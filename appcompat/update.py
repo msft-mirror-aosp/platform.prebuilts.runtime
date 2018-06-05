@@ -27,25 +27,27 @@ THIS_DIR = os.path.realpath(os.path.dirname(__file__))
 
 
 class InstallEntry(object):
-    def __init__(self, target, name, install_path, need_strip=False):
+    def __init__(self, target, name, install_path, need_strip=False, need_unzip=False):
         self.target = target
         self.name = name
         self.install_path = install_path
         self.need_strip = need_strip
+        self.need_unzip = need_unzip
 
 
 install_list = [
-    InstallEntry('sdk_arm64-sdk', 'veridex.zip', 'veridex.zip', False),
+    InstallEntry('sdk_arm64-sdk', 'veridex.zip', 'veridex-linux.zip', need_unzip=True),
+    InstallEntry('sdk_mac', 'veridex.zip', 'veridex-mac.zip'),
 ]
 
 extracted_list = [
-    InstallEntry('sdk_arm64-sdk', 'veridex', 'veridex', True),
-    InstallEntry('sdk_arm64-sdk', 'appcompat.sh', 'appcompat.sh', False),
-    InstallEntry('sdk_arm64-sdk', 'hiddenapi-light-greylist.txt', 'hiddenapi-light-greylist.txt', False),
-    InstallEntry('sdk_arm64-sdk', 'hiddenapi-dark-greylist.txt', 'hiddenapi-dark-greylist.txt', False),
-    InstallEntry('sdk_arm64-sdk', 'hiddenapi-blacklist.txt', 'hiddenapi-blacklist.txt', False),
-    InstallEntry('sdk_arm64-sdk', 'system-stubs.zip', 'system-stubs.zip', False),
-    InstallEntry('sdk_arm64-sdk', 'org.apache.http.legacy-stubs.zip', 'org.apache.http.legacy-stubs.zip', False),
+    InstallEntry('sdk_arm64-sdk', 'veridex', 'veridex', need_strip=True),
+    InstallEntry('sdk_arm64-sdk', 'appcompat.sh', 'appcompat.sh'),
+    InstallEntry('sdk_arm64-sdk', 'hiddenapi-light-greylist.txt', 'hiddenapi-light-greylist.txt'),
+    InstallEntry('sdk_arm64-sdk', 'hiddenapi-dark-greylist.txt', 'hiddenapi-dark-greylist.txt'),
+    InstallEntry('sdk_arm64-sdk', 'hiddenapi-blacklist.txt', 'hiddenapi-blacklist.txt'),
+    InstallEntry('sdk_arm64-sdk', 'system-stubs.zip', 'system-stubs.zip'),
+    InstallEntry('sdk_arm64-sdk', 'org.apache.http.legacy-stubs.zip', 'org.apache.http.legacy-stubs.zip'),
 ]
 
 def logger():
@@ -130,6 +132,7 @@ def install_entry(branch, build, entry):
     name = entry.name
     install_path = entry.install_path
     need_strip = entry.need_strip
+    need_unzip = entry.need_unzip
 
     fetch_artifact(branch, build, target, name)
     if need_strip:
@@ -139,7 +142,7 @@ def install_entry(branch, build, entry):
         os.makedirs(dir)
     shutil.move(name, install_path)
 
-    if install_path.endswith('.zip'):
+    if need_unzip:
         unzip(install_path)
 
 
