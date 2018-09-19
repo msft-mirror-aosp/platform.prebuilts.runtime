@@ -46,6 +46,7 @@ extracted_list = [
     InstallEntry('sdk_arm64-sdk', 'hiddenapi-light-greylist.txt', 'hiddenapi-light-greylist.txt'),
     InstallEntry('sdk_arm64-sdk', 'hiddenapi-dark-greylist.txt', 'hiddenapi-dark-greylist.txt'),
     InstallEntry('sdk_arm64-sdk', 'hiddenapi-blacklist.txt', 'hiddenapi-blacklist.txt'),
+    InstallEntry('sdk_arm64-sdk', 'hiddenapi-whitelist.txt', 'hiddenapi-whitelist.txt'),
     InstallEntry('sdk_arm64-sdk', 'system-stubs.zip', 'system-stubs.zip'),
     InstallEntry('sdk_arm64-sdk', 'org.apache.http.legacy-stubs.zip', 'org.apache.http.legacy-stubs.zip'),
 ]
