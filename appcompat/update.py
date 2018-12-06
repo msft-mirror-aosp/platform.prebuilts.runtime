@@ -37,16 +37,12 @@ class InstallEntry(object):
 
 install_list = [
     InstallEntry('sdk_arm64-sdk', 'veridex.zip', 'veridex-linux.zip', need_unzip=True),
-    InstallEntry('sdk_mac', 'veridex.zip', 'veridex-mac.zip'),
 ]
 
 extracted_list = [
     InstallEntry('sdk_arm64-sdk', 'veridex', 'veridex', need_strip=True),
     InstallEntry('sdk_arm64-sdk', 'appcompat.sh', 'appcompat.sh'),
-    InstallEntry('sdk_arm64-sdk', 'hiddenapi-light-greylist.txt', 'hiddenapi-light-greylist.txt'),
-    InstallEntry('sdk_arm64-sdk', 'hiddenapi-dark-greylist.txt', 'hiddenapi-dark-greylist.txt'),
-    InstallEntry('sdk_arm64-sdk', 'hiddenapi-blacklist.txt', 'hiddenapi-blacklist.txt'),
-    InstallEntry('sdk_arm64-sdk', 'hiddenapi-whitelist.txt', 'hiddenapi-whitelist.txt'),
+    InstallEntry('sdk_arm64-sdk', 'hiddenapi-flags.csv', 'hiddenapi-flags.csv'),
     InstallEntry('sdk_arm64-sdk', 'system-stubs.zip', 'system-stubs.zip'),
     InstallEntry('sdk_arm64-sdk', 'org.apache.http.legacy-stubs.zip', 'org.apache.http.legacy-stubs.zip'),
 ]
