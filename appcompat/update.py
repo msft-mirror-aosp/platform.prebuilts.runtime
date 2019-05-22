@@ -36,15 +36,12 @@ class InstallEntry(object):
 
 
 install_list = [
-    InstallEntry('sdk_arm64-sdk', 'veridex.zip', 'veridex-linux.zip', need_unzip=True),
+    InstallEntry('sdk_phone_arm64-sdk', 'veridex.zip', 'veridex-linux.zip', need_unzip=True),
+    InstallEntry('sdk_phone_armv7-sdk_mac', 'veridex.zip', 'veridex-mac.zip'),
 ]
 
 extracted_list = [
-    InstallEntry('sdk_arm64-sdk', 'veridex', 'veridex', need_strip=True),
-    InstallEntry('sdk_arm64-sdk', 'appcompat.sh', 'appcompat.sh'),
-    InstallEntry('sdk_arm64-sdk', 'hiddenapi-flags.csv', 'hiddenapi-flags.csv'),
-    InstallEntry('sdk_arm64-sdk', 'system-stubs.zip', 'system-stubs.zip'),
-    InstallEntry('sdk_arm64-sdk', 'org.apache.http.legacy-stubs.zip', 'org.apache.http.legacy-stubs.zip'),
+    InstallEntry('sdk_phone_arm64-sdk', 'hiddenapi-flags.csv', 'hiddenapi-flags.csv'),
 ]
 
 def logger():
@@ -117,7 +114,6 @@ def install_new_files(branch, build):
     """Installs the new release."""
     for entry in install_list:
         install_entry(branch, build, entry)
-    install_repo_prop(branch, build)
     for entry in extracted_list:
         if entry.need_strip:
             check_call(['strip', entry.name])
@@ -141,14 +137,6 @@ def install_entry(branch, build, entry):
 
     if need_unzip:
         unzip(install_path)
-
-
-def install_repo_prop(branch, build):
-    """Installs the repo.prop from the build for auditing."""
-    # We took everything from the same build number, so we only need the
-    # repo.prop from one of our targets.
-    fetch_artifact(branch, build, 'sdk', 'repo.prop')
-
 
 def unzip(zip_path):
     check_call(['unzip', zip_path])
@@ -187,7 +175,7 @@ def main():
         start_branch(args.build)
     remove_old_files()
     install_new_files(args.branch, args.build)
-    files = ['repo.prop'] + list_installed_files()
+    files = list_installed_files()
     commit(args.branch, args.build, files)
 
 
