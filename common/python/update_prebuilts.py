@@ -123,15 +123,15 @@ def install_entry(branch, build, entry):
     if need_exec:
         check_call(['chmod', 'a+x', name])
     dir = os.path.dirname(install_path)
-    if dir and os.path.isdir(dir):
+    if dir and not os.path.isdir(dir):
         os.makedirs(dir)
-    shutil.move(name, install_path)
+    shutil.move(os.path.basename(name), install_path)
 
     if need_unzip:
         unzip(install_path)
 
 def unzip(zip_path):
-    check_call(['unzip', zip_path])
+    check_call(['unzip', zip_path, '-d', os.path.dirname(zip_path)])
 
 
 def get_args():
