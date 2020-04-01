@@ -1,0 +1,137 @@
+// This is auto-generated. DO NOT EDIT.
+
+java_import {
+    name: "conscrypt-module-sdk_conscrypt.module.intra.core.api.stubs@current",
+    sdk_member_name: "conscrypt.module.intra.core.api.stubs",
+    visibility: [
+        "//external/okhttp:__pkg__",
+        "//libcore:__subpackages__",
+    ],
+    apex_available: [
+        "com.android.art.debug",
+        "com.android.art.release",
+    ],
+    jars: ["java/conscrypt.module.intra.core.api.stubs.jar"],
+}
+
+java_import {
+    name: "conscrypt.module.intra.core.api.stubs",
+    prefer: false,
+    visibility: [
+        "//external/okhttp:__pkg__",
+        "//libcore:__subpackages__",
+    ],
+    apex_available: [
+        "com.android.art.debug",
+        "com.android.art.release",
+    ],
+    jars: ["java/conscrypt.module.intra.core.api.stubs.jar"],
+}
+
+java_import {
+    name: "conscrypt-module-sdk_conscrypt.module.platform.api.stubs@current",
+    sdk_member_name: "conscrypt.module.platform.api.stubs",
+    visibility: [
+        "//external/wycheproof:__pkg__",
+        "//libcore:__subpackages__",
+    ],
+    jars: ["java/conscrypt.module.platform.api.stubs.jar"],
+}
+
+java_import {
+    name: "conscrypt.module.platform.api.stubs",
+    prefer: false,
+    visibility: [
+        "//external/wycheproof:__pkg__",
+        "//libcore:__subpackages__",
+    ],
+    jars: ["java/conscrypt.module.platform.api.stubs.jar"],
+}
+
+java_import {
+    name: "conscrypt-module-sdk_conscrypt.module.public.api.stubs@current",
+    sdk_member_name: "conscrypt.module.public.api.stubs",
+    visibility: ["//libcore:__pkg__"],
+    jars: ["java/conscrypt.module.public.api.stubs.jar"],
+}
+
+java_import {
+    name: "conscrypt.module.public.api.stubs",
+    prefer: false,
+    visibility: ["//libcore:__pkg__"],
+    jars: ["java/conscrypt.module.public.api.stubs.jar"],
+}
+
+cc_prebuilt_library_shared {
+    name: "conscrypt-module-sdk_libconscrypt_jni@current",
+    sdk_member_name: "libconscrypt_jni",
+    visibility: ["//external/conscrypt:__subpackages__"],
+    installable: false,
+    sdk_version: "21",
+    stl: "c++_static",
+    shared_libs: ["liblog"],
+    arch: {
+        arm64: {
+            srcs: ["arm64/lib/libconscrypt_jni.so"],
+        },
+        x86_64: {
+            srcs: ["x86_64/lib/libconscrypt_jni.so"],
+        },
+        arm: {
+            srcs: ["arm/lib/libconscrypt_jni.so"],
+        },
+        x86: {
+            srcs: ["x86/lib/libconscrypt_jni.so"],
+        },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "libconscrypt_jni",
+    prefer: false,
+    visibility: ["//external/conscrypt:__subpackages__"],
+    sdk_version: "21",
+    stl: "c++_static",
+    shared_libs: ["liblog"],
+    arch: {
+        arm64: {
+            srcs: ["arm64/lib/libconscrypt_jni.so"],
+        },
+        x86_64: {
+            srcs: ["x86_64/lib/libconscrypt_jni.so"],
+        },
+        arm: {
+            srcs: ["arm/lib/libconscrypt_jni.so"],
+        },
+        x86: {
+            srcs: ["x86/lib/libconscrypt_jni.so"],
+        },
+    },
+}
+
+prebuilt_stubs_sources {
+    name: "conscrypt-module-sdk_conscrypt-module-public-api-stubs-source@current",
+    sdk_member_name: "conscrypt-module-public-api-stubs-source",
+    visibility: ["//frameworks/base:__pkg__"],
+    srcs: ["java/conscrypt-module-public-api-stubs-source_stubs_sources"],
+}
+
+prebuilt_stubs_sources {
+    name: "conscrypt-module-public-api-stubs-source",
+    prefer: false,
+    visibility: ["//frameworks/base:__pkg__"],
+    srcs: ["java/conscrypt-module-public-api-stubs-source_stubs_sources"],
+}
+
+sdk_snapshot {
+    name: "conscrypt-module-sdk@current",
+    visibility: ["//external/conscrypt:__subpackages__"],
+    java_header_libs: [
+        "conscrypt-module-sdk_conscrypt.module.intra.core.api.stubs@current",
+        "conscrypt-module-sdk_conscrypt.module.platform.api.stubs@current",
+        "conscrypt-module-sdk_conscrypt.module.public.api.stubs@current",
+    ],
+    native_shared_libs: ["conscrypt-module-sdk_libconscrypt_jni@current"],
+    stubs_sources: ["conscrypt-module-sdk_conscrypt-module-public-api-stubs-source@current"],
+}
+
