@@ -27,12 +27,17 @@ import update_prebuilts as update
 mainline_install_list = [
     update.InstallEntry('mainline_modules',
                         'arm64/com.android.conscrypt.apex',
-                        'conscrypt/apex/com.android.conscryt-arm64.apex',
+                        'conscrypt/apex/com.android.conscrypt-arm64.apex',
                         need_unzip=False),
 
     update.InstallEntry('mainline_modules',
                         'arm/com.android.conscrypt.apex',
-                        'conscrypt/apex/com.android.conscryt-arm.apex',
+                        'conscrypt/apex/com.android.conscrypt-arm.apex',
+                        need_unzip=False),
+
+    update.InstallEntry('mainline_modules',
+                        'x86/com.android.conscrypt.apex',
+                        'conscrypt/apex/com.android.conscrypt-x86.apex',
                         need_unzip=False),
 
     update.InstallEntry('mainline_modules',
