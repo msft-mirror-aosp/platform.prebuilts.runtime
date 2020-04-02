@@ -1,0 +1,65 @@
+// This is auto-generated. DO NOT EDIT.
+
+java_import {
+    name: "conscrypt-module-test-exports_conscrypt@current",
+    sdk_member_name: "conscrypt",
+    visibility: [
+        "//art/build:__pkg__",
+        "//device:__subpackages__",
+        "//external/robolectric-shadows:__pkg__",
+        "//system/apex/tests:__pkg__",
+        "//external/conscrypt:__subpackages__",
+    ],
+    apex_available: [
+        "com.android.conscrypt",
+        "test_com.android.conscrypt",
+    ],
+    jars: ["java/conscrypt.jar"],
+}
+
+java_import {
+    name: "conscrypt",
+    prefer: false,
+    visibility: [
+        "//art/build:__pkg__",
+        "//device:__subpackages__",
+        "//external/robolectric-shadows:__pkg__",
+        "//system/apex/tests:__pkg__",
+        "//external/conscrypt:__subpackages__",
+    ],
+    apex_available: [
+        "com.android.conscrypt",
+        "test_com.android.conscrypt",
+    ],
+    jars: ["java/conscrypt.jar"],
+}
+
+java_test_import {
+    name: "conscrypt-module-test-exports_conscrypt-tests@current",
+    sdk_member_name: "conscrypt-tests",
+    visibility: [
+        "//cts/tests/libcore/luni:__pkg__",
+        "//external/conscrypt/apex/tests:__pkg__",
+    ],
+    jars: ["java/conscrypt-tests.jar"],
+    test_config: "java/conscrypt-tests-AndroidTest.xml",
+}
+
+java_test_import {
+    name: "conscrypt-tests",
+    prefer: false,
+    visibility: [
+        "//cts/tests/libcore/luni:__pkg__",
+        "//external/conscrypt/apex/tests:__pkg__",
+    ],
+    jars: ["java/conscrypt-tests.jar"],
+    test_config: "java/conscrypt-tests-AndroidTest.xml",
+}
+
+module_exports_snapshot {
+    name: "conscrypt-module-test-exports@current",
+    visibility: ["//external/conscrypt:__subpackages__"],
+    java_libs: ["conscrypt-module-test-exports_conscrypt@current"],
+    java_tests: ["conscrypt-module-test-exports_conscrypt-tests@current"],
+}
+
