@@ -41,6 +41,11 @@ mainline_install_list = [
                         need_unzip=False),
 
     update.InstallEntry('mainline_modules',
+                        'x86_64/com.android.conscrypt.apex',
+                        'conscrypt/apex/com.android.conscrypt-x86_64.apex',
+                        need_unzip=False),
+
+    update.InstallEntry('mainline_modules',
                         'mainline-sdks/conscrypt-module-sdk-current.zip',
                         'conscrypt/sdk/conscrypt-module-sdk-current.zip',
                         need_unzip=True),
