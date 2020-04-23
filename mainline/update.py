@@ -54,6 +54,11 @@ mainline_install_list = [
                         'mainline-sdks/conscrypt-module-test-exports-current.zip',
                         'conscrypt/test-exports/conscrypt-module-test-exports-current.zip',
                         need_unzip=True),
+
+    update.InstallEntry('mainline_modules',
+                        'mainline-sdks/conscrypt-module-host-exports-current.zip',
+                        'conscrypt/host-exports/conscrypt-module-host-exports-current.zip',
+                        need_unzip=True),
 ]
 
 mainline_extracted_list = [
