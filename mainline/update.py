@@ -24,45 +24,36 @@ sys.path.append(THIS_DIR + '/../common/python')
 
 import update_prebuilts as update
 
-mainline_install_list = [
-    update.InstallEntry('mainline_modules',
-                        'arm64/com.android.conscrypt.apex',
-                        'conscrypt/apex/com.android.conscrypt-arm64.apex',
-                        install_unzipped=False),
+PREBUILT_DESCRIPTION = 'mainline'
+TARGET = 'mainline_modules'
 
-    update.InstallEntry('mainline_modules',
-                        'arm/com.android.conscrypt.apex',
-                        'conscrypt/apex/com.android.conscrypt-arm.apex',
-                        install_unzipped=False),
+mainline_install_list = []
+mainline_extracted_list = []
 
-    update.InstallEntry('mainline_modules',
-                        'x86/com.android.conscrypt.apex',
-                        'conscrypt/apex/com.android.conscrypt-x86.apex',
-                        install_unzipped=False),
+def InstallApexEntries(apex_name, install_dir):
+  res = []
+  for arch in ['arm', 'arm64', 'x86', 'x86_64']:
+    res.append(update.InstallEntry(
+        TARGET,
+        arch + '/' + apex_name + '.apex',
+        install_dir + '/' + apex_name + '-' + arch + '.apex',
+        install_unzipped=False))
+  return res
 
-    update.InstallEntry('mainline_modules',
-                        'x86_64/com.android.conscrypt.apex',
-                        'conscrypt/apex/com.android.conscrypt-x86_64.apex',
-                        install_unzipped=False),
+def InstallSdkEntries(mainline_sdk_name, install_dir):
+  return [update.InstallEntry(
+      TARGET,
+      'mainline-sdks/' + mainline_sdk_name + '-current.zip',
+      install_dir,
+      install_unzipped=True)]
 
-    update.InstallEntry('mainline_modules',
-                        'mainline-sdks/conscrypt-module-sdk-current.zip',
-                        'conscrypt/sdk',
-                        install_unzipped=True),
-
-    update.InstallEntry('mainline_modules',
-                        'mainline-sdks/conscrypt-module-test-exports-current.zip',
-                        'conscrypt/test-exports',
-                        install_unzipped=True),
-
-    update.InstallEntry('mainline_modules',
-                        'mainline-sdks/conscrypt-module-host-exports-current.zip',
-                        'conscrypt/host-exports',
-                        install_unzipped=True),
-]
-
-mainline_extracted_list = [
-]
+# Conscrypt
+mainline_install_list.extend(
+    InstallApexEntries('com.android.conscrypt', 'conscrypt/apex') +
+    InstallSdkEntries('conscrypt-module-sdk', 'conscrypt/sdk') +
+    InstallSdkEntries('conscrypt-module-test-exports', 'conscrypt/test-exports') +
+    InstallSdkEntries('conscrypt-module-host-exports', 'conscrypt/host-exports'))
 
 if __name__ == '__main__':
-    update.main(THIS_DIR, 'mainline', mainline_install_list, mainline_extracted_list)
+    update.main(THIS_DIR, PREBUILT_DESCRIPTION,
+                mainline_install_list, mainline_extracted_list)
