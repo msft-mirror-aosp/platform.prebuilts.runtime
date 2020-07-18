@@ -24,6 +24,7 @@ java_import {
     prefer: false,
     visibility: [
         "//build/make/tools/signapk",
+        "//tools/apksig",
         "//external/conscrypt",
     ],
     device_supported: false,
