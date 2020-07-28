@@ -48,8 +48,14 @@ cc_prebuilt_library_shared {
     installable: false,
     stl: "libc++_static",
     target: {
+        linux_bionic: {
+            compile_multilib: "64",
+        },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libconscrypt_openjdk_jni.so"],
+        },
+        linux_glibc: {
+            compile_multilib: "both",
         },
         linux_glibc_x86_64: {
             srcs: ["linux_glibc/x86_64/lib/libconscrypt_openjdk_jni.so"],
@@ -68,8 +74,14 @@ cc_prebuilt_library_shared {
     host_supported: true,
     stl: "libc++_static",
     target: {
+        linux_bionic: {
+            compile_multilib: "64",
+        },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libconscrypt_openjdk_jni.so"],
+        },
+        linux_glibc: {
+            compile_multilib: "both",
         },
         linux_glibc_x86_64: {
             srcs: ["linux_glibc/x86_64/lib/libconscrypt_openjdk_jni.so"],
