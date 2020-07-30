@@ -66,6 +66,10 @@ mainline_install_list.extend(
     InstallSdkEntries('i18n-module-sdk', 'i18n/sdk') +
     InstallSdkEntries('i18n-module-test-exports', 'i18n/test-exports'))
 
+# Platform
+mainline_install_list.extend(
+    InstallSdkEntries('platform-mainline-sdk', 'platform/sdk'))
+
 if __name__ == '__main__':
     update.main(THIS_DIR, PREBUILT_DESCRIPTION,
                 mainline_install_list, mainline_extracted_list)
