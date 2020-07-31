@@ -40,6 +40,16 @@ def InstallApexEntries(apex_name, install_dir):
         install_unzipped=False))
   return res
 
+def InstallSharedLibEntries(lib_name, install_dir):
+  res = []
+  for arch in ['arm', 'arm64', 'x86', 'x86_64']:
+    res.append(update.InstallEntry(
+        TARGET,
+        arch + '/' + lib_name + '.so',
+        install_dir + '/' + arch + '/' + lib_name  + '.so',
+        install_unzipped=False))
+  return res
+
 def InstallSdkEntries(mainline_sdk_name, install_dir):
   return [update.InstallEntry(
       TARGET,
@@ -68,7 +78,10 @@ mainline_install_list.extend(
 
 # Platform
 mainline_install_list.extend(
-    InstallSdkEntries('platform-mainline-sdk', 'platform/sdk'))
+    InstallSdkEntries('platform-mainline-sdk', 'platform/sdk') +
+    # Shared libraries that are stubs in SDKs, but for which we need their
+    # implementation for device testing.
+    InstallSharedLibEntries('libartpalette-system', 'platform/impl'))
 
 if __name__ == '__main__':
     update.main(THIS_DIR, PREBUILT_DESCRIPTION,
