@@ -79,6 +79,7 @@ mainline_install_list.extend(
 # Platform
 mainline_install_list.extend(
     InstallSdkEntries('platform-mainline-sdk', 'platform/sdk') +
+    InstallSdkEntries('platform-mainline-test-exports', 'platform/test-exports') +
     # Shared libraries that are stubs in SDKs, but for which we need their
     # implementation for device testing.
     InstallSharedLibEntries('libartpalette-system', 'platform/impl'))
