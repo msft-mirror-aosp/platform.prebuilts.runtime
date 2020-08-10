@@ -74,6 +74,9 @@ cc_prebuilt_library_shared {
         "libssl",
     ],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -90,12 +93,14 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libjavacrypto.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libjavacrypto.so"],
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
@@ -122,6 +127,9 @@ cc_prebuilt_library_shared {
         "libssl",
     ],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -138,12 +146,14 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libjavacrypto.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libjavacrypto.so"],
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
@@ -161,12 +171,19 @@ module_exports_snapshot {
     host_supported: true,
     native_shared_libs: ["conscrypt-module-test-exports_libjavacrypto@current"],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             java_libs: ["conscrypt-module-test-exports_conscrypt@current"],
             java_tests: ["conscrypt-module-test-exports_conscrypt-tests@current"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
+        },
+        linux_glibc: {
+            enabled: true,
         },
     },
 }
