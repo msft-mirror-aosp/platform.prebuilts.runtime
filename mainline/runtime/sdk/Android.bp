@@ -254,6 +254,10 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    stl: "none",
+    sanitize: {
+        never: true,
+    },
     target: {
         android: {
             compile_multilib: "both",
@@ -287,6 +291,10 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    stl: "none",
+    sanitize: {
+        never: true,
+    },
     target: {
         android: {
             compile_multilib: "both",
@@ -321,6 +329,9 @@ cc_prebuilt_object {
         "//apex_available:platform",
     ],
     stl: "none",
+    sanitize: {
+        never: true,
+    },
     target: {
         android: {
             compile_multilib: "both",
@@ -355,6 +366,9 @@ cc_prebuilt_object {
         "//apex_available:platform",
     ],
     stl: "none",
+    sanitize: {
+        never: true,
+    },
     target: {
         android: {
             compile_multilib: "both",
@@ -388,6 +402,10 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    stl: "none",
+    sanitize: {
+        never: true,
+    },
     target: {
         android: {
             compile_multilib: "both",
@@ -421,6 +439,10 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    stl: "none",
+    sanitize: {
+        never: true,
+    },
     target: {
         android: {
             compile_multilib: "both",
@@ -455,6 +477,9 @@ cc_prebuilt_object {
         "//apex_available:platform",
     ],
     stl: "none",
+    sanitize: {
+        never: true,
+    },
     target: {
         android: {
             compile_multilib: "both",
@@ -489,6 +514,9 @@ cc_prebuilt_object {
         "//apex_available:platform",
     ],
     stl: "none",
+    sanitize: {
+        never: true,
+    },
     target: {
         android: {
             compile_multilib: "both",
@@ -690,6 +718,9 @@ cc_prebuilt_library_shared {
     installable: false,
     stl: "none",
     system_shared_libs: [],
+    sanitize: {
+        never: true,
+    },
     stubs: {
         versions: ["10000"],
     },
@@ -739,6 +770,9 @@ cc_prebuilt_library_shared {
     ],
     stl: "none",
     system_shared_libs: [],
+    sanitize: {
+        never: true,
+    },
     stubs: {
         versions: ["10000"],
     },
@@ -789,6 +823,9 @@ cc_prebuilt_library_shared {
     installable: false,
     stl: "none",
     system_shared_libs: [],
+    sanitize: {
+        never: true,
+    },
     stubs: {
         versions: ["10000"],
     },
@@ -831,6 +868,9 @@ cc_prebuilt_library_shared {
     ],
     stl: "none",
     system_shared_libs: [],
+    sanitize: {
+        never: true,
+    },
     stubs: {
         versions: ["10000"],
     },
