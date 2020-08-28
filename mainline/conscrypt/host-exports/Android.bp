@@ -6,7 +6,14 @@ java_import {
     visibility: ["//build/make/tools/signapk:__pkg__"],
     device_supported: false,
     host_supported: true,
-    jars: ["java/conscrypt-unbundled.jar"],
+    target: {
+        linux_bionic: {
+            jars: ["java/linux_bionic/conscrypt-unbundled.jar"],
+        },
+        linux_glibc: {
+            jars: ["java/linux_glibc/conscrypt-unbundled.jar"],
+        },
+    },
 }
 
 java_import {
@@ -15,7 +22,14 @@ java_import {
     visibility: ["//build/make/tools/signapk:__pkg__"],
     device_supported: false,
     host_supported: true,
-    jars: ["java/conscrypt-unbundled.jar"],
+    target: {
+        linux_bionic: {
+            jars: ["java/linux_bionic/conscrypt-unbundled.jar"],
+        },
+        linux_glibc: {
+            jars: ["java/linux_glibc/conscrypt-unbundled.jar"],
+        },
+    },
 }
 
 cc_prebuilt_library_shared {
@@ -26,12 +40,15 @@ cc_prebuilt_library_shared {
     host_supported: true,
     installable: false,
     stl: "libc++_static",
-    arch: {
-        x86_64: {
-            srcs: ["x86_64/lib/libconscrypt_openjdk_jni.so"],
+    target: {
+        linux_bionic_x86_64: {
+            srcs: ["linux_bionic/x86_64/lib/libconscrypt_openjdk_jni.so"],
         },
-        x86: {
-            srcs: ["x86/lib/libconscrypt_openjdk_jni.so"],
+        linux_glibc_x86_64: {
+            srcs: ["linux_glibc/x86_64/lib/libconscrypt_openjdk_jni.so"],
+        },
+        linux_glibc_x86: {
+            srcs: ["linux_glibc/x86/lib/libconscrypt_openjdk_jni.so"],
         },
     },
 }
@@ -43,12 +60,15 @@ cc_prebuilt_library_shared {
     device_supported: false,
     host_supported: true,
     stl: "libc++_static",
-    arch: {
-        x86_64: {
-            srcs: ["x86_64/lib/libconscrypt_openjdk_jni.so"],
+    target: {
+        linux_bionic_x86_64: {
+            srcs: ["linux_bionic/x86_64/lib/libconscrypt_openjdk_jni.so"],
         },
-        x86: {
-            srcs: ["x86/lib/libconscrypt_openjdk_jni.so"],
+        linux_glibc_x86_64: {
+            srcs: ["linux_glibc/x86_64/lib/libconscrypt_openjdk_jni.so"],
+        },
+        linux_glibc_x86: {
+            srcs: ["linux_glibc/x86/lib/libconscrypt_openjdk_jni.so"],
         },
     },
 }
@@ -60,5 +80,10 @@ module_exports_snapshot {
     host_supported: true,
     java_libs: ["conscrypt-module-host-exports_conscrypt-unbundled@current"],
     native_shared_libs: ["conscrypt-module-host-exports_libconscrypt_openjdk_jni@current"],
+    target: {
+        linux_bionic: {
+            compile_multilib: "64",
+        },
+    },
 }
 
