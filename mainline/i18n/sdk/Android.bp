@@ -163,13 +163,18 @@ cc_prebuilt_library_headers {
     ],
     export_include_dirs: ["common_os/include/external/icu/libandroidicu/include"],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
     },
@@ -186,13 +191,18 @@ cc_prebuilt_library_headers {
     ],
     export_include_dirs: ["common_os/include/external/icu/libandroidicu/include"],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
     },
@@ -208,13 +218,18 @@ cc_prebuilt_library_headers {
         "common_os/include/external/icu/android_icu4c/include",
     ],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
     },
@@ -230,13 +245,18 @@ cc_prebuilt_library_headers {
         "common_os/include/external/icu/android_icu4c/include",
     ],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
     },
@@ -257,6 +277,9 @@ cc_prebuilt_library_shared {
         versions: ["1"],
     },
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -273,12 +296,14 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libandroidicu.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libandroidicu-host.so"],
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
@@ -304,6 +329,9 @@ cc_prebuilt_library_shared {
         versions: ["1"],
     },
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -320,12 +348,14 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libandroidicu.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libandroidicu-host.so"],
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
@@ -346,6 +376,9 @@ sdk_snapshot {
     ],
     native_shared_libs: ["i18n-module-sdk_libandroidicu@current"],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             java_sdk_libs: [
                 "i18n-module-sdk_i18n.module.intra.core.api@current",
@@ -355,7 +388,11 @@ sdk_snapshot {
             ],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
+        },
+        linux_glibc: {
+            enabled: true,
         },
     },
 }
