@@ -5,6 +5,7 @@ java_import {
     sdk_member_name: "conscrypt-unbundled",
     visibility: [
         "//build/make/tools/signapk",
+        "//tools/apksig",
         "//external/conscrypt",
     ],
     device_supported: false,
@@ -24,6 +25,7 @@ java_import {
     prefer: false,
     visibility: [
         "//build/make/tools/signapk",
+        "//tools/apksig",
         "//external/conscrypt",
     ],
     device_supported: false,
@@ -47,13 +49,18 @@ cc_prebuilt_library_shared {
     installable: false,
     stl: "libc++_static",
     target: {
+        host: {
+            enabled: false,
+        },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libconscrypt_openjdk_jni.so"],
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
@@ -73,13 +80,18 @@ cc_prebuilt_library_shared {
     host_supported: true,
     stl: "libc++_static",
     target: {
+        host: {
+            enabled: false,
+        },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libconscrypt_openjdk_jni.so"],
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
@@ -99,8 +111,15 @@ module_exports_snapshot {
     java_libs: ["conscrypt-module-host-exports_conscrypt-unbundled@current"],
     native_shared_libs: ["conscrypt-module-host-exports_libconscrypt_openjdk_jni@current"],
     target: {
+        host: {
+            enabled: false,
+        },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
+        },
+        linux_glibc: {
+            enabled: true,
         },
     },
 }
