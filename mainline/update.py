@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env -S python -B
 #
 # Copyright (C) 2020 The Android Open Source Project
 #
@@ -28,37 +28,37 @@ mainline_install_list = [
     update.InstallEntry('mainline_modules',
                         'arm64/com.android.conscrypt.apex',
                         'conscrypt/apex/com.android.conscrypt-arm64.apex',
-                        need_unzip=False),
+                        install_unzipped=False),
 
     update.InstallEntry('mainline_modules',
                         'arm/com.android.conscrypt.apex',
                         'conscrypt/apex/com.android.conscrypt-arm.apex',
-                        need_unzip=False),
+                        install_unzipped=False),
 
     update.InstallEntry('mainline_modules',
                         'x86/com.android.conscrypt.apex',
                         'conscrypt/apex/com.android.conscrypt-x86.apex',
-                        need_unzip=False),
+                        install_unzipped=False),
 
     update.InstallEntry('mainline_modules',
                         'x86_64/com.android.conscrypt.apex',
                         'conscrypt/apex/com.android.conscrypt-x86_64.apex',
-                        need_unzip=False),
+                        install_unzipped=False),
 
     update.InstallEntry('mainline_modules',
                         'mainline-sdks/conscrypt-module-sdk-current.zip',
-                        'conscrypt/sdk/conscrypt-module-sdk-current.zip',
-                        need_unzip=True),
+                        'conscrypt/sdk',
+                        install_unzipped=True),
 
     update.InstallEntry('mainline_modules',
                         'mainline-sdks/conscrypt-module-test-exports-current.zip',
-                        'conscrypt/test-exports/conscrypt-module-test-exports-current.zip',
-                        need_unzip=True),
+                        'conscrypt/test-exports',
+                        install_unzipped=True),
 
     update.InstallEntry('mainline_modules',
                         'mainline-sdks/conscrypt-module-host-exports-current.zip',
-                        'conscrypt/host-exports/conscrypt-module-host-exports-current.zip',
-                        need_unzip=True),
+                        'conscrypt/host-exports',
+                        install_unzipped=True),
 ]
 
 mainline_extracted_list = [
