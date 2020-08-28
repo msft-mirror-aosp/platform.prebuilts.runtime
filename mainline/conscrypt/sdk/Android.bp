@@ -6,6 +6,7 @@ java_sdk_library_import {
     visibility: [
         "//frameworks/base:__pkg__",
         "//libcore:__pkg__",
+        "//prebuilts:__subpackages__",
     ],
     public: {
         jars: ["sdk_library/public/conscrypt.module.public.api-stubs.jar"],
@@ -22,6 +23,7 @@ java_sdk_library_import {
     visibility: [
         "//frameworks/base:__pkg__",
         "//libcore:__pkg__",
+        "//prebuilts:__subpackages__",
     ],
     public: {
         jars: ["sdk_library/public/conscrypt.module.public.api-stubs.jar"],
@@ -38,6 +40,7 @@ java_sdk_library_import {
     visibility: [
         "//external/okhttp:__pkg__",
         "//libcore:__subpackages__",
+        "//prebuilts:__subpackages__",
     ],
     public: {
         jars: ["sdk_library/public/conscrypt.module.intra.core.api-stubs.jar"],
@@ -54,6 +57,7 @@ java_sdk_library_import {
     visibility: [
         "//external/okhttp:__pkg__",
         "//libcore:__subpackages__",
+        "//prebuilts:__subpackages__",
     ],
     public: {
         jars: ["sdk_library/public/conscrypt.module.intra.core.api-stubs.jar"],
@@ -70,6 +74,7 @@ java_sdk_library_import {
     visibility: [
         "//external/wycheproof:__pkg__",
         "//libcore:__subpackages__",
+        "//prebuilts:__subpackages__",
     ],
     public: {
         jars: ["sdk_library/public/conscrypt.module.platform.api-stubs.jar"],
@@ -86,6 +91,7 @@ java_sdk_library_import {
     visibility: [
         "//external/wycheproof:__pkg__",
         "//libcore:__subpackages__",
+        "//prebuilts:__subpackages__",
     ],
     public: {
         jars: ["sdk_library/public/conscrypt.module.platform.api-stubs.jar"],
