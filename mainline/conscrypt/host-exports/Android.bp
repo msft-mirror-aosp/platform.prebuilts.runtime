@@ -48,6 +48,9 @@ cc_prebuilt_library_shared {
     host_supported: true,
     installable: false,
     stl: "libc++_static",
+    sanitize: {
+        never: true,
+    },
     target: {
         host: {
             enabled: false,
@@ -79,6 +82,9 @@ cc_prebuilt_library_shared {
     device_supported: false,
     host_supported: true,
     stl: "libc++_static",
+    sanitize: {
+        never: true,
+    },
     target: {
         host: {
             enabled: false,
