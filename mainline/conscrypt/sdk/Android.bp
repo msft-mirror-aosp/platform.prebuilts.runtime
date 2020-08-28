@@ -4,16 +4,17 @@ java_sdk_library_import {
     name: "conscrypt-module-sdk_conscrypt.module.public.api@current",
     sdk_member_name: "conscrypt.module.public.api",
     visibility: [
-        "//frameworks/base:__pkg__",
-        "//libcore:__pkg__",
+        "//frameworks/base",
+        "//libcore",
         "//prebuilts:__subpackages__",
+        "//external/conscrypt",
     ],
     public: {
         jars: ["sdk_library/public/conscrypt.module.public.api-stubs.jar"],
         stub_srcs: ["sdk_library/public/conscrypt.module.public.api_stub_sources"],
         current_api: "sdk_library/public/conscrypt.module.public.api.txt",
         removed_api: "sdk_library/public/conscrypt.module.public.api-removed.txt",
-        sdk_version: "current",
+        sdk_version: "none",
     },
 }
 
@@ -21,16 +22,17 @@ java_sdk_library_import {
     name: "conscrypt.module.public.api",
     prefer: false,
     visibility: [
-        "//frameworks/base:__pkg__",
-        "//libcore:__pkg__",
+        "//frameworks/base",
+        "//libcore",
         "//prebuilts:__subpackages__",
+        "//external/conscrypt",
     ],
     public: {
         jars: ["sdk_library/public/conscrypt.module.public.api-stubs.jar"],
         stub_srcs: ["sdk_library/public/conscrypt.module.public.api_stub_sources"],
         current_api: "sdk_library/public/conscrypt.module.public.api.txt",
         removed_api: "sdk_library/public/conscrypt.module.public.api-removed.txt",
-        sdk_version: "current",
+        sdk_version: "none",
     },
 }
 
@@ -38,16 +40,17 @@ java_sdk_library_import {
     name: "conscrypt-module-sdk_conscrypt.module.intra.core.api@current",
     sdk_member_name: "conscrypt.module.intra.core.api",
     visibility: [
-        "//external/okhttp:__pkg__",
+        "//external/okhttp",
         "//libcore:__subpackages__",
         "//prebuilts:__subpackages__",
+        "//external/conscrypt",
     ],
     public: {
         jars: ["sdk_library/public/conscrypt.module.intra.core.api-stubs.jar"],
         stub_srcs: ["sdk_library/public/conscrypt.module.intra.core.api_stub_sources"],
         current_api: "sdk_library/public/conscrypt.module.intra.core.api.txt",
         removed_api: "sdk_library/public/conscrypt.module.intra.core.api-removed.txt",
-        sdk_version: "current",
+        sdk_version: "none",
     },
 }
 
@@ -55,16 +58,17 @@ java_sdk_library_import {
     name: "conscrypt.module.intra.core.api",
     prefer: false,
     visibility: [
-        "//external/okhttp:__pkg__",
+        "//external/okhttp",
         "//libcore:__subpackages__",
         "//prebuilts:__subpackages__",
+        "//external/conscrypt",
     ],
     public: {
         jars: ["sdk_library/public/conscrypt.module.intra.core.api-stubs.jar"],
         stub_srcs: ["sdk_library/public/conscrypt.module.intra.core.api_stub_sources"],
         current_api: "sdk_library/public/conscrypt.module.intra.core.api.txt",
         removed_api: "sdk_library/public/conscrypt.module.intra.core.api-removed.txt",
-        sdk_version: "current",
+        sdk_version: "none",
     },
 }
 
@@ -72,16 +76,17 @@ java_sdk_library_import {
     name: "conscrypt-module-sdk_conscrypt.module.platform.api@current",
     sdk_member_name: "conscrypt.module.platform.api",
     visibility: [
-        "//external/wycheproof:__pkg__",
+        "//external/wycheproof",
         "//libcore:__subpackages__",
         "//prebuilts:__subpackages__",
+        "//external/conscrypt",
     ],
     public: {
         jars: ["sdk_library/public/conscrypt.module.platform.api-stubs.jar"],
         stub_srcs: ["sdk_library/public/conscrypt.module.platform.api_stub_sources"],
         current_api: "sdk_library/public/conscrypt.module.platform.api.txt",
         removed_api: "sdk_library/public/conscrypt.module.platform.api-removed.txt",
-        sdk_version: "current",
+        sdk_version: "none",
     },
 }
 
@@ -89,16 +94,17 @@ java_sdk_library_import {
     name: "conscrypt.module.platform.api",
     prefer: false,
     visibility: [
-        "//external/wycheproof:__pkg__",
+        "//external/wycheproof",
         "//libcore:__subpackages__",
         "//prebuilts:__subpackages__",
+        "//external/conscrypt",
     ],
     public: {
         jars: ["sdk_library/public/conscrypt.module.platform.api-stubs.jar"],
         stub_srcs: ["sdk_library/public/conscrypt.module.platform.api_stub_sources"],
         current_api: "sdk_library/public/conscrypt.module.platform.api.txt",
         removed_api: "sdk_library/public/conscrypt.module.platform.api-removed.txt",
-        sdk_version: "current",
+        sdk_version: "none",
     },
 }
 
