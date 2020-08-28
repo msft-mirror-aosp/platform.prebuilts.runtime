@@ -120,6 +120,7 @@ cc_prebuilt_library_shared {
     visibility: ["//external/conscrypt:__subpackages__"],
     installable: false,
     stl: "c++_static",
+    compile_multilib: "both",
     shared_libs: ["liblog"],
     arch: {
         arm64: {
@@ -142,6 +143,7 @@ cc_prebuilt_library_shared {
     prefer: false,
     visibility: ["//external/conscrypt:__subpackages__"],
     stl: "c++_static",
+    compile_multilib: "both",
     shared_libs: ["liblog"],
     arch: {
         arm64: {

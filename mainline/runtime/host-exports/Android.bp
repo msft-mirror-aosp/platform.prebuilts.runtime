@@ -11,10 +11,10 @@ cc_prebuilt_binary {
     ],
     installable: false,
     stl: "none",
+    compile_multilib: "64",
     system_shared_libs: [],
     static_executable: true,
     nocrt: true,
-    compile_multilib: "64",
     arch: {
         x86_64: {
             srcs: ["x86_64/bin/linker64"],
@@ -32,10 +32,10 @@ cc_prebuilt_binary {
         "com.android.runtime",
     ],
     stl: "none",
+    compile_multilib: "64",
     system_shared_libs: [],
     static_executable: true,
     nocrt: true,
-    compile_multilib: "64",
     arch: {
         x86_64: {
             srcs: ["x86_64/bin/linker64"],
