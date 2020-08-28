@@ -54,6 +54,12 @@ mainline_install_list.extend(
     InstallSdkEntries('conscrypt-module-test-exports', 'conscrypt/test-exports') +
     InstallSdkEntries('conscrypt-module-host-exports', 'conscrypt/host-exports'))
 
+# Runtime (Bionic)
+mainline_install_list.extend(
+    InstallApexEntries('com.android.runtime', 'runtime/apex') +
+    InstallSdkEntries('runtime-module-sdk', 'runtime/sdk') +
+    InstallSdkEntries('runtime-module-host-exports', 'runtime/host-exports'))
+
 if __name__ == '__main__':
     update.main(THIS_DIR, PREBUILT_DESCRIPTION,
                 mainline_install_list, mainline_extracted_list)
