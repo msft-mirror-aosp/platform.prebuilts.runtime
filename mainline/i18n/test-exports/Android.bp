@@ -41,6 +41,9 @@ cc_prebuilt_library_shared {
     shared_libs: ["i18n-module-test-exports_libicuuc@current"],
     export_include_dirs: ["common_os/include/external/icu/icu4c/source/i18n"],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -57,12 +60,14 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libicui18n.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libicui18n-host.so"],
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
@@ -86,6 +91,9 @@ cc_prebuilt_library_shared {
     shared_libs: ["libicuuc"],
     export_include_dirs: ["common_os/include/external/icu/icu4c/source/i18n"],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -102,12 +110,14 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libicui18n.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libicui18n-host.so"],
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
@@ -131,6 +141,9 @@ cc_prebuilt_library_shared {
         "common_os/include/external/icu/android_icu4c/include",
     ],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -147,12 +160,14 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libicuuc.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libicuuc-host.so"],
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
@@ -175,6 +190,9 @@ cc_prebuilt_library_shared {
         "common_os/include/external/icu/android_icu4c/include",
     ],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -191,12 +209,14 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libicuuc.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libicuuc-host.so"],
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
@@ -226,6 +246,9 @@ cc_prebuilt_library_shared {
         "libnativehelper",
     ],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -242,12 +265,14 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libicu_jni.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libicu_jni.so"],
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
@@ -276,6 +301,9 @@ cc_prebuilt_library_shared {
         "libnativehelper",
     ],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -292,12 +320,14 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libicu_jni.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libicu_jni.so"],
         },
         linux_glibc: {
+            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
@@ -318,11 +348,18 @@ module_exports_snapshot {
         "i18n-module-test-exports_libicu_jni@current",
     ],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             java_libs: ["i18n-module-test-exports_core-icu4j@current"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
+        },
+        linux_glibc: {
+            enabled: true,
         },
     },
 }

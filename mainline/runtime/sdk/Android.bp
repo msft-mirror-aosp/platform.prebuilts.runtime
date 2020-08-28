@@ -29,10 +29,14 @@ cc_prebuilt_library_headers {
     system_shared_libs: [],
     export_include_dirs: ["common_os/include/bionic/libc/platform"],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
     },
@@ -67,10 +71,14 @@ cc_prebuilt_library_headers {
     system_shared_libs: [],
     export_include_dirs: ["common_os/include/bionic/libc/platform"],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
     },
@@ -101,6 +109,9 @@ cc_prebuilt_library_headers {
     stl: "none",
     system_shared_libs: [],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -141,6 +152,7 @@ cc_prebuilt_library_headers {
             ],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
@@ -178,6 +190,9 @@ cc_prebuilt_library_headers {
     stl: "none",
     system_shared_libs: [],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -218,6 +233,7 @@ cc_prebuilt_library_headers {
             ],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
@@ -513,6 +529,9 @@ cc_prebuilt_library_shared {
         versions: ["10000"],
     },
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -557,18 +576,19 @@ cc_prebuilt_library_shared {
             ],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
+            export_include_dirs: [
+                "linux_bionic/include/external/jemalloc_new/include",
+                "linux_bionic/include/bionic/libc/system_properties/include",
+                "linux_bionic/include/system/core/property_service/libpropertyinfoparser/include",
+            ],
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
                 "linux_bionic/include/bionic/libc/kernel/uapi",
                 "linux_bionic/include/bionic/libc/kernel/android/scsi",
                 "linux_bionic/include/bionic/libc/kernel/android/uapi",
                 "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
-            ],
-            export_include_dirs: [
-                "linux_bionic/include/external/jemalloc_new/include",
-                "linux_bionic/include/bionic/libc/system_properties/include",
-                "linux_bionic/include/system/core/property_service/libpropertyinfoparser/include",
             ],
         },
         linux_bionic_x86_64: {
@@ -591,6 +611,9 @@ cc_prebuilt_library_shared {
         versions: ["10000"],
     },
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -635,18 +658,19 @@ cc_prebuilt_library_shared {
             ],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
+            export_include_dirs: [
+                "linux_bionic/include/external/jemalloc_new/include",
+                "linux_bionic/include/bionic/libc/system_properties/include",
+                "linux_bionic/include/system/core/property_service/libpropertyinfoparser/include",
+            ],
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
                 "linux_bionic/include/bionic/libc/kernel/uapi",
                 "linux_bionic/include/bionic/libc/kernel/android/scsi",
                 "linux_bionic/include/bionic/libc/kernel/android/uapi",
                 "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
-            ],
-            export_include_dirs: [
-                "linux_bionic/include/external/jemalloc_new/include",
-                "linux_bionic/include/bionic/libc/system_properties/include",
-                "linux_bionic/include/system/core/property_service/libpropertyinfoparser/include",
             ],
         },
         linux_bionic_x86_64: {
@@ -670,6 +694,9 @@ cc_prebuilt_library_shared {
         versions: ["10000"],
     },
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -686,6 +713,7 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libdl.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
@@ -715,6 +743,9 @@ cc_prebuilt_library_shared {
         versions: ["10000"],
     },
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -731,6 +762,7 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libdl.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
@@ -761,6 +793,9 @@ cc_prebuilt_library_shared {
         versions: ["10000"],
     },
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -777,6 +812,7 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libdl_android.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
@@ -799,6 +835,9 @@ cc_prebuilt_library_shared {
         versions: ["10000"],
     },
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -815,6 +854,7 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libdl_android.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
@@ -838,6 +878,9 @@ cc_prebuilt_library_shared {
         versions: ["10000"],
     },
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -854,6 +897,7 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libm.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
@@ -876,6 +920,9 @@ cc_prebuilt_library_shared {
         versions: ["10000"],
     },
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -892,6 +939,7 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libm.so"],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
@@ -920,6 +968,9 @@ cc_prebuilt_library_static {
         "common_os/include/system/core/liblog/include",
     ],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -964,6 +1015,7 @@ cc_prebuilt_library_static {
             ],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
@@ -998,6 +1050,9 @@ cc_prebuilt_library_static {
         "common_os/include/system/core/liblog/include",
     ],
     target: {
+        host: {
+            enabled: false,
+        },
         android: {
             compile_multilib: "both",
         },
@@ -1042,6 +1097,7 @@ cc_prebuilt_library_static {
             ],
         },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
@@ -1078,7 +1134,11 @@ sdk_snapshot {
     ],
     native_static_libs: ["runtime-module-sdk_libasync_safe@current"],
     target: {
+        host: {
+            enabled: false,
+        },
         linux_bionic: {
+            enabled: true,
             compile_multilib: "64",
         },
     },
