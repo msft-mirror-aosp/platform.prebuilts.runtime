@@ -482,17 +482,17 @@ cc_prebuilt_library_shared {
             ],
         },
         linux_bionic: {
+            export_include_dirs: [
+                "include/external/jemalloc_new/include",
+                "include/bionic/libc/system_properties/include",
+                "include/system/core/property_service/libpropertyinfoparser/include",
+            ],
             export_system_include_dirs: [
                 "include/bionic/libc/include",
                 "include/bionic/libc/kernel/uapi",
                 "include/bionic/libc/kernel/android/scsi",
                 "include/bionic/libc/kernel/android/uapi",
                 "include/bionic/libc/kernel/uapi/asm-x86",
-            ],
-            export_include_dirs: [
-                "include/external/jemalloc_new/include",
-                "include/bionic/libc/system_properties/include",
-                "include/system/core/property_service/libpropertyinfoparser/include",
             ],
         },
         linux_bionic_x86_64: {
@@ -556,17 +556,17 @@ cc_prebuilt_library_shared {
             ],
         },
         linux_bionic: {
+            export_include_dirs: [
+                "include/external/jemalloc_new/include",
+                "include/bionic/libc/system_properties/include",
+                "include/system/core/property_service/libpropertyinfoparser/include",
+            ],
             export_system_include_dirs: [
                 "include/bionic/libc/include",
                 "include/bionic/libc/kernel/uapi",
                 "include/bionic/libc/kernel/android/scsi",
                 "include/bionic/libc/kernel/android/uapi",
                 "include/bionic/libc/kernel/uapi/asm-x86",
-            ],
-            export_include_dirs: [
-                "include/external/jemalloc_new/include",
-                "include/bionic/libc/system_properties/include",
-                "include/system/core/property_service/libpropertyinfoparser/include",
             ],
         },
         linux_bionic_x86_64: {
