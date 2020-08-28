@@ -4,10 +4,10 @@ java_import {
     name: "conscrypt-module-test-exports_conscrypt@current",
     sdk_member_name: "conscrypt",
     visibility: [
-        "//art/build",
+        "//art/build:__pkg__",
         "//device:__subpackages__",
-        "//external/robolectric-shadows",
-        "//system/apex/tests",
+        "//external/robolectric-shadows:__pkg__",
+        "//system/apex/tests:__pkg__",
         "//external/conscrypt:__subpackages__",
     ],
     apex_available: [
@@ -21,10 +21,10 @@ java_import {
     name: "conscrypt",
     prefer: false,
     visibility: [
-        "//art/build",
+        "//art/build:__pkg__",
         "//device:__subpackages__",
-        "//external/robolectric-shadows",
-        "//system/apex/tests",
+        "//external/robolectric-shadows:__pkg__",
+        "//system/apex/tests:__pkg__",
         "//external/conscrypt:__subpackages__",
     ],
     apex_available: [
@@ -38,9 +38,8 @@ java_test_import {
     name: "conscrypt-module-test-exports_conscrypt-tests@current",
     sdk_member_name: "conscrypt-tests",
     visibility: [
-        "//cts/tests/libcore/luni",
-        "//external/conscrypt/apex/tests",
-        "//external/conscrypt",
+        "//cts/tests/libcore/luni:__pkg__",
+        "//external/conscrypt/apex/tests:__pkg__",
     ],
     jars: ["java/conscrypt-tests.jar"],
     test_config: "java/conscrypt-tests-AndroidTest.xml",
@@ -50,9 +49,8 @@ java_test_import {
     name: "conscrypt-tests",
     prefer: false,
     visibility: [
-        "//cts/tests/libcore/luni",
-        "//external/conscrypt/apex/tests",
-        "//external/conscrypt",
+        "//cts/tests/libcore/luni:__pkg__",
+        "//external/conscrypt/apex/tests:__pkg__",
     ],
     jars: ["java/conscrypt-tests.jar"],
     test_config: "java/conscrypt-tests-AndroidTest.xml",
