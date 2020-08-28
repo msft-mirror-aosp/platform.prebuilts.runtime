@@ -3,10 +3,7 @@
 java_import {
     name: "conscrypt-module-host-exports_conscrypt-unbundled@current",
     sdk_member_name: "conscrypt-unbundled",
-    visibility: [
-        "//build/make/tools/signapk",
-        "//external/conscrypt",
-    ],
+    visibility: ["//build/make/tools/signapk:__pkg__"],
     device_supported: false,
     host_supported: true,
     target: {
@@ -22,10 +19,7 @@ java_import {
 java_import {
     name: "conscrypt-unbundled",
     prefer: false,
-    visibility: [
-        "//build/make/tools/signapk",
-        "//external/conscrypt",
-    ],
+    visibility: ["//build/make/tools/signapk:__pkg__"],
     device_supported: false,
     host_supported: true,
     target: {
