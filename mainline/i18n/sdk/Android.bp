@@ -1,0 +1,399 @@
+// This is auto-generated. DO NOT EDIT.
+
+java_sdk_library_import {
+    name: "i18n-module-sdk_i18n.module.intra.core.api@current",
+    sdk_member_name: "i18n.module.intra.core.api",
+    visibility: [
+        "//libcore:__subpackages__",
+        "//packages/modules/RuntimeI18n/apex",
+        "//prebuilts:__subpackages__",
+        "//external/icu/android_icu4j",
+    ],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/i18n.module.intra.core.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/i18n.module.intra.core.api_stub_sources"],
+        current_api: "sdk_library/public/i18n.module.intra.core.api.txt",
+        removed_api: "sdk_library/public/i18n.module.intra.core.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+java_sdk_library_import {
+    name: "i18n.module.intra.core.api",
+    prefer: false,
+    visibility: [
+        "//libcore:__subpackages__",
+        "//packages/modules/RuntimeI18n/apex",
+        "//prebuilts:__subpackages__",
+        "//external/icu/android_icu4j",
+    ],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/i18n.module.intra.core.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/i18n.module.intra.core.api_stub_sources"],
+        current_api: "sdk_library/public/i18n.module.intra.core.api.txt",
+        removed_api: "sdk_library/public/i18n.module.intra.core.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+java_sdk_library_import {
+    name: "i18n-module-sdk_legacy.i18n.module.platform.api@current",
+    sdk_member_name: "legacy.i18n.module.platform.api",
+    visibility: [
+        "//libcore:__subpackages__",
+        "//packages/modules/RuntimeI18n/apex",
+        "//prebuilts:__subpackages__",
+        "//external/icu/android_icu4j",
+    ],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/legacy.i18n.module.platform.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/legacy.i18n.module.platform.api_stub_sources"],
+        current_api: "sdk_library/public/legacy.i18n.module.platform.api.txt",
+        removed_api: "sdk_library/public/legacy.i18n.module.platform.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+java_sdk_library_import {
+    name: "legacy.i18n.module.platform.api",
+    prefer: false,
+    visibility: [
+        "//libcore:__subpackages__",
+        "//packages/modules/RuntimeI18n/apex",
+        "//prebuilts:__subpackages__",
+        "//external/icu/android_icu4j",
+    ],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/legacy.i18n.module.platform.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/legacy.i18n.module.platform.api_stub_sources"],
+        current_api: "sdk_library/public/legacy.i18n.module.platform.api.txt",
+        removed_api: "sdk_library/public/legacy.i18n.module.platform.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+java_sdk_library_import {
+    name: "i18n-module-sdk_stable.i18n.module.platform.api@current",
+    sdk_member_name: "stable.i18n.module.platform.api",
+    visibility: [
+        "//libcore:__subpackages__",
+        "//packages/modules/RuntimeI18n/apex",
+        "//prebuilts:__subpackages__",
+        "//external/icu/android_icu4j",
+    ],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/stable.i18n.module.platform.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/stable.i18n.module.platform.api_stub_sources"],
+        current_api: "sdk_library/public/stable.i18n.module.platform.api.txt",
+        removed_api: "sdk_library/public/stable.i18n.module.platform.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+java_sdk_library_import {
+    name: "stable.i18n.module.platform.api",
+    prefer: false,
+    visibility: [
+        "//libcore:__subpackages__",
+        "//packages/modules/RuntimeI18n/apex",
+        "//prebuilts:__subpackages__",
+        "//external/icu/android_icu4j",
+    ],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/stable.i18n.module.platform.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/stable.i18n.module.platform.api_stub_sources"],
+        current_api: "sdk_library/public/stable.i18n.module.platform.api.txt",
+        removed_api: "sdk_library/public/stable.i18n.module.platform.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+java_sdk_library_import {
+    name: "i18n-module-sdk_i18n.module.public.api@current",
+    sdk_member_name: "i18n.module.public.api",
+    visibility: [
+        "//libcore",
+        "//packages/modules/RuntimeI18n/apex",
+        "//prebuilts:__subpackages__",
+        "//external/icu/android_icu4j",
+    ],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/i18n.module.public.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/i18n.module.public.api_stub_sources"],
+        current_api: "sdk_library/public/i18n.module.public.api.txt",
+        removed_api: "sdk_library/public/i18n.module.public.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+java_sdk_library_import {
+    name: "i18n.module.public.api",
+    prefer: false,
+    visibility: [
+        "//libcore",
+        "//packages/modules/RuntimeI18n/apex",
+        "//prebuilts:__subpackages__",
+        "//external/icu/android_icu4j",
+    ],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/i18n.module.public.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/i18n.module.public.api_stub_sources"],
+        current_api: "sdk_library/public/i18n.module.public.api.txt",
+        removed_api: "sdk_library/public/i18n.module.public.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+cc_prebuilt_library_headers {
+    name: "i18n-module-sdk_libandroidicu_headers@current",
+    sdk_member_name: "libandroidicu_headers",
+    host_supported: true,
+    apex_available: [
+        "com.android.art.debug",
+        "com.android.art.release",
+        "com.android.i18n",
+    ],
+    export_include_dirs: ["common_os/include/external/icu/libandroidicu/include"],
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+        },
+        linux_glibc: {
+            enabled: true,
+            compile_multilib: "both",
+        },
+    },
+}
+
+cc_prebuilt_library_headers {
+    name: "libandroidicu_headers",
+    prefer: false,
+    host_supported: true,
+    apex_available: [
+        "com.android.art.debug",
+        "com.android.art.release",
+        "com.android.i18n",
+    ],
+    export_include_dirs: ["common_os/include/external/icu/libandroidicu/include"],
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+        },
+        linux_glibc: {
+            enabled: true,
+            compile_multilib: "both",
+        },
+    },
+}
+
+cc_prebuilt_library_headers {
+    name: "i18n-module-sdk_libicuuc_headers@current",
+    sdk_member_name: "libicuuc_headers",
+    host_supported: true,
+    apex_available: ["com.android.i18n"],
+    export_include_dirs: [
+        "common_os/include/external/icu/icu4c/source/common",
+        "common_os/include/external/icu/android_icu4c/include",
+    ],
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+        },
+        linux_glibc: {
+            enabled: true,
+            compile_multilib: "both",
+        },
+    },
+}
+
+cc_prebuilt_library_headers {
+    name: "libicuuc_headers",
+    prefer: false,
+    host_supported: true,
+    apex_available: ["com.android.i18n"],
+    export_include_dirs: [
+        "common_os/include/external/icu/icu4c/source/common",
+        "common_os/include/external/icu/android_icu4c/include",
+    ],
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+        },
+        linux_glibc: {
+            enabled: true,
+            compile_multilib: "both",
+        },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "i18n-module-sdk_libandroidicu@current",
+    sdk_member_name: "libandroidicu",
+    host_supported: true,
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.i18n",
+    ],
+    installable: false,
+    unique_host_soname: true,
+    export_include_dirs: ["common_os/include/external/icu/libandroidicu/include"],
+    stubs: {
+        versions: ["1"],
+    },
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/libandroidicu.so"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/libandroidicu.so"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/libandroidicu.so"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/libandroidicu.so"],
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            srcs: ["linux_bionic/x86_64/lib/libandroidicu-host.so"],
+        },
+        linux_glibc: {
+            enabled: true,
+            compile_multilib: "both",
+        },
+        linux_glibc_x86_64: {
+            srcs: ["linux_glibc/x86_64/lib/libandroidicu-host.so"],
+        },
+        linux_glibc_x86: {
+            srcs: ["linux_glibc/x86/lib/libandroidicu-host.so"],
+        },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "libandroidicu",
+    prefer: false,
+    host_supported: true,
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.i18n",
+    ],
+    unique_host_soname: true,
+    export_include_dirs: ["common_os/include/external/icu/libandroidicu/include"],
+    stubs: {
+        versions: ["1"],
+    },
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/libandroidicu.so"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/libandroidicu.so"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/libandroidicu.so"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/libandroidicu.so"],
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            srcs: ["linux_bionic/x86_64/lib/libandroidicu-host.so"],
+        },
+        linux_glibc: {
+            enabled: true,
+            compile_multilib: "both",
+        },
+        linux_glibc_x86_64: {
+            srcs: ["linux_glibc/x86_64/lib/libandroidicu-host.so"],
+        },
+        linux_glibc_x86: {
+            srcs: ["linux_glibc/x86/lib/libandroidicu-host.so"],
+        },
+    },
+}
+
+sdk_snapshot {
+    name: "i18n-module-sdk@current",
+    host_supported: true,
+    native_header_libs: [
+        "i18n-module-sdk_libandroidicu_headers@current",
+        "i18n-module-sdk_libicuuc_headers@current",
+    ],
+    native_shared_libs: ["i18n-module-sdk_libandroidicu@current"],
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            java_sdk_libs: [
+                "i18n-module-sdk_i18n.module.intra.core.api@current",
+                "i18n-module-sdk_legacy.i18n.module.platform.api@current",
+                "i18n-module-sdk_stable.i18n.module.platform.api@current",
+                "i18n-module-sdk_i18n.module.public.api@current",
+            ],
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+        },
+        linux_glibc: {
+            enabled: true,
+        },
+    },
+}
+
