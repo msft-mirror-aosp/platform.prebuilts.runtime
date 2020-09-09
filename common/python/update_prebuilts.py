@@ -144,7 +144,8 @@ def install_entry(branch, build, entry):
         unzip(install_path, os.path.dirname(install_path))
 
 def unzip(zip_file, unzip_path):
-    check_call(['unzip', zip_file, '-d', unzip_path])
+    # Add -DD to not extract timestamps that may confuse the build system.
+    check_call(['unzip', '-DD', zip_file, '-d', unzip_path])
 
 
 def get_args():
