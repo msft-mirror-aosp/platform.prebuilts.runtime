@@ -9,6 +9,7 @@ cc_prebuilt_library {
         "com.android.runtime",
     ],
     installable: false,
+    recovery_available: true,
     export_include_dirs: ["common_os/include/system/core/liblog/include"],
     stubs: {
         versions: ["30"],
@@ -75,6 +76,7 @@ cc_prebuilt_library {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    recovery_available: true,
     export_include_dirs: ["common_os/include/system/core/liblog/include"],
     stubs: {
         versions: ["30"],
