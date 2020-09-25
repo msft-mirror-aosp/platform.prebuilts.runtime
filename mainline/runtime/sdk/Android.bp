@@ -24,6 +24,7 @@ cc_prebuilt_library_headers {
         "com.android.media",
         "com.android.runtime",
     ],
+    recovery_available: true,
     vendor_available: true,
     sdk_version: "current",
     stl: "none",
@@ -67,6 +68,7 @@ cc_prebuilt_library_headers {
         "com.android.media",
         "com.android.runtime",
     ],
+    recovery_available: true,
     vendor_available: true,
     sdk_version: "current",
     stl: "none",
@@ -107,6 +109,7 @@ cc_prebuilt_library_headers {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    recovery_available: true,
     vendor_available: true,
     sdk_version: "1",
     stl: "none",
@@ -189,6 +192,7 @@ cc_prebuilt_library_headers {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    recovery_available: true,
     vendor_available: true,
     sdk_version: "1",
     stl: "none",
@@ -258,6 +262,7 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    recovery_available: true,
     vendor_available: true,
     stl: "none",
     sanitize: {
@@ -296,6 +301,7 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    recovery_available: true,
     vendor_available: true,
     stl: "none",
     sanitize: {
@@ -334,6 +340,7 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    recovery_available: true,
     vendor_available: true,
     stl: "none",
     sanitize: {
@@ -372,6 +379,7 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    recovery_available: true,
     vendor_available: true,
     stl: "none",
     sanitize: {
@@ -410,6 +418,7 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    recovery_available: true,
     vendor_available: true,
     stl: "none",
     sanitize: {
@@ -448,6 +457,7 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    recovery_available: true,
     vendor_available: true,
     stl: "none",
     sanitize: {
@@ -486,6 +496,7 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    recovery_available: true,
     vendor_available: true,
     stl: "none",
     sanitize: {
@@ -524,6 +535,7 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    recovery_available: true,
     vendor_available: true,
     stl: "none",
     sanitize: {
@@ -563,10 +575,11 @@ cc_prebuilt_library_shared {
         "com.android.runtime",
     ],
     installable: false,
+    recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     stubs: {
-        versions: ["10000"],
+        versions: ["current"],
     },
     target: {
         host: {
@@ -645,10 +658,11 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     stubs: {
-        versions: ["10000"],
+        versions: ["current"],
     },
     target: {
         host: {
@@ -728,13 +742,14 @@ cc_prebuilt_library_shared {
         "com.android.runtime",
     ],
     installable: false,
+    recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     sanitize: {
         never: true,
     },
     stubs: {
-        versions: ["10000"],
+        versions: ["current"],
     },
     target: {
         host: {
@@ -780,13 +795,14 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     sanitize: {
         never: true,
     },
     stubs: {
-        versions: ["10000"],
+        versions: ["current"],
     },
     target: {
         host: {
@@ -833,13 +849,14 @@ cc_prebuilt_library_shared {
         "com.android.runtime",
     ],
     installable: false,
+    recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     sanitize: {
         never: true,
     },
     stubs: {
-        versions: ["10000"],
+        versions: ["current"],
     },
     target: {
         host: {
@@ -878,13 +895,14 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     sanitize: {
         never: true,
     },
     stubs: {
-        versions: ["10000"],
+        versions: ["current"],
     },
     target: {
         host: {
@@ -924,10 +942,11 @@ cc_prebuilt_library_shared {
         "com.android.runtime",
     ],
     installable: false,
+    recovery_available: true,
     stl: "none",
     system_shared_libs: ["runtime-module-sdk_libc@current"],
     stubs: {
-        versions: ["10000"],
+        versions: ["current"],
     },
     target: {
         host: {
@@ -966,10 +985,11 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    recovery_available: true,
     stl: "none",
     system_shared_libs: ["libc"],
     stubs: {
-        versions: ["10000"],
+        versions: ["current"],
     },
     target: {
         host: {
@@ -1013,6 +1033,7 @@ cc_prebuilt_library_static {
         "com.android.runtime",
     ],
     installable: false,
+    recovery_available: true,
     vendor_available: true,
     stl: "none",
     system_shared_libs: [],
@@ -1096,6 +1117,7 @@ cc_prebuilt_library_static {
         "com.android.media.swcodec",
         "com.android.runtime",
     ],
+    recovery_available: true,
     vendor_available: true,
     stl: "none",
     system_shared_libs: [],
