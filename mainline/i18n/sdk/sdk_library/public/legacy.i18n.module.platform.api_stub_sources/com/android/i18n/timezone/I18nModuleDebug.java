@@ -17,10 +17,22 @@
 
 package com.android.i18n.timezone;
 
+
+/**
+ * Provides APIs for obtaining metadata for the i18n library and lower-level
+ * components like timezone.
+ *
+ * @hide
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class I18nModuleDebug {
 
 private I18nModuleDebug() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns information about the Core Library for debugging.
+ */
 
 public static com.android.i18n.timezone.DebugInfo getDebugInfo() { throw new RuntimeException("Stub!"); }
 }

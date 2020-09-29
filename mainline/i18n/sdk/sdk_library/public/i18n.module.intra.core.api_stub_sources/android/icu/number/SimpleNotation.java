@@ -4,6 +4,17 @@
 
 package android.icu.number;
 
+
+/**
+ * A class that defines the simple notation style to be used when formatting numbers in NumberFormatter.
+ *
+ * <p>
+ * This class exposes no public functionality. To create a SimpleNotation, use one of the factory methods
+ * in {@link Notation}.
+ *
+ * @see NumberFormatter
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class SimpleNotation extends android.icu.number.Notation {
 
