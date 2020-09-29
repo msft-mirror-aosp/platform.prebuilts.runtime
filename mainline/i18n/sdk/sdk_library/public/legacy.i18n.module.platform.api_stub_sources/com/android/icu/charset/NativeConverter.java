@@ -10,6 +10,7 @@
 
 package com.android.icu.charset;
 
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class NativeConverter {
 

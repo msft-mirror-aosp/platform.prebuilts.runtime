@@ -18,10 +18,30 @@
 
 package com.android.org.conscrypt;
 
+import java.io.File;
+import java.io.IOException;
+
+/**
+ * File-based cache implementation. Only one process should access the
+ * underlying directory at a time.
+ * @hide This class is not part of the Android public SDK API
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class FileClientSessionCache {
 
 private FileClientSessionCache() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns a cache backed by the given directory. Creates the directory
+ * (including parent directories) if necessary. This cache should have
+ * exclusive access to the given directory.
+ *
+ * @param directory to store files in
+ * @return a cache backed by the given directory
+ * @throws IOException if the file exists and is not a directory or if
+ *  creating the directories fails
+ */
 
 public static synchronized com.android.org.conscrypt.SSLClientSessionCache usingDirectory(java.io.File directory) throws java.io.IOException { throw new RuntimeException("Stub!"); }
 }
