@@ -17,6 +17,7 @@
 
 package com.android.icu.util.regex;
 
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class MatcherNative {
 

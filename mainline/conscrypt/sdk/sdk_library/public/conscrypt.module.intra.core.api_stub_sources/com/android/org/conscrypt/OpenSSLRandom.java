@@ -18,6 +18,12 @@
 
 package com.android.org.conscrypt;
 
+
+/**
+ * Implements {@link java.security.SecureRandom} using BoringSSL's RAND interface.
+ * @hide This class is not part of the Android public SDK API
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class OpenSSLRandom extends java.security.SecureRandomSpi implements java.io.Serializable {
 

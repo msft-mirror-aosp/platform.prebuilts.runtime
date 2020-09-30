@@ -17,10 +17,26 @@
 
 package com.android.i18n.timezone;
 
+
+/**
+ * Utility methods associated with finding updateable time zone data files.
+ *
+ * @hide
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class TimeZoneDataFiles {
 
 private TimeZoneDataFiles() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns time zone file paths for the specified file name in an array in the order they
+ * should be tried. See {@link #generateIcuDataPath()} for ICU files instead.
+ * <ul>
+ * <li>[0] - the location of the file in the /data partition (may not exist).</li>
+ * <li>[1] - the location of the file from the time zone module under /apex (must exist).</li>
+ * </ul>
+ */
 
 public static java.lang.String[] getTimeZoneFilePaths(java.lang.String fileName) { throw new RuntimeException("Stub!"); }
 

@@ -13,10 +13,21 @@
 
 package android.icu.impl;
 
+
+/**
+ * Provides access to ICU data files as InputStreams.  Implements security checking.
+ * @hide Only a subset of ICU is exposed in Android
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class ICUData {
 
 ICUData() { throw new RuntimeException("Stub!"); }
+
+/**
+ * The base name of ICU data to be used with ClassLoader.getResourceAsStream(),
+ * ICUResourceBundle.getBundleInstance() etc.
+ */
 
 public static final java.lang.String ICU_BASE_NAME = "android/icu/impl/data/icudt66b";
 }
