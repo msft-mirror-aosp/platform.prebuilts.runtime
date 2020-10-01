@@ -62,7 +62,10 @@ mainline_install_list.extend(
     InstallApexEntries('com.android.conscrypt', 'conscrypt/apex') +
     InstallSdkEntries('conscrypt-module-sdk', 'conscrypt/sdk') +
     InstallSdkEntries('conscrypt-module-test-exports', 'conscrypt/test-exports') +
-    InstallSdkEntries('conscrypt-module-host-exports', 'conscrypt/host-exports'))
+    InstallSdkEntries('conscrypt-module-host-exports', 'conscrypt/host-exports') +
+    InstallApexEntries('com.android.i18n', 'i18n/apex') +
+    InstallSdkEntries('i18n-module-sdk', 'i18n/sdk') +
+    InstallSdkEntries('i18n-module-test-exports', 'i18n/test-exports'))
 
 # Runtime (Bionic)
 mainline_install_list.extend(
