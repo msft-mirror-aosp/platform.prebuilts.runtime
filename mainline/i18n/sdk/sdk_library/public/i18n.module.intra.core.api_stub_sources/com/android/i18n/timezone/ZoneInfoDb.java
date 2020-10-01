@@ -17,16 +17,34 @@
 
 package com.android.i18n.timezone;
 
+
+/**
+ * A class used to initialize the time zone database. This implementation uses the
+ * Olson tzdata as the source of time zone information. However, to conserve
+ * disk space (inodes) and reduce I/O, all the data is concatenated into a single file,
+ * with an index to indicate the starting position of each time zone record.
+ *
+ * @hide - used to implement TimeZone
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class ZoneInfoDb implements java.lang.AutoCloseable {
 
 private ZoneInfoDb() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Obtains the singleton instance.
+ */
 
 public static com.android.i18n.timezone.ZoneInfoDb getInstance() { throw new RuntimeException("Stub!"); }
 
 public java.lang.String[] getAvailableIDs() { throw new RuntimeException("Stub!"); }
 
 public java.lang.String[] getAvailableIDs(int rawUtcOffset) { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns the tzdb version in use.
+ */
 
 public java.lang.String getVersion() { throw new RuntimeException("Stub!"); }
 

@@ -18,6 +18,14 @@
 
 package com.android.org.conscrypt;
 
+import java.security.cert.TrustAnchor;
+
+/**
+ * Indexes {@code TrustAnchor} instances so they can be found in O(1)
+ * time instead of O(N).
+ * @hide This class is not part of the Android public SDK API
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class TrustedCertificateIndex {
 

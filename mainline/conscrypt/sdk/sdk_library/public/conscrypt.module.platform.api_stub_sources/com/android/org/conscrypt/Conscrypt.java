@@ -17,10 +17,20 @@
 
 package com.android.org.conscrypt;
 
+
+/**
+ * Core API for creating and configuring all Conscrypt types.
+ * @hide This class is not part of the Android public SDK API
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class Conscrypt {
 
 private Conscrypt() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Gets the default X.509 trust manager.
+ */
 
 public static javax.net.ssl.X509TrustManager getDefaultX509TrustManager() throws java.security.KeyManagementException { throw new RuntimeException("Stub!"); }
 }

@@ -10,10 +10,21 @@
 
 package android.icu.util;
 
+
+/**
+ * Measurement unit for time units.
+ * @see TimeUnit
+ * @author markdavis
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class TimeUnit extends android.icu.util.MeasureUnit {
 
 TimeUnit() { throw new RuntimeException("Stub!"); }
+
+/**
+ * @return the available values
+ */
 
 public static android.icu.util.TimeUnit[] values() { throw new RuntimeException("Stub!"); }
 }

@@ -10,6 +10,15 @@
 
 package android.icu.util;
 
+
+/**
+ * <code>InitialTimeZoneRule</code> represents a time zone rule
+ * representing a time zone effective from the beginning and
+ * has no actual start times.
+ *
+ * @hide Only a subset of ICU is exposed in Android
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class InitialTimeZoneRule extends android.icu.util.TimeZoneRule {
 

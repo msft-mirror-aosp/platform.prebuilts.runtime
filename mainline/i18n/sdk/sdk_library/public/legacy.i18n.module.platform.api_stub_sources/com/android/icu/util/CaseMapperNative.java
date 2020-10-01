@@ -17,6 +17,7 @@
 
 package com.android.icu.util;
 
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class CaseMapperNative {
 
