@@ -5,6 +5,7 @@ java_sdk_library_import {
     sdk_member_name: "conscrypt.module.public.api",
     visibility: [
         "//frameworks/base",
+        "//frameworks/base/api",
         "//libcore",
         "//prebuilts:__subpackages__",
         "//external/conscrypt",
@@ -24,6 +25,7 @@ java_sdk_library_import {
     prefer: false,
     visibility: [
         "//frameworks/base",
+        "//frameworks/base/api",
         "//libcore",
         "//prebuilts:__subpackages__",
         "//external/conscrypt",

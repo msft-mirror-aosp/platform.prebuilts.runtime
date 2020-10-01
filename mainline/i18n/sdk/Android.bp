@@ -367,6 +367,103 @@ cc_prebuilt_library_shared {
     },
 }
 
+cc_prebuilt_library_shared {
+    name: "i18n-module-sdk_libicu@current",
+    sdk_member_name: "libicu",
+    host_supported: true,
+    apex_available: ["com.android.i18n"],
+    installable: false,
+    export_include_dirs: ["common_os/include/external/icu/libicu/ndk_headers"],
+    stubs: {
+        versions: ["31"],
+    },
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/libicu.so"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/libicu.so"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/libicu.so"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/libicu.so"],
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            srcs: ["linux_bionic/x86_64/lib/libicu.so"],
+        },
+        linux_glibc: {
+            enabled: true,
+            compile_multilib: "both",
+        },
+        linux_glibc_x86_64: {
+            srcs: ["linux_glibc/x86_64/lib/libicu.so"],
+        },
+        linux_glibc_x86: {
+            srcs: ["linux_glibc/x86/lib/libicu.so"],
+        },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "libicu",
+    prefer: false,
+    host_supported: true,
+    apex_available: ["com.android.i18n"],
+    export_include_dirs: ["common_os/include/external/icu/libicu/ndk_headers"],
+    stubs: {
+        versions: ["31"],
+    },
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/libicu.so"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/libicu.so"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/libicu.so"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/libicu.so"],
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            srcs: ["linux_bionic/x86_64/lib/libicu.so"],
+        },
+        linux_glibc: {
+            enabled: true,
+            compile_multilib: "both",
+        },
+        linux_glibc_x86_64: {
+            srcs: ["linux_glibc/x86_64/lib/libicu.so"],
+        },
+        linux_glibc_x86: {
+            srcs: ["linux_glibc/x86/lib/libicu.so"],
+        },
+    },
+}
+
 sdk_snapshot {
     name: "i18n-module-sdk@current",
     host_supported: true,
@@ -374,7 +471,10 @@ sdk_snapshot {
         "i18n-module-sdk_libandroidicu_headers@current",
         "i18n-module-sdk_libicuuc_headers@current",
     ],
-    native_shared_libs: ["i18n-module-sdk_libandroidicu@current"],
+    native_shared_libs: [
+        "i18n-module-sdk_libandroidicu@current",
+        "i18n-module-sdk_libicu@current",
+    ],
     target: {
         host: {
             enabled: false,
