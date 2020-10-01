@@ -4,6 +4,18 @@
 
 package android.icu.number;
 
+
+/**
+ * A class that defines the scientific notation style to be used when formatting numbers in
+ * NumberFormatter.
+ *
+ * <p>
+ * This class exposes no public functionality. To create a CompactNotation, use one of the factory
+ * methods in {@link Notation}.
+ *
+ * @see NumberFormatter
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class CompactNotation extends android.icu.number.Notation {
 

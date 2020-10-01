@@ -18,6 +18,12 @@
 
 package com.android.org.conscrypt;
 
+
+/**
+ * Implements the JDK MessageDigest interface using OpenSSL's EVP API.
+ * @hide This class is not part of the Android public SDK API
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class OpenSSLMessageDigestJDK extends java.security.MessageDigestSpi implements java.lang.Cloneable {
 
@@ -36,11 +42,19 @@ protected synchronized void engineUpdate(java.nio.ByteBuffer input) { throw new 
 protected synchronized byte[] engineDigest() { throw new RuntimeException("Stub!"); }
 
 public java.lang.Object clone() { throw new RuntimeException("Stub!"); }
+/**
+ * @hide This class is not part of the Android public SDK API
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public static final class MD5 extends com.android.org.conscrypt.OpenSSLMessageDigestJDK {
 
 public MD5() throws java.security.NoSuchAlgorithmException { throw new RuntimeException("Stub!"); }
 }
+
+/**
+ * @hide This class is not part of the Android public SDK API
+ */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public static final class SHA1 extends com.android.org.conscrypt.OpenSSLMessageDigestJDK {
@@ -48,11 +62,19 @@ public static final class SHA1 extends com.android.org.conscrypt.OpenSSLMessageD
 public SHA1() throws java.security.NoSuchAlgorithmException { throw new RuntimeException("Stub!"); }
 }
 
+/**
+ * @hide This class is not part of the Android public SDK API
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public static final class SHA224 extends com.android.org.conscrypt.OpenSSLMessageDigestJDK {
 
 public SHA224() throws java.security.NoSuchAlgorithmException { throw new RuntimeException("Stub!"); }
 }
+
+/**
+ * @hide This class is not part of the Android public SDK API
+ */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public static final class SHA256 extends com.android.org.conscrypt.OpenSSLMessageDigestJDK {
@@ -60,11 +82,19 @@ public static final class SHA256 extends com.android.org.conscrypt.OpenSSLMessag
 public SHA256() throws java.security.NoSuchAlgorithmException { throw new RuntimeException("Stub!"); }
 }
 
+/**
+ * @hide This class is not part of the Android public SDK API
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public static final class SHA384 extends com.android.org.conscrypt.OpenSSLMessageDigestJDK {
 
 public SHA384() throws java.security.NoSuchAlgorithmException { throw new RuntimeException("Stub!"); }
 }
+
+/**
+ * @hide This class is not part of the Android public SDK API
+ */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public static final class SHA512 extends com.android.org.conscrypt.OpenSSLMessageDigestJDK {

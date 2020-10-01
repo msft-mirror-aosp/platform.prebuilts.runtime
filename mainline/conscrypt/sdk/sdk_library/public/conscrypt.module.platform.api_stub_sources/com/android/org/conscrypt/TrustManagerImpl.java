@@ -36,8 +36,27 @@
 
 package com.android.org.conscrypt;
 
+import javax.net.ssl.X509ExtendedTrustManager;
+import java.security.cert.CertificateException;
+
+/**
+ *
+ * TrustManager implementation. The implementation is based on CertPathValidator
+ * PKIX and CertificateFactory X509 implementations. This implementations should
+ * be provided by some certification provider.
+ *
+ * @see javax.net.ssl.X509ExtendedTrustManager
+ * @hide This class is not part of the Android public SDK API
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class TrustManagerImpl extends javax.net.ssl.X509ExtendedTrustManager {
+
+/**
+ * Creates X509TrustManager based on a keystore
+ *
+ * @param keyStore
+ */
 
 public TrustManagerImpl(java.security.KeyStore keyStore) { throw new RuntimeException("Stub!"); }
 
@@ -51,9 +70,25 @@ public void checkClientTrusted(java.security.cert.X509Certificate[] chain, java.
 
 public void checkServerTrusted(java.security.cert.X509Certificate[] chain, java.lang.String authType) throws java.security.cert.CertificateException { throw new RuntimeException("Stub!"); }
 
+/**
+ * For backward compatibility with older Android API that used String for the hostname only.
+ */
+
 public java.util.List<java.security.cert.X509Certificate> checkServerTrusted(java.security.cert.X509Certificate[] chain, java.lang.String authType, java.lang.String hostname) throws java.security.cert.CertificateException { throw new RuntimeException("Stub!"); }
 
+/**
+ * Returns the full trusted certificate chain found from {@code certs}.
+ *
+ * Throws {@link CertificateException} when no trusted chain can be found from {@code certs}.
+ */
+
 public java.util.List<java.security.cert.X509Certificate> getTrustedChainForServer(java.security.cert.X509Certificate[] certs, java.lang.String authType, java.net.Socket socket) throws java.security.cert.CertificateException { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns the full trusted certificate chain found from {@code certs}.
+ *
+ * Throws {@link CertificateException} when no trusted chain can be found from {@code certs}.
+ */
 
 public java.util.List<java.security.cert.X509Certificate> getTrustedChainForServer(java.security.cert.X509Certificate[] certs, java.lang.String authType, javax.net.ssl.SSLEngine engine) throws java.security.cert.CertificateException { throw new RuntimeException("Stub!"); }
 
