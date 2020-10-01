@@ -6,6 +6,7 @@ cc_prebuilt_binary {
     device_supported: false,
     host_supported: true,
     installable: false,
+    stl: "c++_static",
     compile_multilib: "64",
     target: {
         host: {
@@ -31,6 +32,7 @@ cc_prebuilt_binary {
     prefer: false,
     device_supported: false,
     host_supported: true,
+    stl: "c++_static",
     compile_multilib: "64",
     target: {
         host: {
