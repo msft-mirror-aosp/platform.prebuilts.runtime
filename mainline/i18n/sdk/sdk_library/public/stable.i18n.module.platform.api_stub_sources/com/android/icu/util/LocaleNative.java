@@ -22,6 +22,8 @@ public final class LocaleNative {
 
 public LocaleNative() { throw new RuntimeException("Stub!"); }
 
+public static void setDefault(java.lang.String languageTag) { throw new RuntimeException("Stub!"); }
+
 public static java.lang.String getDisplayCountry(java.util.Locale targetLocale, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 
 public static java.lang.String getDisplayLanguage(java.util.Locale targetLocale, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
