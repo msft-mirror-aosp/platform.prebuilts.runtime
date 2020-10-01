@@ -18,6 +18,14 @@
 
 package com.android.org.conscrypt;
 
+
+/**
+ * A certificate store that supports additional operations that are used in
+ * TrustManagerImpl.  This is primarily implemented by the cert store on the
+ * Android platform.
+ * @hide This class is not part of the Android public SDK API
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public interface ConscryptCertStore {
 }
