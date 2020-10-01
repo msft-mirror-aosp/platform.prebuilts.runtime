@@ -18,6 +18,21 @@
 
 package com.android.org.conscrypt;
 
+import javax.net.ssl.SSLSession;
+
+/**
+ * A persistent {@link javax.net.ssl.SSLSession} cache used by
+ * {@link javax.net.ssl.SSLSessionContext} to share client-side SSL sessions
+ * across processes. For example, this cache enables applications to
+ * persist and reuse sessions across restarts.
+ *
+ * <p>The {@code SSLSessionContext} implementation converts
+ * {@code SSLSession}s into raw bytes and vice versa. The exact makeup of the
+ * session data is dependent upon the caller's implementation and is opaque to
+ * the {@code SSLClientSessionCache} implementation.
+ * @hide This class is not part of the Android public SDK API
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public interface SSLClientSessionCache {
 }

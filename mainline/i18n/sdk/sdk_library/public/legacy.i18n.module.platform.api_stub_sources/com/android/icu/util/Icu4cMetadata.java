@@ -17,16 +17,31 @@
 
 package com.android.icu.util;
 
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class Icu4cMetadata {
 
 public Icu4cMetadata() { throw new RuntimeException("Stub!"); }
 
+/** Returns the TZData version as reported by ICU4C. */
+
 public static native java.lang.String getTzdbVersion();
+
+/**
+ * Returns the version of the CLDR data in use, such as "22.1.1".
+ */
 
 public static native java.lang.String getCldrVersion();
 
+/**
+ * Returns the icu4c version in use, such as "50.1.1".
+ */
+
 public static native java.lang.String getIcuVersion();
+
+/**
+ * Returns the Unicode version our ICU supports, such as "6.2".
+ */
 
 public static native java.lang.String getUnicodeVersion();
 }

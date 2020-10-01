@@ -17,6 +17,11 @@
 
 package com.android.icu.util.regex;
 
+
+/**
+ * Provide an entry point to use ICU4C icu::RegexPattern.
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class PatternNative {
 

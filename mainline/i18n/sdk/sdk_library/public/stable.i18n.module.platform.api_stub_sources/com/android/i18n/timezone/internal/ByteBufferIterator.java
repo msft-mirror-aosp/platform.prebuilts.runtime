@@ -17,6 +17,12 @@
 
 package com.android.i18n.timezone.internal;
 
+import java.nio.ByteBuffer;
+
+/**
+ * A {@link BufferIterator} that wraps a {@link ByteBuffer}.
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class ByteBufferIterator {
 

@@ -10,8 +10,17 @@
 
 package com.android.icu.charset;
 
+
+/**
+ * This class is used from native code associated with {@link NativeConverter}.
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class CharsetICU extends java.nio.charset.Charset {
+
+/**
+ * Called by native codes.
+ */
 
 protected CharsetICU(java.lang.String canonicalName, java.lang.String icuCanonName, java.lang.String[] aliases) { super(null, null); throw new RuntimeException("Stub!"); }
 

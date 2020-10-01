@@ -17,10 +17,23 @@
 
 package com.android.icu.text;
 
+import java.util.Locale;
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class TimeZoneNamesNative {
 
 private TimeZoneNamesNative() { throw new RuntimeException("Stub!"); }
+
+/**
+ * For each tzId passed returns a list of arrays of five elements: Olson name, long name,
+ * short name, long DST name and short DST name.
+ *
+ * @param locale Locale object
+ * @param tzIds  List of timezone ids
+ * @see libcore.icu.TimeZoneNames.ZoneStringsCache#create(java.util.Locale)
+ * @return List of [Time zone id, long, short, long DST, short DST] for each id from
+ * {@code tzIds}. Any of these value except Olson name can be null.
+ */
 
 public static java.lang.String[][] getFilledZoneStrings(java.util.Locale locale, java.lang.String[] tzIds) { throw new RuntimeException("Stub!"); }
 }

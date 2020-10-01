@@ -17,14 +17,33 @@
 
 package com.android.i18n.timezone;
 
+
+/**
+ * Information about a telephony network.
+ *
+ * @hide
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class TelephonyNetwork {
 
 private TelephonyNetwork() { throw new RuntimeException("Stub!"); }
 
+/**
+ * Returns the Mobile Country Code of the network.
+ */
+
 public java.lang.String getMcc() { throw new RuntimeException("Stub!"); }
 
+/**
+ * Returns the Mobile Network Code of the network.
+ */
+
 public java.lang.String getMnc() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns the country in which the network operates as an ISO 3166 alpha-2 (lower case).
+ */
 
 public java.lang.String getCountryIsoCode() { throw new RuntimeException("Stub!"); }
 
