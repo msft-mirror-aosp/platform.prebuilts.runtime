@@ -17,16 +17,43 @@
 
 package com.android.i18n.timezone;
 
+
+/**
+ * A container class for debug information.
+ *
+ * @hide
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class DebugInfo {
 
 public DebugInfo() { throw new RuntimeException("Stub!"); }
 
+/**
+ * Adds a key / string value.
+ *
+ * @return {@code this} for chaining calls
+ */
+
 public com.android.i18n.timezone.DebugInfo addStringEntry(java.lang.String key, java.lang.String value) { throw new RuntimeException("Stub!"); }
+
+/**
+ * Adds a key / string value. Converts the supplied int value to a String.
+ *
+ * @return {@code this} for chaining calls
+ */
 
 public com.android.i18n.timezone.DebugInfo addStringEntry(java.lang.String key, int value) { throw new RuntimeException("Stub!"); }
 
+/** Returns all the debug entries. */
+
 public java.util.List<com.android.i18n.timezone.DebugInfo.DebugEntry> getDebugEntries() { throw new RuntimeException("Stub!"); }
+/**
+ * A generic key/value for a single piece of debug information.
+ *
+ * @hide
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public static class DebugEntry {
 

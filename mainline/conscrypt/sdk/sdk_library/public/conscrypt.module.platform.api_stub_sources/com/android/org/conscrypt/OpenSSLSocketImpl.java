@@ -18,6 +18,13 @@
 
 package com.android.org.conscrypt;
 
+
+/**
+ * Public shim allowing us to stay backward-compatible with legacy applications which were using
+ * Conscrypt's extended socket API before the introduction of the {@link Conscrypt} class.
+ * @hide This class is not part of the Android public SDK API
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public abstract class OpenSSLSocketImpl extends javax.net.ssl.SSLSocket {
 
@@ -37,14 +44,30 @@ public abstract void setUseSessionTickets(boolean useSessionTickets);
 
 public abstract void setChannelIdPrivateKey(java.security.PrivateKey privateKey);
 
+/**
+ * @deprecated NPN is not supported
+ */
+
 @Deprecated
 public final byte[] getNpnSelectedProtocol() { throw new RuntimeException("Stub!"); }
+
+/**
+ * @deprecated NPN is not supported
+ */
 
 @Deprecated
 public final void setNpnProtocols(byte[] npnProtocols) { throw new RuntimeException("Stub!"); }
 
+/**
+ * @deprecated use {@link #getApplicationProtocol()} instead.
+ */
+
 @Deprecated
 public final byte[] getAlpnSelectedProtocol() { throw new RuntimeException("Stub!"); }
+
+/**
+ * @deprecated Use {@link #setAlpnProtocols(String[])} instead.
+ */
 
 @Deprecated
 public final void setAlpnProtocols(byte[] protocols) { throw new RuntimeException("Stub!"); }
@@ -86,6 +109,10 @@ public boolean isOutputShutdown() { throw new RuntimeException("Stub!"); }
 public void close() throws java.io.IOException { throw new RuntimeException("Stub!"); }
 
 public final void connect(java.net.SocketAddress endpoint) throws java.io.IOException { throw new RuntimeException("Stub!"); }
+
+/**
+ * Try to extract the peer's hostname if it's available from the endpoint address.
+ */
 
 public final void connect(java.net.SocketAddress endpoint, int timeout) throws java.io.IOException { throw new RuntimeException("Stub!"); }
 
