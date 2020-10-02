@@ -1,0 +1,269 @@
+// This is auto-generated. DO NOT EDIT.
+
+cc_prebuilt_library {
+    name: "platform-mainline-sdk_liblog@current",
+    sdk_member_name: "liblog",
+    host_supported: true,
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.runtime",
+    ],
+    installable: false,
+    recovery_available: true,
+    export_include_dirs: ["common_os/include/system/core/liblog/include"],
+    stubs: {
+        versions: [
+            "29",
+            "30",
+        ],
+    },
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+            sanitize: {
+                address: false,
+            },
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/liblog.so"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/liblog.so"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/liblog.so"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/liblog.so"],
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            static: {
+                srcs: ["linux_bionic/x86_64/lib/liblog.a"],
+            },
+            shared: {
+                srcs: ["linux_bionic/x86_64/lib/liblog.so"],
+            },
+        },
+        linux_glibc: {
+            enabled: true,
+            compile_multilib: "both",
+        },
+        linux_glibc_x86_64: {
+            static: {
+                srcs: ["linux_glibc/x86_64/lib/liblog.a"],
+            },
+            shared: {
+                srcs: ["linux_glibc/x86_64/lib/liblog.so"],
+            },
+        },
+        linux_glibc_x86: {
+            static: {
+                srcs: ["linux_glibc/x86/lib/liblog.a"],
+            },
+            shared: {
+                srcs: ["linux_glibc/x86/lib/liblog.so"],
+            },
+        },
+    },
+}
+
+cc_prebuilt_library {
+    name: "liblog",
+    prefer: false,
+    host_supported: true,
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.runtime",
+    ],
+    recovery_available: true,
+    export_include_dirs: ["common_os/include/system/core/liblog/include"],
+    stubs: {
+        versions: [
+            "29",
+            "30",
+        ],
+    },
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+            sanitize: {
+                address: false,
+            },
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/liblog.so"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/liblog.so"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/liblog.so"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/liblog.so"],
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            static: {
+                srcs: ["linux_bionic/x86_64/lib/liblog.a"],
+            },
+            shared: {
+                srcs: ["linux_bionic/x86_64/lib/liblog.so"],
+            },
+        },
+        linux_glibc: {
+            enabled: true,
+            compile_multilib: "both",
+        },
+        linux_glibc_x86_64: {
+            static: {
+                srcs: ["linux_glibc/x86_64/lib/liblog.a"],
+            },
+            shared: {
+                srcs: ["linux_glibc/x86_64/lib/liblog.so"],
+            },
+        },
+        linux_glibc_x86: {
+            static: {
+                srcs: ["linux_glibc/x86/lib/liblog.a"],
+            },
+            shared: {
+                srcs: ["linux_glibc/x86/lib/liblog.so"],
+            },
+        },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "platform-mainline-sdk_libartpalette-system@current",
+    sdk_member_name: "libartpalette-system",
+    host_supported: true,
+    installable: false,
+    stubs: {
+        versions: ["1"],
+    },
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/libartpalette-system.so"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/libartpalette-system.so"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/libartpalette-system.so"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/libartpalette-system.so"],
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            srcs: ["linux_bionic/x86_64/lib/libartpalette-system.so"],
+        },
+        linux_glibc: {
+            enabled: true,
+            compile_multilib: "both",
+        },
+        linux_glibc_x86_64: {
+            srcs: ["linux_glibc/x86_64/lib/libartpalette-system.so"],
+        },
+        linux_glibc_x86: {
+            srcs: ["linux_glibc/x86/lib/libartpalette-system.so"],
+        },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "libartpalette-system",
+    prefer: false,
+    host_supported: true,
+    stubs: {
+        versions: ["1"],
+    },
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/libartpalette-system.so"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/libartpalette-system.so"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/libartpalette-system.so"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/libartpalette-system.so"],
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            srcs: ["linux_bionic/x86_64/lib/libartpalette-system.so"],
+        },
+        linux_glibc: {
+            enabled: true,
+            compile_multilib: "both",
+        },
+        linux_glibc_x86_64: {
+            srcs: ["linux_glibc/x86_64/lib/libartpalette-system.so"],
+        },
+        linux_glibc_x86: {
+            srcs: ["linux_glibc/x86/lib/libartpalette-system.so"],
+        },
+    },
+}
+
+sdk_snapshot {
+    name: "platform-mainline-sdk@current",
+    host_supported: true,
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            native_shared_libs: [
+                "platform-mainline-sdk_libartpalette-system@current",
+                "platform-mainline-sdk_liblog@current",
+            ],
+        },
+        linux_bionic: {
+            enabled: true,
+            compile_multilib: "64",
+            native_libs: ["platform-mainline-sdk_liblog@current"],
+            native_shared_libs: ["platform-mainline-sdk_libartpalette-system@current"],
+        },
+        linux_glibc: {
+            enabled: true,
+            native_libs: ["platform-mainline-sdk_liblog@current"],
+            native_shared_libs: ["platform-mainline-sdk_libartpalette-system@current"],
+        },
+    },
+}
+
