@@ -17,10 +17,22 @@
 
 package com.android.icu.text;
 
+import android.icu.text.DecimalFormatSymbols;
+
+/**
+ * Used by {@link java.text.DecimalFormatSymbols}.
+ * @hide
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class DecimalFormatSymbolsBridge {
 
 DecimalFormatSymbolsBridge() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Public API {@link DecimalFormatSymbols#getPatternSeparator()} does not localize pattern
+ * separator. This API is consumed by libcore's {@link java.text.DecimalFormatSymbols}.
+ */
 
 public static java.lang.String getLocalizedPatternSeparator(android.icu.util.ULocale locale, android.icu.text.NumberingSystem ns) { throw new RuntimeException("Stub!"); }
 }

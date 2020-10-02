@@ -17,10 +17,23 @@
 
 package com.android.i18n.timezone;
 
+
+/**
+ * A class that can find telephony network information loaded via {@link TelephonyLookup}.
+ *
+ * @hide
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class TelephonyNetworkFinder {
 
 private TelephonyNetworkFinder() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns information held about a specific MCC + MNC combination. It is expected for this
+ * method to return {@code null}. Only known, unusual networks will typically have information
+ * returned, e.g. if they operate in countries other than the one suggested by their MCC.
+ */
 
 public com.android.i18n.timezone.TelephonyNetwork findNetworkByMccMnc(java.lang.String mcc, java.lang.String mnc) { throw new RuntimeException("Stub!"); }
 }

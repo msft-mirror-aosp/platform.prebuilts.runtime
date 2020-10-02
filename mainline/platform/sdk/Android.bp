@@ -9,9 +9,13 @@ cc_prebuilt_library {
         "com.android.runtime",
     ],
     installable: false,
+    recovery_available: true,
     export_include_dirs: ["common_os/include/system/core/liblog/include"],
     stubs: {
-        versions: ["30"],
+        versions: [
+            "29",
+            "30",
+        ],
     },
     target: {
         host: {
@@ -19,6 +23,9 @@ cc_prebuilt_library {
         },
         android: {
             compile_multilib: "both",
+            sanitize: {
+                address: false,
+            },
         },
         android_arm64: {
             srcs: ["android/arm64/lib/liblog.so"],
@@ -75,9 +82,13 @@ cc_prebuilt_library {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    recovery_available: true,
     export_include_dirs: ["common_os/include/system/core/liblog/include"],
     stubs: {
-        versions: ["30"],
+        versions: [
+            "29",
+            "30",
+        ],
     },
     target: {
         host: {
@@ -85,6 +96,9 @@ cc_prebuilt_library {
         },
         android: {
             compile_multilib: "both",
+            sanitize: {
+                address: false,
+            },
         },
         android_arm64: {
             srcs: ["android/arm64/lib/liblog.so"],

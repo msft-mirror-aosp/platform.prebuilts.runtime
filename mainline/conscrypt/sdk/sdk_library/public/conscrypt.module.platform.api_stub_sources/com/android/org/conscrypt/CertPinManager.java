@@ -18,6 +18,12 @@
 
 package com.android.org.conscrypt;
 
+
+/**
+ * Interface for classes that implement certificate pinning for use in {@link TrustManagerImpl}.
+ * @hide This class is not part of the Android public SDK API
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public interface CertPinManager {
 }

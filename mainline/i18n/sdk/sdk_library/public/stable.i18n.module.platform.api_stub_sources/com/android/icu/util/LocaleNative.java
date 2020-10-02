@@ -17,10 +17,25 @@
 
 package com.android.icu.util;
 
+import java.util.Locale;
+
+/**
+ * Used by java.util.Locale to access locale data in ICU4C.
+ * java.util.Locale avoids using android.icu.util.ULocale to prevent circular runtime dependency.
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class LocaleNative {
 
 public LocaleNative() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Libcore's default locale is synchronized with the ICU4C's default locale. But libicu.so
+ * does not expose uloc_setDefault via NDK because app can otherwise break this synchronization.
+ * Instead, expose this uloc_setDefault as @IntraCoreApi called by libcore.
+ */
+
+public static void setDefault(java.lang.String languageTag) { throw new RuntimeException("Stub!"); }
 
 public static java.lang.String getDisplayCountry(java.util.Locale targetLocale, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 

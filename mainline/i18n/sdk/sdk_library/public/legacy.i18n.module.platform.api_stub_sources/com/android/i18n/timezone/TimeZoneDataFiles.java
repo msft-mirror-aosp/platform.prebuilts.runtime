@@ -17,6 +17,13 @@
 
 package com.android.i18n.timezone;
 
+
+/**
+ * Utility methods associated with finding updateable time zone data files.
+ *
+ * @hide
+ */
+
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class TimeZoneDataFiles {
 
