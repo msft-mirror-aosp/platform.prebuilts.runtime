@@ -3,6 +3,7 @@
 cc_prebuilt_library {
     name: "platform-mainline-sdk_liblog@current",
     sdk_member_name: "liblog",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -10,7 +11,7 @@ cc_prebuilt_library {
     ],
     installable: false,
     recovery_available: true,
-    export_include_dirs: ["common_os/include/system/core/liblog/include"],
+    export_include_dirs: ["common_os/include/system/logging/liblog/include"],
     stubs: {
         versions: [
             "29",
@@ -77,13 +78,14 @@ cc_prebuilt_library {
 cc_prebuilt_library {
     name: "liblog",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
         "com.android.runtime",
     ],
     recovery_available: true,
-    export_include_dirs: ["common_os/include/system/core/liblog/include"],
+    export_include_dirs: ["common_os/include/system/logging/liblog/include"],
     stubs: {
         versions: [
             "29",
@@ -150,6 +152,7 @@ cc_prebuilt_library {
 cc_prebuilt_library_shared {
     name: "platform-mainline-sdk_libartpalette-system@current",
     sdk_member_name: "libartpalette-system",
+    visibility: ["//visibility:public"],
     host_supported: true,
     installable: false,
     stubs: {
@@ -197,6 +200,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libartpalette-system",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     stubs: {
         versions: ["1"],
@@ -242,6 +246,7 @@ cc_prebuilt_library_shared {
 
 sdk_snapshot {
     name: "platform-mainline-sdk@current",
+    visibility: ["//visibility:public"],
     host_supported: true,
     target: {
         host: {
