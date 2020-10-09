@@ -4,10 +4,10 @@ java_sdk_library_import {
     name: "i18n-module-sdk_i18n.module.intra.core.api@current",
     sdk_member_name: "i18n.module.intra.core.api",
     visibility: [
+        "//external/icu/android_icu4j",
         "//libcore:__subpackages__",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
-        "//external/icu/android_icu4j",
     ],
     shared_library: false,
     public: {
@@ -23,10 +23,10 @@ java_sdk_library_import {
     name: "i18n.module.intra.core.api",
     prefer: false,
     visibility: [
+        "//external/icu/android_icu4j",
         "//libcore:__subpackages__",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
-        "//external/icu/android_icu4j",
     ],
     shared_library: false,
     public: {
@@ -42,10 +42,10 @@ java_sdk_library_import {
     name: "i18n-module-sdk_legacy.i18n.module.platform.api@current",
     sdk_member_name: "legacy.i18n.module.platform.api",
     visibility: [
+        "//external/icu/android_icu4j",
         "//libcore:__subpackages__",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
-        "//external/icu/android_icu4j",
     ],
     shared_library: false,
     public: {
@@ -61,10 +61,10 @@ java_sdk_library_import {
     name: "legacy.i18n.module.platform.api",
     prefer: false,
     visibility: [
+        "//external/icu/android_icu4j",
         "//libcore:__subpackages__",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
-        "//external/icu/android_icu4j",
     ],
     shared_library: false,
     public: {
@@ -80,10 +80,10 @@ java_sdk_library_import {
     name: "i18n-module-sdk_stable.i18n.module.platform.api@current",
     sdk_member_name: "stable.i18n.module.platform.api",
     visibility: [
+        "//external/icu/android_icu4j",
         "//libcore:__subpackages__",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
-        "//external/icu/android_icu4j",
     ],
     shared_library: false,
     public: {
@@ -99,10 +99,10 @@ java_sdk_library_import {
     name: "stable.i18n.module.platform.api",
     prefer: false,
     visibility: [
+        "//external/icu/android_icu4j",
         "//libcore:__subpackages__",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
-        "//external/icu/android_icu4j",
     ],
     shared_library: false,
     public: {
@@ -118,10 +118,10 @@ java_sdk_library_import {
     name: "i18n-module-sdk_i18n.module.public.api@current",
     sdk_member_name: "i18n.module.public.api",
     visibility: [
+        "//external/icu/android_icu4j",
         "//libcore",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
-        "//external/icu/android_icu4j",
     ],
     shared_library: false,
     public: {
@@ -137,10 +137,10 @@ java_sdk_library_import {
     name: "i18n.module.public.api",
     prefer: false,
     visibility: [
+        "//external/icu/android_icu4j",
         "//libcore",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
-        "//external/icu/android_icu4j",
     ],
     shared_library: false,
     public: {
@@ -155,6 +155,7 @@ java_sdk_library_import {
 cc_prebuilt_library_headers {
     name: "i18n-module-sdk_libandroidicu_headers@current",
     sdk_member_name: "libandroidicu_headers",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "com.android.art.debug",
@@ -183,6 +184,7 @@ cc_prebuilt_library_headers {
 cc_prebuilt_library_headers {
     name: "libandroidicu_headers",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "com.android.art.debug",
@@ -211,6 +213,7 @@ cc_prebuilt_library_headers {
 cc_prebuilt_library_headers {
     name: "i18n-module-sdk_libicuuc_headers@current",
     sdk_member_name: "libicuuc_headers",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: ["com.android.i18n"],
     export_include_dirs: [
@@ -238,6 +241,7 @@ cc_prebuilt_library_headers {
 cc_prebuilt_library_headers {
     name: "libicuuc_headers",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: ["com.android.i18n"],
     export_include_dirs: [
@@ -265,6 +269,7 @@ cc_prebuilt_library_headers {
 cc_prebuilt_library_shared {
     name: "i18n-module-sdk_libandroidicu@current",
     sdk_member_name: "libandroidicu",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -318,6 +323,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libandroidicu",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -370,6 +376,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "i18n-module-sdk_libicu@current",
     sdk_member_name: "libicu",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -422,6 +429,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libicu",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -472,6 +480,7 @@ cc_prebuilt_library_shared {
 
 sdk_snapshot {
     name: "i18n-module-sdk@current",
+    visibility: ["//visibility:public"],
     host_supported: true,
     native_header_libs: [
         "i18n-module-sdk_libandroidicu_headers@current",
