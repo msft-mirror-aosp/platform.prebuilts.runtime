@@ -4,12 +4,11 @@ java_sdk_library_import {
     name: "conscrypt-module-sdk_conscrypt.module.public.api@current",
     sdk_member_name: "conscrypt.module.public.api",
     visibility: [
-        "//external/conscrypt",
         "//frameworks/base",
         "//frameworks/base/api",
         "//libcore",
-        "//packages/modules/IPsec",
         "//prebuilts:__subpackages__",
+        "//external/conscrypt",
     ],
     shared_library: false,
     public: {
@@ -25,12 +24,11 @@ java_sdk_library_import {
     name: "conscrypt.module.public.api",
     prefer: false,
     visibility: [
-        "//external/conscrypt",
         "//frameworks/base",
         "//frameworks/base/api",
         "//libcore",
-        "//packages/modules/IPsec",
         "//prebuilts:__subpackages__",
+        "//external/conscrypt",
     ],
     shared_library: false,
     public: {
@@ -46,10 +44,10 @@ java_sdk_library_import {
     name: "conscrypt-module-sdk_conscrypt.module.intra.core.api@current",
     sdk_member_name: "conscrypt.module.intra.core.api",
     visibility: [
-        "//external/conscrypt",
         "//external/okhttp",
         "//libcore:__subpackages__",
         "//prebuilts:__subpackages__",
+        "//external/conscrypt",
     ],
     shared_library: false,
     public: {
@@ -65,10 +63,10 @@ java_sdk_library_import {
     name: "conscrypt.module.intra.core.api",
     prefer: false,
     visibility: [
-        "//external/conscrypt",
         "//external/okhttp",
         "//libcore:__subpackages__",
         "//prebuilts:__subpackages__",
+        "//external/conscrypt",
     ],
     shared_library: false,
     public: {
@@ -84,10 +82,10 @@ java_sdk_library_import {
     name: "conscrypt-module-sdk_conscrypt.module.platform.api@current",
     sdk_member_name: "conscrypt.module.platform.api",
     visibility: [
-        "//external/conscrypt",
         "//external/wycheproof",
         "//libcore:__subpackages__",
         "//prebuilts:__subpackages__",
+        "//external/conscrypt",
     ],
     shared_library: false,
     public: {
@@ -103,10 +101,10 @@ java_sdk_library_import {
     name: "conscrypt.module.platform.api",
     prefer: false,
     visibility: [
-        "//external/conscrypt",
         "//external/wycheproof",
         "//libcore:__subpackages__",
         "//prebuilts:__subpackages__",
+        "//external/conscrypt",
     ],
     shared_library: false,
     public: {

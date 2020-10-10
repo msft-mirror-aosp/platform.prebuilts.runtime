@@ -4,11 +4,11 @@ java_import {
     name: "i18n-module-test-exports_core-icu4j@current",
     sdk_member_name: "core-icu4j",
     visibility: [
-        "//art/build",
-        "//external/icu/android_icu4j",
+        "//packages/modules/RuntimeI18n/apex",
         "//external/robolectric-shadows",
         "//frameworks/layoutlib",
-        "//packages/modules/RuntimeI18n/apex",
+        "//art/build",
+        "//external/icu/android_icu4j",
     ],
     apex_available: ["com.android.i18n"],
     jars: ["java/core-icu4j.jar"],
@@ -18,11 +18,11 @@ java_import {
     name: "core-icu4j",
     prefer: false,
     visibility: [
-        "//art/build",
-        "//external/icu/android_icu4j",
+        "//packages/modules/RuntimeI18n/apex",
         "//external/robolectric-shadows",
         "//frameworks/layoutlib",
-        "//packages/modules/RuntimeI18n/apex",
+        "//art/build",
+        "//external/icu/android_icu4j",
     ],
     apex_available: ["com.android.i18n"],
     jars: ["java/core-icu4j.jar"],
@@ -31,7 +31,6 @@ java_import {
 cc_prebuilt_library_shared {
     name: "i18n-module-test-exports_libicui18n@current",
     sdk_member_name: "libicui18n",
-    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -83,7 +82,6 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libicui18n",
     prefer: false,
-    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -134,7 +132,6 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "i18n-module-test-exports_libicuuc@current",
     sdk_member_name: "libicuuc",
-    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: ["com.android.i18n"],
     installable: false,
@@ -185,7 +182,6 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libicuuc",
     prefer: false,
-    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: ["com.android.i18n"],
     unique_host_soname: true,
@@ -236,8 +232,8 @@ cc_prebuilt_library_shared {
     name: "i18n-module-test-exports_libicu_jni@current",
     sdk_member_name: "libicu_jni",
     visibility: [
-        "//external/icu/android_icu4j/libcore_bridge/src/native",
         "//packages/modules/RuntimeI18n/apex",
+        "//external/icu/android_icu4j/libcore_bridge/src/native",
     ],
     host_supported: true,
     apex_available: ["com.android.i18n"],
@@ -292,8 +288,8 @@ cc_prebuilt_library_shared {
     name: "libicu_jni",
     prefer: false,
     visibility: [
-        "//external/icu/android_icu4j/libcore_bridge/src/native",
         "//packages/modules/RuntimeI18n/apex",
+        "//external/icu/android_icu4j/libcore_bridge/src/native",
     ],
     host_supported: true,
     apex_available: ["com.android.i18n"],
@@ -345,7 +341,6 @@ cc_prebuilt_library_shared {
 
 module_exports_snapshot {
     name: "i18n-module-test-exports@current",
-    visibility: ["//visibility:public"],
     host_supported: true,
     native_shared_libs: [
         "i18n-module-test-exports_libicui18n@current",

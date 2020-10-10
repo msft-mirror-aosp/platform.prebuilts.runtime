@@ -3,7 +3,6 @@
 cc_prebuilt_library_shared {
     name: "platform-mainline-test-exports_libtombstoned_client@current",
     sdk_member_name: "libtombstoned_client",
-    visibility: ["//visibility:public"],
     installable: false,
     compile_multilib: "both",
     shared_libs: [
@@ -33,7 +32,6 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libtombstoned_client",
     prefer: false,
-    visibility: ["//visibility:public"],
     compile_multilib: "both",
     shared_libs: [
         "libbase",
@@ -61,7 +59,6 @@ cc_prebuilt_library_shared {
 
 module_exports_snapshot {
     name: "platform-mainline-test-exports@current",
-    visibility: ["//visibility:public"],
     native_shared_libs: ["platform-mainline-test-exports_libtombstoned_client@current"],
 }
 
