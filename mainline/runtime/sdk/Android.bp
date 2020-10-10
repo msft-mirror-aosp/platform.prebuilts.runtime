@@ -6,11 +6,11 @@ cc_prebuilt_library_headers {
     visibility: [
         "//art:__subpackages__",
         "//bionic:__subpackages__",
-        "//frameworks:__subpackages__",
         "//device/generic/goldfish-opengl:__subpackages__",
         "//external/gwp_asan:__subpackages__",
         "//external/perfetto:__subpackages__",
         "//external/scudo:__subpackages__",
+        "//frameworks:__subpackages__",
         "//system/core/debuggerd:__subpackages__",
         "//system/core/libunwindstack:__subpackages__",
         "//system/memory/libmemunreachable:__subpackages__",
@@ -50,11 +50,11 @@ cc_prebuilt_library_headers {
     visibility: [
         "//art:__subpackages__",
         "//bionic:__subpackages__",
-        "//frameworks:__subpackages__",
         "//device/generic/goldfish-opengl:__subpackages__",
         "//external/gwp_asan:__subpackages__",
         "//external/perfetto:__subpackages__",
         "//external/scudo:__subpackages__",
+        "//frameworks:__subpackages__",
         "//system/core/debuggerd:__subpackages__",
         "//system/core/libunwindstack:__subpackages__",
         "//system/memory/libmemunreachable:__subpackages__",
@@ -92,17 +92,17 @@ cc_prebuilt_library_headers {
     name: "runtime-module-sdk_libc_headers@current",
     sdk_member_name: "libc_headers",
     visibility: [
+        "//art/tools/cpp-define-generator",
         "//bionic:__subpackages__",
         "//external/arm-optimized-routines",
+        "//external/boringssl",
         "//external/gwp_asan",
         "//external/jemalloc_new",
         "//external/libunwind_llvm",
+        "//external/minijail",
         "//external/scudo",
         "//system/core/property_service/libpropertyinfoparser",
         "//system/extras/toolchain-extras",
-        "//art/tools/cpp-define-generator",
-        "//external/boringssl",
-        "//external/minijail",
     ],
     host_supported: true,
     apex_available: [
@@ -175,17 +175,17 @@ cc_prebuilt_library_headers {
     name: "libc_headers",
     prefer: false,
     visibility: [
+        "//art/tools/cpp-define-generator",
         "//bionic:__subpackages__",
         "//external/arm-optimized-routines",
+        "//external/boringssl",
         "//external/gwp_asan",
         "//external/jemalloc_new",
         "//external/libunwind_llvm",
+        "//external/minijail",
         "//external/scudo",
         "//system/core/property_service/libpropertyinfoparser",
         "//system/extras/toolchain-extras",
-        "//art/tools/cpp-define-generator",
-        "//external/boringssl",
-        "//external/minijail",
     ],
     host_supported: true,
     apex_available: [
@@ -257,6 +257,7 @@ cc_prebuilt_library_headers {
 cc_prebuilt_object {
     name: "runtime-module-sdk_crtbegin_dynamic@current",
     sdk_member_name: "crtbegin_dynamic",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:anyapex",
@@ -296,6 +297,7 @@ cc_prebuilt_object {
 cc_prebuilt_object {
     name: "crtbegin_dynamic",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:anyapex",
@@ -335,6 +337,7 @@ cc_prebuilt_object {
 cc_prebuilt_object {
     name: "runtime-module-sdk_crtbegin_so@current",
     sdk_member_name: "crtbegin_so",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:anyapex",
@@ -374,6 +377,7 @@ cc_prebuilt_object {
 cc_prebuilt_object {
     name: "crtbegin_so",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:anyapex",
@@ -413,6 +417,7 @@ cc_prebuilt_object {
 cc_prebuilt_object {
     name: "runtime-module-sdk_crtend_android@current",
     sdk_member_name: "crtend_android",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:anyapex",
@@ -452,6 +457,7 @@ cc_prebuilt_object {
 cc_prebuilt_object {
     name: "crtend_android",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:anyapex",
@@ -491,6 +497,7 @@ cc_prebuilt_object {
 cc_prebuilt_object {
     name: "runtime-module-sdk_crtend_so@current",
     sdk_member_name: "crtend_so",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:anyapex",
@@ -530,6 +537,7 @@ cc_prebuilt_object {
 cc_prebuilt_object {
     name: "crtend_so",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:anyapex",
@@ -569,6 +577,7 @@ cc_prebuilt_object {
 cc_prebuilt_library_shared {
     name: "runtime-module-sdk_libc@current",
     sdk_member_name: "libc",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -662,6 +671,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libc",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -754,6 +764,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "runtime-module-sdk_libdl@current",
     sdk_member_name: "libdl",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -811,6 +822,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libdl",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -867,6 +879,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "runtime-module-sdk_libdl_android@current",
     sdk_member_name: "libdl_android",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -914,6 +927,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libdl_android",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -960,6 +974,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "runtime-module-sdk_libm@current",
     sdk_member_name: "libm",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -1012,6 +1027,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libm",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -1063,6 +1079,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_static {
     name: "runtime-module-sdk_libasync_safe@current",
     sdk_member_name: "libasync_safe",
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -1079,7 +1096,7 @@ cc_prebuilt_library_static {
     system_shared_libs: [],
     export_include_dirs: [
         "common_os/include/bionic/libc/async_safe/include",
-        "common_os/include/system/core/liblog/include",
+        "common_os/include/system/logging/liblog/include",
     ],
     sanitize: {
         address: false,
@@ -1153,6 +1170,7 @@ cc_prebuilt_library_static {
 cc_prebuilt_library_static {
     name: "libasync_safe",
     prefer: false,
+    visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
@@ -1168,7 +1186,7 @@ cc_prebuilt_library_static {
     system_shared_libs: [],
     export_include_dirs: [
         "common_os/include/bionic/libc/async_safe/include",
-        "common_os/include/system/core/liblog/include",
+        "common_os/include/system/logging/liblog/include",
     ],
     sanitize: {
         address: false,
@@ -1241,6 +1259,7 @@ cc_prebuilt_library_static {
 
 sdk_snapshot {
     name: "runtime-module-sdk@current",
+    visibility: ["//visibility:public"],
     host_supported: true,
     native_header_libs: [
         "runtime-module-sdk_bionic_libc_platform_headers@current",
