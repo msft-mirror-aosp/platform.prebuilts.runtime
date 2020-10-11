@@ -5,8 +5,8 @@ java_import {
     sdk_member_name: "conscrypt-unbundled",
     visibility: [
         "//build/make/tools/signapk",
-        "//tools/apksig",
         "//external/conscrypt",
+        "//tools/apksig",
     ],
     device_supported: false,
     host_supported: true,
@@ -25,8 +25,8 @@ java_import {
     prefer: false,
     visibility: [
         "//build/make/tools/signapk",
-        "//tools/apksig",
         "//external/conscrypt",
+        "//tools/apksig",
     ],
     device_supported: false,
     host_supported: true,
