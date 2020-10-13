@@ -27,6 +27,11 @@ import update_prebuilts as update
 PREBUILT_DESCRIPTION = 'mainline'
 TARGET = 'mainline_modules'
 
+COMMIT_MESSAGE_NOTE = """\
+CL prepared by prebuilts/runtime/mainline/update.py. See
+prebuilts/runtime/mainline/README.md for update instructions.
+"""
+
 mainline_install_list = []
 mainline_extracted_list = []
 
@@ -87,4 +92,5 @@ mainline_install_list.extend(
 
 if __name__ == '__main__':
     update.main(THIS_DIR, PREBUILT_DESCRIPTION,
-                mainline_install_list, mainline_extracted_list)
+                mainline_install_list, mainline_extracted_list,
+                COMMIT_MESSAGE_NOTE)
