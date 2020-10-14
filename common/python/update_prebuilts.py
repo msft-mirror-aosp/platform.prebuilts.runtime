@@ -71,7 +71,7 @@ def start_branch(build):
     check_call(['repo', 'start', branch_name, '.'])
 
 
-def commit(prebuilts, branch, build, add_paths):
+def commit(prebuilts, branch, build, add_paths, commit_message_note):
     """Commits the new prebuilts."""
     logger().info('Making commit')
     check_call(['git', 'add'] + add_paths)
@@ -79,6 +79,8 @@ def commit(prebuilts, branch, build, add_paths):
         Update {prebuilts} prebuilts to build {build}.
 
         Taken from branch {branch}.""").format(prebuilts=prebuilts, branch=branch, build=build)
+    if commit_message_note:
+        message += "\n\n" + commit_message_note
     check_call(['git', 'commit', '-m', message])
 
 
@@ -166,7 +168,7 @@ def get_args():
     return parser.parse_args()
 
 
-def main(work_dir, prebuilts, install_list, extracted_list):
+def main(work_dir, prebuilts, install_list, extracted_list, commit_message_note=None):
     """Program entry point."""
     os.chdir(work_dir)
 
@@ -182,4 +184,4 @@ def main(work_dir, prebuilts, install_list, extracted_list):
     remove_old_files(install_list, extracted_list)
     install_new_files(args.branch, args.build, install_list, extracted_list)
     files = list_installed_files(install_list, extracted_list)
-    commit(prebuilts, args.branch, args.build, files)
+    commit(prebuilts, args.branch, args.build, files, commit_message_note)
