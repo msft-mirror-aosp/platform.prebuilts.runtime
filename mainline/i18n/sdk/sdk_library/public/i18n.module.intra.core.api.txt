@@ -58,6 +58,7 @@ package android.icu.text {
   }
 
   public class DecimalFormat extends android.icu.text.NumberFormat {
+    method public void setParseJavaCompatible(boolean);
     method @Deprecated public void setParseStrictMode(android.icu.impl.number.DecimalFormatProperties.ParseMode);
   }
 
@@ -193,6 +194,15 @@ package android.icu.util {
 
 }
 
+package com.android.i18n.system {
+
+  public final class ZygoteHooks {
+    method public static void onBeginPreload();
+    method public static void onEndPreload();
+  }
+
+}
+
 package com.android.i18n.timezone {
 
   public final class TimeZoneDataFiles {
@@ -244,6 +254,12 @@ package com.android.icu.text {
 
   public class DecimalFormatSymbolsBridge {
     method public static String getLocalizedPatternSeparator(android.icu.util.ULocale, android.icu.text.NumberingSystem);
+  }
+
+  public class ExtendedDateFormatSymbols {
+    method public android.icu.text.DateFormatSymbols getDateFormatSymbols();
+    method public static com.android.icu.text.ExtendedDateFormatSymbols getInstance(android.icu.util.ULocale);
+    method public String[] getNarrowQuarters(int);
   }
 
   public final class TimeZoneNamesNative {
