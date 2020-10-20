@@ -89,6 +89,12 @@ public java.lang.String getBestPattern(java.lang.String skeleton) { throw new Ru
 public java.lang.String getBestPattern(java.lang.String skeleton, int options) { throw new RuntimeException("Stub!"); }
 
 /**
+ * @hide draft / provisional / internal are hidden on Android
+ */
+
+public java.lang.String getBestPattern(java.lang.String skeleton, boolean allowDuplicateFields) { throw new RuntimeException("Stub!"); }
+
+/**
  * Adds a pattern to the generator. If the pattern has the same skeleton as
  * an existing pattern, and the override parameter is set, then the previous
  * value is overridden. Otherwise, the previous value is retained. In either
