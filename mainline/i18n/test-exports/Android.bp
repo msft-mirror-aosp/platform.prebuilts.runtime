@@ -139,9 +139,9 @@ cc_prebuilt_library_shared {
     apex_available: ["com.android.i18n"],
     installable: false,
     unique_host_soname: true,
-    export_include_dirs: [
-        "common_os/include/external/icu/icu4c/source/common",
-        "common_os/include/external/icu/android_icu4c/include",
+    shared_libs: [
+        "libbase",
+        "liblog",
     ],
     target: {
         host: {
@@ -149,6 +149,10 @@ cc_prebuilt_library_shared {
         },
         android: {
             compile_multilib: "both",
+            export_include_dirs: [
+                "android/include/external/icu/icu4c/source/common",
+                "android/include/external/icu/android_icu4c/include",
+            ],
         },
         android_arm64: {
             srcs: ["android/arm64/lib/libicuuc.so"],
@@ -165,6 +169,11 @@ cc_prebuilt_library_shared {
         linux_bionic: {
             enabled: true,
             compile_multilib: "64",
+            export_include_dirs: [
+                "linux_bionic/include/external/icu/icu4c/source/common",
+                "linux_bionic/include/external/icu/android_icu4c/include",
+                "linux_bionic/include/external/icu/libandroidicuinit/include",
+            ],
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libicuuc-host.so"],
@@ -172,6 +181,11 @@ cc_prebuilt_library_shared {
         linux_glibc: {
             enabled: true,
             compile_multilib: "both",
+            export_include_dirs: [
+                "linux_glibc/include/external/icu/icu4c/source/common",
+                "linux_glibc/include/external/icu/android_icu4c/include",
+                "linux_glibc/include/external/icu/libandroidicuinit/include",
+            ],
         },
         linux_glibc_x86_64: {
             srcs: ["linux_glibc/x86_64/lib/libicuuc-host.so"],
@@ -189,9 +203,9 @@ cc_prebuilt_library_shared {
     host_supported: true,
     apex_available: ["com.android.i18n"],
     unique_host_soname: true,
-    export_include_dirs: [
-        "common_os/include/external/icu/icu4c/source/common",
-        "common_os/include/external/icu/android_icu4c/include",
+    shared_libs: [
+        "libbase",
+        "liblog",
     ],
     target: {
         host: {
@@ -199,6 +213,10 @@ cc_prebuilt_library_shared {
         },
         android: {
             compile_multilib: "both",
+            export_include_dirs: [
+                "android/include/external/icu/icu4c/source/common",
+                "android/include/external/icu/android_icu4c/include",
+            ],
         },
         android_arm64: {
             srcs: ["android/arm64/lib/libicuuc.so"],
@@ -215,6 +233,11 @@ cc_prebuilt_library_shared {
         linux_bionic: {
             enabled: true,
             compile_multilib: "64",
+            export_include_dirs: [
+                "linux_bionic/include/external/icu/icu4c/source/common",
+                "linux_bionic/include/external/icu/android_icu4c/include",
+                "linux_bionic/include/external/icu/libandroidicuinit/include",
+            ],
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/libicuuc-host.so"],
@@ -222,6 +245,11 @@ cc_prebuilt_library_shared {
         linux_glibc: {
             enabled: true,
             compile_multilib: "both",
+            export_include_dirs: [
+                "linux_glibc/include/external/icu/icu4c/source/common",
+                "linux_glibc/include/external/icu/android_icu4c/include",
+                "linux_glibc/include/external/icu/libandroidicuinit/include",
+            ],
         },
         linux_glibc_x86_64: {
             srcs: ["linux_glibc/x86_64/lib/libicuuc-host.so"],
