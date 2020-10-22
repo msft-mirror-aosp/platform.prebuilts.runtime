@@ -158,8 +158,8 @@ cc_prebuilt_library_headers {
     visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
+        "com.android.art",
         "com.android.art.debug",
-        "com.android.art.release",
         "com.android.i18n",
     ],
     export_include_dirs: ["common_os/include/external/icu/libandroidicu/include"],
@@ -187,8 +187,8 @@ cc_prebuilt_library_headers {
     visibility: ["//visibility:public"],
     host_supported: true,
     apex_available: [
+        "com.android.art",
         "com.android.art.debug",
-        "com.android.art.release",
         "com.android.i18n",
     ],
     export_include_dirs: ["common_os/include/external/icu/libandroidicu/include"],
@@ -511,4 +511,3 @@ sdk_snapshot {
         },
     },
 }
-
