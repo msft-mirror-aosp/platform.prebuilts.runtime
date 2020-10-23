@@ -1083,8 +1083,8 @@ cc_prebuilt_library_static {
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
+        "com.android.art",
         "com.android.art.debug",
-        "com.android.art.release",
         "com.android.media",
         "com.android.media.swcodec",
         "com.android.runtime",
@@ -1174,8 +1174,8 @@ cc_prebuilt_library_static {
     host_supported: true,
     apex_available: [
         "//apex_available:platform",
+        "com.android.art",
         "com.android.art.debug",
-        "com.android.art.release",
         "com.android.media",
         "com.android.media.swcodec",
         "com.android.runtime",
@@ -1288,4 +1288,3 @@ sdk_snapshot {
         },
     },
 }
-
