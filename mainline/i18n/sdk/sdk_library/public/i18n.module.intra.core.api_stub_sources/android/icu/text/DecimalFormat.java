@@ -12,7 +12,6 @@ import android.icu.math.MathContext;
 import android.icu.math.BigDecimal;
 import java.math.RoundingMode;
 import java.math.BigInteger;
-import android.icu.impl.number.DecimalFormatProperties.ParseMode;
 
 /**
  * <strong>[icu enhancement]</strong> ICU's replacement for {@link java.text.DecimalFormat}.&nbsp;Methods, fields, and other functionality specific to ICU are labeled '<strong>[icu]</strong>'.
@@ -1259,15 +1258,6 @@ public synchronized void setParseStrict(boolean parseStrict) { throw new Runtime
  */
 
 public void setParseJavaCompatible(boolean parseJavaCompatible) { throw new RuntimeException("Stub!"); }
-
-/**
-  * Android libcore uses this internal method to set {@link ParseMode#JAVA_COMPATIBILITY}.
-  * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
-  */
-
-@Deprecated
-public synchronized void setParseStrictMode(android.icu.impl.number.DecimalFormatProperties.ParseMode parseMode) { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
