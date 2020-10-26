@@ -9,8 +9,8 @@
 
 package android.icu.util;
 
-import java.util.Date;
 import android.icu.text.DateFormat;
+import java.util.Date;
 import android.icu.util.ULocale.Category;
 import android.icu.text.DateFormatSymbols;
 

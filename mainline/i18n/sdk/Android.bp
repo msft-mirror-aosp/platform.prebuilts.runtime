@@ -171,12 +171,19 @@ cc_prebuilt_library_headers {
             compile_multilib: "both",
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
-        linux_glibc: {
+        linux_bionic_x86_64: {
             enabled: true,
+        },
+        linux_glibc: {
             compile_multilib: "both",
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+        },
+        linux_glibc_x86: {
+            enabled: true,
         },
     },
 }
@@ -200,12 +207,19 @@ cc_prebuilt_library_headers {
             compile_multilib: "both",
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
-        linux_glibc: {
+        linux_bionic_x86_64: {
             enabled: true,
+        },
+        linux_glibc: {
             compile_multilib: "both",
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+        },
+        linux_glibc_x86: {
+            enabled: true,
         },
     },
 }
@@ -228,12 +242,19 @@ cc_prebuilt_library_headers {
             compile_multilib: "both",
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
-        linux_glibc: {
+        linux_bionic_x86_64: {
             enabled: true,
+        },
+        linux_glibc: {
             compile_multilib: "both",
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+        },
+        linux_glibc_x86: {
+            enabled: true,
         },
     },
 }
@@ -256,12 +277,19 @@ cc_prebuilt_library_headers {
             compile_multilib: "both",
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
-        linux_glibc: {
+        linux_bionic_x86_64: {
             enabled: true,
+        },
+        linux_glibc: {
             compile_multilib: "both",
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+        },
+        linux_glibc_x86: {
+            enabled: true,
         },
     },
 }
@@ -301,20 +329,21 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libandroidicu.so"],
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
+            enabled: true,
             srcs: ["linux_bionic/x86_64/lib/libandroidicu-host.so"],
         },
         linux_glibc: {
-            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
+            enabled: true,
             srcs: ["linux_glibc/x86_64/lib/libandroidicu-host.so"],
         },
         linux_glibc_x86: {
+            enabled: true,
             srcs: ["linux_glibc/x86/lib/libandroidicu-host.so"],
         },
     },
@@ -354,20 +383,21 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libandroidicu.so"],
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
+            enabled: true,
             srcs: ["linux_bionic/x86_64/lib/libandroidicu-host.so"],
         },
         linux_glibc: {
-            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
+            enabled: true,
             srcs: ["linux_glibc/x86_64/lib/libandroidicu-host.so"],
         },
         linux_glibc_x86: {
+            enabled: true,
             srcs: ["linux_glibc/x86/lib/libandroidicu-host.so"],
         },
     },
@@ -407,20 +437,21 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libicu.so"],
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
+            enabled: true,
             srcs: ["linux_bionic/x86_64/lib/libicu.so"],
         },
         linux_glibc: {
-            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
+            enabled: true,
             srcs: ["linux_glibc/x86_64/lib/libicu.so"],
         },
         linux_glibc_x86: {
+            enabled: true,
             srcs: ["linux_glibc/x86/lib/libicu.so"],
         },
     },
@@ -459,20 +490,21 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libicu.so"],
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
+            enabled: true,
             srcs: ["linux_bionic/x86_64/lib/libicu.so"],
         },
         linux_glibc: {
-            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
+            enabled: true,
             srcs: ["linux_glibc/x86_64/lib/libicu.so"],
         },
         linux_glibc_x86: {
+            enabled: true,
             srcs: ["linux_glibc/x86/lib/libicu.so"],
         },
     },
@@ -491,9 +523,6 @@ sdk_snapshot {
         "i18n-module-sdk_libicu@current",
     ],
     target: {
-        host: {
-            enabled: false,
-        },
         android: {
             java_sdk_libs: [
                 "i18n-module-sdk_i18n.module.intra.core.api@current",
@@ -503,11 +532,20 @@ sdk_snapshot {
             ],
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
-        linux_glibc: {
+        host: {
+            enabled: false,
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+        },
+        linux_glibc_x86: {
+            enabled: true,
+        },
+        linux_bionic_x86_64: {
             enabled: true,
         },
     },
 }
+
