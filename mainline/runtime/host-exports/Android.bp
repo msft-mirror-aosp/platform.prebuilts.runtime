@@ -13,16 +13,12 @@ cc_prebuilt_binary {
         host: {
             enabled: false,
         },
-        linux_bionic: {
-            enabled: true,
-        },
         linux_bionic_x86_64: {
+            enabled: true,
             srcs: ["linux_bionic/x86_64/bin/linkerconfig"],
         },
-        linux_glibc: {
-            enabled: true,
-        },
         linux_glibc_x86_64: {
+            enabled: true,
             srcs: ["linux_glibc/x86_64/bin/linkerconfig"],
         },
     },
@@ -40,16 +36,12 @@ cc_prebuilt_binary {
         host: {
             enabled: false,
         },
-        linux_bionic: {
-            enabled: true,
-        },
         linux_bionic_x86_64: {
+            enabled: true,
             srcs: ["linux_bionic/x86_64/bin/linkerconfig"],
         },
-        linux_glibc: {
-            enabled: true,
-        },
         linux_glibc_x86_64: {
+            enabled: true,
             srcs: ["linux_glibc/x86_64/bin/linkerconfig"],
         },
     },
@@ -75,10 +67,8 @@ cc_prebuilt_binary {
         host: {
             enabled: false,
         },
-        linux_bionic: {
-            enabled: true,
-        },
         linux_bionic_x86_64: {
+            enabled: true,
             srcs: ["x86_64/bin/linker64"],
         },
     },
@@ -103,10 +93,8 @@ cc_prebuilt_binary {
         host: {
             enabled: false,
         },
-        linux_bionic: {
-            enabled: true,
-        },
         linux_bionic_x86_64: {
+            enabled: true,
             srcs: ["x86_64/bin/linker64"],
         },
     },
@@ -119,19 +107,23 @@ module_exports_snapshot {
     host_supported: true,
     compile_multilib: "64",
     target: {
-        host: {
-            enabled: false,
-        },
         linux_bionic: {
-            enabled: true,
             native_binaries: [
                 "runtime-module-host-exports_linkerconfig@current",
                 "runtime-module-host-exports_linker@current",
             ],
         },
         linux_glibc: {
-            enabled: true,
             native_binaries: ["runtime-module-host-exports_linkerconfig@current"],
+        },
+        host: {
+            enabled: false,
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+        },
+        linux_bionic_x86_64: {
+            enabled: true,
         },
     },
 }
