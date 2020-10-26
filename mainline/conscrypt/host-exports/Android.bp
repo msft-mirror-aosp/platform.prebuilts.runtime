@@ -56,20 +56,21 @@ cc_prebuilt_library_shared {
             enabled: false,
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
+            enabled: true,
             srcs: ["linux_bionic/x86_64/lib/libconscrypt_openjdk_jni.so"],
         },
         linux_glibc: {
-            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
+            enabled: true,
             srcs: ["linux_glibc/x86_64/lib/libconscrypt_openjdk_jni.so"],
         },
         linux_glibc_x86: {
+            enabled: true,
             srcs: ["linux_glibc/x86/lib/libconscrypt_openjdk_jni.so"],
         },
     },
@@ -90,20 +91,21 @@ cc_prebuilt_library_shared {
             enabled: false,
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
+            enabled: true,
             srcs: ["linux_bionic/x86_64/lib/libconscrypt_openjdk_jni.so"],
         },
         linux_glibc: {
-            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
+            enabled: true,
             srcs: ["linux_glibc/x86_64/lib/libconscrypt_openjdk_jni.so"],
         },
         linux_glibc_x86: {
+            enabled: true,
             srcs: ["linux_glibc/x86/lib/libconscrypt_openjdk_jni.so"],
         },
     },
@@ -117,14 +119,19 @@ module_exports_snapshot {
     java_libs: ["conscrypt-module-host-exports_conscrypt-unbundled@current"],
     native_shared_libs: ["conscrypt-module-host-exports_libconscrypt_openjdk_jni@current"],
     target: {
+        linux_bionic: {
+            compile_multilib: "64",
+        },
         host: {
             enabled: false,
         },
-        linux_bionic: {
+        linux_glibc_x86_64: {
             enabled: true,
-            compile_multilib: "64",
         },
-        linux_glibc: {
+        linux_glibc_x86: {
+            enabled: true,
+        },
+        linux_bionic_x86_64: {
             enabled: true,
         },
     },
