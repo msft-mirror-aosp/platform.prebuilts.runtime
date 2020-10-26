@@ -13,11 +13,11 @@ package android.icu.text;
 
 import java.util.Locale;
 import android.icu.lang.UCharacter;
-import java.text.Format;
-import java.text.ParsePosition;
 import android.icu.util.Calendar;
 import java.util.Date;
 import android.icu.util.TimeZone;
+import java.text.Format;
+import java.text.ParsePosition;
 import android.icu.util.ULocale.Category;
 import java.text.AttributedCharacterIterator;
 
