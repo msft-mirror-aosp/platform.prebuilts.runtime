@@ -64,21 +64,6 @@ public static android.icu.text.DateTimePatternGenerator getInstance(android.icu.
 public static android.icu.text.DateTimePatternGenerator getInstance(java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * Construct a frozen instance of DateTimePatternGenerator for a
- * given locale.  This method returns a cached frozen instance of
- * DateTimePatternGenerator, so less expensive than the regular
- * factory method.
- * @param uLocale The locale to pass.
- * @return A frozen DateTimePatternGenerator.
- * @deprecated This API is ICU internal only.
- * @hide original deprecated declaration
- * @hide draft / provisional / internal are hidden on Android
- */
-
-@Deprecated
-public static android.icu.text.DateTimePatternGenerator getFrozenInstance(android.icu.util.ULocale uLocale) { throw new RuntimeException("Stub!"); }
-
-/**
  * Return the best pattern matching the input skeleton. It is guaranteed to
  * have all of the fields in the skeleton.
  * <p>Example code:{@sample external/icu/android_icu4j/src/samples/java/android/icu/samples/text/datetimepatterngenerator/DateTimePatternGeneratorSample.java getBestPatternExample}
