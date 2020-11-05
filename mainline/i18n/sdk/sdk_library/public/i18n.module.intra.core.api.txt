@@ -17,7 +17,6 @@ package android.icu.text {
 
   public abstract class TimeZoneNames implements java.io.Serializable {
     method public java.util.Collection<android.icu.text.TimeZoneNames.MatchInfo> find(CharSequence, int, java.util.EnumSet<android.icu.text.TimeZoneNames.NameType>);
-    method @Deprecated public void getDisplayNames(String, android.icu.text.TimeZoneNames.NameType[], long, String[], int);
   }
 
   public static class TimeZoneNames.MatchInfo {
@@ -89,6 +88,10 @@ package android.icu.util {
 
 package com.android.i18n.system {
 
+  public class AppSpecializationHooks {
+    method public static void handleCompatChangesBeforeBindingApplication();
+  }
+
   public final class ZygoteHooks {
     method public static void onBeginPreload();
     method public static void onEndPreload();
@@ -100,9 +103,6 @@ package com.android.i18n.timezone {
 
   public final class TimeZoneDataFiles {
     method public static String generateIcuDataPath();
-    method public static String getSystemTzFile(String);
-    method public static String[] getTimeZoneFilePaths(String);
-    method public static String getTimeZoneModuleTzFile(String);
   }
 
   public final class ZoneInfoData implements java.lang.Cloneable {
