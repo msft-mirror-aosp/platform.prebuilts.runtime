@@ -59,12 +59,6 @@ public static int currentFormatMinorVersion() { throw new RuntimeException("Stub
 
 public static com.android.i18n.timezone.TzDataSetVersion readFromFile(java.io.File file) throws java.io.IOException, com.android.i18n.timezone.TzDataSetVersion.TzDataSetException { throw new RuntimeException("Stub!"); }
 
-/**
- * Reads the version of time zone data supplied by the time zone data module.
- */
-
-public static com.android.i18n.timezone.TzDataSetVersion readTimeZoneModuleVersion() throws java.io.IOException, com.android.i18n.timezone.TzDataSetVersion.TzDataSetException { throw new RuntimeException("Stub!"); }
-
 /** Returns the major version number. See {@link TzDataSetVersion}. */
 
 public int getFormatMajorVersion() { throw new RuntimeException("Stub!"); }
