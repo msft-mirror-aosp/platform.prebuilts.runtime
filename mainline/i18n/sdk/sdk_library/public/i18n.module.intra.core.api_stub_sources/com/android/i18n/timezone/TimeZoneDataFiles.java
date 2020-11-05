@@ -19,7 +19,9 @@ package com.android.i18n.timezone;
 
 
 /**
- * Utility methods associated with finding updateable time zone data files.
+ * Utility methods associated with finding updateable time zone data files. ICU4C and ICU4J also
+ * read files affected by time zone updates. That logic is kept in {@link AndroidDataFiles}
+ * and should be updated if file locations or lookup order changes.
  *
  * @hide
  */
@@ -28,21 +30,6 @@ package com.android.i18n.timezone;
 public final class TimeZoneDataFiles {
 
 private TimeZoneDataFiles() { throw new RuntimeException("Stub!"); }
-
-/**
- * Returns time zone file paths for the specified file name in an array in the order they
- * should be tried. See {@link #generateIcuDataPath()} for ICU files instead.
- * <ul>
- * <li>[0] - the location of the file in the /data partition (may not exist).</li>
- * <li>[1] - the location of the file from the time zone module under /apex (must exist).</li>
- * </ul>
- */
-
-public static java.lang.String[] getTimeZoneFilePaths(java.lang.String fileName) { throw new RuntimeException("Stub!"); }
-
-public static java.lang.String getTimeZoneModuleTzFile(java.lang.String fileName) { throw new RuntimeException("Stub!"); }
-
-public static java.lang.String getSystemTzFile(java.lang.String fileName) { throw new RuntimeException("Stub!"); }
 
 public static java.lang.String generateIcuDataPath() { throw new RuntimeException("Stub!"); }
 }
