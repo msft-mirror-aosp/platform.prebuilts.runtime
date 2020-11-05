@@ -238,15 +238,6 @@ public java.lang.String getExemplarLocationName(java.lang.String tzID) { throw n
  */
 
 public java.util.Collection<android.icu.text.TimeZoneNames.MatchInfo> find(java.lang.CharSequence text, int start, java.util.EnumSet<android.icu.text.TimeZoneNames.NameType> types) { throw new RuntimeException("Stub!"); }
-
-/**
- * @deprecated This API is ICU internal only.
- * @hide original deprecated declaration
- * @hide draft / provisional / internal are hidden on Android
- */
-
-@Deprecated
-public void getDisplayNames(java.lang.String tzID, android.icu.text.TimeZoneNames.NameType[] types, long date, java.lang.String[] dest, int destOffset) { throw new RuntimeException("Stub!"); }
 /**
  * A <code>MatchInfo</code> represents a time zone name match used by
  * {@link TimeZoneNames#find(CharSequence, int, EnumSet)}.
