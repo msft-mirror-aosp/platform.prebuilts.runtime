@@ -408,10 +408,7 @@ cc_prebuilt_library_shared {
     sdk_member_name: "libicu",
     visibility: ["//visibility:public"],
     host_supported: true,
-    apex_available: [
-        "//apex_available:platform",
-        "com.android.i18n",
-    ],
+    apex_available: ["com.android.i18n"],
     installable: false,
     export_include_dirs: ["common_os/include/external/icu/libicu/ndk_headers"],
     stubs: {
@@ -462,10 +459,7 @@ cc_prebuilt_library_shared {
     prefer: false,
     visibility: ["//visibility:public"],
     host_supported: true,
-    apex_available: [
-        "//apex_available:platform",
-        "com.android.i18n",
-    ],
+    apex_available: ["com.android.i18n"],
     export_include_dirs: ["common_os/include/external/icu/libicu/ndk_headers"],
     stubs: {
         versions: ["31"],
