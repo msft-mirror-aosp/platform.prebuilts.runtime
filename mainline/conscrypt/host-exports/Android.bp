@@ -8,6 +8,7 @@ java_import {
         "//external/conscrypt",
         "//tools/apksig",
     ],
+    apex_available: ["//apex_available:platform"],
     device_supported: false,
     host_supported: true,
     target: {
@@ -28,6 +29,7 @@ java_import {
         "//external/conscrypt",
         "//tools/apksig",
     ],
+    apex_available: ["//apex_available:platform"],
     device_supported: false,
     host_supported: true,
     target: {
@@ -44,6 +46,7 @@ cc_prebuilt_library_shared {
     name: "conscrypt-module-host-exports_libconscrypt_openjdk_jni@current",
     sdk_member_name: "libconscrypt_openjdk_jni",
     visibility: ["//external/conscrypt:__subpackages__"],
+    apex_available: ["//apex_available:platform"],
     device_supported: false,
     host_supported: true,
     installable: false,
@@ -80,6 +83,7 @@ cc_prebuilt_library_shared {
     name: "libconscrypt_openjdk_jni",
     prefer: false,
     visibility: ["//external/conscrypt:__subpackages__"],
+    apex_available: ["//apex_available:platform"],
     device_supported: false,
     host_supported: true,
     stl: "libc++_static",

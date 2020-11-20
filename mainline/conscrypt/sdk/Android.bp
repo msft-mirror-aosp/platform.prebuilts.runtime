@@ -11,6 +11,7 @@ java_sdk_library_import {
         "//packages/modules/IPsec",
         "//prebuilts:__subpackages__",
     ],
+    apex_available: ["//apex_available:platform"],
     shared_library: false,
     public: {
         jars: ["sdk_library/public/conscrypt.module.public.api-stubs.jar"],
@@ -32,6 +33,7 @@ java_sdk_library_import {
         "//packages/modules/IPsec",
         "//prebuilts:__subpackages__",
     ],
+    apex_available: ["//apex_available:platform"],
     shared_library: false,
     public: {
         jars: ["sdk_library/public/conscrypt.module.public.api-stubs.jar"],
@@ -51,6 +53,7 @@ java_sdk_library_import {
         "//libcore:__subpackages__",
         "//prebuilts:__subpackages__",
     ],
+    apex_available: ["//apex_available:platform"],
     shared_library: false,
     public: {
         jars: ["sdk_library/public/conscrypt.module.intra.core.api-stubs.jar"],
@@ -70,6 +73,7 @@ java_sdk_library_import {
         "//libcore:__subpackages__",
         "//prebuilts:__subpackages__",
     ],
+    apex_available: ["//apex_available:platform"],
     shared_library: false,
     public: {
         jars: ["sdk_library/public/conscrypt.module.intra.core.api-stubs.jar"],
@@ -89,6 +93,7 @@ java_sdk_library_import {
         "//libcore:__subpackages__",
         "//prebuilts:__subpackages__",
     ],
+    apex_available: ["//apex_available:platform"],
     shared_library: false,
     public: {
         jars: ["sdk_library/public/conscrypt.module.platform.api-stubs.jar"],
@@ -108,6 +113,7 @@ java_sdk_library_import {
         "//libcore:__subpackages__",
         "//prebuilts:__subpackages__",
     ],
+    apex_available: ["//apex_available:platform"],
     shared_library: false,
     public: {
         jars: ["sdk_library/public/conscrypt.module.platform.api-stubs.jar"],
@@ -122,6 +128,7 @@ cc_prebuilt_library_shared {
     name: "conscrypt-module-sdk_libconscrypt_jni@current",
     sdk_member_name: "libconscrypt_jni",
     visibility: ["//external/conscrypt:__subpackages__"],
+    apex_available: ["//apex_available:platform"],
     installable: false,
     stl: "c++_static",
     compile_multilib: "both",
@@ -146,6 +153,7 @@ cc_prebuilt_library_shared {
     name: "libconscrypt_jni",
     prefer: false,
     visibility: ["//external/conscrypt:__subpackages__"],
+    apex_available: ["//apex_available:platform"],
     stl: "c++_static",
     compile_multilib: "both",
     shared_libs: ["liblog"],
