@@ -32,11 +32,11 @@ cc_prebuilt_library_shared {
     name: "i18n-module-test-exports_libicui18n@current",
     sdk_member_name: "libicui18n",
     visibility: ["//visibility:public"],
-    host_supported: true,
     apex_available: [
         "//apex_available:platform",
         "com.android.i18n",
     ],
+    host_supported: true,
     installable: false,
     unique_host_soname: true,
     shared_libs: ["i18n-module-test-exports_libicuuc@current"],
@@ -85,11 +85,11 @@ cc_prebuilt_library_shared {
     name: "libicui18n",
     prefer: false,
     visibility: ["//visibility:public"],
-    host_supported: true,
     apex_available: [
         "//apex_available:platform",
         "com.android.i18n",
     ],
+    host_supported: true,
     unique_host_soname: true,
     shared_libs: ["libicuuc"],
     export_include_dirs: ["common_os/include/external/icu/icu4c/source/i18n"],
@@ -137,8 +137,8 @@ cc_prebuilt_library_shared {
     name: "i18n-module-test-exports_libicuuc@current",
     sdk_member_name: "libicuuc",
     visibility: ["//visibility:public"],
-    host_supported: true,
     apex_available: ["com.android.i18n"],
+    host_supported: true,
     installable: false,
     unique_host_soname: true,
     target: {
@@ -203,8 +203,8 @@ cc_prebuilt_library_shared {
     name: "libicuuc",
     prefer: false,
     visibility: ["//visibility:public"],
-    host_supported: true,
     apex_available: ["com.android.i18n"],
+    host_supported: true,
     unique_host_soname: true,
     target: {
         host: {
@@ -271,8 +271,8 @@ cc_prebuilt_library_shared {
         "//external/icu/android_icu4j/libcore_bridge/src/native",
         "//packages/modules/RuntimeI18n/apex",
     ],
-    host_supported: true,
     apex_available: ["com.android.i18n"],
+    host_supported: true,
     installable: false,
     shared_libs: [
         "libbase",
@@ -328,8 +328,8 @@ cc_prebuilt_library_shared {
         "//external/icu/android_icu4j/libcore_bridge/src/native",
         "//packages/modules/RuntimeI18n/apex",
     ],
-    host_supported: true,
     apex_available: ["com.android.i18n"],
+    host_supported: true,
     shared_libs: [
         "libbase",
         "libicuuc",
