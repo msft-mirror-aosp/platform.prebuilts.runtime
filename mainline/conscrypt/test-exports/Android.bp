@@ -42,6 +42,7 @@ java_test_import {
         "//external/conscrypt",
         "//external/conscrypt/apex/tests",
     ],
+    apex_available: ["//apex_available:platform"],
     jars: ["java/conscrypt-tests.jar"],
     test_config: "java/conscrypt-tests-AndroidTest.xml",
 }
@@ -54,6 +55,7 @@ java_test_import {
         "//external/conscrypt",
         "//external/conscrypt/apex/tests",
     ],
+    apex_available: ["//apex_available:platform"],
     jars: ["java/conscrypt-tests.jar"],
     test_config: "java/conscrypt-tests-AndroidTest.xml",
 }
@@ -62,11 +64,11 @@ cc_prebuilt_library_shared {
     name: "conscrypt-module-test-exports_libjavacrypto@current",
     sdk_member_name: "libjavacrypto",
     visibility: ["//external/conscrypt:__subpackages__"],
-    host_supported: true,
     apex_available: [
         "com.android.conscrypt",
         "test_com.android.conscrypt",
     ],
+    host_supported: true,
     installable: false,
     shared_libs: [
         "libcrypto",
@@ -117,11 +119,11 @@ cc_prebuilt_library_shared {
     name: "libjavacrypto",
     prefer: false,
     visibility: ["//external/conscrypt:__subpackages__"],
-    host_supported: true,
     apex_available: [
         "com.android.conscrypt",
         "test_com.android.conscrypt",
     ],
+    host_supported: true,
     shared_libs: [
         "libcrypto",
         "liblog",

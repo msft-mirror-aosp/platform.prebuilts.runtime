@@ -4,6 +4,7 @@ cc_prebuilt_library_shared {
     name: "platform-mainline-test-exports_libtombstoned_client@current",
     sdk_member_name: "libtombstoned_client",
     visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
     installable: false,
     compile_multilib: "both",
     shared_libs: [
@@ -34,6 +35,7 @@ cc_prebuilt_library_shared {
     name: "libtombstoned_client",
     prefer: false,
     visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
     compile_multilib: "both",
     shared_libs: [
         "libbase",
