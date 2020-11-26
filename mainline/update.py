@@ -32,9 +32,6 @@ CL prepared by prebuilts/runtime/mainline/update.py. See
 prebuilts/runtime/mainline/README.md for update instructions.
 """
 
-print("./update.py is temporarily disabled due to a bug http://b/174146254 in the prebuilt artifacts.")
-exit(1)
-
 mainline_install_list = []
 mainline_extracted_list = []
 
