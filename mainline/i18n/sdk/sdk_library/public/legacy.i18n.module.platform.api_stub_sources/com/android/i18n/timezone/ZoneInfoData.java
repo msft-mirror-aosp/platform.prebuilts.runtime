@@ -18,7 +18,7 @@ package com.android.i18n.timezone;
 
 
 /**
- * Our concrete TimeZone implementation, backed by zoneinfo data.
+ * This class holds the data of a time zone backed by the tzfiles. An instance is immutable.
  *
  * <p>This reads time zone information from a binary file stored on the platform. The binary file
  * is essentially a single file containing compacted versions of all the tzfiles produced by the
@@ -44,7 +44,7 @@ package com.android.i18n.timezone;
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class ZoneInfoData {
 
-ZoneInfoData() { throw new RuntimeException("Stub!"); }
+private ZoneInfoData() { throw new RuntimeException("Stub!"); }
 
 public boolean equals(java.lang.Object obj) { throw new RuntimeException("Stub!"); }
 
