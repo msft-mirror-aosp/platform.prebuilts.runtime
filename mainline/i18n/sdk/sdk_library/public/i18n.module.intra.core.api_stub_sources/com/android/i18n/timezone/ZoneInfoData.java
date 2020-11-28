@@ -18,7 +18,7 @@ package com.android.i18n.timezone;
 
 
 /**
- * Our concrete TimeZone implementation, backed by zoneinfo data.
+ * This class holds the data of a time zone backed by the tzfiles. An instance is immutable.
  *
  * <p>This reads time zone information from a binary file stored on the platform. The binary file
  * is essentially a single file containing compacted versions of all the tzfiles produced by the
@@ -44,11 +44,7 @@ package com.android.i18n.timezone;
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class ZoneInfoData {
 
-/**
- * Copy constructor
- */
-
-public ZoneInfoData(com.android.i18n.timezone.ZoneInfoData that) { throw new RuntimeException("Stub!"); }
+private ZoneInfoData() { throw new RuntimeException("Stub!"); }
 
 /**
  * Create an instance from the serialized fields from {@link libcore.util.ZoneInfo}
@@ -95,22 +91,10 @@ public int getOffset(long when) { throw new RuntimeException("Stub!"); }
 public boolean isInDaylightTime(long when) { throw new RuntimeException("Stub!"); }
 
 /**
- * Returns whether the given {@code time} is in daylight saving time in this time zone.
- */
-
-public boolean inDaylightTime(java.util.Date time) { throw new RuntimeException("Stub!"); }
-
-/**
  * Returns the raw offset in milliseconds. The value is not affected by daylight saving.
  */
 
 public int getRawOffset() { throw new RuntimeException("Stub!"); }
-
-/**
- * Sets the raw offset.
- */
-
-public void setRawOffset(int off) { throw new RuntimeException("Stub!"); }
 
 /**
  * Returns the offset of daylight saving in milliseconds.
@@ -123,6 +107,16 @@ public int getDSTSavings() { throw new RuntimeException("Stub!"); }
  */
 
 public boolean useDaylightTime() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns the offset of daylight saving in milliseconds in the latest Daylight Savings Time
+ * after the time {@code when}. If no known DST occurs after {@code when}, it returns
+ * {@code null}.
+ *
+ * @param when the number of milliseconds since January 1, 1970, 00:00:00 GMT
+ */
+
+public java.lang.Integer getLatestDstSavings(long when) { throw new RuntimeException("Stub!"); }
 
 /**
  * Returns {@code true} if 2 time zones have the same time zone rule.
@@ -169,13 +163,17 @@ public com.android.i18n.timezone.ZoneInfoData createCopyWithRawOffset(int newRaw
 
 public long[] getTransitions() { throw new RuntimeException("Stub!"); }
 
-public long[] getTransitionsForAppCompat() { throw new RuntimeException("Stub!"); }
-
 /**
  * IntraCoreApi made visible for testing in libcore
  */
 
 public static com.android.i18n.timezone.ZoneInfoData createZoneInfo(java.lang.String name, long timeInMilli, java.nio.ByteBuffer buf) throws java.io.IOException { throw new RuntimeException("Stub!"); }
+
+/**
+ * IntraCoreApi made visible for testing in libcore
+ */
+
+public static com.android.i18n.timezone.ZoneInfoData createZoneInfo(java.lang.String name, java.nio.ByteBuffer buf) throws java.io.IOException { throw new RuntimeException("Stub!"); }
 
 /**
  * The serialized fields in {@link libcore.util.ZoneInfo} kept for backward app compatibility.

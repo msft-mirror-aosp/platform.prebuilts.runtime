@@ -52,12 +52,6 @@ public java.lang.String[] getAvailableIDs() { throw new RuntimeException("Stub!"
 public java.lang.String[] getAvailableIDs(int rawUtcOffset) { throw new RuntimeException("Stub!"); }
 
 /**
- * Returns the tzdb version in use.
- */
-
-public java.lang.String getVersion() { throw new RuntimeException("Stub!"); }
-
-/**
  * Creates {@link ZoneInfoData} object from the time zone {@code id}. Returns null if the id
  * is not found.
  */
