@@ -32,7 +32,7 @@ package com.android.i18n.timezone;
  * specific file. This class is responsible for reading the data from that {@link BufferIterator}
  * and storing it a representation to support the {@link java.util.TimeZone} and
  * {@link java.util.GregorianCalendar} implementations. See
- * {@link ZoneInfoData#readTimeZone(String, BufferIterator, long)}.
+ * {@link ZoneInfoData#readTimeZone(String, BufferIterator)}.
  *
  * <p>This class does not use all the information from the {@code tzfile}; it uses:
  * {@code tzh_timecnt} and the associated transition times and type information. For each type
@@ -97,18 +97,6 @@ public boolean isInDaylightTime(long when) { throw new RuntimeException("Stub!")
 public int getRawOffset() { throw new RuntimeException("Stub!"); }
 
 /**
- * Returns the offset of daylight saving in milliseconds.
- */
-
-public int getDSTSavings() { throw new RuntimeException("Stub!"); }
-
-/**
- * Returns {@code true} if this time zone still uses daylight saving time currently.
- */
-
-public boolean useDaylightTime() { throw new RuntimeException("Stub!"); }
-
-/**
  * Returns the offset of daylight saving in milliseconds in the latest Daylight Savings Time
  * after the time {@code when}. If no known DST occurs after {@code when}, it returns
  * {@code null}.
@@ -141,12 +129,6 @@ public java.lang.String toString() { throw new RuntimeException("Stub!"); }
 public java.lang.String getID() { throw new RuntimeException("Stub!"); }
 
 /**
- * Create a deep copy of this object.
- */
-
-public com.android.i18n.timezone.ZoneInfoData createCopy() { throw new RuntimeException("Stub!"); }
-
-/**
  * Create a deep copy of this object with a new raw offset.
  */
 
@@ -156,18 +138,10 @@ public com.android.i18n.timezone.ZoneInfoData createCopyWithRawOffset(int newRaw
  * Returns the times (in seconds) at which the offsets changes for any reason, whether that is a
  * change in the offset from UTC or a change in the DST.
  *
- * WARNING: This API is exposed only for app compat usage in {@link libcore.util.ZoneInfo}. The
- * data is read-only. Do not write any data into the returned array, which is an internal
- * data structure.
+ * WARNING: This API is exposed only for app compat usage in @link libcore.util.ZoneInfo}.
  */
 
 public long[] getTransitions() { throw new RuntimeException("Stub!"); }
-
-/**
- * IntraCoreApi made visible for testing in libcore
- */
-
-public static com.android.i18n.timezone.ZoneInfoData createZoneInfo(java.lang.String name, long timeInMilli, java.nio.ByteBuffer buf) throws java.io.IOException { throw new RuntimeException("Stub!"); }
 
 /**
  * IntraCoreApi made visible for testing in libcore
