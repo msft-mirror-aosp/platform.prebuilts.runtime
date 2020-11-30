@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-#
 # Copyright (C) 2018 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,13 +23,21 @@ import textwrap
 
 class InstallEntry(object):
     def __init__(self, target, name, install_path,
-                 need_strip=False, need_exec=False, need_unzip=False):
+                 need_strip=False, need_exec=False, need_unzip=False,
+                 install_unzipped=False):
         self.target = target
         self.name = name
         self.install_path = install_path
         self.need_strip = need_strip
         self.need_exec = need_exec
+
+        # Installs a zip file, and also unzips it into the same directory. The
+        # unzipped contents are not automatically installed.
         self.need_unzip = need_unzip
+
+        # Install the unzipped contents of a zip file into install_path, but not
+        # the file itself. All old content in install_path is removed first.
+        self.install_unzipped = install_unzipped
 
 def logger():
     """Returns the main logger for this module."""
@@ -65,7 +71,7 @@ def start_branch(build):
     check_call(['repo', 'start', branch_name, '.'])
 
 
-def commit(prebuilts, branch, build, add_paths):
+def commit(prebuilts, branch, build, add_paths, commit_message_note):
     """Commits the new prebuilts."""
     logger().info('Making commit')
     check_call(['git', 'add'] + add_paths)
@@ -73,6 +79,8 @@ def commit(prebuilts, branch, build, add_paths):
         Update {prebuilts} prebuilts to build {build}.
 
         Taken from branch {branch}.""").format(prebuilts=prebuilts, branch=branch, build=build)
+    if commit_message_note:
+        message += "\n\n" + commit_message_note
     check_call(['git', 'commit', '-m', message])
 
 
@@ -92,7 +100,7 @@ def remove_old_files(install_list, extracted_list):
     if not old_files:
         return
     logger().info('Removing old files %s', old_files)
-    check_call(['git', 'rm', '-rf', '--ignore-unmatch'] + old_files)
+    check_call(['git', 'rm', '-qrf', '--ignore-unmatch'] + old_files)
 
     # Need to check again because git won't remove directories if they have
     # non-git files in them.
@@ -116,22 +124,30 @@ def install_entry(branch, build, entry):
     need_strip = entry.need_strip
     need_exec = entry.need_exec
     need_unzip = entry.need_unzip
+    install_unzipped = entry.install_unzipped
 
     fetch_artifact(branch, build, target, name)
     if need_strip:
         check_call(['strip', name])
     if need_exec:
         check_call(['chmod', 'a+x', name])
-    dir = os.path.dirname(install_path)
-    if dir and not os.path.isdir(dir):
+
+    if install_unzipped:
+      os.makedirs(install_path)
+      zip_file = os.path.basename(name)
+      unzip(zip_file, install_path)
+      check_call(['rm', zip_file])
+    else:
+      dir = os.path.dirname(install_path)
+      if dir and not os.path.isdir(dir):
         os.makedirs(dir)
-    shutil.move(os.path.basename(name), install_path)
+      shutil.move(os.path.basename(name), install_path)
+      if need_unzip:
+        unzip(install_path, os.path.dirname(install_path))
 
-    if need_unzip:
-        unzip(install_path)
-
-def unzip(zip_path):
-    check_call(['unzip', zip_path, '-d', os.path.dirname(zip_path)])
+def unzip(zip_file, unzip_path):
+    # Add -DD to not extract timestamps that may confuse the build system.
+    check_call(['unzip', '-DD', zip_file, '-d', unzip_path])
 
 
 def get_args():
@@ -152,7 +168,7 @@ def get_args():
     return parser.parse_args()
 
 
-def main(work_dir, prebuilts, install_list, extracted_list):
+def main(work_dir, prebuilts, install_list, extracted_list, commit_message_note=None):
     """Program entry point."""
     os.chdir(work_dir)
 
@@ -168,4 +184,4 @@ def main(work_dir, prebuilts, install_list, extracted_list):
     remove_old_files(install_list, extracted_list)
     install_new_files(args.branch, args.build, install_list, extracted_list)
     files = list_installed_files(install_list, extracted_list)
-    commit(prebuilts, args.branch, args.build, files)
+    commit(prebuilts, args.branch, args.build, files, commit_message_note)

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env -S python -B
 #
 # Copyright (C) 2020 The Android Open Source Project
 #
@@ -24,40 +24,73 @@ sys.path.append(THIS_DIR + '/../common/python')
 
 import update_prebuilts as update
 
-mainline_install_list = [
-    update.InstallEntry('mainline_modules',
-                        'arm64/com.android.conscrypt.apex',
-                        'conscrypt/apex/com.android.conscrypt-arm64.apex',
-                        need_unzip=False),
+PREBUILT_DESCRIPTION = 'mainline'
+TARGET = 'mainline_modules'
 
-    update.InstallEntry('mainline_modules',
-                        'arm/com.android.conscrypt.apex',
-                        'conscrypt/apex/com.android.conscrypt-arm.apex',
-                        need_unzip=False),
+COMMIT_MESSAGE_NOTE = """\
+CL prepared by prebuilts/runtime/mainline/update.py. See
+prebuilts/runtime/mainline/README.md for update instructions.
+"""
 
-    update.InstallEntry('mainline_modules',
-                        'x86/com.android.conscrypt.apex',
-                        'conscrypt/apex/com.android.conscrypt-x86.apex',
-                        need_unzip=False),
+mainline_install_list = []
+mainline_extracted_list = []
 
-    update.InstallEntry('mainline_modules',
-                        'x86_64/com.android.conscrypt.apex',
-                        'conscrypt/apex/com.android.conscrypt-x86_64.apex',
-                        need_unzip=False),
+def InstallApexEntries(apex_name, install_dir):
+  res = []
+  for arch in ['arm', 'arm64', 'x86', 'x86_64']:
+    res.append(update.InstallEntry(
+        TARGET,
+        arch + '/' + apex_name + '.apex',
+        install_dir + '/' + apex_name + '-' + arch + '.apex',
+        install_unzipped=False))
+  return res
 
-    update.InstallEntry('mainline_modules',
-                        'mainline-sdks/conscrypt-module-sdk-current.zip',
-                        'conscrypt/sdk/conscrypt-module-sdk-current.zip',
-                        need_unzip=True),
+def InstallSharedLibEntries(lib_name, install_dir):
+  res = []
+  for arch in ['arm', 'arm64', 'x86', 'x86_64']:
+    res.append(update.InstallEntry(
+        TARGET,
+        arch + '/' + lib_name + '.so',
+        install_dir + '/' + arch + '/' + lib_name  + '.so',
+        install_unzipped=False))
+  return res
 
-    update.InstallEntry('mainline_modules',
-                        'mainline-sdks/conscrypt-module-test-exports-current.zip',
-                        'conscrypt/test-exports/conscrypt-module-test-exports-current.zip',
-                        need_unzip=True),
-]
+def InstallSdkEntries(mainline_sdk_name, install_dir):
+  return [update.InstallEntry(
+      TARGET,
+      'mainline-sdks/' + mainline_sdk_name + '-current.zip',
+      install_dir,
+      install_unzipped=True)]
 
-mainline_extracted_list = [
-]
+# Conscrypt
+mainline_install_list.extend(
+    InstallApexEntries('com.android.conscrypt', 'conscrypt/apex') +
+    InstallSdkEntries('conscrypt-module-sdk', 'conscrypt/sdk') +
+    InstallSdkEntries('conscrypt-module-test-exports', 'conscrypt/test-exports') +
+    InstallSdkEntries('conscrypt-module-host-exports', 'conscrypt/host-exports'))
+
+# Runtime (Bionic)
+mainline_install_list.extend(
+    InstallApexEntries('com.android.runtime', 'runtime/apex') +
+    InstallSdkEntries('runtime-module-sdk', 'runtime/sdk') +
+    InstallSdkEntries('runtime-module-host-exports', 'runtime/host-exports'))
+
+# I18N
+mainline_install_list.extend(
+    InstallApexEntries('com.android.i18n', 'i18n/apex') +
+    InstallSdkEntries('i18n-module-sdk', 'i18n/sdk') +
+    InstallSdkEntries('i18n-module-test-exports', 'i18n/test-exports'))
+
+# Platform
+mainline_install_list.extend(
+    InstallSdkEntries('platform-mainline-sdk', 'platform/sdk') +
+    InstallSdkEntries('platform-mainline-test-exports', 'platform/test-exports') +
+    # Shared libraries that are stubs in SDKs, but for which we need their
+    # implementation for device testing.
+    InstallSharedLibEntries('libartpalette-system', 'platform/impl') +
+    InstallSharedLibEntries('liblog', 'platform/impl'))
 
 if __name__ == '__main__':
-    update.main(THIS_DIR, 'mainline', mainline_install_list, mainline_extracted_list)
+    update.main(THIS_DIR, PREBUILT_DESCRIPTION,
+                mainline_install_list, mainline_extracted_list,
+                COMMIT_MESSAGE_NOTE)
