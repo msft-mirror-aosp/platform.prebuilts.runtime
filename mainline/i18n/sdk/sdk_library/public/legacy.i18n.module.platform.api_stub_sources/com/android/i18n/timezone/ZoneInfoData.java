@@ -32,7 +32,7 @@ package com.android.i18n.timezone;
  * specific file. This class is responsible for reading the data from that {@link BufferIterator}
  * and storing it a representation to support the {@link java.util.TimeZone} and
  * {@link java.util.GregorianCalendar} implementations. See
- * {@link ZoneInfoData#readTimeZone(String, BufferIterator, long)}.
+ * {@link ZoneInfoData#readTimeZone(String, BufferIterator)}.
  *
  * <p>This class does not use all the information from the {@code tzfile}; it uses:
  * {@code tzh_timecnt} and the associated transition times and type information. For each type
