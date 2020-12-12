@@ -125,6 +125,8 @@ java_sdk_library_import {
     sdk_member_name: "i18n.module.public.api",
     visibility: [
         "//external/icu/android_icu4j",
+        "//frameworks/base",
+        "//frameworks/base/api",
         "//libcore",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
@@ -145,6 +147,8 @@ java_sdk_library_import {
     prefer: false,
     visibility: [
         "//external/icu/android_icu4j",
+        "//frameworks/base",
+        "//frameworks/base/api",
         "//libcore",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
