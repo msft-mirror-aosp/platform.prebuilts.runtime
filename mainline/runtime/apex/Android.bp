@@ -16,7 +16,6 @@
 
 prebuilt_apex {
     name: "com.android.runtime",
-    overrides: ["com.android.runtime"],
     arch: {
         arm: {
             src: "com.android.runtime-arm.apex",
