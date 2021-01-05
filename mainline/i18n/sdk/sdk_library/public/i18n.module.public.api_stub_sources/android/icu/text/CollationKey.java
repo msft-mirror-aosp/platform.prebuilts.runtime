@@ -80,8 +80,8 @@ package android.icu.text;
  * </blockquote>
  * <p>
  * This class is not subclassable
- * @see Collator
- * @see RuleBasedCollator
+ * @see android.icu.text.Collator
+ * @see android.icu.text.RuleBasedCollator
  * @author Syn Wee Quek
  */
 
@@ -92,11 +92,11 @@ public final class CollationKey implements java.lang.Comparable<android.icu.text
  * CollationKey constructor.
  * This constructor is given public access, unlike the JDK version, to
  * allow access to users extending the Collator class. See
- * {@link Collator#getCollationKey(String)}.
+ * {@link android.icu.text.Collator#getCollationKey(java.lang.String) Collator#getCollationKey(String)}.
  * @param source string this CollationKey is to represent
  * @param key array of bytes that represent the collation order of argument
  *            source terminated by a null
- * @see Collator
+ * @see android.icu.text.Collator
  */
 
 public CollationKey(java.lang.String source, byte[] key) { throw new RuntimeException("Stub!"); }
@@ -155,8 +155,8 @@ public byte[] toByteArray() { throw new RuntimeException("Stub!"); }
  *         is less than than target, if the value is zero they are equal, and
  *         if the value is greater than zero this CollationKey is greater
  *         than target.
- * @exception NullPointerException is thrown if argument is null.
- * @see Collator#compare(String, String)
+ * @exception java.lang.NullPointerException is thrown if argument is null.
+ * @see android.icu.text.Collator#compare(String, String)
  */
 
 public int compareTo(android.icu.text.CollationKey target) { throw new RuntimeException("Stub!"); }
@@ -172,7 +172,7 @@ public int compareTo(android.icu.text.CollationKey target) { throw new RuntimeEx
  * @param target the object to compare to.
  * @return true if the two keys compare as equal, false otherwise.
  * @see #compareTo(CollationKey)
- * @exception ClassCastException is thrown when the argument is not
+ * @exception java.lang.ClassCastException is thrown when the argument is not
  *            a CollationKey.  NullPointerException is thrown when the argument
  *            is null.
  */
@@ -189,7 +189,7 @@ public boolean equals(java.lang.Object target) { throw new RuntimeException("Stu
  *
  * @param target the CollationKey to compare to.
  * @return true if two objects are equal, false otherwise.
- * @exception NullPointerException is thrown when the argument is null.
+ * @exception java.lang.NullPointerException is thrown when the argument is null.
  */
 
 public boolean equals(android.icu.text.CollationKey target) { throw new RuntimeException("Stub!"); }
@@ -241,20 +241,20 @@ public int hashCode() { throw new RuntimeException("Stub!"); }
  *                 collation key can have.
  * @return the result bounded CollationKey with a valid sort order but
  *         a null String representation.
- * @exception IllegalArgumentException thrown when the strength level
+ * @exception java.lang.IllegalArgumentException thrown when the strength level
  *            requested is higher than or equal to the strength in this
  *            CollationKey.
  *            In the case of an Exception, information
  *            about the maximum strength to use will be returned in the
  *            Exception. The user can then call getBound() again with the
  *            appropriate strength.
- * @see CollationKey
- * @see CollationKey.BoundMode
- * @see Collator#PRIMARY
- * @see Collator#SECONDARY
- * @see Collator#TERTIARY
- * @see Collator#QUATERNARY
- * @see Collator#IDENTICAL
+ * @see android.icu.text.CollationKey
+ * @see android.icu.text.CollationKey.BoundMode
+ * @see android.icu.text.Collator#PRIMARY
+ * @see android.icu.text.Collator#SECONDARY
+ * @see android.icu.text.Collator#TERTIARY
+ * @see android.icu.text.Collator#QUATERNARY
+ * @see android.icu.text.Collator#IDENTICAL
  */
 
 public android.icu.text.CollationKey getBound(int boundType, int noOfLevels) { throw new RuntimeException("Stub!"); }
@@ -296,7 +296,7 @@ public android.icu.text.CollationKey getBound(int boundType, int noOfLevels) { t
  * @return a CollationKey that contains the valid merged sort keys
  *         with a null String representation,
  *         i.e. <tt>new CollationKey(null, merged_sort_keys)</tt>
- * @exception IllegalArgumentException thrown if source CollationKey
+ * @exception java.lang.IllegalArgumentException thrown if source CollationKey
  *            argument is null or of 0 length.
  */
 

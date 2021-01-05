@@ -12,7 +12,7 @@ package com.android.icu.charset;
 
 
 /**
- * This class is used from native code associated with {@link NativeConverter}.
+ * This class is used from native code associated with {@link com.android.icu.charset.NativeConverter NativeConverter}.
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})

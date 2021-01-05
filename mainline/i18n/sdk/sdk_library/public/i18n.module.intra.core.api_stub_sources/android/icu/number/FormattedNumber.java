@@ -13,7 +13,7 @@ import java.text.AttributedCharacterIterator;
  *
  * Instances of this class are immutable and thread-safe.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -63,7 +63,7 @@ public java.text.AttributedCharacterIterator toCharacterIterator() { throw new R
  * pipeline.
  *
  * @return A BigDecimal representation of the formatted number.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public java.math.BigDecimal toBigDecimal() { throw new RuntimeException("Stub!"); }

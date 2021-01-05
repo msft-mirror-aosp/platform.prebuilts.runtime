@@ -27,12 +27,12 @@ package com.android.i18n.timezone;
  *
  * <p>The compacted form is created by
  * {@code system/timezone/input_tools/android/zone_compactor/main/java/ZoneCompactor.java} and is
- * used by both this and Bionic. {@link ZoneInfoDb} is responsible for mapping the binary file, and
- * reading the index and creating a {@link BufferIterator} that provides access to an entry for a
- * specific file. This class is responsible for reading the data from that {@link BufferIterator}
+ * used by both this and Bionic. {@link com.android.i18n.timezone.ZoneInfoDb ZoneInfoDb} is responsible for mapping the binary file, and
+ * reading the index and creating a {@link com.android.i18n.timezone.internal.BufferIterator BufferIterator} that provides access to an entry for a
+ * specific file. This class is responsible for reading the data from that {@link com.android.i18n.timezone.internal.BufferIterator BufferIterator}
  * and storing it a representation to support the {@link java.util.TimeZone} and
  * {@link java.util.GregorianCalendar} implementations. See
- * {@link ZoneInfoData#readTimeZone(String, BufferIterator)}.
+ * {@link com.android.i18n.timezone.ZoneInfoData#readTimeZone(java.lang.String,com.android.i18n.timezone.internal.BufferIterator) ZoneInfoData#readTimeZone(String, BufferIterator)}.
  *
  * <p>This class does not use all the information from the {@code tzfile}; it uses:
  * {@code tzh_timecnt} and the associated transition times and type information. For each type
@@ -58,6 +58,8 @@ public java.lang.String toString() { throw new RuntimeException("Stub!"); }
 
 /**
  * Returns the time zone id.
+ *
+ * @hide
  */
 
 public java.lang.String getID() { throw new RuntimeException("Stub!"); }

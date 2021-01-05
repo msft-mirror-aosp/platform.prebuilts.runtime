@@ -30,7 +30,7 @@ public class DecimalFormatSymbolsBridge {
 DecimalFormatSymbolsBridge() { throw new RuntimeException("Stub!"); }
 
 /**
- * Public API {@link DecimalFormatSymbols#getPatternSeparator()} does not localize pattern
+ * Public API {@link android.icu.text.DecimalFormatSymbols#getPatternSeparator() DecimalFormatSymbols#getPatternSeparator()} does not localize pattern
  * separator. This API is consumed by libcore's {@link java.text.DecimalFormatSymbols}.
  */
 
