@@ -155,7 +155,7 @@ public java.lang.StringBuffer format(java.lang.Object obj, java.lang.StringBuffe
  * Parses text from a string to produce a <code>Measure</code>.
  *
  * @see java.text.Format#parseObject(java.lang.String, java.text.ParsePosition)
- * @throws UnsupportedOperationException
+ * @throws java.lang.UnsupportedOperationException
  *             Not supported.
  * @hide draft / provisional / internal are hidden on Android
  */
@@ -208,18 +208,18 @@ public java.lang.StringBuilder formatMeasurePerUnit(android.icu.util.Measure mea
  * @param measures
  *            the measures to format.
  * @return appendTo.
- * @see MeasureFormat#formatMeasures(Measure...)
+ * @see android.icu.text.MeasureFormat#formatMeasures(Measure...)
  */
 
 public java.lang.StringBuilder formatMeasures(java.lang.StringBuilder appendTo, java.text.FieldPosition fpos, android.icu.util.Measure... measures) { throw new RuntimeException("Stub!"); }
 
 /**
- * Gets the display name of the specified {@link MeasureUnit} corresponding to the current locale and
+ * Gets the display name of the specified {@link android.icu.util.MeasureUnit MeasureUnit} corresponding to the current locale and
  * format width.
  *
  * @param unit
  *            The unit for which to get a display name.
- * @return The display name in the locale and width specified in {@link MeasureFormat#getInstance},
+ * @return The display name in the locale and width specified in {@link android.icu.text.MeasureFormat#getInstance MeasureFormat#getInstance},
  *         or null if there is no display name available for the specified unit.
  */
 
@@ -280,7 +280,7 @@ public static android.icu.text.MeasureFormat getCurrencyFormat(java.util.Locale 
  * Return a formatter for CurrencyAmount objects in the default <code>FORMAT</code> locale.
  *
  * @return a formatter object
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static android.icu.text.MeasureFormat getCurrencyFormat() { throw new RuntimeException("Stub!"); }

@@ -13,7 +13,7 @@ import android.icu.util.ULocale;
  * Instances of this class are immutable and thread-safe.
  *
  * @author sffc
- * @see NumberRangeFormatter
+ * @see android.icu.number.NumberRangeFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -40,7 +40,7 @@ UnlocalizedNumberRangeFormatter() { throw new RuntimeException("Stub!"); }
 public android.icu.number.LocalizedNumberRangeFormatter locale(java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * ULocale version of the {@link #locale(Locale)} setter above.
+ * ULocale version of the {@link #locale(java.util.Locale)} setter above.
  *
  * @param locale
  *            The locale to use when loading data for number range formatting.

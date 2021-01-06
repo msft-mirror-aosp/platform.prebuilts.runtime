@@ -28,7 +28,7 @@ public class DateSorterBridge {
 private DateSorterBridge() { throw new RuntimeException("Stub!"); }
 
 /**
- * @throws AssertionError for the legacy behavior when the ICU data is missing
+ * @throws java.lang.AssertionError for the legacy behavior when the ICU data is missing
  */
 
 public static com.android.icu.text.DateSorterBridge createInstance(java.util.Locale locale) throws java.lang.AssertionError { throw new RuntimeException("Stub!"); }

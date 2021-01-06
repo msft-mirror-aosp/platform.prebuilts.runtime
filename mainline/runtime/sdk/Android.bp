@@ -607,6 +607,11 @@ cc_prebuilt_library_shared {
     recovery_available: true,
     stl: "none",
     system_shared_libs: [],
+    export_include_dirs: [
+        "common_os/include/external/jemalloc_new/include",
+        "common_os/include/bionic/libc/system_properties/include",
+        "common_os/include/system/core/property_service/libpropertyinfoparser/include",
+    ],
     sanitize: {
         address: false,
         fuzzer: false,
@@ -668,11 +673,6 @@ cc_prebuilt_library_shared {
         },
         linux_bionic: {
             compile_multilib: "64",
-            export_include_dirs: [
-                "linux_bionic/include/external/jemalloc_new/include",
-                "linux_bionic/include/bionic/libc/system_properties/include",
-                "linux_bionic/include/system/core/property_service/libpropertyinfoparser/include",
-            ],
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
                 "linux_bionic/include/bionic/libc/kernel/uapi",
@@ -700,6 +700,11 @@ cc_prebuilt_library_shared {
     recovery_available: true,
     stl: "none",
     system_shared_libs: [],
+    export_include_dirs: [
+        "common_os/include/external/jemalloc_new/include",
+        "common_os/include/bionic/libc/system_properties/include",
+        "common_os/include/system/core/property_service/libpropertyinfoparser/include",
+    ],
     sanitize: {
         address: false,
         fuzzer: false,
@@ -761,11 +766,6 @@ cc_prebuilt_library_shared {
         },
         linux_bionic: {
             compile_multilib: "64",
-            export_include_dirs: [
-                "linux_bionic/include/external/jemalloc_new/include",
-                "linux_bionic/include/bionic/libc/system_properties/include",
-                "linux_bionic/include/system/core/property_service/libpropertyinfoparser/include",
-            ],
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
                 "linux_bionic/include/bionic/libc/kernel/uapi",
@@ -812,15 +812,43 @@ cc_prebuilt_library_shared {
         },
         android_arm64: {
             srcs: ["android/arm64/lib/libdl.so"],
+            export_system_include_dirs: [
+                "android/arm64/include/bionic/libc/include",
+                "android/arm64/include/bionic/libc/kernel/uapi",
+                "android/arm64/include/bionic/libc/kernel/android/scsi",
+                "android/arm64/include/bionic/libc/kernel/android/uapi",
+                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
+            ],
         },
         android_x86_64: {
             srcs: ["android/x86_64/lib/libdl.so"],
+            export_system_include_dirs: [
+                "android/x86_64/include/bionic/libc/include",
+                "android/x86_64/include/bionic/libc/kernel/uapi",
+                "android/x86_64/include/bionic/libc/kernel/android/scsi",
+                "android/x86_64/include/bionic/libc/kernel/android/uapi",
+                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
+            ],
         },
         android_arm: {
             srcs: ["android/arm/lib/libdl.so"],
+            export_system_include_dirs: [
+                "android/arm/include/bionic/libc/include",
+                "android/arm/include/bionic/libc/kernel/uapi",
+                "android/arm/include/bionic/libc/kernel/android/scsi",
+                "android/arm/include/bionic/libc/kernel/android/uapi",
+                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
+            ],
         },
         android_x86: {
             srcs: ["android/x86/lib/libdl.so"],
+            export_system_include_dirs: [
+                "android/x86/include/bionic/libc/include",
+                "android/x86/include/bionic/libc/kernel/uapi",
+                "android/x86/include/bionic/libc/kernel/android/scsi",
+                "android/x86/include/bionic/libc/kernel/android/uapi",
+                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
+            ],
         },
         linux_bionic: {
             compile_multilib: "64",
@@ -869,15 +897,43 @@ cc_prebuilt_library_shared {
         },
         android_arm64: {
             srcs: ["android/arm64/lib/libdl.so"],
+            export_system_include_dirs: [
+                "android/arm64/include/bionic/libc/include",
+                "android/arm64/include/bionic/libc/kernel/uapi",
+                "android/arm64/include/bionic/libc/kernel/android/scsi",
+                "android/arm64/include/bionic/libc/kernel/android/uapi",
+                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
+            ],
         },
         android_x86_64: {
             srcs: ["android/x86_64/lib/libdl.so"],
+            export_system_include_dirs: [
+                "android/x86_64/include/bionic/libc/include",
+                "android/x86_64/include/bionic/libc/kernel/uapi",
+                "android/x86_64/include/bionic/libc/kernel/android/scsi",
+                "android/x86_64/include/bionic/libc/kernel/android/uapi",
+                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
+            ],
         },
         android_arm: {
             srcs: ["android/arm/lib/libdl.so"],
+            export_system_include_dirs: [
+                "android/arm/include/bionic/libc/include",
+                "android/arm/include/bionic/libc/kernel/uapi",
+                "android/arm/include/bionic/libc/kernel/android/scsi",
+                "android/arm/include/bionic/libc/kernel/android/uapi",
+                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
+            ],
         },
         android_x86: {
             srcs: ["android/x86/lib/libdl.so"],
+            export_system_include_dirs: [
+                "android/x86/include/bionic/libc/include",
+                "android/x86/include/bionic/libc/kernel/uapi",
+                "android/x86/include/bionic/libc/kernel/android/scsi",
+                "android/x86/include/bionic/libc/kernel/android/uapi",
+                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
+            ],
         },
         linux_bionic: {
             compile_multilib: "64",

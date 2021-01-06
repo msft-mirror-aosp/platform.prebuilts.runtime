@@ -76,7 +76,7 @@ public java.lang.String format(java.util.Collection<?> items) { throw new Runtim
  * @param count the item count.
  * @return the pattern with {0}, {1}, {2}, etc. For English,
  * getPatternForNumItems(3) == "{0}, {1}, and {2}"
- * @throws IllegalArgumentException when count is 0 or negative.
+ * @throws java.lang.IllegalArgumentException when count is 0 or negative.
  */
 
 public java.lang.String getPatternForNumItems(int count) { throw new RuntimeException("Stub!"); }
