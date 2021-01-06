@@ -16,7 +16,7 @@ import android.icu.util.ULocale.Category;
  * <strong>[icu enhancement]</strong> ICU's replacement for {@link java.util.GregorianCalendar}.&nbsp;Methods, fields, and other functionality specific to ICU are labeled '<strong>[icu]</strong>'.
  *
  * <p><code>GregorianCalendar</code> is a concrete subclass of
- * {@link Calendar}
+ * {@link android.icu.util.Calendar Calendar}
  * and provides the standard calendar used by most of the world.
  *
  * <p>The standard (Gregorian) calendar has 2 eras, BC and AD.
@@ -164,8 +164,8 @@ import android.icu.util.ULocale.Category;
  * {@link android.icu.util.Calendar#getInstance(ULocale)} passing in a <code>ULocale</code>
  * with the tag <code>"@calendar=gregorian"</code>.</p>
  
- * @see          Calendar
- * @see          TimeZone
+ * @see          android.icu.util.Calendar
+ * @see          android.icu.util.TimeZone
  * @author Deborah Goldsmith, Mark Davis, Chen-Lieh Huang, Alan Liu
  */
 
@@ -175,7 +175,7 @@ public class GregorianCalendar extends android.icu.util.Calendar {
 /**
  * Constructs a default GregorianCalendar using the current time
  * in the default time zone with the default <code>FORMAT</code> locale.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public GregorianCalendar() { throw new RuntimeException("Stub!"); }
@@ -184,7 +184,7 @@ public GregorianCalendar() { throw new RuntimeException("Stub!"); }
  * Constructs a GregorianCalendar based on the current time
  * in the given time zone with the default <code>FORMAT</code> locale.
  * @param zone the given time zone.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public GregorianCalendar(android.icu.util.TimeZone zone) { throw new RuntimeException("Stub!"); }
@@ -230,7 +230,7 @@ public GregorianCalendar(android.icu.util.TimeZone zone, android.icu.util.ULocal
  * @param month the value used to set the MONTH time field in the calendar.
  * Month value is 0-based. e.g., 0 for January.
  * @param date the value used to set the DATE time field in the calendar.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public GregorianCalendar(int year, int month, int date) { throw new RuntimeException("Stub!"); }
@@ -246,7 +246,7 @@ public GregorianCalendar(int year, int month, int date) { throw new RuntimeExcep
  * in the calendar.
  * @param minute the value used to set the MINUTE time field
  * in the calendar.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public GregorianCalendar(int year, int month, int date, int hour, int minute) { throw new RuntimeException("Stub!"); }
@@ -264,7 +264,7 @@ public GregorianCalendar(int year, int month, int date, int hour, int minute) { 
  * in the calendar.
  * @param second the value used to set the SECOND time field
  * in the calendar.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public GregorianCalendar(int year, int month, int date, int hour, int minute, int second) { throw new RuntimeException("Stub!"); }
@@ -396,7 +396,7 @@ public java.lang.String getType() { throw new RuntimeException("Stub!"); }
  * the common era (Anno Domini), also known as CE.
  * The sequence of years at the transition from <code>BC</code> to <code>AD</code> is
  * ..., 2 BC, 1 BC, 1 AD, 2 AD,...
- * @see Calendar#ERA
+ * @see android.icu.util.Calendar#ERA
  */
 
 public static final int AD = 1; // 0x1
@@ -406,7 +406,7 @@ public static final int AD = 1; // 0x1
  * the period before the common era (before Christ), also known as BCE.
  * The sequence of years at the transition from <code>BC</code> to <code>AD</code> is
  * ..., 2 BC, 1 BC, 1 AD, 2 AD,...
- * @see Calendar#ERA
+ * @see android.icu.util.Calendar#ERA
  */
 
 public static final int BC = 0; // 0x0

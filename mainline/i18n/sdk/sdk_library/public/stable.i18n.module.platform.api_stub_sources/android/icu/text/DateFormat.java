@@ -122,9 +122,9 @@ import java.io.InvalidObjectException;
  * Date formats are not synchronized. It is recommended to create separate format instances for each thread. If multiple
  * threads access a format concurrently, it must be synchronized externally.
  *
- * @see UFormat
- * @see NumberFormat
- * @see SimpleDateFormat
+ * @see android.icu.text.UFormat
+ * @see android.icu.text.NumberFormat
+ * @see android.icu.text.SimpleDateFormat
  * @see android.icu.util.Calendar
  * @see android.icu.util.GregorianCalendar
  * @see android.icu.util.TimeZone
@@ -258,7 +258,7 @@ public final java.lang.String format(java.util.Date date) { throw new RuntimeExc
  *
  * @return      A Date, or null if the input could not be parsed
  *
- * @exception  ParseException  If the given string cannot be parsed as a date.
+ * @exception  java.text.ParseException  If the given string cannot be parsed as a date.
  *
  * @see #parse(String, ParsePosition)
  */
@@ -355,7 +355,7 @@ public java.lang.Object parseObject(java.lang.String source, java.text.ParsePosi
  * Gets the time formatter with the default formatting style
  * for the default <code>FORMAT</code> locale.
  * @return a time formatter.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.DateFormat getTimeInstance() { throw new RuntimeException("Stub!"); }
@@ -367,7 +367,7 @@ public static final android.icu.text.DateFormat getTimeInstance() { throw new Ru
  * SHORT for "h:mm a" in the US locale. Relative time styles are not currently
  * supported, and behave just like the corresponding non-relative style.
  * @return a time formatter.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.DateFormat getTimeInstance(int style) { throw new RuntimeException("Stub!"); }
@@ -400,7 +400,7 @@ public static final android.icu.text.DateFormat getTimeInstance(int style, andro
  * Returns the date formatter with the default formatting style
  * for the default <code>FORMAT</code> locale.
  * @return a date formatter.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.DateFormat getDateInstance() { throw new RuntimeException("Stub!"); }
@@ -415,7 +415,7 @@ public static final android.icu.text.DateFormat getDateInstance() { throw new Ru
  * in English, "Yesterday", "Today", and "Tomorrow". Outside of this range, relative
  * dates are formatted using the corresponding non-relative style.
  * @return a date formatter.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.DateFormat getDateInstance(int style) { throw new RuntimeException("Stub!"); }
@@ -454,7 +454,7 @@ public static final android.icu.text.DateFormat getDateInstance(int style, andro
  * Returns the date/time formatter with the default formatting style
  * for the default <code>FORMAT</code> locale.
  * @return a date/time formatter.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.DateFormat getDateTimeInstance() { throw new RuntimeException("Stub!"); }
@@ -472,7 +472,7 @@ public static final android.icu.text.DateFormat getDateTimeInstance() { throw ne
  * SHORT for "h:mm a" in the US locale. Relative time styles are not currently
  * supported, and behave just like the corresponding non-relative style.
  * @return a date/time formatter.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.DateFormat getDateTimeInstance(int dateStyle, int timeStyle) { throw new RuntimeException("Stub!"); }
@@ -619,7 +619,7 @@ public boolean isCalendarLenient() { throw new RuntimeException("Stub!"); }
  * Sets a boolean attribute for this instance. Aspects of DateFormat leniency are controlled by
  * boolean attributes.
  *
- * @see BooleanAttribute
+ * @see android.icu.text.DateFormat.BooleanAttribute
  */
 
 public android.icu.text.DateFormat setBooleanAttribute(android.icu.text.DateFormat.BooleanAttribute key, boolean value) { throw new RuntimeException("Stub!"); }
@@ -629,7 +629,7 @@ public android.icu.text.DateFormat setBooleanAttribute(android.icu.text.DateForm
  *
  * if attribute is missing false is returned.
  *
- * @see BooleanAttribute
+ * @see android.icu.text.DateFormat.BooleanAttribute
  */
 
 public boolean getBooleanAttribute(android.icu.text.DateFormat.BooleanAttribute key) { throw new RuntimeException("Stub!"); }
@@ -672,13 +672,13 @@ public boolean equals(java.lang.Object obj) { throw new RuntimeException("Stub!"
 public java.lang.Object clone() { throw new RuntimeException("Stub!"); }
 
 /**
- * Creates a {@link DateFormat} object that can be used to format dates in
+ * Creates a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates in
  * the calendar system specified by <code>cal</code>.
  * <p>
  * @param cal   The calendar system for which a date format is desired.
  *
  * @param dateStyle The type of date format desired.  This can be
- *              {@link DateFormat#SHORT}, {@link DateFormat#MEDIUM},
+ *              {@link android.icu.text.DateFormat#SHORT DateFormat#SHORT}, {@link android.icu.text.DateFormat#MEDIUM DateFormat#MEDIUM},
  *              etc.
  *
  * @param locale The locale for which the date format is desired.
@@ -687,13 +687,13 @@ public java.lang.Object clone() { throw new RuntimeException("Stub!"); }
 public static final android.icu.text.DateFormat getDateInstance(android.icu.util.Calendar cal, int dateStyle, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * Creates a {@link DateFormat} object that can be used to format dates in
+ * Creates a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates in
  * the calendar system specified by <code>cal</code>.
  * <p>
  * @param cal   The calendar system for which a date format is desired.
  *
  * @param dateStyle The type of date format desired.  This can be
- *              {@link DateFormat#SHORT}, {@link DateFormat#MEDIUM},
+ *              {@link android.icu.text.DateFormat#SHORT DateFormat#SHORT}, {@link android.icu.text.DateFormat#MEDIUM DateFormat#MEDIUM},
  *              etc.
  *
  * @param locale The locale for which the date format is desired.
@@ -702,12 +702,12 @@ public static final android.icu.text.DateFormat getDateInstance(android.icu.util
 public static final android.icu.text.DateFormat getDateInstance(android.icu.util.Calendar cal, int dateStyle, android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * Creates a {@link DateFormat} object that can be used to format times in
+ * Creates a {@link android.icu.text.DateFormat DateFormat} object that can be used to format times in
  * the calendar system specified by <code>cal</code>.
  * @param cal   The calendar system for which a time format is desired.
  *
  * @param timeStyle The type of time format desired.  This can be
- *              {@link DateFormat#SHORT}, {@link DateFormat#MEDIUM},
+ *              {@link android.icu.text.DateFormat#SHORT DateFormat#SHORT}, {@link android.icu.text.DateFormat#MEDIUM DateFormat#MEDIUM},
  *              etc.
  *
  * @param locale The locale for which the time format is desired.
@@ -718,12 +718,12 @@ public static final android.icu.text.DateFormat getDateInstance(android.icu.util
 public static final android.icu.text.DateFormat getTimeInstance(android.icu.util.Calendar cal, int timeStyle, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * Creates a {@link DateFormat} object that can be used to format times in
+ * Creates a {@link android.icu.text.DateFormat DateFormat} object that can be used to format times in
  * the calendar system specified by <code>cal</code>.
  * @param cal   The calendar system for which a time format is desired.
  *
  * @param timeStyle The type of time format desired.  This can be
- *              {@link DateFormat#SHORT}, {@link DateFormat#MEDIUM},
+ *              {@link android.icu.text.DateFormat#SHORT DateFormat#SHORT}, {@link android.icu.text.DateFormat#MEDIUM DateFormat#MEDIUM},
  *              etc.
  *
  * @param locale The locale for which the time format is desired.
@@ -734,16 +734,16 @@ public static final android.icu.text.DateFormat getTimeInstance(android.icu.util
 public static final android.icu.text.DateFormat getTimeInstance(android.icu.util.Calendar cal, int timeStyle, android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * Creates a {@link DateFormat} object that can be used to format dates and times in
+ * Creates a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates and times in
  * the calendar system specified by <code>cal</code>.
  * @param cal   The calendar system for which a date/time format is desired.
  *
  * @param dateStyle The type of date format desired.  This can be
- *              {@link DateFormat#SHORT}, {@link DateFormat#MEDIUM},
+ *              {@link android.icu.text.DateFormat#SHORT DateFormat#SHORT}, {@link android.icu.text.DateFormat#MEDIUM DateFormat#MEDIUM},
  *              etc.
  *
  * @param timeStyle The type of time format desired.  This can be
- *              {@link DateFormat#SHORT}, {@link DateFormat#MEDIUM},
+ *              {@link android.icu.text.DateFormat#SHORT DateFormat#SHORT}, {@link android.icu.text.DateFormat#MEDIUM DateFormat#MEDIUM},
  *              etc.
  *
  * @param locale The locale for which the date/time format is desired.
@@ -754,16 +754,16 @@ public static final android.icu.text.DateFormat getTimeInstance(android.icu.util
 public static final android.icu.text.DateFormat getDateTimeInstance(android.icu.util.Calendar cal, int dateStyle, int timeStyle, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * Creates a {@link DateFormat} object that can be used to format dates and times in
+ * Creates a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates and times in
  * the calendar system specified by <code>cal</code>.
  * @param cal   The calendar system for which a date/time format is desired.
  *
  * @param dateStyle The type of date format desired.  This can be
- *              {@link DateFormat#SHORT}, {@link DateFormat#MEDIUM},
+ *              {@link android.icu.text.DateFormat#SHORT DateFormat#SHORT}, {@link android.icu.text.DateFormat#MEDIUM DateFormat#MEDIUM},
  *              etc.
  *
  * @param timeStyle The type of time format desired.  This can be
- *              {@link DateFormat#SHORT}, {@link DateFormat#MEDIUM},
+ *              {@link android.icu.text.DateFormat#SHORT DateFormat#SHORT}, {@link android.icu.text.DateFormat#MEDIUM DateFormat#MEDIUM},
  *              etc.
  *
  * @param locale The locale for which the date/time format is desired.
@@ -793,25 +793,25 @@ public static final android.icu.text.DateFormat getInstance(android.icu.util.Cal
 public static final android.icu.text.DateFormat getInstance(android.icu.util.Calendar cal) { throw new RuntimeException("Stub!"); }
 
 /**
- * Creates a {@link DateFormat} object for the default locale that can be used
+ * Creates a {@link android.icu.text.DateFormat DateFormat} object for the default locale that can be used
  * to format dates in the calendar system specified by <code>cal</code>.
  * <p>
  * @param cal   The calendar system for which a date format is desired.
  *
  * @param dateStyle The type of date format desired.  This can be
- *              {@link DateFormat#SHORT}, {@link DateFormat#MEDIUM},
+ *              {@link android.icu.text.DateFormat#SHORT DateFormat#SHORT}, {@link android.icu.text.DateFormat#MEDIUM DateFormat#MEDIUM},
  *              etc.
  */
 
 public static final android.icu.text.DateFormat getDateInstance(android.icu.util.Calendar cal, int dateStyle) { throw new RuntimeException("Stub!"); }
 
 /**
- * Creates a {@link DateFormat} object that can be used to format times in
+ * Creates a {@link android.icu.text.DateFormat DateFormat} object that can be used to format times in
  * the calendar system specified by <code>cal</code>.
  * @param cal   The calendar system for which a time format is desired.
  *
  * @param timeStyle The type of time format desired.  This can be
- *              {@link DateFormat#SHORT}, {@link DateFormat#MEDIUM},
+ *              {@link android.icu.text.DateFormat#SHORT DateFormat#SHORT}, {@link android.icu.text.DateFormat#MEDIUM DateFormat#MEDIUM},
  *              etc.
  *
  * @see DateFormat#getTimeInstance
@@ -820,16 +820,16 @@ public static final android.icu.text.DateFormat getDateInstance(android.icu.util
 public static final android.icu.text.DateFormat getTimeInstance(android.icu.util.Calendar cal, int timeStyle) { throw new RuntimeException("Stub!"); }
 
 /**
- * Creates a {@link DateFormat} object for the default locale that can be used to format
+ * Creates a {@link android.icu.text.DateFormat DateFormat} object for the default locale that can be used to format
  * dates and times in the calendar system specified by <code>cal</code>.
  * @param cal   The calendar system for which a date/time format is desired.
  *
  * @param dateStyle The type of date format desired.  This can be
- *              {@link DateFormat#SHORT}, {@link DateFormat#MEDIUM},
+ *              {@link android.icu.text.DateFormat#SHORT DateFormat#SHORT}, {@link android.icu.text.DateFormat#MEDIUM DateFormat#MEDIUM},
  *              etc.
  *
  * @param timeStyle The type of time format desired.  This can be
- *              {@link DateFormat#SHORT}, {@link DateFormat#MEDIUM},
+ *              {@link android.icu.text.DateFormat#SHORT DateFormat#SHORT}, {@link android.icu.text.DateFormat#MEDIUM DateFormat#MEDIUM},
  *              etc.
  *
  * @see DateFormat#getDateTimeInstance
@@ -838,23 +838,23 @@ public static final android.icu.text.DateFormat getTimeInstance(android.icu.util
 public static final android.icu.text.DateFormat getDateTimeInstance(android.icu.util.Calendar cal, int dateStyle, int timeStyle) { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Returns a {@link DateFormat} object that can be used to format dates and times in
+ * <strong>[icu]</strong> Returns a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates and times in
  * the default locale.
  *
  * @param skeleton The skeleton that selects the fields to be formatted. (Uses the
- *              {@link DateTimePatternGenerator}.) This can be {@link DateFormat#ABBR_MONTH},
- *              {@link DateFormat#MONTH_WEEKDAY_DAY}, etc.
+ *              {@link android.icu.text.DateTimePatternGenerator DateTimePatternGenerator}.) This can be {@link android.icu.text.DateFormat#ABBR_MONTH DateFormat#ABBR_MONTH},
+ *              {@link android.icu.text.DateFormat#MONTH_WEEKDAY_DAY DateFormat#MONTH_WEEKDAY_DAY}, etc.
  */
 
 public static final android.icu.text.DateFormat getInstanceForSkeleton(java.lang.String skeleton) { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Returns a {@link DateFormat} object that can be used to format dates and times in
+ * <strong>[icu]</strong> Returns a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates and times in
  * the given locale.
  *
  * @param skeleton The skeleton that selects the fields to be formatted. (Uses the
- *              {@link DateTimePatternGenerator}.) This can be {@link DateFormat#ABBR_MONTH},
- *              {@link DateFormat#MONTH_WEEKDAY_DAY}, etc.
+ *              {@link android.icu.text.DateTimePatternGenerator DateTimePatternGenerator}.) This can be {@link android.icu.text.DateFormat#ABBR_MONTH DateFormat#ABBR_MONTH},
+ *              {@link android.icu.text.DateFormat#MONTH_WEEKDAY_DAY DateFormat#MONTH_WEEKDAY_DAY}, etc.
  *
  * @param locale The locale for which the date/time format is desired.
  */
@@ -862,12 +862,12 @@ public static final android.icu.text.DateFormat getInstanceForSkeleton(java.lang
 public static final android.icu.text.DateFormat getInstanceForSkeleton(java.lang.String skeleton, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Returns a {@link DateFormat} object that can be used to format dates and times in
+ * <strong>[icu]</strong> Returns a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates and times in
  * the given locale.
  *
  * @param skeleton The skeleton that selects the fields to be formatted. (Uses the
- *              {@link DateTimePatternGenerator}.) This can be {@link DateFormat#ABBR_MONTH},
- *              {@link DateFormat#MONTH_WEEKDAY_DAY}, etc.
+ *              {@link android.icu.text.DateTimePatternGenerator DateTimePatternGenerator}.) This can be {@link android.icu.text.DateFormat#ABBR_MONTH DateFormat#ABBR_MONTH},
+ *              {@link android.icu.text.DateFormat#MONTH_WEEKDAY_DAY DateFormat#MONTH_WEEKDAY_DAY}, etc.
  *
  * @param locale The locale for which the date/time format is desired.
  */
@@ -875,14 +875,14 @@ public static final android.icu.text.DateFormat getInstanceForSkeleton(java.lang
 public static final android.icu.text.DateFormat getInstanceForSkeleton(java.lang.String skeleton, android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Creates a {@link DateFormat} object that can be used to format dates and
+ * <strong>[icu]</strong> Creates a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates and
  * times in the calendar system specified by <code>cal</code>.
  *
  * @param cal   The calendar system for which a date/time format is desired.
  *
  * @param skeleton The skeleton that selects the fields to be formatted. (Uses the
- *              {@link DateTimePatternGenerator}.)  This can be
- *              {@link DateFormat#ABBR_MONTH}, {@link DateFormat#MONTH_WEEKDAY_DAY},
+ *              {@link android.icu.text.DateTimePatternGenerator DateTimePatternGenerator}.)  This can be
+ *              {@link android.icu.text.DateFormat#ABBR_MONTH DateFormat#ABBR_MONTH}, {@link android.icu.text.DateFormat#MONTH_WEEKDAY_DAY DateFormat#MONTH_WEEKDAY_DAY},
  *              etc.
  *
  * @param locale The locale for which the date/time format is desired.
@@ -891,14 +891,14 @@ public static final android.icu.text.DateFormat getInstanceForSkeleton(java.lang
 public static final android.icu.text.DateFormat getInstanceForSkeleton(android.icu.util.Calendar cal, java.lang.String skeleton, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Creates a {@link DateFormat} object that can be used to format dates and
+ * <strong>[icu]</strong> Creates a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates and
  * times in the calendar system specified by <code>cal</code>.
  *
  * @param cal   The calendar system for which a date/time format is desired.
  *
  * @param skeleton The skeleton that selects the fields to be formatted. (Uses the
- *              {@link DateTimePatternGenerator}.)  This can be
- *              {@link DateFormat#ABBR_MONTH}, {@link DateFormat#MONTH_WEEKDAY_DAY},
+ *              {@link android.icu.text.DateTimePatternGenerator DateTimePatternGenerator}.)  This can be
+ *              {@link android.icu.text.DateFormat#ABBR_MONTH DateFormat#ABBR_MONTH}, {@link android.icu.text.DateFormat#MONTH_WEEKDAY_DAY DateFormat#MONTH_WEEKDAY_DAY},
  *              etc.
  *
  * @param locale The locale for which the date/time format is desired.
@@ -907,25 +907,25 @@ public static final android.icu.text.DateFormat getInstanceForSkeleton(android.i
 public static final android.icu.text.DateFormat getInstanceForSkeleton(android.icu.util.Calendar cal, java.lang.String skeleton, android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Returns a {@link DateFormat} object that can be used to format dates and times in
+ * <strong>[icu]</strong> Returns a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates and times in
  * the default locale.
  * The getInstanceForSkeleton methods are preferred over the getPatternInstance methods.
  *
  * @param skeleton The skeleton that selects the fields to be formatted. (Uses the
- *              {@link DateTimePatternGenerator}.) This can be {@link DateFormat#ABBR_MONTH},
- *              {@link DateFormat#MONTH_WEEKDAY_DAY}, etc.
+ *              {@link android.icu.text.DateTimePatternGenerator DateTimePatternGenerator}.) This can be {@link android.icu.text.DateFormat#ABBR_MONTH DateFormat#ABBR_MONTH},
+ *              {@link android.icu.text.DateFormat#MONTH_WEEKDAY_DAY DateFormat#MONTH_WEEKDAY_DAY}, etc.
  */
 
 public static final android.icu.text.DateFormat getPatternInstance(java.lang.String skeleton) { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Returns a {@link DateFormat} object that can be used to format dates and times in
+ * <strong>[icu]</strong> Returns a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates and times in
  * the given locale.
  * The getInstanceForSkeleton methods are preferred over the getPatternInstance methods.
  *
  * @param skeleton The skeleton that selects the fields to be formatted. (Uses the
- *              {@link DateTimePatternGenerator}.) This can be {@link DateFormat#ABBR_MONTH},
- *              {@link DateFormat#MONTH_WEEKDAY_DAY}, etc.
+ *              {@link android.icu.text.DateTimePatternGenerator DateTimePatternGenerator}.) This can be {@link android.icu.text.DateFormat#ABBR_MONTH DateFormat#ABBR_MONTH},
+ *              {@link android.icu.text.DateFormat#MONTH_WEEKDAY_DAY DateFormat#MONTH_WEEKDAY_DAY}, etc.
  *
  * @param locale The locale for which the date/time format is desired.
  */
@@ -933,13 +933,13 @@ public static final android.icu.text.DateFormat getPatternInstance(java.lang.Str
 public static final android.icu.text.DateFormat getPatternInstance(java.lang.String skeleton, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Returns a {@link DateFormat} object that can be used to format dates and times in
+ * <strong>[icu]</strong> Returns a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates and times in
  * the given locale.
  * The getInstanceForSkeleton methods are preferred over the getPatternInstance methods.
  *
  * @param skeleton The skeleton that selects the fields to be formatted. (Uses the
- *              {@link DateTimePatternGenerator}.) This can be {@link DateFormat#ABBR_MONTH},
- *              {@link DateFormat#MONTH_WEEKDAY_DAY}, etc.
+ *              {@link android.icu.text.DateTimePatternGenerator DateTimePatternGenerator}.) This can be {@link android.icu.text.DateFormat#ABBR_MONTH DateFormat#ABBR_MONTH},
+ *              {@link android.icu.text.DateFormat#MONTH_WEEKDAY_DAY DateFormat#MONTH_WEEKDAY_DAY}, etc.
  *
  * @param locale The locale for which the date/time format is desired.
  */
@@ -947,15 +947,15 @@ public static final android.icu.text.DateFormat getPatternInstance(java.lang.Str
 public static final android.icu.text.DateFormat getPatternInstance(java.lang.String skeleton, android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Creates a {@link DateFormat} object that can be used to format dates and
+ * <strong>[icu]</strong> Creates a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates and
  * times in the calendar system specified by <code>cal</code>.
  * The getInstanceForSkeleton methods are preferred over the getPatternInstance methods.
  *
  * @param cal   The calendar system for which a date/time format is desired.
  *
  * @param skeleton The skeleton that selects the fields to be formatted. (Uses the
- *              {@link DateTimePatternGenerator}.)  This can be
- *              {@link DateFormat#ABBR_MONTH}, {@link DateFormat#MONTH_WEEKDAY_DAY},
+ *              {@link android.icu.text.DateTimePatternGenerator DateTimePatternGenerator}.)  This can be
+ *              {@link android.icu.text.DateFormat#ABBR_MONTH DateFormat#ABBR_MONTH}, {@link android.icu.text.DateFormat#MONTH_WEEKDAY_DAY DateFormat#MONTH_WEEKDAY_DAY},
  *              etc.
  *
  * @param locale The locale for which the date/time format is desired.
@@ -964,15 +964,15 @@ public static final android.icu.text.DateFormat getPatternInstance(java.lang.Str
 public static final android.icu.text.DateFormat getPatternInstance(android.icu.util.Calendar cal, java.lang.String skeleton, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Creates a {@link DateFormat} object that can be used to format dates and
+ * <strong>[icu]</strong> Creates a {@link android.icu.text.DateFormat DateFormat} object that can be used to format dates and
  * times in the calendar system specified by <code>cal</code>.
  * The getInstanceForSkeleton methods are preferred over the getPatternInstance methods.
  *
  * @param cal   The calendar system for which a date/time format is desired.
  *
  * @param skeleton The skeleton that selects the fields to be formatted. (Uses the
- *              {@link DateTimePatternGenerator}.)  This can be
- *              {@link DateFormat#ABBR_MONTH}, {@link DateFormat#MONTH_WEEKDAY_DAY},
+ *              {@link android.icu.text.DateTimePatternGenerator DateTimePatternGenerator}.)  This can be
+ *              {@link android.icu.text.DateFormat#ABBR_MONTH DateFormat#ABBR_MONTH}, {@link android.icu.text.DateFormat#MONTH_WEEKDAY_DAY DateFormat#MONTH_WEEKDAY_DAY},
  *              etc.
  *
  * @param locale The locale for which the date/time format is desired.
@@ -1041,7 +1041,7 @@ public static final java.lang.String ABBR_WEEKDAY = "E";
 
 /**
  * FieldPosition selector for 'a' field alignment,
- * corresponding to the {@link Calendar#AM_PM} field.
+ * corresponding to the {@link android.icu.util.Calendar#AM_PM Calendar#AM_PM} field.
  */
 
 public static final int AM_PM_FIELD = 14; // 0xe
@@ -1056,7 +1056,7 @@ public static final int AM_PM_MIDNIGHT_NOON_FIELD = 35; // 0x23
 
 /**
  * FieldPosition selector for 'd' field alignment,
- * corresponding to the {@link Calendar#DATE} field.
+ * corresponding to the {@link android.icu.util.Calendar#DATE Calendar#DATE} field.
  */
 
 public static final int DATE_FIELD = 3; // 0x3
@@ -1069,21 +1069,21 @@ public static final java.lang.String DAY = "d";
 
 /**
  * FieldPosition selector for 'E' field alignment,
- * corresponding to the {@link Calendar#DAY_OF_WEEK} field.
+ * corresponding to the {@link android.icu.util.Calendar#DAY_OF_WEEK Calendar#DAY_OF_WEEK} field.
  */
 
 public static final int DAY_OF_WEEK_FIELD = 9; // 0x9
 
 /**
  * FieldPosition selector for 'F' field alignment,
- * corresponding to the {@link Calendar#DAY_OF_WEEK_IN_MONTH} field.
+ * corresponding to the {@link android.icu.util.Calendar#DAY_OF_WEEK_IN_MONTH Calendar#DAY_OF_WEEK_IN_MONTH} field.
  */
 
 public static final int DAY_OF_WEEK_IN_MONTH_FIELD = 11; // 0xb
 
 /**
  * FieldPosition selector for 'D' field alignment,
- * corresponding to the {@link Calendar#DAY_OF_YEAR} field.
+ * corresponding to the {@link android.icu.util.Calendar#DAY_OF_YEAR Calendar#DAY_OF_YEAR} field.
  */
 
 public static final int DAY_OF_YEAR_FIELD = 10; // 0xa
@@ -1096,21 +1096,21 @@ public static final int DEFAULT = 2; // 0x2
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'e' field alignment,
- * corresponding to the {@link Calendar#DOW_LOCAL} field.
+ * corresponding to the {@link android.icu.util.Calendar#DOW_LOCAL Calendar#DOW_LOCAL} field.
  */
 
 public static final int DOW_LOCAL_FIELD = 19; // 0x13
 
 /**
  * FieldPosition selector for 'G' field alignment,
- * corresponding to the {@link Calendar#ERA} field.
+ * corresponding to the {@link android.icu.util.Calendar#ERA Calendar#ERA} field.
  */
 
 public static final int ERA_FIELD = 0; // 0x0
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'u' field alignment,
- * corresponding to the {@link Calendar#EXTENDED_YEAR} field.
+ * corresponding to the {@link android.icu.util.Calendar#EXTENDED_YEAR Calendar#EXTENDED_YEAR} field.
  */
 
 public static final int EXTENDED_YEAR_FIELD = 20; // 0x14
@@ -1125,7 +1125,7 @@ public static final int FLEXIBLE_DAY_PERIOD_FIELD = 36; // 0x24
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'S' field alignment,
- * corresponding to the {@link Calendar#MILLISECOND} field.
+ * corresponding to the {@link android.icu.util.Calendar#MILLISECOND Calendar#MILLISECOND} field.
  *
  * Note: Time formats that use 'S' can display a maximum of three
  * significant digits for fractional seconds, corresponding to millisecond
@@ -1161,7 +1161,7 @@ public static final java.lang.String HOUR = "j";
 
 /**
  * FieldPosition selector for 'K' field alignment,
- * corresponding to the {@link Calendar#HOUR} field.
+ * corresponding to the {@link android.icu.util.Calendar#HOUR Calendar#HOUR} field.
  * HOUR0_FIELD is used for the zero-based 12-hour clock.
  * For example, 11:30 PM + 1 hour results in 00:30 AM.
  */
@@ -1170,7 +1170,7 @@ public static final int HOUR0_FIELD = 16; // 0x10
 
 /**
  * FieldPosition selector for 'h' field alignment,
- * corresponding to the {@link Calendar#HOUR} field.
+ * corresponding to the {@link android.icu.util.Calendar#HOUR Calendar#HOUR} field.
  * HOUR1_FIELD is used for the one-based 12-hour clock.
  * For example, 11:30 PM + 1 hour results in 12:30 AM.
  */
@@ -1215,7 +1215,7 @@ public static final java.lang.String HOUR_MINUTE_SECOND = "jms";
 
 /**
  * FieldPosition selector for 'H' field alignment,
- * corresponding to the {@link Calendar#HOUR_OF_DAY} field.
+ * corresponding to the {@link android.icu.util.Calendar#HOUR_OF_DAY Calendar#HOUR_OF_DAY} field.
  * HOUR_OF_DAY0_FIELD is used for the zero-based 24-hour clock.
  * For example, 23:59 + 01:00 results in 00:59.
  */
@@ -1224,7 +1224,7 @@ public static final int HOUR_OF_DAY0_FIELD = 5; // 0x5
 
 /**
  * FieldPosition selector for 'k' field alignment,
- * corresponding to the {@link Calendar#HOUR_OF_DAY} field.
+ * corresponding to the {@link android.icu.util.Calendar#HOUR_OF_DAY Calendar#HOUR_OF_DAY} field.
  * HOUR_OF_DAY1_FIELD is used for the one-based 24-hour clock.
  * For example, 23:59 + 01:00 results in 24:59.
  */
@@ -1233,7 +1233,7 @@ public static final int HOUR_OF_DAY1_FIELD = 4; // 0x4
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'g' field alignment,
- * corresponding to the {@link Calendar#JULIAN_DAY} field.
+ * corresponding to the {@link android.icu.util.Calendar#JULIAN_DAY Calendar#JULIAN_DAY} field.
  */
 
 public static final int JULIAN_DAY_FIELD = 21; // 0x15
@@ -1261,7 +1261,7 @@ public static final int MEDIUM = 2; // 0x2
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'A' field alignment,
- * corresponding to the {@link Calendar#MILLISECONDS_IN_DAY} field.
+ * corresponding to the {@link android.icu.util.Calendar#MILLISECONDS_IN_DAY Calendar#MILLISECONDS_IN_DAY} field.
  */
 
 public static final int MILLISECONDS_IN_DAY_FIELD = 22; // 0x16
@@ -1280,7 +1280,7 @@ public static final java.lang.String MINUTE = "m";
 
 /**
  * FieldPosition selector for 'm' field alignment,
- * corresponding to the {@link Calendar#MINUTE} field.
+ * corresponding to the {@link android.icu.util.Calendar#MINUTE Calendar#MINUTE} field.
  */
 
 public static final int MINUTE_FIELD = 6; // 0x6
@@ -1307,7 +1307,7 @@ public static final java.lang.String MONTH_DAY = "MMMMd";
 
 /**
  * FieldPosition selector for 'M' field alignment,
- * corresponding to the {@link Calendar#MONTH} field.
+ * corresponding to the {@link android.icu.util.Calendar#MONTH Calendar#MONTH} field.
  */
 
 public static final int MONTH_FIELD = 2; // 0x2
@@ -1353,7 +1353,7 @@ public static final java.lang.String QUARTER = "QQQQ";
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'Q' field alignment,
- * corresponding to the {@link Calendar#MONTH} field.
+ * corresponding to the {@link android.icu.util.Calendar#MONTH Calendar#MONTH} field.
  * This displays the quarter.
  */
 
@@ -1403,7 +1403,7 @@ public static final java.lang.String SECOND = "s";
 
 /**
  * FieldPosition selector for 's' field alignment,
- * corresponding to the {@link Calendar#SECOND} field.
+ * corresponding to the {@link android.icu.util.Calendar#SECOND Calendar#SECOND} field.
  */
 
 public static final int SECOND_FIELD = 7; // 0x7
@@ -1425,7 +1425,7 @@ public static final java.lang.String SPECIFIC_TZ = "zzzz";
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'c' field alignment,
- * corresponding to the {@link Calendar#DAY_OF_WEEK} field.
+ * corresponding to the {@link android.icu.util.Calendar#DAY_OF_WEEK Calendar#DAY_OF_WEEK} field.
  * This displays the stand alone day name, if available.
  */
 
@@ -1433,7 +1433,7 @@ public static final int STANDALONE_DAY_FIELD = 25; // 0x19
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'L' field alignment,
- * corresponding to the {@link Calendar#MONTH} field.
+ * corresponding to the {@link android.icu.util.Calendar#MONTH Calendar#MONTH} field.
  * This displays the stand alone month name, if available.
  */
 
@@ -1441,7 +1441,7 @@ public static final int STANDALONE_MONTH_FIELD = 26; // 0x1a
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'q' field alignment,
- * corresponding to the {@link Calendar#MONTH} field.
+ * corresponding to the {@link android.icu.util.Calendar#MONTH Calendar#MONTH} field.
  * This displays the stand alone quarter, if available.
  */
 
@@ -1449,16 +1449,16 @@ public static final int STANDALONE_QUARTER_FIELD = 28; // 0x1c
 
 /**
  * FieldPosition selector for 'z' field alignment,
- * corresponding to the {@link Calendar#ZONE_OFFSET} and
- * {@link Calendar#DST_OFFSET} fields.
+ * corresponding to the {@link android.icu.util.Calendar#ZONE_OFFSET Calendar#ZONE_OFFSET} and
+ * {@link android.icu.util.Calendar#DST_OFFSET Calendar#DST_OFFSET} fields.
  */
 
 public static final int TIMEZONE_FIELD = 17; // 0x11
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'v' field alignment,
- * corresponding to the {@link Calendar#ZONE_OFFSET} and
- * {@link Calendar#DST_OFFSET} fields.  This displays the generic zone
+ * corresponding to the {@link android.icu.util.Calendar#ZONE_OFFSET Calendar#ZONE_OFFSET} and
+ * {@link android.icu.util.Calendar#DST_OFFSET Calendar#DST_OFFSET} fields.  This displays the generic zone
  * name, if available.
  */
 
@@ -1466,8 +1466,8 @@ public static final int TIMEZONE_GENERIC_FIELD = 24; // 0x18
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'X' field alignment,
- * corresponding to the {@link Calendar#ZONE_OFFSET} and
- * {@link Calendar#DST_OFFSET} fields.  This displays the
+ * corresponding to the {@link android.icu.util.Calendar#ZONE_OFFSET Calendar#ZONE_OFFSET} and
+ * {@link android.icu.util.Calendar#DST_OFFSET Calendar#DST_OFFSET} fields.  This displays the
  * ISO 8601 local time offset format or UTC indicator ("Z").
  */
 
@@ -1475,8 +1475,8 @@ public static final int TIMEZONE_ISO_FIELD = 32; // 0x20
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'x' field alignment,
- * corresponding to the {@link Calendar#ZONE_OFFSET} and
- * {@link Calendar#DST_OFFSET} fields.  This displays the
+ * corresponding to the {@link android.icu.util.Calendar#ZONE_OFFSET Calendar#ZONE_OFFSET} and
+ * {@link android.icu.util.Calendar#DST_OFFSET Calendar#DST_OFFSET} fields.  This displays the
  * ISO 8601 local time offset format.
  */
 
@@ -1484,8 +1484,8 @@ public static final int TIMEZONE_ISO_LOCAL_FIELD = 33; // 0x21
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'O' field alignment,
- * corresponding to the {@link Calendar#ZONE_OFFSET} and
- * {@link Calendar#DST_OFFSET} fields.  This displays the
+ * corresponding to the {@link android.icu.util.Calendar#ZONE_OFFSET Calendar#ZONE_OFFSET} and
+ * {@link android.icu.util.Calendar#DST_OFFSET Calendar#DST_OFFSET} fields.  This displays the
  * localized GMT format.
  */
 
@@ -1493,16 +1493,16 @@ public static final int TIMEZONE_LOCALIZED_GMT_OFFSET_FIELD = 31; // 0x1f
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'Z' field alignment,
- * corresponding to the {@link Calendar#ZONE_OFFSET} and
- * {@link Calendar#DST_OFFSET} fields.
+ * corresponding to the {@link android.icu.util.Calendar#ZONE_OFFSET Calendar#ZONE_OFFSET} and
+ * {@link android.icu.util.Calendar#DST_OFFSET Calendar#DST_OFFSET} fields.
  */
 
 public static final int TIMEZONE_RFC_FIELD = 23; // 0x17
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'V' field alignment,
- * corresponding to the {@link Calendar#ZONE_OFFSET} and
- * {@link Calendar#DST_OFFSET} fields.  This displays the fallback timezone
+ * corresponding to the {@link android.icu.util.Calendar#ZONE_OFFSET Calendar#ZONE_OFFSET} and
+ * {@link android.icu.util.Calendar#DST_OFFSET Calendar#DST_OFFSET} fields.  This displays the fallback timezone
  * name when VVVV is specified, and the short standard or daylight
  * timezone name ignoring commonlyUsed when a single V is specified.
  */
@@ -1517,14 +1517,14 @@ public static final java.lang.String WEEKDAY = "EEEE";
 
 /**
  * FieldPosition selector for 'W' field alignment,
- * corresponding to the {@link Calendar#WEEK_OF_MONTH} field.
+ * corresponding to the {@link android.icu.util.Calendar#WEEK_OF_MONTH Calendar#WEEK_OF_MONTH} field.
  */
 
 public static final int WEEK_OF_MONTH_FIELD = 13; // 0xd
 
 /**
  * FieldPosition selector for 'w' field alignment,
- * corresponding to the {@link Calendar#WEEK_OF_YEAR} field.
+ * corresponding to the {@link android.icu.util.Calendar#WEEK_OF_YEAR Calendar#WEEK_OF_YEAR} field.
  */
 
 public static final int WEEK_OF_YEAR_FIELD = 12; // 0xc
@@ -1563,7 +1563,7 @@ public static final java.lang.String YEAR_ABBR_QUARTER = "yQQQ";
 
 /**
  * FieldPosition selector for 'y' field alignment,
- * corresponding to the {@link Calendar#YEAR} field.
+ * corresponding to the {@link android.icu.util.Calendar#YEAR Calendar#YEAR} field.
  */
 
 public static final int YEAR_FIELD = 1; // 0x1
@@ -1590,7 +1590,7 @@ public static final java.lang.String YEAR_MONTH_WEEKDAY_DAY = "yMMMMEEEEd";
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'U' field alignment,
- * corresponding to the {@link Calendar#YEAR} field.
+ * corresponding to the {@link android.icu.util.Calendar#YEAR Calendar#YEAR} field.
  * This displays the cyclic year name, if available.
  */
 
@@ -1624,7 +1624,7 @@ public static final java.lang.String YEAR_QUARTER = "yQQQQ";
 
 /**
  * <strong>[icu]</strong> FieldPosition selector for 'Y' field alignment,
- * corresponding to the {@link Calendar#YEAR_WOY} field.
+ * corresponding to the {@link android.icu.util.Calendar#YEAR_WOY Calendar#YEAR_WOY} field.
  */
 
 public static final int YEAR_WOY_FIELD = 18; // 0x12
@@ -1711,7 +1711,7 @@ protected Field(java.lang.String name, int calendarField) { super(null); throw n
  * @param calendarField <code>Calendar</code> field constant
  * @return <code>Field</code> associated with the <code>calendarField</code>,
  * or null if no associated <code>Field</code> is available.
- * @throws IllegalArgumentException if <code>calendarField</code> is not
+ * @throws java.lang.IllegalArgumentException if <code>calendarField</code> is not
  * a valid <code>Calendar</code> field constant.
  */
 
@@ -1730,7 +1730,7 @@ public int getCalendarField() { throw new RuntimeException("Stub!"); }
 /**
  * Resolves instances being deserialized to the predefined constants.
  *
- * @throws InvalidObjectException if the constant could not be resolved.
+ * @throws java.io.InvalidObjectException if the constant could not be resolved.
  */
 
 protected java.lang.Object readResolve() throws java.io.InvalidObjectException { throw new RuntimeException("Stub!"); }

@@ -34,6 +34,8 @@ private ZoneInfoDb() { throw new RuntimeException("Stub!"); }
 
 /**
  * Obtains the singleton instance.
+ *
+ * @hide
  */
 
 public static com.android.i18n.timezone.ZoneInfoDb getInstance() { throw new RuntimeException("Stub!"); }
@@ -41,19 +43,25 @@ public static com.android.i18n.timezone.ZoneInfoDb getInstance() { throw new Run
 /**
  * Returns an array containing all time zone ids sorted in lexicographical order for
  * binary searching.
+ *
+ * @hide
  */
 
 public java.lang.String[] getAvailableIDs() { throw new RuntimeException("Stub!"); }
 
 /**
  * Returns ids of all time zones with the given raw UTC offset.
+ *
+ * @hide
  */
 
 public java.lang.String[] getAvailableIDs(int rawUtcOffset) { throw new RuntimeException("Stub!"); }
 
 /**
- * Creates {@link ZoneInfoData} object from the time zone {@code id}. Returns null if the id
+ * Creates {@link com.android.i18n.timezone.ZoneInfoData ZoneInfoData} object from the time zone {@code id}. Returns null if the id
  * is not found.
+ *
+ * @hide
  */
 
 public com.android.i18n.timezone.ZoneInfoData makeZoneInfoData(java.lang.String id) { throw new RuntimeException("Stub!"); }

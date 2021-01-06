@@ -22,7 +22,7 @@ import android.icu.text.DateFormatSymbols;
  * <code>YEAR</code>, <code>MONTH</code>, <code>DAY</code>, <code>HOUR</code>,
  * and so on. (A <code>Date</code> object represents a specific instant in
  * time with millisecond precision. See
- * {@link Date}
+ * {@link java.util.Date Date}
  * for information about the <code>Date</code> class.)
  *
  * <p>Subclasses of <code>Calendar</code> interpret a <code>Date</code>
@@ -160,7 +160,7 @@ import android.icu.text.DateFormatSymbols;
  *
  * <p>The date or time format strings are not part of the definition of a
  * calendar, as those must be modifiable or overridable by the user at
- * runtime. Use {@link DateFormat}
+ * runtime. Use {@link android.icu.text.DateFormat DateFormat}
  * to format dates.
  *
  * <p><strong>Field manipulation methods</strong></p>
@@ -329,7 +329,7 @@ import android.icu.text.DateFormatSymbols;
  *     should not have to reimplement common code. Certain behaviors are
  *     common across calendar systems: The definition and behavior of
  *     week-related fields and time fields, the arithmetic
- *     ({@link #add(int, int) add} and {@link #roll(int, int) roll}) behavior of many
+ *     ({@link #add(int,int) add} and {@link #roll(int,int) roll}) behavior of many
  *     fields, and the field validation system.</li>
  *
  *   <li>The subclassing API has been completely redesigned.</li>
@@ -516,9 +516,7 @@ import android.icu.text.DateFormatSymbols;
  *     {@link #add add} to handle fields that are discontinuous. For
  *     example, in the Hebrew calendar the month &quot;Adar I&quot; only
  *     occurs in leap years; in other years the calendar jumps from
- *     Shevat (month #4) to Adar (month #6). The {@link
- *     HebrewCalendar#add HebrewCalendar.add} and {@link
- *     HebrewCalendar#roll HebrewCalendar.roll} methods take this into
+ *     Shevat (month #4) to Adar (month #6). The {@link android.icu.util.HebrewCalendar#add HebrewCalendar#add} and {@link android.icu.util.HebrewCalendar#roll HebrewCalendar#roll} methods take this into
  *     account, so that adding 1 month to Shevat gives the proper result
  *     (Adar) in a non-leap year. The protected utility method {@link
  *     #pinField pinField} is often useful when implementing these two
@@ -617,10 +615,10 @@ import android.icu.text.DateFormatSymbols;
  *
  * </ul>
  *
- * @see          Date
- * @see          GregorianCalendar
- * @see          TimeZone
- * @see          DateFormat
+ * @see          java.util.Date
+ * @see          android.icu.util.GregorianCalendar
+ * @see          android.icu.util.TimeZone
+ * @see          android.icu.text.DateFormat
  * @author Mark Davis, Deborah Goldsmith, Chen-Lieh Huang, Alan Liu, Laura Werner
  */
 
@@ -630,8 +628,8 @@ public abstract class Calendar implements java.io.Serializable, java.lang.Clonea
 /**
  * Constructs a Calendar with the default time zone
  * and the default <code>FORMAT</code> locale.
- * @see     TimeZone#getDefault
- * @see Category#FORMAT
+ * @see     android.icu.util.TimeZone#getDefault
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 protected Calendar() { throw new RuntimeException("Stub!"); }
@@ -1039,7 +1037,7 @@ protected void prepareGetActual(int field, boolean isMinimum) { throw new Runtim
  *              rolled up or rolled down. Use <code>true</code> if rolling up,
  *              <code>false</code> otherwise.
  *
- * @exception   IllegalArgumentException if the field is invalid or refers
+ * @exception   java.lang.IllegalArgumentException if the field is invalid or refers
  *              to a field that cannot be handled by this method.
  * @see #roll(int, int)
  * @see #add
@@ -1102,14 +1100,14 @@ public final void roll(int field, boolean up) { throw new RuntimeException("Stub
  * For example, in the Hebrew calendar the month "Adar I"
  * only occurs in leap years; in other years the calendar jumps from
  * Shevat (month #4) to Adar (month #6).  The
- * {@link HebrewCalendar#roll HebrewCalendar.roll} method takes this into account,
+ * {@link android.icu.util.HebrewCalendar#roll HebrewCalendar#roll} method takes this into account,
  * so that rolling the month of Shevat by one gives the proper result (Adar) in a
  * non-leap year.
  * <p>
  * @param field     the calendar field to roll.
  * @param amount    the amount by which the field should be rolled.
  *
- * @exception   IllegalArgumentException if the field is invalid or refers
+ * @exception   java.lang.IllegalArgumentException if the field is invalid or refers
  *              to a field that cannot be handled by this method.
  * @see #roll(int, boolean)
  * @see #add
@@ -1158,14 +1156,14 @@ public void roll(int field, int amount) { throw new RuntimeException("Stub!"); }
  * For example, in the Hebrew calendar the month "Adar I"
  * only occurs in leap years; in other years the calendar jumps from
  * Shevat (month #4) to Adar (month #6).  The
- * {@link HebrewCalendar#add HebrewCalendar.add} method takes this into account,
+ * {@link android.icu.util.HebrewCalendar#add HebrewCalendar#add} method takes this into account,
  * so that adding one month
  * to a date in Shevat gives the proper result (Adar) in a non-leap year.
  * <p>
  * @param field     the time field.
  * @param amount    the amount to add to the field.
  *
- * @exception   IllegalArgumentException if the field is invalid or refers
+ * @exception   java.lang.IllegalArgumentException if the field is invalid or refers
  *              to a field that cannot be handled by this method.
  * @see #roll(int, int)
  */
@@ -1196,9 +1194,9 @@ public java.lang.String getDisplayName(android.icu.util.ULocale loc) { throw new
  * the time represented by that, and a value greater than
  * <code>0</code> if the time represented by this
  * is after the time represented by that.
- * @throws NullPointerException if that
+ * @throws java.lang.NullPointerException if that
  * <code>Calendar</code> is null.
- * @throws IllegalArgumentException if the time of that
+ * @throws java.lang.IllegalArgumentException if the time of that
  * <code>Calendar</code> can't be obtained because of invalid
  * calendar values.
  */
@@ -1269,7 +1267,7 @@ protected android.icu.text.DateFormat handleGetDateFormat(java.lang.String patte
 
 /**
  * Get the date time format string for the specified values.
- * This is a copy of {@link #formatHelper(Calendar, ULocale, int, int)} with the following
+ * This is a copy of {@link #formatHelper(android.icu.util.Calendar,android.icu.util.ULocale,int,int)} with the following
  * changes:
  * <ul>
  *     <li>Made public, but hidden</li>
@@ -1463,7 +1461,7 @@ public android.icu.util.TimeZone getTimeZone() { throw new RuntimeException("Stu
  * With strict interpretation, such dates will cause an exception to be
  * thrown.
  *
- * @see DateFormat#setLenient
+ * @see android.icu.text.DateFormat#setLenient
  */
 
 public void setLenient(boolean lenient) { throw new RuntimeException("Stub!"); }
@@ -1486,7 +1484,7 @@ public boolean isLenient() { throw new RuntimeException("Stub!"); }
  *
  * @param option the behavior for handling repeating wall time, either
  * <code>WALLTIME_FIRST</code> or <code>WALLTIME_LAST</code>.
- * @throws IllegalArgumentException when <code>option</code> is neither
+ * @throws java.lang.IllegalArgumentException when <code>option</code> is neither
  * <code>WALLTIME_FIRST</code> nor <code>WALLTIME_LAST</code>.
  *
  * @see #getRepeatedWallTimeOption()
@@ -1527,7 +1525,7 @@ public int getRepeatedWallTimeOption() { throw new RuntimeException("Stub!"); }
  * @param option the behavior for handling skipped wall time at positive time zone
  * offset transitions, one of <code>WALLTIME_FIRST</code>, <code>WALLTIME_LAST</code> and
  * <code>WALLTIME_NEXT_VALID</code>.
- * @throws IllegalArgumentException when <code>option</code> is not any of
+ * @throws java.lang.IllegalArgumentException when <code>option</code> is not any of
  * <code>WALLTIME_FIRST</code>, <code>WALLTIME_LAST</code> and <code>WALLTIME_NEXT_VALID</code>.
  *
  * @see #getSkippedWallTimeOption()
@@ -2299,8 +2297,8 @@ protected static final int EPOCH_JULIAN_DAY = 2440588; // 0x253d8c
  * Field number for <code>get</code> and <code>set</code> indicating the
  * era, e.g., AD or BC in the Julian calendar. This is a calendar-specific
  * value; see subclass documentation.
- * @see GregorianCalendar#AD
- * @see GregorianCalendar#BC
+ * @see android.icu.util.GregorianCalendar#AD
+ * @see android.icu.util.GregorianCalendar#BC
  */
 
 public static final int ERA = 0; // 0x0
@@ -2686,7 +2684,7 @@ public static final int TUESDAY = 3; // 0x3
 
 /**
  * Value of the <code>MONTH</code> field indicating the
- * thirteenth month of the year. Although {@link GregorianCalendar}
+ * thirteenth month of the year. Although {@link android.icu.util.GregorianCalendar GregorianCalendar}
  * does not use this value, lunar calendars do.
  */
 

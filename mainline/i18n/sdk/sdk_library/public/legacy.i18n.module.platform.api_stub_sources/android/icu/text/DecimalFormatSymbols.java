@@ -25,7 +25,7 @@ import android.icu.util.Currency;
  * <code>DecimalFormat</code> and modify it.
  *
  * @see          java.util.Locale
- * @see          DecimalFormat
+ * @see          android.icu.text.DecimalFormat
  * @author       Mark Davis
  * @author       Alan Liu
  */
@@ -35,7 +35,7 @@ public class DecimalFormatSymbols implements java.lang.Cloneable, java.io.Serial
 
 /**
  * Creates a DecimalFormatSymbols object for the default <code>FORMAT</code> locale.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public DecimalFormatSymbols() { throw new RuntimeException("Stub!"); }
@@ -99,7 +99,7 @@ public static android.icu.text.DecimalFormatSymbols getInstance(android.icu.util
 
 /**
  * <strong>[icu]</strong> Returns a DecimalFormatSymbols instance for the given locale with digits and symbols
- * corresponding to the given {@link NumberingSystem}.
+ * corresponding to the given {@link android.icu.text.NumberingSystem NumberingSystem}.
  *
  * <p>This method behaves equivalently to {@link #getInstance} called with a locale having a
  * "numbers=xxxx" keyword specifying the numbering system by name.
@@ -116,7 +116,7 @@ public static android.icu.text.DecimalFormatSymbols forNumberingSystem(java.util
 
 /**
  * <strong>[icu]</strong> Returns a DecimalFormatSymbols instance for the given locale with digits and symbols
- * corresponding to the given {@link NumberingSystem}.
+ * corresponding to the given {@link android.icu.text.NumberingSystem NumberingSystem}.
  *
  * <p>This method behaves equivalently to {@link #getInstance} called with a locale having a
  * "numbers=xxxx" keyword specifying the numbering system by name.
@@ -191,8 +191,8 @@ public java.lang.String[] getDigitStrings() { throw new RuntimeException("Stub!"
  * default zero digit ('0').
  *
  * @param digitStrings The array of digit strings. The length of the array must be exactly 10.
- * @throws NullPointerException if the <code>digitStrings</code> is null.
- * @throws IllegalArgumentException if the length of the array is not 10.
+ * @throws java.lang.NullPointerException if the <code>digitStrings</code> is null.
+ * @throws java.lang.IllegalArgumentException if the length of the array is not 10.
  * @see #getDigitStrings()
  */
 
@@ -242,7 +242,7 @@ public java.lang.String getGroupingSeparatorString() { throw new RuntimeExceptio
  * return the default grouping separator character (',').
  *
  * @param groupingSeparatorString the grouping separator string
- * @throws NullPointerException if <code>groupingSeparatorString</code> is null.
+ * @throws java.lang.NullPointerException if <code>groupingSeparatorString</code> is null.
  * @see #getGroupingSeparatorString()
  */
 
@@ -278,7 +278,7 @@ public java.lang.String getDecimalSeparatorString() { throw new RuntimeException
  * return the default decimal separator character ('.').
  *
  * @param decimalSeparatorString the decimal sign string
- * @throws NullPointerException if <code>decimalSeparatorString</code> is null.
+ * @throws java.lang.NullPointerException if <code>decimalSeparatorString</code> is null.
  * @see #getDecimalSeparatorString()
  */
 
@@ -314,7 +314,7 @@ public java.lang.String getPerMillString() { throw new RuntimeException("Stub!")
  * return the default permille character ('&#x2030;').
  *
  * @param perMillString the permille string
- * @throws NullPointerException if <code>perMillString</code> is null.
+ * @throws java.lang.NullPointerException if <code>perMillString</code> is null.
  * @see #getPerMillString()
  */
 
@@ -350,7 +350,7 @@ public java.lang.String getPercentString() { throw new RuntimeException("Stub!")
  * return the default percent sign character ('%').
  *
  * @param percentString the percent string
- * @throws NullPointerException if <code>percentString</code> is null.
+ * @throws java.lang.NullPointerException if <code>percentString</code> is null.
  * @see #getPercentString()
  */
 
@@ -452,7 +452,7 @@ public java.lang.String getMinusSignString() { throw new RuntimeException("Stub!
  * return the default minus sign character ('-').
  *
  * @param minusSignString the minus sign string
- * @throws NullPointerException if <code>minusSignString</code> is null.
+ * @throws java.lang.NullPointerException if <code>minusSignString</code> is null.
  * @see #getGroupingSeparatorString()
  */
 
@@ -496,7 +496,7 @@ public java.lang.String getPlusSignString() { throw new RuntimeException("Stub!"
  *
  * @param plusSignString the plus sign string, used in localized patterns and formatted
  * strings
- * @throws NullPointerException if <code>plusSignString</code> is null.
+ * @throws java.lang.NullPointerException if <code>plusSignString</code> is null.
  * @see #getPlusSignString()
  */
 
@@ -531,7 +531,7 @@ public java.lang.String getInternationalCurrencySymbol() { throw new RuntimeExce
 public void setInternationalCurrencySymbol(java.lang.String currency) { throw new RuntimeException("Stub!"); }
 
 /**
- * Returns the currency symbol, for {@link DecimalFormatSymbols#getCurrency()} API
+ * Returns the currency symbol, for {@link android.icu.text.DecimalFormatSymbols#getCurrency() DecimalFormatSymbols#getCurrency()} API
  * compatibility only. ICU clients should use the Currency API directly.
  * @return the currency used, or null
  */
@@ -549,7 +549,7 @@ public android.icu.util.Currency getCurrency() { throw new RuntimeException("Stu
  * symbol attribute to the currency's ISO 4217 currency code.
  *
  * @param currency the new currency to be used
- * @throws NullPointerException if <code>currency</code> is null
+ * @throws java.lang.NullPointerException if <code>currency</code> is null
  * @see #setCurrencySymbol
  * @see #setInternationalCurrencySymbol
  */
@@ -586,7 +586,7 @@ public java.lang.String getMonetaryDecimalSeparatorString() { throw new RuntimeE
  * return the default monetary decimal separator character ('.').
  *
  * @param sep the monetary decimal separator string
- * @throws NullPointerException if <code>sep</code> is null.
+ * @throws java.lang.NullPointerException if <code>sep</code> is null.
  * @see #getMonetaryDecimalSeparatorString()
  */
 
@@ -622,7 +622,7 @@ public java.lang.String getMonetaryGroupingSeparatorString() { throw new Runtime
  * return the default monetary grouping separator character (',').
  *
  * @param sep the monetary grouping separator string
- * @throws NullPointerException if <code>sep</code> is null.
+ * @throws java.lang.NullPointerException if <code>sep</code> is null.
  * @see #getMonetaryGroupingSeparatorString()
  */
 
@@ -667,9 +667,9 @@ public void setExponentSeparator(java.lang.String exp) { throw new RuntimeExcept
  * escape, and '_' is the pad character.
  * @return the character
  * @see #setPadEscape
- * @see DecimalFormat#getFormatWidth
- * @see DecimalFormat#getPadPosition
- * @see DecimalFormat#getPadCharacter
+ * @see android.icu.text.DecimalFormat#getFormatWidth
+ * @see android.icu.text.DecimalFormat#getPadPosition
+ * @see android.icu.text.DecimalFormat#getPadCharacter
  */
 
 public char getPadEscape() { throw new RuntimeException("Stub!"); }
@@ -680,9 +680,9 @@ public char getPadEscape() { throw new RuntimeException("Stub!"); }
  * <em>preceding</em> the pad character.  In the pattern "*_#,##0", '*' is the pad
  * escape, and '_' is the pad character.
  * @see #getPadEscape
- * @see DecimalFormat#setFormatWidth
- * @see DecimalFormat#setPadPosition
- * @see DecimalFormat#setPadCharacter
+ * @see android.icu.text.DecimalFormat#setFormatWidth
+ * @see android.icu.text.DecimalFormat#setPadPosition
+ * @see android.icu.text.DecimalFormat#setPadCharacter
  */
 
 public void setPadEscape(char c) { throw new RuntimeException("Stub!"); }

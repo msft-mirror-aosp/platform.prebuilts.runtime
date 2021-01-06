@@ -194,7 +194,7 @@ public boolean equals(java.lang.Object obj) { throw new RuntimeException("Stub!"
  * @param other the ULocale to be compared.
  * @return a negative integer, zero, or a positive integer as this ULocale is less than, equal to, or greater
  * than the specified ULocale.
- * @throws NullPointerException if <code>other</code> is null.
+ * @throws java.lang.NullPointerException if <code>other</code> is null.
  */
 
 public int compareTo(android.icu.util.ULocale other) { throw new RuntimeException("Stub!"); }
@@ -321,7 +321,7 @@ public java.lang.String getBaseName() { throw new RuntimeException("Stub!"); }
 
 /**
  * <strong>[icu]</strong> Returns the (normalized) base name for the specified locale,
- * like {@link #getName(String)}, but without keywords.
+ * like {@link #getName(java.lang.String)}, but without keywords.
  *
  * @param localeID the locale ID as a string
  * @return the base name as a String.
@@ -420,7 +420,7 @@ public android.icu.util.ULocale setKeywordValue(java.lang.String keyword, java.l
  * locale id.  Otherwise, this adds/replaces the value for this keyword in the locale id.
  * The keyword and value must not be empty.
  *
- * <p>Related: {@link #getBaseName(String)} returns the locale ID string with all keywords removed.
+ * <p>Related: {@link #getBaseName(java.lang.String)} returns the locale ID string with all keywords removed.
  *
  * @param localeID the locale id to modify
  * @param keyword the keyword to add/remove, or null to remove all keywords.
@@ -436,7 +436,7 @@ public static java.lang.String setKeywordValue(java.lang.String localeID, java.l
  * a lowercase ISO 639-2/T language code.
  * The ISO 639-2 language codes can be found on-line at
  *   <a href="ftp://dkuug.dk/i18n/iso-639-2.txt"><code>ftp://dkuug.dk/i18n/iso-639-2.txt</code></a>
- * @exception MissingResourceException Throws MissingResourceException if the
+ * @exception java.util.MissingResourceException Throws MissingResourceException if the
  * three-letter language abbreviation is not available for this locale.
  */
 
@@ -448,7 +448,7 @@ public java.lang.String getISO3Language() { throw new RuntimeException("Stub!");
  * a lowercase ISO 639-2/T language code.
  * The ISO 639-2 language codes can be found on-line at
  *   <a href="ftp://dkuug.dk/i18n/iso-639-2.txt"><code>ftp://dkuug.dk/i18n/iso-639-2.txt</code></a>
- * @exception MissingResourceException Throws MissingResourceException if the
+ * @exception java.util.MissingResourceException Throws MissingResourceException if the
  * three-letter language abbreviation is not available for this locale.
  */
 
@@ -458,7 +458,7 @@ public static java.lang.String getISO3Language(java.lang.String localeID) { thro
  * Returns a three-letter abbreviation for this locale's country/region.  If the locale
  * doesn't specify a country, returns the empty string.  Otherwise, returns
  * an uppercase ISO 3166 3-letter country code.
- * @exception MissingResourceException Throws MissingResourceException if the
+ * @exception java.util.MissingResourceException Throws MissingResourceException if the
  * three-letter country abbreviation is not available for this locale.
  */
 
@@ -468,7 +468,7 @@ public java.lang.String getISO3Country() { throw new RuntimeException("Stub!"); 
  * <strong>[icu]</strong> Returns a three-letter abbreviation for this locale's country/region.  If the locale
  * doesn't specify a country, returns the empty string.  Otherwise, returns
  * an uppercase ISO 3166 3-letter country code.
- * @exception MissingResourceException Throws MissingResourceException if the
+ * @exception java.util.MissingResourceException Throws MissingResourceException if the
  * three-letter country abbreviation is not available for this locale.
  */
 
@@ -477,7 +477,7 @@ public static java.lang.String getISO3Country(java.lang.String localeID) { throw
 /**
  * <strong>[icu]</strong> Returns whether this locale's script is written right-to-left.
  * If there is no script subtag, then the likely script is used,
- * see {@link #addLikelySubtags(ULocale)}.
+ * see {@link #addLikelySubtags(android.icu.util.ULocale)}.
  * If no likely script is known, then false is returned.
  *
  * <p>A script is right-to-left according to the CLDR script metadata
@@ -493,7 +493,7 @@ public boolean isRightToLeft() { throw new RuntimeException("Stub!"); }
 /**
  * Returns this locale's language localized for display in the default <code>DISPLAY</code> locale.
  * @return the localized language name.
- * @see Category#DISPLAY
+ * @see android.icu.util.ULocale.Category#DISPLAY
  */
 
 public java.lang.String getDisplayLanguage() { throw new RuntimeException("Stub!"); }
@@ -530,7 +530,7 @@ public static java.lang.String getDisplayLanguage(java.lang.String localeID, and
  * <strong>[icu]</strong> Returns this locale's language localized for display in the default <code>DISPLAY</code> locale.
  * If a dialect name is present in the data, then it is returned.
  * @return the localized language name.
- * @see Category#DISPLAY
+ * @see android.icu.util.ULocale.Category#DISPLAY
  */
 
 public java.lang.String getDisplayLanguageWithDialect() { throw new RuntimeException("Stub!"); }
@@ -569,7 +569,7 @@ public static java.lang.String getDisplayLanguageWithDialect(java.lang.String lo
 /**
  * Returns this locale's script localized for display in the default <code>DISPLAY</code> locale.
  * @return the localized script name.
- * @see Category#DISPLAY
+ * @see android.icu.util.ULocale.Category#DISPLAY
  */
 
 public java.lang.String getDisplayScript() { throw new RuntimeException("Stub!"); }
@@ -604,9 +604,9 @@ public static java.lang.String getDisplayScript(java.lang.String localeID, andro
 /**
  * Returns this locale's country localized for display in the default <code>DISPLAY</code> locale.
  * <b>Warning: </b>this is for the region part of a valid locale ID; it cannot just be the region code (like "FR").
- * To get the display name for a region alone, or for other options, use {@link LocaleDisplayNames} instead.
+ * To get the display name for a region alone, or for other options, use {@link android.icu.text.LocaleDisplayNames LocaleDisplayNames} instead.
  * @return the localized country name.
- * @see Category#DISPLAY
+ * @see android.icu.util.ULocale.Category#DISPLAY
  */
 
 public java.lang.String getDisplayCountry() { throw new RuntimeException("Stub!"); }
@@ -614,7 +614,7 @@ public java.lang.String getDisplayCountry() { throw new RuntimeException("Stub!"
 /**
  * Returns this locale's country localized for display in the provided locale.
  * <b>Warning: </b>this is for the region part of a valid locale ID; it cannot just be the region code (like "FR").
- * To get the display name for a region alone, or for other options, use {@link LocaleDisplayNames} instead.
+ * To get the display name for a region alone, or for other options, use {@link android.icu.text.LocaleDisplayNames LocaleDisplayNames} instead.
  * @param displayLocale the locale in which to display the name.
  * @return the localized country name.
  */
@@ -624,7 +624,7 @@ public java.lang.String getDisplayCountry(android.icu.util.ULocale displayLocale
 /**
  * <strong>[icu]</strong> Returns a locale's country localized for display in the provided locale.
  * <b>Warning: </b>this is for the region part of a valid locale ID; it cannot just be the region code (like "FR").
- * To get the display name for a region alone, or for other options, use {@link LocaleDisplayNames} instead.
+ * To get the display name for a region alone, or for other options, use {@link android.icu.text.LocaleDisplayNames LocaleDisplayNames} instead.
  * This is a cover for the ICU4C API.
  * @param localeID the id of the locale whose country will be displayed
  * @param displayLocaleID the id of the locale in which to display the name.
@@ -636,7 +636,7 @@ public static java.lang.String getDisplayCountry(java.lang.String localeID, java
 /**
  * <strong>[icu]</strong> Returns a locale's country localized for display in the provided locale.
  * <b>Warning: </b>this is for the region part of a valid locale ID; it cannot just be the region code (like "FR").
- * To get the display name for a region alone, or for other options, use {@link LocaleDisplayNames} instead.
+ * To get the display name for a region alone, or for other options, use {@link android.icu.text.LocaleDisplayNames LocaleDisplayNames} instead.
  * This is a cover for the ICU4C API.
  * @param localeID the id of the locale whose country will be displayed.
  * @param displayLocale the locale in which to display the name.
@@ -648,7 +648,7 @@ public static java.lang.String getDisplayCountry(java.lang.String localeID, andr
 /**
  * Returns this locale's variant localized for display in the default <code>DISPLAY</code> locale.
  * @return the localized variant name.
- * @see Category#DISPLAY
+ * @see android.icu.util.ULocale.Category#DISPLAY
  */
 
 public java.lang.String getDisplayVariant() { throw new RuntimeException("Stub!"); }
@@ -686,7 +686,7 @@ public static java.lang.String getDisplayVariant(java.lang.String localeID, andr
  * @param keyword the keyword to be displayed.
  * @return the localized keyword name.
  * @see #getKeywords()
- * @see Category#DISPLAY
+ * @see android.icu.util.ULocale.Category#DISPLAY
  */
 
 public static java.lang.String getDisplayKeyword(java.lang.String keyword) { throw new RuntimeException("Stub!"); }
@@ -715,7 +715,7 @@ public static java.lang.String getDisplayKeyword(java.lang.String keyword, andro
  * <strong>[icu]</strong> Returns a keyword value localized for display in the default <code>DISPLAY</code> locale.
  * @param keyword the keyword whose value is to be displayed.
  * @return the localized value name.
- * @see Category#DISPLAY
+ * @see android.icu.util.ULocale.Category#DISPLAY
  */
 
 public java.lang.String getDisplayKeywordValue(java.lang.String keyword) { throw new RuntimeException("Stub!"); }
@@ -754,7 +754,7 @@ public static java.lang.String getDisplayKeywordValue(java.lang.String localeID,
 /**
  * Returns this locale name localized for display in the default <code>DISPLAY</code> locale.
  * @return the localized locale name.
- * @see Category#DISPLAY
+ * @see android.icu.util.ULocale.Category#DISPLAY
  */
 
 public java.lang.String getDisplayName() { throw new RuntimeException("Stub!"); }
@@ -791,7 +791,7 @@ public static java.lang.String getDisplayName(java.lang.String localeID, android
  * <strong>[icu]</strong> Returns this locale name localized for display in the default <code>DISPLAY</code> locale.
  * If a dialect name is present in the locale data, then it is returned.
  * @return the localized locale name.
- * @see Category#DISPLAY
+ * @see android.icu.util.ULocale.Category#DISPLAY
  */
 
 public java.lang.String getDisplayNameWithDialect() { throw new RuntimeException("Stub!"); }
@@ -985,7 +985,7 @@ public static android.icu.util.ULocale minimizeSubtags(android.icu.util.ULocale 
  * @param key the extension key
  * @return The extension, or null if this locale defines no
  * extension for the specified key.
- * @throws IllegalArgumentException if key is not well-formed
+ * @throws java.lang.IllegalArgumentException if key is not well-formed
  * @see #PRIVATE_USE_EXTENSION
  * @see #UNICODE_LOCALE_EXTENSION
  */
@@ -1023,8 +1023,8 @@ public java.util.Set<java.lang.String> getUnicodeLocaleAttributes() { throw new 
  * @param key the Unicode locale key
  * @return The Unicode locale type associated with the key, or null if the
  * locale does not define the key.
- * @throws IllegalArgumentException if the key is not well-formed
- * @throws NullPointerException if <code>key</code> is null
+ * @throws java.lang.IllegalArgumentException if the key is not well-formed
+ * @throws java.lang.NullPointerException if <code>key</code> is null
  */
 
 public java.lang.String getUnicodeLocaleType(java.lang.String key) { throw new RuntimeException("Stub!"); }
@@ -1100,7 +1100,7 @@ public java.lang.String toLanguageTag() { throw new RuntimeException("Stub!"); }
  *
  * <p>If the specified language tag contains any ill-formed subtags,
  * the first such subtag and all following subtags are ignored.  Compare
- * to {@link ULocale.Builder#setLanguageTag} which throws an exception
+ * to {@link android.icu.util.ULocale.Builder#setLanguageTag ULocale.Builder#setLanguageTag} which throws an exception
  * in this case.
  *
  * <p>The following <b>conversions</b> are performed:
@@ -1197,9 +1197,9 @@ public java.lang.String toLanguageTag() { throw new RuntimeException("Stub!"); }
  *
  * @param languageTag the language tag
  * @return The locale that best represents the language tag.
- * @throws NullPointerException if <code>languageTag</code> is <code>null</code>
+ * @throws java.lang.NullPointerException if <code>languageTag</code> is <code>null</code>
  * @see #toLanguageTag()
- * @see ULocale.Builder#setLanguageTag(String)
+ * @see android.icu.util.ULocale.Builder#setLanguageTag(String)
  */
 
 public static android.icu.util.ULocale forLanguageTag(java.lang.String languageTag) { throw new RuntimeException("Stub!"); }
@@ -1413,7 +1413,7 @@ static { PRC = null; }
  * The key for the private use locale extension ('x').
  *
  * @see #getExtension(char)
- * @see Builder#setExtension(char, String)
+ * @see android.icu.util.ULocale.Builder#setExtension(char, String)
  */
 
 public static final char PRIVATE_USE_EXTENSION = 120; // 0x0078 'x'
@@ -1457,7 +1457,7 @@ static { UK = null; }
  * The key for Unicode locale extension ('u').
  *
  * @see #getExtension(char)
- * @see Builder#setExtension(char, String)
+ * @see android.icu.util.ULocale.Builder#setExtension(char, String)
  */
 
 public static final char UNICODE_LOCALE_EXTENSION = 117; // 0x0075 'u'
@@ -1498,7 +1498,7 @@ static { US = null; }
  * <p>Builders can be reused; <code>clear()</code> resets all
  * fields to their default values.
  *
- * @see ULocale#toLanguageTag()
+ * @see android.icu.util.ULocale#toLanguageTag()
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -1516,16 +1516,16 @@ public Builder() { throw new RuntimeException("Stub!"); }
  * Resets the <code>Builder</code> to match the provided
  * <code>locale</code>.  Existing state is discarded.
  *
- * <p>All fields of the locale must be well-formed, see {@link Locale}.
+ * <p>All fields of the locale must be well-formed, see {@link java.util.Locale Locale}.
  *
  * <p>Locales with any ill-formed fields cause
  * <code>IllformedLocaleException</code> to be thrown.
  *
  * @param locale the locale
  * @return This builder.
- * @throws IllformedLocaleException if <code>locale</code> has
+ * @throws android.icu.util.IllformedLocaleException if <code>locale</code> has
  * any ill-formed fields.
- * @throws NullPointerException if <code>locale</code> is null.
+ * @throws java.lang.NullPointerException if <code>locale</code> is null.
  */
 
 public android.icu.util.ULocale.Builder setLocale(android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
@@ -1534,18 +1534,17 @@ public android.icu.util.ULocale.Builder setLocale(android.icu.util.ULocale local
  * Resets the Builder to match the provided IETF BCP 47
  * language tag.  Discards the existing state.  Null and the
  * empty string cause the builder to be reset, like {@link
- * #clear}.  Grandfathered tags (see {@link
- * ULocale#forLanguageTag}) are converted to their canonical
+ * #clear}.  Grandfathered tags (see {@link android.icu.util.ULocale#forLanguageTag ULocale#forLanguageTag}) are converted to their canonical
  * form before being processed.  Otherwise, the language tag
- * must be well-formed (see {@link ULocale}) or an exception is
+ * must be well-formed (see {@link android.icu.util.ULocale ULocale}) or an exception is
  * thrown (unlike <code>ULocale.forLanguageTag</code>, which
  * just discards ill-formed and following portions of the
  * tag).
  *
  * @param languageTag the language tag
  * @return This builder.
- * @throws IllformedLocaleException if <code>languageTag</code> is ill-formed
- * @see ULocale#forLanguageTag(String)
+ * @throws android.icu.util.IllformedLocaleException if <code>languageTag</code> is ill-formed
+ * @see android.icu.util.ULocale#forLanguageTag(String)
  */
 
 public android.icu.util.ULocale.Builder setLanguageTag(java.lang.String languageTag) { throw new RuntimeException("Stub!"); }
@@ -1561,7 +1560,7 @@ public android.icu.util.ULocale.Builder setLanguageTag(java.lang.String language
  *
  * @param language the language
  * @return This builder.
- * @throws IllformedLocaleException if <code>language</code> is ill-formed
+ * @throws android.icu.util.IllformedLocaleException if <code>language</code> is ill-formed
  */
 
 public android.icu.util.ULocale.Builder setLanguage(java.lang.String language) { throw new RuntimeException("Stub!"); }
@@ -1575,7 +1574,7 @@ public android.icu.util.ULocale.Builder setLanguage(java.lang.String language) {
  *
  * @param script the script
  * @return This builder.
- * @throws IllformedLocaleException if <code>script</code> is ill-formed
+ * @throws android.icu.util.IllformedLocaleException if <code>script</code> is ill-formed
  */
 
 public android.icu.util.ULocale.Builder setScript(java.lang.String script) { throw new RuntimeException("Stub!"); }
@@ -1593,7 +1592,7 @@ public android.icu.util.ULocale.Builder setScript(java.lang.String script) { thr
  *
  * @param region the region
  * @return This builder.
- * @throws IllformedLocaleException if <code>region</code> is ill-formed
+ * @throws android.icu.util.IllformedLocaleException if <code>region</code> is ill-formed
  */
 
 public android.icu.util.ULocale.Builder setRegion(java.lang.String region) { throw new RuntimeException("Stub!"); }
@@ -1612,7 +1611,7 @@ public android.icu.util.ULocale.Builder setRegion(java.lang.String region) { thr
  *
  * @param variant the variant
  * @return This builder.
- * @throws IllformedLocaleException if <code>variant</code> is ill-formed
+ * @throws android.icu.util.IllformedLocaleException if <code>variant</code> is ill-formed
  */
 
 public android.icu.util.ULocale.Builder setVariant(java.lang.String variant) { throw new RuntimeException("Stub!"); }
@@ -1622,20 +1621,18 @@ public android.icu.util.ULocale.Builder setVariant(java.lang.String variant) { t
  * empty string, the extension is removed.  Otherwise, the extension
  * must be well-formed or an exception is thrown.
  *
- * <p><b>Note:</b> The key {@link ULocale#UNICODE_LOCALE_EXTENSION
- * UNICODE_LOCALE_EXTENSION} ('u') is used for the Unicode locale extension.
+ * <p><b>Note:</b> The key {@link android.icu.util.ULocale#UNICODE_LOCALE_EXTENSION ULocale#UNICODE_LOCALE_EXTENSION} ('u') is used for the Unicode locale extension.
  * Setting a value for this key replaces any existing Unicode locale key/type
  * pairs with those defined in the extension.
  *
- * <p><b>Note:</b> The key {@link ULocale#PRIVATE_USE_EXTENSION
- * PRIVATE_USE_EXTENSION} ('x') is used for the private use code. To be
+ * <p><b>Note:</b> The key {@link android.icu.util.ULocale#PRIVATE_USE_EXTENSION ULocale#PRIVATE_USE_EXTENSION} ('x') is used for the private use code. To be
  * well-formed, the value for this key needs only to have subtags of one to
  * eight alphanumeric characters, not two to eight as in the general case.
  *
  * @param key the extension key
  * @param value the extension value
  * @return This builder.
- * @throws IllformedLocaleException if <code>key</code> is illegal
+ * @throws android.icu.util.IllformedLocaleException if <code>key</code> is illegal
  * or <code>value</code> is ill-formed
  * @see #setUnicodeLocaleKeyword(String, String)
  */
@@ -1657,9 +1654,9 @@ public android.icu.util.ULocale.Builder setExtension(char key, java.lang.String 
  * @param key the Unicode locale key
  * @param type the Unicode locale type
  * @return This builder.
- * @throws IllformedLocaleException if <code>key</code> or <code>type</code>
+ * @throws android.icu.util.IllformedLocaleException if <code>key</code> or <code>type</code>
  * is ill-formed
- * @throws NullPointerException if <code>key</code> is null
+ * @throws java.lang.NullPointerException if <code>key</code> is null
  * @see #setExtension(char, String)
  */
 
@@ -1672,8 +1669,8 @@ public android.icu.util.ULocale.Builder setUnicodeLocaleKeyword(java.lang.String
  *
  * @param attribute the attribute
  * @return This builder.
- * @throws NullPointerException if <code>attribute</code> is null
- * @throws IllformedLocaleException if <code>attribute</code> is ill-formed
+ * @throws java.lang.NullPointerException if <code>attribute</code> is null
+ * @throws android.icu.util.IllformedLocaleException if <code>attribute</code> is ill-formed
  * @see #setExtension(char, String)
  */
 
@@ -1688,8 +1685,8 @@ public android.icu.util.ULocale.Builder addUnicodeLocaleAttribute(java.lang.Stri
  *
  * @param attribute the attribute
  * @return This builder.
- * @throws NullPointerException if <code>attribute</code> is null
- * @throws IllformedLocaleException if <code>attribute</code> is ill-formed
+ * @throws java.lang.NullPointerException if <code>attribute</code> is null
+ * @throws android.icu.util.IllformedLocaleException if <code>attribute</code> is ill-formed
  * @see #setExtension(char, String)
  */
 

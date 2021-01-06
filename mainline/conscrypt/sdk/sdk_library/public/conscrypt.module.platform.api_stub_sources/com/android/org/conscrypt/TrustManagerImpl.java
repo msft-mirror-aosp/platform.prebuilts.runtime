@@ -79,7 +79,7 @@ public java.util.List<java.security.cert.X509Certificate> checkServerTrusted(jav
 /**
  * Returns the full trusted certificate chain found from {@code certs}.
  *
- * Throws {@link CertificateException} when no trusted chain can be found from {@code certs}.
+ * Throws {@link java.security.cert.CertificateException CertificateException} when no trusted chain can be found from {@code certs}.
  */
 
 public java.util.List<java.security.cert.X509Certificate> getTrustedChainForServer(java.security.cert.X509Certificate[] certs, java.lang.String authType, java.net.Socket socket) throws java.security.cert.CertificateException { throw new RuntimeException("Stub!"); }
@@ -87,7 +87,7 @@ public java.util.List<java.security.cert.X509Certificate> getTrustedChainForServ
 /**
  * Returns the full trusted certificate chain found from {@code certs}.
  *
- * Throws {@link CertificateException} when no trusted chain can be found from {@code certs}.
+ * Throws {@link java.security.cert.CertificateException CertificateException} when no trusted chain can be found from {@code certs}.
  */
 
 public java.util.List<java.security.cert.X509Certificate> getTrustedChainForServer(java.security.cert.X509Certificate[] certs, java.lang.String authType, javax.net.ssl.SSLEngine engine) throws java.security.cert.CertificateException { throw new RuntimeException("Stub!"); }

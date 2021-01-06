@@ -47,7 +47,7 @@ public interface ValueIterator {
  * be updated.
  * @param element for storing the result index and value
  * @return true if we are not at the end of the iteration, false otherwise.
- * @see Element
+ * @see android.icu.util.ValueIterator.Element
  */
 
 public boolean next(android.icu.util.ValueIterator.Element element);
@@ -71,7 +71,7 @@ public void reset();
  *
  * @param start first integer in the range to iterate
  * @param limit one more than the last integer in the range
- * @exception IllegalArgumentException thrown when attempting to set an
+ * @exception java.lang.IllegalArgumentException thrown when attempting to set an
  *            illegal range. E.g limit &lt;= start
  */
 

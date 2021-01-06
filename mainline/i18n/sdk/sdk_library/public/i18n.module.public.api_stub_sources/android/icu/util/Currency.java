@@ -100,8 +100,8 @@ public static java.util.Set<android.icu.util.Currency> getAvailableCurrencies() 
  * Returns a currency object given an ISO 4217 3-letter code.
  * @param theISOCode the iso code
  * @return the currency for this iso code
- * @throws NullPointerException if <code>theISOCode</code> is null.
- * @throws IllegalArgumentException if <code>theISOCode</code> is not a
+ * @throws java.lang.NullPointerException if <code>theISOCode</code> is null.
+ * @throws java.lang.IllegalArgumentException if <code>theISOCode</code> is not a
  *         3-letter alpha code.
  */
 
@@ -149,7 +149,7 @@ public static android.icu.util.ULocale[] getAvailableULocales() { throw new Runt
  * The only supported key is "currency", other values return an empty array.
  * <p>
  * Currency information is based on the region of the locale.  If the locale does not
- * indicate a region, {@link ULocale#addLikelySubtags(ULocale)} is used to infer a region,
+ * indicate a region, {@link android.icu.util.ULocale#addLikelySubtags(android.icu.util.ULocale) ULocale#addLikelySubtags(ULocale)} is used to infer a region,
  * except for the 'und' locale.
  * <p>
  * If commonlyUsed is true, only the currencies known to be in use as of the current date
@@ -189,7 +189,7 @@ public int getNumericCode() { throw new RuntimeException("Stub!"); }
  * Convenience and compatibility override of getName that
  * requests the symbol name for the default <code>DISPLAY</code> locale.
  * @see #getName
- * @see Category#DISPLAY
+ * @see android.icu.util.ULocale.Category#DISPLAY
  */
 
 public java.lang.String getSymbol() { throw new RuntimeException("Stub!"); }
@@ -248,7 +248,7 @@ public java.lang.String getName(java.util.Locale locale, int nameStyle, boolean[
  * contains no entry for this currency, then the ISO 4217 code is
  * returned.
  * <p>
- * @throws  IllegalArgumentException  if the nameStyle is not SYMBOL_NAME
+ * @throws  java.lang.IllegalArgumentException  if the nameStyle is not SYMBOL_NAME
  *                                    or LONG_NAME.
  * @see #getName(ULocale, int, String, boolean[])
  */
@@ -290,7 +290,7 @@ public java.lang.String getName(java.util.Locale locale, int nameStyle, java.lan
  * @return display string for this currency.  If the resource data
  * contains no entry for this currency, then the ISO 4217 code is
  * returned.
- * @throws  IllegalArgumentException  if the nameStyle is not SYMBOL_NAME,
+ * @throws  java.lang.IllegalArgumentException  if the nameStyle is not SYMBOL_NAME,
  *                                    LONG_NAME, or PLURAL_LONG_NAME.
  */
 
@@ -403,7 +403,7 @@ public java.lang.String toString() { throw new RuntimeException("Stub!"); }
  *            The upper bound of the date range, inclusive. When <code>to</code> is null, check the availability of
  *            the currency any date after <code>from</code>
  * @return true if the given ISO 4217 3-letter code is supported on the specified date range.
- * @throws IllegalArgumentException when <code>to</code> is before <code>from</code>.
+ * @throws java.lang.IllegalArgumentException when <code>to</code> is before <code>from</code>.
  */
 
 public static boolean isAvailable(java.lang.String code, java.util.Date from, java.util.Date to) { throw new RuntimeException("Stub!"); }

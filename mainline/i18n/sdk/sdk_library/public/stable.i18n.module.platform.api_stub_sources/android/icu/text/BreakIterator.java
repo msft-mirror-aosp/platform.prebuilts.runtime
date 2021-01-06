@@ -199,7 +199,7 @@ import java.text.CharacterIterator;
  * with punctuation or other non-word characters.
  * </blockquote>
  *
- * @see CharacterIterator
+ * @see java.text.CharacterIterator
  *
  */
 
@@ -445,7 +445,7 @@ public static android.icu.text.BreakIterator getWordInstance() { throw new Runti
  * @param where A locale specifying the language of the text to be
  * analyzed.
  * @return An instance of BreakIterator that locates word boundaries.
- * @throws NullPointerException if <code>where</code> is null.
+ * @throws java.lang.NullPointerException if <code>where</code> is null.
  */
 
 public static android.icu.text.BreakIterator getWordInstance(java.util.Locale where) { throw new RuntimeException("Stub!"); }
@@ -455,7 +455,7 @@ public static android.icu.text.BreakIterator getWordInstance(java.util.Locale wh
  * @param where A locale specifying the language of the text to be
  * analyzed.
  * @return An instance of BreakIterator that locates word boundaries.
- * @throws NullPointerException if <code>where</code> is null.
+ * @throws java.lang.NullPointerException if <code>where</code> is null.
  */
 
 public static android.icu.text.BreakIterator getWordInstance(android.icu.util.ULocale where) { throw new RuntimeException("Stub!"); }
@@ -476,7 +476,7 @@ public static android.icu.text.BreakIterator getLineInstance() { throw new Runti
  * @param where A Locale specifying the language of the text being broken.
  * @return A new instance of BreakIterator that locates legal
  * line-wrapping positions.
- * @throws NullPointerException if <code>where</code> is null.
+ * @throws java.lang.NullPointerException if <code>where</code> is null.
  */
 
 public static android.icu.text.BreakIterator getLineInstance(java.util.Locale where) { throw new RuntimeException("Stub!"); }
@@ -487,7 +487,7 @@ public static android.icu.text.BreakIterator getLineInstance(java.util.Locale wh
  * @param where A Locale specifying the language of the text being broken.
  * @return A new instance of BreakIterator that locates legal
  * line-wrapping positions.
- * @throws NullPointerException if <code>where</code> is null.
+ * @throws java.lang.NullPointerException if <code>where</code> is null.
  */
 
 public static android.icu.text.BreakIterator getLineInstance(android.icu.util.ULocale where) { throw new RuntimeException("Stub!"); }
@@ -508,7 +508,7 @@ public static android.icu.text.BreakIterator getCharacterInstance() { throw new 
  * @param where A Locale specifying the language of the text being analyzed.
  * @return A new instance of BreakIterator that locates logical-character
  * boundaries.
- * @throws NullPointerException if <code>where</code> is null.
+ * @throws java.lang.NullPointerException if <code>where</code> is null.
  */
 
 public static android.icu.text.BreakIterator getCharacterInstance(java.util.Locale where) { throw new RuntimeException("Stub!"); }
@@ -519,7 +519,7 @@ public static android.icu.text.BreakIterator getCharacterInstance(java.util.Loca
  * @param where A Locale specifying the language of the text being analyzed.
  * @return A new instance of BreakIterator that locates logical-character
  * boundaries.
- * @throws NullPointerException if <code>where</code> is null.
+ * @throws java.lang.NullPointerException if <code>where</code> is null.
  */
 
 public static android.icu.text.BreakIterator getCharacterInstance(android.icu.util.ULocale where) { throw new RuntimeException("Stub!"); }
@@ -537,7 +537,7 @@ public static android.icu.text.BreakIterator getSentenceInstance() { throw new R
  * Returns a new instance of BreakIterator that locates sentence boundaries.
  * @param where A Locale specifying the language of the text being analyzed.
  * @return A new instance of BreakIterator that locates sentence boundaries.
- * @throws NullPointerException if <code>where</code> is null.
+ * @throws java.lang.NullPointerException if <code>where</code> is null.
  */
 
 public static android.icu.text.BreakIterator getSentenceInstance(java.util.Locale where) { throw new RuntimeException("Stub!"); }
@@ -546,7 +546,7 @@ public static android.icu.text.BreakIterator getSentenceInstance(java.util.Local
  * <strong>[icu]</strong> Returns a new instance of BreakIterator that locates sentence boundaries.
  * @param where A Locale specifying the language of the text being analyzed.
  * @return A new instance of BreakIterator that locates sentence boundaries.
- * @throws NullPointerException if <code>where</code> is null.
+ * @throws java.lang.NullPointerException if <code>where</code> is null.
  */
 
 public static android.icu.text.BreakIterator getSentenceInstance(android.icu.util.ULocale where) { throw new RuntimeException("Stub!"); }
@@ -571,7 +571,7 @@ public static android.icu.text.BreakIterator getTitleInstance() { throw new Runt
  * please use Word Boundary iterator.{@link #getWordInstance}
  * @param where A Locale specifying the language of the text being analyzed.
  * @return A new instance of BreakIterator that locates title boundaries.
- * @throws NullPointerException if <code>where</code> is null.
+ * @throws java.lang.NullPointerException if <code>where</code> is null.
  * @deprecated ICU 64 Use {@link #getWordInstance} instead.
  */
 
@@ -585,7 +585,7 @@ public static android.icu.text.BreakIterator getTitleInstance(java.util.Locale w
  * please use Word Boundary iterator.{@link #getWordInstance}
  * @param where A Locale specifying the language of the text being analyzed.
  * @return A new instance of BreakIterator that locates title boundaries.
- * @throws NullPointerException if <code>where</code> is null.
+ * @throws java.lang.NullPointerException if <code>where</code> is null.
  * @deprecated ICU 64 Use {@link #getWordInstance} instead.
  */
 

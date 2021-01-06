@@ -29,10 +29,10 @@ import java.math.BigInteger;
  *
  * <h3>Operator methods</h3>
  * <p>
- * Operations on <code>BigDecimal</code> numbers are controlled by a {@link MathContext} object, which provides the
+ * Operations on <code>BigDecimal</code> numbers are controlled by a {@link android.icu.math.MathContext MathContext} object, which provides the
  * context (precision and other information) for the operation. Methods that can take a <code>MathContext</code>
  * parameter implement the standard arithmetic operators for <code>BigDecimal</code> objects and are known as
- * <i>operator methods</i>. The default settings provided by the constant {@link MathContext#DEFAULT} (<code>digits=9,
+ * <i>operator methods</i>. The default settings provided by the constant {@link android.icu.math.MathContext#DEFAULT MathContext#DEFAULT} (<code>digits=9,
  * form=SCIENTIFIC, lostDigits=false, roundingMode=ROUND_HALF_UP</code>) perform general-purpose floating point
  * arithmetic to nine digits of precision. The <code>MathContext</code> parameter must not be <code>null</code>.
  * <p>
@@ -117,7 +117,7 @@ import java.math.BigInteger;
  * The names of methods in this class follow the conventions established by <code>java.lang.Number</code>,
  * <code>java.math.BigInteger</code>, and <code>java.math.BigDecimal</code> in Java 1.1 and Java 1.2.
  *
- * @see MathContext
+ * @see android.icu.math.MathContext
  * @author Mike Cowlishaw
  */
 
@@ -168,7 +168,7 @@ public BigDecimal(java.math.BigInteger bi) { throw new RuntimeException("Stub!")
  *
  * @param bi The <code>BigInteger</code> to be converted.
  * @param scale The <code>int</code> specifying the scale.
- * @throws NumberFormatException If the scale is negative.
+ * @throws java.lang.NumberFormatException If the scale is negative.
  */
 
 public BigDecimal(java.math.BigInteger bi, int scale) { throw new RuntimeException("Stub!"); }
@@ -184,7 +184,7 @@ public BigDecimal(java.math.BigInteger bi, int scale) { throw new RuntimeExcepti
  * already available in character array form.
  *
  * @param inchars The <code>char[]</code> array containing the number to be converted.
- * @throws NumberFormatException If the parameter is not a valid number.
+ * @throws java.lang.NumberFormatException If the parameter is not a valid number.
  */
 
 public BigDecimal(char[] inchars) { throw new RuntimeException("Stub!"); }
@@ -202,7 +202,7 @@ public BigDecimal(char[] inchars) { throw new RuntimeException("Stub!"); }
  * @param inchars The <code>char[]</code> array containing the number to be converted.
  * @param offset The <code>int</code> offset into the array of the start of the number to be converted.
  * @param length The <code>int</code> length of the number.
- * @throws NumberFormatException If the parameter is not a valid number for any reason.
+ * @throws java.lang.NumberFormatException If the parameter is not a valid number for any reason.
  */
 
 public BigDecimal(char[] inchars, int offset, int length) { throw new RuntimeException("Stub!"); }
@@ -219,7 +219,7 @@ public BigDecimal(char[] inchars, int offset, int length) { throw new RuntimeExc
  * method to construct a <code>BigDecimal</code> from a <code>double</code>.
  *
  * @param num The <code>double</code> to be converted.
- * @throws NumberFormatException If the parameter is infinite or not a number.
+ * @throws java.lang.NumberFormatException If the parameter is infinite or not a number.
  */
 
 public BigDecimal(double num) { throw new RuntimeException("Stub!"); }
@@ -252,7 +252,7 @@ public BigDecimal(long num) { throw new RuntimeException("Stub!"); }
  * Constructs a <code>BigDecimal</code> object from a <code>String</code>.
  * <p>
  * Constructs a <code>BigDecimal</code> from the parameter, which must not be <code>null</code> and must represent a
- * valid <i>number</i>, as described formally in the documentation referred to {@link BigDecimal above}.
+ * valid <i>number</i>, as described formally in the documentation referred to {@link android.icu.math.BigDecimal BigDecimal}.
  * <p>
  * In summary, numbers in <code>String</code> form must have at least one digit, may have a leading sign, may have a
  * decimal point, and exponential notation may be used. They follow conventional syntax, and may not contain blanks.
@@ -273,7 +273,7 @@ public BigDecimal(long num) { throw new RuntimeException("Stub!"); }
  * 0.000000073</code>.)
  * <p>
  * The <code>BigDecimal</code> constructed from the String is in a standard form, with no blanks, as though the
- * {@link #add(BigDecimal)} method had been used to add zero to the number with unlimited precision. If the string
+ * {@link #add(android.icu.math.BigDecimal)} method had been used to add zero to the number with unlimited precision. If the string
  * uses exponential notation (that is, includes an <code>e</code> or an <code>E</code>), then the <code>BigDecimal
  * </code> number will be expressed in scientific notation (where the power of ten is adjusted so there is a single
  * non-zero digit to the left of the decimal point); in this case if the number is zero then it will be expressed as
@@ -284,7 +284,7 @@ public BigDecimal(long num) { throw new RuntimeException("Stub!"); }
  * is the character in question) would not return -1.
  *
  * @param string The <code>String</code> to be converted.
- * @throws NumberFormatException If the parameter is not a valid number.
+ * @throws java.lang.NumberFormatException If the parameter is not a valid number.
  */
 
 public BigDecimal(java.lang.String string) { throw new RuntimeException("Stub!"); }
@@ -292,7 +292,7 @@ public BigDecimal(java.lang.String string) { throw new RuntimeException("Stub!")
 /**
  * Returns a plain <code>BigDecimal</code> whose value is the absolute value of this <code>BigDecimal</code>.
  * <p>
- * The same as {@link #abs(MathContext)}, where the context is <code>new MathContext(0, MathContext.PLAIN)</code>.
+ * The same as {@link #abs(android.icu.math.MathContext)}, where the context is <code>new MathContext(0, MathContext.PLAIN)</code>.
  * <p>
  * The length of the decimal part (the scale) of the result will be <code>this.scale()</code>
  *
@@ -304,8 +304,8 @@ public android.icu.math.BigDecimal abs() { throw new RuntimeException("Stub!"); 
 /**
  * Returns a <code>BigDecimal</code> whose value is the absolute value of this <code>BigDecimal</code>.
  * <p>
- * If the current object is zero or positive, then the same result as invoking the {@link #plus(MathContext)} method
- * with the same parameter is returned. Otherwise, the same result as invoking the {@link #negate(MathContext)}
+ * If the current object is zero or positive, then the same result as invoking the {@link #plus(android.icu.math.MathContext)} method
+ * with the same parameter is returned. Otherwise, the same result as invoking the {@link #negate(android.icu.math.MathContext)}
  * method with the same parameter is returned.
  *
  * @param set The <code>MathContext</code> arithmetic settings.
@@ -317,7 +317,7 @@ public android.icu.math.BigDecimal abs(android.icu.math.MathContext set) { throw
 /**
  * Returns a plain <code>BigDecimal</code> whose value is <code>this+rhs</code>, using fixed point arithmetic.
  * <p>
- * The same as {@link #add(BigDecimal, MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
+ * The same as {@link #add(android.icu.math.BigDecimal,android.icu.math.MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
  * context is <code>new MathContext(0, MathContext.PLAIN)</code>.
  * <p>
  * The length of the decimal part (the scale) of the result will be the maximum of the scales of the two operands.
@@ -332,7 +332,7 @@ public android.icu.math.BigDecimal add(android.icu.math.BigDecimal rhs) { throw 
  * Returns a <code>BigDecimal</code> whose value is <code>this+rhs</code>.
  * <p>
  * Implements the addition (<b><code>+</code></b>) operator (as defined in the decimal documentation, see
- * {@link BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the addition.
  * @param set The <code>MathContext</code> arithmetic settings.
@@ -344,7 +344,7 @@ public android.icu.math.BigDecimal add(android.icu.math.BigDecimal rhs, android.
 /**
  * Compares this <code>BigDecimal</code> to another, using unlimited precision.
  * <p>
- * The same as {@link #compareTo(BigDecimal, MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>,
+ * The same as {@link #compareTo(android.icu.math.BigDecimal,android.icu.math.MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>,
  * and the context is <code>new MathContext(0, MathContext.PLAIN)</code>.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the comparison.
@@ -357,7 +357,7 @@ public int compareTo(android.icu.math.BigDecimal rhs) { throw new RuntimeExcepti
 /**
  * Compares this <code>BigDecimal</code> to another.
  * <p>
- * Implements numeric comparison, (as defined in the decimal documentation, see {@link BigDecimal class header}),
+ * Implements numeric comparison, (as defined in the decimal documentation, see {@link android.icu.math.BigDecimal BigDecimal}),
  * and returns a result of type <code>int</code>.
  * <p>
  * The result will be:
@@ -373,7 +373,7 @@ public int compareTo(android.icu.math.BigDecimal rhs) { throw new RuntimeExcepti
  * </tr>
  * </table>
  * <p>
- * A {@link #compareTo(BigDecimal)} method is also provided.
+ * A {@link #compareTo(android.icu.math.BigDecimal)} method is also provided.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the comparison.
  * @param set The <code>MathContext</code> arithmetic settings.
@@ -386,15 +386,15 @@ public int compareTo(android.icu.math.BigDecimal rhs, android.icu.math.MathConte
 /**
  * Returns a plain <code>BigDecimal</code> whose value is <code>this/rhs</code>, using fixed point arithmetic.
  * <p>
- * The same as {@link #divide(BigDecimal, int)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
- * rounding mode is {@link MathContext#ROUND_HALF_UP}.
+ * The same as {@link #divide(android.icu.math.BigDecimal,int)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
+ * rounding mode is {@link android.icu.math.MathContext#ROUND_HALF_UP MathContext#ROUND_HALF_UP}.
  *
  * The length of the decimal part (the scale) of the result will be the same as the scale of the current object, if
  * the latter were formatted without exponential notation.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the division.
  * @return A plain <code>BigDecimal</code> whose value is <code>this/rhs</code>, using fixed point arithmetic.
- * @throws ArithmeticException If <code>rhs</code> is zero.
+ * @throws java.lang.ArithmeticException If <code>rhs</code> is zero.
  */
 
 public android.icu.math.BigDecimal divide(android.icu.math.BigDecimal rhs) { throw new RuntimeException("Stub!"); }
@@ -403,7 +403,7 @@ public android.icu.math.BigDecimal divide(android.icu.math.BigDecimal rhs) { thr
  * Returns a plain <code>BigDecimal</code> whose value is <code>this/rhs</code>, using fixed point arithmetic and a
  * rounding mode.
  * <p>
- * The same as {@link #divide(BigDecimal, int, int)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
+ * The same as {@link #divide(android.icu.math.BigDecimal,int,int)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
  * second parameter is <code>this.scale()</code>, and the third is <code>round</code>.
  * <p>
  * The length of the decimal part (the scale) of the result will therefore be the same as the scale of the current
@@ -411,12 +411,12 @@ public android.icu.math.BigDecimal divide(android.icu.math.BigDecimal rhs) { thr
  * <p>
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the division.
- * @param round The <code>int</code> rounding mode to be used for the division (see the {@link MathContext} class).
+ * @param round The <code>int</code> rounding mode to be used for the division (see the {@link android.icu.math.MathContext MathContext} class).
  * @return A plain <code>BigDecimal</code> whose value is <code>this/rhs</code>, using fixed point arithmetic and
  *         the specified rounding mode.
- * @throws IllegalArgumentException if <code>round</code> is not a valid rounding mode.
- * @throws ArithmeticException if <code>rhs</code> is zero.
- * @throws ArithmeticException if <code>round</code> is {@link MathContext#ROUND_UNNECESSARY} and <code>this.scale()</code> is insufficient to represent the result exactly.
+ * @throws java.lang.IllegalArgumentException if <code>round</code> is not a valid rounding mode.
+ * @throws java.lang.ArithmeticException if <code>rhs</code> is zero.
+ * @throws java.lang.ArithmeticException if <code>round</code> is {@link android.icu.math.MathContext#ROUND_UNNECESSARY MathContext#ROUND_UNNECESSARY} and <code>this.scale()</code> is insufficient to represent the result exactly.
  */
 
 public android.icu.math.BigDecimal divide(android.icu.math.BigDecimal rhs, int round) { throw new RuntimeException("Stub!"); }
@@ -425,7 +425,7 @@ public android.icu.math.BigDecimal divide(android.icu.math.BigDecimal rhs, int r
  * Returns a plain <code>BigDecimal</code> whose value is <code>this/rhs</code>, using fixed point arithmetic and a
  * given scale and rounding mode.
  * <p>
- * The same as {@link #divide(BigDecimal, MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>,
+ * The same as {@link #divide(android.icu.math.BigDecimal,android.icu.math.MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>,
  * <code>new MathContext(0, MathContext.PLAIN, false, round)</code>, except that the length of the decimal part (the
  * scale) to be used for the result is explicit rather than being taken from <code>this</code>.
  * <p>
@@ -435,13 +435,13 @@ public android.icu.math.BigDecimal divide(android.icu.math.BigDecimal rhs, int r
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the division.
  * @param scale The <code>int</code> scale to be used for the result.
- * @param round The <code>int</code> rounding mode to be used for the division (see the {@link MathContext} class).
+ * @param round The <code>int</code> rounding mode to be used for the division (see the {@link android.icu.math.MathContext MathContext} class).
  * @return A plain <code>BigDecimal</code> whose value is <code>this/rhs</code>, using fixed point arithmetic and
  *         the specified rounding mode.
- * @throws IllegalArgumentException if <code>round</code> is not a valid rounding mode.
- * @throws ArithmeticException if <code>rhs</code> is zero.
- * @throws ArithmeticException if <code>scale</code> is negative.
- * @throws ArithmeticException if <code>round</code> is {@link MathContext#ROUND_UNNECESSARY} and <code>scale</code> is insufficient
+ * @throws java.lang.IllegalArgumentException if <code>round</code> is not a valid rounding mode.
+ * @throws java.lang.ArithmeticException if <code>rhs</code> is zero.
+ * @throws java.lang.ArithmeticException if <code>scale</code> is negative.
+ * @throws java.lang.ArithmeticException if <code>round</code> is {@link android.icu.math.MathContext#ROUND_UNNECESSARY MathContext#ROUND_UNNECESSARY} and <code>scale</code> is insufficient
  *             to represent the result exactly.
  */
 
@@ -451,12 +451,12 @@ public android.icu.math.BigDecimal divide(android.icu.math.BigDecimal rhs, int s
  * Returns a <code>BigDecimal</code> whose value is <code>this/rhs</code>.
  * <p>
  * Implements the division (<b><code>/</code></b>) operator (as defined in the decimal documentation, see
- * {@link BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the division.
  * @param set The <code>MathContext</code> arithmetic settings.
  * @return A <code>BigDecimal</code> whose value is <code>this/rhs</code>.
- * @throws ArithmeticException if <code>rhs</code> is zero.
+ * @throws java.lang.ArithmeticException if <code>rhs</code> is zero.
  */
 
 public android.icu.math.BigDecimal divide(android.icu.math.BigDecimal rhs, android.icu.math.MathContext set) { throw new RuntimeException("Stub!"); }
@@ -464,12 +464,12 @@ public android.icu.math.BigDecimal divide(android.icu.math.BigDecimal rhs, andro
 /**
  * Returns a plain <code>BigDecimal</code> whose value is the integer part of <code>this/rhs</code>.
  * <p>
- * The same as {@link #divideInteger(BigDecimal, MathContext)}, where the <code>BigDecimal</code> is <code>rhs
+ * The same as {@link #divideInteger(android.icu.math.BigDecimal,android.icu.math.MathContext)}, where the <code>BigDecimal</code> is <code>rhs
  * </code>, and the context is <code>new MathContext(0, MathContext.PLAIN)</code>.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the integer division.
  * @return A <code>BigDecimal</code> whose value is the integer part of <code>this/rhs</code>.
- * @throws ArithmeticException if <code>rhs</code> is zero.
+ * @throws java.lang.ArithmeticException if <code>rhs</code> is zero.
  */
 
 public android.icu.math.BigDecimal divideInteger(android.icu.math.BigDecimal rhs) { throw new RuntimeException("Stub!"); }
@@ -477,14 +477,13 @@ public android.icu.math.BigDecimal divideInteger(android.icu.math.BigDecimal rhs
 /**
  * Returns a <code>BigDecimal</code> whose value is the integer part of <code>this/rhs</code>.
  * <p>
- * Implements the integer division operator (as defined in the decimal documentation, see {@link BigDecimal class
- * header}), and returns the result as a <code>BigDecimal</code> object.
+ * Implements the integer division operator (as defined in the decimal documentation, see {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the integer division.
  * @param set The <code>MathContext</code> arithmetic settings.
  * @return A <code>BigDecimal</code> whose value is the integer part of <code>this/rhs</code>.
- * @throws ArithmeticException if <code>rhs</code> is zero.
- * @throws ArithmeticException if the result will not fit in the number of digits specified for the context.
+ * @throws java.lang.ArithmeticException if <code>rhs</code> is zero.
+ * @throws java.lang.ArithmeticException if the result will not fit in the number of digits specified for the context.
  */
 
 public android.icu.math.BigDecimal divideInteger(android.icu.math.BigDecimal rhs, android.icu.math.MathContext set) { throw new RuntimeException("Stub!"); }
@@ -492,7 +491,7 @@ public android.icu.math.BigDecimal divideInteger(android.icu.math.BigDecimal rhs
 /**
  * Returns a plain <code>BigDecimal</code> whose value is the maximum of <code>this</code> and <code>rhs</code>.
  * <p>
- * The same as {@link #max(BigDecimal, MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
+ * The same as {@link #max(android.icu.math.BigDecimal,android.icu.math.MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
  * context is <code>new MathContext(0, MathContext.PLAIN)</code>.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the comparison.
@@ -506,10 +505,10 @@ public android.icu.math.BigDecimal max(android.icu.math.BigDecimal rhs) { throw 
  * <p>
  * Returns the larger of the current object and the first parameter.
  * <p>
- * If calling the {@link #compareTo(BigDecimal, MathContext)} method with the same parameters would return <code>1
- * </code> or <code>0</code>, then the result of calling the {@link #plus(MathContext)} method on the current object
+ * If calling the {@link #compareTo(android.icu.math.BigDecimal,android.icu.math.MathContext)} method with the same parameters would return <code>1
+ * </code> or <code>0</code>, then the result of calling the {@link #plus(android.icu.math.MathContext)} method on the current object
  * (using the same <code>MathContext</code> parameter) is returned. Otherwise, the result of calling the
- * {@link #plus(MathContext)} method on the first parameter object (using the same <code>MathContext</code>
+ * {@link #plus(android.icu.math.MathContext)} method on the first parameter object (using the same <code>MathContext</code>
  * parameter) is returned.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the comparison.
@@ -522,7 +521,7 @@ public android.icu.math.BigDecimal max(android.icu.math.BigDecimal rhs, android.
 /**
  * Returns a plain <code>BigDecimal</code> whose value is the minimum of <code>this</code> and <code>rhs</code>.
  * <p>
- * The same as {@link #min(BigDecimal, MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
+ * The same as {@link #min(android.icu.math.BigDecimal,android.icu.math.MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
  * context is <code>new MathContext(0, MathContext.PLAIN)</code>.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the comparison.
@@ -536,10 +535,10 @@ public android.icu.math.BigDecimal min(android.icu.math.BigDecimal rhs) { throw 
  * <p>
  * Returns the smaller of the current object and the first parameter.
  * <p>
- * If calling the {@link #compareTo(BigDecimal, MathContext)} method with the same parameters would return <code>-1
- * </code> or <code>0</code>, then the result of calling the {@link #plus(MathContext)} method on the current object
+ * If calling the {@link #compareTo(android.icu.math.BigDecimal,android.icu.math.MathContext)} method with the same parameters would return <code>-1
+ * </code> or <code>0</code>, then the result of calling the {@link #plus(android.icu.math.MathContext)} method on the current object
  * (using the same <code>MathContext</code> parameter) is returned. Otherwise, the result of calling the
- * {@link #plus(MathContext)} method on the first parameter object (using the same <code>MathContext</code>
+ * {@link #plus(android.icu.math.MathContext)} method on the first parameter object (using the same <code>MathContext</code>
  * parameter) is returned.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the comparison.
@@ -552,7 +551,7 @@ public android.icu.math.BigDecimal min(android.icu.math.BigDecimal rhs, android.
 /**
  * Returns a plain <code>BigDecimal</code> whose value is <code>this*rhs</code>, using fixed point arithmetic.
  * <p>
- * The same as {@link #add(BigDecimal, MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
+ * The same as {@link #add(android.icu.math.BigDecimal,android.icu.math.MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
  * context is <code>new MathContext(0, MathContext.PLAIN)</code>.
  * <p>
  * The length of the decimal part (the scale) of the result will be the sum of the scales of the operands, if they
@@ -568,7 +567,7 @@ public android.icu.math.BigDecimal multiply(android.icu.math.BigDecimal rhs) { t
  * Returns a <code>BigDecimal</code> whose value is <code>this*rhs</code>.
  * <p>
  * Implements the multiplication (<b><code>&#42;</code></b>) operator (as defined in the decimal documentation, see
- * {@link BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the multiplication.
  * @param set The <code>MathContext</code> arithmetic settings.
@@ -580,7 +579,7 @@ public android.icu.math.BigDecimal multiply(android.icu.math.BigDecimal rhs, and
 /**
  * Returns a plain <code>BigDecimal</code> whose value is <code>-this</code>.
  * <p>
- * The same as {@link #negate(MathContext)}, where the context is <code>new MathContext(0, MathContext.PLAIN)</code>
+ * The same as {@link #negate(android.icu.math.MathContext)}, where the context is <code>new MathContext(0, MathContext.PLAIN)</code>
  * .
  * <p>
  * The length of the decimal part (the scale) of the result will be be <code>this.scale()</code>
@@ -595,7 +594,7 @@ public android.icu.math.BigDecimal negate() { throw new RuntimeException("Stub!"
  * Returns a <code>BigDecimal</code> whose value is <code>-this</code>.
  * <p>
  * Implements the negation (Prefix <b><code>-</code></b>) operator (as defined in the decimal documentation, see
- * {@link BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
  *
  * @param set The <code>MathContext</code> arithmetic settings.
  * @return A <code>BigDecimal</code> whose value is <code>-this</code>.
@@ -607,7 +606,7 @@ public android.icu.math.BigDecimal negate(android.icu.math.MathContext set) { th
  * Returns a plain <code>BigDecimal</code> whose value is <code>+this</code>. Note that <code>this</code> is not
  * necessarily a plain <code>BigDecimal</code>, but the result will always be.
  * <p>
- * The same as {@link #plus(MathContext)}, where the context is <code>new MathContext(0, MathContext.PLAIN)</code>.
+ * The same as {@link #plus(android.icu.math.MathContext)}, where the context is <code>new MathContext(0, MathContext.PLAIN)</code>.
  * <p>
  * The length of the decimal part (the scale) of the result will be be <code>this.scale()</code>
  *
@@ -620,7 +619,7 @@ public android.icu.math.BigDecimal plus() { throw new RuntimeException("Stub!");
  * Returns a <code>BigDecimal</code> whose value is <code>+this</code>.
  * <p>
  * Implements the plus (Prefix <b><code>+</code></b>) operator (as defined in the decimal documentation, see
- * {@link BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
  * <p>
  * This method is useful for rounding or otherwise applying a context to a decimal value.
  *
@@ -633,7 +632,7 @@ public android.icu.math.BigDecimal plus(android.icu.math.MathContext set) { thro
 /**
  * Returns a plain <code>BigDecimal</code> whose value is <code>this**rhs</code>, using fixed point arithmetic.
  * <p>
- * The same as {@link #pow(BigDecimal, MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
+ * The same as {@link #pow(android.icu.math.BigDecimal,android.icu.math.MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>, and the
  * context is <code>new MathContext(0, MathContext.PLAIN)</code>.
  * <p>
  * The parameter is the power to which the <code>this</code> will be raised; it must be in the range 0 through
@@ -645,7 +644,7 @@ public android.icu.math.BigDecimal plus(android.icu.math.MathContext set) { thro
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the operation (the power).
  * @return A <code>BigDecimal</code> whose value is <code>this**rhs</code>, using fixed point arithmetic.
- * @throws ArithmeticException if <code>rhs</code> is out of range or is not a whole number.
+ * @throws java.lang.ArithmeticException if <code>rhs</code> is out of range or is not a whole number.
  */
 
 public android.icu.math.BigDecimal pow(android.icu.math.BigDecimal rhs) { throw new RuntimeException("Stub!"); }
@@ -654,7 +653,7 @@ public android.icu.math.BigDecimal pow(android.icu.math.BigDecimal rhs) { throw 
  * Returns a <code>BigDecimal</code> whose value is <code>this**rhs</code>.
  * <p>
  * Implements the power (<b><code>^</code></b>) operator (as defined in the decimal documentation, see
- * {@link BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
  * <p>
  * The first parameter is the power to which the <code>this</code> will be raised; it must be in the range
  * -999999999 through 999999999, and must have a decimal part of zero. Note that these restrictions may be removed
@@ -666,7 +665,7 @@ public android.icu.math.BigDecimal pow(android.icu.math.BigDecimal rhs) { throw 
  * @param rhs The <code>BigDecimal</code> for the right hand side of the operation (the power).
  * @param set The <code>MathContext</code> arithmetic settings.
  * @return A <code>BigDecimal</code> whose value is <code>this**rhs</code>.
- * @throws ArithmeticException if <code>rhs</code> is out of range or is not a whole number.
+ * @throws java.lang.ArithmeticException if <code>rhs</code> is out of range or is not a whole number.
  */
 
 public android.icu.math.BigDecimal pow(android.icu.math.BigDecimal rhs, android.icu.math.MathContext set) { throw new RuntimeException("Stub!"); }
@@ -675,7 +674,7 @@ public android.icu.math.BigDecimal pow(android.icu.math.BigDecimal rhs, android.
  * Returns a plain <code>BigDecimal</code> whose value is the remainder of <code>this/rhs</code>, using fixed point
  * arithmetic.
  * <p>
- * The same as {@link #remainder(BigDecimal, MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>,
+ * The same as {@link #remainder(android.icu.math.BigDecimal,android.icu.math.MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>,
  * and the context is <code>new MathContext(0, MathContext.PLAIN)</code>.
  * <p>
  * This is not the modulo operator -- the result may be negative.
@@ -683,7 +682,7 @@ public android.icu.math.BigDecimal pow(android.icu.math.BigDecimal rhs, android.
  * @param rhs The <code>BigDecimal</code> for the right hand side of the remainder operation.
  * @return A <code>BigDecimal</code> whose value is the remainder of <code>this/rhs</code>, using fixed point
  *         arithmetic.
- * @throws ArithmeticException if <code>rhs</code> is zero.
+ * @throws java.lang.ArithmeticException if <code>rhs</code> is zero.
  */
 
 public android.icu.math.BigDecimal remainder(android.icu.math.BigDecimal rhs) { throw new RuntimeException("Stub!"); }
@@ -691,7 +690,7 @@ public android.icu.math.BigDecimal remainder(android.icu.math.BigDecimal rhs) { 
 /**
  * Returns a <code>BigDecimal</code> whose value is the remainder of <code>this/rhs</code>.
  * <p>
- * Implements the remainder operator (as defined in the decimal documentation, see {@link BigDecimal class header}),
+ * Implements the remainder operator (as defined in the decimal documentation, see {@link android.icu.math.BigDecimal BigDecimal}),
  * and returns the result as a <code>BigDecimal</code> object.
  * <p>
  * This is not the modulo operator -- the result may be negative.
@@ -699,8 +698,8 @@ public android.icu.math.BigDecimal remainder(android.icu.math.BigDecimal rhs) { 
  * @param rhs The <code>BigDecimal</code> for the right hand side of the remainder operation.
  * @param set The <code>MathContext</code> arithmetic settings.
  * @return A <code>BigDecimal</code> whose value is the remainder of <code>this+rhs</code>.
- * @throws ArithmeticException if <code>rhs</code> is zero.
- * @throws ArithmeticException  if the integer part of the result will not fit in the number of digits specified for the context.
+ * @throws java.lang.ArithmeticException if <code>rhs</code> is zero.
+ * @throws java.lang.ArithmeticException  if the integer part of the result will not fit in the number of digits specified for the context.
  */
 
 public android.icu.math.BigDecimal remainder(android.icu.math.BigDecimal rhs, android.icu.math.MathContext set) { throw new RuntimeException("Stub!"); }
@@ -708,7 +707,7 @@ public android.icu.math.BigDecimal remainder(android.icu.math.BigDecimal rhs, an
 /**
  * Returns a plain <code>BigDecimal</code> whose value is <code>this-rhs</code>, using fixed point arithmetic.
  * <p>
- * The same as {@link #subtract(BigDecimal, MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>,
+ * The same as {@link #subtract(android.icu.math.BigDecimal,android.icu.math.MathContext)}, where the <code>BigDecimal</code> is <code>rhs</code>,
  * and the context is <code>new MathContext(0, MathContext.PLAIN)</code>.
  * <p>
  * The length of the decimal part (the scale) of the result will be the maximum of the scales of the two operands.
@@ -723,7 +722,7 @@ public android.icu.math.BigDecimal subtract(android.icu.math.BigDecimal rhs) { t
  * Returns a <code>BigDecimal</code> whose value is <code>this-rhs</code>.
  * <p>
  * Implements the subtraction (<b><code>-</code></b>) operator (as defined in the decimal documentation, see
- * {@link BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the subtraction.
  * @param set The <code>MathContext</code> arithmetic settings.
@@ -738,7 +737,7 @@ public android.icu.math.BigDecimal subtract(android.icu.math.BigDecimal rhs, and
  * ArithmeticException</code> is thrown.
  *
  * @return A <code>byte</code> equal in value to <code>this</code>.
- * @throws ArithmeticException if <code>this</code> has a non-zero decimal part, or will not fit in a <code>byte</code>.
+ * @throws java.lang.ArithmeticException if <code>this</code> has a non-zero decimal part, or will not fit in a <code>byte</code>.
  */
 
 public byte byteValueExact() { throw new RuntimeException("Stub!"); }
@@ -766,12 +765,12 @@ public double doubleValue() { throw new RuntimeException("Stub!"); }
  * "Exactly equal", here, means that the <code>String</code> representations of the <code>BigDecimal</code> numbers
  * are identical (they have the same characters in the same sequence).
  * <p>
- * The {@link #compareTo(BigDecimal, MathContext)} method should be used for more general comparisons.
+ * The {@link #compareTo(android.icu.math.BigDecimal,android.icu.math.MathContext)} method should be used for more general comparisons.
  *
  * @param obj The <code>Object</code> for the right hand side of the comparison.
  * @return A <code>boolean</code> whose value <i>true</i> if and only if the operands have identical string
  *         representations.
- * @throws ClassCastException if <code>rhs</code> cannot be cast to a <code>BigDecimal</code> object.
+ * @throws java.lang.ClassCastException if <code>rhs</code> cannot be cast to a <code>BigDecimal</code> object.
  * @see #compareTo(BigDecimal)
  * @see #compareTo(BigDecimal, MathContext)
  */
@@ -825,8 +824,8 @@ public float floatValue() { throw new RuntimeException("Stub!"); }
  * @param before The <code>int</code> specifying the number of places before the decimal point. Use -1 for 'as many as are needed'.
  * @param after The <code>int</code> specifying the number of places after the decimal point. Use -1 for 'as many as are needed'.
  * @return A <code>String</code> representing this <code>BigDecimal</code>, laid out according to the specified parameters
- * @throws ArithmeticException if the number cannot be laid out as requested.
- * @throws IllegalArgumentException if a parameter is out of range.
+ * @throws java.lang.ArithmeticException if the number cannot be laid out as requested.
+ * @throws java.lang.IllegalArgumentException if a parameter is out of range.
  * @see #toString
  * @see #toCharArray
  */
@@ -869,12 +868,12 @@ public java.lang.String format(int before, int after) { throw new RuntimeExcepti
  * <code>exdigits</code>, exponential notation is always used unless the exponent would be 0.
  * <p>
  * <code>exform</code> sets the form for exponential notation (if needed). It may be either
- * {@link MathContext#SCIENTIFIC} or {@link MathContext#ENGINEERING}. If the latter, engineering, form is requested,
+ * {@link android.icu.math.MathContext#SCIENTIFIC MathContext#SCIENTIFIC} or {@link android.icu.math.MathContext#ENGINEERING MathContext#ENGINEERING}. If the latter, engineering, form is requested,
  * up to three digits (plus sign, if negative) may be needed for the integer part of the result (<code>before</code>
  * ). Otherwise, only one digit (plus sign, if negative) is needed.
  * <p>
  * Finally, the sixth argument, <code>exround</code>, selects the rounding algorithm to be used, and must be one of
- * the values indicated by a public constant in the {@link MathContext} class whose name starts with <code>ROUND_
+ * the values indicated by a public constant in the {@link android.icu.math.MathContext MathContext} class whose name starts with <code>ROUND_
  * </code>. The default (<code>ROUND_HALF_UP</code>) may also be selected by using the value -1, as before.
  * <p>
  * The special value <code>MathContext.ROUND_UNNECESSARY</code> may be used to detect whether non-zero digits are
@@ -891,13 +890,13 @@ public java.lang.String format(int before, int after) { throw new RuntimeExcepti
  *            exponential notation to be used. Use 0 to force exponential notation. Use -1 to force plain notation
  *            (no exponential notation).
  * @param exformint The <code>int</code> specifying the form of exponential notation to be used (
- *            {@link MathContext#SCIENTIFIC} or {@link MathContext#ENGINEERING}).
+ *            {@link android.icu.math.MathContext#SCIENTIFIC MathContext#SCIENTIFIC} or {@link android.icu.math.MathContext#ENGINEERING MathContext#ENGINEERING}).
  * @param exround The <code>int</code> specifying the rounding mode to use. Use -1 for the default,
- *            {@link MathContext#ROUND_HALF_UP}.
+ *            {@link android.icu.math.MathContext#ROUND_HALF_UP MathContext#ROUND_HALF_UP}.
  * @return A <code>String</code> representing this <code>BigDecimal</code>, laid out according to the specified
  *         parameters
- * @throws ArithmeticException if the number cannot be laid out as requested.
- * @throws IllegalArgumentException if a parameter is out of range.
+ * @throws java.lang.ArithmeticException if the number cannot be laid out as requested.
+ * @throws java.lang.IllegalArgumentException if a parameter is out of range.
  * @see #toString
  * @see #toCharArray
  */
@@ -935,7 +934,7 @@ public int intValue() { throw new RuntimeException("Stub!"); }
  * <code>ArithmeticException</code> is thrown.
  *
  * @return An <code>int</code> equal in value to <code>this</code>.
- * @throws ArithmeticException if <code>this</code> has a non-zero decimal part, or will not fit in an <code>int</code>.
+ * @throws java.lang.ArithmeticException if <code>this</code> has a non-zero decimal part, or will not fit in an <code>int</code>.
  */
 
 public int intValueExact() { throw new RuntimeException("Stub!"); }
@@ -958,7 +957,7 @@ public long longValue() { throw new RuntimeException("Stub!"); }
  * <code>ArithmeticException</code> is thrown.
  *
  * @return A <code>long</code> equal in value to <code>this</code>.
- * @throws ArithmeticException if <code>this</code> has a non-zero decimal part, or will not fit in a <code>long</code>.
+ * @throws java.lang.ArithmeticException if <code>this</code> has a non-zero decimal part, or will not fit in a <code>long</code>.
  */
 
 public long longValueExact() { throw new RuntimeException("Stub!"); }
@@ -1017,13 +1016,13 @@ public int scale() { throw new RuntimeException("Stub!"); }
  * trailing digits will be removed, and in this case an <code>ArithmeticException</code> is thrown if any discarded
  * digits are non-zero.
  * <p>
- * The same as {@link #setScale(int, int)}, where the first parameter is the scale, and the second is <code>
+ * The same as {@link #setScale(int,int)}, where the first parameter is the scale, and the second is <code>
  * MathContext.ROUND_UNNECESSARY</code>.
  *
  * @param scale The <code>int</code> specifying the scale of the resulting <code>BigDecimal</code>.
  * @return A plain <code>BigDecimal</code> with the given scale.
- * @throws ArithmeticException if <code>scale</code> is negative.
- * @throws ArithmeticException if reducing scale would discard non-zero digits.
+ * @throws java.lang.ArithmeticException if <code>scale</code> is negative.
+ * @throws java.lang.ArithmeticException if reducing scale would discard non-zero digits.
  */
 
 public android.icu.math.BigDecimal setScale(int scale) { throw new RuntimeException("Stub!"); }
@@ -1043,11 +1042,11 @@ public android.icu.math.BigDecimal setScale(int scale) { throw new RuntimeExcept
  * thrown if any discarded digits are non-zero.
  *
  * @param scale The <code>int</code> specifying the scale of the resulting <code>BigDecimal</code>.
- * @param round The <code>int</code> rounding mode to be used for the division (see the {@link MathContext} class).
+ * @param round The <code>int</code> rounding mode to be used for the division (see the {@link android.icu.math.MathContext MathContext} class).
  * @return A plain <code>BigDecimal</code> with the given scale.
- * @throws IllegalArgumentException if <code>round</code> is not a valid rounding mode.
- * @throws ArithmeticException if <code>scale</code> is negative.
- * @throws ArithmeticException if <code>round</code> is <code>MathContext.ROUND_UNNECESSARY</code>, and reducing scale would discard
+ * @throws java.lang.IllegalArgumentException if <code>round</code> is not a valid rounding mode.
+ * @throws java.lang.ArithmeticException if <code>scale</code> is negative.
+ * @throws java.lang.ArithmeticException if <code>round</code> is <code>MathContext.ROUND_UNNECESSARY</code>, and reducing scale would discard
  *             non-zero digits.
  */
 
@@ -1059,7 +1058,7 @@ public android.icu.math.BigDecimal setScale(int scale, int round) { throw new Ru
  * <code>ArithmeticException</code> is thrown.
  *
  * @return A <code>short</code> equal in value to <code>this</code>.
- * @throws ArithmeticException if <code>this</code> has a non-zero decimal part, or will not fit in a <code>short</code>.
+ * @throws java.lang.ArithmeticException if <code>this</code> has a non-zero decimal part, or will not fit in a <code>short</code>.
  */
 
 public short shortValueExact() { throw new RuntimeException("Stub!"); }
@@ -1107,7 +1106,7 @@ public java.math.BigInteger toBigInteger() { throw new RuntimeException("Stub!")
  * An exception is thrown if the decimal part (if any) is non-zero.
  *
  * @return The <code>java.math.BigInteger</code> equal in value to the integer part of this <code>BigDecimal</code>.
- * @throws ArithmeticException if <code>this</code> has a non-zero decimal part.
+ * @throws java.lang.ArithmeticException if <code>this</code> has a non-zero decimal part.
  */
 
 public java.math.BigInteger toBigIntegerExact() { throw new RuntimeException("Stub!"); }
@@ -1124,10 +1123,9 @@ public char[] toCharArray() { throw new RuntimeException("Stub!"); }
 
 /**
  * Returns the <code>BigDecimal</code> as a <code>String</code>. This returns a <code>String</code> that exactly
- * represents this <code>BigDecimal</code>, as defined in the decimal documentation (see {@link BigDecimal class
- * header}).
+ * represents this <code>BigDecimal</code>, as defined in the decimal documentation (see {@link android.icu.math.BigDecimal BigDecimal}).
  * <p>
- * By definition, using the {@link #BigDecimal(String)} constructor on the result <code>String</code> will create a
+ * By definition, using the {@link #BigDecimal(java.lang.String)} constructor on the result <code>String</code> will create a
  * <code>BigDecimal</code> that is exactly equal to the original <code>BigDecimal</code>.
  *
  * @return The <code>String</code> exactly corresponding to this <code>BigDecimal</code>.
@@ -1162,7 +1160,7 @@ public java.math.BigInteger unscaledValue() { throw new RuntimeException("Stub!"
  *
  * @param dub The <code>double</code> to be translated.
  * @return The <code>BigDecimal</code> equal in value to <code>dub</code>.
- * @throws NumberFormatException if the parameter is infinite or not a number.
+ * @throws java.lang.NumberFormatException if the parameter is infinite or not a number.
  */
 
 public static android.icu.math.BigDecimal valueOf(double dub) { throw new RuntimeException("Stub!"); }
@@ -1191,7 +1189,7 @@ public static android.icu.math.BigDecimal valueOf(long lint) { throw new Runtime
  * @param lint The <code>long</code> to be translated.
  * @param scale The <code>int</code> scale to be applied.
  * @return The <code>BigDecimal</code> equal in value to <code>lint</code>.
- * @throws NumberFormatException if the scale is negative.
+ * @throws java.lang.NumberFormatException if the scale is negative.
  */
 
 public static android.icu.math.BigDecimal valueOf(long lint, int scale) { throw new RuntimeException("Stub!"); }
@@ -1209,7 +1207,7 @@ static { ONE = null; }
 /**
  * Rounding mode to round to a more positive number.
  *
- * @see MathContext#ROUND_CEILING
+ * @see android.icu.math.MathContext#ROUND_CEILING
  */
 
 public static final int ROUND_CEILING = 2; // 0x2
@@ -1217,7 +1215,7 @@ public static final int ROUND_CEILING = 2; // 0x2
 /**
  * Rounding mode to round towards zero.
  *
- * @see MathContext#ROUND_DOWN
+ * @see android.icu.math.MathContext#ROUND_DOWN
  */
 
 public static final int ROUND_DOWN = 1; // 0x1
@@ -1225,7 +1223,7 @@ public static final int ROUND_DOWN = 1; // 0x1
 /**
  * Rounding mode to round to a more negative number.
  *
- * @see MathContext#ROUND_FLOOR
+ * @see android.icu.math.MathContext#ROUND_FLOOR
  */
 
 public static final int ROUND_FLOOR = 3; // 0x3
@@ -1233,7 +1231,7 @@ public static final int ROUND_FLOOR = 3; // 0x3
 /**
  * Rounding mode to round to nearest neighbor, where an equidistant value is rounded down.
  *
- * @see MathContext#ROUND_HALF_DOWN
+ * @see android.icu.math.MathContext#ROUND_HALF_DOWN
  */
 
 public static final int ROUND_HALF_DOWN = 5; // 0x5
@@ -1241,7 +1239,7 @@ public static final int ROUND_HALF_DOWN = 5; // 0x5
 /**
  * Rounding mode to round to nearest neighbor, where an equidistant value is rounded to the nearest even neighbor.
  *
- * @see MathContext#ROUND_HALF_EVEN
+ * @see android.icu.math.MathContext#ROUND_HALF_EVEN
  */
 
 public static final int ROUND_HALF_EVEN = 6; // 0x6
@@ -1249,7 +1247,7 @@ public static final int ROUND_HALF_EVEN = 6; // 0x6
 /**
  * Rounding mode to round to nearest neighbor, where an equidistant value is rounded up.
  *
- * @see MathContext#ROUND_HALF_UP
+ * @see android.icu.math.MathContext#ROUND_HALF_UP
  */
 
 public static final int ROUND_HALF_UP = 4; // 0x4
@@ -1257,7 +1255,7 @@ public static final int ROUND_HALF_UP = 4; // 0x4
 /**
  * Rounding mode to assert that no rounding is necessary.
  *
- * @see MathContext#ROUND_UNNECESSARY
+ * @see android.icu.math.MathContext#ROUND_UNNECESSARY
  */
 
 public static final int ROUND_UNNECESSARY = 7; // 0x7
@@ -1265,7 +1263,7 @@ public static final int ROUND_UNNECESSARY = 7; // 0x7
 /**
  * Rounding mode to round away from zero.
  *
- * @see MathContext#ROUND_UP
+ * @see android.icu.math.MathContext#ROUND_UP
  */
 
 public static final int ROUND_UP = 0; // 0x0
