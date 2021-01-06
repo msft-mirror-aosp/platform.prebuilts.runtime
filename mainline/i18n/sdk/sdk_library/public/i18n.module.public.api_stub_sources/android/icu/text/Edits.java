@@ -10,13 +10,13 @@ package android.icu.text;
  * in linear progression. Does not support moving/reordering of text.
  * <p>
  * There are two types of edits: <em>change edits</em> and <em>no-change edits</em>. Add edits to
- * instances of this class using {@link #addReplace(int, int)} (for change edits) and
+ * instances of this class using {@link #addReplace(int,int)} (for change edits) and
  * {@link #addUnchanged(int)} (for no-change edits). Change edits are retained with full granularity,
  * whereas adjacent no-change edits are always merged together. In no-change edits, there is a one-to-one
  * mapping between code points in the source and destination strings.
  * <p>
  * After all edits have been added, instances of this class should be considered immutable, and an
- * {@link Edits.Iterator} can be used for queries.
+ * {@link android.icu.text.Edits.Iterator Edits.Iterator} can be used for queries.
  * <p>
  * There are four flavors of Edits.Iterator:
  * <ul>
@@ -47,8 +47,8 @@ package android.icu.text;
  * </ul>
  * <p>
  * The "fine changes" and "coarse changes" iterators will step through only the change edits when their
- * {@link Edits.Iterator#next()} methods are called. They are identical to the non-change iterators when
- * their {@link Edits.Iterator#findSourceIndex(int)} method is used to walk through the string.
+ * {@link android.icu.text.Edits.Iterator#next() Edits.Iterator#next()} methods are called. They are identical to the non-change iterators when
+ * their {@link android.icu.text.Edits.Iterator#findSourceIndex(int) Edits.Iterator#findSourceIndex(int)} method is used to walk through the string.
  * <p>
  * For examples of how to use this class, see the test <code>TestCaseMapEditsIteratorDocs</code> in
  * UCharacterCaseTest.java.
@@ -178,7 +178,7 @@ public android.icu.text.Edits mergeAndAppend(android.icu.text.Edits ab, android.
  * {@link #findSourceIndex(int)} methods. Calling any of these methods mutates the iterator
  * to make it point to the corresponding edit.
  * <p>
- * For more information, see the documentation for {@link Edits}.
+ * For more information, see the documentation for {@link android.icu.text.Edits Edits}.
  * <p>
  * Note: Although this class is called "Iterator", it does not implement {@link java.util.Iterator}.
  *
@@ -321,7 +321,7 @@ public int sourceIndex() { throw new RuntimeException("Stub!"); }
  * string corresponding to change edits.
  * <p>
  * This method is intended to be used together with operations that write only replacement
- * characters (e.g., {@link CaseMap#omitUnchangedText()}). The source string can then be modified
+ * characters (e.g., {@link android.icu.text.CaseMap#omitUnchangedText() CaseMap#omitUnchangedText()}). The source string can then be modified
  * in-place.
  *
  * @return the current index into the replacement-characters-only string, not counting unchanged

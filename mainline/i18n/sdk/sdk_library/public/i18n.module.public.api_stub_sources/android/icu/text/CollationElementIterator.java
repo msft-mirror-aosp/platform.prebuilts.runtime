@@ -87,9 +87,9 @@ package android.icu.text;
  * direction is done without one of these calls, the result is undefined.
  * <p>
  * This class is not subclassable.
- * @see Collator
- * @see RuleBasedCollator
- * @see StringSearch
+ * @see android.icu.text.Collator
+ * @see android.icu.text.RuleBasedCollator
+ * @see android.icu.text.StringSearch
  * @author Syn Wee Quek
  */
 

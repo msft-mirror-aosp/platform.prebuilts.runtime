@@ -141,7 +141,7 @@ public java.util.Set<java.security.cert.X509Certificate> findAllIssuers(java.sec
  * This means that a list with only the {@code leaf} certificate is returned
  * if no issuer certificates could be found.
  *
- * @throws CertificateException if there was a problem parsing the
+ * @throws java.security.cert.CertificateException if there was a problem parsing the
  *             certificates
  */
 

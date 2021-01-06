@@ -913,8 +913,8 @@ public static final int XID_START = 33; // 0x21
  * beyond the long and short name, which would be indicated by
  * LONG + i, where i=1, 2,...
  *
- * @see UCharacter#getPropertyName
- * @see UCharacter#getPropertyValueName
+ * @see android.icu.lang.UCharacter#getPropertyName
+ * @see android.icu.lang.UCharacter#getPropertyValueName
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})

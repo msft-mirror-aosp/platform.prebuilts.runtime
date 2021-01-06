@@ -35,7 +35,7 @@ import android.icu.util.ULocale;
  * formatter is created, you may modify its format pattern using the
  * <code>setPattern</code> method. For more information about
  * creating formatters using <code>DateFormat</code>'s factory methods,
- * see {@link DateFormat}.
+ * see {@link android.icu.text.DateFormat DateFormat}.
  *
  * <p>If you decide to create a date-time formatter with a specific
  * format pattern for a specific locale, you can do so with:
@@ -55,8 +55,8 @@ import android.icu.util.ULocale;
  * <p>New <code>DateFormatSymbols</code> subclasses may be added to support
  * <code>SimpleDateFormat</code> for date-time formatting for additional locales.
  *
- * @see          DateFormat
- * @see          SimpleDateFormat
+ * @see          android.icu.text.DateFormat
+ * @see          android.icu.text.SimpleDateFormat
  * @author       Chen-Lieh Huang
  */
 
@@ -69,7 +69,7 @@ public class DateFormatSymbols implements java.io.Serializable, java.lang.Clonea
  *
  * @throws java.util.MissingResourceException if the resources for the default locale
  *          cannot be found or cannot be loaded.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public DateFormatSymbols() { throw new RuntimeException("Stub!"); }
@@ -95,24 +95,24 @@ public DateFormatSymbols(java.util.Locale locale) { throw new RuntimeException("
 public DateFormatSymbols(android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * Returns the {@link DateFormatSymbols} object that should be used to format a
+ * Returns the {@link android.icu.text.DateFormatSymbols DateFormatSymbols} object that should be used to format a
  * calendar system's dates in the given locale.
  *
  * @param cal       The calendar system whose date format symbols are desired.
  * @param locale    The locale whose symbols are desired.
  *
- * @see DateFormatSymbols#DateFormatSymbols(java.util.Locale)
+ * @see android.icu.text.DateFormatSymbols#DateFormatSymbols(java.util.Locale)
  */
 
 public DateFormatSymbols(android.icu.util.Calendar cal, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * Returns the {@link DateFormatSymbols} object that should be used to format a
+ * Returns the {@link android.icu.text.DateFormatSymbols DateFormatSymbols} object that should be used to format a
  * calendar system's dates in the given locale.
  * @param cal       The calendar system whose date format symbols are desired.
  * @param locale    The ulocale whose symbols are desired.
  *
- * @see DateFormatSymbols#DateFormatSymbols(java.util.Locale)
+ * @see android.icu.text.DateFormatSymbols#DateFormatSymbols(java.util.Locale)
  */
 
 public DateFormatSymbols(android.icu.util.Calendar cal, android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
@@ -134,21 +134,10 @@ public DateFormatSymbols(java.lang.Class<? extends android.icu.util.Calendar> ca
 public DateFormatSymbols(java.lang.Class<? extends android.icu.util.Calendar> calendarClass, android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * Variant of DateFormatSymbols(Calendar, ULocale) that takes the calendar type
- * instead of a Calendar instance.
- * @see #DateFormatSymbols(Calendar, Locale)
- * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
- */
-
-@Deprecated
-public DateFormatSymbols(android.icu.util.ULocale locale, java.lang.String calType) { throw new RuntimeException("Stub!"); }
-
-/**
  * Fetches a custom calendar's DateFormatSymbols out of the given resource
  * bundle.  Symbols that are not overridden are inherited from the
  * default DateFormatSymbols for the locale.
- * @see DateFormatSymbols#DateFormatSymbols(java.util.Locale)
+ * @see android.icu.text.DateFormatSymbols#DateFormatSymbols(java.util.Locale)
  */
 
 public DateFormatSymbols(java.util.ResourceBundle bundle, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
@@ -157,7 +146,7 @@ public DateFormatSymbols(java.util.ResourceBundle bundle, java.util.Locale local
  * Fetches a custom calendar's DateFormatSymbols out of the given resource
  * bundle.  Symbols that are not overridden are inherited from the
  * default DateFormatSymbols for the locale.
- * @see DateFormatSymbols#DateFormatSymbols(java.util.Locale)
+ * @see android.icu.text.DateFormatSymbols#DateFormatSymbols(java.util.Locale)
  */
 
 public DateFormatSymbols(java.util.ResourceBundle bundle, android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
@@ -456,7 +445,7 @@ public void setAmPmStrings(java.lang.String[] newAmpms) { throw new RuntimeExcep
  * display name changes and various different types of names not available in
  * {@link java.text.DateFormatSymbols#getZoneStrings()}. For accessing the full
  * set of time zone string data used by ICU implementation, you should use
- * {@link TimeZoneNames} APIs instead.
+ * {@link android.icu.text.TimeZoneNames TimeZoneNames} APIs instead.
  *
  * @return the time zone strings.
  */
@@ -466,14 +455,14 @@ public java.lang.String[][] getZoneStrings() { throw new RuntimeException("Stub!
 /**
  * Sets time zone strings.
  * <p>
- * <b>Note</b>: {@link SimpleDateFormat} no longer uses the
+ * <b>Note</b>: {@link android.icu.text.SimpleDateFormat SimpleDateFormat} no longer uses the
  * zone strings stored in a <code>DateFormatSymbols</code>.
  * Therefore, the time zone strings set by this method have
  * no effects in an instance of <code>SimpleDateFormat</code>
  * for formatting time zones. If you want to customize time
  * zone display names formatted by <code>SimpleDateFormat</code>,
- * you should customize {@link TimeZoneFormat} and set the
- * instance by {@link SimpleDateFormat#setTimeZoneFormat(TimeZoneFormat)}
+ * you should customize {@link android.icu.text.TimeZoneFormat TimeZoneFormat} and set the
+ * instance by {@link android.icu.text.SimpleDateFormat#setTimeZoneFormat(android.icu.text.TimeZoneFormat) SimpleDateFormat#setTimeZoneFormat(TimeZoneFormat)}
  * instead.
  *
  * @param newZoneStrings the new time zone strings.

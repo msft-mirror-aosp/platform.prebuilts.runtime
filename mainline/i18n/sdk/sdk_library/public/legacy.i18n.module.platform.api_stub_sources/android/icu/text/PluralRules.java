@@ -157,7 +157,7 @@ private PluralRules() { throw new RuntimeException("Stub!"); }
 /**
  * Parses a plural rules description and returns a PluralRules.
  * @param description the rule description.
- * @throws ParseException if the description cannot be parsed.
+ * @throws java.text.ParseException if the description cannot be parsed.
  *    The exception index is typically not set, it will be -1.
  */
 

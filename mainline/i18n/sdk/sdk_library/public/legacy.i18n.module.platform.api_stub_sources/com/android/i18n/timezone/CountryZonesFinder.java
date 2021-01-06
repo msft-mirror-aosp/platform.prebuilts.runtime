@@ -30,13 +30,13 @@ CountryZonesFinder() { throw new RuntimeException("Stub!"); }
 
 /**
  * Returns an immutable list of country ISO codes with time zones. The codes can be passed to
- * {@link #lookupCountryTimeZones(String)} and similar methods.
+ * {@link #lookupCountryTimeZones(java.lang.String)} and similar methods.
  */
 
 public java.util.List<java.lang.String> lookupAllCountryIsoCodes() { throw new RuntimeException("Stub!"); }
 
 /**
- * Returns an immutable list of {@link CountryTimeZones} for countries that use the specified
+ * Returns an immutable list of {@link com.android.i18n.timezone.CountryTimeZones CountryTimeZones} for countries that use the specified
  * time zone. An exact, case-sensitive match is performed on the zone ID. If the match  but the method also
  * checks for alternative zone IDs. This method never returns null and will usually return a
  * list containing a single element. It can return an empty list if the zone ID is
@@ -46,7 +46,7 @@ public java.util.List<java.lang.String> lookupAllCountryIsoCodes() { throw new R
 public java.util.List<com.android.i18n.timezone.CountryTimeZones> lookupCountryTimeZonesForZoneId(java.lang.String zoneId) { throw new RuntimeException("Stub!"); }
 
 /**
- * Returns a {@link CountryTimeZones} object associated with the specified country code. If one
+ * Returns a {@link com.android.i18n.timezone.CountryTimeZones CountryTimeZones} object associated with the specified country code. If one
  * cannot be found this method returns {@code null}.
  */
 

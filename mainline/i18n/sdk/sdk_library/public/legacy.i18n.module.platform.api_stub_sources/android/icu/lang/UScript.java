@@ -72,7 +72,7 @@ public static int[] getCode(android.icu.util.ULocale locale) { throw new Runtime
  * Returns LATIN given "en" OR "en_US"
  *
  * <p>Note: To search by short or long script alias only, use
- * {@link #getCodeFromName(String)} instead.
+ * {@link #getCodeFromName(java.lang.String)} instead.
  * That does a fast lookup with no access of the locale data.
  *
  * @param nameOrAbbrOrLocale name of the script or ISO 15924 code or locale
@@ -152,7 +152,7 @@ public static int getScriptExtensions(int c, java.util.BitSet set) { throw new R
  *
  * @param scriptCode int script code
  * @return long script name as given in PropertyValueAliases.txt, or the 4-letter code
- * @throws IllegalArgumentException if the script code is not valid
+ * @throws java.lang.IllegalArgumentException if the script code is not valid
  */
 
 public static java.lang.String getName(int scriptCode) { throw new RuntimeException("Stub!"); }
@@ -164,7 +164,7 @@ public static java.lang.String getName(int scriptCode) { throw new RuntimeExcept
  *
  * @param scriptCode int script code
  * @return short script name (4-letter code)
- * @throws IllegalArgumentException if the script code is not valid
+ * @throws java.lang.IllegalArgumentException if the script code is not valid
  */
 
 public static java.lang.String getShortName(int scriptCode) { throw new RuntimeException("Stub!"); }
@@ -182,11 +182,11 @@ public static java.lang.String getSampleString(int script) { throw new RuntimeEx
 
 /**
  * Returns the script usage according to UAX #31 Unicode Identifier and Pattern Syntax.
- * Returns {@link ScriptUsage#NOT_ENCODED} if the script is not encoded in Unicode.
+ * Returns {@link android.icu.lang.UScript.ScriptUsage#NOT_ENCODED ScriptUsage#NOT_ENCODED} if the script is not encoded in Unicode.
  *
  * @param script script code
  * @return script usage
- * @see ScriptUsage
+ * @see android.icu.lang.UScript.ScriptUsage
  */
 
 public static android.icu.lang.UScript.ScriptUsage getUsage(int script) { throw new RuntimeException("Stub!"); }

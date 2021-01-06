@@ -51,7 +51,7 @@ import java.util.Enumeration;
  * </code></blockquote>
  *
  * will transliterate it and return the result. Other methods allow the client to specify a substring to be
- * transliterated and to use {@link Replaceable} objects instead of strings, in order to preserve out-of-band
+ * transliterated and to use {@link android.icu.text.Replaceable Replaceable} objects instead of strings, in order to preserve out-of-band
  * information (such as text styles).
  *
  * <p>
@@ -290,7 +290,7 @@ import java.util.Enumeration;
  *     [aeiou]&gt;'*'; # Another way
  * </pre>
  *
- * <p>See {@link UnicodeSet} for more documentation and examples.
+ * <p>See {@link android.icu.text.UnicodeSet UnicodeSet} for more documentation and examples.
  *
  * <p><b>Segments</b>
  *
@@ -517,7 +517,7 @@ public final java.lang.String transliterate(java.lang.String text) { throw new R
  * transliterated into the translation buffer at
  * <code>index.contextLimit</code>.  If <code>null</code> then no text
  * is inserted.
- * @exception IllegalArgumentException if <code>index</code>
+ * @exception java.lang.IllegalArgumentException if <code>index</code>
  * is invalid
  */
 
@@ -527,8 +527,7 @@ public final void transliterate(android.icu.text.Replaceable text, android.icu.t
  * Transliterates the portion of the text buffer that can be
  * transliterated unambiguosly after a new character has been
  * inserted, typically as a result of a keyboard event.  This is a
- * convenience method; see {@link #transliterate(Replaceable,
- * Transliterator.Position, String)} for details.
+ * convenience method; see {@link #transliterate(android.icu.text.Replaceable,android.icu.text.Transliterator.Position,java.lang.String)} for details.
  * @param text the buffer holding transliterated and
  * untransliterated text
  * @param index the start and limit of the text, the position
@@ -544,8 +543,7 @@ public final void transliterate(android.icu.text.Replaceable text, android.icu.t
 /**
  * Transliterates the portion of the text buffer that can be
  * transliterated unambiguosly.  This is a convenience method; see
- * {@link #transliterate(Replaceable, Transliterator.Position,
- * String)} for details.
+ * {@link #transliterate(android.icu.text.Replaceable,android.icu.text.Transliterator.Position,java.lang.String)} for details.
  * @param text the buffer holding transliterated and
  * untransliterated text
  * @param index the start and limit of the text, the position
@@ -607,7 +605,7 @@ public final java.lang.String getID() { throw new RuntimeException("Stub!"); }
 /**
  * Returns a name for this transliterator that is appropriate for
  * display to the user in the default <code>DISPLAY</code> locale.  See {@link
- * #getDisplayName(String,Locale)} for details.
+ * #getDisplayName(java.lang.String,java.util.Locale)} for details.
  * @see android.icu.util.ULocale.Category#DISPLAY
  */
 
@@ -679,7 +677,7 @@ public void setFilter(android.icu.text.UnicodeFilter filter) { throw new Runtime
  *
  * @param ID a valid ID, as enumerated by <code>getAvailableIDs()</code>
  * @return A <code>Transliterator</code> object with the given ID
- * @exception IllegalArgumentException if the given ID is invalid.
+ * @exception java.lang.IllegalArgumentException if the given ID is invalid.
  */
 
 public static final android.icu.text.Transliterator getInstance(java.lang.String ID) { throw new RuntimeException("Stub!"); }
@@ -692,7 +690,7 @@ public static final android.icu.text.Transliterator getInstance(java.lang.String
  * @param dir either FORWARD or REVERSE.  If REVERSE then the
  * inverse of the given ID is instantiated.
  * @return A <code>Transliterator</code> object with the given ID
- * @exception IllegalArgumentException if the given ID is invalid.
+ * @exception java.lang.IllegalArgumentException if the given ID is invalid.
  * @see #getAvailableIDs
  * @see #getID
  */
@@ -711,7 +709,7 @@ public static android.icu.text.Transliterator getInstance(java.lang.String ID, i
  * @param rules rules, separated by ';'
  * @param dir either FORWARD or REVERSE.
  * @return a newly created Transliterator
- * @throws IllegalArgumentException if there is a problem with the ID or the rules
+ * @throws java.lang.IllegalArgumentException if there is a problem with the ID or the rules
  */
 
 public static final android.icu.text.Transliterator createFromRules(java.lang.String ID, java.lang.String rules, int dir) { throw new RuntimeException("Stub!"); }
@@ -930,7 +928,7 @@ public java.lang.String toString() { throw new RuntimeException("Stub!"); }
 /**
  * Check all bounds.  If they are invalid, throw an exception.
  * @param length the length of the string this object applies to
- * @exception IllegalArgumentException if any indices are out
+ * @exception java.lang.IllegalArgumentException if any indices are out
  * of bounds
  */
 

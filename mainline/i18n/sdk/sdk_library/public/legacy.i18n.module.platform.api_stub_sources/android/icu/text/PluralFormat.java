@@ -77,7 +77,7 @@ import java.util.Locale;
  * selector = explicitValue | keyword
  * explicitValue = '=' number  // adjacent, no white space in between
  * keyword = [^[[:Pattern_Syntax:][:Pattern_White_Space:]]]+
- * message: see {@link MessageFormat}
+ * message: see {@link android.icu.text.MessageFormat MessageFormat}
  * </pre></blockquote>
  * Pattern_White_Space between syntax elements is ignored, except
  * between the {curly braces} and their sub-message,
@@ -107,7 +107,7 @@ import java.util.Locale;
  * If you need a custom format and have a non-zero offset, then you need to pass the
  * number-minus-offset value as a separate parameter.
  *
- * <p>For a usage example, see the {@link MessageFormat} class documentation.
+ * <p>For a usage example, see the {@link android.icu.text.MessageFormat MessageFormat} class documentation.
  *
  * <h4>Defining Custom Plural Rules</h4>
  * <p>If you need to use <code>PluralFormat</code> with custom rules, you can
@@ -117,7 +117,7 @@ import java.util.Locale;
  * texts.
  * <p>
  * For more information about <code>PluralRules</code>, see
- * {@link PluralRules}.
+ * {@link android.icu.text.PluralRules PluralRules}.
  *
  * @author tschumann (Tim Schumann)
  */
@@ -129,7 +129,7 @@ public class PluralFormat extends android.icu.text.UFormat {
  * Creates a new cardinal-number <code>PluralFormat</code> for the default <code>FORMAT</code> locale.
  * This locale will be used to get the set of plural rules and for standard
  * number formatting.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public PluralFormat() { throw new RuntimeException("Stub!"); }
@@ -158,7 +158,7 @@ public PluralFormat(java.util.Locale locale) { throw new RuntimeException("Stub!
  * The standard number formatting will be done using the default <code>FORMAT</code> locale.
  * @param rules defines the behavior of the <code>PluralFormat</code>
  *        object.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public PluralFormat(android.icu.text.PluralRules rules) { throw new RuntimeException("Stub!"); }
@@ -210,8 +210,8 @@ public PluralFormat(java.util.Locale locale, android.icu.text.PluralRules.Plural
  * The default <code>FORMAT</code> locale will be used to get the set of plural rules and for
  * standard number formatting.
  * @param  pattern the pattern for this <code>PluralFormat</code>.
- * @throws IllegalArgumentException if the pattern is invalid.
- * @see Category#FORMAT
+ * @throws java.lang.IllegalArgumentException if the pattern is invalid.
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public PluralFormat(java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -226,7 +226,7 @@ public PluralFormat(java.lang.String pattern) { throw new RuntimeException("Stub
  *        rules for this locale. This locale will also be used for standard
  *        number formatting.
  * @param  pattern the pattern for this <code>PluralFormat</code>.
- * @throws IllegalArgumentException if the pattern is invalid.
+ * @throws java.lang.IllegalArgumentException if the pattern is invalid.
  */
 
 public PluralFormat(android.icu.util.ULocale ulocale, java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -238,8 +238,8 @@ public PluralFormat(android.icu.util.ULocale ulocale, java.lang.String pattern) 
  * @param rules defines the behavior of the <code>PluralFormat</code>
  *        object.
  * @param  pattern the pattern for this <code>PluralFormat</code>.
- * @throws IllegalArgumentException if the pattern is invalid.
- * @see Category#FORMAT
+ * @throws java.lang.IllegalArgumentException if the pattern is invalid.
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public PluralFormat(android.icu.text.PluralRules rules, java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -253,7 +253,7 @@ public PluralFormat(android.icu.text.PluralRules rules, java.lang.String pattern
  * @param rules defines the behavior of the <code>PluralFormat</code>
  *        object.
  * @param  pattern the pattern for this <code>PluralFormat</code>.
- * @throws IllegalArgumentException if the pattern is invalid.
+ * @throws java.lang.IllegalArgumentException if the pattern is invalid.
  */
 
 public PluralFormat(android.icu.util.ULocale ulocale, android.icu.text.PluralRules rules, java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -266,7 +266,7 @@ public PluralFormat(android.icu.util.ULocale ulocale, android.icu.text.PluralRul
  *        number formatting.
  * @param type The plural type (e.g., cardinal or ordinal).
  * @param  pattern the pattern for this <code>PluralFormat</code>.
- * @throws IllegalArgumentException if the pattern is invalid.
+ * @throws java.lang.IllegalArgumentException if the pattern is invalid.
  */
 
 public PluralFormat(android.icu.util.ULocale ulocale, android.icu.text.PluralRules.PluralType type, java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -278,7 +278,7 @@ public PluralFormat(android.icu.util.ULocale ulocale, android.icu.text.PluralRul
  * Patterns and their interpretation are specified in the class description.
  *
  * @param pattern the pattern for this plural format.
- * @throws IllegalArgumentException if the pattern is invalid.
+ * @throws java.lang.IllegalArgumentException if the pattern is invalid.
  */
 
 public void applyPattern(java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -317,7 +317,7 @@ public final java.lang.String format(double number) { throw new RuntimeException
  * @param pos will be ignored by this method.
  * @return the string buffer passed in as toAppendTo, with formatted text
  *         appended.
- * @throws IllegalArgumentException if number is not an instance of Number
+ * @throws java.lang.IllegalArgumentException if number is not an instance of Number
  */
 
 public java.lang.StringBuffer format(java.lang.Object number, java.lang.StringBuffer toAppendTo, java.text.FieldPosition pos) { throw new RuntimeException("Stub!"); }
@@ -329,7 +329,7 @@ public java.lang.StringBuffer format(java.lang.Object number, java.lang.StringBu
  * and upon return, the position where parsing left off.  If the position
  * has not changed upon return, then parsing failed.
  * @return nothing because this method is not yet implemented.
- * @throws UnsupportedOperationException will always be thrown by this method.
+ * @throws java.lang.UnsupportedOperationException will always be thrown by this method.
  */
 
 public java.lang.Number parse(java.lang.String text, java.text.ParsePosition parsePosition) { throw new RuntimeException("Stub!"); }
@@ -341,7 +341,7 @@ public java.lang.Number parse(java.lang.String text, java.text.ParsePosition par
  * and upon return, the position where parsing left off.  If the position
  * has not changed upon return, then parsing failed.
  * @return nothing because this method is not yet implemented.
- * @throws UnsupportedOperationException will always be thrown by this method.
+ * @throws java.lang.UnsupportedOperationException will always be thrown by this method.
  */
 
 public java.lang.Object parseObject(java.lang.String source, java.text.ParsePosition pos) { throw new RuntimeException("Stub!"); }

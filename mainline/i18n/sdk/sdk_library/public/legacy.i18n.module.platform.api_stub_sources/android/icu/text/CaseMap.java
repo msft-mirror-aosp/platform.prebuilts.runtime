@@ -46,7 +46,7 @@ public static android.icu.text.CaseMap.Fold fold() { throw new RuntimeException(
 
 /**
  * Returns an instance that behaves like this one but
- * omits unchanged text when case-mapping with {@link Edits}.
+ * omits unchanged text when case-mapping with {@link android.icu.text.Edits Edits}.
  *
  * @return an options object with this option.
  */
@@ -78,7 +78,7 @@ public android.icu.text.CaseMap.Fold omitUnchangedText() { throw new RuntimeExce
  * included for the Turkic-specific mappings.
  *
  * @return an options object with this option.
- * @see UCharacter#FOLD_CASE_EXCLUDE_SPECIAL_I
+ * @see android.icu.lang.UCharacter#FOLD_CASE_EXCLUDE_SPECIAL_I
  */
 
 public android.icu.text.CaseMap.Fold turkic() { throw new RuntimeException("Stub!"); }
@@ -94,7 +94,7 @@ public android.icu.text.CaseMap.Fold turkic() { throw new RuntimeException("Stub
  * @param src       The original string.
  * @return the result string.
  *
- * @see UCharacter#foldCase(String, int)
+ * @see android.icu.lang.UCharacter#foldCase(String, int)
  */
 
 public java.lang.String apply(java.lang.CharSequence src) { throw new RuntimeException("Stub!"); }
@@ -114,7 +114,7 @@ public java.lang.String apply(java.lang.CharSequence src) { throw new RuntimeExc
  *                  This function calls edits.reset() first. edits can be null.
  * @return dest with the result string (or only changes) appended.
  *
- * @see UCharacter#foldCase(String, int)
+ * @see android.icu.lang.UCharacter#foldCase(String, int)
  */
 
 public <A extends java.lang.Appendable> A apply(java.lang.CharSequence src, A dest, android.icu.text.Edits edits) { throw new RuntimeException("Stub!"); }
@@ -142,12 +142,12 @@ public android.icu.text.CaseMap.Lower omitUnchangedText() { throw new RuntimeExc
  * Casing is locale-dependent and context-sensitive.
  * The result may be longer or shorter than the original.
  *
- * @param locale    The locale ID. Can be null for {@link Locale#getDefault}.
- *                  (See {@link ULocale#toLocale}.)
+ * @param locale    The locale ID. Can be null for {@link java.util.Locale#getDefault Locale#getDefault}.
+ *                  (See {@link android.icu.util.ULocale#toLocale ULocale#toLocale}.)
  * @param src       The original string.
  * @return the result string.
  *
- * @see UCharacter#toLowerCase(Locale, String)
+ * @see android.icu.lang.UCharacter#toLowerCase(Locale, String)
  */
 
 public java.lang.String apply(java.util.Locale locale, java.lang.CharSequence src) { throw new RuntimeException("Stub!"); }
@@ -157,8 +157,8 @@ public java.lang.String apply(java.util.Locale locale, java.lang.CharSequence sr
  * Casing is locale-dependent and context-sensitive.
  * The result may be longer or shorter than the original.
  *
- * @param locale    The locale ID. Can be null for {@link Locale#getDefault}.
- *                  (See {@link ULocale#toLocale}.)
+ * @param locale    The locale ID. Can be null for {@link java.util.Locale#getDefault Locale#getDefault}.
+ *                  (See {@link android.icu.util.ULocale#toLocale ULocale#toLocale}.)
  * @param src       The original string.
  * @param dest      A buffer for the result string. Must not be null.
  * @param edits     Records edits for index mapping, working with styled text,
@@ -166,7 +166,7 @@ public java.lang.String apply(java.util.Locale locale, java.lang.CharSequence sr
  *                  This function calls edits.reset() first. edits can be null.
  * @return dest with the result string (or only changes) appended.
  *
- * @see UCharacter#toLowerCase(Locale, String)
+ * @see android.icu.lang.UCharacter#toLowerCase(Locale, String)
  */
 
 public <A extends java.lang.Appendable> A apply(java.util.Locale locale, java.lang.CharSequence src, A dest, android.icu.text.Edits edits) { throw new RuntimeException("Stub!"); }
@@ -227,7 +227,7 @@ public android.icu.text.CaseMap.Title omitUnchangedText() { throw new RuntimeExc
  * With this option, the other characters will not be modified.
  *
  * @return an options object with this option.
- * @see UCharacter#TITLECASE_NO_LOWERCASE
+ * @see android.icu.lang.UCharacter#TITLECASE_NO_LOWERCASE
  * @see #adjustToCased()
  */
 
@@ -245,7 +245,7 @@ public android.icu.text.CaseMap.Title noLowercase() { throw new RuntimeException
  * <p>Other characters are lowercased.
  *
  * @return an options object with this option.
- * @see UCharacter#TITLECASE_NO_BREAK_ADJUSTMENT
+ * @see android.icu.lang.UCharacter#TITLECASE_NO_BREAK_ADJUSTMENT
  */
 
 public android.icu.text.CaseMap.Title noBreakAdjustment() { throw new RuntimeException("Stub!"); }
@@ -280,8 +280,8 @@ public android.icu.text.CaseMap.Title adjustToCased() { throw new RuntimeExcepti
  * that are to be titlecased. It titlecases those characters and lowercases
  * all others. (This can be modified with options bits.)
  *
- * @param locale    The locale ID. Can be null for {@link Locale#getDefault}.
- *                  (See {@link ULocale#toLocale}.)
+ * @param locale    The locale ID. Can be null for {@link java.util.Locale#getDefault Locale#getDefault}.
+ *                  (See {@link android.icu.util.ULocale#toLocale ULocale#toLocale}.)
  * @param iter      A break iterator to find the first characters of words that are to be titlecased.
  *                  It is set to the source string (setText())
  *                  and used one or more times for iteration (first() and next()).
@@ -290,7 +290,7 @@ public android.icu.text.CaseMap.Title adjustToCased() { throw new RuntimeExcepti
  * @param src       The original string.
  * @return the result string.
  *
- * @see UCharacter#toUpperCase(Locale, String)
+ * @see android.icu.lang.UCharacter#toUpperCase(Locale, String)
  */
 
 public java.lang.String apply(java.util.Locale locale, android.icu.text.BreakIterator iter, java.lang.CharSequence src) { throw new RuntimeException("Stub!"); }
@@ -304,8 +304,8 @@ public java.lang.String apply(java.util.Locale locale, android.icu.text.BreakIte
  * that are to be titlecased. It titlecases those characters and lowercases
  * all others. (This can be modified with options bits.)
  *
- * @param locale    The locale ID. Can be null for {@link Locale#getDefault}.
- *                  (See {@link ULocale#toLocale}.)
+ * @param locale    The locale ID. Can be null for {@link java.util.Locale#getDefault Locale#getDefault}.
+ *                  (See {@link android.icu.util.ULocale#toLocale ULocale#toLocale}.)
  * @param iter      A break iterator to find the first characters of words that are to be titlecased.
  *                  It is set to the source string (setText())
  *                  and used one or more times for iteration (first() and next()).
@@ -318,7 +318,7 @@ public java.lang.String apply(java.util.Locale locale, android.icu.text.BreakIte
  *                  This function calls edits.reset() first. edits can be null.
  * @return dest with the result string (or only changes) appended.
  *
- * @see UCharacter#toTitleCase(Locale, String, BreakIterator, int)
+ * @see android.icu.lang.UCharacter#toTitleCase(Locale, String, BreakIterator, int)
  */
 
 public <A extends java.lang.Appendable> A apply(java.util.Locale locale, android.icu.text.BreakIterator iter, java.lang.CharSequence src, A dest, android.icu.text.Edits edits) { throw new RuntimeException("Stub!"); }
@@ -346,12 +346,12 @@ public android.icu.text.CaseMap.Upper omitUnchangedText() { throw new RuntimeExc
  * Casing is locale-dependent and context-sensitive.
  * The result may be longer or shorter than the original.
  *
- * @param locale    The locale ID. Can be null for {@link Locale#getDefault}.
- *                  (See {@link ULocale#toLocale}.)
+ * @param locale    The locale ID. Can be null for {@link java.util.Locale#getDefault Locale#getDefault}.
+ *                  (See {@link android.icu.util.ULocale#toLocale ULocale#toLocale}.)
  * @param src       The original string.
  * @return the result string.
  *
- * @see UCharacter#toUpperCase(Locale, String)
+ * @see android.icu.lang.UCharacter#toUpperCase(Locale, String)
  */
 
 public java.lang.String apply(java.util.Locale locale, java.lang.CharSequence src) { throw new RuntimeException("Stub!"); }
@@ -361,8 +361,8 @@ public java.lang.String apply(java.util.Locale locale, java.lang.CharSequence sr
  * Casing is locale-dependent and context-sensitive.
  * The result may be longer or shorter than the original.
  *
- * @param locale    The locale ID. Can be null for {@link Locale#getDefault}.
- *                  (See {@link ULocale#toLocale}.)
+ * @param locale    The locale ID. Can be null for {@link java.util.Locale#getDefault Locale#getDefault}.
+ *                  (See {@link android.icu.util.ULocale#toLocale ULocale#toLocale}.)
  * @param src       The original string.
  * @param dest      A buffer for the result string. Must not be null.
  * @param edits     Records edits for index mapping, working with styled text,
@@ -370,7 +370,7 @@ public java.lang.String apply(java.util.Locale locale, java.lang.CharSequence sr
  *                  This function calls edits.reset() first. edits can be null.
  * @return dest with the result string (or only changes) appended.
  *
- * @see UCharacter#toUpperCase(Locale, String)
+ * @see android.icu.lang.UCharacter#toUpperCase(Locale, String)
  */
 
 public <A extends java.lang.Appendable> A apply(java.util.Locale locale, java.lang.CharSequence src, A dest, android.icu.text.Edits edits) { throw new RuntimeException("Stub!"); }
