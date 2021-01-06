@@ -260,7 +260,7 @@ DateIntervalFormat() { throw new RuntimeException("Stub!"); }
  *
  * @param skeleton  the skeleton on which interval format based.
  * @return          a date time interval formatter.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.DateIntervalFormat getInstance(java.lang.String skeleton) { throw new RuntimeException("Stub!"); }
@@ -321,7 +321,7 @@ public static final android.icu.text.DateIntervalFormat getInstance(java.lang.St
  * @param skeleton  the skeleton on which interval format based.
  * @param dtitvinf  the DateIntervalInfo object to be adopted.
  * @return          a date time interval formatter.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.DateIntervalFormat getInstance(java.lang.String skeleton, android.icu.text.DateIntervalInfo dtitvinf) { throw new RuntimeException("Stub!"); }
@@ -403,7 +403,7 @@ public synchronized java.lang.Object clone() { throw new RuntimeException("Stub!
  *                          in an interval format; in this case the fieldPosition
  *                          offsets refer to the first instance.
  * @return                  Reference to 'appendTo' parameter.
- * @throws    IllegalArgumentException  if the formatted object is not
+ * @throws    java.lang.IllegalArgumentException  if the formatted object is not
  *                                      DateInterval object
  */
 
@@ -440,7 +440,7 @@ public final java.lang.StringBuffer format(android.icu.util.DateInterval dtInter
  *                          in an interval format; in this case the fieldPosition
  *                          offsets refer to the first instance.
  * @return                  Reference to 'appendTo' parameter.
- * @throws    IllegalArgumentException  if the two calendars are not equivalent.
+ * @throws    java.lang.IllegalArgumentException  if the two calendars are not equivalent.
  */
 
 public final java.lang.StringBuffer format(android.icu.util.Calendar fromCalendar, android.icu.util.Calendar toCalendar, java.lang.StringBuffer appendTo, java.text.FieldPosition pos) { throw new RuntimeException("Stub!"); }

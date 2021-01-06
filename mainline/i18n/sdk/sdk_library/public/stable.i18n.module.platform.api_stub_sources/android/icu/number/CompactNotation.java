@@ -11,9 +11,9 @@ package android.icu.number;
  *
  * <p>
  * This class exposes no public functionality. To create a CompactNotation, use one of the factory
- * methods in {@link Notation}.
+ * methods in {@link android.icu.number.Notation Notation}.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})

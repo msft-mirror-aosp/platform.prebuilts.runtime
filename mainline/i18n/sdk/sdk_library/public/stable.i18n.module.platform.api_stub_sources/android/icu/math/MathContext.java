@@ -9,7 +9,7 @@ package android.icu.math;
 
 /**
  * The <code>MathContext</code> immutable class encapsulates the
- * settings understood by the operator methods of the {@link BigDecimal}
+ * settings understood by the operator methods of the {@link android.icu.math.BigDecimal BigDecimal}
  * class (and potentially other classes).  Operator methods are those
  * that effect an operation on a number or a pair of numbers.
  * <p>
@@ -47,7 +47,7 @@ package android.icu.math;
  * maintain compatibility with earlier versions of
  * <code>BigDecimal</code>.
  *
- * @see     BigDecimal
+ * @see     android.icu.math.BigDecimal
  * @author  Mike Cowlishaw
  */
 
@@ -66,7 +66,7 @@ public final class MathContext implements java.io.Serializable {
  *
  * @param setdigits     The <code>int</code> digits setting
  *                      for this <code>MathContext</code>.
- * @throws IllegalArgumentException parameter out of range.
+ * @throws java.lang.IllegalArgumentException parameter out of range.
  */
 
 public MathContext(int setdigits) { throw new RuntimeException("Stub!"); }
@@ -87,7 +87,7 @@ public MathContext(int setdigits) { throw new RuntimeException("Stub!"); }
  *                      for this <code>MathContext</code>.
  * @param setform       The <code>int</code> form setting
  *                      for this <code>MathContext</code>.
- * @throws IllegalArgumentException parameter out of range.
+ * @throws java.lang.IllegalArgumentException parameter out of range.
  */
 
 public MathContext(int setdigits, int setform) { throw new RuntimeException("Stub!"); }
@@ -110,7 +110,7 @@ public MathContext(int setdigits, int setform) { throw new RuntimeException("Stu
  *                      for this <code>MathContext</code>.
  * @param setlostdigits The <code>boolean</code> lostDigits
  *                      setting for this <code>MathContext</code>.
- * @throws IllegalArgumentException parameter out of range.
+ * @throws java.lang.IllegalArgumentException parameter out of range.
  */
 
 public MathContext(int setdigits, int setform, boolean setlostdigits) { throw new RuntimeException("Stub!"); }
@@ -133,7 +133,7 @@ public MathContext(int setdigits, int setform, boolean setlostdigits) { throw ne
  *                        setting for this <code>MathContext</code>.
  * @param setroundingmode The <code>int</code> roundingMode setting
  *                        for this <code>MathContext</code>.
- * @throws IllegalArgumentException parameter out of range.
+ * @throws java.lang.IllegalArgumentException parameter out of range.
  */
 
 public MathContext(int setdigits, int setform, boolean setlostdigits, int setroundingmode) { throw new RuntimeException("Stub!"); }

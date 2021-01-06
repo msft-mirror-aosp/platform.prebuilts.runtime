@@ -17,10 +17,10 @@ import android.icu.number.NumberFormatter.DecimalSeparatorDisplay;
 
 /**
  * An abstract base class for specifying settings related to number formatting. This class is implemented
- * by {@link UnlocalizedNumberFormatter} and {@link LocalizedNumberFormatter}. This class is not intended
+ * by {@link android.icu.number.UnlocalizedNumberFormatter UnlocalizedNumberFormatter} and {@link android.icu.number.LocalizedNumberFormatter LocalizedNumberFormatter}. This class is not intended
  * for public subclassing.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -42,7 +42,7 @@ NumberFormatterSettings() { throw new RuntimeException("Stub!"); }
  * compatible with units, rounding strategies, and other number formatter settings.
  *
  * <p>
- * Pass this method the return value of a {@link Notation} factory method. For example:
+ * Pass this method the return value of a {@link android.icu.number.Notation Notation} factory method. For example:
  *
  * <pre>
  * NumberFormatter.with().notation(Notation.compactShort())
@@ -53,7 +53,7 @@ NumberFormatterSettings() { throw new RuntimeException("Stub!"); }
  * @param notation
  *            The notation strategy to use.
  * @return The fluent chain.
- * @see Notation
+ * @see android.icu.number.Notation
  */
 
 public T notation(android.icu.number.Notation notation) { throw new RuntimeException("Stub!"); }
@@ -68,8 +68,8 @@ public T notation(android.icu.number.Notation notation) { throw new RuntimeExcep
  * </ul>
  *
  * <p>
- * <strong>Note:</strong> The unit can also be specified by passing a {@link Measure} to
- * {@link LocalizedNumberFormatter#format(Measure)}. Units specified via the format method take
+ * <strong>Note:</strong> The unit can also be specified by passing a {@link android.icu.util.Measure Measure} to
+ * {@link android.icu.number.LocalizedNumberFormatter#format(android.icu.util.Measure) LocalizedNumberFormatter#format(Measure)}. Units specified via the format method take
  * precedence over units specified here. This setter is designed for situations when the unit is
  * constant for the duration of the number formatting process.
  *
@@ -78,7 +78,7 @@ public T notation(android.icu.number.Notation notation) { throw new RuntimeExcep
  * styles, rounding strategies, and other number formatter settings.
  *
  * <p>
- * Pass this method any instance of {@link MeasureUnit}. For units of measure:
+ * Pass this method any instance of {@link android.icu.util.MeasureUnit MeasureUnit}. For units of measure:
  *
  * <pre>
  * NumberFormatter.with().unit(MeasureUnit.METER)
@@ -102,8 +102,8 @@ public T notation(android.icu.number.Notation notation) { throw new RuntimeExcep
  * @param unit
  *            The unit to render.
  * @return The fluent chain.
- * @see MeasureUnit
- * @see Currency
+ * @see android.icu.util.MeasureUnit
+ * @see android.icu.util.Currency
  * @see #perUnit
  */
 
@@ -114,7 +114,7 @@ public T unit(android.icu.util.MeasureUnit unit) { throw new RuntimeException("S
  * and SECOND to the perUnit.
  *
  * <p>
- * Pass this method any instance of {@link MeasureUnit}. For example:
+ * Pass this method any instance of {@link android.icu.util.MeasureUnit MeasureUnit}. For example:
  *
  * <pre>
  * NumberFormatter.with().unit(MeasureUnit.METER).perUnit(MeasureUnit.SECOND)
@@ -145,7 +145,7 @@ public T perUnit(android.icu.util.MeasureUnit perUnit) { throw new RuntimeExcept
  * </ul>
  *
  * <p>
- * Pass this method the return value of one of the factory methods on {@link Precision}. For example:
+ * Pass this method the return value of one of the factory methods on {@link android.icu.number.Precision Precision}. For example:
  *
  * <pre>
  * NumberFormatter.with().precision(Precision.fixedFraction(2))
@@ -154,14 +154,14 @@ public T perUnit(android.icu.util.MeasureUnit perUnit) { throw new RuntimeExcept
  * <p>
  * In most cases, the default rounding precision is to round to 6 fraction places; i.e.,
  * <code>Precision.maxFraction(6)</code>. The exceptions are if compact notation is being used, then
- * the compact notation rounding precision is used (see {@link Notation#compactShort} for details), or
+ * the compact notation rounding precision is used (see {@link android.icu.number.Notation#compactShort Notation#compactShort} for details), or
  * if the unit is a currency, then standard currency rounding is used, which varies from currency to
- * currency (see {@link Precision#currency} for details).
+ * currency (see {@link android.icu.number.Precision#currency Precision#currency} for details).
  *
  * @param precision
  *            The rounding precision to use.
  * @return The fluent chain.
- * @see Precision
+ * @see android.icu.number.Precision
  */
 
 public T precision(android.icu.number.Precision precision) { throw new RuntimeException("Stub!"); }
@@ -183,7 +183,7 @@ public T precision(android.icu.number.Precision precision) { throw new RuntimeEx
  * @param roundingMode
  *            The rounding mode to use.
  * @return The fluent chain.
- * @see Precision
+ * @see android.icu.number.Precision
  */
 
 public T roundingMode(java.math.RoundingMode roundingMode) { throw new RuntimeException("Stub!"); }
@@ -201,7 +201,7 @@ public T roundingMode(java.math.RoundingMode roundingMode) { throw new RuntimeEx
  * The exact grouping widths will be chosen based on the locale.
  *
  * <p>
- * Pass this method an element from the {@link GroupingStrategy} enum. For example:
+ * Pass this method an element from the {@link android.icu.number.NumberFormatter.GroupingStrategy GroupingStrategy} enum. For example:
  *
  * <pre>
  * NumberFormatter.with().grouping(GroupingStrategy.MIN2)
@@ -213,7 +213,7 @@ public T roundingMode(java.math.RoundingMode roundingMode) { throw new RuntimeEx
  * @param strategy
  *            The grouping strategy to use.
  * @return The fluent chain.
- * @see GroupingStrategy
+ * @see android.icu.number.NumberFormatter.GroupingStrategy
  */
 
 public T grouping(android.icu.number.NumberFormatter.GroupingStrategy strategy) { throw new RuntimeException("Stub!"); }
@@ -228,7 +228,7 @@ public T grouping(android.icu.number.NumberFormatter.GroupingStrategy strategy) 
  * </ul>
  *
  * <p>
- * Pass this method the return value of {@link IntegerWidth#zeroFillTo(int)}. For example:
+ * Pass this method the return value of {@link android.icu.number.IntegerWidth#zeroFillTo(int) IntegerWidth#zeroFillTo(int)}. For example:
  *
  * <pre>
  * NumberFormatter.with().integerWidth(IntegerWidth.zeroFillTo(2))
@@ -239,7 +239,7 @@ public T grouping(android.icu.number.NumberFormatter.GroupingStrategy strategy) 
  * @param style
  *            The integer width to use.
  * @return The fluent chain.
- * @see IntegerWidth
+ * @see android.icu.number.IntegerWidth
  */
 
 public T integerWidth(android.icu.number.IntegerWidth style) { throw new RuntimeException("Stub!"); }
@@ -256,7 +256,7 @@ public T integerWidth(android.icu.number.IntegerWidth style) { throw new Runtime
  * </ul>
  *
  * <p>
- * Pass this method an instance of {@link DecimalFormatSymbols}. For example:
+ * Pass this method an instance of {@link android.icu.text.DecimalFormatSymbols DecimalFormatSymbols}. For example:
  *
  * <pre>
  * NumberFormatter.with().symbols(DecimalFormatSymbols.getInstance(new ULocale("de_CH")))
@@ -273,7 +273,7 @@ public T integerWidth(android.icu.number.IntegerWidth style) { throw new Runtime
  *
  * <p>
  * <strong>Note:</strong> Calling this method will override the NumberingSystem previously specified
- * in {@link #symbols(NumberingSystem)}.
+ * in {@link #symbols(android.icu.text.NumberingSystem)}.
  *
  * <p>
  * The default is to choose the symbols based on the locale specified in the fluent chain.
@@ -281,7 +281,7 @@ public T integerWidth(android.icu.number.IntegerWidth style) { throw new Runtime
  * @param symbols
  *            The DecimalFormatSymbols to use.
  * @return The fluent chain.
- * @see DecimalFormatSymbols
+ * @see android.icu.text.DecimalFormatSymbols
  */
 
 public T symbols(android.icu.text.DecimalFormatSymbols symbols) { throw new RuntimeException("Stub!"); }
@@ -296,7 +296,7 @@ public T symbols(android.icu.text.DecimalFormatSymbols symbols) { throw new Runt
  * </ul>
  *
  * <p>
- * Pass this method an instance of {@link NumberingSystem}. For example, to force the locale to
+ * Pass this method an instance of {@link android.icu.text.NumberingSystem NumberingSystem}. For example, to force the locale to
  * always use the Latin alphabet numbering system (ASCII digits):
  *
  * <pre>
@@ -305,7 +305,7 @@ public T symbols(android.icu.text.DecimalFormatSymbols symbols) { throw new Runt
  *
  * <p>
  * <strong>Note:</strong> Calling this method will override the DecimalFormatSymbols previously
- * specified in {@link #symbols(DecimalFormatSymbols)}.
+ * specified in {@link #symbols(android.icu.text.DecimalFormatSymbols)}.
  *
  * <p>
  * The default is to choose the best numbering system for the locale.
@@ -313,7 +313,7 @@ public T symbols(android.icu.text.DecimalFormatSymbols symbols) { throw new Runt
  * @param ns
  *            The NumberingSystem to use.
  * @return The fluent chain.
- * @see NumberingSystem
+ * @see android.icu.text.NumberingSystem
  */
 
 public T symbols(android.icu.text.NumberingSystem ns) { throw new RuntimeException("Stub!"); }
@@ -328,7 +328,7 @@ public T symbols(android.icu.text.NumberingSystem ns) { throw new RuntimeExcepti
  * </ul>
  *
  * <p>
- * Pass an element from the {@link UnitWidth} enum to this setter. For example:
+ * Pass an element from the {@link android.icu.number.NumberFormatter.UnitWidth UnitWidth} enum to this setter. For example:
  *
  * <pre>
  * NumberFormatter.with().unitWidth(UnitWidth.FULL_NAME)
@@ -340,7 +340,7 @@ public T symbols(android.icu.text.NumberingSystem ns) { throw new RuntimeExcepti
  * @param style
  *            The width to use when rendering numbers.
  * @return The fluent chain
- * @see UnitWidth
+ * @see android.icu.number.NumberFormatter.UnitWidth
  */
 
 public T unitWidth(android.icu.number.NumberFormatter.UnitWidth style) { throw new RuntimeException("Stub!"); }
@@ -355,7 +355,7 @@ public T unitWidth(android.icu.number.NumberFormatter.UnitWidth style) { throw n
  * </ul>
  *
  * <p>
- * Pass an element from the {@link SignDisplay} enum to this setter. For example:
+ * Pass an element from the {@link android.icu.number.NumberFormatter.SignDisplay SignDisplay} enum to this setter. For example:
  *
  * <pre>
  * NumberFormatter.with().sign(SignDisplay.ALWAYS)
@@ -367,7 +367,7 @@ public T unitWidth(android.icu.number.NumberFormatter.UnitWidth style) { throw n
  * @param style
  *            The sign display strategy to use when rendering numbers.
  * @return The fluent chain
- * @see SignDisplay
+ * @see android.icu.number.NumberFormatter.SignDisplay
  */
 
 public T sign(android.icu.number.NumberFormatter.SignDisplay style) { throw new RuntimeException("Stub!"); }
@@ -382,7 +382,7 @@ public T sign(android.icu.number.NumberFormatter.SignDisplay style) { throw new 
  * </ul>
  *
  * <p>
- * Pass an element from the {@link DecimalSeparatorDisplay} enum to this setter. For example:
+ * Pass an element from the {@link android.icu.number.NumberFormatter.DecimalSeparatorDisplay DecimalSeparatorDisplay} enum to this setter. For example:
  *
  * <pre>
  * NumberFormatter.with().decimal(DecimalSeparatorDisplay.ALWAYS)
@@ -394,7 +394,7 @@ public T sign(android.icu.number.NumberFormatter.SignDisplay style) { throw new 
  * @param style
  *            The decimal separator display strategy to use when rendering numbers.
  * @return The fluent chain
- * @see DecimalSeparatorDisplay
+ * @see android.icu.number.NumberFormatter.DecimalSeparatorDisplay
  */
 
 public T decimal(android.icu.number.NumberFormatter.DecimalSeparatorDisplay style) { throw new RuntimeException("Stub!"); }
@@ -409,7 +409,7 @@ public T decimal(android.icu.number.NumberFormatter.DecimalSeparatorDisplay styl
  * </ul>
  *
  * <p>
- * Pass an element from a {@link Scale} factory method to this setter. For example:
+ * Pass an element from a {@link android.icu.number.Scale Scale} factory method to this setter. For example:
  *
  * <pre>
  * NumberFormatter.with().scale(Scale.powerOfTen(2))
@@ -421,7 +421,7 @@ public T decimal(android.icu.number.NumberFormatter.DecimalSeparatorDisplay styl
  * @param scale
  *            An amount to be multiplied against numbers before formatting.
  * @return The fluent chain
- * @see Scale
+ * @see android.icu.number.Scale
  */
 
 public T scale(android.icu.number.Scale scale) { throw new RuntimeException("Stub!"); }

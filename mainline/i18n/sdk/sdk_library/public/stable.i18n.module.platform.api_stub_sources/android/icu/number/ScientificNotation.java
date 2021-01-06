@@ -10,9 +10,9 @@ package android.icu.number;
  * NumberFormatter.
  *
  * <p>
- * To create a ScientificNotation, use one of the factory methods in {@link Notation}.
+ * To create a ScientificNotation, use one of the factory methods in {@link android.icu.number.Notation Notation}.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -31,8 +31,8 @@ ScientificNotation() { throw new RuntimeException("Stub!"); }
  * @param minExponentDigits
  *            The minimum number of digits to show in the exponent.
  * @return A ScientificNotation, for chaining.
- * @throws IllegalArgumentException if minExponentDigits is too big or smaller than 1
- * @see NumberFormatter
+ * @throws java.lang.IllegalArgumentException if minExponentDigits is too big or smaller than 1
+ * @see android.icu.number.NumberFormatter
  */
 
 public android.icu.number.ScientificNotation withMinExponentDigits(int minExponentDigits) { throw new RuntimeException("Stub!"); }
@@ -48,7 +48,7 @@ public android.icu.number.ScientificNotation withMinExponentDigits(int minExpone
  * @param exponentSignDisplay
  *            The strategy for displaying the sign in the exponent.
  * @return A ScientificNotation, for chaining.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public android.icu.number.ScientificNotation withExponentSignDisplay(android.icu.number.NumberFormatter.SignDisplay exponentSignDisplay) { throw new RuntimeException("Stub!"); }

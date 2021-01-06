@@ -24,7 +24,7 @@ private UCharacterEnums() { throw new RuntimeException("Stub!"); }
  * 'Enum' for the CharacterCategory constants.  These constants are
  * compatible in name <b>but not in value</b> with those defined in
  * {@link java.lang.Character}.
- * @see UCharacterCategory
+ * @see android.icu.lang.UCharacterCategory
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -240,7 +240,7 @@ public static final byte UPPERCASE_LETTER = 1; // 0x1
  * 'Enum' for the CharacterDirection constants. Some constants are
  * compatible in name <b>but not in value</b> with those defined in
  * {@link java.lang.Character}.
- * @see UCharacterDirection
+ * @see android.icu.lang.UCharacterDirection
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})

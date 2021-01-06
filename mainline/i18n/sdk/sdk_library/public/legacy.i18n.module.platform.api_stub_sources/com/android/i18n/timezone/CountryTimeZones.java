@@ -47,7 +47,7 @@ public boolean matchesCountryCode(java.lang.String countryIso) { throw new Runti
 /**
  * Returns the default time zone ID for the country. Can return {@code null} in cases when no
  * data is available or the time zone ID provided to
- * {@link #createValidated(String, String, boolean, boolean, List, String)} was not recognized.
+ * {@link #createValidated(java.lang.String,java.lang.String,boolean,boolean,java.util.List,java.lang.String)} was not recognized.
  */
 
 public java.lang.String getDefaultTimeZoneId() { throw new RuntimeException("Stub!"); }
@@ -55,7 +55,7 @@ public java.lang.String getDefaultTimeZoneId() { throw new RuntimeException("Stu
 /**
  * Returns the default time zone for the country. Can return {@code null} in cases when no data
  * is available or the time zone ID provided to
- * {@link #createValidated(String, String, boolean, boolean, List, String)} was not recognized.
+ * {@link #createValidated(java.lang.String,java.lang.String,boolean,boolean,java.util.List,java.lang.String)} was not recognized.
  */
 
 public synchronized android.icu.util.TimeZone getDefaultTimeZone() { throw new RuntimeException("Stub!"); }
@@ -102,7 +102,7 @@ public boolean hasUtcZone(long whenMillis) { throw new RuntimeException("Stub!")
  * @param totalOffsetMillis the offset from UTC at {@code whenMillis}
  * @param isDst the Daylight Savings Time state at {@code whenMillis}. {@code true} means DST,
  *     {@code false} means not DST
- * @return an {@link OffsetResult} with information about a matching zone, or {@code null} if
+ * @return an {@link com.android.i18n.timezone.CountryTimeZones.OffsetResult OffsetResult} with information about a matching zone, or {@code null} if
  *     there is no match
  */
 
@@ -117,7 +117,7 @@ public com.android.i18n.timezone.CountryTimeZones.OffsetResult lookupByOffsetWit
  * @param whenMillis the UTC time to match against
  * @param bias the time zone to prefer, can be {@code null} to indicate there is no preference
  * @param totalOffsetMillis the offset from UTC at {@code whenMillis}
- * @return an {@link OffsetResult} with information about a matching zone, or {@code null} if
+ * @return an {@link com.android.i18n.timezone.CountryTimeZones.OffsetResult OffsetResult} with information about a matching zone, or {@code null} if
  *     there is no match
  */
 
@@ -181,7 +181,7 @@ public java.lang.Long getNotUsedAfter() { throw new RuntimeException("Stub!"); }
 public java.util.List<java.lang.String> getAlternativeIds() { throw new RuntimeException("Stub!"); }
 
 /**
- * Returns a {@link TimeZone} object for this mapping, or {@code null} if the ID is unknown.
+ * Returns a {@link android.icu.util.TimeZone TimeZone} object for this mapping, or {@code null} if the ID is unknown.
  */
 
 public android.icu.util.TimeZone getTimeZone() { throw new RuntimeException("Stub!"); }

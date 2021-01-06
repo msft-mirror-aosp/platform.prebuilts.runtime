@@ -60,7 +60,7 @@ public interface RangeValueIterator {
  * be updated.
  * @param element for storing the result range and value
  * @return true if we are not at the end of the iteration, false otherwise.
- * @see Element
+ * @see android.icu.util.RangeValueIterator.Element
  */
 
 public boolean next(android.icu.util.RangeValueIterator.Element element);
