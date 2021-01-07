@@ -29,7 +29,7 @@ public abstract class LocaleDisplayNames {
 LocaleDisplayNames() { throw new RuntimeException("Stub!"); }
 
 /**
- * Convenience overload of {@link #getInstance(ULocale, DialectHandling)} that specifies
+ * Convenience overload of {@link #getInstance(android.icu.util.ULocale,android.icu.text.LocaleDisplayNames.DialectHandling)} that specifies
  * STANDARD dialect handling.
  * @param locale the display locale
  * @return a LocaleDisplayNames instance
@@ -38,8 +38,8 @@ LocaleDisplayNames() { throw new RuntimeException("Stub!"); }
 public static android.icu.text.LocaleDisplayNames getInstance(android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * Convenience overload of {@link #getInstance(Locale, DisplayContext...)} that specifies
- * {@link DisplayContext#STANDARD_NAMES}.
+ * Convenience overload of {@link #getInstance(java.util.Locale,android.icu.text.DisplayContext...)} that specifies
+ * {@link android.icu.text.DisplayContext#STANDARD_NAMES DisplayContext#STANDARD_NAMES}.
  * @param locale the display {@link java.util.Locale}
  * @return a LocaleDisplayNames instance
  */
@@ -203,7 +203,7 @@ public abstract java.lang.String keyValueDisplayName(java.lang.String key, java.
  * If both are to show up in the UI, then it should be the one used for the primary sort order.
  * @param localeSet a list of locales to present in a UI list. The casing uses the settings in the LocaleDisplayNames instance.
  * @return an ordered list of UiListItems.
- * @throws IllformedLocaleException if any of the locales in localeSet are malformed.
+ * @throws android.icu.util.IllformedLocaleException if any of the locales in localeSet are malformed.
  */
 
 public java.util.List<android.icu.text.LocaleDisplayNames.UiListItem> getUiList(java.util.Set<android.icu.util.ULocale> localeSet, boolean inSelf, java.util.Comparator<java.lang.Object> collator) { throw new RuntimeException("Stub!"); }
@@ -214,12 +214,12 @@ public java.util.List<android.icu.text.LocaleDisplayNames.UiListItem> getUiList(
  * @param comparator how to sort the UiListItems in the result.
  * @param localeSet a list of locales to present in a UI list. The casing uses the settings in the LocaleDisplayNames instance.
  * @return an ordered list of UiListItems.
- * @throws IllformedLocaleException if any of the locales in localeSet are malformed.
+ * @throws android.icu.util.IllformedLocaleException if any of the locales in localeSet are malformed.
  */
 
 public abstract java.util.List<android.icu.text.LocaleDisplayNames.UiListItem> getUiListCompareWholeItems(java.util.Set<android.icu.util.ULocale> localeSet, java.util.Comparator<android.icu.text.LocaleDisplayNames.UiListItem> comparator);
 /**
- * Enum used in {@link #getInstance(ULocale, DialectHandling)}.
+ * Enum used in {@link #getInstance(android.icu.util.ULocale,android.icu.text.LocaleDisplayNames.DialectHandling)}.
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})

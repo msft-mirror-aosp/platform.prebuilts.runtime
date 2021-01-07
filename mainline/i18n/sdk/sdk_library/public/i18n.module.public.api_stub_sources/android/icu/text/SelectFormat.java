@@ -157,7 +157,7 @@ public SelectFormat(java.lang.String pattern) { throw new RuntimeException("Stub
  * Patterns and their interpretation are specified in the class description.
  *
  * @param pattern the pattern for this select format.
- * @throws IllegalArgumentException when the pattern is not a valid select format pattern.
+ * @throws java.lang.IllegalArgumentException when the pattern is not a valid select format pattern.
  */
 
 public void applyPattern(java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -175,7 +175,7 @@ public java.lang.String toPattern() { throw new RuntimeException("Stub!"); }
  *
  * @param keyword a phrase selection keyword.
  * @return the string containing the formatted select message.
- * @throws IllegalArgumentException when the given keyword is not a "pattern identifier"
+ * @throws java.lang.IllegalArgumentException when the given keyword is not a "pattern identifier"
  */
 
 public final java.lang.String format(java.lang.String keyword) { throw new RuntimeException("Stub!"); }
@@ -187,7 +187,7 @@ public final java.lang.String format(java.lang.String keyword) { throw new Runti
  * @param toAppendTo the selected phrase will be appended to this
  *        <code>StringBuffer</code>.
  * @param pos will be ignored by this method.
- * @throws IllegalArgumentException when the given keyword is not a String
+ * @throws java.lang.IllegalArgumentException when the given keyword is not a String
  *         or not a "pattern identifier"
  * @return the string buffer passed in as toAppendTo, with formatted text
  *         appended.
@@ -202,7 +202,7 @@ public java.lang.StringBuffer format(java.lang.Object keyword, java.lang.StringB
  * and upon return, the position where parsing left off.  If the position
  * has not changed upon return, then parsing failed.
  * @return nothing because this method is not supported.
- * @throws UnsupportedOperationException thrown always.
+ * @throws java.lang.UnsupportedOperationException thrown always.
  */
 
 public java.lang.Object parseObject(java.lang.String source, java.text.ParsePosition pos) { throw new RuntimeException("Stub!"); }

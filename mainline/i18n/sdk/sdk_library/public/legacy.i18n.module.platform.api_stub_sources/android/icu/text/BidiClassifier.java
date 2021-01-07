@@ -36,7 +36,7 @@ package android.icu.text;
  * called by the UBA implementation any time the class of a character is
  * to be determined.</p>
  *
- * @see Bidi#setCustomClassifier
+ * @see android.icu.text.Bidi#setCustomClassifier
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})

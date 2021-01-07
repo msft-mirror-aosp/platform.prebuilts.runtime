@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  * <p>
  * To create a Multiplier, use one of the factory methods.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -24,7 +24,7 @@ private Scale() { throw new RuntimeException("Stub!"); }
  * Do not change the value of numbers when formatting or parsing.
  *
  * @return A Multiplier to prevent any multiplication.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.Scale none() { throw new RuntimeException("Stub!"); }
@@ -37,7 +37,7 @@ public static android.icu.number.Scale none() { throw new RuntimeException("Stub
  * </pre>
  *
  * @return A Multiplier for passing to the setter in NumberFormatter.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.Scale powerOfTen(int power) { throw new RuntimeException("Stub!"); }
@@ -48,7 +48,7 @@ public static android.icu.number.Scale powerOfTen(int power) { throw new Runtime
  * This method takes a BigDecimal; also see the version that takes a double.
  *
  * @return A Multiplier for passing to the setter in NumberFormatter.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.Scale byBigDecimal(java.math.BigDecimal multiplicand) { throw new RuntimeException("Stub!"); }
@@ -59,7 +59,7 @@ public static android.icu.number.Scale byBigDecimal(java.math.BigDecimal multipl
  * This method takes a double; also see the version that takes a BigDecimal.
  *
  * @return A Multiplier for passing to the setter in NumberFormatter.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.Scale byDouble(double multiplicand) { throw new RuntimeException("Stub!"); }
@@ -68,7 +68,7 @@ public static android.icu.number.Scale byDouble(double multiplicand) { throw new
  * Multiply a number by both a power of ten and by an arbitrary double value before formatting.
  *
  * @return A Multiplier for passing to the setter in NumberFormatter.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.Scale byDoubleAndPowerOfTen(double multiplicand, int power) { throw new RuntimeException("Stub!"); }

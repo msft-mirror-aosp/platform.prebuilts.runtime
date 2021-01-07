@@ -20,7 +20,7 @@ package android.icu.util;
  * CurrencyAmount objects are immutable.
  *
  * @see java.lang.Number
- * @see Currency
+ * @see android.icu.util.Currency
  * @author Alan Liu
  */
 

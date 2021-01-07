@@ -20,7 +20,7 @@ package com.android.i18n.timezone.internal;
 import java.nio.ByteBuffer;
 
 /**
- * A {@link BufferIterator} that wraps a {@link ByteBuffer}.
+ * A {@link com.android.i18n.timezone.internal.BufferIterator BufferIterator} that wraps a {@link java.nio.ByteBuffer ByteBuffer}.
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})

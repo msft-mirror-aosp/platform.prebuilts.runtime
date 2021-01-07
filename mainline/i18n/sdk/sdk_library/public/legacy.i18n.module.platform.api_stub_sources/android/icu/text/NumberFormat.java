@@ -290,10 +290,10 @@ public java.lang.StringBuffer format(android.icu.util.CurrencyAmount currAmt, ja
  * unchanged!
  *
  * <p>For more detail on parsing, see the "Parsing" header in the class
- * documentation of {@link DecimalFormat}.
+ * documentation of {@link android.icu.text.DecimalFormat DecimalFormat}.
  *
  * @see #isParseIntegerOnly
- * @see DecimalFormat#setParseBigDecimal
+ * @see android.icu.text.DecimalFormat#setParseBigDecimal
  * @see java.text.Format#parseObject(String, ParsePosition)
  */
 
@@ -305,7 +305,7 @@ public abstract java.lang.Number parse(java.lang.String text, java.text.ParsePos
  *
  * @param text A String whose beginning should be parsed.
  * @return A Number parsed from the string.
- * @throws ParseException if the beginning of the specified string
+ * @throws java.text.ParseException if the beginning of the specified string
  * cannot be parsed.
  * @see #format
  */
@@ -415,7 +415,7 @@ public android.icu.text.DisplayContext getContext(android.icu.text.DisplayContex
  * factory methods: getNumberInstance, getIntegerInstance,
  * getCurrencyInstance or getPercentInstance.
  * Exactly which one is locale-dependent.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.NumberFormat getInstance() { throw new RuntimeException("Stub!"); }
@@ -441,7 +441,7 @@ public static android.icu.text.NumberFormat getInstance(android.icu.util.ULocale
 /**
  * <strong>[icu]</strong> Returns a specific style number format for default <code>FORMAT</code> locale.
  * @param style  number format style
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.NumberFormat getInstance(int style) { throw new RuntimeException("Stub!"); }
@@ -456,7 +456,7 @@ public static android.icu.text.NumberFormat getInstance(java.util.Locale inLocal
 
 /**
  * Returns a general-purpose number format for the current default <code>FORMAT</code> locale.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.NumberFormat getNumberInstance() { throw new RuntimeException("Stub!"); }
@@ -482,7 +482,7 @@ public static android.icu.text.NumberFormat getNumberInstance(android.icu.util.U
  * #isParseIntegerOnly isParseIntegerOnly}).
  *
  * @return a number format for integer values
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.NumberFormat getIntegerInstance() { throw new RuntimeException("Stub!"); }
@@ -518,7 +518,7 @@ public static android.icu.text.NumberFormat getIntegerInstance(android.icu.util.
 /**
  * Returns a currency format for the current default <code>FORMAT</code> locale.
  * @return a number format for currency
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.NumberFormat getCurrencyInstance() { throw new RuntimeException("Stub!"); }
@@ -540,7 +540,7 @@ public static android.icu.text.NumberFormat getCurrencyInstance(android.icu.util
 /**
  * Returns a percentage format for the current default <code>FORMAT</code> locale.
  * @return a number format for percents
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.NumberFormat getPercentInstance() { throw new RuntimeException("Stub!"); }
@@ -562,7 +562,7 @@ public static android.icu.text.NumberFormat getPercentInstance(android.icu.util.
 /**
  * <strong>[icu]</strong> Returns a scientific format for the current default <code>FORMAT</code> locale.
  * @return a scientific number format
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.NumberFormat getScientificInstance() { throw new RuntimeException("Stub!"); }
@@ -785,7 +785,7 @@ public void setRoundingMode(int roundingMode) { throw new RuntimeException("Stub
  * Returns a specific style number format for a specific locale.
  * @param desiredLocale  the specific locale.
  * @param choice         number format style
- * @throws IllegalArgumentException  if choice is not one of
+ * @throws java.lang.IllegalArgumentException  if choice is not one of
  *                                   NUMBERSTYLE, CURRENCYSTYLE,
  *                                   PERCENTSTYLE, SCIENTIFICSTYLE,
  *                                   INTEGERSTYLE, ISOCURRENCYSTYLE,
