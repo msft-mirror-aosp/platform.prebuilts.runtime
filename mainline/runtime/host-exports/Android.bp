@@ -4,7 +4,10 @@ cc_prebuilt_binary {
     name: "runtime-module-host-exports_linkerconfig@current",
     sdk_member_name: "linkerconfig",
     visibility: ["//visibility:public"],
-    apex_available: ["//apex_available:platform"],
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.runtime",
+    ],
     device_supported: false,
     host_supported: true,
     installable: false,
@@ -29,7 +32,10 @@ cc_prebuilt_binary {
     name: "linkerconfig",
     prefer: false,
     visibility: ["//visibility:public"],
-    apex_available: ["//apex_available:platform"],
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.runtime",
+    ],
     device_supported: false,
     host_supported: true,
     stl: "c++_static",

@@ -13,7 +13,7 @@ package android.icu.util;
 
 /**
  * Measurement unit for time units.
- * @see TimeUnit
+ * @see android.icu.util.TimeUnit
  * @author markdavis
  */
 

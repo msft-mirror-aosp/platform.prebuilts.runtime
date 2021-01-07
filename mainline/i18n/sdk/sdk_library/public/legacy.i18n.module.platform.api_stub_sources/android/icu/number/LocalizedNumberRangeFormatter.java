@@ -11,7 +11,7 @@ package android.icu.number;
  * Instances of this class are immutable and thread-safe.
  *
  * @author sffc
- * @see NumberRangeFormatter
+ * @see android.icu.number.NumberRangeFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -28,7 +28,7 @@ LocalizedNumberRangeFormatter() { throw new RuntimeException("Stub!"); }
  * @param second
  *            The second number in the range, usually to the right in LTR locales.
  * @return A FormattedNumberRange object; call .toString() to get the string.
- * @see NumberRangeFormatter
+ * @see android.icu.number.NumberRangeFormatter
  */
 
 public android.icu.number.FormattedNumberRange formatRange(int first, int second) { throw new RuntimeException("Stub!"); }
@@ -42,7 +42,7 @@ public android.icu.number.FormattedNumberRange formatRange(int first, int second
  * @param second
  *            The second number in the range, usually to the right in LTR locales.
  * @return A FormattedNumberRange object; call .toString() to get the string.
- * @see NumberRangeFormatter
+ * @see android.icu.number.NumberRangeFormatter
  */
 
 public android.icu.number.FormattedNumberRange formatRange(double first, double second) { throw new RuntimeException("Stub!"); }
@@ -56,8 +56,8 @@ public android.icu.number.FormattedNumberRange formatRange(double first, double 
  * @param second
  *            The second number in the range, usually to the right in LTR locales.
  * @return A FormattedNumberRange object; call .toString() to get the string.
- * @throws IllegalArgumentException if first or second is null
- * @see NumberRangeFormatter
+ * @throws java.lang.IllegalArgumentException if first or second is null
+ * @see android.icu.number.NumberRangeFormatter
  */
 
 public android.icu.number.FormattedNumberRange formatRange(java.lang.Number first, java.lang.Number second) { throw new RuntimeException("Stub!"); }

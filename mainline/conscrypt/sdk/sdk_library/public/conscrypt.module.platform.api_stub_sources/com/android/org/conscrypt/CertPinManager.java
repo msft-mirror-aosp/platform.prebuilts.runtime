@@ -20,7 +20,7 @@ package com.android.org.conscrypt;
 
 
 /**
- * Interface for classes that implement certificate pinning for use in {@link TrustManagerImpl}.
+ * Interface for classes that implement certificate pinning for use in {@link com.android.org.conscrypt.TrustManagerImpl TrustManagerImpl}.
  * @hide This class is not part of the Android public SDK API
  */
 

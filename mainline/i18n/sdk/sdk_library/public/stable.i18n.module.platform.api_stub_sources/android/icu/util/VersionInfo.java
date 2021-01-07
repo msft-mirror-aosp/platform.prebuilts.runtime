@@ -31,7 +31,7 @@ private VersionInfo() { throw new RuntimeException("Stub!"); }
  *                not specified they are taken as 0s. E.g. Version "3.1" is
  *                equivalent to "3.1.0.0".
  * @return an instance of VersionInfo with the argument version.
- * @exception IllegalArgumentException when the argument version
+ * @exception java.lang.IllegalArgumentException when the argument version
  *                is not in the right format
  */
 
@@ -43,7 +43,7 @@ public static android.icu.util.VersionInfo getInstance(java.lang.String version)
  * @param minor minor version, non-negative number &lt;= 255.
  * @param milli milli version, non-negative number &lt;= 255.
  * @param micro micro version, non-negative number &lt;= 255.
- * @exception IllegalArgumentException when either arguments are negative or &gt; 255
+ * @exception java.lang.IllegalArgumentException when either arguments are negative or &gt; 255
  */
 
 public static android.icu.util.VersionInfo getInstance(int major, int minor, int milli, int micro) { throw new RuntimeException("Stub!"); }
@@ -54,7 +54,7 @@ public static android.icu.util.VersionInfo getInstance(int major, int minor, int
  * @param major major version, non-negative number &lt;= 255.
  * @param minor minor version, non-negative number &lt;= 255.
  * @param milli milli version, non-negative number &lt;= 255.
- * @exception IllegalArgumentException when either arguments are
+ * @exception java.lang.IllegalArgumentException when either arguments are
  *                                     negative or &gt; 255
  */
 
@@ -65,7 +65,7 @@ public static android.icu.util.VersionInfo getInstance(int major, int minor, int
  * Equivalent to getInstance(major, minor, 0, 0).
  * @param major major version, non-negative number &lt;= 255.
  * @param minor minor version, non-negative number &lt;= 255.
- * @exception IllegalArgumentException when either arguments are
+ * @exception java.lang.IllegalArgumentException when either arguments are
  *                                     negative or &gt; 255
  */
 
@@ -75,7 +75,7 @@ public static android.icu.util.VersionInfo getInstance(int major, int minor) { t
  * Returns an instance of VersionInfo with the argument version.
  * Equivalent to getInstance(major, 0, 0, 0).
  * @param major major version, non-negative number &lt;= 255.
- * @exception IllegalArgumentException when either arguments are
+ * @exception java.lang.IllegalArgumentException when either arguments are
  *                                     negative or &gt; 255
  */
 

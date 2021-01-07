@@ -131,12 +131,12 @@ public static android.icu.text.RelativeDateTimeFormatter getInstance(java.util.L
  * formatting result, use formatToValue().
  *
  * @param quantity The numerical amount e.g 5. This value is formatted
- * according to this object's {@link NumberFormat} object.
+ * according to this object's {@link android.icu.text.NumberFormat NumberFormat} object.
  * @param direction NEXT means a future relative date; LAST means a past
  * relative date.
  * @param unit the unit e.g day? month? year?
  * @return the formatted string
- * @throws IllegalArgumentException if direction is something other than
+ * @throws java.lang.IllegalArgumentException if direction is something other than
  * NEXT or LAST.
  */
 
@@ -172,7 +172,7 @@ public java.lang.String formatNumeric(double offset, android.icu.text.RelativeDa
  * @return the formatted string. If direction has a value that is documented as not being
  *  fully supported in every locale (for example NEXT_2 or LAST_2) then this function may
  *  return null to signal that no formatted string is available.
- * @throws IllegalArgumentException if the direction is incompatible with
+ * @throws java.lang.IllegalArgumentException if the direction is incompatible with
  * unit this can occur with NOW which can only take PLAIN.
  */
 

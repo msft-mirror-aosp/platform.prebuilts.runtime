@@ -33,7 +33,7 @@ public class CurrencyPluralInfo implements java.lang.Cloneable, java.io.Serializ
 
 /**
  * Create a CurrencyPluralInfo object for the default <code>FORMAT</code> locale.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public CurrencyPluralInfo() { throw new RuntimeException("Stub!"); }

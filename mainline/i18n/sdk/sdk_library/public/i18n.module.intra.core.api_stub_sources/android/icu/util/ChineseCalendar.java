@@ -14,7 +14,7 @@ import android.icu.text.DateFormat;
 import android.icu.util.ULocale.Category;
 
 /**
- * <code>ChineseCalendar</code> is a concrete subclass of {@link Calendar}
+ * <code>ChineseCalendar</code> is a concrete subclass of {@link android.icu.util.Calendar Calendar}
  * that implements a traditional Chinese calendar.  The traditional Chinese
  * calendar is a lunisolar calendar: Each month starts on a new moon, and
  * the months are numbered according to solar events, specifically, to
@@ -104,7 +104,7 @@ public ChineseCalendar(java.util.Date date) { throw new RuntimeException("Stub!"
  * @param isLeapMonth The value used to set the Chinese calendar's {@link #IS_LEAP_MONTH}
  *                  time field.
  * @param date      The value used to set the calendar's {@link #DATE DATE} time field.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public ChineseCalendar(int year, int month, int isLeapMonth, int date) { throw new RuntimeException("Stub!"); }
@@ -125,7 +125,7 @@ public ChineseCalendar(int year, int month, int isLeapMonth, int date) { throw n
  *              in the calendar.
  * @param second the value used to set the {@link #SECOND SECOND} time field
  *              in the calendar.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public ChineseCalendar(int year, int month, int isLeapMonth, int date, int hour, int minute, int second) { throw new RuntimeException("Stub!"); }
@@ -141,7 +141,7 @@ public ChineseCalendar(int year, int month, int isLeapMonth, int date, int hour,
  * @param isLeapMonth The value used to set the Chinese calendar's {@link #IS_LEAP_MONTH}
  *                  time field.
  * @param date      The value used to set the calendar's {@link #DATE DATE} time field.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public ChineseCalendar(int era, int year, int month, int isLeapMonth, int date) { throw new RuntimeException("Stub!"); }
@@ -163,7 +163,7 @@ public ChineseCalendar(int era, int year, int month, int isLeapMonth, int date) 
  *              in the calendar.
  * @param second the value used to set the {@link #SECOND SECOND} time field
  *              in the calendar.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public ChineseCalendar(int era, int year, int month, int isLeapMonth, int date, int hour, int minute, int second) { throw new RuntimeException("Stub!"); }
@@ -180,7 +180,7 @@ public ChineseCalendar(java.util.Locale aLocale) { throw new RuntimeException("S
  * Construct a <code>ChineseCalendar</code> based on the current time
  * in the given time zone with the default <code>FORMAT</code> locale.
  * @param zone the given time zone
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public ChineseCalendar(android.icu.util.TimeZone zone) { throw new RuntimeException("Stub!"); }

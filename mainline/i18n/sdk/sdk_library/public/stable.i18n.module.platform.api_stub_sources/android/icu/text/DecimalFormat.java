@@ -17,14 +17,14 @@ import java.math.BigInteger;
  * <strong>[icu enhancement]</strong> ICU's replacement for {@link java.text.DecimalFormat}.&nbsp;Methods, fields, and other functionality specific to ICU are labeled '<strong>[icu]</strong>'.
  *
  * <code>DecimalFormat</code> is the primary
- * concrete subclass of {@link NumberFormat}. It has a variety of features designed to make it
+ * concrete subclass of {@link android.icu.text.NumberFormat NumberFormat}. It has a variety of features designed to make it
  * possible to parse and format numbers in any locale, including support for Western, Arabic, or
  * Indic digits. It supports different flavors of numbers, including integers ("123"), fixed-point
  * numbers ("123.4"), scientific notation ("1.23E4"), percentages ("12%"), and currency amounts
  * ("$123.00", "USD123.00", "123.00 US dollars"). All of these flavors can be easily localized.
  *
  * <p>To obtain a number formatter for a specific locale (including the default locale), call one of
- * NumberFormat's factory methods such as {@link NumberFormat#getInstance}. Do not call
+ * NumberFormat's factory methods such as {@link android.icu.text.NumberFormat#getInstance NumberFormat#getInstance}. Do not call
  * DecimalFormat constructors directly unless you know what you are doing.
  *
  * <p>DecimalFormat aims to comply with the specification <a
@@ -166,9 +166,9 @@ import java.math.BigInteger;
  * validation. The default is lenient mode. For more information, see {@link #setParseStrict}.
  *
  * <p><code>DecimalFormat</code> parses all Unicode characters that represent decimal digits, as
- * defined by {@link UCharacter#digit}. In addition, <code>DecimalFormat</code> also recognizes as
+ * defined by {@link android.icu.lang.UCharacter#digit UCharacter#digit}. In addition, <code>DecimalFormat</code> also recognizes as
  * digits the ten consecutive characters starting with the localized zero digit defined in the
- * {@link DecimalFormatSymbols} object. During formatting, the {@link DecimalFormatSymbols}-based
+ * {@link android.icu.text.DecimalFormatSymbols DecimalFormatSymbols} object. During formatting, the {@link android.icu.text.DecimalFormatSymbols DecimalFormatSymbols}-based
  * digits are output.
  *
  * <p>Grouping separators are ignored in lenient mode (default). In strict mode, grouping separators
@@ -190,8 +190,8 @@ import java.math.BigInteger;
  * "horizontal" whitespace, like spaces and tabs, but not "vertical" whitespace, like line breaks.
  * Ignorable control characters are those in the Unicode set [:Default_Ignorable_Code_Point:].
  *
- * <p>If {@link #parse(String, ParsePosition)} fails to parse a string, it returns <code>null</code>
- * and leaves the parse position unchanged. The convenience method {@link #parse(String)} indicates
+ * <p>If {@link #parse(java.lang.String,java.text.ParsePosition)} fails to parse a string, it returns <code>null</code>
+ * and leaves the parse position unchanged. The convenience method {@link #parse(java.lang.String)} indicates
  * parse failure by throwing a {@link java.text.ParseException}.
  *
  * <p>Under the hood, a state table parsing engine is used. To debug a parsing failure during
@@ -212,7 +212,7 @@ import java.math.BigInteger;
  * only during construction and not when formatting numbers online.
  *
  * @see java.text.Format
- * @see NumberFormat
+ * @see android.icu.text.NumberFormat
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -223,15 +223,14 @@ public class DecimalFormat extends android.icu.text.NumberFormat {
  * a convenient way to obtain a DecimalFormat instance when internationalization is not the main
  * concern.
  *
- * <p>Most users should call the factory methods on NumberFormat, such as {@link
- * NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
+ * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
  * DecimalFormat constructors.
  *
  * @see NumberFormat#getInstance
  * @see NumberFormat#getNumberInstance
  * @see NumberFormat#getCurrencyInstance
  * @see NumberFormat#getPercentInstance
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public DecimalFormat() { throw new RuntimeException("Stub!"); }
@@ -241,19 +240,18 @@ public DecimalFormat() { throw new RuntimeException("Stub!"); }
  * is a convenient way to obtain a DecimalFormat instance when internationalization is not the
  * main concern.
  *
- * <p>Most users should call the factory methods on NumberFormat, such as {@link
- * NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
+ * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
  * DecimalFormat constructors.
  *
  * @param pattern A pattern string such as "#,##0.00" conforming to <a
  *     href="http://unicode.org/reports/tr35/tr35-numbers.html#Number_Format_Patterns">UTS
  *     #35</a>.
- * @throws IllegalArgumentException if the given pattern is invalid.
+ * @throws java.lang.IllegalArgumentException if the given pattern is invalid.
  * @see NumberFormat#getInstance
  * @see NumberFormat#getNumberInstance
  * @see NumberFormat#getCurrencyInstance
  * @see NumberFormat#getPercentInstance
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public DecimalFormat(java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -262,20 +260,19 @@ public DecimalFormat(java.lang.String pattern) { throw new RuntimeException("Stu
  * Creates a DecimalFormat based on the given pattern and symbols. Use this constructor if you
  * want complete control over the behavior of the formatter.
  *
- * <p>Most users should call the factory methods on NumberFormat, such as {@link
- * NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
+ * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
  * DecimalFormat constructors.
  *
  * @param pattern A pattern string such as "#,##0.00" conforming to <a
  *     href="http://unicode.org/reports/tr35/tr35-numbers.html#Number_Format_Patterns">UTS
  *     #35</a>.
  * @param symbols The set of symbols to be used.
- * @exception IllegalArgumentException if the given pattern is invalid
+ * @exception java.lang.IllegalArgumentException if the given pattern is invalid
  * @see NumberFormat#getInstance
  * @see NumberFormat#getNumberInstance
  * @see NumberFormat#getCurrencyInstance
  * @see NumberFormat#getPercentInstance
- * @see DecimalFormatSymbols
+ * @see android.icu.text.DecimalFormatSymbols
  */
 
 public DecimalFormat(java.lang.String pattern, android.icu.text.DecimalFormatSymbols symbols) { throw new RuntimeException("Stub!"); }
@@ -283,11 +280,10 @@ public DecimalFormat(java.lang.String pattern, android.icu.text.DecimalFormatSym
 /**
  * Creates a DecimalFormat based on the given pattern and symbols, with additional control over
  * the behavior of currency. The style argument determines whether currency rounding rules should
- * override the pattern, and the {@link CurrencyPluralInfo} object is used for customizing the
+ * override the pattern, and the {@link android.icu.text.CurrencyPluralInfo CurrencyPluralInfo} object is used for customizing the
  * plural forms used for currency long names.
  *
- * <p>Most users should call the factory methods on NumberFormat, such as {@link
- * NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
+ * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
  * DecimalFormat constructors.
  *
  * @param pattern a non-localized pattern string
@@ -410,7 +406,7 @@ public android.icu.util.CurrencyAmount parseCurrency(java.lang.CharSequence text
  * Returns a copy of the decimal format symbols used by this formatter.
  *
  * @return desired DecimalFormatSymbols
- * @see DecimalFormatSymbols
+ * @see android.icu.text.DecimalFormatSymbols
  */
 
 public synchronized android.icu.text.DecimalFormatSymbols getDecimalFormatSymbols() { throw new RuntimeException("Stub!"); }
@@ -420,7 +416,7 @@ public synchronized android.icu.text.DecimalFormatSymbols getDecimalFormatSymbol
  * provided symbols.
  *
  * @param newSymbols desired DecimalFormatSymbols
- * @see DecimalFormatSymbols
+ * @see android.icu.text.DecimalFormatSymbols
  */
 
 public synchronized void setDecimalFormatSymbols(android.icu.text.DecimalFormatSymbols newSymbols) { throw new RuntimeException("Stub!"); }
@@ -551,8 +547,8 @@ public synchronized int getMultiplier() { throw new RuntimeException("Stub!"); }
  * <p>If the number specified here is a power of 10, a more efficient code path will be used.
  *
  * @param multiplier The number by which all numbers passed to {@link #format} will be multiplied.
- * @throws IllegalArgumentException If the given multiplier is zero.
- * @throws ArithmeticException when inverting multiplier produces a non-terminating decimal result
+ * @throws java.lang.IllegalArgumentException If the given multiplier is zero.
+ * @throws java.lang.ArithmeticException when inverting multiplier produces a non-terminating decimal result
  *         in conjunction with MathContext of unlimited precision.
  */
 
@@ -617,7 +613,7 @@ public synchronized void setRoundingIncrement(double increment) { throw new Runt
 public synchronized int getRoundingMode() { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>Rounding and Digit Limits:</strong> Sets the {@link RoundingMode} used to round
+ * <strong>Rounding and Digit Limits:</strong> Sets the {@link java.math.RoundingMode RoundingMode} used to round
  * numbers. The default rounding mode is HALF_EVEN, which rounds decimals to their closest whole
  * number, and rounds to the closest even number if at the midpoint.
  *
@@ -626,7 +622,7 @@ public synchronized int getRoundingMode() { throw new RuntimeException("Stub!");
  * Guide</a>.
  *
  * <p>For backwards compatibility, the rounding mode is specified as an int argument, which can be
- * from either the constants in {@link BigDecimal} or the ordinal value of {@link RoundingMode}.
+ * from either the constants in {@link android.icu.math.BigDecimal BigDecimal} or the ordinal value of {@link java.math.RoundingMode RoundingMode}.
  * The following two calls are functionally equivalent.
  *
  * <pre>
@@ -660,7 +656,7 @@ public synchronized java.math.MathContext getMathContext() { throw new RuntimeEx
  * method.
  *
  * @param mathContext The MathContext to use when rounding numbers.
- * @throws ArithmeticException when inverting multiplier produces a non-terminating decimal result
+ * @throws java.lang.ArithmeticException when inverting multiplier produces a non-terminating decimal result
  *         in conjunction with MathContext of unlimited precision.
  * @see java.math.MathContext
  */
@@ -680,7 +676,7 @@ public synchronized android.icu.math.MathContext getMathContextICU() { throw new
  * {@link android.icu.math.MathContext}.
  *
  * @param mathContextICU The MathContext to use when rounding numbers.
- * @throws ArithmeticException when inverting multiplier produces a non-terminating decimal result
+ * @throws java.lang.ArithmeticException when inverting multiplier produces a non-terminating decimal result
  *         in conjunction with MathContext of unlimited precision.
  * @see #setMathContext(java.math.MathContext)
  */
@@ -954,10 +950,10 @@ public synchronized int getPadPosition() { throw new RuntimeException("Stub!"); 
  * "P123S" with padding width 8 and padding char "*". The four positions are:
  *
  * <ul>
- *   <li>{@link DecimalFormat#PAD_BEFORE_PREFIX} ⇒ "***P123S"
- *   <li>{@link DecimalFormat#PAD_AFTER_PREFIX} ⇒ "P***123S"
- *   <li>{@link DecimalFormat#PAD_BEFORE_SUFFIX} ⇒ "P123***S"
- *   <li>{@link DecimalFormat#PAD_AFTER_SUFFIX} ⇒ "P123S***"
+ *   <li>{@link android.icu.text.DecimalFormat#PAD_BEFORE_PREFIX DecimalFormat#PAD_BEFORE_PREFIX} ⇒ "***P123S"
+ *   <li>{@link android.icu.text.DecimalFormat#PAD_AFTER_PREFIX DecimalFormat#PAD_AFTER_PREFIX} ⇒ "P***123S"
+ *   <li>{@link android.icu.text.DecimalFormat#PAD_BEFORE_SUFFIX DecimalFormat#PAD_BEFORE_SUFFIX} ⇒ "P123***S"
+ *   <li>{@link android.icu.text.DecimalFormat#PAD_AFTER_SUFFIX DecimalFormat#PAD_AFTER_SUFFIX} ⇒ "P123S***"
  * </ul>
  *
  * @param padPos The position used for padding.
@@ -1130,7 +1126,7 @@ public synchronized void setDecimalSeparatorAlwaysShown(boolean value) { throw n
  * Returns the currency used to display currency amounts. May be null.
  *
  * @see #setCurrency
- * @see DecimalFormatSymbols#getCurrency
+ * @see android.icu.text.DecimalFormatSymbols#getCurrency
  */
 
 public synchronized android.icu.util.Currency getCurrency() { throw new RuntimeException("Stub!"); }

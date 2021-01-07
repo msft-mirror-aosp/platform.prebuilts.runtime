@@ -64,7 +64,7 @@ public static android.icu.text.NumberingSystem getInstance(android.icu.util.ULoc
 
 /**
  * Returns the default numbering system for the default <code>FORMAT</code> locale.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static android.icu.text.NumberingSystem getInstance() { throw new RuntimeException("Stub!"); }

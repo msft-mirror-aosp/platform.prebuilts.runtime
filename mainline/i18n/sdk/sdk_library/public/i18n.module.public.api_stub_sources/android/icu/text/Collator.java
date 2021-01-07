@@ -23,7 +23,7 @@ import android.icu.util.ULocale.Category;
  * subclass, RuleBasedCollator, allows customization of the collation
  * ordering by the use of rule sets.
  *
- * <p>A Collator is thread-safe only when frozen. See {@link #isFrozen()} and {@link Freezable}.
+ * <p>A Collator is thread-safe only when frozen. See {@link #isFrozen()} and {@link android.icu.util.Freezable Freezable}.
  *
  * <p>Following the <a href=http://www.unicode.org>Unicode
  * Consortium</a>'s specifications for the
@@ -113,8 +113,8 @@ import android.icu.util.ULocale.Category;
  * }
  * </pre>
  *
- * @see RuleBasedCollator
- * @see CollationKey
+ * @see android.icu.text.RuleBasedCollator
+ * @see android.icu.text.CollationKey
  * @author Syn Wee Quek
  */
 
@@ -143,7 +143,7 @@ public boolean equals(java.lang.Object obj) { throw new RuntimeException("Stub!"
 /**
  * Generates a hash code for this Collator object.
  *
- * <p>The implementation exists just for consistency with {@link #equals(Object)}
+ * <p>The implementation exists just for consistency with {@link #equals(java.lang.Object)}
  * implementation in this class and does not generate a useful hash code.
  * Subclasses should override this implementation.
  *
@@ -167,7 +167,7 @@ public int hashCode() { throw new RuntimeException("Stub!"); }
  * @see #TERTIARY
  * @see #QUATERNARY
  * @see #IDENTICAL
- * @throws IllegalArgumentException if the new strength value is not valid.
+ * @throws java.lang.IllegalArgumentException if the new strength value is not valid.
  */
 
 public void setStrength(int newStrength) { throw new RuntimeException("Stub!"); }
@@ -196,7 +196,7 @@ public void setStrength(int newStrength) { throw new RuntimeException("Stub!"); 
  * @see #getDecomposition
  * @see #NO_DECOMPOSITION
  * @see #CANONICAL_DECOMPOSITION
- * @throws IllegalArgumentException If the given value is not a valid
+ * @throws java.lang.IllegalArgumentException If the given value is not a valid
  *            decomposition mode.
  */
 
@@ -208,27 +208,27 @@ public void setDecomposition(int decomposition) { throw new RuntimeException("St
  * to be moved relative to each other. This reordering is done on top of
  * the DUCET/CLDR standard collation order. Reordering can specify groups to be placed
  * at the start and/or the end of the collation order. These groups are specified using
- * UScript codes and {@link Collator.ReorderCodes} entries.
+ * UScript codes and {@link android.icu.text.Collator.ReorderCodes Collator.ReorderCodes} entries.
  *
  * <p>By default, reordering codes specified for the start of the order are placed in the
  * order given after several special non-script blocks. These special groups of characters
  * are space, punctuation, symbol, currency, and digit. These special groups are represented with
- * {@link Collator.ReorderCodes} entries. Script groups can be intermingled with
+ * {@link android.icu.text.Collator.ReorderCodes Collator.ReorderCodes} entries. Script groups can be intermingled with
  * these special non-script groups if those special groups are explicitly specified in the reordering.
  *
- * <p>The special code {@link Collator.ReorderCodes#OTHERS OTHERS}
+ * <p>The special code {@link android.icu.text.Collator.ReorderCodes#OTHERS Collator.ReorderCodes#OTHERS}
  * stands for any script that is not explicitly
  * mentioned in the list of reordering codes given. Anything that is after OTHERS
  * will go at the very end of the reordering in the order given.
  *
- * <p>The special reorder code {@link Collator.ReorderCodes#DEFAULT DEFAULT}
+ * <p>The special reorder code {@link android.icu.text.Collator.ReorderCodes#DEFAULT Collator.ReorderCodes#DEFAULT}
  * will reset the reordering for this collator
  * to the default for this collator. The default reordering may be the DUCET/CLDR order or may be a reordering that
  * was specified when this collator was created from resource data or from rules. The
  * DEFAULT code <b>must</b> be the sole code supplied when it is used.
- * If not, then an {@link IllegalArgumentException} will be thrown.
+ * If not, then an {@link java.lang.IllegalArgumentException IllegalArgumentException} will be thrown.
  *
- * <p>The special reorder code {@link Collator.ReorderCodes#NONE NONE}
+ * <p>The special reorder code {@link android.icu.text.Collator.ReorderCodes#NONE Collator.ReorderCodes#NONE}
  * will remove any reordering for this collator.
  * The result of setting no reordering will be to have the DUCET/CLDR ordering used. The
  * NONE code <b>must</b> be the sole code supplied when it is used.
@@ -237,8 +237,8 @@ public void setDecomposition(int decomposition) { throw new RuntimeException("St
  * then this clears any existing reordering
  * @see #getReorderCodes
  * @see #getEquivalentReorderCodes
- * @see Collator.ReorderCodes
- * @see UScript
+ * @see android.icu.text.Collator.ReorderCodes
+ * @see android.icu.lang.UScript
  */
 
 public void setReorderCodes(int... order) { throw new RuntimeException("Stub!"); }
@@ -292,7 +292,7 @@ public static final android.icu.text.Collator getInstance(android.icu.util.ULoca
  * <p>For some languages, multiple collation types are available;
  * for example, "de-u-co-phonebk".
  * Starting with ICU 54, collation attributes can be specified via locale keywords as well,
- * in the old locale extension syntax ("el@colCaseFirst=upper", only with {@link ULocale})
+ * in the old locale extension syntax ("el@colCaseFirst=upper", only with {@link android.icu.util.ULocale ULocale})
  * or in language tag syntax ("el-u-kf-upper").
  * See <a href="http://userguide.icu-project.org/collation/api">User Guide: Collation API</a>.
  *
@@ -490,7 +490,7 @@ public int getDecomposition() { throw new RuntimeException("Stub!"); }
  * @return true if the strings are equal according to the collation
  *         rules, otherwise false.
  * @see #compare
- * @throws NullPointerException thrown if either arguments is null.
+ * @throws java.lang.NullPointerException thrown if either arguments is null.
  */
 
 public boolean equals(java.lang.String source, java.lang.String target) { throw new RuntimeException("Stub!"); }
@@ -518,9 +518,9 @@ public android.icu.text.UnicodeSet getTailoredSet() { throw new RuntimeException
  * @return Returns an integer value. Value is less than zero if source is
  *         less than target, value is zero if source and target are equal,
  *         value is greater than zero if source is greater than target.
- * @see CollationKey
+ * @see android.icu.text.CollationKey
  * @see #getCollationKey
- * @throws NullPointerException thrown if either argument is null.
+ * @throws java.lang.NullPointerException thrown if either argument is null.
  */
 
 public abstract int compare(java.lang.String source, java.lang.String target);
@@ -533,7 +533,7 @@ public abstract int compare(java.lang.String source, java.lang.String target);
  * @return Returns an integer value. Value is less than zero if source is
  *         less than target, value is zero if source and target are equal,
  *         value is greater than zero if source is greater than target.
- * @throws ClassCastException thrown if either arguments cannot be cast to CharSequence.
+ * @throws java.lang.ClassCastException thrown if either arguments cannot be cast to CharSequence.
  */
 
 public int compare(java.lang.Object source, java.lang.Object target) { throw new RuntimeException("Stub!"); }
@@ -552,7 +552,7 @@ public int compare(java.lang.Object source, java.lang.Object target) { throw new
  * @return the CollationKey for the given String based on this Collator's
  *         collation rules. If the source String is null, a null
  *         CollationKey is returned.
- * @see CollationKey
+ * @see android.icu.text.CollationKey
  * @see #compare(String, String)
  */
 
@@ -615,8 +615,8 @@ public abstract android.icu.util.VersionInfo getUCAVersion();
  * if none are set then returns an empty array
  * @see #setReorderCodes
  * @see #getEquivalentReorderCodes
- * @see Collator.ReorderCodes
- * @see UScript
+ * @see android.icu.text.Collator.ReorderCodes
+ * @see android.icu.lang.UScript
  */
 
 public int[] getReorderCodes() { throw new RuntimeException("Stub!"); }
@@ -631,8 +631,8 @@ public int[] getReorderCodes() { throw new RuntimeException("Stub!"); }
  * @return the set of all reorder codes in the same group as the given reorder code.
  * @see #setReorderCodes
  * @see #getReorderCodes
- * @see Collator.ReorderCodes
- * @see UScript
+ * @see android.icu.text.Collator.ReorderCodes
+ * @see android.icu.lang.UScript
  */
 
 public static int[] getEquivalentReorderCodes(int reorderCode) { throw new RuntimeException("Stub!"); }
