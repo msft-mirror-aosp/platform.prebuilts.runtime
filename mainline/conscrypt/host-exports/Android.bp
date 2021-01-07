@@ -46,8 +46,8 @@ cc_prebuilt_library_shared {
     name: "conscrypt-module-host-exports_libconscrypt_openjdk_jni@current",
     sdk_member_name: "libconscrypt_openjdk_jni",
     visibility: [
-        "//external/conscrypt:__subpackages__",
         "//build/make/tools/signapk",
+        "//external/conscrypt",
         "//tools/apksig",
     ],
     apex_available: ["//apex_available:platform"],
@@ -87,8 +87,8 @@ cc_prebuilt_library_shared {
     name: "libconscrypt_openjdk_jni",
     prefer: false,
     visibility: [
-        "//external/conscrypt:__subpackages__",
         "//build/make/tools/signapk",
+        "//external/conscrypt",
         "//tools/apksig",
     ],
     apex_available: ["//apex_available:platform"],

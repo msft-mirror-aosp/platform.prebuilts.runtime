@@ -17,13 +17,39 @@
 
 package com.android.icu.util;
 
+import java.util.Locale;
+
+/**
+ * Provide functionalities implemented by ICU4C for {@link java.lang.String}, which avoids using
+ * {@link android.icu.lang.UCharacter} to prevent circular runtime dependency.
+ *
+ * @hide
+ */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class CaseMapperNative {
 
-public CaseMapperNative() { throw new RuntimeException("Stub!"); }
+private CaseMapperNative() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns the lower-case version of the string in the {@code locale}.
+ *
+ * Behaves the same as {@link android.icu.lang.UCharacter#toLowerCase(Locale, String)}, but
+ * implemented by ICU4C.
+ *
+ * @hide
+ */
 
 public static java.lang.String toLowerCase(java.lang.String s, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns the upper-case version of the string in the {@code locale}.
+ *
+ * Behaves the same as {@link android.icu.lang.UCharacter#toUpperCase(Locale, String)}, but
+ * implemented by ICU4C.
+ *
+ * @hide
+ */
 
 public static java.lang.String toUpperCase(java.lang.String s, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 }

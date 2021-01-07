@@ -39,7 +39,7 @@ private FileClientSessionCache() { throw new RuntimeException("Stub!"); }
  *
  * @param directory to store files in
  * @return a cache backed by the given directory
- * @throws IOException if the file exists and is not a directory or if
+ * @throws java.io.IOException if the file exists and is not a directory or if
  *  creating the directories fails
  */
 

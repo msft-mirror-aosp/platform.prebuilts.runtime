@@ -16,7 +16,7 @@ import android.icu.lang.UCharacter;
 /**
  * Old Unicode normalization API.
  *
- * <p>This API has been replaced by the {@link Normalizer2} class and is only available
+ * <p>This API has been replaced by the {@link android.icu.text.Normalizer2 Normalizer2} class and is only available
  * for backward compatibility. This class simply delegates to the Normalizer2 class.
  * There are two exceptions: The new API does not provide a replacement for
  * <code>QuickCheckResult</code> and <code>compare()</code>.
@@ -134,13 +134,13 @@ Normalizer() { throw new RuntimeException("Stub!"); }
 /**
  * Clones this <tt>Normalizer</tt> object.  All properties of this
  * object are duplicated in the new object, including the cloning of any
- * {@link CharacterIterator} that was passed in to the constructor
- * or to {@link #setText(CharacterIterator) setText}.
+ * {@link java.text.CharacterIterator CharacterIterator} that was passed in to the constructor
+ * or to {@link #setText(java.text.CharacterIterator) setText}.
  * However, the text storage underlying
  * the <tt>CharacterIterator</tt> is not duplicated unless the
  * iterator's <tt>clone</tt> method does so.
  *
- * @deprecated ICU 56 Use {@link Normalizer2} instead.
+ * @deprecated ICU 56 Use {@link android.icu.text.Normalizer2 Normalizer2} instead.
  * @hide original deprecated declaration
  */
 
@@ -322,7 +322,7 @@ public static final int FOLD_CASE_DEFAULT = 0; // 0x0
  * Option value for case folding:
  * Use the modified set of mappings provided in CaseFolding.txt to handle dotted I
  * and dotless i appropriately for Turkic languages (tr, az).
- * @see UCharacter#FOLD_CASE_EXCLUDE_SPECIAL_I
+ * @see android.icu.lang.UCharacter#FOLD_CASE_EXCLUDE_SPECIAL_I
  */
 
 public static final int FOLD_CASE_EXCLUDE_SPECIAL_I = 1; // 0x1

@@ -184,10 +184,10 @@ public DateIntervalInfo(java.util.Locale locale) { throw new RuntimeException("S
  *                         For example, if lrgDiffCalUnit is
  *                         "year", the interval pattern for en_US when year
  *                         is different could be "'from' yyyy 'to' yyyy".
- * @throws IllegalArgumentException  if setting interval pattern on
+ * @throws java.lang.IllegalArgumentException  if setting interval pattern on
  *                            a calendar field that is smaller
  *                            than the MINIMUM_SUPPORTED_CALENDAR_FIELD
- * @throws UnsupportedOperationException  if the object is frozen
+ * @throws java.lang.UnsupportedOperationException  if the object is frozen
  */
 
 public void setIntervalPattern(java.lang.String skeleton, int lrgDiffCalUnit, java.lang.String intervalPattern) { throw new RuntimeException("Stub!"); }
@@ -197,7 +197,7 @@ public void setIntervalPattern(java.lang.String skeleton, int lrgDiffCalUnit, ja
  * @param skeleton   the skeleton
  * @param field      the largest different calendar field
  * @return interval pattern  return null if interval pattern is not found.
- * @throws IllegalArgumentException  if getting interval pattern on
+ * @throws java.lang.IllegalArgumentException  if getting interval pattern on
  *                            a calendar field that is smaller
  *                            than the MINIMUM_SUPPORTED_CALENDAR_FIELD
  */
@@ -221,8 +221,8 @@ public java.lang.String getFallbackIntervalPattern() { throw new RuntimeExceptio
  * This method provides a way for user to replace the fallback pattern.
  *
  * @param fallbackPattern                 fall-back interval pattern.
- * @throws UnsupportedOperationException  if the object is frozen
- * @throws IllegalArgumentException       if there is no pattern {0} or
+ * @throws java.lang.UnsupportedOperationException  if the object is frozen
+ * @throws java.lang.IllegalArgumentException       if there is no pattern {0} or
  *                                        pattern {1} in fallbakckPattern
  */
 

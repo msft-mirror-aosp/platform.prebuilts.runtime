@@ -78,7 +78,7 @@ public class HebrewCalendar extends android.icu.util.Calendar {
 /**
  * Constructs a default <code>HebrewCalendar</code> using the current time
  * in the default time zone with the default <code>FORMAT</code> locale.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public HebrewCalendar() { throw new RuntimeException("Stub!"); }
@@ -88,7 +88,7 @@ public HebrewCalendar() { throw new RuntimeException("Stub!"); }
  * in the given time zone with the default <code>FORMAT</code> locale.
  *
  * @param zone The time zone for the new calendar.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public HebrewCalendar(android.icu.util.TimeZone zone) { throw new RuntimeException("Stub!"); }
@@ -143,7 +143,7 @@ public HebrewCalendar(android.icu.util.TimeZone zone, android.icu.util.ULocale l
  *                  The value is 0-based. e.g., 0 for Tishri.
  *
  * @param date      The value used to set the calendar's {@link #DATE DATE} time field.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public HebrewCalendar(int year, int month, int date) { throw new RuntimeException("Stub!"); }
@@ -153,7 +153,7 @@ public HebrewCalendar(int year, int month, int date) { throw new RuntimeExceptio
  * in the default time zone with the default <code>FORMAT</code> locale.
  *
  * @param date      The date to which the new calendar is set.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public HebrewCalendar(java.util.Date date) { throw new RuntimeException("Stub!"); }
@@ -174,7 +174,7 @@ public HebrewCalendar(java.util.Date date) { throw new RuntimeException("Stub!")
  * @param minute    The value used to set the calendar's {@link #MINUTE MINUTE} time field.
  *
  * @param second    The value used to set the calendar's {@link #SECOND SECOND} time field.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public HebrewCalendar(int year, int month, int date, int hour, int minute, int second) { throw new RuntimeException("Stub!"); }
@@ -202,7 +202,7 @@ public HebrewCalendar(int year, int month, int date, int hour, int minute, int s
  * @param field     the time field.
  * @param amount    the amount to add to the field.
  *
- * @exception   IllegalArgumentException if the field is invalid or refers
+ * @exception   java.lang.IllegalArgumentException if the field is invalid or refers
  *              to a field that cannot be handled by this method.
  */
 
@@ -236,7 +236,7 @@ public void add(int field, int amount) { throw new RuntimeException("Stub!"); }
  * @param field     the time field.
  * @param amount    the amount by which the field should be rolled.
  *
- * @exception   IllegalArgumentException if the field is invalid or refers
+ * @exception   java.lang.IllegalArgumentException if the field is invalid or refers
  *              to a field that cannot be handled by this method.
  */
 
@@ -262,7 +262,7 @@ protected int handleGetYearLength(int eyear) { throw new RuntimeException("Stub!
 /**
  * {@inheritDoc}
  * <p>
- * Overrides {@link Calendar#validateField(int)} to provide
+ * Overrides {@link android.icu.util.Calendar#validateField(int) Calendar#validateField(int)} to provide
  * special handling for month validation for Hebrew calendar.
  * @deprecated This API is ICU internal only.
  * @hide original deprecated declaration

@@ -35,7 +35,7 @@ public static android.icu.util.LocaleData getInstance(android.icu.util.ULocale l
  * Gets the LocaleData object associated with the default <code>FORMAT</code> locale
  *
  * @return          A locale data object.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static android.icu.util.LocaleData getInstance() { throw new RuntimeException("Stub!"); }
