@@ -24,10 +24,6 @@ public final class CharsetICU extends java.nio.charset.Charset {
 
 protected CharsetICU(java.lang.String canonicalName, java.lang.String icuCanonName, java.lang.String[] aliases) { super(null, null); throw new RuntimeException("Stub!"); }
 
-public static java.lang.String[] getAvailableCharsetNames() { throw new RuntimeException("Stub!"); }
-
-public static java.nio.charset.Charset charsetForName(java.lang.String charsetName) { throw new RuntimeException("Stub!"); }
-
 public java.nio.charset.CharsetDecoder newDecoder() { throw new RuntimeException("Stub!"); }
 
 public java.nio.charset.CharsetEncoder newEncoder() { throw new RuntimeException("Stub!"); }

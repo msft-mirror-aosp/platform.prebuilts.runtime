@@ -1249,13 +1249,6 @@ public synchronized boolean isParseStrict() { throw new RuntimeException("Stub!"
 public synchronized void setParseStrict(boolean parseStrict) { throw new RuntimeException("Stub!"); }
 
 /**
- * @param parseJavaCompatible true for java-compatible mode, and otherwise lenient mode.
- * @hide draft / provisional / internal are hidden on Android
- */
-
-public void setParseJavaCompatible(boolean parseJavaCompatible) { throw new RuntimeException("Stub!"); }
-
-/**
  * {@inheritDoc}
  *
  * @see #setParseIntegerOnly
