@@ -1266,22 +1266,6 @@ protected android.icu.text.DateFormat handleGetDateFormat(java.lang.String patte
 protected android.icu.text.DateFormat handleGetDateFormat(java.lang.String pattern, android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * Get the date time format string for the specified values.
- * This is a copy of {@link #formatHelper(android.icu.util.Calendar,android.icu.util.ULocale,int,int)} with the following
- * changes:
- * <ul>
- *     <li>Made public, but hidden</li>
- *     <li>take calendar type string instead of Calendar</li>
- *     <li>Ignore overrides</li>
- *     <li>Return format string instead of DateFormat.</li>
- * </ul>
- * This is not meant as public API.
- * @hide draft / provisional / internal are hidden on Android
- */
-
-public static java.lang.String getDateTimeFormatString(android.icu.util.ULocale loc, java.lang.String calType, int dateStyle, int timeStyle) { throw new RuntimeException("Stub!"); }
-
-/**
  * Adjust the specified field so that it is within
  * the allowable range for the date to which this calendar is set.
  * For example, in a Gregorian calendar pinning the {@link #DAY_OF_MONTH DAY_OF_MONTH}
