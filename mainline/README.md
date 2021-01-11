@@ -5,7 +5,7 @@ To update:
 
 1. Submit the changes that need to go into the prebuilt.
 
-2. Wait for a new build on branch `aosp-master`, target `mainline-modules`.
+2. Wait for a new build on branch `aosp-master`, target `mainline_modules`.
 
 3. Run:
 
