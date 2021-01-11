@@ -477,21 +477,6 @@ public static java.lang.String getEquivalentID(java.lang.String id, int index) {
 public static android.icu.util.TimeZone getDefault() { throw new RuntimeException("Stub!"); }
 
 /**
- * Sets the <code>TimeZone</code> that is returned by the <code>getDefault</code>
- * method. If <code>tz</code> is null, next {@link #getDefault()} method invocation
- * will reset the default time zone synchronized with the JVM's default at that time.
- * Unlike {@link #setDefault(android.icu.util.TimeZone)}, this method does not change the JVM's
- * default time zone.
- *
- * @param tz the new default time zone
- * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
- */
-
-@Deprecated
-public static synchronized void setICUDefault(android.icu.util.TimeZone tz) { throw new RuntimeException("Stub!"); }
-
-/**
  * Returns true if this zone has the same rule and offset as another zone.
  * That is, if this zone differs only in ID, if at all.  Returns false
  * if the other zone is null.
