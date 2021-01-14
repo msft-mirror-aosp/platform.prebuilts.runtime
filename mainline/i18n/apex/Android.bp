@@ -16,7 +16,6 @@
 
 prebuilt_apex {
     name: "com.android.i18n",
-    overrides: ["com.android.i18n"],
     arch: {
         arm: {
             src: "com.android.i18n-arm.apex",
