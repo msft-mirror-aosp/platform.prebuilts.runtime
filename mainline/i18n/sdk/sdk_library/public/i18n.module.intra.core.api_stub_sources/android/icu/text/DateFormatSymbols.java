@@ -238,7 +238,7 @@ public void setEraNames(java.lang.String[] newEraNames) { throw new RuntimeExcep
 /**
  * <strong>[icu]</strong> Returns narrow era name strings. For example: "A" and "B".
  * @return the narrow era strings.
- * @hide draft / provisional / internal are hidden on Android
+ * @hide Hide new API in Android temporarily
  */
 
 public java.lang.String[] getNarrowEras() { throw new RuntimeException("Stub!"); }

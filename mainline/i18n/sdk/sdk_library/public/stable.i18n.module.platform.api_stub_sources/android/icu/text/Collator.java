@@ -216,19 +216,19 @@ public void setDecomposition(int decomposition) { throw new RuntimeException("St
  * {@link android.icu.text.Collator.ReorderCodes Collator.ReorderCodes} entries. Script groups can be intermingled with
  * these special non-script groups if those special groups are explicitly specified in the reordering.
  *
- * <p>The special code {@link android.icu.text.Collator.ReorderCodes#OTHERS Collator.ReorderCodes#OTHERS}
+ * <p>The special code {@link android.icu.text.Collator.ReorderCodes#OTHERS OTHERS}
  * stands for any script that is not explicitly
  * mentioned in the list of reordering codes given. Anything that is after OTHERS
  * will go at the very end of the reordering in the order given.
  *
- * <p>The special reorder code {@link android.icu.text.Collator.ReorderCodes#DEFAULT Collator.ReorderCodes#DEFAULT}
+ * <p>The special reorder code {@link android.icu.text.Collator.ReorderCodes#DEFAULT DEFAULT}
  * will reset the reordering for this collator
  * to the default for this collator. The default reordering may be the DUCET/CLDR order or may be a reordering that
  * was specified when this collator was created from resource data or from rules. The
  * DEFAULT code <b>must</b> be the sole code supplied when it is used.
  * If not, then an {@link java.lang.IllegalArgumentException IllegalArgumentException} will be thrown.
  *
- * <p>The special reorder code {@link android.icu.text.Collator.ReorderCodes#NONE Collator.ReorderCodes#NONE}
+ * <p>The special reorder code {@link android.icu.text.Collator.ReorderCodes#NONE NONE}
  * will remove any reordering for this collator.
  * The result of setting no reordering will be to have the DUCET/CLDR ordering used. The
  * NONE code <b>must</b> be the sole code supplied when it is used.
