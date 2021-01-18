@@ -211,7 +211,7 @@ import android.icu.util.TimeZone;
  *
  *     // a series of set interval patterns.
  *     // Only ERA, YEAR, MONTH, DATE,  DAY_OF_MONTH, DAY_OF_WEEK, AM_PM,  HOUR, HOUR_OF_DAY,
- *     MINUTE and SECOND are supported.
+ *     MINUTE, SECOND and MILLISECOND are supported.
  *     dtitvinf.setIntervalPattern("yMMMd", Calendar.YEAR, "'y ~ y'");
  *     dtitvinf.setIntervalPattern("yMMMd", Calendar.MONTH, "yyyy 'diff' MMM d - MMM d");
  *     dtitvinf.setIntervalPattern("yMMMd", Calendar.DATE, "yyyy MMM d ~ d");

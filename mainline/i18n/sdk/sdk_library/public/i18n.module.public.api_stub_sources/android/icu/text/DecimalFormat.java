@@ -223,7 +223,7 @@ public class DecimalFormat extends android.icu.text.NumberFormat {
  * a convenient way to obtain a DecimalFormat instance when internationalization is not the main
  * concern.
  *
- * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
+ * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance  }, which return localized formatter objects, instead of the
  * DecimalFormat constructors.
  *
  * @see NumberFormat#getInstance
@@ -240,7 +240,7 @@ public DecimalFormat() { throw new RuntimeException("Stub!"); }
  * is a convenient way to obtain a DecimalFormat instance when internationalization is not the
  * main concern.
  *
- * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
+ * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance  }, which return localized formatter objects, instead of the
  * DecimalFormat constructors.
  *
  * @param pattern A pattern string such as "#,##0.00" conforming to <a
@@ -260,7 +260,7 @@ public DecimalFormat(java.lang.String pattern) { throw new RuntimeException("Stu
  * Creates a DecimalFormat based on the given pattern and symbols. Use this constructor if you
  * want complete control over the behavior of the formatter.
  *
- * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
+ * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance  }, which return localized formatter objects, instead of the
  * DecimalFormat constructors.
  *
  * @param pattern A pattern string such as "#,##0.00" conforming to <a
@@ -283,7 +283,7 @@ public DecimalFormat(java.lang.String pattern, android.icu.text.DecimalFormatSym
  * override the pattern, and the {@link android.icu.text.CurrencyPluralInfo CurrencyPluralInfo} object is used for customizing the
  * plural forms used for currency long names.
  *
- * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
+ * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance  }, which return localized formatter objects, instead of the
  * DecimalFormat constructors.
  *
  * @param pattern a non-localized pattern string
