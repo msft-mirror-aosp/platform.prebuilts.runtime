@@ -122,7 +122,7 @@ import android.icu.util.Calendar;
  * the interval patterns using setIntervalPattern function as so desired.
  * Currently, users can only set interval patterns when the following
  * calendar fields are different: ERA, YEAR, MONTH, DATE,  DAY_OF_MONTH,
- * DAY_OF_WEEK, AM_PM,  HOUR, HOUR_OF_DAY, MINUTE and SECOND.
+ * DAY_OF_WEEK, AM_PM,  HOUR, HOUR_OF_DAY, MINUTE, SECOND, and MILLISECOND.
  * Interval patterns when other calendar fields are different is not supported.
  * <P>
  * DateIntervalInfo objects are cloneable.
@@ -173,7 +173,7 @@ public DateIntervalInfo(java.util.Locale locale) { throw new RuntimeException("S
  * Restriction:
  * Currently, users can only set interval patterns when the following
  * calendar fields are different: ERA, YEAR, MONTH, DATE,  DAY_OF_MONTH,
- * DAY_OF_WEEK, AM_PM,  HOUR, HOUR_OF_DAY, MINUTE, and SECOND.
+ * DAY_OF_WEEK, AM_PM,  HOUR, HOUR_OF_DAY, MINUTE, SECOND, and MILLISECOND.
  * Interval patterns when other calendar fields are different are
  * not supported.
  *

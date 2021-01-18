@@ -127,7 +127,7 @@ public ULocale(java.lang.String a, java.lang.String b, java.lang.String c) { thr
 public static android.icu.util.ULocale forLocale(java.util.Locale loc) { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Creates a ULocale from the id by first canonicalizing the id.
+ * <strong>[icu]</strong> Creates a ULocale from the id by first canonicalizing the id according to CLDR.
  * @param nonCanonicalID the locale id to canonicalize
  * @return the locale created from the canonical version of the ID.
  */
@@ -389,8 +389,8 @@ public java.lang.String getKeywordValue(java.lang.String keywordName) { throw ne
 public static java.lang.String getKeywordValue(java.lang.String localeID, java.lang.String keywordName) { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Returns the canonical name for the specified locale ID.  This is used to
- * convert POSIX and other grandfathered IDs to standard ICU form.
+ * <strong>[icu]</strong> Returns the canonical name according to CLDR for the specified locale ID.
+ * This is used to convert POSIX and other grandfathered IDs to standard ICU form.
  * @param localeID the locale id
  * @return the canonicalized id
  */
@@ -854,6 +854,7 @@ public java.lang.String getLineOrientation() { throw new RuntimeException("Stub!
  * ROOT ULocale if if a ROOT locale was used as a fallback (because nothing else in
  * availableLocales matched).  No ULocale array element should be null; behavior is
  * undefined if this is the case.
+ *
  * @param acceptLanguageList list in HTTP "Accept-Language:" format of acceptable locales
  * @param availableLocales list of available locales. One of these will be returned.
  * @param fallback if non-null, a 1-element array containing a boolean to be set with
@@ -871,6 +872,7 @@ public static android.icu.util.ULocale acceptLanguage(java.lang.String acceptLan
  * will be one of the locales in availableLocales, or the ROOT ULocale if if a ROOT
  * locale was used as a fallback (because nothing else in availableLocales matched).
  * No ULocale array element should be null; behavior is undefined if this is the case.
+ *
  * @param acceptLanguageList list of acceptable locales
  * @param availableLocales list of available locales. One of these will be returned.
  * @param fallback if non-null, a 1-element array containing a boolean to be set with
@@ -890,6 +892,7 @@ public static android.icu.util.ULocale acceptLanguage(android.icu.util.ULocale[]
  * availableLocales matched).  No ULocale array element should be null; behavior is
  * undefined if this is the case.  This function will choose a locale from the
  * ULocale.getAvailableLocales() list as available.
+ *
  * @param acceptLanguageList list in HTTP "Accept-Language:" format of acceptable locales
  * @param fallback if non-null, a 1-element array containing a boolean to be set with
  * the fallback status
@@ -909,6 +912,7 @@ public static android.icu.util.ULocale acceptLanguage(java.lang.String acceptLan
  * availableLocales matched).  No ULocale array element should be null; behavior is
  * undefined if this is the case.  This function will choose a locale from the
  * ULocale.getAvailableLocales() list as available.
+ *
  * @param acceptLanguageList ordered array of acceptable locales (preferred are listed first)
  * @param fallback if non-null, a 1-element array containing a boolean to be set with
  * the fallback status
@@ -1534,7 +1538,7 @@ public android.icu.util.ULocale.Builder setLocale(android.icu.util.ULocale local
  * Resets the Builder to match the provided IETF BCP 47
  * language tag.  Discards the existing state.  Null and the
  * empty string cause the builder to be reset, like {@link
- * #clear}.  Grandfathered tags (see {@link android.icu.util.ULocale#forLanguageTag ULocale#forLanguageTag}) are converted to their canonical
+ * #clear}.  Grandfathered tags (see {@link android.icu.util.ULocale#forLanguageTag  }) are converted to their canonical
  * form before being processed.  Otherwise, the language tag
  * must be well-formed (see {@link android.icu.util.ULocale ULocale}) or an exception is
  * thrown (unlike <code>ULocale.forLanguageTag</code>, which
@@ -1621,11 +1625,11 @@ public android.icu.util.ULocale.Builder setVariant(java.lang.String variant) { t
  * empty string, the extension is removed.  Otherwise, the extension
  * must be well-formed or an exception is thrown.
  *
- * <p><b>Note:</b> The key {@link android.icu.util.ULocale#UNICODE_LOCALE_EXTENSION ULocale#UNICODE_LOCALE_EXTENSION} ('u') is used for the Unicode locale extension.
+ * <p><b>Note:</b> The key {@link android.icu.util.ULocale#UNICODE_LOCALE_EXTENSION  UNICODE_LOCALE_EXTENSION} ('u') is used for the Unicode locale extension.
  * Setting a value for this key replaces any existing Unicode locale key/type
  * pairs with those defined in the extension.
  *
- * <p><b>Note:</b> The key {@link android.icu.util.ULocale#PRIVATE_USE_EXTENSION ULocale#PRIVATE_USE_EXTENSION} ('x') is used for the private use code. To be
+ * <p><b>Note:</b> The key {@link android.icu.util.ULocale#PRIVATE_USE_EXTENSION  PRIVATE_USE_EXTENSION} ('x') is used for the private use code. To be
  * well-formed, the value for this key needs only to have subtags of one to
  * eight alphanumeric characters, not two to eight as in the general case.
  *

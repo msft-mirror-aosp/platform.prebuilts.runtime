@@ -10,6 +10,7 @@
 
 package android.icu.text;
 
+import java.text.Format;
 
 /**
  * Immutable class for formatting a list, using data from CLDR (or supplied
