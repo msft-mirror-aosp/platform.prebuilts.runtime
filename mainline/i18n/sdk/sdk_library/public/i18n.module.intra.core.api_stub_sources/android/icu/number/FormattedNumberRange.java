@@ -31,7 +31,7 @@ public java.lang.String toString() { throw new RuntimeException("Stub!"); }
 /**
  * {@inheritDoc}
  *
- * @hide draft / provisional / internal are hidden on Android
+ * @hide Hide new API in Android temporarily
  */
 
 public char charAt(int index) { throw new RuntimeException("Stub!"); }
@@ -39,7 +39,7 @@ public char charAt(int index) { throw new RuntimeException("Stub!"); }
 /**
  * {@inheritDoc}
  *
- * @hide draft / provisional / internal are hidden on Android
+ * @hide Hide new API in Android temporarily
  */
 
 public int length() { throw new RuntimeException("Stub!"); }
@@ -47,7 +47,7 @@ public int length() { throw new RuntimeException("Stub!"); }
 /**
  * {@inheritDoc}
  *
- * @hide draft / provisional / internal are hidden on Android
+ * @hide Hide new API in Android temporarily
  */
 
 public java.lang.CharSequence subSequence(int start, int end) { throw new RuntimeException("Stub!"); }
@@ -95,7 +95,7 @@ public android.icu.number.NumberRangeFormatter.RangeIdentityResult getIdentityRe
 /**
  * {@inheritDoc}
  *
- * @hide draft / provisional / internal are hidden on Android
+ * @hide Hide new API in Android temporarily
  */
 
 public int hashCode() { throw new RuntimeException("Stub!"); }
@@ -103,7 +103,7 @@ public int hashCode() { throw new RuntimeException("Stub!"); }
 /**
  * {@inheritDoc}
  *
- * @hide draft / provisional / internal are hidden on Android
+ * @hide Hide new API in Android temporarily
  */
 
 public boolean equals(java.lang.Object other) { throw new RuntimeException("Stub!"); }
