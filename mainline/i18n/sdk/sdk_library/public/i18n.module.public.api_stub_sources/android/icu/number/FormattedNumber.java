@@ -17,7 +17,7 @@ import java.text.AttributedCharacterIterator;
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
-public class FormattedNumber implements java.lang.CharSequence {
+public class FormattedNumber implements android.icu.text.FormattedValue {
 
 FormattedNumber() { throw new RuntimeException("Stub!"); }
 
@@ -29,27 +29,33 @@ public java.lang.String toString() { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide Hide new API in Android temporarily
  */
 
 public int length() { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide Hide new API in Android temporarily
  */
 
 public char charAt(int index) { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide Hide new API in Android temporarily
  */
 
 public java.lang.CharSequence subSequence(int start, int end) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public <A extends java.lang.Appendable> A appendTo(A appendable) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public boolean nextPosition(android.icu.text.ConstrainedFieldPosition cfpos) { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}

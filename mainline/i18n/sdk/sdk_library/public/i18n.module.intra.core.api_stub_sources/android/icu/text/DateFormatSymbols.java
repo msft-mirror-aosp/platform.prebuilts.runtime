@@ -238,10 +238,16 @@ public void setEraNames(java.lang.String[] newEraNames) { throw new RuntimeExcep
 /**
  * <strong>[icu]</strong> Returns narrow era name strings. For example: "A" and "B".
  * @return the narrow era strings.
- * @hide Hide new API in Android temporarily
  */
 
 public java.lang.String[] getNarrowEras() { throw new RuntimeException("Stub!"); }
+
+/**
+ * <strong>[icu]</strong> Sets narrow era name strings. For example: "A" and "B".
+ * @param newNarrowEras the new narrow era strings.
+ */
+
+public void setNarrowEras(java.lang.String[] newNarrowEras) { throw new RuntimeException("Stub!"); }
 
 /**
  * Returns month strings. For example: "January", "February", etc.
