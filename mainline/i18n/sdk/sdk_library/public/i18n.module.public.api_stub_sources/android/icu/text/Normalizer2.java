@@ -127,8 +127,10 @@ public static android.icu.text.Normalizer2 getNFKCCasefoldInstance() { throw new
  * @param name "nfc" or "nfkc" or "nfkc_cf" or name of custom data file
  * @param mode normalization mode (compose or decompose etc.)
  * @return the requested Normalizer2, if successful
+ * @deprecated on Android but not deprecated in ICU
  */
 
+@Deprecated
 public static android.icu.text.Normalizer2 getInstance(java.io.InputStream data, java.lang.String name, android.icu.text.Normalizer2.Mode mode) { throw new RuntimeException("Stub!"); }
 
 /**

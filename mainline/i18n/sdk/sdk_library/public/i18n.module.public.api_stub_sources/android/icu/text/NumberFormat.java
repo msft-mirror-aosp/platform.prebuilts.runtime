@@ -922,6 +922,12 @@ protected java.lang.Object readResolve() throws java.io.InvalidObjectException {
 /**
  */
 
+public static final android.icu.text.NumberFormat.Field COMPACT;
+static { COMPACT = null; }
+
+/**
+ */
+
 public static final android.icu.text.NumberFormat.Field CURRENCY;
 static { CURRENCY = null; }
 
@@ -966,6 +972,12 @@ static { GROUPING_SEPARATOR = null; }
 
 public static final android.icu.text.NumberFormat.Field INTEGER;
 static { INTEGER = null; }
+
+/**
+ */
+
+public static final android.icu.text.NumberFormat.Field MEASURE_UNIT;
+static { MEASURE_UNIT = null; }
 
 /**
  */
