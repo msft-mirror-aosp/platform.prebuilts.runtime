@@ -530,6 +530,40 @@ public synchronized java.lang.String getNegativeSuffix() { throw new RuntimeExce
 public synchronized void setNegativeSuffix(java.lang.String suffix) { throw new RuntimeException("Stub!"); }
 
 /**
+ * <strong>[icu]</strong> Returns whether the sign is being shown on positive numbers.
+ *
+ * @return Whether the sign is shown on positive numbers and zero.
+ * @see #setSignAlwaysShown
+ */
+
+public synchronized boolean isSignAlwaysShown() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Sets whether to always shown the plus sign ('+' in <em>en</em>) on positive numbers. The rules
+ * in UTS #35 section 3.2.1 will be followed to ensure a locale-aware placement of the sign.
+ *
+ * <p>More specifically, the following strategy will be used to place the plus sign:
+ *
+ * <ol>
+ *   <li><em>Patterns without a negative subpattern:</em> The locale's plus sign will be prepended
+ *       to the positive prefix.
+ *   <li><em>Patterns with a negative subpattern without a '-' sign (e.g., accounting):</em> The
+ *       locale's plus sign will be prepended to the positive prefix, as in case 1.
+ *   <li><em>Patterns with a negative subpattern that has a '-' sign:</em> The locale's plus sign
+ *       will substitute the '-' in the negative subpattern. The positive subpattern will be
+ *       unused.
+ * </ol>
+ *
+ * This method is designed to be used <em>instead of</em> applying a pattern containing an
+ * explicit plus sign, such as "+0;-0". The behavior when combining this method with explicit plus
+ * signs in the pattern is undefined.
+ *
+ * @param value true to always show a sign; false to hide the sign on positive numbers and zero.
+ */
+
+public synchronized void setSignAlwaysShown(boolean value) { throw new RuntimeException("Stub!"); }
+
+/**
  * Returns the multiplier being applied to numbers before they are formatted.
  *
  * @see #setMultiplier
@@ -1102,6 +1136,24 @@ public synchronized int getSecondaryGroupingSize() { throw new RuntimeException(
 public synchronized void setSecondaryGroupingSize(int width) { throw new RuntimeException("Stub!"); }
 
 /**
+ * <strong>[icu]</strong> Returns the minimum number of digits before grouping is triggered.
+ *
+ * @see #setMinimumGroupingDigits
+ */
+
+public synchronized int getMinimumGroupingDigits() { throw new RuntimeException("Stub!"); }
+
+/**
+ * <strong>[icu]</strong> Sets the minimum number of digits that must be before the first grouping separator in
+ * order for the grouping separator to be printed. For example, if minimum grouping digits is set
+ * to 2, in <em>en-US</em>, 1234 will be printed as "1234" and 12345 will be printed as "12,345".
+ *
+ * @param number The minimum number of digits before grouping is triggered.
+ */
+
+public synchronized void setMinimumGroupingDigits(int number) { throw new RuntimeException("Stub!"); }
+
+/**
  * Returns whether the decimal separator is shown on integers.
  *
  * @see #setDecimalSeparatorAlwaysShown
@@ -1311,6 +1363,42 @@ public synchronized boolean isDecimalPatternMatchRequired() { throw new RuntimeE
  */
 
 public synchronized void setDecimalPatternMatchRequired(boolean value) { throw new RuntimeException("Stub!"); }
+
+/**
+ * <strong>[icu]</strong> Returns whether to ignore exponents when parsing.
+ *
+ * @see #setParseNoExponent
+ */
+
+public synchronized boolean isParseNoExponent() { throw new RuntimeException("Stub!"); }
+
+/**
+ * <strong>[icu]</strong> Specifies whether to stop parsing when an exponent separator is encountered. For
+ * example, parses "123E4" to 123 (with parse position 3) instead of 1230000 (with parse position
+ * 5).
+ *
+ * @param value true to prevent exponents from being parsed; false to allow them to be parsed.
+ */
+
+public synchronized void setParseNoExponent(boolean value) { throw new RuntimeException("Stub!"); }
+
+/**
+ * <strong>[icu]</strong> Returns whether to force case (uppercase/lowercase) to match when parsing.
+ *
+ * @see #setParseNoExponent
+ */
+
+public synchronized boolean isParseCaseSensitive() { throw new RuntimeException("Stub!"); }
+
+/**
+ * <strong>[icu]</strong> Specifies whether parsing should require cases to match in affixes, exponent separators,
+ * and currency codes. Case mapping is performed for each code point using {@link android.icu.lang.UCharacter#foldCase  }.
+ *
+ * @param value true to force case (uppercase/lowercase) to match when parsing; false to ignore
+ *     case and perform case folding.
+ */
+
+public synchronized void setParseCaseSensitive(boolean value) { throw new RuntimeException("Stub!"); }
 
 /**
  * Tests for equality between this formatter and another formatter.
