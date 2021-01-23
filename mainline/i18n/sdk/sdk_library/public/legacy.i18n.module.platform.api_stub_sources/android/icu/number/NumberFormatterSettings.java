@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2017 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.number;
 
@@ -90,14 +90,13 @@ public T notation(android.icu.number.Notation notation) { throw new RuntimeExcep
  * NumberFormatter.with().unit(Currency.getInstance("USD"))
  * </pre>
  *
- * Percent:
- *
- * <pre>
- * NumberFormatter.with().unit(NoUnit.PERCENT)
- * </pre>
- *
  * <p>
  * See {@link #perUnit} for information on how to format strings like "5 meters per second".
+ *
+ * <p>
+ * If the input usage is correctly set the output unit <b>will change</b>
+ * according to `usage`, `locale` and `unit` value.
+ * </p>
  *
  * @param unit
  *            The unit to render.
@@ -178,7 +177,7 @@ public T precision(android.icu.number.Precision precision) { throw new RuntimeEx
  *
  * The default is HALF_EVEN. For more information on rounding mode, see the ICU userguide here:
  *
- * http://userguide.icu-project.org/formatparse/numbers/rounding-modes
+ * https://unicode-org.github.io/icu/userguide/format_parse/numbers/rounding-modes
  *
  * @param roundingMode
  *            The rounding mode to use.
