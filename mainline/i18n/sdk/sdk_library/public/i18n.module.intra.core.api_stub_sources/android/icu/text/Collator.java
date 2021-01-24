@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /**
 *******************************************************************************
 * Copyright (C) 1996-2016, International Business Machines Corporation and
@@ -50,7 +50,7 @@ import android.icu.util.ULocale.Category;
  *     difference between large and small Kana. A tertiary difference is ignored
  *     when there is a primary or secondary difference anywhere in the strings.
  * <li>QUATERNARY strength: When punctuation is ignored
- *     (see <a href="http://userguide.icu-project.org/collation/concepts#TOC-Ignoring-Punctuation">
+ *     (see <a href="https://unicode-org.github.io/icu/userguide/collation/concepts#ignoring-punctuation">
  *     Ignoring Punctuations in the User Guide</a>) at PRIMARY to TERTIARY
  *     strength, an additional strength level can
  *     be used to distinguish words with and without punctuation (for example,
@@ -81,7 +81,7 @@ import android.icu.util.ULocale.Category;
  * a comparison or before getting a CollationKey.
  *
  * <p>For more information about the collation service see the
- * <a href="http://userguide.icu-project.org/collation">User Guide</a>.
+ * <a href="https://unicode-org.github.io/icu/userguide/collation">User Guide</a>.
  *
  * <p>Examples of use
  * <pre>
@@ -271,7 +271,7 @@ public java.lang.Object clone() throws java.lang.CloneNotSupportedException { th
  * Starting with ICU 54, collation attributes can be specified via locale keywords as well,
  * in the old locale extension syntax ("el@colCaseFirst=upper")
  * or in language tag syntax ("el-u-kf-upper").
- * See <a href="http://userguide.icu-project.org/collation/api">User Guide: Collation API</a>.
+ * See <a href="https://unicode-org.github.io/icu/userguide/collation/api">User Guide: Collation API</a>.
  *
  * @param locale the desired locale.
  * @return Collator for the desired locale if it is created successfully.
@@ -294,7 +294,7 @@ public static final android.icu.text.Collator getInstance(android.icu.util.ULoca
  * Starting with ICU 54, collation attributes can be specified via locale keywords as well,
  * in the old locale extension syntax ("el@colCaseFirst=upper", only with {@link android.icu.util.ULocale ULocale})
  * or in language tag syntax ("el-u-kf-upper").
- * See <a href="http://userguide.icu-project.org/collation/api">User Guide: Collation API</a>.
+ * See <a href="https://unicode-org.github.io/icu/userguide/collation/api">User Guide: Collation API</a>.
  *
  * @param locale the desired locale.
  * @return Collator for the desired locale if it is created successfully.
@@ -378,7 +378,7 @@ public static final java.lang.String[] getKeywordValuesForLocale(java.lang.Strin
  * applications who wish to cache collators, or otherwise reuse
  * collators when possible.  The functional equivalent may change
  * over time.  For more information, please see the <a
- * href="http://userguide.icu-project.org/locale#TOC-Locales-and-Services">
+ * href="https://unicode-org.github.io/icu/userguide/locale#locales-and-services">
  * Locales and Services</a> section of the ICU User Guide.
  * @param keyword a particular keyword as enumerated by
  * getKeywords.
@@ -721,7 +721,7 @@ public static final int PRIMARY = 0; // 0x0
 /**
  * <strong>[icu]</strong> Fourth level collator strength value.
  * When punctuation is ignored
- * (see <a href="http://userguide.icu-project.org/collation/concepts#TOC-Ignoring-Punctuation">
+ * (see <a href="https://unicode-org.github.io/icu/userguide/collation/concepts#ignoring-punctuation">
  * Ignoring Punctuation in the User Guide</a>) at PRIMARY to TERTIARY
  * strength, an additional strength level can
  * be used to distinguish words with and without punctuation.
