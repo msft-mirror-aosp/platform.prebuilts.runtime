@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2004-2016, Google Inc, International Business Machines
@@ -27,13 +27,13 @@ public class MeasureUnit implements java.io.Serializable {
 MeasureUnit() { throw new RuntimeException("Stub!"); }
 
 /**
- * Get the type, such as "length"
+ * Get the type, such as "length". May return null.
  */
 
 public java.lang.String getType() { throw new RuntimeException("Stub!"); }
 
 /**
- * Get the subType, such as “foot”.
+ * Get the subType, such as “foot”. May return null.
  */
 
 public java.lang.String getSubtype() { throw new RuntimeException("Stub!"); }
