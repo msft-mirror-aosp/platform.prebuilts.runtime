@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2004-2016, Google Inc, International Business Machines
@@ -27,13 +27,13 @@ public class MeasureUnit implements java.io.Serializable {
 MeasureUnit() { throw new RuntimeException("Stub!"); }
 
 /**
- * Get the type, such as "length"
+ * Get the type, such as "length". May return null.
  */
 
 public java.lang.String getType() { throw new RuntimeException("Stub!"); }
 
 /**
- * Get the subType, such as “foot”.
+ * Get the subType, such as “foot”. May return null.
  */
 
 public java.lang.String getSubtype() { throw new RuntimeException("Stub!"); }
@@ -434,7 +434,7 @@ public static final android.icu.util.MeasureUnit INCH;
 static { INCH = null; }
 
 /**
- * Constant for unit of pressure: inch-hg
+ * Constant for unit of pressure: inch-ofhg
  */
 
 public static final android.icu.util.MeasureUnit INCH_HG;
@@ -553,7 +553,7 @@ public static final android.icu.util.MeasureUnit LITER;
 static { LITER = null; }
 
 /**
- * Constant for unit of consumption: liter-per-100kilometers
+ * Constant for unit of consumption: liter-per-100-kilometer
  */
 
 public static final android.icu.util.MeasureUnit LITER_PER_100KILOMETERS;
@@ -623,7 +623,7 @@ public static final android.icu.util.MeasureUnit METER_PER_SECOND;
 static { METER_PER_SECOND = null; }
 
 /**
- * Constant for unit of acceleration: meter-per-second-squared
+ * Constant for unit of acceleration: meter-per-square-second
  */
 
 public static final android.icu.util.MeasureUnit METER_PER_SECOND_SQUARED;
@@ -735,7 +735,7 @@ public static final android.icu.util.MeasureUnit MILLIMETER;
 static { MILLIMETER = null; }
 
 /**
- * Constant for unit of pressure: millimeter-of-mercury
+ * Constant for unit of pressure: millimeter-ofhg
  */
 
 public static final android.icu.util.MeasureUnit MILLIMETER_OF_MERCURY;
@@ -826,7 +826,7 @@ public static final android.icu.util.MeasureUnit PARSEC;
 static { PARSEC = null; }
 
 /**
- * Constant for unit of concentr: part-per-million
+ * Constant for unit of concentr: permillion
  */
 
 public static final android.icu.util.MeasureUnit PART_PER_MILLION;
@@ -889,7 +889,7 @@ public static final android.icu.util.MeasureUnit POUND;
 static { POUND = null; }
 
 /**
- * Constant for unit of pressure: pound-per-square-inch
+ * Constant for unit of pressure: pound-force-per-square-inch
  */
 
 public static final android.icu.util.MeasureUnit POUND_PER_SQUARE_INCH;

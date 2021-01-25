@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 1996-2016, International Business Machines Corporation and
@@ -48,8 +48,8 @@ package android.icu.text;
  * the backwards direction in the reverse order
  * <p>
  * {@link android.icu.text.SearchIterator SearchIterator} provides APIs to specify the starting position
- * within the text string to be searched, e.g. {@link android.icu.text.SearchIterator#setIndex SearchIterator#setIndex},
- * {@link android.icu.text.SearchIterator#preceding SearchIterator#preceding} and {@link android.icu.text.SearchIterator#following SearchIterator#following}.
+ * within the text string to be searched, e.g. {@link android.icu.text.SearchIterator#setIndex setIndex},
+ * {@link android.icu.text.SearchIterator#preceding preceding} and {@link android.icu.text.SearchIterator#following following}.
  * Since the starting position will be set as it is specified, please take note that
  * there are some danger points at which the search may render incorrect
  * results:

@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2012-2016, Google, International Business Machines Corporation and
@@ -10,6 +10,7 @@
 
 package android.icu.text;
 
+import java.text.Format;
 
 /**
  * Immutable class for formatting a list, using data from CLDR (or supplied

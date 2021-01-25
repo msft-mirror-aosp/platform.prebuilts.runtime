@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2007-2016, International Business Machines Corporation and
@@ -14,6 +14,8 @@ package android.icu.text;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.util.Locale;
+import android.icu.number.FormattedNumber;
+import android.icu.number.NumberFormatter;
 
 /**
  * <p>
@@ -268,6 +270,20 @@ public int hashCode() { throw new RuntimeException("Stub!"); }
  */
 
 public java.lang.String select(double number) { throw new RuntimeException("Stub!"); }
+
+/**
+ * Given a formatted number, returns the keyword of the first rule that
+ * applies to the number.
+ *
+ * A FormattedNumber allows you to specify an exponent or trailing zeros,
+ * which can affect the plural category. To get a FormattedNumber, see
+ * {@link android.icu.number.NumberFormatter NumberFormatter}.
+ *
+ * @param number The number for which the rule has to be determined.
+ * @return The keyword of the selected rule.
+ */
+
+public java.lang.String select(android.icu.number.FormattedNumber number) { throw new RuntimeException("Stub!"); }
 
 /**
  * Returns a set of all rule keywords used in this <code>PluralRules</code>

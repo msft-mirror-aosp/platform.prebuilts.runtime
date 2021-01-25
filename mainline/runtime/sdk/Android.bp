@@ -1335,6 +1335,188 @@ cc_prebuilt_library_static {
     },
 }
 
+cc_prebuilt_library_static {
+    name: "runtime-module-sdk_note_memtag_heap_async@current",
+    sdk_member_name: "note_memtag_heap_async",
+    visibility: ["//visibility:public"],
+    apex_available: [
+        "//apex_available:anyapex",
+        "//apex_available:platform",
+    ],
+    host_supported: true,
+    installable: false,
+    recovery_available: true,
+    vendor_available: true,
+    product_available: true,
+    stl: "none",
+    sanitize: {
+        never: true,
+    },
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/note_memtag_heap_async.a"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/note_memtag_heap_async.a"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/note_memtag_heap_async.a"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/note_memtag_heap_async.a"],
+        },
+        linux_bionic: {
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            enabled: true,
+            srcs: ["linux_bionic/x86_64/lib/note_memtag_heap_async.a"],
+        },
+    },
+}
+
+cc_prebuilt_library_static {
+    name: "note_memtag_heap_async",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: [
+        "//apex_available:anyapex",
+        "//apex_available:platform",
+    ],
+    host_supported: true,
+    recovery_available: true,
+    vendor_available: true,
+    product_available: true,
+    stl: "none",
+    sanitize: {
+        never: true,
+    },
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/note_memtag_heap_async.a"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/note_memtag_heap_async.a"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/note_memtag_heap_async.a"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/note_memtag_heap_async.a"],
+        },
+        linux_bionic: {
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            enabled: true,
+            srcs: ["linux_bionic/x86_64/lib/note_memtag_heap_async.a"],
+        },
+    },
+}
+
+cc_prebuilt_library_static {
+    name: "runtime-module-sdk_note_memtag_heap_sync@current",
+    sdk_member_name: "note_memtag_heap_sync",
+    visibility: ["//visibility:public"],
+    apex_available: [
+        "//apex_available:anyapex",
+        "//apex_available:platform",
+    ],
+    host_supported: true,
+    installable: false,
+    recovery_available: true,
+    vendor_available: true,
+    product_available: true,
+    stl: "none",
+    sanitize: {
+        never: true,
+    },
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/note_memtag_heap_sync.a"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/note_memtag_heap_sync.a"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/note_memtag_heap_sync.a"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/note_memtag_heap_sync.a"],
+        },
+        linux_bionic: {
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            enabled: true,
+            srcs: ["linux_bionic/x86_64/lib/note_memtag_heap_sync.a"],
+        },
+    },
+}
+
+cc_prebuilt_library_static {
+    name: "note_memtag_heap_sync",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: [
+        "//apex_available:anyapex",
+        "//apex_available:platform",
+    ],
+    host_supported: true,
+    recovery_available: true,
+    vendor_available: true,
+    product_available: true,
+    stl: "none",
+    sanitize: {
+        never: true,
+    },
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/note_memtag_heap_sync.a"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/note_memtag_heap_sync.a"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/note_memtag_heap_sync.a"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/note_memtag_heap_sync.a"],
+        },
+        linux_bionic: {
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            enabled: true,
+            srcs: ["linux_bionic/x86_64/lib/note_memtag_heap_sync.a"],
+        },
+    },
+}
+
 sdk_snapshot {
     name: "runtime-module-sdk@current",
     visibility: ["//visibility:public"],
@@ -1355,7 +1537,11 @@ sdk_snapshot {
         "runtime-module-sdk_libdl_android@current",
         "runtime-module-sdk_libm@current",
     ],
-    native_static_libs: ["runtime-module-sdk_libasync_safe@current"],
+    native_static_libs: [
+        "runtime-module-sdk_libasync_safe@current",
+        "runtime-module-sdk_note_memtag_heap_async@current",
+        "runtime-module-sdk_note_memtag_heap_sync@current",
+    ],
     target: {
         linux_bionic: {
             compile_multilib: "64",

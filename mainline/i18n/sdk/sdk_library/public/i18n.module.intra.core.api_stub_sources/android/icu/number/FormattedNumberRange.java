@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2018 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.number;
 
@@ -18,7 +18,7 @@ import java.text.AttributedCharacterIterator;
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
-public class FormattedNumberRange implements java.lang.CharSequence {
+public class FormattedNumberRange implements android.icu.text.FormattedValue {
 
 FormattedNumberRange() { throw new RuntimeException("Stub!"); }
 
@@ -30,27 +30,33 @@ public java.lang.String toString() { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
+ */
+
+public <A extends java.lang.Appendable> A appendTo(A appendable) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
  */
 
 public char charAt(int index) { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 
 public int length() { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 
 public java.lang.CharSequence subSequence(int start, int end) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public boolean nextPosition(android.icu.text.ConstrainedFieldPosition cfpos) { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
@@ -94,16 +100,12 @@ public android.icu.number.NumberRangeFormatter.RangeIdentityResult getIdentityRe
 
 /**
  * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 
 public int hashCode() { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 
 public boolean equals(java.lang.Object other) { throw new RuntimeException("Stub!"); }

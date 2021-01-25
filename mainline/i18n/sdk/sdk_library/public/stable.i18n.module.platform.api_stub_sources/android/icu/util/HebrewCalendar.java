@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 1996-2016, International Business Machines Corporation and
@@ -312,7 +312,7 @@ protected int handleComputeMonthStart(int eyear, int month, boolean useMonth) { 
 
 public java.lang.String getType() { throw new RuntimeException("Stub!"); }
 
-/** 
+/**
  * Constant for the Adar, the 7th month of the Hebrew year.
  */
 
@@ -386,7 +386,7 @@ public static final int TAMUZ = 10; // 0xa
 
 public static final int TEVET = 3; // 0x3
 
-/** 
+/**
  * Constant for Tishri, the 1st month of the Hebrew year.
  */
 

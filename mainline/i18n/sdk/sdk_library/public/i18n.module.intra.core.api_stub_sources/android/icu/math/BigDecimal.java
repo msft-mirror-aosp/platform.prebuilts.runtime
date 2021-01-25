@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /* Generated from 'BigDecimal.nrx' 8 Sep 2000 11:10:50 [v2.00] */
 /* Options: Binary Comments Crossref Format Java Logo Strictargs Strictcase Trace2 Verbose3 */
 
@@ -252,7 +252,7 @@ public BigDecimal(long num) { throw new RuntimeException("Stub!"); }
  * Constructs a <code>BigDecimal</code> object from a <code>String</code>.
  * <p>
  * Constructs a <code>BigDecimal</code> from the parameter, which must not be <code>null</code> and must represent a
- * valid <i>number</i>, as described formally in the documentation referred to {@link android.icu.math.BigDecimal BigDecimal}.
+ * valid <i>number</i>, as described formally in the documentation referred to {@link android.icu.math.BigDecimal above}.
  * <p>
  * In summary, numbers in <code>String</code> form must have at least one digit, may have a leading sign, may have a
  * decimal point, and exponential notation may be used. They follow conventional syntax, and may not contain blanks.
@@ -332,7 +332,7 @@ public android.icu.math.BigDecimal add(android.icu.math.BigDecimal rhs) { throw 
  * Returns a <code>BigDecimal</code> whose value is <code>this+rhs</code>.
  * <p>
  * Implements the addition (<b><code>+</code></b>) operator (as defined in the decimal documentation, see
- * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the addition.
  * @param set The <code>MathContext</code> arithmetic settings.
@@ -357,7 +357,7 @@ public int compareTo(android.icu.math.BigDecimal rhs) { throw new RuntimeExcepti
 /**
  * Compares this <code>BigDecimal</code> to another.
  * <p>
- * Implements numeric comparison, (as defined in the decimal documentation, see {@link android.icu.math.BigDecimal BigDecimal}),
+ * Implements numeric comparison, (as defined in the decimal documentation, see {@link android.icu.math.BigDecimal class header}),
  * and returns a result of type <code>int</code>.
  * <p>
  * The result will be:
@@ -451,7 +451,7 @@ public android.icu.math.BigDecimal divide(android.icu.math.BigDecimal rhs, int s
  * Returns a <code>BigDecimal</code> whose value is <code>this/rhs</code>.
  * <p>
  * Implements the division (<b><code>/</code></b>) operator (as defined in the decimal documentation, see
- * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the division.
  * @param set The <code>MathContext</code> arithmetic settings.
@@ -477,7 +477,7 @@ public android.icu.math.BigDecimal divideInteger(android.icu.math.BigDecimal rhs
 /**
  * Returns a <code>BigDecimal</code> whose value is the integer part of <code>this/rhs</code>.
  * <p>
- * Implements the integer division operator (as defined in the decimal documentation, see {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
+ * Implements the integer division operator (as defined in the decimal documentation, see {@link android.icu.math.BigDecimal  header}), and returns the result as a <code>BigDecimal</code> object.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the integer division.
  * @param set The <code>MathContext</code> arithmetic settings.
@@ -567,7 +567,7 @@ public android.icu.math.BigDecimal multiply(android.icu.math.BigDecimal rhs) { t
  * Returns a <code>BigDecimal</code> whose value is <code>this*rhs</code>.
  * <p>
  * Implements the multiplication (<b><code>&#42;</code></b>) operator (as defined in the decimal documentation, see
- * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the multiplication.
  * @param set The <code>MathContext</code> arithmetic settings.
@@ -594,7 +594,7 @@ public android.icu.math.BigDecimal negate() { throw new RuntimeException("Stub!"
  * Returns a <code>BigDecimal</code> whose value is <code>-this</code>.
  * <p>
  * Implements the negation (Prefix <b><code>-</code></b>) operator (as defined in the decimal documentation, see
- * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
  *
  * @param set The <code>MathContext</code> arithmetic settings.
  * @return A <code>BigDecimal</code> whose value is <code>-this</code>.
@@ -619,7 +619,7 @@ public android.icu.math.BigDecimal plus() { throw new RuntimeException("Stub!");
  * Returns a <code>BigDecimal</code> whose value is <code>+this</code>.
  * <p>
  * Implements the plus (Prefix <b><code>+</code></b>) operator (as defined in the decimal documentation, see
- * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
  * <p>
  * This method is useful for rounding or otherwise applying a context to a decimal value.
  *
@@ -653,7 +653,7 @@ public android.icu.math.BigDecimal pow(android.icu.math.BigDecimal rhs) { throw 
  * Returns a <code>BigDecimal</code> whose value is <code>this**rhs</code>.
  * <p>
  * Implements the power (<b><code>^</code></b>) operator (as defined in the decimal documentation, see
- * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
  * <p>
  * The first parameter is the power to which the <code>this</code> will be raised; it must be in the range
  * -999999999 through 999999999, and must have a decimal part of zero. Note that these restrictions may be removed
@@ -690,7 +690,7 @@ public android.icu.math.BigDecimal remainder(android.icu.math.BigDecimal rhs) { 
 /**
  * Returns a <code>BigDecimal</code> whose value is the remainder of <code>this/rhs</code>.
  * <p>
- * Implements the remainder operator (as defined in the decimal documentation, see {@link android.icu.math.BigDecimal BigDecimal}),
+ * Implements the remainder operator (as defined in the decimal documentation, see {@link android.icu.math.BigDecimal class header}),
  * and returns the result as a <code>BigDecimal</code> object.
  * <p>
  * This is not the modulo operator -- the result may be negative.
@@ -722,7 +722,7 @@ public android.icu.math.BigDecimal subtract(android.icu.math.BigDecimal rhs) { t
  * Returns a <code>BigDecimal</code> whose value is <code>this-rhs</code>.
  * <p>
  * Implements the subtraction (<b><code>-</code></b>) operator (as defined in the decimal documentation, see
- * {@link android.icu.math.BigDecimal BigDecimal}), and returns the result as a <code>BigDecimal</code> object.
+ * {@link android.icu.math.BigDecimal class header}), and returns the result as a <code>BigDecimal</code> object.
  *
  * @param rhs The <code>BigDecimal</code> for the right hand side of the subtraction.
  * @param set The <code>MathContext</code> arithmetic settings.
@@ -1123,7 +1123,7 @@ public char[] toCharArray() { throw new RuntimeException("Stub!"); }
 
 /**
  * Returns the <code>BigDecimal</code> as a <code>String</code>. This returns a <code>String</code> that exactly
- * represents this <code>BigDecimal</code>, as defined in the decimal documentation (see {@link android.icu.math.BigDecimal BigDecimal}).
+ * represents this <code>BigDecimal</code>, as defined in the decimal documentation (see {@link android.icu.math.BigDecimal  header}).
  * <p>
  * By definition, using the {@link #BigDecimal(java.lang.String)} constructor on the result <code>String</code> will create a
  * <code>BigDecimal</code> that is exactly equal to the original <code>BigDecimal</code>.

@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *   Copyright (C) 1996-2016, International Business Machines
  *   Corporation and others.  All Rights Reserved.
@@ -516,7 +516,7 @@ import android.icu.text.DateFormatSymbols;
  *     {@link #add add} to handle fields that are discontinuous. For
  *     example, in the Hebrew calendar the month &quot;Adar I&quot; only
  *     occurs in leap years; in other years the calendar jumps from
- *     Shevat (month #4) to Adar (month #6). The {@link android.icu.util.HebrewCalendar#add HebrewCalendar#add} and {@link android.icu.util.HebrewCalendar#roll HebrewCalendar#roll} methods take this into
+ *     Shevat (month #4) to Adar (month #6). The {@link android.icu.util.HebrewCalendar#add HebrewCalendar.add} and {@link android.icu.util.HebrewCalendar#roll HebrewCalendar.roll} methods take this into
  *     account, so that adding 1 month to Shevat gives the proper result
  *     (Adar) in a non-leap year. The protected utility method {@link
  *     #pinField pinField} is often useful when implementing these two
@@ -1100,7 +1100,7 @@ public final void roll(int field, boolean up) { throw new RuntimeException("Stub
  * For example, in the Hebrew calendar the month "Adar I"
  * only occurs in leap years; in other years the calendar jumps from
  * Shevat (month #4) to Adar (month #6).  The
- * {@link android.icu.util.HebrewCalendar#roll HebrewCalendar#roll} method takes this into account,
+ * {@link android.icu.util.HebrewCalendar#roll HebrewCalendar.roll} method takes this into account,
  * so that rolling the month of Shevat by one gives the proper result (Adar) in a
  * non-leap year.
  * <p>
@@ -1156,7 +1156,7 @@ public void roll(int field, int amount) { throw new RuntimeException("Stub!"); }
  * For example, in the Hebrew calendar the month "Adar I"
  * only occurs in leap years; in other years the calendar jumps from
  * Shevat (month #4) to Adar (month #6).  The
- * {@link android.icu.util.HebrewCalendar#add HebrewCalendar#add} method takes this into account,
+ * {@link android.icu.util.HebrewCalendar#add HebrewCalendar.add} method takes this into account,
  * so that adding one month
  * to a date in Shevat gives the proper result (Adar) in a non-leap year.
  * <p>
@@ -1685,7 +1685,7 @@ public java.lang.Object clone() { throw new RuntimeException("Stub!"); }
 public java.lang.String toString() { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Return simple, immutable struct-like class for access to the CLDR weekend data.
+ * <strong>[icu]</strong> Return simple, immutable struct-like class for access to the CLDR week data.
  * @param region The input region. The results are undefined if the region code is not valid.
  * @return the WeekData for the input region. It is never null.
  */
@@ -1693,7 +1693,7 @@ public java.lang.String toString() { throw new RuntimeException("Stub!"); }
 public static android.icu.util.Calendar.WeekData getWeekDataForRegion(java.lang.String region) { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>[icu]</strong> Return simple, immutable struct-like class for access to the weekend data in this calendar.
+ * <strong>[icu]</strong> Return simple, immutable struct-like class for access to the week data in this calendar.
  * @return the WeekData for this calendar.
  */
 
@@ -2772,7 +2772,7 @@ public static final int YEAR_WOY = 17; // 0x11
 
 public static final int ZONE_OFFSET = 15; // 0xf
 /**
- * Simple, immutable struct-like class for access to the CLDR weekend data.
+ * Simple, immutable struct-like class for access to the CLDR week data.
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})

@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /**
  *******************************************************************************
  * Copyright (C) 2001-2016, International Business Machines Corporation and
@@ -417,9 +417,10 @@ public static final int LONG_NAME = 1; // 0x1
 
 /**
  * Selector for getName() indicating the narrow currency symbol.
- * The narrow currency symbol is similar to the regular currency
- * symbol, but it always takes the shortest form: for example,
- * "$" instead of "US$" for USD in en-CA.
+ * <p>
+ * The narrow currency symbol is similar to the regular currency symbol,
+ * but it always takes the shortest form;
+ * for example, "$" instead of "US$" for USD in en-CA.
  */
 
 public static final int NARROW_SYMBOL_NAME = 3; // 0x3
