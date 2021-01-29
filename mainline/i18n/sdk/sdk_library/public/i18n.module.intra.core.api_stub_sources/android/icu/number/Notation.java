@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2017 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.number;
 
@@ -8,7 +8,7 @@ package android.icu.number;
 /**
  * A class that defines the notation style to be used when formatting numbers in NumberFormatter.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -39,7 +39,7 @@ Notation() { throw new RuntimeException("Stub!"); }
  * </pre>
  *
  * @return A ScientificNotation for chaining or passing to the NumberFormatter notation() setter.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.ScientificNotation scientific() { throw new RuntimeException("Stub!"); }
@@ -64,7 +64,7 @@ public static android.icu.number.ScientificNotation scientific() { throw new Run
  * </pre>
  *
  * @return A ScientificNotation for chaining or passing to the NumberFormatter notation() setter.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.ScientificNotation engineering() { throw new RuntimeException("Stub!"); }
@@ -108,7 +108,7 @@ public static android.icu.number.ScientificNotation engineering() { throw new Ru
  * </pre>
  *
  * @return A CompactNotation for passing to the NumberFormatter notation() setter.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.CompactNotation compactShort() { throw new RuntimeException("Stub!"); }
@@ -133,7 +133,7 @@ public static android.icu.number.CompactNotation compactShort() { throw new Runt
  * </pre>
  *
  * @return A CompactNotation for passing to the NumberFormatter notation() setter.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.CompactNotation compactLong() { throw new RuntimeException("Stub!"); }
@@ -161,7 +161,7 @@ public static android.icu.number.CompactNotation compactLong() { throw new Runti
  * </pre>
  *
  * @return A SimpleNotation for passing to the NumberFormatter notation() setter.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.SimpleNotation simple() { throw new RuntimeException("Stub!"); }

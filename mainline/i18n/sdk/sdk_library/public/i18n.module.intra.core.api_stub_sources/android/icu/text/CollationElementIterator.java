@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /**
 *******************************************************************************
 * Copyright (C) 1996-2016, International Business Machines Corporation and
@@ -43,7 +43,7 @@ package android.icu.text;
  * can not be compared simply by using basic arithmetic operators,
  * e.g. &lt;, == or &gt;, further processing has to be done. Details
  * can be found in the ICU
- * <a href="http://userguide.icu-project.org/collation/architecture">
+ * <a href="https://unicode-org.github.io/icu/userguide/collation/architecture">
  * User Guide</a>. An example of using the CollationElementIterator
  * for collation ordering comparison is the class
  * {@link android.icu.text.StringSearch}.
@@ -87,9 +87,9 @@ package android.icu.text;
  * direction is done without one of these calls, the result is undefined.
  * <p>
  * This class is not subclassable.
- * @see Collator
- * @see RuleBasedCollator
- * @see StringSearch
+ * @see android.icu.text.Collator
+ * @see android.icu.text.RuleBasedCollator
+ * @see android.icu.text.StringSearch
  * @author Syn Wee Quek
  */
 

@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2013-2016, International Business Machines Corporation and
@@ -131,16 +131,35 @@ public static android.icu.text.RelativeDateTimeFormatter getInstance(java.util.L
  * formatting result, use formatToValue().
  *
  * @param quantity The numerical amount e.g 5. This value is formatted
- * according to this object's {@link NumberFormat} object.
+ * according to this object's {@link android.icu.text.NumberFormat NumberFormat} object.
  * @param direction NEXT means a future relative date; LAST means a past
  * relative date.
  * @param unit the unit e.g day? month? year?
  * @return the formatted string
- * @throws IllegalArgumentException if direction is something other than
+ * @throws java.lang.IllegalArgumentException if direction is something other than
  * NEXT or LAST.
  */
 
 public java.lang.String format(double quantity, android.icu.text.RelativeDateTimeFormatter.Direction direction, android.icu.text.RelativeDateTimeFormatter.RelativeUnit unit) { throw new RuntimeException("Stub!"); }
+
+/**
+ * Formats a relative date with a quantity such as "in 5 days" or
+ * "3 months ago".
+ *
+ * This method returns a FormattedRelativeDateTime, which exposes more
+ * information than the String returned by format().
+ *
+ * @param quantity The numerical amount e.g 5. This value is formatted
+ * according to this object's {@link android.icu.text.NumberFormat NumberFormat} object.
+ * @param direction NEXT means a future relative date; LAST means a past
+ * relative date.
+ * @param unit the unit e.g day? month? year?
+ * @return the formatted relative datetime
+ * @throws java.lang.IllegalArgumentException if direction is something other than
+ * NEXT or LAST.
+ */
+
+public android.icu.text.RelativeDateTimeFormatter.FormattedRelativeDateTime formatToValue(double quantity, android.icu.text.RelativeDateTimeFormatter.Direction direction, android.icu.text.RelativeDateTimeFormatter.RelativeUnit unit) { throw new RuntimeException("Stub!"); }
 
 /**
  * Format a combination of RelativeDateTimeUnit and numeric offset
@@ -162,6 +181,25 @@ public java.lang.String format(double quantity, android.icu.text.RelativeDateTim
 public java.lang.String formatNumeric(double offset, android.icu.text.RelativeDateTimeFormatter.RelativeDateTimeUnit unit) { throw new RuntimeException("Stub!"); }
 
 /**
+ * Format a combination of RelativeDateTimeUnit and numeric offset
+ * using a numeric style, e.g. "1 week ago", "in 1 week",
+ * "5 weeks ago", "in 5 weeks".
+ *
+ * This method returns a FormattedRelativeDateTime, which exposes more
+ * information than the String returned by formatNumeric().
+ *
+ * @param offset    The signed offset for the specified unit. This
+ *                  will be formatted according to this object's
+ *                  NumberFormat object.
+ * @param unit      The unit to use when formatting the relative
+ *                  date, e.g. RelativeDateTimeUnit.WEEK,
+ *                  RelativeDateTimeUnit.FRIDAY.
+ * @return          The formatted string (may be empty in case of error)
+ */
+
+public android.icu.text.RelativeDateTimeFormatter.FormattedRelativeDateTime formatNumericToValue(double offset, android.icu.text.RelativeDateTimeFormatter.RelativeDateTimeUnit unit) { throw new RuntimeException("Stub!"); }
+
+/**
  * Formats a relative date without a quantity.
  *
  * This method returns a String. To get more information about the
@@ -172,11 +210,28 @@ public java.lang.String formatNumeric(double offset, android.icu.text.RelativeDa
  * @return the formatted string. If direction has a value that is documented as not being
  *  fully supported in every locale (for example NEXT_2 or LAST_2) then this function may
  *  return null to signal that no formatted string is available.
- * @throws IllegalArgumentException if the direction is incompatible with
+ * @throws java.lang.IllegalArgumentException if the direction is incompatible with
  * unit this can occur with NOW which can only take PLAIN.
  */
 
 public java.lang.String format(android.icu.text.RelativeDateTimeFormatter.Direction direction, android.icu.text.RelativeDateTimeFormatter.AbsoluteUnit unit) { throw new RuntimeException("Stub!"); }
+
+/**
+ * Formats a relative date without a quantity.
+ *
+ * This method returns a FormattedRelativeDateTime, which exposes more
+ * information than the String returned by format().
+ *
+ * @param direction NEXT, LAST, THIS, etc.
+ * @param unit e.g SATURDAY, DAY, MONTH
+ * @return the formatted string. If direction has a value that is documented as not being
+ *  fully supported in every locale (for example NEXT_2 or LAST_2) then this function may
+ *  return null to signal that no formatted string is available.
+ * @throws java.lang.IllegalArgumentException if the direction is incompatible with
+ * unit this can occur with NOW which can only take PLAIN.
+ */
+
+public android.icu.text.RelativeDateTimeFormatter.FormattedRelativeDateTime formatToValue(android.icu.text.RelativeDateTimeFormatter.Direction direction, android.icu.text.RelativeDateTimeFormatter.AbsoluteUnit unit) { throw new RuntimeException("Stub!"); }
 
 /**
  * Format a combination of RelativeDateTimeUnit and numeric offset
@@ -196,6 +251,25 @@ public java.lang.String format(android.icu.text.RelativeDateTimeFormatter.Direct
  */
 
 public java.lang.String format(double offset, android.icu.text.RelativeDateTimeFormatter.RelativeDateTimeUnit unit) { throw new RuntimeException("Stub!"); }
+
+/**
+ * Format a combination of RelativeDateTimeUnit and numeric offset
+ * using a text style if possible, e.g. "last week", "this week",
+ * "next week", "yesterday", "tomorrow". Falls back to numeric
+ * style if no appropriate text term is available for the specified
+ * offset in the object’s locale.
+ *
+ * This method returns a FormattedRelativeDateTime, which exposes more
+ * information than the String returned by format().
+ *
+ * @param offset    The signed offset for the specified field.
+ * @param unit      The unit to use when formatting the relative
+ *                  date, e.g. RelativeDateTimeUnit.WEEK,
+ *                  RelativeDateTimeUnit.FRIDAY.
+ * @return          The formatted string (may be empty in case of error)
+ */
+
+public android.icu.text.RelativeDateTimeFormatter.FormattedRelativeDateTime formatToValue(double offset, android.icu.text.RelativeDateTimeFormatter.RelativeDateTimeUnit unit) { throw new RuntimeException("Stub!"); }
 
 /**
  * Combines a relative date string and a time string in this object's
@@ -294,7 +368,12 @@ YEAR,
  * Now
  */
 
-NOW;
+NOW,
+/**
+ * Quarter
+ */
+
+QUARTER;
 }
 
 /**
@@ -334,6 +413,65 @@ NEXT_2,
  */
 
 PLAIN;
+}
+
+/**
+ * Represents the result of a formatting operation of a relative datetime.
+ * Access the string value or field information.
+ *
+ * Instances of this class are immutable and thread-safe.
+ *
+ * Not intended for public subclassing.
+ *
+ * @author sffc
+ */
+
+@SuppressWarnings({"unchecked", "deprecation", "all"})
+public static class FormattedRelativeDateTime implements android.icu.text.FormattedValue {
+
+private FormattedRelativeDateTime() { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public java.lang.String toString() { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public int length() { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public char charAt(int index) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public java.lang.CharSequence subSequence(int start, int end) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public <A extends java.lang.Appendable> A appendTo(A appendable) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public boolean nextPosition(android.icu.text.ConstrainedFieldPosition cfpos) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public java.text.AttributedCharacterIterator toCharacterIterator() { throw new RuntimeException("Stub!"); }
 }
 
 /**

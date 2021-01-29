@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
 **********************************************************************
 * Copyright (c) 2004-2016, International Business Machines
@@ -96,9 +96,9 @@ import java.io.InvalidObjectException;
  * selectArg = '{' argNameOrNumber ',' "select" ',' selectStyle '}'
  * selectordinalArg = '{' argNameOrNumber ',' "selectordinal" ',' pluralStyle '}'
  *
- * choiceStyle: see {@link ChoiceFormat}
- * pluralStyle: see {@link PluralFormat}
- * selectStyle: see {@link SelectFormat}
+ * choiceStyle: see {@link java.text.ChoiceFormat ChoiceFormat}
+ * pluralStyle: see {@link android.icu.text.PluralFormat PluralFormat}
+ * selectStyle: see {@link android.icu.text.SelectFormat SelectFormat}
  *
  * argNameOrNumber = argName | argNumber
  * argName = [^[[:Pattern_Syntax:][:Pattern_White_Space:]]]+
@@ -117,7 +117,7 @@ import java.io.InvalidObjectException;
  *   <li>Quotable syntax characters are the {curly braces} in all messageText parts,
  *       plus the '#' sign in a messageText immediately inside a pluralStyle,
  *       and the '|' symbol in a messageText immediately inside a choiceStyle.
- *   <li>See also {@link MessagePattern.ApostropheMode}
+ *   <li>See also {@link android.icu.text.MessagePattern.ApostropheMode MessagePattern.ApostropheMode}
  *   <li>In argStyleText, every single ASCII apostrophe begins and ends quoted literal text,
  *       and unquoted {curly braces} must occur in matched pairs.
  * </ul>
@@ -228,7 +228,7 @@ import java.io.InvalidObjectException;
  * In the JDK MessageFormat, an apostrophe always begins quoting,
  * which requires common text like "don't" and "aujourd'hui"
  * to be written with doubled apostrophes like "don''t" and "aujourd''hui".
- * For more details see {@link MessagePattern.ApostropheMode}.
+ * For more details see {@link android.icu.text.MessagePattern.ApostropheMode MessagePattern.ApostropheMode}.
  *
  * <p>ICU does not create a ChoiceFormat object for a choiceArg, pluralArg or selectArg
  * but rather handles such arguments itself.
@@ -295,7 +295,7 @@ import java.io.InvalidObjectException;
  * There are no files on disk "MyDisk".
  * There are 3 files on "MyDisk".
  * </pre>
- * See {@link PluralFormat} and {@link PluralRules} for details.
+ * See {@link android.icu.text.PluralFormat PluralFormat} and {@link android.icu.text.PluralRules PluralRules} for details.
  *
  * <h4><a name="synchronization">Synchronization</a></h4>
  *
@@ -305,12 +305,12 @@ import java.io.InvalidObjectException;
  * externally.
  *
  * @see          java.util.Locale
- * @see          Format
- * @see          NumberFormat
- * @see          DecimalFormat
- * @see          ChoiceFormat
- * @see          PluralFormat
- * @see          SelectFormat
+ * @see          java.text.Format
+ * @see          android.icu.text.NumberFormat
+ * @see          android.icu.text.DecimalFormat
+ * @see          java.text.ChoiceFormat
+ * @see          android.icu.text.PluralFormat
+ * @see          android.icu.text.SelectFormat
  * @author       Mark Davis
  * @author       Markus Scherer
  */
@@ -324,8 +324,8 @@ public class MessageFormat extends android.icu.text.UFormat {
  * Sets the locale and calls applyPattern(pattern).
  *
  * @param pattern the pattern for this message format
- * @exception IllegalArgumentException if the pattern is invalid
- * @see Category#FORMAT
+ * @exception java.lang.IllegalArgumentException if the pattern is invalid
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public MessageFormat(java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -337,7 +337,7 @@ public MessageFormat(java.lang.String pattern) { throw new RuntimeException("Stu
  *
  * @param pattern the pattern for this message format
  * @param locale the locale for this message format
- * @exception IllegalArgumentException if the pattern is invalid
+ * @exception java.lang.IllegalArgumentException if the pattern is invalid
  */
 
 public MessageFormat(java.lang.String pattern, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
@@ -349,7 +349,7 @@ public MessageFormat(java.lang.String pattern, java.util.Locale locale) { throw 
  *
  * @param pattern the pattern for this message format
  * @param locale the locale for this message format
- * @exception IllegalArgumentException if the pattern is invalid
+ * @exception java.lang.IllegalArgumentException if the pattern is invalid
  */
 
 public MessageFormat(java.lang.String pattern, android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
@@ -399,7 +399,7 @@ public android.icu.util.ULocale getULocale() { throw new RuntimeException("Stub!
  * <a href="#patterns">class description</a>.
  *
  * @param pttrn the pattern for this message format
- * @throws IllegalArgumentException if the pattern is invalid
+ * @throws java.lang.IllegalArgumentException if the pattern is invalid
  */
 
 public void applyPattern(java.lang.String pttrn) { throw new RuntimeException("Stub!"); }
@@ -415,8 +415,8 @@ public void applyPattern(java.lang.String pttrn) { throw new RuntimeException("S
  *
  * @param pattern the pattern for this message format
  * @param aposMode the new ApostropheMode
- * @throws IllegalArgumentException if the pattern is invalid
- * @see MessagePattern.ApostropheMode
+ * @throws java.lang.IllegalArgumentException if the pattern is invalid
+ * @see android.icu.text.MessagePattern.ApostropheMode
  */
 
 public void applyPattern(java.lang.String pattern, android.icu.text.MessagePattern.ApostropheMode aposMode) { throw new RuntimeException("Stub!"); }
@@ -431,7 +431,7 @@ public android.icu.text.MessagePattern.ApostropheMode getApostropheMode() { thro
 /**
  * Returns the applied pattern string.
  * @return the pattern string
- * @throws IllegalStateException after custom Format objects have been set
+ * @throws java.lang.IllegalStateException after custom Format objects have been set
  *         via setFormat() or similar APIs
  */
 
@@ -460,8 +460,8 @@ public java.lang.String toPattern() { throw new RuntimeException("Stub!"); }
  * named arguments, otherwise an IllegalArgumentException is thrown.
  *
  * @param newFormats the new formats to use
- * @throws NullPointerException if <code>newFormats</code> is null
- * @throws IllegalArgumentException if this formatter uses named arguments
+ * @throws java.lang.NullPointerException if <code>newFormats</code> is null
+ * @throws java.lang.IllegalArgumentException if this formatter uses named arguments
  */
 
 public void setFormatsByArgumentIndex(java.text.Format[] newFormats) { throw new RuntimeException("Stub!"); }
@@ -509,7 +509,7 @@ public void setFormatsByArgumentName(java.util.Map<java.lang.String,java.text.Fo
  * the <code>parse</code> methods.
  *
  * @param newFormats the new formats to use
- * @exception NullPointerException if <code>newFormats</code> is null
+ * @exception java.lang.NullPointerException if <code>newFormats</code> is null
  */
 
 public void setFormats(java.text.Format[] newFormats) { throw new RuntimeException("Stub!"); }
@@ -533,7 +533,7 @@ public void setFormats(java.text.Format[] newFormats) { throw new RuntimeExcepti
  *
  * @param argumentIndex the argument index for which to use the new format
  * @param newFormat the new format to use
- * @throws IllegalArgumentException if this format uses named arguments
+ * @throws java.lang.IllegalArgumentException if this format uses named arguments
  */
 
 public void setFormatByArgumentIndex(int argumentIndex, java.text.Format newFormat) { throw new RuntimeException("Stub!"); }
@@ -573,7 +573,7 @@ public void setFormatByArgumentName(java.lang.String argumentName, java.text.For
  *
  * @param formatElementIndex the index of a format element within the pattern
  * @param newFormat the format to use for the specified format element
- * @exception ArrayIndexOutOfBoundsException if formatElementIndex is equal to or
+ * @exception java.lang.ArrayIndexOutOfBoundsException if formatElementIndex is equal to or
  *            larger than the number of format elements in the pattern string
  */
 
@@ -600,7 +600,7 @@ public void setFormat(int formatElementIndex, java.text.Format newFormat) { thro
  * argument names. Otherwise an IllegalArgumentException is thrown.
  *
  * @return the formats used for the arguments within the pattern
- * @throws IllegalArgumentException if this format uses named arguments
+ * @throws java.lang.IllegalArgumentException if this format uses named arguments
  */
 
 public java.text.Format[] getFormatsByArgumentIndex() { throw new RuntimeException("Stub!"); }
@@ -623,14 +623,14 @@ public java.text.Format[] getFormatsByArgumentIndex() { throw new RuntimeExcepti
  * argument names. Otherwise an IllegalArgumentException is thrown.
  *
  * @return the formats used for the format elements in the pattern
- * @throws IllegalArgumentException if this format uses named arguments
+ * @throws java.lang.IllegalArgumentException if this format uses named arguments
  */
 
 public java.text.Format[] getFormats() { throw new RuntimeException("Stub!"); }
 
 /**
  * <strong>[icu]</strong> Returns the top-level argument names. For more details, see
- * {@link #setFormatByArgumentName(String, Format)}.
+ * {@link #setFormatByArgumentName(java.lang.String,java.text.Format)}.
  * @return a Set of argument names
  */
 
@@ -638,7 +638,7 @@ public java.util.Set<java.lang.String> getArgumentNames() { throw new RuntimeExc
 
 /**
  * <strong>[icu]</strong> Returns the first top-level format associated with the given argument name.
- * For more details, see {@link #setFormatByArgumentName(String, Format)}.
+ * For more details, see {@link #setFormatByArgumentName(java.lang.String,java.text.Format)}.
  * @param argumentName The name of the desired argument.
  * @return the Format associated with the name, or null if there isn't one.
  */
@@ -709,10 +709,10 @@ public java.text.Format getFormatByArgumentName(java.lang.String argumentName) {
  * @param result where text is appended.
  * @param pos On input: an alignment field, if desired.
  *            On output: the offsets of the alignment field.
- * @throws IllegalArgumentException if a value in the
+ * @throws java.lang.IllegalArgumentException if a value in the
  *         <code>arguments</code> array is not of the type
  *         expected by the corresponding argument or custom Format object.
- * @throws IllegalArgumentException if this format uses named arguments
+ * @throws java.lang.IllegalArgumentException if this format uses named arguments
  */
 
 public final java.lang.StringBuffer format(java.lang.Object[] arguments, java.lang.StringBuffer result, java.text.FieldPosition pos) { throw new RuntimeException("Stub!"); }
@@ -739,7 +739,7 @@ public final java.lang.StringBuffer format(java.lang.Object[] arguments, java.la
  * @param result where text is appended.
  * @param pos On input: an alignment field, if desired.
  *            On output: the offsets of the alignment field.
- * @throws IllegalArgumentException if a value in the
+ * @throws java.lang.IllegalArgumentException if a value in the
  *         <code>arguments</code> array is not of the type
  *         expected by the corresponding argument or custom Format object.
  * @return the passed-in StringBuffer
@@ -751,16 +751,16 @@ public final java.lang.StringBuffer format(java.util.Map<java.lang.String,java.l
  * Creates a MessageFormat with the given pattern and uses it
  * to format the given arguments. This is equivalent to
  * <blockquote>
- *     <code>(new {@link #MessageFormat(String) MessageFormat}(pattern)).{@link
- *     #format(java.lang.Object[], java.lang.StringBuffer, java.text.FieldPosition)
+ *     <code>(new {@link #MessageFormat(java.lang.String) MessageFormat}(pattern)).{@link
+ *     #format(java.lang.Object[],java.lang.StringBuffer,java.text.FieldPosition)
  *     format}(arguments, new StringBuffer(), null).toString()</code>
  * </blockquote>
  *
- * @throws IllegalArgumentException if the pattern is invalid
- * @throws IllegalArgumentException if a value in the
+ * @throws java.lang.IllegalArgumentException if the pattern is invalid
+ * @throws java.lang.IllegalArgumentException if a value in the
  *         <code>arguments</code> array is not of the type
  *         expected by the corresponding argument or custom Format object.
- * @throws IllegalArgumentException if this format uses named arguments
+ * @throws java.lang.IllegalArgumentException if this format uses named arguments
  */
 
 public static java.lang.String format(java.lang.String pattern, java.lang.Object... arguments) { throw new RuntimeException("Stub!"); }
@@ -770,8 +770,8 @@ public static java.lang.String format(java.lang.String pattern, java.lang.Object
  * format the given arguments.  The pattern must identifyarguments
  * by name instead of by number.
  * <p>
- * @throws IllegalArgumentException if the pattern is invalid
- * @throws IllegalArgumentException if a value in the
+ * @throws java.lang.IllegalArgumentException if the pattern is invalid
+ * @throws java.lang.IllegalArgumentException if a value in the
  *         <code>arguments</code> array is not of the type
  *         expected by the corresponding argument or custom Format object.
  * @see #format(Map, StringBuffer, FieldPosition)
@@ -795,10 +795,8 @@ public boolean usesNamedArguments() { throw new RuntimeException("Stub!"); }
  * provided <code>StringBuffer</code>.
  * This is equivalent to either of
  * <blockquote>
- *     <code>{@link #format(java.lang.Object[], java.lang.StringBuffer,
- *     java.text.FieldPosition) format}((Object[]) arguments, result, pos)</code>
- *     <code>{@link #format(java.util.Map, java.lang.StringBuffer,
- *     java.text.FieldPosition) format}((Map) arguments, result, pos)</code>
+ *     <code>{@link #format(java.lang.Object[],java.lang.StringBuffer,java.text.FieldPosition) format}((Object[]) arguments, result, pos)</code>
+ *     <code>{@link #format(java.util.Map,java.lang.StringBuffer,java.text.FieldPosition) format}((Map) arguments, result, pos)</code>
  * </blockquote>
  * A map must be provided if this format uses named arguments, otherwise
  * an IllegalArgumentException will be thrown.
@@ -806,10 +804,10 @@ public boolean usesNamedArguments() { throw new RuntimeException("Stub!"); }
  * @param result where text is appended
  * @param pos On input: an alignment field, if desired
  *            On output: the offsets of the alignment field
- * @throws IllegalArgumentException if an argument in
+ * @throws java.lang.IllegalArgumentException if an argument in
  *         <code>arguments</code> is not of the type
  *         expected by the format element(s) that use it
- * @throws IllegalArgumentException if <code>arguments</code> is
+ * @throws java.lang.IllegalArgumentException if <code>arguments</code> is
  *         an array of Object and this format uses named arguments
  */
 
@@ -826,8 +824,7 @@ public final java.lang.StringBuffer format(java.lang.Object arguments, java.lang
  * The text of the returned <code>AttributedCharacterIterator</code> is
  * the same that would be returned by
  * <blockquote>
- *     <code>{@link #format(java.lang.Object[], java.lang.StringBuffer,
- *     java.text.FieldPosition) format}(arguments, new StringBuffer(), null).toString()</code>
+ *     <code>{@link #format(java.lang.Object[],java.lang.StringBuffer,java.text.FieldPosition) format}(arguments, new StringBuffer(), null).toString()</code>
  * </blockquote>
  * <p>
  * In addition, the <code>AttributedCharacterIterator</code> contains at
@@ -845,8 +842,8 @@ public final java.lang.StringBuffer format(java.lang.Object arguments, java.lang
  *
  * @param arguments an array of objects to be formatted and substituted.
  * @return AttributedCharacterIterator describing the formatted value.
- * @exception NullPointerException if <code>arguments</code> is null.
- * @throws IllegalArgumentException if a value in the
+ * @exception java.lang.NullPointerException if <code>arguments</code> is null.
+ * @throws java.lang.IllegalArgumentException if a value in the
  *         <code>arguments</code> array is not of the type
  *         expected by the corresponding argument or custom Format object.
  */
@@ -880,7 +877,7 @@ public java.text.AttributedCharacterIterator formatToCharacterIterator(java.lang
  * 0. When an error occurs, the call to this method will return null.
  * If the source is null, return an empty array.
  *
- * @throws IllegalArgumentException if this format uses named arguments
+ * @throws java.lang.IllegalArgumentException if this format uses named arguments
  */
 
 public java.lang.Object[] parse(java.lang.String source, java.text.ParsePosition pos) { throw new RuntimeException("Stub!"); }
@@ -905,13 +902,13 @@ public java.util.Map<java.lang.String,java.lang.Object> parseToMap(java.lang.Str
  * array.
  * The method may not use the entire text of the given string.
  * <p>
- * See the {@link #parse(String, ParsePosition)} method for more information
+ * See the {@link #parse(java.lang.String,java.text.ParsePosition)} method for more information
  * on message parsing.
  *
  * @param source A <code>String</code> whose beginning should be parsed.
  * @return An <code>Object</code> array parsed from the string.
- * @exception ParseException if the beginning of the specified string cannot be parsed.
- * @exception IllegalArgumentException if this format uses named arguments
+ * @exception java.text.ParseException if the beginning of the specified string cannot be parsed.
+ * @exception java.lang.IllegalArgumentException if this format uses named arguments
  */
 
 public java.lang.Object[] parse(java.lang.String source) throws java.text.ParseException { throw new RuntimeException("Stub!"); }
@@ -920,12 +917,12 @@ public java.lang.Object[] parse(java.lang.String source) throws java.text.ParseE
  * <strong>[icu]</strong> Parses text from the beginning of the given string to produce a map from
  * argument to values. The method may not use the entire text of the given string.
  *
- * <p>See the {@link #parse(String, ParsePosition)} method for more information on
+ * <p>See the {@link #parse(java.lang.String,java.text.ParsePosition)} method for more information on
  * message parsing.
  *
  * @param source A <code>String</code> whose beginning should be parsed.
  * @return A <code>Map</code> parsed from the string.
- * @throws ParseException if the beginning of the specified string cannot
+ * @throws java.text.ParseException if the beginning of the specified string cannot
  *         be parsed.
  * @see #parseToMap(String, ParsePosition)
  */
@@ -946,7 +943,7 @@ public java.util.Map<java.lang.String,java.lang.Object> parseToMap(java.lang.Str
  * changed, the error index of <code>pos</code> is set to the index of
  * the character where the error occurred, and null is returned.
  * <p>
- * See the {@link #parse(String, ParsePosition)} method for more information
+ * See the {@link #parse(java.lang.String,java.text.ParsePosition)} method for more information
  * on message parsing.
  *
  * @param source A <code>String</code>, part of which should be parsed.
@@ -956,7 +953,7 @@ public java.util.Map<java.lang.String,java.lang.Object> parseToMap(java.lang.Str
  *         array of Object, or a Map, depending on whether named
  *         arguments are used.  This can be queried using <code>usesNamedArguments</code>.
  *         In case of error, returns null.
- * @throws NullPointerException if <code>pos</code> is null.
+ * @throws java.lang.NullPointerException if <code>pos</code> is null.
  */
 
 public java.lang.Object parseObject(java.lang.String source, java.text.ParsePosition pos) { throw new RuntimeException("Stub!"); }
@@ -1029,7 +1026,7 @@ protected Field(java.lang.String name) { super(null); throw new RuntimeException
  * Resolves instances being deserialized to the predefined constants.
  *
  * @return resolved MessageFormat.Field constant
- * @throws InvalidObjectException if the constant could not be resolved.
+ * @throws java.io.InvalidObjectException if the constant could not be resolved.
  */
 
 protected java.lang.Object readResolve() throws java.io.InvalidObjectException { throw new RuntimeException("Stub!"); }

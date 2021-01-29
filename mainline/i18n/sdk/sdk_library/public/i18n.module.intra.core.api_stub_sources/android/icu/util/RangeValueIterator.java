@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
 ******************************************************************************
 * Copyright (C) 1996-2016, International Business Machines Corporation and   *
@@ -60,7 +60,7 @@ public interface RangeValueIterator {
  * be updated.
  * @param element for storing the result range and value
  * @return true if we are not at the end of the iteration, false otherwise.
- * @see Element
+ * @see android.icu.util.RangeValueIterator.Element
  */
 
 public boolean next(android.icu.util.RangeValueIterator.Element element);

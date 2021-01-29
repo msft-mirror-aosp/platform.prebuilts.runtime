@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2014-2016, International Business Machines Corporation and
@@ -15,13 +15,13 @@ import android.icu.text.UnicodeSet.SpanCondition;
 /**
  * A helper class used to count, replace, and trim CharSequences based on UnicodeSet matches.
  * An instance is immutable (and thus thread-safe) iff the source UnicodeSet is frozen.
- * <p><b>Note:</b> The counting, deletion, and replacement depend on alternating a {@link SpanCondition} with
+ * <p><b>Note:</b> The counting, deletion, and replacement depend on alternating a {@link android.icu.text.UnicodeSet.SpanCondition SpanCondition} with
  * its inverse. That is, the code spans, then spans for the inverse, then spans, and so on.
  * For the inverse, the following mapping is used:
  * <ul>
- * <li>{@link UnicodeSet.SpanCondition#SIMPLE} → {@link UnicodeSet.SpanCondition#NOT_CONTAINED}</li>
- * <li>{@link UnicodeSet.SpanCondition#CONTAINED} → {@link UnicodeSet.SpanCondition#NOT_CONTAINED}</li>
- * <li>{@link UnicodeSet.SpanCondition#NOT_CONTAINED} → {@link UnicodeSet.SpanCondition#SIMPLE}</li>
+ * <li>{@link android.icu.text.UnicodeSet.SpanCondition#SIMPLE UnicodeSet.SpanCondition#SIMPLE} → {@link android.icu.text.UnicodeSet.SpanCondition#NOT_CONTAINED UnicodeSet.SpanCondition#NOT_CONTAINED}</li>
+ * <li>{@link android.icu.text.UnicodeSet.SpanCondition#CONTAINED UnicodeSet.SpanCondition#CONTAINED} → {@link android.icu.text.UnicodeSet.SpanCondition#NOT_CONTAINED UnicodeSet.SpanCondition#NOT_CONTAINED}</li>
+ * <li>{@link android.icu.text.UnicodeSet.SpanCondition#NOT_CONTAINED UnicodeSet.SpanCondition#NOT_CONTAINED} → {@link android.icu.text.UnicodeSet.SpanCondition#SIMPLE UnicodeSet.SpanCondition#SIMPLE}</li>
  * </ul>
  * These are actually not complete inverses. However, the alternating works because there are no gaps.
  * For example, with [a{ab}{bc}], you get the following behavior when scanning forward:
@@ -78,7 +78,7 @@ public int hashCode() { throw new RuntimeException("Stub!"); }
 /**
  * Returns the number of matching characters found in a character sequence,
  * counting by CountMethod.MIN_ELEMENTS using SpanCondition.SIMPLE.
- * The code alternates spans; see the class doc for {@link UnicodeSetSpanner} for a note about boundary conditions.
+ * The code alternates spans; see the class doc for {@link android.icu.text.UnicodeSetSpanner UnicodeSetSpanner} for a note about boundary conditions.
  * @param sequence
  *            the sequence to count characters in
  * @return the count. Zero if there are none.
@@ -88,7 +88,7 @@ public int countIn(java.lang.CharSequence sequence) { throw new RuntimeException
 
 /**
  * Returns the number of matching characters found in a character sequence, using SpanCondition.SIMPLE.
- * The code alternates spans; see the class doc for {@link UnicodeSetSpanner} for a note about boundary conditions.
+ * The code alternates spans; see the class doc for {@link android.icu.text.UnicodeSetSpanner UnicodeSetSpanner} for a note about boundary conditions.
  * @param sequence
  *            the sequence to count characters in
  * @param countMethod
@@ -100,7 +100,7 @@ public int countIn(java.lang.CharSequence sequence, android.icu.text.UnicodeSetS
 
 /**
  * Returns the number of matching characters found in a character sequence.
- * The code alternates spans; see the class doc for {@link UnicodeSetSpanner} for a note about boundary conditions.
+ * The code alternates spans; see the class doc for {@link android.icu.text.UnicodeSetSpanner UnicodeSetSpanner} for a note about boundary conditions.
  * @param sequence
  *            the sequence to count characters in
  * @param countMethod
@@ -116,7 +116,7 @@ public int countIn(java.lang.CharSequence sequence, android.icu.text.UnicodeSetS
 
 /**
  * Delete all the matching spans in sequence, using SpanCondition.SIMPLE
- * The code alternates spans; see the class doc for {@link UnicodeSetSpanner} for a note about boundary conditions.
+ * The code alternates spans; see the class doc for {@link android.icu.text.UnicodeSetSpanner UnicodeSetSpanner} for a note about boundary conditions.
  * @param sequence
  *            charsequence to replace matching spans in.
  * @return modified string.
@@ -126,7 +126,7 @@ public java.lang.String deleteFrom(java.lang.CharSequence sequence) { throw new 
 
 /**
  * Delete all matching spans in sequence, according to the spanCondition.
- * The code alternates spans; see the class doc for {@link UnicodeSetSpanner} for a note about boundary conditions.
+ * The code alternates spans; see the class doc for {@link android.icu.text.UnicodeSetSpanner UnicodeSetSpanner} for a note about boundary conditions.
  * @param sequence
  *            charsequence to replace matching spans in.
  * @param spanCondition
@@ -139,7 +139,7 @@ public java.lang.String deleteFrom(java.lang.CharSequence sequence, android.icu.
 /**
  * Replace all matching spans in sequence by the replacement,
  * counting by CountMethod.MIN_ELEMENTS using SpanCondition.SIMPLE.
- * The code alternates spans; see the class doc for {@link UnicodeSetSpanner} for a note about boundary conditions.
+ * The code alternates spans; see the class doc for {@link android.icu.text.UnicodeSetSpanner UnicodeSetSpanner} for a note about boundary conditions.
  * @param sequence
  *            charsequence to replace matching spans in.
  * @param replacement
@@ -151,7 +151,7 @@ public java.lang.String replaceFrom(java.lang.CharSequence sequence, java.lang.C
 
 /**
  * Replace all matching spans in sequence by replacement, according to the CountMethod, using SpanCondition.SIMPLE.
- * The code alternates spans; see the class doc for {@link UnicodeSetSpanner} for a note about boundary conditions.
+ * The code alternates spans; see the class doc for {@link android.icu.text.UnicodeSetSpanner UnicodeSetSpanner} for a note about boundary conditions.
  *
  * @param sequence
  *            charsequence to replace matching spans in.
@@ -166,7 +166,7 @@ public java.lang.String replaceFrom(java.lang.CharSequence sequence, java.lang.C
 
 /**
  * Replace all matching spans in sequence by replacement, according to the countMethod and spanCondition.
- * The code alternates spans; see the class doc for {@link UnicodeSetSpanner} for a note about boundary conditions.
+ * The code alternates spans; see the class doc for {@link android.icu.text.UnicodeSetSpanner UnicodeSetSpanner} for a note about boundary conditions.
  * @param sequence
  *            charsequence to replace matching spans in.
  * @param replacement
@@ -257,7 +257,7 @@ public enum CountMethod {
 WHOLE_SPAN,
 /**
  * Use the smallest number of elements in the spanned range for counting and modification,
- * based on the {@link UnicodeSet.SpanCondition}.
+ * based on the {@link android.icu.text.UnicodeSet.SpanCondition UnicodeSet.SpanCondition}.
  * If the set has no strings, this will be the same as the number of spanned code points.
  * <p>For example, in the string "abab" with SpanCondition.SIMPLE:
  * <ul>

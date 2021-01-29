@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2017 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.number;
 
@@ -71,7 +71,7 @@ private NumberFormatter() { throw new RuntimeException("Stub!"); }
  * Call this method at the beginning of a NumberFormatter fluent chain in which the locale is not
  * currently known at the call site.
  *
- * @return An {@link UnlocalizedNumberFormatter}, to be used for chaining.
+ * @return An {@link android.icu.number.UnlocalizedNumberFormatter UnlocalizedNumberFormatter}, to be used for chaining.
  */
 
 public static android.icu.number.UnlocalizedNumberFormatter with() { throw new RuntimeException("Stub!"); }
@@ -82,7 +82,7 @@ public static android.icu.number.UnlocalizedNumberFormatter with() { throw new R
  *
  * @param locale
  *            The locale from which to load formats and symbols for number formatting.
- * @return A {@link LocalizedNumberFormatter}, to be used for chaining.
+ * @return A {@link android.icu.number.LocalizedNumberFormatter LocalizedNumberFormatter}, to be used for chaining.
  */
 
 public static android.icu.number.LocalizedNumberFormatter withLocale(java.util.Locale locale) { throw new RuntimeException("Stub!"); }
@@ -93,7 +93,7 @@ public static android.icu.number.LocalizedNumberFormatter withLocale(java.util.L
  *
  * @param locale
  *            The locale from which to load formats and symbols for number formatting.
- * @return A {@link LocalizedNumberFormatter}, to be used for chaining.
+ * @return A {@link android.icu.number.LocalizedNumberFormatter LocalizedNumberFormatter}, to be used for chaining.
  */
 
 public static android.icu.number.LocalizedNumberFormatter withLocale(android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
@@ -106,7 +106,7 @@ public static android.icu.number.LocalizedNumberFormatter withLocale(android.icu
  * <li>ALWAYS: "1." and "1.1"
  * </ul>
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -115,14 +115,14 @@ public enum DecimalSeparatorDisplay {
  * Show the decimal separator when there are one or more digits to display after the separator,
  * and do not show it otherwise. This is the default behavior.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 AUTO,
 /**
  * Always show the decimal separator, even if there are no digits to display after the separator.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 ALWAYS;
@@ -152,7 +152,7 @@ ALWAYS;
  * Note: This enum specifies the strategy for grouping sizes. To set which character to use as the
  * grouping separator, use the "symbols" setter.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -160,7 +160,7 @@ public enum GroupingStrategy {
 /**
  * Do not display grouping separators in any locale.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 OFF,
@@ -176,7 +176,7 @@ OFF,
  * Locale data is used to determine whether to separate larger numbers into groups of 2
  * (customary in South Asia) or groups of 3 (customary in Europe and the Americas).
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 MIN2,
@@ -191,7 +191,7 @@ MIN2,
  * Locale data is used to determine whether to separate larger numbers into groups of 2
  * (customary in South Asia) or groups of 3 (customary in Europe and the Americas).
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 AUTO,
@@ -207,7 +207,7 @@ AUTO,
  * Locale data is used to determine whether to separate larger numbers into groups of 2
  * (customary in South Asia) or groups of 3 (customary in Europe and the Americas).
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 ON_ALIGNED,
@@ -215,7 +215,7 @@ ON_ALIGNED,
  * Use the Western defaults: groups of 3 and enabled for all numbers 1000 or greater. Do not use
  * locale data for determining the grouping strategy.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 THOUSANDS;
@@ -238,7 +238,7 @@ THOUSANDS;
  * <p>
  * The exact format, including the position and the code point of the sign, differ by locale.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -247,7 +247,7 @@ public enum SignDisplay {
  * Show the minus sign on negative numbers, and do not show the sign on positive numbers. This is
  * the default behavior.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 AUTO,
@@ -255,14 +255,14 @@ AUTO,
  * Show the minus sign on negative numbers and the plus sign on positive numbers, including zero.
  * To hide the sign on zero, see {@link #EXCEPT_ZERO}.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 ALWAYS,
 /**
  * Do not show the sign on positive or negative numbers.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 NEVER,
@@ -279,7 +279,7 @@ NEVER,
  * back to the AUTO sign display strategy when formatting without a currency unit. This
  * limitation may be lifted in the future.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 ACCOUNTING,
@@ -289,25 +289,24 @@ ACCOUNTING,
  * ACCOUNTING sign display strategy. To hide the sign on zero, see
  * {@link #ACCOUNTING_EXCEPT_ZERO}.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 ACCOUNTING_ALWAYS,
 /**
  * Show the minus sign on negative numbers and the plus sign on positive numbers. Do not show a
- * sign on zero or NaN, unless the sign bit is set (-0.0 gets a sign).
+ * sign on zero, numbers that round to zero, or NaN.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 EXCEPT_ZERO,
 /**
  * Use the locale-dependent accounting format on negative numbers, and show the plus sign on
- * positive numbers. Do not show a sign on zero or NaN, unless the sign bit is set (-0.0 gets a
- * sign). For more information on the accounting format, see the ACCOUNTING sign display
- * strategy.
+ * positive numbers. Do not show a sign on zero, numbers that round to zero, or NaN. For more
+ * information on the accounting format, see the ACCOUNTING sign display strategy.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 ACCOUNTING_EXCEPT_ZERO;
@@ -328,7 +327,7 @@ ACCOUNTING_EXCEPT_ZERO;
  * <p>
  * This enum is similar to {@link android.icu.text.MeasureFormat.FormatWidth}.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -343,7 +342,7 @@ public enum UnitWidth {
  * In CLDR, this option corresponds to the "Narrow" format for measure units and the "¤¤¤¤¤"
  * placeholder for currencies.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 NARROW,
@@ -359,7 +358,7 @@ NARROW,
  * In CLDR, this option corresponds to the "Short" format for measure units and the "¤"
  * placeholder for currencies.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 SHORT,
@@ -370,18 +369,20 @@ SHORT,
  * In CLDR, this option corresponds to the default format for measure units and the "¤¤¤"
  * placeholder for currencies.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 FULL_NAME,
 /**
- * Use the three-digit ISO XXX code in place of the symbol for displaying currencies. The
- * behavior of this option is currently undefined for use with measure units.
+ * Use the three-digit ISO XXX code in place of the symbol for displaying currencies.
+ *
+ * <p>
+ * Behavior of this option with non-currency units is not defined at this time.
  *
  * <p>
  * In CLDR, this option corresponds to the "¤¤" placeholder for currencies.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 ISO_CODE,
@@ -390,7 +391,7 @@ ISO_CODE,
  * currencies, apply monetary symbols and formats as with SHORT, but omit the currency symbol.
  * For measure units, the behavior is equivalent to not specifying the unit at all.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 HIDDEN;

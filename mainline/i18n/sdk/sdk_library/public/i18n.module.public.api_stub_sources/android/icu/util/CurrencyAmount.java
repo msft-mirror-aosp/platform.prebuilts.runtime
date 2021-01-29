@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
 **********************************************************************
 * Copyright (c) 2004-2010, International Business Machines
@@ -20,7 +20,7 @@ package android.icu.util;
  * CurrencyAmount objects are immutable.
  *
  * @see java.lang.Number
- * @see Currency
+ * @see android.icu.util.Currency
  * @author Alan Liu
  */
 

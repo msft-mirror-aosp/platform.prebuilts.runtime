@@ -19,7 +19,9 @@ package com.android.i18n.timezone;
 
 
 /**
- * Utility methods associated with finding updateable time zone data files.
+ * Utility methods associated with finding updateable time zone data files. ICU4C and ICU4J also
+ * read files affected by time zone updates. That logic is kept in {@link android.icu.platform.AndroidDataFiles AndroidDataFiles}
+ * and should be updated if file locations or lookup order changes.
  *
  * @hide
  */
@@ -34,5 +36,11 @@ public static java.lang.String getDataTimeZoneRootDir() { throw new RuntimeExcep
 public static java.lang.String getDataTimeZoneFile(java.lang.String fileName) { throw new RuntimeException("Stub!"); }
 
 public static java.lang.String getTimeZoneModuleTzVersionFile() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Reads the version of time zone data supplied by the time zone data module.
+ */
+
+public static com.android.i18n.timezone.TzDataSetVersion readTimeZoneModuleVersion() throws java.io.IOException, com.android.i18n.timezone.TzDataSetVersion.TzDataSetException { throw new RuntimeException("Stub!"); }
 }
 

@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2000-2016, International Business Machines Corporation and
@@ -16,7 +16,7 @@ import android.icu.lang.UCharacter;
 /**
  * Old Unicode normalization API.
  *
- * <p>This API has been replaced by the {@link Normalizer2} class and is only available
+ * <p>This API has been replaced by the {@link android.icu.text.Normalizer2 Normalizer2} class and is only available
  * for backward compatibility. This class simply delegates to the Normalizer2 class.
  * There are two exceptions: The new API does not provide a replacement for
  * <code>QuickCheckResult</code> and <code>compare()</code>.
@@ -134,56 +134,18 @@ Normalizer() { throw new RuntimeException("Stub!"); }
 /**
  * Clones this <tt>Normalizer</tt> object.  All properties of this
  * object are duplicated in the new object, including the cloning of any
- * {@link CharacterIterator} that was passed in to the constructor
- * or to {@link #setText(CharacterIterator) setText}.
+ * {@link java.text.CharacterIterator CharacterIterator} that was passed in to the constructor
+ * or to {@link #setText(java.text.CharacterIterator) setText}.
  * However, the text storage underlying
  * the <tt>CharacterIterator</tt> is not duplicated unless the
  * iterator's <tt>clone</tt> method does so.
  *
- * @deprecated ICU 56 Use {@link Normalizer2} instead.
+ * @deprecated ICU 56 Use {@link android.icu.text.Normalizer2 Normalizer2} instead.
  * @hide original deprecated declaration
  */
 
 @Deprecated
 public java.lang.Object clone() { throw new RuntimeException("Stub!"); }
-
-/**
- * Normalize a string.
- * The string will be normalized according to the specified normalization
- * mode and options.
- * @param src        The string to normalize.
- * @param mode       The normalization mode; one of Normalizer.NONE,
- *                    Normalizer.NFD, Normalizer.NFC, Normalizer.NFKC,
- *                    Normalizer.NFKD, Normalizer.DEFAULT
- * @return the normalized string
- * @deprecated ICU 56 Use {@link Normalizer2} instead.
- * @hide original deprecated declaration
- */
-
-@Deprecated
-public static java.lang.String normalize(java.lang.String src, android.icu.text.Normalizer.Mode mode) { throw new RuntimeException("Stub!"); }
-
-/**
- * Test if a string is in a given normalization form.
- * This is semantically equivalent to source.equals(normalize(source, mode)).
- *
- * Unlike quickCheck(), this function returns a definitive result,
- * never a "maybe".
- * For NFD, NFKD, and FCD, both functions work exactly the same.
- * For NFC and NFKC where quickCheck may return "maybe", this function will
- * perform further tests to arrive at a true/false result.
- * @param str       the input string to be checked to see if it is
- *                   normalized
- * @param mode      the normalization mode
- * @param options   Options for use with exclusion set and tailored Normalization
- *                  The only option that is currently recognized is UNICODE_3_2
- * @see #isNormalized
- * @deprecated ICU 56 Use {@link Normalizer2} instead.
- * @hide original deprecated declaration
- */
-
-@Deprecated
-public static boolean isNormalized(java.lang.String str, android.icu.text.Normalizer.Mode mode, int options) { throw new RuntimeException("Stub!"); }
 
 /**
  * Compare two strings for canonical equivalence.
@@ -360,7 +322,7 @@ public static final int FOLD_CASE_DEFAULT = 0; // 0x0
  * Option value for case folding:
  * Use the modified set of mappings provided in CaseFolding.txt to handle dotted I
  * and dotless i appropriately for Turkic languages (tr, az).
- * @see UCharacter#FOLD_CASE_EXCLUDE_SPECIAL_I
+ * @see android.icu.lang.UCharacter#FOLD_CASE_EXCLUDE_SPECIAL_I
  */
 
 public static final int FOLD_CASE_EXCLUDE_SPECIAL_I = 1; // 0x1
@@ -381,46 +343,6 @@ public static final android.icu.text.Normalizer.QuickCheckResult MAYBE;
 static { MAYBE = null; }
 
 /**
- * Canonical decomposition followed by canonical composition.
- *
- * @deprecated ICU 56 Use {@link Normalizer2} instead.
- * @hide original deprecated declaration
- */
-
-@Deprecated public static final android.icu.text.Normalizer.Mode NFC;
-static { NFC = null; }
-
-/**
- * Canonical decomposition.
- *
- * @deprecated ICU 56 Use {@link Normalizer2} instead.
- * @hide original deprecated declaration
- */
-
-@Deprecated public static final android.icu.text.Normalizer.Mode NFD;
-static { NFD = null; }
-
-/**
- * Compatibility decomposition followed by canonical composition.
- *
- * @deprecated ICU 56 Use {@link Normalizer2} instead.
- * @hide original deprecated declaration
- */
-
-@Deprecated public static final android.icu.text.Normalizer.Mode NFKC;
-static { NFKC = null; }
-
-/**
- * Compatibility decomposition.
- *
- * @deprecated ICU 56 Use {@link Normalizer2} instead.
- * @hide original deprecated declaration
- */
-
-@Deprecated public static final android.icu.text.Normalizer.Mode NFKD;
-static { NFKD = null; }
-
-/**
  * Indicates that string is not in the normalized format
  */
 
@@ -433,25 +355,6 @@ static { NO = null; }
 
 public static final android.icu.text.Normalizer.QuickCheckResult YES;
 static { YES = null; }
-/**
- * Constants for normalization modes.
- * <p>
- * The Mode class is not intended for public subclassing.
- * Only the Mode constants provided by the Normalizer class should be used,
- * and any fields or methods should not be called or overridden by users.
- *
- * @deprecated ICU 56 Use {@link Normalizer2} instead.
- * @hide Only a subset of ICU is exposed in Android
- * @hide original deprecated declaration
- */
-
-@SuppressWarnings({"unchecked", "deprecation", "all"})
-@Deprecated
-public abstract static class Mode {
-
-Mode() { throw new RuntimeException("Stub!"); }
-}
-
 /**
  * Result values for quickCheck().
  * For details see Unicode Technical Report 15.

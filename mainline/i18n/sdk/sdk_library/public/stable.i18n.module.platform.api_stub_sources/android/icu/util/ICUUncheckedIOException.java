@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2014-2015, International Business Machines Corporation and
@@ -16,7 +16,7 @@ package android.icu.util;
  * Some ICU APIs do not throw the standard exception but instead wrap it
  * into this unchecked version.
  *
- * <p>This currently extends {@link RuntimeException},
+ * <p>This currently extends {@link java.lang.RuntimeException RuntimeException},
  * but when ICU can rely on Java 8 this class should be changed to extend
  * java.io.UncheckedIOException instead.
  */

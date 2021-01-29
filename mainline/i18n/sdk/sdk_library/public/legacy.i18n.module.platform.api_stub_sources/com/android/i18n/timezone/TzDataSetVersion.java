@@ -59,25 +59,19 @@ public static int currentFormatMinorVersion() { throw new RuntimeException("Stub
 
 public static com.android.i18n.timezone.TzDataSetVersion readFromFile(java.io.File file) throws java.io.IOException, com.android.i18n.timezone.TzDataSetVersion.TzDataSetException { throw new RuntimeException("Stub!"); }
 
-/**
- * Reads the version of time zone data supplied by the time zone data module.
- */
-
-public static com.android.i18n.timezone.TzDataSetVersion readTimeZoneModuleVersion() throws java.io.IOException, com.android.i18n.timezone.TzDataSetVersion.TzDataSetException { throw new RuntimeException("Stub!"); }
-
-/** Returns the major version number. See {@link TzDataSetVersion}. */
+/** Returns the major version number. See {@link com.android.i18n.timezone.TzDataSetVersion TzDataSetVersion}. */
 
 public int getFormatMajorVersion() { throw new RuntimeException("Stub!"); }
 
-/** Returns the minor version number. See {@link TzDataSetVersion}. */
+/** Returns the minor version number. See {@link com.android.i18n.timezone.TzDataSetVersion TzDataSetVersion}. */
 
 public int getFormatMinorVersion() { throw new RuntimeException("Stub!"); }
 
-/** Returns the tzdb version string. See {@link TzDataSetVersion}. */
+/** Returns the tzdb version string. See {@link com.android.i18n.timezone.TzDataSetVersion TzDataSetVersion}. */
 
 public java.lang.String getRulesVersion() { throw new RuntimeException("Stub!"); }
 
-/** Returns the Android revision. See {@link TzDataSetVersion}. */
+/** Returns the Android revision. See {@link com.android.i18n.timezone.TzDataSetVersion TzDataSetVersion}. */
 
 public int getRevision() { throw new RuntimeException("Stub!"); }
 
@@ -92,8 +86,8 @@ public int hashCode() { throw new RuntimeException("Stub!"); }
 public java.lang.String toString() { throw new RuntimeException("Stub!"); }
 
 /**
- * The name typically given to the {@link TzDataSetVersion} file. See
- * {@link TzDataSetVersion#readFromFile(File)}.
+ * The name typically given to the {@link com.android.i18n.timezone.TzDataSetVersion TzDataSetVersion} file. See
+ * {@link com.android.i18n.timezone.TzDataSetVersion#readFromFile(java.io.File) TzDataSetVersion#readFromFile(File)}.
  */
 
 public static final java.lang.String DEFAULT_FILE_NAME = "tz_version";

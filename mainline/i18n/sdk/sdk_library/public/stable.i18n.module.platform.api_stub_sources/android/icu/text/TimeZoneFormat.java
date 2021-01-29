@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2011-2016, International Business Machines Corporation and
@@ -20,17 +20,17 @@ import java.text.ParseException;
 
 /**
  * <code>TimeZoneFormat</code> supports time zone display name formatting and parsing.
- * An instance of TimeZoneFormat works as a subformatter of {@link SimpleDateFormat},
+ * An instance of TimeZoneFormat works as a subformatter of {@link android.icu.text.SimpleDateFormat SimpleDateFormat},
  * but you can also directly get a new instance of <code>TimeZoneFormat</code> and
  * formatting/parsing time zone display names.
  * <p>
  * ICU implements the time zone display names defined by <a href="http://www.unicode.org/reports/tr35/">UTS#35
- * Unicode Locale Data Markup Language (LDML)</a>. {@link TimeZoneNames} represents the
+ * Unicode Locale Data Markup Language (LDML)</a>. {@link android.icu.text.TimeZoneNames TimeZoneNames} represents the
  * time zone display name data model and this class implements the algorithm for actual
  * formatting and parsing.
  *
- * @see SimpleDateFormat
- * @see TimeZoneNames
+ * @see android.icu.text.SimpleDateFormat
+ * @see android.icu.text.TimeZoneNames
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -62,7 +62,7 @@ public static android.icu.text.TimeZoneFormat getInstance(android.icu.util.ULoca
  * customize a TimeZoneFormat, you must use {@link #cloneAsThawed()} to get a
  * thawed copy first.
  *
- * @param locale the {@link Locale}.
+ * @param locale the {@link java.util.Locale Locale}.
  * @return a frozen instance of <code>TimeZoneFormat</code> for the given locale.
  */
 
@@ -82,7 +82,7 @@ public android.icu.text.TimeZoneNames getTimeZoneNames() { throw new RuntimeExce
  *
  * @param tznames the time zone display name data.
  * @return this object.
- * @throws UnsupportedOperationException when this object is frozen.
+ * @throws java.lang.UnsupportedOperationException when this object is frozen.
  * @see #getTimeZoneNames()
  */
 
@@ -103,8 +103,8 @@ public java.lang.String getGMTPattern() { throw new RuntimeException("Stub!"); }
  *
  * @param pattern the localized GMT format pattern string
  * @return this object.
- * @throws IllegalArgumentException when the pattern string does not contain "{0}"
- * @throws UnsupportedOperationException when this object is frozen.
+ * @throws java.lang.IllegalArgumentException when the pattern string does not contain "{0}"
+ * @throws java.lang.UnsupportedOperationException when this object is frozen.
  * @see #getGMTPattern()
  */
 
@@ -125,8 +125,8 @@ public java.lang.String getGMTOffsetPattern(android.icu.text.TimeZoneFormat.GMTO
  * @param type the offset pattern.
  * @param pattern the pattern string.
  * @return this object.
- * @throws IllegalArgumentException when the pattern string does not have required time field letters.
- * @throws UnsupportedOperationException when this object is frozen.
+ * @throws java.lang.IllegalArgumentException when the pattern string does not have required time field letters.
+ * @throws java.lang.UnsupportedOperationException when this object is frozen.
  * @see #getGMTOffsetPattern(GMTOffsetPatternType)
  */
 
@@ -147,8 +147,8 @@ public java.lang.String getGMTOffsetDigits() { throw new RuntimeException("Stub!
  *
  * @param digits a string contains the decimal digit characters from 0 to 9 n the ascending order.
  * @return this object.
- * @throws IllegalArgumentException when the string did not contain ten characters.
- * @throws UnsupportedOperationException when this object is frozen.
+ * @throws java.lang.IllegalArgumentException when the string did not contain ten characters.
+ * @throws java.lang.UnsupportedOperationException when this object is frozen.
  * @see #getGMTOffsetDigits()
  */
 
@@ -168,7 +168,7 @@ public java.lang.String getGMTZeroFormat() { throw new RuntimeException("Stub!")
  *
  * @param gmtZeroFormat the localized GMT format string for GMT(UTC).
  * @return this object.
- * @throws UnsupportedOperationException when this object is frozen.
+ * @throws java.lang.UnsupportedOperationException when this object is frozen.
  * @see #getGMTZeroFormat()
  */
 
@@ -178,11 +178,11 @@ public android.icu.text.TimeZoneFormat setGMTZeroFormat(java.lang.String gmtZero
  * Sets the default parse options.
  * <p>
  * <b>Note:</b> By default, an instance of <code>TimeZoneFormat</code>
- * created by {@link #getInstance(ULocale)} has no parse options set.
+ * created by {@link #getInstance(android.icu.util.ULocale)} has no parse options set.
  *
  * @param options the default parse options.
  * @return this object.
- * @see ParseOption
+ * @see android.icu.text.TimeZoneFormat.ParseOption
  */
 
 public android.icu.text.TimeZoneFormat setDefaultParseOptions(java.util.EnumSet<android.icu.text.TimeZoneFormat.ParseOption> options) { throw new RuntimeException("Stub!"); }
@@ -190,7 +190,7 @@ public android.icu.text.TimeZoneFormat setDefaultParseOptions(java.util.EnumSet<
 /**
  * Returns the default parse options used by this <code>TimeZoneFormat</code> instance.
  * @return the default parse options.
- * @see ParseOption
+ * @see android.icu.text.TimeZoneFormat.ParseOption
  */
 
 public java.util.EnumSet<android.icu.text.TimeZoneFormat.ParseOption> getDefaultParseOptions() { throw new RuntimeException("Stub!"); }
@@ -204,7 +204,7 @@ public java.util.EnumSet<android.icu.text.TimeZoneFormat.ParseOption> getDefault
  * @param isShort true if shortest form is used.
  * @param ignoreSeconds true if non-zero offset seconds is appended.
  * @return the ISO 8601 basic format.
- * @throws IllegalArgumentException if the specified offset is out of supported range
+ * @throws java.lang.IllegalArgumentException if the specified offset is out of supported range
  * (-24 hours &lt; offset &lt; +24 hours).
  * @see #formatOffsetISO8601Extended(int, boolean, boolean, boolean)
  * @see #parseOffsetISO8601(String, ParsePosition)
@@ -221,7 +221,7 @@ public final java.lang.String formatOffsetISO8601Basic(int offset, boolean useUt
  * @param isShort true if shortest form is used.
  * @param ignoreSeconds true if non-zero offset seconds is appended.
  * @return the ISO 8601 extended format.
- * @throws IllegalArgumentException if the specified offset is out of supported range
+ * @throws java.lang.IllegalArgumentException if the specified offset is out of supported range
  * (-24 hours &lt; offset &lt; +24 hours).
  * @see #formatOffsetISO8601Basic(int, boolean, boolean, boolean)
  * @see #parseOffsetISO8601(String, ParsePosition)
@@ -234,7 +234,7 @@ public final java.lang.String formatOffsetISO8601Extended(int offset, boolean us
  * The localized GMT offset is defined by;
  * <ul>
  * <li>GMT format pattern (e.g. "GMT {0}" - see {@link #getGMTPattern()})
- * <li>Offset time pattern (e.g. "+HH:mm" - see {@link #getGMTOffsetPattern(GMTOffsetPatternType)})
+ * <li>Offset time pattern (e.g. "+HH:mm" - see {@link #getGMTOffsetPattern(android.icu.text.TimeZoneFormat.GMTOffsetPatternType)})
  * <li>Offset digits (e.g. "0123456789" - see {@link #getGMTOffsetDigits()})
  * <li>GMT zero format (e.g. "GMT" - see {@link #getGMTZeroFormat()})
  * </ul>
@@ -244,7 +244,7 @@ public final java.lang.String formatOffsetISO8601Extended(int offset, boolean us
  * @param offset the offset from GMT(UTC) in milliseconds.
  * @return the localized GMT format string
  * @see #parseOffsetLocalizedGMT(String, ParsePosition)
- * @throws IllegalArgumentException if the specified offset is out of supported range
+ * @throws java.lang.IllegalArgumentException if the specified offset is out of supported range
  * (-24 hours &lt; offset &lt; +24 hours).
  */
 
@@ -255,7 +255,7 @@ public java.lang.String formatOffsetLocalizedGMT(int offset) { throw new Runtime
  * The short localized GMT offset is defined by;
  * <ul>
  * <li>GMT format pattern (e.g. "GMT {0}" - see {@link #getGMTPattern()})
- * <li>Offset time pattern (e.g. "+HH:mm" - see {@link #getGMTOffsetPattern(GMTOffsetPatternType)})
+ * <li>Offset time pattern (e.g. "+HH:mm" - see {@link #getGMTOffsetPattern(android.icu.text.TimeZoneFormat.GMTOffsetPatternType)})
  * <li>Offset digits (e.g. "0123456789" - see {@link #getGMTOffsetDigits()})
  * <li>GMT zero format (e.g. "GMT" - see {@link #getGMTZeroFormat()})
  * </ul>
@@ -265,7 +265,7 @@ public java.lang.String formatOffsetLocalizedGMT(int offset) { throw new Runtime
  * @param offset the offset from GMT(UTC) in milliseconds.
  * @return the short localized GMT format string
  * @see #parseOffsetLocalizedGMT(String, ParsePosition)
- * @throws IllegalArgumentException if the specified offset is out of supported range
+ * @throws java.lang.IllegalArgumentException if the specified offset is out of supported range
  * (-24 hours &lt; offset &lt; +24 hours).
  */
 
@@ -287,7 +287,7 @@ public java.lang.String formatOffsetShortLocalizedGMT(int offset) { throw new Ru
  * @param tz the time zone.
  * @param date the date.
  * @return the display name of the time zone.
- * @see Style
+ * @see android.icu.text.TimeZoneFormat.Style
  * @see #format(Style, TimeZone, long, Output)
  */
 
@@ -296,7 +296,7 @@ public final java.lang.String format(android.icu.text.TimeZoneFormat.Style style
 /**
  * Returns the display name of the time zone at the given date for
  * the style. This method takes an extra argument <code>Output&lt;TimeType&gt; timeType</code>
- * in addition to the argument list of {@link #format(Style, TimeZone, long)}.
+ * in addition to the argument list of {@link #format(android.icu.text.TimeZoneFormat.Style,android.icu.util.TimeZone,long)}.
  * The argument is used for receiving the time type (standard time
  * or daylight saving time, or unknown) actually used for the display name.
  *
@@ -306,7 +306,7 @@ public final java.lang.String format(android.icu.text.TimeZoneFormat.Style style
  * @param timeType the output argument for receiving the time type (standard/daylight/unknown)
  * used for the display name, or specify null if the information is not necessary.
  * @return the display name of the time zone.
- * @see Style
+ * @see android.icu.text.TimeZoneFormat.Style
  * @see #format(Style, TimeZone, long)
  */
 
@@ -370,7 +370,7 @@ public int parseOffsetShortLocalizedGMT(java.lang.String text, java.text.ParsePo
  * @param timeType The output argument for receiving the time type (standard/daylight/unknown),
  * or specify null if the information is not necessary.
  * @return A <code>TimeZone</code>, or null if the input could not be parsed.
- * @see Style
+ * @see android.icu.text.TimeZoneFormat.Style
  * @see #format(Style, TimeZone, long, Output)
  */
 
@@ -380,7 +380,7 @@ public android.icu.util.TimeZone parse(android.icu.text.TimeZoneFormat.Style sty
  * Returns a <code>TimeZone</code> by parsing the time zone string according to
  * the parse position, the style and the default parse options.
  * <p>
- * <b>Note</b>: This method is equivalent to {@link #parse(Style, String, ParsePosition, EnumSet, Output)
+ * <b>Note</b>: This method is equivalent to {@link #parse(android.icu.text.TimeZoneFormat.Style,java.lang.String,java.text.ParsePosition,java.util.EnumSet,android.icu.util.Output)
  * parse(style, text, pos, null, timeType)}.
  *
  * @param text the text contains a time zone string at the position.
@@ -389,7 +389,7 @@ public android.icu.util.TimeZone parse(android.icu.text.TimeZoneFormat.Style sty
  * @param timeType The output argument for receiving the time type (standard/daylight/unknown),
  * or specify null if the information is not necessary.
  * @return A <code>TimeZone</code>, or null if the input could not be parsed.
- * @see Style
+ * @see android.icu.text.TimeZoneFormat.Style
  * @see #parse(Style, String, ParsePosition, EnumSet, Output)
  * @see #format(Style, TimeZone, long, Output)
  * @see #setDefaultParseOptions(EnumSet)
@@ -401,7 +401,7 @@ public android.icu.util.TimeZone parse(android.icu.text.TimeZoneFormat.Style sty
  * Returns a <code>TimeZone</code> by parsing the time zone string according to
  * the given parse position.
  * <p>
- * <b>Note</b>: This method is equivalent to {@link #parse(Style, String, ParsePosition, EnumSet, Output)
+ * <b>Note</b>: This method is equivalent to {@link #parse(android.icu.text.TimeZoneFormat.Style,java.lang.String,java.text.ParsePosition,java.util.EnumSet,android.icu.util.Output)
  * parse(Style.GENERIC_LOCATION, text, pos, EnumSet.of(ParseOption.ALL_STYLES), timeType)}.
  *
  * @param text the text contains a time zone string at the position.
@@ -415,10 +415,10 @@ public final android.icu.util.TimeZone parse(java.lang.String text, java.text.Pa
 /**
  * Returns a <code>TimeZone</code> for the given text.
  * <p>
- * <b>Note</b>: The behavior of this method is equivalent to {@link #parse(String, ParsePosition)}.
+ * <b>Note</b>: The behavior of this method is equivalent to {@link #parse(java.lang.String,java.text.ParsePosition)}.
  * @param text the time zone string
  * @return A <code>TimeZone</code>.
- * @throws ParseException when the input could not be parsed as a time zone string.
+ * @throws java.text.ParseException when the input could not be parsed as a time zone string.
  * @see #parse(String, ParsePosition)
  */
 
@@ -462,8 +462,8 @@ public android.icu.text.TimeZoneFormat cloneAsThawed() { throw new RuntimeExcept
 /**
  * Offset pattern type enum.
  *
- * @see TimeZoneFormat#getGMTOffsetPattern(GMTOffsetPatternType)
- * @see TimeZoneFormat#setGMTOffsetPattern(GMTOffsetPatternType, String)
+ * @see android.icu.text.TimeZoneFormat#getGMTOffsetPattern(GMTOffsetPatternType)
+ * @see android.icu.text.TimeZoneFormat#setGMTOffsetPattern(GMTOffsetPatternType, String)
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -514,10 +514,10 @@ public enum ParseOption {
 
 ALL_STYLES,
 /**
- * When parsing a time zone display name in {@link Style#SPECIFIC_SHORT},
+ * When parsing a time zone display name in {@link android.icu.text.TimeZoneFormat.Style#SPECIFIC_SHORT Style#SPECIFIC_SHORT},
  * look for the IANA tz database compatible zone abbreviations in addition
- * to the localized names coming from the {@link TimeZoneNames} currently
- * used by the {@link TimeZoneFormat}.
+ * to the localized names coming from the {@link android.icu.text.TimeZoneNames TimeZoneNames} currently
+ * used by the {@link android.icu.text.TimeZoneFormat TimeZoneFormat}.
  */
 
 TZ_DATABASE_ABBREVIATIONS;
@@ -526,9 +526,9 @@ TZ_DATABASE_ABBREVIATIONS;
 /**
  * Time zone display format style enum used by format/parse APIs in <code>TimeZoneFormat</code>.
  *
- * @see TimeZoneFormat#format(Style, TimeZone, long)
- * @see TimeZoneFormat#format(Style, TimeZone, long, Output)
- * @see TimeZoneFormat#parse(Style, String, ParsePosition, Output)
+ * @see android.icu.text.TimeZoneFormat#format(Style, TimeZone, long)
+ * @see android.icu.text.TimeZoneFormat#format(Style, TimeZone, long, Output)
+ * @see android.icu.text.TimeZoneFormat#parse(Style, String, ParsePosition, Output)
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})

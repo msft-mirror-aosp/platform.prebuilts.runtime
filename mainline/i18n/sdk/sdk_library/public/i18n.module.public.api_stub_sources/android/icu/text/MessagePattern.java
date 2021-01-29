@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
 *******************************************************************************
 *   Copyright (C) 2010-2016, International Business Machines
@@ -91,10 +91,10 @@ public MessagePattern(android.icu.text.MessagePattern.ApostropheMode mode) { thr
  * Constructs a MessagePattern with default ApostropheMode and
  * parses the MessageFormat pattern string.
  * @param pattern a MessageFormat pattern string
- * @throws IllegalArgumentException for syntax errors in the pattern string
- * @throws IndexOutOfBoundsException if certain limits are exceeded
+ * @throws java.lang.IllegalArgumentException for syntax errors in the pattern string
+ * @throws java.lang.IndexOutOfBoundsException if certain limits are exceeded
  *         (e.g., argument number too high, argument name too long, etc.)
- * @throws NumberFormatException if a number could not be parsed
+ * @throws java.lang.NumberFormatException if a number could not be parsed
  */
 
 public MessagePattern(java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -103,10 +103,10 @@ public MessagePattern(java.lang.String pattern) { throw new RuntimeException("St
  * Parses a MessageFormat pattern string.
  * @param pattern a MessageFormat pattern string
  * @return this
- * @throws IllegalArgumentException for syntax errors in the pattern string
- * @throws IndexOutOfBoundsException if certain limits are exceeded
+ * @throws java.lang.IllegalArgumentException for syntax errors in the pattern string
+ * @throws java.lang.IndexOutOfBoundsException if certain limits are exceeded
  *         (e.g., argument number too high, argument name too long, etc.)
- * @throws NumberFormatException if a number could not be parsed
+ * @throws java.lang.NumberFormatException if a number could not be parsed
  */
 
 public android.icu.text.MessagePattern parse(java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -115,10 +115,10 @@ public android.icu.text.MessagePattern parse(java.lang.String pattern) { throw n
  * Parses a ChoiceFormat pattern string.
  * @param pattern a ChoiceFormat pattern string
  * @return this
- * @throws IllegalArgumentException for syntax errors in the pattern string
- * @throws IndexOutOfBoundsException if certain limits are exceeded
+ * @throws java.lang.IllegalArgumentException for syntax errors in the pattern string
+ * @throws java.lang.IndexOutOfBoundsException if certain limits are exceeded
  *         (e.g., argument number too high, argument name too long, etc.)
- * @throws NumberFormatException if a number could not be parsed
+ * @throws java.lang.NumberFormatException if a number could not be parsed
  */
 
 public android.icu.text.MessagePattern parseChoiceStyle(java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -127,10 +127,10 @@ public android.icu.text.MessagePattern parseChoiceStyle(java.lang.String pattern
  * Parses a PluralFormat pattern string.
  * @param pattern a PluralFormat pattern string
  * @return this
- * @throws IllegalArgumentException for syntax errors in the pattern string
- * @throws IndexOutOfBoundsException if certain limits are exceeded
+ * @throws java.lang.IllegalArgumentException for syntax errors in the pattern string
+ * @throws java.lang.IndexOutOfBoundsException if certain limits are exceeded
  *         (e.g., argument number too high, argument name too long, etc.)
- * @throws NumberFormatException if a number could not be parsed
+ * @throws java.lang.NumberFormatException if a number could not be parsed
  */
 
 public android.icu.text.MessagePattern parsePluralStyle(java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -139,10 +139,10 @@ public android.icu.text.MessagePattern parsePluralStyle(java.lang.String pattern
  * Parses a SelectFormat pattern string.
  * @param pattern a SelectFormat pattern string
  * @return this
- * @throws IllegalArgumentException for syntax errors in the pattern string
- * @throws IndexOutOfBoundsException if certain limits are exceeded
+ * @throws java.lang.IllegalArgumentException for syntax errors in the pattern string
+ * @throws java.lang.IndexOutOfBoundsException if certain limits are exceeded
  *         (e.g., argument number too high, argument name too long, etc.)
- * @throws NumberFormatException if a number could not be parsed
+ * @throws java.lang.NumberFormatException if a number could not be parsed
  */
 
 public android.icu.text.MessagePattern parseSelectStyle(java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -227,7 +227,7 @@ public static int validateArgumentName(java.lang.String name) { throw new Runtim
  * For example, this turns "I don't '{know}' {gender,select,female{h''er}other{h'im}}."
  * into "I don''t '{know}' {gender,select,female{h''er}other{h''im}}."
  * @return the deep-auto-quoted version of the parsed pattern string.
- * @see MessageFormat#autoQuoteApostrophe(String)
+ * @see android.icu.text.MessageFormat#autoQuoteApostrophe(String)
  */
 
 public java.lang.String autoQuoteApostropheDeep() { throw new RuntimeException("Stub!"); }
@@ -244,7 +244,7 @@ public int countParts() { throw new RuntimeException("Stub!"); }
  * Gets the i-th pattern "part".
  * @param i The index of the Part data. (0..countParts()-1)
  * @return the i-th pattern "part".
- * @throws IndexOutOfBoundsException if i is outside the (0..countParts()-1) range
+ * @throws java.lang.IndexOutOfBoundsException if i is outside the (0..countParts()-1) range
  */
 
 public android.icu.text.MessagePattern.Part getPart(int i) { throw new RuntimeException("Stub!"); }
@@ -254,7 +254,7 @@ public android.icu.text.MessagePattern.Part getPart(int i) { throw new RuntimeEx
  * Convenience method for getPart(i).getType().
  * @param i The index of the Part data. (0..countParts()-1)
  * @return The Part.Type of the i-th Part.
- * @throws IndexOutOfBoundsException if i is outside the (0..countParts()-1) range
+ * @throws java.lang.IndexOutOfBoundsException if i is outside the (0..countParts()-1) range
  */
 
 public android.icu.text.MessagePattern.Part.Type getPartType(int i) { throw new RuntimeException("Stub!"); }
@@ -264,7 +264,7 @@ public android.icu.text.MessagePattern.Part.Type getPartType(int i) { throw new 
  * Convenience method for getPart(partIndex).getIndex().
  * @param partIndex The index of the Part data. (0..countParts()-1)
  * @return The pattern index of this Part.
- * @throws IndexOutOfBoundsException if partIndex is outside the (0..countParts()-1) range
+ * @throws java.lang.IndexOutOfBoundsException if partIndex is outside the (0..countParts()-1) range
  */
 
 public int getPatternIndex(int partIndex) { throw new RuntimeException("Stub!"); }
@@ -299,7 +299,7 @@ public double getNumericValue(android.icu.text.MessagePattern.Part part) { throw
  * Returns the "offset:" value of a PluralFormat argument, or 0 if none is specified.
  * @param pluralStart the index of the first PluralFormat argument style part. (0..countParts()-1)
  * @return the "offset:" value.
- * @throws IndexOutOfBoundsException if pluralStart is outside the (0..countParts()-1) range
+ * @throws java.lang.IndexOutOfBoundsException if pluralStart is outside the (0..countParts()-1) range
  */
 
 public double getPluralOffset(int pluralStart) { throw new RuntimeException("Stub!"); }
@@ -310,7 +310,7 @@ public double getPluralOffset(int pluralStart) { throw new RuntimeException("Stu
  *        this Part should be of Type ARG_START or MSG_START.
  * @return The first i&gt;start where getPart(i).getType()==ARG|MSG_LIMIT at the same nesting level,
  *         or start itself if getPartType(msgStart)!=ARG|MSG_START.
- * @throws IndexOutOfBoundsException if start is outside the (0..countParts()-1) range
+ * @throws java.lang.IndexOutOfBoundsException if start is outside the (0..countParts()-1) range
  */
 
 public int getLimitPartIndex(int start) { throw new RuntimeException("Stub!"); }
@@ -344,14 +344,14 @@ public android.icu.text.MessagePattern freeze() { throw new RuntimeException("St
 public boolean isFrozen() { throw new RuntimeException("Stub!"); }
 
 /**
- * Return value from {@link #validateArgumentName(String)} for when
+ * Return value from {@link #validateArgumentName(java.lang.String)} for when
  * the string is a valid "pattern identifier" but not a number.
  */
 
 public static final int ARG_NAME_NOT_NUMBER = -1; // 0xffffffff
 
 /**
- * Return value from {@link #validateArgumentName(String)} for when
+ * Return value from {@link #validateArgumentName(java.lang.String)} for when
  * the string is invalid.
  * It might not be a valid "pattern identifier",
  * or it have only ASCII digits but there is a leading zero or the number is too large.
@@ -470,14 +470,14 @@ PLURAL,
 SELECT,
 /**
  * The argument is an ordinal-number PluralFormat
- * with the same style parts sequence and semantics as {@link ArgType#PLURAL}.
+ * with the same style parts sequence and semantics as {@link android.icu.text.MessagePattern.ArgType#PLURAL ArgType#PLURAL}.
  */
 
 SELECTORDINAL;
 
 /**
  * @return true if the argument type has a plural style part sequence and semantics,
- * for example {@link ArgType#PLURAL} and {@link ArgType#SELECTORDINAL}.
+ * for example {@link android.icu.text.MessagePattern.ArgType#PLURAL ArgType#PLURAL} and {@link android.icu.text.MessagePattern.ArgType#SELECTORDINAL ArgType#SELECTORDINAL}.
  */
 
 public boolean hasPluralStyle() { throw new RuntimeException("Stub!"); }
@@ -672,7 +672,7 @@ ARG_DOUBLE;
 
 /**
  * Indicates whether this part has a numeric value.
- * If so, then that numeric value can be retrieved via {@link MessagePattern#getNumericValue(Part)}.
+ * If so, then that numeric value can be retrieved via {@link android.icu.text.MessagePattern#getNumericValue(android.icu.text.MessagePattern.Part) MessagePattern#getNumericValue(Part)}.
  * @return true if this part has a numeric value.
  */
 

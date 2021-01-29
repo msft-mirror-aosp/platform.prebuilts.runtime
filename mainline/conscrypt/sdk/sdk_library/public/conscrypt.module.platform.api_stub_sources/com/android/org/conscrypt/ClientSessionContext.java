@@ -31,8 +31,7 @@ public final class ClientSessionContext implements javax.net.ssl.SSLSessionConte
 ClientSessionContext() { throw new RuntimeException("Stub!"); }
 
 /**
- * Applications should not use this method. Instead use {@link
- * Conscrypt#setClientSessionCache(SSLContext, SSLClientSessionCache)}.
+ * Applications should not use this method. Instead use {@link com.android.org.conscrypt.Conscrypt#setClientSessionCache(javax.net.ssl.SSLContext,com.android.org.conscrypt.SSLClientSessionCache)  }.
  */
 
 public void setPersistentCache(com.android.org.conscrypt.SSLClientSessionCache persistentCache) { throw new RuntimeException("Stub!"); }

@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2018 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.number;
 
@@ -14,11 +14,11 @@ import java.text.AttributedCharacterIterator;
  * Instances of this class are immutable and thread-safe.
  *
  * @author sffc
- * @see NumberRangeFormatter
+ * @see android.icu.number.NumberRangeFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
-public class FormattedNumberRange implements java.lang.CharSequence {
+public class FormattedNumberRange implements android.icu.text.FormattedValue {
 
 FormattedNumberRange() { throw new RuntimeException("Stub!"); }
 
@@ -30,27 +30,33 @@ public java.lang.String toString() { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
+ */
+
+public <A extends java.lang.Appendable> A appendTo(A appendable) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
  */
 
 public char charAt(int index) { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 
 public int length() { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 
 public java.lang.CharSequence subSequence(int start, int end) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public boolean nextPosition(android.icu.text.ConstrainedFieldPosition cfpos) { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
@@ -63,7 +69,7 @@ public java.text.AttributedCharacterIterator toCharacterIterator() { throw new R
  * printed after scaling and rounding have been applied by the number range formatting pipeline.
  *
  * @return A BigDecimal representation of the first formatted number.
- * @see NumberRangeFormatter
+ * @see android.icu.number.NumberRangeFormatter
  * @see #getSecondBigDecimal
  */
 
@@ -74,7 +80,7 @@ public java.math.BigDecimal getFirstBigDecimal() { throw new RuntimeException("S
  * printed after scaling and rounding have been applied by the number range formatting pipeline.
  *
  * @return A BigDecimal representation of the second formatted number.
- * @see NumberRangeFormatter
+ * @see android.icu.number.NumberRangeFormatter
  * @see #getFirstBigDecimal
  */
 
@@ -86,24 +92,20 @@ public java.math.BigDecimal getSecondBigDecimal() { throw new RuntimeException("
  * identity fallback was used.
  *
  * @return A RangeIdentityType indicating the resulting identity situation in the formatted number range.
- * @see NumberRangeFormatter
- * @see NumberRangeFormatter.RangeIdentityFallback
+ * @see android.icu.number.NumberRangeFormatter
+ * @see android.icu.number.NumberRangeFormatter.RangeIdentityFallback
  */
 
 public android.icu.number.NumberRangeFormatter.RangeIdentityResult getIdentityResult() { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 
 public int hashCode() { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 
 public boolean equals(java.lang.Object other) { throw new RuntimeException("Stub!"); }

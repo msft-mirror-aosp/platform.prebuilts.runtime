@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  * @(#)TimeZone.java    1.51 00/01/19
  *
@@ -27,7 +27,7 @@ import java.util.MissingResourceException;
  * is running. For example, for a program running in Japan, <code>getDefault</code>
  * creates a <code>TimeZone</code> object based on Japanese Standard Time.
  *
- * <p>You can also get a <code>TimeZone</code> using {@link #getTimeZone(String)}
+ * <p>You can also get a <code>TimeZone</code> using {@link #getTimeZone(java.lang.String)}
  * along with a time zone ID. For instance, the time zone ID for the
  * U.S. Pacific Time zone is "America/Los_Angeles". So, you can get a
  * U.S. Pacific Time <code>TimeZone</code> object with:
@@ -68,8 +68,8 @@ import java.util.MissingResourceException;
  * Time" and "China Standard Time"), and the Java platform can then only
  * recognize one of them.
  *
- * @see          Calendar
- * @see          GregorianCalendar
+ * @see          android.icu.util.Calendar
+ * @see          android.icu.util.GregorianCalendar
  * @author       Mark Davis, Deborah Goldsmith, Chen-Lieh Huang, Alan Liu
  */
 
@@ -107,8 +107,8 @@ public abstract int getOffset(int era, int year, int month, int day, int dayOfWe
  * @param date the date represented in milliseconds since January 1, 1970 00:00:00 GMT
  * @return the amount of time in milliseconds to add to UTC to get local time.
  *
- * @see Calendar#ZONE_OFFSET
- * @see Calendar#DST_OFFSET
+ * @see android.icu.util.Calendar#ZONE_OFFSET
+ * @see android.icu.util.Calendar#DST_OFFSET
  * @see #getOffset(long, boolean, int[])
  */
 
@@ -174,7 +174,7 @@ public void setID(java.lang.String ID) { throw new RuntimeException("Stub!"); }
  * If the display name is not available for the locale,
  * a fallback based on the country, city, or time zone id will be used.
  * @return the human-readable name of this time zone in the default locale.
- * @see Category#DISPLAY
+ * @see android.icu.util.ULocale.Category#DISPLAY
  */
 
 public final java.lang.String getDisplayName() { throw new RuntimeException("Stub!"); }
@@ -217,7 +217,7 @@ public final java.lang.String getDisplayName(android.icu.util.ULocale locale) { 
  * <code>LONG_GENERIC</code>, <code>SHORT_GMT</code>, <code>LONG_GMT</code>,
  * <code>SHORT_COMMONLY_USED</code> or <code>GENERIC_LOCATION</code>.
  * @return the human-readable name of this time zone in the default locale.
- * @see Category#DISPLAY
+ * @see android.icu.util.ULocale.Category#DISPLAY
  */
 
 public final java.lang.String getDisplayName(boolean daylight, int style) { throw new RuntimeException("Stub!"); }
@@ -236,7 +236,7 @@ public final java.lang.String getDisplayName(boolean daylight, int style) { thro
  * @param locale the locale in which to supply the display name.
  * @return the human-readable name of this time zone in the given locale
  * or in the default locale if the given locale is not recognized.
- * @exception IllegalArgumentException style is invalid.
+ * @exception java.lang.IllegalArgumentException style is invalid.
  */
 
 public java.lang.String getDisplayName(boolean daylight, int style, java.util.Locale locale) { throw new RuntimeException("Stub!"); }
@@ -255,7 +255,7 @@ public java.lang.String getDisplayName(boolean daylight, int style, java.util.Lo
  * @param locale the locale in which to supply the display name.
  * @return the human-readable name of this time zone in the given locale
  * or in the default locale if the given locale is not recognized.
- * @exception IllegalArgumentException style is invalid.
+ * @exception java.lang.IllegalArgumentException style is invalid.
  */
 
 public java.lang.String getDisplayName(boolean daylight, int style, android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
@@ -299,7 +299,7 @@ public abstract boolean useDaylightTime();
  * Queries if this time zone is in daylight saving time or will observe
  * daylight saving time at any future time.
  * <p>The default implementation in this class returns <code>true</code> if {@link #useDaylightTime()}
- * or {@link #inDaylightTime(Date) inDaylightTime(new Date())} returns <code>true</code>.
+ * or {@link #inDaylightTime(java.util.Date) inDaylightTime(new Date())} returns <code>true</code>.
  * <p>
  * <strong>Note:</strong> This method was added for {@link java.util.TimeZone} compatibility
  * support. The {@link java.util.TimeZone#useDaylightTime()} method only checks the last known
@@ -348,7 +348,7 @@ public static android.icu.util.TimeZone getTimeZone(java.lang.String ID) { throw
 
 /**
  * Gets the <code>TimeZone</code> for the given ID. The instance of <code>TimeZone</code>
- * returned by this method is immutable. Any methods mutate the instance({@link #setID(String)},
+ * returned by this method is immutable. Any methods mutate the instance({@link #setID(java.lang.String)},
  * {@link #setRawOffset(int)}) will throw <code>UnsupportedOperationException</code> upon its
  * invocation.
  *
@@ -387,7 +387,7 @@ public static android.icu.util.TimeZone getTimeZone(java.lang.String ID, int typ
  * @param rawOffset     An offset from GMT in milliseconds, ignoring the effect of daylight savings
  *                      time, if any. When null, no filtering done by zone offset.
  * @return an immutable set of system time zone IDs.
- * @see SystemTimeZoneType
+ * @see android.icu.util.TimeZone.SystemTimeZoneType
  */
 
 public static java.util.Set<java.lang.String> getAvailableIDs(android.icu.util.TimeZone.SystemTimeZoneType zoneType, java.lang.String region, java.lang.Integer rawOffset) { throw new RuntimeException("Stub!"); }
@@ -511,7 +511,7 @@ public int hashCode() { throw new RuntimeException("Stub!"); }
  * <strong>[icu]</strong> Returns the time zone data version currently used by ICU.
  *
  * @return the version string, such as "2007f"
- * @throws MissingResourceException if ICU time zone resource bundle
+ * @throws java.util.MissingResourceException if ICU time zone resource bundle
  * is missing or the version information is not available.
  */
 
@@ -553,7 +553,7 @@ public static java.lang.String getCanonicalID(java.lang.String id, boolean[] isS
  * @param id the system time zone ID.
  * @return the region code associated with the given
  * system time zone ID.
- * @throws IllegalArgumentException if <code>id</code> is not a known system ID.
+ * @throws java.lang.IllegalArgumentException if <code>id</code> is not a known system ID.
  * @see #getAvailableIDs(String)
  */
 
@@ -569,7 +569,7 @@ public static java.lang.String getRegion(java.lang.String id) { throw new Runtim
  *
  * <p>This implementation utilizes <a href="http://unicode.org/cldr/charts/supplemental/zone_tzid.html">
  * Zone-Tzid mapping data</a>. The mapping data is updated time to time. To get the latest changes,
- * please read the ICU user guide section <a href="http://userguide.icu-project.org/datetime/timezone#TOC-Updating-the-Time-Zone-Data">
+ * please read the ICU user guide section <a href="https://unicode-org.github.io/icu/userguide/datetime/timezone#updating-the-time-zone-data">
  * Updating the Time Zone Data</a>.
  *
  * @param id A system time zone ID
@@ -593,7 +593,7 @@ public static java.lang.String getWindowsID(java.lang.String id) { throw new Run
  *
  * <p>This implementation utilizes <a href="http://unicode.org/cldr/charts/supplemental/zone_tzid.html">
  * Zone-Tzid mapping data</a>. The mapping data is updated time to time. To get the latest changes,
- * please read the ICU user guide section <a href="http://userguide.icu-project.org/datetime/timezone#TOC-Updating-the-Time-Zone-Data">
+ * please read the ICU user guide section <a href="https://unicode-org.github.io/icu/userguide/datetime/timezone#updating-the-time-zone-data">
  * Updating the Time Zone Data</a>.
  *
  * @param winid A Windows time zone ID
@@ -711,7 +711,7 @@ public static final int TIMEZONE_JDK = 1; // 0x1
 /**
  * <strong>[icu]</strong> The immutable (frozen) "unknown" time zone.
  * It behaves like the GMT/UTC time zone but has the UNKNOWN_ZONE_ID = "Etc/Unknown".
- * {@link TimeZone#getTimeZone(String)} returns a mutable clone of this
+ * {@link android.icu.util.TimeZone#getTimeZone(java.lang.String) TimeZone#getTimeZone(String)} returns a mutable clone of this
  * time zone if the input ID is not recognized.
  *
  * @see #UNKNOWN_ZONE_ID
@@ -729,7 +729,7 @@ static { UNKNOWN_ZONE = null; }
 public static final java.lang.String UNKNOWN_ZONE_ID = "Etc/Unknown";
 /**
  * <strong>[icu]</strong> System time zone type constants used by filtering zones in
- * {@link TimeZone#getAvailableIDs(SystemTimeZoneType, String, Integer)}
+ * {@link android.icu.util.TimeZone#getAvailableIDs(android.icu.util.TimeZone.SystemTimeZoneType,java.lang.String,java.lang.Integer) TimeZone#getAvailableIDs(SystemTimeZoneType, String, Integer)}
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
