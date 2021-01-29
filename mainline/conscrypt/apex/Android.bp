@@ -16,7 +16,6 @@
 
 prebuilt_apex {
     name: "com.android.conscrypt",
-    overrides: ["com.android.conscrypt"],
     arch: {
         arm: {
             src: "com.android.conscrypt-arm.apex",

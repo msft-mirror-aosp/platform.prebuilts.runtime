@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
 *******************************************************************************
 *   Copyright (C) 2001-2016, International Business Machines
@@ -470,7 +470,7 @@ public Bidi() { throw new RuntimeException("Stub!"); }
  *        The number of runs depends on the actual text and maybe anywhere between
  *        1 and <code>maxLength</code>. It is typically small.
  *
- * @throws IllegalArgumentException if maxLength or maxRunCount is less than 0
+ * @throws java.lang.IllegalArgumentException if maxLength or maxRunCount is less than 0
  */
 
 public Bidi(int maxLength, int maxRunCount) { throw new RuntimeException("Stub!"); }
@@ -550,7 +550,7 @@ public Bidi(java.text.AttributedCharacterIterator paragraph) { throw new Runtime
  *        DIRECTION_RIGHT_TO_LEFT, DIRECTION_DEFAULT_LEFT_TO_RIGHT, and
  *        DIRECTION_DEFAULT_RIGHT_TO_LEFT. Other values are reserved.
  *
- * @throws IllegalArgumentException if the values in embeddings are
+ * @throws java.lang.IllegalArgumentException if the values in embeddings are
  *         not within the allowed range
  *
  * @see #DIRECTION_LEFT_TO_RIGHT
@@ -986,7 +986,7 @@ public void setContext(java.lang.String prologue, java.lang.String epilogue) { t
  *        <strong>Note:</strong> the <code>embeddingLevels</code> array must
  *        have one entry for each character in <code>text</code>.
  *
- * @throws IllegalArgumentException if the values in embeddingLevels are
+ * @throws java.lang.IllegalArgumentException if the values in embeddingLevels are
  *         not within the allowed range
  *
  * @see #LEVEL_DEFAULT_LTR
@@ -1064,7 +1064,7 @@ public void setPara(java.lang.String text, byte paraLevel, byte[] embeddingLevel
  *        <strong>Note:</strong> the <code>embeddingLevels</code> array must
  *        have one entry for each character in <code>text</code>.
  *
- * @throws IllegalArgumentException if the values in embeddingLevels are
+ * @throws java.lang.IllegalArgumentException if the values in embeddingLevels are
  *         not within the allowed range
  *
  * @see #LEVEL_DEFAULT_LTR
@@ -1156,7 +1156,7 @@ public boolean isOrderParagraphsLTR() { throw new RuntimeException("Stub!"); }
  *         represented by this object is unidirectional,
  *         and which direction, or if it is mixed-directional.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  *
  * @see #LTR
@@ -1172,7 +1172,7 @@ public byte getDirection() { throw new RuntimeException("Stub!"); }
  * @return A <code>String</code> containing the text that the
  *         <code>Bidi</code> object was created for.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  *
  * @see #setPara
@@ -1187,7 +1187,7 @@ public java.lang.String getTextAsString() { throw new RuntimeException("Stub!");
  * @return A <code>char</code> array containing the text that the
  *         <code>Bidi</code> object was created for.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  *
  * @see #setPara
@@ -1202,7 +1202,7 @@ public char[] getText() { throw new RuntimeException("Stub!"); }
  * @return The length of the text that the <code>Bidi</code> object was
  *         created for.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  */
 
@@ -1241,7 +1241,7 @@ public int getLength() { throw new RuntimeException("Stub!"); }
  * @return The length of the part of the source text processed by
  *         the last call to <code>setPara</code>.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  *
  * @see #setPara
@@ -1270,7 +1270,7 @@ public int getProcessedLength() { throw new RuntimeException("Stub!"); }
  * @return The length of the reordered text resulting from
  *         the last call to <code>setPara</code>.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  *
  * @see #setPara
@@ -1289,7 +1289,7 @@ public int getResultLength() { throw new RuntimeException("Stub!"); }
  *         LEVEL_DEFAULT_RTL.  In that case, the level of the first paragraph
  *         is returned.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  *
  * @see #LEVEL_DEFAULT_LTR
@@ -1305,7 +1305,7 @@ public byte getParaLevel() { throw new RuntimeException("Stub!"); }
  *
  * @return The number of paragraphs.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  */
 
@@ -1325,9 +1325,9 @@ public int countParagraphs() { throw new RuntimeException("Stub!"); }
  *        <code>limit</code> will receive the limit of the paragraph.<br>
  *        <code>embeddingLevel</code> will receive the level of the paragraph.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
- * @throws IllegalArgumentException if paraIndex is not in the range
+ * @throws java.lang.IllegalArgumentException if paraIndex is not in the range
  *        <code>[0..countParagraphs()-1]</code>
  *
  * @see android.icu.text.BidiRun
@@ -1350,9 +1350,9 @@ public android.icu.text.BidiRun getParagraphByIndex(int paraIndex) { throw new R
  *        <code>limit</code> will receive the limit of the paragraph.<br>
  *        <code>embeddingLevel</code> will receive the level of the paragraph.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
- * @throws IllegalArgumentException if charIndex is not within the legal range
+ * @throws java.lang.IllegalArgumentException if charIndex is not within the legal range
  *
  * @see android.icu.text.BidiRun
  * @see #getParagraphByIndex
@@ -1370,9 +1370,9 @@ public android.icu.text.BidiRun getParagraph(int charIndex) { throw new RuntimeE
  * @return The index of the paragraph containing the specified position,
  *         starting from 0.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
- * @throws IllegalArgumentException if charIndex is not within the legal range
+ * @throws java.lang.IllegalArgumentException if charIndex is not within the legal range
  *
  * @see android.icu.text.BidiRun
  * @see #getProcessedLength
@@ -1413,7 +1413,7 @@ public android.icu.text.BidiClassifier getCustomClassifier() { throw new Runtime
  * @return The Bidi class for the character <code>c</code> that is in effect
  *         for this <code>Bidi</code> instance.
  *
- * @see BidiClassifier
+ * @see android.icu.text.BidiClassifier
  */
 
 public int getCustomizedClass(int c) { throw new RuntimeException("Stub!"); }
@@ -1447,9 +1447,9 @@ public int getCustomizedClass(int c) { throw new RuntimeException("Stub!"); }
  *
  * @return a <code>Bidi</code> object that will now represent a line of the text.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code>
- * @throws IllegalArgumentException if start and limit are not in the range
+ * @throws java.lang.IllegalArgumentException if start and limit are not in the range
  *         <code>0&lt;=start&lt;limit&lt;=getProcessedLength()</code>,
  *         or if the specified line crosses a paragraph boundary
  *
@@ -1466,9 +1466,9 @@ public android.icu.text.Bidi setLine(int start, int limit) { throw new RuntimeEx
  *
  * @return The level for the character at <code>charIndex</code>.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
- * @throws IllegalArgumentException if charIndex is not in the range
+ * @throws java.lang.IllegalArgumentException if charIndex is not in the range
  *         <code>0&lt;=charIndex&lt;getProcessedLength()</code>
  *
  * @see #getProcessedLength
@@ -1485,7 +1485,7 @@ public byte getLevelAt(int charIndex) { throw new RuntimeException("Stub!"); }
  * @return The levels array for the text,
  *         or <code>null</code> if an error occurs.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  */
 
@@ -1504,9 +1504,9 @@ public byte[] getLevels() { throw new RuntimeException("Stub!"); }
  *        the limit of the run, and <code>embeddingLevel</code> containing
  *        the level of the run.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
- * @throws IllegalArgumentException if logicalPosition is not in the range
+ * @throws java.lang.IllegalArgumentException if logicalPosition is not in the range
  *         <code>0&lt;=logicalPosition&lt;getProcessedLength()</code>
  *
  * @see android.icu.text.BidiRun
@@ -1527,7 +1527,7 @@ public android.icu.text.BidiRun getLogicalRun(int logicalPosition) { throw new R
  *
  * @return The number of runs.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  */
 
@@ -1585,9 +1585,9 @@ public int countRuns() { throw new RuntimeException("Stub!"); }
  *         <code>LTR==0</code> or <code>RTL==1</code>,
  *         never <code>MIXED</code>.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
- * @throws IllegalArgumentException if <code>runIndex</code> is not in
+ * @throws java.lang.IllegalArgumentException if <code>runIndex</code> is not in
  *         the range <code>0&lt;=runIndex&lt;countRuns()</code>
  *
  * @see #countRuns()
@@ -1628,9 +1628,9 @@ public android.icu.text.BidiRun getVisualRun(int runIndex) { throw new RuntimeEx
  *
  * @return The visual position of this character.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
- * @throws IllegalArgumentException if <code>logicalIndex</code> is not in
+ * @throws java.lang.IllegalArgumentException if <code>logicalIndex</code> is not in
  *         the range <code>0&lt;=logicalIndex&lt;getProcessedLength()</code>
  *
  * @see #getLogicalMap
@@ -1667,9 +1667,9 @@ public int getVisualIndex(int logicalIndex) { throw new RuntimeException("Stub!"
  *
  * @return The index of this character in the text.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
- * @throws IllegalArgumentException if <code>visualIndex</code> is not in
+ * @throws java.lang.IllegalArgumentException if <code>visualIndex</code> is not in
  *         the range <code>0&lt;=visualIndex&lt;getResultLength()</code>
  *
  * @see #getVisualMap
@@ -1710,7 +1710,7 @@ public int getLogicalIndex(int visualIndex) { throw new RuntimeException("Stub!"
  *        <code>indexMap[logicalIndex]==visualIndex</code>, where
  *        <code>indexMap</code> represents the returned array.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  *
  * @see #getVisualMap
@@ -1744,7 +1744,7 @@ public int[] getLogicalMap() { throw new RuntimeException("Stub!"); }
  *        <code>indexMap[visualIndex]==logicalIndex</code>, where
  *        <code>indexMap</code> represents the returned array.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  *
  * @see #getLogicalMap
@@ -1841,9 +1841,9 @@ public static int[] invertMap(int[] srcMap) { throw new RuntimeException("Stub!"
  * @param lineLimit the offset from the start of the paragraph to the limit
  *        of the line.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code>
- * @throws IllegalArgumentException if lineStart and lineLimit are not in the range
+ * @throws java.lang.IllegalArgumentException if lineStart and lineLimit are not in the range
  *         <code>0&lt;=lineStart&lt;lineLimit&lt;=getProcessedLength()</code>,
  *         or if the specified line crosses a paragraph boundary
  */
@@ -1857,7 +1857,7 @@ public android.icu.text.Bidi createLineBidi(int lineStart, int lineLimit) { thro
  *
  * @return true if the line is not left-to-right or right-to-left.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code>
  */
 
@@ -1870,7 +1870,7 @@ public boolean isMixed() { throw new RuntimeException("Stub!"); }
  * @return true if the line is all left-to-right text and the base direction
  *         is left-to-right.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code>
  */
 
@@ -1883,7 +1883,7 @@ public boolean isLeftToRight() { throw new RuntimeException("Stub!"); }
  * @return true if the line is all right-to-left text, and the base
  *         direction is right-to-left
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code>
  */
 
@@ -1894,7 +1894,7 @@ public boolean isRightToLeft() { throw new RuntimeException("Stub!"); }
  *
  * @return true if the base direction is left-to-right
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  */
 
@@ -1905,7 +1905,7 @@ public boolean baseIsLeftToRight() { throw new RuntimeException("Stub!"); }
  *
  * @return the base level
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  */
 
@@ -1916,7 +1916,7 @@ public int getBaseLevel() { throw new RuntimeException("Stub!"); }
  *
  * @return the number of level runs
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  */
 
@@ -1929,9 +1929,9 @@ public int getRunCount() { throw new RuntimeException("Stub!"); }
  *
  * @return the level of the run
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
- * @throws IllegalArgumentException if <code>run</code> is not in
+ * @throws java.lang.IllegalArgumentException if <code>run</code> is not in
  *         the range <code>0&lt;=run&lt;countRuns()</code>
  */
 
@@ -1945,9 +1945,9 @@ public int getRunLevel(int run) { throw new RuntimeException("Stub!"); }
  *
  * @return the start of the run
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
- * @throws IllegalArgumentException if <code>run</code> is not in
+ * @throws java.lang.IllegalArgumentException if <code>run</code> is not in
  *         the range <code>0&lt;=run&lt;countRuns()</code>
  */
 
@@ -1962,9 +1962,9 @@ public int getRunStart(int run) { throw new RuntimeException("Stub!"); }
  *
  * @return the limit of the run
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
- * @throws IllegalArgumentException if <code>run</code> is not in
+ * @throws java.lang.IllegalArgumentException if <code>run</code> is not in
  *         the range <code>0&lt;=run&lt;countRuns()</code>
  */
 
@@ -2051,7 +2051,7 @@ public static void reorderVisually(byte[] levels, int levelStart, java.lang.Obje
  *         If none of these options is set, then the length of the returned
  *         string will be exactly <code>getProcessedLength()</code>.
  *
- * @throws IllegalStateException if this call is not preceded by a successful
+ * @throws java.lang.IllegalStateException if this call is not preceded by a successful
  *         call to <code>setPara</code> or <code>setLine</code>
  *
  * @see #DO_MIRRORING
@@ -2099,7 +2099,7 @@ public java.lang.String writeReordered(int options) { throw new RuntimeException
  *         then the length of the returned string will be exactly
  *         <code>src.length()</code>.
  *
- * @throws IllegalArgumentException if <code>src</code> is null.
+ * @throws java.lang.IllegalArgumentException if <code>src</code> is null.
  */
 
 public static java.lang.String writeReverse(java.lang.String src, int options) { throw new RuntimeException("Stub!"); }

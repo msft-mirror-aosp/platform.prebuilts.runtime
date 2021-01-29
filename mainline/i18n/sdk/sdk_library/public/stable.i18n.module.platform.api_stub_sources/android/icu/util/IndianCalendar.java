@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 1996-2011, International Business Machines Corporation and    *
@@ -70,7 +70,7 @@ public class IndianCalendar extends android.icu.util.Calendar {
 /**
  * Constructs a <code>IndianCalendar</code> using the current time
  * in the default time zone with the default <code>FORMAT</code> locale.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public IndianCalendar() { throw new RuntimeException("Stub!"); }
@@ -80,7 +80,7 @@ public IndianCalendar() { throw new RuntimeException("Stub!"); }
  * in the given time zone with the default <code>FORMAT</code> locale.
  *
  * @param zone the given time zone.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public IndianCalendar(android.icu.util.TimeZone zone) { throw new RuntimeException("Stub!"); }
@@ -130,7 +130,7 @@ public IndianCalendar(android.icu.util.TimeZone zone, android.icu.util.ULocale l
  * in the default time zone with the default <code>FORMAT</code> locale.
  *
  * @param date      The date to which the new calendar is set.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public IndianCalendar(java.util.Date date) { throw new RuntimeException("Stub!"); }
@@ -145,7 +145,7 @@ public IndianCalendar(java.util.Date date) { throw new RuntimeException("Stub!")
  *                  The value is 0-based. e.g., 0 for January.
  *
  * @param date      The value used to set the calendar's {@link #DATE DATE} time field.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public IndianCalendar(int year, int month, int date) { throw new RuntimeException("Stub!"); }
@@ -166,7 +166,7 @@ public IndianCalendar(int year, int month, int date) { throw new RuntimeExceptio
  * @param minute    The value used to set the calendar's {@link #MINUTE MINUTE} time field.
  *
  * @param second    The value used to set the calendar's {@link #SECOND SECOND} time field.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public IndianCalendar(int year, int month, int date, int hour, int minute, int second) { throw new RuntimeException("Stub!"); }

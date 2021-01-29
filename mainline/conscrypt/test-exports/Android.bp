@@ -6,9 +6,9 @@ java_import {
     visibility: [
         "//art/build",
         "//device:__subpackages__",
+        "//external/conscrypt:__subpackages__",
         "//external/robolectric-shadows",
         "//system/apex/tests",
-        "//external/conscrypt:__subpackages__",
     ],
     apex_available: [
         "com.android.conscrypt",
@@ -23,9 +23,9 @@ java_import {
     visibility: [
         "//art/build",
         "//device:__subpackages__",
+        "//external/conscrypt:__subpackages__",
         "//external/robolectric-shadows",
         "//system/apex/tests",
-        "//external/conscrypt:__subpackages__",
     ],
     apex_available: [
         "com.android.conscrypt",
@@ -39,9 +39,10 @@ java_test_import {
     sdk_member_name: "conscrypt-tests",
     visibility: [
         "//cts/tests/libcore/luni",
-        "//external/conscrypt/apex/tests",
         "//external/conscrypt",
+        "//external/conscrypt/apex/tests",
     ],
+    apex_available: ["//apex_available:platform"],
     jars: ["java/conscrypt-tests.jar"],
     test_config: "java/conscrypt-tests-AndroidTest.xml",
 }
@@ -51,9 +52,10 @@ java_test_import {
     prefer: false,
     visibility: [
         "//cts/tests/libcore/luni",
-        "//external/conscrypt/apex/tests",
         "//external/conscrypt",
+        "//external/conscrypt/apex/tests",
     ],
+    apex_available: ["//apex_available:platform"],
     jars: ["java/conscrypt-tests.jar"],
     test_config: "java/conscrypt-tests-AndroidTest.xml",
 }
@@ -62,11 +64,11 @@ cc_prebuilt_library_shared {
     name: "conscrypt-module-test-exports_libjavacrypto@current",
     sdk_member_name: "libjavacrypto",
     visibility: ["//external/conscrypt:__subpackages__"],
-    host_supported: true,
     apex_available: [
         "com.android.conscrypt",
         "test_com.android.conscrypt",
     ],
+    host_supported: true,
     installable: false,
     shared_libs: [
         "libcrypto",
@@ -93,20 +95,21 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libjavacrypto.so"],
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
+            enabled: true,
             srcs: ["linux_bionic/x86_64/lib/libjavacrypto.so"],
         },
         linux_glibc: {
-            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
+            enabled: true,
             srcs: ["linux_glibc/x86_64/lib/libjavacrypto.so"],
         },
         linux_glibc_x86: {
+            enabled: true,
             srcs: ["linux_glibc/x86/lib/libjavacrypto.so"],
         },
     },
@@ -116,11 +119,11 @@ cc_prebuilt_library_shared {
     name: "libjavacrypto",
     prefer: false,
     visibility: ["//external/conscrypt:__subpackages__"],
-    host_supported: true,
     apex_available: [
         "com.android.conscrypt",
         "test_com.android.conscrypt",
     ],
+    host_supported: true,
     shared_libs: [
         "libcrypto",
         "liblog",
@@ -146,20 +149,21 @@ cc_prebuilt_library_shared {
             srcs: ["android/x86/lib/libjavacrypto.so"],
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
         linux_bionic_x86_64: {
+            enabled: true,
             srcs: ["linux_bionic/x86_64/lib/libjavacrypto.so"],
         },
         linux_glibc: {
-            enabled: true,
             compile_multilib: "both",
         },
         linux_glibc_x86_64: {
+            enabled: true,
             srcs: ["linux_glibc/x86_64/lib/libjavacrypto.so"],
         },
         linux_glibc_x86: {
+            enabled: true,
             srcs: ["linux_glibc/x86/lib/libjavacrypto.so"],
         },
     },
@@ -171,18 +175,23 @@ module_exports_snapshot {
     host_supported: true,
     native_shared_libs: ["conscrypt-module-test-exports_libjavacrypto@current"],
     target: {
-        host: {
-            enabled: false,
-        },
         android: {
             java_libs: ["conscrypt-module-test-exports_conscrypt@current"],
             java_tests: ["conscrypt-module-test-exports_conscrypt-tests@current"],
         },
         linux_bionic: {
-            enabled: true,
             compile_multilib: "64",
         },
-        linux_glibc: {
+        host: {
+            enabled: false,
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+        },
+        linux_glibc_x86: {
+            enabled: true,
+        },
+        linux_bionic_x86_64: {
             enabled: true,
         },
     },

@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /**
  *******************************************************************************
  * Copyright (C) 1996-2016, International Business Machines Corporation and
@@ -23,7 +23,7 @@ import android.icu.lang.UScript;
  * <p>A Collator is thread-safe only when frozen. See {{@link #isFrozen()} and {@link android.icu.util.Freezable}.
  *
  * <p>
- * Users are strongly encouraged to read the <a href="http://userguide.icu-project.org/collation">User
+ * Users are strongly encouraged to read the <a href="https://unicode-org.github.io/icu/userguide/collation">User
  * Guide</a> for more information about the collation service before using this class.
  *
  * <p>
@@ -40,8 +40,8 @@ import android.icu.lang.UScript;
  *
  * <p>
  * For information about the collation rule syntax and details about customization, please refer to the <a
- * href="http://userguide.icu-project.org/collation/customization">Collation customization</a> section of the
- * User Guide.
+ * href="https://unicode-org.github.io/icu/userguide/collation/customization">Collation customization</a>
+ * section of the User Guide.
  *
  * <p>
  * <strong>Note</strong> that there are some differences between the Collation rule syntax used in Java and ICU4J:
@@ -166,12 +166,12 @@ public final class RuleBasedCollator extends android.icu.text.Collator {
  * The collator will be based on the CLDR root collation, with the
  * attributes and re-ordering of the characters specified in the argument rules.
  * <p>
- * See the User Guide's section on <a href="http://userguide.icu-project.org/collation/customization">
+ * See the User Guide's section on <a href="https://unicode-org.github.io/icu/userguide/collation/customization">
  * Collation Customization</a> for details on the rule syntax.
  *
  * @param rules
  *            the collation rules to build the collation table from.
- * @exception ParseException
+ * @exception java.text.ParseException
  *                and IOException thrown. ParseException thrown when argument rules have an invalid syntax.
  *                IOException thrown when an error occurred while reading internal data.
  */
@@ -189,7 +189,7 @@ public java.lang.Object clone() throws java.lang.CloneNotSupportedException { th
 /**
  * Return a CollationElementIterator for the given String.
  *
- * @see CollationElementIterator
+ * @see android.icu.text.CollationElementIterator
  */
 
 public android.icu.text.CollationElementIterator getCollationElementIterator(java.lang.String source) { throw new RuntimeException("Stub!"); }
@@ -198,7 +198,7 @@ public android.icu.text.CollationElementIterator getCollationElementIterator(jav
  * Return a CollationElementIterator for the given CharacterIterator. The source iterator's integrity will be
  * preserved since a new copy will be created for use.
  *
- * @see CollationElementIterator
+ * @see android.icu.text.CollationElementIterator
  */
 
 public android.icu.text.CollationElementIterator getCollationElementIterator(java.text.CharacterIterator source) { throw new RuntimeException("Stub!"); }
@@ -207,7 +207,7 @@ public android.icu.text.CollationElementIterator getCollationElementIterator(jav
  * Return a CollationElementIterator for the given UCharacterIterator. The source iterator's integrity will be
  * preserved since a new copy will be created for use.
  *
- * @see CollationElementIterator
+ * @see android.icu.text.CollationElementIterator
  */
 
 public android.icu.text.CollationElementIterator getCollationElementIterator(android.icu.text.UCharacterIterator source) { throw new RuntimeException("Stub!"); }
@@ -340,7 +340,7 @@ public void setNumericCollationDefault() { throw new RuntimeException("Stub!"); 
 /**
  * Sets the mode for the direction of SECONDARY weights to be used in French collation. The default value is false,
  * which treats SECONDARY weights in the order they appear. If set to true, the SECONDARY weights will be sorted
- * backwards. See the section on <a href="http://userguide.icu-project.org/collation/architecture">
+ * backwards. See the section on <a href="https://unicode-org.github.io/icu/userguide/collation/architecture">
  * French collation</a> for more information.
  *
  * @param flag
@@ -377,7 +377,7 @@ public void setAlternateHandlingShifted(boolean shifted) { throw new RuntimeExce
  * first mode. A simple way to ignore accent differences in a string is to set the strength to PRIMARY and enable
  * case level.
  * <p>
- * See the section on <a href="http://userguide.icu-project.org/collation/architecture">case
+ * See the section on <a href="https://unicode-org.github.io/icu/userguide/collation/architecture">case
  * level</a> for more information.
  *
  * @param flag
@@ -414,7 +414,7 @@ public void setCaseLevel(boolean flag) { throw new RuntimeException("Stub!"); }
  * @see #getDecomposition
  * @see #NO_DECOMPOSITION
  * @see #CANONICAL_DECOMPOSITION
- * @throws IllegalArgumentException If the given value is not a valid
+ * @throws java.lang.IllegalArgumentException If the given value is not a valid
  *            decomposition mode.
  */
 
@@ -435,7 +435,7 @@ public void setDecomposition(int decomposition) { throw new RuntimeException("St
  * @see #TERTIARY
  * @see #QUATERNARY
  * @see #IDENTICAL
- * @exception IllegalArgumentException
+ * @exception java.lang.IllegalArgumentException
  *                If the new strength value is not one of PRIMARY, SECONDARY, TERTIARY, QUATERNARY or IDENTICAL.
  */
 
@@ -493,11 +493,11 @@ public void setNumericCollation(boolean flag) { throw new RuntimeException("Stub
  *
  * @param order the reordering codes to apply to this collator; if this is null or an empty array
  * then this clears any existing reordering
- * @throws IllegalArgumentException if the reordering codes are malformed in any way (e.g. duplicates, multiple reset codes, overlapping equivalent scripts)
+ * @throws java.lang.IllegalArgumentException if the reordering codes are malformed in any way (e.g. duplicates, multiple reset codes, overlapping equivalent scripts)
  * @see #getReorderCodes
- * @see Collator#getEquivalentReorderCodes
- * @see Collator.ReorderCodes
- * @see UScript
+ * @see android.icu.text.Collator#getEquivalentReorderCodes
+ * @see android.icu.text.Collator.ReorderCodes
+ * @see android.icu.lang.UScript
  */
 
 public void setReorderCodes(int... order) { throw new RuntimeException("Stub!"); }
@@ -507,7 +507,7 @@ public void setReorderCodes(int... order) { throw new RuntimeException("Stub!");
  * Equivalent to String getRules(false).
  *
  * <p>On Android, the returned string will be empty unless this instance was
- * constructed using {@link #RuleBasedCollator(String)}.
+ * constructed using {@link #RuleBasedCollator(java.lang.String)}.
  *
  * @return the collation tailoring rules
  * @see #getRules(boolean)
@@ -522,7 +522,7 @@ public java.lang.String getRules() { throw new RuntimeException("Stub!"); }
  *
  * <p>The root collation rules are an <i>approximation</i> of the root collator's sort order.
  * They are almost never used or useful at runtime and can be removed from the data.
- * See <a href="http://userguide.icu-project.org/collation/customization#TOC-Building-on-Existing-Locales">User Guide:
+ * See <a href="https://unicode-org.github.io/icu/userguide/collation/customization#building-on-existing-locales">User Guide:
  * Collation Customization, Building on Existing Locales</a>
  *
  * <p>{@link #getRules()} should normally be used instead.
@@ -553,7 +553,7 @@ public android.icu.text.UnicodeSet getTailoredSet() { throw new RuntimeException
  *            if not null, set to contain expansions
  * @param addPrefixes
  *            add the prefix contextual elements to contractions
- * @throws Exception
+ * @throws java.lang.Exception
  *             Throws an exception if any errors occurs.
  */
 
@@ -575,7 +575,7 @@ public void getContractionsAndExpansions(android.icu.text.UnicodeSet contraction
  *            the text String to be transformed into a collation key.
  * @return the CollationKey for the given String based on this RuleBasedCollator's collation rules. If the source
  *         String is null, a null CollationKey is returned.
- * @see CollationKey
+ * @see android.icu.text.CollationKey
  * @see #compare(String, String)
  */
 
@@ -701,7 +701,7 @@ public boolean getNumericCollation() { throw new RuntimeException("Stub!"); }
  * @return a copy of the reordering codes for this collator;
  * if none are set then returns an empty array
  * @see #setReorderCodes
- * @see Collator#getEquivalentReorderCodes
+ * @see android.icu.text.Collator#getEquivalentReorderCodes
  */
 
 public int[] getReorderCodes() { throw new RuntimeException("Stub!"); }
@@ -742,7 +742,7 @@ public int hashCode() { throw new RuntimeException("Stub!"); }
  *            the target text String.
  * @return Returns an integer value. Value is less than zero if source is less than target, value is zero if source
  *         and target are equal, value is greater than zero if source is greater than target.
- * @see CollationKey
+ * @see android.icu.text.CollationKey
  * @see #getCollationKey
  */
 

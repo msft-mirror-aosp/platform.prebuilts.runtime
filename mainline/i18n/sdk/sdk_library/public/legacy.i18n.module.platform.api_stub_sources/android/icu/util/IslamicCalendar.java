@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 1996-2016, International Business Machines Corporation and    *
@@ -83,7 +83,7 @@ public class IslamicCalendar extends android.icu.util.Calendar {
 /**
  * Constructs a default <code>IslamicCalendar</code> using the current time
  * in the default time zone with the default <code>FORMAT</code> locale.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public IslamicCalendar() { throw new RuntimeException("Stub!"); }
@@ -92,7 +92,7 @@ public IslamicCalendar() { throw new RuntimeException("Stub!"); }
  * Constructs an <code>IslamicCalendar</code> based on the current time
  * in the given time zone with the default <code>FORMAT</code> locale.
  * @param zone the given time zone.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public IslamicCalendar(android.icu.util.TimeZone zone) { throw new RuntimeException("Stub!"); }
@@ -140,7 +140,7 @@ public IslamicCalendar(android.icu.util.TimeZone zone, android.icu.util.ULocale 
  * in the default time zone with the default <code>FORMAT</code> locale.
  *
  * @param date      The date to which the new calendar is set.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public IslamicCalendar(java.util.Date date) { throw new RuntimeException("Stub!"); }
@@ -153,7 +153,7 @@ public IslamicCalendar(java.util.Date date) { throw new RuntimeException("Stub!"
  * @param month the value used to set the {@link #MONTH MONTH} time field in the calendar.
  *              Note that the month value is 0-based. e.g., 0 for Muharram.
  * @param date the value used to set the {@link #DATE DATE} time field in the calendar.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public IslamicCalendar(int year, int month, int date) { throw new RuntimeException("Stub!"); }
@@ -172,7 +172,7 @@ public IslamicCalendar(int year, int month, int date) { throw new RuntimeExcepti
  *              in the calendar.
  * @param second the value used to set the {@link #SECOND SECOND} time field
  *              in the calendar.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public IslamicCalendar(int year, int month, int date, int hour, int minute, int second) { throw new RuntimeException("Stub!"); }

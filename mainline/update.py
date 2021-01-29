@@ -27,6 +27,11 @@ import update_prebuilts as update
 PREBUILT_DESCRIPTION = 'mainline'
 TARGET = 'mainline_modules'
 
+COMMIT_MESSAGE_NOTE = """\
+CL prepared by prebuilts/runtime/mainline/update.py. See
+prebuilts/runtime/mainline/README.md for update instructions.
+"""
+
 mainline_install_list = []
 mainline_extracted_list = []
 
@@ -76,14 +81,21 @@ mainline_install_list.extend(
     InstallSdkEntries('i18n-module-sdk', 'i18n/sdk') +
     InstallSdkEntries('i18n-module-test-exports', 'i18n/test-exports'))
 
+# tzdata
+mainline_install_list.extend(
+    InstallApexEntries('com.android.tzdata', 'tzdata/apex') +
+    InstallSdkEntries('tzdata-module-test-exports', 'tzdata/test-exports'))
+
 # Platform
 mainline_install_list.extend(
     InstallSdkEntries('platform-mainline-sdk', 'platform/sdk') +
     InstallSdkEntries('platform-mainline-test-exports', 'platform/test-exports') +
     # Shared libraries that are stubs in SDKs, but for which we need their
     # implementation for device testing.
-    InstallSharedLibEntries('libartpalette-system', 'platform/impl'))
+    InstallSharedLibEntries('libartpalette-system', 'platform/impl') +
+    InstallSharedLibEntries('liblog', 'platform/impl'))
 
 if __name__ == '__main__':
     update.main(THIS_DIR, PREBUILT_DESCRIPTION,
-                mainline_install_list, mainline_extracted_list)
+                mainline_install_list, mainline_extracted_list,
+                COMMIT_MESSAGE_NOTE)

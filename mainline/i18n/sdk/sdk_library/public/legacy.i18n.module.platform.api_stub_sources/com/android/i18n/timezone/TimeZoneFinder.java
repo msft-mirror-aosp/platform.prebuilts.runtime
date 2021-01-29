@@ -66,7 +66,7 @@ public java.lang.String getIanaVersion() { throw new RuntimeException("Stub!"); 
 public com.android.i18n.timezone.CountryZonesFinder getCountryZonesFinder() { throw new RuntimeException("Stub!"); }
 
 /**
- * Returns a {@link CountryTimeZones} object associated with the specified country code.
+ * Returns a {@link com.android.i18n.timezone.CountryTimeZones CountryTimeZones} object associated with the specified country code.
  * Caching is handled as needed. If the country code is not recognized or there is an error
  * during lookup this method can return null.
  */

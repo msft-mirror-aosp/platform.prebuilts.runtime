@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  ********************************************************************************
  * Copyright (C) 2006-2016, Google, International Business Machines Corporation
@@ -44,7 +44,7 @@ public static android.icu.text.DateTimePatternGenerator getEmptyInstance() { thr
 
 /**
  * Construct a flexible generator according to data for the default <code>FORMAT</code> locale.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static android.icu.text.DateTimePatternGenerator getInstance() { throw new RuntimeException("Stub!"); }
@@ -87,6 +87,12 @@ public java.lang.String getBestPattern(java.lang.String skeleton) { throw new Ru
  */
 
 public java.lang.String getBestPattern(java.lang.String skeleton, int options) { throw new RuntimeException("Stub!"); }
+
+/**
+ * @hide draft / provisional / internal are hidden on Android
+ */
+
+public java.lang.String getBestPattern(java.lang.String skeleton, boolean allowDuplicateFields) { throw new RuntimeException("Stub!"); }
 
 /**
  * Adds a pattern to the generator. If the pattern has the same skeleton as
@@ -372,8 +378,8 @@ public static final int MATCH_ALL_FIELDS_LENGTH = 65535; // 0xffff
 public static final int MATCH_HOUR_FIELD_LENGTH = 2048; // 0x800
 
 /**
- * Default option mask used for {@link #getBestPattern(String, int)}
- * and {@link #replaceFieldTypes(String, String, int)}.
+ * Default option mask used for {@link #getBestPattern(java.lang.String,int)}
+ * and {@link #replaceFieldTypes(java.lang.String,java.lang.String,int)}.
  * @see #getBestPattern(String, int)
  * @see #replaceFieldTypes(String, String, int)
  */

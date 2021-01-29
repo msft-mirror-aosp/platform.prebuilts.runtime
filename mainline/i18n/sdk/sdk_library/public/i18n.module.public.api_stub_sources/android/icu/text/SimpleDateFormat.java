@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 1996-2016, International Business Machines Corporation and
@@ -38,7 +38,7 @@ import java.text.AttributedCharacterIterator;
  * with a default format pattern. You may modify the format pattern
  * using the <code>applyPattern</code> methods as desired.
  * For more information on using these methods, see
- * {@link DateFormat}.
+ * {@link android.icu.text.DateFormat DateFormat}.
  *
  * <p><strong>Date and Time Patterns:</strong></p>
  *
@@ -685,10 +685,10 @@ import java.text.AttributedCharacterIterator;
  * @see          android.icu.util.Calendar
  * @see          android.icu.util.GregorianCalendar
  * @see          android.icu.util.TimeZone
- * @see          DateFormat
- * @see          DateFormatSymbols
- * @see          DecimalFormat
- * @see          TimeZoneFormat
+ * @see          android.icu.text.DateFormat
+ * @see          android.icu.text.DateFormatSymbols
+ * @see          android.icu.text.DecimalFormat
+ * @see          android.icu.text.TimeZoneFormat
  * @author       Mark Davis, Chen-Lieh Huang, Alan Liu
  */
 
@@ -700,8 +700,8 @@ public class SimpleDateFormat extends android.icu.text.DateFormat {
  * locale.  <b>Note:</b> Not all locales support SimpleDateFormat; for full
  * generality, use the factory methods in the DateFormat class.
  *
- * @see DateFormat
- * @see Category#FORMAT
+ * @see android.icu.text.DateFormat
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public SimpleDateFormat() { throw new RuntimeException("Stub!"); }
@@ -710,7 +710,7 @@ public SimpleDateFormat() { throw new RuntimeException("Stub!"); }
  * Constructs a SimpleDateFormat using the given pattern in the default <code>FORMAT</code>
  * locale.  <b>Note:</b> Not all locales support SimpleDateFormat; for full
  * generality, use the factory methods in the DateFormat class.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public SimpleDateFormat(java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -792,7 +792,7 @@ public void setContext(android.icu.text.DisplayContext context) { throw new Runt
  * @param pos the formatting position. On input: an alignment field,
  * if desired. On output: the offsets of the alignment field.
  * @return the formatted date-time string.
- * @see DateFormat
+ * @see android.icu.text.DateFormat
  */
 
 public java.lang.StringBuffer format(android.icu.util.Calendar cal, java.lang.StringBuffer toAppendTo, java.text.FieldPosition pos) { throw new RuntimeException("Stub!"); }
@@ -824,7 +824,7 @@ protected java.lang.String subFormat(char ch, int count, int beginOffset, java.t
 /**
  * Overrides superclass method and
  * This method also clears per field NumberFormat instances
- * previously set by {@link #setNumberFormat(String, NumberFormat)}
+ * previously set by {@link #setNumberFormat(java.lang.String,android.icu.text.NumberFormat)}
  */
 
 public void setNumberFormat(android.icu.text.NumberFormat newNumberFormat) { throw new RuntimeException("Stub!"); }
@@ -837,7 +837,7 @@ protected java.lang.String zeroPaddingNumber(long value, int minDigits, int maxD
 
 /**
  * Overrides DateFormat
- * @see DateFormat
+ * @see android.icu.text.DateFormat
  */
 
 public void parse(java.lang.String text, android.icu.util.Calendar cal, java.text.ParsePosition parsePos) { throw new RuntimeException("Stub!"); }
@@ -912,7 +912,7 @@ public java.lang.String toPattern() { throw new RuntimeException("Stub!"); }
 /**
  * Return a localized pattern string describing this date format.
  * <p>
- * <b>Note:</b> This implementation depends on {@link DateFormatSymbols#getLocalPatternChars()}
+ * <b>Note:</b> This implementation depends on {@link android.icu.text.DateFormatSymbols#getLocalPatternChars() DateFormatSymbols#getLocalPatternChars()}
  * to get localized format pattern characters. ICU does not include
  * localized pattern character data, therefore, unless user sets localized
  * pattern characters manually, this method returns the same result as
@@ -1011,7 +1011,7 @@ public java.text.AttributedCharacterIterator formatToCharacterIterator(java.lang
  *
  * @param fields the fields to override
  * @param overrideNF the NumbeferFormat used
- * @exception IllegalArgumentException when the fields contain invalid field
+ * @exception java.lang.IllegalArgumentException when the fields contain invalid field
  */
 
 public void setNumberFormat(java.lang.String fields, android.icu.text.NumberFormat overrideNF) { throw new RuntimeException("Stub!"); }

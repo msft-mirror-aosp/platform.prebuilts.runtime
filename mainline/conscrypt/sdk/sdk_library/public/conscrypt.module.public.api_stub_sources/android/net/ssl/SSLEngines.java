@@ -21,7 +21,7 @@ import javax.net.ssl.SSLEngine;
 
 /**
  * Static utility methods for accessing additional functionality of supported instances of
- * {@link SSLEngine}.  Engines from the platform TLS provider will be compatible with all
+ * {@link javax.net.ssl.SSLEngine SSLEngine}.  Engines from the platform TLS provider will be compatible with all
  * methods in this class.
  */
 
@@ -44,7 +44,7 @@ public static boolean isSupportedEngine(@android.annotation.NonNull javax.net.ss
  *
  * @param engine the engine
  * @param useSessionTickets whether to enable or disable the use of session tickets
- * @throws IllegalArgumentException if the given engine is not a platform engine
+ * @throws java.lang.IllegalArgumentException if the given engine is not a platform engine
  */
 
 public static void setUseSessionTickets(@android.annotation.NonNull javax.net.ssl.SSLEngine engine, boolean useSessionTickets) { throw new RuntimeException("Stub!"); }
