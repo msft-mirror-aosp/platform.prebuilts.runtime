@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2017 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.number;
 
@@ -15,8 +15,8 @@ import android.icu.util.CurrencyAmount;
  *
  * Instances of this class are immutable and thread-safe.
  *
- * @see NumberFormatter
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -31,7 +31,7 @@ LocalizedNumberFormatter() { throw new RuntimeException("Stub!"); }
  * @param input
  *            The number to format.
  * @return A FormattedNumber object; call .toString() to get the string.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public android.icu.number.FormattedNumber format(long input) { throw new RuntimeException("Stub!"); }
@@ -43,25 +43,25 @@ public android.icu.number.FormattedNumber format(long input) { throw new Runtime
  * @param input
  *            The number to format.
  * @return A FormattedNumber object; call .toString() to get the string.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public android.icu.number.FormattedNumber format(double input) { throw new RuntimeException("Stub!"); }
 
 /**
- * Format the given {@link BigInteger}, {@link BigDecimal}, or other {@link Number} to a string using
+ * Format the given {@link java.math.BigInteger BigInteger}, {@link android.icu.math.BigDecimal BigDecimal}, or other {@link java.lang.Number Number} to a string using
  * the settings specified in the NumberFormatter fluent setting chain.
  *
  * @param input
  *            The number to format.
  * @return A FormattedNumber object; call .toString() to get the string.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public android.icu.number.FormattedNumber format(java.lang.Number input) { throw new RuntimeException("Stub!"); }
 
 /**
- * Format the given {@link Measure} or {@link CurrencyAmount} to a string using the settings
+ * Format the given {@link android.icu.util.Measure Measure} or {@link android.icu.util.CurrencyAmount CurrencyAmount} to a string using the settings
  * specified in the NumberFormatter fluent setting chain.
  *
  * <p>
@@ -71,7 +71,7 @@ public android.icu.number.FormattedNumber format(java.lang.Number input) { throw
  * @param input
  *            The number to format.
  * @return A FormattedNumber object; call .toString() to get the string.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public android.icu.number.FormattedNumber format(android.icu.util.Measure input) { throw new RuntimeException("Stub!"); }
@@ -85,7 +85,7 @@ public android.icu.number.FormattedNumber format(android.icu.util.Measure input)
  * method.
  *
  * @return A Format wrapping this LocalizedNumberFormatter.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public java.text.Format toFormat() { throw new RuntimeException("Stub!"); }

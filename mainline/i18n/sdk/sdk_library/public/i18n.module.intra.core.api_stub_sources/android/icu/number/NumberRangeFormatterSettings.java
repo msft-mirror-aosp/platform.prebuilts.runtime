@@ -1,17 +1,17 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2018 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.number;
 
 
 /**
  * An abstract base class for specifying settings related to number formatting. This class is implemented by
- * {@link UnlocalizedNumberRangeFormatter} and {@link LocalizedNumberRangeFormatter}. This class is not intended for
+ * {@link android.icu.number.UnlocalizedNumberRangeFormatter UnlocalizedNumberRangeFormatter} and {@link android.icu.number.LocalizedNumberRangeFormatter LocalizedNumberRangeFormatter}. This class is not intended for
  * public subclassing.
  *
  * @author sffc
- * @see NumberRangeFormatter
+ * @see android.icu.number.NumberRangeFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -29,8 +29,8 @@ NumberRangeFormatterSettings() { throw new RuntimeException("Stub!"); }
  * @param formatter
  *            The formatter to use for both numbers in the range.
  * @return The fluent chain.
- * @see NumberFormatter
- * @see NumberRangeFormatter
+ * @see android.icu.number.NumberFormatter
+ * @see android.icu.number.NumberRangeFormatter
  */
 
 public T numberFormatterBoth(android.icu.number.UnlocalizedNumberFormatter formatter) { throw new RuntimeException("Stub!"); }
@@ -44,8 +44,8 @@ public T numberFormatterBoth(android.icu.number.UnlocalizedNumberFormatter forma
  * @param formatterFirst
  *            The formatter to use for the first number in the range.
  * @return The fluent chain.
- * @see NumberFormatter
- * @see NumberRangeFormatter
+ * @see android.icu.number.NumberFormatter
+ * @see android.icu.number.NumberRangeFormatter
  */
 
 public T numberFormatterFirst(android.icu.number.UnlocalizedNumberFormatter formatterFirst) { throw new RuntimeException("Stub!"); }
@@ -59,8 +59,8 @@ public T numberFormatterFirst(android.icu.number.UnlocalizedNumberFormatter form
  * @param formatterSecond
  *            The formatter to use for the second number in the range.
  * @return The fluent chain.
- * @see NumberFormatter
- * @see NumberRangeFormatter
+ * @see android.icu.number.NumberFormatter
+ * @see android.icu.number.NumberRangeFormatter
  */
 
 public T numberFormatterSecond(android.icu.number.UnlocalizedNumberFormatter formatterSecond) { throw new RuntimeException("Stub!"); }
@@ -79,7 +79,7 @@ public T numberFormatterSecond(android.icu.number.UnlocalizedNumberFormatter for
  * @param collapse
  *            The collapsing strategy to use for this range.
  * @return The fluent chain.
- * @see NumberRangeFormatter
+ * @see android.icu.number.NumberRangeFormatter
  */
 
 public T collapse(android.icu.number.NumberRangeFormatter.RangeCollapse collapse) { throw new RuntimeException("Stub!"); }
@@ -101,7 +101,7 @@ public T collapse(android.icu.number.NumberRangeFormatter.RangeCollapse collapse
  * @param identityFallback
  *            The strategy to use when formatting two numbers that end up being the same.
  * @return The fluent chain.
- * @see NumberRangeFormatter
+ * @see android.icu.number.NumberRangeFormatter
  */
 
 public T identityFallback(android.icu.number.NumberRangeFormatter.RangeIdentityFallback identityFallback) { throw new RuntimeException("Stub!"); }

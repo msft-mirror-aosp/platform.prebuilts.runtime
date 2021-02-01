@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2011-2016, International Business Machines Corporation and
@@ -37,14 +37,14 @@ import java.util.EnumSet;
  *
  * <p><b>Note:</b>
  * <p>
- * {@link TimeZoneFormat} assumes an instance of <code>TimeZoneNames</code> is immutable. If you want to provide
- * your own <code>TimeZoneNames</code> implementation and use it with {@link TimeZoneFormat}, you must follow
+ * {@link android.icu.text.TimeZoneFormat TimeZoneFormat} assumes an instance of <code>TimeZoneNames</code> is immutable. If you want to provide
+ * your own <code>TimeZoneNames</code> implementation and use it with {@link android.icu.text.TimeZoneFormat TimeZoneFormat}, you must follow
  * the contract.
  * <p>
  * The methods in this class assume that time zone IDs are already canonicalized. For example, you may not get proper
  * result returned by a method with time zone ID "America/Indiana/Indianapolis", because it's not a canonical time zone
  * ID (the canonical time zone ID for the time zone is "America/Indianapolis". See
- * {@link TimeZone#getCanonicalID(String)} about ICU canonical time zone IDs.
+ * {@link android.icu.util.TimeZone#getCanonicalID(java.lang.String) TimeZone#getCanonicalID(String)} about ICU canonical time zone IDs.
  *
  * <p>
  * In CLDR, most of time zone display names except location names are provided through meta zones. But a time zone may
@@ -55,16 +55,16 @@ import java.util.EnumSet;
  * used for "Europe/London".
  *
  * <p>
- * {@link #getTimeZoneDisplayName(String, NameType)} is designed for accessing a name only used by a single time zone.
+ * {@link #getTimeZoneDisplayName(java.lang.String,android.icu.text.TimeZoneNames.NameType)} is designed for accessing a name only used by a single time zone.
  * But is not necessarily mean that a subclass implementation use the same model with CLDR. A subclass implementation
- * may provide time zone names only through {@link #getTimeZoneDisplayName(String, NameType)}, or only through
- * {@link #getMetaZoneDisplayName(String, NameType)}, or both.
+ * may provide time zone names only through {@link #getTimeZoneDisplayName(java.lang.String,android.icu.text.TimeZoneNames.NameType)}, or only through
+ * {@link #getMetaZoneDisplayName(java.lang.String,android.icu.text.TimeZoneNames.NameType)}, or both.
  *
  * <p>
- * The default <code>TimeZoneNames</code> implementation returned by {@link #getInstance(ULocale)} uses the locale data
+ * The default <code>TimeZoneNames</code> implementation returned by {@link #getInstance(android.icu.util.ULocale)} uses the locale data
  * imported from CLDR. In CLDR, set of meta zone IDs and mappings between zone IDs and meta zone IDs are shared by all
- * locales. Therefore, the behavior of {@link #getAvailableMetaZoneIDs()}, {@link #getAvailableMetaZoneIDs(String)},
- * {@link #getMetaZoneID(String, long)}, and {@link #getReferenceZoneID(String, String)} won't be changed no matter
+ * locales. Therefore, the behavior of {@link #getAvailableMetaZoneIDs()}, {@link #getAvailableMetaZoneIDs(java.lang.String)},
+ * {@link #getMetaZoneID(java.lang.String,long)}, and {@link #getReferenceZoneID(java.lang.String,java.lang.String)} won't be changed no matter
  * what locale is used for getting an instance of <code>TimeZoneNames</code>.
  */
 
@@ -96,7 +96,7 @@ public static android.icu.text.TimeZoneNames getInstance(java.util.Locale locale
 
 /**
  * Returns an instance of <code>TimeZoneNames</code> containing only short specific
- * zone names ({@link NameType#SHORT_STANDARD} and {@link NameType#SHORT_DAYLIGHT}),
+ * zone names ({@link android.icu.text.TimeZoneNames.NameType#SHORT_STANDARD NameType#SHORT_STANDARD} and {@link android.icu.text.TimeZoneNames.NameType#SHORT_DAYLIGHT NameType#SHORT_DAYLIGHT}),
  * compatible with the IANA tz database's zone abbreviations (not localized).
  * <br>
  * Note: The input locale is used for resolving ambiguous names (e.g. "IST" is parsed
@@ -161,7 +161,7 @@ public abstract java.lang.String getReferenceZoneID(java.lang.String mzID, java.
  * @param mzID
  *            The meta zone ID.
  * @param type
- *            The display name type. See {@link TimeZoneNames.NameType}.
+ *            The display name type. See {@link android.icu.text.TimeZoneNames.NameType TimeZoneNames.NameType}.
  * @return The display name of the meta zone. When this object does not have a localized display name for the given
  *         meta zone with the specified type or the implementation does not provide any display names associated
  *         with meta zones, null is returned.
@@ -173,14 +173,14 @@ public abstract java.lang.String getMetaZoneDisplayName(java.lang.String mzID, a
  * Returns the display name of the time zone at the given date.
  *
  * <p>
- * <b>Note:</b> This method calls the subclass's {@link #getTimeZoneDisplayName(String, NameType)} first. When the
- * result is null, this method calls {@link #getMetaZoneID(String, long)} to get the meta zone ID mapped from the
- * time zone, then calls {@link #getMetaZoneDisplayName(String, NameType)}.
+ * <b>Note:</b> This method calls the subclass's {@link #getTimeZoneDisplayName(java.lang.String,android.icu.text.TimeZoneNames.NameType)} first. When the
+ * result is null, this method calls {@link #getMetaZoneID(java.lang.String,long)} to get the meta zone ID mapped from the
+ * time zone, then calls {@link #getMetaZoneDisplayName(java.lang.String,android.icu.text.TimeZoneNames.NameType)}.
  *
  * @param tzID
  *            The canonical time zone ID.
  * @param type
- *            The display name type. See {@link TimeZoneNames.NameType}.
+ *            The display name type. See {@link android.icu.text.TimeZoneNames.NameType TimeZoneNames.NameType}.
  * @param date
  *            The date
  * @return The display name for the time zone at the given date. When this object does not have a localized display
@@ -190,13 +190,13 @@ public abstract java.lang.String getMetaZoneDisplayName(java.lang.String mzID, a
 public final java.lang.String getDisplayName(java.lang.String tzID, android.icu.text.TimeZoneNames.NameType type, long date) { throw new RuntimeException("Stub!"); }
 
 /**
- * Returns the display name of the time zone. Unlike {@link #getDisplayName(String, NameType, long)},
+ * Returns the display name of the time zone. Unlike {@link #getDisplayName(java.lang.String,android.icu.text.TimeZoneNames.NameType,long)},
  * this method does not get a name from a meta zone used by the time zone.
  *
  * @param tzID
  *            The canonical time zone ID.
  * @param type
- *            The display name type. See {@link TimeZoneNames.NameType}.
+ *            The display name type. See {@link android.icu.text.TimeZoneNames.NameType TimeZoneNames.NameType}.
  * @return The display name for the time zone. When this object does not have a localized display name for the given
  *         time zone with the specified type, null is returned.
  */
@@ -232,15 +232,15 @@ public java.lang.String getExemplarLocationName(java.lang.String tzID) { throw n
  * @param start the starting offset within the text.
  * @param types the set of name types, or <code>null</code> for all name types.
  * @return A collection of matches.
- * @see NameType
- * @see MatchInfo
+ * @see android.icu.text.TimeZoneNames.NameType
+ * @see android.icu.text.TimeZoneNames.MatchInfo
  * @hide draft / provisional / internal are hidden on Android
  */
 
 public java.util.Collection<android.icu.text.TimeZoneNames.MatchInfo> find(java.lang.CharSequence text, int start, java.util.EnumSet<android.icu.text.TimeZoneNames.NameType> types) { throw new RuntimeException("Stub!"); }
 /**
  * A <code>MatchInfo</code> represents a time zone name match used by
- * {@link TimeZoneNames#find(CharSequence, int, EnumSet)}.
+ * {@link android.icu.text.TimeZoneNames#find(java.lang.CharSequence,int,java.util.EnumSet) TimeZoneNames#find(CharSequence, int, EnumSet)}.
  * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
@@ -279,7 +279,7 @@ public java.lang.String mzID() { throw new RuntimeException("Stub!"); }
 /**
  * Returns the time zone name type.
  * @return the time zone name type enum.
- * @see NameType
+ * @see android.icu.text.TimeZoneNames.NameType
  * @hide draft / provisional / internal are hidden on Android
  */
 

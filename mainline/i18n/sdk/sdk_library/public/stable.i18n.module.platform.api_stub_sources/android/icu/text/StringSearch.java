@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 1996-2016, International Business Machines Corporation and
@@ -13,9 +13,9 @@ package android.icu.text;
 
 /**
  *
- * <tt>StringSearch</tt> is a {@link SearchIterator} that provides
+ * <tt>StringSearch</tt> is a {@link android.icu.text.SearchIterator SearchIterator} that provides
  * language-sensitive text searching based on the comparison rules defined
- * in a {@link RuleBasedCollator} object.
+ * in a {@link android.icu.text.RuleBasedCollator RuleBasedCollator} object.
  * StringSearch ensures that language eccentricity can be
  * handled, e.g. for the German collator, characters &szlig; and SS will be matched
  * if case is chosen to be ignored.
@@ -38,7 +38,7 @@ package android.icu.text;
  * Option 2. is the default.
  * <p>
  * This search has APIs similar to that of other text iteration mechanisms
- * such as the break iterators in {@link BreakIterator}. Using these
+ * such as the break iterators in {@link android.icu.text.BreakIterator BreakIterator}. Using these
  * APIs, it is easy to scan through text looking for all occurrences of
  * a given pattern. This search iterator allows changing of direction by
  * calling a {@link #reset} followed by a {@link #next} or {@link #previous}.
@@ -47,9 +47,9 @@ package android.icu.text;
  * Match results in the forward direction will match the result matches in
  * the backwards direction in the reverse order
  * <p>
- * {@link SearchIterator} provides APIs to specify the starting position
- * within the text string to be searched, e.g. {@link SearchIterator#setIndex setIndex},
- * {@link SearchIterator#preceding preceding} and {@link SearchIterator#following following}.
+ * {@link android.icu.text.SearchIterator SearchIterator} provides APIs to specify the starting position
+ * within the text string to be searched, e.g. {@link android.icu.text.SearchIterator#setIndex setIndex},
+ * {@link android.icu.text.SearchIterator#preceding preceding} and {@link android.icu.text.SearchIterator#following following}.
  * Since the starting position will be set as it is specified, please take note that
  * there are some danger points at which the search may render incorrect
  * results:
@@ -67,9 +67,9 @@ package android.icu.text;
  *      would be any character within a contracting sequence except the last.
  * </ul>
  * <p>
- * A {@link BreakIterator} can be used if only matches at logical breaks are desired.
- * Using a {@link BreakIterator} will only give you results that exactly matches the
- * boundaries given by the {@link BreakIterator}. For instance the pattern "e" will
+ * A {@link android.icu.text.BreakIterator BreakIterator} can be used if only matches at logical breaks are desired.
+ * Using a {@link android.icu.text.BreakIterator BreakIterator} will only give you results that exactly matches the
+ * boundaries given by the {@link android.icu.text.BreakIterator BreakIterator}. For instance the pattern "e" will
  * not be found in the string "\u00e9" if a character break iterator is used.
  * <p>
  * Options are provided to handle overlapping matches.
@@ -85,7 +85,7 @@ package android.icu.text;
  * Though collator attributes will be taken into consideration while
  * performing matches, there are no APIs here for setting and getting the
  * attributes. These attributes can be set by getting the collator
- * from {@link #getCollator} and using the APIs in {@link RuleBasedCollator}.
+ * from {@link #getCollator} and using the APIs in {@link android.icu.text.RuleBasedCollator RuleBasedCollator}.
  * Lastly to update <tt>StringSearch</tt> to the new collator attributes,
  * {@link #reset} has to be called.
  * <p>
@@ -95,14 +95,14 @@ package android.icu.text;
  * class == 0. However, if such a character exists in the future,
  * <tt>StringSearch</tt> does not guarantee the results for option 1.
  * <p>
- * Consult the {@link SearchIterator} documentation for information on
+ * Consult the {@link android.icu.text.SearchIterator SearchIterator} documentation for information on
  * and examples of how to use instances of this class to implement text
  * searching.
  * <p>
  * Note, <tt>StringSearch</tt> is not to be subclassed.
  * </p>
- * @see SearchIterator
- * @see RuleBasedCollator
+ * @see android.icu.text.SearchIterator
+ * @see android.icu.text.RuleBasedCollator
  * @author Laura Werner, synwee
  */
 
@@ -114,16 +114,16 @@ public final class StringSearch extends android.icu.text.SearchIterator {
  * the argument collator to search for argument pattern in the argument
  * target text. The argument <code>breakiter</code> is used to define logical matches.
  * See super class documentation for more details on the use of the target
- * text and {@link BreakIterator}.
+ * text and {@link android.icu.text.BreakIterator BreakIterator}.
  * @param pattern text to look for.
  * @param target target text to search for pattern.
- * @param collator {@link RuleBasedCollator} that defines the language rules
- * @param breakiter A {@link BreakIterator} that is used to determine the
+ * @param collator {@link android.icu.text.RuleBasedCollator RuleBasedCollator} that defines the language rules
+ * @param breakiter A {@link android.icu.text.BreakIterator BreakIterator} that is used to determine the
  *                boundaries of a logical match. This argument can be null.
- * @throws IllegalArgumentException thrown when argument target is null,
+ * @throws java.lang.IllegalArgumentException thrown when argument target is null,
  *            or of length 0
- * @see BreakIterator
- * @see RuleBasedCollator
+ * @see android.icu.text.BreakIterator
+ * @see android.icu.text.RuleBasedCollator
  */
 
 public StringSearch(java.lang.String pattern, java.text.CharacterIterator target, android.icu.text.RuleBasedCollator collator, android.icu.text.BreakIterator breakiter) { super(null, null); throw new RuntimeException("Stub!"); }
@@ -131,13 +131,13 @@ public StringSearch(java.lang.String pattern, java.text.CharacterIterator target
 /**
  * Initializes the iterator to use the language-specific rules defined in
  * the argument collator to search for argument pattern in the argument
- * target text. No {@link BreakIterator}s are set to test for logical matches.
+ * target text. No {@link android.icu.text.BreakIterator BreakIterator}s are set to test for logical matches.
  * @param pattern text to look for.
  * @param target target text to search for pattern.
- * @param collator {@link RuleBasedCollator} that defines the language rules
- * @throws IllegalArgumentException thrown when argument target is null,
+ * @param collator {@link android.icu.text.RuleBasedCollator RuleBasedCollator} that defines the language rules
+ * @throws java.lang.IllegalArgumentException thrown when argument target is null,
  *            or of length 0
- * @see RuleBasedCollator
+ * @see android.icu.text.RuleBasedCollator
  */
 
 public StringSearch(java.lang.String pattern, java.text.CharacterIterator target, android.icu.text.RuleBasedCollator collator) { super(null, null); throw new RuntimeException("Stub!"); }
@@ -149,7 +149,7 @@ public StringSearch(java.lang.String pattern, java.text.CharacterIterator target
  * @param pattern text to look for.
  * @param target target text to search for pattern.
  * @param locale locale to use for language and break iterator rules
- * @throws IllegalArgumentException thrown when argument target is null,
+ * @throws java.lang.IllegalArgumentException thrown when argument target is null,
  *            or of length 0. ClassCastException thrown if the collator for
  *            the specified locale is not a RuleBasedCollator.
  */
@@ -161,16 +161,16 @@ public StringSearch(java.lang.String pattern, java.text.CharacterIterator target
  * break iterator rules defined in the argument locale to search for
  * argument pattern in the argument target text.
  * See super class documentation for more details on the use of the target
- * text and {@link BreakIterator}.
+ * text and {@link android.icu.text.BreakIterator BreakIterator}.
  * @param pattern text to look for.
  * @param target target text to search for pattern.
  * @param locale locale to use for language and break iterator rules
- * @throws IllegalArgumentException thrown when argument target is null,
+ * @throws java.lang.IllegalArgumentException thrown when argument target is null,
  *            or of length 0. ClassCastException thrown if the collator for
  *            the specified locale is not a RuleBasedCollator.
- * @see BreakIterator
- * @see RuleBasedCollator
- * @see SearchIterator
+ * @see android.icu.text.BreakIterator
+ * @see android.icu.text.RuleBasedCollator
+ * @see android.icu.text.SearchIterator
  */
 
 public StringSearch(java.lang.String pattern, java.text.CharacterIterator target, android.icu.util.ULocale locale) { super(null, null); throw new RuntimeException("Stub!"); }
@@ -181,7 +181,7 @@ public StringSearch(java.lang.String pattern, java.text.CharacterIterator target
  * argument pattern in the argument target text.
  * @param pattern text to look for.
  * @param target target text to search for pattern.
- * @throws IllegalArgumentException thrown when argument target is null,
+ * @throws java.lang.IllegalArgumentException thrown when argument target is null,
  *            or of length 0. ClassCastException thrown if the collator for
  *            the default locale is not a RuleBasedCollator.
  */
@@ -189,26 +189,26 @@ public StringSearch(java.lang.String pattern, java.text.CharacterIterator target
 public StringSearch(java.lang.String pattern, java.lang.String target) { super(null, null); throw new RuntimeException("Stub!"); }
 
 /**
- * Gets the {@link RuleBasedCollator} used for the language rules.
+ * Gets the {@link android.icu.text.RuleBasedCollator RuleBasedCollator} used for the language rules.
  * <p>
- * Since <tt>StringSearch</tt> depends on the returned {@link RuleBasedCollator}, any
- * changes to the {@link RuleBasedCollator} result should follow with a call to
- * either {@link #reset()} or {@link #setCollator(RuleBasedCollator)} to ensure the correct
+ * Since <tt>StringSearch</tt> depends on the returned {@link android.icu.text.RuleBasedCollator RuleBasedCollator}, any
+ * changes to the {@link android.icu.text.RuleBasedCollator RuleBasedCollator} result should follow with a call to
+ * either {@link #reset()} or {@link #setCollator(android.icu.text.RuleBasedCollator)} to ensure the correct
  * search behavior.
  * </p>
- * @return {@link RuleBasedCollator} used by this <tt>StringSearch</tt>
- * @see RuleBasedCollator
+ * @return {@link android.icu.text.RuleBasedCollator RuleBasedCollator} used by this <tt>StringSearch</tt>
+ * @see android.icu.text.RuleBasedCollator
  * @see #setCollator
  */
 
 public android.icu.text.RuleBasedCollator getCollator() { throw new RuntimeException("Stub!"); }
 
 /**
- * Sets the {@link RuleBasedCollator} to be used for language-specific searching.
+ * Sets the {@link android.icu.text.RuleBasedCollator RuleBasedCollator} to be used for language-specific searching.
  * <p>
  * The iterator's position will not be changed by this method.
  * @param collator to use for this <tt>StringSearch</tt>
- * @throws IllegalArgumentException thrown when collator is null
+ * @throws java.lang.IllegalArgumentException thrown when collator is null
  * @see #getCollator
  */
 
@@ -226,7 +226,7 @@ public java.lang.String getPattern() { throw new RuntimeException("Stub!"); }
  * The iterator's position will not be changed by this method.
  * @param pattern for searching
  * @see #getPattern
- * @exception IllegalArgumentException thrown if pattern is null or of
+ * @exception java.lang.IllegalArgumentException thrown if pattern is null or of
  *               length 0
  */
 

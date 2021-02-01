@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 1996-2016, International Business Machines Corporation and
@@ -260,8 +260,8 @@ import java.util.Iterator;
  * <p>To replace, count elements, or delete spans, see {@link android.icu.text.UnicodeSetSpanner UnicodeSetSpanner}.
  *
  * @author Alan Liu
- * @see UnicodeSetIterator
- * @see UnicodeSetSpanner
+ * @see android.icu.text.UnicodeSetIterator
+ * @see android.icu.text.UnicodeSetSpanner
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -895,7 +895,7 @@ public int getRangeCount() { throw new RuntimeException("Stub!"); }
 /**
  * Iteration method that returns the first character in the
  * specified range of this set.
- * @exception ArrayIndexOutOfBoundsException if index is outside
+ * @exception java.lang.ArrayIndexOutOfBoundsException if index is outside
  * the range <code>0..getRangeCount()-1</code>
  * @see #getRangeCount
  * @see #getRangeEnd
@@ -906,7 +906,7 @@ public int getRangeStart(int index) { throw new RuntimeException("Stub!"); }
 /**
  * Iteration method that returns the last character in the
  * specified range of this set.
- * @exception ArrayIndexOutOfBoundsException if index is outside
+ * @exception java.lang.ArrayIndexOutOfBoundsException if index is outside
  * the range <code>0..getRangeCount()-1</code>
  * @see #getRangeStart
  * @see #getRangeEnd
@@ -1158,7 +1158,7 @@ public android.icu.text.UnicodeSet cloneAsThawed() { throw new RuntimeException(
 public java.lang.Iterable<android.icu.text.UnicodeSet.EntryRange> ranges() { throw new RuntimeException("Stub!"); }
 
 /**
- * Returns a string iterator. Uses the same order of iteration as {@link UnicodeSetIterator}.
+ * Returns a string iterator. Uses the same order of iteration as {@link android.icu.text.UnicodeSetIterator UnicodeSetIterator}.
  * <p><b>Warning: </b>For speed, UnicodeSet iteration does not check for concurrent modification.
  * Do not alter the UnicodeSet while iterating.
  * @see java.util.Set#iterator()
@@ -1321,7 +1321,7 @@ public static final int MAX_VALUE = 1114111; // 0x10ffff
 
 public static final int MIN_VALUE = 0; // 0x0
 /**
- * Comparison style enums used by {@link UnicodeSet#compareTo(UnicodeSet, ComparisonStyle)}.
+ * Comparison style enums used by {@link android.icu.text.UnicodeSet#compareTo(android.icu.text.UnicodeSet,android.icu.text.UnicodeSet.ComparisonStyle) UnicodeSet#compareTo(UnicodeSet, ComparisonStyle)}.
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -1342,7 +1342,7 @@ LONGER_FIRST;
 
 /**
  * A struct-like class used for iteration through ranges, for faster iteration than by String.
- * Read about the restrictions on usage in {@link UnicodeSet#ranges()}.
+ * Read about the restrictions on usage in {@link android.icu.text.UnicodeSet#ranges() UnicodeSet#ranges()}.
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})

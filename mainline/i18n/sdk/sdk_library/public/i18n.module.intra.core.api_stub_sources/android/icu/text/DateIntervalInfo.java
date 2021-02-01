@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2008-2016, International Business Machines Corporation and
@@ -122,7 +122,7 @@ import android.icu.util.Calendar;
  * the interval patterns using setIntervalPattern function as so desired.
  * Currently, users can only set interval patterns when the following
  * calendar fields are different: ERA, YEAR, MONTH, DATE,  DAY_OF_MONTH,
- * DAY_OF_WEEK, AM_PM,  HOUR, HOUR_OF_DAY, MINUTE and SECOND.
+ * DAY_OF_WEEK, AM_PM,  HOUR, HOUR_OF_DAY, MINUTE, SECOND, and MILLISECOND.
  * Interval patterns when other calendar fields are different is not supported.
  * <P>
  * DateIntervalInfo objects are cloneable.
@@ -173,7 +173,7 @@ public DateIntervalInfo(java.util.Locale locale) { throw new RuntimeException("S
  * Restriction:
  * Currently, users can only set interval patterns when the following
  * calendar fields are different: ERA, YEAR, MONTH, DATE,  DAY_OF_MONTH,
- * DAY_OF_WEEK, AM_PM,  HOUR, HOUR_OF_DAY, MINUTE, and SECOND.
+ * DAY_OF_WEEK, AM_PM,  HOUR, HOUR_OF_DAY, MINUTE, SECOND, and MILLISECOND.
  * Interval patterns when other calendar fields are different are
  * not supported.
  *
@@ -184,10 +184,10 @@ public DateIntervalInfo(java.util.Locale locale) { throw new RuntimeException("S
  *                         For example, if lrgDiffCalUnit is
  *                         "year", the interval pattern for en_US when year
  *                         is different could be "'from' yyyy 'to' yyyy".
- * @throws IllegalArgumentException  if setting interval pattern on
+ * @throws java.lang.IllegalArgumentException  if setting interval pattern on
  *                            a calendar field that is smaller
  *                            than the MINIMUM_SUPPORTED_CALENDAR_FIELD
- * @throws UnsupportedOperationException  if the object is frozen
+ * @throws java.lang.UnsupportedOperationException  if the object is frozen
  */
 
 public void setIntervalPattern(java.lang.String skeleton, int lrgDiffCalUnit, java.lang.String intervalPattern) { throw new RuntimeException("Stub!"); }
@@ -197,7 +197,7 @@ public void setIntervalPattern(java.lang.String skeleton, int lrgDiffCalUnit, ja
  * @param skeleton   the skeleton
  * @param field      the largest different calendar field
  * @return interval pattern  return null if interval pattern is not found.
- * @throws IllegalArgumentException  if getting interval pattern on
+ * @throws java.lang.IllegalArgumentException  if getting interval pattern on
  *                            a calendar field that is smaller
  *                            than the MINIMUM_SUPPORTED_CALENDAR_FIELD
  */
@@ -221,8 +221,8 @@ public java.lang.String getFallbackIntervalPattern() { throw new RuntimeExceptio
  * This method provides a way for user to replace the fallback pattern.
  *
  * @param fallbackPattern                 fall-back interval pattern.
- * @throws UnsupportedOperationException  if the object is frozen
- * @throws IllegalArgumentException       if there is no pattern {0} or
+ * @throws java.lang.UnsupportedOperationException  if the object is frozen
+ * @throws java.lang.IllegalArgumentException       if there is no pattern {0} or
  *                                        pattern {1} in fallbakckPattern
  */
 

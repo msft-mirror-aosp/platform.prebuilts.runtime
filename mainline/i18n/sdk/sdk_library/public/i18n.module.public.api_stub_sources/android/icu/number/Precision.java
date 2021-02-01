@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2017 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.number;
 
@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  * <p>
  * To create a Precision, use one of the factory methods.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -35,7 +35,7 @@ Precision() { throw new RuntimeException("Stub!"); }
  * http://www.serpentine.com/blog/2011/06/29/here-be-dragons-advances-in-problems-you-didnt-even-know-you-had/
  *
  * @return A Precision for chaining or passing to the NumberFormatter precision() setter.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.Precision unlimited() { throw new RuntimeException("Stub!"); }
@@ -44,7 +44,7 @@ public static android.icu.number.Precision unlimited() { throw new RuntimeExcept
  * Show numbers rounded if necessary to the nearest integer.
  *
  * @return A FractionPrecision for chaining or passing to the NumberFormatter precision() setter.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.FractionPrecision integer() { throw new RuntimeException("Stub!"); }
@@ -75,8 +75,8 @@ public static android.icu.number.FractionPrecision integer() { throw new Runtime
  *            The minimum and maximum number of numerals to display after the decimal separator
  *            (rounding if too long or padding with zeros if too short).
  * @return A FractionPrecision for chaining or passing to the NumberFormatter precision() setter.
- * @throws IllegalArgumentException if the input number is too big or smaller than 0.
- * @see NumberFormatter
+ * @throws java.lang.IllegalArgumentException if the input number is too big or smaller than 0.
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.FractionPrecision fixedFraction(int minMaxFractionPlaces) { throw new RuntimeException("Stub!"); }
@@ -93,8 +93,8 @@ public static android.icu.number.FractionPrecision fixedFraction(int minMaxFract
  *            The minimum number of numerals to display after the decimal separator (padding with
  *            zeros if necessary).
  * @return A FractionPrecision for chaining or passing to the NumberFormatter precision() setter.
- * @throws IllegalArgumentException if the input number is too big or smaller than 0.
- * @see NumberFormatter
+ * @throws java.lang.IllegalArgumentException if the input number is too big or smaller than 0.
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.FractionPrecision minFraction(int minFractionPlaces) { throw new RuntimeException("Stub!"); }
@@ -108,8 +108,8 @@ public static android.icu.number.FractionPrecision minFraction(int minFractionPl
  *            The maximum number of numerals to display after the decimal mark (rounding if
  *            necessary).
  * @return A FractionPrecision for chaining or passing to the NumberFormatter precision() setter.
- * @throws IllegalArgumentException if the input number is too big or smaller than 0.
- * @see NumberFormatter
+ * @throws java.lang.IllegalArgumentException if the input number is too big or smaller than 0.
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.FractionPrecision maxFraction(int maxFractionPlaces) { throw new RuntimeException("Stub!"); }
@@ -126,8 +126,8 @@ public static android.icu.number.FractionPrecision maxFraction(int maxFractionPl
  *            The maximum number of numerals to display after the decimal separator (rounding if
  *            necessary).
  * @return A FractionPrecision for chaining or passing to the NumberFormatter precision() setter.
- * @throws IllegalArgumentException if the input number is too big or smaller than 0.
- * @see NumberFormatter
+ * @throws java.lang.IllegalArgumentException if the input number is too big or smaller than 0.
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.FractionPrecision minMaxFraction(int minFractionPlaces, int maxFractionPlaces) { throw new RuntimeException("Stub!"); }
@@ -144,8 +144,8 @@ public static android.icu.number.FractionPrecision minMaxFraction(int minFractio
  *            The minimum and maximum number of significant digits to display (rounding if too long
  *            or padding with zeros if too short).
  * @return A Precision for chaining or passing to the NumberFormatter precision() setter.
- * @throws IllegalArgumentException if the input number is too big or smaller than 1.
- * @see NumberFormatter
+ * @throws java.lang.IllegalArgumentException if the input number is too big or smaller than 1.
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.Precision fixedSignificantDigits(int minMaxSignificantDigits) { throw new RuntimeException("Stub!"); }
@@ -161,8 +161,8 @@ public static android.icu.number.Precision fixedSignificantDigits(int minMaxSign
  * @param minSignificantDigits
  *            The minimum number of significant digits to display (padding with zeros if too short).
  * @return A Precision for chaining or passing to the NumberFormatter precision() setter.
- * @throws IllegalArgumentException if the input number is too big or smaller than 1.
- * @see NumberFormatter
+ * @throws java.lang.IllegalArgumentException if the input number is too big or smaller than 1.
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.Precision minSignificantDigits(int minSignificantDigits) { throw new RuntimeException("Stub!"); }
@@ -173,8 +173,8 @@ public static android.icu.number.Precision minSignificantDigits(int minSignifica
  * @param maxSignificantDigits
  *            The maximum number of significant digits to display (rounding if too long).
  * @return A Precision for chaining or passing to the NumberFormatter precision() setter.
- * @throws IllegalArgumentException if the input number is too big or smaller than 1.
- * @see NumberFormatter
+ * @throws java.lang.IllegalArgumentException if the input number is too big or smaller than 1.
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.Precision maxSignificantDigits(int maxSignificantDigits) { throw new RuntimeException("Stub!"); }
@@ -188,8 +188,8 @@ public static android.icu.number.Precision maxSignificantDigits(int maxSignifica
  * @param maxSignificantDigits
  *            The maximum number of significant digits to display (rounding if necessary).
  * @return A Precision for chaining or passing to the NumberFormatter precision() setter.
- * @throws IllegalArgumentException if the input number is too big or smaller than 1.
- * @see NumberFormatter
+ * @throws java.lang.IllegalArgumentException if the input number is too big or smaller than 1.
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.Precision minMaxSignificantDigits(int minSignificantDigits, int maxSignificantDigits) { throw new RuntimeException("Stub!"); }
@@ -214,8 +214,8 @@ public static android.icu.number.Precision minMaxSignificantDigits(int minSignif
  * @param roundingIncrement
  *            The increment to which to round numbers.
  * @return A Precision for chaining or passing to the NumberFormatter precision() setter.
- * @throws IllegalArgumentException if the rounding increment is null or non-positive.
- * @see NumberFormatter
+ * @throws java.lang.IllegalArgumentException if the rounding increment is null or non-positive.
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.Precision increment(java.math.BigDecimal roundingIncrement) { throw new RuntimeException("Stub!"); }
@@ -236,8 +236,8 @@ public static android.icu.number.Precision increment(java.math.BigDecimal roundi
  *            Either STANDARD (for digital transactions) or CASH (for transactions where the rounding
  *            increment may be limited by the available denominations of cash or coins).
  * @return A CurrencyPrecision for chaining or passing to the NumberFormatter precision() setter.
- * @throws IllegalArgumentException if currencyUsage is null.
- * @see NumberFormatter
+ * @throws java.lang.IllegalArgumentException if currencyUsage is null.
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.CurrencyPrecision currency(android.icu.util.Currency.CurrencyUsage currencyUsage) { throw new RuntimeException("Stub!"); }

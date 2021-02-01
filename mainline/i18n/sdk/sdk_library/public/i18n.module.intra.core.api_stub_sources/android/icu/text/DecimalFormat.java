@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2017 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.text;
 
@@ -17,14 +17,14 @@ import java.math.BigInteger;
  * <strong>[icu enhancement]</strong> ICU's replacement for {@link java.text.DecimalFormat}.&nbsp;Methods, fields, and other functionality specific to ICU are labeled '<strong>[icu]</strong>'.
  *
  * <code>DecimalFormat</code> is the primary
- * concrete subclass of {@link NumberFormat}. It has a variety of features designed to make it
+ * concrete subclass of {@link android.icu.text.NumberFormat NumberFormat}. It has a variety of features designed to make it
  * possible to parse and format numbers in any locale, including support for Western, Arabic, or
  * Indic digits. It supports different flavors of numbers, including integers ("123"), fixed-point
  * numbers ("123.4"), scientific notation ("1.23E4"), percentages ("12%"), and currency amounts
  * ("$123.00", "USD123.00", "123.00 US dollars"). All of these flavors can be easily localized.
  *
  * <p>To obtain a number formatter for a specific locale (including the default locale), call one of
- * NumberFormat's factory methods such as {@link NumberFormat#getInstance}. Do not call
+ * NumberFormat's factory methods such as {@link android.icu.text.NumberFormat#getInstance NumberFormat#getInstance}. Do not call
  * DecimalFormat constructors directly unless you know what you are doing.
  *
  * <p>DecimalFormat aims to comply with the specification <a
@@ -99,8 +99,8 @@ import java.math.BigInteger;
  * <p>It is also possible to specify the <em>rounding mode</em> to use. The default rounding mode is
  * "half even", which rounds numbers to their closest increment, with ties broken in favor of
  * trailing numbers being even. For more information, see {@link #setRoundingMode} and <a
- * href="http://userguide.icu-project.org/formatparse/numbers/rounding-modes">the ICU User
- * Guide</a>.
+ * href="https://unicode-org.github.io/icu/userguide/format_parse/numbers/rounding-modes">the ICU
+ * User Guide</a>.
  *
  * <h3>Pattern Strings</h3>
  *
@@ -166,9 +166,9 @@ import java.math.BigInteger;
  * validation. The default is lenient mode. For more information, see {@link #setParseStrict}.
  *
  * <p><code>DecimalFormat</code> parses all Unicode characters that represent decimal digits, as
- * defined by {@link UCharacter#digit}. In addition, <code>DecimalFormat</code> also recognizes as
+ * defined by {@link android.icu.lang.UCharacter#digit UCharacter#digit}. In addition, <code>DecimalFormat</code> also recognizes as
  * digits the ten consecutive characters starting with the localized zero digit defined in the
- * {@link DecimalFormatSymbols} object. During formatting, the {@link DecimalFormatSymbols}-based
+ * {@link android.icu.text.DecimalFormatSymbols DecimalFormatSymbols} object. During formatting, the {@link android.icu.text.DecimalFormatSymbols DecimalFormatSymbols}-based
  * digits are output.
  *
  * <p>Grouping separators are ignored in lenient mode (default). In strict mode, grouping separators
@@ -190,8 +190,8 @@ import java.math.BigInteger;
  * "horizontal" whitespace, like spaces and tabs, but not "vertical" whitespace, like line breaks.
  * Ignorable control characters are those in the Unicode set [:Default_Ignorable_Code_Point:].
  *
- * <p>If {@link #parse(String, ParsePosition)} fails to parse a string, it returns <code>null</code>
- * and leaves the parse position unchanged. The convenience method {@link #parse(String)} indicates
+ * <p>If {@link #parse(java.lang.String,java.text.ParsePosition)} fails to parse a string, it returns <code>null</code>
+ * and leaves the parse position unchanged. The convenience method {@link #parse(java.lang.String)} indicates
  * parse failure by throwing a {@link java.text.ParseException}.
  *
  * <p>Under the hood, a state table parsing engine is used. To debug a parsing failure during
@@ -212,7 +212,7 @@ import java.math.BigInteger;
  * only during construction and not when formatting numbers online.
  *
  * @see java.text.Format
- * @see NumberFormat
+ * @see android.icu.text.NumberFormat
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -223,15 +223,14 @@ public class DecimalFormat extends android.icu.text.NumberFormat {
  * a convenient way to obtain a DecimalFormat instance when internationalization is not the main
  * concern.
  *
- * <p>Most users should call the factory methods on NumberFormat, such as {@link
- * NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
+ * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance  }, which return localized formatter objects, instead of the
  * DecimalFormat constructors.
  *
  * @see NumberFormat#getInstance
  * @see NumberFormat#getNumberInstance
  * @see NumberFormat#getCurrencyInstance
  * @see NumberFormat#getPercentInstance
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public DecimalFormat() { throw new RuntimeException("Stub!"); }
@@ -241,19 +240,18 @@ public DecimalFormat() { throw new RuntimeException("Stub!"); }
  * is a convenient way to obtain a DecimalFormat instance when internationalization is not the
  * main concern.
  *
- * <p>Most users should call the factory methods on NumberFormat, such as {@link
- * NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
+ * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance  }, which return localized formatter objects, instead of the
  * DecimalFormat constructors.
  *
  * @param pattern A pattern string such as "#,##0.00" conforming to <a
  *     href="http://unicode.org/reports/tr35/tr35-numbers.html#Number_Format_Patterns">UTS
  *     #35</a>.
- * @throws IllegalArgumentException if the given pattern is invalid.
+ * @throws java.lang.IllegalArgumentException if the given pattern is invalid.
  * @see NumberFormat#getInstance
  * @see NumberFormat#getNumberInstance
  * @see NumberFormat#getCurrencyInstance
  * @see NumberFormat#getPercentInstance
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public DecimalFormat(java.lang.String pattern) { throw new RuntimeException("Stub!"); }
@@ -262,20 +260,19 @@ public DecimalFormat(java.lang.String pattern) { throw new RuntimeException("Stu
  * Creates a DecimalFormat based on the given pattern and symbols. Use this constructor if you
  * want complete control over the behavior of the formatter.
  *
- * <p>Most users should call the factory methods on NumberFormat, such as {@link
- * NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
+ * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance  }, which return localized formatter objects, instead of the
  * DecimalFormat constructors.
  *
  * @param pattern A pattern string such as "#,##0.00" conforming to <a
  *     href="http://unicode.org/reports/tr35/tr35-numbers.html#Number_Format_Patterns">UTS
  *     #35</a>.
  * @param symbols The set of symbols to be used.
- * @exception IllegalArgumentException if the given pattern is invalid
+ * @exception java.lang.IllegalArgumentException if the given pattern is invalid
  * @see NumberFormat#getInstance
  * @see NumberFormat#getNumberInstance
  * @see NumberFormat#getCurrencyInstance
  * @see NumberFormat#getPercentInstance
- * @see DecimalFormatSymbols
+ * @see android.icu.text.DecimalFormatSymbols
  */
 
 public DecimalFormat(java.lang.String pattern, android.icu.text.DecimalFormatSymbols symbols) { throw new RuntimeException("Stub!"); }
@@ -283,11 +280,10 @@ public DecimalFormat(java.lang.String pattern, android.icu.text.DecimalFormatSym
 /**
  * Creates a DecimalFormat based on the given pattern and symbols, with additional control over
  * the behavior of currency. The style argument determines whether currency rounding rules should
- * override the pattern, and the {@link CurrencyPluralInfo} object is used for customizing the
+ * override the pattern, and the {@link android.icu.text.CurrencyPluralInfo CurrencyPluralInfo} object is used for customizing the
  * plural forms used for currency long names.
  *
- * <p>Most users should call the factory methods on NumberFormat, such as {@link
- * NumberFormat#getNumberInstance}, which return localized formatter objects, instead of the
+ * <p>Most users should call the factory methods on NumberFormat, such as {@link android.icu.text.NumberFormat#getNumberInstance  }, which return localized formatter objects, instead of the
  * DecimalFormat constructors.
  *
  * @param pattern a non-localized pattern string
@@ -410,7 +406,7 @@ public android.icu.util.CurrencyAmount parseCurrency(java.lang.CharSequence text
  * Returns a copy of the decimal format symbols used by this formatter.
  *
  * @return desired DecimalFormatSymbols
- * @see DecimalFormatSymbols
+ * @see android.icu.text.DecimalFormatSymbols
  */
 
 public synchronized android.icu.text.DecimalFormatSymbols getDecimalFormatSymbols() { throw new RuntimeException("Stub!"); }
@@ -420,7 +416,7 @@ public synchronized android.icu.text.DecimalFormatSymbols getDecimalFormatSymbol
  * provided symbols.
  *
  * @param newSymbols desired DecimalFormatSymbols
- * @see DecimalFormatSymbols
+ * @see android.icu.text.DecimalFormatSymbols
  */
 
 public synchronized void setDecimalFormatSymbols(android.icu.text.DecimalFormatSymbols newSymbols) { throw new RuntimeException("Stub!"); }
@@ -534,6 +530,40 @@ public synchronized java.lang.String getNegativeSuffix() { throw new RuntimeExce
 public synchronized void setNegativeSuffix(java.lang.String suffix) { throw new RuntimeException("Stub!"); }
 
 /**
+ * <strong>[icu]</strong> Returns whether the sign is being shown on positive numbers.
+ *
+ * @return Whether the sign is shown on positive numbers and zero.
+ * @see #setSignAlwaysShown
+ */
+
+public synchronized boolean isSignAlwaysShown() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Sets whether to always shown the plus sign ('+' in <em>en</em>) on positive numbers. The rules
+ * in UTS #35 section 3.2.1 will be followed to ensure a locale-aware placement of the sign.
+ *
+ * <p>More specifically, the following strategy will be used to place the plus sign:
+ *
+ * <ol>
+ *   <li><em>Patterns without a negative subpattern:</em> The locale's plus sign will be prepended
+ *       to the positive prefix.
+ *   <li><em>Patterns with a negative subpattern without a '-' sign (e.g., accounting):</em> The
+ *       locale's plus sign will be prepended to the positive prefix, as in case 1.
+ *   <li><em>Patterns with a negative subpattern that has a '-' sign:</em> The locale's plus sign
+ *       will substitute the '-' in the negative subpattern. The positive subpattern will be
+ *       unused.
+ * </ol>
+ *
+ * This method is designed to be used <em>instead of</em> applying a pattern containing an
+ * explicit plus sign, such as "+0;-0". The behavior when combining this method with explicit plus
+ * signs in the pattern is undefined.
+ *
+ * @param value true to always show a sign; false to hide the sign on positive numbers and zero.
+ */
+
+public synchronized void setSignAlwaysShown(boolean value) { throw new RuntimeException("Stub!"); }
+
+/**
  * Returns the multiplier being applied to numbers before they are formatted.
  *
  * @see #setMultiplier
@@ -551,8 +581,8 @@ public synchronized int getMultiplier() { throw new RuntimeException("Stub!"); }
  * <p>If the number specified here is a power of 10, a more efficient code path will be used.
  *
  * @param multiplier The number by which all numbers passed to {@link #format} will be multiplied.
- * @throws IllegalArgumentException If the given multiplier is zero.
- * @throws ArithmeticException when inverting multiplier produces a non-terminating decimal result
+ * @throws java.lang.IllegalArgumentException If the given multiplier is zero.
+ * @throws java.lang.ArithmeticException when inverting multiplier produces a non-terminating decimal result
  *         in conjunction with MathContext of unlimited precision.
  */
 
@@ -617,16 +647,16 @@ public synchronized void setRoundingIncrement(double increment) { throw new Runt
 public synchronized int getRoundingMode() { throw new RuntimeException("Stub!"); }
 
 /**
- * <strong>Rounding and Digit Limits:</strong> Sets the {@link RoundingMode} used to round
+ * <strong>Rounding and Digit Limits:</strong> Sets the {@link java.math.RoundingMode RoundingMode} used to round
  * numbers. The default rounding mode is HALF_EVEN, which rounds decimals to their closest whole
  * number, and rounds to the closest even number if at the midpoint.
  *
  * <p>For more detail on rounding modes, see <a
- * href="http://userguide.icu-project.org/formatparse/numbers/rounding-modes">the ICU User
- * Guide</a>.
+ * href="https://unicode-org.github.io/icu/userguide/format_parse/numbers/rounding-modes">the ICU
+ * User Guide</a>.
  *
  * <p>For backwards compatibility, the rounding mode is specified as an int argument, which can be
- * from either the constants in {@link BigDecimal} or the ordinal value of {@link RoundingMode}.
+ * from either the constants in {@link android.icu.math.BigDecimal BigDecimal} or the ordinal value of {@link java.math.RoundingMode RoundingMode}.
  * The following two calls are functionally equivalent.
  *
  * <pre>
@@ -660,7 +690,7 @@ public synchronized java.math.MathContext getMathContext() { throw new RuntimeEx
  * method.
  *
  * @param mathContext The MathContext to use when rounding numbers.
- * @throws ArithmeticException when inverting multiplier produces a non-terminating decimal result
+ * @throws java.lang.ArithmeticException when inverting multiplier produces a non-terminating decimal result
  *         in conjunction with MathContext of unlimited precision.
  * @see java.math.MathContext
  */
@@ -680,7 +710,7 @@ public synchronized android.icu.math.MathContext getMathContextICU() { throw new
  * {@link android.icu.math.MathContext}.
  *
  * @param mathContextICU The MathContext to use when rounding numbers.
- * @throws ArithmeticException when inverting multiplier produces a non-terminating decimal result
+ * @throws java.lang.ArithmeticException when inverting multiplier produces a non-terminating decimal result
  *         in conjunction with MathContext of unlimited precision.
  * @see #setMathContext(java.math.MathContext)
  */
@@ -954,10 +984,10 @@ public synchronized int getPadPosition() { throw new RuntimeException("Stub!"); 
  * "P123S" with padding width 8 and padding char "*". The four positions are:
  *
  * <ul>
- *   <li>{@link DecimalFormat#PAD_BEFORE_PREFIX} ⇒ "***P123S"
- *   <li>{@link DecimalFormat#PAD_AFTER_PREFIX} ⇒ "P***123S"
- *   <li>{@link DecimalFormat#PAD_BEFORE_SUFFIX} ⇒ "P123***S"
- *   <li>{@link DecimalFormat#PAD_AFTER_SUFFIX} ⇒ "P123S***"
+ *   <li>{@link android.icu.text.DecimalFormat#PAD_BEFORE_PREFIX DecimalFormat#PAD_BEFORE_PREFIX} ⇒ "***P123S"
+ *   <li>{@link android.icu.text.DecimalFormat#PAD_AFTER_PREFIX DecimalFormat#PAD_AFTER_PREFIX} ⇒ "P***123S"
+ *   <li>{@link android.icu.text.DecimalFormat#PAD_BEFORE_SUFFIX DecimalFormat#PAD_BEFORE_SUFFIX} ⇒ "P123***S"
+ *   <li>{@link android.icu.text.DecimalFormat#PAD_AFTER_SUFFIX DecimalFormat#PAD_AFTER_SUFFIX} ⇒ "P123S***"
  * </ul>
  *
  * @param padPos The position used for padding.
@@ -1106,6 +1136,34 @@ public synchronized int getSecondaryGroupingSize() { throw new RuntimeException(
 public synchronized void setSecondaryGroupingSize(int width) { throw new RuntimeException("Stub!"); }
 
 /**
+ * <strong>[icu]</strong> Returns the minimum number of digits before grouping is triggered.
+ *
+ * @see #setMinimumGroupingDigits
+ */
+
+public synchronized int getMinimumGroupingDigits() { throw new RuntimeException("Stub!"); }
+
+/**
+ * <strong>[icu]</strong> Sets the minimum number of digits that must be before the first grouping separator in
+ * order for the grouping separator to be printed. For example, if minimum grouping digits is set
+ * to 2, in <em>en-US</em>, 1234 will be printed as "1234" and 12345 will be printed as "12,345".
+ *
+ * Set the value to:
+ * <ul>
+ * <li>1 to turn off minimum grouping digits.</li>
+ * <li>MINIMUM_GROUPING_DIGITS_AUTO to display grouping using the default
+ * strategy for all locales.</li>
+ * <li>MINIMUM_GROUPING_DIGITS_MIN2 to display grouping using locale defaults,
+ * except do not show grouping on values smaller than 10000 (such that there is a minimum of
+ * two digits before the first separator).</li>
+ * </ul>
+ *
+ * @param number The minimum number of digits before grouping is triggered.
+ */
+
+public synchronized void setMinimumGroupingDigits(int number) { throw new RuntimeException("Stub!"); }
+
+/**
  * Returns whether the decimal separator is shown on integers.
  *
  * @see #setDecimalSeparatorAlwaysShown
@@ -1130,7 +1188,7 @@ public synchronized void setDecimalSeparatorAlwaysShown(boolean value) { throw n
  * Returns the currency used to display currency amounts. May be null.
  *
  * @see #setCurrency
- * @see DecimalFormatSymbols#getCurrency
+ * @see android.icu.text.DecimalFormatSymbols#getCurrency
  */
 
 public synchronized android.icu.util.Currency getCurrency() { throw new RuntimeException("Stub!"); }
@@ -1253,13 +1311,6 @@ public synchronized boolean isParseStrict() { throw new RuntimeException("Stub!"
 public synchronized void setParseStrict(boolean parseStrict) { throw new RuntimeException("Stub!"); }
 
 /**
- * @param parseJavaCompatible true for java-compatible mode, and otherwise lenient mode.
- * @hide draft / provisional / internal are hidden on Android
- */
-
-public void setParseJavaCompatible(boolean parseJavaCompatible) { throw new RuntimeException("Stub!"); }
-
-/**
  * {@inheritDoc}
  *
  * @see #setParseIntegerOnly
@@ -1322,6 +1373,42 @@ public synchronized boolean isDecimalPatternMatchRequired() { throw new RuntimeE
  */
 
 public synchronized void setDecimalPatternMatchRequired(boolean value) { throw new RuntimeException("Stub!"); }
+
+/**
+ * <strong>[icu]</strong> Returns whether to ignore exponents when parsing.
+ *
+ * @see #setParseNoExponent
+ */
+
+public synchronized boolean isParseNoExponent() { throw new RuntimeException("Stub!"); }
+
+/**
+ * <strong>[icu]</strong> Specifies whether to stop parsing when an exponent separator is encountered. For
+ * example, parses "123E4" to 123 (with parse position 3) instead of 1230000 (with parse position
+ * 5).
+ *
+ * @param value true to prevent exponents from being parsed; false to allow them to be parsed.
+ */
+
+public synchronized void setParseNoExponent(boolean value) { throw new RuntimeException("Stub!"); }
+
+/**
+ * <strong>[icu]</strong> Returns whether to force case (uppercase/lowercase) to match when parsing.
+ *
+ * @see #setParseNoExponent
+ */
+
+public synchronized boolean isParseCaseSensitive() { throw new RuntimeException("Stub!"); }
+
+/**
+ * <strong>[icu]</strong> Specifies whether parsing should require cases to match in affixes, exponent separators,
+ * and currency codes. Case mapping is performed for each code point using {@link android.icu.lang.UCharacter#foldCase  }.
+ *
+ * @param value true to force case (uppercase/lowercase) to match when parsing; false to ignore
+ *     case and perform case folding.
+ */
+
+public synchronized void setParseCaseSensitive(boolean value) { throw new RuntimeException("Stub!"); }
 
 /**
  * Tests for equality between this formatter and another formatter.

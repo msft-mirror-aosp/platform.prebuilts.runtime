@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 1996-2015, International Business Machines Corporation and    *
@@ -48,8 +48,8 @@ import java.text.CharacterIterator;
  * </code></pre>
  *
  * @author Laura Werner, synwee
- * @see BreakIterator
- * @see RuleBasedCollator
+ * @see android.icu.text.BreakIterator
+ * @see android.icu.text.RuleBasedCollator
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -60,14 +60,14 @@ public abstract class SearchIterator {
  * Initializes the iterator with the argument target text for searching
  * and sets the BreakIterator.
  * See class documentation for more details on the use of the target text
- * and {@link BreakIterator}.
+ * and {@link android.icu.text.BreakIterator BreakIterator}.
  *
  * @param target The target text to be searched.
- * @param breaker A {@link BreakIterator} that is used to determine the
+ * @param breaker A {@link android.icu.text.BreakIterator BreakIterator} that is used to determine the
  *                boundaries of a logical match. This argument can be null.
- * @exception IllegalArgumentException thrown when argument target is null,
+ * @exception java.lang.IllegalArgumentException thrown when argument target is null,
  *            or of length 0
- * @see BreakIterator
+ * @see android.icu.text.BreakIterator
  */
 
 protected SearchIterator(java.text.CharacterIterator target, android.icu.text.BreakIterator breaker) { throw new RuntimeException("Stub!"); }
@@ -78,7 +78,7 @@ protected SearchIterator(java.text.CharacterIterator target, android.icu.text.Br
  * This method clears any previous match.
  * </p>
  * @param position position from which to start the next search
- * @exception IndexOutOfBoundsException thrown if argument position is out
+ * @exception java.lang.IndexOutOfBoundsException thrown if argument position is out
  *            of the target text range.
  * @see #getIndex
  */
@@ -104,11 +104,11 @@ public void setOverlapping(boolean allowOverlap) { throw new RuntimeException("S
  * @param breakiter A BreakIterator that will be used to restrict the
  *                points at which matches are detected. If a match is
  *                found, but the match's start or end index is not a
- *                boundary as determined by the {@link BreakIterator},
+ *                boundary as determined by the {@link android.icu.text.BreakIterator BreakIterator},
  *                the match will be rejected and another will be searched
  *                for. If this parameter is <tt>null</tt>, no break
  *                detection is attempted.
- * @see BreakIterator
+ * @see android.icu.text.BreakIterator
  */
 
 public void setBreakIterator(android.icu.text.BreakIterator breakiter) { throw new RuntimeException("Stub!"); }
@@ -119,7 +119,7 @@ public void setBreakIterator(android.icu.text.BreakIterator breakiter) { throw n
  * reuse an iterator to search within a different body of text.
  *
  * @param text new text iterator to look for match,
- * @exception IllegalArgumentException thrown when text is null or has
+ * @exception java.lang.IllegalArgumentException thrown when text is null or has
  *               0 length
  * @see #getTarget
  */
@@ -177,12 +177,12 @@ public int getMatchLength() { throw new RuntimeException("Stub!"); }
  * Returns the BreakIterator that is used to restrict the indexes at which
  * matches are detected. This will be the same object that was passed to
  * the constructor or to {@link #setBreakIterator}.
- * If the {@link BreakIterator} has not been set, <tt>null</tt> will be returned.
+ * If the {@link android.icu.text.BreakIterator BreakIterator} has not been set, <tt>null</tt> will be returned.
  * See {@link #setBreakIterator} for more information.
  *
  * @return the BreakIterator set to restrict logic matches
  * @see #setBreakIterator
- * @see BreakIterator
+ * @see android.icu.text.BreakIterator
  */
 
 public android.icu.text.BreakIterator getBreakIterator() { throw new RuntimeException("Stub!"); }
@@ -289,7 +289,7 @@ public final int first() { throw new RuntimeException("Stub!"); }
  * @param  position where search if to start from.
  * @return The character index of the first match following
  *         <tt>position</tt>, or {@link #DONE} if there are no matches.
- * @throws IndexOutOfBoundsException    If position is less than or greater
+ * @throws java.lang.IndexOutOfBoundsException    If position is less than or greater
  *      than the text range for searching.
  * @see #getIndex
  */
@@ -328,7 +328,7 @@ public final int last() { throw new RuntimeException("Stub!"); }
  * @return The character index of the first match preceding
  *         <tt>position</tt>, or {@link #DONE} if there are
  *         no matches.
- * @throws IndexOutOfBoundsException If position is less than or greater than
+ * @throws java.lang.IndexOutOfBoundsException If position is less than or greater than
  *                                   the text range for searching
  * @see #getIndex
  */
@@ -390,9 +390,9 @@ protected abstract int handlePrevious(int startAt);
 /**
  * Sets the collation element comparison type.
  * <p>
- * The default comparison type is {@link ElementComparisonType#STANDARD_ELEMENT_COMPARISON}.
+ * The default comparison type is {@link android.icu.text.SearchIterator.ElementComparisonType#STANDARD_ELEMENT_COMPARISON ElementComparisonType#STANDARD_ELEMENT_COMPARISON}.
  *
- * @see ElementComparisonType
+ * @see android.icu.text.SearchIterator.ElementComparisonType
  * @see #getElementComparisonType()
  */
 
@@ -401,7 +401,7 @@ public void setElementComparisonType(android.icu.text.SearchIterator.ElementComp
 /**
  * Returns the collation element comparison type.
  *
- * @see ElementComparisonType
+ * @see android.icu.text.SearchIterator.ElementComparisonType
  * @see #setElementComparisonType(ElementComparisonType)
  */
 
@@ -422,7 +422,7 @@ public static final int DONE = -1; // 0xffffffff
  * See class documentation for more information.
  * @see #setBreakIterator(BreakIterator)
  * @see #getBreakIterator
- * @see BreakIterator
+ * @see android.icu.text.BreakIterator
  */
 
 protected android.icu.text.BreakIterator breakIterator;

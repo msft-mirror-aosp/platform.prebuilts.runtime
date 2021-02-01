@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2000-2009, International Business Machines Corporation and    *
@@ -36,7 +36,7 @@ package android.icu.text;
  * called by the UBA implementation any time the class of a character is
  * to be determined.</p>
  *
- * @see Bidi#setCustomClassifier
+ * @see android.icu.text.Bidi#setCustomClassifier
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})

@@ -21,7 +21,7 @@ import javax.net.ssl.SSLSocket;
 
 /**
  * Static utility methods for accessing additional functionality of supported instances of
- * {@link SSLSocket}.  Sockets from the platform TLS provider will be compatible with all
+ * {@link javax.net.ssl.SSLSocket SSLSocket}.  Sockets from the platform TLS provider will be compatible with all
  * methods in this class.
  */
 
@@ -44,7 +44,7 @@ public static boolean isSupportedSocket(javax.net.ssl.SSLSocket socket) { throw 
  *
  * @param socket the socket
  * @param useSessionTickets whether to enable or disable the use of session tickets
- * @throws IllegalArgumentException if the given socket is not a platform socket
+ * @throws java.lang.IllegalArgumentException if the given socket is not a platform socket
  */
 
 public static void setUseSessionTickets(javax.net.ssl.SSLSocket socket, boolean useSessionTickets) { throw new RuntimeException("Stub!"); }

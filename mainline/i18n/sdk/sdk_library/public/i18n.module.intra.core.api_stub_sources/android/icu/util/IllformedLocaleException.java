@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2009-2012, International Business Machines Corporation and    *
@@ -12,10 +12,10 @@ package android.icu.util;
 
 
 /**
- * Thrown by methods in {@link ULocale} and {@link ULocale.Builder} to
+ * Thrown by methods in {@link android.icu.util.ULocale ULocale} and {@link android.icu.util.ULocale.Builder ULocale.Builder} to
  * indicate that an argument is not a well-formed BCP 47 tag.
  *
- * @see ULocale
+ * @see android.icu.util.ULocale
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})

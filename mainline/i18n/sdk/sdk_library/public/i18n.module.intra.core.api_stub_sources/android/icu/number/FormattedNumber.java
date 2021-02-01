@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2017 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.number;
 
@@ -13,11 +13,11 @@ import java.text.AttributedCharacterIterator;
  *
  * Instances of this class are immutable and thread-safe.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
-public class FormattedNumber implements java.lang.CharSequence {
+public class FormattedNumber implements android.icu.text.FormattedValue {
 
 FormattedNumber() { throw new RuntimeException("Stub!"); }
 
@@ -29,27 +29,33 @@ public java.lang.String toString() { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 
 public int length() { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 
 public char charAt(int index) { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 
 public java.lang.CharSequence subSequence(int start, int end) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public <A extends java.lang.Appendable> A appendTo(A appendable) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public boolean nextPosition(android.icu.text.ConstrainedFieldPosition cfpos) { throw new RuntimeException("Stub!"); }
 
 /**
  * {@inheritDoc}
@@ -63,25 +69,9 @@ public java.text.AttributedCharacterIterator toCharacterIterator() { throw new R
  * pipeline.
  *
  * @return A BigDecimal representation of the formatted number.
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 public java.math.BigDecimal toBigDecimal() { throw new RuntimeException("Stub!"); }
-
-/**
- * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
- */
-
-public int hashCode() { throw new RuntimeException("Stub!"); }
-
-/**
- * {@inheritDoc}
- *
- * @hide draft / provisional / internal are hidden on Android
- */
-
-public boolean equals(java.lang.Object other) { throw new RuntimeException("Stub!"); }
 }
 

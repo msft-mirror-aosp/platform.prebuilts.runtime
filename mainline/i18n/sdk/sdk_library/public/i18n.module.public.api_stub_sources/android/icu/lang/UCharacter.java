@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /**
  *******************************************************************************
  * Copyright (C) 1996-2016, International Business Machines Corporation and
@@ -28,8 +28,8 @@ import android.icu.lang.UCharacterEnums.ECharacterCategory;
  * The ICU UCharacter class and many other ICU classes already supported them.
  * Some UCharacter methods and constants were widened slightly differently than
  * how the Character class methods and constants were widened later.
- * In particular, {@link Character#MAX_VALUE} is still a char with the value U+FFFF,
- * while the {@link UCharacter#MAX_VALUE} is an int with the value U+10FFFF.
+ * In particular, {@link java.lang.Character#MAX_VALUE Character#MAX_VALUE} is still a char with the value U+FFFF,
+ * while the {@link android.icu.lang.UCharacter#MAX_VALUE UCharacter#MAX_VALUE} is an int with the value U+10FFFF.
  *
  * <p>Code points are represented in these API using ints. While it would be
  * more convenient in Java to have a separate primitive datatype for them,
@@ -623,8 +623,8 @@ public static int getMirror(int ch) { throw new RuntimeException("Stub!"); }
  *         or c itself if there is no such mapping
  *         (Bidi_Paired_Bracket_Type=None)
  *
- * @see UProperty#BIDI_PAIRED_BRACKET
- * @see UProperty#BIDI_PAIRED_BRACKET_TYPE
+ * @see android.icu.lang.UProperty#BIDI_PAIRED_BRACKET
+ * @see android.icu.lang.UProperty#BIDI_PAIRED_BRACKET_TYPE
  * @see #getMirror(int)
  */
 
@@ -799,11 +799,11 @@ public static int getCharFromNameAlias(java.lang.String name) { throw new Runtim
  * nameChoice, then other nameChoice values may return non-null
  * results.
  *
- * @exception IllegalArgumentException thrown if property or
+ * @exception java.lang.IllegalArgumentException thrown if property or
  * nameChoice are invalid.
  *
- * @see UProperty
- * @see UProperty.NameChoice
+ * @see android.icu.lang.UProperty
+ * @see android.icu.lang.UProperty.NameChoice
  */
 
 public static java.lang.String getPropertyName(int property, int nameChoice) { throw new RuntimeException("Stub!"); }
@@ -824,10 +824,10 @@ public static java.lang.String getPropertyName(int property, int nameChoice) { t
  *
  * @return a UProperty enum.
  *
- * @exception IllegalArgumentException thrown if propertyAlias
+ * @exception java.lang.IllegalArgumentException thrown if propertyAlias
  * is not recognized.
  *
- * @see UProperty
+ * @see android.icu.lang.UProperty
  */
 
 public static int getPropertyEnum(java.lang.CharSequence propertyAlias) { throw new RuntimeException("Stub!"); }
@@ -873,11 +873,11 @@ public static int getPropertyEnum(java.lang.CharSequence propertyAlias) { throw 
  * given nameChoice, then other nameChoice values may return
  * non-null results.
  *
- * @exception IllegalArgumentException thrown if property, value,
+ * @exception java.lang.IllegalArgumentException thrown if property, value,
  * or nameChoice are invalid.
  *
- * @see UProperty
- * @see UProperty.NameChoice
+ * @see android.icu.lang.UProperty
+ * @see android.icu.lang.UProperty.NameChoice
  */
 
 public static java.lang.String getPropertyValueName(int property, int value, int nameChoice) { throw new RuntimeException("Stub!"); }
@@ -908,8 +908,8 @@ public static java.lang.String getPropertyValueName(int property, int value, int
  * UCharacter.getType().  This allows grouped categories such as
  * [:L:] to be represented.
  *
- * @see UProperty
- * @throws IllegalArgumentException if property is not a valid UProperty
+ * @see android.icu.lang.UProperty
+ * @throws java.lang.IllegalArgumentException if property is not a valid UProperty
  *         selector or valueAlias is not a value of this property
  */
 
@@ -921,7 +921,7 @@ public static int getPropertyValueEnum(int property, java.lang.CharSequence valu
  * @param lead the lead char
  * @param trail the trail char
  * @return code point if surrogate characters are valid.
- * @exception IllegalArgumentException thrown when the code units do
+ * @exception java.lang.IllegalArgumentException thrown when the code units do
  *            not form a valid code point
  */
 
@@ -932,7 +932,7 @@ public static int getCodePoint(char lead, char trail) { throw new RuntimeExcepti
  *
  * @param char16 the BMP code point
  * @return code point if argument is a valid character.
- * @exception IllegalArgumentException thrown when char16 is not a valid
+ * @exception java.lang.IllegalArgumentException thrown when char16 is not a valid
  *            code point
  */
 
@@ -1381,14 +1381,14 @@ public static boolean isUWhiteSpace(int ch) { throw new RuntimeException("Stub!"
  * @return numeric value that is directly the property value or,
  *         for enumerated properties, corresponds to the numeric value of
  *         the enumerated constant of the respective property value type
- *         ({@link ECharacterCategory}, {@link ECharacterDirection},
- *         {@link DecompositionType}, etc.).
+ *         ({@link android.icu.lang.UCharacterEnums.ECharacterCategory ECharacterCategory}, {@link android.icu.lang.UCharacterEnums.ECharacterDirection ECharacterDirection},
+ *         {@link android.icu.lang.UCharacter.DecompositionType DecompositionType}, etc.).
  *         Returns 0 or 1 (for false / true) for binary Unicode properties.
  *         Returns a bit-mask for mask properties.
  *         Returns 0 if 'type' is out of bounds or if the Unicode version
  *         does not have data for the property at all, or not for this code
  *         point.
- * @see UProperty
+ * @see android.icu.lang.UProperty
  * @see #hasBinaryProperty
  * @see #getIntPropertyMinValue
  * @see #getIntPropertyMaxValue
@@ -1408,7 +1408,7 @@ public static int getIntPropertyValue(int ch, int type) { throw new RuntimeExcep
  * @return Minimum value returned by UCharacter.getIntPropertyValue(int)
  *         for a Unicode property. 0 if the property
  *         selector 'type' is out of range.
- * @see UProperty
+ * @see android.icu.lang.UProperty
  * @see #hasBinaryProperty
  * @see #getUnicodeVersion
  * @see #getIntPropertyMaxValue
@@ -1435,7 +1435,7 @@ public static int getIntPropertyMinValue(int type) { throw new RuntimeException(
  *        UProperty.INT_START &lt;= type &lt; UProperty.INT_LIMIT.
  * @return Maximum value returned by u_getIntPropertyValue for a Unicode
  *         property. &lt;= 0 if the property selector 'type' is out of range.
- * @see UProperty
+ * @see android.icu.lang.UProperty
  * @see #hasBinaryProperty
  * @see #getUnicodeVersion
  * @see #getIntPropertyMaxValue
@@ -1451,7 +1451,7 @@ public static int getIntPropertyMaxValue(int type) { throw new RuntimeException(
 public static char forDigit(int digit, int radix) { throw new RuntimeException("Stub!"); }
 
 /**
- * Equivalent to {@link Character#isValidCodePoint}.
+ * Equivalent to {@link java.lang.Character#isValidCodePoint Character#isValidCodePoint}.
  *
  * @param cp the code point to check
  * @return true if cp is a valid code point
@@ -1460,7 +1460,7 @@ public static char forDigit(int digit, int radix) { throw new RuntimeException("
 public static boolean isValidCodePoint(int cp) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#isSupplementaryCodePoint}.
+ * Same as {@link java.lang.Character#isSupplementaryCodePoint Character#isSupplementaryCodePoint}.
  *
  * @param cp the code point to check
  * @return true if cp is a supplementary code point
@@ -1469,7 +1469,7 @@ public static boolean isValidCodePoint(int cp) { throw new RuntimeException("Stu
 public static boolean isSupplementaryCodePoint(int cp) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#isHighSurrogate}.
+ * Same as {@link java.lang.Character#isHighSurrogate Character#isHighSurrogate}.
  *
  * @param ch the char to check
  * @return true if ch is a high (lead) surrogate
@@ -1478,7 +1478,7 @@ public static boolean isSupplementaryCodePoint(int cp) { throw new RuntimeExcept
 public static boolean isHighSurrogate(char ch) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#isLowSurrogate}.
+ * Same as {@link java.lang.Character#isLowSurrogate Character#isLowSurrogate}.
  *
  * @param ch the char to check
  * @return true if ch is a low (trail) surrogate
@@ -1487,7 +1487,7 @@ public static boolean isHighSurrogate(char ch) { throw new RuntimeException("Stu
 public static boolean isLowSurrogate(char ch) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#isSurrogatePair}.
+ * Same as {@link java.lang.Character#isSurrogatePair Character#isSurrogatePair}.
  *
  * @param high the high (lead) char
  * @param low the low (trail) char
@@ -1497,7 +1497,7 @@ public static boolean isLowSurrogate(char ch) { throw new RuntimeException("Stub
 public static boolean isSurrogatePair(char high, char low) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#charCount}.
+ * Same as {@link java.lang.Character#charCount Character#charCount}.
  * Returns the number of chars needed to represent the code point (1 or 2).
  * This does not check the code point for validity.
  *
@@ -1508,7 +1508,7 @@ public static boolean isSurrogatePair(char high, char low) { throw new RuntimeEx
 public static int charCount(int cp) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#toCodePoint}.
+ * Same as {@link java.lang.Character#toCodePoint Character#toCodePoint}.
  * Returns the code point represented by the two surrogate code units.
  * This does not check the surrogate pair for validity.
  *
@@ -1520,7 +1520,7 @@ public static int charCount(int cp) { throw new RuntimeException("Stub!"); }
 public static int toCodePoint(char high, char low) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#codePointAt(CharSequence, int)}.
+ * Same as {@link java.lang.Character#codePointAt(java.lang.CharSequence,int) Character#codePointAt(CharSequence, int)}.
  * Returns the code point at index.
  * This examines only the characters at index and index+1.
  *
@@ -1532,7 +1532,7 @@ public static int toCodePoint(char high, char low) { throw new RuntimeException(
 public static int codePointAt(java.lang.CharSequence seq, int index) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#codePointAt(char[], int)}.
+ * Same as {@link java.lang.Character#codePointAt(char[],int) Character#codePointAt(char[], int)}.
  * Returns the code point at index.
  * This examines only the characters at index and index+1.
  *
@@ -1544,7 +1544,7 @@ public static int codePointAt(java.lang.CharSequence seq, int index) { throw new
 public static int codePointAt(char[] text, int index) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#codePointAt(char[], int, int)}.
+ * Same as {@link java.lang.Character#codePointAt(char[],int,int) Character#codePointAt(char[], int, int)}.
  * Returns the code point at index.
  * This examines only the characters at index and index+1.
  *
@@ -1557,7 +1557,7 @@ public static int codePointAt(char[] text, int index) { throw new RuntimeExcepti
 public static int codePointAt(char[] text, int index, int limit) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#codePointBefore(CharSequence, int)}.
+ * Same as {@link java.lang.Character#codePointBefore(java.lang.CharSequence,int) Character#codePointBefore(CharSequence, int)}.
  * Return the code point before index.
  * This examines only the characters at index-1 and index-2.
  *
@@ -1569,7 +1569,7 @@ public static int codePointAt(char[] text, int index, int limit) { throw new Run
 public static int codePointBefore(java.lang.CharSequence seq, int index) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#codePointBefore(char[], int)}.
+ * Same as {@link java.lang.Character#codePointBefore(char[],int) Character#codePointBefore(char[], int)}.
  * Returns the code point before index.
  * This examines only the characters at index-1 and index-2.
  *
@@ -1581,7 +1581,7 @@ public static int codePointBefore(java.lang.CharSequence seq, int index) { throw
 public static int codePointBefore(char[] text, int index) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#codePointBefore(char[], int, int)}.
+ * Same as {@link java.lang.Character#codePointBefore(char[],int,int) Character#codePointBefore(char[], int, int)}.
  * Return the code point before index.
  * This examines only the characters at index-1 and index-2.
  *
@@ -1594,7 +1594,7 @@ public static int codePointBefore(char[] text, int index) { throw new RuntimeExc
 public static int codePointBefore(char[] text, int index, int limit) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#toChars(int, char[], int)}.
+ * Same as {@link java.lang.Character#toChars(int,char[],int) Character#toChars(int, char[], int)}.
  * Writes the chars representing the
  * code point into the destination at the given index.
  *
@@ -1602,33 +1602,31 @@ public static int codePointBefore(char[] text, int index, int limit) { throw new
  * @param dst the destination array into which to put the char(s) representing the code point
  * @param dstIndex the index at which to put the first (or only) char
  * @return the count of the number of chars written (1 or 2)
- * @throws IllegalArgumentException if cp is not a valid code point
+ * @throws java.lang.IllegalArgumentException if cp is not a valid code point
  */
 
 public static int toChars(int cp, char[] dst, int dstIndex) { throw new RuntimeException("Stub!"); }
 
 /**
- * Same as {@link Character#toChars(int)}.
+ * Same as {@link java.lang.Character#toChars(int) Character#toChars(int)}.
  * Returns a char array representing the code point.
  *
  * @param cp the code point to convert
  * @return an array containing the char(s) representing the code point
- * @throws IllegalArgumentException if cp is not a valid code point
+ * @throws java.lang.IllegalArgumentException if cp is not a valid code point
  */
 
 public static char[] toChars(int cp) { throw new RuntimeException("Stub!"); }
 
 /**
- * Equivalent to the {@link Character#getDirectionality(char)} method, for
+ * Equivalent to the {@link java.lang.Character#getDirectionality(char) Character#getDirectionality(char)} method, for
  * convenience. Returns a byte representing the directionality of the
  * character.
  *
- * <strong>[icu] Note:</strong> Unlike {@link Character#getDirectionality(char)}, this returns
+ * <strong>[icu] Note:</strong> Unlike {@link java.lang.Character#getDirectionality(char) Character#getDirectionality(char)}, this returns
  * DIRECTIONALITY_LEFT_TO_RIGHT for undefined or out-of-bounds characters.
  *
- * <strong>[icu] Note:</strong> The return value must be tested using the constants defined in {@link
- * UCharacterDirection} and its interface {@link
- * UCharacterEnums.ECharacterDirection} since the values are different from the ones
+ * <strong>[icu] Note:</strong> The return value must be tested using the constants defined in {@link android.icu.lang.UCharacterDirection UCharacterDirection} and its interface {@link android.icu.lang.UCharacterEnums.ECharacterDirection UCharacterEnums.ECharacterDirection} since the values are different from the ones
  * defined by <code>java.lang.Character</code>.
  * @param cp the code point to check
  * @return the directionality of the code point
@@ -1638,7 +1636,7 @@ public static char[] toChars(int cp) { throw new RuntimeException("Stub!"); }
 public static byte getDirectionality(int cp) { throw new RuntimeException("Stub!"); }
 
 /**
- * Equivalent to the {@link Character#codePointCount(CharSequence, int, int)}
+ * Equivalent to the {@link java.lang.Character#codePointCount(java.lang.CharSequence,int,int) Character#codePointCount(CharSequence, int, int)}
  * method, for convenience.  Counts the number of code points in the range
  * of text.
  * @param text the characters to check
@@ -1650,7 +1648,7 @@ public static byte getDirectionality(int cp) { throw new RuntimeException("Stub!
 public static int codePointCount(java.lang.CharSequence text, int start, int limit) { throw new RuntimeException("Stub!"); }
 
 /**
- * Equivalent to the {@link Character#codePointCount(char[], int, int)} method, for
+ * Equivalent to the {@link java.lang.Character#codePointCount(char[],int,int) Character#codePointCount(char[], int, int)} method, for
  * convenience. Counts the number of code points in the range of text.
  * @param text the characters to check
  * @param start the start of the range
@@ -1661,7 +1659,7 @@ public static int codePointCount(java.lang.CharSequence text, int start, int lim
 public static int codePointCount(char[] text, int start, int limit) { throw new RuntimeException("Stub!"); }
 
 /**
- * Equivalent to the {@link Character#offsetByCodePoints(CharSequence, int, int)}
+ * Equivalent to the {@link java.lang.Character#offsetByCodePoints(java.lang.CharSequence,int,int) Character#offsetByCodePoints(CharSequence, int, int)}
  * method, for convenience.  Adjusts the char index by a code point offset.
  * @param text the characters to check
  * @param index the index to adjust
@@ -1673,7 +1671,7 @@ public static int offsetByCodePoints(java.lang.CharSequence text, int index, int
 
 /**
  * Equivalent to the
- * {@link Character#offsetByCodePoints(char[], int, int, int, int)}
+ * {@link java.lang.Character#offsetByCodePoints(char[],int,int,int,int) Character#offsetByCodePoints(char[], int, int, int, int)}
  * method, for convenience.  Adjusts the char index by a code point offset.
  * @param text the characters to check
  * @param start the start of the range to check
@@ -1709,19 +1707,19 @@ public static final int FOLD_CASE_DEFAULT = 0; // 0x0
 public static final int FOLD_CASE_EXCLUDE_SPECIAL_I = 1; // 0x1
 
 /**
- * Constant U+10FFFF, same as {@link Character#MAX_CODE_POINT}.
+ * Constant U+10FFFF, same as {@link java.lang.Character#MAX_CODE_POINT Character#MAX_CODE_POINT}.
  */
 
 public static final int MAX_CODE_POINT = 1114111; // 0x10ffff
 
 /**
- * Constant U+DBFF, same as {@link Character#MAX_HIGH_SURROGATE}.
+ * Constant U+DBFF, same as {@link java.lang.Character#MAX_HIGH_SURROGATE Character#MAX_HIGH_SURROGATE}.
  */
 
 public static final char MAX_HIGH_SURROGATE = 56319; // 0xdbff '\udbff'
 
 /**
- * Constant U+DFFF, same as {@link Character#MAX_LOW_SURROGATE}.
+ * Constant U+DFFF, same as {@link java.lang.Character#MAX_LOW_SURROGATE Character#MAX_LOW_SURROGATE}.
  */
 
 public static final char MAX_LOW_SURROGATE = 57343; // 0xdfff '\udfff'
@@ -1733,35 +1731,35 @@ public static final char MAX_LOW_SURROGATE = 57343; // 0xdfff '\udfff'
 public static final int MAX_RADIX = 36; // 0x24
 
 /**
- * Constant U+DFFF, same as {@link Character#MAX_SURROGATE}.
+ * Constant U+DFFF, same as {@link java.lang.Character#MAX_SURROGATE Character#MAX_SURROGATE}.
  */
 
 public static final char MAX_SURROGATE = 57343; // 0xdfff '\udfff'
 
 /**
  * The highest Unicode code point value (scalar value), constant U+10FFFF (uses 21 bits).
- * Same as {@link Character#MAX_CODE_POINT}.
+ * Same as {@link java.lang.Character#MAX_CODE_POINT Character#MAX_CODE_POINT}.
  *
- * <p>Up-to-date Unicode implementation of {@link Character#MAX_VALUE}
+ * <p>Up-to-date Unicode implementation of {@link java.lang.Character#MAX_VALUE Character#MAX_VALUE}
  * which is still a char with the value U+FFFF.
  */
 
 public static final int MAX_VALUE = 1114111; // 0x10ffff
 
 /**
- * Constant U+0000, same as {@link Character#MIN_CODE_POINT}.
+ * Constant U+0000, same as {@link java.lang.Character#MIN_CODE_POINT Character#MIN_CODE_POINT}.
  */
 
 public static final int MIN_CODE_POINT = 0; // 0x0
 
 /**
- * Constant U+D800, same as {@link Character#MIN_HIGH_SURROGATE}.
+ * Constant U+D800, same as {@link java.lang.Character#MIN_HIGH_SURROGATE Character#MIN_HIGH_SURROGATE}.
  */
 
 public static final char MIN_HIGH_SURROGATE = 55296; // 0xd800 '\ud800'
 
 /**
- * Constant U+DC00, same as {@link Character#MIN_LOW_SURROGATE}.
+ * Constant U+DC00, same as {@link java.lang.Character#MIN_LOW_SURROGATE Character#MIN_LOW_SURROGATE}.
  */
 
 public static final char MIN_LOW_SURROGATE = 56320; // 0xdc00 '\udc00'
@@ -1773,20 +1771,20 @@ public static final char MIN_LOW_SURROGATE = 56320; // 0xdc00 '\udc00'
 public static final int MIN_RADIX = 2; // 0x2
 
 /**
- * Constant U+10000, same as {@link Character#MIN_SUPPLEMENTARY_CODE_POINT}.
+ * Constant U+10000, same as {@link java.lang.Character#MIN_SUPPLEMENTARY_CODE_POINT Character#MIN_SUPPLEMENTARY_CODE_POINT}.
  */
 
 public static final int MIN_SUPPLEMENTARY_CODE_POINT = 65536; // 0x10000
 
 /**
- * Constant U+D800, same as {@link Character#MIN_SURROGATE}.
+ * Constant U+D800, same as {@link java.lang.Character#MIN_SURROGATE Character#MIN_SURROGATE}.
  */
 
 public static final char MIN_SURROGATE = 55296; // 0xd800 '\ud800'
 
 /**
  * The lowest Unicode code point value, constant 0.
- * Same as {@link Character#MIN_CODE_POINT}, same integer value as {@link Character#MIN_VALUE}.
+ * Same as {@link java.lang.Character#MIN_CODE_POINT Character#MIN_CODE_POINT}, same integer value as {@link java.lang.Character#MIN_VALUE Character#MIN_VALUE}.
  */
 
 public static final int MIN_VALUE = 0; // 0x0
@@ -1808,7 +1806,7 @@ public static final int REPLACEMENT_CHAR = 65533; // 0xfffd
 
 /**
  * The minimum value for Supplementary code points, constant U+10000.
- * Same as {@link Character#MIN_SUPPLEMENTARY_CODE_POINT}.
+ * Same as {@link java.lang.Character#MIN_SUPPLEMENTARY_CODE_POINT Character#MIN_SUPPLEMENTARY_CODE_POINT}.
  */
 
 public static final int SUPPLEMENTARY_MIN_VALUE = 65536; // 0x10000
@@ -1850,7 +1848,7 @@ public static final int TITLECASE_NO_LOWERCASE = 256; // 0x100
 /**
  * Bidi Paired Bracket Type constants.
  *
- * @see UProperty#BIDI_PAIRED_BRACKET_TYPE
+ * @see android.icu.lang.UProperty#BIDI_PAIRED_BRACKET_TYPE
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -1877,7 +1875,7 @@ public static final int OPEN = 1; // 0x1
 
 /**
  * Decomposition Type constants.
- * @see UProperty#DECOMPOSITION_TYPE
+ * @see android.icu.lang.UProperty#DECOMPOSITION_TYPE
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -1976,8 +1974,8 @@ public static final int WIDE = 17; // 0x11
 
 /**
  * East Asian Width constants.
- * @see UProperty#EAST_ASIAN_WIDTH
- * @see UCharacter#getIntPropertyValue
+ * @see android.icu.lang.UProperty#EAST_ASIAN_WIDTH
+ * @see android.icu.lang.UCharacter#getIntPropertyValue
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -2016,7 +2014,7 @@ public static final int WIDE = 5; // 0x5
 
 /**
  * Grapheme Cluster Break constants.
- * @see UProperty#GRAPHEME_CLUSTER_BREAK
+ * @see android.icu.lang.UProperty#GRAPHEME_CLUSTER_BREAK
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -2110,7 +2108,7 @@ public static final int ZWJ = 17; // 0x11
 /**
  * Hangul Syllable Type constants.
  *
- * @see UProperty#HANGUL_SYLLABLE_TYPE
+ * @see android.icu.lang.UProperty#HANGUL_SYLLABLE_TYPE
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -2150,7 +2148,7 @@ public static final int VOWEL_JAMO = 2; // 0x2
 /**
  * Indic Positional Category constants.
  *
- * @see UProperty#INDIC_POSITIONAL_CATEGORY
+ * @see android.icu.lang.UProperty#INDIC_POSITIONAL_CATEGORY
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -2224,7 +2222,7 @@ public static final int VISUAL_ORDER_LEFT = 14; // 0xe
 /**
  * Indic Syllabic Category constants.
  *
- * @see UProperty#INDIC_SYLLABIC_CATEGORY
+ * @see android.icu.lang.UProperty#INDIC_SYLLABIC_CATEGORY
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -2377,7 +2375,7 @@ public static final int VOWEL_INDEPENDENT = 35; // 0x23
 
 /**
  * Joining Group constants.
- * @see UProperty#JOINING_GROUP
+ * @see android.icu.lang.UProperty#JOINING_GROUP
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -2853,7 +2851,7 @@ public static final int ZHAIN = 53; // 0x35
 
 /**
  * Joining Type constants.
- * @see UProperty#JOINING_TYPE
+ * @see android.icu.lang.UProperty#JOINING_TYPE
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -2892,7 +2890,7 @@ public static final int TRANSPARENT = 5; // 0x5
 
 /**
  * Line Break constants.
- * @see UProperty#LINE_BREAK
+ * @see android.icu.lang.UProperty#LINE_BREAK
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -3116,7 +3114,7 @@ public static final int ZWSPACE = 28; // 0x1c
 
 /**
  * Numeric Type constants.
- * @see UProperty#NUMERIC_TYPE
+ * @see android.icu.lang.UProperty#NUMERIC_TYPE
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -3145,7 +3143,7 @@ public static final int NUMERIC = 3; // 0x3
 
 /**
  * Sentence Break constants.
- * @see UProperty#SENTENCE_BREAK
+ * @see android.icu.lang.UProperty#SENTENCE_BREAK
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -3271,7 +3269,7 @@ public static android.icu.lang.UCharacter.UnicodeBlock of(int ch) { throw new Ru
  * (ignoring case).
  * @param blockName the name of the block to match
  * @return the UnicodeBlock with that name
- * @throws IllegalArgumentException if the blockName could not be matched
+ * @throws java.lang.IllegalArgumentException if the blockName could not be matched
  */
 
 public static android.icu.lang.UCharacter.UnicodeBlock forName(java.lang.String blockName) { throw new RuntimeException("Stub!"); }
@@ -6470,7 +6468,7 @@ public static final int ZANABAZAR_SQUARE_ID = 280; // 0x118
 /**
  * Vertical Orientation constants.
  *
- * @see UProperty#VERTICAL_ORIENTATION
+ * @see android.icu.lang.UProperty#VERTICAL_ORIENTATION
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -6495,7 +6493,7 @@ public static final int UPRIGHT = 3; // 0x3
 
 /**
  * Word Break constants.
- * @see UProperty#WORD_BREAK
+ * @see android.icu.lang.UProperty#WORD_BREAK
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})

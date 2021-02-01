@@ -35,12 +35,14 @@ private ZoneInfoDb() { throw new RuntimeException("Stub!"); }
 
 /**
  * Obtains the singleton instance.
+ *
+ * @hide
  */
 
 public static com.android.i18n.timezone.ZoneInfoDb getInstance() { throw new RuntimeException("Stub!"); }
 
 /**
- * Validate the data at the specified path. Throws {@link IOException} if it's not valid.
+ * Validate the data at the specified path. Throws {@link java.io.IOException IOException} if it's not valid.
  */
 
 public static void validateTzData(java.lang.String path) throws java.io.IOException { throw new RuntimeException("Stub!"); }
@@ -52,8 +54,10 @@ public static void validateTzData(java.lang.String path) throws java.io.IOExcept
 public java.lang.String getVersion() { throw new RuntimeException("Stub!"); }
 
 /**
- * Creates {@link ZoneInfoData} object from the time zone {@code id}. Returns null if the id
+ * Creates {@link com.android.i18n.timezone.ZoneInfoData ZoneInfoData} object from the time zone {@code id}. Returns null if the id
  * is not found.
+ *
+ * @hide
  */
 
 public com.android.i18n.timezone.ZoneInfoData makeZoneInfoData(java.lang.String id) { throw new RuntimeException("Stub!"); }

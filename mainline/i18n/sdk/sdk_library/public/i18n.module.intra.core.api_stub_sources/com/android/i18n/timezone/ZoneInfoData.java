@@ -27,12 +27,12 @@ package com.android.i18n.timezone;
  *
  * <p>The compacted form is created by
  * {@code system/timezone/input_tools/android/zone_compactor/main/java/ZoneCompactor.java} and is
- * used by both this and Bionic. {@link ZoneInfoDb} is responsible for mapping the binary file, and
- * reading the index and creating a {@link BufferIterator} that provides access to an entry for a
- * specific file. This class is responsible for reading the data from that {@link BufferIterator}
+ * used by both this and Bionic. {@link com.android.i18n.timezone.ZoneInfoDb ZoneInfoDb} is responsible for mapping the binary file, and
+ * reading the index and creating a {@link com.android.i18n.timezone.internal.BufferIterator BufferIterator} that provides access to an entry for a
+ * specific file. This class is responsible for reading the data from that {@link com.android.i18n.timezone.internal.BufferIterator BufferIterator}
  * and storing it a representation to support the {@link java.util.TimeZone} and
  * {@link java.util.GregorianCalendar} implementations. See
- * {@link ZoneInfoData#readTimeZone(String, BufferIterator)}.
+ * {@link com.android.i18n.timezone.ZoneInfoData#readTimeZone(java.lang.String,com.android.i18n.timezone.internal.BufferIterator) ZoneInfoData#readTimeZone(String, BufferIterator)}.
  *
  * <p>This class does not use all the information from the {@code tzfile}; it uses:
  * {@code tzh_timecnt} and the associated transition times and type information. For each type
@@ -49,12 +49,16 @@ private ZoneInfoData() { throw new RuntimeException("Stub!"); }
 /**
  * Create an instance from the serialized fields from {@link libcore.util.ZoneInfo}
  * for backward app compatibility.
+ *
+ * @hide
  */
 
 public static com.android.i18n.timezone.ZoneInfoData createFromSerializationFields(java.lang.String id, java.io.ObjectInputStream.GetField getField) throws java.io.IOException { throw new RuntimeException("Stub!"); }
 
 /**
  * Serialize {@link libcore.util.ZoneInfo} into backward app compatible form.
+ *
+ * @hide
  */
 
 public void writeToSerializationFields(java.io.ObjectOutputStream.PutField putField) { throw new RuntimeException("Stub!"); }
@@ -70,6 +74,8 @@ public void writeToSerializationFields(java.io.ObjectOutputStream.PutField putFi
  * @param utcTimeInMillis the UTC time in milliseconds.
  * @param offsets the array whose length must be greater than or equal to 2.
  * @return the total offset which is the sum of the raw and DST offsets.
+ *
+ * @hide
  */
 
 public int getOffsetsByUtcTime(long utcTimeInMillis, int[] offsets) { throw new RuntimeException("Stub!"); }
@@ -78,6 +84,8 @@ public int getOffsetsByUtcTime(long utcTimeInMillis, int[] offsets) { throw new 
  * Returns the offset from UTC in milliseconds at the specified time {@when}.
  *
  * @param when the number of milliseconds since January 1, 1970, 00:00:00 GMT
+ *
+ * @hide
  */
 
 public int getOffset(long when) { throw new RuntimeException("Stub!"); }
@@ -86,12 +94,16 @@ public int getOffset(long when) { throw new RuntimeException("Stub!"); }
  * Returns whether the given {@code when} is in daylight saving time in this time zone.
  *
  * @param when the number of milliseconds since January 1, 1970, 00:00:00 GMT
+ *
+ * @hide
  */
 
 public boolean isInDaylightTime(long when) { throw new RuntimeException("Stub!"); }
 
 /**
  * Returns the raw offset in milliseconds. The value is not affected by daylight saving.
+ *
+ * @hide
  */
 
 public int getRawOffset() { throw new RuntimeException("Stub!"); }
@@ -102,12 +114,16 @@ public int getRawOffset() { throw new RuntimeException("Stub!"); }
  * {@code null}.
  *
  * @param when the number of milliseconds since January 1, 1970, 00:00:00 GMT
+ *
+ * @hide
  */
 
 public java.lang.Integer getLatestDstSavings(long when) { throw new RuntimeException("Stub!"); }
 
 /**
  * Returns {@code true} if 2 time zones have the same time zone rule.
+ *
+ * @hide
  */
 
 public boolean hasSameRules(com.android.i18n.timezone.ZoneInfoData other) { throw new RuntimeException("Stub!"); }
@@ -124,12 +140,16 @@ public java.lang.String toString() { throw new RuntimeException("Stub!"); }
 
 /**
  * Returns the time zone id.
+ *
+ * @hide
  */
 
 public java.lang.String getID() { throw new RuntimeException("Stub!"); }
 
 /**
  * Create a deep copy of this object with a new raw offset.
+ *
+ * @hide
  */
 
 public com.android.i18n.timezone.ZoneInfoData createCopyWithRawOffset(int newRawOffset) { throw new RuntimeException("Stub!"); }
@@ -139,18 +159,24 @@ public com.android.i18n.timezone.ZoneInfoData createCopyWithRawOffset(int newRaw
  * change in the offset from UTC or a change in the DST.
  *
  * WARNING: This API is exposed only for app compat usage in @link libcore.util.ZoneInfo}.
+ *
+ * @hide
  */
 
 public long[] getTransitions() { throw new RuntimeException("Stub!"); }
 
 /**
  * IntraCoreApi made visible for testing in libcore
+ *
+ * @hide
  */
 
 public static com.android.i18n.timezone.ZoneInfoData createZoneInfo(java.lang.String name, java.nio.ByteBuffer buf) throws java.io.IOException { throw new RuntimeException("Stub!"); }
 
 /**
  * The serialized fields in {@link libcore.util.ZoneInfo} kept for backward app compatibility.
+ *
+ * @hide
  */
 
 public static final java.io.ObjectStreamField[] ZONEINFO_SERIALIZED_FIELDS;
