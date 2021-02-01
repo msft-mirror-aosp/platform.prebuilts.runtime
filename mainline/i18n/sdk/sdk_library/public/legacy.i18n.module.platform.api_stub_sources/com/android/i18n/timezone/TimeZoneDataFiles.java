@@ -20,7 +20,7 @@ package com.android.i18n.timezone;
 
 /**
  * Utility methods associated with finding updateable time zone data files. ICU4C and ICU4J also
- * read files affected by time zone updates. That logic is kept in {@link AndroidDataFiles}
+ * read files affected by time zone updates. That logic is kept in {@link android.icu.platform.AndroidDataFiles AndroidDataFiles}
  * and should be updated if file locations or lookup order changes.
  *
  * @hide

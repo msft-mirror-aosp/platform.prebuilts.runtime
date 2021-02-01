@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2017 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.number;
 
@@ -13,7 +13,7 @@ import android.icu.util.ULocale;
  *
  * Instances of this class are immutable and thread-safe.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -40,7 +40,7 @@ UnlocalizedNumberFormatter() { throw new RuntimeException("Stub!"); }
 public android.icu.number.LocalizedNumberFormatter locale(java.util.Locale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * ULocale version of the {@link #locale(Locale)} setter above.
+ * ULocale version of the {@link #locale(java.util.Locale)} setter above.
  *
  * @param locale
  *            The locale to use when loading data for number formatting.

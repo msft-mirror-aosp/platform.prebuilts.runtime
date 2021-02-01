@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2009-2016, International Business Machines Corporation and
@@ -64,7 +64,7 @@ public static android.icu.text.NumberingSystem getInstance(android.icu.util.ULoc
 
 /**
  * Returns the default numbering system for the default <code>FORMAT</code> locale.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static android.icu.text.NumberingSystem getInstance() { throw new RuntimeException("Stub!"); }

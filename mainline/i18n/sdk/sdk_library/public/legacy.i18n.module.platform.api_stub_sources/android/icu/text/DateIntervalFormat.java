@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
 *   Copyright (C) 2008-2016, International Business Machines
 *   Corporation and others.  All Rights Reserved.
@@ -211,7 +211,7 @@ import android.icu.util.TimeZone;
  *
  *     // a series of set interval patterns.
  *     // Only ERA, YEAR, MONTH, DATE,  DAY_OF_MONTH, DAY_OF_WEEK, AM_PM,  HOUR, HOUR_OF_DAY,
- *     MINUTE and SECOND are supported.
+ *     MINUTE, SECOND and MILLISECOND are supported.
  *     dtitvinf.setIntervalPattern("yMMMd", Calendar.YEAR, "'y ~ y'");
  *     dtitvinf.setIntervalPattern("yMMMd", Calendar.MONTH, "yyyy 'diff' MMM d - MMM d");
  *     dtitvinf.setIntervalPattern("yMMMd", Calendar.DATE, "yyyy MMM d ~ d");
@@ -260,7 +260,7 @@ DateIntervalFormat() { throw new RuntimeException("Stub!"); }
  *
  * @param skeleton  the skeleton on which interval format based.
  * @return          a date time interval formatter.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.DateIntervalFormat getInstance(java.lang.String skeleton) { throw new RuntimeException("Stub!"); }
@@ -321,7 +321,7 @@ public static final android.icu.text.DateIntervalFormat getInstance(java.lang.St
  * @param skeleton  the skeleton on which interval format based.
  * @param dtitvinf  the DateIntervalInfo object to be adopted.
  * @return          a date time interval formatter.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public static final android.icu.text.DateIntervalFormat getInstance(java.lang.String skeleton, android.icu.text.DateIntervalInfo dtitvinf) { throw new RuntimeException("Stub!"); }
@@ -403,7 +403,7 @@ public synchronized java.lang.Object clone() { throw new RuntimeException("Stub!
  *                          in an interval format; in this case the fieldPosition
  *                          offsets refer to the first instance.
  * @return                  Reference to 'appendTo' parameter.
- * @throws    IllegalArgumentException  if the formatted object is not
+ * @throws    java.lang.IllegalArgumentException  if the formatted object is not
  *                                      DateInterval object
  */
 
@@ -426,6 +426,17 @@ public final java.lang.StringBuffer format(java.lang.Object obj, java.lang.Strin
 public final java.lang.StringBuffer format(android.icu.util.DateInterval dtInterval, java.lang.StringBuffer appendTo, java.text.FieldPosition fieldPosition) { throw new RuntimeException("Stub!"); }
 
 /**
+ * Format a DateInterval to produce a FormattedDateInterval.
+ *
+ * The FormattedDateInterval exposes field information about the formatted string.
+ *
+ * @param dtInterval        DateInterval to be formatted.
+ * @return                  A FormattedDateInterval containing the format result.
+ */
+
+public android.icu.text.DateIntervalFormat.FormattedDateInterval formatToValue(android.icu.util.DateInterval dtInterval) { throw new RuntimeException("Stub!"); }
+
+/**
  * Format 2 Calendars to produce a string.
  *
  * @param fromCalendar      calendar set to the from date in date interval
@@ -440,10 +451,24 @@ public final java.lang.StringBuffer format(android.icu.util.DateInterval dtInter
  *                          in an interval format; in this case the fieldPosition
  *                          offsets refer to the first instance.
  * @return                  Reference to 'appendTo' parameter.
- * @throws    IllegalArgumentException  if the two calendars are not equivalent.
+ * @throws    java.lang.IllegalArgumentException  if the two calendars are not equivalent.
  */
 
 public final java.lang.StringBuffer format(android.icu.util.Calendar fromCalendar, android.icu.util.Calendar toCalendar, java.lang.StringBuffer appendTo, java.text.FieldPosition pos) { throw new RuntimeException("Stub!"); }
+
+/**
+ * Format 2 Calendars to produce a FormattedDateInterval.
+ *
+ * The FormattedDateInterval exposes field information about the formatted string.
+ *
+ * @param fromCalendar      calendar set to the from date in date interval
+ *                          to be formatted into date interval string
+ * @param toCalendar        calendar set to the to date in date interval
+ *                          to be formatted into date interval string
+ * @return                  A FormattedDateInterval containing the format result.
+ */
+
+public android.icu.text.DateIntervalFormat.FormattedDateInterval formatToValue(android.icu.util.Calendar fromCalendar, android.icu.util.Calendar toCalendar) { throw new RuntimeException("Stub!"); }
 
 /**
  * Date interval parsing is not supported.
@@ -510,5 +535,61 @@ public void setTimeZone(android.icu.util.TimeZone zone) { throw new RuntimeExcep
  */
 
 public synchronized android.icu.text.DateFormat getDateFormat() { throw new RuntimeException("Stub!"); }
+/**
+ * An immutable class containing the result of a date interval formatting operation.
+ *
+ * Instances of this class are immutable and thread-safe.
+ *
+ * Not intended for public subclassing.
+ */
+
+@SuppressWarnings({"unchecked", "deprecation", "all"})
+public static final class FormattedDateInterval implements android.icu.text.FormattedValue {
+
+FormattedDateInterval() { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public java.lang.String toString() { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public int length() { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public char charAt(int index) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public java.lang.CharSequence subSequence(int start, int end) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public <A extends java.lang.Appendable> A appendTo(A appendable) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public boolean nextPosition(android.icu.text.ConstrainedFieldPosition cfpos) { throw new RuntimeException("Stub!"); }
+
+/**
+ * {@inheritDoc}
+ */
+
+public java.text.AttributedCharacterIterator toCharacterIterator() { throw new RuntimeException("Stub!"); }
+}
+
 }
 

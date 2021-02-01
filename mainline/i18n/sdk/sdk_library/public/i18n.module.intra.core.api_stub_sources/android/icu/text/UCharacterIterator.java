@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 1996-2016, International Business Machines Corporation and
@@ -39,7 +39,7 @@ protected UCharacterIterator() { throw new RuntimeException("Stub!"); }
  * @param source
  *            a valid source as a <code>Replaceable</code> object
  * @return UCharacterIterator object
- * @exception IllegalArgumentException
+ * @exception java.lang.IllegalArgumentException
  *                if the argument is null
  */
 
@@ -51,7 +51,7 @@ public static final android.icu.text.UCharacterIterator getInstance(android.icu.
  * @param source
  *            a string
  * @return UCharacterIterator object
- * @exception IllegalArgumentException
+ * @exception java.lang.IllegalArgumentException
  *                if the argument is null
  */
 
@@ -63,7 +63,7 @@ public static final android.icu.text.UCharacterIterator getInstance(java.lang.St
  * @param source
  *            an array of UTF-16 code units
  * @return UCharacterIterator object
- * @exception IllegalArgumentException
+ * @exception java.lang.IllegalArgumentException
  *                if the argument is null
  */
 
@@ -75,7 +75,7 @@ public static final android.icu.text.UCharacterIterator getInstance(char[] sourc
  * @param source
  *            an array of UTF-16 code units
  * @return UCharacterIterator object
- * @exception IllegalArgumentException
+ * @exception java.lang.IllegalArgumentException
  *                if the argument is null
  */
 
@@ -87,7 +87,7 @@ public static final android.icu.text.UCharacterIterator getInstance(char[] sourc
  * @param source
  *            an string buffer of UTF-16 code units
  * @return UCharacterIterator object
- * @exception IllegalArgumentException
+ * @exception java.lang.IllegalArgumentException
  *                if the argument is null
  */
 
@@ -99,7 +99,7 @@ public static final android.icu.text.UCharacterIterator getInstance(java.lang.St
  * @param source
  *            a valid CharacterIterator object.
  * @return UCharacterIterator object
- * @exception IllegalArgumentException
+ * @exception java.lang.IllegalArgumentException
  *                if the argument is null
  */
 
@@ -192,7 +192,7 @@ public int previousCodePoint() { throw new RuntimeException("Stub!"); }
  *
  * @param index
  *            the index within the text.
- * @exception IndexOutOfBoundsException
+ * @exception java.lang.IndexOutOfBoundsException
  *                is thrown if an invalid index is supplied
  */
 
@@ -238,7 +238,7 @@ public void setToStart() { throw new RuntimeException("Stub!"); }
  * @param offset
  *            the position within the array to start putting the data.
  * @return the number of code units added to fillIn, as a convenience
- * @exception IndexOutOfBoundsException
+ * @exception java.lang.IndexOutOfBoundsException
  *                exception if there is not enough room after offset in the array, or if offset &lt; 0.
  */
 
@@ -250,7 +250,7 @@ public abstract int getText(char[] fillIn, int offset);
  * @param fillIn
  *            an array of chars to fill with the underlying UTF-16 code units.
  * @return the number of code units added to fillIn, as a convenience
- * @exception IndexOutOfBoundsException
+ * @exception java.lang.IndexOutOfBoundsException
  *                exception if there is not enough room in the array.
  */
 
@@ -272,7 +272,7 @@ public java.lang.String getText() { throw new RuntimeException("Stub!"); }
  * @param delta
  *            the number of code units to move the current index.
  * @return the new index.
- * @exception IndexOutOfBoundsException
+ * @exception java.lang.IndexOutOfBoundsException
  *                is thrown if an invalid index is supplied
  *
  */
@@ -289,7 +289,7 @@ public int moveIndex(int delta) { throw new RuntimeException("Stub!"); }
  * @param delta
  *            the number of code units to move the current index.
  * @return the new index
- * @exception IndexOutOfBoundsException
+ * @exception java.lang.IndexOutOfBoundsException
  *                is thrown if an invalid delta is supplied
  */
 

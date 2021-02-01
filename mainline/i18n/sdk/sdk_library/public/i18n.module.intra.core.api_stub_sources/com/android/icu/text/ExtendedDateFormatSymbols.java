@@ -20,7 +20,7 @@ package com.android.icu.text;
 import android.icu.text.DateFormatSymbols;
 
 /**
- * Provides extra data not in {@link DateFormatSymbols}.
+ * Provides extra data not in {@link android.icu.text.DateFormatSymbols DateFormatSymbols}.
  *
  * @hide used by {@link java.time.format.DateTimeTextProvider}.
  */
@@ -38,15 +38,17 @@ private ExtendedDateFormatSymbols() { throw new RuntimeException("Stub!"); }
 public static com.android.icu.text.ExtendedDateFormatSymbols getInstance(android.icu.util.ULocale locale) { throw new RuntimeException("Stub!"); }
 
 /**
- * Get the {@link DateFormatSymbols}.
+ * Get the {@link android.icu.text.DateFormatSymbols DateFormatSymbols}.
  * @hide
  */
 
 public android.icu.text.DateFormatSymbols getDateFormatSymbols() { throw new RuntimeException("Stub!"); }
 
 /**
- * @param context {@link DateFormatSymbols#FORMAT} or {@link DateFormatSymbols#STANDALONE}.
- * @throws IllegalArgumentException for bad context or no data.
+ * Returns {@link android.icu.text.DateFormatSymbols#NARROW DateFormatSymbols#NARROW} quarter strings.
+ *
+ * @param context {@link android.icu.text.DateFormatSymbols#FORMAT DateFormatSymbols#FORMAT} or {@link android.icu.text.DateFormatSymbols#STANDALONE DateFormatSymbols#STANDALONE}.
+ * @throws java.lang.IllegalArgumentException for bad context or no data.
  * @hide
  */
 

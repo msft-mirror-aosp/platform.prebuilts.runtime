@@ -20,12 +20,27 @@ package com.android.icu.util.regex;
 
 /**
  * Provide an entry point to use ICU4C icu::RegexPattern.
+ *
+ * @hide
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class PatternNative {
 
 private PatternNative() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Create an {@link com.android.icu.util.regex.PatternNative PatternNative} with a regular expression string.
+ *
+ * @param pattern the regular expression to be compiled
+ * @param flags a bit set of {@link java.util.regex.Pattern#UNIX_LINES},
+ *              {@link java.util.regex.Pattern#CASE_INSENSITIVE},
+ *              {@link java.util.regex.Pattern#COMMENTS},
+ *              {@link java.util.regex.Pattern#MULTILINE} and
+ *              {@link java.util.regex.Pattern#DOTALL}.
+ *
+ * @hide
+ */
 
 public static com.android.icu.util.regex.PatternNative create(java.lang.String pattern, int flags) { throw new RuntimeException("Stub!"); }
 }

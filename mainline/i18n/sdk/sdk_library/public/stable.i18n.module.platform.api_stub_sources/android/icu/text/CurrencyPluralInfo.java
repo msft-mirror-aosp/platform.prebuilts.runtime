@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2009-2014, International Business Machines Corporation and    *
@@ -33,7 +33,7 @@ public class CurrencyPluralInfo implements java.lang.Cloneable, java.io.Serializ
 
 /**
  * Create a CurrencyPluralInfo object for the default <code>FORMAT</code> locale.
- * @see Category#FORMAT
+ * @see android.icu.util.ULocale.Category#FORMAT
  */
 
 public CurrencyPluralInfo() { throw new RuntimeException("Stub!"); }

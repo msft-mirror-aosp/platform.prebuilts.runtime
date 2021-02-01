@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2017 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.number;
 
@@ -11,7 +11,7 @@ package android.icu.number;
  * <p>
  * To create an IntegerWidth, use one of the factory methods.
  *
- * @see NumberFormatter
+ * @see android.icu.number.NumberFormatter
  */
 
 @SuppressWarnings({"unchecked", "deprecation", "all"})
@@ -29,8 +29,8 @@ private IntegerWidth() { throw new RuntimeException("Stub!"); }
  * @param minInt
  *            The minimum number of places before the decimal separator.
  * @return An IntegerWidth for chaining or passing to the NumberFormatter integerWidth() setter.
- * @throws IllegalArgumentException if the input number is too big or smaller than 0.
- * @see NumberFormatter
+ * @throws java.lang.IllegalArgumentException if the input number is too big or smaller than 0.
+ * @see android.icu.number.NumberFormatter
  */
 
 public static android.icu.number.IntegerWidth zeroFillTo(int minInt) { throw new RuntimeException("Stub!"); }
@@ -44,8 +44,8 @@ public static android.icu.number.IntegerWidth zeroFillTo(int minInt) { throw new
  *            The maximum number of places before the decimal separator. maxInt == -1 means no
  *            truncation.
  * @return An IntegerWidth for passing to the NumberFormatter integerWidth() setter.
- * @throws IllegalArgumentException if the input number is too big or smaller than -1.
- * @see NumberFormatter
+ * @throws java.lang.IllegalArgumentException if the input number is too big or smaller than -1.
+ * @see android.icu.number.NumberFormatter
  */
 
 public android.icu.number.IntegerWidth truncateAt(int maxInt) { throw new RuntimeException("Stub!"); }

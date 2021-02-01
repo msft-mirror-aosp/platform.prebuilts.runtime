@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2003-2015, International Business Machines Corporation and
@@ -72,7 +72,7 @@ public static android.icu.text.StringPrep getInstance(int profile) { throw new R
  *          as normal Unicode code points.</li>
  *   </ul>
  * @return String A String containing the output
- * @throws StringPrepParseException An exception when parsing or preparing a string is invalid.
+ * @throws android.icu.text.StringPrepParseException An exception when parsing or preparing a string is invalid.
  */
 
 public java.lang.String prepare(java.lang.String src, int options) throws android.icu.text.StringPrepParseException { throw new RuntimeException("Stub!"); }

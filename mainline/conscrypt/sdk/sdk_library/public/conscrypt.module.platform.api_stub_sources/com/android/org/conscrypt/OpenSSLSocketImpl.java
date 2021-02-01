@@ -21,7 +21,7 @@ package com.android.org.conscrypt;
 
 /**
  * Public shim allowing us to stay backward-compatible with legacy applications which were using
- * Conscrypt's extended socket API before the introduction of the {@link Conscrypt} class.
+ * Conscrypt's extended socket API before the introduction of the {@link com.android.org.conscrypt.Conscrypt Conscrypt} class.
  * @hide This class is not part of the Android public SDK API
  */
 
@@ -66,7 +66,7 @@ public final void setNpnProtocols(byte[] npnProtocols) { throw new RuntimeExcept
 public final byte[] getAlpnSelectedProtocol() { throw new RuntimeException("Stub!"); }
 
 /**
- * @deprecated Use {@link #setAlpnProtocols(String[])} instead.
+ * @deprecated Use {@link #setAlpnProtocols(java.lang.String[])} instead.
  */
 
 @Deprecated

@@ -1,6 +1,6 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
 // © 2016 and later: Unicode, Inc. and others.
-// License & terms of use: http://www.unicode.org/copyright.html#License
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
  * Copyright (C) 2008-2016, Google Inc, International Business Machines Corporation
@@ -87,7 +87,7 @@ import java.util.Iterator;
  * </pre>
  *
  * <h2>Client Support</h2>
- * <p>Callers can also use the {@link AlphabeticIndex.ImmutableIndex}, or the AlphabeticIndex itself,
+ * <p>Callers can also use the {@link android.icu.text.AlphabeticIndex.ImmutableIndex AlphabeticIndex.ImmutableIndex}, or the AlphabeticIndex itself,
  * to support sorting on a client that doesn't support AlphabeticIndex functionality.
  *
  * <p>The ImmutableIndex is both immutable and thread-safe.
@@ -337,10 +337,10 @@ public int getRecordCount() { throw new RuntimeException("Stub!"); }
 public java.util.Iterator<android.icu.text.AlphabeticIndex.Bucket<V>> iterator() { throw new RuntimeException("Stub!"); }
 /**
  * An index "bucket" with a label string and type.
- * It is referenced by {@link AlphabeticIndex#getBucketIndex(CharSequence)}
- * and {@link AlphabeticIndex.ImmutableIndex#getBucketIndex(CharSequence)},
- * returned by {@link AlphabeticIndex.ImmutableIndex#getBucket(int)},
- * and {@link AlphabeticIndex#addRecord(CharSequence, Object)} adds a record
+ * It is referenced by {@link android.icu.text.AlphabeticIndex#getBucketIndex(java.lang.CharSequence) AlphabeticIndex#getBucketIndex(CharSequence)}
+ * and {@link android.icu.text.AlphabeticIndex.ImmutableIndex#getBucketIndex(java.lang.CharSequence) AlphabeticIndex.ImmutableIndex#getBucketIndex(CharSequence)},
+ * returned by {@link android.icu.text.AlphabeticIndex.ImmutableIndex#getBucket(int) AlphabeticIndex.ImmutableIndex#getBucket(int)},
+ * and {@link android.icu.text.AlphabeticIndex#addRecord(java.lang.CharSequence,java.lang.Object) AlphabeticIndex#addRecord(CharSequence, Object)} adds a record
  * into a bucket according to the record's name.
  *
  * @param <V>
@@ -418,7 +418,7 @@ OVERFLOW;
 }
 
 /**
- * Immutable, thread-safe version of {@link AlphabeticIndex}.
+ * Immutable, thread-safe version of {@link android.icu.text.AlphabeticIndex AlphabeticIndex}.
  * This class provides thread-safe methods for bucketing,
  * and random access to buckets and their properties,
  * but does not offer adding records to the index.
