@@ -373,7 +373,17 @@ NOW,
  * Quarter
  */
 
-QUARTER;
+QUARTER,
+/**
+ * Hour
+ */
+
+HOUR,
+/**
+ * Minute
+ */
+
+MINUTE;
 }
 
 /**
