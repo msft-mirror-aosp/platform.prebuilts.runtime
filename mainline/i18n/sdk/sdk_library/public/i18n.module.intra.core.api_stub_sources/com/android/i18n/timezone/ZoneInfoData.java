@@ -174,6 +174,22 @@ public long[] getTransitions() { throw new RuntimeException("Stub!"); }
 public static com.android.i18n.timezone.ZoneInfoData createZoneInfo(java.lang.String name, java.nio.ByteBuffer buf) throws java.io.IOException { throw new RuntimeException("Stub!"); }
 
 /**
+ * Creates an instance. This method is only for testing purposes.
+ *
+ * @param transitions The times (in seconds) since beginning of the Unix epoch at which
+ *                    the offsets changes
+ * @param types the type of the transition. The offsets and standard/daylight states are
+ *              represented in the corresponding entry in <code>offsets</code> and
+ *              <code>isDsts</code> respectively
+ * @param offsets the total offsets of each type. The max allowed size of this array is 256.
+ * @param isDsts an entry is {@code true} if the type is daylight saving time. The max allowed
+ *               size of this array is 256.
+ * @hide
+ */
+
+public static com.android.i18n.timezone.ZoneInfoData createInstance(java.lang.String id, long[] transitions, byte[] types, int[] offsets, boolean[] isDsts) { throw new RuntimeException("Stub!"); }
+
+/**
  * The serialized fields in {@link libcore.util.ZoneInfo} kept for backward app compatibility.
  *
  * @hide
