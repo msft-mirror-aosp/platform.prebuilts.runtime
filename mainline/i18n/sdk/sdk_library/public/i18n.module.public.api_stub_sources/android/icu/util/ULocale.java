@@ -210,6 +210,12 @@ public int compareTo(android.icu.util.ULocale other) { throw new RuntimeExceptio
 public static android.icu.util.ULocale[] getAvailableLocales() { throw new RuntimeException("Stub!"); }
 
 /**
+ * Returns a list of all installed locales according to the specified type.
+ */
+
+public static java.util.Collection<android.icu.util.ULocale> getAvailableLocalesByType(android.icu.util.ULocale.AvailableType type) { throw new RuntimeException("Stub!"); }
+
+/**
  * Returns a list of all 2-letter country codes defined in ISO 3166.
  * Can be used to create Locales.
  */
@@ -1431,6 +1437,43 @@ public static final char UNICODE_LOCALE_EXTENSION = 117; // 0x0075 'u'
 
 public static final android.icu.util.ULocale US;
 static { US = null; }
+/**
+ * Types for {@link android.icu.util.ULocale#getAvailableLocalesByType ULocale#getAvailableLocalesByType}
+ */
+
+@SuppressWarnings({"unchecked", "deprecation", "all"})
+public enum AvailableType {
+/**
+ * Locales that return data when passed to ICU APIs,
+ * but not including legacy or alias locales.
+ */
+
+DEFAULT,
+/**
+ * Legacy or alias locales that return data when passed to ICU APIs.
+ * Examples of supported legacy or alias locales:
+ *
+ * <ul>
+ * <li>iw (alias to he)
+ * <li>mo (alias to ro)
+ * <li>zh_CN (alias to zh_Hans_CN)
+ * <li>sr_BA (alias to sr_Cyrl_BA)
+ * <li>ars (alias to ar_SA)
+ * </ul>
+ *
+ * The locales in this set are disjoint from the ones in
+ * DEFAULT. To get both sets at the same time, use
+ * WITH_LEGACY_ALIASES.
+ */
+
+ONLY_LEGACY_ALIASES,
+/**
+ * The union of the locales in DEFAULT and ONLY_LEGACY_ALIASES.
+ */
+
+WITH_LEGACY_ALIASES;
+}
+
 /**
  * <code>Builder</code> is used to build instances of <code>ULocale</code>
  * from values configured by the setters.  Unlike the <code>ULocale</code>
