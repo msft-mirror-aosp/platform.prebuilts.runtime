@@ -250,6 +250,65 @@ cc_prebuilt_library_shared {
     },
 }
 
+cc_prebuilt_library_shared {
+    name: "platform-mainline-sdk_heapprofd_client_api@current",
+    sdk_member_name: "heapprofd_client_api",
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    installable: false,
+    compile_multilib: "both",
+    export_include_dirs: [
+        "include/external/perfetto/include",
+        "include/external/perfetto/include/perfetto/base/build_configs/android_tree",
+    ],
+    stubs: {
+        versions: ["S"],
+    },
+    arch: {
+        arm64: {
+            srcs: ["arm64/lib/heapprofd_client_api.so"],
+        },
+        x86_64: {
+            srcs: ["x86_64/lib/heapprofd_client_api.so"],
+        },
+        arm: {
+            srcs: ["arm/lib/heapprofd_client_api.so"],
+        },
+        x86: {
+            srcs: ["x86/lib/heapprofd_client_api.so"],
+        },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "heapprofd_client_api",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    compile_multilib: "both",
+    export_include_dirs: [
+        "include/external/perfetto/include",
+        "include/external/perfetto/include/perfetto/base/build_configs/android_tree",
+    ],
+    stubs: {
+        versions: ["S"],
+    },
+    arch: {
+        arm64: {
+            srcs: ["arm64/lib/heapprofd_client_api.so"],
+        },
+        x86_64: {
+            srcs: ["x86_64/lib/heapprofd_client_api.so"],
+        },
+        arm: {
+            srcs: ["arm/lib/heapprofd_client_api.so"],
+        },
+        x86: {
+            srcs: ["x86/lib/heapprofd_client_api.so"],
+        },
+    },
+}
+
 sdk_snapshot {
     name: "platform-mainline-sdk@current",
     visibility: ["//visibility:public"],
@@ -258,6 +317,7 @@ sdk_snapshot {
         android: {
             native_shared_libs: [
                 "platform-mainline-sdk_libartpalette-system@current",
+                "platform-mainline-sdk_heapprofd_client_api@current",
                 "platform-mainline-sdk_liblog@current",
             ],
         },
