@@ -11,11 +11,11 @@
 
 package android.icu.text;
 
-import android.icu.util.ULocale.Category;
 import java.util.MissingResourceException;
 import java.util.Locale;
 import android.icu.util.Calendar;
 import android.icu.util.ULocale;
+import android.icu.util.ULocale.Category;
 
 /**
  * <strong>[icu enhancement]</strong> ICU's replacement for {@link java.text.DateFormatSymbols}.&nbsp;Methods, fields, and other functionality specific to ICU are labeled '<strong>[icu]</strong>'.
