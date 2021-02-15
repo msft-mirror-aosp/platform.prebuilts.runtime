@@ -18,9 +18,6 @@
 package com.android.icu.util;
 
 import android.icu.util.TimeZone;
-import android.icu.util.BasicTimeZone;
-import android.icu.util.InitialTimeZoneRule;
-import android.icu.util.AnnualTimeZoneRule;
 import java.time.zone.ZoneRules;
 
 /**

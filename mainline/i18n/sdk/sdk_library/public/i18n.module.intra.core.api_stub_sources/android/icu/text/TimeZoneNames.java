@@ -13,7 +13,6 @@ package android.icu.text;
 import java.util.Locale;
 import android.icu.util.TimeZone;
 import android.icu.util.ULocale;
-import java.util.EnumSet;
 
 /**
  * <code>TimeZoneNames</code> is an abstract class representing the time zone display name data model defined
@@ -223,77 +222,6 @@ public abstract java.lang.String getTimeZoneDisplayName(java.lang.String tzID, a
  */
 
 public java.lang.String getExemplarLocationName(java.lang.String tzID) { throw new RuntimeException("Stub!"); }
-
-/**
- * Finds time zone name prefix matches for the input text at the
- * given offset and returns a collection of the matches.
- *
- * @param text the text.
- * @param start the starting offset within the text.
- * @param types the set of name types, or <code>null</code> for all name types.
- * @return A collection of matches.
- * @see android.icu.text.TimeZoneNames.NameType
- * @see android.icu.text.TimeZoneNames.MatchInfo
- * @hide draft / provisional / internal are hidden on Android
- */
-
-public java.util.Collection<android.icu.text.TimeZoneNames.MatchInfo> find(java.lang.CharSequence text, int start, java.util.EnumSet<android.icu.text.TimeZoneNames.NameType> types) { throw new RuntimeException("Stub!"); }
-/**
- * A <code>MatchInfo</code> represents a time zone name match used by
- * {@link android.icu.text.TimeZoneNames#find(java.lang.CharSequence,int,java.util.EnumSet) TimeZoneNames#find(CharSequence, int, EnumSet)}.
- * @hide Only a subset of ICU is exposed in Android
- * @hide draft / provisional / internal are hidden on Android
- */
-
-@SuppressWarnings({"unchecked", "deprecation", "all"})
-public static class MatchInfo {
-
-MatchInfo() { throw new RuntimeException("Stub!"); }
-
-/**
- * Returns the time zone ID, or <code>null</code> if not available.
- *
- * <p><b>Note</b>: A <code>MatchInfo</code> must have either a time zone ID
- * or a meta zone ID.
- *
- * @return the time zone ID, or <code>null</code>.
- * @see #mzID()
- * @hide draft / provisional / internal are hidden on Android
- */
-
-public java.lang.String tzID() { throw new RuntimeException("Stub!"); }
-
-/**
- * Returns the meta zone ID, or <code>null</code> if not available.
- *
- * <p><b>Note</b>: A <code>MatchInfo</code> must have either a time zone ID
- * or a meta zone ID.
- *
- * @return the meta zone ID, or <code>null</code>.
- * @see #tzID()
- * @hide draft / provisional / internal are hidden on Android
- */
-
-public java.lang.String mzID() { throw new RuntimeException("Stub!"); }
-
-/**
- * Returns the time zone name type.
- * @return the time zone name type enum.
- * @see android.icu.text.TimeZoneNames.NameType
- * @hide draft / provisional / internal are hidden on Android
- */
-
-public android.icu.text.TimeZoneNames.NameType nameType() { throw new RuntimeException("Stub!"); }
-
-/**
- * Returns the match length.
- * @return the match length.
- * @hide draft / provisional / internal are hidden on Android
- */
-
-public int matchLength() { throw new RuntimeException("Stub!"); }
-}
-
 /**
  * Time zone display name types
  */
