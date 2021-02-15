@@ -86,6 +86,11 @@ mainline_install_list.extend(
     InstallApexEntries('com.android.tzdata', 'tzdata/apex') +
     InstallSdkEntries('tzdata-module-test-exports', 'tzdata/test-exports'))
 
+# statsd
+mainline_install_list.extend(
+    InstallSdkEntries('stats-log-api-gen-exports', 'statsd/stats-log-api-gen-exports') +
+    InstallSdkEntries('statsd-module-sdk', 'statsd/module-sdk'))
+
 # Platform
 mainline_install_list.extend(
     InstallSdkEntries('platform-mainline-sdk', 'platform/sdk') +
