@@ -12,8 +12,8 @@
 package android.icu.text;
 
 import android.icu.util.ULocale;
-import android.icu.util.ULocale.Category;
 import java.util.Locale;
+import android.icu.util.ULocale.Category;
 
 /**
  * <code>PluralFormat</code> supports the creation of internationalized
