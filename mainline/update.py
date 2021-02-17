@@ -30,6 +30,8 @@ TARGET = 'mainline_modules'
 COMMIT_MESSAGE_NOTE = """\
 CL prepared by prebuilts/runtime/mainline/update.py. See
 prebuilts/runtime/mainline/README.md for update instructions.
+
+Test: Presubmits
 """
 
 mainline_install_list = []
