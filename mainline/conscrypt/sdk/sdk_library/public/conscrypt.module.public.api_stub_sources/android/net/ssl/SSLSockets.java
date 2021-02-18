@@ -18,6 +18,7 @@
 package android.net.ssl;
 
 import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLException;
 
 /**
  * Static utility methods for accessing additional functionality of supported instances of
@@ -48,5 +49,31 @@ public static boolean isSupportedSocket(@android.annotation.NonNull javax.net.ss
  */
 
 public static void setUseSessionTickets(@android.annotation.NonNull javax.net.ssl.SSLSocket socket, boolean useSessionTickets) { throw new RuntimeException("Stub!"); }
+
+/**
+ * Exports a value derived from the TLS master secret as described in RFC 5705.
+ *
+ * A number of protocols leverage Transport Layer Security (TLS) to perform key
+ * establishment but then use some of the keying material for their own purposes.
+ *
+ * This method allows an application to export keying material from a TLS connection.
+ * The exported material will be the same on the client and server if they pass in
+ * the same values for {@code label} and {@code context}.  See RFC 5705 for further
+ * details.
+ *
+ * @param socket the socket to use for exporting keying material
+ * @param label the label to use in calculating the exported value.  This must be
+ * an ASCII-only string.
+ * @param context the application-specific context value to use in calculating the
+ * exported value.  This may be {@code null} to use no application context, which is
+ * treated differently than an empty byte array.
+ * @param length the number of bytes of keying material to return.
+ * @return a value of the specified length, or {@code null} if the handshake has not yet
+ * completed or the connection has been closed.
+ * @throws javax.net.ssl.SSLException if the value could not be exported.
+ */
+
+@android.annotation.Nullable
+public static byte[] exportKeyingMaterial(@android.annotation.NonNull javax.net.ssl.SSLSocket socket, @android.annotation.NonNull java.lang.String label, @android.annotation.Nullable byte[] context, int length) throws javax.net.ssl.SSLException { throw new RuntimeException("Stub!"); }
 }
 
