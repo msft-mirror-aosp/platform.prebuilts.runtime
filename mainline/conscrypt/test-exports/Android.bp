@@ -1,5 +1,9 @@
 // This is auto-generated. DO NOT EDIT.
 
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
 java_import {
     name: "conscrypt-module-test-exports_conscrypt@current",
     sdk_member_name: "conscrypt",
@@ -196,4 +200,3 @@ module_exports_snapshot {
         },
     },
 }
-
