@@ -18,6 +18,7 @@
 package com.android.icu.util;
 
 import android.icu.util.TimeZone;
+import java.time.zone.ZoneRules;
 
 /**
  * Provide extra functionalities on top of {@link android.icu.util.TimeZone TimeZone} public APIs.
@@ -59,5 +60,19 @@ public static void clearDefaultTimeZone() { throw new RuntimeException("Stub!");
  */
 
 public android.icu.util.TimeZone getTimeZone() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns a {@link java.time.zone.ZoneRules ZoneRules} instance for this time zone.
+ *
+ * @throws java.time.zone.ZoneRulesException if the zone rules can't be created.
+ *
+ * @implNote This implementations relies on {@link android.icu.util.BasicTimeZone#getTimeZoneRules() BasicTimeZone#getTimeZoneRules()} in the
+ * following way:
+ * Returned array starts with {@code InitialTimeZoneRule}, followed by {@code
+ * TimeArrayTimeZoneRule}, and, if available, ends with {@code AnnualTimeZoneRule}.
+ * @hide
+ */
+
+public java.time.zone.ZoneRules createZoneRules() { throw new RuntimeException("Stub!"); }
 }
 
