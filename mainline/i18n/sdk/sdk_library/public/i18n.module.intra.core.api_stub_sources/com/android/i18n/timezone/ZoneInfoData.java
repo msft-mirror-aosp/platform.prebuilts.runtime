@@ -166,14 +166,6 @@ public com.android.i18n.timezone.ZoneInfoData createCopyWithRawOffset(int newRaw
 public long[] getTransitions() { throw new RuntimeException("Stub!"); }
 
 /**
- * IntraCoreApi made visible for testing in libcore
- *
- * @hide
- */
-
-public static com.android.i18n.timezone.ZoneInfoData createZoneInfo(java.lang.String name, java.nio.ByteBuffer buf) throws java.io.IOException { throw new RuntimeException("Stub!"); }
-
-/**
  * Creates an instance. This method is only for testing purposes.
  *
  * @param transitions The times (in seconds) since beginning of the Unix epoch at which
