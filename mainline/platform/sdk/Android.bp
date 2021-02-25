@@ -1,9 +1,5 @@
 // This is auto-generated. DO NOT EDIT.
 
-package {
-    default_applicable_licenses: ["Android-Apache-2.0"],
-}
-
 cc_prebuilt_library {
     name: "platform-mainline-sdk_liblog@current",
     sdk_member_name: "liblog",
@@ -261,10 +257,7 @@ cc_prebuilt_library_shared {
     apex_available: ["//apex_available:platform"],
     installable: false,
     compile_multilib: "both",
-    export_include_dirs: [
-        "include/external/perfetto/include",
-        "include/external/perfetto/include/perfetto/base/build_configs/android_tree",
-    ],
+    export_include_dirs: ["include/external/perfetto/src/profiling/memory/include"],
     stubs: {
         versions: ["S"],
     },
@@ -290,10 +283,7 @@ cc_prebuilt_library_shared {
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
     compile_multilib: "both",
-    export_include_dirs: [
-        "include/external/perfetto/include",
-        "include/external/perfetto/include/perfetto/base/build_configs/android_tree",
-    ],
+    export_include_dirs: ["include/external/perfetto/src/profiling/memory/include"],
     stubs: {
         versions: ["S"],
     },
@@ -348,3 +338,4 @@ sdk_snapshot {
         },
     },
 }
+
