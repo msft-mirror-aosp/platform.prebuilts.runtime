@@ -1,16 +1,5 @@
 // This is auto-generated. DO NOT EDIT.
 
-package {
-    // See: http://go/android-license-faq
-    // A large-scale-change added 'default_applicable_licenses' to import
-    // all of the 'license_kinds' from "prebuilts_runtime_license"
-    // to get the below license kinds:
-    //   SPDX-license-identifier-Apache-2.0
-    //   SPDX-license-identifier-BSD
-    //   SPDX-license-identifier-Unicode-DFS
-    default_applicable_licenses: ["prebuilts_runtime_license"],
-}
-
 java_import {
     name: "i18n-module-test-exports_core-icu4j@current",
     sdk_member_name: "core-icu4j",
@@ -418,3 +407,4 @@ module_exports_snapshot {
         },
     },
 }
+
