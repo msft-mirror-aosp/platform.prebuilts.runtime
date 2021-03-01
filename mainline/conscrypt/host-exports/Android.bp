@@ -1,9 +1,5 @@
 // This is auto-generated. DO NOT EDIT.
 
-package {
-    default_applicable_licenses: ["Android-Apache-2.0"],
-}
-
 java_import {
     name: "conscrypt-module-host-exports_conscrypt-unbundled@current",
     sdk_member_name: "conscrypt-unbundled",
@@ -152,3 +148,4 @@ module_exports_snapshot {
         },
     },
 }
+
