@@ -16,6 +16,7 @@ namespace protos {
 namespace pbzero {
 
 enum ChromeFrameReporter_FrameDropReason : int32_t;
+enum ChromeFrameReporter_ScrollState : int32_t;
 enum ChromeFrameReporter_State : int32_t;
 
 enum ChromeFrameReporter_State : int32_t {
@@ -38,7 +39,16 @@ enum ChromeFrameReporter_FrameDropReason : int32_t {
 const ChromeFrameReporter_FrameDropReason ChromeFrameReporter_FrameDropReason_MIN = ChromeFrameReporter_FrameDropReason_REASON_UNSPECIFIED;
 const ChromeFrameReporter_FrameDropReason ChromeFrameReporter_FrameDropReason_MAX = ChromeFrameReporter_FrameDropReason_REASON_CLIENT_COMPOSITOR;
 
-class ChromeFrameReporter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+enum ChromeFrameReporter_ScrollState : int32_t {
+  ChromeFrameReporter_ScrollState_SCROLL_NONE = 0,
+  ChromeFrameReporter_ScrollState_SCROLL_MAIN_THREAD = 1,
+  ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD = 2,
+};
+
+const ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_MIN = ChromeFrameReporter_ScrollState_SCROLL_NONE;
+const ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_MAX = ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD;
+
+class ChromeFrameReporter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/9, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   ChromeFrameReporter_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ChromeFrameReporter_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -53,6 +63,14 @@ class ChromeFrameReporter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_
   uint64_t frame_sequence() const { return at<4>().as_uint64(); }
   bool has_affects_smoothness() const { return at<5>().valid(); }
   bool affects_smoothness() const { return at<5>().as_bool(); }
+  bool has_scroll_state() const { return at<6>().valid(); }
+  int32_t scroll_state() const { return at<6>().as_int32(); }
+  bool has_has_main_animation() const { return at<7>().valid(); }
+  bool has_main_animation() const { return at<7>().as_bool(); }
+  bool has_has_compositor_animation() const { return at<8>().valid(); }
+  bool has_compositor_animation() const { return at<8>().as_bool(); }
+  bool has_has_smooth_input_main() const { return at<9>().valid(); }
+  bool has_smooth_input_main() const { return at<9>().as_bool(); }
 };
 
 class ChromeFrameReporter : public ::protozero::Message {
@@ -64,9 +82,14 @@ class ChromeFrameReporter : public ::protozero::Message {
     kFrameSourceFieldNumber = 3,
     kFrameSequenceFieldNumber = 4,
     kAffectsSmoothnessFieldNumber = 5,
+    kScrollStateFieldNumber = 6,
+    kHasMainAnimationFieldNumber = 7,
+    kHasCompositorAnimationFieldNumber = 8,
+    kHasSmoothInputMainFieldNumber = 9,
   };
   using State = ::perfetto::protos::pbzero::ChromeFrameReporter_State;
   using FrameDropReason = ::perfetto::protos::pbzero::ChromeFrameReporter_FrameDropReason;
+  using ScrollState = ::perfetto::protos::pbzero::ChromeFrameReporter_ScrollState;
   static const State STATE_NO_UPDATE_DESIRED = ChromeFrameReporter_State_STATE_NO_UPDATE_DESIRED;
   static const State STATE_PRESENTED_ALL = ChromeFrameReporter_State_STATE_PRESENTED_ALL;
   static const State STATE_PRESENTED_PARTIAL = ChromeFrameReporter_State_STATE_PRESENTED_PARTIAL;
@@ -75,6 +98,9 @@ class ChromeFrameReporter : public ::protozero::Message {
   static const FrameDropReason REASON_DISPLAY_COMPOSITOR = ChromeFrameReporter_FrameDropReason_REASON_DISPLAY_COMPOSITOR;
   static const FrameDropReason REASON_MAIN_THREAD = ChromeFrameReporter_FrameDropReason_REASON_MAIN_THREAD;
   static const FrameDropReason REASON_CLIENT_COMPOSITOR = ChromeFrameReporter_FrameDropReason_REASON_CLIENT_COMPOSITOR;
+  static const ScrollState SCROLL_NONE = ChromeFrameReporter_ScrollState_SCROLL_NONE;
+  static const ScrollState SCROLL_MAIN_THREAD = ChromeFrameReporter_ScrollState_SCROLL_MAIN_THREAD;
+  static const ScrollState SCROLL_COMPOSITOR_THREAD = ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD;
   void set_state(::perfetto::protos::pbzero::ChromeFrameReporter_State value) {
     AppendTinyVarInt(1, value);
   }
@@ -89,6 +115,18 @@ class ChromeFrameReporter : public ::protozero::Message {
   }
   void set_affects_smoothness(bool value) {
     AppendTinyVarInt(5, value);
+  }
+  void set_scroll_state(::perfetto::protos::pbzero::ChromeFrameReporter_ScrollState value) {
+    AppendTinyVarInt(6, value);
+  }
+  void set_has_main_animation(bool value) {
+    AppendTinyVarInt(7, value);
+  }
+  void set_has_compositor_animation(bool value) {
+    AppendTinyVarInt(8, value);
+  }
+  void set_has_smooth_input_main(bool value) {
+    AppendTinyVarInt(9, value);
   }
 };
 

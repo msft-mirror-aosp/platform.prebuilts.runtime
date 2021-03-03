@@ -18,6 +18,7 @@ namespace gen {
 class ChromeFrameReporter;
 enum ChromeFrameReporter_State : int;
 enum ChromeFrameReporter_FrameDropReason : int;
+enum ChromeFrameReporter_ScrollState : int;
 }  // namespace perfetto
 }  // namespace protos
 }  // namespace gen
@@ -41,6 +42,11 @@ enum ChromeFrameReporter_FrameDropReason : int {
   ChromeFrameReporter_FrameDropReason_REASON_MAIN_THREAD = 2,
   ChromeFrameReporter_FrameDropReason_REASON_CLIENT_COMPOSITOR = 3,
 };
+enum ChromeFrameReporter_ScrollState : int {
+  ChromeFrameReporter_ScrollState_SCROLL_NONE = 0,
+  ChromeFrameReporter_ScrollState_SCROLL_MAIN_THREAD = 1,
+  ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD = 2,
+};
 
 class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
  public:
@@ -58,12 +64,22 @@ class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
   static constexpr auto REASON_CLIENT_COMPOSITOR = ChromeFrameReporter_FrameDropReason_REASON_CLIENT_COMPOSITOR;
   static constexpr auto FrameDropReason_MIN = ChromeFrameReporter_FrameDropReason_REASON_UNSPECIFIED;
   static constexpr auto FrameDropReason_MAX = ChromeFrameReporter_FrameDropReason_REASON_CLIENT_COMPOSITOR;
+  using ScrollState = ChromeFrameReporter_ScrollState;
+  static constexpr auto SCROLL_NONE = ChromeFrameReporter_ScrollState_SCROLL_NONE;
+  static constexpr auto SCROLL_MAIN_THREAD = ChromeFrameReporter_ScrollState_SCROLL_MAIN_THREAD;
+  static constexpr auto SCROLL_COMPOSITOR_THREAD = ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD;
+  static constexpr auto ScrollState_MIN = ChromeFrameReporter_ScrollState_SCROLL_NONE;
+  static constexpr auto ScrollState_MAX = ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD;
   enum FieldNumbers {
     kStateFieldNumber = 1,
     kReasonFieldNumber = 2,
     kFrameSourceFieldNumber = 3,
     kFrameSequenceFieldNumber = 4,
     kAffectsSmoothnessFieldNumber = 5,
+    kScrollStateFieldNumber = 6,
+    kHasMainAnimationFieldNumber = 7,
+    kHasCompositorAnimationFieldNumber = 8,
+    kHasSmoothInputMainFieldNumber = 9,
   };
 
   ChromeFrameReporter();
@@ -100,18 +116,38 @@ class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
   bool affects_smoothness() const { return affects_smoothness_; }
   void set_affects_smoothness(bool value) { affects_smoothness_ = value; _has_field_.set(5); }
 
+  bool has_scroll_state() const { return _has_field_[6]; }
+  ChromeFrameReporter_ScrollState scroll_state() const { return scroll_state_; }
+  void set_scroll_state(ChromeFrameReporter_ScrollState value) { scroll_state_ = value; _has_field_.set(6); }
+
+  bool has_has_main_animation() const { return _has_field_[7]; }
+  bool has_main_animation() const { return has_main_animation_; }
+  void set_has_main_animation(bool value) { has_main_animation_ = value; _has_field_.set(7); }
+
+  bool has_has_compositor_animation() const { return _has_field_[8]; }
+  bool has_compositor_animation() const { return has_compositor_animation_; }
+  void set_has_compositor_animation(bool value) { has_compositor_animation_ = value; _has_field_.set(8); }
+
+  bool has_has_smooth_input_main() const { return _has_field_[9]; }
+  bool has_smooth_input_main() const { return has_smooth_input_main_; }
+  void set_has_smooth_input_main(bool value) { has_smooth_input_main_ = value; _has_field_.set(9); }
+
  private:
   ChromeFrameReporter_State state_{};
   ChromeFrameReporter_FrameDropReason reason_{};
   uint64_t frame_source_{};
   uint64_t frame_sequence_{};
   bool affects_smoothness_{};
+  ChromeFrameReporter_ScrollState scroll_state_{};
+  bool has_main_animation_{};
+  bool has_compositor_animation_{};
+  bool has_smooth_input_main_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<6> _has_field_{};
+  std::bitset<10> _has_field_{};
 };
 
 }  // namespace perfetto

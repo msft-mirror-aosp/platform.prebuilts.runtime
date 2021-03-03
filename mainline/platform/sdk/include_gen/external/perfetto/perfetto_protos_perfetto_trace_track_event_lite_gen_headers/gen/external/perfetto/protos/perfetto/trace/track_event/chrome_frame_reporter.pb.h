@@ -107,6 +107,26 @@ inline const std::string& ChromeFrameReporter_FrameDropReason_Name(T enum_t_valu
 }
 bool ChromeFrameReporter_FrameDropReason_Parse(
     const std::string& name, ChromeFrameReporter_FrameDropReason* value);
+enum ChromeFrameReporter_ScrollState : int {
+  ChromeFrameReporter_ScrollState_SCROLL_NONE = 0,
+  ChromeFrameReporter_ScrollState_SCROLL_MAIN_THREAD = 1,
+  ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD = 2
+};
+bool ChromeFrameReporter_ScrollState_IsValid(int value);
+constexpr ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_ScrollState_MIN = ChromeFrameReporter_ScrollState_SCROLL_NONE;
+constexpr ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_ScrollState_MAX = ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD;
+constexpr int ChromeFrameReporter_ScrollState_ScrollState_ARRAYSIZE = ChromeFrameReporter_ScrollState_ScrollState_MAX + 1;
+
+const std::string& ChromeFrameReporter_ScrollState_Name(ChromeFrameReporter_ScrollState value);
+template<typename T>
+inline const std::string& ChromeFrameReporter_ScrollState_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ChromeFrameReporter_ScrollState>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function ChromeFrameReporter_ScrollState_Name.");
+  return ChromeFrameReporter_ScrollState_Name(static_cast<ChromeFrameReporter_ScrollState>(enum_t_value));
+}
+bool ChromeFrameReporter_ScrollState_Parse(
+    const std::string& name, ChromeFrameReporter_ScrollState* value);
 // ===================================================================
 
 class ChromeFrameReporter :
@@ -269,6 +289,34 @@ class ChromeFrameReporter :
     return ChromeFrameReporter_FrameDropReason_Parse(name, value);
   }
 
+  typedef ChromeFrameReporter_ScrollState ScrollState;
+  static constexpr ScrollState SCROLL_NONE =
+    ChromeFrameReporter_ScrollState_SCROLL_NONE;
+  static constexpr ScrollState SCROLL_MAIN_THREAD =
+    ChromeFrameReporter_ScrollState_SCROLL_MAIN_THREAD;
+  static constexpr ScrollState SCROLL_COMPOSITOR_THREAD =
+    ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD;
+  static inline bool ScrollState_IsValid(int value) {
+    return ChromeFrameReporter_ScrollState_IsValid(value);
+  }
+  static constexpr ScrollState ScrollState_MIN =
+    ChromeFrameReporter_ScrollState_ScrollState_MIN;
+  static constexpr ScrollState ScrollState_MAX =
+    ChromeFrameReporter_ScrollState_ScrollState_MAX;
+  static constexpr int ScrollState_ARRAYSIZE =
+    ChromeFrameReporter_ScrollState_ScrollState_ARRAYSIZE;
+  template<typename T>
+  static inline const std::string& ScrollState_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, ScrollState>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function ScrollState_Name.");
+    return ChromeFrameReporter_ScrollState_Name(enum_t_value);
+  }
+  static inline bool ScrollState_Parse(const std::string& name,
+      ScrollState* value) {
+    return ChromeFrameReporter_ScrollState_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
@@ -276,7 +324,11 @@ class ChromeFrameReporter :
     kReasonFieldNumber = 2,
     kFrameSourceFieldNumber = 3,
     kFrameSequenceFieldNumber = 4,
+    kScrollStateFieldNumber = 6,
     kAffectsSmoothnessFieldNumber = 5,
+    kHasMainAnimationFieldNumber = 7,
+    kHasCompositorAnimationFieldNumber = 8,
+    kHasSmoothInputMainFieldNumber = 9,
   };
   // optional .perfetto.protos.ChromeFrameReporter.State state = 1;
   bool has_state() const;
@@ -302,11 +354,35 @@ class ChromeFrameReporter :
   ::PROTOBUF_NAMESPACE_ID::uint64 frame_sequence() const;
   void set_frame_sequence(::PROTOBUF_NAMESPACE_ID::uint64 value);
 
+  // optional .perfetto.protos.ChromeFrameReporter.ScrollState scroll_state = 6;
+  bool has_scroll_state() const;
+  void clear_scroll_state();
+  ::perfetto::protos::ChromeFrameReporter_ScrollState scroll_state() const;
+  void set_scroll_state(::perfetto::protos::ChromeFrameReporter_ScrollState value);
+
   // optional bool affects_smoothness = 5;
   bool has_affects_smoothness() const;
   void clear_affects_smoothness();
   bool affects_smoothness() const;
   void set_affects_smoothness(bool value);
+
+  // optional bool has_main_animation = 7;
+  bool has_has_main_animation() const;
+  void clear_has_main_animation();
+  bool has_main_animation() const;
+  void set_has_main_animation(bool value);
+
+  // optional bool has_compositor_animation = 8;
+  bool has_has_compositor_animation() const;
+  void clear_has_compositor_animation();
+  bool has_compositor_animation() const;
+  void set_has_compositor_animation(bool value);
+
+  // optional bool has_smooth_input_main = 9;
+  bool has_has_smooth_input_main() const;
+  void clear_has_smooth_input_main();
+  bool has_smooth_input_main() const;
+  void set_has_smooth_input_main(bool value);
 
   // @@protoc_insertion_point(class_scope:perfetto.protos.ChromeFrameReporter)
  private:
@@ -319,7 +395,11 @@ class ChromeFrameReporter :
   int reason_;
   ::PROTOBUF_NAMESPACE_ID::uint64 frame_source_;
   ::PROTOBUF_NAMESPACE_ID::uint64 frame_sequence_;
+  int scroll_state_;
   bool affects_smoothness_;
+  bool has_main_animation_;
+  bool has_compositor_animation_;
+  bool has_smooth_input_main_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftrack_5fevent_2fchrome_5fframe_5freporter_2eproto;
 };
 // ===================================================================
@@ -409,20 +489,93 @@ inline void ChromeFrameReporter::set_frame_sequence(::PROTOBUF_NAMESPACE_ID::uin
 
 // optional bool affects_smoothness = 5;
 inline bool ChromeFrameReporter::has_affects_smoothness() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void ChromeFrameReporter::clear_affects_smoothness() {
   affects_smoothness_ = false;
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline bool ChromeFrameReporter::affects_smoothness() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeFrameReporter.affects_smoothness)
   return affects_smoothness_;
 }
 inline void ChromeFrameReporter::set_affects_smoothness(bool value) {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
   affects_smoothness_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeFrameReporter.affects_smoothness)
+}
+
+// optional .perfetto.protos.ChromeFrameReporter.ScrollState scroll_state = 6;
+inline bool ChromeFrameReporter::has_scroll_state() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ChromeFrameReporter::clear_scroll_state() {
+  scroll_state_ = 0;
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline ::perfetto::protos::ChromeFrameReporter_ScrollState ChromeFrameReporter::scroll_state() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeFrameReporter.scroll_state)
+  return static_cast< ::perfetto::protos::ChromeFrameReporter_ScrollState >(scroll_state_);
+}
+inline void ChromeFrameReporter::set_scroll_state(::perfetto::protos::ChromeFrameReporter_ScrollState value) {
+  assert(::perfetto::protos::ChromeFrameReporter_ScrollState_IsValid(value));
+  _has_bits_[0] |= 0x00000010u;
+  scroll_state_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeFrameReporter.scroll_state)
+}
+
+// optional bool has_main_animation = 7;
+inline bool ChromeFrameReporter::has_has_main_animation() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ChromeFrameReporter::clear_has_main_animation() {
+  has_main_animation_ = false;
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline bool ChromeFrameReporter::has_main_animation() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeFrameReporter.has_main_animation)
+  return has_main_animation_;
+}
+inline void ChromeFrameReporter::set_has_main_animation(bool value) {
+  _has_bits_[0] |= 0x00000040u;
+  has_main_animation_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeFrameReporter.has_main_animation)
+}
+
+// optional bool has_compositor_animation = 8;
+inline bool ChromeFrameReporter::has_has_compositor_animation() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void ChromeFrameReporter::clear_has_compositor_animation() {
+  has_compositor_animation_ = false;
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline bool ChromeFrameReporter::has_compositor_animation() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeFrameReporter.has_compositor_animation)
+  return has_compositor_animation_;
+}
+inline void ChromeFrameReporter::set_has_compositor_animation(bool value) {
+  _has_bits_[0] |= 0x00000080u;
+  has_compositor_animation_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeFrameReporter.has_compositor_animation)
+}
+
+// optional bool has_smooth_input_main = 9;
+inline bool ChromeFrameReporter::has_has_smooth_input_main() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void ChromeFrameReporter::clear_has_smooth_input_main() {
+  has_smooth_input_main_ = false;
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline bool ChromeFrameReporter::has_smooth_input_main() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeFrameReporter.has_smooth_input_main)
+  return has_smooth_input_main_;
+}
+inline void ChromeFrameReporter::set_has_smooth_input_main(bool value) {
+  _has_bits_[0] |= 0x00000100u;
+  has_smooth_input_main_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeFrameReporter.has_smooth_input_main)
 }
 
 #ifdef __GNUC__
@@ -438,6 +591,7 @@ PROTOBUF_NAMESPACE_OPEN
 
 template <> struct is_proto_enum< ::perfetto::protos::ChromeFrameReporter_State> : ::std::true_type {};
 template <> struct is_proto_enum< ::perfetto::protos::ChromeFrameReporter_FrameDropReason> : ::std::true_type {};
+template <> struct is_proto_enum< ::perfetto::protos::ChromeFrameReporter_ScrollState> : ::std::true_type {};
 
 PROTOBUF_NAMESPACE_CLOSE
 
