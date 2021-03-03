@@ -55,6 +55,7 @@ enum ChromeRAILMode : int;
 enum ChromeApplicationStateInfo_ChromeApplicationState : int;
 enum ChromeFrameReporter_State : int;
 enum ChromeFrameReporter_FrameDropReason : int;
+enum ChromeFrameReporter_ScrollState : int;
 enum ChromeLatencyInfo_Step : int;
 enum ChromeLatencyInfo_LatencyComponentType : int;
 enum ChromeLegacyIpc_MessageClass : int;
