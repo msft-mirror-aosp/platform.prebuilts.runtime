@@ -30,6 +30,8 @@ TARGET = 'mainline_modules'
 COMMIT_MESSAGE_NOTE = """\
 CL prepared by prebuilts/runtime/mainline/update.py. See
 prebuilts/runtime/mainline/README.md for update instructions.
+
+Test: Presubmits
 """
 
 mainline_install_list = []
@@ -85,6 +87,12 @@ mainline_install_list.extend(
 mainline_install_list.extend(
     InstallApexEntries('com.android.tzdata', 'tzdata/apex') +
     InstallSdkEntries('tzdata-module-test-exports', 'tzdata/test-exports'))
+
+# statsd
+mainline_install_list.extend(
+    InstallApexEntries('com.android.os.statsd', 'statsd/apex') +
+    InstallSdkEntries('stats-log-api-gen-exports', 'statsd/stats-log-api-gen-exports') +
+    InstallSdkEntries('statsd-module-sdk-for-art', 'statsd/module-sdk-for-art'))
 
 # Platform
 mainline_install_list.extend(
