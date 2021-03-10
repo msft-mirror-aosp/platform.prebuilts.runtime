@@ -110,11 +110,12 @@ bool ChromeFrameReporter_FrameDropReason_Parse(
 enum ChromeFrameReporter_ScrollState : int {
   ChromeFrameReporter_ScrollState_SCROLL_NONE = 0,
   ChromeFrameReporter_ScrollState_SCROLL_MAIN_THREAD = 1,
-  ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD = 2
+  ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD = 2,
+  ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN = 3
 };
 bool ChromeFrameReporter_ScrollState_IsValid(int value);
 constexpr ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_ScrollState_MIN = ChromeFrameReporter_ScrollState_SCROLL_NONE;
-constexpr ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_ScrollState_MAX = ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD;
+constexpr ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_ScrollState_MAX = ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN;
 constexpr int ChromeFrameReporter_ScrollState_ScrollState_ARRAYSIZE = ChromeFrameReporter_ScrollState_ScrollState_MAX + 1;
 
 const std::string& ChromeFrameReporter_ScrollState_Name(ChromeFrameReporter_ScrollState value);
@@ -296,6 +297,8 @@ class ChromeFrameReporter :
     ChromeFrameReporter_ScrollState_SCROLL_MAIN_THREAD;
   static constexpr ScrollState SCROLL_COMPOSITOR_THREAD =
     ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD;
+  static constexpr ScrollState SCROLL_UNKNOWN =
+    ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN;
   static inline bool ScrollState_IsValid(int value) {
     return ChromeFrameReporter_ScrollState_IsValid(value);
   }
