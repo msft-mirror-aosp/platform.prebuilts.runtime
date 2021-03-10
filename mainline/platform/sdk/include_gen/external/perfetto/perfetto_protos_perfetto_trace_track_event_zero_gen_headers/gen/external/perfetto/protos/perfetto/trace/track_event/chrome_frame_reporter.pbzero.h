@@ -43,10 +43,11 @@ enum ChromeFrameReporter_ScrollState : int32_t {
   ChromeFrameReporter_ScrollState_SCROLL_NONE = 0,
   ChromeFrameReporter_ScrollState_SCROLL_MAIN_THREAD = 1,
   ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD = 2,
+  ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN = 3,
 };
 
 const ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_MIN = ChromeFrameReporter_ScrollState_SCROLL_NONE;
-const ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_MAX = ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD;
+const ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_MAX = ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN;
 
 class ChromeFrameReporter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/9, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -101,6 +102,7 @@ class ChromeFrameReporter : public ::protozero::Message {
   static const ScrollState SCROLL_NONE = ChromeFrameReporter_ScrollState_SCROLL_NONE;
   static const ScrollState SCROLL_MAIN_THREAD = ChromeFrameReporter_ScrollState_SCROLL_MAIN_THREAD;
   static const ScrollState SCROLL_COMPOSITOR_THREAD = ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD;
+  static const ScrollState SCROLL_UNKNOWN = ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN;
   void set_state(::perfetto::protos::pbzero::ChromeFrameReporter_State value) {
     AppendTinyVarInt(1, value);
   }
