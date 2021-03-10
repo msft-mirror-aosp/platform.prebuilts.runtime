@@ -100,6 +100,7 @@ mainline_install_list.extend(
     InstallSdkEntries('platform-mainline-test-exports', 'platform/test-exports') +
     # Shared libraries that are stubs in SDKs, but for which we need their
     # implementation for device testing.
+    InstallSharedLibEntries('heapprofd_client_api', 'platform/impl') +
     InstallSharedLibEntries('libartpalette-system', 'platform/impl') +
     InstallSharedLibEntries('liblog', 'platform/impl'))
 
