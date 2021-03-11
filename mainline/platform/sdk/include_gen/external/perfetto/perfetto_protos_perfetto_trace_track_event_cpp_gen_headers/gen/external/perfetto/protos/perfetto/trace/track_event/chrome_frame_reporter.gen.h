@@ -46,6 +46,7 @@ enum ChromeFrameReporter_ScrollState : int {
   ChromeFrameReporter_ScrollState_SCROLL_NONE = 0,
   ChromeFrameReporter_ScrollState_SCROLL_MAIN_THREAD = 1,
   ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD = 2,
+  ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN = 3,
 };
 
 class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
@@ -68,8 +69,9 @@ class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
   static constexpr auto SCROLL_NONE = ChromeFrameReporter_ScrollState_SCROLL_NONE;
   static constexpr auto SCROLL_MAIN_THREAD = ChromeFrameReporter_ScrollState_SCROLL_MAIN_THREAD;
   static constexpr auto SCROLL_COMPOSITOR_THREAD = ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD;
+  static constexpr auto SCROLL_UNKNOWN = ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN;
   static constexpr auto ScrollState_MIN = ChromeFrameReporter_ScrollState_SCROLL_NONE;
-  static constexpr auto ScrollState_MAX = ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD;
+  static constexpr auto ScrollState_MAX = ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN;
   enum FieldNumbers {
     kStateFieldNumber = 1,
     kReasonFieldNumber = 2,

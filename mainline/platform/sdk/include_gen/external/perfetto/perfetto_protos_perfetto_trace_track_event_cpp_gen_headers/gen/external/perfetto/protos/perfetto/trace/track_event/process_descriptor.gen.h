@@ -60,6 +60,7 @@ class PERFETTO_EXPORT ProcessDescriptor : public ::protozero::CppMessageObj {
     kProcessNameFieldNumber = 6,
     kProcessPriorityFieldNumber = 5,
     kStartTimestampNsFieldNumber = 7,
+    kChromeCrashTraceIdFieldNumber = 8,
     kChromeProcessTypeFieldNumber = 4,
     kLegacySortIndexFieldNumber = 3,
   };
@@ -101,6 +102,10 @@ class PERFETTO_EXPORT ProcessDescriptor : public ::protozero::CppMessageObj {
   int64_t start_timestamp_ns() const { return start_timestamp_ns_; }
   void set_start_timestamp_ns(int64_t value) { start_timestamp_ns_ = value; _has_field_.set(7); }
 
+  bool has_chrome_crash_trace_id() const { return _has_field_[8]; }
+  uint64_t chrome_crash_trace_id() const { return chrome_crash_trace_id_; }
+  void set_chrome_crash_trace_id(uint64_t value) { chrome_crash_trace_id_ = value; _has_field_.set(8); }
+
   bool has_chrome_process_type() const { return _has_field_[4]; }
   ProcessDescriptor_ChromeProcessType chrome_process_type() const { return chrome_process_type_; }
   void set_chrome_process_type(ProcessDescriptor_ChromeProcessType value) { chrome_process_type_ = value; _has_field_.set(4); }
@@ -115,6 +120,7 @@ class PERFETTO_EXPORT ProcessDescriptor : public ::protozero::CppMessageObj {
   std::string process_name_{};
   int32_t process_priority_{};
   int64_t start_timestamp_ns_{};
+  uint64_t chrome_crash_trace_id_{};
   ProcessDescriptor_ChromeProcessType chrome_process_type_{};
   int32_t legacy_sort_index_{};
 
@@ -122,7 +128,7 @@ class PERFETTO_EXPORT ProcessDescriptor : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<8> _has_field_{};
+  std::bitset<9> _has_field_{};
 };
 
 }  // namespace perfetto
