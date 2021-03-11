@@ -32,7 +32,7 @@ enum ProcessDescriptor_ChromeProcessType : int32_t {
 const ProcessDescriptor_ChromeProcessType ProcessDescriptor_ChromeProcessType_MIN = ProcessDescriptor_ChromeProcessType_PROCESS_UNSPECIFIED;
 const ProcessDescriptor_ChromeProcessType ProcessDescriptor_ChromeProcessType_MAX = ProcessDescriptor_ChromeProcessType_PROCESS_PPAPI_BROKER;
 
-class ProcessDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class ProcessDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/8, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   ProcessDescriptor_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ProcessDescriptor_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -47,6 +47,8 @@ class ProcessDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FI
   int32_t process_priority() const { return at<5>().as_int32(); }
   bool has_start_timestamp_ns() const { return at<7>().valid(); }
   int64_t start_timestamp_ns() const { return at<7>().as_int64(); }
+  bool has_chrome_crash_trace_id() const { return at<8>().valid(); }
+  uint64_t chrome_crash_trace_id() const { return at<8>().as_uint64(); }
   bool has_chrome_process_type() const { return at<4>().valid(); }
   int32_t chrome_process_type() const { return at<4>().as_int32(); }
   bool has_legacy_sort_index() const { return at<3>().valid(); }
@@ -62,6 +64,7 @@ class ProcessDescriptor : public ::protozero::Message {
     kProcessNameFieldNumber = 6,
     kProcessPriorityFieldNumber = 5,
     kStartTimestampNsFieldNumber = 7,
+    kChromeCrashTraceIdFieldNumber = 8,
     kChromeProcessTypeFieldNumber = 4,
     kLegacySortIndexFieldNumber = 3,
   };
@@ -95,6 +98,9 @@ class ProcessDescriptor : public ::protozero::Message {
   }
   void set_start_timestamp_ns(int64_t value) {
     AppendVarInt(7, value);
+  }
+  void set_chrome_crash_trace_id(uint64_t value) {
+    AppendVarInt(8, value);
   }
   void set_chrome_process_type(::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType value) {
     AppendTinyVarInt(4, value);
