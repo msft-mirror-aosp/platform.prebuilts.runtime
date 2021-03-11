@@ -1,5 +1,9 @@
 // This is auto-generated. DO NOT EDIT.
 
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
 java_sdk_library_import {
     name: "conscrypt-module-sdk_conscrypt.module.public.api@current",
     sdk_member_name: "conscrypt.module.public.api",
@@ -183,4 +187,3 @@ sdk_snapshot {
     ],
     native_shared_libs: ["conscrypt-module-sdk_libconscrypt_jni@current"],
 }
-
