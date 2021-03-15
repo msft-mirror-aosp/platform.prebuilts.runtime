@@ -25,12 +25,12 @@ sys.path.append(THIS_DIR + '/../common/python')
 import update_prebuilts as update
 
 appcompat_install_list = [
-    update.InstallEntry('sdk_phone_x86-sdk', 'veridex.zip', 'veridex-linux.zip', need_unzip=True),
+    update.InstallEntry('sdk_phone_x86_64-sdk', 'veridex.zip', 'veridex-linux.zip', need_unzip=True),
     update.InstallEntry('sdk_phone_armv7-sdk_mac', 'veridex.zip', 'veridex-mac.zip'),
 ]
 
 appcompat_extracted_list = [
-    update.InstallEntry('sdk_phone_arm64-sdk', 'hiddenapi-flags.csv', 'hiddenapi-flags.csv'),
+    update.InstallEntry('sdk_phone_arm64', 'hiddenapi-flags.csv', 'hiddenapi-flags.csv'),
 ]
 
 if __name__ == '__main__':
