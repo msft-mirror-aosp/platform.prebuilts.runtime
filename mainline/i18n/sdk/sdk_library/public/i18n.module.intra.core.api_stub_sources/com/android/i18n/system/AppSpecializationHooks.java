@@ -31,8 +31,11 @@ public class AppSpecializationHooks {
 AppSpecializationHooks() { throw new RuntimeException("Stub!"); }
 
 /**
- * Called by
+ * This is a good place to change system properties / clear cache due to an app compat change
+ * before an app starts. It's called by
  * {@link dalvik.system.AppSpecializationHooks#handleCompatChangesBeforeBindingApplication()}.
+ *
+ * @hide
  */
 
 public static void handleCompatChangesBeforeBindingApplication() { throw new RuntimeException("Stub!"); }
