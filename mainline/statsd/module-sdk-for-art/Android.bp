@@ -1,5 +1,9 @@
 // This is auto-generated. DO NOT EDIT.
 
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
 cc_prebuilt_library_shared {
     name: "statsd-module-sdk-for-art_libstatssocket@current",
     sdk_member_name: "libstatssocket",
@@ -68,4 +72,3 @@ sdk_snapshot {
     visibility: ["//visibility:public"],
     native_shared_libs: ["statsd-module-sdk-for-art_libstatssocket@current"],
 }
-
