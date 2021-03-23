@@ -30,7 +30,7 @@
 #include <google/protobuf/message_lite.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
-#include <google/protobuf/generated_enum_util.h>
+#include "protos/perfetto/common/perf_events.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_protos_2fperfetto_2fconfig_2fprofiling_2fperf_5fevent_5fconfig_2eproto
@@ -46,7 +46,7 @@ struct TableStruct_protos_2fperfetto_2fconfig_2fprofiling_2fperf_5fevent_5fconfi
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[3]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -63,230 +63,17 @@ extern PerfEventConfig_CallstackSamplingDefaultTypeInternal _PerfEventConfig_Cal
 class PerfEventConfig_Scope;
 class PerfEventConfig_ScopeDefaultTypeInternal;
 extern PerfEventConfig_ScopeDefaultTypeInternal _PerfEventConfig_Scope_default_instance_;
-class PerfEventConfig_Timebase;
-class PerfEventConfig_TimebaseDefaultTypeInternal;
-extern PerfEventConfig_TimebaseDefaultTypeInternal _PerfEventConfig_Timebase_default_instance_;
-class PerfEventConfig_Tracepoint;
-class PerfEventConfig_TracepointDefaultTypeInternal;
-extern PerfEventConfig_TracepointDefaultTypeInternal _PerfEventConfig_Tracepoint_default_instance_;
 }  // namespace protos
 }  // namespace perfetto
 PROTOBUF_NAMESPACE_OPEN
 template<> ::perfetto::protos::PerfEventConfig* Arena::CreateMaybeMessage<::perfetto::protos::PerfEventConfig>(Arena*);
 template<> ::perfetto::protos::PerfEventConfig_CallstackSampling* Arena::CreateMaybeMessage<::perfetto::protos::PerfEventConfig_CallstackSampling>(Arena*);
 template<> ::perfetto::protos::PerfEventConfig_Scope* Arena::CreateMaybeMessage<::perfetto::protos::PerfEventConfig_Scope>(Arena*);
-template<> ::perfetto::protos::PerfEventConfig_Timebase* Arena::CreateMaybeMessage<::perfetto::protos::PerfEventConfig_Timebase>(Arena*);
-template<> ::perfetto::protos::PerfEventConfig_Tracepoint* Arena::CreateMaybeMessage<::perfetto::protos::PerfEventConfig_Tracepoint>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
 namespace protos {
 
-enum PerfEventConfig_Counter : int {
-  PerfEventConfig_Counter_UNKNOWN_COUNTER = 0,
-  PerfEventConfig_Counter_SW_CPU_CLOCK = 1,
-  PerfEventConfig_Counter_SW_PAGE_FAULTS = 2,
-  PerfEventConfig_Counter_HW_CPU_CYCLES = 10,
-  PerfEventConfig_Counter_HW_INSTRUCTIONS = 11
-};
-bool PerfEventConfig_Counter_IsValid(int value);
-constexpr PerfEventConfig_Counter PerfEventConfig_Counter_Counter_MIN = PerfEventConfig_Counter_UNKNOWN_COUNTER;
-constexpr PerfEventConfig_Counter PerfEventConfig_Counter_Counter_MAX = PerfEventConfig_Counter_HW_INSTRUCTIONS;
-constexpr int PerfEventConfig_Counter_Counter_ARRAYSIZE = PerfEventConfig_Counter_Counter_MAX + 1;
-
-const std::string& PerfEventConfig_Counter_Name(PerfEventConfig_Counter value);
-template<typename T>
-inline const std::string& PerfEventConfig_Counter_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, PerfEventConfig_Counter>::value ||
-    ::std::is_integral<T>::value,
-    "Incorrect type passed to function PerfEventConfig_Counter_Name.");
-  return PerfEventConfig_Counter_Name(static_cast<PerfEventConfig_Counter>(enum_t_value));
-}
-bool PerfEventConfig_Counter_Parse(
-    const std::string& name, PerfEventConfig_Counter* value);
 // ===================================================================
-
-class PerfEventConfig_Timebase :
-    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.PerfEventConfig.Timebase) */ {
- public:
-  PerfEventConfig_Timebase();
-  virtual ~PerfEventConfig_Timebase();
-
-  PerfEventConfig_Timebase(const PerfEventConfig_Timebase& from);
-  PerfEventConfig_Timebase(PerfEventConfig_Timebase&& from) noexcept
-    : PerfEventConfig_Timebase() {
-    *this = ::std::move(from);
-  }
-
-  inline PerfEventConfig_Timebase& operator=(const PerfEventConfig_Timebase& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline PerfEventConfig_Timebase& operator=(PerfEventConfig_Timebase&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const std::string& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline std::string* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const PerfEventConfig_Timebase& default_instance();
-
-  enum IntervalCase {
-    kFrequency = 2,
-    kPeriod = 1,
-    INTERVAL_NOT_SET = 0,
-  };
-
-  enum EventCase {
-    kCounter = 4,
-    kTracepoint = 3,
-    EVENT_NOT_SET = 0,
-  };
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const PerfEventConfig_Timebase* internal_default_instance() {
-    return reinterpret_cast<const PerfEventConfig_Timebase*>(
-               &_PerfEventConfig_Timebase_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    0;
-
-  friend void swap(PerfEventConfig_Timebase& a, PerfEventConfig_Timebase& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(PerfEventConfig_Timebase* other) {
-    if (other == this) return;
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline PerfEventConfig_Timebase* New() const final {
-    return CreateMaybeMessage<PerfEventConfig_Timebase>(nullptr);
-  }
-
-  PerfEventConfig_Timebase* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<PerfEventConfig_Timebase>(arena);
-  }
-  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)
-    final;
-  void CopyFrom(const PerfEventConfig_Timebase& from);
-  void MergeFrom(const PerfEventConfig_Timebase& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  #else
-  bool MergePartialFromCodedStream(
-      ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
-  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  void SerializeWithCachedSizes(
-      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
-  void DiscardUnknownFields();
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  inline void SharedCtor();
-  inline void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(PerfEventConfig_Timebase* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "perfetto.protos.PerfEventConfig.Timebase";
-  }
-  private:
-  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
-    return nullptr;
-  }
-  inline void* MaybeArenaPtr() const {
-    return nullptr;
-  }
-  public:
-
-  std::string GetTypeName() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kFrequencyFieldNumber = 2,
-    kPeriodFieldNumber = 1,
-    kCounterFieldNumber = 4,
-    kTracepointFieldNumber = 3,
-  };
-  // optional uint64 frequency = 2;
-  bool has_frequency() const;
-  void clear_frequency();
-  ::PROTOBUF_NAMESPACE_ID::uint64 frequency() const;
-  void set_frequency(::PROTOBUF_NAMESPACE_ID::uint64 value);
-
-  // optional uint64 period = 1;
-  bool has_period() const;
-  void clear_period();
-  ::PROTOBUF_NAMESPACE_ID::uint64 period() const;
-  void set_period(::PROTOBUF_NAMESPACE_ID::uint64 value);
-
-  // optional .perfetto.protos.PerfEventConfig.Counter counter = 4;
-  bool has_counter() const;
-  void clear_counter();
-  ::perfetto::protos::PerfEventConfig_Counter counter() const;
-  void set_counter(::perfetto::protos::PerfEventConfig_Counter value);
-
-  // optional .perfetto.protos.PerfEventConfig.Tracepoint tracepoint = 3;
-  bool has_tracepoint() const;
-  void clear_tracepoint();
-  const ::perfetto::protos::PerfEventConfig_Tracepoint& tracepoint() const;
-  ::perfetto::protos::PerfEventConfig_Tracepoint* release_tracepoint();
-  ::perfetto::protos::PerfEventConfig_Tracepoint* mutable_tracepoint();
-  void set_allocated_tracepoint(::perfetto::protos::PerfEventConfig_Tracepoint* tracepoint);
-
-  void clear_interval();
-  IntervalCase interval_case() const;
-  void clear_event();
-  EventCase event_case() const;
-  // @@protoc_insertion_point(class_scope:perfetto.protos.PerfEventConfig.Timebase)
- private:
-  class _Internal;
-  void set_has_frequency();
-  void set_has_period();
-  void set_has_counter();
-  void set_has_tracepoint();
-
-  inline bool has_interval() const;
-  inline void clear_has_interval();
-
-  inline bool has_event() const;
-  inline void clear_has_event();
-
-  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  union IntervalUnion {
-    IntervalUnion() {}
-    ::PROTOBUF_NAMESPACE_ID::uint64 frequency_;
-    ::PROTOBUF_NAMESPACE_ID::uint64 period_;
-  } interval_;
-  union EventUnion {
-    EventUnion() {}
-    int counter_;
-    ::perfetto::protos::PerfEventConfig_Tracepoint* tracepoint_;
-  } event_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[2];
-
-  friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fprofiling_2fperf_5fevent_5fconfig_2eproto;
-};
-// -------------------------------------------------------------------
 
 class PerfEventConfig_CallstackSampling :
     public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.PerfEventConfig.CallstackSampling) */ {
@@ -328,7 +115,7 @@ class PerfEventConfig_CallstackSampling :
                &_PerfEventConfig_CallstackSampling_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    0;
 
   friend void swap(PerfEventConfig_CallstackSampling& a, PerfEventConfig_CallstackSampling& b) {
     a.Swap(&b);
@@ -461,7 +248,7 @@ class PerfEventConfig_Scope :
                &_PerfEventConfig_Scope_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    1;
 
   friend void swap(PerfEventConfig_Scope& a, PerfEventConfig_Scope& b) {
     a.Swap(&b);
@@ -608,149 +395,6 @@ class PerfEventConfig_Scope :
 };
 // -------------------------------------------------------------------
 
-class PerfEventConfig_Tracepoint :
-    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.PerfEventConfig.Tracepoint) */ {
- public:
-  PerfEventConfig_Tracepoint();
-  virtual ~PerfEventConfig_Tracepoint();
-
-  PerfEventConfig_Tracepoint(const PerfEventConfig_Tracepoint& from);
-  PerfEventConfig_Tracepoint(PerfEventConfig_Tracepoint&& from) noexcept
-    : PerfEventConfig_Tracepoint() {
-    *this = ::std::move(from);
-  }
-
-  inline PerfEventConfig_Tracepoint& operator=(const PerfEventConfig_Tracepoint& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline PerfEventConfig_Tracepoint& operator=(PerfEventConfig_Tracepoint&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const std::string& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline std::string* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const PerfEventConfig_Tracepoint& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const PerfEventConfig_Tracepoint* internal_default_instance() {
-    return reinterpret_cast<const PerfEventConfig_Tracepoint*>(
-               &_PerfEventConfig_Tracepoint_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    3;
-
-  friend void swap(PerfEventConfig_Tracepoint& a, PerfEventConfig_Tracepoint& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(PerfEventConfig_Tracepoint* other) {
-    if (other == this) return;
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline PerfEventConfig_Tracepoint* New() const final {
-    return CreateMaybeMessage<PerfEventConfig_Tracepoint>(nullptr);
-  }
-
-  PerfEventConfig_Tracepoint* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<PerfEventConfig_Tracepoint>(arena);
-  }
-  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)
-    final;
-  void CopyFrom(const PerfEventConfig_Tracepoint& from);
-  void MergeFrom(const PerfEventConfig_Tracepoint& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  #else
-  bool MergePartialFromCodedStream(
-      ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
-  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  void SerializeWithCachedSizes(
-      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
-  void DiscardUnknownFields();
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  inline void SharedCtor();
-  inline void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(PerfEventConfig_Tracepoint* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "perfetto.protos.PerfEventConfig.Tracepoint";
-  }
-  private:
-  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
-    return nullptr;
-  }
-  inline void* MaybeArenaPtr() const {
-    return nullptr;
-  }
-  public:
-
-  std::string GetTypeName() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kNameFieldNumber = 1,
-    kFilterFieldNumber = 2,
-  };
-  // optional string name = 1;
-  bool has_name() const;
-  void clear_name();
-  const std::string& name() const;
-  void set_name(const std::string& value);
-  void set_name(std::string&& value);
-  void set_name(const char* value);
-  void set_name(const char* value, size_t size);
-  std::string* mutable_name();
-  std::string* release_name();
-  void set_allocated_name(std::string* name);
-
-  // optional string filter = 2;
-  bool has_filter() const;
-  void clear_filter();
-  const std::string& filter() const;
-  void set_filter(const std::string& value);
-  void set_filter(std::string&& value);
-  void set_filter(const char* value);
-  void set_filter(const char* value, size_t size);
-  std::string* mutable_filter();
-  std::string* release_filter();
-  void set_allocated_filter(std::string* filter);
-
-  // @@protoc_insertion_point(class_scope:perfetto.protos.PerfEventConfig.Tracepoint)
- private:
-  class _Internal;
-
-  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr filter_;
-  friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fprofiling_2fperf_5fevent_5fconfig_2eproto;
-};
-// -------------------------------------------------------------------
-
 class PerfEventConfig :
     public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.PerfEventConfig) */ {
  public:
@@ -791,7 +435,7 @@ class PerfEventConfig :
                &_PerfEventConfig_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    2;
 
   friend void swap(PerfEventConfig& a, PerfEventConfig& b) {
     a.Swap(&b);
@@ -851,42 +495,8 @@ class PerfEventConfig :
 
   // nested types ----------------------------------------------------
 
-  typedef PerfEventConfig_Timebase Timebase;
   typedef PerfEventConfig_CallstackSampling CallstackSampling;
   typedef PerfEventConfig_Scope Scope;
-  typedef PerfEventConfig_Tracepoint Tracepoint;
-
-  typedef PerfEventConfig_Counter Counter;
-  static constexpr Counter UNKNOWN_COUNTER =
-    PerfEventConfig_Counter_UNKNOWN_COUNTER;
-  static constexpr Counter SW_CPU_CLOCK =
-    PerfEventConfig_Counter_SW_CPU_CLOCK;
-  static constexpr Counter SW_PAGE_FAULTS =
-    PerfEventConfig_Counter_SW_PAGE_FAULTS;
-  static constexpr Counter HW_CPU_CYCLES =
-    PerfEventConfig_Counter_HW_CPU_CYCLES;
-  static constexpr Counter HW_INSTRUCTIONS =
-    PerfEventConfig_Counter_HW_INSTRUCTIONS;
-  static inline bool Counter_IsValid(int value) {
-    return PerfEventConfig_Counter_IsValid(value);
-  }
-  static constexpr Counter Counter_MIN =
-    PerfEventConfig_Counter_Counter_MIN;
-  static constexpr Counter Counter_MAX =
-    PerfEventConfig_Counter_Counter_MAX;
-  static constexpr int Counter_ARRAYSIZE =
-    PerfEventConfig_Counter_Counter_ARRAYSIZE;
-  template<typename T>
-  static inline const std::string& Counter_Name(T enum_t_value) {
-    static_assert(::std::is_same<T, Counter>::value ||
-      ::std::is_integral<T>::value,
-      "Incorrect type passed to function Counter_Name.");
-    return PerfEventConfig_Counter_Name(enum_t_value);
-  }
-  static inline bool Counter_Parse(const std::string& name,
-      Counter* value) {
-    return PerfEventConfig_Counter_Parse(name, value);
-  }
 
   // accessors -------------------------------------------------------
 
@@ -895,7 +505,6 @@ class PerfEventConfig :
     kTargetCmdlineFieldNumber = 5,
     kExcludePidFieldNumber = 6,
     kExcludeCmdlineFieldNumber = 7,
-    kTracepointFieldNumber = 14,
     kTimebaseFieldNumber = 15,
     kCallstackSamplingFieldNumber = 16,
     kSamplingFrequencyFieldNumber = 2,
@@ -964,21 +573,13 @@ class PerfEventConfig :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& exclude_cmdline() const;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_exclude_cmdline();
 
-  // optional .perfetto.protos.PerfEventConfig.Tracepoint tracepoint = 14;
-  bool has_tracepoint() const;
-  void clear_tracepoint();
-  const ::perfetto::protos::PerfEventConfig_Tracepoint& tracepoint() const;
-  ::perfetto::protos::PerfEventConfig_Tracepoint* release_tracepoint();
-  ::perfetto::protos::PerfEventConfig_Tracepoint* mutable_tracepoint();
-  void set_allocated_tracepoint(::perfetto::protos::PerfEventConfig_Tracepoint* tracepoint);
-
-  // optional .perfetto.protos.PerfEventConfig.Timebase timebase = 15;
+  // optional .perfetto.protos.PerfEvents.Timebase timebase = 15;
   bool has_timebase() const;
   void clear_timebase();
-  const ::perfetto::protos::PerfEventConfig_Timebase& timebase() const;
-  ::perfetto::protos::PerfEventConfig_Timebase* release_timebase();
-  ::perfetto::protos::PerfEventConfig_Timebase* mutable_timebase();
-  void set_allocated_timebase(::perfetto::protos::PerfEventConfig_Timebase* timebase);
+  const ::perfetto::protos::PerfEvents_Timebase& timebase() const;
+  ::perfetto::protos::PerfEvents_Timebase* release_timebase();
+  ::perfetto::protos::PerfEvents_Timebase* mutable_timebase();
+  void set_allocated_timebase(::perfetto::protos::PerfEvents_Timebase* timebase);
 
   // optional .perfetto.protos.PerfEventConfig.CallstackSampling callstack_sampling = 16;
   bool has_callstack_sampling() const;
@@ -1053,8 +654,7 @@ class PerfEventConfig :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> target_cmdline_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > exclude_pid_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> exclude_cmdline_;
-  ::perfetto::protos::PerfEventConfig_Tracepoint* tracepoint_;
-  ::perfetto::protos::PerfEventConfig_Timebase* timebase_;
+  ::perfetto::protos::PerfEvents_Timebase* timebase_;
   ::perfetto::protos::PerfEventConfig_CallstackSampling* callstack_sampling_;
   ::PROTOBUF_NAMESPACE_ID::uint32 sampling_frequency_;
   ::PROTOBUF_NAMESPACE_ID::uint32 ring_buffer_pages_;
@@ -1076,157 +676,6 @@ class PerfEventConfig :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// PerfEventConfig_Timebase
-
-// optional uint64 frequency = 2;
-inline bool PerfEventConfig_Timebase::has_frequency() const {
-  return interval_case() == kFrequency;
-}
-inline void PerfEventConfig_Timebase::set_has_frequency() {
-  _oneof_case_[0] = kFrequency;
-}
-inline void PerfEventConfig_Timebase::clear_frequency() {
-  if (has_frequency()) {
-    interval_.frequency_ = PROTOBUF_ULONGLONG(0);
-    clear_has_interval();
-  }
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 PerfEventConfig_Timebase::frequency() const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.Timebase.frequency)
-  if (has_frequency()) {
-    return interval_.frequency_;
-  }
-  return PROTOBUF_ULONGLONG(0);
-}
-inline void PerfEventConfig_Timebase::set_frequency(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  if (!has_frequency()) {
-    clear_interval();
-    set_has_frequency();
-  }
-  interval_.frequency_ = value;
-  // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.Timebase.frequency)
-}
-
-// optional uint64 period = 1;
-inline bool PerfEventConfig_Timebase::has_period() const {
-  return interval_case() == kPeriod;
-}
-inline void PerfEventConfig_Timebase::set_has_period() {
-  _oneof_case_[0] = kPeriod;
-}
-inline void PerfEventConfig_Timebase::clear_period() {
-  if (has_period()) {
-    interval_.period_ = PROTOBUF_ULONGLONG(0);
-    clear_has_interval();
-  }
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 PerfEventConfig_Timebase::period() const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.Timebase.period)
-  if (has_period()) {
-    return interval_.period_;
-  }
-  return PROTOBUF_ULONGLONG(0);
-}
-inline void PerfEventConfig_Timebase::set_period(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  if (!has_period()) {
-    clear_interval();
-    set_has_period();
-  }
-  interval_.period_ = value;
-  // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.Timebase.period)
-}
-
-// optional .perfetto.protos.PerfEventConfig.Counter counter = 4;
-inline bool PerfEventConfig_Timebase::has_counter() const {
-  return event_case() == kCounter;
-}
-inline void PerfEventConfig_Timebase::set_has_counter() {
-  _oneof_case_[1] = kCounter;
-}
-inline void PerfEventConfig_Timebase::clear_counter() {
-  if (has_counter()) {
-    event_.counter_ = 0;
-    clear_has_event();
-  }
-}
-inline ::perfetto::protos::PerfEventConfig_Counter PerfEventConfig_Timebase::counter() const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.Timebase.counter)
-  if (has_counter()) {
-    return static_cast< ::perfetto::protos::PerfEventConfig_Counter >(event_.counter_);
-  }
-  return static_cast< ::perfetto::protos::PerfEventConfig_Counter >(0);
-}
-inline void PerfEventConfig_Timebase::set_counter(::perfetto::protos::PerfEventConfig_Counter value) {
-  assert(::perfetto::protos::PerfEventConfig_Counter_IsValid(value));
-  if (!has_counter()) {
-    clear_event();
-    set_has_counter();
-  }
-  event_.counter_ = value;
-  // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.Timebase.counter)
-}
-
-// optional .perfetto.protos.PerfEventConfig.Tracepoint tracepoint = 3;
-inline bool PerfEventConfig_Timebase::has_tracepoint() const {
-  return event_case() == kTracepoint;
-}
-inline void PerfEventConfig_Timebase::set_has_tracepoint() {
-  _oneof_case_[1] = kTracepoint;
-}
-inline void PerfEventConfig_Timebase::clear_tracepoint() {
-  if (has_tracepoint()) {
-    delete event_.tracepoint_;
-    clear_has_event();
-  }
-}
-inline ::perfetto::protos::PerfEventConfig_Tracepoint* PerfEventConfig_Timebase::release_tracepoint() {
-  // @@protoc_insertion_point(field_release:perfetto.protos.PerfEventConfig.Timebase.tracepoint)
-  if (has_tracepoint()) {
-    clear_has_event();
-      ::perfetto::protos::PerfEventConfig_Tracepoint* temp = event_.tracepoint_;
-    event_.tracepoint_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::perfetto::protos::PerfEventConfig_Tracepoint& PerfEventConfig_Timebase::tracepoint() const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.Timebase.tracepoint)
-  return has_tracepoint()
-      ? *event_.tracepoint_
-      : *reinterpret_cast< ::perfetto::protos::PerfEventConfig_Tracepoint*>(&::perfetto::protos::_PerfEventConfig_Tracepoint_default_instance_);
-}
-inline ::perfetto::protos::PerfEventConfig_Tracepoint* PerfEventConfig_Timebase::mutable_tracepoint() {
-  if (!has_tracepoint()) {
-    clear_event();
-    set_has_tracepoint();
-    event_.tracepoint_ = CreateMaybeMessage< ::perfetto::protos::PerfEventConfig_Tracepoint >(
-        GetArenaNoVirtual());
-  }
-  // @@protoc_insertion_point(field_mutable:perfetto.protos.PerfEventConfig.Timebase.tracepoint)
-  return event_.tracepoint_;
-}
-
-inline bool PerfEventConfig_Timebase::has_interval() const {
-  return interval_case() != INTERVAL_NOT_SET;
-}
-inline void PerfEventConfig_Timebase::clear_has_interval() {
-  _oneof_case_[0] = INTERVAL_NOT_SET;
-}
-inline bool PerfEventConfig_Timebase::has_event() const {
-  return event_case() != EVENT_NOT_SET;
-}
-inline void PerfEventConfig_Timebase::clear_has_event() {
-  _oneof_case_[1] = EVENT_NOT_SET;
-}
-inline PerfEventConfig_Timebase::IntervalCase PerfEventConfig_Timebase::interval_case() const {
-  return PerfEventConfig_Timebase::IntervalCase(_oneof_case_[0]);
-}
-inline PerfEventConfig_Timebase::EventCase PerfEventConfig_Timebase::event_case() const {
-  return PerfEventConfig_Timebase::EventCase(_oneof_case_[1]);
-}
-// -------------------------------------------------------------------
-
 // PerfEventConfig_CallstackSampling
 
 // optional .perfetto.protos.PerfEventConfig.Scope scope = 1;
@@ -1510,162 +959,38 @@ inline void PerfEventConfig_Scope::set_additional_cmdline_count(::PROTOBUF_NAMES
 
 // -------------------------------------------------------------------
 
-// PerfEventConfig_Tracepoint
-
-// optional string name = 1;
-inline bool PerfEventConfig_Tracepoint::has_name() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void PerfEventConfig_Tracepoint::clear_name() {
-  name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline const std::string& PerfEventConfig_Tracepoint::name() const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.Tracepoint.name)
-  return name_.GetNoArena();
-}
-inline void PerfEventConfig_Tracepoint::set_name(const std::string& value) {
-  _has_bits_[0] |= 0x00000001u;
-  name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.Tracepoint.name)
-}
-inline void PerfEventConfig_Tracepoint::set_name(std::string&& value) {
-  _has_bits_[0] |= 0x00000001u;
-  name_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.PerfEventConfig.Tracepoint.name)
-}
-inline void PerfEventConfig_Tracepoint::set_name(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  _has_bits_[0] |= 0x00000001u;
-  name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:perfetto.protos.PerfEventConfig.Tracepoint.name)
-}
-inline void PerfEventConfig_Tracepoint::set_name(const char* value, size_t size) {
-  _has_bits_[0] |= 0x00000001u;
-  name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.PerfEventConfig.Tracepoint.name)
-}
-inline std::string* PerfEventConfig_Tracepoint::mutable_name() {
-  _has_bits_[0] |= 0x00000001u;
-  // @@protoc_insertion_point(field_mutable:perfetto.protos.PerfEventConfig.Tracepoint.name)
-  return name_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* PerfEventConfig_Tracepoint::release_name() {
-  // @@protoc_insertion_point(field_release:perfetto.protos.PerfEventConfig.Tracepoint.name)
-  if (!has_name()) {
-    return nullptr;
-  }
-  _has_bits_[0] &= ~0x00000001u;
-  return name_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void PerfEventConfig_Tracepoint::set_allocated_name(std::string* name) {
-  if (name != nullptr) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  name_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.PerfEventConfig.Tracepoint.name)
-}
-
-// optional string filter = 2;
-inline bool PerfEventConfig_Tracepoint::has_filter() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void PerfEventConfig_Tracepoint::clear_filter() {
-  filter_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline const std::string& PerfEventConfig_Tracepoint::filter() const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.Tracepoint.filter)
-  return filter_.GetNoArena();
-}
-inline void PerfEventConfig_Tracepoint::set_filter(const std::string& value) {
-  _has_bits_[0] |= 0x00000002u;
-  filter_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.Tracepoint.filter)
-}
-inline void PerfEventConfig_Tracepoint::set_filter(std::string&& value) {
-  _has_bits_[0] |= 0x00000002u;
-  filter_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.PerfEventConfig.Tracepoint.filter)
-}
-inline void PerfEventConfig_Tracepoint::set_filter(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  _has_bits_[0] |= 0x00000002u;
-  filter_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:perfetto.protos.PerfEventConfig.Tracepoint.filter)
-}
-inline void PerfEventConfig_Tracepoint::set_filter(const char* value, size_t size) {
-  _has_bits_[0] |= 0x00000002u;
-  filter_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.PerfEventConfig.Tracepoint.filter)
-}
-inline std::string* PerfEventConfig_Tracepoint::mutable_filter() {
-  _has_bits_[0] |= 0x00000002u;
-  // @@protoc_insertion_point(field_mutable:perfetto.protos.PerfEventConfig.Tracepoint.filter)
-  return filter_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* PerfEventConfig_Tracepoint::release_filter() {
-  // @@protoc_insertion_point(field_release:perfetto.protos.PerfEventConfig.Tracepoint.filter)
-  if (!has_filter()) {
-    return nullptr;
-  }
-  _has_bits_[0] &= ~0x00000002u;
-  return filter_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void PerfEventConfig_Tracepoint::set_allocated_filter(std::string* filter) {
-  if (filter != nullptr) {
-    _has_bits_[0] |= 0x00000002u;
-  } else {
-    _has_bits_[0] &= ~0x00000002u;
-  }
-  filter_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), filter);
-  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.PerfEventConfig.Tracepoint.filter)
-}
-
-// -------------------------------------------------------------------
-
 // PerfEventConfig
 
-// optional .perfetto.protos.PerfEventConfig.Timebase timebase = 15;
+// optional .perfetto.protos.PerfEvents.Timebase timebase = 15;
 inline bool PerfEventConfig::has_timebase() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void PerfEventConfig::clear_timebase() {
-  if (timebase_ != nullptr) timebase_->Clear();
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline const ::perfetto::protos::PerfEventConfig_Timebase& PerfEventConfig::timebase() const {
-  const ::perfetto::protos::PerfEventConfig_Timebase* p = timebase_;
+inline const ::perfetto::protos::PerfEvents_Timebase& PerfEventConfig::timebase() const {
+  const ::perfetto::protos::PerfEvents_Timebase* p = timebase_;
   // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.timebase)
-  return p != nullptr ? *p : *reinterpret_cast<const ::perfetto::protos::PerfEventConfig_Timebase*>(
-      &::perfetto::protos::_PerfEventConfig_Timebase_default_instance_);
+  return p != nullptr ? *p : *reinterpret_cast<const ::perfetto::protos::PerfEvents_Timebase*>(
+      &::perfetto::protos::_PerfEvents_Timebase_default_instance_);
 }
-inline ::perfetto::protos::PerfEventConfig_Timebase* PerfEventConfig::release_timebase() {
+inline ::perfetto::protos::PerfEvents_Timebase* PerfEventConfig::release_timebase() {
   // @@protoc_insertion_point(field_release:perfetto.protos.PerfEventConfig.timebase)
-  _has_bits_[0] &= ~0x00000002u;
-  ::perfetto::protos::PerfEventConfig_Timebase* temp = timebase_;
+  _has_bits_[0] &= ~0x00000001u;
+  ::perfetto::protos::PerfEvents_Timebase* temp = timebase_;
   timebase_ = nullptr;
   return temp;
 }
-inline ::perfetto::protos::PerfEventConfig_Timebase* PerfEventConfig::mutable_timebase() {
-  _has_bits_[0] |= 0x00000002u;
+inline ::perfetto::protos::PerfEvents_Timebase* PerfEventConfig::mutable_timebase() {
+  _has_bits_[0] |= 0x00000001u;
   if (timebase_ == nullptr) {
-    auto* p = CreateMaybeMessage<::perfetto::protos::PerfEventConfig_Timebase>(GetArenaNoVirtual());
+    auto* p = CreateMaybeMessage<::perfetto::protos::PerfEvents_Timebase>(GetArenaNoVirtual());
     timebase_ = p;
   }
   // @@protoc_insertion_point(field_mutable:perfetto.protos.PerfEventConfig.timebase)
   return timebase_;
 }
-inline void PerfEventConfig::set_allocated_timebase(::perfetto::protos::PerfEventConfig_Timebase* timebase) {
+inline void PerfEventConfig::set_allocated_timebase(::perfetto::protos::PerfEvents_Timebase* timebase) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
-    delete timebase_;
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(timebase_);
   }
   if (timebase) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
@@ -1673,9 +998,9 @@ inline void PerfEventConfig::set_allocated_timebase(::perfetto::protos::PerfEven
       timebase = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, timebase, submessage_arena);
     }
-    _has_bits_[0] |= 0x00000002u;
+    _has_bits_[0] |= 0x00000001u;
   } else {
-    _has_bits_[0] &= ~0x00000002u;
+    _has_bits_[0] &= ~0x00000001u;
   }
   timebase_ = timebase;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.PerfEventConfig.timebase)
@@ -1683,11 +1008,11 @@ inline void PerfEventConfig::set_allocated_timebase(::perfetto::protos::PerfEven
 
 // optional .perfetto.protos.PerfEventConfig.CallstackSampling callstack_sampling = 16;
 inline bool PerfEventConfig::has_callstack_sampling() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void PerfEventConfig::clear_callstack_sampling() {
   if (callstack_sampling_ != nullptr) callstack_sampling_->Clear();
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline const ::perfetto::protos::PerfEventConfig_CallstackSampling& PerfEventConfig::callstack_sampling() const {
   const ::perfetto::protos::PerfEventConfig_CallstackSampling* p = callstack_sampling_;
@@ -1697,13 +1022,13 @@ inline const ::perfetto::protos::PerfEventConfig_CallstackSampling& PerfEventCon
 }
 inline ::perfetto::protos::PerfEventConfig_CallstackSampling* PerfEventConfig::release_callstack_sampling() {
   // @@protoc_insertion_point(field_release:perfetto.protos.PerfEventConfig.callstack_sampling)
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
   ::perfetto::protos::PerfEventConfig_CallstackSampling* temp = callstack_sampling_;
   callstack_sampling_ = nullptr;
   return temp;
 }
 inline ::perfetto::protos::PerfEventConfig_CallstackSampling* PerfEventConfig::mutable_callstack_sampling() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
   if (callstack_sampling_ == nullptr) {
     auto* p = CreateMaybeMessage<::perfetto::protos::PerfEventConfig_CallstackSampling>(GetArenaNoVirtual());
     callstack_sampling_ = p;
@@ -1722,9 +1047,9 @@ inline void PerfEventConfig::set_allocated_callstack_sampling(::perfetto::protos
       callstack_sampling = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, callstack_sampling, submessage_arena);
     }
-    _has_bits_[0] |= 0x00000004u;
+    _has_bits_[0] |= 0x00000002u;
   } else {
-    _has_bits_[0] &= ~0x00000004u;
+    _has_bits_[0] &= ~0x00000002u;
   }
   callstack_sampling_ = callstack_sampling;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.PerfEventConfig.callstack_sampling)
@@ -1732,144 +1057,144 @@ inline void PerfEventConfig::set_allocated_callstack_sampling(::perfetto::protos
 
 // optional uint32 ring_buffer_read_period_ms = 8;
 inline bool PerfEventConfig::has_ring_buffer_read_period_ms() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void PerfEventConfig::clear_ring_buffer_read_period_ms() {
   ring_buffer_read_period_ms_ = 0u;
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 PerfEventConfig::ring_buffer_read_period_ms() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.ring_buffer_read_period_ms)
   return ring_buffer_read_period_ms_;
 }
 inline void PerfEventConfig::set_ring_buffer_read_period_ms(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
   ring_buffer_read_period_ms_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.ring_buffer_read_period_ms)
 }
 
 // optional uint32 ring_buffer_pages = 3;
 inline bool PerfEventConfig::has_ring_buffer_pages() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void PerfEventConfig::clear_ring_buffer_pages() {
   ring_buffer_pages_ = 0u;
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 PerfEventConfig::ring_buffer_pages() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.ring_buffer_pages)
   return ring_buffer_pages_;
 }
 inline void PerfEventConfig::set_ring_buffer_pages(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
   ring_buffer_pages_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.ring_buffer_pages)
 }
 
 // optional uint32 max_daemon_memory_kb = 13;
 inline bool PerfEventConfig::has_max_daemon_memory_kb() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void PerfEventConfig::clear_max_daemon_memory_kb() {
   max_daemon_memory_kb_ = 0u;
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 PerfEventConfig::max_daemon_memory_kb() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.max_daemon_memory_kb)
   return max_daemon_memory_kb_;
 }
 inline void PerfEventConfig::set_max_daemon_memory_kb(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000400u;
   max_daemon_memory_kb_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.max_daemon_memory_kb)
 }
 
 // optional uint32 remote_descriptor_timeout_ms = 9;
 inline bool PerfEventConfig::has_remote_descriptor_timeout_ms() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void PerfEventConfig::clear_remote_descriptor_timeout_ms() {
   remote_descriptor_timeout_ms_ = 0u;
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 PerfEventConfig::remote_descriptor_timeout_ms() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.remote_descriptor_timeout_ms)
   return remote_descriptor_timeout_ms_;
 }
 inline void PerfEventConfig::set_remote_descriptor_timeout_ms(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
   remote_descriptor_timeout_ms_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.remote_descriptor_timeout_ms)
 }
 
 // optional uint32 unwind_state_clear_period_ms = 10;
 inline bool PerfEventConfig::has_unwind_state_clear_period_ms() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void PerfEventConfig::clear_unwind_state_clear_period_ms() {
   unwind_state_clear_period_ms_ = 0u;
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 PerfEventConfig::unwind_state_clear_period_ms() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.unwind_state_clear_period_ms)
   return unwind_state_clear_period_ms_;
 }
 inline void PerfEventConfig::set_unwind_state_clear_period_ms(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
   unwind_state_clear_period_ms_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.unwind_state_clear_period_ms)
 }
 
 // optional bool all_cpus = 1;
 inline bool PerfEventConfig::has_all_cpus() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void PerfEventConfig::clear_all_cpus() {
   all_cpus_ = false;
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline bool PerfEventConfig::all_cpus() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.all_cpus)
   return all_cpus_;
 }
 inline void PerfEventConfig::set_all_cpus(bool value) {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
   all_cpus_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.all_cpus)
 }
 
 // optional uint32 sampling_frequency = 2;
 inline bool PerfEventConfig::has_sampling_frequency() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void PerfEventConfig::clear_sampling_frequency() {
   sampling_frequency_ = 0u;
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 PerfEventConfig::sampling_frequency() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.sampling_frequency)
   return sampling_frequency_;
 }
 inline void PerfEventConfig::set_sampling_frequency(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
   sampling_frequency_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.sampling_frequency)
 }
 
 // optional bool kernel_frames = 12;
 inline bool PerfEventConfig::has_kernel_frames() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void PerfEventConfig::clear_kernel_frames() {
   kernel_frames_ = false;
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline bool PerfEventConfig::kernel_frames() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.kernel_frames)
   return kernel_frames_;
 }
 inline void PerfEventConfig::set_kernel_frames(bool value) {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
   kernel_frames_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.kernel_frames)
 }
@@ -2066,69 +1391,20 @@ PerfEventConfig::mutable_exclude_cmdline() {
 
 // optional uint32 additional_cmdline_count = 11;
 inline bool PerfEventConfig::has_additional_cmdline_count() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void PerfEventConfig::clear_additional_cmdline_count() {
   additional_cmdline_count_ = 0u;
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 PerfEventConfig::additional_cmdline_count() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.additional_cmdline_count)
   return additional_cmdline_count_;
 }
 inline void PerfEventConfig::set_additional_cmdline_count(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
   additional_cmdline_count_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.additional_cmdline_count)
-}
-
-// optional .perfetto.protos.PerfEventConfig.Tracepoint tracepoint = 14;
-inline bool PerfEventConfig::has_tracepoint() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void PerfEventConfig::clear_tracepoint() {
-  if (tracepoint_ != nullptr) tracepoint_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline const ::perfetto::protos::PerfEventConfig_Tracepoint& PerfEventConfig::tracepoint() const {
-  const ::perfetto::protos::PerfEventConfig_Tracepoint* p = tracepoint_;
-  // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.tracepoint)
-  return p != nullptr ? *p : *reinterpret_cast<const ::perfetto::protos::PerfEventConfig_Tracepoint*>(
-      &::perfetto::protos::_PerfEventConfig_Tracepoint_default_instance_);
-}
-inline ::perfetto::protos::PerfEventConfig_Tracepoint* PerfEventConfig::release_tracepoint() {
-  // @@protoc_insertion_point(field_release:perfetto.protos.PerfEventConfig.tracepoint)
-  _has_bits_[0] &= ~0x00000001u;
-  ::perfetto::protos::PerfEventConfig_Tracepoint* temp = tracepoint_;
-  tracepoint_ = nullptr;
-  return temp;
-}
-inline ::perfetto::protos::PerfEventConfig_Tracepoint* PerfEventConfig::mutable_tracepoint() {
-  _has_bits_[0] |= 0x00000001u;
-  if (tracepoint_ == nullptr) {
-    auto* p = CreateMaybeMessage<::perfetto::protos::PerfEventConfig_Tracepoint>(GetArenaNoVirtual());
-    tracepoint_ = p;
-  }
-  // @@protoc_insertion_point(field_mutable:perfetto.protos.PerfEventConfig.tracepoint)
-  return tracepoint_;
-}
-inline void PerfEventConfig::set_allocated_tracepoint(::perfetto::protos::PerfEventConfig_Tracepoint* tracepoint) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
-  if (message_arena == nullptr) {
-    delete tracepoint_;
-  }
-  if (tracepoint) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
-    if (message_arena != submessage_arena) {
-      tracepoint = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, tracepoint, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  tracepoint_ = tracepoint;
-  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.PerfEventConfig.tracepoint)
 }
 
 #ifdef __GNUC__
@@ -2138,21 +1414,11 @@ inline void PerfEventConfig::set_allocated_tracepoint(::perfetto::protos::PerfEv
 
 // -------------------------------------------------------------------
 
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace protos
 }  // namespace perfetto
-
-PROTOBUF_NAMESPACE_OPEN
-
-template <> struct is_proto_enum< ::perfetto::protos::PerfEventConfig_Counter> : ::std::true_type {};
-
-PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

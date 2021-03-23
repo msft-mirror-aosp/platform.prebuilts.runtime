@@ -71,6 +71,7 @@ class CpuhpExitFtraceEvent;
 class CpuhpLatencyFtraceEvent;
 class CpuhpMultiEnterFtraceEvent;
 class DmaAllocContiguousRetryFtraceEvent;
+class DmaHeapStatFtraceEvent;
 class DpuTracingMarkWriteFtraceEvent;
 class Ext4AllocDaBlocksFtraceEvent;
 class Ext4AllocateBlocksFtraceEvent;
@@ -347,7 +348,7 @@ class WorkqueueExecuteStartFtraceEvent;
 class WorkqueueQueueWorkFtraceEvent;
 class ZeroFtraceEvent;
 
-class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/350, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/351, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   FtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit FtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -1018,6 +1019,8 @@ class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstBytes g2d_tracing_mark_write() const { return at<349>().as_bytes(); }
   bool has_mali_tracing_mark_write() const { return at<350>().valid(); }
   ::protozero::ConstBytes mali_tracing_mark_write() const { return at<350>().as_bytes(); }
+  bool has_dma_heap_stat() const { return at<351>().valid(); }
+  ::protozero::ConstBytes dma_heap_stat() const { return at<351>().as_bytes(); }
 };
 
 class FtraceEvent : public ::protozero::Message {
@@ -1357,6 +1360,7 @@ class FtraceEvent : public ::protozero::Message {
     kDpuTracingMarkWriteFieldNumber = 348,
     kG2dTracingMarkWriteFieldNumber = 349,
     kMaliTracingMarkWriteFieldNumber = 350,
+    kDmaHeapStatFieldNumber = 351,
   };
   void set_timestamp(uint64_t value) {
     AppendVarInt(1, value);
@@ -2686,6 +2690,10 @@ class FtraceEvent : public ::protozero::Message {
 
   template <typename T = MaliTracingMarkWriteFtraceEvent> T* set_mali_tracing_mark_write() {
     return BeginNestedMessage<T>(350);
+  }
+
+  template <typename T = DmaHeapStatFtraceEvent> T* set_dma_heap_stat() {
+    return BeginNestedMessage<T>(351);
   }
 
 };

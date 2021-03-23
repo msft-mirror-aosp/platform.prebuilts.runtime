@@ -37,7 +37,7 @@ enum CounterDescriptor_Unit : int32_t {
 const CounterDescriptor_Unit CounterDescriptor_Unit_MIN = CounterDescriptor_Unit_UNIT_UNSPECIFIED;
 const CounterDescriptor_Unit CounterDescriptor_Unit_MAX = CounterDescriptor_Unit_UNIT_SIZE_BYTES;
 
-class CounterDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class CounterDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   CounterDescriptor_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit CounterDescriptor_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -48,6 +48,8 @@ class CounterDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FI
   ::protozero::RepeatedFieldIterator<::protozero::ConstChars> categories() const { return GetRepeated<::protozero::ConstChars>(2); }
   bool has_unit() const { return at<3>().valid(); }
   int32_t unit() const { return at<3>().as_int32(); }
+  bool has_unit_name() const { return at<6>().valid(); }
+  ::protozero::ConstChars unit_name() const { return at<6>().as_string(); }
   bool has_unit_multiplier() const { return at<4>().valid(); }
   int64_t unit_multiplier() const { return at<4>().as_int64(); }
   bool has_is_incremental() const { return at<5>().valid(); }
@@ -61,6 +63,7 @@ class CounterDescriptor : public ::protozero::Message {
     kTypeFieldNumber = 1,
     kCategoriesFieldNumber = 2,
     kUnitFieldNumber = 3,
+    kUnitNameFieldNumber = 6,
     kUnitMultiplierFieldNumber = 4,
     kIsIncrementalFieldNumber = 5,
   };
@@ -84,6 +87,12 @@ class CounterDescriptor : public ::protozero::Message {
   }
   void set_unit(::perfetto::protos::pbzero::CounterDescriptor_Unit value) {
     AppendTinyVarInt(3, value);
+  }
+  void set_unit_name(const std::string& value) {
+    AppendBytes(6, value.data(), value.size());
+  }
+  void set_unit_name(const char* data, size_t size) {
+    AppendBytes(6, data, size);
   }
   void set_unit_multiplier(int64_t value) {
     AppendVarInt(4, value);

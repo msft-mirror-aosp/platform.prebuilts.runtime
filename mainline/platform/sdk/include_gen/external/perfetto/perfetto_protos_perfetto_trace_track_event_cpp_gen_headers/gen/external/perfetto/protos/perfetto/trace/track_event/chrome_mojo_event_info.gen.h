@@ -32,6 +32,8 @@ class PERFETTO_EXPORT ChromeMojoEventInfo : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kWatcherNotifyInterfaceTagFieldNumber = 1,
+    kIpcHashFieldNumber = 2,
+    kMojoInterfaceTagFieldNumber = 3,
   };
 
   ChromeMojoEventInfo();
@@ -52,14 +54,24 @@ class PERFETTO_EXPORT ChromeMojoEventInfo : public ::protozero::CppMessageObj {
   const std::string& watcher_notify_interface_tag() const { return watcher_notify_interface_tag_; }
   void set_watcher_notify_interface_tag(const std::string& value) { watcher_notify_interface_tag_ = value; _has_field_.set(1); }
 
+  bool has_ipc_hash() const { return _has_field_[2]; }
+  uint32_t ipc_hash() const { return ipc_hash_; }
+  void set_ipc_hash(uint32_t value) { ipc_hash_ = value; _has_field_.set(2); }
+
+  bool has_mojo_interface_tag() const { return _has_field_[3]; }
+  const std::string& mojo_interface_tag() const { return mojo_interface_tag_; }
+  void set_mojo_interface_tag(const std::string& value) { mojo_interface_tag_ = value; _has_field_.set(3); }
+
  private:
   std::string watcher_notify_interface_tag_{};
+  uint32_t ipc_hash_{};
+  std::string mojo_interface_tag_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<2> _has_field_{};
+  std::bitset<4> _has_field_{};
 };
 
 }  // namespace perfetto

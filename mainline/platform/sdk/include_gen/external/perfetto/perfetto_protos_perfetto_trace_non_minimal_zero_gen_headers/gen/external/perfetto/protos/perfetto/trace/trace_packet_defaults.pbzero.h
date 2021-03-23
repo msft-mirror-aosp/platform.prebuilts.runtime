@@ -15,6 +15,7 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
+class PerfSampleDefaults;
 class TrackEventDefaults;
 
 class TracePacketDefaults_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/58, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
@@ -26,6 +27,8 @@ class TracePacketDefaults_Decoder : public ::protozero::TypedProtoDecoder</*MAX_
   uint32_t timestamp_clock_id() const { return at<58>().as_uint32(); }
   bool has_track_event_defaults() const { return at<11>().valid(); }
   ::protozero::ConstBytes track_event_defaults() const { return at<11>().as_bytes(); }
+  bool has_perf_sample_defaults() const { return at<12>().valid(); }
+  ::protozero::ConstBytes perf_sample_defaults() const { return at<12>().as_bytes(); }
 };
 
 class TracePacketDefaults : public ::protozero::Message {
@@ -34,12 +37,17 @@ class TracePacketDefaults : public ::protozero::Message {
   enum : int32_t {
     kTimestampClockIdFieldNumber = 58,
     kTrackEventDefaultsFieldNumber = 11,
+    kPerfSampleDefaultsFieldNumber = 12,
   };
   void set_timestamp_clock_id(uint32_t value) {
     AppendVarInt(58, value);
   }
   template <typename T = TrackEventDefaults> T* set_track_event_defaults() {
     return BeginNestedMessage<T>(11);
+  }
+
+  template <typename T = PerfSampleDefaults> T* set_perf_sample_defaults() {
+    return BeginNestedMessage<T>(12);
   }
 
 };
