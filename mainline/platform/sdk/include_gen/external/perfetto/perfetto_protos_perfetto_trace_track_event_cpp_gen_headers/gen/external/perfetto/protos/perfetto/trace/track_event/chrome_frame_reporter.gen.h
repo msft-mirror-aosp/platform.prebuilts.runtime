@@ -82,6 +82,7 @@ class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
     kHasMainAnimationFieldNumber = 7,
     kHasCompositorAnimationFieldNumber = 8,
     kHasSmoothInputMainFieldNumber = 9,
+    kHasMissingContentFieldNumber = 10,
   };
 
   ChromeFrameReporter();
@@ -134,6 +135,10 @@ class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
   bool has_smooth_input_main() const { return has_smooth_input_main_; }
   void set_has_smooth_input_main(bool value) { has_smooth_input_main_ = value; _has_field_.set(9); }
 
+  bool has_has_missing_content() const { return _has_field_[10]; }
+  bool has_missing_content() const { return has_missing_content_; }
+  void set_has_missing_content(bool value) { has_missing_content_ = value; _has_field_.set(10); }
+
  private:
   ChromeFrameReporter_State state_{};
   ChromeFrameReporter_FrameDropReason reason_{};
@@ -144,12 +149,13 @@ class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
   bool has_main_animation_{};
   bool has_compositor_animation_{};
   bool has_smooth_input_main_{};
+  bool has_missing_content_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<10> _has_field_{};
+  std::bitset<11> _has_field_{};
 };
 
 }  // namespace perfetto

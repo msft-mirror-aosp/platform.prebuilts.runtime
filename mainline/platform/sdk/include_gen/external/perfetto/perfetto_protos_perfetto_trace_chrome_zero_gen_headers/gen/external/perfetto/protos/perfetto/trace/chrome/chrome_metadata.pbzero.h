@@ -171,7 +171,7 @@ class BackgroundTracingMetadata_TriggerRule_HistogramRule : public ::protozero::
   }
 };
 
-class ChromeMetadataPacket_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class ChromeMetadataPacket_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   ChromeMetadataPacket_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ChromeMetadataPacket_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -180,6 +180,8 @@ class ChromeMetadataPacket_Decoder : public ::protozero::TypedProtoDecoder</*MAX
   ::protozero::ConstBytes background_tracing_metadata() const { return at<1>().as_bytes(); }
   bool has_chrome_version_code() const { return at<2>().valid(); }
   int32_t chrome_version_code() const { return at<2>().as_int32(); }
+  bool has_enabled_categories() const { return at<3>().valid(); }
+  ::protozero::ConstChars enabled_categories() const { return at<3>().as_string(); }
 };
 
 class ChromeMetadataPacket : public ::protozero::Message {
@@ -188,6 +190,7 @@ class ChromeMetadataPacket : public ::protozero::Message {
   enum : int32_t {
     kBackgroundTracingMetadataFieldNumber = 1,
     kChromeVersionCodeFieldNumber = 2,
+    kEnabledCategoriesFieldNumber = 3,
   };
   template <typename T = BackgroundTracingMetadata> T* set_background_tracing_metadata() {
     return BeginNestedMessage<T>(1);
@@ -195,6 +198,12 @@ class ChromeMetadataPacket : public ::protozero::Message {
 
   void set_chrome_version_code(int32_t value) {
     AppendVarInt(2, value);
+  }
+  void set_enabled_categories(const std::string& value) {
+    AppendBytes(3, value.data(), value.size());
+  }
+  void set_enabled_categories(const char* data, size_t size) {
+    AppendBytes(3, data, size);
   }
 };
 
