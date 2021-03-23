@@ -30,6 +30,7 @@
 #include <google/protobuf/message_lite.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include "protos/perfetto/trace/profiling/profile_packet.pb.h"
 #include "protos/perfetto/trace/track_event/track_event.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -171,6 +172,7 @@ class TracePacketDefaults :
 
   enum : int {
     kTrackEventDefaultsFieldNumber = 11,
+    kPerfSampleDefaultsFieldNumber = 12,
     kTimestampClockIdFieldNumber = 58,
   };
   // optional .perfetto.protos.TrackEventDefaults track_event_defaults = 11;
@@ -180,6 +182,14 @@ class TracePacketDefaults :
   ::perfetto::protos::TrackEventDefaults* release_track_event_defaults();
   ::perfetto::protos::TrackEventDefaults* mutable_track_event_defaults();
   void set_allocated_track_event_defaults(::perfetto::protos::TrackEventDefaults* track_event_defaults);
+
+  // optional .perfetto.protos.PerfSampleDefaults perf_sample_defaults = 12;
+  bool has_perf_sample_defaults() const;
+  void clear_perf_sample_defaults();
+  const ::perfetto::protos::PerfSampleDefaults& perf_sample_defaults() const;
+  ::perfetto::protos::PerfSampleDefaults* release_perf_sample_defaults();
+  ::perfetto::protos::PerfSampleDefaults* mutable_perf_sample_defaults();
+  void set_allocated_perf_sample_defaults(::perfetto::protos::PerfSampleDefaults* perf_sample_defaults);
 
   // optional uint32 timestamp_clock_id = 58;
   bool has_timestamp_clock_id() const;
@@ -195,6 +205,7 @@ class TracePacketDefaults :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::perfetto::protos::TrackEventDefaults* track_event_defaults_;
+  ::perfetto::protos::PerfSampleDefaults* perf_sample_defaults_;
   ::PROTOBUF_NAMESPACE_ID::uint32 timestamp_clock_id_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftrace_5fpacket_5fdefaults_2eproto;
 };
@@ -211,18 +222,18 @@ class TracePacketDefaults :
 
 // optional uint32 timestamp_clock_id = 58;
 inline bool TracePacketDefaults::has_timestamp_clock_id() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void TracePacketDefaults::clear_timestamp_clock_id() {
   timestamp_clock_id_ = 0u;
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 TracePacketDefaults::timestamp_clock_id() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TracePacketDefaults.timestamp_clock_id)
   return timestamp_clock_id_;
 }
 inline void TracePacketDefaults::set_timestamp_clock_id(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   timestamp_clock_id_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TracePacketDefaults.timestamp_clock_id)
 }
@@ -270,6 +281,51 @@ inline void TracePacketDefaults::set_allocated_track_event_defaults(::perfetto::
   }
   track_event_defaults_ = track_event_defaults;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TracePacketDefaults.track_event_defaults)
+}
+
+// optional .perfetto.protos.PerfSampleDefaults perf_sample_defaults = 12;
+inline bool TracePacketDefaults::has_perf_sample_defaults() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline const ::perfetto::protos::PerfSampleDefaults& TracePacketDefaults::perf_sample_defaults() const {
+  const ::perfetto::protos::PerfSampleDefaults* p = perf_sample_defaults_;
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacketDefaults.perf_sample_defaults)
+  return p != nullptr ? *p : *reinterpret_cast<const ::perfetto::protos::PerfSampleDefaults*>(
+      &::perfetto::protos::_PerfSampleDefaults_default_instance_);
+}
+inline ::perfetto::protos::PerfSampleDefaults* TracePacketDefaults::release_perf_sample_defaults() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacketDefaults.perf_sample_defaults)
+  _has_bits_[0] &= ~0x00000002u;
+  ::perfetto::protos::PerfSampleDefaults* temp = perf_sample_defaults_;
+  perf_sample_defaults_ = nullptr;
+  return temp;
+}
+inline ::perfetto::protos::PerfSampleDefaults* TracePacketDefaults::mutable_perf_sample_defaults() {
+  _has_bits_[0] |= 0x00000002u;
+  if (perf_sample_defaults_ == nullptr) {
+    auto* p = CreateMaybeMessage<::perfetto::protos::PerfSampleDefaults>(GetArenaNoVirtual());
+    perf_sample_defaults_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacketDefaults.perf_sample_defaults)
+  return perf_sample_defaults_;
+}
+inline void TracePacketDefaults::set_allocated_perf_sample_defaults(::perfetto::protos::PerfSampleDefaults* perf_sample_defaults) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(perf_sample_defaults_);
+  }
+  if (perf_sample_defaults) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      perf_sample_defaults = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, perf_sample_defaults, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  perf_sample_defaults_ = perf_sample_defaults;
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TracePacketDefaults.perf_sample_defaults)
 }
 
 #ifdef __GNUC__

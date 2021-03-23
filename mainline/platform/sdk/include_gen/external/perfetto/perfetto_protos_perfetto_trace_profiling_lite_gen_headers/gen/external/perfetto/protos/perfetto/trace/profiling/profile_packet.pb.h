@@ -31,6 +31,7 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_util.h>
+#include "protos/perfetto/common/perf_events.pb.h"
 #include "protos/perfetto/trace/profiling/profile_common.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -47,7 +48,7 @@ struct TableStruct_protos_2fperfetto_2ftrace_2fprofiling_2fprofile_5fpacket_2epr
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[12]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[13]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -58,6 +59,9 @@ namespace protos {
 class PerfSample;
 class PerfSampleDefaultTypeInternal;
 extern PerfSampleDefaultTypeInternal _PerfSample_default_instance_;
+class PerfSampleDefaults;
+class PerfSampleDefaultsDefaultTypeInternal;
+extern PerfSampleDefaultsDefaultTypeInternal _PerfSampleDefaults_default_instance_;
 class PerfSample_ProducerEvent;
 class PerfSample_ProducerEventDefaultTypeInternal;
 extern PerfSample_ProducerEventDefaultTypeInternal _PerfSample_ProducerEvent_default_instance_;
@@ -95,6 +99,7 @@ extern StreamingProfilePacketDefaultTypeInternal _StreamingProfilePacket_default
 }  // namespace perfetto
 PROTOBUF_NAMESPACE_OPEN
 template<> ::perfetto::protos::PerfSample* Arena::CreateMaybeMessage<::perfetto::protos::PerfSample>(Arena*);
+template<> ::perfetto::protos::PerfSampleDefaults* Arena::CreateMaybeMessage<::perfetto::protos::PerfSampleDefaults>(Arena*);
 template<> ::perfetto::protos::PerfSample_ProducerEvent* Arena::CreateMaybeMessage<::perfetto::protos::PerfSample_ProducerEvent>(Arena*);
 template<> ::perfetto::protos::ProfilePacket* Arena::CreateMaybeMessage<::perfetto::protos::ProfilePacket>(Arena*);
 template<> ::perfetto::protos::ProfilePacket_HeapSample* Arena::CreateMaybeMessage<::perfetto::protos::ProfilePacket_HeapSample>(Arena*);
@@ -2417,6 +2422,131 @@ class PerfSample :
 
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fprofiling_2fprofile_5fpacket_2eproto;
 };
+// -------------------------------------------------------------------
+
+class PerfSampleDefaults :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.PerfSampleDefaults) */ {
+ public:
+  PerfSampleDefaults();
+  virtual ~PerfSampleDefaults();
+
+  PerfSampleDefaults(const PerfSampleDefaults& from);
+  PerfSampleDefaults(PerfSampleDefaults&& from) noexcept
+    : PerfSampleDefaults() {
+    *this = ::std::move(from);
+  }
+
+  inline PerfSampleDefaults& operator=(const PerfSampleDefaults& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PerfSampleDefaults& operator=(PerfSampleDefaults&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const PerfSampleDefaults& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PerfSampleDefaults* internal_default_instance() {
+    return reinterpret_cast<const PerfSampleDefaults*>(
+               &_PerfSampleDefaults_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(PerfSampleDefaults& a, PerfSampleDefaults& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PerfSampleDefaults* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PerfSampleDefaults* New() const final {
+    return CreateMaybeMessage<PerfSampleDefaults>(nullptr);
+  }
+
+  PerfSampleDefaults* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<PerfSampleDefaults>(arena);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)
+    final;
+  void CopyFrom(const PerfSampleDefaults& from);
+  void MergeFrom(const PerfSampleDefaults& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
+  void DiscardUnknownFields();
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(PerfSampleDefaults* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.PerfSampleDefaults";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTimebaseFieldNumber = 1,
+  };
+  // optional .perfetto.protos.PerfEvents.Timebase timebase = 1;
+  bool has_timebase() const;
+  void clear_timebase();
+  const ::perfetto::protos::PerfEvents_Timebase& timebase() const;
+  ::perfetto::protos::PerfEvents_Timebase* release_timebase();
+  ::perfetto::protos::PerfEvents_Timebase* mutable_timebase();
+  void set_allocated_timebase(::perfetto::protos::PerfEvents_Timebase* timebase);
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.PerfSampleDefaults)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::perfetto::protos::PerfEvents_Timebase* timebase_;
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fprofiling_2fprofile_5fpacket_2eproto;
+};
 // ===================================================================
 
 
@@ -3990,9 +4120,60 @@ inline PerfSample::OptionalUnwindErrorCase PerfSample::optional_unwind_error_cas
 inline PerfSample::OptionalSampleSkippedReasonCase PerfSample::optional_sample_skipped_reason_case() const {
   return PerfSample::OptionalSampleSkippedReasonCase(_oneof_case_[1]);
 }
+// -------------------------------------------------------------------
+
+// PerfSampleDefaults
+
+// optional .perfetto.protos.PerfEvents.Timebase timebase = 1;
+inline bool PerfSampleDefaults::has_timebase() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline const ::perfetto::protos::PerfEvents_Timebase& PerfSampleDefaults::timebase() const {
+  const ::perfetto::protos::PerfEvents_Timebase* p = timebase_;
+  // @@protoc_insertion_point(field_get:perfetto.protos.PerfSampleDefaults.timebase)
+  return p != nullptr ? *p : *reinterpret_cast<const ::perfetto::protos::PerfEvents_Timebase*>(
+      &::perfetto::protos::_PerfEvents_Timebase_default_instance_);
+}
+inline ::perfetto::protos::PerfEvents_Timebase* PerfSampleDefaults::release_timebase() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.PerfSampleDefaults.timebase)
+  _has_bits_[0] &= ~0x00000001u;
+  ::perfetto::protos::PerfEvents_Timebase* temp = timebase_;
+  timebase_ = nullptr;
+  return temp;
+}
+inline ::perfetto::protos::PerfEvents_Timebase* PerfSampleDefaults::mutable_timebase() {
+  _has_bits_[0] |= 0x00000001u;
+  if (timebase_ == nullptr) {
+    auto* p = CreateMaybeMessage<::perfetto::protos::PerfEvents_Timebase>(GetArenaNoVirtual());
+    timebase_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.PerfSampleDefaults.timebase)
+  return timebase_;
+}
+inline void PerfSampleDefaults::set_allocated_timebase(::perfetto::protos::PerfEvents_Timebase* timebase) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(timebase_);
+  }
+  if (timebase) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      timebase = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, timebase, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  timebase_ = timebase;
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.PerfSampleDefaults.timebase)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

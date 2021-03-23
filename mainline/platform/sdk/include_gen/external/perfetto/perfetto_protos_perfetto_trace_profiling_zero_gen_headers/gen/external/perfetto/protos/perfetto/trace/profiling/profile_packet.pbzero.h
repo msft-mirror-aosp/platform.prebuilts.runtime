@@ -19,6 +19,7 @@ class Callstack;
 class Frame;
 class InternedString;
 class Mapping;
+class PerfEvents_Timebase;
 class PerfSample_ProducerEvent;
 class ProfilePacket_HeapSample;
 class ProfilePacket_Histogram;
@@ -87,6 +88,27 @@ enum ProfilePacket_ProcessHeapSamples_ClientError : int32_t {
 
 const ProfilePacket_ProcessHeapSamples_ClientError ProfilePacket_ProcessHeapSamples_ClientError_MIN = ProfilePacket_ProcessHeapSamples_ClientError_CLIENT_ERROR_NONE;
 const ProfilePacket_ProcessHeapSamples_ClientError ProfilePacket_ProcessHeapSamples_ClientError_MAX = ProfilePacket_ProcessHeapSamples_ClientError_CLIENT_ERROR_INVALID_STACK_BOUNDS;
+
+class PerfSampleDefaults_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  PerfSampleDefaults_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit PerfSampleDefaults_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit PerfSampleDefaults_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_timebase() const { return at<1>().valid(); }
+  ::protozero::ConstBytes timebase() const { return at<1>().as_bytes(); }
+};
+
+class PerfSampleDefaults : public ::protozero::Message {
+ public:
+  using Decoder = PerfSampleDefaults_Decoder;
+  enum : int32_t {
+    kTimebaseFieldNumber = 1,
+  };
+  template <typename T = PerfEvents_Timebase> T* set_timebase() {
+    return BeginNestedMessage<T>(1);
+  }
+
+};
 
 class PerfSample_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/19, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
