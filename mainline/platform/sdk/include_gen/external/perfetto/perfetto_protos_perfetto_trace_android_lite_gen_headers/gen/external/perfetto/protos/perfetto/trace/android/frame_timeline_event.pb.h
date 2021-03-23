@@ -430,6 +430,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart :
     kPresentTypeFieldNumber = 6,
     kOnTimeFinishFieldNumber = 7,
     kGpuCompositionFieldNumber = 8,
+    kIsBufferFieldNumber = 11,
     kJankTypeFieldNumber = 9,
     kPredictionTypeFieldNumber = 10,
   };
@@ -487,6 +488,12 @@ class FrameTimelineEvent_ActualSurfaceFrameStart :
   bool gpu_composition() const;
   void set_gpu_composition(bool value);
 
+  // optional bool is_buffer = 11;
+  bool has_is_buffer() const;
+  void clear_is_buffer();
+  bool is_buffer() const;
+  void set_is_buffer(bool value);
+
   // optional int32 jank_type = 9;
   bool has_jank_type() const;
   void clear_jank_type();
@@ -514,6 +521,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart :
   int present_type_;
   bool on_time_finish_;
   bool gpu_composition_;
+  bool is_buffer_;
   ::PROTOBUF_NAMESPACE_ID::int32 jank_type_;
   int prediction_type_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fandroid_2fframe_5ftimeline_5fevent_2eproto;
@@ -1592,29 +1600,29 @@ inline void FrameTimelineEvent_ActualSurfaceFrameStart::set_gpu_composition(bool
 
 // optional int32 jank_type = 9;
 inline bool FrameTimelineEvent_ActualSurfaceFrameStart::has_jank_type() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void FrameTimelineEvent_ActualSurfaceFrameStart::clear_jank_type() {
   jank_type_ = 0;
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 FrameTimelineEvent_ActualSurfaceFrameStart::jank_type() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.FrameTimelineEvent.ActualSurfaceFrameStart.jank_type)
   return jank_type_;
 }
 inline void FrameTimelineEvent_ActualSurfaceFrameStart::set_jank_type(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000200u;
   jank_type_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.FrameTimelineEvent.ActualSurfaceFrameStart.jank_type)
 }
 
 // optional .perfetto.protos.FrameTimelineEvent.PredictionType prediction_type = 10;
 inline bool FrameTimelineEvent_ActualSurfaceFrameStart::has_prediction_type() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void FrameTimelineEvent_ActualSurfaceFrameStart::clear_prediction_type() {
   prediction_type_ = 0;
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline ::perfetto::protos::FrameTimelineEvent_PredictionType FrameTimelineEvent_ActualSurfaceFrameStart::prediction_type() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.FrameTimelineEvent.ActualSurfaceFrameStart.prediction_type)
@@ -1622,9 +1630,27 @@ inline ::perfetto::protos::FrameTimelineEvent_PredictionType FrameTimelineEvent_
 }
 inline void FrameTimelineEvent_ActualSurfaceFrameStart::set_prediction_type(::perfetto::protos::FrameTimelineEvent_PredictionType value) {
   assert(::perfetto::protos::FrameTimelineEvent_PredictionType_IsValid(value));
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000400u;
   prediction_type_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.FrameTimelineEvent.ActualSurfaceFrameStart.prediction_type)
+}
+
+// optional bool is_buffer = 11;
+inline bool FrameTimelineEvent_ActualSurfaceFrameStart::has_is_buffer() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void FrameTimelineEvent_ActualSurfaceFrameStart::clear_is_buffer() {
+  is_buffer_ = false;
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline bool FrameTimelineEvent_ActualSurfaceFrameStart::is_buffer() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FrameTimelineEvent.ActualSurfaceFrameStart.is_buffer)
+  return is_buffer_;
+}
+inline void FrameTimelineEvent_ActualSurfaceFrameStart::set_is_buffer(bool value) {
+  _has_bits_[0] |= 0x00000100u;
+  is_buffer_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.FrameTimelineEvent.ActualSurfaceFrameStart.is_buffer)
 }
 
 // -------------------------------------------------------------------

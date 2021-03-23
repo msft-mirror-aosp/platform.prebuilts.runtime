@@ -49,7 +49,7 @@ enum ChromeFrameReporter_ScrollState : int32_t {
 const ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_MIN = ChromeFrameReporter_ScrollState_SCROLL_NONE;
 const ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_MAX = ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN;
 
-class ChromeFrameReporter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/9, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class ChromeFrameReporter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   ChromeFrameReporter_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ChromeFrameReporter_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -72,6 +72,8 @@ class ChromeFrameReporter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_
   bool has_compositor_animation() const { return at<8>().as_bool(); }
   bool has_has_smooth_input_main() const { return at<9>().valid(); }
   bool has_smooth_input_main() const { return at<9>().as_bool(); }
+  bool has_has_missing_content() const { return at<10>().valid(); }
+  bool has_missing_content() const { return at<10>().as_bool(); }
 };
 
 class ChromeFrameReporter : public ::protozero::Message {
@@ -87,6 +89,7 @@ class ChromeFrameReporter : public ::protozero::Message {
     kHasMainAnimationFieldNumber = 7,
     kHasCompositorAnimationFieldNumber = 8,
     kHasSmoothInputMainFieldNumber = 9,
+    kHasMissingContentFieldNumber = 10,
   };
   using State = ::perfetto::protos::pbzero::ChromeFrameReporter_State;
   using FrameDropReason = ::perfetto::protos::pbzero::ChromeFrameReporter_FrameDropReason;
@@ -129,6 +132,9 @@ class ChromeFrameReporter : public ::protozero::Message {
   }
   void set_has_smooth_input_main(bool value) {
     AppendTinyVarInt(9, value);
+  }
+  void set_has_missing_content(bool value) {
+    AppendTinyVarInt(10, value);
   }
 };
 
