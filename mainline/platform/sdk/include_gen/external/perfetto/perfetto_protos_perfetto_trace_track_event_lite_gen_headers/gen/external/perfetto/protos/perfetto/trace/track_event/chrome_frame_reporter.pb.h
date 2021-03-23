@@ -332,6 +332,7 @@ class ChromeFrameReporter :
     kHasMainAnimationFieldNumber = 7,
     kHasCompositorAnimationFieldNumber = 8,
     kHasSmoothInputMainFieldNumber = 9,
+    kHasMissingContentFieldNumber = 10,
   };
   // optional .perfetto.protos.ChromeFrameReporter.State state = 1;
   bool has_state() const;
@@ -387,6 +388,12 @@ class ChromeFrameReporter :
   bool has_smooth_input_main() const;
   void set_has_smooth_input_main(bool value);
 
+  // optional bool has_missing_content = 10;
+  bool has_has_missing_content() const;
+  void clear_has_missing_content();
+  bool has_missing_content() const;
+  void set_has_missing_content(bool value);
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.ChromeFrameReporter)
  private:
   class _Internal;
@@ -403,6 +410,7 @@ class ChromeFrameReporter :
   bool has_main_animation_;
   bool has_compositor_animation_;
   bool has_smooth_input_main_;
+  bool has_missing_content_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftrack_5fevent_2fchrome_5fframe_5freporter_2eproto;
 };
 // ===================================================================
@@ -579,6 +587,24 @@ inline void ChromeFrameReporter::set_has_smooth_input_main(bool value) {
   _has_bits_[0] |= 0x00000100u;
   has_smooth_input_main_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeFrameReporter.has_smooth_input_main)
+}
+
+// optional bool has_missing_content = 10;
+inline bool ChromeFrameReporter::has_has_missing_content() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void ChromeFrameReporter::clear_has_missing_content() {
+  has_missing_content_ = false;
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline bool ChromeFrameReporter::has_missing_content() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeFrameReporter.has_missing_content)
+  return has_missing_content_;
+}
+inline void ChromeFrameReporter::set_has_missing_content(bool value) {
+  _has_bits_[0] |= 0x00000200u;
+  has_missing_content_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeFrameReporter.has_missing_content)
 }
 
 #ifdef __GNUC__

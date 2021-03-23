@@ -602,6 +602,12 @@ class HeapGraphObject :
 
   static const HeapGraphObject& default_instance();
 
+  enum IdentifierCase {
+    kId = 1,
+    kIdDelta = 7,
+    IDENTIFIER_NOT_SET = 0,
+  };
+
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
   static inline const HeapGraphObject* internal_default_instance() {
     return reinterpret_cast<const HeapGraphObject*>(
@@ -673,10 +679,11 @@ class HeapGraphObject :
   enum : int {
     kReferenceFieldIdFieldNumber = 4,
     kReferenceObjectIdFieldNumber = 5,
-    kIdFieldNumber = 1,
     kTypeIdFieldNumber = 2,
     kSelfSizeFieldNumber = 3,
     kReferenceFieldIdBaseFieldNumber = 6,
+    kIdFieldNumber = 1,
+    kIdDeltaFieldNumber = 7,
   };
   // repeated uint64 reference_field_id = 4 [packed = true];
   int reference_field_id_size() const;
@@ -700,12 +707,6 @@ class HeapGraphObject :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
       mutable_reference_object_id();
 
-  // optional uint64 id = 1;
-  bool has_id() const;
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::uint64 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
-
   // optional uint64 type_id = 2;
   bool has_type_id() const;
   void clear_type_id();
@@ -724,9 +725,28 @@ class HeapGraphObject :
   ::PROTOBUF_NAMESPACE_ID::uint64 reference_field_id_base() const;
   void set_reference_field_id_base(::PROTOBUF_NAMESPACE_ID::uint64 value);
 
+  // optional uint64 id = 1;
+  bool has_id() const;
+  void clear_id();
+  ::PROTOBUF_NAMESPACE_ID::uint64 id() const;
+  void set_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
+
+  // optional uint64 id_delta = 7;
+  bool has_id_delta() const;
+  void clear_id_delta();
+  ::PROTOBUF_NAMESPACE_ID::uint64 id_delta() const;
+  void set_id_delta(::PROTOBUF_NAMESPACE_ID::uint64 value);
+
+  void clear_identifier();
+  IdentifierCase identifier_case() const;
   // @@protoc_insertion_point(class_scope:perfetto.protos.HeapGraphObject)
  private:
   class _Internal;
+  void set_has_id();
+  void set_has_id_delta();
+
+  inline bool has_identifier() const;
+  inline void clear_has_identifier();
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
@@ -735,10 +755,16 @@ class HeapGraphObject :
   mutable std::atomic<int> _reference_field_id_cached_byte_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > reference_object_id_;
   mutable std::atomic<int> _reference_object_id_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::uint64 id_;
   ::PROTOBUF_NAMESPACE_ID::uint64 type_id_;
   ::PROTOBUF_NAMESPACE_ID::uint64 self_size_;
   ::PROTOBUF_NAMESPACE_ID::uint64 reference_field_id_base_;
+  union IdentifierUnion {
+    IdentifierUnion() {}
+    ::PROTOBUF_NAMESPACE_ID::uint64 id_;
+    ::PROTOBUF_NAMESPACE_ID::uint64 id_delta_;
+  } identifier_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
+
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fprofiling_2fheap_5fgraph_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1212,72 +1238,112 @@ inline void HeapGraphType::set_classloader_id(::PROTOBUF_NAMESPACE_ID::uint64 va
 
 // optional uint64 id = 1;
 inline bool HeapGraphObject::has_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return identifier_case() == kId;
+}
+inline void HeapGraphObject::set_has_id() {
+  _oneof_case_[0] = kId;
 }
 inline void HeapGraphObject::clear_id() {
-  id_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000001u;
+  if (has_id()) {
+    identifier_.id_ = PROTOBUF_ULONGLONG(0);
+    clear_has_identifier();
+  }
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 HeapGraphObject::id() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.HeapGraphObject.id)
-  return id_;
+  if (has_id()) {
+    return identifier_.id_;
+  }
+  return PROTOBUF_ULONGLONG(0);
 }
 inline void HeapGraphObject::set_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000001u;
-  id_ = value;
+  if (!has_id()) {
+    clear_identifier();
+    set_has_id();
+  }
+  identifier_.id_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.HeapGraphObject.id)
+}
+
+// optional uint64 id_delta = 7;
+inline bool HeapGraphObject::has_id_delta() const {
+  return identifier_case() == kIdDelta;
+}
+inline void HeapGraphObject::set_has_id_delta() {
+  _oneof_case_[0] = kIdDelta;
+}
+inline void HeapGraphObject::clear_id_delta() {
+  if (has_id_delta()) {
+    identifier_.id_delta_ = PROTOBUF_ULONGLONG(0);
+    clear_has_identifier();
+  }
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 HeapGraphObject::id_delta() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.HeapGraphObject.id_delta)
+  if (has_id_delta()) {
+    return identifier_.id_delta_;
+  }
+  return PROTOBUF_ULONGLONG(0);
+}
+inline void HeapGraphObject::set_id_delta(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  if (!has_id_delta()) {
+    clear_identifier();
+    set_has_id_delta();
+  }
+  identifier_.id_delta_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.HeapGraphObject.id_delta)
 }
 
 // optional uint64 type_id = 2;
 inline bool HeapGraphObject::has_type_id() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 inline void HeapGraphObject::clear_type_id() {
   type_id_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 HeapGraphObject::type_id() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.HeapGraphObject.type_id)
   return type_id_;
 }
 inline void HeapGraphObject::set_type_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
   type_id_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.HeapGraphObject.type_id)
 }
 
 // optional uint64 self_size = 3;
 inline bool HeapGraphObject::has_self_size() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void HeapGraphObject::clear_self_size() {
   self_size_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 HeapGraphObject::self_size() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.HeapGraphObject.self_size)
   return self_size_;
 }
 inline void HeapGraphObject::set_self_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
   self_size_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.HeapGraphObject.self_size)
 }
 
 // optional uint64 reference_field_id_base = 6;
 inline bool HeapGraphObject::has_reference_field_id_base() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void HeapGraphObject::clear_reference_field_id_base() {
   reference_field_id_base_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 HeapGraphObject::reference_field_id_base() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.HeapGraphObject.reference_field_id_base)
   return reference_field_id_base_;
 }
 inline void HeapGraphObject::set_reference_field_id_base(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
   reference_field_id_base_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.HeapGraphObject.reference_field_id_base)
 }
@@ -1342,6 +1408,15 @@ HeapGraphObject::mutable_reference_object_id() {
   return &reference_object_id_;
 }
 
+inline bool HeapGraphObject::has_identifier() const {
+  return identifier_case() != IDENTIFIER_NOT_SET;
+}
+inline void HeapGraphObject::clear_has_identifier() {
+  _oneof_case_[0] = IDENTIFIER_NOT_SET;
+}
+inline HeapGraphObject::IdentifierCase HeapGraphObject::identifier_case() const {
+  return HeapGraphObject::IdentifierCase(_oneof_case_[0]);
+}
 // -------------------------------------------------------------------
 
 // HeapGraph
