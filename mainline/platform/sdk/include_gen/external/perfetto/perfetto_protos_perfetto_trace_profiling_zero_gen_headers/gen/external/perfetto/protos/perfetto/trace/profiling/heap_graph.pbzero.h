@@ -129,13 +129,15 @@ class HeapGraph : public ::protozero::Message {
   }
 };
 
-class HeapGraphObject_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class HeapGraphObject_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   HeapGraphObject_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit HeapGraphObject_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit HeapGraphObject_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_id() const { return at<1>().valid(); }
   uint64_t id() const { return at<1>().as_uint64(); }
+  bool has_id_delta() const { return at<7>().valid(); }
+  uint64_t id_delta() const { return at<7>().as_uint64(); }
   bool has_type_id() const { return at<2>().valid(); }
   uint64_t type_id() const { return at<2>().as_uint64(); }
   bool has_self_size() const { return at<3>().valid(); }
@@ -153,6 +155,7 @@ class HeapGraphObject : public ::protozero::Message {
   using Decoder = HeapGraphObject_Decoder;
   enum : int32_t {
     kIdFieldNumber = 1,
+    kIdDeltaFieldNumber = 7,
     kTypeIdFieldNumber = 2,
     kSelfSizeFieldNumber = 3,
     kReferenceFieldIdBaseFieldNumber = 6,
@@ -161,6 +164,9 @@ class HeapGraphObject : public ::protozero::Message {
   };
   void set_id(uint64_t value) {
     AppendVarInt(1, value);
+  }
+  void set_id_delta(uint64_t value) {
+    AppendVarInt(7, value);
   }
   void set_type_id(uint64_t value) {
     AppendVarInt(2, value);

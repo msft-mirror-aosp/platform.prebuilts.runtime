@@ -243,7 +243,6 @@ class ProcessDescriptor :
     kChromeProcessTypeFieldNumber = 4,
     kProcessPriorityFieldNumber = 5,
     kStartTimestampNsFieldNumber = 7,
-    kChromeCrashTraceIdFieldNumber = 8,
   };
   // repeated string cmdline = 2;
   int cmdline_size() const;
@@ -304,12 +303,6 @@ class ProcessDescriptor :
   ::PROTOBUF_NAMESPACE_ID::int64 start_timestamp_ns() const;
   void set_start_timestamp_ns(::PROTOBUF_NAMESPACE_ID::int64 value);
 
-  // optional uint64 chrome_crash_trace_id = 8;
-  bool has_chrome_crash_trace_id() const;
-  void clear_chrome_crash_trace_id();
-  ::PROTOBUF_NAMESPACE_ID::uint64 chrome_crash_trace_id() const;
-  void set_chrome_crash_trace_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
-
   // @@protoc_insertion_point(class_scope:perfetto.protos.ProcessDescriptor)
  private:
   class _Internal;
@@ -324,7 +317,6 @@ class ProcessDescriptor :
   int chrome_process_type_;
   ::PROTOBUF_NAMESPACE_ID::int32 process_priority_;
   ::PROTOBUF_NAMESPACE_ID::int64 start_timestamp_ns_;
-  ::PROTOBUF_NAMESPACE_ID::uint64 chrome_crash_trace_id_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftrack_5fevent_2fprocess_5fdescriptor_2eproto;
 };
 // ===================================================================
@@ -513,24 +505,6 @@ inline void ProcessDescriptor::set_start_timestamp_ns(::PROTOBUF_NAMESPACE_ID::i
   _has_bits_[0] |= 0x00000020u;
   start_timestamp_ns_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ProcessDescriptor.start_timestamp_ns)
-}
-
-// optional uint64 chrome_crash_trace_id = 8;
-inline bool ProcessDescriptor::has_chrome_crash_trace_id() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
-inline void ProcessDescriptor::clear_chrome_crash_trace_id() {
-  chrome_crash_trace_id_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000040u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::uint64 ProcessDescriptor::chrome_crash_trace_id() const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.ProcessDescriptor.chrome_crash_trace_id)
-  return chrome_crash_trace_id_;
-}
-inline void ProcessDescriptor::set_chrome_crash_trace_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000040u;
-  chrome_crash_trace_id_ = value;
-  // @@protoc_insertion_point(field_set:perfetto.protos.ProcessDescriptor.chrome_crash_trace_id)
 }
 
 // optional .perfetto.protos.ProcessDescriptor.ChromeProcessType chrome_process_type = 4;

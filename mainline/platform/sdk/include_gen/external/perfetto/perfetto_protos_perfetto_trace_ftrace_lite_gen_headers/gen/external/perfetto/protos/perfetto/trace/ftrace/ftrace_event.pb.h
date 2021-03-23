@@ -36,6 +36,7 @@
 #include "protos/perfetto/trace/ftrace/clk.pb.h"
 #include "protos/perfetto/trace/ftrace/compaction.pb.h"
 #include "protos/perfetto/trace/ftrace/cpuhp.pb.h"
+#include "protos/perfetto/trace/ftrace/dmabuf_heap.pb.h"
 #include "protos/perfetto/trace/ftrace/dpu.pb.h"
 #include "protos/perfetto/trace/ftrace/ext4.pb.h"
 #include "protos/perfetto/trace/ftrace/f2fs.pb.h"
@@ -471,6 +472,7 @@ class FtraceEvent :
     kDpuTracingMarkWrite = 348,
     kG2DTracingMarkWrite = 349,
     kMaliTracingMarkWrite = 350,
+    kDmaHeapStat = 351,
     EVENT_NOT_SET = 0,
   };
 
@@ -876,6 +878,7 @@ class FtraceEvent :
     kDpuTracingMarkWriteFieldNumber = 348,
     kG2DTracingMarkWriteFieldNumber = 349,
     kMaliTracingMarkWriteFieldNumber = 350,
+    kDmaHeapStatFieldNumber = 351,
   };
   // optional uint64 timestamp = 1;
   bool has_timestamp() const;
@@ -3537,6 +3540,14 @@ class FtraceEvent :
   ::perfetto::protos::MaliTracingMarkWriteFtraceEvent* mutable_mali_tracing_mark_write();
   void set_allocated_mali_tracing_mark_write(::perfetto::protos::MaliTracingMarkWriteFtraceEvent* mali_tracing_mark_write);
 
+  // optional .perfetto.protos.DmaHeapStatFtraceEvent dma_heap_stat = 351;
+  bool has_dma_heap_stat() const;
+  void clear_dma_heap_stat();
+  const ::perfetto::protos::DmaHeapStatFtraceEvent& dma_heap_stat() const;
+  ::perfetto::protos::DmaHeapStatFtraceEvent* release_dma_heap_stat();
+  ::perfetto::protos::DmaHeapStatFtraceEvent* mutable_dma_heap_stat();
+  void set_allocated_dma_heap_stat(::perfetto::protos::DmaHeapStatFtraceEvent* dma_heap_stat);
+
   void clear_event();
   EventCase event_case() const;
   // @@protoc_insertion_point(class_scope:perfetto.protos.FtraceEvent)
@@ -3873,6 +3884,7 @@ class FtraceEvent :
   void set_has_dpu_tracing_mark_write();
   void set_has_g2d_tracing_mark_write();
   void set_has_mali_tracing_mark_write();
+  void set_has_dma_heap_stat();
 
   inline bool has_event() const;
   inline void clear_has_event();
@@ -4215,6 +4227,7 @@ class FtraceEvent :
     ::perfetto::protos::DpuTracingMarkWriteFtraceEvent* dpu_tracing_mark_write_;
     ::perfetto::protos::G2dTracingMarkWriteFtraceEvent* g2d_tracing_mark_write_;
     ::perfetto::protos::MaliTracingMarkWriteFtraceEvent* mali_tracing_mark_write_;
+    ::perfetto::protos::DmaHeapStatFtraceEvent* dma_heap_stat_;
   } event_;
   ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
 
@@ -15850,6 +15863,41 @@ inline ::perfetto::protos::MaliTracingMarkWriteFtraceEvent* FtraceEvent::mutable
   }
   // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_tracing_mark_write)
   return event_.mali_tracing_mark_write_;
+}
+
+// optional .perfetto.protos.DmaHeapStatFtraceEvent dma_heap_stat = 351;
+inline bool FtraceEvent::has_dma_heap_stat() const {
+  return event_case() == kDmaHeapStat;
+}
+inline void FtraceEvent::set_has_dma_heap_stat() {
+  _oneof_case_[0] = kDmaHeapStat;
+}
+inline ::perfetto::protos::DmaHeapStatFtraceEvent* FtraceEvent::release_dma_heap_stat() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.dma_heap_stat)
+  if (has_dma_heap_stat()) {
+    clear_has_event();
+      ::perfetto::protos::DmaHeapStatFtraceEvent* temp = event_.dma_heap_stat_;
+    event_.dma_heap_stat_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::DmaHeapStatFtraceEvent& FtraceEvent::dma_heap_stat() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.dma_heap_stat)
+  return has_dma_heap_stat()
+      ? *event_.dma_heap_stat_
+      : *reinterpret_cast< ::perfetto::protos::DmaHeapStatFtraceEvent*>(&::perfetto::protos::_DmaHeapStatFtraceEvent_default_instance_);
+}
+inline ::perfetto::protos::DmaHeapStatFtraceEvent* FtraceEvent::mutable_dma_heap_stat() {
+  if (!has_dma_heap_stat()) {
+    clear_event();
+    set_has_dma_heap_stat();
+    event_.dma_heap_stat_ = CreateMaybeMessage< ::perfetto::protos::DmaHeapStatFtraceEvent >(
+        GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.dma_heap_stat)
+  return event_.dma_heap_stat_;
 }
 
 inline bool FtraceEvent::has_event() const {
