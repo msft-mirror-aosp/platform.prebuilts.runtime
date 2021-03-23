@@ -1,18 +1,5 @@
 // This is auto-generated. DO NOT EDIT.
 
-package {
-    // See: http://go/android-license-faq
-    // A large-scale-change added 'default_applicable_licenses' to import
-    // all of the 'license_kinds' from "prebuilts_runtime_license"
-    // to get the below license kinds:
-    //   SPDX-license-identifier-Apache-2.0
-    //   SPDX-license-identifier-BSD
-    //   SPDX-license-identifier-ISC
-    //   SPDX-license-identifier-MIT
-    //   legacy_unencumbered
-    default_applicable_licenses: ["prebuilts_runtime_license"],
-}
-
 cc_prebuilt_library_headers {
     name: "runtime-module-sdk_bionic_libc_platform_headers@current",
     sdk_member_name: "bionic_libc_platform_headers",
@@ -622,6 +609,8 @@ cc_prebuilt_library_shared {
     system_shared_libs: [],
     export_include_dirs: [
         "common_os/include/external/jemalloc_new/include",
+        "common_os/include/bionic/libc/async_safe/include",
+        "common_os/include/system/logging/liblog/include",
         "common_os/include/bionic/libc/system_properties/include",
         "common_os/include/system/core/property_service/libpropertyinfoparser/include",
     ],
@@ -715,6 +704,8 @@ cc_prebuilt_library_shared {
     system_shared_libs: [],
     export_include_dirs: [
         "common_os/include/external/jemalloc_new/include",
+        "common_os/include/bionic/libc/async_safe/include",
+        "common_os/include/system/logging/liblog/include",
         "common_os/include/bionic/libc/system_properties/include",
         "common_os/include/system/core/property_service/libpropertyinfoparser/include",
     ],
@@ -1361,6 +1352,7 @@ cc_prebuilt_library_static {
     recovery_available: true,
     vendor_available: true,
     product_available: true,
+    sdk_version: "minimum",
     stl: "none",
     sanitize: {
         never: true,
@@ -1406,6 +1398,7 @@ cc_prebuilt_library_static {
     recovery_available: true,
     vendor_available: true,
     product_available: true,
+    sdk_version: "minimum",
     stl: "none",
     sanitize: {
         never: true,
@@ -1452,6 +1445,7 @@ cc_prebuilt_library_static {
     recovery_available: true,
     vendor_available: true,
     product_available: true,
+    sdk_version: "minimum",
     stl: "none",
     sanitize: {
         never: true,
@@ -1497,6 +1491,7 @@ cc_prebuilt_library_static {
     recovery_available: true,
     vendor_available: true,
     product_available: true,
+    sdk_version: "minimum",
     stl: "none",
     sanitize: {
         never: true,
@@ -1567,3 +1562,4 @@ sdk_snapshot {
         },
     },
 }
+
