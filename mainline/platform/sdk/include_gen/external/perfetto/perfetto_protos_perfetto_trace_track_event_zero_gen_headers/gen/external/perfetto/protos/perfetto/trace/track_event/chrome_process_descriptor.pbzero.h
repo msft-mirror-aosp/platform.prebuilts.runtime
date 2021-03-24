@@ -32,7 +32,7 @@ enum ChromeProcessDescriptor_ProcessType : int32_t {
 const ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_MIN = ChromeProcessDescriptor_ProcessType_PROCESS_UNSPECIFIED;
 const ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_MAX = ChromeProcessDescriptor_ProcessType_PROCESS_PPAPI_BROKER;
 
-class ChromeProcessDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class ChromeProcessDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   ChromeProcessDescriptor_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ChromeProcessDescriptor_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -45,6 +45,8 @@ class ChromeProcessDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*
   int32_t legacy_sort_index() const { return at<3>().as_int32(); }
   bool has_host_app_package_name() const { return at<4>().valid(); }
   ::protozero::ConstChars host_app_package_name() const { return at<4>().as_string(); }
+  bool has_crash_trace_id() const { return at<5>().valid(); }
+  uint64_t crash_trace_id() const { return at<5>().as_uint64(); }
 };
 
 class ChromeProcessDescriptor : public ::protozero::Message {
@@ -55,6 +57,7 @@ class ChromeProcessDescriptor : public ::protozero::Message {
     kProcessPriorityFieldNumber = 2,
     kLegacySortIndexFieldNumber = 3,
     kHostAppPackageNameFieldNumber = 4,
+    kCrashTraceIdFieldNumber = 5,
   };
   using ProcessType = ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType;
   static const ProcessType PROCESS_UNSPECIFIED = ChromeProcessDescriptor_ProcessType_PROCESS_UNSPECIFIED;
@@ -80,6 +83,9 @@ class ChromeProcessDescriptor : public ::protozero::Message {
   }
   void set_host_app_package_name(const char* data, size_t size) {
     AppendBytes(4, data, size);
+  }
+  void set_crash_trace_id(uint64_t value) {
+    AppendVarInt(5, value);
   }
 };
 

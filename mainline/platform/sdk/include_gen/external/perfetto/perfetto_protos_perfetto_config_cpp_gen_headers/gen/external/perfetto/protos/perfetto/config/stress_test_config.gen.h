@@ -35,6 +35,7 @@ class ChromeConfig;
 class TraceConfig_BufferConfig;
 enum TraceConfig_LockdownModeOperation : int;
 enum TraceConfig_CompressionType : int;
+enum TraceConfig_StatsdLogging : int;
 enum TraceConfig_TriggerConfig_TriggerMode : int;
 enum BuiltinClock : int;
 enum ChromeConfig_ClientPriority : int;

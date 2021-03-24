@@ -33,6 +33,7 @@ class ChromeConfig;
 class TraceConfig_BufferConfig;
 enum TraceConfig_LockdownModeOperation : int;
 enum TraceConfig_CompressionType : int;
+enum TraceConfig_StatsdLogging : int;
 enum TraceConfig_TriggerConfig_TriggerMode : int;
 enum BuiltinClock : int;
 enum ChromeConfig_ClientPriority : int;
@@ -56,6 +57,11 @@ enum TraceConfig_LockdownModeOperation : int {
 enum TraceConfig_CompressionType : int {
   TraceConfig_CompressionType_COMPRESSION_TYPE_UNSPECIFIED = 0,
   TraceConfig_CompressionType_COMPRESSION_TYPE_DEFLATE = 1,
+};
+enum TraceConfig_StatsdLogging : int {
+  TraceConfig_StatsdLogging_STATSD_LOGGING_UNSPECIFIED = 0,
+  TraceConfig_StatsdLogging_STATSD_LOGGING_ENABLED = 1,
+  TraceConfig_StatsdLogging_STATSD_LOGGING_DISABLED = 2,
 };
 enum TraceConfig_TriggerConfig_TriggerMode : int {
   TraceConfig_TriggerConfig_TriggerMode_UNSPECIFIED = 0,
@@ -90,6 +96,12 @@ class PERFETTO_EXPORT TraceConfig : public ::protozero::CppMessageObj {
   static constexpr auto COMPRESSION_TYPE_DEFLATE = TraceConfig_CompressionType_COMPRESSION_TYPE_DEFLATE;
   static constexpr auto CompressionType_MIN = TraceConfig_CompressionType_COMPRESSION_TYPE_UNSPECIFIED;
   static constexpr auto CompressionType_MAX = TraceConfig_CompressionType_COMPRESSION_TYPE_DEFLATE;
+  using StatsdLogging = TraceConfig_StatsdLogging;
+  static constexpr auto STATSD_LOGGING_UNSPECIFIED = TraceConfig_StatsdLogging_STATSD_LOGGING_UNSPECIFIED;
+  static constexpr auto STATSD_LOGGING_ENABLED = TraceConfig_StatsdLogging_STATSD_LOGGING_ENABLED;
+  static constexpr auto STATSD_LOGGING_DISABLED = TraceConfig_StatsdLogging_STATSD_LOGGING_DISABLED;
+  static constexpr auto StatsdLogging_MIN = TraceConfig_StatsdLogging_STATSD_LOGGING_UNSPECIFIED;
+  static constexpr auto StatsdLogging_MAX = TraceConfig_StatsdLogging_STATSD_LOGGING_DISABLED;
   enum FieldNumbers {
     kBuffersFieldNumber = 1,
     kDataSourcesFieldNumber = 2,
@@ -117,6 +129,7 @@ class PERFETTO_EXPORT TraceConfig : public ::protozero::CppMessageObj {
     kUniqueSessionNameFieldNumber = 22,
     kCompressionTypeFieldNumber = 24,
     kIncidentReportConfigFieldNumber = 25,
+    kStatsdLoggingFieldNumber = 31,
     kTraceUuidMsbFieldNumber = 27,
     kTraceUuidLsbFieldNumber = 28,
   };
@@ -248,6 +261,10 @@ class PERFETTO_EXPORT TraceConfig : public ::protozero::CppMessageObj {
   const TraceConfig_IncidentReportConfig& incident_report_config() const { return *incident_report_config_; }
   TraceConfig_IncidentReportConfig* mutable_incident_report_config() { _has_field_.set(25); return incident_report_config_.get(); }
 
+  bool has_statsd_logging() const { return _has_field_[31]; }
+  TraceConfig_StatsdLogging statsd_logging() const { return statsd_logging_; }
+  void set_statsd_logging(TraceConfig_StatsdLogging value) { statsd_logging_ = value; _has_field_.set(31); }
+
   bool has_trace_uuid_msb() const { return _has_field_[27]; }
   int64_t trace_uuid_msb() const { return trace_uuid_msb_; }
   void set_trace_uuid_msb(int64_t value) { trace_uuid_msb_ = value; _has_field_.set(27); }
@@ -283,6 +300,7 @@ class PERFETTO_EXPORT TraceConfig : public ::protozero::CppMessageObj {
   std::string unique_session_name_{};
   TraceConfig_CompressionType compression_type_{};
   ::protozero::CopyablePtr<TraceConfig_IncidentReportConfig> incident_report_config_;
+  TraceConfig_StatsdLogging statsd_logging_{};
   int64_t trace_uuid_msb_{};
   int64_t trace_uuid_lsb_{};
 
@@ -290,7 +308,7 @@ class PERFETTO_EXPORT TraceConfig : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<31> _has_field_{};
+  std::bitset<32> _has_field_{};
 };
 
 
@@ -300,6 +318,7 @@ class PERFETTO_EXPORT TraceConfig_IncidentReportConfig : public ::protozero::Cpp
     kDestinationPackageFieldNumber = 1,
     kDestinationClassFieldNumber = 2,
     kPrivacyLevelFieldNumber = 3,
+    kSkipIncidentdFieldNumber = 5,
     kSkipDropboxFieldNumber = 4,
   };
 
@@ -329,6 +348,10 @@ class PERFETTO_EXPORT TraceConfig_IncidentReportConfig : public ::protozero::Cpp
   int32_t privacy_level() const { return privacy_level_; }
   void set_privacy_level(int32_t value) { privacy_level_ = value; _has_field_.set(3); }
 
+  bool has_skip_incidentd() const { return _has_field_[5]; }
+  bool skip_incidentd() const { return skip_incidentd_; }
+  void set_skip_incidentd(bool value) { skip_incidentd_ = value; _has_field_.set(5); }
+
   bool has_skip_dropbox() const { return _has_field_[4]; }
   bool skip_dropbox() const { return skip_dropbox_; }
   void set_skip_dropbox(bool value) { skip_dropbox_ = value; _has_field_.set(4); }
@@ -337,13 +360,14 @@ class PERFETTO_EXPORT TraceConfig_IncidentReportConfig : public ::protozero::Cpp
   std::string destination_package_{};
   std::string destination_class_{};
   int32_t privacy_level_{};
+  bool skip_incidentd_{};
   bool skip_dropbox_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<5> _has_field_{};
+  std::bitset<6> _has_field_{};
 };
 
 
