@@ -59,6 +59,7 @@ class PERFETTO_EXPORT ChromeProcessDescriptor : public ::protozero::CppMessageOb
     kProcessPriorityFieldNumber = 2,
     kLegacySortIndexFieldNumber = 3,
     kHostAppPackageNameFieldNumber = 4,
+    kCrashTraceIdFieldNumber = 5,
   };
 
   ChromeProcessDescriptor();
@@ -91,17 +92,22 @@ class PERFETTO_EXPORT ChromeProcessDescriptor : public ::protozero::CppMessageOb
   const std::string& host_app_package_name() const { return host_app_package_name_; }
   void set_host_app_package_name(const std::string& value) { host_app_package_name_ = value; _has_field_.set(4); }
 
+  bool has_crash_trace_id() const { return _has_field_[5]; }
+  uint64_t crash_trace_id() const { return crash_trace_id_; }
+  void set_crash_trace_id(uint64_t value) { crash_trace_id_ = value; _has_field_.set(5); }
+
  private:
   ChromeProcessDescriptor_ProcessType process_type_{};
   int32_t process_priority_{};
   int32_t legacy_sort_index_{};
   std::string host_app_package_name_{};
+  uint64_t crash_trace_id_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<5> _has_field_{};
+  std::bitset<6> _has_field_{};
 };
 
 }  // namespace perfetto
