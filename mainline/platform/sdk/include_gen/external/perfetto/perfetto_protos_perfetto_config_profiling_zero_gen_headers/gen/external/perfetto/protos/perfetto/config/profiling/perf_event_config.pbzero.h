@@ -17,20 +17,7 @@ namespace pbzero {
 
 class PerfEventConfig_CallstackSampling;
 class PerfEventConfig_Scope;
-class PerfEventConfig_Timebase;
-class PerfEventConfig_Tracepoint;
-enum PerfEventConfig_Counter : int32_t;
-
-enum PerfEventConfig_Counter : int32_t {
-  PerfEventConfig_Counter_UNKNOWN_COUNTER = 0,
-  PerfEventConfig_Counter_SW_CPU_CLOCK = 1,
-  PerfEventConfig_Counter_SW_PAGE_FAULTS = 2,
-  PerfEventConfig_Counter_HW_CPU_CYCLES = 10,
-  PerfEventConfig_Counter_HW_INSTRUCTIONS = 11,
-};
-
-const PerfEventConfig_Counter PerfEventConfig_Counter_MIN = PerfEventConfig_Counter_UNKNOWN_COUNTER;
-const PerfEventConfig_Counter PerfEventConfig_Counter_MAX = PerfEventConfig_Counter_HW_INSTRUCTIONS;
+class PerfEvents_Timebase;
 
 class PerfEventConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/16, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -67,8 +54,6 @@ class PerfEventConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIEL
   ::protozero::RepeatedFieldIterator<::protozero::ConstChars> exclude_cmdline() const { return GetRepeated<::protozero::ConstChars>(7); }
   bool has_additional_cmdline_count() const { return at<11>().valid(); }
   uint32_t additional_cmdline_count() const { return at<11>().as_uint32(); }
-  bool has_tracepoint() const { return at<14>().valid(); }
-  ::protozero::ConstBytes tracepoint() const { return at<14>().as_bytes(); }
 };
 
 class PerfEventConfig : public ::protozero::Message {
@@ -90,19 +75,10 @@ class PerfEventConfig : public ::protozero::Message {
     kExcludePidFieldNumber = 6,
     kExcludeCmdlineFieldNumber = 7,
     kAdditionalCmdlineCountFieldNumber = 11,
-    kTracepointFieldNumber = 14,
   };
-  using Timebase = ::perfetto::protos::pbzero::PerfEventConfig_Timebase;
   using CallstackSampling = ::perfetto::protos::pbzero::PerfEventConfig_CallstackSampling;
   using Scope = ::perfetto::protos::pbzero::PerfEventConfig_Scope;
-  using Tracepoint = ::perfetto::protos::pbzero::PerfEventConfig_Tracepoint;
-  using Counter = ::perfetto::protos::pbzero::PerfEventConfig_Counter;
-  static const Counter UNKNOWN_COUNTER = PerfEventConfig_Counter_UNKNOWN_COUNTER;
-  static const Counter SW_CPU_CLOCK = PerfEventConfig_Counter_SW_CPU_CLOCK;
-  static const Counter SW_PAGE_FAULTS = PerfEventConfig_Counter_SW_PAGE_FAULTS;
-  static const Counter HW_CPU_CYCLES = PerfEventConfig_Counter_HW_CPU_CYCLES;
-  static const Counter HW_INSTRUCTIONS = PerfEventConfig_Counter_HW_INSTRUCTIONS;
-  template <typename T = PerfEventConfig_Timebase> T* set_timebase() {
+  template <typename T = PerfEvents_Timebase> T* set_timebase() {
     return BeginNestedMessage<T>(15);
   }
 
@@ -154,42 +130,6 @@ class PerfEventConfig : public ::protozero::Message {
   }
   void set_additional_cmdline_count(uint32_t value) {
     AppendVarInt(11, value);
-  }
-  template <typename T = PerfEventConfig_Tracepoint> T* set_tracepoint() {
-    return BeginNestedMessage<T>(14);
-  }
-
-};
-
-class PerfEventConfig_Tracepoint_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
- public:
-  PerfEventConfig_Tracepoint_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
-  explicit PerfEventConfig_Tracepoint_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
-  explicit PerfEventConfig_Tracepoint_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
-  bool has_name() const { return at<1>().valid(); }
-  ::protozero::ConstChars name() const { return at<1>().as_string(); }
-  bool has_filter() const { return at<2>().valid(); }
-  ::protozero::ConstChars filter() const { return at<2>().as_string(); }
-};
-
-class PerfEventConfig_Tracepoint : public ::protozero::Message {
- public:
-  using Decoder = PerfEventConfig_Tracepoint_Decoder;
-  enum : int32_t {
-    kNameFieldNumber = 1,
-    kFilterFieldNumber = 2,
-  };
-  void set_name(const std::string& value) {
-    AppendBytes(1, value.data(), value.size());
-  }
-  void set_name(const char* data, size_t size) {
-    AppendBytes(1, data, size);
-  }
-  void set_filter(const std::string& value) {
-    AppendBytes(2, value.data(), value.size());
-  }
-  void set_filter(const char* data, size_t size) {
-    AppendBytes(2, data, size);
   }
 };
 
@@ -268,45 +208,6 @@ class PerfEventConfig_CallstackSampling : public ::protozero::Message {
   void set_kernel_frames(bool value) {
     AppendTinyVarInt(2, value);
   }
-};
-
-class PerfEventConfig_Timebase_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
- public:
-  PerfEventConfig_Timebase_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
-  explicit PerfEventConfig_Timebase_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
-  explicit PerfEventConfig_Timebase_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
-  bool has_frequency() const { return at<2>().valid(); }
-  uint64_t frequency() const { return at<2>().as_uint64(); }
-  bool has_period() const { return at<1>().valid(); }
-  uint64_t period() const { return at<1>().as_uint64(); }
-  bool has_counter() const { return at<4>().valid(); }
-  int32_t counter() const { return at<4>().as_int32(); }
-  bool has_tracepoint() const { return at<3>().valid(); }
-  ::protozero::ConstBytes tracepoint() const { return at<3>().as_bytes(); }
-};
-
-class PerfEventConfig_Timebase : public ::protozero::Message {
- public:
-  using Decoder = PerfEventConfig_Timebase_Decoder;
-  enum : int32_t {
-    kFrequencyFieldNumber = 2,
-    kPeriodFieldNumber = 1,
-    kCounterFieldNumber = 4,
-    kTracepointFieldNumber = 3,
-  };
-  void set_frequency(uint64_t value) {
-    AppendVarInt(2, value);
-  }
-  void set_period(uint64_t value) {
-    AppendVarInt(1, value);
-  }
-  void set_counter(::perfetto::protos::pbzero::PerfEventConfig_Counter value) {
-    AppendTinyVarInt(4, value);
-  }
-  template <typename T = PerfEventConfig_Tracepoint> T* set_tracepoint() {
-    return BeginNestedMessage<T>(3);
-  }
-
 };
 
 } // Namespace.

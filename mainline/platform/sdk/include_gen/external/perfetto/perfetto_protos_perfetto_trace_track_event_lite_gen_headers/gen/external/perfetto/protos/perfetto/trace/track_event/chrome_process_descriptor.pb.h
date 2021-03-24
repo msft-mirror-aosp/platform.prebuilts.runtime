@@ -239,6 +239,7 @@ class ChromeProcessDescriptor :
     kHostAppPackageNameFieldNumber = 4,
     kProcessTypeFieldNumber = 1,
     kProcessPriorityFieldNumber = 2,
+    kCrashTraceIdFieldNumber = 5,
     kLegacySortIndexFieldNumber = 3,
   };
   // optional string host_app_package_name = 4;
@@ -265,6 +266,12 @@ class ChromeProcessDescriptor :
   ::PROTOBUF_NAMESPACE_ID::int32 process_priority() const;
   void set_process_priority(::PROTOBUF_NAMESPACE_ID::int32 value);
 
+  // optional uint64 crash_trace_id = 5;
+  bool has_crash_trace_id() const;
+  void clear_crash_trace_id();
+  ::PROTOBUF_NAMESPACE_ID::uint64 crash_trace_id() const;
+  void set_crash_trace_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
+
   // optional int32 legacy_sort_index = 3;
   bool has_legacy_sort_index() const;
   void clear_legacy_sort_index();
@@ -281,6 +288,7 @@ class ChromeProcessDescriptor :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr host_app_package_name_;
   int process_type_;
   ::PROTOBUF_NAMESPACE_ID::int32 process_priority_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 crash_trace_id_;
   ::PROTOBUF_NAMESPACE_ID::int32 legacy_sort_index_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftrack_5fevent_2fchrome_5fprocess_5fdescriptor_2eproto;
 };
@@ -334,18 +342,18 @@ inline void ChromeProcessDescriptor::set_process_priority(::PROTOBUF_NAMESPACE_I
 
 // optional int32 legacy_sort_index = 3;
 inline bool ChromeProcessDescriptor::has_legacy_sort_index() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void ChromeProcessDescriptor::clear_legacy_sort_index() {
   legacy_sort_index_ = 0;
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 ChromeProcessDescriptor::legacy_sort_index() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeProcessDescriptor.legacy_sort_index)
   return legacy_sort_index_;
 }
 inline void ChromeProcessDescriptor::set_legacy_sort_index(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
   legacy_sort_index_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeProcessDescriptor.legacy_sort_index)
 }
@@ -406,6 +414,24 @@ inline void ChromeProcessDescriptor::set_allocated_host_app_package_name(std::st
   }
   host_app_package_name_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), host_app_package_name);
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.ChromeProcessDescriptor.host_app_package_name)
+}
+
+// optional uint64 crash_trace_id = 5;
+inline bool ChromeProcessDescriptor::has_crash_trace_id() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ChromeProcessDescriptor::clear_crash_trace_id() {
+  crash_trace_id_ = PROTOBUF_ULONGLONG(0);
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 ChromeProcessDescriptor::crash_trace_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeProcessDescriptor.crash_trace_id)
+  return crash_trace_id_;
+}
+inline void ChromeProcessDescriptor::set_crash_trace_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _has_bits_[0] |= 0x00000008u;
+  crash_trace_id_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeProcessDescriptor.crash_trace_id)
 }
 
 #ifdef __GNUC__

@@ -252,7 +252,7 @@ class FrameTimelineEvent_ExpectedDisplayFrameStart : public ::protozero::Message
   }
 };
 
-class FrameTimelineEvent_ActualSurfaceFrameStart_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class FrameTimelineEvent_ActualSurfaceFrameStart_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/11, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   FrameTimelineEvent_ActualSurfaceFrameStart_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit FrameTimelineEvent_ActualSurfaceFrameStart_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -277,6 +277,8 @@ class FrameTimelineEvent_ActualSurfaceFrameStart_Decoder : public ::protozero::T
   int32_t jank_type() const { return at<9>().as_int32(); }
   bool has_prediction_type() const { return at<10>().valid(); }
   int32_t prediction_type() const { return at<10>().as_int32(); }
+  bool has_is_buffer() const { return at<11>().valid(); }
+  bool is_buffer() const { return at<11>().as_bool(); }
 };
 
 class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
@@ -293,6 +295,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
     kGpuCompositionFieldNumber = 8,
     kJankTypeFieldNumber = 9,
     kPredictionTypeFieldNumber = 10,
+    kIsBufferFieldNumber = 11,
   };
   void set_cookie(int64_t value) {
     AppendVarInt(1, value);
@@ -326,6 +329,9 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
   }
   void set_prediction_type(::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType value) {
     AppendTinyVarInt(10, value);
+  }
+  void set_is_buffer(bool value) {
+    AppendTinyVarInt(11, value);
   }
 };
 
