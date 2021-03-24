@@ -16,13 +16,17 @@ namespace protos {
 namespace pbzero {
 
 
-class ChromeMojoEventInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class ChromeMojoEventInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   ChromeMojoEventInfo_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ChromeMojoEventInfo_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit ChromeMojoEventInfo_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_watcher_notify_interface_tag() const { return at<1>().valid(); }
   ::protozero::ConstChars watcher_notify_interface_tag() const { return at<1>().as_string(); }
+  bool has_ipc_hash() const { return at<2>().valid(); }
+  uint32_t ipc_hash() const { return at<2>().as_uint32(); }
+  bool has_mojo_interface_tag() const { return at<3>().valid(); }
+  ::protozero::ConstChars mojo_interface_tag() const { return at<3>().as_string(); }
 };
 
 class ChromeMojoEventInfo : public ::protozero::Message {
@@ -30,12 +34,23 @@ class ChromeMojoEventInfo : public ::protozero::Message {
   using Decoder = ChromeMojoEventInfo_Decoder;
   enum : int32_t {
     kWatcherNotifyInterfaceTagFieldNumber = 1,
+    kIpcHashFieldNumber = 2,
+    kMojoInterfaceTagFieldNumber = 3,
   };
   void set_watcher_notify_interface_tag(const std::string& value) {
     AppendBytes(1, value.data(), value.size());
   }
   void set_watcher_notify_interface_tag(const char* data, size_t size) {
     AppendBytes(1, data, size);
+  }
+  void set_ipc_hash(uint32_t value) {
+    AppendVarInt(2, value);
+  }
+  void set_mojo_interface_tag(const std::string& value) {
+    AppendBytes(3, value.data(), value.size());
+  }
+  void set_mojo_interface_tag(const char* data, size_t size) {
+    AppendBytes(3, data, size);
   }
 };
 

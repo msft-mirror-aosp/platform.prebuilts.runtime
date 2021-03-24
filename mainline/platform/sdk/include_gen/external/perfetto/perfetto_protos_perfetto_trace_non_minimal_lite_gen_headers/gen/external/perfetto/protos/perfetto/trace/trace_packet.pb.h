@@ -56,6 +56,7 @@
 #include "protos/perfetto/trace/memory_graph.pb.h"
 #include "protos/perfetto/trace/perfetto/perfetto_metatrace.pb.h"
 #include "protos/perfetto/trace/perfetto/tracing_service_event.pb.h"
+#include "protos/perfetto/trace/power/android_energy_estimation_breakdown.pb.h"
 #include "protos/perfetto/trace/power/battery_counters.pb.h"
 #include "protos/perfetto/trace/power/power_rails.pb.h"
 #include "protos/perfetto/trace/profiling/deobfuscation.pb.h"
@@ -204,6 +205,7 @@ class TracePacket :
     kGpuMemTotalEvent = 71,
     kMemoryTrackerSnapshot = 73,
     kFrameTimelineEvent = 76,
+    kAndroidEnergyEstimationBreakdown = 77,
     kProfiledFrameSymbols = 55,
     kModuleSymbols = 61,
     kDeobfuscationMapping = 64,
@@ -370,6 +372,7 @@ class TracePacket :
     kGpuMemTotalEventFieldNumber = 71,
     kMemoryTrackerSnapshotFieldNumber = 73,
     kFrameTimelineEventFieldNumber = 76,
+    kAndroidEnergyEstimationBreakdownFieldNumber = 77,
     kProfiledFrameSymbolsFieldNumber = 55,
     kModuleSymbolsFieldNumber = 61,
     kDeobfuscationMappingFieldNumber = 64,
@@ -734,6 +737,14 @@ class TracePacket :
   ::perfetto::protos::FrameTimelineEvent* mutable_frame_timeline_event();
   void set_allocated_frame_timeline_event(::perfetto::protos::FrameTimelineEvent* frame_timeline_event);
 
+  // optional .perfetto.protos.AndroidEnergyEstimationBreakdown android_energy_estimation_breakdown = 77;
+  bool has_android_energy_estimation_breakdown() const;
+  void clear_android_energy_estimation_breakdown();
+  const ::perfetto::protos::AndroidEnergyEstimationBreakdown& android_energy_estimation_breakdown() const;
+  ::perfetto::protos::AndroidEnergyEstimationBreakdown* release_android_energy_estimation_breakdown();
+  ::perfetto::protos::AndroidEnergyEstimationBreakdown* mutable_android_energy_estimation_breakdown();
+  void set_allocated_android_energy_estimation_breakdown(::perfetto::protos::AndroidEnergyEstimationBreakdown* android_energy_estimation_breakdown);
+
   // optional .perfetto.protos.ProfiledFrameSymbols profiled_frame_symbols = 55;
   bool has_profiled_frame_symbols() const;
   void clear_profiled_frame_symbols();
@@ -889,6 +900,7 @@ class TracePacket :
   void set_has_gpu_mem_total_event();
   void set_has_memory_tracker_snapshot();
   void set_has_frame_timeline_event();
+  void set_has_android_energy_estimation_breakdown();
   void set_has_profiled_frame_symbols();
   void set_has_module_symbols();
   void set_has_deobfuscation_mapping();
@@ -962,6 +974,7 @@ class TracePacket :
     ::perfetto::protos::GpuMemTotalEvent* gpu_mem_total_event_;
     ::perfetto::protos::MemoryTrackerSnapshot* memory_tracker_snapshot_;
     ::perfetto::protos::FrameTimelineEvent* frame_timeline_event_;
+    ::perfetto::protos::AndroidEnergyEstimationBreakdown* android_energy_estimation_breakdown_;
     ::perfetto::protos::ProfiledFrameSymbols* profiled_frame_symbols_;
     ::perfetto::protos::ModuleSymbols* module_symbols_;
     ::perfetto::protos::DeobfuscationMapping* deobfuscation_mapping_;
@@ -2361,6 +2374,41 @@ inline ::perfetto::protos::FrameTimelineEvent* TracePacket::mutable_frame_timeli
   }
   // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.frame_timeline_event)
   return data_.frame_timeline_event_;
+}
+
+// optional .perfetto.protos.AndroidEnergyEstimationBreakdown android_energy_estimation_breakdown = 77;
+inline bool TracePacket::has_android_energy_estimation_breakdown() const {
+  return data_case() == kAndroidEnergyEstimationBreakdown;
+}
+inline void TracePacket::set_has_android_energy_estimation_breakdown() {
+  _oneof_case_[0] = kAndroidEnergyEstimationBreakdown;
+}
+inline ::perfetto::protos::AndroidEnergyEstimationBreakdown* TracePacket::release_android_energy_estimation_breakdown() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.android_energy_estimation_breakdown)
+  if (has_android_energy_estimation_breakdown()) {
+    clear_has_data();
+      ::perfetto::protos::AndroidEnergyEstimationBreakdown* temp = data_.android_energy_estimation_breakdown_;
+    data_.android_energy_estimation_breakdown_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::AndroidEnergyEstimationBreakdown& TracePacket::android_energy_estimation_breakdown() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.android_energy_estimation_breakdown)
+  return has_android_energy_estimation_breakdown()
+      ? *data_.android_energy_estimation_breakdown_
+      : *reinterpret_cast< ::perfetto::protos::AndroidEnergyEstimationBreakdown*>(&::perfetto::protos::_AndroidEnergyEstimationBreakdown_default_instance_);
+}
+inline ::perfetto::protos::AndroidEnergyEstimationBreakdown* TracePacket::mutable_android_energy_estimation_breakdown() {
+  if (!has_android_energy_estimation_breakdown()) {
+    clear_data();
+    set_has_android_energy_estimation_breakdown();
+    data_.android_energy_estimation_breakdown_ = CreateMaybeMessage< ::perfetto::protos::AndroidEnergyEstimationBreakdown >(
+        GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.android_energy_estimation_breakdown)
+  return data_.android_energy_estimation_breakdown_;
 }
 
 // optional .perfetto.protos.ProfiledFrameSymbols profiled_frame_symbols = 55;

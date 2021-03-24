@@ -229,9 +229,22 @@ class ChromeMetadataPacket :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kEnabledCategoriesFieldNumber = 3,
     kBackgroundTracingMetadataFieldNumber = 1,
     kChromeVersionCodeFieldNumber = 2,
   };
+  // optional string enabled_categories = 3;
+  bool has_enabled_categories() const;
+  void clear_enabled_categories();
+  const std::string& enabled_categories() const;
+  void set_enabled_categories(const std::string& value);
+  void set_enabled_categories(std::string&& value);
+  void set_enabled_categories(const char* value);
+  void set_enabled_categories(const char* value, size_t size);
+  std::string* mutable_enabled_categories();
+  std::string* release_enabled_categories();
+  void set_allocated_enabled_categories(std::string* enabled_categories);
+
   // optional .perfetto.protos.BackgroundTracingMetadata background_tracing_metadata = 1;
   bool has_background_tracing_metadata() const;
   void clear_background_tracing_metadata();
@@ -253,6 +266,7 @@ class ChromeMetadataPacket :
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr enabled_categories_;
   ::perfetto::protos::BackgroundTracingMetadata* background_tracing_metadata_;
   ::PROTOBUF_NAMESPACE_ID::int32 chrome_version_code_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fchrome_2fchrome_5fmetadata_2eproto;
@@ -880,11 +894,11 @@ class BackgroundTracingMetadata :
 
 // optional .perfetto.protos.BackgroundTracingMetadata background_tracing_metadata = 1;
 inline bool ChromeMetadataPacket::has_background_tracing_metadata() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void ChromeMetadataPacket::clear_background_tracing_metadata() {
   if (background_tracing_metadata_ != nullptr) background_tracing_metadata_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline const ::perfetto::protos::BackgroundTracingMetadata& ChromeMetadataPacket::background_tracing_metadata() const {
   const ::perfetto::protos::BackgroundTracingMetadata* p = background_tracing_metadata_;
@@ -894,13 +908,13 @@ inline const ::perfetto::protos::BackgroundTracingMetadata& ChromeMetadataPacket
 }
 inline ::perfetto::protos::BackgroundTracingMetadata* ChromeMetadataPacket::release_background_tracing_metadata() {
   // @@protoc_insertion_point(field_release:perfetto.protos.ChromeMetadataPacket.background_tracing_metadata)
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
   ::perfetto::protos::BackgroundTracingMetadata* temp = background_tracing_metadata_;
   background_tracing_metadata_ = nullptr;
   return temp;
 }
 inline ::perfetto::protos::BackgroundTracingMetadata* ChromeMetadataPacket::mutable_background_tracing_metadata() {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   if (background_tracing_metadata_ == nullptr) {
     auto* p = CreateMaybeMessage<::perfetto::protos::BackgroundTracingMetadata>(GetArenaNoVirtual());
     background_tracing_metadata_ = p;
@@ -919,9 +933,9 @@ inline void ChromeMetadataPacket::set_allocated_background_tracing_metadata(::pe
       background_tracing_metadata = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, background_tracing_metadata, submessage_arena);
     }
-    _has_bits_[0] |= 0x00000001u;
+    _has_bits_[0] |= 0x00000002u;
   } else {
-    _has_bits_[0] &= ~0x00000001u;
+    _has_bits_[0] &= ~0x00000002u;
   }
   background_tracing_metadata_ = background_tracing_metadata;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.ChromeMetadataPacket.background_tracing_metadata)
@@ -929,20 +943,78 @@ inline void ChromeMetadataPacket::set_allocated_background_tracing_metadata(::pe
 
 // optional int32 chrome_version_code = 2;
 inline bool ChromeMetadataPacket::has_chrome_version_code() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void ChromeMetadataPacket::clear_chrome_version_code() {
   chrome_version_code_ = 0;
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 ChromeMetadataPacket::chrome_version_code() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeMetadataPacket.chrome_version_code)
   return chrome_version_code_;
 }
 inline void ChromeMetadataPacket::set_chrome_version_code(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   chrome_version_code_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeMetadataPacket.chrome_version_code)
+}
+
+// optional string enabled_categories = 3;
+inline bool ChromeMetadataPacket::has_enabled_categories() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ChromeMetadataPacket::clear_enabled_categories() {
+  enabled_categories_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& ChromeMetadataPacket::enabled_categories() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeMetadataPacket.enabled_categories)
+  return enabled_categories_.GetNoArena();
+}
+inline void ChromeMetadataPacket::set_enabled_categories(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  enabled_categories_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeMetadataPacket.enabled_categories)
+}
+inline void ChromeMetadataPacket::set_enabled_categories(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  enabled_categories_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.ChromeMetadataPacket.enabled_categories)
+}
+inline void ChromeMetadataPacket::set_enabled_categories(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  enabled_categories_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.ChromeMetadataPacket.enabled_categories)
+}
+inline void ChromeMetadataPacket::set_enabled_categories(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  enabled_categories_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.ChromeMetadataPacket.enabled_categories)
+}
+inline std::string* ChromeMetadataPacket::mutable_enabled_categories() {
+  _has_bits_[0] |= 0x00000001u;
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.ChromeMetadataPacket.enabled_categories)
+  return enabled_categories_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* ChromeMetadataPacket::release_enabled_categories() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.ChromeMetadataPacket.enabled_categories)
+  if (!has_enabled_categories()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return enabled_categories_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void ChromeMetadataPacket::set_allocated_enabled_categories(std::string* enabled_categories) {
+  if (enabled_categories != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  enabled_categories_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), enabled_categories);
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.ChromeMetadataPacket.enabled_categories)
 }
 
 // -------------------------------------------------------------------

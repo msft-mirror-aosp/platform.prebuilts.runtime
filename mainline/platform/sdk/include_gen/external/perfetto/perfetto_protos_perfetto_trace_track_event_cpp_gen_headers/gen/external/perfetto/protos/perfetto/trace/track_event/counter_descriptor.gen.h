@@ -60,6 +60,7 @@ class PERFETTO_EXPORT CounterDescriptor : public ::protozero::CppMessageObj {
     kTypeFieldNumber = 1,
     kCategoriesFieldNumber = 2,
     kUnitFieldNumber = 3,
+    kUnitNameFieldNumber = 6,
     kUnitMultiplierFieldNumber = 4,
     kIsIncrementalFieldNumber = 5,
   };
@@ -93,6 +94,10 @@ class PERFETTO_EXPORT CounterDescriptor : public ::protozero::CppMessageObj {
   CounterDescriptor_Unit unit() const { return unit_; }
   void set_unit(CounterDescriptor_Unit value) { unit_ = value; _has_field_.set(3); }
 
+  bool has_unit_name() const { return _has_field_[6]; }
+  const std::string& unit_name() const { return unit_name_; }
+  void set_unit_name(const std::string& value) { unit_name_ = value; _has_field_.set(6); }
+
   bool has_unit_multiplier() const { return _has_field_[4]; }
   int64_t unit_multiplier() const { return unit_multiplier_; }
   void set_unit_multiplier(int64_t value) { unit_multiplier_ = value; _has_field_.set(4); }
@@ -105,6 +110,7 @@ class PERFETTO_EXPORT CounterDescriptor : public ::protozero::CppMessageObj {
   CounterDescriptor_BuiltinCounterType type_{};
   std::vector<std::string> categories_;
   CounterDescriptor_Unit unit_{};
+  std::string unit_name_{};
   int64_t unit_multiplier_{};
   bool is_incremental_{};
 
@@ -112,7 +118,7 @@ class PERFETTO_EXPORT CounterDescriptor : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<6> _has_field_{};
+  std::bitset<7> _has_field_{};
 };
 
 }  // namespace perfetto
