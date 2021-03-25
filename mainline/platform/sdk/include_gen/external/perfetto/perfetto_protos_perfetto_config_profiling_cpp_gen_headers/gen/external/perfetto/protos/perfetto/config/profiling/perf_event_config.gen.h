@@ -16,11 +16,11 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 class PerfEventConfig;
-class PerfEventConfig_Tracepoint;
 class PerfEventConfig_CallstackSampling;
 class PerfEventConfig_Scope;
-class PerfEventConfig_Timebase;
-enum PerfEventConfig_Counter : int;
+class PerfEvents_Timebase;
+class PerfEvents_Tracepoint;
+enum PerfEvents_Counter : int;
 }  // namespace perfetto
 }  // namespace protos
 }  // namespace gen
@@ -32,28 +32,11 @@ class Message;
 namespace perfetto {
 namespace protos {
 namespace gen {
-enum PerfEventConfig_Counter : int {
-  PerfEventConfig_Counter_UNKNOWN_COUNTER = 0,
-  PerfEventConfig_Counter_SW_CPU_CLOCK = 1,
-  PerfEventConfig_Counter_SW_PAGE_FAULTS = 2,
-  PerfEventConfig_Counter_HW_CPU_CYCLES = 10,
-  PerfEventConfig_Counter_HW_INSTRUCTIONS = 11,
-};
 
 class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
  public:
-  using Timebase = PerfEventConfig_Timebase;
   using CallstackSampling = PerfEventConfig_CallstackSampling;
   using Scope = PerfEventConfig_Scope;
-  using Tracepoint = PerfEventConfig_Tracepoint;
-  using Counter = PerfEventConfig_Counter;
-  static constexpr auto UNKNOWN_COUNTER = PerfEventConfig_Counter_UNKNOWN_COUNTER;
-  static constexpr auto SW_CPU_CLOCK = PerfEventConfig_Counter_SW_CPU_CLOCK;
-  static constexpr auto SW_PAGE_FAULTS = PerfEventConfig_Counter_SW_PAGE_FAULTS;
-  static constexpr auto HW_CPU_CYCLES = PerfEventConfig_Counter_HW_CPU_CYCLES;
-  static constexpr auto HW_INSTRUCTIONS = PerfEventConfig_Counter_HW_INSTRUCTIONS;
-  static constexpr auto Counter_MIN = PerfEventConfig_Counter_UNKNOWN_COUNTER;
-  static constexpr auto Counter_MAX = PerfEventConfig_Counter_HW_INSTRUCTIONS;
   enum FieldNumbers {
     kTimebaseFieldNumber = 15,
     kCallstackSamplingFieldNumber = 16,
@@ -70,7 +53,6 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
     kExcludePidFieldNumber = 6,
     kExcludeCmdlineFieldNumber = 7,
     kAdditionalCmdlineCountFieldNumber = 11,
-    kTracepointFieldNumber = 14,
   };
 
   PerfEventConfig();
@@ -88,8 +70,8 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   void Serialize(::protozero::Message*) const;
 
   bool has_timebase() const { return _has_field_[15]; }
-  const PerfEventConfig_Timebase& timebase() const { return *timebase_; }
-  PerfEventConfig_Timebase* mutable_timebase() { _has_field_.set(15); return timebase_.get(); }
+  const PerfEvents_Timebase& timebase() const { return *timebase_; }
+  PerfEvents_Timebase* mutable_timebase() { _has_field_.set(15); return timebase_.get(); }
 
   bool has_callstack_sampling() const { return _has_field_[16]; }
   const PerfEventConfig_CallstackSampling& callstack_sampling() const { return *callstack_sampling_; }
@@ -159,12 +141,8 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   uint32_t additional_cmdline_count() const { return additional_cmdline_count_; }
   void set_additional_cmdline_count(uint32_t value) { additional_cmdline_count_ = value; _has_field_.set(11); }
 
-  bool has_tracepoint() const { return _has_field_[14]; }
-  const PerfEventConfig_Tracepoint& tracepoint() const { return *tracepoint_; }
-  PerfEventConfig_Tracepoint* mutable_tracepoint() { _has_field_.set(14); return tracepoint_.get(); }
-
  private:
-  ::protozero::CopyablePtr<PerfEventConfig_Timebase> timebase_;
+  ::protozero::CopyablePtr<PerfEvents_Timebase> timebase_;
   ::protozero::CopyablePtr<PerfEventConfig_CallstackSampling> callstack_sampling_;
   uint32_t ring_buffer_read_period_ms_{};
   uint32_t ring_buffer_pages_{};
@@ -179,54 +157,12 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   std::vector<int32_t> exclude_pid_;
   std::vector<std::string> exclude_cmdline_;
   uint32_t additional_cmdline_count_{};
-  ::protozero::CopyablePtr<PerfEventConfig_Tracepoint> tracepoint_;
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
   std::bitset<17> _has_field_{};
-};
-
-
-class PERFETTO_EXPORT PerfEventConfig_Tracepoint : public ::protozero::CppMessageObj {
- public:
-  enum FieldNumbers {
-    kNameFieldNumber = 1,
-    kFilterFieldNumber = 2,
-  };
-
-  PerfEventConfig_Tracepoint();
-  ~PerfEventConfig_Tracepoint() override;
-  PerfEventConfig_Tracepoint(PerfEventConfig_Tracepoint&&) noexcept;
-  PerfEventConfig_Tracepoint& operator=(PerfEventConfig_Tracepoint&&);
-  PerfEventConfig_Tracepoint(const PerfEventConfig_Tracepoint&);
-  PerfEventConfig_Tracepoint& operator=(const PerfEventConfig_Tracepoint&);
-  bool operator==(const PerfEventConfig_Tracepoint&) const;
-  bool operator!=(const PerfEventConfig_Tracepoint& other) const { return !(*this == other); }
-
-  bool ParseFromArray(const void*, size_t) override;
-  std::string SerializeAsString() const override;
-  std::vector<uint8_t> SerializeAsArray() const override;
-  void Serialize(::protozero::Message*) const;
-
-  bool has_name() const { return _has_field_[1]; }
-  const std::string& name() const { return name_; }
-  void set_name(const std::string& value) { name_ = value; _has_field_.set(1); }
-
-  bool has_filter() const { return _has_field_[2]; }
-  const std::string& filter() const { return filter_; }
-  void set_filter(const std::string& value) { filter_ = value; _has_field_.set(2); }
-
- private:
-  std::string name_{};
-  std::string filter_{};
-
-  // Allows to preserve unknown protobuf fields for compatibility
-  // with future versions of .proto files.
-  std::string unknown_fields_;
-
-  std::bitset<3> _has_field_{};
 };
 
 
@@ -339,59 +275,6 @@ class PERFETTO_EXPORT PerfEventConfig_Scope : public ::protozero::CppMessageObj 
   std::string unknown_fields_;
 
   std::bitset<6> _has_field_{};
-};
-
-
-class PERFETTO_EXPORT PerfEventConfig_Timebase : public ::protozero::CppMessageObj {
- public:
-  enum FieldNumbers {
-    kFrequencyFieldNumber = 2,
-    kPeriodFieldNumber = 1,
-    kCounterFieldNumber = 4,
-    kTracepointFieldNumber = 3,
-  };
-
-  PerfEventConfig_Timebase();
-  ~PerfEventConfig_Timebase() override;
-  PerfEventConfig_Timebase(PerfEventConfig_Timebase&&) noexcept;
-  PerfEventConfig_Timebase& operator=(PerfEventConfig_Timebase&&);
-  PerfEventConfig_Timebase(const PerfEventConfig_Timebase&);
-  PerfEventConfig_Timebase& operator=(const PerfEventConfig_Timebase&);
-  bool operator==(const PerfEventConfig_Timebase&) const;
-  bool operator!=(const PerfEventConfig_Timebase& other) const { return !(*this == other); }
-
-  bool ParseFromArray(const void*, size_t) override;
-  std::string SerializeAsString() const override;
-  std::vector<uint8_t> SerializeAsArray() const override;
-  void Serialize(::protozero::Message*) const;
-
-  bool has_frequency() const { return _has_field_[2]; }
-  uint64_t frequency() const { return frequency_; }
-  void set_frequency(uint64_t value) { frequency_ = value; _has_field_.set(2); }
-
-  bool has_period() const { return _has_field_[1]; }
-  uint64_t period() const { return period_; }
-  void set_period(uint64_t value) { period_ = value; _has_field_.set(1); }
-
-  bool has_counter() const { return _has_field_[4]; }
-  PerfEventConfig_Counter counter() const { return counter_; }
-  void set_counter(PerfEventConfig_Counter value) { counter_ = value; _has_field_.set(4); }
-
-  bool has_tracepoint() const { return _has_field_[3]; }
-  const PerfEventConfig_Tracepoint& tracepoint() const { return *tracepoint_; }
-  PerfEventConfig_Tracepoint* mutable_tracepoint() { _has_field_.set(3); return tracepoint_.get(); }
-
- private:
-  uint64_t frequency_{};
-  uint64_t period_{};
-  PerfEventConfig_Counter counter_{};
-  ::protozero::CopyablePtr<PerfEventConfig_Tracepoint> tracepoint_;
-
-  // Allows to preserve unknown protobuf fields for compatibility
-  // with future versions of .proto files.
-  std::string unknown_fields_;
-
-  std::bitset<5> _has_field_{};
 };
 
 }  // namespace perfetto

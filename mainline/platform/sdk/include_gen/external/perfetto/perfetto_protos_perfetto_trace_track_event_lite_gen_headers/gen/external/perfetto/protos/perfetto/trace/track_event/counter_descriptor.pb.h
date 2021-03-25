@@ -270,6 +270,7 @@ class CounterDescriptor :
 
   enum : int {
     kCategoriesFieldNumber = 2,
+    kUnitNameFieldNumber = 6,
     kTypeFieldNumber = 1,
     kUnitFieldNumber = 3,
     kUnitMultiplierFieldNumber = 4,
@@ -291,6 +292,18 @@ class CounterDescriptor :
   void add_categories(const char* value, size_t size);
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& categories() const;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_categories();
+
+  // optional string unit_name = 6;
+  bool has_unit_name() const;
+  void clear_unit_name();
+  const std::string& unit_name() const;
+  void set_unit_name(const std::string& value);
+  void set_unit_name(std::string&& value);
+  void set_unit_name(const char* value);
+  void set_unit_name(const char* value, size_t size);
+  std::string* mutable_unit_name();
+  std::string* release_unit_name();
+  void set_allocated_unit_name(std::string* unit_name);
 
   // optional .perfetto.protos.CounterDescriptor.BuiltinCounterType type = 1;
   bool has_type() const;
@@ -324,6 +337,7 @@ class CounterDescriptor :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> categories_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr unit_name_;
   int type_;
   int unit_;
   ::PROTOBUF_NAMESPACE_ID::int64 unit_multiplier_;
@@ -343,11 +357,11 @@ class CounterDescriptor :
 
 // optional .perfetto.protos.CounterDescriptor.BuiltinCounterType type = 1;
 inline bool CounterDescriptor::has_type() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void CounterDescriptor::clear_type() {
   type_ = 0;
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::perfetto::protos::CounterDescriptor_BuiltinCounterType CounterDescriptor::type() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.CounterDescriptor.type)
@@ -355,7 +369,7 @@ inline ::perfetto::protos::CounterDescriptor_BuiltinCounterType CounterDescripto
 }
 inline void CounterDescriptor::set_type(::perfetto::protos::CounterDescriptor_BuiltinCounterType value) {
   assert(::perfetto::protos::CounterDescriptor_BuiltinCounterType_IsValid(value));
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   type_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.CounterDescriptor.type)
 }
@@ -427,11 +441,11 @@ CounterDescriptor::mutable_categories() {
 
 // optional .perfetto.protos.CounterDescriptor.Unit unit = 3;
 inline bool CounterDescriptor::has_unit() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void CounterDescriptor::clear_unit() {
   unit_ = 0;
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::perfetto::protos::CounterDescriptor_Unit CounterDescriptor::unit() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.CounterDescriptor.unit)
@@ -439,43 +453,101 @@ inline ::perfetto::protos::CounterDescriptor_Unit CounterDescriptor::unit() cons
 }
 inline void CounterDescriptor::set_unit(::perfetto::protos::CounterDescriptor_Unit value) {
   assert(::perfetto::protos::CounterDescriptor_Unit_IsValid(value));
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   unit_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.CounterDescriptor.unit)
 }
 
+// optional string unit_name = 6;
+inline bool CounterDescriptor::has_unit_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CounterDescriptor::clear_unit_name() {
+  unit_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& CounterDescriptor::unit_name() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CounterDescriptor.unit_name)
+  return unit_name_.GetNoArena();
+}
+inline void CounterDescriptor::set_unit_name(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  unit_name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.CounterDescriptor.unit_name)
+}
+inline void CounterDescriptor::set_unit_name(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  unit_name_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.CounterDescriptor.unit_name)
+}
+inline void CounterDescriptor::set_unit_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  unit_name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.CounterDescriptor.unit_name)
+}
+inline void CounterDescriptor::set_unit_name(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  unit_name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.CounterDescriptor.unit_name)
+}
+inline std::string* CounterDescriptor::mutable_unit_name() {
+  _has_bits_[0] |= 0x00000001u;
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.CounterDescriptor.unit_name)
+  return unit_name_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* CounterDescriptor::release_unit_name() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.CounterDescriptor.unit_name)
+  if (!has_unit_name()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return unit_name_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void CounterDescriptor::set_allocated_unit_name(std::string* unit_name) {
+  if (unit_name != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  unit_name_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), unit_name);
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.CounterDescriptor.unit_name)
+}
+
 // optional int64 unit_multiplier = 4;
 inline bool CounterDescriptor::has_unit_multiplier() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void CounterDescriptor::clear_unit_multiplier() {
   unit_multiplier_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int64 CounterDescriptor::unit_multiplier() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.CounterDescriptor.unit_multiplier)
   return unit_multiplier_;
 }
 inline void CounterDescriptor::set_unit_multiplier(::PROTOBUF_NAMESPACE_ID::int64 value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
   unit_multiplier_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.CounterDescriptor.unit_multiplier)
 }
 
 // optional bool is_incremental = 5;
 inline bool CounterDescriptor::has_is_incremental() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void CounterDescriptor::clear_is_incremental() {
   is_incremental_ = false;
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline bool CounterDescriptor::is_incremental() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.CounterDescriptor.is_incremental)
   return is_incremental_;
 }
 inline void CounterDescriptor::set_is_incremental(bool value) {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
   is_incremental_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.CounterDescriptor.is_incremental)
 }
