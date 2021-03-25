@@ -170,6 +170,8 @@ class ChromeMojoEventInfo :
 
   enum : int {
     kWatcherNotifyInterfaceTagFieldNumber = 1,
+    kMojoInterfaceTagFieldNumber = 3,
+    kIpcHashFieldNumber = 2,
   };
   // optional string watcher_notify_interface_tag = 1;
   bool has_watcher_notify_interface_tag() const;
@@ -183,6 +185,24 @@ class ChromeMojoEventInfo :
   std::string* release_watcher_notify_interface_tag();
   void set_allocated_watcher_notify_interface_tag(std::string* watcher_notify_interface_tag);
 
+  // optional string mojo_interface_tag = 3;
+  bool has_mojo_interface_tag() const;
+  void clear_mojo_interface_tag();
+  const std::string& mojo_interface_tag() const;
+  void set_mojo_interface_tag(const std::string& value);
+  void set_mojo_interface_tag(std::string&& value);
+  void set_mojo_interface_tag(const char* value);
+  void set_mojo_interface_tag(const char* value, size_t size);
+  std::string* mutable_mojo_interface_tag();
+  std::string* release_mojo_interface_tag();
+  void set_allocated_mojo_interface_tag(std::string* mojo_interface_tag);
+
+  // optional uint32 ipc_hash = 2;
+  bool has_ipc_hash() const;
+  void clear_ipc_hash();
+  ::PROTOBUF_NAMESPACE_ID::uint32 ipc_hash() const;
+  void set_ipc_hash(::PROTOBUF_NAMESPACE_ID::uint32 value);
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.ChromeMojoEventInfo)
  private:
   class _Internal;
@@ -191,6 +211,8 @@ class ChromeMojoEventInfo :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr watcher_notify_interface_tag_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr mojo_interface_tag_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 ipc_hash_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftrack_5fevent_2fchrome_5fmojo_5fevent_5finfo_2eproto;
 };
 // ===================================================================
@@ -260,6 +282,82 @@ inline void ChromeMojoEventInfo::set_allocated_watcher_notify_interface_tag(std:
   }
   watcher_notify_interface_tag_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), watcher_notify_interface_tag);
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.ChromeMojoEventInfo.watcher_notify_interface_tag)
+}
+
+// optional uint32 ipc_hash = 2;
+inline bool ChromeMojoEventInfo::has_ipc_hash() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ChromeMojoEventInfo::clear_ipc_hash() {
+  ipc_hash_ = 0u;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 ChromeMojoEventInfo::ipc_hash() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeMojoEventInfo.ipc_hash)
+  return ipc_hash_;
+}
+inline void ChromeMojoEventInfo::set_ipc_hash(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _has_bits_[0] |= 0x00000004u;
+  ipc_hash_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeMojoEventInfo.ipc_hash)
+}
+
+// optional string mojo_interface_tag = 3;
+inline bool ChromeMojoEventInfo::has_mojo_interface_tag() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ChromeMojoEventInfo::clear_mojo_interface_tag() {
+  mojo_interface_tag_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& ChromeMojoEventInfo::mojo_interface_tag() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeMojoEventInfo.mojo_interface_tag)
+  return mojo_interface_tag_.GetNoArena();
+}
+inline void ChromeMojoEventInfo::set_mojo_interface_tag(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  mojo_interface_tag_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeMojoEventInfo.mojo_interface_tag)
+}
+inline void ChromeMojoEventInfo::set_mojo_interface_tag(std::string&& value) {
+  _has_bits_[0] |= 0x00000002u;
+  mojo_interface_tag_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.ChromeMojoEventInfo.mojo_interface_tag)
+}
+inline void ChromeMojoEventInfo::set_mojo_interface_tag(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000002u;
+  mojo_interface_tag_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.ChromeMojoEventInfo.mojo_interface_tag)
+}
+inline void ChromeMojoEventInfo::set_mojo_interface_tag(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000002u;
+  mojo_interface_tag_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.ChromeMojoEventInfo.mojo_interface_tag)
+}
+inline std::string* ChromeMojoEventInfo::mutable_mojo_interface_tag() {
+  _has_bits_[0] |= 0x00000002u;
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.ChromeMojoEventInfo.mojo_interface_tag)
+  return mojo_interface_tag_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* ChromeMojoEventInfo::release_mojo_interface_tag() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.ChromeMojoEventInfo.mojo_interface_tag)
+  if (!has_mojo_interface_tag()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  return mojo_interface_tag_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void ChromeMojoEventInfo::set_allocated_mojo_interface_tag(std::string* mojo_interface_tag) {
+  if (mojo_interface_tag != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  mojo_interface_tag_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), mojo_interface_tag);
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.ChromeMojoEventInfo.mojo_interface_tag)
 }
 
 #ifdef __GNUC__

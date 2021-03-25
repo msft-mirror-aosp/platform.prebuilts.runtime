@@ -1,9 +1,5 @@
 // This is auto-generated. DO NOT EDIT.
 
-package {
-    default_applicable_licenses: ["Android-Apache-2.0"],
-}
-
 cc_prebuilt_binary {
     name: "stats-log-api-gen-exports_stats-log-api-gen@current",
     sdk_member_name: "stats-log-api-gen",
@@ -72,3 +68,4 @@ module_exports_snapshot {
         },
     },
 }
+
