@@ -1,5 +1,18 @@
 // This is auto-generated. DO NOT EDIT.
 
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "prebuilts_runtime_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    //   SPDX-license-identifier-BSD
+    //   SPDX-license-identifier-ISC
+    //   SPDX-license-identifier-MIT
+    //   legacy_unencumbered
+    default_applicable_licenses: ["prebuilts_runtime_license"],
+}
+
 cc_prebuilt_library_headers {
     name: "runtime-module-sdk_bionic_libc_platform_headers@current",
     sdk_member_name: "bionic_libc_platform_headers",
@@ -1562,4 +1575,3 @@ sdk_snapshot {
         },
     },
 }
-
