@@ -1,5 +1,9 @@
 // This is auto-generated. DO NOT EDIT.
 
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
 cc_prebuilt_binary {
     name: "runtime-module-host-exports_linkerconfig@current",
     sdk_member_name: "linkerconfig",
@@ -135,4 +139,3 @@ module_exports_snapshot {
         },
     },
 }
-
