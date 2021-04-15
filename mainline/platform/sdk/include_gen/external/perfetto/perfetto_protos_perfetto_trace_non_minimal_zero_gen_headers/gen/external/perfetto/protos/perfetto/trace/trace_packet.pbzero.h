@@ -15,6 +15,7 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
+class AndroidEnergyEstimationBreakdown;
 class AndroidLogPacket;
 class BatteryCounters;
 class ChromeBenchmarkMetadata;
@@ -159,6 +160,8 @@ class TracePacket_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstBytes memory_tracker_snapshot() const { return at<73>().as_bytes(); }
   bool has_frame_timeline_event() const { return at<76>().valid(); }
   ::protozero::ConstBytes frame_timeline_event() const { return at<76>().as_bytes(); }
+  bool has_android_energy_estimation_breakdown() const { return at<77>().valid(); }
+  ::protozero::ConstBytes android_energy_estimation_breakdown() const { return at<77>().as_bytes(); }
   bool has_profiled_frame_symbols() const { return at<55>().valid(); }
   ::protozero::ConstBytes profiled_frame_symbols() const { return at<55>().as_bytes(); }
   bool has_module_symbols() const { return at<61>().valid(); }
@@ -241,6 +244,7 @@ class TracePacket : public ::protozero::Message {
     kGpuMemTotalEventFieldNumber = 71,
     kMemoryTrackerSnapshotFieldNumber = 73,
     kFrameTimelineEventFieldNumber = 76,
+    kAndroidEnergyEstimationBreakdownFieldNumber = 77,
     kProfiledFrameSymbolsFieldNumber = 55,
     kModuleSymbolsFieldNumber = 61,
     kDeobfuscationMappingFieldNumber = 64,
@@ -420,6 +424,10 @@ class TracePacket : public ::protozero::Message {
 
   template <typename T = FrameTimelineEvent> T* set_frame_timeline_event() {
     return BeginNestedMessage<T>(76);
+  }
+
+  template <typename T = AndroidEnergyEstimationBreakdown> T* set_android_energy_estimation_breakdown() {
+    return BeginNestedMessage<T>(77);
   }
 
   template <typename T = ProfiledFrameSymbols> T* set_profiled_frame_symbols() {

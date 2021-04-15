@@ -30,6 +30,7 @@ enum BuiltinClock : int32_t;
 enum TraceConfig_BufferConfig_FillPolicy : int32_t;
 enum TraceConfig_CompressionType : int32_t;
 enum TraceConfig_LockdownModeOperation : int32_t;
+enum TraceConfig_StatsdLogging : int32_t;
 enum TraceConfig_TriggerConfig_TriggerMode : int32_t;
 
 enum TraceConfig_LockdownModeOperation : int32_t {
@@ -49,6 +50,15 @@ enum TraceConfig_CompressionType : int32_t {
 const TraceConfig_CompressionType TraceConfig_CompressionType_MIN = TraceConfig_CompressionType_COMPRESSION_TYPE_UNSPECIFIED;
 const TraceConfig_CompressionType TraceConfig_CompressionType_MAX = TraceConfig_CompressionType_COMPRESSION_TYPE_DEFLATE;
 
+enum TraceConfig_StatsdLogging : int32_t {
+  TraceConfig_StatsdLogging_STATSD_LOGGING_UNSPECIFIED = 0,
+  TraceConfig_StatsdLogging_STATSD_LOGGING_ENABLED = 1,
+  TraceConfig_StatsdLogging_STATSD_LOGGING_DISABLED = 2,
+};
+
+const TraceConfig_StatsdLogging TraceConfig_StatsdLogging_MIN = TraceConfig_StatsdLogging_STATSD_LOGGING_UNSPECIFIED;
+const TraceConfig_StatsdLogging TraceConfig_StatsdLogging_MAX = TraceConfig_StatsdLogging_STATSD_LOGGING_DISABLED;
+
 enum TraceConfig_TriggerConfig_TriggerMode : int32_t {
   TraceConfig_TriggerConfig_TriggerMode_UNSPECIFIED = 0,
   TraceConfig_TriggerConfig_TriggerMode_START_TRACING = 1,
@@ -67,7 +77,7 @@ enum TraceConfig_BufferConfig_FillPolicy : int32_t {
 const TraceConfig_BufferConfig_FillPolicy TraceConfig_BufferConfig_FillPolicy_MIN = TraceConfig_BufferConfig_FillPolicy_UNSPECIFIED;
 const TraceConfig_BufferConfig_FillPolicy TraceConfig_BufferConfig_FillPolicy_MAX = TraceConfig_BufferConfig_FillPolicy_DISCARD;
 
-class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/30, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/31, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   TraceConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -124,6 +134,8 @@ class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   int32_t compression_type() const { return at<24>().as_int32(); }
   bool has_incident_report_config() const { return at<25>().valid(); }
   ::protozero::ConstBytes incident_report_config() const { return at<25>().as_bytes(); }
+  bool has_statsd_logging() const { return at<31>().valid(); }
+  int32_t statsd_logging() const { return at<31>().as_int32(); }
   bool has_trace_uuid_msb() const { return at<27>().valid(); }
   int64_t trace_uuid_msb() const { return at<27>().as_int64(); }
   bool has_trace_uuid_lsb() const { return at<28>().valid(); }
@@ -160,6 +172,7 @@ class TraceConfig : public ::protozero::Message {
     kUniqueSessionNameFieldNumber = 22,
     kCompressionTypeFieldNumber = 24,
     kIncidentReportConfigFieldNumber = 25,
+    kStatsdLoggingFieldNumber = 31,
     kTraceUuidMsbFieldNumber = 27,
     kTraceUuidLsbFieldNumber = 28,
   };
@@ -174,11 +187,15 @@ class TraceConfig : public ::protozero::Message {
   using IncidentReportConfig = ::perfetto::protos::pbzero::TraceConfig_IncidentReportConfig;
   using LockdownModeOperation = ::perfetto::protos::pbzero::TraceConfig_LockdownModeOperation;
   using CompressionType = ::perfetto::protos::pbzero::TraceConfig_CompressionType;
+  using StatsdLogging = ::perfetto::protos::pbzero::TraceConfig_StatsdLogging;
   static const LockdownModeOperation LOCKDOWN_UNCHANGED = TraceConfig_LockdownModeOperation_LOCKDOWN_UNCHANGED;
   static const LockdownModeOperation LOCKDOWN_CLEAR = TraceConfig_LockdownModeOperation_LOCKDOWN_CLEAR;
   static const LockdownModeOperation LOCKDOWN_SET = TraceConfig_LockdownModeOperation_LOCKDOWN_SET;
   static const CompressionType COMPRESSION_TYPE_UNSPECIFIED = TraceConfig_CompressionType_COMPRESSION_TYPE_UNSPECIFIED;
   static const CompressionType COMPRESSION_TYPE_DEFLATE = TraceConfig_CompressionType_COMPRESSION_TYPE_DEFLATE;
+  static const StatsdLogging STATSD_LOGGING_UNSPECIFIED = TraceConfig_StatsdLogging_STATSD_LOGGING_UNSPECIFIED;
+  static const StatsdLogging STATSD_LOGGING_ENABLED = TraceConfig_StatsdLogging_STATSD_LOGGING_ENABLED;
+  static const StatsdLogging STATSD_LOGGING_DISABLED = TraceConfig_StatsdLogging_STATSD_LOGGING_DISABLED;
   template <typename T = TraceConfig_BufferConfig> T* add_buffers() {
     return BeginNestedMessage<T>(1);
   }
@@ -275,6 +292,9 @@ class TraceConfig : public ::protozero::Message {
     return BeginNestedMessage<T>(25);
   }
 
+  void set_statsd_logging(::perfetto::protos::pbzero::TraceConfig_StatsdLogging value) {
+    AppendTinyVarInt(31, value);
+  }
   void set_trace_uuid_msb(int64_t value) {
     AppendVarInt(27, value);
   }
@@ -283,7 +303,7 @@ class TraceConfig : public ::protozero::Message {
   }
 };
 
-class TraceConfig_IncidentReportConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class TraceConfig_IncidentReportConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   TraceConfig_IncidentReportConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_IncidentReportConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -294,6 +314,8 @@ class TraceConfig_IncidentReportConfig_Decoder : public ::protozero::TypedProtoD
   ::protozero::ConstChars destination_class() const { return at<2>().as_string(); }
   bool has_privacy_level() const { return at<3>().valid(); }
   int32_t privacy_level() const { return at<3>().as_int32(); }
+  bool has_skip_incidentd() const { return at<5>().valid(); }
+  bool skip_incidentd() const { return at<5>().as_bool(); }
   bool has_skip_dropbox() const { return at<4>().valid(); }
   bool skip_dropbox() const { return at<4>().as_bool(); }
 };
@@ -305,6 +327,7 @@ class TraceConfig_IncidentReportConfig : public ::protozero::Message {
     kDestinationPackageFieldNumber = 1,
     kDestinationClassFieldNumber = 2,
     kPrivacyLevelFieldNumber = 3,
+    kSkipIncidentdFieldNumber = 5,
     kSkipDropboxFieldNumber = 4,
   };
   void set_destination_package(const std::string& value) {
@@ -321,6 +344,9 @@ class TraceConfig_IncidentReportConfig : public ::protozero::Message {
   }
   void set_privacy_level(int32_t value) {
     AppendVarInt(3, value);
+  }
+  void set_skip_incidentd(bool value) {
+    AppendTinyVarInt(5, value);
   }
   void set_skip_dropbox(bool value) {
     AppendTinyVarInt(4, value);
