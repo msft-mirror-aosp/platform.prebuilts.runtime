@@ -118,18 +118,6 @@ public int getRawOffset() { throw new RuntimeException("Stub!"); }
  * @hide
  */
 
-public java.lang.Integer getLatestDstSavings(long when) { throw new RuntimeException("Stub!"); }
-
-/**
- * Returns the offset of daylight saving in milliseconds in the latest Daylight Savings Time
- * after the time {@code when}. If no known DST occurs after {@code when}, it returns
- * {@code null}.
- *
- * @param when the number of milliseconds since January 1, 1970, 00:00:00 GMT
- *
- * @hide
- */
-
 public java.lang.Integer getLatestDstSavingsMillis(long when) { throw new RuntimeException("Stub!"); }
 
 /**

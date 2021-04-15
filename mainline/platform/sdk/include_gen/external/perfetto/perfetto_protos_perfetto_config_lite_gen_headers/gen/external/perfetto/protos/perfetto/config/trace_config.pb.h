@@ -186,6 +186,26 @@ inline const std::string& TraceConfig_CompressionType_Name(T enum_t_value) {
 }
 bool TraceConfig_CompressionType_Parse(
     const std::string& name, TraceConfig_CompressionType* value);
+enum TraceConfig_StatsdLogging : int {
+  TraceConfig_StatsdLogging_STATSD_LOGGING_UNSPECIFIED = 0,
+  TraceConfig_StatsdLogging_STATSD_LOGGING_ENABLED = 1,
+  TraceConfig_StatsdLogging_STATSD_LOGGING_DISABLED = 2
+};
+bool TraceConfig_StatsdLogging_IsValid(int value);
+constexpr TraceConfig_StatsdLogging TraceConfig_StatsdLogging_StatsdLogging_MIN = TraceConfig_StatsdLogging_STATSD_LOGGING_UNSPECIFIED;
+constexpr TraceConfig_StatsdLogging TraceConfig_StatsdLogging_StatsdLogging_MAX = TraceConfig_StatsdLogging_STATSD_LOGGING_DISABLED;
+constexpr int TraceConfig_StatsdLogging_StatsdLogging_ARRAYSIZE = TraceConfig_StatsdLogging_StatsdLogging_MAX + 1;
+
+const std::string& TraceConfig_StatsdLogging_Name(TraceConfig_StatsdLogging value);
+template<typename T>
+inline const std::string& TraceConfig_StatsdLogging_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, TraceConfig_StatsdLogging>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function TraceConfig_StatsdLogging_Name.");
+  return TraceConfig_StatsdLogging_Name(static_cast<TraceConfig_StatsdLogging>(enum_t_value));
+}
+bool TraceConfig_StatsdLogging_Parse(
+    const std::string& name, TraceConfig_StatsdLogging* value);
 // ===================================================================
 
 class TraceConfig_BufferConfig :
@@ -1658,6 +1678,7 @@ class TraceConfig_IncidentReportConfig :
     kDestinationPackageFieldNumber = 1,
     kDestinationClassFieldNumber = 2,
     kPrivacyLevelFieldNumber = 3,
+    kSkipIncidentdFieldNumber = 5,
     kSkipDropboxFieldNumber = 4,
   };
   // optional string destination_package = 1;
@@ -1690,11 +1711,17 @@ class TraceConfig_IncidentReportConfig :
   ::PROTOBUF_NAMESPACE_ID::int32 privacy_level() const;
   void set_privacy_level(::PROTOBUF_NAMESPACE_ID::int32 value);
 
-  // optional bool skip_dropbox = 4;
-  bool has_skip_dropbox() const;
-  void clear_skip_dropbox();
-  bool skip_dropbox() const;
-  void set_skip_dropbox(bool value);
+  // optional bool skip_incidentd = 5;
+  bool has_skip_incidentd() const;
+  void clear_skip_incidentd();
+  bool skip_incidentd() const;
+  void set_skip_incidentd(bool value);
+
+  // optional bool skip_dropbox = 4 [deprecated = true];
+  PROTOBUF_DEPRECATED bool has_skip_dropbox() const;
+  PROTOBUF_DEPRECATED void clear_skip_dropbox();
+  PROTOBUF_DEPRECATED bool skip_dropbox() const;
+  PROTOBUF_DEPRECATED void set_skip_dropbox(bool value);
 
   // @@protoc_insertion_point(class_scope:perfetto.protos.TraceConfig.IncidentReportConfig)
  private:
@@ -1706,6 +1733,7 @@ class TraceConfig_IncidentReportConfig :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr destination_package_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr destination_class_;
   ::PROTOBUF_NAMESPACE_ID::int32 privacy_level_;
+  bool skip_incidentd_;
   bool skip_dropbox_;
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2ftrace_5fconfig_2eproto;
 };
@@ -1875,6 +1903,34 @@ class TraceConfig :
     return TraceConfig_CompressionType_Parse(name, value);
   }
 
+  typedef TraceConfig_StatsdLogging StatsdLogging;
+  static constexpr StatsdLogging STATSD_LOGGING_UNSPECIFIED =
+    TraceConfig_StatsdLogging_STATSD_LOGGING_UNSPECIFIED;
+  static constexpr StatsdLogging STATSD_LOGGING_ENABLED =
+    TraceConfig_StatsdLogging_STATSD_LOGGING_ENABLED;
+  static constexpr StatsdLogging STATSD_LOGGING_DISABLED =
+    TraceConfig_StatsdLogging_STATSD_LOGGING_DISABLED;
+  static inline bool StatsdLogging_IsValid(int value) {
+    return TraceConfig_StatsdLogging_IsValid(value);
+  }
+  static constexpr StatsdLogging StatsdLogging_MIN =
+    TraceConfig_StatsdLogging_StatsdLogging_MIN;
+  static constexpr StatsdLogging StatsdLogging_MAX =
+    TraceConfig_StatsdLogging_StatsdLogging_MAX;
+  static constexpr int StatsdLogging_ARRAYSIZE =
+    TraceConfig_StatsdLogging_StatsdLogging_ARRAYSIZE;
+  template<typename T>
+  static inline const std::string& StatsdLogging_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, StatsdLogging>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function StatsdLogging_Name.");
+    return TraceConfig_StatsdLogging_Name(enum_t_value);
+  }
+  static inline bool StatsdLogging_Parse(const std::string& name,
+      StatsdLogging* value) {
+    return TraceConfig_StatsdLogging_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
@@ -1906,6 +1962,7 @@ class TraceConfig :
     kCompressionTypeFieldNumber = 24,
     kBugreportScoreFieldNumber = 30,
     kTraceUuidLsbFieldNumber = 28,
+    kStatsdLoggingFieldNumber = 31,
   };
   // repeated .perfetto.protos.TraceConfig.BufferConfig buffers = 1;
   int buffers_size() const;
@@ -2125,6 +2182,12 @@ class TraceConfig :
   ::PROTOBUF_NAMESPACE_ID::int64 trace_uuid_lsb() const;
   void set_trace_uuid_lsb(::PROTOBUF_NAMESPACE_ID::int64 value);
 
+  // optional .perfetto.protos.TraceConfig.StatsdLogging statsd_logging = 31;
+  bool has_statsd_logging() const;
+  void clear_statsd_logging();
+  ::perfetto::protos::TraceConfig_StatsdLogging statsd_logging() const;
+  void set_statsd_logging(::perfetto::protos::TraceConfig_StatsdLogging value);
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.TraceConfig)
  private:
   class _Internal;
@@ -2160,6 +2223,7 @@ class TraceConfig :
   int compression_type_;
   ::PROTOBUF_NAMESPACE_ID::int32 bugreport_score_;
   ::PROTOBUF_NAMESPACE_ID::int64 trace_uuid_lsb_;
+  int statsd_logging_;
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2ftrace_5fconfig_2eproto;
 };
 // ===================================================================
@@ -3103,20 +3167,38 @@ inline void TraceConfig_IncidentReportConfig::set_privacy_level(::PROTOBUF_NAMES
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.IncidentReportConfig.privacy_level)
 }
 
-// optional bool skip_dropbox = 4;
-inline bool TraceConfig_IncidentReportConfig::has_skip_dropbox() const {
+// optional bool skip_incidentd = 5;
+inline bool TraceConfig_IncidentReportConfig::has_skip_incidentd() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void TraceConfig_IncidentReportConfig::clear_skip_incidentd() {
+  skip_incidentd_ = false;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline bool TraceConfig_IncidentReportConfig::skip_incidentd() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.IncidentReportConfig.skip_incidentd)
+  return skip_incidentd_;
+}
+inline void TraceConfig_IncidentReportConfig::set_skip_incidentd(bool value) {
+  _has_bits_[0] |= 0x00000008u;
+  skip_incidentd_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.IncidentReportConfig.skip_incidentd)
+}
+
+// optional bool skip_dropbox = 4 [deprecated = true];
+inline bool TraceConfig_IncidentReportConfig::has_skip_dropbox() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void TraceConfig_IncidentReportConfig::clear_skip_dropbox() {
   skip_dropbox_ = false;
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline bool TraceConfig_IncidentReportConfig::skip_dropbox() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.IncidentReportConfig.skip_dropbox)
   return skip_dropbox_;
 }
 inline void TraceConfig_IncidentReportConfig::set_skip_dropbox(bool value) {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
   skip_dropbox_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.IncidentReportConfig.skip_dropbox)
 }
@@ -3944,6 +4026,25 @@ inline void TraceConfig::set_allocated_incident_report_config(::perfetto::protos
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TraceConfig.incident_report_config)
 }
 
+// optional .perfetto.protos.TraceConfig.StatsdLogging statsd_logging = 31;
+inline bool TraceConfig::has_statsd_logging() const {
+  return (_has_bits_[0] & 0x01000000u) != 0;
+}
+inline void TraceConfig::clear_statsd_logging() {
+  statsd_logging_ = 0;
+  _has_bits_[0] &= ~0x01000000u;
+}
+inline ::perfetto::protos::TraceConfig_StatsdLogging TraceConfig::statsd_logging() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.statsd_logging)
+  return static_cast< ::perfetto::protos::TraceConfig_StatsdLogging >(statsd_logging_);
+}
+inline void TraceConfig::set_statsd_logging(::perfetto::protos::TraceConfig_StatsdLogging value) {
+  assert(::perfetto::protos::TraceConfig_StatsdLogging_IsValid(value));
+  _has_bits_[0] |= 0x01000000u;
+  statsd_logging_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.statsd_logging)
+}
+
 // optional int64 trace_uuid_msb = 27;
 inline bool TraceConfig::has_trace_uuid_msb() const {
   return (_has_bits_[0] & 0x00100000u) != 0;
@@ -4015,6 +4116,7 @@ template <> struct is_proto_enum< ::perfetto::protos::TraceConfig_BufferConfig_F
 template <> struct is_proto_enum< ::perfetto::protos::TraceConfig_TriggerConfig_TriggerMode> : ::std::true_type {};
 template <> struct is_proto_enum< ::perfetto::protos::TraceConfig_LockdownModeOperation> : ::std::true_type {};
 template <> struct is_proto_enum< ::perfetto::protos::TraceConfig_CompressionType> : ::std::true_type {};
+template <> struct is_proto_enum< ::perfetto::protos::TraceConfig_StatsdLogging> : ::std::true_type {};
 
 PROTOBUF_NAMESPACE_CLOSE
 
