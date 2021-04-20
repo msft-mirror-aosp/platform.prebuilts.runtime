@@ -38,6 +38,30 @@ java_import {
     jars: ["java/conscrypt.jar"],
 }
 
+java_import {
+    name: "conscrypt-module-test-exports_conscrypt-for-host@current",
+    sdk_member_name: "conscrypt-for-host",
+    visibility: [
+        "//art/build",
+        "//external/conscrypt",
+        "//external/robolectric-shadows",
+    ],
+    apex_available: ["//apex_available:platform"],
+    jars: ["java/conscrypt-for-host.jar"],
+}
+
+java_import {
+    name: "conscrypt-for-host",
+    prefer: false,
+    visibility: [
+        "//art/build",
+        "//external/conscrypt",
+        "//external/robolectric-shadows",
+    ],
+    apex_available: ["//apex_available:platform"],
+    jars: ["java/conscrypt-for-host.jar"],
+}
+
 java_test_import {
     name: "conscrypt-module-test-exports_conscrypt-tests@current",
     sdk_member_name: "conscrypt-tests",
@@ -180,7 +204,10 @@ module_exports_snapshot {
     native_shared_libs: ["conscrypt-module-test-exports_libjavacrypto@current"],
     target: {
         android: {
-            java_libs: ["conscrypt-module-test-exports_conscrypt@current"],
+            java_libs: [
+                "conscrypt-module-test-exports_conscrypt@current",
+                "conscrypt-module-test-exports_conscrypt-for-host@current",
+            ],
             java_tests: ["conscrypt-module-test-exports_conscrypt-tests@current"],
         },
         linux_bionic: {
@@ -200,3 +227,4 @@ module_exports_snapshot {
         },
     },
 }
+

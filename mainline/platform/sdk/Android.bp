@@ -20,6 +20,7 @@ cc_prebuilt_library {
         versions: [
             "29",
             "30",
+            "current",
         ],
     },
     target: {
@@ -95,6 +96,7 @@ cc_prebuilt_library {
         versions: [
             "29",
             "30",
+            "current",
         ],
     },
     target: {
@@ -163,7 +165,10 @@ cc_prebuilt_library_shared {
     host_supported: true,
     installable: false,
     stubs: {
-        versions: ["1"],
+        versions: [
+            "1",
+            "current",
+        ],
     },
     target: {
         host: {
@@ -212,7 +217,10 @@ cc_prebuilt_library_shared {
     apex_available: ["//apex_available:platform"],
     host_supported: true,
     stubs: {
-        versions: ["1"],
+        versions: [
+            "1",
+            "current",
+        ],
     },
     target: {
         host: {
@@ -263,7 +271,10 @@ cc_prebuilt_library_shared {
     compile_multilib: "both",
     export_include_dirs: ["include/external/perfetto/src/profiling/memory/include"],
     stubs: {
-        versions: ["S"],
+        versions: [
+            "S",
+            "current",
+        ],
     },
     arch: {
         arm64: {
@@ -289,7 +300,10 @@ cc_prebuilt_library_shared {
     compile_multilib: "both",
     export_include_dirs: ["include/external/perfetto/src/profiling/memory/include"],
     stubs: {
-        versions: ["S"],
+        versions: [
+            "S",
+            "current",
+        ],
     },
     arch: {
         arm64: {
@@ -750,3 +764,4 @@ sdk_snapshot {
         },
     },
 }
+

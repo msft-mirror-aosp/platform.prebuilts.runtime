@@ -74,11 +74,42 @@ enum ChromeProcessDescriptor_ProcessType : int {
   ChromeProcessDescriptor_ProcessType_PROCESS_SANDBOX_HELPER = 5,
   ChromeProcessDescriptor_ProcessType_PROCESS_GPU = 6,
   ChromeProcessDescriptor_ProcessType_PROCESS_PPAPI_PLUGIN = 7,
-  ChromeProcessDescriptor_ProcessType_PROCESS_PPAPI_BROKER = 8
+  ChromeProcessDescriptor_ProcessType_PROCESS_PPAPI_BROKER = 8,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_NETWORK = 9,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_TRACING = 10,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_STORAGE = 11,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_AUDIO = 12,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_DATA_DECODER = 13,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_UTIL_WIN = 14,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PROXY_RESOLVER = 15,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_CDM = 16,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_VIDEO_CAPTURE = 17,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_UNZIPPER = 18,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_MIRRORING = 19,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_FILEPATCHER = 20,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_TTS = 21,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PRINTING = 22,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_QUARANTINE = 23,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_CROS_LOCALSEARCH = 24,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_CROS_ASSISTANT_AUDIO_DECODER = 25,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_FILEUTIL = 26,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PRINTCOMPOSITOR = 27,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PAINTPREVIEW = 28,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SPEECHRECOGNITION = 29,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_XRDEVICE = 30,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_READICON = 31,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_LANGUAGEDETECTION = 32,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHARING = 33,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_MEDIAPARSER = 34,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_QRCODEGENERATOR = 35,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PROFILEIMPORT = 36,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_IME = 37,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_RECORDING = 38,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHAPEDETECTION = 39
 };
 bool ChromeProcessDescriptor_ProcessType_IsValid(int value);
 constexpr ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_ProcessType_MIN = ChromeProcessDescriptor_ProcessType_PROCESS_UNSPECIFIED;
-constexpr ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_ProcessType_MAX = ChromeProcessDescriptor_ProcessType_PROCESS_PPAPI_BROKER;
+constexpr ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_ProcessType_MAX = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHAPEDETECTION;
 constexpr int ChromeProcessDescriptor_ProcessType_ProcessType_ARRAYSIZE = ChromeProcessDescriptor_ProcessType_ProcessType_MAX + 1;
 
 const std::string& ChromeProcessDescriptor_ProcessType_Name(ChromeProcessDescriptor_ProcessType value);
@@ -212,6 +243,68 @@ class ChromeProcessDescriptor :
     ChromeProcessDescriptor_ProcessType_PROCESS_PPAPI_PLUGIN;
   static constexpr ProcessType PROCESS_PPAPI_BROKER =
     ChromeProcessDescriptor_ProcessType_PROCESS_PPAPI_BROKER;
+  static constexpr ProcessType PROCESS_SERVICE_NETWORK =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_NETWORK;
+  static constexpr ProcessType PROCESS_SERVICE_TRACING =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_TRACING;
+  static constexpr ProcessType PROCESS_SERVICE_STORAGE =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_STORAGE;
+  static constexpr ProcessType PROCESS_SERVICE_AUDIO =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_AUDIO;
+  static constexpr ProcessType PROCESS_SERVICE_DATA_DECODER =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_DATA_DECODER;
+  static constexpr ProcessType PROCESS_SERVICE_UTIL_WIN =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_UTIL_WIN;
+  static constexpr ProcessType PROCESS_SERVICE_PROXY_RESOLVER =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PROXY_RESOLVER;
+  static constexpr ProcessType PROCESS_SERVICE_CDM =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_CDM;
+  static constexpr ProcessType PROCESS_SERVICE_VIDEO_CAPTURE =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_VIDEO_CAPTURE;
+  static constexpr ProcessType PROCESS_SERVICE_UNZIPPER =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_UNZIPPER;
+  static constexpr ProcessType PROCESS_SERVICE_MIRRORING =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_MIRRORING;
+  static constexpr ProcessType PROCESS_SERVICE_FILEPATCHER =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_FILEPATCHER;
+  static constexpr ProcessType PROCESS_SERVICE_TTS =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_TTS;
+  static constexpr ProcessType PROCESS_SERVICE_PRINTING =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PRINTING;
+  static constexpr ProcessType PROCESS_SERVICE_QUARANTINE =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_QUARANTINE;
+  static constexpr ProcessType PROCESS_SERVICE_CROS_LOCALSEARCH =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_CROS_LOCALSEARCH;
+  static constexpr ProcessType PROCESS_SERVICE_CROS_ASSISTANT_AUDIO_DECODER =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_CROS_ASSISTANT_AUDIO_DECODER;
+  static constexpr ProcessType PROCESS_SERVICE_FILEUTIL =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_FILEUTIL;
+  static constexpr ProcessType PROCESS_SERVICE_PRINTCOMPOSITOR =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PRINTCOMPOSITOR;
+  static constexpr ProcessType PROCESS_SERVICE_PAINTPREVIEW =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PAINTPREVIEW;
+  static constexpr ProcessType PROCESS_SERVICE_SPEECHRECOGNITION =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SPEECHRECOGNITION;
+  static constexpr ProcessType PROCESS_SERVICE_XRDEVICE =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_XRDEVICE;
+  static constexpr ProcessType PROCESS_SERVICE_READICON =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_READICON;
+  static constexpr ProcessType PROCESS_SERVICE_LANGUAGEDETECTION =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_LANGUAGEDETECTION;
+  static constexpr ProcessType PROCESS_SERVICE_SHARING =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHARING;
+  static constexpr ProcessType PROCESS_SERVICE_MEDIAPARSER =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_MEDIAPARSER;
+  static constexpr ProcessType PROCESS_SERVICE_QRCODEGENERATOR =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_QRCODEGENERATOR;
+  static constexpr ProcessType PROCESS_SERVICE_PROFILEIMPORT =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PROFILEIMPORT;
+  static constexpr ProcessType PROCESS_SERVICE_IME =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_IME;
+  static constexpr ProcessType PROCESS_SERVICE_RECORDING =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_RECORDING;
+  static constexpr ProcessType PROCESS_SERVICE_SHAPEDETECTION =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHAPEDETECTION;
   static inline bool ProcessType_IsValid(int value) {
     return ChromeProcessDescriptor_ProcessType_IsValid(value);
   }
