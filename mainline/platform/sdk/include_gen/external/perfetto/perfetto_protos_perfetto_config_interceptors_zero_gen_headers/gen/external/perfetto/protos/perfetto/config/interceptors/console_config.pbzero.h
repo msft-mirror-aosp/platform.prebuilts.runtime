@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "perfetto/protozero/field_writer.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -48,11 +49,55 @@ class ConsoleConfig : public ::protozero::Message {
   static const Output OUTPUT_UNSPECIFIED = ConsoleConfig_Output_OUTPUT_UNSPECIFIED;
   static const Output OUTPUT_STDOUT = ConsoleConfig_Output_OUTPUT_STDOUT;
   static const Output OUTPUT_STDERR = ConsoleConfig_Output_OUTPUT_STDERR;
+
+  using FieldMetadata_Output =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::ConsoleConfig_Output,
+      ConsoleConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Output kOutput() { return {}; }
   void set_output(::perfetto::protos::pbzero::ConsoleConfig_Output value) {
-    AppendTinyVarInt(1, value);
+    static constexpr uint32_t field_id = FieldMetadata_Output::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_EnableColors =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      ConsoleConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_EnableColors kEnableColors() { return {}; }
   void set_enable_colors(bool value) {
-    AppendTinyVarInt(2, value);
+    static constexpr uint32_t field_id = FieldMetadata_EnableColors::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
   }
 };
 

@@ -452,6 +452,8 @@ class DebugAnnotation :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kDictEntriesFieldNumber = 11,
+    kArrayValuesFieldNumber = 12,
     kNameIidFieldNumber = 1,
     kNameFieldNumber = 10,
     kBoolValueFieldNumber = 2,
@@ -463,6 +465,28 @@ class DebugAnnotation :
     kNestedValueFieldNumber = 8,
     kLegacyJsonValueFieldNumber = 9,
   };
+  // repeated .perfetto.protos.DebugAnnotation dict_entries = 11;
+  int dict_entries_size() const;
+  void clear_dict_entries();
+  ::perfetto::protos::DebugAnnotation* mutable_dict_entries(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >*
+      mutable_dict_entries();
+  const ::perfetto::protos::DebugAnnotation& dict_entries(int index) const;
+  ::perfetto::protos::DebugAnnotation* add_dict_entries();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >&
+      dict_entries() const;
+
+  // repeated .perfetto.protos.DebugAnnotation array_values = 12;
+  int array_values_size() const;
+  void clear_array_values();
+  ::perfetto::protos::DebugAnnotation* mutable_array_values(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >*
+      mutable_array_values();
+  const ::perfetto::protos::DebugAnnotation& array_values(int index) const;
+  ::perfetto::protos::DebugAnnotation* add_array_values();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >&
+      array_values() const;
+
   // optional uint64 name_iid = 1;
   bool has_name_iid() const;
   void clear_name_iid();
@@ -570,6 +594,8 @@ class DebugAnnotation :
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation > dict_entries_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation > array_values_;
   union NameFieldUnion {
     NameFieldUnion() {}
     ::PROTOBUF_NAMESPACE_ID::uint64 name_iid_;
@@ -1481,6 +1507,66 @@ inline void DebugAnnotation::set_allocated_legacy_json_value(std::string* legacy
     value_.legacy_json_value_.UnsafeSetDefault(legacy_json_value);
   }
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.DebugAnnotation.legacy_json_value)
+}
+
+// repeated .perfetto.protos.DebugAnnotation dict_entries = 11;
+inline int DebugAnnotation::dict_entries_size() const {
+  return dict_entries_.size();
+}
+inline void DebugAnnotation::clear_dict_entries() {
+  dict_entries_.Clear();
+}
+inline ::perfetto::protos::DebugAnnotation* DebugAnnotation::mutable_dict_entries(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.DebugAnnotation.dict_entries)
+  return dict_entries_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >*
+DebugAnnotation::mutable_dict_entries() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.DebugAnnotation.dict_entries)
+  return &dict_entries_;
+}
+inline const ::perfetto::protos::DebugAnnotation& DebugAnnotation::dict_entries(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DebugAnnotation.dict_entries)
+  return dict_entries_.Get(index);
+}
+inline ::perfetto::protos::DebugAnnotation* DebugAnnotation::add_dict_entries() {
+  // @@protoc_insertion_point(field_add:perfetto.protos.DebugAnnotation.dict_entries)
+  return dict_entries_.Add();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >&
+DebugAnnotation::dict_entries() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.DebugAnnotation.dict_entries)
+  return dict_entries_;
+}
+
+// repeated .perfetto.protos.DebugAnnotation array_values = 12;
+inline int DebugAnnotation::array_values_size() const {
+  return array_values_.size();
+}
+inline void DebugAnnotation::clear_array_values() {
+  array_values_.Clear();
+}
+inline ::perfetto::protos::DebugAnnotation* DebugAnnotation::mutable_array_values(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.DebugAnnotation.array_values)
+  return array_values_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >*
+DebugAnnotation::mutable_array_values() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.DebugAnnotation.array_values)
+  return &array_values_;
+}
+inline const ::perfetto::protos::DebugAnnotation& DebugAnnotation::array_values(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DebugAnnotation.array_values)
+  return array_values_.Get(index);
+}
+inline ::perfetto::protos::DebugAnnotation* DebugAnnotation::add_array_values() {
+  // @@protoc_insertion_point(field_add:perfetto.protos.DebugAnnotation.array_values)
+  return array_values_.Add();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >&
+DebugAnnotation::array_values() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.DebugAnnotation.array_values)
+  return array_values_;
 }
 
 inline bool DebugAnnotation::has_name_field() const {

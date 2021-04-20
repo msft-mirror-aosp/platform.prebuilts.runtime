@@ -175,7 +175,10 @@ class TestEvent_TestPayload :
   enum : int {
     kStrFieldNumber = 1,
     kNestedFieldNumber = 2,
+    kRepeatedIntsFieldNumber = 6,
+    kSingleStringFieldNumber = 4,
     kRemainingNestingDepthFieldNumber = 3,
+    kSingleIntFieldNumber = 5,
   };
   // repeated string str = 1;
   int str_size() const;
@@ -205,11 +208,40 @@ class TestEvent_TestPayload :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TestEvent_TestPayload >&
       nested() const;
 
+  // repeated int32 repeated_ints = 6;
+  int repeated_ints_size() const;
+  void clear_repeated_ints();
+  ::PROTOBUF_NAMESPACE_ID::int32 repeated_ints(int index) const;
+  void set_repeated_ints(int index, ::PROTOBUF_NAMESPACE_ID::int32 value);
+  void add_repeated_ints(::PROTOBUF_NAMESPACE_ID::int32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+      repeated_ints() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+      mutable_repeated_ints();
+
+  // optional string single_string = 4;
+  bool has_single_string() const;
+  void clear_single_string();
+  const std::string& single_string() const;
+  void set_single_string(const std::string& value);
+  void set_single_string(std::string&& value);
+  void set_single_string(const char* value);
+  void set_single_string(const char* value, size_t size);
+  std::string* mutable_single_string();
+  std::string* release_single_string();
+  void set_allocated_single_string(std::string* single_string);
+
   // optional uint32 remaining_nesting_depth = 3;
   bool has_remaining_nesting_depth() const;
   void clear_remaining_nesting_depth();
   ::PROTOBUF_NAMESPACE_ID::uint32 remaining_nesting_depth() const;
   void set_remaining_nesting_depth(::PROTOBUF_NAMESPACE_ID::uint32 value);
+
+  // optional int32 single_int = 5;
+  bool has_single_int() const;
+  void clear_single_int();
+  ::PROTOBUF_NAMESPACE_ID::int32 single_int() const;
+  void set_single_int(::PROTOBUF_NAMESPACE_ID::int32 value);
 
   // @@protoc_insertion_point(class_scope:perfetto.protos.TestEvent.TestPayload)
  private:
@@ -220,7 +252,10 @@ class TestEvent_TestPayload :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> str_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TestEvent_TestPayload > nested_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > repeated_ints_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr single_string_;
   ::PROTOBUF_NAMESPACE_ID::uint32 remaining_nesting_depth_;
+  ::PROTOBUF_NAMESPACE_ID::int32 single_int_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftest_5fevent_2eproto;
 };
 // -------------------------------------------------------------------
@@ -494,20 +529,126 @@ TestEvent_TestPayload::nested() const {
   return nested_;
 }
 
+// optional string single_string = 4;
+inline bool TestEvent_TestPayload::has_single_string() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TestEvent_TestPayload::clear_single_string() {
+  single_string_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& TestEvent_TestPayload::single_string() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TestEvent.TestPayload.single_string)
+  return single_string_.GetNoArena();
+}
+inline void TestEvent_TestPayload::set_single_string(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  single_string_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.TestEvent.TestPayload.single_string)
+}
+inline void TestEvent_TestPayload::set_single_string(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  single_string_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.TestEvent.TestPayload.single_string)
+}
+inline void TestEvent_TestPayload::set_single_string(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  single_string_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.TestEvent.TestPayload.single_string)
+}
+inline void TestEvent_TestPayload::set_single_string(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  single_string_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.TestEvent.TestPayload.single_string)
+}
+inline std::string* TestEvent_TestPayload::mutable_single_string() {
+  _has_bits_[0] |= 0x00000001u;
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TestEvent.TestPayload.single_string)
+  return single_string_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* TestEvent_TestPayload::release_single_string() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TestEvent.TestPayload.single_string)
+  if (!has_single_string()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return single_string_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void TestEvent_TestPayload::set_allocated_single_string(std::string* single_string) {
+  if (single_string != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  single_string_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), single_string);
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TestEvent.TestPayload.single_string)
+}
+
+// optional int32 single_int = 5;
+inline bool TestEvent_TestPayload::has_single_int() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void TestEvent_TestPayload::clear_single_int() {
+  single_int_ = 0;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TestEvent_TestPayload::single_int() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TestEvent.TestPayload.single_int)
+  return single_int_;
+}
+inline void TestEvent_TestPayload::set_single_int(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000004u;
+  single_int_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.TestEvent.TestPayload.single_int)
+}
+
+// repeated int32 repeated_ints = 6;
+inline int TestEvent_TestPayload::repeated_ints_size() const {
+  return repeated_ints_.size();
+}
+inline void TestEvent_TestPayload::clear_repeated_ints() {
+  repeated_ints_.Clear();
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 TestEvent_TestPayload::repeated_ints(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TestEvent.TestPayload.repeated_ints)
+  return repeated_ints_.Get(index);
+}
+inline void TestEvent_TestPayload::set_repeated_ints(int index, ::PROTOBUF_NAMESPACE_ID::int32 value) {
+  repeated_ints_.Set(index, value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.TestEvent.TestPayload.repeated_ints)
+}
+inline void TestEvent_TestPayload::add_repeated_ints(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  repeated_ints_.Add(value);
+  // @@protoc_insertion_point(field_add:perfetto.protos.TestEvent.TestPayload.repeated_ints)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+TestEvent_TestPayload::repeated_ints() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.TestEvent.TestPayload.repeated_ints)
+  return repeated_ints_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+TestEvent_TestPayload::mutable_repeated_ints() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.TestEvent.TestPayload.repeated_ints)
+  return &repeated_ints_;
+}
+
 // optional uint32 remaining_nesting_depth = 3;
 inline bool TestEvent_TestPayload::has_remaining_nesting_depth() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void TestEvent_TestPayload::clear_remaining_nesting_depth() {
   remaining_nesting_depth_ = 0u;
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 TestEvent_TestPayload::remaining_nesting_depth() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TestEvent.TestPayload.remaining_nesting_depth)
   return remaining_nesting_depth_;
 }
 inline void TestEvent_TestPayload::set_remaining_nesting_depth(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   remaining_nesting_depth_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TestEvent.TestPayload.remaining_nesting_depth)
 }
