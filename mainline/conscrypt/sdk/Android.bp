@@ -187,3 +187,4 @@ sdk_snapshot {
     ],
     native_shared_libs: ["conscrypt-module-sdk_libconscrypt_jni@current"],
 }
+
