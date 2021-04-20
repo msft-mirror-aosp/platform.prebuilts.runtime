@@ -45,7 +45,7 @@ struct TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fcpuhp_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -65,6 +65,9 @@ extern CpuhpLatencyFtraceEventDefaultTypeInternal _CpuhpLatencyFtraceEvent_defau
 class CpuhpMultiEnterFtraceEvent;
 class CpuhpMultiEnterFtraceEventDefaultTypeInternal;
 extern CpuhpMultiEnterFtraceEventDefaultTypeInternal _CpuhpMultiEnterFtraceEvent_default_instance_;
+class CpuhpPauseFtraceEvent;
+class CpuhpPauseFtraceEventDefaultTypeInternal;
+extern CpuhpPauseFtraceEventDefaultTypeInternal _CpuhpPauseFtraceEvent_default_instance_;
 }  // namespace protos
 }  // namespace perfetto
 PROTOBUF_NAMESPACE_OPEN
@@ -72,6 +75,7 @@ template<> ::perfetto::protos::CpuhpEnterFtraceEvent* Arena::CreateMaybeMessage<
 template<> ::perfetto::protos::CpuhpExitFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::CpuhpExitFtraceEvent>(Arena*);
 template<> ::perfetto::protos::CpuhpLatencyFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::CpuhpLatencyFtraceEvent>(Arena*);
 template<> ::perfetto::protos::CpuhpMultiEnterFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::CpuhpMultiEnterFtraceEvent>(Arena*);
+template<> ::perfetto::protos::CpuhpPauseFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::CpuhpPauseFtraceEvent>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
 namespace protos {
@@ -664,6 +668,153 @@ class CpuhpLatencyFtraceEvent :
   ::PROTOBUF_NAMESPACE_ID::uint32 state_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fcpuhp_2eproto;
 };
+// -------------------------------------------------------------------
+
+class CpuhpPauseFtraceEvent :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.CpuhpPauseFtraceEvent) */ {
+ public:
+  CpuhpPauseFtraceEvent();
+  virtual ~CpuhpPauseFtraceEvent();
+
+  CpuhpPauseFtraceEvent(const CpuhpPauseFtraceEvent& from);
+  CpuhpPauseFtraceEvent(CpuhpPauseFtraceEvent&& from) noexcept
+    : CpuhpPauseFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline CpuhpPauseFtraceEvent& operator=(const CpuhpPauseFtraceEvent& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CpuhpPauseFtraceEvent& operator=(CpuhpPauseFtraceEvent&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const CpuhpPauseFtraceEvent& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const CpuhpPauseFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const CpuhpPauseFtraceEvent*>(
+               &_CpuhpPauseFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(CpuhpPauseFtraceEvent& a, CpuhpPauseFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CpuhpPauseFtraceEvent* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CpuhpPauseFtraceEvent* New() const final {
+    return CreateMaybeMessage<CpuhpPauseFtraceEvent>(nullptr);
+  }
+
+  CpuhpPauseFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<CpuhpPauseFtraceEvent>(arena);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)
+    final;
+  void CopyFrom(const CpuhpPauseFtraceEvent& from);
+  void MergeFrom(const CpuhpPauseFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
+  void DiscardUnknownFields();
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(CpuhpPauseFtraceEvent* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.CpuhpPauseFtraceEvent";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kActiveCpusFieldNumber = 1,
+    kCpusFieldNumber = 2,
+    kPauseFieldNumber = 3,
+    kTimeFieldNumber = 4,
+  };
+  // optional uint32 active_cpus = 1;
+  bool has_active_cpus() const;
+  void clear_active_cpus();
+  ::PROTOBUF_NAMESPACE_ID::uint32 active_cpus() const;
+  void set_active_cpus(::PROTOBUF_NAMESPACE_ID::uint32 value);
+
+  // optional uint32 cpus = 2;
+  bool has_cpus() const;
+  void clear_cpus();
+  ::PROTOBUF_NAMESPACE_ID::uint32 cpus() const;
+  void set_cpus(::PROTOBUF_NAMESPACE_ID::uint32 value);
+
+  // optional uint32 pause = 3;
+  bool has_pause() const;
+  void clear_pause();
+  ::PROTOBUF_NAMESPACE_ID::uint32 pause() const;
+  void set_pause(::PROTOBUF_NAMESPACE_ID::uint32 value);
+
+  // optional uint32 time = 4;
+  bool has_time() const;
+  void clear_time();
+  ::PROTOBUF_NAMESPACE_ID::uint32 time() const;
+  void set_time(::PROTOBUF_NAMESPACE_ID::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.CpuhpPauseFtraceEvent)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 active_cpus_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cpus_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 pause_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 time_;
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fcpuhp_2eproto;
+};
 // ===================================================================
 
 
@@ -975,9 +1126,87 @@ inline void CpuhpLatencyFtraceEvent::set_time(::PROTOBUF_NAMESPACE_ID::uint64 va
   // @@protoc_insertion_point(field_set:perfetto.protos.CpuhpLatencyFtraceEvent.time)
 }
 
+// -------------------------------------------------------------------
+
+// CpuhpPauseFtraceEvent
+
+// optional uint32 active_cpus = 1;
+inline bool CpuhpPauseFtraceEvent::has_active_cpus() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CpuhpPauseFtraceEvent::clear_active_cpus() {
+  active_cpus_ = 0u;
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CpuhpPauseFtraceEvent::active_cpus() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CpuhpPauseFtraceEvent.active_cpus)
+  return active_cpus_;
+}
+inline void CpuhpPauseFtraceEvent::set_active_cpus(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _has_bits_[0] |= 0x00000001u;
+  active_cpus_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.CpuhpPauseFtraceEvent.active_cpus)
+}
+
+// optional uint32 cpus = 2;
+inline bool CpuhpPauseFtraceEvent::has_cpus() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void CpuhpPauseFtraceEvent::clear_cpus() {
+  cpus_ = 0u;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CpuhpPauseFtraceEvent::cpus() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CpuhpPauseFtraceEvent.cpus)
+  return cpus_;
+}
+inline void CpuhpPauseFtraceEvent::set_cpus(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _has_bits_[0] |= 0x00000002u;
+  cpus_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.CpuhpPauseFtraceEvent.cpus)
+}
+
+// optional uint32 pause = 3;
+inline bool CpuhpPauseFtraceEvent::has_pause() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CpuhpPauseFtraceEvent::clear_pause() {
+  pause_ = 0u;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CpuhpPauseFtraceEvent::pause() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CpuhpPauseFtraceEvent.pause)
+  return pause_;
+}
+inline void CpuhpPauseFtraceEvent::set_pause(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _has_bits_[0] |= 0x00000004u;
+  pause_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.CpuhpPauseFtraceEvent.pause)
+}
+
+// optional uint32 time = 4;
+inline bool CpuhpPauseFtraceEvent::has_time() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void CpuhpPauseFtraceEvent::clear_time() {
+  time_ = 0u;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 CpuhpPauseFtraceEvent::time() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CpuhpPauseFtraceEvent.time)
+  return time_;
+}
+inline void CpuhpPauseFtraceEvent::set_time(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _has_bits_[0] |= 0x00000008u;
+  time_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.CpuhpPauseFtraceEvent.time)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
