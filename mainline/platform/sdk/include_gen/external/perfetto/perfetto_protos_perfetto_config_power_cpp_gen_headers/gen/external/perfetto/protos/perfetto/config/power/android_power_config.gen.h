@@ -50,6 +50,7 @@ class PERFETTO_EXPORT AndroidPowerConfig : public ::protozero::CppMessageObj {
     kBatteryPollMsFieldNumber = 1,
     kBatteryCountersFieldNumber = 2,
     kCollectPowerRailsFieldNumber = 3,
+    kCollectEnergyEstimationBreakdownFieldNumber = 4,
   };
 
   AndroidPowerConfig();
@@ -81,16 +82,21 @@ class PERFETTO_EXPORT AndroidPowerConfig : public ::protozero::CppMessageObj {
   bool collect_power_rails() const { return collect_power_rails_; }
   void set_collect_power_rails(bool value) { collect_power_rails_ = value; _has_field_.set(3); }
 
+  bool has_collect_energy_estimation_breakdown() const { return _has_field_[4]; }
+  bool collect_energy_estimation_breakdown() const { return collect_energy_estimation_breakdown_; }
+  void set_collect_energy_estimation_breakdown(bool value) { collect_energy_estimation_breakdown_ = value; _has_field_.set(4); }
+
  private:
   uint32_t battery_poll_ms_{};
   std::vector<AndroidPowerConfig_BatteryCounters> battery_counters_;
   bool collect_power_rails_{};
+  bool collect_energy_estimation_breakdown_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<4> _has_field_{};
+  std::bitset<5> _has_field_{};
 };
 
 }  // namespace perfetto

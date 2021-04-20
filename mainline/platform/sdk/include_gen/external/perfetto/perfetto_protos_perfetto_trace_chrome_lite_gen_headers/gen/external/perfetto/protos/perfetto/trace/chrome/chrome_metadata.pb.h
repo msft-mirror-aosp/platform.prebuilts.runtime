@@ -87,6 +87,7 @@ enum BackgroundTracingMetadata_TriggerRule_NamedRule_EventType : int {
   BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_NAVIGATION = 2,
   BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_STARTUP = 3,
   BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_REACHED_CODE = 4,
+  BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_CONTENT_TRIGGER = 5,
   BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_TEST_RULE = 1000
 };
 bool BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_IsValid(int value);
@@ -523,6 +524,8 @@ class BackgroundTracingMetadata_TriggerRule_NamedRule :
     BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_STARTUP;
   static constexpr EventType REACHED_CODE =
     BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_REACHED_CODE;
+  static constexpr EventType CONTENT_TRIGGER =
+    BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_CONTENT_TRIGGER;
   static constexpr EventType TEST_RULE =
     BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_TEST_RULE;
   static inline bool EventType_IsValid(int value) {
@@ -549,8 +552,15 @@ class BackgroundTracingMetadata_TriggerRule_NamedRule :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kContentTriggerNameHashFieldNumber = 2,
     kEventTypeFieldNumber = 1,
   };
+  // optional fixed64 content_trigger_name_hash = 2;
+  bool has_content_trigger_name_hash() const;
+  void clear_content_trigger_name_hash();
+  ::PROTOBUF_NAMESPACE_ID::uint64 content_trigger_name_hash() const;
+  void set_content_trigger_name_hash(::PROTOBUF_NAMESPACE_ID::uint64 value);
+
   // optional .perfetto.protos.BackgroundTracingMetadata.TriggerRule.NamedRule.EventType event_type = 1;
   bool has_event_type() const;
   void clear_event_type();
@@ -564,6 +574,7 @@ class BackgroundTracingMetadata_TriggerRule_NamedRule :
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 content_trigger_name_hash_;
   int event_type_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fchrome_2fchrome_5fmetadata_2eproto;
 };
@@ -1081,11 +1092,11 @@ inline void BackgroundTracingMetadata_TriggerRule_HistogramRule::set_histogram_m
 
 // optional .perfetto.protos.BackgroundTracingMetadata.TriggerRule.NamedRule.EventType event_type = 1;
 inline bool BackgroundTracingMetadata_TriggerRule_NamedRule::has_event_type() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void BackgroundTracingMetadata_TriggerRule_NamedRule::clear_event_type() {
   event_type_ = 0;
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::perfetto::protos::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType BackgroundTracingMetadata_TriggerRule_NamedRule::event_type() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.BackgroundTracingMetadata.TriggerRule.NamedRule.event_type)
@@ -1093,9 +1104,27 @@ inline ::perfetto::protos::BackgroundTracingMetadata_TriggerRule_NamedRule_Event
 }
 inline void BackgroundTracingMetadata_TriggerRule_NamedRule::set_event_type(::perfetto::protos::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType value) {
   assert(::perfetto::protos::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_IsValid(value));
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   event_type_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.BackgroundTracingMetadata.TriggerRule.NamedRule.event_type)
+}
+
+// optional fixed64 content_trigger_name_hash = 2;
+inline bool BackgroundTracingMetadata_TriggerRule_NamedRule::has_content_trigger_name_hash() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void BackgroundTracingMetadata_TriggerRule_NamedRule::clear_content_trigger_name_hash() {
+  content_trigger_name_hash_ = PROTOBUF_ULONGLONG(0);
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 BackgroundTracingMetadata_TriggerRule_NamedRule::content_trigger_name_hash() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.BackgroundTracingMetadata.TriggerRule.NamedRule.content_trigger_name_hash)
+  return content_trigger_name_hash_;
+}
+inline void BackgroundTracingMetadata_TriggerRule_NamedRule::set_content_trigger_name_hash(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _has_bits_[0] |= 0x00000001u;
+  content_trigger_name_hash_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.BackgroundTracingMetadata.TriggerRule.NamedRule.content_trigger_name_hash)
 }
 
 // -------------------------------------------------------------------
