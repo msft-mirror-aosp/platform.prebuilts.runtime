@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "perfetto/protozero/field_writer.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -41,10 +42,44 @@ class AndroidLogPacket : public ::protozero::Message {
   };
   using LogEvent = ::perfetto::protos::pbzero::AndroidLogPacket_LogEvent;
   using Stats = ::perfetto::protos::pbzero::AndroidLogPacket_Stats;
+
+  using FieldMetadata_Events =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      AndroidLogPacket_LogEvent,
+      AndroidLogPacket>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Events kEvents() { return {}; }
   template <typename T = AndroidLogPacket_LogEvent> T* add_events() {
     return BeginNestedMessage<T>(1);
   }
 
+
+  using FieldMetadata_Stats =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      AndroidLogPacket_Stats,
+      AndroidLogPacket>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Stats kStats() { return {}; }
   template <typename T = AndroidLogPacket_Stats> T* set_stats() {
     return BeginNestedMessage<T>(2);
   }
@@ -72,14 +107,80 @@ class AndroidLogPacket_Stats : public ::protozero::Message {
     kNumFailedFieldNumber = 2,
     kNumSkippedFieldNumber = 3,
   };
+
+  using FieldMetadata_NumTotal =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      AndroidLogPacket_Stats>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_NumTotal kNumTotal() { return {}; }
   void set_num_total(uint64_t value) {
-    AppendVarInt(1, value);
+    static constexpr uint32_t field_id = FieldMetadata_NumTotal::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_NumFailed =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      AndroidLogPacket_Stats>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_NumFailed kNumFailed() { return {}; }
   void set_num_failed(uint64_t value) {
-    AppendVarInt(2, value);
+    static constexpr uint32_t field_id = FieldMetadata_NumFailed::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_NumSkipped =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      AndroidLogPacket_Stats>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_NumSkipped kNumSkipped() { return {}; }
   void set_num_skipped(uint64_t value) {
-    AppendVarInt(3, value);
+    static constexpr uint32_t field_id = FieldMetadata_NumSkipped::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
   }
 };
 
@@ -123,36 +224,229 @@ class AndroidLogPacket_LogEvent : public ::protozero::Message {
     kArgsFieldNumber = 9,
   };
   using Arg = ::perfetto::protos::pbzero::AndroidLogPacket_LogEvent_Arg;
+
+  using FieldMetadata_LogId =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::AndroidLogId,
+      AndroidLogPacket_LogEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_LogId kLogId() { return {}; }
   void set_log_id(::perfetto::protos::pbzero::AndroidLogId value) {
-    AppendTinyVarInt(1, value);
+    static constexpr uint32_t field_id = FieldMetadata_LogId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_Pid =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      AndroidLogPacket_LogEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
-    AppendVarInt(2, value);
+    static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_Tid =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      AndroidLogPacket_LogEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Tid kTid() { return {}; }
   void set_tid(int32_t value) {
-    AppendVarInt(3, value);
+    static constexpr uint32_t field_id = FieldMetadata_Tid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_Uid =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      AndroidLogPacket_LogEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Uid kUid() { return {}; }
   void set_uid(int32_t value) {
-    AppendVarInt(4, value);
+    static constexpr uint32_t field_id = FieldMetadata_Uid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_Timestamp =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      AndroidLogPacket_LogEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Timestamp kTimestamp() { return {}; }
   void set_timestamp(uint64_t value) {
-    AppendVarInt(5, value);
+    static constexpr uint32_t field_id = FieldMetadata_Timestamp::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
   }
-  void set_tag(const std::string& value) {
-    AppendBytes(6, value.data(), value.size());
-  }
+
+  using FieldMetadata_Tag =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      AndroidLogPacket_LogEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Tag kTag() { return {}; }
   void set_tag(const char* data, size_t size) {
-    AppendBytes(6, data, size);
+    AppendBytes(FieldMetadata_Tag::kFieldId, data, size);
   }
+  void set_tag(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Tag::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Prio =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::AndroidLogPriority,
+      AndroidLogPacket_LogEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Prio kPrio() { return {}; }
   void set_prio(::perfetto::protos::pbzero::AndroidLogPriority value) {
-    AppendTinyVarInt(7, value);
+    static constexpr uint32_t field_id = FieldMetadata_Prio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
   }
-  void set_message(const std::string& value) {
-    AppendBytes(8, value.data(), value.size());
-  }
+
+  using FieldMetadata_Message =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      AndroidLogPacket_LogEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Message kMessage() { return {}; }
   void set_message(const char* data, size_t size) {
-    AppendBytes(8, data, size);
+    AppendBytes(FieldMetadata_Message::kFieldId, data, size);
   }
+  void set_message(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Message::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Args =
+    ::protozero::proto_utils::FieldMetadata<
+      9,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      AndroidLogPacket_LogEvent_Arg,
+      AndroidLogPacket_LogEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Args kArgs() { return {}; }
   template <typename T = AndroidLogPacket_LogEvent_Arg> T* add_args() {
     return BeginNestedMessage<T>(9);
   }
@@ -183,23 +477,111 @@ class AndroidLogPacket_LogEvent_Arg : public ::protozero::Message {
     kFloatValueFieldNumber = 3,
     kStringValueFieldNumber = 4,
   };
-  void set_name(const std::string& value) {
-    AppendBytes(1, value.data(), value.size());
-  }
+
+  using FieldMetadata_Name =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      AndroidLogPacket_LogEvent_Arg>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
-    AppendBytes(1, data, size);
+    AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
+  void set_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_IntValue =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt64,
+      int64_t,
+      AndroidLogPacket_LogEvent_Arg>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IntValue kIntValue() { return {}; }
   void set_int_value(int64_t value) {
-    AppendVarInt(2, value);
+    static constexpr uint32_t field_id = FieldMetadata_IntValue::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_FloatValue =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kFloat,
+      float,
+      AndroidLogPacket_LogEvent_Arg>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_FloatValue kFloatValue() { return {}; }
   void set_float_value(float value) {
-    AppendFixed(3, value);
+    static constexpr uint32_t field_id = FieldMetadata_FloatValue::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kFloat>
+        ::Append(*this, field_id, value);
   }
-  void set_string_value(const std::string& value) {
-    AppendBytes(4, value.data(), value.size());
-  }
+
+  using FieldMetadata_StringValue =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      AndroidLogPacket_LogEvent_Arg>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_StringValue kStringValue() { return {}; }
   void set_string_value(const char* data, size_t size) {
-    AppendBytes(4, data, size);
+    AppendBytes(FieldMetadata_StringValue::kFieldId, data, size);
+  }
+  void set_string_value(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_StringValue::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
   }
 };
 

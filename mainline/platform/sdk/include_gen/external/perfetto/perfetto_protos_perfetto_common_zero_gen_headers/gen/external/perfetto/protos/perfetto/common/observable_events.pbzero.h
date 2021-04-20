@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "perfetto/protozero/field_writer.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -61,12 +62,51 @@ class ObservableEvents : public ::protozero::Message {
   static const Type TYPE_ALL_DATA_SOURCES_STARTED = ObservableEvents_Type_TYPE_ALL_DATA_SOURCES_STARTED;
   static const DataSourceInstanceState DATA_SOURCE_INSTANCE_STATE_STOPPED = ObservableEvents_DataSourceInstanceState_DATA_SOURCE_INSTANCE_STATE_STOPPED;
   static const DataSourceInstanceState DATA_SOURCE_INSTANCE_STATE_STARTED = ObservableEvents_DataSourceInstanceState_DATA_SOURCE_INSTANCE_STATE_STARTED;
+
+  using FieldMetadata_InstanceStateChanges =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ObservableEvents_DataSourceInstanceStateChange,
+      ObservableEvents>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_InstanceStateChanges kInstanceStateChanges() { return {}; }
   template <typename T = ObservableEvents_DataSourceInstanceStateChange> T* add_instance_state_changes() {
     return BeginNestedMessage<T>(1);
   }
 
+
+  using FieldMetadata_AllDataSourcesStarted =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      ObservableEvents>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_AllDataSourcesStarted kAllDataSourcesStarted() { return {}; }
   void set_all_data_sources_started(bool value) {
-    AppendTinyVarInt(2, value);
+    static constexpr uint32_t field_id = FieldMetadata_AllDataSourcesStarted::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
   }
 };
 
@@ -91,20 +131,86 @@ class ObservableEvents_DataSourceInstanceStateChange : public ::protozero::Messa
     kDataSourceNameFieldNumber = 2,
     kStateFieldNumber = 3,
   };
-  void set_producer_name(const std::string& value) {
-    AppendBytes(1, value.data(), value.size());
-  }
+
+  using FieldMetadata_ProducerName =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      ObservableEvents_DataSourceInstanceStateChange>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ProducerName kProducerName() { return {}; }
   void set_producer_name(const char* data, size_t size) {
-    AppendBytes(1, data, size);
+    AppendBytes(FieldMetadata_ProducerName::kFieldId, data, size);
   }
-  void set_data_source_name(const std::string& value) {
-    AppendBytes(2, value.data(), value.size());
+  void set_producer_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_ProducerName::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_DataSourceName =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      ObservableEvents_DataSourceInstanceStateChange>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_DataSourceName kDataSourceName() { return {}; }
   void set_data_source_name(const char* data, size_t size) {
-    AppendBytes(2, data, size);
+    AppendBytes(FieldMetadata_DataSourceName::kFieldId, data, size);
   }
+  void set_data_source_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_DataSourceName::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_State =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceState,
+      ObservableEvents_DataSourceInstanceStateChange>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_State kState() { return {}; }
   void set_state(::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceState value) {
-    AppendTinyVarInt(3, value);
+    static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
   }
 };
 

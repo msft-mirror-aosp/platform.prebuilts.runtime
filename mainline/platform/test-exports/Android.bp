@@ -70,3 +70,4 @@ module_exports_snapshot {
     visibility: ["//visibility:public"],
     native_shared_libs: ["platform-mainline-test-exports_libtombstoned_client@current"],
 }
+

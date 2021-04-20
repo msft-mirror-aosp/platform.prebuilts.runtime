@@ -473,6 +473,7 @@ class FtraceEvent :
     kG2DTracingMarkWrite = 349,
     kMaliTracingMarkWrite = 350,
     kDmaHeapStat = 351,
+    kCpuhpPause = 352,
     EVENT_NOT_SET = 0,
   };
 
@@ -879,6 +880,7 @@ class FtraceEvent :
     kG2DTracingMarkWriteFieldNumber = 349,
     kMaliTracingMarkWriteFieldNumber = 350,
     kDmaHeapStatFieldNumber = 351,
+    kCpuhpPauseFieldNumber = 352,
   };
   // optional uint64 timestamp = 1;
   bool has_timestamp() const;
@@ -3548,6 +3550,14 @@ class FtraceEvent :
   ::perfetto::protos::DmaHeapStatFtraceEvent* mutable_dma_heap_stat();
   void set_allocated_dma_heap_stat(::perfetto::protos::DmaHeapStatFtraceEvent* dma_heap_stat);
 
+  // optional .perfetto.protos.CpuhpPauseFtraceEvent cpuhp_pause = 352;
+  bool has_cpuhp_pause() const;
+  void clear_cpuhp_pause();
+  const ::perfetto::protos::CpuhpPauseFtraceEvent& cpuhp_pause() const;
+  ::perfetto::protos::CpuhpPauseFtraceEvent* release_cpuhp_pause();
+  ::perfetto::protos::CpuhpPauseFtraceEvent* mutable_cpuhp_pause();
+  void set_allocated_cpuhp_pause(::perfetto::protos::CpuhpPauseFtraceEvent* cpuhp_pause);
+
   void clear_event();
   EventCase event_case() const;
   // @@protoc_insertion_point(class_scope:perfetto.protos.FtraceEvent)
@@ -3885,6 +3895,7 @@ class FtraceEvent :
   void set_has_g2d_tracing_mark_write();
   void set_has_mali_tracing_mark_write();
   void set_has_dma_heap_stat();
+  void set_has_cpuhp_pause();
 
   inline bool has_event() const;
   inline void clear_has_event();
@@ -4228,6 +4239,7 @@ class FtraceEvent :
     ::perfetto::protos::G2dTracingMarkWriteFtraceEvent* g2d_tracing_mark_write_;
     ::perfetto::protos::MaliTracingMarkWriteFtraceEvent* mali_tracing_mark_write_;
     ::perfetto::protos::DmaHeapStatFtraceEvent* dma_heap_stat_;
+    ::perfetto::protos::CpuhpPauseFtraceEvent* cpuhp_pause_;
   } event_;
   ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
 
@@ -15898,6 +15910,41 @@ inline ::perfetto::protos::DmaHeapStatFtraceEvent* FtraceEvent::mutable_dma_heap
   }
   // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.dma_heap_stat)
   return event_.dma_heap_stat_;
+}
+
+// optional .perfetto.protos.CpuhpPauseFtraceEvent cpuhp_pause = 352;
+inline bool FtraceEvent::has_cpuhp_pause() const {
+  return event_case() == kCpuhpPause;
+}
+inline void FtraceEvent::set_has_cpuhp_pause() {
+  _oneof_case_[0] = kCpuhpPause;
+}
+inline ::perfetto::protos::CpuhpPauseFtraceEvent* FtraceEvent::release_cpuhp_pause() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.cpuhp_pause)
+  if (has_cpuhp_pause()) {
+    clear_has_event();
+      ::perfetto::protos::CpuhpPauseFtraceEvent* temp = event_.cpuhp_pause_;
+    event_.cpuhp_pause_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::CpuhpPauseFtraceEvent& FtraceEvent::cpuhp_pause() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.cpuhp_pause)
+  return has_cpuhp_pause()
+      ? *event_.cpuhp_pause_
+      : *reinterpret_cast< ::perfetto::protos::CpuhpPauseFtraceEvent*>(&::perfetto::protos::_CpuhpPauseFtraceEvent_default_instance_);
+}
+inline ::perfetto::protos::CpuhpPauseFtraceEvent* FtraceEvent::mutable_cpuhp_pause() {
+  if (!has_cpuhp_pause()) {
+    clear_event();
+    set_has_cpuhp_pause();
+    event_.cpuhp_pause_ = CreateMaybeMessage< ::perfetto::protos::CpuhpPauseFtraceEvent >(
+        GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.cpuhp_pause)
+  return event_.cpuhp_pause_;
 }
 
 inline bool FtraceEvent::has_event() const {

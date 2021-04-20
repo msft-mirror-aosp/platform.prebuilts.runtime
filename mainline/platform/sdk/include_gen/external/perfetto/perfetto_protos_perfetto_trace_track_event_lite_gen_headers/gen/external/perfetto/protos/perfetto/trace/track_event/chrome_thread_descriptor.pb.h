@@ -69,16 +69,44 @@ enum ChromeThreadDescriptor_ThreadType : int {
   ChromeThreadDescriptor_ThreadType_THREAD_UNSPECIFIED = 0,
   ChromeThreadDescriptor_ThreadType_THREAD_MAIN = 1,
   ChromeThreadDescriptor_ThreadType_THREAD_IO = 2,
-  ChromeThreadDescriptor_ThreadType_THREAD_NETWORK_SERVICE = 12,
   ChromeThreadDescriptor_ThreadType_THREAD_POOL_BG_WORKER = 3,
   ChromeThreadDescriptor_ThreadType_THREAD_POOL_FG_WORKER = 4,
-  ChromeThreadDescriptor_ThreadType_THREAD_POOL_BG_BLOCKING = 6,
   ChromeThreadDescriptor_ThreadType_THREAD_POOL_FG_BLOCKING = 5,
+  ChromeThreadDescriptor_ThreadType_THREAD_POOL_BG_BLOCKING = 6,
   ChromeThreadDescriptor_ThreadType_THREAD_POOL_SERVICE = 7,
   ChromeThreadDescriptor_ThreadType_THREAD_COMPOSITOR = 8,
   ChromeThreadDescriptor_ThreadType_THREAD_VIZ_COMPOSITOR = 9,
   ChromeThreadDescriptor_ThreadType_THREAD_COMPOSITOR_WORKER = 10,
   ChromeThreadDescriptor_ThreadType_THREAD_SERVICE_WORKER = 11,
+  ChromeThreadDescriptor_ThreadType_THREAD_NETWORK_SERVICE = 12,
+  ChromeThreadDescriptor_ThreadType_THREAD_CHILD_IO = 13,
+  ChromeThreadDescriptor_ThreadType_THREAD_BROWSER_IO = 14,
+  ChromeThreadDescriptor_ThreadType_THREAD_BROWSER_MAIN = 15,
+  ChromeThreadDescriptor_ThreadType_THREAD_RENDERER_MAIN = 16,
+  ChromeThreadDescriptor_ThreadType_THREAD_UTILITY_MAIN = 17,
+  ChromeThreadDescriptor_ThreadType_THREAD_GPU_MAIN = 18,
+  ChromeThreadDescriptor_ThreadType_THREAD_CACHE_BLOCKFILE = 19,
+  ChromeThreadDescriptor_ThreadType_THREAD_MEDIA = 20,
+  ChromeThreadDescriptor_ThreadType_THREAD_AUDIO_OUTPUTDEVICE = 21,
+  ChromeThreadDescriptor_ThreadType_THREAD_AUDIO_INPUTDEVICE = 22,
+  ChromeThreadDescriptor_ThreadType_THREAD_GPU_MEMORY = 23,
+  ChromeThreadDescriptor_ThreadType_THREAD_GPU_VSYNC = 24,
+  ChromeThreadDescriptor_ThreadType_THREAD_DXA_VIDEODECODER = 25,
+  ChromeThreadDescriptor_ThreadType_THREAD_BROWSER_WATCHDOG = 26,
+  ChromeThreadDescriptor_ThreadType_THREAD_WEBRTC_NETWORK = 27,
+  ChromeThreadDescriptor_ThreadType_THREAD_WINDOW_OWNER = 28,
+  ChromeThreadDescriptor_ThreadType_THREAD_WEBRTC_SIGNALING = 29,
+  ChromeThreadDescriptor_ThreadType_THREAD_WEBRTC_WORKER = 30,
+  ChromeThreadDescriptor_ThreadType_THREAD_PPAPI_MAIN = 31,
+  ChromeThreadDescriptor_ThreadType_THREAD_GPU_WATCHDOG = 32,
+  ChromeThreadDescriptor_ThreadType_THREAD_SWAPPER = 33,
+  ChromeThreadDescriptor_ThreadType_THREAD_GAMEPAD_POLLING = 34,
+  ChromeThreadDescriptor_ThreadType_THREAD_WEBCRYPTO = 35,
+  ChromeThreadDescriptor_ThreadType_THREAD_DATABASE = 36,
+  ChromeThreadDescriptor_ThreadType_THREAD_PROXYRESOLVER = 37,
+  ChromeThreadDescriptor_ThreadType_THREAD_DEVTOOLSADB = 38,
+  ChromeThreadDescriptor_ThreadType_THREAD_NETWORKCONFIGWATCHER = 39,
+  ChromeThreadDescriptor_ThreadType_THREAD_WASAPI_RENDER = 40,
   ChromeThreadDescriptor_ThreadType_THREAD_MEMORY_INFRA = 50,
   ChromeThreadDescriptor_ThreadType_THREAD_SAMPLING_PROFILER = 51
 };
@@ -206,16 +234,14 @@ class ChromeThreadDescriptor :
     ChromeThreadDescriptor_ThreadType_THREAD_MAIN;
   static constexpr ThreadType THREAD_IO =
     ChromeThreadDescriptor_ThreadType_THREAD_IO;
-  static constexpr ThreadType THREAD_NETWORK_SERVICE =
-    ChromeThreadDescriptor_ThreadType_THREAD_NETWORK_SERVICE;
   static constexpr ThreadType THREAD_POOL_BG_WORKER =
     ChromeThreadDescriptor_ThreadType_THREAD_POOL_BG_WORKER;
   static constexpr ThreadType THREAD_POOL_FG_WORKER =
     ChromeThreadDescriptor_ThreadType_THREAD_POOL_FG_WORKER;
-  static constexpr ThreadType THREAD_POOL_BG_BLOCKING =
-    ChromeThreadDescriptor_ThreadType_THREAD_POOL_BG_BLOCKING;
   static constexpr ThreadType THREAD_POOL_FG_BLOCKING =
     ChromeThreadDescriptor_ThreadType_THREAD_POOL_FG_BLOCKING;
+  static constexpr ThreadType THREAD_POOL_BG_BLOCKING =
+    ChromeThreadDescriptor_ThreadType_THREAD_POOL_BG_BLOCKING;
   static constexpr ThreadType THREAD_POOL_SERVICE =
     ChromeThreadDescriptor_ThreadType_THREAD_POOL_SERVICE;
   static constexpr ThreadType THREAD_COMPOSITOR =
@@ -226,6 +252,64 @@ class ChromeThreadDescriptor :
     ChromeThreadDescriptor_ThreadType_THREAD_COMPOSITOR_WORKER;
   static constexpr ThreadType THREAD_SERVICE_WORKER =
     ChromeThreadDescriptor_ThreadType_THREAD_SERVICE_WORKER;
+  static constexpr ThreadType THREAD_NETWORK_SERVICE =
+    ChromeThreadDescriptor_ThreadType_THREAD_NETWORK_SERVICE;
+  static constexpr ThreadType THREAD_CHILD_IO =
+    ChromeThreadDescriptor_ThreadType_THREAD_CHILD_IO;
+  static constexpr ThreadType THREAD_BROWSER_IO =
+    ChromeThreadDescriptor_ThreadType_THREAD_BROWSER_IO;
+  static constexpr ThreadType THREAD_BROWSER_MAIN =
+    ChromeThreadDescriptor_ThreadType_THREAD_BROWSER_MAIN;
+  static constexpr ThreadType THREAD_RENDERER_MAIN =
+    ChromeThreadDescriptor_ThreadType_THREAD_RENDERER_MAIN;
+  static constexpr ThreadType THREAD_UTILITY_MAIN =
+    ChromeThreadDescriptor_ThreadType_THREAD_UTILITY_MAIN;
+  static constexpr ThreadType THREAD_GPU_MAIN =
+    ChromeThreadDescriptor_ThreadType_THREAD_GPU_MAIN;
+  static constexpr ThreadType THREAD_CACHE_BLOCKFILE =
+    ChromeThreadDescriptor_ThreadType_THREAD_CACHE_BLOCKFILE;
+  static constexpr ThreadType THREAD_MEDIA =
+    ChromeThreadDescriptor_ThreadType_THREAD_MEDIA;
+  static constexpr ThreadType THREAD_AUDIO_OUTPUTDEVICE =
+    ChromeThreadDescriptor_ThreadType_THREAD_AUDIO_OUTPUTDEVICE;
+  static constexpr ThreadType THREAD_AUDIO_INPUTDEVICE =
+    ChromeThreadDescriptor_ThreadType_THREAD_AUDIO_INPUTDEVICE;
+  static constexpr ThreadType THREAD_GPU_MEMORY =
+    ChromeThreadDescriptor_ThreadType_THREAD_GPU_MEMORY;
+  static constexpr ThreadType THREAD_GPU_VSYNC =
+    ChromeThreadDescriptor_ThreadType_THREAD_GPU_VSYNC;
+  static constexpr ThreadType THREAD_DXA_VIDEODECODER =
+    ChromeThreadDescriptor_ThreadType_THREAD_DXA_VIDEODECODER;
+  static constexpr ThreadType THREAD_BROWSER_WATCHDOG =
+    ChromeThreadDescriptor_ThreadType_THREAD_BROWSER_WATCHDOG;
+  static constexpr ThreadType THREAD_WEBRTC_NETWORK =
+    ChromeThreadDescriptor_ThreadType_THREAD_WEBRTC_NETWORK;
+  static constexpr ThreadType THREAD_WINDOW_OWNER =
+    ChromeThreadDescriptor_ThreadType_THREAD_WINDOW_OWNER;
+  static constexpr ThreadType THREAD_WEBRTC_SIGNALING =
+    ChromeThreadDescriptor_ThreadType_THREAD_WEBRTC_SIGNALING;
+  static constexpr ThreadType THREAD_WEBRTC_WORKER =
+    ChromeThreadDescriptor_ThreadType_THREAD_WEBRTC_WORKER;
+  static constexpr ThreadType THREAD_PPAPI_MAIN =
+    ChromeThreadDescriptor_ThreadType_THREAD_PPAPI_MAIN;
+  static constexpr ThreadType THREAD_GPU_WATCHDOG =
+    ChromeThreadDescriptor_ThreadType_THREAD_GPU_WATCHDOG;
+  static constexpr ThreadType THREAD_SWAPPER =
+    ChromeThreadDescriptor_ThreadType_THREAD_SWAPPER;
+  static constexpr ThreadType THREAD_GAMEPAD_POLLING =
+    ChromeThreadDescriptor_ThreadType_THREAD_GAMEPAD_POLLING;
+  static constexpr ThreadType THREAD_WEBCRYPTO =
+    ChromeThreadDescriptor_ThreadType_THREAD_WEBCRYPTO;
+  static constexpr ThreadType THREAD_DATABASE =
+    ChromeThreadDescriptor_ThreadType_THREAD_DATABASE;
+  static constexpr ThreadType THREAD_PROXYRESOLVER =
+    ChromeThreadDescriptor_ThreadType_THREAD_PROXYRESOLVER;
+  static constexpr ThreadType THREAD_DEVTOOLSADB =
+    ChromeThreadDescriptor_ThreadType_THREAD_DEVTOOLSADB;
+  static constexpr ThreadType THREAD_NETWORKCONFIGWATCHER =
+    ChromeThreadDescriptor_ThreadType_THREAD_NETWORKCONFIGWATCHER;
+  static constexpr ThreadType THREAD_WASAPI_RENDER =
+    ChromeThreadDescriptor_ThreadType_THREAD_WASAPI_RENDER;
   static constexpr ThreadType THREAD_MEMORY_INFRA =
     ChromeThreadDescriptor_ThreadType_THREAD_MEMORY_INFRA;
   static constexpr ThreadType THREAD_SAMPLING_PROFILER =

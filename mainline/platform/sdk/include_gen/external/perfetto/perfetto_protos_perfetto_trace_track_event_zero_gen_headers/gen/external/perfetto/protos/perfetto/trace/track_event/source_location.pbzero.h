@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "perfetto/protozero/field_writer.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -40,23 +41,111 @@ class SourceLocation : public ::protozero::Message {
     kFunctionNameFieldNumber = 3,
     kLineNumberFieldNumber = 4,
   };
+
+  using FieldMetadata_Iid =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      SourceLocation>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Iid kIid() { return {}; }
   void set_iid(uint64_t value) {
-    AppendVarInt(1, value);
+    static constexpr uint32_t field_id = FieldMetadata_Iid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
   }
-  void set_file_name(const std::string& value) {
-    AppendBytes(2, value.data(), value.size());
-  }
+
+  using FieldMetadata_FileName =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      SourceLocation>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_FileName kFileName() { return {}; }
   void set_file_name(const char* data, size_t size) {
-    AppendBytes(2, data, size);
+    AppendBytes(FieldMetadata_FileName::kFieldId, data, size);
   }
-  void set_function_name(const std::string& value) {
-    AppendBytes(3, value.data(), value.size());
+  void set_file_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_FileName::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_FunctionName =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      SourceLocation>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_FunctionName kFunctionName() { return {}; }
   void set_function_name(const char* data, size_t size) {
-    AppendBytes(3, data, size);
+    AppendBytes(FieldMetadata_FunctionName::kFieldId, data, size);
   }
+  void set_function_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_FunctionName::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_LineNumber =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SourceLocation>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_LineNumber kLineNumber() { return {}; }
   void set_line_number(uint32_t value) {
-    AppendVarInt(4, value);
+    static constexpr uint32_t field_id = FieldMetadata_LineNumber::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
   }
 };
 

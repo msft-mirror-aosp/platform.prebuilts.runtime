@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "perfetto/protozero/field_writer.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -118,24 +119,151 @@ class ChromeLatencyInfo : public ::protozero::Message {
   static const LatencyComponentType COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME = ChromeLatencyInfo_LatencyComponentType_COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME;
   static const LatencyComponentType COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER;
   static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP;
+
+  using FieldMetadata_TraceId =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt64,
+      int64_t,
+      ChromeLatencyInfo>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_TraceId kTraceId() { return {}; }
   void set_trace_id(int64_t value) {
-    AppendVarInt(1, value);
+    static constexpr uint32_t field_id = FieldMetadata_TraceId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_Step =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::ChromeLatencyInfo_Step,
+      ChromeLatencyInfo>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Step kStep() { return {}; }
   void set_step(::perfetto::protos::pbzero::ChromeLatencyInfo_Step value) {
-    AppendTinyVarInt(2, value);
+    static constexpr uint32_t field_id = FieldMetadata_Step::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_FrameTreeNodeId =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      ChromeLatencyInfo>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_FrameTreeNodeId kFrameTreeNodeId() { return {}; }
   void set_frame_tree_node_id(int32_t value) {
-    AppendVarInt(3, value);
+    static constexpr uint32_t field_id = FieldMetadata_FrameTreeNodeId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_ComponentInfo =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ChromeLatencyInfo_ComponentInfo,
+      ChromeLatencyInfo>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ComponentInfo kComponentInfo() { return {}; }
   template <typename T = ChromeLatencyInfo_ComponentInfo> T* add_component_info() {
     return BeginNestedMessage<T>(4);
   }
 
+
+  using FieldMetadata_IsCoalesced =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      ChromeLatencyInfo>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IsCoalesced kIsCoalesced() { return {}; }
   void set_is_coalesced(bool value) {
-    AppendTinyVarInt(5, value);
+    static constexpr uint32_t field_id = FieldMetadata_IsCoalesced::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_GestureScrollId =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt64,
+      int64_t,
+      ChromeLatencyInfo>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_GestureScrollId kGestureScrollId() { return {}; }
   void set_gesture_scroll_id(int64_t value) {
-    AppendVarInt(6, value);
+    static constexpr uint32_t field_id = FieldMetadata_GestureScrollId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
   }
 };
 
@@ -157,11 +285,55 @@ class ChromeLatencyInfo_ComponentInfo : public ::protozero::Message {
     kComponentTypeFieldNumber = 1,
     kTimeUsFieldNumber = 2,
   };
+
+  using FieldMetadata_ComponentType =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType,
+      ChromeLatencyInfo_ComponentInfo>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ComponentType kComponentType() { return {}; }
   void set_component_type(::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType value) {
-    AppendTinyVarInt(1, value);
+    static constexpr uint32_t field_id = FieldMetadata_ComponentType::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_TimeUs =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      ChromeLatencyInfo_ComponentInfo>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_TimeUs kTimeUs() { return {}; }
   void set_time_us(uint64_t value) {
-    AppendVarInt(2, value);
+    static constexpr uint32_t field_id = FieldMetadata_TimeUs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
   }
 };
 
