@@ -76,6 +76,7 @@
 #include "protos/perfetto/trace/track_event/track_event.pb.h"
 #include "protos/perfetto/trace/trigger.pb.h"
 #include "protos/perfetto/trace/test_event.pb.h"
+#include "protos/perfetto/trace/ui_state.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_protos_2fperfetto_2ftrace_2ftrace_5fpacket_2eproto
@@ -206,6 +207,7 @@ class TracePacket :
     kMemoryTrackerSnapshot = 73,
     kFrameTimelineEvent = 76,
     kAndroidEnergyEstimationBreakdown = 77,
+    kUiState = 78,
     kProfiledFrameSymbols = 55,
     kModuleSymbols = 61,
     kDeobfuscationMapping = 64,
@@ -373,6 +375,7 @@ class TracePacket :
     kMemoryTrackerSnapshotFieldNumber = 73,
     kFrameTimelineEventFieldNumber = 76,
     kAndroidEnergyEstimationBreakdownFieldNumber = 77,
+    kUiStateFieldNumber = 78,
     kProfiledFrameSymbolsFieldNumber = 55,
     kModuleSymbolsFieldNumber = 61,
     kDeobfuscationMappingFieldNumber = 64,
@@ -745,6 +748,14 @@ class TracePacket :
   ::perfetto::protos::AndroidEnergyEstimationBreakdown* mutable_android_energy_estimation_breakdown();
   void set_allocated_android_energy_estimation_breakdown(::perfetto::protos::AndroidEnergyEstimationBreakdown* android_energy_estimation_breakdown);
 
+  // optional .perfetto.protos.UiState ui_state = 78;
+  bool has_ui_state() const;
+  void clear_ui_state();
+  const ::perfetto::protos::UiState& ui_state() const;
+  ::perfetto::protos::UiState* release_ui_state();
+  ::perfetto::protos::UiState* mutable_ui_state();
+  void set_allocated_ui_state(::perfetto::protos::UiState* ui_state);
+
   // optional .perfetto.protos.ProfiledFrameSymbols profiled_frame_symbols = 55;
   bool has_profiled_frame_symbols() const;
   void clear_profiled_frame_symbols();
@@ -901,6 +912,7 @@ class TracePacket :
   void set_has_memory_tracker_snapshot();
   void set_has_frame_timeline_event();
   void set_has_android_energy_estimation_breakdown();
+  void set_has_ui_state();
   void set_has_profiled_frame_symbols();
   void set_has_module_symbols();
   void set_has_deobfuscation_mapping();
@@ -975,6 +987,7 @@ class TracePacket :
     ::perfetto::protos::MemoryTrackerSnapshot* memory_tracker_snapshot_;
     ::perfetto::protos::FrameTimelineEvent* frame_timeline_event_;
     ::perfetto::protos::AndroidEnergyEstimationBreakdown* android_energy_estimation_breakdown_;
+    ::perfetto::protos::UiState* ui_state_;
     ::perfetto::protos::ProfiledFrameSymbols* profiled_frame_symbols_;
     ::perfetto::protos::ModuleSymbols* module_symbols_;
     ::perfetto::protos::DeobfuscationMapping* deobfuscation_mapping_;
@@ -2409,6 +2422,41 @@ inline ::perfetto::protos::AndroidEnergyEstimationBreakdown* TracePacket::mutabl
   }
   // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.android_energy_estimation_breakdown)
   return data_.android_energy_estimation_breakdown_;
+}
+
+// optional .perfetto.protos.UiState ui_state = 78;
+inline bool TracePacket::has_ui_state() const {
+  return data_case() == kUiState;
+}
+inline void TracePacket::set_has_ui_state() {
+  _oneof_case_[0] = kUiState;
+}
+inline ::perfetto::protos::UiState* TracePacket::release_ui_state() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.ui_state)
+  if (has_ui_state()) {
+    clear_has_data();
+      ::perfetto::protos::UiState* temp = data_.ui_state_;
+    data_.ui_state_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::UiState& TracePacket::ui_state() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.ui_state)
+  return has_ui_state()
+      ? *data_.ui_state_
+      : *reinterpret_cast< ::perfetto::protos::UiState*>(&::perfetto::protos::_UiState_default_instance_);
+}
+inline ::perfetto::protos::UiState* TracePacket::mutable_ui_state() {
+  if (!has_ui_state()) {
+    clear_data();
+    set_has_ui_state();
+    data_.ui_state_ = CreateMaybeMessage< ::perfetto::protos::UiState >(
+        GetArenaNoVirtual());
+  }
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.ui_state)
+  return data_.ui_state_;
 }
 
 // optional .perfetto.protos.ProfiledFrameSymbols profiled_frame_symbols = 55;
