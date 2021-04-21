@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "perfetto/protozero/field_writer.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -39,17 +40,83 @@ class AndroidLogConfig : public ::protozero::Message {
     kMinPrioFieldNumber = 3,
     kFilterTagsFieldNumber = 4,
   };
+
+  using FieldMetadata_LogIds =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::AndroidLogId,
+      AndroidLogConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_LogIds kLogIds() { return {}; }
   void add_log_ids(::perfetto::protos::pbzero::AndroidLogId value) {
-    AppendTinyVarInt(1, value);
+    static constexpr uint32_t field_id = FieldMetadata_LogIds::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_MinPrio =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::AndroidLogPriority,
+      AndroidLogConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MinPrio kMinPrio() { return {}; }
   void set_min_prio(::perfetto::protos::pbzero::AndroidLogPriority value) {
-    AppendTinyVarInt(3, value);
+    static constexpr uint32_t field_id = FieldMetadata_MinPrio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
   }
-  void add_filter_tags(const std::string& value) {
-    AppendBytes(4, value.data(), value.size());
-  }
+
+  using FieldMetadata_FilterTags =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      AndroidLogConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_FilterTags kFilterTags() { return {}; }
   void add_filter_tags(const char* data, size_t size) {
-    AppendBytes(4, data, size);
+    AppendBytes(FieldMetadata_FilterTags::kFieldId, data, size);
+  }
+  void add_filter_tags(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_FilterTags::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
   }
 };
 

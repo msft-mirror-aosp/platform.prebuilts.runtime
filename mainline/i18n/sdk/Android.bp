@@ -330,7 +330,10 @@ cc_prebuilt_library_shared {
     unique_host_soname: true,
     export_include_dirs: ["common_os/include/external/icu/libandroidicu/include"],
     stubs: {
-        versions: ["1"],
+        versions: [
+            "1",
+            "current",
+        ],
     },
     target: {
         host: {
@@ -384,7 +387,10 @@ cc_prebuilt_library_shared {
     unique_host_soname: true,
     export_include_dirs: ["common_os/include/external/icu/libandroidicu/include"],
     stubs: {
-        versions: ["1"],
+        versions: [
+            "1",
+            "current",
+        ],
     },
     target: {
         host: {
@@ -435,7 +441,10 @@ cc_prebuilt_library_shared {
     installable: false,
     export_include_dirs: ["common_os/include/external/icu/libicu/ndk_headers"],
     stubs: {
-        versions: ["31"],
+        versions: [
+            "31",
+            "current",
+        ],
     },
     target: {
         host: {
@@ -485,7 +494,10 @@ cc_prebuilt_library_shared {
     host_supported: true,
     export_include_dirs: ["common_os/include/external/icu/libicu/ndk_headers"],
     stubs: {
-        versions: ["31"],
+        versions: [
+            "31",
+            "current",
+        ],
     },
     target: {
         host: {
@@ -565,3 +577,4 @@ sdk_snapshot {
         },
     },
 }
+

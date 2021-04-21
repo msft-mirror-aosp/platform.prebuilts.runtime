@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "perfetto/protozero/field_writer.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -57,26 +58,136 @@ class ChromeConfig : public ::protozero::Message {
   static const ClientPriority UNKNOWN = ChromeConfig_ClientPriority_UNKNOWN;
   static const ClientPriority BACKGROUND = ChromeConfig_ClientPriority_BACKGROUND;
   static const ClientPriority USER_INITIATED = ChromeConfig_ClientPriority_USER_INITIATED;
-  void set_trace_config(const std::string& value) {
-    AppendBytes(1, value.data(), value.size());
-  }
+
+  using FieldMetadata_TraceConfig =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      ChromeConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_TraceConfig kTraceConfig() { return {}; }
   void set_trace_config(const char* data, size_t size) {
-    AppendBytes(1, data, size);
+    AppendBytes(FieldMetadata_TraceConfig::kFieldId, data, size);
   }
+  void set_trace_config(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_TraceConfig::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_PrivacyFilteringEnabled =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      ChromeConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_PrivacyFilteringEnabled kPrivacyFilteringEnabled() { return {}; }
   void set_privacy_filtering_enabled(bool value) {
-    AppendTinyVarInt(2, value);
+    static constexpr uint32_t field_id = FieldMetadata_PrivacyFilteringEnabled::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_ConvertToLegacyJson =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      ChromeConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ConvertToLegacyJson kConvertToLegacyJson() { return {}; }
   void set_convert_to_legacy_json(bool value) {
-    AppendTinyVarInt(3, value);
+    static constexpr uint32_t field_id = FieldMetadata_ConvertToLegacyJson::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_ClientPriority =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::ChromeConfig_ClientPriority,
+      ChromeConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ClientPriority kClientPriority() { return {}; }
   void set_client_priority(::perfetto::protos::pbzero::ChromeConfig_ClientPriority value) {
-    AppendTinyVarInt(4, value);
+    static constexpr uint32_t field_id = FieldMetadata_ClientPriority::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
   }
-  void set_json_agent_label_filter(const std::string& value) {
-    AppendBytes(5, value.data(), value.size());
-  }
+
+  using FieldMetadata_JsonAgentLabelFilter =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      ChromeConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_JsonAgentLabelFilter kJsonAgentLabelFilter() { return {}; }
   void set_json_agent_label_filter(const char* data, size_t size) {
-    AppendBytes(5, data, size);
+    AppendBytes(FieldMetadata_JsonAgentLabelFilter::kFieldId, data, size);
+  }
+  void set_json_agent_label_filter(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_JsonAgentLabelFilter::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
   }
 };
 

@@ -227,6 +227,7 @@ class AndroidPowerConfig :
     kBatteryCountersFieldNumber = 2,
     kBatteryPollMsFieldNumber = 1,
     kCollectPowerRailsFieldNumber = 3,
+    kCollectEnergyEstimationBreakdownFieldNumber = 4,
   };
   // repeated .perfetto.protos.AndroidPowerConfig.BatteryCounters battery_counters = 2;
   int battery_counters_size() const;
@@ -249,6 +250,12 @@ class AndroidPowerConfig :
   bool collect_power_rails() const;
   void set_collect_power_rails(bool value);
 
+  // optional bool collect_energy_estimation_breakdown = 4;
+  bool has_collect_energy_estimation_breakdown() const;
+  void clear_collect_energy_estimation_breakdown();
+  bool collect_energy_estimation_breakdown() const;
+  void set_collect_energy_estimation_breakdown(bool value);
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.AndroidPowerConfig)
  private:
   class _Internal;
@@ -259,6 +266,7 @@ class AndroidPowerConfig :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField<int> battery_counters_;
   ::PROTOBUF_NAMESPACE_ID::uint32 battery_poll_ms_;
   bool collect_power_rails_;
+  bool collect_energy_estimation_breakdown_;
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fpower_2fandroid_5fpower_5fconfig_2eproto;
 };
 // ===================================================================
@@ -338,6 +346,24 @@ inline void AndroidPowerConfig::set_collect_power_rails(bool value) {
   _has_bits_[0] |= 0x00000002u;
   collect_power_rails_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.AndroidPowerConfig.collect_power_rails)
+}
+
+// optional bool collect_energy_estimation_breakdown = 4;
+inline bool AndroidPowerConfig::has_collect_energy_estimation_breakdown() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void AndroidPowerConfig::clear_collect_energy_estimation_breakdown() {
+  collect_energy_estimation_breakdown_ = false;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline bool AndroidPowerConfig::collect_energy_estimation_breakdown() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.AndroidPowerConfig.collect_energy_estimation_breakdown)
+  return collect_energy_estimation_breakdown_;
+}
+inline void AndroidPowerConfig::set_collect_energy_estimation_breakdown(bool value) {
+  _has_bits_[0] |= 0x00000004u;
+  collect_energy_estimation_breakdown_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.AndroidPowerConfig.collect_energy_estimation_breakdown)
 }
 
 #ifdef __GNUC__

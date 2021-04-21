@@ -516,6 +516,7 @@ class PerfEventConfig :
     kUnwindStateClearPeriodMsFieldNumber = 10,
     kAdditionalCmdlineCountFieldNumber = 11,
     kMaxDaemonMemoryKbFieldNumber = 13,
+    kMaxEnqueuedFootprintKbFieldNumber = 17,
   };
   // repeated int32 target_pid = 4;
   int target_pid_size() const;
@@ -643,6 +644,12 @@ class PerfEventConfig :
   ::PROTOBUF_NAMESPACE_ID::uint32 max_daemon_memory_kb() const;
   void set_max_daemon_memory_kb(::PROTOBUF_NAMESPACE_ID::uint32 value);
 
+  // optional uint64 max_enqueued_footprint_kb = 17;
+  bool has_max_enqueued_footprint_kb() const;
+  void clear_max_enqueued_footprint_kb();
+  ::PROTOBUF_NAMESPACE_ID::uint64 max_enqueued_footprint_kb() const;
+  void set_max_enqueued_footprint_kb(::PROTOBUF_NAMESPACE_ID::uint64 value);
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.PerfEventConfig)
  private:
   class _Internal;
@@ -665,6 +672,7 @@ class PerfEventConfig :
   ::PROTOBUF_NAMESPACE_ID::uint32 unwind_state_clear_period_ms_;
   ::PROTOBUF_NAMESPACE_ID::uint32 additional_cmdline_count_;
   ::PROTOBUF_NAMESPACE_ID::uint32 max_daemon_memory_kb_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 max_enqueued_footprint_kb_;
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fprofiling_2fperf_5fevent_5fconfig_2eproto;
 };
 // ===================================================================
@@ -1089,6 +1097,24 @@ inline void PerfEventConfig::set_ring_buffer_pages(::PROTOBUF_NAMESPACE_ID::uint
   _has_bits_[0] |= 0x00000008u;
   ring_buffer_pages_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.ring_buffer_pages)
+}
+
+// optional uint64 max_enqueued_footprint_kb = 17;
+inline bool PerfEventConfig::has_max_enqueued_footprint_kb() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void PerfEventConfig::clear_max_enqueued_footprint_kb() {
+  max_enqueued_footprint_kb_ = PROTOBUF_ULONGLONG(0);
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 PerfEventConfig::max_enqueued_footprint_kb() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.max_enqueued_footprint_kb)
+  return max_enqueued_footprint_kb_;
+}
+inline void PerfEventConfig::set_max_enqueued_footprint_kb(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _has_bits_[0] |= 0x00000800u;
+  max_enqueued_footprint_kb_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.max_enqueued_footprint_kb)
 }
 
 // optional uint32 max_daemon_memory_kb = 13;

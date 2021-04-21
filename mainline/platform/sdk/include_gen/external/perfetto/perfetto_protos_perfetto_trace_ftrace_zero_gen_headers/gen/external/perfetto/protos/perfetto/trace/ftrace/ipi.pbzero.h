@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "perfetto/protozero/field_writer.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -34,14 +35,58 @@ class IpiRaiseFtraceEvent : public ::protozero::Message {
     kTargetCpusFieldNumber = 1,
     kReasonFieldNumber = 2,
   };
+
+  using FieldMetadata_TargetCpus =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      IpiRaiseFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_TargetCpus kTargetCpus() { return {}; }
   void set_target_cpus(uint32_t value) {
-    AppendVarInt(1, value);
+    static constexpr uint32_t field_id = FieldMetadata_TargetCpus::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
   }
-  void set_reason(const std::string& value) {
-    AppendBytes(2, value.data(), value.size());
-  }
+
+  using FieldMetadata_Reason =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      IpiRaiseFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Reason kReason() { return {}; }
   void set_reason(const char* data, size_t size) {
-    AppendBytes(2, data, size);
+    AppendBytes(FieldMetadata_Reason::kFieldId, data, size);
+  }
+  void set_reason(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Reason::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
   }
 };
 
@@ -60,11 +105,33 @@ class IpiExitFtraceEvent : public ::protozero::Message {
   enum : int32_t {
     kReasonFieldNumber = 1,
   };
-  void set_reason(const std::string& value) {
-    AppendBytes(1, value.data(), value.size());
-  }
+
+  using FieldMetadata_Reason =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      IpiExitFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Reason kReason() { return {}; }
   void set_reason(const char* data, size_t size) {
-    AppendBytes(1, data, size);
+    AppendBytes(FieldMetadata_Reason::kFieldId, data, size);
+  }
+  void set_reason(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Reason::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
   }
 };
 
@@ -83,11 +150,33 @@ class IpiEntryFtraceEvent : public ::protozero::Message {
   enum : int32_t {
     kReasonFieldNumber = 1,
   };
-  void set_reason(const std::string& value) {
-    AppendBytes(1, value.data(), value.size());
-  }
+
+  using FieldMetadata_Reason =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      IpiEntryFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Reason kReason() { return {}; }
   void set_reason(const char* data, size_t size) {
-    AppendBytes(1, data, size);
+    AppendBytes(FieldMetadata_Reason::kFieldId, data, size);
+  }
+  void set_reason(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Reason::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
   }
 };
 
