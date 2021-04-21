@@ -39,6 +39,32 @@ java_import {
     jars: ["java/core-icu4j.jar"],
 }
 
+java_import {
+    name: "i18n-module-test-exports_core-icu4j-for-host@current",
+    sdk_member_name: "core-icu4j-for-host",
+    visibility: [
+        "//art/build",
+        "//external/icu/android_icu4j",
+        "//external/robolectric-shadows",
+        "//packages/modules/RuntimeI18n/apex",
+    ],
+    apex_available: ["//apex_available:platform"],
+    jars: ["java/core-icu4j-for-host.jar"],
+}
+
+java_import {
+    name: "core-icu4j-for-host",
+    prefer: false,
+    visibility: [
+        "//art/build",
+        "//external/icu/android_icu4j",
+        "//external/robolectric-shadows",
+        "//packages/modules/RuntimeI18n/apex",
+    ],
+    apex_available: ["//apex_available:platform"],
+    jars: ["java/core-icu4j-for-host.jar"],
+}
+
 cc_prebuilt_library_shared {
     name: "i18n-module-test-exports_libicui18n@current",
     sdk_member_name: "libicui18n",
@@ -399,7 +425,10 @@ module_exports_snapshot {
     ],
     target: {
         android: {
-            java_libs: ["i18n-module-test-exports_core-icu4j@current"],
+            java_libs: [
+                "i18n-module-test-exports_core-icu4j@current",
+                "i18n-module-test-exports_core-icu4j-for-host@current",
+            ],
         },
         linux_bionic: {
             compile_multilib: "64",
@@ -418,3 +447,4 @@ module_exports_snapshot {
         },
     },
 }
+

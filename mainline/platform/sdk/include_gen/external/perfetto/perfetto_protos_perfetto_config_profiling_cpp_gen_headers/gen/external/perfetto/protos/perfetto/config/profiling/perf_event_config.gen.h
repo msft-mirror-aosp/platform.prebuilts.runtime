@@ -42,6 +42,7 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
     kCallstackSamplingFieldNumber = 16,
     kRingBufferReadPeriodMsFieldNumber = 8,
     kRingBufferPagesFieldNumber = 3,
+    kMaxEnqueuedFootprintKbFieldNumber = 17,
     kMaxDaemonMemoryKbFieldNumber = 13,
     kRemoteDescriptorTimeoutMsFieldNumber = 9,
     kUnwindStateClearPeriodMsFieldNumber = 10,
@@ -84,6 +85,10 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   bool has_ring_buffer_pages() const { return _has_field_[3]; }
   uint32_t ring_buffer_pages() const { return ring_buffer_pages_; }
   void set_ring_buffer_pages(uint32_t value) { ring_buffer_pages_ = value; _has_field_.set(3); }
+
+  bool has_max_enqueued_footprint_kb() const { return _has_field_[17]; }
+  uint64_t max_enqueued_footprint_kb() const { return max_enqueued_footprint_kb_; }
+  void set_max_enqueued_footprint_kb(uint64_t value) { max_enqueued_footprint_kb_ = value; _has_field_.set(17); }
 
   bool has_max_daemon_memory_kb() const { return _has_field_[13]; }
   uint32_t max_daemon_memory_kb() const { return max_daemon_memory_kb_; }
@@ -146,6 +151,7 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   ::protozero::CopyablePtr<PerfEventConfig_CallstackSampling> callstack_sampling_;
   uint32_t ring_buffer_read_period_ms_{};
   uint32_t ring_buffer_pages_{};
+  uint64_t max_enqueued_footprint_kb_{};
   uint32_t max_daemon_memory_kb_{};
   uint32_t remote_descriptor_timeout_ms_{};
   uint32_t unwind_state_clear_period_ms_{};
@@ -162,7 +168,7 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<17> _has_field_{};
+  std::bitset<18> _has_field_{};
 };
 
 

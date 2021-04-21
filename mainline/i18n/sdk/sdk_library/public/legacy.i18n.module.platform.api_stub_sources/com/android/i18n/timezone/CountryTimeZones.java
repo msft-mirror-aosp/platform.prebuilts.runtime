@@ -169,9 +169,7 @@ TimeZoneMapping() { throw new RuntimeException("Stub!"); }
 
 public java.lang.String getTimeZoneId() { throw new RuntimeException("Stub!"); }
 
-public boolean isShownInPicker() { throw new RuntimeException("Stub!"); }
-
-public java.lang.Long getNotUsedAfter() { throw new RuntimeException("Stub!"); }
+public boolean isShownInPickerAt(java.time.Instant time) { throw new RuntimeException("Stub!"); }
 
 /**
  * Returns a list of alternative time zone IDs that are linked to this one. Can be empty,
