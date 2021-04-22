@@ -64,7 +64,8 @@ public android.icu.util.TimeZone getTimeZone() { throw new RuntimeException("Stu
 /**
  * Returns a {@link java.time.zone.ZoneRules ZoneRules} instance for this time zone.
  *
- * @throws java.time.zone.ZoneRulesException if the zone rules can't be created.
+ * @throws java.time.zone.ZoneRulesException if the internal rules can't be parsed correctly, or it's not
+ * implemented for the subtype of {@link android.icu.util.TimeZone TimeZone}.
  *
  * @implNote This implementations relies on {@link android.icu.util.BasicTimeZone#getTimeZoneRules() BasicTimeZone#getTimeZoneRules()} in the
  * following way:

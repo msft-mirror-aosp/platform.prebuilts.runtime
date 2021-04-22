@@ -54,8 +54,6 @@ public final class TrustManagerImpl extends javax.net.ssl.X509ExtendedTrustManag
 
 /**
  * Creates X509TrustManager based on a keystore
- *
- * @param keyStore
  */
 
 public TrustManagerImpl(java.security.KeyStore keyStore) { throw new RuntimeException("Stub!"); }

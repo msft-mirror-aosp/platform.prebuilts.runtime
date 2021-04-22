@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "perfetto/protozero/field_writer.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -43,16 +44,94 @@ class FtraceEventBundle : public ::protozero::Message {
     kCompactSchedFieldNumber = 4,
   };
   using CompactSched = ::perfetto::protos::pbzero::FtraceEventBundle_CompactSched;
+
+  using FieldMetadata_Cpu =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      FtraceEventBundle>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Cpu kCpu() { return {}; }
   void set_cpu(uint32_t value) {
-    AppendVarInt(1, value);
+    static constexpr uint32_t field_id = FieldMetadata_Cpu::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_Event =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FtraceEvent,
+      FtraceEventBundle>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Event kEvent() { return {}; }
   template <typename T = FtraceEvent> T* add_event() {
     return BeginNestedMessage<T>(2);
   }
 
+
+  using FieldMetadata_LostEvents =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      FtraceEventBundle>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_LostEvents kLostEvents() { return {}; }
   void set_lost_events(bool value) {
-    AppendTinyVarInt(3, value);
+    static constexpr uint32_t field_id = FieldMetadata_LostEvents::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_CompactSched =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FtraceEventBundle_CompactSched,
+      FtraceEventBundle>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CompactSched kCompactSched() { return {}; }
   template <typename T = FtraceEventBundle_CompactSched> T* set_compact_sched() {
     return BeginNestedMessage<T>(4);
   }
@@ -104,41 +183,243 @@ class FtraceEventBundle_CompactSched : public ::protozero::Message {
     kWakingPrioFieldNumber = 10,
     kWakingCommIndexFieldNumber = 11,
   };
-  void add_intern_table(const std::string& value) {
-    AppendBytes(5, value.data(), value.size());
-  }
+
+  using FieldMetadata_InternTable =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      FtraceEventBundle_CompactSched>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_InternTable kInternTable() { return {}; }
   void add_intern_table(const char* data, size_t size) {
-    AppendBytes(5, data, size);
+    AppendBytes(FieldMetadata_InternTable::kFieldId, data, size);
   }
+  void add_intern_table(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_InternTable::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_SwitchTimestamp =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kRepeatedPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      FtraceEventBundle_CompactSched>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SwitchTimestamp kSwitchTimestamp() { return {}; }
   void set_switch_timestamp(const ::protozero::PackedVarInt& packed_buffer) {
-    AppendBytes(1, packed_buffer.data(), packed_buffer.size());
+    AppendBytes(FieldMetadata_SwitchTimestamp::kFieldId, packed_buffer.data(),
+                packed_buffer.size());
   }
+
+  using FieldMetadata_SwitchPrevState =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kRepeatedPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kInt64,
+      int64_t,
+      FtraceEventBundle_CompactSched>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SwitchPrevState kSwitchPrevState() { return {}; }
   void set_switch_prev_state(const ::protozero::PackedVarInt& packed_buffer) {
-    AppendBytes(2, packed_buffer.data(), packed_buffer.size());
+    AppendBytes(FieldMetadata_SwitchPrevState::kFieldId, packed_buffer.data(),
+                packed_buffer.size());
   }
+
+  using FieldMetadata_SwitchNextPid =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kRepeatedPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      FtraceEventBundle_CompactSched>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SwitchNextPid kSwitchNextPid() { return {}; }
   void set_switch_next_pid(const ::protozero::PackedVarInt& packed_buffer) {
-    AppendBytes(3, packed_buffer.data(), packed_buffer.size());
+    AppendBytes(FieldMetadata_SwitchNextPid::kFieldId, packed_buffer.data(),
+                packed_buffer.size());
   }
+
+  using FieldMetadata_SwitchNextPrio =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kRepeatedPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      FtraceEventBundle_CompactSched>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SwitchNextPrio kSwitchNextPrio() { return {}; }
   void set_switch_next_prio(const ::protozero::PackedVarInt& packed_buffer) {
-    AppendBytes(4, packed_buffer.data(), packed_buffer.size());
+    AppendBytes(FieldMetadata_SwitchNextPrio::kFieldId, packed_buffer.data(),
+                packed_buffer.size());
   }
+
+  using FieldMetadata_SwitchNextCommIndex =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kRepeatedPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      FtraceEventBundle_CompactSched>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SwitchNextCommIndex kSwitchNextCommIndex() { return {}; }
   void set_switch_next_comm_index(const ::protozero::PackedVarInt& packed_buffer) {
-    AppendBytes(6, packed_buffer.data(), packed_buffer.size());
+    AppendBytes(FieldMetadata_SwitchNextCommIndex::kFieldId, packed_buffer.data(),
+                packed_buffer.size());
   }
+
+  using FieldMetadata_WakingTimestamp =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kRepeatedPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      FtraceEventBundle_CompactSched>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_WakingTimestamp kWakingTimestamp() { return {}; }
   void set_waking_timestamp(const ::protozero::PackedVarInt& packed_buffer) {
-    AppendBytes(7, packed_buffer.data(), packed_buffer.size());
+    AppendBytes(FieldMetadata_WakingTimestamp::kFieldId, packed_buffer.data(),
+                packed_buffer.size());
   }
+
+  using FieldMetadata_WakingPid =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kRepeatedPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      FtraceEventBundle_CompactSched>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_WakingPid kWakingPid() { return {}; }
   void set_waking_pid(const ::protozero::PackedVarInt& packed_buffer) {
-    AppendBytes(8, packed_buffer.data(), packed_buffer.size());
+    AppendBytes(FieldMetadata_WakingPid::kFieldId, packed_buffer.data(),
+                packed_buffer.size());
   }
+
+  using FieldMetadata_WakingTargetCpu =
+    ::protozero::proto_utils::FieldMetadata<
+      9,
+      ::protozero::proto_utils::RepetitionType::kRepeatedPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      FtraceEventBundle_CompactSched>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_WakingTargetCpu kWakingTargetCpu() { return {}; }
   void set_waking_target_cpu(const ::protozero::PackedVarInt& packed_buffer) {
-    AppendBytes(9, packed_buffer.data(), packed_buffer.size());
+    AppendBytes(FieldMetadata_WakingTargetCpu::kFieldId, packed_buffer.data(),
+                packed_buffer.size());
   }
+
+  using FieldMetadata_WakingPrio =
+    ::protozero::proto_utils::FieldMetadata<
+      10,
+      ::protozero::proto_utils::RepetitionType::kRepeatedPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      FtraceEventBundle_CompactSched>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_WakingPrio kWakingPrio() { return {}; }
   void set_waking_prio(const ::protozero::PackedVarInt& packed_buffer) {
-    AppendBytes(10, packed_buffer.data(), packed_buffer.size());
+    AppendBytes(FieldMetadata_WakingPrio::kFieldId, packed_buffer.data(),
+                packed_buffer.size());
   }
+
+  using FieldMetadata_WakingCommIndex =
+    ::protozero::proto_utils::FieldMetadata<
+      11,
+      ::protozero::proto_utils::RepetitionType::kRepeatedPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      FtraceEventBundle_CompactSched>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_WakingCommIndex kWakingCommIndex() { return {}; }
   void set_waking_comm_index(const ::protozero::PackedVarInt& packed_buffer) {
-    AppendBytes(11, packed_buffer.data(), packed_buffer.size());
+    AppendBytes(FieldMetadata_WakingCommIndex::kFieldId, packed_buffer.data(),
+                packed_buffer.size());
   }
 };
 
