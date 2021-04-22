@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "perfetto/protozero/field_writer.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -70,6 +71,7 @@ class CpuhpEnterFtraceEvent;
 class CpuhpExitFtraceEvent;
 class CpuhpLatencyFtraceEvent;
 class CpuhpMultiEnterFtraceEvent;
+class CpuhpPauseFtraceEvent;
 class DmaAllocContiguousRetryFtraceEvent;
 class DmaHeapStatFtraceEvent;
 class DpuTracingMarkWriteFtraceEvent;
@@ -348,7 +350,7 @@ class WorkqueueExecuteStartFtraceEvent;
 class WorkqueueQueueWorkFtraceEvent;
 class ZeroFtraceEvent;
 
-class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/351, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/352, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   FtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit FtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -1021,6 +1023,8 @@ class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstBytes mali_tracing_mark_write() const { return at<350>().as_bytes(); }
   bool has_dma_heap_stat() const { return at<351>().valid(); }
   ::protozero::ConstBytes dma_heap_stat() const { return at<351>().as_bytes(); }
+  bool has_cpuhp_pause() const { return at<352>().valid(); }
+  ::protozero::ConstBytes cpuhp_pause() const { return at<352>().as_bytes(); }
 };
 
 class FtraceEvent : public ::protozero::Message {
@@ -1361,1339 +1365,7049 @@ class FtraceEvent : public ::protozero::Message {
     kG2dTracingMarkWriteFieldNumber = 349,
     kMaliTracingMarkWriteFieldNumber = 350,
     kDmaHeapStatFieldNumber = 351,
+    kCpuhpPauseFieldNumber = 352,
   };
+
+  using FieldMetadata_Timestamp =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Timestamp kTimestamp() { return {}; }
   void set_timestamp(uint64_t value) {
-    AppendVarInt(1, value);
+    static constexpr uint32_t field_id = FieldMetadata_Timestamp::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_Pid =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(uint32_t value) {
-    AppendVarInt(2, value);
+    static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_Print =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      PrintFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Print kPrint() { return {}; }
   template <typename T = PrintFtraceEvent> T* set_print() {
     return BeginNestedMessage<T>(3);
   }
 
+
+  using FieldMetadata_SchedSwitch =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedSwitchFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SchedSwitch kSchedSwitch() { return {}; }
   template <typename T = SchedSwitchFtraceEvent> T* set_sched_switch() {
     return BeginNestedMessage<T>(4);
   }
 
+
+  using FieldMetadata_CpuFrequency =
+    ::protozero::proto_utils::FieldMetadata<
+      11,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CpuFrequencyFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CpuFrequency kCpuFrequency() { return {}; }
   template <typename T = CpuFrequencyFtraceEvent> T* set_cpu_frequency() {
     return BeginNestedMessage<T>(11);
   }
 
+
+  using FieldMetadata_CpuFrequencyLimits =
+    ::protozero::proto_utils::FieldMetadata<
+      12,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CpuFrequencyLimitsFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CpuFrequencyLimits kCpuFrequencyLimits() { return {}; }
   template <typename T = CpuFrequencyLimitsFtraceEvent> T* set_cpu_frequency_limits() {
     return BeginNestedMessage<T>(12);
   }
 
+
+  using FieldMetadata_CpuIdle =
+    ::protozero::proto_utils::FieldMetadata<
+      13,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CpuIdleFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CpuIdle kCpuIdle() { return {}; }
   template <typename T = CpuIdleFtraceEvent> T* set_cpu_idle() {
     return BeginNestedMessage<T>(13);
   }
 
+
+  using FieldMetadata_ClockEnable =
+    ::protozero::proto_utils::FieldMetadata<
+      14,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ClockEnableFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ClockEnable kClockEnable() { return {}; }
   template <typename T = ClockEnableFtraceEvent> T* set_clock_enable() {
     return BeginNestedMessage<T>(14);
   }
 
+
+  using FieldMetadata_ClockDisable =
+    ::protozero::proto_utils::FieldMetadata<
+      15,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ClockDisableFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ClockDisable kClockDisable() { return {}; }
   template <typename T = ClockDisableFtraceEvent> T* set_clock_disable() {
     return BeginNestedMessage<T>(15);
   }
 
+
+  using FieldMetadata_ClockSetRate =
+    ::protozero::proto_utils::FieldMetadata<
+      16,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ClockSetRateFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ClockSetRate kClockSetRate() { return {}; }
   template <typename T = ClockSetRateFtraceEvent> T* set_clock_set_rate() {
     return BeginNestedMessage<T>(16);
   }
 
+
+  using FieldMetadata_SchedWakeup =
+    ::protozero::proto_utils::FieldMetadata<
+      17,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedWakeupFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SchedWakeup kSchedWakeup() { return {}; }
   template <typename T = SchedWakeupFtraceEvent> T* set_sched_wakeup() {
     return BeginNestedMessage<T>(17);
   }
 
+
+  using FieldMetadata_SchedBlockedReason =
+    ::protozero::proto_utils::FieldMetadata<
+      18,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedBlockedReasonFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SchedBlockedReason kSchedBlockedReason() { return {}; }
   template <typename T = SchedBlockedReasonFtraceEvent> T* set_sched_blocked_reason() {
     return BeginNestedMessage<T>(18);
   }
 
+
+  using FieldMetadata_SchedCpuHotplug =
+    ::protozero::proto_utils::FieldMetadata<
+      19,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedCpuHotplugFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SchedCpuHotplug kSchedCpuHotplug() { return {}; }
   template <typename T = SchedCpuHotplugFtraceEvent> T* set_sched_cpu_hotplug() {
     return BeginNestedMessage<T>(19);
   }
 
+
+  using FieldMetadata_SchedWaking =
+    ::protozero::proto_utils::FieldMetadata<
+      20,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedWakingFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SchedWaking kSchedWaking() { return {}; }
   template <typename T = SchedWakingFtraceEvent> T* set_sched_waking() {
     return BeginNestedMessage<T>(20);
   }
 
+
+  using FieldMetadata_IpiEntry =
+    ::protozero::proto_utils::FieldMetadata<
+      21,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IpiEntryFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IpiEntry kIpiEntry() { return {}; }
   template <typename T = IpiEntryFtraceEvent> T* set_ipi_entry() {
     return BeginNestedMessage<T>(21);
   }
 
+
+  using FieldMetadata_IpiExit =
+    ::protozero::proto_utils::FieldMetadata<
+      22,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IpiExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IpiExit kIpiExit() { return {}; }
   template <typename T = IpiExitFtraceEvent> T* set_ipi_exit() {
     return BeginNestedMessage<T>(22);
   }
 
+
+  using FieldMetadata_IpiRaise =
+    ::protozero::proto_utils::FieldMetadata<
+      23,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IpiRaiseFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IpiRaise kIpiRaise() { return {}; }
   template <typename T = IpiRaiseFtraceEvent> T* set_ipi_raise() {
     return BeginNestedMessage<T>(23);
   }
 
+
+  using FieldMetadata_SoftirqEntry =
+    ::protozero::proto_utils::FieldMetadata<
+      24,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SoftirqEntryFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SoftirqEntry kSoftirqEntry() { return {}; }
   template <typename T = SoftirqEntryFtraceEvent> T* set_softirq_entry() {
     return BeginNestedMessage<T>(24);
   }
 
+
+  using FieldMetadata_SoftirqExit =
+    ::protozero::proto_utils::FieldMetadata<
+      25,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SoftirqExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SoftirqExit kSoftirqExit() { return {}; }
   template <typename T = SoftirqExitFtraceEvent> T* set_softirq_exit() {
     return BeginNestedMessage<T>(25);
   }
 
+
+  using FieldMetadata_SoftirqRaise =
+    ::protozero::proto_utils::FieldMetadata<
+      26,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SoftirqRaiseFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SoftirqRaise kSoftirqRaise() { return {}; }
   template <typename T = SoftirqRaiseFtraceEvent> T* set_softirq_raise() {
     return BeginNestedMessage<T>(26);
   }
 
+
+  using FieldMetadata_I2cRead =
+    ::protozero::proto_utils::FieldMetadata<
+      27,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      I2cReadFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_I2cRead kI2cRead() { return {}; }
   template <typename T = I2cReadFtraceEvent> T* set_i2c_read() {
     return BeginNestedMessage<T>(27);
   }
 
+
+  using FieldMetadata_I2cWrite =
+    ::protozero::proto_utils::FieldMetadata<
+      28,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      I2cWriteFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_I2cWrite kI2cWrite() { return {}; }
   template <typename T = I2cWriteFtraceEvent> T* set_i2c_write() {
     return BeginNestedMessage<T>(28);
   }
 
+
+  using FieldMetadata_I2cResult =
+    ::protozero::proto_utils::FieldMetadata<
+      29,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      I2cResultFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_I2cResult kI2cResult() { return {}; }
   template <typename T = I2cResultFtraceEvent> T* set_i2c_result() {
     return BeginNestedMessage<T>(29);
   }
 
+
+  using FieldMetadata_I2cReply =
+    ::protozero::proto_utils::FieldMetadata<
+      30,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      I2cReplyFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_I2cReply kI2cReply() { return {}; }
   template <typename T = I2cReplyFtraceEvent> T* set_i2c_reply() {
     return BeginNestedMessage<T>(30);
   }
 
+
+  using FieldMetadata_SmbusRead =
+    ::protozero::proto_utils::FieldMetadata<
+      31,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SmbusReadFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SmbusRead kSmbusRead() { return {}; }
   template <typename T = SmbusReadFtraceEvent> T* set_smbus_read() {
     return BeginNestedMessage<T>(31);
   }
 
+
+  using FieldMetadata_SmbusWrite =
+    ::protozero::proto_utils::FieldMetadata<
+      32,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SmbusWriteFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SmbusWrite kSmbusWrite() { return {}; }
   template <typename T = SmbusWriteFtraceEvent> T* set_smbus_write() {
     return BeginNestedMessage<T>(32);
   }
 
+
+  using FieldMetadata_SmbusResult =
+    ::protozero::proto_utils::FieldMetadata<
+      33,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SmbusResultFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SmbusResult kSmbusResult() { return {}; }
   template <typename T = SmbusResultFtraceEvent> T* set_smbus_result() {
     return BeginNestedMessage<T>(33);
   }
 
+
+  using FieldMetadata_SmbusReply =
+    ::protozero::proto_utils::FieldMetadata<
+      34,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SmbusReplyFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SmbusReply kSmbusReply() { return {}; }
   template <typename T = SmbusReplyFtraceEvent> T* set_smbus_reply() {
     return BeginNestedMessage<T>(34);
   }
 
+
+  using FieldMetadata_LowmemoryKill =
+    ::protozero::proto_utils::FieldMetadata<
+      35,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      LowmemoryKillFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_LowmemoryKill kLowmemoryKill() { return {}; }
   template <typename T = LowmemoryKillFtraceEvent> T* set_lowmemory_kill() {
     return BeginNestedMessage<T>(35);
   }
 
+
+  using FieldMetadata_IrqHandlerEntry =
+    ::protozero::proto_utils::FieldMetadata<
+      36,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IrqHandlerEntryFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IrqHandlerEntry kIrqHandlerEntry() { return {}; }
   template <typename T = IrqHandlerEntryFtraceEvent> T* set_irq_handler_entry() {
     return BeginNestedMessage<T>(36);
   }
 
+
+  using FieldMetadata_IrqHandlerExit =
+    ::protozero::proto_utils::FieldMetadata<
+      37,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IrqHandlerExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IrqHandlerExit kIrqHandlerExit() { return {}; }
   template <typename T = IrqHandlerExitFtraceEvent> T* set_irq_handler_exit() {
     return BeginNestedMessage<T>(37);
   }
 
+
+  using FieldMetadata_SyncPt =
+    ::protozero::proto_utils::FieldMetadata<
+      38,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SyncPtFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SyncPt kSyncPt() { return {}; }
   template <typename T = SyncPtFtraceEvent> T* set_sync_pt() {
     return BeginNestedMessage<T>(38);
   }
 
+
+  using FieldMetadata_SyncTimeline =
+    ::protozero::proto_utils::FieldMetadata<
+      39,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SyncTimelineFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SyncTimeline kSyncTimeline() { return {}; }
   template <typename T = SyncTimelineFtraceEvent> T* set_sync_timeline() {
     return BeginNestedMessage<T>(39);
   }
 
+
+  using FieldMetadata_SyncWait =
+    ::protozero::proto_utils::FieldMetadata<
+      40,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SyncWaitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SyncWait kSyncWait() { return {}; }
   template <typename T = SyncWaitFtraceEvent> T* set_sync_wait() {
     return BeginNestedMessage<T>(40);
   }
 
+
+  using FieldMetadata_Ext4DaWriteBegin =
+    ::protozero::proto_utils::FieldMetadata<
+      41,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4DaWriteBeginFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4DaWriteBegin kExt4DaWriteBegin() { return {}; }
   template <typename T = Ext4DaWriteBeginFtraceEvent> T* set_ext4_da_write_begin() {
     return BeginNestedMessage<T>(41);
   }
 
+
+  using FieldMetadata_Ext4DaWriteEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      42,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4DaWriteEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4DaWriteEnd kExt4DaWriteEnd() { return {}; }
   template <typename T = Ext4DaWriteEndFtraceEvent> T* set_ext4_da_write_end() {
     return BeginNestedMessage<T>(42);
   }
 
+
+  using FieldMetadata_Ext4SyncFileEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      43,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4SyncFileEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4SyncFileEnter kExt4SyncFileEnter() { return {}; }
   template <typename T = Ext4SyncFileEnterFtraceEvent> T* set_ext4_sync_file_enter() {
     return BeginNestedMessage<T>(43);
   }
 
+
+  using FieldMetadata_Ext4SyncFileExit =
+    ::protozero::proto_utils::FieldMetadata<
+      44,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4SyncFileExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4SyncFileExit kExt4SyncFileExit() { return {}; }
   template <typename T = Ext4SyncFileExitFtraceEvent> T* set_ext4_sync_file_exit() {
     return BeginNestedMessage<T>(44);
   }
 
+
+  using FieldMetadata_BlockRqIssue =
+    ::protozero::proto_utils::FieldMetadata<
+      45,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockRqIssueFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockRqIssue kBlockRqIssue() { return {}; }
   template <typename T = BlockRqIssueFtraceEvent> T* set_block_rq_issue() {
     return BeginNestedMessage<T>(45);
   }
 
+
+  using FieldMetadata_MmVmscanDirectReclaimBegin =
+    ::protozero::proto_utils::FieldMetadata<
+      46,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmVmscanDirectReclaimBeginFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmVmscanDirectReclaimBegin kMmVmscanDirectReclaimBegin() { return {}; }
   template <typename T = MmVmscanDirectReclaimBeginFtraceEvent> T* set_mm_vmscan_direct_reclaim_begin() {
     return BeginNestedMessage<T>(46);
   }
 
+
+  using FieldMetadata_MmVmscanDirectReclaimEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      47,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmVmscanDirectReclaimEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmVmscanDirectReclaimEnd kMmVmscanDirectReclaimEnd() { return {}; }
   template <typename T = MmVmscanDirectReclaimEndFtraceEvent> T* set_mm_vmscan_direct_reclaim_end() {
     return BeginNestedMessage<T>(47);
   }
 
+
+  using FieldMetadata_MmVmscanKswapdWake =
+    ::protozero::proto_utils::FieldMetadata<
+      48,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmVmscanKswapdWakeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmVmscanKswapdWake kMmVmscanKswapdWake() { return {}; }
   template <typename T = MmVmscanKswapdWakeFtraceEvent> T* set_mm_vmscan_kswapd_wake() {
     return BeginNestedMessage<T>(48);
   }
 
+
+  using FieldMetadata_MmVmscanKswapdSleep =
+    ::protozero::proto_utils::FieldMetadata<
+      49,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmVmscanKswapdSleepFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmVmscanKswapdSleep kMmVmscanKswapdSleep() { return {}; }
   template <typename T = MmVmscanKswapdSleepFtraceEvent> T* set_mm_vmscan_kswapd_sleep() {
     return BeginNestedMessage<T>(49);
   }
 
+
+  using FieldMetadata_BinderTransaction =
+    ::protozero::proto_utils::FieldMetadata<
+      50,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BinderTransactionFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BinderTransaction kBinderTransaction() { return {}; }
   template <typename T = BinderTransactionFtraceEvent> T* set_binder_transaction() {
     return BeginNestedMessage<T>(50);
   }
 
+
+  using FieldMetadata_BinderTransactionReceived =
+    ::protozero::proto_utils::FieldMetadata<
+      51,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BinderTransactionReceivedFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BinderTransactionReceived kBinderTransactionReceived() { return {}; }
   template <typename T = BinderTransactionReceivedFtraceEvent> T* set_binder_transaction_received() {
     return BeginNestedMessage<T>(51);
   }
 
+
+  using FieldMetadata_BinderSetPriority =
+    ::protozero::proto_utils::FieldMetadata<
+      52,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BinderSetPriorityFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BinderSetPriority kBinderSetPriority() { return {}; }
   template <typename T = BinderSetPriorityFtraceEvent> T* set_binder_set_priority() {
     return BeginNestedMessage<T>(52);
   }
 
+
+  using FieldMetadata_BinderLock =
+    ::protozero::proto_utils::FieldMetadata<
+      53,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BinderLockFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BinderLock kBinderLock() { return {}; }
   template <typename T = BinderLockFtraceEvent> T* set_binder_lock() {
     return BeginNestedMessage<T>(53);
   }
 
+
+  using FieldMetadata_BinderLocked =
+    ::protozero::proto_utils::FieldMetadata<
+      54,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BinderLockedFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BinderLocked kBinderLocked() { return {}; }
   template <typename T = BinderLockedFtraceEvent> T* set_binder_locked() {
     return BeginNestedMessage<T>(54);
   }
 
+
+  using FieldMetadata_BinderUnlock =
+    ::protozero::proto_utils::FieldMetadata<
+      55,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BinderUnlockFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BinderUnlock kBinderUnlock() { return {}; }
   template <typename T = BinderUnlockFtraceEvent> T* set_binder_unlock() {
     return BeginNestedMessage<T>(55);
   }
 
+
+  using FieldMetadata_WorkqueueActivateWork =
+    ::protozero::proto_utils::FieldMetadata<
+      56,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      WorkqueueActivateWorkFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_WorkqueueActivateWork kWorkqueueActivateWork() { return {}; }
   template <typename T = WorkqueueActivateWorkFtraceEvent> T* set_workqueue_activate_work() {
     return BeginNestedMessage<T>(56);
   }
 
+
+  using FieldMetadata_WorkqueueExecuteEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      57,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      WorkqueueExecuteEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_WorkqueueExecuteEnd kWorkqueueExecuteEnd() { return {}; }
   template <typename T = WorkqueueExecuteEndFtraceEvent> T* set_workqueue_execute_end() {
     return BeginNestedMessage<T>(57);
   }
 
+
+  using FieldMetadata_WorkqueueExecuteStart =
+    ::protozero::proto_utils::FieldMetadata<
+      58,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      WorkqueueExecuteStartFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_WorkqueueExecuteStart kWorkqueueExecuteStart() { return {}; }
   template <typename T = WorkqueueExecuteStartFtraceEvent> T* set_workqueue_execute_start() {
     return BeginNestedMessage<T>(58);
   }
 
+
+  using FieldMetadata_WorkqueueQueueWork =
+    ::protozero::proto_utils::FieldMetadata<
+      59,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      WorkqueueQueueWorkFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_WorkqueueQueueWork kWorkqueueQueueWork() { return {}; }
   template <typename T = WorkqueueQueueWorkFtraceEvent> T* set_workqueue_queue_work() {
     return BeginNestedMessage<T>(59);
   }
 
+
+  using FieldMetadata_RegulatorDisable =
+    ::protozero::proto_utils::FieldMetadata<
+      60,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      RegulatorDisableFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_RegulatorDisable kRegulatorDisable() { return {}; }
   template <typename T = RegulatorDisableFtraceEvent> T* set_regulator_disable() {
     return BeginNestedMessage<T>(60);
   }
 
+
+  using FieldMetadata_RegulatorDisableComplete =
+    ::protozero::proto_utils::FieldMetadata<
+      61,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      RegulatorDisableCompleteFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_RegulatorDisableComplete kRegulatorDisableComplete() { return {}; }
   template <typename T = RegulatorDisableCompleteFtraceEvent> T* set_regulator_disable_complete() {
     return BeginNestedMessage<T>(61);
   }
 
+
+  using FieldMetadata_RegulatorEnable =
+    ::protozero::proto_utils::FieldMetadata<
+      62,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      RegulatorEnableFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_RegulatorEnable kRegulatorEnable() { return {}; }
   template <typename T = RegulatorEnableFtraceEvent> T* set_regulator_enable() {
     return BeginNestedMessage<T>(62);
   }
 
+
+  using FieldMetadata_RegulatorEnableComplete =
+    ::protozero::proto_utils::FieldMetadata<
+      63,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      RegulatorEnableCompleteFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_RegulatorEnableComplete kRegulatorEnableComplete() { return {}; }
   template <typename T = RegulatorEnableCompleteFtraceEvent> T* set_regulator_enable_complete() {
     return BeginNestedMessage<T>(63);
   }
 
+
+  using FieldMetadata_RegulatorEnableDelay =
+    ::protozero::proto_utils::FieldMetadata<
+      64,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      RegulatorEnableDelayFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_RegulatorEnableDelay kRegulatorEnableDelay() { return {}; }
   template <typename T = RegulatorEnableDelayFtraceEvent> T* set_regulator_enable_delay() {
     return BeginNestedMessage<T>(64);
   }
 
+
+  using FieldMetadata_RegulatorSetVoltage =
+    ::protozero::proto_utils::FieldMetadata<
+      65,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      RegulatorSetVoltageFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_RegulatorSetVoltage kRegulatorSetVoltage() { return {}; }
   template <typename T = RegulatorSetVoltageFtraceEvent> T* set_regulator_set_voltage() {
     return BeginNestedMessage<T>(65);
   }
 
+
+  using FieldMetadata_RegulatorSetVoltageComplete =
+    ::protozero::proto_utils::FieldMetadata<
+      66,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      RegulatorSetVoltageCompleteFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_RegulatorSetVoltageComplete kRegulatorSetVoltageComplete() { return {}; }
   template <typename T = RegulatorSetVoltageCompleteFtraceEvent> T* set_regulator_set_voltage_complete() {
     return BeginNestedMessage<T>(66);
   }
 
+
+  using FieldMetadata_CgroupAttachTask =
+    ::protozero::proto_utils::FieldMetadata<
+      67,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CgroupAttachTaskFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CgroupAttachTask kCgroupAttachTask() { return {}; }
   template <typename T = CgroupAttachTaskFtraceEvent> T* set_cgroup_attach_task() {
     return BeginNestedMessage<T>(67);
   }
 
+
+  using FieldMetadata_CgroupMkdir =
+    ::protozero::proto_utils::FieldMetadata<
+      68,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CgroupMkdirFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CgroupMkdir kCgroupMkdir() { return {}; }
   template <typename T = CgroupMkdirFtraceEvent> T* set_cgroup_mkdir() {
     return BeginNestedMessage<T>(68);
   }
 
+
+  using FieldMetadata_CgroupRemount =
+    ::protozero::proto_utils::FieldMetadata<
+      69,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CgroupRemountFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CgroupRemount kCgroupRemount() { return {}; }
   template <typename T = CgroupRemountFtraceEvent> T* set_cgroup_remount() {
     return BeginNestedMessage<T>(69);
   }
 
+
+  using FieldMetadata_CgroupRmdir =
+    ::protozero::proto_utils::FieldMetadata<
+      70,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CgroupRmdirFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CgroupRmdir kCgroupRmdir() { return {}; }
   template <typename T = CgroupRmdirFtraceEvent> T* set_cgroup_rmdir() {
     return BeginNestedMessage<T>(70);
   }
 
+
+  using FieldMetadata_CgroupTransferTasks =
+    ::protozero::proto_utils::FieldMetadata<
+      71,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CgroupTransferTasksFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CgroupTransferTasks kCgroupTransferTasks() { return {}; }
   template <typename T = CgroupTransferTasksFtraceEvent> T* set_cgroup_transfer_tasks() {
     return BeginNestedMessage<T>(71);
   }
 
+
+  using FieldMetadata_CgroupDestroyRoot =
+    ::protozero::proto_utils::FieldMetadata<
+      72,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CgroupDestroyRootFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CgroupDestroyRoot kCgroupDestroyRoot() { return {}; }
   template <typename T = CgroupDestroyRootFtraceEvent> T* set_cgroup_destroy_root() {
     return BeginNestedMessage<T>(72);
   }
 
+
+  using FieldMetadata_CgroupRelease =
+    ::protozero::proto_utils::FieldMetadata<
+      73,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CgroupReleaseFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CgroupRelease kCgroupRelease() { return {}; }
   template <typename T = CgroupReleaseFtraceEvent> T* set_cgroup_release() {
     return BeginNestedMessage<T>(73);
   }
 
+
+  using FieldMetadata_CgroupRename =
+    ::protozero::proto_utils::FieldMetadata<
+      74,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CgroupRenameFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CgroupRename kCgroupRename() { return {}; }
   template <typename T = CgroupRenameFtraceEvent> T* set_cgroup_rename() {
     return BeginNestedMessage<T>(74);
   }
 
+
+  using FieldMetadata_CgroupSetupRoot =
+    ::protozero::proto_utils::FieldMetadata<
+      75,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CgroupSetupRootFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CgroupSetupRoot kCgroupSetupRoot() { return {}; }
   template <typename T = CgroupSetupRootFtraceEvent> T* set_cgroup_setup_root() {
     return BeginNestedMessage<T>(75);
   }
 
+
+  using FieldMetadata_MdpCmdKickoff =
+    ::protozero::proto_utils::FieldMetadata<
+      76,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpCmdKickoffFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpCmdKickoff kMdpCmdKickoff() { return {}; }
   template <typename T = MdpCmdKickoffFtraceEvent> T* set_mdp_cmd_kickoff() {
     return BeginNestedMessage<T>(76);
   }
 
+
+  using FieldMetadata_MdpCommit =
+    ::protozero::proto_utils::FieldMetadata<
+      77,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpCommitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpCommit kMdpCommit() { return {}; }
   template <typename T = MdpCommitFtraceEvent> T* set_mdp_commit() {
     return BeginNestedMessage<T>(77);
   }
 
+
+  using FieldMetadata_MdpPerfSetOt =
+    ::protozero::proto_utils::FieldMetadata<
+      78,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpPerfSetOtFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpPerfSetOt kMdpPerfSetOt() { return {}; }
   template <typename T = MdpPerfSetOtFtraceEvent> T* set_mdp_perf_set_ot() {
     return BeginNestedMessage<T>(78);
   }
 
+
+  using FieldMetadata_MdpSsppChange =
+    ::protozero::proto_utils::FieldMetadata<
+      79,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpSsppChangeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpSsppChange kMdpSsppChange() { return {}; }
   template <typename T = MdpSsppChangeFtraceEvent> T* set_mdp_sspp_change() {
     return BeginNestedMessage<T>(79);
   }
 
+
+  using FieldMetadata_TracingMarkWrite =
+    ::protozero::proto_utils::FieldMetadata<
+      80,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      TracingMarkWriteFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_TracingMarkWrite kTracingMarkWrite() { return {}; }
   template <typename T = TracingMarkWriteFtraceEvent> T* set_tracing_mark_write() {
     return BeginNestedMessage<T>(80);
   }
 
+
+  using FieldMetadata_MdpCmdPingpongDone =
+    ::protozero::proto_utils::FieldMetadata<
+      81,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpCmdPingpongDoneFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpCmdPingpongDone kMdpCmdPingpongDone() { return {}; }
   template <typename T = MdpCmdPingpongDoneFtraceEvent> T* set_mdp_cmd_pingpong_done() {
     return BeginNestedMessage<T>(81);
   }
 
+
+  using FieldMetadata_MdpCompareBw =
+    ::protozero::proto_utils::FieldMetadata<
+      82,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpCompareBwFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpCompareBw kMdpCompareBw() { return {}; }
   template <typename T = MdpCompareBwFtraceEvent> T* set_mdp_compare_bw() {
     return BeginNestedMessage<T>(82);
   }
 
+
+  using FieldMetadata_MdpPerfSetPanicLuts =
+    ::protozero::proto_utils::FieldMetadata<
+      83,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpPerfSetPanicLutsFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpPerfSetPanicLuts kMdpPerfSetPanicLuts() { return {}; }
   template <typename T = MdpPerfSetPanicLutsFtraceEvent> T* set_mdp_perf_set_panic_luts() {
     return BeginNestedMessage<T>(83);
   }
 
+
+  using FieldMetadata_MdpSsppSet =
+    ::protozero::proto_utils::FieldMetadata<
+      84,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpSsppSetFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpSsppSet kMdpSsppSet() { return {}; }
   template <typename T = MdpSsppSetFtraceEvent> T* set_mdp_sspp_set() {
     return BeginNestedMessage<T>(84);
   }
 
+
+  using FieldMetadata_MdpCmdReadptrDone =
+    ::protozero::proto_utils::FieldMetadata<
+      85,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpCmdReadptrDoneFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpCmdReadptrDone kMdpCmdReadptrDone() { return {}; }
   template <typename T = MdpCmdReadptrDoneFtraceEvent> T* set_mdp_cmd_readptr_done() {
     return BeginNestedMessage<T>(85);
   }
 
+
+  using FieldMetadata_MdpMisrCrc =
+    ::protozero::proto_utils::FieldMetadata<
+      86,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpMisrCrcFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpMisrCrc kMdpMisrCrc() { return {}; }
   template <typename T = MdpMisrCrcFtraceEvent> T* set_mdp_misr_crc() {
     return BeginNestedMessage<T>(86);
   }
 
+
+  using FieldMetadata_MdpPerfSetQosLuts =
+    ::protozero::proto_utils::FieldMetadata<
+      87,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpPerfSetQosLutsFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpPerfSetQosLuts kMdpPerfSetQosLuts() { return {}; }
   template <typename T = MdpPerfSetQosLutsFtraceEvent> T* set_mdp_perf_set_qos_luts() {
     return BeginNestedMessage<T>(87);
   }
 
+
+  using FieldMetadata_MdpTraceCounter =
+    ::protozero::proto_utils::FieldMetadata<
+      88,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpTraceCounterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpTraceCounter kMdpTraceCounter() { return {}; }
   template <typename T = MdpTraceCounterFtraceEvent> T* set_mdp_trace_counter() {
     return BeginNestedMessage<T>(88);
   }
 
+
+  using FieldMetadata_MdpCmdReleaseBw =
+    ::protozero::proto_utils::FieldMetadata<
+      89,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpCmdReleaseBwFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpCmdReleaseBw kMdpCmdReleaseBw() { return {}; }
   template <typename T = MdpCmdReleaseBwFtraceEvent> T* set_mdp_cmd_release_bw() {
     return BeginNestedMessage<T>(89);
   }
 
+
+  using FieldMetadata_MdpMixerUpdate =
+    ::protozero::proto_utils::FieldMetadata<
+      90,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpMixerUpdateFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpMixerUpdate kMdpMixerUpdate() { return {}; }
   template <typename T = MdpMixerUpdateFtraceEvent> T* set_mdp_mixer_update() {
     return BeginNestedMessage<T>(90);
   }
 
+
+  using FieldMetadata_MdpPerfSetWmLevels =
+    ::protozero::proto_utils::FieldMetadata<
+      91,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpPerfSetWmLevelsFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpPerfSetWmLevels kMdpPerfSetWmLevels() { return {}; }
   template <typename T = MdpPerfSetWmLevelsFtraceEvent> T* set_mdp_perf_set_wm_levels() {
     return BeginNestedMessage<T>(91);
   }
 
+
+  using FieldMetadata_MdpVideoUnderrunDone =
+    ::protozero::proto_utils::FieldMetadata<
+      92,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpVideoUnderrunDoneFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpVideoUnderrunDone kMdpVideoUnderrunDone() { return {}; }
   template <typename T = MdpVideoUnderrunDoneFtraceEvent> T* set_mdp_video_underrun_done() {
     return BeginNestedMessage<T>(92);
   }
 
+
+  using FieldMetadata_MdpCmdWaitPingpong =
+    ::protozero::proto_utils::FieldMetadata<
+      93,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpCmdWaitPingpongFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpCmdWaitPingpong kMdpCmdWaitPingpong() { return {}; }
   template <typename T = MdpCmdWaitPingpongFtraceEvent> T* set_mdp_cmd_wait_pingpong() {
     return BeginNestedMessage<T>(93);
   }
 
+
+  using FieldMetadata_MdpPerfPrefillCalc =
+    ::protozero::proto_utils::FieldMetadata<
+      94,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpPerfPrefillCalcFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpPerfPrefillCalc kMdpPerfPrefillCalc() { return {}; }
   template <typename T = MdpPerfPrefillCalcFtraceEvent> T* set_mdp_perf_prefill_calc() {
     return BeginNestedMessage<T>(94);
   }
 
+
+  using FieldMetadata_MdpPerfUpdateBus =
+    ::protozero::proto_utils::FieldMetadata<
+      95,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MdpPerfUpdateBusFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MdpPerfUpdateBus kMdpPerfUpdateBus() { return {}; }
   template <typename T = MdpPerfUpdateBusFtraceEvent> T* set_mdp_perf_update_bus() {
     return BeginNestedMessage<T>(95);
   }
 
+
+  using FieldMetadata_RotatorBwAoAsContext =
+    ::protozero::proto_utils::FieldMetadata<
+      96,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      RotatorBwAoAsContextFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_RotatorBwAoAsContext kRotatorBwAoAsContext() { return {}; }
   template <typename T = RotatorBwAoAsContextFtraceEvent> T* set_rotator_bw_ao_as_context() {
     return BeginNestedMessage<T>(96);
   }
 
+
+  using FieldMetadata_MmFilemapAddToPageCache =
+    ::protozero::proto_utils::FieldMetadata<
+      97,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmFilemapAddToPageCacheFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmFilemapAddToPageCache kMmFilemapAddToPageCache() { return {}; }
   template <typename T = MmFilemapAddToPageCacheFtraceEvent> T* set_mm_filemap_add_to_page_cache() {
     return BeginNestedMessage<T>(97);
   }
 
+
+  using FieldMetadata_MmFilemapDeleteFromPageCache =
+    ::protozero::proto_utils::FieldMetadata<
+      98,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmFilemapDeleteFromPageCacheFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmFilemapDeleteFromPageCache kMmFilemapDeleteFromPageCache() { return {}; }
   template <typename T = MmFilemapDeleteFromPageCacheFtraceEvent> T* set_mm_filemap_delete_from_page_cache() {
     return BeginNestedMessage<T>(98);
   }
 
+
+  using FieldMetadata_MmCompactionBegin =
+    ::protozero::proto_utils::FieldMetadata<
+      99,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionBeginFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionBegin kMmCompactionBegin() { return {}; }
   template <typename T = MmCompactionBeginFtraceEvent> T* set_mm_compaction_begin() {
     return BeginNestedMessage<T>(99);
   }
 
+
+  using FieldMetadata_MmCompactionDeferCompaction =
+    ::protozero::proto_utils::FieldMetadata<
+      100,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionDeferCompactionFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionDeferCompaction kMmCompactionDeferCompaction() { return {}; }
   template <typename T = MmCompactionDeferCompactionFtraceEvent> T* set_mm_compaction_defer_compaction() {
     return BeginNestedMessage<T>(100);
   }
 
+
+  using FieldMetadata_MmCompactionDeferred =
+    ::protozero::proto_utils::FieldMetadata<
+      101,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionDeferredFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionDeferred kMmCompactionDeferred() { return {}; }
   template <typename T = MmCompactionDeferredFtraceEvent> T* set_mm_compaction_deferred() {
     return BeginNestedMessage<T>(101);
   }
 
+
+  using FieldMetadata_MmCompactionDeferReset =
+    ::protozero::proto_utils::FieldMetadata<
+      102,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionDeferResetFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionDeferReset kMmCompactionDeferReset() { return {}; }
   template <typename T = MmCompactionDeferResetFtraceEvent> T* set_mm_compaction_defer_reset() {
     return BeginNestedMessage<T>(102);
   }
 
+
+  using FieldMetadata_MmCompactionEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      103,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionEnd kMmCompactionEnd() { return {}; }
   template <typename T = MmCompactionEndFtraceEvent> T* set_mm_compaction_end() {
     return BeginNestedMessage<T>(103);
   }
 
+
+  using FieldMetadata_MmCompactionFinished =
+    ::protozero::proto_utils::FieldMetadata<
+      104,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionFinishedFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionFinished kMmCompactionFinished() { return {}; }
   template <typename T = MmCompactionFinishedFtraceEvent> T* set_mm_compaction_finished() {
     return BeginNestedMessage<T>(104);
   }
 
+
+  using FieldMetadata_MmCompactionIsolateFreepages =
+    ::protozero::proto_utils::FieldMetadata<
+      105,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionIsolateFreepagesFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionIsolateFreepages kMmCompactionIsolateFreepages() { return {}; }
   template <typename T = MmCompactionIsolateFreepagesFtraceEvent> T* set_mm_compaction_isolate_freepages() {
     return BeginNestedMessage<T>(105);
   }
 
+
+  using FieldMetadata_MmCompactionIsolateMigratepages =
+    ::protozero::proto_utils::FieldMetadata<
+      106,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionIsolateMigratepagesFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionIsolateMigratepages kMmCompactionIsolateMigratepages() { return {}; }
   template <typename T = MmCompactionIsolateMigratepagesFtraceEvent> T* set_mm_compaction_isolate_migratepages() {
     return BeginNestedMessage<T>(106);
   }
 
+
+  using FieldMetadata_MmCompactionKcompactdSleep =
+    ::protozero::proto_utils::FieldMetadata<
+      107,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionKcompactdSleepFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionKcompactdSleep kMmCompactionKcompactdSleep() { return {}; }
   template <typename T = MmCompactionKcompactdSleepFtraceEvent> T* set_mm_compaction_kcompactd_sleep() {
     return BeginNestedMessage<T>(107);
   }
 
+
+  using FieldMetadata_MmCompactionKcompactdWake =
+    ::protozero::proto_utils::FieldMetadata<
+      108,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionKcompactdWakeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionKcompactdWake kMmCompactionKcompactdWake() { return {}; }
   template <typename T = MmCompactionKcompactdWakeFtraceEvent> T* set_mm_compaction_kcompactd_wake() {
     return BeginNestedMessage<T>(108);
   }
 
+
+  using FieldMetadata_MmCompactionMigratepages =
+    ::protozero::proto_utils::FieldMetadata<
+      109,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionMigratepagesFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionMigratepages kMmCompactionMigratepages() { return {}; }
   template <typename T = MmCompactionMigratepagesFtraceEvent> T* set_mm_compaction_migratepages() {
     return BeginNestedMessage<T>(109);
   }
 
+
+  using FieldMetadata_MmCompactionSuitable =
+    ::protozero::proto_utils::FieldMetadata<
+      110,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionSuitableFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionSuitable kMmCompactionSuitable() { return {}; }
   template <typename T = MmCompactionSuitableFtraceEvent> T* set_mm_compaction_suitable() {
     return BeginNestedMessage<T>(110);
   }
 
+
+  using FieldMetadata_MmCompactionTryToCompactPages =
+    ::protozero::proto_utils::FieldMetadata<
+      111,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionTryToCompactPagesFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionTryToCompactPages kMmCompactionTryToCompactPages() { return {}; }
   template <typename T = MmCompactionTryToCompactPagesFtraceEvent> T* set_mm_compaction_try_to_compact_pages() {
     return BeginNestedMessage<T>(111);
   }
 
+
+  using FieldMetadata_MmCompactionWakeupKcompactd =
+    ::protozero::proto_utils::FieldMetadata<
+      112,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmCompactionWakeupKcompactdFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmCompactionWakeupKcompactd kMmCompactionWakeupKcompactd() { return {}; }
   template <typename T = MmCompactionWakeupKcompactdFtraceEvent> T* set_mm_compaction_wakeup_kcompactd() {
     return BeginNestedMessage<T>(112);
   }
 
+
+  using FieldMetadata_SuspendResume =
+    ::protozero::proto_utils::FieldMetadata<
+      113,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SuspendResumeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SuspendResume kSuspendResume() { return {}; }
   template <typename T = SuspendResumeFtraceEvent> T* set_suspend_resume() {
     return BeginNestedMessage<T>(113);
   }
 
+
+  using FieldMetadata_SchedWakeupNew =
+    ::protozero::proto_utils::FieldMetadata<
+      114,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedWakeupNewFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SchedWakeupNew kSchedWakeupNew() { return {}; }
   template <typename T = SchedWakeupNewFtraceEvent> T* set_sched_wakeup_new() {
     return BeginNestedMessage<T>(114);
   }
 
+
+  using FieldMetadata_BlockBioBackmerge =
+    ::protozero::proto_utils::FieldMetadata<
+      115,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockBioBackmergeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockBioBackmerge kBlockBioBackmerge() { return {}; }
   template <typename T = BlockBioBackmergeFtraceEvent> T* set_block_bio_backmerge() {
     return BeginNestedMessage<T>(115);
   }
 
+
+  using FieldMetadata_BlockBioBounce =
+    ::protozero::proto_utils::FieldMetadata<
+      116,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockBioBounceFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockBioBounce kBlockBioBounce() { return {}; }
   template <typename T = BlockBioBounceFtraceEvent> T* set_block_bio_bounce() {
     return BeginNestedMessage<T>(116);
   }
 
+
+  using FieldMetadata_BlockBioComplete =
+    ::protozero::proto_utils::FieldMetadata<
+      117,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockBioCompleteFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockBioComplete kBlockBioComplete() { return {}; }
   template <typename T = BlockBioCompleteFtraceEvent> T* set_block_bio_complete() {
     return BeginNestedMessage<T>(117);
   }
 
+
+  using FieldMetadata_BlockBioFrontmerge =
+    ::protozero::proto_utils::FieldMetadata<
+      118,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockBioFrontmergeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockBioFrontmerge kBlockBioFrontmerge() { return {}; }
   template <typename T = BlockBioFrontmergeFtraceEvent> T* set_block_bio_frontmerge() {
     return BeginNestedMessage<T>(118);
   }
 
+
+  using FieldMetadata_BlockBioQueue =
+    ::protozero::proto_utils::FieldMetadata<
+      119,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockBioQueueFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockBioQueue kBlockBioQueue() { return {}; }
   template <typename T = BlockBioQueueFtraceEvent> T* set_block_bio_queue() {
     return BeginNestedMessage<T>(119);
   }
 
+
+  using FieldMetadata_BlockBioRemap =
+    ::protozero::proto_utils::FieldMetadata<
+      120,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockBioRemapFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockBioRemap kBlockBioRemap() { return {}; }
   template <typename T = BlockBioRemapFtraceEvent> T* set_block_bio_remap() {
     return BeginNestedMessage<T>(120);
   }
 
+
+  using FieldMetadata_BlockDirtyBuffer =
+    ::protozero::proto_utils::FieldMetadata<
+      121,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockDirtyBufferFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockDirtyBuffer kBlockDirtyBuffer() { return {}; }
   template <typename T = BlockDirtyBufferFtraceEvent> T* set_block_dirty_buffer() {
     return BeginNestedMessage<T>(121);
   }
 
+
+  using FieldMetadata_BlockGetrq =
+    ::protozero::proto_utils::FieldMetadata<
+      122,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockGetrqFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockGetrq kBlockGetrq() { return {}; }
   template <typename T = BlockGetrqFtraceEvent> T* set_block_getrq() {
     return BeginNestedMessage<T>(122);
   }
 
+
+  using FieldMetadata_BlockPlug =
+    ::protozero::proto_utils::FieldMetadata<
+      123,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockPlugFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockPlug kBlockPlug() { return {}; }
   template <typename T = BlockPlugFtraceEvent> T* set_block_plug() {
     return BeginNestedMessage<T>(123);
   }
 
+
+  using FieldMetadata_BlockRqAbort =
+    ::protozero::proto_utils::FieldMetadata<
+      124,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockRqAbortFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockRqAbort kBlockRqAbort() { return {}; }
   template <typename T = BlockRqAbortFtraceEvent> T* set_block_rq_abort() {
     return BeginNestedMessage<T>(124);
   }
 
+
+  using FieldMetadata_BlockRqComplete =
+    ::protozero::proto_utils::FieldMetadata<
+      125,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockRqCompleteFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockRqComplete kBlockRqComplete() { return {}; }
   template <typename T = BlockRqCompleteFtraceEvent> T* set_block_rq_complete() {
     return BeginNestedMessage<T>(125);
   }
 
+
+  using FieldMetadata_BlockRqInsert =
+    ::protozero::proto_utils::FieldMetadata<
+      126,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockRqInsertFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockRqInsert kBlockRqInsert() { return {}; }
   template <typename T = BlockRqInsertFtraceEvent> T* set_block_rq_insert() {
     return BeginNestedMessage<T>(126);
   }
 
+
+  using FieldMetadata_BlockRqRemap =
+    ::protozero::proto_utils::FieldMetadata<
+      128,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockRqRemapFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockRqRemap kBlockRqRemap() { return {}; }
   template <typename T = BlockRqRemapFtraceEvent> T* set_block_rq_remap() {
     return BeginNestedMessage<T>(128);
   }
 
+
+  using FieldMetadata_BlockRqRequeue =
+    ::protozero::proto_utils::FieldMetadata<
+      129,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockRqRequeueFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockRqRequeue kBlockRqRequeue() { return {}; }
   template <typename T = BlockRqRequeueFtraceEvent> T* set_block_rq_requeue() {
     return BeginNestedMessage<T>(129);
   }
 
+
+  using FieldMetadata_BlockSleeprq =
+    ::protozero::proto_utils::FieldMetadata<
+      130,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockSleeprqFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockSleeprq kBlockSleeprq() { return {}; }
   template <typename T = BlockSleeprqFtraceEvent> T* set_block_sleeprq() {
     return BeginNestedMessage<T>(130);
   }
 
+
+  using FieldMetadata_BlockSplit =
+    ::protozero::proto_utils::FieldMetadata<
+      131,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockSplitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockSplit kBlockSplit() { return {}; }
   template <typename T = BlockSplitFtraceEvent> T* set_block_split() {
     return BeginNestedMessage<T>(131);
   }
 
+
+  using FieldMetadata_BlockTouchBuffer =
+    ::protozero::proto_utils::FieldMetadata<
+      132,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockTouchBufferFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockTouchBuffer kBlockTouchBuffer() { return {}; }
   template <typename T = BlockTouchBufferFtraceEvent> T* set_block_touch_buffer() {
     return BeginNestedMessage<T>(132);
   }
 
+
+  using FieldMetadata_BlockUnplug =
+    ::protozero::proto_utils::FieldMetadata<
+      133,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BlockUnplugFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BlockUnplug kBlockUnplug() { return {}; }
   template <typename T = BlockUnplugFtraceEvent> T* set_block_unplug() {
     return BeginNestedMessage<T>(133);
   }
 
+
+  using FieldMetadata_Ext4AllocDaBlocks =
+    ::protozero::proto_utils::FieldMetadata<
+      134,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4AllocDaBlocksFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4AllocDaBlocks kExt4AllocDaBlocks() { return {}; }
   template <typename T = Ext4AllocDaBlocksFtraceEvent> T* set_ext4_alloc_da_blocks() {
     return BeginNestedMessage<T>(134);
   }
 
+
+  using FieldMetadata_Ext4AllocateBlocks =
+    ::protozero::proto_utils::FieldMetadata<
+      135,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4AllocateBlocksFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4AllocateBlocks kExt4AllocateBlocks() { return {}; }
   template <typename T = Ext4AllocateBlocksFtraceEvent> T* set_ext4_allocate_blocks() {
     return BeginNestedMessage<T>(135);
   }
 
+
+  using FieldMetadata_Ext4AllocateInode =
+    ::protozero::proto_utils::FieldMetadata<
+      136,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4AllocateInodeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4AllocateInode kExt4AllocateInode() { return {}; }
   template <typename T = Ext4AllocateInodeFtraceEvent> T* set_ext4_allocate_inode() {
     return BeginNestedMessage<T>(136);
   }
 
+
+  using FieldMetadata_Ext4BeginOrderedTruncate =
+    ::protozero::proto_utils::FieldMetadata<
+      137,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4BeginOrderedTruncateFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4BeginOrderedTruncate kExt4BeginOrderedTruncate() { return {}; }
   template <typename T = Ext4BeginOrderedTruncateFtraceEvent> T* set_ext4_begin_ordered_truncate() {
     return BeginNestedMessage<T>(137);
   }
 
+
+  using FieldMetadata_Ext4CollapseRange =
+    ::protozero::proto_utils::FieldMetadata<
+      138,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4CollapseRangeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4CollapseRange kExt4CollapseRange() { return {}; }
   template <typename T = Ext4CollapseRangeFtraceEvent> T* set_ext4_collapse_range() {
     return BeginNestedMessage<T>(138);
   }
 
+
+  using FieldMetadata_Ext4DaReleaseSpace =
+    ::protozero::proto_utils::FieldMetadata<
+      139,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4DaReleaseSpaceFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4DaReleaseSpace kExt4DaReleaseSpace() { return {}; }
   template <typename T = Ext4DaReleaseSpaceFtraceEvent> T* set_ext4_da_release_space() {
     return BeginNestedMessage<T>(139);
   }
 
+
+  using FieldMetadata_Ext4DaReserveSpace =
+    ::protozero::proto_utils::FieldMetadata<
+      140,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4DaReserveSpaceFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4DaReserveSpace kExt4DaReserveSpace() { return {}; }
   template <typename T = Ext4DaReserveSpaceFtraceEvent> T* set_ext4_da_reserve_space() {
     return BeginNestedMessage<T>(140);
   }
 
+
+  using FieldMetadata_Ext4DaUpdateReserveSpace =
+    ::protozero::proto_utils::FieldMetadata<
+      141,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4DaUpdateReserveSpaceFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4DaUpdateReserveSpace kExt4DaUpdateReserveSpace() { return {}; }
   template <typename T = Ext4DaUpdateReserveSpaceFtraceEvent> T* set_ext4_da_update_reserve_space() {
     return BeginNestedMessage<T>(141);
   }
 
+
+  using FieldMetadata_Ext4DaWritePages =
+    ::protozero::proto_utils::FieldMetadata<
+      142,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4DaWritePagesFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4DaWritePages kExt4DaWritePages() { return {}; }
   template <typename T = Ext4DaWritePagesFtraceEvent> T* set_ext4_da_write_pages() {
     return BeginNestedMessage<T>(142);
   }
 
+
+  using FieldMetadata_Ext4DaWritePagesExtent =
+    ::protozero::proto_utils::FieldMetadata<
+      143,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4DaWritePagesExtentFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4DaWritePagesExtent kExt4DaWritePagesExtent() { return {}; }
   template <typename T = Ext4DaWritePagesExtentFtraceEvent> T* set_ext4_da_write_pages_extent() {
     return BeginNestedMessage<T>(143);
   }
 
+
+  using FieldMetadata_Ext4DirectIOEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      144,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4DirectIOEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4DirectIOEnter kExt4DirectIOEnter() { return {}; }
   template <typename T = Ext4DirectIOEnterFtraceEvent> T* set_ext4_direct_io_enter() {
     return BeginNestedMessage<T>(144);
   }
 
+
+  using FieldMetadata_Ext4DirectIOExit =
+    ::protozero::proto_utils::FieldMetadata<
+      145,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4DirectIOExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4DirectIOExit kExt4DirectIOExit() { return {}; }
   template <typename T = Ext4DirectIOExitFtraceEvent> T* set_ext4_direct_io_exit() {
     return BeginNestedMessage<T>(145);
   }
 
+
+  using FieldMetadata_Ext4DiscardBlocks =
+    ::protozero::proto_utils::FieldMetadata<
+      146,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4DiscardBlocksFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4DiscardBlocks kExt4DiscardBlocks() { return {}; }
   template <typename T = Ext4DiscardBlocksFtraceEvent> T* set_ext4_discard_blocks() {
     return BeginNestedMessage<T>(146);
   }
 
+
+  using FieldMetadata_Ext4DiscardPreallocations =
+    ::protozero::proto_utils::FieldMetadata<
+      147,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4DiscardPreallocationsFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4DiscardPreallocations kExt4DiscardPreallocations() { return {}; }
   template <typename T = Ext4DiscardPreallocationsFtraceEvent> T* set_ext4_discard_preallocations() {
     return BeginNestedMessage<T>(147);
   }
 
+
+  using FieldMetadata_Ext4DropInode =
+    ::protozero::proto_utils::FieldMetadata<
+      148,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4DropInodeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4DropInode kExt4DropInode() { return {}; }
   template <typename T = Ext4DropInodeFtraceEvent> T* set_ext4_drop_inode() {
     return BeginNestedMessage<T>(148);
   }
 
+
+  using FieldMetadata_Ext4EsCacheExtent =
+    ::protozero::proto_utils::FieldMetadata<
+      149,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4EsCacheExtentFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4EsCacheExtent kExt4EsCacheExtent() { return {}; }
   template <typename T = Ext4EsCacheExtentFtraceEvent> T* set_ext4_es_cache_extent() {
     return BeginNestedMessage<T>(149);
   }
 
+
+  using FieldMetadata_Ext4EsFindDelayedExtentRangeEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      150,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4EsFindDelayedExtentRangeEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4EsFindDelayedExtentRangeEnter kExt4EsFindDelayedExtentRangeEnter() { return {}; }
   template <typename T = Ext4EsFindDelayedExtentRangeEnterFtraceEvent> T* set_ext4_es_find_delayed_extent_range_enter() {
     return BeginNestedMessage<T>(150);
   }
 
+
+  using FieldMetadata_Ext4EsFindDelayedExtentRangeExit =
+    ::protozero::proto_utils::FieldMetadata<
+      151,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4EsFindDelayedExtentRangeExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4EsFindDelayedExtentRangeExit kExt4EsFindDelayedExtentRangeExit() { return {}; }
   template <typename T = Ext4EsFindDelayedExtentRangeExitFtraceEvent> T* set_ext4_es_find_delayed_extent_range_exit() {
     return BeginNestedMessage<T>(151);
   }
 
+
+  using FieldMetadata_Ext4EsInsertExtent =
+    ::protozero::proto_utils::FieldMetadata<
+      152,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4EsInsertExtentFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4EsInsertExtent kExt4EsInsertExtent() { return {}; }
   template <typename T = Ext4EsInsertExtentFtraceEvent> T* set_ext4_es_insert_extent() {
     return BeginNestedMessage<T>(152);
   }
 
+
+  using FieldMetadata_Ext4EsLookupExtentEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      153,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4EsLookupExtentEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4EsLookupExtentEnter kExt4EsLookupExtentEnter() { return {}; }
   template <typename T = Ext4EsLookupExtentEnterFtraceEvent> T* set_ext4_es_lookup_extent_enter() {
     return BeginNestedMessage<T>(153);
   }
 
+
+  using FieldMetadata_Ext4EsLookupExtentExit =
+    ::protozero::proto_utils::FieldMetadata<
+      154,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4EsLookupExtentExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4EsLookupExtentExit kExt4EsLookupExtentExit() { return {}; }
   template <typename T = Ext4EsLookupExtentExitFtraceEvent> T* set_ext4_es_lookup_extent_exit() {
     return BeginNestedMessage<T>(154);
   }
 
+
+  using FieldMetadata_Ext4EsRemoveExtent =
+    ::protozero::proto_utils::FieldMetadata<
+      155,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4EsRemoveExtentFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4EsRemoveExtent kExt4EsRemoveExtent() { return {}; }
   template <typename T = Ext4EsRemoveExtentFtraceEvent> T* set_ext4_es_remove_extent() {
     return BeginNestedMessage<T>(155);
   }
 
+
+  using FieldMetadata_Ext4EsShrink =
+    ::protozero::proto_utils::FieldMetadata<
+      156,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4EsShrinkFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4EsShrink kExt4EsShrink() { return {}; }
   template <typename T = Ext4EsShrinkFtraceEvent> T* set_ext4_es_shrink() {
     return BeginNestedMessage<T>(156);
   }
 
+
+  using FieldMetadata_Ext4EsShrinkCount =
+    ::protozero::proto_utils::FieldMetadata<
+      157,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4EsShrinkCountFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4EsShrinkCount kExt4EsShrinkCount() { return {}; }
   template <typename T = Ext4EsShrinkCountFtraceEvent> T* set_ext4_es_shrink_count() {
     return BeginNestedMessage<T>(157);
   }
 
+
+  using FieldMetadata_Ext4EsShrinkScanEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      158,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4EsShrinkScanEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4EsShrinkScanEnter kExt4EsShrinkScanEnter() { return {}; }
   template <typename T = Ext4EsShrinkScanEnterFtraceEvent> T* set_ext4_es_shrink_scan_enter() {
     return BeginNestedMessage<T>(158);
   }
 
+
+  using FieldMetadata_Ext4EsShrinkScanExit =
+    ::protozero::proto_utils::FieldMetadata<
+      159,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4EsShrinkScanExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4EsShrinkScanExit kExt4EsShrinkScanExit() { return {}; }
   template <typename T = Ext4EsShrinkScanExitFtraceEvent> T* set_ext4_es_shrink_scan_exit() {
     return BeginNestedMessage<T>(159);
   }
 
+
+  using FieldMetadata_Ext4EvictInode =
+    ::protozero::proto_utils::FieldMetadata<
+      160,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4EvictInodeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4EvictInode kExt4EvictInode() { return {}; }
   template <typename T = Ext4EvictInodeFtraceEvent> T* set_ext4_evict_inode() {
     return BeginNestedMessage<T>(160);
   }
 
+
+  using FieldMetadata_Ext4ExtConvertToInitializedEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      161,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ExtConvertToInitializedEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ExtConvertToInitializedEnter kExt4ExtConvertToInitializedEnter() { return {}; }
   template <typename T = Ext4ExtConvertToInitializedEnterFtraceEvent> T* set_ext4_ext_convert_to_initialized_enter() {
     return BeginNestedMessage<T>(161);
   }
 
+
+  using FieldMetadata_Ext4ExtConvertToInitializedFastpath =
+    ::protozero::proto_utils::FieldMetadata<
+      162,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ExtConvertToInitializedFastpathFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ExtConvertToInitializedFastpath kExt4ExtConvertToInitializedFastpath() { return {}; }
   template <typename T = Ext4ExtConvertToInitializedFastpathFtraceEvent> T* set_ext4_ext_convert_to_initialized_fastpath() {
     return BeginNestedMessage<T>(162);
   }
 
+
+  using FieldMetadata_Ext4ExtHandleUnwrittenExtents =
+    ::protozero::proto_utils::FieldMetadata<
+      163,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ExtHandleUnwrittenExtentsFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ExtHandleUnwrittenExtents kExt4ExtHandleUnwrittenExtents() { return {}; }
   template <typename T = Ext4ExtHandleUnwrittenExtentsFtraceEvent> T* set_ext4_ext_handle_unwritten_extents() {
     return BeginNestedMessage<T>(163);
   }
 
+
+  using FieldMetadata_Ext4ExtInCache =
+    ::protozero::proto_utils::FieldMetadata<
+      164,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ExtInCacheFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ExtInCache kExt4ExtInCache() { return {}; }
   template <typename T = Ext4ExtInCacheFtraceEvent> T* set_ext4_ext_in_cache() {
     return BeginNestedMessage<T>(164);
   }
 
+
+  using FieldMetadata_Ext4ExtLoadExtent =
+    ::protozero::proto_utils::FieldMetadata<
+      165,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ExtLoadExtentFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ExtLoadExtent kExt4ExtLoadExtent() { return {}; }
   template <typename T = Ext4ExtLoadExtentFtraceEvent> T* set_ext4_ext_load_extent() {
     return BeginNestedMessage<T>(165);
   }
 
+
+  using FieldMetadata_Ext4ExtMapBlocksEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      166,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ExtMapBlocksEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ExtMapBlocksEnter kExt4ExtMapBlocksEnter() { return {}; }
   template <typename T = Ext4ExtMapBlocksEnterFtraceEvent> T* set_ext4_ext_map_blocks_enter() {
     return BeginNestedMessage<T>(166);
   }
 
+
+  using FieldMetadata_Ext4ExtMapBlocksExit =
+    ::protozero::proto_utils::FieldMetadata<
+      167,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ExtMapBlocksExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ExtMapBlocksExit kExt4ExtMapBlocksExit() { return {}; }
   template <typename T = Ext4ExtMapBlocksExitFtraceEvent> T* set_ext4_ext_map_blocks_exit() {
     return BeginNestedMessage<T>(167);
   }
 
+
+  using FieldMetadata_Ext4ExtPutInCache =
+    ::protozero::proto_utils::FieldMetadata<
+      168,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ExtPutInCacheFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ExtPutInCache kExt4ExtPutInCache() { return {}; }
   template <typename T = Ext4ExtPutInCacheFtraceEvent> T* set_ext4_ext_put_in_cache() {
     return BeginNestedMessage<T>(168);
   }
 
+
+  using FieldMetadata_Ext4ExtRemoveSpace =
+    ::protozero::proto_utils::FieldMetadata<
+      169,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ExtRemoveSpaceFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ExtRemoveSpace kExt4ExtRemoveSpace() { return {}; }
   template <typename T = Ext4ExtRemoveSpaceFtraceEvent> T* set_ext4_ext_remove_space() {
     return BeginNestedMessage<T>(169);
   }
 
+
+  using FieldMetadata_Ext4ExtRemoveSpaceDone =
+    ::protozero::proto_utils::FieldMetadata<
+      170,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ExtRemoveSpaceDoneFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ExtRemoveSpaceDone kExt4ExtRemoveSpaceDone() { return {}; }
   template <typename T = Ext4ExtRemoveSpaceDoneFtraceEvent> T* set_ext4_ext_remove_space_done() {
     return BeginNestedMessage<T>(170);
   }
 
+
+  using FieldMetadata_Ext4ExtRmIdx =
+    ::protozero::proto_utils::FieldMetadata<
+      171,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ExtRmIdxFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ExtRmIdx kExt4ExtRmIdx() { return {}; }
   template <typename T = Ext4ExtRmIdxFtraceEvent> T* set_ext4_ext_rm_idx() {
     return BeginNestedMessage<T>(171);
   }
 
+
+  using FieldMetadata_Ext4ExtRmLeaf =
+    ::protozero::proto_utils::FieldMetadata<
+      172,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ExtRmLeafFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ExtRmLeaf kExt4ExtRmLeaf() { return {}; }
   template <typename T = Ext4ExtRmLeafFtraceEvent> T* set_ext4_ext_rm_leaf() {
     return BeginNestedMessage<T>(172);
   }
 
+
+  using FieldMetadata_Ext4ExtShowExtent =
+    ::protozero::proto_utils::FieldMetadata<
+      173,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ExtShowExtentFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ExtShowExtent kExt4ExtShowExtent() { return {}; }
   template <typename T = Ext4ExtShowExtentFtraceEvent> T* set_ext4_ext_show_extent() {
     return BeginNestedMessage<T>(173);
   }
 
+
+  using FieldMetadata_Ext4FallocateEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      174,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4FallocateEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4FallocateEnter kExt4FallocateEnter() { return {}; }
   template <typename T = Ext4FallocateEnterFtraceEvent> T* set_ext4_fallocate_enter() {
     return BeginNestedMessage<T>(174);
   }
 
+
+  using FieldMetadata_Ext4FallocateExit =
+    ::protozero::proto_utils::FieldMetadata<
+      175,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4FallocateExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4FallocateExit kExt4FallocateExit() { return {}; }
   template <typename T = Ext4FallocateExitFtraceEvent> T* set_ext4_fallocate_exit() {
     return BeginNestedMessage<T>(175);
   }
 
+
+  using FieldMetadata_Ext4FindDelallocRange =
+    ::protozero::proto_utils::FieldMetadata<
+      176,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4FindDelallocRangeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4FindDelallocRange kExt4FindDelallocRange() { return {}; }
   template <typename T = Ext4FindDelallocRangeFtraceEvent> T* set_ext4_find_delalloc_range() {
     return BeginNestedMessage<T>(176);
   }
 
+
+  using FieldMetadata_Ext4Forget =
+    ::protozero::proto_utils::FieldMetadata<
+      177,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ForgetFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4Forget kExt4Forget() { return {}; }
   template <typename T = Ext4ForgetFtraceEvent> T* set_ext4_forget() {
     return BeginNestedMessage<T>(177);
   }
 
+
+  using FieldMetadata_Ext4FreeBlocks =
+    ::protozero::proto_utils::FieldMetadata<
+      178,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4FreeBlocksFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4FreeBlocks kExt4FreeBlocks() { return {}; }
   template <typename T = Ext4FreeBlocksFtraceEvent> T* set_ext4_free_blocks() {
     return BeginNestedMessage<T>(178);
   }
 
+
+  using FieldMetadata_Ext4FreeInode =
+    ::protozero::proto_utils::FieldMetadata<
+      179,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4FreeInodeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4FreeInode kExt4FreeInode() { return {}; }
   template <typename T = Ext4FreeInodeFtraceEvent> T* set_ext4_free_inode() {
     return BeginNestedMessage<T>(179);
   }
 
+
+  using FieldMetadata_Ext4GetImpliedClusterAllocExit =
+    ::protozero::proto_utils::FieldMetadata<
+      180,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4GetImpliedClusterAllocExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4GetImpliedClusterAllocExit kExt4GetImpliedClusterAllocExit() { return {}; }
   template <typename T = Ext4GetImpliedClusterAllocExitFtraceEvent> T* set_ext4_get_implied_cluster_alloc_exit() {
     return BeginNestedMessage<T>(180);
   }
 
+
+  using FieldMetadata_Ext4GetReservedClusterAlloc =
+    ::protozero::proto_utils::FieldMetadata<
+      181,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4GetReservedClusterAllocFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4GetReservedClusterAlloc kExt4GetReservedClusterAlloc() { return {}; }
   template <typename T = Ext4GetReservedClusterAllocFtraceEvent> T* set_ext4_get_reserved_cluster_alloc() {
     return BeginNestedMessage<T>(181);
   }
 
+
+  using FieldMetadata_Ext4IndMapBlocksEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      182,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4IndMapBlocksEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4IndMapBlocksEnter kExt4IndMapBlocksEnter() { return {}; }
   template <typename T = Ext4IndMapBlocksEnterFtraceEvent> T* set_ext4_ind_map_blocks_enter() {
     return BeginNestedMessage<T>(182);
   }
 
+
+  using FieldMetadata_Ext4IndMapBlocksExit =
+    ::protozero::proto_utils::FieldMetadata<
+      183,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4IndMapBlocksExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4IndMapBlocksExit kExt4IndMapBlocksExit() { return {}; }
   template <typename T = Ext4IndMapBlocksExitFtraceEvent> T* set_ext4_ind_map_blocks_exit() {
     return BeginNestedMessage<T>(183);
   }
 
+
+  using FieldMetadata_Ext4InsertRange =
+    ::protozero::proto_utils::FieldMetadata<
+      184,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4InsertRangeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4InsertRange kExt4InsertRange() { return {}; }
   template <typename T = Ext4InsertRangeFtraceEvent> T* set_ext4_insert_range() {
     return BeginNestedMessage<T>(184);
   }
 
+
+  using FieldMetadata_Ext4Invalidatepage =
+    ::protozero::proto_utils::FieldMetadata<
+      185,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4InvalidatepageFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4Invalidatepage kExt4Invalidatepage() { return {}; }
   template <typename T = Ext4InvalidatepageFtraceEvent> T* set_ext4_invalidatepage() {
     return BeginNestedMessage<T>(185);
   }
 
+
+  using FieldMetadata_Ext4JournalStart =
+    ::protozero::proto_utils::FieldMetadata<
+      186,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4JournalStartFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4JournalStart kExt4JournalStart() { return {}; }
   template <typename T = Ext4JournalStartFtraceEvent> T* set_ext4_journal_start() {
     return BeginNestedMessage<T>(186);
   }
 
+
+  using FieldMetadata_Ext4JournalStartReserved =
+    ::protozero::proto_utils::FieldMetadata<
+      187,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4JournalStartReservedFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4JournalStartReserved kExt4JournalStartReserved() { return {}; }
   template <typename T = Ext4JournalStartReservedFtraceEvent> T* set_ext4_journal_start_reserved() {
     return BeginNestedMessage<T>(187);
   }
 
+
+  using FieldMetadata_Ext4JournalledInvalidatepage =
+    ::protozero::proto_utils::FieldMetadata<
+      188,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4JournalledInvalidatepageFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4JournalledInvalidatepage kExt4JournalledInvalidatepage() { return {}; }
   template <typename T = Ext4JournalledInvalidatepageFtraceEvent> T* set_ext4_journalled_invalidatepage() {
     return BeginNestedMessage<T>(188);
   }
 
+
+  using FieldMetadata_Ext4JournalledWriteEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      189,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4JournalledWriteEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4JournalledWriteEnd kExt4JournalledWriteEnd() { return {}; }
   template <typename T = Ext4JournalledWriteEndFtraceEvent> T* set_ext4_journalled_write_end() {
     return BeginNestedMessage<T>(189);
   }
 
+
+  using FieldMetadata_Ext4LoadInode =
+    ::protozero::proto_utils::FieldMetadata<
+      190,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4LoadInodeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4LoadInode kExt4LoadInode() { return {}; }
   template <typename T = Ext4LoadInodeFtraceEvent> T* set_ext4_load_inode() {
     return BeginNestedMessage<T>(190);
   }
 
+
+  using FieldMetadata_Ext4LoadInodeBitmap =
+    ::protozero::proto_utils::FieldMetadata<
+      191,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4LoadInodeBitmapFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4LoadInodeBitmap kExt4LoadInodeBitmap() { return {}; }
   template <typename T = Ext4LoadInodeBitmapFtraceEvent> T* set_ext4_load_inode_bitmap() {
     return BeginNestedMessage<T>(191);
   }
 
+
+  using FieldMetadata_Ext4MarkInodeDirty =
+    ::protozero::proto_utils::FieldMetadata<
+      192,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4MarkInodeDirtyFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4MarkInodeDirty kExt4MarkInodeDirty() { return {}; }
   template <typename T = Ext4MarkInodeDirtyFtraceEvent> T* set_ext4_mark_inode_dirty() {
     return BeginNestedMessage<T>(192);
   }
 
+
+  using FieldMetadata_Ext4MbBitmapLoad =
+    ::protozero::proto_utils::FieldMetadata<
+      193,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4MbBitmapLoadFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4MbBitmapLoad kExt4MbBitmapLoad() { return {}; }
   template <typename T = Ext4MbBitmapLoadFtraceEvent> T* set_ext4_mb_bitmap_load() {
     return BeginNestedMessage<T>(193);
   }
 
+
+  using FieldMetadata_Ext4MbBuddyBitmapLoad =
+    ::protozero::proto_utils::FieldMetadata<
+      194,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4MbBuddyBitmapLoadFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4MbBuddyBitmapLoad kExt4MbBuddyBitmapLoad() { return {}; }
   template <typename T = Ext4MbBuddyBitmapLoadFtraceEvent> T* set_ext4_mb_buddy_bitmap_load() {
     return BeginNestedMessage<T>(194);
   }
 
+
+  using FieldMetadata_Ext4MbDiscardPreallocations =
+    ::protozero::proto_utils::FieldMetadata<
+      195,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4MbDiscardPreallocationsFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4MbDiscardPreallocations kExt4MbDiscardPreallocations() { return {}; }
   template <typename T = Ext4MbDiscardPreallocationsFtraceEvent> T* set_ext4_mb_discard_preallocations() {
     return BeginNestedMessage<T>(195);
   }
 
+
+  using FieldMetadata_Ext4MbNewGroupPa =
+    ::protozero::proto_utils::FieldMetadata<
+      196,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4MbNewGroupPaFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4MbNewGroupPa kExt4MbNewGroupPa() { return {}; }
   template <typename T = Ext4MbNewGroupPaFtraceEvent> T* set_ext4_mb_new_group_pa() {
     return BeginNestedMessage<T>(196);
   }
 
+
+  using FieldMetadata_Ext4MbNewInodePa =
+    ::protozero::proto_utils::FieldMetadata<
+      197,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4MbNewInodePaFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4MbNewInodePa kExt4MbNewInodePa() { return {}; }
   template <typename T = Ext4MbNewInodePaFtraceEvent> T* set_ext4_mb_new_inode_pa() {
     return BeginNestedMessage<T>(197);
   }
 
+
+  using FieldMetadata_Ext4MbReleaseGroupPa =
+    ::protozero::proto_utils::FieldMetadata<
+      198,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4MbReleaseGroupPaFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4MbReleaseGroupPa kExt4MbReleaseGroupPa() { return {}; }
   template <typename T = Ext4MbReleaseGroupPaFtraceEvent> T* set_ext4_mb_release_group_pa() {
     return BeginNestedMessage<T>(198);
   }
 
+
+  using FieldMetadata_Ext4MbReleaseInodePa =
+    ::protozero::proto_utils::FieldMetadata<
+      199,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4MbReleaseInodePaFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4MbReleaseInodePa kExt4MbReleaseInodePa() { return {}; }
   template <typename T = Ext4MbReleaseInodePaFtraceEvent> T* set_ext4_mb_release_inode_pa() {
     return BeginNestedMessage<T>(199);
   }
 
+
+  using FieldMetadata_Ext4MballocAlloc =
+    ::protozero::proto_utils::FieldMetadata<
+      200,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4MballocAllocFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4MballocAlloc kExt4MballocAlloc() { return {}; }
   template <typename T = Ext4MballocAllocFtraceEvent> T* set_ext4_mballoc_alloc() {
     return BeginNestedMessage<T>(200);
   }
 
+
+  using FieldMetadata_Ext4MballocDiscard =
+    ::protozero::proto_utils::FieldMetadata<
+      201,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4MballocDiscardFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4MballocDiscard kExt4MballocDiscard() { return {}; }
   template <typename T = Ext4MballocDiscardFtraceEvent> T* set_ext4_mballoc_discard() {
     return BeginNestedMessage<T>(201);
   }
 
+
+  using FieldMetadata_Ext4MballocFree =
+    ::protozero::proto_utils::FieldMetadata<
+      202,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4MballocFreeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4MballocFree kExt4MballocFree() { return {}; }
   template <typename T = Ext4MballocFreeFtraceEvent> T* set_ext4_mballoc_free() {
     return BeginNestedMessage<T>(202);
   }
 
+
+  using FieldMetadata_Ext4MballocPrealloc =
+    ::protozero::proto_utils::FieldMetadata<
+      203,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4MballocPreallocFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4MballocPrealloc kExt4MballocPrealloc() { return {}; }
   template <typename T = Ext4MballocPreallocFtraceEvent> T* set_ext4_mballoc_prealloc() {
     return BeginNestedMessage<T>(203);
   }
 
+
+  using FieldMetadata_Ext4OtherInodeUpdateTime =
+    ::protozero::proto_utils::FieldMetadata<
+      204,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4OtherInodeUpdateTimeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4OtherInodeUpdateTime kExt4OtherInodeUpdateTime() { return {}; }
   template <typename T = Ext4OtherInodeUpdateTimeFtraceEvent> T* set_ext4_other_inode_update_time() {
     return BeginNestedMessage<T>(204);
   }
 
+
+  using FieldMetadata_Ext4PunchHole =
+    ::protozero::proto_utils::FieldMetadata<
+      205,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4PunchHoleFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4PunchHole kExt4PunchHole() { return {}; }
   template <typename T = Ext4PunchHoleFtraceEvent> T* set_ext4_punch_hole() {
     return BeginNestedMessage<T>(205);
   }
 
+
+  using FieldMetadata_Ext4ReadBlockBitmapLoad =
+    ::protozero::proto_utils::FieldMetadata<
+      206,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ReadBlockBitmapLoadFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ReadBlockBitmapLoad kExt4ReadBlockBitmapLoad() { return {}; }
   template <typename T = Ext4ReadBlockBitmapLoadFtraceEvent> T* set_ext4_read_block_bitmap_load() {
     return BeginNestedMessage<T>(206);
   }
 
+
+  using FieldMetadata_Ext4Readpage =
+    ::protozero::proto_utils::FieldMetadata<
+      207,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ReadpageFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4Readpage kExt4Readpage() { return {}; }
   template <typename T = Ext4ReadpageFtraceEvent> T* set_ext4_readpage() {
     return BeginNestedMessage<T>(207);
   }
 
+
+  using FieldMetadata_Ext4Releasepage =
+    ::protozero::proto_utils::FieldMetadata<
+      208,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ReleasepageFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4Releasepage kExt4Releasepage() { return {}; }
   template <typename T = Ext4ReleasepageFtraceEvent> T* set_ext4_releasepage() {
     return BeginNestedMessage<T>(208);
   }
 
+
+  using FieldMetadata_Ext4RemoveBlocks =
+    ::protozero::proto_utils::FieldMetadata<
+      209,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4RemoveBlocksFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4RemoveBlocks kExt4RemoveBlocks() { return {}; }
   template <typename T = Ext4RemoveBlocksFtraceEvent> T* set_ext4_remove_blocks() {
     return BeginNestedMessage<T>(209);
   }
 
+
+  using FieldMetadata_Ext4RequestBlocks =
+    ::protozero::proto_utils::FieldMetadata<
+      210,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4RequestBlocksFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4RequestBlocks kExt4RequestBlocks() { return {}; }
   template <typename T = Ext4RequestBlocksFtraceEvent> T* set_ext4_request_blocks() {
     return BeginNestedMessage<T>(210);
   }
 
+
+  using FieldMetadata_Ext4RequestInode =
+    ::protozero::proto_utils::FieldMetadata<
+      211,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4RequestInodeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4RequestInode kExt4RequestInode() { return {}; }
   template <typename T = Ext4RequestInodeFtraceEvent> T* set_ext4_request_inode() {
     return BeginNestedMessage<T>(211);
   }
 
+
+  using FieldMetadata_Ext4SyncFs =
+    ::protozero::proto_utils::FieldMetadata<
+      212,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4SyncFsFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4SyncFs kExt4SyncFs() { return {}; }
   template <typename T = Ext4SyncFsFtraceEvent> T* set_ext4_sync_fs() {
     return BeginNestedMessage<T>(212);
   }
 
+
+  using FieldMetadata_Ext4TrimAllFree =
+    ::protozero::proto_utils::FieldMetadata<
+      213,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4TrimAllFreeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4TrimAllFree kExt4TrimAllFree() { return {}; }
   template <typename T = Ext4TrimAllFreeFtraceEvent> T* set_ext4_trim_all_free() {
     return BeginNestedMessage<T>(213);
   }
 
+
+  using FieldMetadata_Ext4TrimExtent =
+    ::protozero::proto_utils::FieldMetadata<
+      214,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4TrimExtentFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4TrimExtent kExt4TrimExtent() { return {}; }
   template <typename T = Ext4TrimExtentFtraceEvent> T* set_ext4_trim_extent() {
     return BeginNestedMessage<T>(214);
   }
 
+
+  using FieldMetadata_Ext4TruncateEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      215,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4TruncateEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4TruncateEnter kExt4TruncateEnter() { return {}; }
   template <typename T = Ext4TruncateEnterFtraceEvent> T* set_ext4_truncate_enter() {
     return BeginNestedMessage<T>(215);
   }
 
+
+  using FieldMetadata_Ext4TruncateExit =
+    ::protozero::proto_utils::FieldMetadata<
+      216,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4TruncateExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4TruncateExit kExt4TruncateExit() { return {}; }
   template <typename T = Ext4TruncateExitFtraceEvent> T* set_ext4_truncate_exit() {
     return BeginNestedMessage<T>(216);
   }
 
+
+  using FieldMetadata_Ext4UnlinkEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      217,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4UnlinkEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4UnlinkEnter kExt4UnlinkEnter() { return {}; }
   template <typename T = Ext4UnlinkEnterFtraceEvent> T* set_ext4_unlink_enter() {
     return BeginNestedMessage<T>(217);
   }
 
+
+  using FieldMetadata_Ext4UnlinkExit =
+    ::protozero::proto_utils::FieldMetadata<
+      218,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4UnlinkExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4UnlinkExit kExt4UnlinkExit() { return {}; }
   template <typename T = Ext4UnlinkExitFtraceEvent> T* set_ext4_unlink_exit() {
     return BeginNestedMessage<T>(218);
   }
 
+
+  using FieldMetadata_Ext4WriteBegin =
+    ::protozero::proto_utils::FieldMetadata<
+      219,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4WriteBeginFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4WriteBegin kExt4WriteBegin() { return {}; }
   template <typename T = Ext4WriteBeginFtraceEvent> T* set_ext4_write_begin() {
     return BeginNestedMessage<T>(219);
   }
 
+
+  using FieldMetadata_Ext4WriteEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      230,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4WriteEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4WriteEnd kExt4WriteEnd() { return {}; }
   template <typename T = Ext4WriteEndFtraceEvent> T* set_ext4_write_end() {
     return BeginNestedMessage<T>(230);
   }
 
+
+  using FieldMetadata_Ext4Writepage =
+    ::protozero::proto_utils::FieldMetadata<
+      231,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4WritepageFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4Writepage kExt4Writepage() { return {}; }
   template <typename T = Ext4WritepageFtraceEvent> T* set_ext4_writepage() {
     return BeginNestedMessage<T>(231);
   }
 
+
+  using FieldMetadata_Ext4Writepages =
+    ::protozero::proto_utils::FieldMetadata<
+      232,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4WritepagesFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4Writepages kExt4Writepages() { return {}; }
   template <typename T = Ext4WritepagesFtraceEvent> T* set_ext4_writepages() {
     return BeginNestedMessage<T>(232);
   }
 
+
+  using FieldMetadata_Ext4WritepagesResult =
+    ::protozero::proto_utils::FieldMetadata<
+      233,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4WritepagesResultFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4WritepagesResult kExt4WritepagesResult() { return {}; }
   template <typename T = Ext4WritepagesResultFtraceEvent> T* set_ext4_writepages_result() {
     return BeginNestedMessage<T>(233);
   }
 
+
+  using FieldMetadata_Ext4ZeroRange =
+    ::protozero::proto_utils::FieldMetadata<
+      234,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      Ext4ZeroRangeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Ext4ZeroRange kExt4ZeroRange() { return {}; }
   template <typename T = Ext4ZeroRangeFtraceEvent> T* set_ext4_zero_range() {
     return BeginNestedMessage<T>(234);
   }
 
+
+  using FieldMetadata_TaskNewtask =
+    ::protozero::proto_utils::FieldMetadata<
+      235,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      TaskNewtaskFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_TaskNewtask kTaskNewtask() { return {}; }
   template <typename T = TaskNewtaskFtraceEvent> T* set_task_newtask() {
     return BeginNestedMessage<T>(235);
   }
 
+
+  using FieldMetadata_TaskRename =
+    ::protozero::proto_utils::FieldMetadata<
+      236,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      TaskRenameFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_TaskRename kTaskRename() { return {}; }
   template <typename T = TaskRenameFtraceEvent> T* set_task_rename() {
     return BeginNestedMessage<T>(236);
   }
 
+
+  using FieldMetadata_SchedProcessExec =
+    ::protozero::proto_utils::FieldMetadata<
+      237,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedProcessExecFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SchedProcessExec kSchedProcessExec() { return {}; }
   template <typename T = SchedProcessExecFtraceEvent> T* set_sched_process_exec() {
     return BeginNestedMessage<T>(237);
   }
 
+
+  using FieldMetadata_SchedProcessExit =
+    ::protozero::proto_utils::FieldMetadata<
+      238,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedProcessExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SchedProcessExit kSchedProcessExit() { return {}; }
   template <typename T = SchedProcessExitFtraceEvent> T* set_sched_process_exit() {
     return BeginNestedMessage<T>(238);
   }
 
+
+  using FieldMetadata_SchedProcessFork =
+    ::protozero::proto_utils::FieldMetadata<
+      239,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedProcessForkFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SchedProcessFork kSchedProcessFork() { return {}; }
   template <typename T = SchedProcessForkFtraceEvent> T* set_sched_process_fork() {
     return BeginNestedMessage<T>(239);
   }
 
+
+  using FieldMetadata_SchedProcessFree =
+    ::protozero::proto_utils::FieldMetadata<
+      240,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedProcessFreeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SchedProcessFree kSchedProcessFree() { return {}; }
   template <typename T = SchedProcessFreeFtraceEvent> T* set_sched_process_free() {
     return BeginNestedMessage<T>(240);
   }
 
+
+  using FieldMetadata_SchedProcessHang =
+    ::protozero::proto_utils::FieldMetadata<
+      241,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedProcessHangFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SchedProcessHang kSchedProcessHang() { return {}; }
   template <typename T = SchedProcessHangFtraceEvent> T* set_sched_process_hang() {
     return BeginNestedMessage<T>(241);
   }
 
+
+  using FieldMetadata_SchedProcessWait =
+    ::protozero::proto_utils::FieldMetadata<
+      242,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedProcessWaitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SchedProcessWait kSchedProcessWait() { return {}; }
   template <typename T = SchedProcessWaitFtraceEvent> T* set_sched_process_wait() {
     return BeginNestedMessage<T>(242);
   }
 
+
+  using FieldMetadata_F2fsDoSubmitBio =
+    ::protozero::proto_utils::FieldMetadata<
+      243,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsDoSubmitBioFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsDoSubmitBio kF2fsDoSubmitBio() { return {}; }
   template <typename T = F2fsDoSubmitBioFtraceEvent> T* set_f2fs_do_submit_bio() {
     return BeginNestedMessage<T>(243);
   }
 
+
+  using FieldMetadata_F2fsEvictInode =
+    ::protozero::proto_utils::FieldMetadata<
+      244,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsEvictInodeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsEvictInode kF2fsEvictInode() { return {}; }
   template <typename T = F2fsEvictInodeFtraceEvent> T* set_f2fs_evict_inode() {
     return BeginNestedMessage<T>(244);
   }
 
+
+  using FieldMetadata_F2fsFallocate =
+    ::protozero::proto_utils::FieldMetadata<
+      245,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsFallocateFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsFallocate kF2fsFallocate() { return {}; }
   template <typename T = F2fsFallocateFtraceEvent> T* set_f2fs_fallocate() {
     return BeginNestedMessage<T>(245);
   }
 
+
+  using FieldMetadata_F2fsGetDataBlock =
+    ::protozero::proto_utils::FieldMetadata<
+      246,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsGetDataBlockFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsGetDataBlock kF2fsGetDataBlock() { return {}; }
   template <typename T = F2fsGetDataBlockFtraceEvent> T* set_f2fs_get_data_block() {
     return BeginNestedMessage<T>(246);
   }
 
+
+  using FieldMetadata_F2fsGetVictim =
+    ::protozero::proto_utils::FieldMetadata<
+      247,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsGetVictimFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsGetVictim kF2fsGetVictim() { return {}; }
   template <typename T = F2fsGetVictimFtraceEvent> T* set_f2fs_get_victim() {
     return BeginNestedMessage<T>(247);
   }
 
+
+  using FieldMetadata_F2fsIget =
+    ::protozero::proto_utils::FieldMetadata<
+      248,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsIgetFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsIget kF2fsIget() { return {}; }
   template <typename T = F2fsIgetFtraceEvent> T* set_f2fs_iget() {
     return BeginNestedMessage<T>(248);
   }
 
+
+  using FieldMetadata_F2fsIgetExit =
+    ::protozero::proto_utils::FieldMetadata<
+      249,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsIgetExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsIgetExit kF2fsIgetExit() { return {}; }
   template <typename T = F2fsIgetExitFtraceEvent> T* set_f2fs_iget_exit() {
     return BeginNestedMessage<T>(249);
   }
 
+
+  using FieldMetadata_F2fsNewInode =
+    ::protozero::proto_utils::FieldMetadata<
+      250,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsNewInodeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsNewInode kF2fsNewInode() { return {}; }
   template <typename T = F2fsNewInodeFtraceEvent> T* set_f2fs_new_inode() {
     return BeginNestedMessage<T>(250);
   }
 
+
+  using FieldMetadata_F2fsReadpage =
+    ::protozero::proto_utils::FieldMetadata<
+      251,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsReadpageFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsReadpage kF2fsReadpage() { return {}; }
   template <typename T = F2fsReadpageFtraceEvent> T* set_f2fs_readpage() {
     return BeginNestedMessage<T>(251);
   }
 
+
+  using FieldMetadata_F2fsReserveNewBlock =
+    ::protozero::proto_utils::FieldMetadata<
+      252,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsReserveNewBlockFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsReserveNewBlock kF2fsReserveNewBlock() { return {}; }
   template <typename T = F2fsReserveNewBlockFtraceEvent> T* set_f2fs_reserve_new_block() {
     return BeginNestedMessage<T>(252);
   }
 
+
+  using FieldMetadata_F2fsSetPageDirty =
+    ::protozero::proto_utils::FieldMetadata<
+      253,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsSetPageDirtyFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsSetPageDirty kF2fsSetPageDirty() { return {}; }
   template <typename T = F2fsSetPageDirtyFtraceEvent> T* set_f2fs_set_page_dirty() {
     return BeginNestedMessage<T>(253);
   }
 
+
+  using FieldMetadata_F2fsSubmitWritePage =
+    ::protozero::proto_utils::FieldMetadata<
+      254,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsSubmitWritePageFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsSubmitWritePage kF2fsSubmitWritePage() { return {}; }
   template <typename T = F2fsSubmitWritePageFtraceEvent> T* set_f2fs_submit_write_page() {
     return BeginNestedMessage<T>(254);
   }
 
+
+  using FieldMetadata_F2fsSyncFileEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      255,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsSyncFileEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsSyncFileEnter kF2fsSyncFileEnter() { return {}; }
   template <typename T = F2fsSyncFileEnterFtraceEvent> T* set_f2fs_sync_file_enter() {
     return BeginNestedMessage<T>(255);
   }
 
+
+  using FieldMetadata_F2fsSyncFileExit =
+    ::protozero::proto_utils::FieldMetadata<
+      256,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsSyncFileExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsSyncFileExit kF2fsSyncFileExit() { return {}; }
   template <typename T = F2fsSyncFileExitFtraceEvent> T* set_f2fs_sync_file_exit() {
     return BeginNestedMessage<T>(256);
   }
 
+
+  using FieldMetadata_F2fsSyncFs =
+    ::protozero::proto_utils::FieldMetadata<
+      257,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsSyncFsFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsSyncFs kF2fsSyncFs() { return {}; }
   template <typename T = F2fsSyncFsFtraceEvent> T* set_f2fs_sync_fs() {
     return BeginNestedMessage<T>(257);
   }
 
+
+  using FieldMetadata_F2fsTruncate =
+    ::protozero::proto_utils::FieldMetadata<
+      258,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsTruncateFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsTruncate kF2fsTruncate() { return {}; }
   template <typename T = F2fsTruncateFtraceEvent> T* set_f2fs_truncate() {
     return BeginNestedMessage<T>(258);
   }
 
+
+  using FieldMetadata_F2fsTruncateBlocksEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      259,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsTruncateBlocksEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsTruncateBlocksEnter kF2fsTruncateBlocksEnter() { return {}; }
   template <typename T = F2fsTruncateBlocksEnterFtraceEvent> T* set_f2fs_truncate_blocks_enter() {
     return BeginNestedMessage<T>(259);
   }
 
+
+  using FieldMetadata_F2fsTruncateBlocksExit =
+    ::protozero::proto_utils::FieldMetadata<
+      260,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsTruncateBlocksExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsTruncateBlocksExit kF2fsTruncateBlocksExit() { return {}; }
   template <typename T = F2fsTruncateBlocksExitFtraceEvent> T* set_f2fs_truncate_blocks_exit() {
     return BeginNestedMessage<T>(260);
   }
 
+
+  using FieldMetadata_F2fsTruncateDataBlocksRange =
+    ::protozero::proto_utils::FieldMetadata<
+      261,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsTruncateDataBlocksRangeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsTruncateDataBlocksRange kF2fsTruncateDataBlocksRange() { return {}; }
   template <typename T = F2fsTruncateDataBlocksRangeFtraceEvent> T* set_f2fs_truncate_data_blocks_range() {
     return BeginNestedMessage<T>(261);
   }
 
+
+  using FieldMetadata_F2fsTruncateInodeBlocksEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      262,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsTruncateInodeBlocksEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsTruncateInodeBlocksEnter kF2fsTruncateInodeBlocksEnter() { return {}; }
   template <typename T = F2fsTruncateInodeBlocksEnterFtraceEvent> T* set_f2fs_truncate_inode_blocks_enter() {
     return BeginNestedMessage<T>(262);
   }
 
+
+  using FieldMetadata_F2fsTruncateInodeBlocksExit =
+    ::protozero::proto_utils::FieldMetadata<
+      263,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsTruncateInodeBlocksExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsTruncateInodeBlocksExit kF2fsTruncateInodeBlocksExit() { return {}; }
   template <typename T = F2fsTruncateInodeBlocksExitFtraceEvent> T* set_f2fs_truncate_inode_blocks_exit() {
     return BeginNestedMessage<T>(263);
   }
 
+
+  using FieldMetadata_F2fsTruncateNode =
+    ::protozero::proto_utils::FieldMetadata<
+      264,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsTruncateNodeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsTruncateNode kF2fsTruncateNode() { return {}; }
   template <typename T = F2fsTruncateNodeFtraceEvent> T* set_f2fs_truncate_node() {
     return BeginNestedMessage<T>(264);
   }
 
+
+  using FieldMetadata_F2fsTruncateNodesEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      265,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsTruncateNodesEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsTruncateNodesEnter kF2fsTruncateNodesEnter() { return {}; }
   template <typename T = F2fsTruncateNodesEnterFtraceEvent> T* set_f2fs_truncate_nodes_enter() {
     return BeginNestedMessage<T>(265);
   }
 
+
+  using FieldMetadata_F2fsTruncateNodesExit =
+    ::protozero::proto_utils::FieldMetadata<
+      266,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsTruncateNodesExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsTruncateNodesExit kF2fsTruncateNodesExit() { return {}; }
   template <typename T = F2fsTruncateNodesExitFtraceEvent> T* set_f2fs_truncate_nodes_exit() {
     return BeginNestedMessage<T>(266);
   }
 
+
+  using FieldMetadata_F2fsTruncatePartialNodes =
+    ::protozero::proto_utils::FieldMetadata<
+      267,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsTruncatePartialNodesFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsTruncatePartialNodes kF2fsTruncatePartialNodes() { return {}; }
   template <typename T = F2fsTruncatePartialNodesFtraceEvent> T* set_f2fs_truncate_partial_nodes() {
     return BeginNestedMessage<T>(267);
   }
 
+
+  using FieldMetadata_F2fsUnlinkEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      268,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsUnlinkEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsUnlinkEnter kF2fsUnlinkEnter() { return {}; }
   template <typename T = F2fsUnlinkEnterFtraceEvent> T* set_f2fs_unlink_enter() {
     return BeginNestedMessage<T>(268);
   }
 
+
+  using FieldMetadata_F2fsUnlinkExit =
+    ::protozero::proto_utils::FieldMetadata<
+      269,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsUnlinkExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsUnlinkExit kF2fsUnlinkExit() { return {}; }
   template <typename T = F2fsUnlinkExitFtraceEvent> T* set_f2fs_unlink_exit() {
     return BeginNestedMessage<T>(269);
   }
 
+
+  using FieldMetadata_F2fsVmPageMkwrite =
+    ::protozero::proto_utils::FieldMetadata<
+      270,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsVmPageMkwriteFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsVmPageMkwrite kF2fsVmPageMkwrite() { return {}; }
   template <typename T = F2fsVmPageMkwriteFtraceEvent> T* set_f2fs_vm_page_mkwrite() {
     return BeginNestedMessage<T>(270);
   }
 
+
+  using FieldMetadata_F2fsWriteBegin =
+    ::protozero::proto_utils::FieldMetadata<
+      271,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsWriteBeginFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsWriteBegin kF2fsWriteBegin() { return {}; }
   template <typename T = F2fsWriteBeginFtraceEvent> T* set_f2fs_write_begin() {
     return BeginNestedMessage<T>(271);
   }
 
+
+  using FieldMetadata_F2fsWriteCheckpoint =
+    ::protozero::proto_utils::FieldMetadata<
+      272,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsWriteCheckpointFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsWriteCheckpoint kF2fsWriteCheckpoint() { return {}; }
   template <typename T = F2fsWriteCheckpointFtraceEvent> T* set_f2fs_write_checkpoint() {
     return BeginNestedMessage<T>(272);
   }
 
+
+  using FieldMetadata_F2fsWriteEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      273,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsWriteEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_F2fsWriteEnd kF2fsWriteEnd() { return {}; }
   template <typename T = F2fsWriteEndFtraceEvent> T* set_f2fs_write_end() {
     return BeginNestedMessage<T>(273);
   }
 
+
+  using FieldMetadata_AllocPagesIommuEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      274,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      AllocPagesIommuEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_AllocPagesIommuEnd kAllocPagesIommuEnd() { return {}; }
   template <typename T = AllocPagesIommuEndFtraceEvent> T* set_alloc_pages_iommu_end() {
     return BeginNestedMessage<T>(274);
   }
 
+
+  using FieldMetadata_AllocPagesIommuFail =
+    ::protozero::proto_utils::FieldMetadata<
+      275,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      AllocPagesIommuFailFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_AllocPagesIommuFail kAllocPagesIommuFail() { return {}; }
   template <typename T = AllocPagesIommuFailFtraceEvent> T* set_alloc_pages_iommu_fail() {
     return BeginNestedMessage<T>(275);
   }
 
+
+  using FieldMetadata_AllocPagesIommuStart =
+    ::protozero::proto_utils::FieldMetadata<
+      276,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      AllocPagesIommuStartFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_AllocPagesIommuStart kAllocPagesIommuStart() { return {}; }
   template <typename T = AllocPagesIommuStartFtraceEvent> T* set_alloc_pages_iommu_start() {
     return BeginNestedMessage<T>(276);
   }
 
+
+  using FieldMetadata_AllocPagesSysEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      277,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      AllocPagesSysEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_AllocPagesSysEnd kAllocPagesSysEnd() { return {}; }
   template <typename T = AllocPagesSysEndFtraceEvent> T* set_alloc_pages_sys_end() {
     return BeginNestedMessage<T>(277);
   }
 
+
+  using FieldMetadata_AllocPagesSysFail =
+    ::protozero::proto_utils::FieldMetadata<
+      278,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      AllocPagesSysFailFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_AllocPagesSysFail kAllocPagesSysFail() { return {}; }
   template <typename T = AllocPagesSysFailFtraceEvent> T* set_alloc_pages_sys_fail() {
     return BeginNestedMessage<T>(278);
   }
 
+
+  using FieldMetadata_AllocPagesSysStart =
+    ::protozero::proto_utils::FieldMetadata<
+      279,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      AllocPagesSysStartFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_AllocPagesSysStart kAllocPagesSysStart() { return {}; }
   template <typename T = AllocPagesSysStartFtraceEvent> T* set_alloc_pages_sys_start() {
     return BeginNestedMessage<T>(279);
   }
 
+
+  using FieldMetadata_DmaAllocContiguousRetry =
+    ::protozero::proto_utils::FieldMetadata<
+      280,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      DmaAllocContiguousRetryFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_DmaAllocContiguousRetry kDmaAllocContiguousRetry() { return {}; }
   template <typename T = DmaAllocContiguousRetryFtraceEvent> T* set_dma_alloc_contiguous_retry() {
     return BeginNestedMessage<T>(280);
   }
 
+
+  using FieldMetadata_IommuMapRange =
+    ::protozero::proto_utils::FieldMetadata<
+      281,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IommuMapRangeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IommuMapRange kIommuMapRange() { return {}; }
   template <typename T = IommuMapRangeFtraceEvent> T* set_iommu_map_range() {
     return BeginNestedMessage<T>(281);
   }
 
+
+  using FieldMetadata_IommuSecPtblMapRangeEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      282,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IommuSecPtblMapRangeEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IommuSecPtblMapRangeEnd kIommuSecPtblMapRangeEnd() { return {}; }
   template <typename T = IommuSecPtblMapRangeEndFtraceEvent> T* set_iommu_sec_ptbl_map_range_end() {
     return BeginNestedMessage<T>(282);
   }
 
+
+  using FieldMetadata_IommuSecPtblMapRangeStart =
+    ::protozero::proto_utils::FieldMetadata<
+      283,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IommuSecPtblMapRangeStartFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IommuSecPtblMapRangeStart kIommuSecPtblMapRangeStart() { return {}; }
   template <typename T = IommuSecPtblMapRangeStartFtraceEvent> T* set_iommu_sec_ptbl_map_range_start() {
     return BeginNestedMessage<T>(283);
   }
 
+
+  using FieldMetadata_IonAllocBufferEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      284,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonAllocBufferEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonAllocBufferEnd kIonAllocBufferEnd() { return {}; }
   template <typename T = IonAllocBufferEndFtraceEvent> T* set_ion_alloc_buffer_end() {
     return BeginNestedMessage<T>(284);
   }
 
+
+  using FieldMetadata_IonAllocBufferFail =
+    ::protozero::proto_utils::FieldMetadata<
+      285,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonAllocBufferFailFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonAllocBufferFail kIonAllocBufferFail() { return {}; }
   template <typename T = IonAllocBufferFailFtraceEvent> T* set_ion_alloc_buffer_fail() {
     return BeginNestedMessage<T>(285);
   }
 
+
+  using FieldMetadata_IonAllocBufferFallback =
+    ::protozero::proto_utils::FieldMetadata<
+      286,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonAllocBufferFallbackFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonAllocBufferFallback kIonAllocBufferFallback() { return {}; }
   template <typename T = IonAllocBufferFallbackFtraceEvent> T* set_ion_alloc_buffer_fallback() {
     return BeginNestedMessage<T>(286);
   }
 
+
+  using FieldMetadata_IonAllocBufferStart =
+    ::protozero::proto_utils::FieldMetadata<
+      287,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonAllocBufferStartFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonAllocBufferStart kIonAllocBufferStart() { return {}; }
   template <typename T = IonAllocBufferStartFtraceEvent> T* set_ion_alloc_buffer_start() {
     return BeginNestedMessage<T>(287);
   }
 
+
+  using FieldMetadata_IonCpAllocRetry =
+    ::protozero::proto_utils::FieldMetadata<
+      288,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonCpAllocRetryFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonCpAllocRetry kIonCpAllocRetry() { return {}; }
   template <typename T = IonCpAllocRetryFtraceEvent> T* set_ion_cp_alloc_retry() {
     return BeginNestedMessage<T>(288);
   }
 
+
+  using FieldMetadata_IonCpSecureBufferEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      289,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonCpSecureBufferEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonCpSecureBufferEnd kIonCpSecureBufferEnd() { return {}; }
   template <typename T = IonCpSecureBufferEndFtraceEvent> T* set_ion_cp_secure_buffer_end() {
     return BeginNestedMessage<T>(289);
   }
 
+
+  using FieldMetadata_IonCpSecureBufferStart =
+    ::protozero::proto_utils::FieldMetadata<
+      290,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonCpSecureBufferStartFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonCpSecureBufferStart kIonCpSecureBufferStart() { return {}; }
   template <typename T = IonCpSecureBufferStartFtraceEvent> T* set_ion_cp_secure_buffer_start() {
     return BeginNestedMessage<T>(290);
   }
 
+
+  using FieldMetadata_IonPrefetching =
+    ::protozero::proto_utils::FieldMetadata<
+      291,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonPrefetchingFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonPrefetching kIonPrefetching() { return {}; }
   template <typename T = IonPrefetchingFtraceEvent> T* set_ion_prefetching() {
     return BeginNestedMessage<T>(291);
   }
 
+
+  using FieldMetadata_IonSecureCmaAddToPoolEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      292,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonSecureCmaAddToPoolEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonSecureCmaAddToPoolEnd kIonSecureCmaAddToPoolEnd() { return {}; }
   template <typename T = IonSecureCmaAddToPoolEndFtraceEvent> T* set_ion_secure_cma_add_to_pool_end() {
     return BeginNestedMessage<T>(292);
   }
 
+
+  using FieldMetadata_IonSecureCmaAddToPoolStart =
+    ::protozero::proto_utils::FieldMetadata<
+      293,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonSecureCmaAddToPoolStartFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonSecureCmaAddToPoolStart kIonSecureCmaAddToPoolStart() { return {}; }
   template <typename T = IonSecureCmaAddToPoolStartFtraceEvent> T* set_ion_secure_cma_add_to_pool_start() {
     return BeginNestedMessage<T>(293);
   }
 
+
+  using FieldMetadata_IonSecureCmaAllocateEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      294,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonSecureCmaAllocateEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonSecureCmaAllocateEnd kIonSecureCmaAllocateEnd() { return {}; }
   template <typename T = IonSecureCmaAllocateEndFtraceEvent> T* set_ion_secure_cma_allocate_end() {
     return BeginNestedMessage<T>(294);
   }
 
+
+  using FieldMetadata_IonSecureCmaAllocateStart =
+    ::protozero::proto_utils::FieldMetadata<
+      295,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonSecureCmaAllocateStartFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonSecureCmaAllocateStart kIonSecureCmaAllocateStart() { return {}; }
   template <typename T = IonSecureCmaAllocateStartFtraceEvent> T* set_ion_secure_cma_allocate_start() {
     return BeginNestedMessage<T>(295);
   }
 
+
+  using FieldMetadata_IonSecureCmaShrinkPoolEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      296,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonSecureCmaShrinkPoolEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonSecureCmaShrinkPoolEnd kIonSecureCmaShrinkPoolEnd() { return {}; }
   template <typename T = IonSecureCmaShrinkPoolEndFtraceEvent> T* set_ion_secure_cma_shrink_pool_end() {
     return BeginNestedMessage<T>(296);
   }
 
+
+  using FieldMetadata_IonSecureCmaShrinkPoolStart =
+    ::protozero::proto_utils::FieldMetadata<
+      297,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonSecureCmaShrinkPoolStartFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonSecureCmaShrinkPoolStart kIonSecureCmaShrinkPoolStart() { return {}; }
   template <typename T = IonSecureCmaShrinkPoolStartFtraceEvent> T* set_ion_secure_cma_shrink_pool_start() {
     return BeginNestedMessage<T>(297);
   }
 
+
+  using FieldMetadata_Kfree =
+    ::protozero::proto_utils::FieldMetadata<
+      298,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      KfreeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Kfree kKfree() { return {}; }
   template <typename T = KfreeFtraceEvent> T* set_kfree() {
     return BeginNestedMessage<T>(298);
   }
 
+
+  using FieldMetadata_Kmalloc =
+    ::protozero::proto_utils::FieldMetadata<
+      299,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      KmallocFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Kmalloc kKmalloc() { return {}; }
   template <typename T = KmallocFtraceEvent> T* set_kmalloc() {
     return BeginNestedMessage<T>(299);
   }
 
+
+  using FieldMetadata_KmallocNode =
+    ::protozero::proto_utils::FieldMetadata<
+      300,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      KmallocNodeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_KmallocNode kKmallocNode() { return {}; }
   template <typename T = KmallocNodeFtraceEvent> T* set_kmalloc_node() {
     return BeginNestedMessage<T>(300);
   }
 
+
+  using FieldMetadata_KmemCacheAlloc =
+    ::protozero::proto_utils::FieldMetadata<
+      301,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      KmemCacheAllocFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_KmemCacheAlloc kKmemCacheAlloc() { return {}; }
   template <typename T = KmemCacheAllocFtraceEvent> T* set_kmem_cache_alloc() {
     return BeginNestedMessage<T>(301);
   }
 
+
+  using FieldMetadata_KmemCacheAllocNode =
+    ::protozero::proto_utils::FieldMetadata<
+      302,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      KmemCacheAllocNodeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_KmemCacheAllocNode kKmemCacheAllocNode() { return {}; }
   template <typename T = KmemCacheAllocNodeFtraceEvent> T* set_kmem_cache_alloc_node() {
     return BeginNestedMessage<T>(302);
   }
 
+
+  using FieldMetadata_KmemCacheFree =
+    ::protozero::proto_utils::FieldMetadata<
+      303,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      KmemCacheFreeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_KmemCacheFree kKmemCacheFree() { return {}; }
   template <typename T = KmemCacheFreeFtraceEvent> T* set_kmem_cache_free() {
     return BeginNestedMessage<T>(303);
   }
 
+
+  using FieldMetadata_MigratePagesEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      304,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MigratePagesEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MigratePagesEnd kMigratePagesEnd() { return {}; }
   template <typename T = MigratePagesEndFtraceEvent> T* set_migrate_pages_end() {
     return BeginNestedMessage<T>(304);
   }
 
+
+  using FieldMetadata_MigratePagesStart =
+    ::protozero::proto_utils::FieldMetadata<
+      305,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MigratePagesStartFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MigratePagesStart kMigratePagesStart() { return {}; }
   template <typename T = MigratePagesStartFtraceEvent> T* set_migrate_pages_start() {
     return BeginNestedMessage<T>(305);
   }
 
+
+  using FieldMetadata_MigrateRetry =
+    ::protozero::proto_utils::FieldMetadata<
+      306,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MigrateRetryFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MigrateRetry kMigrateRetry() { return {}; }
   template <typename T = MigrateRetryFtraceEvent> T* set_migrate_retry() {
     return BeginNestedMessage<T>(306);
   }
 
+
+  using FieldMetadata_MmPageAlloc =
+    ::protozero::proto_utils::FieldMetadata<
+      307,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmPageAllocFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmPageAlloc kMmPageAlloc() { return {}; }
   template <typename T = MmPageAllocFtraceEvent> T* set_mm_page_alloc() {
     return BeginNestedMessage<T>(307);
   }
 
+
+  using FieldMetadata_MmPageAllocExtfrag =
+    ::protozero::proto_utils::FieldMetadata<
+      308,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmPageAllocExtfragFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmPageAllocExtfrag kMmPageAllocExtfrag() { return {}; }
   template <typename T = MmPageAllocExtfragFtraceEvent> T* set_mm_page_alloc_extfrag() {
     return BeginNestedMessage<T>(308);
   }
 
+
+  using FieldMetadata_MmPageAllocZoneLocked =
+    ::protozero::proto_utils::FieldMetadata<
+      309,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmPageAllocZoneLockedFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmPageAllocZoneLocked kMmPageAllocZoneLocked() { return {}; }
   template <typename T = MmPageAllocZoneLockedFtraceEvent> T* set_mm_page_alloc_zone_locked() {
     return BeginNestedMessage<T>(309);
   }
 
+
+  using FieldMetadata_MmPageFree =
+    ::protozero::proto_utils::FieldMetadata<
+      310,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmPageFreeFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmPageFree kMmPageFree() { return {}; }
   template <typename T = MmPageFreeFtraceEvent> T* set_mm_page_free() {
     return BeginNestedMessage<T>(310);
   }
 
+
+  using FieldMetadata_MmPageFreeBatched =
+    ::protozero::proto_utils::FieldMetadata<
+      311,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmPageFreeBatchedFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmPageFreeBatched kMmPageFreeBatched() { return {}; }
   template <typename T = MmPageFreeBatchedFtraceEvent> T* set_mm_page_free_batched() {
     return BeginNestedMessage<T>(311);
   }
 
+
+  using FieldMetadata_MmPagePcpuDrain =
+    ::protozero::proto_utils::FieldMetadata<
+      312,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmPagePcpuDrainFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmPagePcpuDrain kMmPagePcpuDrain() { return {}; }
   template <typename T = MmPagePcpuDrainFtraceEvent> T* set_mm_page_pcpu_drain() {
     return BeginNestedMessage<T>(312);
   }
 
+
+  using FieldMetadata_RssStat =
+    ::protozero::proto_utils::FieldMetadata<
+      313,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      RssStatFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_RssStat kRssStat() { return {}; }
   template <typename T = RssStatFtraceEvent> T* set_rss_stat() {
     return BeginNestedMessage<T>(313);
   }
 
+
+  using FieldMetadata_IonHeapShrink =
+    ::protozero::proto_utils::FieldMetadata<
+      314,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonHeapShrinkFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonHeapShrink kIonHeapShrink() { return {}; }
   template <typename T = IonHeapShrinkFtraceEvent> T* set_ion_heap_shrink() {
     return BeginNestedMessage<T>(314);
   }
 
+
+  using FieldMetadata_IonHeapGrow =
+    ::protozero::proto_utils::FieldMetadata<
+      315,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonHeapGrowFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonHeapGrow kIonHeapGrow() { return {}; }
   template <typename T = IonHeapGrowFtraceEvent> T* set_ion_heap_grow() {
     return BeginNestedMessage<T>(315);
   }
 
+
+  using FieldMetadata_FenceInit =
+    ::protozero::proto_utils::FieldMetadata<
+      316,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FenceInitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_FenceInit kFenceInit() { return {}; }
   template <typename T = FenceInitFtraceEvent> T* set_fence_init() {
     return BeginNestedMessage<T>(316);
   }
 
+
+  using FieldMetadata_FenceDestroy =
+    ::protozero::proto_utils::FieldMetadata<
+      317,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FenceDestroyFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_FenceDestroy kFenceDestroy() { return {}; }
   template <typename T = FenceDestroyFtraceEvent> T* set_fence_destroy() {
     return BeginNestedMessage<T>(317);
   }
 
+
+  using FieldMetadata_FenceEnableSignal =
+    ::protozero::proto_utils::FieldMetadata<
+      318,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FenceEnableSignalFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_FenceEnableSignal kFenceEnableSignal() { return {}; }
   template <typename T = FenceEnableSignalFtraceEvent> T* set_fence_enable_signal() {
     return BeginNestedMessage<T>(318);
   }
 
+
+  using FieldMetadata_FenceSignaled =
+    ::protozero::proto_utils::FieldMetadata<
+      319,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FenceSignaledFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_FenceSignaled kFenceSignaled() { return {}; }
   template <typename T = FenceSignaledFtraceEvent> T* set_fence_signaled() {
     return BeginNestedMessage<T>(319);
   }
 
+
+  using FieldMetadata_ClkEnable =
+    ::protozero::proto_utils::FieldMetadata<
+      320,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ClkEnableFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ClkEnable kClkEnable() { return {}; }
   template <typename T = ClkEnableFtraceEvent> T* set_clk_enable() {
     return BeginNestedMessage<T>(320);
   }
 
+
+  using FieldMetadata_ClkDisable =
+    ::protozero::proto_utils::FieldMetadata<
+      321,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ClkDisableFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ClkDisable kClkDisable() { return {}; }
   template <typename T = ClkDisableFtraceEvent> T* set_clk_disable() {
     return BeginNestedMessage<T>(321);
   }
 
+
+  using FieldMetadata_ClkSetRate =
+    ::protozero::proto_utils::FieldMetadata<
+      322,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ClkSetRateFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ClkSetRate kClkSetRate() { return {}; }
   template <typename T = ClkSetRateFtraceEvent> T* set_clk_set_rate() {
     return BeginNestedMessage<T>(322);
   }
 
+
+  using FieldMetadata_BinderTransactionAllocBuf =
+    ::protozero::proto_utils::FieldMetadata<
+      323,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BinderTransactionAllocBufFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_BinderTransactionAllocBuf kBinderTransactionAllocBuf() { return {}; }
   template <typename T = BinderTransactionAllocBufFtraceEvent> T* set_binder_transaction_alloc_buf() {
     return BeginNestedMessage<T>(323);
   }
 
+
+  using FieldMetadata_SignalDeliver =
+    ::protozero::proto_utils::FieldMetadata<
+      324,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SignalDeliverFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SignalDeliver kSignalDeliver() { return {}; }
   template <typename T = SignalDeliverFtraceEvent> T* set_signal_deliver() {
     return BeginNestedMessage<T>(324);
   }
 
+
+  using FieldMetadata_SignalGenerate =
+    ::protozero::proto_utils::FieldMetadata<
+      325,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SignalGenerateFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SignalGenerate kSignalGenerate() { return {}; }
   template <typename T = SignalGenerateFtraceEvent> T* set_signal_generate() {
     return BeginNestedMessage<T>(325);
   }
 
+
+  using FieldMetadata_OomScoreAdjUpdate =
+    ::protozero::proto_utils::FieldMetadata<
+      326,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      OomScoreAdjUpdateFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_OomScoreAdjUpdate kOomScoreAdjUpdate() { return {}; }
   template <typename T = OomScoreAdjUpdateFtraceEvent> T* set_oom_score_adj_update() {
     return BeginNestedMessage<T>(326);
   }
 
+
+  using FieldMetadata_Generic =
+    ::protozero::proto_utils::FieldMetadata<
+      327,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      GenericFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Generic kGeneric() { return {}; }
   template <typename T = GenericFtraceEvent> T* set_generic() {
     return BeginNestedMessage<T>(327);
   }
 
+
+  using FieldMetadata_MmEventRecord =
+    ::protozero::proto_utils::FieldMetadata<
+      328,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MmEventRecordFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MmEventRecord kMmEventRecord() { return {}; }
   template <typename T = MmEventRecordFtraceEvent> T* set_mm_event_record() {
     return BeginNestedMessage<T>(328);
   }
 
+
+  using FieldMetadata_SysEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      329,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SysEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SysEnter kSysEnter() { return {}; }
   template <typename T = SysEnterFtraceEvent> T* set_sys_enter() {
     return BeginNestedMessage<T>(329);
   }
 
+
+  using FieldMetadata_SysExit =
+    ::protozero::proto_utils::FieldMetadata<
+      330,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SysExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SysExit kSysExit() { return {}; }
   template <typename T = SysExitFtraceEvent> T* set_sys_exit() {
     return BeginNestedMessage<T>(330);
   }
 
+
+  using FieldMetadata_Zero =
+    ::protozero::proto_utils::FieldMetadata<
+      331,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ZeroFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Zero kZero() { return {}; }
   template <typename T = ZeroFtraceEvent> T* set_zero() {
     return BeginNestedMessage<T>(331);
   }
 
+
+  using FieldMetadata_GpuFrequency =
+    ::protozero::proto_utils::FieldMetadata<
+      332,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      GpuFrequencyFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_GpuFrequency kGpuFrequency() { return {}; }
   template <typename T = GpuFrequencyFtraceEvent> T* set_gpu_frequency() {
     return BeginNestedMessage<T>(332);
   }
 
+
+  using FieldMetadata_SdeTracingMarkWrite =
+    ::protozero::proto_utils::FieldMetadata<
+      333,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SdeTracingMarkWriteFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SdeTracingMarkWrite kSdeTracingMarkWrite() { return {}; }
   template <typename T = SdeTracingMarkWriteFtraceEvent> T* set_sde_tracing_mark_write() {
     return BeginNestedMessage<T>(333);
   }
 
+
+  using FieldMetadata_MarkVictim =
+    ::protozero::proto_utils::FieldMetadata<
+      334,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MarkVictimFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MarkVictim kMarkVictim() { return {}; }
   template <typename T = MarkVictimFtraceEvent> T* set_mark_victim() {
     return BeginNestedMessage<T>(334);
   }
 
+
+  using FieldMetadata_IonStat =
+    ::protozero::proto_utils::FieldMetadata<
+      335,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonStatFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonStat kIonStat() { return {}; }
   template <typename T = IonStatFtraceEvent> T* set_ion_stat() {
     return BeginNestedMessage<T>(335);
   }
 
+
+  using FieldMetadata_IonBufferCreate =
+    ::protozero::proto_utils::FieldMetadata<
+      336,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonBufferCreateFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonBufferCreate kIonBufferCreate() { return {}; }
   template <typename T = IonBufferCreateFtraceEvent> T* set_ion_buffer_create() {
     return BeginNestedMessage<T>(336);
   }
 
+
+  using FieldMetadata_IonBufferDestroy =
+    ::protozero::proto_utils::FieldMetadata<
+      337,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      IonBufferDestroyFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_IonBufferDestroy kIonBufferDestroy() { return {}; }
   template <typename T = IonBufferDestroyFtraceEvent> T* set_ion_buffer_destroy() {
     return BeginNestedMessage<T>(337);
   }
 
+
+  using FieldMetadata_ScmCallStart =
+    ::protozero::proto_utils::FieldMetadata<
+      338,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ScmCallStartFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ScmCallStart kScmCallStart() { return {}; }
   template <typename T = ScmCallStartFtraceEvent> T* set_scm_call_start() {
     return BeginNestedMessage<T>(338);
   }
 
+
+  using FieldMetadata_ScmCallEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      339,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ScmCallEndFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ScmCallEnd kScmCallEnd() { return {}; }
   template <typename T = ScmCallEndFtraceEvent> T* set_scm_call_end() {
     return BeginNestedMessage<T>(339);
   }
 
+
+  using FieldMetadata_GpuMemTotal =
+    ::protozero::proto_utils::FieldMetadata<
+      340,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      GpuMemTotalFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_GpuMemTotal kGpuMemTotal() { return {}; }
   template <typename T = GpuMemTotalFtraceEvent> T* set_gpu_mem_total() {
     return BeginNestedMessage<T>(340);
   }
 
+
+  using FieldMetadata_ThermalTemperature =
+    ::protozero::proto_utils::FieldMetadata<
+      341,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ThermalTemperatureFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ThermalTemperature kThermalTemperature() { return {}; }
   template <typename T = ThermalTemperatureFtraceEvent> T* set_thermal_temperature() {
     return BeginNestedMessage<T>(341);
   }
 
+
+  using FieldMetadata_CdevUpdate =
+    ::protozero::proto_utils::FieldMetadata<
+      342,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CdevUpdateFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CdevUpdate kCdevUpdate() { return {}; }
   template <typename T = CdevUpdateFtraceEvent> T* set_cdev_update() {
     return BeginNestedMessage<T>(342);
   }
 
+
+  using FieldMetadata_CpuhpExit =
+    ::protozero::proto_utils::FieldMetadata<
+      343,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CpuhpExitFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CpuhpExit kCpuhpExit() { return {}; }
   template <typename T = CpuhpExitFtraceEvent> T* set_cpuhp_exit() {
     return BeginNestedMessage<T>(343);
   }
 
+
+  using FieldMetadata_CpuhpMultiEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      344,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CpuhpMultiEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CpuhpMultiEnter kCpuhpMultiEnter() { return {}; }
   template <typename T = CpuhpMultiEnterFtraceEvent> T* set_cpuhp_multi_enter() {
     return BeginNestedMessage<T>(344);
   }
 
+
+  using FieldMetadata_CpuhpEnter =
+    ::protozero::proto_utils::FieldMetadata<
+      345,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CpuhpEnterFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CpuhpEnter kCpuhpEnter() { return {}; }
   template <typename T = CpuhpEnterFtraceEvent> T* set_cpuhp_enter() {
     return BeginNestedMessage<T>(345);
   }
 
+
+  using FieldMetadata_CpuhpLatency =
+    ::protozero::proto_utils::FieldMetadata<
+      346,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CpuhpLatencyFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CpuhpLatency kCpuhpLatency() { return {}; }
   template <typename T = CpuhpLatencyFtraceEvent> T* set_cpuhp_latency() {
     return BeginNestedMessage<T>(346);
   }
 
+
+  using FieldMetadata_FastrpcDmaStat =
+    ::protozero::proto_utils::FieldMetadata<
+      347,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FastrpcDmaStatFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_FastrpcDmaStat kFastrpcDmaStat() { return {}; }
   template <typename T = FastrpcDmaStatFtraceEvent> T* set_fastrpc_dma_stat() {
     return BeginNestedMessage<T>(347);
   }
 
+
+  using FieldMetadata_DpuTracingMarkWrite =
+    ::protozero::proto_utils::FieldMetadata<
+      348,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      DpuTracingMarkWriteFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_DpuTracingMarkWrite kDpuTracingMarkWrite() { return {}; }
   template <typename T = DpuTracingMarkWriteFtraceEvent> T* set_dpu_tracing_mark_write() {
     return BeginNestedMessage<T>(348);
   }
 
+
+  using FieldMetadata_G2dTracingMarkWrite =
+    ::protozero::proto_utils::FieldMetadata<
+      349,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      G2dTracingMarkWriteFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_G2dTracingMarkWrite kG2dTracingMarkWrite() { return {}; }
   template <typename T = G2dTracingMarkWriteFtraceEvent> T* set_g2d_tracing_mark_write() {
     return BeginNestedMessage<T>(349);
   }
 
+
+  using FieldMetadata_MaliTracingMarkWrite =
+    ::protozero::proto_utils::FieldMetadata<
+      350,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliTracingMarkWriteFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_MaliTracingMarkWrite kMaliTracingMarkWrite() { return {}; }
   template <typename T = MaliTracingMarkWriteFtraceEvent> T* set_mali_tracing_mark_write() {
     return BeginNestedMessage<T>(350);
   }
 
+
+  using FieldMetadata_DmaHeapStat =
+    ::protozero::proto_utils::FieldMetadata<
+      351,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      DmaHeapStatFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_DmaHeapStat kDmaHeapStat() { return {}; }
   template <typename T = DmaHeapStatFtraceEvent> T* set_dma_heap_stat() {
     return BeginNestedMessage<T>(351);
+  }
+
+
+  using FieldMetadata_CpuhpPause =
+    ::protozero::proto_utils::FieldMetadata<
+      352,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      CpuhpPauseFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_CpuhpPause kCpuhpPause() { return {}; }
+  template <typename T = CpuhpPauseFtraceEvent> T* set_cpuhp_pause() {
+    return BeginNestedMessage<T>(352);
   }
 
 };
