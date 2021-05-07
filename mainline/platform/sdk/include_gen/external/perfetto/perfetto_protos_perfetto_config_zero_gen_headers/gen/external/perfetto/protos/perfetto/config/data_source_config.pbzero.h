@@ -33,6 +33,15 @@ class SysStatsConfig;
 class TestConfig;
 class TrackEventConfig;
 class VulkanMemoryConfig;
+enum DataSourceConfig_SessionInitiator : int32_t;
+
+enum DataSourceConfig_SessionInitiator : int32_t {
+  DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED = 0,
+  DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD = 1,
+};
+
+const DataSourceConfig_SessionInitiator DataSourceConfig_SessionInitiator_MIN = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED;
+const DataSourceConfig_SessionInitiator DataSourceConfig_SessionInitiator_MAX = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD;
 
 class DataSourceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/115, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -49,6 +58,8 @@ class DataSourceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIE
   uint32_t stop_timeout_ms() const { return at<7>().as_uint32(); }
   bool has_enable_extra_guardrails() const { return at<6>().valid(); }
   bool enable_extra_guardrails() const { return at<6>().as_bool(); }
+  bool has_session_initiator() const { return at<8>().valid(); }
+  int32_t session_initiator() const { return at<8>().as_int32(); }
   bool has_tracing_session_id() const { return at<4>().valid(); }
   uint64_t tracing_session_id() const { return at<4>().as_uint64(); }
   bool has_ftrace_config() const { return at<100>().valid(); }
@@ -96,6 +107,7 @@ class DataSourceConfig : public ::protozero::Message {
     kTraceDurationMsFieldNumber = 3,
     kStopTimeoutMsFieldNumber = 7,
     kEnableExtraGuardrailsFieldNumber = 6,
+    kSessionInitiatorFieldNumber = 8,
     kTracingSessionIdFieldNumber = 4,
     kFtraceConfigFieldNumber = 100,
     kInodeFileConfigFieldNumber = 102,
@@ -116,6 +128,9 @@ class DataSourceConfig : public ::protozero::Message {
     kLegacyConfigFieldNumber = 1000,
     kForTestingFieldNumber = 1001,
   };
+  using SessionInitiator = ::perfetto::protos::pbzero::DataSourceConfig_SessionInitiator;
+  static const SessionInitiator SESSION_INITIATOR_UNSPECIFIED = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED;
+  static const SessionInitiator SESSION_INITIATOR_STATSD = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD;
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -242,6 +257,31 @@ class DataSourceConfig : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_SessionInitiator =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::DataSourceConfig_SessionInitiator,
+      DataSourceConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SessionInitiator kSessionInitiator() { return {}; }
+  void set_session_initiator(::perfetto::protos::pbzero::DataSourceConfig_SessionInitiator value) {
+    static constexpr uint32_t field_id = FieldMetadata_SessionInitiator::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
         ::Append(*this, field_id, value);
   }
 
