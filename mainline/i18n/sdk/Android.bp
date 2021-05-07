@@ -1,14 +1,25 @@
 // This is auto-generated. DO NOT EDIT.
 
-package {
-    // See: http://go/android-license-faq
-    // A large-scale-change added 'default_applicable_licenses' to import
-    // all of the 'license_kinds' from "prebuilts_runtime_license"
-    // to get the below license kinds:
-    //   SPDX-license-identifier-Apache-2.0
-    //   SPDX-license-identifier-Unicode-DFS
-    //   legacy_unencumbered
-    default_applicable_licenses: ["prebuilts_runtime_license"],
+java_import {
+    name: "i18n-module-sdk_core-icu4j@current",
+    sdk_member_name: "core-icu4j",
+    visibility: [
+        "//external/icu/android_icu4j",
+        "//packages/modules/RuntimeI18n/apex",
+    ],
+    apex_available: ["com.android.i18n"],
+    jars: ["java/core-icu4j.jar"],
+}
+
+java_import {
+    name: "core-icu4j",
+    prefer: false,
+    visibility: [
+        "//external/icu/android_icu4j",
+        "//packages/modules/RuntimeI18n/apex",
+    ],
+    apex_available: ["com.android.i18n"],
+    jars: ["java/core-icu4j.jar"],
 }
 
 java_sdk_library_import {
@@ -553,6 +564,7 @@ sdk_snapshot {
     ],
     target: {
         android: {
+            java_boot_libs: ["i18n-module-sdk_core-icu4j@current"],
             java_sdk_libs: [
                 "i18n-module-sdk_i18n.module.intra.core.api@current",
                 "i18n-module-sdk_legacy.i18n.module.platform.api@current",
@@ -577,4 +589,3 @@ sdk_snapshot {
         },
     },
 }
-

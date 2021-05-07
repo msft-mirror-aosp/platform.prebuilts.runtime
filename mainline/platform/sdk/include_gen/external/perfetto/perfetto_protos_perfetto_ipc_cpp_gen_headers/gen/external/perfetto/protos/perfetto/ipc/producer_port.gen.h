@@ -48,6 +48,7 @@ class RegisterDataSourceRequest;
 class DataSourceDescriptor;
 class InitializeConnectionResponse;
 class InitializeConnectionRequest;
+enum DataSourceConfig_SessionInitiator : int;
 enum ChromeConfig_ClientPriority : int;
 enum InitializeConnectionRequest_ProducerSMBScrapingMode : int;
 enum InitializeConnectionRequest_ProducerBuildFlags : int;

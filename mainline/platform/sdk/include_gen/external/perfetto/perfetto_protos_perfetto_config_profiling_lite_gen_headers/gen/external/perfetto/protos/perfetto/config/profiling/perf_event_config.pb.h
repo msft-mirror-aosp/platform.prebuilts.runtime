@@ -505,6 +505,7 @@ class PerfEventConfig :
     kTargetCmdlineFieldNumber = 5,
     kExcludePidFieldNumber = 6,
     kExcludeCmdlineFieldNumber = 7,
+    kTargetInstalledByFieldNumber = 18,
     kTimebaseFieldNumber = 15,
     kCallstackSamplingFieldNumber = 16,
     kSamplingFrequencyFieldNumber = 2,
@@ -573,6 +574,23 @@ class PerfEventConfig :
   void add_exclude_cmdline(const char* value, size_t size);
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& exclude_cmdline() const;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_exclude_cmdline();
+
+  // repeated string target_installed_by = 18;
+  int target_installed_by_size() const;
+  void clear_target_installed_by();
+  const std::string& target_installed_by(int index) const;
+  std::string* mutable_target_installed_by(int index);
+  void set_target_installed_by(int index, const std::string& value);
+  void set_target_installed_by(int index, std::string&& value);
+  void set_target_installed_by(int index, const char* value);
+  void set_target_installed_by(int index, const char* value, size_t size);
+  std::string* add_target_installed_by();
+  void add_target_installed_by(const std::string& value);
+  void add_target_installed_by(std::string&& value);
+  void add_target_installed_by(const char* value);
+  void add_target_installed_by(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& target_installed_by() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_target_installed_by();
 
   // optional .perfetto.protos.PerfEvents.Timebase timebase = 15;
   bool has_timebase() const;
@@ -661,6 +679,7 @@ class PerfEventConfig :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> target_cmdline_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > exclude_pid_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> exclude_cmdline_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> target_installed_by_;
   ::perfetto::protos::PerfEvents_Timebase* timebase_;
   ::perfetto::protos::PerfEventConfig_CallstackSampling* callstack_sampling_;
   ::PROTOBUF_NAMESPACE_ID::uint32 sampling_frequency_;
@@ -1318,6 +1337,71 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 PerfEventConfig::mutable_target_cmdline() {
   // @@protoc_insertion_point(field_mutable_list:perfetto.protos.PerfEventConfig.target_cmdline)
   return &target_cmdline_;
+}
+
+// repeated string target_installed_by = 18;
+inline int PerfEventConfig::target_installed_by_size() const {
+  return target_installed_by_.size();
+}
+inline void PerfEventConfig::clear_target_installed_by() {
+  target_installed_by_.Clear();
+}
+inline const std::string& PerfEventConfig::target_installed_by(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.target_installed_by)
+  return target_installed_by_.Get(index);
+}
+inline std::string* PerfEventConfig::mutable_target_installed_by(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.PerfEventConfig.target_installed_by)
+  return target_installed_by_.Mutable(index);
+}
+inline void PerfEventConfig::set_target_installed_by(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.target_installed_by)
+  target_installed_by_.Mutable(index)->assign(value);
+}
+inline void PerfEventConfig::set_target_installed_by(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.target_installed_by)
+  target_installed_by_.Mutable(index)->assign(std::move(value));
+}
+inline void PerfEventConfig::set_target_installed_by(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  target_installed_by_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.PerfEventConfig.target_installed_by)
+}
+inline void PerfEventConfig::set_target_installed_by(int index, const char* value, size_t size) {
+  target_installed_by_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.PerfEventConfig.target_installed_by)
+}
+inline std::string* PerfEventConfig::add_target_installed_by() {
+  // @@protoc_insertion_point(field_add_mutable:perfetto.protos.PerfEventConfig.target_installed_by)
+  return target_installed_by_.Add();
+}
+inline void PerfEventConfig::add_target_installed_by(const std::string& value) {
+  target_installed_by_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:perfetto.protos.PerfEventConfig.target_installed_by)
+}
+inline void PerfEventConfig::add_target_installed_by(std::string&& value) {
+  target_installed_by_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:perfetto.protos.PerfEventConfig.target_installed_by)
+}
+inline void PerfEventConfig::add_target_installed_by(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  target_installed_by_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:perfetto.protos.PerfEventConfig.target_installed_by)
+}
+inline void PerfEventConfig::add_target_installed_by(const char* value, size_t size) {
+  target_installed_by_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:perfetto.protos.PerfEventConfig.target_installed_by)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+PerfEventConfig::target_installed_by() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.PerfEventConfig.target_installed_by)
+  return target_installed_by_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+PerfEventConfig::mutable_target_installed_by() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.PerfEventConfig.target_installed_by)
+  return &target_installed_by_;
 }
 
 // repeated int32 exclude_pid = 6;
