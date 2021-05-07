@@ -18,7 +18,7 @@ namespace pbzero {
 
 class JavaHprofConfig_ContinuousDumpConfig;
 
-class JavaHprofConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class JavaHprofConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   JavaHprofConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit JavaHprofConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -27,6 +27,8 @@ class JavaHprofConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIEL
   ::protozero::RepeatedFieldIterator<::protozero::ConstChars> process_cmdline() const { return GetRepeated<::protozero::ConstChars>(1); }
   bool has_pid() const { return at<2>().valid(); }
   ::protozero::RepeatedFieldIterator<uint64_t> pid() const { return GetRepeated<uint64_t>(2); }
+  bool has_target_installed_by() const { return at<7>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstChars> target_installed_by() const { return GetRepeated<::protozero::ConstChars>(7); }
   bool has_continuous_dump_config() const { return at<3>().valid(); }
   ::protozero::ConstBytes continuous_dump_config() const { return at<3>().as_bytes(); }
   bool has_min_anonymous_memory_kb() const { return at<4>().valid(); }
@@ -43,6 +45,7 @@ class JavaHprofConfig : public ::protozero::Message {
   enum : int32_t {
     kProcessCmdlineFieldNumber = 1,
     kPidFieldNumber = 2,
+    kTargetInstalledByFieldNumber = 7,
     kContinuousDumpConfigFieldNumber = 3,
     kMinAnonymousMemoryKbFieldNumber = 4,
     kDumpSmapsFieldNumber = 5,
@@ -100,6 +103,34 @@ class JavaHprofConfig : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TargetInstalledBy =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      JavaHprofConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_TargetInstalledBy kTargetInstalledBy() { return {}; }
+  void add_target_installed_by(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_TargetInstalledBy::kFieldId, data, size);
+  }
+  void add_target_installed_by(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_TargetInstalledBy::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
         ::Append(*this, field_id, value);
   }
 

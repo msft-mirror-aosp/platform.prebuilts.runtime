@@ -311,6 +311,7 @@ class HeapprofdConfig :
     kSkipSymbolPrefixFieldNumber = 7,
     kHeapsFieldNumber = 20,
     kHeapSamplingIntervalsFieldNumber = 22,
+    kTargetInstalledByFieldNumber = 26,
     kContinuousDumpConfigFieldNumber = 6,
     kSamplingIntervalBytesFieldNumber = 1,
     kShmemSizeBytesFieldNumber = 8,
@@ -402,6 +403,23 @@ class HeapprofdConfig :
       heap_sampling_intervals() const;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >*
       mutable_heap_sampling_intervals();
+
+  // repeated string target_installed_by = 26;
+  int target_installed_by_size() const;
+  void clear_target_installed_by();
+  const std::string& target_installed_by(int index) const;
+  std::string* mutable_target_installed_by(int index);
+  void set_target_installed_by(int index, const std::string& value);
+  void set_target_installed_by(int index, std::string&& value);
+  void set_target_installed_by(int index, const char* value);
+  void set_target_installed_by(int index, const char* value, size_t size);
+  std::string* add_target_installed_by();
+  void add_target_installed_by(const std::string& value);
+  void add_target_installed_by(std::string&& value);
+  void add_target_installed_by(const char* value);
+  void add_target_installed_by(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& target_installed_by() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_target_installed_by();
 
   // optional .perfetto.protos.HeapprofdConfig.ContinuousDumpConfig continuous_dump_config = 6;
   bool has_continuous_dump_config() const;
@@ -525,6 +543,7 @@ class HeapprofdConfig :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> skip_symbol_prefix_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> heaps_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > heap_sampling_intervals_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> target_installed_by_;
   ::perfetto::protos::HeapprofdConfig_ContinuousDumpConfig* continuous_dump_config_;
   ::PROTOBUF_NAMESPACE_ID::uint64 sampling_interval_bytes_;
   ::PROTOBUF_NAMESPACE_ID::uint64 shmem_size_bytes_;
@@ -743,6 +762,71 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >
 HeapprofdConfig::mutable_pid() {
   // @@protoc_insertion_point(field_mutable_list:perfetto.protos.HeapprofdConfig.pid)
   return &pid_;
+}
+
+// repeated string target_installed_by = 26;
+inline int HeapprofdConfig::target_installed_by_size() const {
+  return target_installed_by_.size();
+}
+inline void HeapprofdConfig::clear_target_installed_by() {
+  target_installed_by_.Clear();
+}
+inline const std::string& HeapprofdConfig::target_installed_by(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.HeapprofdConfig.target_installed_by)
+  return target_installed_by_.Get(index);
+}
+inline std::string* HeapprofdConfig::mutable_target_installed_by(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.HeapprofdConfig.target_installed_by)
+  return target_installed_by_.Mutable(index);
+}
+inline void HeapprofdConfig::set_target_installed_by(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:perfetto.protos.HeapprofdConfig.target_installed_by)
+  target_installed_by_.Mutable(index)->assign(value);
+}
+inline void HeapprofdConfig::set_target_installed_by(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:perfetto.protos.HeapprofdConfig.target_installed_by)
+  target_installed_by_.Mutable(index)->assign(std::move(value));
+}
+inline void HeapprofdConfig::set_target_installed_by(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  target_installed_by_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.HeapprofdConfig.target_installed_by)
+}
+inline void HeapprofdConfig::set_target_installed_by(int index, const char* value, size_t size) {
+  target_installed_by_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.HeapprofdConfig.target_installed_by)
+}
+inline std::string* HeapprofdConfig::add_target_installed_by() {
+  // @@protoc_insertion_point(field_add_mutable:perfetto.protos.HeapprofdConfig.target_installed_by)
+  return target_installed_by_.Add();
+}
+inline void HeapprofdConfig::add_target_installed_by(const std::string& value) {
+  target_installed_by_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:perfetto.protos.HeapprofdConfig.target_installed_by)
+}
+inline void HeapprofdConfig::add_target_installed_by(std::string&& value) {
+  target_installed_by_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:perfetto.protos.HeapprofdConfig.target_installed_by)
+}
+inline void HeapprofdConfig::add_target_installed_by(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  target_installed_by_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:perfetto.protos.HeapprofdConfig.target_installed_by)
+}
+inline void HeapprofdConfig::add_target_installed_by(const char* value, size_t size) {
+  target_installed_by_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:perfetto.protos.HeapprofdConfig.target_installed_by)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+HeapprofdConfig::target_installed_by() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.HeapprofdConfig.target_installed_by)
+  return target_installed_by_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+HeapprofdConfig::mutable_target_installed_by() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.HeapprofdConfig.target_installed_by)
+  return &target_installed_by_;
 }
 
 // repeated string heaps = 20;
