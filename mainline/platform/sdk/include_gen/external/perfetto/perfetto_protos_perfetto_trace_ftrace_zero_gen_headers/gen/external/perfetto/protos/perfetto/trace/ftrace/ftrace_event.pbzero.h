@@ -312,6 +312,7 @@ class RotatorBwAoAsContextFtraceEvent;
 class RssStatFtraceEvent;
 class SchedBlockedReasonFtraceEvent;
 class SchedCpuHotplugFtraceEvent;
+class SchedPiSetprioFtraceEvent;
 class SchedProcessExecFtraceEvent;
 class SchedProcessExitFtraceEvent;
 class SchedProcessForkFtraceEvent;
@@ -324,6 +325,11 @@ class SchedWakeupNewFtraceEvent;
 class SchedWakingFtraceEvent;
 class ScmCallEndFtraceEvent;
 class ScmCallStartFtraceEvent;
+class SdeSdeEvtlogFtraceEvent;
+class SdeSdePerfCalcCrtcFtraceEvent;
+class SdeSdePerfCrtcUpdateFtraceEvent;
+class SdeSdePerfSetQosLutsFtraceEvent;
+class SdeSdePerfUpdateBusFtraceEvent;
 class SdeTracingMarkWriteFtraceEvent;
 class SignalDeliverFtraceEvent;
 class SignalGenerateFtraceEvent;
@@ -350,7 +356,7 @@ class WorkqueueExecuteStartFtraceEvent;
 class WorkqueueQueueWorkFtraceEvent;
 class ZeroFtraceEvent;
 
-class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/352, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/358, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   FtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit FtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -1025,6 +1031,18 @@ class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstBytes dma_heap_stat() const { return at<351>().as_bytes(); }
   bool has_cpuhp_pause() const { return at<352>().valid(); }
   ::protozero::ConstBytes cpuhp_pause() const { return at<352>().as_bytes(); }
+  bool has_sched_pi_setprio() const { return at<353>().valid(); }
+  ::protozero::ConstBytes sched_pi_setprio() const { return at<353>().as_bytes(); }
+  bool has_sde_sde_evtlog() const { return at<354>().valid(); }
+  ::protozero::ConstBytes sde_sde_evtlog() const { return at<354>().as_bytes(); }
+  bool has_sde_sde_perf_calc_crtc() const { return at<355>().valid(); }
+  ::protozero::ConstBytes sde_sde_perf_calc_crtc() const { return at<355>().as_bytes(); }
+  bool has_sde_sde_perf_crtc_update() const { return at<356>().valid(); }
+  ::protozero::ConstBytes sde_sde_perf_crtc_update() const { return at<356>().as_bytes(); }
+  bool has_sde_sde_perf_set_qos_luts() const { return at<357>().valid(); }
+  ::protozero::ConstBytes sde_sde_perf_set_qos_luts() const { return at<357>().as_bytes(); }
+  bool has_sde_sde_perf_update_bus() const { return at<358>().valid(); }
+  ::protozero::ConstBytes sde_sde_perf_update_bus() const { return at<358>().as_bytes(); }
 };
 
 class FtraceEvent : public ::protozero::Message {
@@ -1366,6 +1384,12 @@ class FtraceEvent : public ::protozero::Message {
     kMaliTracingMarkWriteFieldNumber = 350,
     kDmaHeapStatFieldNumber = 351,
     kCpuhpPauseFieldNumber = 352,
+    kSchedPiSetprioFieldNumber = 353,
+    kSdeSdeEvtlogFieldNumber = 354,
+    kSdeSdePerfCalcCrtcFieldNumber = 355,
+    kSdeSdePerfCrtcUpdateFieldNumber = 356,
+    kSdeSdePerfSetQosLutsFieldNumber = 357,
+    kSdeSdePerfUpdateBusFieldNumber = 358,
   };
 
   using FieldMetadata_Timestamp =
@@ -8408,6 +8432,132 @@ class FtraceEvent : public ::protozero::Message {
   static constexpr FieldMetadata_CpuhpPause kCpuhpPause() { return {}; }
   template <typename T = CpuhpPauseFtraceEvent> T* set_cpuhp_pause() {
     return BeginNestedMessage<T>(352);
+  }
+
+
+  using FieldMetadata_SchedPiSetprio =
+    ::protozero::proto_utils::FieldMetadata<
+      353,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedPiSetprioFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SchedPiSetprio kSchedPiSetprio() { return {}; }
+  template <typename T = SchedPiSetprioFtraceEvent> T* set_sched_pi_setprio() {
+    return BeginNestedMessage<T>(353);
+  }
+
+
+  using FieldMetadata_SdeSdeEvtlog =
+    ::protozero::proto_utils::FieldMetadata<
+      354,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SdeSdeEvtlogFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SdeSdeEvtlog kSdeSdeEvtlog() { return {}; }
+  template <typename T = SdeSdeEvtlogFtraceEvent> T* set_sde_sde_evtlog() {
+    return BeginNestedMessage<T>(354);
+  }
+
+
+  using FieldMetadata_SdeSdePerfCalcCrtc =
+    ::protozero::proto_utils::FieldMetadata<
+      355,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SdeSdePerfCalcCrtcFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SdeSdePerfCalcCrtc kSdeSdePerfCalcCrtc() { return {}; }
+  template <typename T = SdeSdePerfCalcCrtcFtraceEvent> T* set_sde_sde_perf_calc_crtc() {
+    return BeginNestedMessage<T>(355);
+  }
+
+
+  using FieldMetadata_SdeSdePerfCrtcUpdate =
+    ::protozero::proto_utils::FieldMetadata<
+      356,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SdeSdePerfCrtcUpdateFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SdeSdePerfCrtcUpdate kSdeSdePerfCrtcUpdate() { return {}; }
+  template <typename T = SdeSdePerfCrtcUpdateFtraceEvent> T* set_sde_sde_perf_crtc_update() {
+    return BeginNestedMessage<T>(356);
+  }
+
+
+  using FieldMetadata_SdeSdePerfSetQosLuts =
+    ::protozero::proto_utils::FieldMetadata<
+      357,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SdeSdePerfSetQosLutsFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SdeSdePerfSetQosLuts kSdeSdePerfSetQosLuts() { return {}; }
+  template <typename T = SdeSdePerfSetQosLutsFtraceEvent> T* set_sde_sde_perf_set_qos_luts() {
+    return BeginNestedMessage<T>(357);
+  }
+
+
+  using FieldMetadata_SdeSdePerfUpdateBus =
+    ::protozero::proto_utils::FieldMetadata<
+      358,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SdeSdePerfUpdateBusFtraceEvent,
+      FtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SdeSdePerfUpdateBus kSdeSdePerfUpdateBus() { return {}; }
+  template <typename T = SdeSdePerfUpdateBusFtraceEvent> T* set_sde_sde_perf_update_bus() {
+    return BeginNestedMessage<T>(358);
   }
 
 };
