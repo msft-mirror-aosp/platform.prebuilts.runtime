@@ -55,6 +55,7 @@ class PERFETTO_EXPORT SysStatsConfig : public ::protozero::CppMessageObj {
     kVmstatCountersFieldNumber = 4,
     kStatPeriodMsFieldNumber = 5,
     kStatCountersFieldNumber = 6,
+    kDevfreqPeriodMsFieldNumber = 7,
   };
 
   SysStatsConfig();
@@ -104,6 +105,10 @@ class PERFETTO_EXPORT SysStatsConfig : public ::protozero::CppMessageObj {
   void add_stat_counters(SysStatsConfig_StatCounters value) { stat_counters_.emplace_back(value); }
   SysStatsConfig_StatCounters* add_stat_counters() { stat_counters_.emplace_back(); return &stat_counters_.back(); }
 
+  bool has_devfreq_period_ms() const { return _has_field_[7]; }
+  uint32_t devfreq_period_ms() const { return devfreq_period_ms_; }
+  void set_devfreq_period_ms(uint32_t value) { devfreq_period_ms_ = value; _has_field_.set(7); }
+
  private:
   uint32_t meminfo_period_ms_{};
   std::vector<MeminfoCounters> meminfo_counters_;
@@ -111,12 +116,13 @@ class PERFETTO_EXPORT SysStatsConfig : public ::protozero::CppMessageObj {
   std::vector<VmstatCounters> vmstat_counters_;
   uint32_t stat_period_ms_{};
   std::vector<SysStatsConfig_StatCounters> stat_counters_;
+  uint32_t devfreq_period_ms_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<7> _has_field_{};
+  std::bitset<8> _has_field_{};
 };
 
 }  // namespace perfetto

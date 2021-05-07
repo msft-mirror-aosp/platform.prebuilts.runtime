@@ -47,6 +47,31 @@ public static com.android.icu.text.ExtendedTimeZoneNames getInstance(android.icu
 public android.icu.text.TimeZoneNames getTimeZoneNames() { throw new RuntimeException("Stub!"); }
 
 /**
+ * Returns {@link com.android.icu.text.ExtendedTimeZoneNames.Match Match} if a time zone name in ICU can be matched against the input
+ * CharSequence {@code s}.
+ * The best match is found by the following principles:
+ * <ul>
+ * <li>Length of the matched name. Longest name matched to the given {@code s} has the
+ * highest priority.</li>
+ * <li>The current time zone and meta zones possible in the current country have higher
+ * priority than other zones.</li>
+ * <li>If only meta zones are matched, the country/region in the locale is used to select
+ * a reference time zone. For example, if the name is "Pacific Standard Time" and the country
+ * is US, America/Los_Angeles is returned.</li>
+ * </ul>
+ *
+ * @param text input string to be matched against time zone names in ICU
+ * @param start the begin index in the CharSequence {@code s}
+ * @param currentTzId the time zone ID prioritized to be matched if multiple time zone IDs can
+ *                    be matched and this is one of the matched IDs.
+ * @return null if no match is found
+ *
+ * @hide
+ */
+
+public com.android.icu.text.ExtendedTimeZoneNames.Match matchNameToBeRenamed(java.lang.CharSequence text, int start, java.lang.String currentTzId) { throw new RuntimeException("Stub!"); }
+
+/**
  * Returns {@link com.android.icu.text.ExtendedTimeZoneNames.MatchedTimeZone MatchedTimeZone} if a time zone name in ICU can be matched against the input
  * CharSequence {@code s}.
  * The best match is found by the following principles:
@@ -70,6 +95,43 @@ public android.icu.text.TimeZoneNames getTimeZoneNames() { throw new RuntimeExce
  */
 
 public com.android.icu.text.ExtendedTimeZoneNames.MatchedTimeZone matchName(java.lang.CharSequence text, int start, java.lang.String currentTzId) { throw new RuntimeException("Stub!"); }
+/**
+ * A class representing the return result of {@link #matchName(java.lang.CharSequence,int,java.lang.String)}
+ *
+ * @hide
+ */
+
+@SuppressWarnings({"unchecked", "deprecation", "all"})
+public static final class Match {
+
+private Match() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns the number of chars in the matched name.
+ *
+ * @hide
+ */
+
+public int getMatchLength() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns the time zone id associated with the matched name.
+ *
+ * @hide
+ */
+
+public java.lang.String getTzId() { throw new RuntimeException("Stub!"); }
+
+/**
+ * Returns true if the matched name is a display name for daylight saving time. For example,
+ * returns true for "Pacific Daylight Time", but false for "Pacific Standard Time".
+ *
+ * @hide
+ */
+
+public boolean isDst() { throw new RuntimeException("Stub!"); }
+}
+
 /**
  * A class representing the return result of {@link #matchName(java.lang.CharSequence,int,java.lang.String)}
  *
