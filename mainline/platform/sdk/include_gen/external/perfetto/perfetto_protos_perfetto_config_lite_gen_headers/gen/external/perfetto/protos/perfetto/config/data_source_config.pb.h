@@ -30,6 +30,7 @@
 #include <google/protobuf/message_lite.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_util.h>
 #include "protos/perfetto/config/android/android_log_config.pb.h"
 #include "protos/perfetto/config/android/android_polled_state_config.pb.h"
 #include "protos/perfetto/config/android/packages_list_config.pb.h"
@@ -81,6 +82,25 @@ PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
 namespace protos {
 
+enum DataSourceConfig_SessionInitiator : int {
+  DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED = 0,
+  DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD = 1
+};
+bool DataSourceConfig_SessionInitiator_IsValid(int value);
+constexpr DataSourceConfig_SessionInitiator DataSourceConfig_SessionInitiator_SessionInitiator_MIN = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED;
+constexpr DataSourceConfig_SessionInitiator DataSourceConfig_SessionInitiator_SessionInitiator_MAX = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD;
+constexpr int DataSourceConfig_SessionInitiator_SessionInitiator_ARRAYSIZE = DataSourceConfig_SessionInitiator_SessionInitiator_MAX + 1;
+
+const std::string& DataSourceConfig_SessionInitiator_Name(DataSourceConfig_SessionInitiator value);
+template<typename T>
+inline const std::string& DataSourceConfig_SessionInitiator_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, DataSourceConfig_SessionInitiator>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function DataSourceConfig_SessionInitiator_Name.");
+  return DataSourceConfig_SessionInitiator_Name(static_cast<DataSourceConfig_SessionInitiator>(enum_t_value));
+}
+bool DataSourceConfig_SessionInitiator_Parse(
+    const std::string& name, DataSourceConfig_SessionInitiator* value);
 // ===================================================================
 
 class DataSourceConfig :
@@ -183,6 +203,32 @@ class DataSourceConfig :
 
   // nested types ----------------------------------------------------
 
+  typedef DataSourceConfig_SessionInitiator SessionInitiator;
+  static constexpr SessionInitiator SESSION_INITIATOR_UNSPECIFIED =
+    DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED;
+  static constexpr SessionInitiator SESSION_INITIATOR_STATSD =
+    DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD;
+  static inline bool SessionInitiator_IsValid(int value) {
+    return DataSourceConfig_SessionInitiator_IsValid(value);
+  }
+  static constexpr SessionInitiator SessionInitiator_MIN =
+    DataSourceConfig_SessionInitiator_SessionInitiator_MIN;
+  static constexpr SessionInitiator SessionInitiator_MAX =
+    DataSourceConfig_SessionInitiator_SessionInitiator_MAX;
+  static constexpr int SessionInitiator_ARRAYSIZE =
+    DataSourceConfig_SessionInitiator_SessionInitiator_ARRAYSIZE;
+  template<typename T>
+  static inline const std::string& SessionInitiator_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, SessionInitiator>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function SessionInitiator_Name.");
+    return DataSourceConfig_SessionInitiator_Name(enum_t_value);
+  }
+  static inline bool SessionInitiator_Parse(const std::string& name,
+      SessionInitiator* value) {
+    return DataSourceConfig_SessionInitiator_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
@@ -210,6 +256,7 @@ class DataSourceConfig :
     kTracingSessionIdFieldNumber = 4,
     kEnableExtraGuardrailsFieldNumber = 6,
     kStopTimeoutMsFieldNumber = 7,
+    kSessionInitiatorFieldNumber = 8,
   };
   // optional string name = 1;
   bool has_name() const;
@@ -401,6 +448,12 @@ class DataSourceConfig :
   ::PROTOBUF_NAMESPACE_ID::uint32 stop_timeout_ms() const;
   void set_stop_timeout_ms(::PROTOBUF_NAMESPACE_ID::uint32 value);
 
+  // optional .perfetto.protos.DataSourceConfig.SessionInitiator session_initiator = 8;
+  bool has_session_initiator() const;
+  void clear_session_initiator();
+  ::perfetto::protos::DataSourceConfig_SessionInitiator session_initiator() const;
+  void set_session_initiator(::perfetto::protos::DataSourceConfig_SessionInitiator value);
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.DataSourceConfig)
  private:
   class _Internal;
@@ -432,6 +485,7 @@ class DataSourceConfig :
   ::PROTOBUF_NAMESPACE_ID::uint64 tracing_session_id_;
   bool enable_extra_guardrails_;
   ::PROTOBUF_NAMESPACE_ID::uint32 stop_timeout_ms_;
+  int session_initiator_;
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fdata_5fsource_5fconfig_2eproto;
 };
 // ===================================================================
@@ -573,6 +627,25 @@ inline void DataSourceConfig::set_enable_extra_guardrails(bool value) {
   _has_bits_[0] |= 0x00400000u;
   enable_extra_guardrails_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.DataSourceConfig.enable_extra_guardrails)
+}
+
+// optional .perfetto.protos.DataSourceConfig.SessionInitiator session_initiator = 8;
+inline bool DataSourceConfig::has_session_initiator() const {
+  return (_has_bits_[0] & 0x01000000u) != 0;
+}
+inline void DataSourceConfig::clear_session_initiator() {
+  session_initiator_ = 0;
+  _has_bits_[0] &= ~0x01000000u;
+}
+inline ::perfetto::protos::DataSourceConfig_SessionInitiator DataSourceConfig::session_initiator() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DataSourceConfig.session_initiator)
+  return static_cast< ::perfetto::protos::DataSourceConfig_SessionInitiator >(session_initiator_);
+}
+inline void DataSourceConfig::set_session_initiator(::perfetto::protos::DataSourceConfig_SessionInitiator value) {
+  assert(::perfetto::protos::DataSourceConfig_SessionInitiator_IsValid(value));
+  _has_bits_[0] |= 0x01000000u;
+  session_initiator_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.DataSourceConfig.session_initiator)
 }
 
 // optional uint64 tracing_session_id = 4;
@@ -1424,6 +1497,12 @@ inline void DataSourceConfig::set_allocated_for_testing(::perfetto::protos::Test
 
 }  // namespace protos
 }  // namespace perfetto
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::perfetto::protos::DataSourceConfig_SessionInitiator> : ::std::true_type {};
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

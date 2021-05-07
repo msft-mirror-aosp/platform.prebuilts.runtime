@@ -1,9 +1,5 @@
 // This is auto-generated. DO NOT EDIT.
 
-package {
-    default_applicable_licenses: ["Android-Apache-2.0"],
-}
-
 cc_prebuilt_library_shared {
     name: "platform-mainline-test-exports_libtombstoned_client@current",
     sdk_member_name: "libtombstoned_client",
@@ -70,4 +66,3 @@ module_exports_snapshot {
     visibility: ["//visibility:public"],
     native_shared_libs: ["platform-mainline-test-exports_libtombstoned_client@current"],
 }
-
