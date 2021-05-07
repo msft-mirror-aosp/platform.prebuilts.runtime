@@ -17,13 +17,14 @@ namespace protos {
 namespace pbzero {
 
 class SysStats_CpuTimes;
+class SysStats_DevfreqValue;
 class SysStats_InterruptCount;
 class SysStats_MeminfoValue;
 class SysStats_VmstatValue;
 enum MeminfoCounters : int32_t;
 enum VmstatCounters : int32_t;
 
-class SysStats_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/9, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class SysStats_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   SysStats_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit SysStats_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -46,6 +47,8 @@ class SysStats_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/
   ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> num_softirq() const { return GetRepeated<::protozero::ConstBytes>(8); }
   bool has_collection_end_timestamp() const { return at<9>().valid(); }
   uint64_t collection_end_timestamp() const { return at<9>().as_uint64(); }
+  bool has_devfreq() const { return at<10>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> devfreq() const { return GetRepeated<::protozero::ConstBytes>(10); }
 };
 
 class SysStats : public ::protozero::Message {
@@ -61,11 +64,13 @@ class SysStats : public ::protozero::Message {
     kNumSoftirqTotalFieldNumber = 7,
     kNumSoftirqFieldNumber = 8,
     kCollectionEndTimestampFieldNumber = 9,
+    kDevfreqFieldNumber = 10,
   };
   using MeminfoValue = ::perfetto::protos::pbzero::SysStats_MeminfoValue;
   using VmstatValue = ::perfetto::protos::pbzero::SysStats_VmstatValue;
   using CpuTimes = ::perfetto::protos::pbzero::SysStats_CpuTimes;
   using InterruptCount = ::perfetto::protos::pbzero::SysStats_InterruptCount;
+  using DevfreqValue = ::perfetto::protos::pbzero::SysStats_DevfreqValue;
 
   using FieldMetadata_Meminfo =
     ::protozero::proto_utils::FieldMetadata<
@@ -265,6 +270,100 @@ class SysStats : public ::protozero::Message {
   static constexpr FieldMetadata_CollectionEndTimestamp kCollectionEndTimestamp() { return {}; }
   void set_collection_end_timestamp(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CollectionEndTimestamp::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Devfreq =
+    ::protozero::proto_utils::FieldMetadata<
+      10,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SysStats_DevfreqValue,
+      SysStats>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Devfreq kDevfreq() { return {}; }
+  template <typename T = SysStats_DevfreqValue> T* add_devfreq() {
+    return BeginNestedMessage<T>(10);
+  }
+
+};
+
+class SysStats_DevfreqValue_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  SysStats_DevfreqValue_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit SysStats_DevfreqValue_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit SysStats_DevfreqValue_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_key() const { return at<1>().valid(); }
+  ::protozero::ConstChars key() const { return at<1>().as_string(); }
+  bool has_value() const { return at<2>().valid(); }
+  uint64_t value() const { return at<2>().as_uint64(); }
+};
+
+class SysStats_DevfreqValue : public ::protozero::Message {
+ public:
+  using Decoder = SysStats_DevfreqValue_Decoder;
+  enum : int32_t {
+    kKeyFieldNumber = 1,
+    kValueFieldNumber = 2,
+  };
+
+  using FieldMetadata_Key =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      SysStats_DevfreqValue>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Key kKey() { return {}; }
+  void set_key(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Key::kFieldId, data, size);
+  }
+  void set_key(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Key::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Value =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      SysStats_DevfreqValue>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Value kValue() { return {}; }
+  void set_value(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Value::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<

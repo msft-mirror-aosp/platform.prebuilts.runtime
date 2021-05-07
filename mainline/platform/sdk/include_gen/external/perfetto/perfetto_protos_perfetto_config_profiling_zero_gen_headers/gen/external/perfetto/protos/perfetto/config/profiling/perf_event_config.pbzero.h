@@ -20,7 +20,7 @@ class PerfEventConfig_CallstackSampling;
 class PerfEventConfig_Scope;
 class PerfEvents_Timebase;
 
-class PerfEventConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/17, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class PerfEventConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/18, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   PerfEventConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit PerfEventConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -51,6 +51,8 @@ class PerfEventConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIEL
   ::protozero::RepeatedFieldIterator<int32_t> target_pid() const { return GetRepeated<int32_t>(4); }
   bool has_target_cmdline() const { return at<5>().valid(); }
   ::protozero::RepeatedFieldIterator<::protozero::ConstChars> target_cmdline() const { return GetRepeated<::protozero::ConstChars>(5); }
+  bool has_target_installed_by() const { return at<18>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstChars> target_installed_by() const { return GetRepeated<::protozero::ConstChars>(18); }
   bool has_exclude_pid() const { return at<6>().valid(); }
   ::protozero::RepeatedFieldIterator<int32_t> exclude_pid() const { return GetRepeated<int32_t>(6); }
   bool has_exclude_cmdline() const { return at<7>().valid(); }
@@ -76,6 +78,7 @@ class PerfEventConfig : public ::protozero::Message {
     kKernelFramesFieldNumber = 12,
     kTargetPidFieldNumber = 4,
     kTargetCmdlineFieldNumber = 5,
+    kTargetInstalledByFieldNumber = 18,
     kExcludePidFieldNumber = 6,
     kExcludeCmdlineFieldNumber = 7,
     kAdditionalCmdlineCountFieldNumber = 11,
@@ -396,6 +399,34 @@ class PerfEventConfig : public ::protozero::Message {
   }
   void add_target_cmdline(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_TargetCmdline::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TargetInstalledBy =
+    ::protozero::proto_utils::FieldMetadata<
+      18,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      PerfEventConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_TargetInstalledBy kTargetInstalledBy() { return {}; }
+  void add_target_installed_by(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_TargetInstalledBy::kFieldId, data, size);
+  }
+  void add_target_installed_by(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_TargetInstalledBy::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
