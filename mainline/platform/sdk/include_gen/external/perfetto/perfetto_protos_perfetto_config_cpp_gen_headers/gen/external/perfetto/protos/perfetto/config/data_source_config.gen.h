@@ -20,6 +20,7 @@ class TestConfig;
 class TestConfig_DummyFields;
 class InterceptorConfig;
 class ChromeConfig;
+enum DataSourceConfig_SessionInitiator : int;
 enum ChromeConfig_ClientPriority : int;
 }  // namespace perfetto
 }  // namespace protos
@@ -32,15 +33,25 @@ class Message;
 namespace perfetto {
 namespace protos {
 namespace gen {
+enum DataSourceConfig_SessionInitiator : int {
+  DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED = 0,
+  DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD = 1,
+};
 
 class PERFETTO_EXPORT DataSourceConfig : public ::protozero::CppMessageObj {
  public:
+  using SessionInitiator = DataSourceConfig_SessionInitiator;
+  static constexpr auto SESSION_INITIATOR_UNSPECIFIED = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED;
+  static constexpr auto SESSION_INITIATOR_STATSD = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD;
+  static constexpr auto SessionInitiator_MIN = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED;
+  static constexpr auto SessionInitiator_MAX = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD;
   enum FieldNumbers {
     kNameFieldNumber = 1,
     kTargetBufferFieldNumber = 2,
     kTraceDurationMsFieldNumber = 3,
     kStopTimeoutMsFieldNumber = 7,
     kEnableExtraGuardrailsFieldNumber = 6,
+    kSessionInitiatorFieldNumber = 8,
     kTracingSessionIdFieldNumber = 4,
     kFtraceConfigFieldNumber = 100,
     kInodeFileConfigFieldNumber = 102,
@@ -95,6 +106,10 @@ class PERFETTO_EXPORT DataSourceConfig : public ::protozero::CppMessageObj {
   bool has_enable_extra_guardrails() const { return _has_field_[6]; }
   bool enable_extra_guardrails() const { return enable_extra_guardrails_; }
   void set_enable_extra_guardrails(bool value) { enable_extra_guardrails_ = value; _has_field_.set(6); }
+
+  bool has_session_initiator() const { return _has_field_[8]; }
+  DataSourceConfig_SessionInitiator session_initiator() const { return session_initiator_; }
+  void set_session_initiator(DataSourceConfig_SessionInitiator value) { session_initiator_ = value; _has_field_.set(8); }
 
   bool has_tracing_session_id() const { return _has_field_[4]; }
   uint64_t tracing_session_id() const { return tracing_session_id_; }
@@ -164,6 +179,7 @@ class PERFETTO_EXPORT DataSourceConfig : public ::protozero::CppMessageObj {
   uint32_t trace_duration_ms_{};
   uint32_t stop_timeout_ms_{};
   bool enable_extra_guardrails_{};
+  DataSourceConfig_SessionInitiator session_initiator_{};
   uint64_t tracing_session_id_{};
   std::string ftrace_config_;  // [lazy=true]
   std::string inode_file_config_;  // [lazy=true]
