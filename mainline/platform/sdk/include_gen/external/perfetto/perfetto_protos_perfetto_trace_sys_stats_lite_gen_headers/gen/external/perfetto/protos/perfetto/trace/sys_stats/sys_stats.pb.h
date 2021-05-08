@@ -46,7 +46,7 @@ struct TableStruct_protos_2fperfetto_2ftrace_2fsys_5fstats_2fsys_5fstats_2eproto
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -60,6 +60,9 @@ extern SysStatsDefaultTypeInternal _SysStats_default_instance_;
 class SysStats_CpuTimes;
 class SysStats_CpuTimesDefaultTypeInternal;
 extern SysStats_CpuTimesDefaultTypeInternal _SysStats_CpuTimes_default_instance_;
+class SysStats_DevfreqValue;
+class SysStats_DevfreqValueDefaultTypeInternal;
+extern SysStats_DevfreqValueDefaultTypeInternal _SysStats_DevfreqValue_default_instance_;
 class SysStats_InterruptCount;
 class SysStats_InterruptCountDefaultTypeInternal;
 extern SysStats_InterruptCountDefaultTypeInternal _SysStats_InterruptCount_default_instance_;
@@ -74,6 +77,7 @@ extern SysStats_VmstatValueDefaultTypeInternal _SysStats_VmstatValue_default_ins
 PROTOBUF_NAMESPACE_OPEN
 template<> ::perfetto::protos::SysStats* Arena::CreateMaybeMessage<::perfetto::protos::SysStats>(Arena*);
 template<> ::perfetto::protos::SysStats_CpuTimes* Arena::CreateMaybeMessage<::perfetto::protos::SysStats_CpuTimes>(Arena*);
+template<> ::perfetto::protos::SysStats_DevfreqValue* Arena::CreateMaybeMessage<::perfetto::protos::SysStats_DevfreqValue>(Arena*);
 template<> ::perfetto::protos::SysStats_InterruptCount* Arena::CreateMaybeMessage<::perfetto::protos::SysStats_InterruptCount>(Arena*);
 template<> ::perfetto::protos::SysStats_MeminfoValue* Arena::CreateMaybeMessage<::perfetto::protos::SysStats_MeminfoValue>(Arena*);
 template<> ::perfetto::protos::SysStats_VmstatValue* Arena::CreateMaybeMessage<::perfetto::protos::SysStats_VmstatValue>(Arena*);
@@ -655,6 +659,143 @@ class SysStats_InterruptCount :
 };
 // -------------------------------------------------------------------
 
+class SysStats_DevfreqValue :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.SysStats.DevfreqValue) */ {
+ public:
+  SysStats_DevfreqValue();
+  virtual ~SysStats_DevfreqValue();
+
+  SysStats_DevfreqValue(const SysStats_DevfreqValue& from);
+  SysStats_DevfreqValue(SysStats_DevfreqValue&& from) noexcept
+    : SysStats_DevfreqValue() {
+    *this = ::std::move(from);
+  }
+
+  inline SysStats_DevfreqValue& operator=(const SysStats_DevfreqValue& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SysStats_DevfreqValue& operator=(SysStats_DevfreqValue&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const SysStats_DevfreqValue& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const SysStats_DevfreqValue* internal_default_instance() {
+    return reinterpret_cast<const SysStats_DevfreqValue*>(
+               &_SysStats_DevfreqValue_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(SysStats_DevfreqValue& a, SysStats_DevfreqValue& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SysStats_DevfreqValue* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SysStats_DevfreqValue* New() const final {
+    return CreateMaybeMessage<SysStats_DevfreqValue>(nullptr);
+  }
+
+  SysStats_DevfreqValue* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<SysStats_DevfreqValue>(arena);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)
+    final;
+  void CopyFrom(const SysStats_DevfreqValue& from);
+  void MergeFrom(const SysStats_DevfreqValue& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
+  void DiscardUnknownFields();
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(SysStats_DevfreqValue* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.SysStats.DevfreqValue";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKeyFieldNumber = 1,
+    kValueFieldNumber = 2,
+  };
+  // optional string key = 1;
+  bool has_key() const;
+  void clear_key();
+  const std::string& key() const;
+  void set_key(const std::string& value);
+  void set_key(std::string&& value);
+  void set_key(const char* value);
+  void set_key(const char* value, size_t size);
+  std::string* mutable_key();
+  std::string* release_key();
+  void set_allocated_key(std::string* key);
+
+  // optional uint64 value = 2;
+  bool has_value() const;
+  void clear_value();
+  ::PROTOBUF_NAMESPACE_ID::uint64 value() const;
+  void set_value(::PROTOBUF_NAMESPACE_ID::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.SysStats.DevfreqValue)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr key_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 value_;
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fsys_5fstats_2fsys_5fstats_2eproto;
+};
+// -------------------------------------------------------------------
+
 class SysStats :
     public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.SysStats) */ {
  public:
@@ -695,7 +836,7 @@ class SysStats :
                &_SysStats_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(SysStats& a, SysStats& b) {
     a.Swap(&b);
@@ -759,6 +900,7 @@ class SysStats :
   typedef SysStats_VmstatValue VmstatValue;
   typedef SysStats_CpuTimes CpuTimes;
   typedef SysStats_InterruptCount InterruptCount;
+  typedef SysStats_DevfreqValue DevfreqValue;
 
   // accessors -------------------------------------------------------
 
@@ -768,6 +910,7 @@ class SysStats :
     kCpuStatFieldNumber = 3,
     kNumIrqFieldNumber = 6,
     kNumSoftirqFieldNumber = 8,
+    kDevfreqFieldNumber = 10,
     kNumForksFieldNumber = 4,
     kNumIrqTotalFieldNumber = 5,
     kNumSoftirqTotalFieldNumber = 7,
@@ -828,6 +971,17 @@ class SysStats :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::SysStats_InterruptCount >&
       num_softirq() const;
 
+  // repeated .perfetto.protos.SysStats.DevfreqValue devfreq = 10;
+  int devfreq_size() const;
+  void clear_devfreq();
+  ::perfetto::protos::SysStats_DevfreqValue* mutable_devfreq(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::SysStats_DevfreqValue >*
+      mutable_devfreq();
+  const ::perfetto::protos::SysStats_DevfreqValue& devfreq(int index) const;
+  ::perfetto::protos::SysStats_DevfreqValue* add_devfreq();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::SysStats_DevfreqValue >&
+      devfreq() const;
+
   // optional uint64 num_forks = 4;
   bool has_num_forks() const;
   void clear_num_forks();
@@ -864,6 +1018,7 @@ class SysStats :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::SysStats_CpuTimes > cpu_stat_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::SysStats_InterruptCount > num_irq_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::SysStats_InterruptCount > num_softirq_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::SysStats_DevfreqValue > devfreq_;
   ::PROTOBUF_NAMESPACE_ID::uint64 num_forks_;
   ::PROTOBUF_NAMESPACE_ID::uint64 num_irq_total_;
   ::PROTOBUF_NAMESPACE_ID::uint64 num_softirq_total_;
@@ -1149,6 +1304,86 @@ inline void SysStats_InterruptCount::set_count(::PROTOBUF_NAMESPACE_ID::uint64 v
 
 // -------------------------------------------------------------------
 
+// SysStats_DevfreqValue
+
+// optional string key = 1;
+inline bool SysStats_DevfreqValue::has_key() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SysStats_DevfreqValue::clear_key() {
+  key_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& SysStats_DevfreqValue::key() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SysStats.DevfreqValue.key)
+  return key_.GetNoArena();
+}
+inline void SysStats_DevfreqValue::set_key(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  key_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SysStats.DevfreqValue.key)
+}
+inline void SysStats_DevfreqValue::set_key(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  key_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.SysStats.DevfreqValue.key)
+}
+inline void SysStats_DevfreqValue::set_key(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  key_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.SysStats.DevfreqValue.key)
+}
+inline void SysStats_DevfreqValue::set_key(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  key_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.SysStats.DevfreqValue.key)
+}
+inline std::string* SysStats_DevfreqValue::mutable_key() {
+  _has_bits_[0] |= 0x00000001u;
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.SysStats.DevfreqValue.key)
+  return key_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* SysStats_DevfreqValue::release_key() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.SysStats.DevfreqValue.key)
+  if (!has_key()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return key_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void SysStats_DevfreqValue::set_allocated_key(std::string* key) {
+  if (key != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  key_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), key);
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.SysStats.DevfreqValue.key)
+}
+
+// optional uint64 value = 2;
+inline bool SysStats_DevfreqValue::has_value() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SysStats_DevfreqValue::clear_value() {
+  value_ = PROTOBUF_ULONGLONG(0);
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 SysStats_DevfreqValue::value() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SysStats.DevfreqValue.value)
+  return value_;
+}
+inline void SysStats_DevfreqValue::set_value(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _has_bits_[0] |= 0x00000002u;
+  value_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.SysStats.DevfreqValue.value)
+}
+
+// -------------------------------------------------------------------
+
 // SysStats
 
 // repeated .perfetto.protos.SysStats.MeminfoValue meminfo = 1;
@@ -1373,9 +1608,41 @@ inline void SysStats::set_collection_end_timestamp(::PROTOBUF_NAMESPACE_ID::uint
   // @@protoc_insertion_point(field_set:perfetto.protos.SysStats.collection_end_timestamp)
 }
 
+// repeated .perfetto.protos.SysStats.DevfreqValue devfreq = 10;
+inline int SysStats::devfreq_size() const {
+  return devfreq_.size();
+}
+inline void SysStats::clear_devfreq() {
+  devfreq_.Clear();
+}
+inline ::perfetto::protos::SysStats_DevfreqValue* SysStats::mutable_devfreq(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.SysStats.devfreq)
+  return devfreq_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::SysStats_DevfreqValue >*
+SysStats::mutable_devfreq() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.SysStats.devfreq)
+  return &devfreq_;
+}
+inline const ::perfetto::protos::SysStats_DevfreqValue& SysStats::devfreq(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SysStats.devfreq)
+  return devfreq_.Get(index);
+}
+inline ::perfetto::protos::SysStats_DevfreqValue* SysStats::add_devfreq() {
+  // @@protoc_insertion_point(field_add:perfetto.protos.SysStats.devfreq)
+  return devfreq_.Add();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::SysStats_DevfreqValue >&
+SysStats::devfreq() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.SysStats.devfreq)
+  return devfreq_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

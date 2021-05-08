@@ -1,43 +1,5 @@
 // This is auto-generated. DO NOT EDIT.
 
-package {
-    default_applicable_licenses: ["Android-Apache-2.0"],
-}
-
-java_import {
-    name: "conscrypt-module-test-exports_conscrypt@current",
-    sdk_member_name: "conscrypt",
-    visibility: [
-        "//art/build",
-        "//device:__subpackages__",
-        "//external/conscrypt:__subpackages__",
-        "//external/robolectric-shadows",
-        "//system/apex/tests",
-    ],
-    apex_available: [
-        "com.android.conscrypt",
-        "test_com.android.conscrypt",
-    ],
-    jars: ["java/conscrypt.jar"],
-}
-
-java_import {
-    name: "conscrypt",
-    prefer: false,
-    visibility: [
-        "//art/build",
-        "//device:__subpackages__",
-        "//external/conscrypt:__subpackages__",
-        "//external/robolectric-shadows",
-        "//system/apex/tests",
-    ],
-    apex_available: [
-        "com.android.conscrypt",
-        "test_com.android.conscrypt",
-    ],
-    jars: ["java/conscrypt.jar"],
-}
-
 java_import {
     name: "conscrypt-module-test-exports_conscrypt-for-host@current",
     sdk_member_name: "conscrypt-for-host",
@@ -204,10 +166,7 @@ module_exports_snapshot {
     native_shared_libs: ["conscrypt-module-test-exports_libjavacrypto@current"],
     target: {
         android: {
-            java_libs: [
-                "conscrypt-module-test-exports_conscrypt@current",
-                "conscrypt-module-test-exports_conscrypt-for-host@current",
-            ],
+            java_libs: ["conscrypt-module-test-exports_conscrypt-for-host@current"],
             java_tests: ["conscrypt-module-test-exports_conscrypt-tests@current"],
         },
         linux_bionic: {
@@ -227,4 +186,3 @@ module_exports_snapshot {
         },
     },
 }
-

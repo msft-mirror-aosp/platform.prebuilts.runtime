@@ -1627,7 +1627,7 @@ class TraceConfig_ProducerConfig : public ::protozero::Message {
   }
 };
 
-class TraceConfig_BuiltinDataSource_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class TraceConfig_BuiltinDataSource_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   TraceConfig_BuiltinDataSource_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_BuiltinDataSource_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -1644,6 +1644,8 @@ class TraceConfig_BuiltinDataSource_Decoder : public ::protozero::TypedProtoDeco
   int32_t primary_trace_clock() const { return at<5>().as_int32(); }
   bool has_snapshot_interval_ms() const { return at<6>().valid(); }
   uint32_t snapshot_interval_ms() const { return at<6>().as_uint32(); }
+  bool has_prefer_suspend_clock_for_snapshot() const { return at<7>().valid(); }
+  bool prefer_suspend_clock_for_snapshot() const { return at<7>().as_bool(); }
 };
 
 class TraceConfig_BuiltinDataSource : public ::protozero::Message {
@@ -1656,6 +1658,7 @@ class TraceConfig_BuiltinDataSource : public ::protozero::Message {
     kDisableServiceEventsFieldNumber = 4,
     kPrimaryTraceClockFieldNumber = 5,
     kSnapshotIntervalMsFieldNumber = 6,
+    kPreferSuspendClockForSnapshotFieldNumber = 7,
   };
 
   using FieldMetadata_DisableClockSnapshotting =
@@ -1805,6 +1808,31 @@ class TraceConfig_BuiltinDataSource : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_PreferSuspendClockForSnapshot =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      TraceConfig_BuiltinDataSource>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_PreferSuspendClockForSnapshot kPreferSuspendClockForSnapshot() { return {}; }
+  void set_prefer_suspend_clock_for_snapshot(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_PreferSuspendClockForSnapshot::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
         ::Append(*this, field_id, value);
   }
 };

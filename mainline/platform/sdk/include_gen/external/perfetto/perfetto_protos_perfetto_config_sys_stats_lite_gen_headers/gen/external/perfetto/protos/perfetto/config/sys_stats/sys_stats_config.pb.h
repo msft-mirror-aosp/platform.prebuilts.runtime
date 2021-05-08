@@ -231,6 +231,7 @@ class SysStatsConfig :
     kMeminfoPeriodMsFieldNumber = 1,
     kVmstatPeriodMsFieldNumber = 3,
     kStatPeriodMsFieldNumber = 5,
+    kDevfreqPeriodMsFieldNumber = 7,
   };
   // repeated .perfetto.protos.MeminfoCounters meminfo_counters = 2;
   int meminfo_counters_size() const;
@@ -277,6 +278,12 @@ class SysStatsConfig :
   ::PROTOBUF_NAMESPACE_ID::uint32 stat_period_ms() const;
   void set_stat_period_ms(::PROTOBUF_NAMESPACE_ID::uint32 value);
 
+  // optional uint32 devfreq_period_ms = 7;
+  bool has_devfreq_period_ms() const;
+  void clear_devfreq_period_ms();
+  ::PROTOBUF_NAMESPACE_ID::uint32 devfreq_period_ms() const;
+  void set_devfreq_period_ms(::PROTOBUF_NAMESPACE_ID::uint32 value);
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.SysStatsConfig)
  private:
   class _Internal;
@@ -290,6 +297,7 @@ class SysStatsConfig :
   ::PROTOBUF_NAMESPACE_ID::uint32 meminfo_period_ms_;
   ::PROTOBUF_NAMESPACE_ID::uint32 vmstat_period_ms_;
   ::PROTOBUF_NAMESPACE_ID::uint32 stat_period_ms_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 devfreq_period_ms_;
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fsys_5fstats_2fsys_5fstats_5fconfig_2eproto;
 };
 // ===================================================================
@@ -451,6 +459,24 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
 SysStatsConfig::mutable_stat_counters() {
   // @@protoc_insertion_point(field_mutable_list:perfetto.protos.SysStatsConfig.stat_counters)
   return &stat_counters_;
+}
+
+// optional uint32 devfreq_period_ms = 7;
+inline bool SysStatsConfig::has_devfreq_period_ms() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void SysStatsConfig::clear_devfreq_period_ms() {
+  devfreq_period_ms_ = 0u;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 SysStatsConfig::devfreq_period_ms() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SysStatsConfig.devfreq_period_ms)
+  return devfreq_period_ms_;
+}
+inline void SysStatsConfig::set_devfreq_period_ms(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _has_bits_[0] |= 0x00000008u;
+  devfreq_period_ms_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.SysStatsConfig.devfreq_period_ms)
 }
 
 #ifdef __GNUC__

@@ -35,10 +35,11 @@ enum FrameTimelineEvent_JankType : int32_t {
   FrameTimelineEvent_JankType_JANK_APP_DEADLINE_MISSED = 64,
   FrameTimelineEvent_JankType_JANK_BUFFER_STUFFING = 128,
   FrameTimelineEvent_JankType_JANK_UNKNOWN = 256,
+  FrameTimelineEvent_JankType_JANK_SF_STUFFING = 512,
 };
 
 const FrameTimelineEvent_JankType FrameTimelineEvent_JankType_MIN = FrameTimelineEvent_JankType_JANK_UNSPECIFIED;
-const FrameTimelineEvent_JankType FrameTimelineEvent_JankType_MAX = FrameTimelineEvent_JankType_JANK_UNKNOWN;
+const FrameTimelineEvent_JankType FrameTimelineEvent_JankType_MAX = FrameTimelineEvent_JankType_JANK_SF_STUFFING;
 
 enum FrameTimelineEvent_PresentType : int32_t {
   FrameTimelineEvent_PresentType_PRESENT_UNSPECIFIED = 0,
@@ -107,6 +108,7 @@ class FrameTimelineEvent : public ::protozero::Message {
   static const JankType JANK_APP_DEADLINE_MISSED = FrameTimelineEvent_JankType_JANK_APP_DEADLINE_MISSED;
   static const JankType JANK_BUFFER_STUFFING = FrameTimelineEvent_JankType_JANK_BUFFER_STUFFING;
   static const JankType JANK_UNKNOWN = FrameTimelineEvent_JankType_JANK_UNKNOWN;
+  static const JankType JANK_SF_STUFFING = FrameTimelineEvent_JankType_JANK_SF_STUFFING;
   static const PresentType PRESENT_UNSPECIFIED = FrameTimelineEvent_PresentType_PRESENT_UNSPECIFIED;
   static const PresentType PRESENT_ON_TIME = FrameTimelineEvent_PresentType_PRESENT_ON_TIME;
   static const PresentType PRESENT_LATE = FrameTimelineEvent_PresentType_PRESENT_LATE;
