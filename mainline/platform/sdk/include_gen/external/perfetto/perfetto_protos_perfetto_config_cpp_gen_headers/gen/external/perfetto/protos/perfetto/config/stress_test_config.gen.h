@@ -38,6 +38,7 @@ enum TraceConfig_CompressionType : int;
 enum TraceConfig_StatsdLogging : int;
 enum TraceConfig_TriggerConfig_TriggerMode : int;
 enum BuiltinClock : int;
+enum DataSourceConfig_SessionInitiator : int;
 enum ChromeConfig_ClientPriority : int;
 enum TraceConfig_BufferConfig_FillPolicy : int;
 }  // namespace perfetto
