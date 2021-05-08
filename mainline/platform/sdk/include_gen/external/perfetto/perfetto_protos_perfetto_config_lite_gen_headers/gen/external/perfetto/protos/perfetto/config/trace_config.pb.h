@@ -639,6 +639,7 @@ class TraceConfig_BuiltinDataSource :
     kDisableServiceEventsFieldNumber = 4,
     kPrimaryTraceClockFieldNumber = 5,
     kSnapshotIntervalMsFieldNumber = 6,
+    kPreferSuspendClockForSnapshotFieldNumber = 7,
   };
   // optional bool disable_clock_snapshotting = 1;
   bool has_disable_clock_snapshotting() const;
@@ -676,6 +677,12 @@ class TraceConfig_BuiltinDataSource :
   ::PROTOBUF_NAMESPACE_ID::uint32 snapshot_interval_ms() const;
   void set_snapshot_interval_ms(::PROTOBUF_NAMESPACE_ID::uint32 value);
 
+  // optional bool prefer_suspend_clock_for_snapshot = 7;
+  bool has_prefer_suspend_clock_for_snapshot() const;
+  void clear_prefer_suspend_clock_for_snapshot();
+  bool prefer_suspend_clock_for_snapshot() const;
+  void set_prefer_suspend_clock_for_snapshot(bool value);
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.TraceConfig.BuiltinDataSource)
  private:
   class _Internal;
@@ -689,6 +696,7 @@ class TraceConfig_BuiltinDataSource :
   bool disable_service_events_;
   int primary_trace_clock_;
   ::PROTOBUF_NAMESPACE_ID::uint32 snapshot_interval_ms_;
+  bool prefer_suspend_clock_for_snapshot_;
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2ftrace_5fconfig_2eproto;
 };
 // -------------------------------------------------------------------
@@ -2564,6 +2572,24 @@ inline void TraceConfig_BuiltinDataSource::set_snapshot_interval_ms(::PROTOBUF_N
   _has_bits_[0] |= 0x00000020u;
   snapshot_interval_ms_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.BuiltinDataSource.snapshot_interval_ms)
+}
+
+// optional bool prefer_suspend_clock_for_snapshot = 7;
+inline bool TraceConfig_BuiltinDataSource::has_prefer_suspend_clock_for_snapshot() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void TraceConfig_BuiltinDataSource::clear_prefer_suspend_clock_for_snapshot() {
+  prefer_suspend_clock_for_snapshot_ = false;
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline bool TraceConfig_BuiltinDataSource::prefer_suspend_clock_for_snapshot() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.BuiltinDataSource.prefer_suspend_clock_for_snapshot)
+  return prefer_suspend_clock_for_snapshot_;
+}
+inline void TraceConfig_BuiltinDataSource::set_prefer_suspend_clock_for_snapshot(bool value) {
+  _has_bits_[0] |= 0x00000040u;
+  prefer_suspend_clock_for_snapshot_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.BuiltinDataSource.prefer_suspend_clock_for_snapshot)
 }
 
 // -------------------------------------------------------------------

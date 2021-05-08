@@ -95,11 +95,12 @@ enum FrameTimelineEvent_JankType : int {
   FrameTimelineEvent_JankType_JANK_SF_GPU_DEADLINE_MISSED = 32,
   FrameTimelineEvent_JankType_JANK_APP_DEADLINE_MISSED = 64,
   FrameTimelineEvent_JankType_JANK_BUFFER_STUFFING = 128,
-  FrameTimelineEvent_JankType_JANK_UNKNOWN = 256
+  FrameTimelineEvent_JankType_JANK_UNKNOWN = 256,
+  FrameTimelineEvent_JankType_JANK_SF_STUFFING = 512
 };
 bool FrameTimelineEvent_JankType_IsValid(int value);
 constexpr FrameTimelineEvent_JankType FrameTimelineEvent_JankType_JankType_MIN = FrameTimelineEvent_JankType_JANK_UNSPECIFIED;
-constexpr FrameTimelineEvent_JankType FrameTimelineEvent_JankType_JankType_MAX = FrameTimelineEvent_JankType_JANK_UNKNOWN;
+constexpr FrameTimelineEvent_JankType FrameTimelineEvent_JankType_JankType_MAX = FrameTimelineEvent_JankType_JANK_SF_STUFFING;
 constexpr int FrameTimelineEvent_JankType_JankType_ARRAYSIZE = FrameTimelineEvent_JankType_JankType_MAX + 1;
 
 const std::string& FrameTimelineEvent_JankType_Name(FrameTimelineEvent_JankType value);
@@ -1105,6 +1106,8 @@ class FrameTimelineEvent :
     FrameTimelineEvent_JankType_JANK_BUFFER_STUFFING;
   static constexpr JankType JANK_UNKNOWN =
     FrameTimelineEvent_JankType_JANK_UNKNOWN;
+  static constexpr JankType JANK_SF_STUFFING =
+    FrameTimelineEvent_JankType_JANK_SF_STUFFING;
   static inline bool JankType_IsValid(int value) {
     return FrameTimelineEvent_JankType_IsValid(value);
   }

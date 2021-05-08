@@ -1,44 +1,5 @@
 // This is auto-generated. DO NOT EDIT.
 
-package {
-    // See: http://go/android-license-faq
-    // A large-scale-change added 'default_applicable_licenses' to import
-    // all of the 'license_kinds' from "prebuilts_runtime_license"
-    // to get the below license kinds:
-    //   SPDX-license-identifier-Apache-2.0
-    //   SPDX-license-identifier-BSD
-    //   SPDX-license-identifier-Unicode-DFS
-    default_applicable_licenses: ["prebuilts_runtime_license"],
-}
-
-java_import {
-    name: "i18n-module-test-exports_core-icu4j@current",
-    sdk_member_name: "core-icu4j",
-    visibility: [
-        "//art/build",
-        "//external/icu/android_icu4j",
-        "//external/robolectric-shadows",
-        "//frameworks/layoutlib",
-        "//packages/modules/RuntimeI18n/apex",
-    ],
-    apex_available: ["com.android.i18n"],
-    jars: ["java/core-icu4j.jar"],
-}
-
-java_import {
-    name: "core-icu4j",
-    prefer: false,
-    visibility: [
-        "//art/build",
-        "//external/icu/android_icu4j",
-        "//external/robolectric-shadows",
-        "//frameworks/layoutlib",
-        "//packages/modules/RuntimeI18n/apex",
-    ],
-    apex_available: ["com.android.i18n"],
-    jars: ["java/core-icu4j.jar"],
-}
-
 java_import {
     name: "i18n-module-test-exports_core-icu4j-for-host@current",
     sdk_member_name: "core-icu4j-for-host",
@@ -46,6 +7,7 @@ java_import {
         "//art/build",
         "//external/icu/android_icu4j",
         "//external/robolectric-shadows",
+        "//frameworks/layoutlib",
         "//packages/modules/RuntimeI18n/apex",
     ],
     apex_available: ["//apex_available:platform"],
@@ -59,6 +21,7 @@ java_import {
         "//art/build",
         "//external/icu/android_icu4j",
         "//external/robolectric-shadows",
+        "//frameworks/layoutlib",
         "//packages/modules/RuntimeI18n/apex",
     ],
     apex_available: ["//apex_available:platform"],
@@ -425,10 +388,7 @@ module_exports_snapshot {
     ],
     target: {
         android: {
-            java_libs: [
-                "i18n-module-test-exports_core-icu4j@current",
-                "i18n-module-test-exports_core-icu4j-for-host@current",
-            ],
+            java_libs: ["i18n-module-test-exports_core-icu4j-for-host@current"],
         },
         linux_bionic: {
             compile_multilib: "64",
@@ -447,4 +407,3 @@ module_exports_snapshot {
         },
     },
 }
-
