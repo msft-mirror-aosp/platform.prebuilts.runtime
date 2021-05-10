@@ -35,16 +35,16 @@ namespace protos {
 namespace gen {
 enum DataSourceConfig_SessionInitiator : int {
   DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED = 0,
-  DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD = 1,
+  DataSourceConfig_SessionInitiator_SESSION_INITIATOR_TRUSTED_SYSTEM = 1,
 };
 
 class PERFETTO_EXPORT DataSourceConfig : public ::protozero::CppMessageObj {
  public:
   using SessionInitiator = DataSourceConfig_SessionInitiator;
   static constexpr auto SESSION_INITIATOR_UNSPECIFIED = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED;
-  static constexpr auto SESSION_INITIATOR_STATSD = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD;
+  static constexpr auto SESSION_INITIATOR_TRUSTED_SYSTEM = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_TRUSTED_SYSTEM;
   static constexpr auto SessionInitiator_MIN = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED;
-  static constexpr auto SessionInitiator_MAX = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD;
+  static constexpr auto SessionInitiator_MAX = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_TRUSTED_SYSTEM;
   enum FieldNumbers {
     kNameFieldNumber = 1,
     kTargetBufferFieldNumber = 2,
