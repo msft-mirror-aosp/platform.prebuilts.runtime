@@ -84,11 +84,11 @@ namespace protos {
 
 enum DataSourceConfig_SessionInitiator : int {
   DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED = 0,
-  DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD = 1
+  DataSourceConfig_SessionInitiator_SESSION_INITIATOR_TRUSTED_SYSTEM = 1
 };
 bool DataSourceConfig_SessionInitiator_IsValid(int value);
 constexpr DataSourceConfig_SessionInitiator DataSourceConfig_SessionInitiator_SessionInitiator_MIN = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED;
-constexpr DataSourceConfig_SessionInitiator DataSourceConfig_SessionInitiator_SessionInitiator_MAX = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD;
+constexpr DataSourceConfig_SessionInitiator DataSourceConfig_SessionInitiator_SessionInitiator_MAX = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_TRUSTED_SYSTEM;
 constexpr int DataSourceConfig_SessionInitiator_SessionInitiator_ARRAYSIZE = DataSourceConfig_SessionInitiator_SessionInitiator_MAX + 1;
 
 const std::string& DataSourceConfig_SessionInitiator_Name(DataSourceConfig_SessionInitiator value);
@@ -206,8 +206,8 @@ class DataSourceConfig :
   typedef DataSourceConfig_SessionInitiator SessionInitiator;
   static constexpr SessionInitiator SESSION_INITIATOR_UNSPECIFIED =
     DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED;
-  static constexpr SessionInitiator SESSION_INITIATOR_STATSD =
-    DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD;
+  static constexpr SessionInitiator SESSION_INITIATOR_TRUSTED_SYSTEM =
+    DataSourceConfig_SessionInitiator_SESSION_INITIATOR_TRUSTED_SYSTEM;
   static inline bool SessionInitiator_IsValid(int value) {
     return DataSourceConfig_SessionInitiator_IsValid(value);
   }
