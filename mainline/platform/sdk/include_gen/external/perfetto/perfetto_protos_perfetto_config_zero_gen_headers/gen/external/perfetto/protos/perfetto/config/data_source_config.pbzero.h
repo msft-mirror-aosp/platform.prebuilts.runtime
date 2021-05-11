@@ -37,11 +37,11 @@ enum DataSourceConfig_SessionInitiator : int32_t;
 
 enum DataSourceConfig_SessionInitiator : int32_t {
   DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED = 0,
-  DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD = 1,
+  DataSourceConfig_SessionInitiator_SESSION_INITIATOR_TRUSTED_SYSTEM = 1,
 };
 
 const DataSourceConfig_SessionInitiator DataSourceConfig_SessionInitiator_MIN = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED;
-const DataSourceConfig_SessionInitiator DataSourceConfig_SessionInitiator_MAX = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD;
+const DataSourceConfig_SessionInitiator DataSourceConfig_SessionInitiator_MAX = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_TRUSTED_SYSTEM;
 
 class DataSourceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/115, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -130,7 +130,7 @@ class DataSourceConfig : public ::protozero::Message {
   };
   using SessionInitiator = ::perfetto::protos::pbzero::DataSourceConfig_SessionInitiator;
   static const SessionInitiator SESSION_INITIATOR_UNSPECIFIED = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED;
-  static const SessionInitiator SESSION_INITIATOR_STATSD = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_STATSD;
+  static const SessionInitiator SESSION_INITIATOR_TRUSTED_SYSTEM = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_TRUSTED_SYSTEM;
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
