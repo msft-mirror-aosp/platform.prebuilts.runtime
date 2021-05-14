@@ -309,6 +309,7 @@ class JavaHprofConfig :
     kProcessCmdlineFieldNumber = 1,
     kPidFieldNumber = 2,
     kIgnoredTypesFieldNumber = 6,
+    kTargetInstalledByFieldNumber = 7,
     kContinuousDumpConfigFieldNumber = 3,
     kMinAnonymousMemoryKbFieldNumber = 4,
     kDumpSmapsFieldNumber = 5,
@@ -358,6 +359,23 @@ class JavaHprofConfig :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& ignored_types() const;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_ignored_types();
 
+  // repeated string target_installed_by = 7;
+  int target_installed_by_size() const;
+  void clear_target_installed_by();
+  const std::string& target_installed_by(int index) const;
+  std::string* mutable_target_installed_by(int index);
+  void set_target_installed_by(int index, const std::string& value);
+  void set_target_installed_by(int index, std::string&& value);
+  void set_target_installed_by(int index, const char* value);
+  void set_target_installed_by(int index, const char* value, size_t size);
+  std::string* add_target_installed_by();
+  void add_target_installed_by(const std::string& value);
+  void add_target_installed_by(std::string&& value);
+  void add_target_installed_by(const char* value);
+  void add_target_installed_by(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& target_installed_by() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_target_installed_by();
+
   // optional .perfetto.protos.JavaHprofConfig.ContinuousDumpConfig continuous_dump_config = 3;
   bool has_continuous_dump_config() const;
   void clear_continuous_dump_config();
@@ -388,6 +406,7 @@ class JavaHprofConfig :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> process_cmdline_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > pid_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> ignored_types_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> target_installed_by_;
   ::perfetto::protos::JavaHprofConfig_ContinuousDumpConfig* continuous_dump_config_;
   ::PROTOBUF_NAMESPACE_ID::uint32 min_anonymous_memory_kb_;
   bool dump_smaps_;
@@ -537,6 +556,71 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >
 JavaHprofConfig::mutable_pid() {
   // @@protoc_insertion_point(field_mutable_list:perfetto.protos.JavaHprofConfig.pid)
   return &pid_;
+}
+
+// repeated string target_installed_by = 7;
+inline int JavaHprofConfig::target_installed_by_size() const {
+  return target_installed_by_.size();
+}
+inline void JavaHprofConfig::clear_target_installed_by() {
+  target_installed_by_.Clear();
+}
+inline const std::string& JavaHprofConfig::target_installed_by(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.JavaHprofConfig.target_installed_by)
+  return target_installed_by_.Get(index);
+}
+inline std::string* JavaHprofConfig::mutable_target_installed_by(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.JavaHprofConfig.target_installed_by)
+  return target_installed_by_.Mutable(index);
+}
+inline void JavaHprofConfig::set_target_installed_by(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:perfetto.protos.JavaHprofConfig.target_installed_by)
+  target_installed_by_.Mutable(index)->assign(value);
+}
+inline void JavaHprofConfig::set_target_installed_by(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:perfetto.protos.JavaHprofConfig.target_installed_by)
+  target_installed_by_.Mutable(index)->assign(std::move(value));
+}
+inline void JavaHprofConfig::set_target_installed_by(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  target_installed_by_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.JavaHprofConfig.target_installed_by)
+}
+inline void JavaHprofConfig::set_target_installed_by(int index, const char* value, size_t size) {
+  target_installed_by_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.JavaHprofConfig.target_installed_by)
+}
+inline std::string* JavaHprofConfig::add_target_installed_by() {
+  // @@protoc_insertion_point(field_add_mutable:perfetto.protos.JavaHprofConfig.target_installed_by)
+  return target_installed_by_.Add();
+}
+inline void JavaHprofConfig::add_target_installed_by(const std::string& value) {
+  target_installed_by_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:perfetto.protos.JavaHprofConfig.target_installed_by)
+}
+inline void JavaHprofConfig::add_target_installed_by(std::string&& value) {
+  target_installed_by_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:perfetto.protos.JavaHprofConfig.target_installed_by)
+}
+inline void JavaHprofConfig::add_target_installed_by(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  target_installed_by_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:perfetto.protos.JavaHprofConfig.target_installed_by)
+}
+inline void JavaHprofConfig::add_target_installed_by(const char* value, size_t size) {
+  target_installed_by_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:perfetto.protos.JavaHprofConfig.target_installed_by)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+JavaHprofConfig::target_installed_by() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.JavaHprofConfig.target_installed_by)
+  return target_installed_by_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+JavaHprofConfig::mutable_target_installed_by() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.JavaHprofConfig.target_installed_by)
+  return &target_installed_by_;
 }
 
 // optional .perfetto.protos.JavaHprofConfig.ContinuousDumpConfig continuous_dump_config = 3;

@@ -25,4 +25,3 @@ module_exports_snapshot {
     visibility: ["//visibility:public"],
     java_libs: ["tzdata-module-test-exports_tzdata-testing@current"],
 }
-

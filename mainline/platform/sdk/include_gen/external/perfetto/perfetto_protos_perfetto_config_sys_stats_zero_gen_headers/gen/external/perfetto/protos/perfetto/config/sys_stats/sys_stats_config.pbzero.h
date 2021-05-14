@@ -31,7 +31,7 @@ enum SysStatsConfig_StatCounters : int32_t {
 const SysStatsConfig_StatCounters SysStatsConfig_StatCounters_MIN = SysStatsConfig_StatCounters_STAT_UNSPECIFIED;
 const SysStatsConfig_StatCounters SysStatsConfig_StatCounters_MAX = SysStatsConfig_StatCounters_STAT_FORK_COUNT;
 
-class SysStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class SysStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   SysStatsConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit SysStatsConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -48,6 +48,8 @@ class SysStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD
   uint32_t stat_period_ms() const { return at<5>().as_uint32(); }
   bool has_stat_counters() const { return at<6>().valid(); }
   ::protozero::RepeatedFieldIterator<int32_t> stat_counters() const { return GetRepeated<int32_t>(6); }
+  bool has_devfreq_period_ms() const { return at<7>().valid(); }
+  uint32_t devfreq_period_ms() const { return at<7>().as_uint32(); }
 };
 
 class SysStatsConfig : public ::protozero::Message {
@@ -60,6 +62,7 @@ class SysStatsConfig : public ::protozero::Message {
     kVmstatCountersFieldNumber = 4,
     kStatPeriodMsFieldNumber = 5,
     kStatCountersFieldNumber = 6,
+    kDevfreqPeriodMsFieldNumber = 7,
   };
   using StatCounters = ::perfetto::protos::pbzero::SysStatsConfig_StatCounters;
   static const StatCounters STAT_UNSPECIFIED = SysStatsConfig_StatCounters_STAT_UNSPECIFIED;
@@ -215,6 +218,31 @@ class SysStatsConfig : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DevfreqPeriodMs =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SysStatsConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_DevfreqPeriodMs kDevfreqPeriodMs() { return {}; }
+  void set_devfreq_period_ms(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DevfreqPeriodMs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
         ::Append(*this, field_id, value);
   }
 };

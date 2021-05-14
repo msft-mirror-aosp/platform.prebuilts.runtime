@@ -104,6 +104,12 @@ class UiState_HighlightProcess :
 
   static const UiState_HighlightProcess& default_instance();
 
+  enum SelectorCase {
+    kPid = 1,
+    kCmdline = 2,
+    SELECTOR_NOT_SET = 0,
+  };
+
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
   static inline const UiState_HighlightProcess* internal_default_instance() {
     return reinterpret_cast<const UiState_HighlightProcess*>(
@@ -174,6 +180,7 @@ class UiState_HighlightProcess :
 
   enum : int {
     kPidFieldNumber = 1,
+    kCmdlineFieldNumber = 2,
   };
   // optional uint32 pid = 1;
   bool has_pid() const;
@@ -181,14 +188,39 @@ class UiState_HighlightProcess :
   ::PROTOBUF_NAMESPACE_ID::uint32 pid() const;
   void set_pid(::PROTOBUF_NAMESPACE_ID::uint32 value);
 
+  // optional string cmdline = 2;
+  bool has_cmdline() const;
+  void clear_cmdline();
+  const std::string& cmdline() const;
+  void set_cmdline(const std::string& value);
+  void set_cmdline(std::string&& value);
+  void set_cmdline(const char* value);
+  void set_cmdline(const char* value, size_t size);
+  std::string* mutable_cmdline();
+  std::string* release_cmdline();
+  void set_allocated_cmdline(std::string* cmdline);
+
+  void clear_selector();
+  SelectorCase selector_case() const;
   // @@protoc_insertion_point(class_scope:perfetto.protos.UiState.HighlightProcess)
  private:
   class _Internal;
+  void set_has_pid();
+  void set_has_cmdline();
+
+  inline bool has_selector() const;
+  inline void clear_has_selector();
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PROTOBUF_NAMESPACE_ID::uint32 pid_;
+  union SelectorUnion {
+    SelectorUnion() {}
+    ::PROTOBUF_NAMESPACE_ID::uint32 pid_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr cmdline_;
+  } selector_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
+
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fui_5fstate_2eproto;
 };
 // -------------------------------------------------------------------
@@ -347,22 +379,132 @@ class UiState :
 
 // optional uint32 pid = 1;
 inline bool UiState_HighlightProcess::has_pid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return selector_case() == kPid;
+}
+inline void UiState_HighlightProcess::set_has_pid() {
+  _oneof_case_[0] = kPid;
 }
 inline void UiState_HighlightProcess::clear_pid() {
-  pid_ = 0u;
-  _has_bits_[0] &= ~0x00000001u;
+  if (has_pid()) {
+    selector_.pid_ = 0u;
+    clear_has_selector();
+  }
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 UiState_HighlightProcess::pid() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.UiState.HighlightProcess.pid)
-  return pid_;
+  if (has_pid()) {
+    return selector_.pid_;
+  }
+  return 0u;
 }
 inline void UiState_HighlightProcess::set_pid(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000001u;
-  pid_ = value;
+  if (!has_pid()) {
+    clear_selector();
+    set_has_pid();
+  }
+  selector_.pid_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.UiState.HighlightProcess.pid)
 }
 
+// optional string cmdline = 2;
+inline bool UiState_HighlightProcess::has_cmdline() const {
+  return selector_case() == kCmdline;
+}
+inline void UiState_HighlightProcess::set_has_cmdline() {
+  _oneof_case_[0] = kCmdline;
+}
+inline void UiState_HighlightProcess::clear_cmdline() {
+  if (has_cmdline()) {
+    selector_.cmdline_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+    clear_has_selector();
+  }
+}
+inline const std::string& UiState_HighlightProcess::cmdline() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.UiState.HighlightProcess.cmdline)
+  if (has_cmdline()) {
+    return selector_.cmdline_.GetNoArena();
+  }
+  return *&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
+}
+inline void UiState_HighlightProcess::set_cmdline(const std::string& value) {
+  // @@protoc_insertion_point(field_set:perfetto.protos.UiState.HighlightProcess.cmdline)
+  if (!has_cmdline()) {
+    clear_selector();
+    set_has_cmdline();
+    selector_.cmdline_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  selector_.cmdline_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.UiState.HighlightProcess.cmdline)
+}
+inline void UiState_HighlightProcess::set_cmdline(std::string&& value) {
+  // @@protoc_insertion_point(field_set:perfetto.protos.UiState.HighlightProcess.cmdline)
+  if (!has_cmdline()) {
+    clear_selector();
+    set_has_cmdline();
+    selector_.cmdline_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  selector_.cmdline_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.UiState.HighlightProcess.cmdline)
+}
+inline void UiState_HighlightProcess::set_cmdline(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  if (!has_cmdline()) {
+    clear_selector();
+    set_has_cmdline();
+    selector_.cmdline_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  selector_.cmdline_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.UiState.HighlightProcess.cmdline)
+}
+inline void UiState_HighlightProcess::set_cmdline(const char* value, size_t size) {
+  if (!has_cmdline()) {
+    clear_selector();
+    set_has_cmdline();
+    selector_.cmdline_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  selector_.cmdline_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.UiState.HighlightProcess.cmdline)
+}
+inline std::string* UiState_HighlightProcess::mutable_cmdline() {
+  if (!has_cmdline()) {
+    clear_selector();
+    set_has_cmdline();
+    selector_.cmdline_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.UiState.HighlightProcess.cmdline)
+  return selector_.cmdline_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* UiState_HighlightProcess::release_cmdline() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.UiState.HighlightProcess.cmdline)
+  if (has_cmdline()) {
+    clear_has_selector();
+    return selector_.cmdline_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  } else {
+    return nullptr;
+  }
+}
+inline void UiState_HighlightProcess::set_allocated_cmdline(std::string* cmdline) {
+  if (has_selector()) {
+    clear_selector();
+  }
+  if (cmdline != nullptr) {
+    set_has_cmdline();
+    selector_.cmdline_.UnsafeSetDefault(cmdline);
+  }
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.UiState.HighlightProcess.cmdline)
+}
+
+inline bool UiState_HighlightProcess::has_selector() const {
+  return selector_case() != SELECTOR_NOT_SET;
+}
+inline void UiState_HighlightProcess::clear_has_selector() {
+  _oneof_case_[0] = SELECTOR_NOT_SET;
+}
+inline UiState_HighlightProcess::SelectorCase UiState_HighlightProcess::selector_case() const {
+  return UiState_HighlightProcess::SelectorCase(_oneof_case_[0]);
+}
 // -------------------------------------------------------------------
 
 // UiState

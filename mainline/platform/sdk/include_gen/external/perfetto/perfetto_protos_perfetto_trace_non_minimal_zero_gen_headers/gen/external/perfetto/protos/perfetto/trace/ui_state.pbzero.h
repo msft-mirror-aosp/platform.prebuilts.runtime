@@ -113,13 +113,15 @@ class UiState : public ::protozero::Message {
 
 };
 
-class UiState_HighlightProcess_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class UiState_HighlightProcess_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   UiState_HighlightProcess_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit UiState_HighlightProcess_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit UiState_HighlightProcess_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_pid() const { return at<1>().valid(); }
   uint32_t pid() const { return at<1>().as_uint32(); }
+  bool has_cmdline() const { return at<2>().valid(); }
+  ::protozero::ConstChars cmdline() const { return at<2>().as_string(); }
 };
 
 class UiState_HighlightProcess : public ::protozero::Message {
@@ -127,6 +129,7 @@ class UiState_HighlightProcess : public ::protozero::Message {
   using Decoder = UiState_HighlightProcess_Decoder;
   enum : int32_t {
     kPidFieldNumber = 1,
+    kCmdlineFieldNumber = 2,
   };
 
   using FieldMetadata_Pid =
@@ -151,6 +154,34 @@ class UiState_HighlightProcess : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Cmdline =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      UiState_HighlightProcess>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Cmdline kCmdline() { return {}; }
+  void set_cmdline(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Cmdline::kFieldId, data, size);
+  }
+  void set_cmdline(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Cmdline::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
         ::Append(*this, field_id, value);
   }
 };

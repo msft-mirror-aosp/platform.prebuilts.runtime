@@ -18,7 +18,7 @@ namespace pbzero {
 
 class HeapprofdConfig_ContinuousDumpConfig;
 
-class HeapprofdConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/25, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class HeapprofdConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/26, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   HeapprofdConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit HeapprofdConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -33,6 +33,8 @@ class HeapprofdConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIEL
   ::protozero::RepeatedFieldIterator<::protozero::ConstChars> process_cmdline() const { return GetRepeated<::protozero::ConstChars>(2); }
   bool has_pid() const { return at<4>().valid(); }
   ::protozero::RepeatedFieldIterator<uint64_t> pid() const { return GetRepeated<uint64_t>(4); }
+  bool has_target_installed_by() const { return at<26>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstChars> target_installed_by() const { return GetRepeated<::protozero::ConstChars>(26); }
   bool has_heaps() const { return at<20>().valid(); }
   ::protozero::RepeatedFieldIterator<::protozero::ConstChars> heaps() const { return GetRepeated<::protozero::ConstChars>(20); }
   bool has_stream_allocations() const { return at<23>().valid(); }
@@ -80,6 +82,7 @@ class HeapprofdConfig : public ::protozero::Message {
     kAdaptiveSamplingMaxSamplingIntervalBytesFieldNumber = 25,
     kProcessCmdlineFieldNumber = 2,
     kPidFieldNumber = 4,
+    kTargetInstalledByFieldNumber = 26,
     kHeapsFieldNumber = 20,
     kStreamAllocationsFieldNumber = 23,
     kHeapSamplingIntervalsFieldNumber = 22,
@@ -226,6 +229,34 @@ class HeapprofdConfig : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TargetInstalledBy =
+    ::protozero::proto_utils::FieldMetadata<
+      26,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      HeapprofdConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_TargetInstalledBy kTargetInstalledBy() { return {}; }
+  void add_target_installed_by(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_TargetInstalledBy::kFieldId, data, size);
+  }
+  void add_target_installed_by(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_TargetInstalledBy::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
         ::Append(*this, field_id, value);
   }
 

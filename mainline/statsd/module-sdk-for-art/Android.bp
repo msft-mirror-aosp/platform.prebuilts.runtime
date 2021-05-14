@@ -78,4 +78,3 @@ sdk_snapshot {
     visibility: ["//visibility:public"],
     native_shared_libs: ["statsd-module-sdk-for-art_libstatssocket@current"],
 }
-
