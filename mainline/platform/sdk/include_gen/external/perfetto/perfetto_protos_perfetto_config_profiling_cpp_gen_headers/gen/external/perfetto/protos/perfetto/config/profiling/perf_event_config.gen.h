@@ -42,6 +42,7 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
     kCallstackSamplingFieldNumber = 16,
     kRingBufferReadPeriodMsFieldNumber = 8,
     kRingBufferPagesFieldNumber = 3,
+    kMaxEnqueuedFootprintKbFieldNumber = 17,
     kMaxDaemonMemoryKbFieldNumber = 13,
     kRemoteDescriptorTimeoutMsFieldNumber = 9,
     kUnwindStateClearPeriodMsFieldNumber = 10,
@@ -50,6 +51,7 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
     kKernelFramesFieldNumber = 12,
     kTargetPidFieldNumber = 4,
     kTargetCmdlineFieldNumber = 5,
+    kTargetInstalledByFieldNumber = 18,
     kExcludePidFieldNumber = 6,
     kExcludeCmdlineFieldNumber = 7,
     kAdditionalCmdlineCountFieldNumber = 11,
@@ -84,6 +86,10 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   bool has_ring_buffer_pages() const { return _has_field_[3]; }
   uint32_t ring_buffer_pages() const { return ring_buffer_pages_; }
   void set_ring_buffer_pages(uint32_t value) { ring_buffer_pages_ = value; _has_field_.set(3); }
+
+  bool has_max_enqueued_footprint_kb() const { return _has_field_[17]; }
+  uint64_t max_enqueued_footprint_kb() const { return max_enqueued_footprint_kb_; }
+  void set_max_enqueued_footprint_kb(uint64_t value) { max_enqueued_footprint_kb_ = value; _has_field_.set(17); }
 
   bool has_max_daemon_memory_kb() const { return _has_field_[13]; }
   uint32_t max_daemon_memory_kb() const { return max_daemon_memory_kb_; }
@@ -123,6 +129,13 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   void add_target_cmdline(std::string value) { target_cmdline_.emplace_back(value); }
   std::string* add_target_cmdline() { target_cmdline_.emplace_back(); return &target_cmdline_.back(); }
 
+  const std::vector<std::string>& target_installed_by() const { return target_installed_by_; }
+  std::vector<std::string>* mutable_target_installed_by() { return &target_installed_by_; }
+  int target_installed_by_size() const { return static_cast<int>(target_installed_by_.size()); }
+  void clear_target_installed_by() { target_installed_by_.clear(); }
+  void add_target_installed_by(std::string value) { target_installed_by_.emplace_back(value); }
+  std::string* add_target_installed_by() { target_installed_by_.emplace_back(); return &target_installed_by_.back(); }
+
   const std::vector<int32_t>& exclude_pid() const { return exclude_pid_; }
   std::vector<int32_t>* mutable_exclude_pid() { return &exclude_pid_; }
   int exclude_pid_size() const { return static_cast<int>(exclude_pid_.size()); }
@@ -146,6 +159,7 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   ::protozero::CopyablePtr<PerfEventConfig_CallstackSampling> callstack_sampling_;
   uint32_t ring_buffer_read_period_ms_{};
   uint32_t ring_buffer_pages_{};
+  uint64_t max_enqueued_footprint_kb_{};
   uint32_t max_daemon_memory_kb_{};
   uint32_t remote_descriptor_timeout_ms_{};
   uint32_t unwind_state_clear_period_ms_{};
@@ -154,6 +168,7 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   bool kernel_frames_{};
   std::vector<int32_t> target_pid_;
   std::vector<std::string> target_cmdline_;
+  std::vector<std::string> target_installed_by_;
   std::vector<int32_t> exclude_pid_;
   std::vector<std::string> exclude_cmdline_;
   uint32_t additional_cmdline_count_{};
@@ -162,7 +177,7 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<17> _has_field_{};
+  std::bitset<19> _has_field_{};
 };
 
 
