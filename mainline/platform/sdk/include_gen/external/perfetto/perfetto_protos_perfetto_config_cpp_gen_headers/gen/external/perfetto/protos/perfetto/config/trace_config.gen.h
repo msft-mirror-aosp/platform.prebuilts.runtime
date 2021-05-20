@@ -36,6 +36,7 @@ enum TraceConfig_CompressionType : int;
 enum TraceConfig_StatsdLogging : int;
 enum TraceConfig_TriggerConfig_TriggerMode : int;
 enum BuiltinClock : int;
+enum DataSourceConfig_SessionInitiator : int;
 enum ChromeConfig_ClientPriority : int;
 enum TraceConfig_BufferConfig_FillPolicy : int;
 }  // namespace perfetto
@@ -665,6 +666,7 @@ class PERFETTO_EXPORT TraceConfig_BuiltinDataSource : public ::protozero::CppMes
     kDisableServiceEventsFieldNumber = 4,
     kPrimaryTraceClockFieldNumber = 5,
     kSnapshotIntervalMsFieldNumber = 6,
+    kPreferSuspendClockForSnapshotFieldNumber = 7,
   };
 
   TraceConfig_BuiltinDataSource();
@@ -705,6 +707,10 @@ class PERFETTO_EXPORT TraceConfig_BuiltinDataSource : public ::protozero::CppMes
   uint32_t snapshot_interval_ms() const { return snapshot_interval_ms_; }
   void set_snapshot_interval_ms(uint32_t value) { snapshot_interval_ms_ = value; _has_field_.set(6); }
 
+  bool has_prefer_suspend_clock_for_snapshot() const { return _has_field_[7]; }
+  bool prefer_suspend_clock_for_snapshot() const { return prefer_suspend_clock_for_snapshot_; }
+  void set_prefer_suspend_clock_for_snapshot(bool value) { prefer_suspend_clock_for_snapshot_ = value; _has_field_.set(7); }
+
  private:
   bool disable_clock_snapshotting_{};
   bool disable_trace_config_{};
@@ -712,12 +718,13 @@ class PERFETTO_EXPORT TraceConfig_BuiltinDataSource : public ::protozero::CppMes
   bool disable_service_events_{};
   BuiltinClock primary_trace_clock_{};
   uint32_t snapshot_interval_ms_{};
+  bool prefer_suspend_clock_for_snapshot_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<7> _has_field_{};
+  std::bitset<8> _has_field_{};
 };
 
 
