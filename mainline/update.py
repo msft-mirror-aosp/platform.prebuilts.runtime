@@ -90,8 +90,7 @@ mainline_install_list.extend(
 
 # statsd
 mainline_install_list.extend(
-    InstallApexEntries('com.android.os.statsd', 'statsd/apex') +
-    InstallSdkEntries('statsd-module-sdk-for-art', 'statsd/module-sdk-for-art'))
+    InstallApexEntries('com.android.os.statsd', 'statsd/apex'))
 
 # Platform
 mainline_install_list.extend(
