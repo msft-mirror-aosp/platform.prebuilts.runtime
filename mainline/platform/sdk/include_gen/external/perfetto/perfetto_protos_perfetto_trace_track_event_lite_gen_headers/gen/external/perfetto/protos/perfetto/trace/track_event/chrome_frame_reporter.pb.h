@@ -332,6 +332,7 @@ class ChromeFrameReporter :
     kHasMainAnimationFieldNumber = 7,
     kHasCompositorAnimationFieldNumber = 8,
     kHasSmoothInputMainFieldNumber = 9,
+    kLayerTreeHostIdFieldNumber = 11,
     kHasMissingContentFieldNumber = 10,
   };
   // optional .perfetto.protos.ChromeFrameReporter.State state = 1;
@@ -388,6 +389,12 @@ class ChromeFrameReporter :
   bool has_smooth_input_main() const;
   void set_has_smooth_input_main(bool value);
 
+  // optional uint64 layer_tree_host_id = 11;
+  bool has_layer_tree_host_id() const;
+  void clear_layer_tree_host_id();
+  ::PROTOBUF_NAMESPACE_ID::uint64 layer_tree_host_id() const;
+  void set_layer_tree_host_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
+
   // optional bool has_missing_content = 10;
   bool has_has_missing_content() const;
   void clear_has_missing_content();
@@ -410,6 +417,7 @@ class ChromeFrameReporter :
   bool has_main_animation_;
   bool has_compositor_animation_;
   bool has_smooth_input_main_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 layer_tree_host_id_;
   bool has_missing_content_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftrack_5fevent_2fchrome_5fframe_5freporter_2eproto;
 };
@@ -591,20 +599,38 @@ inline void ChromeFrameReporter::set_has_smooth_input_main(bool value) {
 
 // optional bool has_missing_content = 10;
 inline bool ChromeFrameReporter::has_has_missing_content() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void ChromeFrameReporter::clear_has_missing_content() {
   has_missing_content_ = false;
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline bool ChromeFrameReporter::has_missing_content() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeFrameReporter.has_missing_content)
   return has_missing_content_;
 }
 inline void ChromeFrameReporter::set_has_missing_content(bool value) {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000400u;
   has_missing_content_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeFrameReporter.has_missing_content)
+}
+
+// optional uint64 layer_tree_host_id = 11;
+inline bool ChromeFrameReporter::has_layer_tree_host_id() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void ChromeFrameReporter::clear_layer_tree_host_id() {
+  layer_tree_host_id_ = PROTOBUF_ULONGLONG(0);
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 ChromeFrameReporter::layer_tree_host_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeFrameReporter.layer_tree_host_id)
+  return layer_tree_host_id_;
+}
+inline void ChromeFrameReporter::set_layer_tree_host_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _has_bits_[0] |= 0x00000200u;
+  layer_tree_host_id_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeFrameReporter.layer_tree_host_id)
 }
 
 #ifdef __GNUC__
