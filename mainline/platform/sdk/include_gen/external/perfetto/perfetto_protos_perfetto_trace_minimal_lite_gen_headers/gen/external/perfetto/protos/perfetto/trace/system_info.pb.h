@@ -345,6 +345,7 @@ class SystemInfo :
 
   enum : int {
     kAndroidBuildFingerprintFieldNumber = 2,
+    kTracingServiceVersionFieldNumber = 4,
     kUtsnameFieldNumber = 1,
     kHzFieldNumber = 3,
   };
@@ -359,6 +360,18 @@ class SystemInfo :
   std::string* mutable_android_build_fingerprint();
   std::string* release_android_build_fingerprint();
   void set_allocated_android_build_fingerprint(std::string* android_build_fingerprint);
+
+  // optional string tracing_service_version = 4;
+  bool has_tracing_service_version() const;
+  void clear_tracing_service_version();
+  const std::string& tracing_service_version() const;
+  void set_tracing_service_version(const std::string& value);
+  void set_tracing_service_version(std::string&& value);
+  void set_tracing_service_version(const char* value);
+  void set_tracing_service_version(const char* value, size_t size);
+  std::string* mutable_tracing_service_version();
+  std::string* release_tracing_service_version();
+  void set_allocated_tracing_service_version(std::string* tracing_service_version);
 
   // optional .perfetto.protos.Utsname utsname = 1;
   bool has_utsname() const;
@@ -382,6 +395,7 @@ class SystemInfo :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr android_build_fingerprint_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tracing_service_version_;
   ::perfetto::protos::Utsname* utsname_;
   ::PROTOBUF_NAMESPACE_ID::int64 hz_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fsystem_5finfo_2eproto;
@@ -635,11 +649,11 @@ inline void Utsname::set_allocated_machine(std::string* machine) {
 
 // optional .perfetto.protos.Utsname utsname = 1;
 inline bool SystemInfo::has_utsname() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void SystemInfo::clear_utsname() {
   if (utsname_ != nullptr) utsname_->Clear();
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline const ::perfetto::protos::Utsname& SystemInfo::utsname() const {
   const ::perfetto::protos::Utsname* p = utsname_;
@@ -649,13 +663,13 @@ inline const ::perfetto::protos::Utsname& SystemInfo::utsname() const {
 }
 inline ::perfetto::protos::Utsname* SystemInfo::release_utsname() {
   // @@protoc_insertion_point(field_release:perfetto.protos.SystemInfo.utsname)
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
   ::perfetto::protos::Utsname* temp = utsname_;
   utsname_ = nullptr;
   return temp;
 }
 inline ::perfetto::protos::Utsname* SystemInfo::mutable_utsname() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   if (utsname_ == nullptr) {
     auto* p = CreateMaybeMessage<::perfetto::protos::Utsname>(GetArenaNoVirtual());
     utsname_ = p;
@@ -674,9 +688,9 @@ inline void SystemInfo::set_allocated_utsname(::perfetto::protos::Utsname* utsna
       utsname = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, utsname, submessage_arena);
     }
-    _has_bits_[0] |= 0x00000002u;
+    _has_bits_[0] |= 0x00000004u;
   } else {
-    _has_bits_[0] &= ~0x00000002u;
+    _has_bits_[0] &= ~0x00000004u;
   }
   utsname_ = utsname;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.SystemInfo.utsname)
@@ -742,20 +756,78 @@ inline void SystemInfo::set_allocated_android_build_fingerprint(std::string* and
 
 // optional int64 hz = 3;
 inline bool SystemInfo::has_hz() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void SystemInfo::clear_hz() {
   hz_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int64 SystemInfo::hz() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.SystemInfo.hz)
   return hz_;
 }
 inline void SystemInfo::set_hz(::PROTOBUF_NAMESPACE_ID::int64 value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
   hz_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.SystemInfo.hz)
+}
+
+// optional string tracing_service_version = 4;
+inline bool SystemInfo::has_tracing_service_version() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SystemInfo::clear_tracing_service_version() {
+  tracing_service_version_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& SystemInfo::tracing_service_version() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SystemInfo.tracing_service_version)
+  return tracing_service_version_.GetNoArena();
+}
+inline void SystemInfo::set_tracing_service_version(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  tracing_service_version_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SystemInfo.tracing_service_version)
+}
+inline void SystemInfo::set_tracing_service_version(std::string&& value) {
+  _has_bits_[0] |= 0x00000002u;
+  tracing_service_version_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.SystemInfo.tracing_service_version)
+}
+inline void SystemInfo::set_tracing_service_version(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000002u;
+  tracing_service_version_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.SystemInfo.tracing_service_version)
+}
+inline void SystemInfo::set_tracing_service_version(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000002u;
+  tracing_service_version_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.SystemInfo.tracing_service_version)
+}
+inline std::string* SystemInfo::mutable_tracing_service_version() {
+  _has_bits_[0] |= 0x00000002u;
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.SystemInfo.tracing_service_version)
+  return tracing_service_version_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* SystemInfo::release_tracing_service_version() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.SystemInfo.tracing_service_version)
+  if (!has_tracing_service_version()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  return tracing_service_version_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void SystemInfo::set_allocated_tracing_service_version(std::string* tracing_service_version) {
+  if (tracing_service_version != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  tracing_service_version_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), tracing_service_version);
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.SystemInfo.tracing_service_version)
 }
 
 #ifdef __GNUC__
