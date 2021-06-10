@@ -22776,7 +22776,7 @@ Lcom/android/icu/charset/CharsetICU;->icuCanonicalName:Ljava/lang/String;,blocke
 Lcom/android/icu/charset/CharsetICU;->newDecoder()Ljava/nio/charset/CharsetDecoder;,core-platform-api,public-api,sdk,system-api,test-api
 Lcom/android/icu/charset/CharsetICU;->newEncoder()Ljava/nio/charset/CharsetEncoder;,core-platform-api,public-api,sdk,system-api,test-api
 Lcom/android/icu/charset/NativeConverter;-><clinit>()V,blocked
-Lcom/android/icu/charset/NativeConverter;-><init>()V,blocked,core-platform-api
+Lcom/android/icu/charset/NativeConverter;-><init>()V,blocked
 Lcom/android/icu/charset/NativeConverter;->U_BUFFER_OVERFLOW_ERROR:I,blocked
 Lcom/android/icu/charset/NativeConverter;->U_FAILURE(I)Z,blocked
 Lcom/android/icu/charset/NativeConverter;->U_ILLEGAL_CHAR_FOUND:I,blocked
