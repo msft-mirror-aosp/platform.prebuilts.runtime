@@ -1,6 +1,8 @@
 // This is auto-generated. DO NOT EDIT.
 
 package {
+    // A default list here prevents the license LSC from adding its own list which would
+    // be unnecessary as every module in the sdk already has its own licenses property.
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
@@ -13,6 +15,7 @@ java_import {
         "//tools/apksig",
     ],
     apex_available: ["//apex_available:platform"],
+    licenses: ["conscrypt-module-host-exports_external_conscrypt_license@current"],
     device_supported: false,
     host_supported: true,
     target: {
@@ -34,6 +37,7 @@ java_import {
         "//tools/apksig",
     ],
     apex_available: ["//apex_available:platform"],
+    licenses: ["conscrypt-module-host-exports_external_conscrypt_license"],
     device_supported: false,
     host_supported: true,
     target: {
@@ -46,6 +50,37 @@ java_import {
     },
 }
 
+license {
+    name: "conscrypt-module-host-exports_external_conscrypt_license@current",
+    sdk_member_name: "external_conscrypt_license",
+    visibility: ["//visibility:private"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+        "legacy_unencumbered",
+    ],
+    license_text: [
+        "licenses/external/conscrypt/LICENSE",
+        "licenses/external/conscrypt/NOTICE",
+        "licenses/external/conscrypt/licenses/LICENSE.harmony.txt",
+        "licenses/external/conscrypt/licenses/LICENSE.netty.txt",
+    ],
+}
+
+license {
+    name: "conscrypt-module-host-exports_external_conscrypt_license",
+    visibility: ["//visibility:private"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+        "legacy_unencumbered",
+    ],
+    license_text: [
+        "licenses/external/conscrypt/LICENSE",
+        "licenses/external/conscrypt/NOTICE",
+        "licenses/external/conscrypt/licenses/LICENSE.harmony.txt",
+        "licenses/external/conscrypt/licenses/LICENSE.netty.txt",
+    ],
+}
+
 cc_prebuilt_library_shared {
     name: "conscrypt-module-host-exports_libconscrypt_openjdk_jni@current",
     sdk_member_name: "libconscrypt_openjdk_jni",
@@ -55,6 +90,7 @@ cc_prebuilt_library_shared {
         "//tools/apksig",
     ],
     apex_available: ["//apex_available:platform"],
+    licenses: ["conscrypt-module-host-exports_external_conscrypt_license@current"],
     device_supported: false,
     host_supported: true,
     installable: false,
@@ -96,6 +132,7 @@ cc_prebuilt_library_shared {
         "//tools/apksig",
     ],
     apex_available: ["//apex_available:platform"],
+    licenses: ["conscrypt-module-host-exports_external_conscrypt_license"],
     device_supported: false,
     host_supported: true,
     stl: "libc++_static",
