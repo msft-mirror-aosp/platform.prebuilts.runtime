@@ -40,4 +40,11 @@ prebuilt_apex {
         },
     },
     filename: "com.android.i18n.apex",
+
+    // Make fragment related files from the apex file available for use by the
+    // build when using prebuilts, e.g. for running the boot jars package check
+    // and hidden API flag validation among other uses.
+    exported_bootclasspath_fragments: [
+        "i18n-bootclasspath-fragment",
+    ],
 }
