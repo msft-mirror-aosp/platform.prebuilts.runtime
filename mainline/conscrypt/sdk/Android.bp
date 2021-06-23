@@ -1,0 +1,222 @@
+// This is auto-generated. DO NOT EDIT.
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+java_import {
+    name: "conscrypt-module-sdk_conscrypt@current",
+    sdk_member_name: "conscrypt",
+    visibility: [
+        "//device:__subpackages__",
+        "//external/conscrypt:__subpackages__",
+        "//system/apex/tests",
+    ],
+    apex_available: [
+        "com.android.conscrypt",
+        "test_com.android.conscrypt",
+    ],
+    jars: ["java/conscrypt.jar"],
+}
+
+java_import {
+    name: "conscrypt",
+    prefer: false,
+    visibility: [
+        "//device:__subpackages__",
+        "//external/conscrypt:__subpackages__",
+        "//system/apex/tests",
+    ],
+    apex_available: [
+        "com.android.conscrypt",
+        "test_com.android.conscrypt",
+    ],
+    jars: ["java/conscrypt.jar"],
+}
+
+java_sdk_library_import {
+    name: "conscrypt-module-sdk_conscrypt.module.public.api@current",
+    sdk_member_name: "conscrypt.module.public.api",
+    visibility: [
+        "//external/conscrypt",
+        "//frameworks/base",
+        "//frameworks/base/api",
+        "//libcore",
+        "//packages/modules/IPsec",
+        "//packages/modules/common/sdk",
+        "//prebuilts:__subpackages__",
+    ],
+    apex_available: ["//apex_available:platform"],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/conscrypt.module.public.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/conscrypt.module.public.api_stub_sources"],
+        current_api: "sdk_library/public/conscrypt.module.public.api.txt",
+        removed_api: "sdk_library/public/conscrypt.module.public.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+java_sdk_library_import {
+    name: "conscrypt.module.public.api",
+    prefer: false,
+    visibility: [
+        "//external/conscrypt",
+        "//frameworks/base",
+        "//frameworks/base/api",
+        "//libcore",
+        "//packages/modules/IPsec",
+        "//packages/modules/common/sdk",
+        "//prebuilts:__subpackages__",
+    ],
+    apex_available: ["//apex_available:platform"],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/conscrypt.module.public.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/conscrypt.module.public.api_stub_sources"],
+        current_api: "sdk_library/public/conscrypt.module.public.api.txt",
+        removed_api: "sdk_library/public/conscrypt.module.public.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+java_sdk_library_import {
+    name: "conscrypt-module-sdk_conscrypt.module.intra.core.api@current",
+    sdk_member_name: "conscrypt.module.intra.core.api",
+    visibility: [
+        "//external/conscrypt",
+        "//external/okhttp",
+        "//libcore:__subpackages__",
+        "//prebuilts:__subpackages__",
+    ],
+    apex_available: ["//apex_available:platform"],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/conscrypt.module.intra.core.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/conscrypt.module.intra.core.api_stub_sources"],
+        current_api: "sdk_library/public/conscrypt.module.intra.core.api.txt",
+        removed_api: "sdk_library/public/conscrypt.module.intra.core.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+java_sdk_library_import {
+    name: "conscrypt.module.intra.core.api",
+    prefer: false,
+    visibility: [
+        "//external/conscrypt",
+        "//external/okhttp",
+        "//libcore:__subpackages__",
+        "//prebuilts:__subpackages__",
+    ],
+    apex_available: ["//apex_available:platform"],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/conscrypt.module.intra.core.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/conscrypt.module.intra.core.api_stub_sources"],
+        current_api: "sdk_library/public/conscrypt.module.intra.core.api.txt",
+        removed_api: "sdk_library/public/conscrypt.module.intra.core.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+java_sdk_library_import {
+    name: "conscrypt-module-sdk_conscrypt.module.platform.api@current",
+    sdk_member_name: "conscrypt.module.platform.api",
+    visibility: [
+        "//external/conscrypt",
+        "//external/wycheproof",
+        "//libcore:__subpackages__",
+        "//prebuilts:__subpackages__",
+    ],
+    apex_available: ["//apex_available:platform"],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/conscrypt.module.platform.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/conscrypt.module.platform.api_stub_sources"],
+        current_api: "sdk_library/public/conscrypt.module.platform.api.txt",
+        removed_api: "sdk_library/public/conscrypt.module.platform.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+java_sdk_library_import {
+    name: "conscrypt.module.platform.api",
+    prefer: false,
+    visibility: [
+        "//external/conscrypt",
+        "//external/wycheproof",
+        "//libcore:__subpackages__",
+        "//prebuilts:__subpackages__",
+    ],
+    apex_available: ["//apex_available:platform"],
+    shared_library: false,
+    public: {
+        jars: ["sdk_library/public/conscrypt.module.platform.api-stubs.jar"],
+        stub_srcs: ["sdk_library/public/conscrypt.module.platform.api_stub_sources"],
+        current_api: "sdk_library/public/conscrypt.module.platform.api.txt",
+        removed_api: "sdk_library/public/conscrypt.module.platform.api-removed.txt",
+        sdk_version: "none",
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "conscrypt-module-sdk_libconscrypt_jni@current",
+    sdk_member_name: "libconscrypt_jni",
+    visibility: ["//external/conscrypt:__subpackages__"],
+    apex_available: ["//apex_available:platform"],
+    installable: false,
+    stl: "c++_static",
+    compile_multilib: "both",
+    shared_libs: ["liblog"],
+    arch: {
+        arm64: {
+            srcs: ["arm64/lib/libconscrypt_jni.so"],
+        },
+        x86_64: {
+            srcs: ["x86_64/lib/libconscrypt_jni.so"],
+        },
+        arm: {
+            srcs: ["arm/lib/libconscrypt_jni.so"],
+        },
+        x86: {
+            srcs: ["x86/lib/libconscrypt_jni.so"],
+        },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "libconscrypt_jni",
+    prefer: false,
+    visibility: ["//external/conscrypt:__subpackages__"],
+    apex_available: ["//apex_available:platform"],
+    stl: "c++_static",
+    compile_multilib: "both",
+    shared_libs: ["liblog"],
+    arch: {
+        arm64: {
+            srcs: ["arm64/lib/libconscrypt_jni.so"],
+        },
+        x86_64: {
+            srcs: ["x86_64/lib/libconscrypt_jni.so"],
+        },
+        arm: {
+            srcs: ["arm/lib/libconscrypt_jni.so"],
+        },
+        x86: {
+            srcs: ["x86/lib/libconscrypt_jni.so"],
+        },
+    },
+}
+
+sdk_snapshot {
+    name: "conscrypt-module-sdk@current",
+    visibility: ["//external/conscrypt:__subpackages__"],
+    java_boot_libs: ["conscrypt-module-sdk_conscrypt@current"],
+    java_sdk_libs: [
+        "conscrypt-module-sdk_conscrypt.module.public.api@current",
+        "conscrypt-module-sdk_conscrypt.module.intra.core.api@current",
+        "conscrypt-module-sdk_conscrypt.module.platform.api@current",
+    ],
+    native_shared_libs: ["conscrypt-module-sdk_libconscrypt_jni@current"],
+}
