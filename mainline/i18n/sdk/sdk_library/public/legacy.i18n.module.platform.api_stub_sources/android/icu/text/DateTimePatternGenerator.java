@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// © 2016 and later: Unicode, Inc. and others.
+// ? 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /*
  ********************************************************************************
@@ -89,10 +89,20 @@ public java.lang.String getBestPattern(java.lang.String skeleton) { throw new Ru
 public java.lang.String getBestPattern(java.lang.String skeleton, int options) { throw new RuntimeException("Stub!"); }
 
 /**
+ * Return the best pattern matching the input skeleton. It is guaranteed to
+ * have all of the fields in the skeleton.
+ *
+ * @param skeleton The skeleton is a pattern containing only the variable fields.
+ *            For example, "MMMdd" and "mmhh" are skeletons.
+ * @param options MATCH_xxx options for forcing the length of specified fields in
+ *            the returned pattern to match those in the skeleton (when this would
+ *            not happen otherwise). For default behavior, use MATCH_NO_OPTIONS.
+ * @param allowDuplicateFields allows duplicated field in the skeleton
+ * @return Best pattern matching the input skeleton (and options).
  * @hide draft / provisional / internal are hidden on Android
  */
 
-public java.lang.String getBestPattern(java.lang.String skeleton, boolean allowDuplicateFields) { throw new RuntimeException("Stub!"); }
+public java.lang.String getBestPattern(java.lang.String skeleton, int options, boolean allowDuplicateFields) { throw new RuntimeException("Stub!"); }
 
 /**
  * Adds a pattern to the generator. If the pattern has the same skeleton as

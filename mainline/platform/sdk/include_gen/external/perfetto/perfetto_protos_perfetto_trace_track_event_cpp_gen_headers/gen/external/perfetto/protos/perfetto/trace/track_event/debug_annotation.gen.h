@@ -91,6 +91,8 @@ class PERFETTO_EXPORT DebugAnnotation : public ::protozero::CppMessageObj {
     kPointerValueFieldNumber = 7,
     kNestedValueFieldNumber = 8,
     kLegacyJsonValueFieldNumber = 9,
+    kDictEntriesFieldNumber = 11,
+    kArrayValuesFieldNumber = 12,
   };
 
   DebugAnnotation();
@@ -147,6 +149,18 @@ class PERFETTO_EXPORT DebugAnnotation : public ::protozero::CppMessageObj {
   const std::string& legacy_json_value() const { return legacy_json_value_; }
   void set_legacy_json_value(const std::string& value) { legacy_json_value_ = value; _has_field_.set(9); }
 
+  const std::vector<DebugAnnotation>& dict_entries() const { return dict_entries_; }
+  std::vector<DebugAnnotation>* mutable_dict_entries() { return &dict_entries_; }
+  int dict_entries_size() const;
+  void clear_dict_entries();
+  DebugAnnotation* add_dict_entries();
+
+  const std::vector<DebugAnnotation>& array_values() const { return array_values_; }
+  std::vector<DebugAnnotation>* mutable_array_values() { return &array_values_; }
+  int array_values_size() const;
+  void clear_array_values();
+  DebugAnnotation* add_array_values();
+
  private:
   uint64_t name_iid_{};
   std::string name_{};
@@ -158,12 +172,14 @@ class PERFETTO_EXPORT DebugAnnotation : public ::protozero::CppMessageObj {
   uint64_t pointer_value_{};
   ::protozero::CopyablePtr<DebugAnnotation_NestedValue> nested_value_;
   std::string legacy_json_value_{};
+  std::vector<DebugAnnotation> dict_entries_;
+  std::vector<DebugAnnotation> array_values_;
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<11> _has_field_{};
+  std::bitset<13> _has_field_{};
 };
 
 

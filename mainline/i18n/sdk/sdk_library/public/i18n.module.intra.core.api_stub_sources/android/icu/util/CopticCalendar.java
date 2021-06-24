@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// © 2016 and later: Unicode, Inc. and others.
+// ? 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
@@ -154,91 +154,91 @@ protected int handleComputeMonthStart(int eyear, int emonth, boolean useMonth) {
 protected int handleGetLimit(int field, int limitType) { throw new RuntimeException("Stub!"); }
 
 /** 
- * Constant for Μεϣιρ / ﺮﻴﺸﻣأ,
+ * Constant for ????? / ?????,
  * the 6th month of the Coptic year.
  */
 
 public static final int AMSHIR = 5; // 0x5
 
 /** 
- * Constant for Παοπι / ﻪﺑﺎﺑ,
+ * Constant for ????? / ????,
  * the 2nd month of the Coptic year.
  */
 
 public static final int BABA = 1; // 0x1
 
 /** 
- * Constant for Παρεμϩατ / تﺎﻬﻣﺮﺑ,
+ * Constant for ???????? / ??????,
  * the 7th month of the Coptic year.
  */
 
 public static final int BARAMHAT = 6; // 0x6
 
 /** 
- * Constant for Φαρμοθι / هدﻮﻣﺮﺑ,
+ * Constant for ??????? / ??????,
  * the 8th month of the Coptic year.
  */
 
 public static final int BARAMOUDA = 7; // 0x7
 
 /** 
- * Constant for Παϣαν / ﺲﻨﺸﺑ;,
+ * Constant for ????? / ????;,
  * the 9th month of the Coptic year.
  */
 
 public static final int BASHANS = 8; // 0x8
 
 /** 
- * Constant for Επηπ / ﺐﻴﺑأ,
+ * Constant for ???? / ????,
  * the 11th month of the Coptic year.
  */
 
 public static final int EPEP = 10; // 0xa
 
 /** 
- * Constant for Αθορ / رﻮﺗﺎﻫ,
+ * Constant for ???? / ?????,
  * the 3rd month of the Coptic year.
  */
 
 public static final int HATOR = 2; // 0x2
 
 /** 
- * Constant for Χοιακ / ﻚﻬﻴﻛ;,
+ * Constant for ????? / ????;,
  * the 4th month of the Coptic year.
  */
 
 public static final int KIAHK = 3; // 0x3
 
 /** 
- * Constant for Μεϲωρη / ىﺮﺴﻣ,
+ * Constant for ?????? / ????,
  * the 12th month of the Coptic year.
  */
 
 public static final int MESRA = 11; // 0xb
 
 /** 
- * Constant for Πικογϫι μαβοτ / ﺮﻴﻐﺼﻟاﺮﻬﺸﻟا,
+ * Constant for ??????? ????? / ???????????,
  * the 13th month of the Coptic year.
  */
 
 public static final int NASIE = 12; // 0xc
 
 /** 
- * Constant for Παωνι / ﻪﻧؤﻮﺑ,
+ * Constant for ????? / ?????,
  * the 10th month of the Coptic year.
  */
 
 public static final int PAONA = 9; // 0x9
 
 /** 
- * Constant for Τωβι / طﻮﺒﻫ,
+ * Constant for ???? / ????,
  * the 5th month of the Coptic year.
  */
 
 public static final int TOBA = 4; // 0x4
 
 /** 
- * Constant for ωογτ / تﻮﺗ,
+ * Constant for ???? / ???,
  * the 1st month of the Coptic year.
  */
 

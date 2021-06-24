@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "perfetto/protozero/field_writer.h"
 #include "perfetto/protozero/message.h"
 #include "perfetto/protozero/packed_repeated_fields.h"
 #include "perfetto/protozero/proto_decoder.h"
@@ -49,8 +50,30 @@ class ChromeApplicationStateInfo : public ::protozero::Message {
   static const ChromeApplicationState APPLICATION_STATE_HAS_PAUSED_ACTIVITIES = ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_HAS_PAUSED_ACTIVITIES;
   static const ChromeApplicationState APPLICATION_STATE_HAS_STOPPED_ACTIVITIES = ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_HAS_STOPPED_ACTIVITIES;
   static const ChromeApplicationState APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES = ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES;
+
+  using FieldMetadata_ApplicationState =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState,
+      ChromeApplicationStateInfo>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ApplicationState kApplicationState() { return {}; }
   void set_application_state(::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState value) {
-    AppendTinyVarInt(1, value);
+    static constexpr uint32_t field_id = FieldMetadata_ApplicationState::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
   }
 };
 

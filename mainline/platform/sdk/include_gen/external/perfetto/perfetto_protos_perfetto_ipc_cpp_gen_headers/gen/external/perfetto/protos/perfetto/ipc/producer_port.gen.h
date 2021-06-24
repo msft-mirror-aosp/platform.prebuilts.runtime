@@ -48,6 +48,7 @@ class RegisterDataSourceRequest;
 class DataSourceDescriptor;
 class InitializeConnectionResponse;
 class InitializeConnectionRequest;
+enum DataSourceConfig_SessionInitiator : int;
 enum ChromeConfig_ClientPriority : int;
 enum InitializeConnectionRequest_ProducerSMBScrapingMode : int;
 enum InitializeConnectionRequest_ProducerBuildFlags : int;
@@ -405,6 +406,7 @@ class PERFETTO_EXPORT GetAsyncCommandResponse_SetupTracing : public ::protozero:
  public:
   enum FieldNumbers {
     kSharedBufferPageSizeKbFieldNumber = 1,
+    kShmKeyWindowsFieldNumber = 2,
   };
 
   GetAsyncCommandResponse_SetupTracing();
@@ -425,14 +427,19 @@ class PERFETTO_EXPORT GetAsyncCommandResponse_SetupTracing : public ::protozero:
   uint32_t shared_buffer_page_size_kb() const { return shared_buffer_page_size_kb_; }
   void set_shared_buffer_page_size_kb(uint32_t value) { shared_buffer_page_size_kb_ = value; _has_field_.set(1); }
 
+  bool has_shm_key_windows() const { return _has_field_[2]; }
+  const std::string& shm_key_windows() const { return shm_key_windows_; }
+  void set_shm_key_windows(const std::string& value) { shm_key_windows_ = value; _has_field_.set(2); }
+
  private:
   uint32_t shared_buffer_page_size_kb_{};
+  std::string shm_key_windows_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<2> _has_field_{};
+  std::bitset<3> _has_field_{};
 };
 
 
@@ -1019,6 +1026,8 @@ class PERFETTO_EXPORT InitializeConnectionRequest : public ::protozero::CppMessa
     kSmbScrapingModeFieldNumber = 4,
     kBuildFlagsFieldNumber = 5,
     kProducerProvidedShmemFieldNumber = 6,
+    kSdkVersionFieldNumber = 8,
+    kShmKeyWindowsFieldNumber = 7,
   };
 
   InitializeConnectionRequest();
@@ -1059,6 +1068,14 @@ class PERFETTO_EXPORT InitializeConnectionRequest : public ::protozero::CppMessa
   bool producer_provided_shmem() const { return producer_provided_shmem_; }
   void set_producer_provided_shmem(bool value) { producer_provided_shmem_ = value; _has_field_.set(6); }
 
+  bool has_sdk_version() const { return _has_field_[8]; }
+  const std::string& sdk_version() const { return sdk_version_; }
+  void set_sdk_version(const std::string& value) { sdk_version_ = value; _has_field_.set(8); }
+
+  bool has_shm_key_windows() const { return _has_field_[7]; }
+  const std::string& shm_key_windows() const { return shm_key_windows_; }
+  void set_shm_key_windows(const std::string& value) { shm_key_windows_ = value; _has_field_.set(7); }
+
  private:
   uint32_t shared_memory_page_size_hint_bytes_{};
   uint32_t shared_memory_size_hint_bytes_{};
@@ -1066,12 +1083,14 @@ class PERFETTO_EXPORT InitializeConnectionRequest : public ::protozero::CppMessa
   InitializeConnectionRequest_ProducerSMBScrapingMode smb_scraping_mode_{};
   InitializeConnectionRequest_ProducerBuildFlags build_flags_{};
   bool producer_provided_shmem_{};
+  std::string sdk_version_{};
+  std::string shm_key_windows_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<7> _has_field_{};
+  std::bitset<9> _has_field_{};
 };
 
 }  // namespace perfetto
