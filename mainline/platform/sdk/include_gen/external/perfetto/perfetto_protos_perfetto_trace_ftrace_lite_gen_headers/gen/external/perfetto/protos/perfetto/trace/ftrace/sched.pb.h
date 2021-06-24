@@ -45,7 +45,7 @@ struct TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fsched_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[12]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[13]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -59,6 +59,9 @@ extern SchedBlockedReasonFtraceEventDefaultTypeInternal _SchedBlockedReasonFtrac
 class SchedCpuHotplugFtraceEvent;
 class SchedCpuHotplugFtraceEventDefaultTypeInternal;
 extern SchedCpuHotplugFtraceEventDefaultTypeInternal _SchedCpuHotplugFtraceEvent_default_instance_;
+class SchedPiSetprioFtraceEvent;
+class SchedPiSetprioFtraceEventDefaultTypeInternal;
+extern SchedPiSetprioFtraceEventDefaultTypeInternal _SchedPiSetprioFtraceEvent_default_instance_;
 class SchedProcessExecFtraceEvent;
 class SchedProcessExecFtraceEventDefaultTypeInternal;
 extern SchedProcessExecFtraceEventDefaultTypeInternal _SchedProcessExecFtraceEvent_default_instance_;
@@ -94,6 +97,7 @@ extern SchedWakingFtraceEventDefaultTypeInternal _SchedWakingFtraceEvent_default
 PROTOBUF_NAMESPACE_OPEN
 template<> ::perfetto::protos::SchedBlockedReasonFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedBlockedReasonFtraceEvent>(Arena*);
 template<> ::perfetto::protos::SchedCpuHotplugFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedCpuHotplugFtraceEvent>(Arena*);
+template<> ::perfetto::protos::SchedPiSetprioFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedPiSetprioFtraceEvent>(Arena*);
 template<> ::perfetto::protos::SchedProcessExecFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedProcessExecFtraceEvent>(Arena*);
 template<> ::perfetto::protos::SchedProcessExitFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedProcessExitFtraceEvent>(Arena*);
 template<> ::perfetto::protos::SchedProcessForkFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedProcessForkFtraceEvent>(Arena*);
@@ -1936,6 +1940,159 @@ class SchedProcessWaitFtraceEvent :
   ::PROTOBUF_NAMESPACE_ID::int32 prio_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fsched_2eproto;
 };
+// -------------------------------------------------------------------
+
+class SchedPiSetprioFtraceEvent :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.SchedPiSetprioFtraceEvent) */ {
+ public:
+  SchedPiSetprioFtraceEvent();
+  virtual ~SchedPiSetprioFtraceEvent();
+
+  SchedPiSetprioFtraceEvent(const SchedPiSetprioFtraceEvent& from);
+  SchedPiSetprioFtraceEvent(SchedPiSetprioFtraceEvent&& from) noexcept
+    : SchedPiSetprioFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline SchedPiSetprioFtraceEvent& operator=(const SchedPiSetprioFtraceEvent& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SchedPiSetprioFtraceEvent& operator=(SchedPiSetprioFtraceEvent&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const SchedPiSetprioFtraceEvent& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const SchedPiSetprioFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const SchedPiSetprioFtraceEvent*>(
+               &_SchedPiSetprioFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(SchedPiSetprioFtraceEvent& a, SchedPiSetprioFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SchedPiSetprioFtraceEvent* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SchedPiSetprioFtraceEvent* New() const final {
+    return CreateMaybeMessage<SchedPiSetprioFtraceEvent>(nullptr);
+  }
+
+  SchedPiSetprioFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<SchedPiSetprioFtraceEvent>(arena);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)
+    final;
+  void CopyFrom(const SchedPiSetprioFtraceEvent& from);
+  void MergeFrom(const SchedPiSetprioFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
+  void DiscardUnknownFields();
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(SchedPiSetprioFtraceEvent* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.SchedPiSetprioFtraceEvent";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCommFieldNumber = 1,
+    kNewprioFieldNumber = 2,
+    kOldprioFieldNumber = 3,
+    kPidFieldNumber = 4,
+  };
+  // optional string comm = 1;
+  bool has_comm() const;
+  void clear_comm();
+  const std::string& comm() const;
+  void set_comm(const std::string& value);
+  void set_comm(std::string&& value);
+  void set_comm(const char* value);
+  void set_comm(const char* value, size_t size);
+  std::string* mutable_comm();
+  std::string* release_comm();
+  void set_allocated_comm(std::string* comm);
+
+  // optional int32 newprio = 2;
+  bool has_newprio() const;
+  void clear_newprio();
+  ::PROTOBUF_NAMESPACE_ID::int32 newprio() const;
+  void set_newprio(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // optional int32 oldprio = 3;
+  bool has_oldprio() const;
+  void clear_oldprio();
+  ::PROTOBUF_NAMESPACE_ID::int32 oldprio() const;
+  void set_oldprio(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // optional int32 pid = 4;
+  bool has_pid() const;
+  void clear_pid();
+  ::PROTOBUF_NAMESPACE_ID::int32 pid() const;
+  void set_pid(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.SchedPiSetprioFtraceEvent)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr comm_;
+  ::PROTOBUF_NAMESPACE_ID::int32 newprio_;
+  ::PROTOBUF_NAMESPACE_ID::int32 oldprio_;
+  ::PROTOBUF_NAMESPACE_ID::int32 pid_;
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fsched_2eproto;
+};
 // ===================================================================
 
 
@@ -3317,9 +3474,127 @@ inline void SchedProcessWaitFtraceEvent::set_prio(::PROTOBUF_NAMESPACE_ID::int32
   // @@protoc_insertion_point(field_set:perfetto.protos.SchedProcessWaitFtraceEvent.prio)
 }
 
+// -------------------------------------------------------------------
+
+// SchedPiSetprioFtraceEvent
+
+// optional string comm = 1;
+inline bool SchedPiSetprioFtraceEvent::has_comm() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SchedPiSetprioFtraceEvent::clear_comm() {
+  comm_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& SchedPiSetprioFtraceEvent::comm() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedPiSetprioFtraceEvent.comm)
+  return comm_.GetNoArena();
+}
+inline void SchedPiSetprioFtraceEvent::set_comm(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  comm_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedPiSetprioFtraceEvent.comm)
+}
+inline void SchedPiSetprioFtraceEvent::set_comm(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  comm_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.SchedPiSetprioFtraceEvent.comm)
+}
+inline void SchedPiSetprioFtraceEvent::set_comm(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  comm_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.SchedPiSetprioFtraceEvent.comm)
+}
+inline void SchedPiSetprioFtraceEvent::set_comm(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  comm_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.SchedPiSetprioFtraceEvent.comm)
+}
+inline std::string* SchedPiSetprioFtraceEvent::mutable_comm() {
+  _has_bits_[0] |= 0x00000001u;
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.SchedPiSetprioFtraceEvent.comm)
+  return comm_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* SchedPiSetprioFtraceEvent::release_comm() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.SchedPiSetprioFtraceEvent.comm)
+  if (!has_comm()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return comm_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void SchedPiSetprioFtraceEvent::set_allocated_comm(std::string* comm) {
+  if (comm != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  comm_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), comm);
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.SchedPiSetprioFtraceEvent.comm)
+}
+
+// optional int32 newprio = 2;
+inline bool SchedPiSetprioFtraceEvent::has_newprio() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SchedPiSetprioFtraceEvent::clear_newprio() {
+  newprio_ = 0;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 SchedPiSetprioFtraceEvent::newprio() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedPiSetprioFtraceEvent.newprio)
+  return newprio_;
+}
+inline void SchedPiSetprioFtraceEvent::set_newprio(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000002u;
+  newprio_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedPiSetprioFtraceEvent.newprio)
+}
+
+// optional int32 oldprio = 3;
+inline bool SchedPiSetprioFtraceEvent::has_oldprio() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SchedPiSetprioFtraceEvent::clear_oldprio() {
+  oldprio_ = 0;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 SchedPiSetprioFtraceEvent::oldprio() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedPiSetprioFtraceEvent.oldprio)
+  return oldprio_;
+}
+inline void SchedPiSetprioFtraceEvent::set_oldprio(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000004u;
+  oldprio_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedPiSetprioFtraceEvent.oldprio)
+}
+
+// optional int32 pid = 4;
+inline bool SchedPiSetprioFtraceEvent::has_pid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void SchedPiSetprioFtraceEvent::clear_pid() {
+  pid_ = 0;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 SchedPiSetprioFtraceEvent::pid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedPiSetprioFtraceEvent.pid)
+  return pid_;
+}
+inline void SchedPiSetprioFtraceEvent::set_pid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000008u;
+  pid_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedPiSetprioFtraceEvent.pid)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -38,7 +38,9 @@ class PERFETTO_EXPORT HeapprofdConfig : public ::protozero::CppMessageObj {
     kAdaptiveSamplingMaxSamplingIntervalBytesFieldNumber = 25,
     kProcessCmdlineFieldNumber = 2,
     kPidFieldNumber = 4,
+    kTargetInstalledByFieldNumber = 26,
     kHeapsFieldNumber = 20,
+    kExcludeHeapsFieldNumber = 27,
     kStreamAllocationsFieldNumber = 23,
     kHeapSamplingIntervalsFieldNumber = 22,
     kAllHeapsFieldNumber = 21,
@@ -98,12 +100,26 @@ class PERFETTO_EXPORT HeapprofdConfig : public ::protozero::CppMessageObj {
   void add_pid(uint64_t value) { pid_.emplace_back(value); }
   uint64_t* add_pid() { pid_.emplace_back(); return &pid_.back(); }
 
+  const std::vector<std::string>& target_installed_by() const { return target_installed_by_; }
+  std::vector<std::string>* mutable_target_installed_by() { return &target_installed_by_; }
+  int target_installed_by_size() const { return static_cast<int>(target_installed_by_.size()); }
+  void clear_target_installed_by() { target_installed_by_.clear(); }
+  void add_target_installed_by(std::string value) { target_installed_by_.emplace_back(value); }
+  std::string* add_target_installed_by() { target_installed_by_.emplace_back(); return &target_installed_by_.back(); }
+
   const std::vector<std::string>& heaps() const { return heaps_; }
   std::vector<std::string>* mutable_heaps() { return &heaps_; }
   int heaps_size() const { return static_cast<int>(heaps_.size()); }
   void clear_heaps() { heaps_.clear(); }
   void add_heaps(std::string value) { heaps_.emplace_back(value); }
   std::string* add_heaps() { heaps_.emplace_back(); return &heaps_.back(); }
+
+  const std::vector<std::string>& exclude_heaps() const { return exclude_heaps_; }
+  std::vector<std::string>* mutable_exclude_heaps() { return &exclude_heaps_; }
+  int exclude_heaps_size() const { return static_cast<int>(exclude_heaps_.size()); }
+  void clear_exclude_heaps() { exclude_heaps_.clear(); }
+  void add_exclude_heaps(std::string value) { exclude_heaps_.emplace_back(value); }
+  std::string* add_exclude_heaps() { exclude_heaps_.emplace_back(); return &exclude_heaps_.back(); }
 
   bool has_stream_allocations() const { return _has_field_[23]; }
   bool stream_allocations() const { return stream_allocations_; }
@@ -185,7 +201,9 @@ class PERFETTO_EXPORT HeapprofdConfig : public ::protozero::CppMessageObj {
   uint64_t adaptive_sampling_max_sampling_interval_bytes_{};
   std::vector<std::string> process_cmdline_;
   std::vector<uint64_t> pid_;
+  std::vector<std::string> target_installed_by_;
   std::vector<std::string> heaps_;
+  std::vector<std::string> exclude_heaps_;
   bool stream_allocations_{};
   std::vector<uint64_t> heap_sampling_intervals_;
   bool all_heaps_{};
@@ -208,7 +226,7 @@ class PERFETTO_EXPORT HeapprofdConfig : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<26> _has_field_{};
+  std::bitset<28> _has_field_{};
 };
 
 

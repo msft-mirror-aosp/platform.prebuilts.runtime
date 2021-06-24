@@ -1,7 +1,77 @@
 // This is auto-generated. DO NOT EDIT.
 
 package {
+    // A default list here prevents the license LSC from adding its own list which would
+    // be unnecessary as every module in the sdk already has its own licenses property.
     default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+license {
+    name: "platform-mainline-sdk_Android-Apache-2.0@current",
+    sdk_member_name: "Android-Apache-2.0",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/build/soong/licenses/LICENSE"],
+}
+
+license {
+    name: "platform-mainline-sdk_Android-Apache-2.0",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/build/soong/licenses/LICENSE"],
+}
+
+license {
+    name: "platform-mainline-sdk_system_logging_liblog_license@current",
+    sdk_member_name: "system_logging_liblog_license",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/system/logging/liblog/NOTICE"],
+}
+
+license {
+    name: "platform-mainline-sdk_system_logging_liblog_license",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/system/logging/liblog/NOTICE"],
+}
+
+license {
+    name: "platform-mainline-sdk_external_perfetto_license@current",
+    sdk_member_name: "external_perfetto_license",
+    visibility: ["//visibility:private"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+        "SPDX-license-identifier-BSD",
+        "SPDX-license-identifier-CC-BY",
+    ],
+    license_text: ["licenses/external/perfetto/LICENSE"],
+}
+
+license {
+    name: "platform-mainline-sdk_external_perfetto_license",
+    visibility: ["//visibility:private"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+        "SPDX-license-identifier-BSD",
+        "SPDX-license-identifier-CC-BY",
+    ],
+    license_text: ["licenses/external/perfetto/LICENSE"],
+}
+
+license {
+    name: "platform-mainline-sdk_frameworks_native_libs_binder_ndk_license@current",
+    sdk_member_name: "frameworks_native_libs_binder_ndk_license",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/frameworks/native/libs/binder/ndk/NOTICE"],
+}
+
+license {
+    name: "platform-mainline-sdk_frameworks_native_libs_binder_ndk_license",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/frameworks/native/libs/binder/ndk/NOTICE"],
 }
 
 cc_prebuilt_library {
@@ -12,6 +82,7 @@ cc_prebuilt_library {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["platform-mainline-sdk_system_logging_liblog_license@current"],
     host_supported: true,
     installable: false,
     recovery_available: true,
@@ -20,6 +91,7 @@ cc_prebuilt_library {
         versions: [
             "29",
             "30",
+            "current",
         ],
     },
     target: {
@@ -88,6 +160,7 @@ cc_prebuilt_library {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["platform-mainline-sdk_system_logging_liblog_license"],
     host_supported: true,
     recovery_available: true,
     export_include_dirs: ["common_os/include/system/logging/liblog/include"],
@@ -95,6 +168,7 @@ cc_prebuilt_library {
         versions: [
             "29",
             "30",
+            "current",
         ],
     },
     target: {
@@ -160,10 +234,14 @@ cc_prebuilt_library_shared {
     sdk_member_name: "libartpalette-system",
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
+    licenses: ["platform-mainline-sdk_Android-Apache-2.0@current"],
     host_supported: true,
     installable: false,
     stubs: {
-        versions: ["1"],
+        versions: [
+            "1",
+            "current",
+        ],
     },
     target: {
         host: {
@@ -210,9 +288,13 @@ cc_prebuilt_library_shared {
     prefer: false,
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
+    licenses: ["platform-mainline-sdk_Android-Apache-2.0"],
     host_supported: true,
     stubs: {
-        versions: ["1"],
+        versions: [
+            "1",
+            "current",
+        ],
     },
     target: {
         host: {
@@ -259,11 +341,15 @@ cc_prebuilt_library_shared {
     sdk_member_name: "heapprofd_client_api",
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
+    licenses: ["platform-mainline-sdk_external_perfetto_license@current"],
     installable: false,
     compile_multilib: "both",
     export_include_dirs: ["include/external/perfetto/src/profiling/memory/include"],
     stubs: {
-        versions: ["S"],
+        versions: [
+            "S",
+            "current",
+        ],
     },
     arch: {
         arm64: {
@@ -286,10 +372,14 @@ cc_prebuilt_library_shared {
     prefer: false,
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
+    licenses: ["platform-mainline-sdk_external_perfetto_license"],
     compile_multilib: "both",
     export_include_dirs: ["include/external/perfetto/src/profiling/memory/include"],
     stubs: {
-        versions: ["S"],
+        versions: [
+            "S",
+            "current",
+        ],
     },
     arch: {
         arm64: {
@@ -307,6 +397,79 @@ cc_prebuilt_library_shared {
     },
 }
 
+cc_prebuilt_library_shared {
+    name: "platform-mainline-sdk_libbinder_ndk@current",
+    sdk_member_name: "libbinder_ndk",
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    licenses: ["platform-mainline-sdk_frameworks_native_libs_binder_ndk_license@current"],
+    installable: false,
+    compile_multilib: "both",
+    export_include_dirs: [
+        "include/frameworks/native/libs/binder/ndk/include_cpp",
+        "include/frameworks/native/libs/binder/ndk/include_ndk",
+        "include/frameworks/native/libs/binder/ndk/include_platform",
+        "include/libnativehelper/include_jni",
+    ],
+    stubs: {
+        versions: [
+            "29",
+            "30",
+            "current",
+        ],
+    },
+    arch: {
+        arm64: {
+            srcs: ["arm64/lib/libbinder_ndk.so"],
+        },
+        x86_64: {
+            srcs: ["x86_64/lib/libbinder_ndk.so"],
+        },
+        arm: {
+            srcs: ["arm/lib/libbinder_ndk.so"],
+        },
+        x86: {
+            srcs: ["x86/lib/libbinder_ndk.so"],
+        },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "libbinder_ndk",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    licenses: ["platform-mainline-sdk_frameworks_native_libs_binder_ndk_license"],
+    compile_multilib: "both",
+    export_include_dirs: [
+        "include/frameworks/native/libs/binder/ndk/include_cpp",
+        "include/frameworks/native/libs/binder/ndk/include_ndk",
+        "include/frameworks/native/libs/binder/ndk/include_platform",
+        "include/libnativehelper/include_jni",
+    ],
+    stubs: {
+        versions: [
+            "29",
+            "30",
+            "current",
+        ],
+    },
+    arch: {
+        arm64: {
+            srcs: ["arm64/lib/libbinder_ndk.so"],
+        },
+        x86_64: {
+            srcs: ["x86_64/lib/libbinder_ndk.so"],
+        },
+        arm: {
+            srcs: ["arm/lib/libbinder_ndk.so"],
+        },
+        x86: {
+            srcs: ["x86/lib/libbinder_ndk.so"],
+        },
+    },
+}
+
 cc_prebuilt_library_static {
     name: "platform-mainline-sdk_libperfetto_client_experimental@current",
     sdk_member_name: "libperfetto_client_experimental",
@@ -316,6 +479,7 @@ cc_prebuilt_library_static {
         "com.android.art",
         "com.android.art.debug",
     ],
+    licenses: ["platform-mainline-sdk_external_perfetto_license@current"],
     installable: false,
     compile_multilib: "both",
     shared_libs: ["platform-mainline-sdk_liblog@current"],
@@ -435,6 +599,7 @@ cc_prebuilt_library_static {
         "com.android.art",
         "com.android.art.debug",
     ],
+    licenses: ["platform-mainline-sdk_external_perfetto_license"],
     compile_multilib: "both",
     shared_libs: ["liblog"],
     export_include_dirs: [
@@ -553,6 +718,7 @@ cc_prebuilt_library_static {
         "com.android.art",
         "com.android.art.debug",
     ],
+    licenses: ["platform-mainline-sdk_external_perfetto_license@current"],
     installable: false,
     compile_multilib: "both",
     shared_libs: ["libprotobuf-cpp-lite"],
@@ -637,6 +803,7 @@ cc_prebuilt_library_static {
         "com.android.art",
         "com.android.art.debug",
     ],
+    licenses: ["platform-mainline-sdk_external_perfetto_license"],
     compile_multilib: "both",
     shared_libs: ["libprotobuf-cpp-lite"],
     export_include_dirs: [
@@ -720,6 +887,7 @@ sdk_snapshot {
             native_shared_libs: [
                 "platform-mainline-sdk_libartpalette-system@current",
                 "platform-mainline-sdk_heapprofd_client_api@current",
+                "platform-mainline-sdk_libbinder_ndk@current",
                 "platform-mainline-sdk_liblog@current",
             ],
             native_static_libs: [

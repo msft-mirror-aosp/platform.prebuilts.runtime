@@ -18,6 +18,7 @@ namespace gen {
 class StressTestConfig;
 class StressTestConfig_WriterTiming;
 class TraceConfig;
+class TraceConfig_TraceFilter;
 class TraceConfig_IncidentReportConfig;
 class TraceConfig_IncrementalStateConfig;
 class TraceConfig_TriggerConfig;
@@ -38,6 +39,7 @@ enum TraceConfig_CompressionType : int;
 enum TraceConfig_StatsdLogging : int;
 enum TraceConfig_TriggerConfig_TriggerMode : int;
 enum BuiltinClock : int;
+enum DataSourceConfig_SessionInitiator : int;
 enum ChromeConfig_ClientPriority : int;
 enum TraceConfig_BufferConfig_FillPolicy : int;
 }  // namespace perfetto
