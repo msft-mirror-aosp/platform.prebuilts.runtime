@@ -80,10 +80,10 @@ java_sdk_library_import {
     name: "i18n-module-sdk_i18n.module.public.api@current",
     sdk_member_name: "i18n.module.public.api",
     visibility: [
+        "//build/soong/java/core-libraries",
         "//external/icu/android_icu4j",
         "//frameworks/base",
         "//frameworks/base/api",
-        "//libcore",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
     ],
@@ -103,10 +103,10 @@ java_sdk_library_import {
     name: "i18n.module.public.api",
     prefer: false,
     visibility: [
+        "//build/soong/java/core-libraries",
         "//external/icu/android_icu4j",
         "//frameworks/base",
         "//frameworks/base/api",
-        "//libcore",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
     ],
@@ -126,8 +126,8 @@ java_sdk_library_import {
     name: "i18n-module-sdk_legacy.i18n.module.platform.api@current",
     sdk_member_name: "legacy.i18n.module.platform.api",
     visibility: [
+        "//build/soong/java/core-libraries",
         "//external/icu/android_icu4j",
-        "//libcore:__subpackages__",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
     ],
@@ -147,8 +147,8 @@ java_sdk_library_import {
     name: "legacy.i18n.module.platform.api",
     prefer: false,
     visibility: [
+        "//build/soong/java/core-libraries",
         "//external/icu/android_icu4j",
-        "//libcore:__subpackages__",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
     ],
@@ -210,8 +210,8 @@ java_sdk_library_import {
     name: "i18n-module-sdk_stable.i18n.module.platform.api@current",
     sdk_member_name: "stable.i18n.module.platform.api",
     visibility: [
+        "//build/soong/java/core-libraries",
         "//external/icu/android_icu4j",
-        "//libcore:__subpackages__",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
     ],
@@ -231,8 +231,8 @@ java_sdk_library_import {
     name: "stable.i18n.module.platform.api",
     prefer: false,
     visibility: [
+        "//build/soong/java/core-libraries",
         "//external/icu/android_icu4j",
-        "//libcore:__subpackages__",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
     ],
