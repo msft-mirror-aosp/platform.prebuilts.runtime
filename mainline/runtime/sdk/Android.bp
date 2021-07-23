@@ -374,7 +374,7 @@ cc_prebuilt_object {
     vendor_available: true,
     product_available: true,
     stl: "none",
-    default_shared_libs: [],
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -417,7 +417,7 @@ cc_prebuilt_object {
     vendor_available: true,
     product_available: true,
     stl: "none",
-    default_shared_libs: [],
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -459,8 +459,8 @@ cc_prebuilt_object {
     recovery_available: true,
     vendor_available: true,
     product_available: true,
-    default_shared_libs: [],
     stl: "none",
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -503,7 +503,7 @@ cc_prebuilt_object {
     vendor_available: true,
     product_available: true,
     stl: "none",
-    default_shared_libs: [],
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -546,7 +546,7 @@ cc_prebuilt_object {
     vendor_available: true,
     product_available: true,
     stl: "none",
-    default_shared_libs: [],
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -589,7 +589,7 @@ cc_prebuilt_object {
     vendor_available: true,
     product_available: true,
     stl: "none",
-    default_shared_libs: [],
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -632,7 +632,7 @@ cc_prebuilt_object {
     vendor_available: true,
     product_available: true,
     stl: "none",
-    default_shared_libs: [],
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -675,7 +675,7 @@ cc_prebuilt_object {
     vendor_available: true,
     product_available: true,
     stl: "none",
-    default_shared_libs: [],
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
