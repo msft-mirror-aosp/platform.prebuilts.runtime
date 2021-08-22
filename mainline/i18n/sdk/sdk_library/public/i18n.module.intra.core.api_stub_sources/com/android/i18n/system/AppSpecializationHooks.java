@@ -28,7 +28,7 @@ package com.android.i18n.system;
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class AppSpecializationHooks {
 
-AppSpecializationHooks() { throw new RuntimeException("Stub!"); }
+private AppSpecializationHooks() { throw new RuntimeException("Stub!"); }
 
 /**
  * This is a good place to change system properties / clear cache due to an app compat change
