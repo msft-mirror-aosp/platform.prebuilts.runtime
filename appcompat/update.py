@@ -34,4 +34,5 @@ appcompat_extracted_list = [
 ]
 
 if __name__ == '__main__':
-    update.main(THIS_DIR, 'appcompat', appcompat_install_list, appcompat_extracted_list)
+    args = update.parse_args()
+    update.main(args, THIS_DIR, 'appcompat', appcompat_install_list, appcompat_extracted_list)
