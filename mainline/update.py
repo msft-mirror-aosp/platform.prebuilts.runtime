@@ -64,6 +64,10 @@ def InstallSdkEntries(mainline_sdk_name, install_dir):
       install_dir,
       install_unzipped=True)]
 
+# CompOS (T+)
+mainline_install_list.extend(
+    InstallSdkEntries('compos-module-sdk', 'compos/sdk'))
+
 # Conscrypt
 mainline_install_list.extend(
     InstallApexEntries('com.android.conscrypt', 'conscrypt/apex') +
