@@ -1,0 +1,89 @@
+// This is auto-generated. DO NOT EDIT.
+
+package {
+    // A default list here prevents the license LSC from adding its own list which would
+    // be unnecessary as every module in the sdk already has its own licenses property.
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+license {
+    name: "compos-module-sdk_Android-Apache-2.0@current",
+    sdk_member_name: "Android-Apache-2.0",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/build/soong/licenses/LICENSE"],
+}
+
+license {
+    name: "compos-module-sdk_Android-Apache-2.0",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/build/soong/licenses/LICENSE"],
+}
+
+cc_prebuilt_library_shared {
+    name: "compos-module-sdk_libcompos_client@current",
+    sdk_member_name: "libcompos_client",
+    visibility: [
+        "//art/odrefresh:__subpackages__",
+        "//packages/modules/Virtualization/compos:__subpackages__",
+    ],
+    apex_available: ["com.android.compos"],
+    licenses: ["compos-module-sdk_Android-Apache-2.0@current"],
+    installable: false,
+    compile_multilib: "both",
+    export_include_dirs: ["include/packages/modules/Virtualization/compos/libcompos_client/include"],
+    stubs: {
+        versions: ["current"],
+    },
+    arch: {
+        arm64: {
+            srcs: ["arm64/lib/libcompos_client.so"],
+        },
+        x86_64: {
+            srcs: ["x86_64/lib/libcompos_client.so"],
+        },
+        arm: {
+            srcs: ["arm/lib/libcompos_client.so"],
+        },
+        x86: {
+            srcs: ["x86/lib/libcompos_client.so"],
+        },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "libcompos_client",
+    prefer: false,
+    visibility: [
+        "//art/odrefresh:__subpackages__",
+        "//packages/modules/Virtualization/compos:__subpackages__",
+    ],
+    apex_available: ["com.android.compos"],
+    licenses: ["compos-module-sdk_Android-Apache-2.0"],
+    compile_multilib: "both",
+    export_include_dirs: ["include/packages/modules/Virtualization/compos/libcompos_client/include"],
+    stubs: {
+        versions: ["current"],
+    },
+    arch: {
+        arm64: {
+            srcs: ["arm64/lib/libcompos_client.so"],
+        },
+        x86_64: {
+            srcs: ["x86_64/lib/libcompos_client.so"],
+        },
+        arm: {
+            srcs: ["arm/lib/libcompos_client.so"],
+        },
+        x86: {
+            srcs: ["x86/lib/libcompos_client.so"],
+        },
+    },
+}
+
+sdk_snapshot {
+    name: "compos-module-sdk@current",
+    visibility: ["//visibility:public"],
+    native_shared_libs: ["compos-module-sdk_libcompos_client@current"],
+}
