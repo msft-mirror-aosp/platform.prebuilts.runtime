@@ -27,15 +27,14 @@ import update_prebuilts as update
 PREBUILT_DESCRIPTION = 'mainline'
 TARGET = 'mainline_modules'
 
-COMMIT_MESSAGE_NOTE = """\
-CL prepared by prebuilts/runtime/mainline/update.py. See
-prebuilts/runtime/mainline/README.md for update instructions.
+COMMIT_MESSAGE_NOTE_TEMPLATE = """\
+CL prepared by prebuilts/runtime/mainline/update.py with the following
+targets: {}
+
+See prebuilts/runtime/mainline/README.md for update instructions.
 
 Test: Presubmits
 """
-
-mainline_install_list = []
-mainline_extracted_list = []
 
 def InstallApexEntries(apex_name, install_dir):
   res = []
@@ -64,48 +63,64 @@ def InstallSdkEntries(mainline_sdk_name, install_dir):
       install_dir,
       install_unzipped=True)]
 
-# CompOS (T+)
-mainline_install_list.extend(
-    InstallSdkEntries('compos-module-sdk', 'compos/sdk'))
+PREBUILT_INSTALL_MODULES = {
+    # CompOS (T+)
+    'compos': InstallSdkEntries('compos-module-sdk', 'compos/sdk'),
 
-# Conscrypt
-mainline_install_list.extend(
-    InstallApexEntries('com.android.conscrypt', 'conscrypt/apex') +
-    InstallSdkEntries('conscrypt-module-test-exports', 'conscrypt/test-exports') +
-    InstallSdkEntries('conscrypt-module-host-exports', 'conscrypt/host-exports'))
+    # Conscrypt
+    'conscrypt': (
+        InstallApexEntries('com.android.conscrypt', 'conscrypt/apex') +
+        InstallSdkEntries('conscrypt-module-test-exports', 'conscrypt/test-exports') +
+        InstallSdkEntries('conscrypt-module-host-exports', 'conscrypt/host-exports')),
 
-# Runtime (Bionic)
-mainline_install_list.extend(
-    InstallApexEntries('com.android.runtime', 'runtime/apex') +
-    InstallSdkEntries('runtime-module-sdk', 'runtime/sdk') +
-    InstallSdkEntries('runtime-module-host-exports', 'runtime/host-exports'))
+    # Runtime (Bionic)
+    'runtime': (
+        InstallApexEntries('com.android.runtime', 'runtime/apex') +
+        InstallSdkEntries('runtime-module-sdk', 'runtime/sdk') +
+        InstallSdkEntries('runtime-module-host-exports', 'runtime/host-exports')),
 
-# I18N
-mainline_install_list.extend(
-    InstallApexEntries('com.android.i18n', 'i18n/apex') +
-    InstallSdkEntries('i18n-module-sdk', 'i18n/sdk') +
-    InstallSdkEntries('i18n-module-test-exports', 'i18n/test-exports'))
+    # I18N
+    'i18n': (
+        InstallApexEntries('com.android.i18n', 'i18n/apex') +
+        InstallSdkEntries('i18n-module-sdk', 'i18n/sdk') +
+        InstallSdkEntries('i18n-module-test-exports', 'i18n/test-exports')),
 
-# tzdata
-mainline_install_list.extend(
-    InstallApexEntries('com.android.tzdata', 'tzdata/apex') +
-    InstallSdkEntries('tzdata-module-test-exports', 'tzdata/test-exports'))
+    # tzdata
+    'tzdata': (
+        InstallApexEntries('com.android.tzdata', 'tzdata/apex') +
+        InstallSdkEntries('tzdata-module-test-exports', 'tzdata/test-exports')),
 
-# statsd
-mainline_install_list.extend(
-    InstallApexEntries('com.android.os.statsd', 'statsd/apex'))
+    # statsd
+    'statsd': InstallApexEntries('com.android.os.statsd', 'statsd/apex'),
 
-# Platform
-mainline_install_list.extend(
-    InstallSdkEntries('platform-mainline-sdk', 'platform/sdk') +
-    InstallSdkEntries('platform-mainline-test-exports', 'platform/test-exports') +
-    # Shared libraries that are stubs in SDKs, but for which we need their
-    # implementation for device testing.
-    InstallSharedLibEntries('heapprofd_client_api', 'platform/impl') +
-    InstallSharedLibEntries('libartpalette-system', 'platform/impl') +
-    InstallSharedLibEntries('liblog', 'platform/impl'))
+    # Platform
+    'platform': (
+        InstallSdkEntries('platform-mainline-sdk', 'platform/sdk') +
+        InstallSdkEntries('platform-mainline-test-exports', 'platform/test-exports') +
+        # Shared libraries that are stubs in SDKs, but for which we need their
+        # implementation for device testing.
+        InstallSharedLibEntries('heapprofd_client_api', 'platform/impl') +
+        InstallSharedLibEntries('libartpalette-system', 'platform/impl') +
+        InstallSharedLibEntries('liblog', 'platform/impl')),
+}
+
+def add_additional_arguments(parser):
+    parser.add_argument('--install-module', choices=['all'] + PREBUILT_INSTALL_MODULES.keys(),
+                        default='all',
+                        help="The prebuilt module(s) to install.")
 
 if __name__ == '__main__':
-    update.main(THIS_DIR, PREBUILT_DESCRIPTION,
-                mainline_install_list, mainline_extracted_list,
-                COMMIT_MESSAGE_NOTE)
+    args = update.parse_args(add_additional_arguments)
+
+    mainline_install_list = []
+    if args.install_module == 'all':
+      modules = PREBUILT_INSTALL_MODULES.keys()
+    else:
+      modules = [args.install_module]
+    for module in modules:
+      mainline_install_list.extend(PREBUILT_INSTALL_MODULES[module])
+
+    commit_message_note = COMMIT_MESSAGE_NOTE_TEMPLATE.format(', '.join(modules))
+
+    update.main(args, THIS_DIR, PREBUILT_DESCRIPTION, mainline_install_list, [],
+                commit_message_note)
