@@ -105,6 +105,7 @@ class PERFETTO_EXPORT ChromeLatencyInfo : public ::protozero::CppMessageObj {
     kComponentInfoFieldNumber = 4,
     kIsCoalescedFieldNumber = 5,
     kGestureScrollIdFieldNumber = 6,
+    kTouchIdFieldNumber = 7,
   };
 
   ChromeLatencyInfo();
@@ -147,6 +148,10 @@ class PERFETTO_EXPORT ChromeLatencyInfo : public ::protozero::CppMessageObj {
   int64_t gesture_scroll_id() const { return gesture_scroll_id_; }
   void set_gesture_scroll_id(int64_t value) { gesture_scroll_id_ = value; _has_field_.set(6); }
 
+  bool has_touch_id() const { return _has_field_[7]; }
+  int64_t touch_id() const { return touch_id_; }
+  void set_touch_id(int64_t value) { touch_id_ = value; _has_field_.set(7); }
+
  private:
   int64_t trace_id_{};
   ChromeLatencyInfo_Step step_{};
@@ -154,12 +159,13 @@ class PERFETTO_EXPORT ChromeLatencyInfo : public ::protozero::CppMessageObj {
   std::vector<ChromeLatencyInfo_ComponentInfo> component_info_;
   bool is_coalesced_{};
   int64_t gesture_scroll_id_{};
+  int64_t touch_id_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<7> _has_field_{};
+  std::bitset<8> _has_field_{};
 };
 
 
