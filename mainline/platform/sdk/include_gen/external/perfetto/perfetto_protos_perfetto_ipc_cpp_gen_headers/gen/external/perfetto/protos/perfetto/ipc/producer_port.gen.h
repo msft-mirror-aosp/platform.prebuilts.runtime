@@ -51,7 +51,6 @@ class InitializeConnectionRequest;
 enum DataSourceConfig_SessionInitiator : int;
 enum ChromeConfig_ClientPriority : int;
 enum InitializeConnectionRequest_ProducerSMBScrapingMode : int;
-enum InitializeConnectionRequest_ProducerBuildFlags : int;
 }  // namespace perfetto
 }  // namespace protos
 }  // namespace gen
@@ -67,11 +66,6 @@ enum InitializeConnectionRequest_ProducerSMBScrapingMode : int {
   InitializeConnectionRequest_ProducerSMBScrapingMode_SMB_SCRAPING_UNSPECIFIED = 0,
   InitializeConnectionRequest_ProducerSMBScrapingMode_SMB_SCRAPING_ENABLED = 1,
   InitializeConnectionRequest_ProducerSMBScrapingMode_SMB_SCRAPING_DISABLED = 2,
-};
-enum InitializeConnectionRequest_ProducerBuildFlags : int {
-  InitializeConnectionRequest_ProducerBuildFlags_BUILD_FLAGS_UNSPECIFIED = 0,
-  InitializeConnectionRequest_ProducerBuildFlags_BUILD_FLAGS_DCHECKS_ON = 1,
-  InitializeConnectionRequest_ProducerBuildFlags_BUILD_FLAGS_DCHECKS_OFF = 2,
 };
 
 class PERFETTO_EXPORT SyncResponse : public ::protozero::CppMessageObj {
@@ -1013,18 +1007,11 @@ class PERFETTO_EXPORT InitializeConnectionRequest : public ::protozero::CppMessa
   static constexpr auto SMB_SCRAPING_DISABLED = InitializeConnectionRequest_ProducerSMBScrapingMode_SMB_SCRAPING_DISABLED;
   static constexpr auto ProducerSMBScrapingMode_MIN = InitializeConnectionRequest_ProducerSMBScrapingMode_SMB_SCRAPING_UNSPECIFIED;
   static constexpr auto ProducerSMBScrapingMode_MAX = InitializeConnectionRequest_ProducerSMBScrapingMode_SMB_SCRAPING_DISABLED;
-  using ProducerBuildFlags = InitializeConnectionRequest_ProducerBuildFlags;
-  static constexpr auto BUILD_FLAGS_UNSPECIFIED = InitializeConnectionRequest_ProducerBuildFlags_BUILD_FLAGS_UNSPECIFIED;
-  static constexpr auto BUILD_FLAGS_DCHECKS_ON = InitializeConnectionRequest_ProducerBuildFlags_BUILD_FLAGS_DCHECKS_ON;
-  static constexpr auto BUILD_FLAGS_DCHECKS_OFF = InitializeConnectionRequest_ProducerBuildFlags_BUILD_FLAGS_DCHECKS_OFF;
-  static constexpr auto ProducerBuildFlags_MIN = InitializeConnectionRequest_ProducerBuildFlags_BUILD_FLAGS_UNSPECIFIED;
-  static constexpr auto ProducerBuildFlags_MAX = InitializeConnectionRequest_ProducerBuildFlags_BUILD_FLAGS_DCHECKS_OFF;
   enum FieldNumbers {
     kSharedMemoryPageSizeHintBytesFieldNumber = 1,
     kSharedMemorySizeHintBytesFieldNumber = 2,
     kProducerNameFieldNumber = 3,
     kSmbScrapingModeFieldNumber = 4,
-    kBuildFlagsFieldNumber = 5,
     kProducerProvidedShmemFieldNumber = 6,
     kSdkVersionFieldNumber = 8,
     kShmKeyWindowsFieldNumber = 7,
@@ -1060,10 +1047,6 @@ class PERFETTO_EXPORT InitializeConnectionRequest : public ::protozero::CppMessa
   InitializeConnectionRequest_ProducerSMBScrapingMode smb_scraping_mode() const { return smb_scraping_mode_; }
   void set_smb_scraping_mode(InitializeConnectionRequest_ProducerSMBScrapingMode value) { smb_scraping_mode_ = value; _has_field_.set(4); }
 
-  bool has_build_flags() const { return _has_field_[5]; }
-  InitializeConnectionRequest_ProducerBuildFlags build_flags() const { return build_flags_; }
-  void set_build_flags(InitializeConnectionRequest_ProducerBuildFlags value) { build_flags_ = value; _has_field_.set(5); }
-
   bool has_producer_provided_shmem() const { return _has_field_[6]; }
   bool producer_provided_shmem() const { return producer_provided_shmem_; }
   void set_producer_provided_shmem(bool value) { producer_provided_shmem_ = value; _has_field_.set(6); }
@@ -1081,7 +1064,6 @@ class PERFETTO_EXPORT InitializeConnectionRequest : public ::protozero::CppMessa
   uint32_t shared_memory_size_hint_bytes_{};
   std::string producer_name_{};
   InitializeConnectionRequest_ProducerSMBScrapingMode smb_scraping_mode_{};
-  InitializeConnectionRequest_ProducerBuildFlags build_flags_{};
   bool producer_provided_shmem_{};
   std::string sdk_version_{};
   std::string shm_key_windows_{};

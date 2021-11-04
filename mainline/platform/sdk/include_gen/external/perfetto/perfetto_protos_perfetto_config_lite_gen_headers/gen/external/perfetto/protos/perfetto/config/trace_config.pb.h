@@ -31,8 +31,8 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_util.h>
-#include "protos/perfetto/config/data_source_config.pb.h"
 #include "protos/perfetto/common/builtin_clock.pb.h"
+#include "protos/perfetto/config/data_source_config.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_protos_2fperfetto_2fconfig_2ftrace_5fconfig_2eproto
@@ -2088,7 +2088,7 @@ class TraceConfig :
     kBuiltinDataSourcesFieldNumber = 20,
     kIncrementalStateConfigFieldNumber = 21,
     kIncidentReportConfigFieldNumber = 25,
-    kTraceFilterFieldNumber = 32,
+    kTraceFilterFieldNumber = 33,
     kDurationMsFieldNumber = 3,
     kLockdownModeFieldNumber = 5,
     kFileWritePeriodMsFieldNumber = 9,
@@ -2229,7 +2229,7 @@ class TraceConfig :
   ::perfetto::protos::TraceConfig_IncidentReportConfig* mutable_incident_report_config();
   void set_allocated_incident_report_config(::perfetto::protos::TraceConfig_IncidentReportConfig* incident_report_config);
 
-  // optional .perfetto.protos.TraceConfig.TraceFilter trace_filter = 32;
+  // optional .perfetto.protos.TraceConfig.TraceFilter trace_filter = 33;
   bool has_trace_filter() const;
   void clear_trace_filter();
   const ::perfetto::protos::TraceConfig_TraceFilter& trace_filter() const;
@@ -4313,7 +4313,7 @@ inline void TraceConfig::set_trace_uuid_lsb(::PROTOBUF_NAMESPACE_ID::int64 value
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.trace_uuid_lsb)
 }
 
-// optional .perfetto.protos.TraceConfig.TraceFilter trace_filter = 32;
+// optional .perfetto.protos.TraceConfig.TraceFilter trace_filter = 33;
 inline bool TraceConfig::has_trace_filter() const {
   return (_has_bits_[0] & 0x00000100u) != 0;
 }
