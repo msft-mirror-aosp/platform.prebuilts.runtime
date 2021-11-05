@@ -79,7 +79,7 @@ enum TraceConfig_BufferConfig_FillPolicy : int32_t {
 const TraceConfig_BufferConfig_FillPolicy TraceConfig_BufferConfig_FillPolicy_MIN = TraceConfig_BufferConfig_FillPolicy_UNSPECIFIED;
 const TraceConfig_BufferConfig_FillPolicy TraceConfig_BufferConfig_FillPolicy_MAX = TraceConfig_BufferConfig_FillPolicy_DISCARD;
 
-class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/32, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/33, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   TraceConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -142,8 +142,8 @@ class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   int64_t trace_uuid_msb() const { return at<27>().as_int64(); }
   bool has_trace_uuid_lsb() const { return at<28>().valid(); }
   int64_t trace_uuid_lsb() const { return at<28>().as_int64(); }
-  bool has_trace_filter() const { return at<32>().valid(); }
-  ::protozero::ConstBytes trace_filter() const { return at<32>().as_bytes(); }
+  bool has_trace_filter() const { return at<33>().valid(); }
+  ::protozero::ConstBytes trace_filter() const { return at<33>().as_bytes(); }
 };
 
 class TraceConfig : public ::protozero::Message {
@@ -179,7 +179,7 @@ class TraceConfig : public ::protozero::Message {
     kStatsdLoggingFieldNumber = 31,
     kTraceUuidMsbFieldNumber = 27,
     kTraceUuidLsbFieldNumber = 28,
-    kTraceFilterFieldNumber = 32,
+    kTraceFilterFieldNumber = 33,
   };
   using BufferConfig = ::perfetto::protos::pbzero::TraceConfig_BufferConfig;
   using DataSource = ::perfetto::protos::pbzero::TraceConfig_DataSource;
@@ -903,7 +903,7 @@ class TraceConfig : public ::protozero::Message {
 
   using FieldMetadata_TraceFilter =
     ::protozero::proto_utils::FieldMetadata<
-      32,
+      33,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kMessage,
       TraceConfig_TraceFilter,
@@ -918,7 +918,7 @@ class TraceConfig : public ::protozero::Message {
   // TODO(altimin): Use inline variable instead after adopting C++17.  
   static constexpr FieldMetadata_TraceFilter kTraceFilter() { return {}; }
   template <typename T = TraceConfig_TraceFilter> T* set_trace_filter() {
-    return BeginNestedMessage<T>(32);
+    return BeginNestedMessage<T>(33);
   }
 
 };
