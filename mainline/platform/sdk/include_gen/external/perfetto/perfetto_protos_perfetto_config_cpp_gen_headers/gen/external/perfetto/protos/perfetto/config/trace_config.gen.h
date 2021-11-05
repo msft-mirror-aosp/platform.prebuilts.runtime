@@ -135,7 +135,7 @@ class PERFETTO_EXPORT TraceConfig : public ::protozero::CppMessageObj {
     kStatsdLoggingFieldNumber = 31,
     kTraceUuidMsbFieldNumber = 27,
     kTraceUuidLsbFieldNumber = 28,
-    kTraceFilterFieldNumber = 32,
+    kTraceFilterFieldNumber = 33,
   };
 
   TraceConfig();
@@ -277,9 +277,9 @@ class PERFETTO_EXPORT TraceConfig : public ::protozero::CppMessageObj {
   int64_t trace_uuid_lsb() const { return trace_uuid_lsb_; }
   void set_trace_uuid_lsb(int64_t value) { trace_uuid_lsb_ = value; _has_field_.set(28); }
 
-  bool has_trace_filter() const { return _has_field_[32]; }
+  bool has_trace_filter() const { return _has_field_[33]; }
   const TraceConfig_TraceFilter& trace_filter() const { return *trace_filter_; }
-  TraceConfig_TraceFilter* mutable_trace_filter() { _has_field_.set(32); return trace_filter_.get(); }
+  TraceConfig_TraceFilter* mutable_trace_filter() { _has_field_.set(33); return trace_filter_.get(); }
 
  private:
   std::vector<TraceConfig_BufferConfig> buffers_;
@@ -317,7 +317,7 @@ class PERFETTO_EXPORT TraceConfig : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<33> _has_field_{};
+  std::bitset<34> _has_field_{};
 };
 
 
