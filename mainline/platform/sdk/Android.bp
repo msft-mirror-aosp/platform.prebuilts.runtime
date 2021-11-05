@@ -85,7 +85,6 @@ cc_prebuilt_library {
     licenses: ["platform-mainline-sdk_system_logging_liblog_license@current"],
     host_supported: true,
     installable: false,
-    recovery_available: true,
     export_include_dirs: ["common_os/include/system/logging/liblog/include"],
     stubs: {
         versions: [
@@ -162,7 +161,6 @@ cc_prebuilt_library {
     ],
     licenses: ["platform-mainline-sdk_system_logging_liblog_license"],
     host_supported: true,
-    recovery_available: true,
     export_include_dirs: ["common_os/include/system/logging/liblog/include"],
     stubs: {
         versions: [
@@ -347,7 +345,7 @@ cc_prebuilt_library_shared {
     export_include_dirs: ["include/external/perfetto/src/profiling/memory/include"],
     stubs: {
         versions: [
-            "S",
+            "31",
             "current",
         ],
     },
@@ -377,7 +375,7 @@ cc_prebuilt_library_shared {
     export_include_dirs: ["include/external/perfetto/src/profiling/memory/include"],
     stubs: {
         versions: [
-            "S",
+            "31",
             "current",
         ],
     },
@@ -411,6 +409,9 @@ cc_prebuilt_library_shared {
         "include/frameworks/native/libs/binder/ndk/include_platform",
         "include/libnativehelper/include_jni",
     ],
+    sanitize: {
+        misc_undefined: ["integer"],
+    },
     stubs: {
         versions: [
             "29",
@@ -447,6 +448,9 @@ cc_prebuilt_library_shared {
         "include/frameworks/native/libs/binder/ndk/include_platform",
         "include/libnativehelper/include_jni",
     ],
+    sanitize: {
+        misc_undefined: ["integer"],
+    },
     stubs: {
         versions: [
             "29",
