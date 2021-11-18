@@ -64,9 +64,6 @@ def InstallSdkEntries(mainline_sdk_name, install_dir):
       install_unzipped=True)]
 
 PREBUILT_INSTALL_MODULES = {
-    # CompOS (T+)
-    'compos': InstallSdkEntries('compos-module-sdk', 'compos/sdk'),
-
     # Conscrypt
     'conscrypt': (
         InstallApexEntries('com.android.conscrypt', 'conscrypt/apex') +
