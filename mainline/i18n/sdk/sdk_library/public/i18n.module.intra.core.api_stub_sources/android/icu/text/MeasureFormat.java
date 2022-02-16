@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// ? 2016 and later: Unicode, Inc. and others.
+// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /*
  **********************************************************************
@@ -35,12 +35,12 @@ import android.icu.util.ULocale.Category;
  * MeasureFormat fmtFr = MeasureFormat.getInstance(ULocale.FRENCH, FormatWidth.SHORT);
  * Measure measure = new Measure(23, MeasureUnit.CELSIUS);
  *
- * // Output: 23 ?C
+ * // Output: 23 °C
  * System.out.println(fmtFr.format(measure));
  *
  * Measure measureF = new Measure(70, MeasureUnit.FAHRENHEIT);
  *
- * // Output: 70 ?F
+ * // Output: 70 °F
  * System.out.println(fmtFr.format(measureF));
  *
  * MeasureFormat fmtFrFull = MeasureFormat.getInstance(ULocale.FRENCH, FormatWidth.WIDE);
@@ -53,7 +53,7 @@ import android.icu.util.ULocale.Category;
  *         fmtFrFull.formatMeasures(new Measure(1, MeasureUnit.FOOT), new Measure(1, MeasureUnit.INCH)));
  *
  * MeasureFormat fmtFrNarrow = MeasureFormat.getInstance(ULocale.FRENCH, FormatWidth.NARROW);
- * // Output: 1? 1?
+ * // Output: 1′ 1″
  * System.out.println(fmtFrNarrow.formatMeasures(new Measure(1, MeasureUnit.FOOT),
  *         new Measure(1, MeasureUnit.INCH)));
  *
@@ -164,10 +164,10 @@ public android.icu.util.Measure parseObject(java.lang.String source, java.text.P
 
 /**
  * Format a sequence of measures. Uses the ListFormatter unit lists. So, for example, one could
- * format ?3 feet, 2 inches?. Zero values are formatted (eg, ?3 feet, 0 inches?). It is the caller?s
+ * format “3 feet, 2 inches”. Zero values are formatted (eg, “3 feet, 0 inches”). It is the caller’s
  * responsibility to have the appropriate values in appropriate order, and using the appropriate
  * Number values. Typically the units should be in descending order, with all but the last Measure
- * having integer values (eg, not ?3.2 feet, 2 inches?).
+ * having integer values (eg, not “3.2 feet, 2 inches”).
  *
  * @param measures
  *            a sequence of one or more measures.

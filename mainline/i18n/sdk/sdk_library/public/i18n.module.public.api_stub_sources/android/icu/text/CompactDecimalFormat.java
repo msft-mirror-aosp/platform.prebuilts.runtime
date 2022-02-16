@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// ? 2016 and later: Unicode, Inc. and others.
+// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
@@ -29,7 +29,7 @@ package android.icu.text;
  * setMaximumIntegerDigits or setMaximumFractionDigits), then result may be wider.
  *
  * <p>The "short" style is also capable of formatting currency amounts, such as "$1.2M" instead of
- * "$1,200,000.00" (English) or "5,3?Mio.??" instead of "5.300.000,00 ?" (German). Localized data
+ * "$1,200,000.00" (English) or "5,3 Mio. €" instead of "5.300.000,00 €" (German). Localized data
  * concerning longer formats is not available yet in the Unicode CLDR. Because of this, attempting
  * to format a currency amount using the "long" style will produce an UnsupportedOperationException.
  *
