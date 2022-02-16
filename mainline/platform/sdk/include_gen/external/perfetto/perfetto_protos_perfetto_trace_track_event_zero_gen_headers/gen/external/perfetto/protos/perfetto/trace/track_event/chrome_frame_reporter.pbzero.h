@@ -50,7 +50,7 @@ enum ChromeFrameReporter_ScrollState : int32_t {
 const ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_MIN = ChromeFrameReporter_ScrollState_SCROLL_NONE;
 const ChromeFrameReporter_ScrollState ChromeFrameReporter_ScrollState_MAX = ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN;
 
-class ChromeFrameReporter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/11, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class ChromeFrameReporter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   ChromeFrameReporter_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ChromeFrameReporter_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -75,8 +75,6 @@ class ChromeFrameReporter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_
   bool has_smooth_input_main() const { return at<9>().as_bool(); }
   bool has_has_missing_content() const { return at<10>().valid(); }
   bool has_missing_content() const { return at<10>().as_bool(); }
-  bool has_layer_tree_host_id() const { return at<11>().valid(); }
-  uint64_t layer_tree_host_id() const { return at<11>().as_uint64(); }
 };
 
 class ChromeFrameReporter : public ::protozero::Message {
@@ -93,7 +91,6 @@ class ChromeFrameReporter : public ::protozero::Message {
     kHasCompositorAnimationFieldNumber = 8,
     kHasSmoothInputMainFieldNumber = 9,
     kHasMissingContentFieldNumber = 10,
-    kLayerTreeHostIdFieldNumber = 11,
   };
   using State = ::perfetto::protos::pbzero::ChromeFrameReporter_State;
   using FrameDropReason = ::perfetto::protos::pbzero::ChromeFrameReporter_FrameDropReason;
@@ -358,31 +355,6 @@ class ChromeFrameReporter : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kBool>
-        ::Append(*this, field_id, value);
-  }
-
-  using FieldMetadata_LayerTreeHostId =
-    ::protozero::proto_utils::FieldMetadata<
-      11,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kUint64,
-      uint64_t,
-      ChromeFrameReporter>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_LayerTreeHostId kLayerTreeHostId() { return {}; }
-  void set_layer_tree_host_id(uint64_t value) {
-    static constexpr uint32_t field_id = FieldMetadata_LayerTreeHostId::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kUint64>
         ::Append(*this, field_id, value);
   }
 };

@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// ? 2017 and later: Unicode, Inc. and others.
+// © 2017 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.text;
@@ -931,7 +931,7 @@ public synchronized int getFormatWidth() { throw new RuntimeException("Stub!"); 
 /**
  * <strong>Padding:</strong> Sets the minimum width of the string output by the formatting
  * pipeline. For example, if padding is enabled and paddingWidth is set to 6, formatting the
- * number "3.14159" with the pattern "0.00" will result in "??3.14" if '?' is your padding string.
+ * number "3.14159" with the pattern "0.00" will result in "··3.14" if '·' is your padding string.
  *
  * <p>If the number is longer than your padding width, the number will display as if no padding
  * width had been specified, which may result in strings longer than the padding width.
@@ -984,10 +984,10 @@ public synchronized int getPadPosition() { throw new RuntimeException("Stub!"); 
  * "P123S" with padding width 8 and padding char "*". The four positions are:
  *
  * <ul>
- *   <li>{@link android.icu.text.DecimalFormat#PAD_BEFORE_PREFIX DecimalFormat#PAD_BEFORE_PREFIX} ? "***P123S"
- *   <li>{@link android.icu.text.DecimalFormat#PAD_AFTER_PREFIX DecimalFormat#PAD_AFTER_PREFIX} ? "P***123S"
- *   <li>{@link android.icu.text.DecimalFormat#PAD_BEFORE_SUFFIX DecimalFormat#PAD_BEFORE_SUFFIX} ? "P123***S"
- *   <li>{@link android.icu.text.DecimalFormat#PAD_AFTER_SUFFIX DecimalFormat#PAD_AFTER_SUFFIX} ? "P123S***"
+ *   <li>{@link android.icu.text.DecimalFormat#PAD_BEFORE_PREFIX DecimalFormat#PAD_BEFORE_PREFIX} ⇒ "***P123S"
+ *   <li>{@link android.icu.text.DecimalFormat#PAD_AFTER_PREFIX DecimalFormat#PAD_AFTER_PREFIX} ⇒ "P***123S"
+ *   <li>{@link android.icu.text.DecimalFormat#PAD_BEFORE_SUFFIX DecimalFormat#PAD_BEFORE_SUFFIX} ⇒ "P123***S"
+ *   <li>{@link android.icu.text.DecimalFormat#PAD_AFTER_SUFFIX DecimalFormat#PAD_AFTER_SUFFIX} ⇒ "P123S***"
  * </ul>
  *
  * @param padPos The position used for padding.
@@ -1202,7 +1202,7 @@ public synchronized android.icu.util.Currency getCurrency() { throw new RuntimeE
  * </ol>
  *
  * <strong>Important:</strong> Displaying the currency in the output requires that the patter
- * associated with this formatter contains a currency symbol '?'. This will be the case if the
+ * associated with this formatter contains a currency symbol '¤'. This will be the case if the
  * instance was created via {@link #getCurrencyInstance} or one of its friends.
  *
  * @param currency The currency to use.

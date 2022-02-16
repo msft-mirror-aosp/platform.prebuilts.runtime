@@ -931,7 +931,7 @@ class BeginImplFrameArgs_TimestampsInUs : public ::protozero::Message {
   }
 };
 
-class BeginFrameArgs_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/12, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class BeginFrameArgs_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   BeginFrameArgs_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit BeginFrameArgs_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -956,8 +956,6 @@ class BeginFrameArgs_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD
   uint64_t source_location_iid() const { return at<9>().as_uint64(); }
   bool has_source_location() const { return at<10>().valid(); }
   ::protozero::ConstBytes source_location() const { return at<10>().as_bytes(); }
-  bool has_frames_throttled_since_last() const { return at<12>().valid(); }
-  int64_t frames_throttled_since_last() const { return at<12>().as_int64(); }
 };
 
 class BeginFrameArgs : public ::protozero::Message {
@@ -974,7 +972,6 @@ class BeginFrameArgs : public ::protozero::Message {
     kAnimateOnlyFieldNumber = 8,
     kSourceLocationIidFieldNumber = 9,
     kSourceLocationFieldNumber = 10,
-    kFramesThrottledSinceLastFieldNumber = 12,
   };
   using BeginFrameArgsType = ::perfetto::protos::pbzero::BeginFrameArgs_BeginFrameArgsType;
   static const BeginFrameArgsType BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED = BeginFrameArgs_BeginFrameArgsType_BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED;
@@ -1227,31 +1224,6 @@ class BeginFrameArgs : public ::protozero::Message {
     return BeginNestedMessage<T>(10);
   }
 
-
-  using FieldMetadata_FramesThrottledSinceLast =
-    ::protozero::proto_utils::FieldMetadata<
-      12,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kInt64,
-      int64_t,
-      BeginFrameArgs>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_FramesThrottledSinceLast kFramesThrottledSinceLast() { return {}; }
-  void set_frames_throttled_since_last(int64_t value) {
-    static constexpr uint32_t field_id = FieldMetadata_FramesThrottledSinceLast::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kInt64>
-        ::Append(*this, field_id, value);
-  }
 };
 
 class ChromeCompositorStateMachine_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
@@ -1391,6 +1363,8 @@ class ChromeCompositorStateMachine_MinorState_Decoder : public ::protozero::Type
   bool critical_begin_main_frame_to_activate_is_fast() const { return at<33>().as_bool(); }
   bool has_main_thread_missed_last_deadline() const { return at<34>().valid(); }
   bool main_thread_missed_last_deadline() const { return at<34>().as_bool(); }
+  bool has_skip_next_begin_main_frame_to_reduce_latency() const { return at<35>().valid(); }
+  bool skip_next_begin_main_frame_to_reduce_latency() const { return at<35>().as_bool(); }
   bool has_video_needs_begin_frames() const { return at<36>().valid(); }
   bool video_needs_begin_frames() const { return at<36>().as_bool(); }
   bool has_defer_begin_main_frame() const { return at<37>().valid(); }
@@ -1453,6 +1427,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
     kScrollHandlerStateFieldNumber = 32,
     kCriticalBeginMainFrameToActivateIsFastFieldNumber = 33,
     kMainThreadMissedLastDeadlineFieldNumber = 34,
+    kSkipNextBeginMainFrameToReduceLatencyFieldNumber = 35,
     kVideoNeedsBeginFramesFieldNumber = 36,
     kDeferBeginMainFrameFieldNumber = 37,
     kLastCommitHadNoUpdatesFieldNumber = 38,
@@ -2325,6 +2300,31 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
         ::Append(*this, field_id, value);
   }
 
+  using FieldMetadata_SkipNextBeginMainFrameToReduceLatency =
+    ::protozero::proto_utils::FieldMetadata<
+      35,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      ChromeCompositorStateMachine_MinorState>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SkipNextBeginMainFrameToReduceLatency kSkipNextBeginMainFrameToReduceLatency() { return {}; }
+  void set_skip_next_begin_main_frame_to_reduce_latency(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_SkipNextBeginMainFrameToReduceLatency::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
   using FieldMetadata_VideoNeedsBeginFrames =
     ::protozero::proto_utils::FieldMetadata<
       36,
@@ -2793,6 +2793,8 @@ class ChromeCompositorSchedulerState_Decoder : public ::protozero::TypedProtoDec
   bool pending_begin_frame_task() const { return at<4>().as_bool(); }
   bool has_skipped_last_frame_missed_exceeded_deadline() const { return at<5>().valid(); }
   bool skipped_last_frame_missed_exceeded_deadline() const { return at<5>().as_bool(); }
+  bool has_skipped_last_frame_to_reduce_latency() const { return at<6>().valid(); }
+  bool skipped_last_frame_to_reduce_latency() const { return at<6>().as_bool(); }
   bool has_inside_action() const { return at<7>().valid(); }
   int32_t inside_action() const { return at<7>().as_int32(); }
   bool has_deadline_mode() const { return at<8>().valid(); }
@@ -2826,6 +2828,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
     kBeginImplFrameDeadlineTaskFieldNumber = 3,
     kPendingBeginFrameTaskFieldNumber = 4,
     kSkippedLastFrameMissedExceededDeadlineFieldNumber = 5,
+    kSkippedLastFrameToReduceLatencyFieldNumber = 6,
     kInsideActionFieldNumber = 7,
     kDeadlineModeFieldNumber = 8,
     kDeadlineUsFieldNumber = 9,
@@ -2960,6 +2963,31 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   static constexpr FieldMetadata_SkippedLastFrameMissedExceededDeadline kSkippedLastFrameMissedExceededDeadline() { return {}; }
   void set_skipped_last_frame_missed_exceeded_deadline(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_SkippedLastFrameMissedExceededDeadline::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_SkippedLastFrameToReduceLatency =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      ChromeCompositorSchedulerState>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_SkippedLastFrameToReduceLatency kSkippedLastFrameToReduceLatency() { return {}; }
+  void set_skipped_last_frame_to_reduce_latency(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_SkippedLastFrameToReduceLatency::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
