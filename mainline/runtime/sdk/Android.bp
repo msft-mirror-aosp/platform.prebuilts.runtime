@@ -1,93 +1,16 @@
 // This is auto-generated. DO NOT EDIT.
 
 package {
-    // A default list here prevents the license LSC from adding its own list which would
-    // be unnecessary as every module in the sdk already has its own licenses property.
-    default_applicable_licenses: ["Android-Apache-2.0"],
-}
-
-license {
-    name: "runtime-module-sdk_bionic_apex_license@current",
-    sdk_member_name: "bionic_apex_license",
-    visibility: ["//visibility:private"],
-    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
-    license_text: ["licenses/bionic/apex/NOTICE"],
-}
-
-license {
-    name: "runtime-module-sdk_bionic_apex_license",
-    visibility: ["//visibility:private"],
-    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
-    license_text: ["licenses/bionic/apex/NOTICE"],
-}
-
-license {
-    name: "runtime-module-sdk_bionic_libc_license@current",
-    sdk_member_name: "bionic_libc_license",
-    visibility: ["//visibility:private"],
-    license_kinds: [
-        "SPDX-license-identifier-Apache-2.0",
-        "SPDX-license-identifier-BSD",
-        "SPDX-license-identifier-ISC",
-        "SPDX-license-identifier-MIT",
-        "legacy_notice",
-        "legacy_unencumbered",
-    ],
-    license_text: ["licenses/bionic/libc/NOTICE"],
-}
-
-license {
-    name: "runtime-module-sdk_bionic_libc_license",
-    visibility: ["//visibility:private"],
-    license_kinds: [
-        "SPDX-license-identifier-Apache-2.0",
-        "SPDX-license-identifier-BSD",
-        "SPDX-license-identifier-ISC",
-        "SPDX-license-identifier-MIT",
-        "legacy_notice",
-        "legacy_unencumbered",
-    ],
-    license_text: ["licenses/bionic/libc/NOTICE"],
-}
-
-license {
-    name: "runtime-module-sdk_bionic_libdl_license@current",
-    sdk_member_name: "bionic_libdl_license",
-    visibility: ["//visibility:private"],
-    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
-    license_text: ["licenses/bionic/libdl/NOTICE"],
-}
-
-license {
-    name: "runtime-module-sdk_bionic_libdl_license",
-    visibility: ["//visibility:private"],
-    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
-    license_text: ["licenses/bionic/libdl/NOTICE"],
-}
-
-license {
-    name: "runtime-module-sdk_bionic_libm_license@current",
-    sdk_member_name: "bionic_libm_license",
-    visibility: ["//visibility:private"],
-    license_kinds: [
-        "SPDX-license-identifier-Apache-2.0",
-        "SPDX-license-identifier-BSD",
-        "SPDX-license-identifier-MIT",
-        "legacy_unencumbered",
-    ],
-    license_text: ["licenses/bionic/libm/NOTICE"],
-}
-
-license {
-    name: "runtime-module-sdk_bionic_libm_license",
-    visibility: ["//visibility:private"],
-    license_kinds: [
-        "SPDX-license-identifier-Apache-2.0",
-        "SPDX-license-identifier-BSD",
-        "SPDX-license-identifier-MIT",
-        "legacy_unencumbered",
-    ],
-    license_text: ["licenses/bionic/libm/NOTICE"],
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "prebuilts_runtime_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    //   SPDX-license-identifier-BSD
+    //   SPDX-license-identifier-ISC
+    //   SPDX-license-identifier-MIT
+    //   legacy_unencumbered
+    default_applicable_licenses: ["prebuilts_runtime_license"],
 }
 
 cc_prebuilt_library_headers {
@@ -113,7 +36,6 @@ cc_prebuilt_library_headers {
         "com.android.media",
         "com.android.runtime",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
@@ -161,7 +83,6 @@ cc_prebuilt_library_headers {
         "com.android.media",
         "com.android.runtime",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
@@ -206,7 +127,6 @@ cc_prebuilt_library_headers {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
@@ -293,7 +213,6 @@ cc_prebuilt_library_headers {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
@@ -368,13 +287,11 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
-    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -411,13 +328,11 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
-    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -454,13 +369,11 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
-    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -497,13 +410,11 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
-    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -540,13 +451,11 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
-    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -583,13 +492,11 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
-    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -626,13 +533,11 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
-    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -669,13 +574,11 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
-    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -712,13 +615,13 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     installable: false,
     recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     export_include_dirs: [
+        "common_os/include/external/jemalloc_new/include",
         "common_os/include/bionic/libc/async_safe/include",
         "common_os/include/system/logging/liblog/include",
         "common_os/include/bionic/libc/system_properties/include",
@@ -808,12 +711,12 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
     recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     export_include_dirs: [
+        "common_os/include/external/jemalloc_new/include",
         "common_os/include/bionic/libc/async_safe/include",
         "common_os/include/system/logging/liblog/include",
         "common_os/include/bionic/libc/system_properties/include",
@@ -903,7 +806,6 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
-    licenses: ["runtime-module-sdk_bionic_libdl_license@current"],
     host_supported: true,
     installable: false,
     recovery_available: true,
@@ -990,7 +892,6 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
-    licenses: ["runtime-module-sdk_bionic_libdl_license"],
     host_supported: true,
     recovery_available: true,
     stl: "none",
@@ -1076,7 +977,6 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
-    licenses: ["runtime-module-sdk_bionic_libdl_license@current"],
     host_supported: true,
     installable: false,
     recovery_available: true,
@@ -1125,7 +1025,6 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
-    licenses: ["runtime-module-sdk_bionic_libdl_license"],
     host_supported: true,
     recovery_available: true,
     stl: "none",
@@ -1173,7 +1072,6 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
-    licenses: ["runtime-module-sdk_bionic_libm_license@current"],
     host_supported: true,
     installable: false,
     recovery_available: true,
@@ -1227,7 +1125,6 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
-    licenses: ["runtime-module-sdk_bionic_libm_license"],
     host_supported: true,
     recovery_available: true,
     stl: "none",
@@ -1284,7 +1181,6 @@ cc_prebuilt_library_static {
         "com.android.media.swcodec",
         "com.android.runtime",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     installable: false,
     recovery_available: true,
@@ -1377,7 +1273,6 @@ cc_prebuilt_library_static {
         "com.android.media.swcodec",
         "com.android.runtime",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
@@ -1465,7 +1360,6 @@ cc_prebuilt_library_static {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     installable: false,
     recovery_available: true,
@@ -1513,7 +1407,6 @@ cc_prebuilt_library_static {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,
@@ -1560,7 +1453,6 @@ cc_prebuilt_library_static {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     installable: false,
     recovery_available: true,
@@ -1608,7 +1500,6 @@ cc_prebuilt_library_static {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
-    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
     recovery_available: true,
     vendor_available: true,

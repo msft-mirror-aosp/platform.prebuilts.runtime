@@ -14,6 +14,6 @@ package com.android.icu.charset;
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public final class NativeConverter {
 
-private NativeConverter() { throw new RuntimeException("Stub!"); }
+public NativeConverter() { throw new RuntimeException("Stub!"); }
 }
 
