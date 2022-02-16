@@ -31,8 +31,8 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_util.h>
-#include "protos/perfetto/common/builtin_clock.pb.h"
 #include "protos/perfetto/config/data_source_config.pb.h"
+#include "protos/perfetto/common/builtin_clock.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_protos_2fperfetto_2fconfig_2ftrace_5fconfig_2eproto
@@ -48,7 +48,7 @@ struct TableStruct_protos_2fperfetto_2fconfig_2ftrace_5fconfig_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[12]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[11]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -83,9 +83,6 @@ extern TraceConfig_ProducerConfigDefaultTypeInternal _TraceConfig_ProducerConfig
 class TraceConfig_StatsdMetadata;
 class TraceConfig_StatsdMetadataDefaultTypeInternal;
 extern TraceConfig_StatsdMetadataDefaultTypeInternal _TraceConfig_StatsdMetadata_default_instance_;
-class TraceConfig_TraceFilter;
-class TraceConfig_TraceFilterDefaultTypeInternal;
-extern TraceConfig_TraceFilterDefaultTypeInternal _TraceConfig_TraceFilter_default_instance_;
 class TraceConfig_TriggerConfig;
 class TraceConfig_TriggerConfigDefaultTypeInternal;
 extern TraceConfig_TriggerConfigDefaultTypeInternal _TraceConfig_TriggerConfig_default_instance_;
@@ -104,7 +101,6 @@ template<> ::perfetto::protos::TraceConfig_IncidentReportConfig* Arena::CreateMa
 template<> ::perfetto::protos::TraceConfig_IncrementalStateConfig* Arena::CreateMaybeMessage<::perfetto::protos::TraceConfig_IncrementalStateConfig>(Arena*);
 template<> ::perfetto::protos::TraceConfig_ProducerConfig* Arena::CreateMaybeMessage<::perfetto::protos::TraceConfig_ProducerConfig>(Arena*);
 template<> ::perfetto::protos::TraceConfig_StatsdMetadata* Arena::CreateMaybeMessage<::perfetto::protos::TraceConfig_StatsdMetadata>(Arena*);
-template<> ::perfetto::protos::TraceConfig_TraceFilter* Arena::CreateMaybeMessage<::perfetto::protos::TraceConfig_TraceFilter>(Arena*);
 template<> ::perfetto::protos::TraceConfig_TriggerConfig* Arena::CreateMaybeMessage<::perfetto::protos::TraceConfig_TriggerConfig>(Arena*);
 template<> ::perfetto::protos::TraceConfig_TriggerConfig_Trigger* Arena::CreateMaybeMessage<::perfetto::protos::TraceConfig_TriggerConfig_Trigger>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -1751,135 +1747,6 @@ class TraceConfig_IncidentReportConfig :
 };
 // -------------------------------------------------------------------
 
-class TraceConfig_TraceFilter :
-    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.TraceConfig.TraceFilter) */ {
- public:
-  TraceConfig_TraceFilter();
-  virtual ~TraceConfig_TraceFilter();
-
-  TraceConfig_TraceFilter(const TraceConfig_TraceFilter& from);
-  TraceConfig_TraceFilter(TraceConfig_TraceFilter&& from) noexcept
-    : TraceConfig_TraceFilter() {
-    *this = ::std::move(from);
-  }
-
-  inline TraceConfig_TraceFilter& operator=(const TraceConfig_TraceFilter& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline TraceConfig_TraceFilter& operator=(TraceConfig_TraceFilter&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const std::string& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline std::string* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const TraceConfig_TraceFilter& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const TraceConfig_TraceFilter* internal_default_instance() {
-    return reinterpret_cast<const TraceConfig_TraceFilter*>(
-               &_TraceConfig_TraceFilter_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    10;
-
-  friend void swap(TraceConfig_TraceFilter& a, TraceConfig_TraceFilter& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(TraceConfig_TraceFilter* other) {
-    if (other == this) return;
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline TraceConfig_TraceFilter* New() const final {
-    return CreateMaybeMessage<TraceConfig_TraceFilter>(nullptr);
-  }
-
-  TraceConfig_TraceFilter* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<TraceConfig_TraceFilter>(arena);
-  }
-  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)
-    final;
-  void CopyFrom(const TraceConfig_TraceFilter& from);
-  void MergeFrom(const TraceConfig_TraceFilter& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  #else
-  bool MergePartialFromCodedStream(
-      ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
-  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  void SerializeWithCachedSizes(
-      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
-  void DiscardUnknownFields();
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  inline void SharedCtor();
-  inline void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(TraceConfig_TraceFilter* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "perfetto.protos.TraceConfig.TraceFilter";
-  }
-  private:
-  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
-    return nullptr;
-  }
-  inline void* MaybeArenaPtr() const {
-    return nullptr;
-  }
-  public:
-
-  std::string GetTypeName() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kBytecodeFieldNumber = 1,
-  };
-  // optional bytes bytecode = 1;
-  bool has_bytecode() const;
-  void clear_bytecode();
-  const std::string& bytecode() const;
-  void set_bytecode(const std::string& value);
-  void set_bytecode(std::string&& value);
-  void set_bytecode(const char* value);
-  void set_bytecode(const void* value, size_t size);
-  std::string* mutable_bytecode();
-  std::string* release_bytecode();
-  void set_allocated_bytecode(std::string* bytecode);
-
-  // @@protoc_insertion_point(class_scope:perfetto.protos.TraceConfig.TraceFilter)
- private:
-  class _Internal;
-
-  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr bytecode_;
-  friend struct ::TableStruct_protos_2fperfetto_2fconfig_2ftrace_5fconfig_2eproto;
-};
-// -------------------------------------------------------------------
-
 class TraceConfig :
     public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.TraceConfig) */ {
  public:
@@ -1920,7 +1787,7 @@ class TraceConfig :
                &_TraceConfig_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    10;
 
   friend void swap(TraceConfig& a, TraceConfig& b) {
     a.Swap(&b);
@@ -1989,7 +1856,6 @@ class TraceConfig :
   typedef TraceConfig_TriggerConfig TriggerConfig;
   typedef TraceConfig_IncrementalStateConfig IncrementalStateConfig;
   typedef TraceConfig_IncidentReportConfig IncidentReportConfig;
-  typedef TraceConfig_TraceFilter TraceFilter;
 
   typedef TraceConfig_LockdownModeOperation LockdownModeOperation;
   static constexpr LockdownModeOperation LOCKDOWN_UNCHANGED =
@@ -2088,7 +1954,6 @@ class TraceConfig :
     kBuiltinDataSourcesFieldNumber = 20,
     kIncrementalStateConfigFieldNumber = 21,
     kIncidentReportConfigFieldNumber = 25,
-    kTraceFilterFieldNumber = 33,
     kDurationMsFieldNumber = 3,
     kLockdownModeFieldNumber = 5,
     kFileWritePeriodMsFieldNumber = 9,
@@ -2229,14 +2094,6 @@ class TraceConfig :
   ::perfetto::protos::TraceConfig_IncidentReportConfig* mutable_incident_report_config();
   void set_allocated_incident_report_config(::perfetto::protos::TraceConfig_IncidentReportConfig* incident_report_config);
 
-  // optional .perfetto.protos.TraceConfig.TraceFilter trace_filter = 33;
-  bool has_trace_filter() const;
-  void clear_trace_filter();
-  const ::perfetto::protos::TraceConfig_TraceFilter& trace_filter() const;
-  ::perfetto::protos::TraceConfig_TraceFilter* release_trace_filter();
-  ::perfetto::protos::TraceConfig_TraceFilter* mutable_trace_filter();
-  void set_allocated_trace_filter(::perfetto::protos::TraceConfig_TraceFilter* trace_filter);
-
   // optional uint32 duration_ms = 3;
   bool has_duration_ms() const;
   void clear_duration_ms();
@@ -2358,7 +2215,6 @@ class TraceConfig :
   ::perfetto::protos::TraceConfig_BuiltinDataSource* builtin_data_sources_;
   ::perfetto::protos::TraceConfig_IncrementalStateConfig* incremental_state_config_;
   ::perfetto::protos::TraceConfig_IncidentReportConfig* incident_report_config_;
-  ::perfetto::protos::TraceConfig_TraceFilter* trace_filter_;
   ::PROTOBUF_NAMESPACE_ID::uint32 duration_ms_;
   int lockdown_mode_;
   ::PROTOBUF_NAMESPACE_ID::uint32 file_write_period_ms_;
@@ -3375,68 +3231,6 @@ inline void TraceConfig_IncidentReportConfig::set_skip_dropbox(bool value) {
 
 // -------------------------------------------------------------------
 
-// TraceConfig_TraceFilter
-
-// optional bytes bytecode = 1;
-inline bool TraceConfig_TraceFilter::has_bytecode() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void TraceConfig_TraceFilter::clear_bytecode() {
-  bytecode_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline const std::string& TraceConfig_TraceFilter::bytecode() const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.TraceFilter.bytecode)
-  return bytecode_.GetNoArena();
-}
-inline void TraceConfig_TraceFilter::set_bytecode(const std::string& value) {
-  _has_bits_[0] |= 0x00000001u;
-  bytecode_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.TraceFilter.bytecode)
-}
-inline void TraceConfig_TraceFilter::set_bytecode(std::string&& value) {
-  _has_bits_[0] |= 0x00000001u;
-  bytecode_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.TraceConfig.TraceFilter.bytecode)
-}
-inline void TraceConfig_TraceFilter::set_bytecode(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  _has_bits_[0] |= 0x00000001u;
-  bytecode_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:perfetto.protos.TraceConfig.TraceFilter.bytecode)
-}
-inline void TraceConfig_TraceFilter::set_bytecode(const void* value, size_t size) {
-  _has_bits_[0] |= 0x00000001u;
-  bytecode_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.TraceConfig.TraceFilter.bytecode)
-}
-inline std::string* TraceConfig_TraceFilter::mutable_bytecode() {
-  _has_bits_[0] |= 0x00000001u;
-  // @@protoc_insertion_point(field_mutable:perfetto.protos.TraceConfig.TraceFilter.bytecode)
-  return bytecode_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* TraceConfig_TraceFilter::release_bytecode() {
-  // @@protoc_insertion_point(field_release:perfetto.protos.TraceConfig.TraceFilter.bytecode)
-  if (!has_bytecode()) {
-    return nullptr;
-  }
-  _has_bits_[0] &= ~0x00000001u;
-  return bytecode_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void TraceConfig_TraceFilter::set_allocated_bytecode(std::string* bytecode) {
-  if (bytecode != nullptr) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  bytecode_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), bytecode);
-  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TraceConfig.TraceFilter.bytecode)
-}
-
-// -------------------------------------------------------------------
-
 // TraceConfig
 
 // repeated .perfetto.protos.TraceConfig.BufferConfig buffers = 1;
@@ -3550,47 +3344,47 @@ inline void TraceConfig::set_allocated_builtin_data_sources(::perfetto::protos::
 
 // optional uint32 duration_ms = 3;
 inline bool TraceConfig::has_duration_ms() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void TraceConfig::clear_duration_ms() {
   duration_ms_ = 0u;
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 TraceConfig::duration_ms() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.duration_ms)
   return duration_ms_;
 }
 inline void TraceConfig::set_duration_ms(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
   duration_ms_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.duration_ms)
 }
 
 // optional bool enable_extra_guardrails = 4;
 inline bool TraceConfig::has_enable_extra_guardrails() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void TraceConfig::clear_enable_extra_guardrails() {
   enable_extra_guardrails_ = false;
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline bool TraceConfig::enable_extra_guardrails() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.enable_extra_guardrails)
   return enable_extra_guardrails_;
 }
 inline void TraceConfig::set_enable_extra_guardrails(bool value) {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00000800u;
   enable_extra_guardrails_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.enable_extra_guardrails)
 }
 
 // optional .perfetto.protos.TraceConfig.LockdownModeOperation lockdown_mode = 5;
 inline bool TraceConfig::has_lockdown_mode() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void TraceConfig::clear_lockdown_mode() {
   lockdown_mode_ = 0;
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline ::perfetto::protos::TraceConfig_LockdownModeOperation TraceConfig::lockdown_mode() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.lockdown_mode)
@@ -3598,7 +3392,7 @@ inline ::perfetto::protos::TraceConfig_LockdownModeOperation TraceConfig::lockdo
 }
 inline void TraceConfig::set_lockdown_mode(::perfetto::protos::TraceConfig_LockdownModeOperation value) {
   assert(::perfetto::protos::TraceConfig_LockdownModeOperation_IsValid(value));
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
   lockdown_mode_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.lockdown_mode)
 }
@@ -3684,18 +3478,18 @@ inline void TraceConfig::set_allocated_statsd_metadata(::perfetto::protos::Trace
 
 // optional bool write_into_file = 8;
 inline bool TraceConfig::has_write_into_file() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void TraceConfig::clear_write_into_file() {
   write_into_file_ = false;
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline bool TraceConfig::write_into_file() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.write_into_file)
   return write_into_file_;
 }
 inline void TraceConfig::set_write_into_file(bool value) {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00001000u;
   write_into_file_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.write_into_file)
 }
@@ -3760,36 +3554,36 @@ inline void TraceConfig::set_allocated_output_path(std::string* output_path) {
 
 // optional uint32 file_write_period_ms = 9;
 inline bool TraceConfig::has_file_write_period_ms() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void TraceConfig::clear_file_write_period_ms() {
   file_write_period_ms_ = 0u;
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 TraceConfig::file_write_period_ms() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.file_write_period_ms)
   return file_write_period_ms_;
 }
 inline void TraceConfig::set_file_write_period_ms(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000400u;
   file_write_period_ms_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.file_write_period_ms)
 }
 
 // optional uint64 max_file_size_bytes = 10;
 inline bool TraceConfig::has_max_file_size_bytes() const {
-  return (_has_bits_[0] & 0x00010000u) != 0;
+  return (_has_bits_[0] & 0x00008000u) != 0;
 }
 inline void TraceConfig::clear_max_file_size_bytes() {
   max_file_size_bytes_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00010000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 TraceConfig::max_file_size_bytes() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.max_file_size_bytes)
   return max_file_size_bytes_;
 }
 inline void TraceConfig::set_max_file_size_bytes(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00010000u;
+  _has_bits_[0] |= 0x00008000u;
   max_file_size_bytes_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.max_file_size_bytes)
 }
@@ -3845,108 +3639,108 @@ inline void TraceConfig::set_allocated_guardrail_overrides(::perfetto::protos::T
 
 // optional bool deferred_start = 12;
 inline bool TraceConfig::has_deferred_start() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
+  return (_has_bits_[0] & 0x00002000u) != 0;
 }
 inline void TraceConfig::clear_deferred_start() {
   deferred_start_ = false;
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline bool TraceConfig::deferred_start() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.deferred_start)
   return deferred_start_;
 }
 inline void TraceConfig::set_deferred_start(bool value) {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00002000u;
   deferred_start_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.deferred_start)
 }
 
 // optional uint32 flush_period_ms = 13;
 inline bool TraceConfig::has_flush_period_ms() const {
-  return (_has_bits_[0] & 0x00020000u) != 0;
+  return (_has_bits_[0] & 0x00010000u) != 0;
 }
 inline void TraceConfig::clear_flush_period_ms() {
   flush_period_ms_ = 0u;
-  _has_bits_[0] &= ~0x00020000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 TraceConfig::flush_period_ms() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.flush_period_ms)
   return flush_period_ms_;
 }
 inline void TraceConfig::set_flush_period_ms(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00020000u;
+  _has_bits_[0] |= 0x00010000u;
   flush_period_ms_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.flush_period_ms)
 }
 
 // optional uint32 flush_timeout_ms = 14;
 inline bool TraceConfig::has_flush_timeout_ms() const {
-  return (_has_bits_[0] & 0x00040000u) != 0;
+  return (_has_bits_[0] & 0x00020000u) != 0;
 }
 inline void TraceConfig::clear_flush_timeout_ms() {
   flush_timeout_ms_ = 0u;
-  _has_bits_[0] &= ~0x00040000u;
+  _has_bits_[0] &= ~0x00020000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 TraceConfig::flush_timeout_ms() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.flush_timeout_ms)
   return flush_timeout_ms_;
 }
 inline void TraceConfig::set_flush_timeout_ms(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00040000u;
+  _has_bits_[0] |= 0x00020000u;
   flush_timeout_ms_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.flush_timeout_ms)
 }
 
 // optional uint32 data_source_stop_timeout_ms = 23;
 inline bool TraceConfig::has_data_source_stop_timeout_ms() const {
-  return (_has_bits_[0] & 0x00100000u) != 0;
+  return (_has_bits_[0] & 0x00080000u) != 0;
 }
 inline void TraceConfig::clear_data_source_stop_timeout_ms() {
   data_source_stop_timeout_ms_ = 0u;
-  _has_bits_[0] &= ~0x00100000u;
+  _has_bits_[0] &= ~0x00080000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 TraceConfig::data_source_stop_timeout_ms() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.data_source_stop_timeout_ms)
   return data_source_stop_timeout_ms_;
 }
 inline void TraceConfig::set_data_source_stop_timeout_ms(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00100000u;
+  _has_bits_[0] |= 0x00080000u;
   data_source_stop_timeout_ms_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.data_source_stop_timeout_ms)
 }
 
 // optional bool notify_traceur = 16;
 inline bool TraceConfig::has_notify_traceur() const {
-  return (_has_bits_[0] & 0x00008000u) != 0;
+  return (_has_bits_[0] & 0x00004000u) != 0;
 }
 inline void TraceConfig::clear_notify_traceur() {
   notify_traceur_ = false;
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline bool TraceConfig::notify_traceur() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.notify_traceur)
   return notify_traceur_;
 }
 inline void TraceConfig::set_notify_traceur(bool value) {
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00004000u;
   notify_traceur_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.notify_traceur)
 }
 
 // optional int32 bugreport_score = 30;
 inline bool TraceConfig::has_bugreport_score() const {
-  return (_has_bits_[0] & 0x00800000u) != 0;
+  return (_has_bits_[0] & 0x00400000u) != 0;
 }
 inline void TraceConfig::clear_bugreport_score() {
   bugreport_score_ = 0;
-  _has_bits_[0] &= ~0x00800000u;
+  _has_bits_[0] &= ~0x00400000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 TraceConfig::bugreport_score() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.bugreport_score)
   return bugreport_score_;
 }
 inline void TraceConfig::set_bugreport_score(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00800000u;
+  _has_bits_[0] |= 0x00400000u;
   bugreport_score_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.bugreport_score)
 }
@@ -4116,18 +3910,18 @@ inline void TraceConfig::set_allocated_incremental_state_config(::perfetto::prot
 
 // optional bool allow_user_build_tracing = 19;
 inline bool TraceConfig::has_allow_user_build_tracing() const {
-  return (_has_bits_[0] & 0x00080000u) != 0;
+  return (_has_bits_[0] & 0x00040000u) != 0;
 }
 inline void TraceConfig::clear_allow_user_build_tracing() {
   allow_user_build_tracing_ = false;
-  _has_bits_[0] &= ~0x00080000u;
+  _has_bits_[0] &= ~0x00040000u;
 }
 inline bool TraceConfig::allow_user_build_tracing() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.allow_user_build_tracing)
   return allow_user_build_tracing_;
 }
 inline void TraceConfig::set_allow_user_build_tracing(bool value) {
-  _has_bits_[0] |= 0x00080000u;
+  _has_bits_[0] |= 0x00040000u;
   allow_user_build_tracing_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.allow_user_build_tracing)
 }
@@ -4192,11 +3986,11 @@ inline void TraceConfig::set_allocated_unique_session_name(std::string* unique_s
 
 // optional .perfetto.protos.TraceConfig.CompressionType compression_type = 24;
 inline bool TraceConfig::has_compression_type() const {
-  return (_has_bits_[0] & 0x00400000u) != 0;
+  return (_has_bits_[0] & 0x00200000u) != 0;
 }
 inline void TraceConfig::clear_compression_type() {
   compression_type_ = 0;
-  _has_bits_[0] &= ~0x00400000u;
+  _has_bits_[0] &= ~0x00200000u;
 }
 inline ::perfetto::protos::TraceConfig_CompressionType TraceConfig::compression_type() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.compression_type)
@@ -4204,7 +3998,7 @@ inline ::perfetto::protos::TraceConfig_CompressionType TraceConfig::compression_
 }
 inline void TraceConfig::set_compression_type(::perfetto::protos::TraceConfig_CompressionType value) {
   assert(::perfetto::protos::TraceConfig_CompressionType_IsValid(value));
-  _has_bits_[0] |= 0x00400000u;
+  _has_bits_[0] |= 0x00200000u;
   compression_type_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.compression_type)
 }
@@ -4260,11 +4054,11 @@ inline void TraceConfig::set_allocated_incident_report_config(::perfetto::protos
 
 // optional .perfetto.protos.TraceConfig.StatsdLogging statsd_logging = 31;
 inline bool TraceConfig::has_statsd_logging() const {
-  return (_has_bits_[0] & 0x02000000u) != 0;
+  return (_has_bits_[0] & 0x01000000u) != 0;
 }
 inline void TraceConfig::clear_statsd_logging() {
   statsd_logging_ = 0;
-  _has_bits_[0] &= ~0x02000000u;
+  _has_bits_[0] &= ~0x01000000u;
 }
 inline ::perfetto::protos::TraceConfig_StatsdLogging TraceConfig::statsd_logging() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.statsd_logging)
@@ -4272,101 +4066,50 @@ inline ::perfetto::protos::TraceConfig_StatsdLogging TraceConfig::statsd_logging
 }
 inline void TraceConfig::set_statsd_logging(::perfetto::protos::TraceConfig_StatsdLogging value) {
   assert(::perfetto::protos::TraceConfig_StatsdLogging_IsValid(value));
-  _has_bits_[0] |= 0x02000000u;
+  _has_bits_[0] |= 0x01000000u;
   statsd_logging_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.statsd_logging)
 }
 
 // optional int64 trace_uuid_msb = 27;
 inline bool TraceConfig::has_trace_uuid_msb() const {
-  return (_has_bits_[0] & 0x00200000u) != 0;
+  return (_has_bits_[0] & 0x00100000u) != 0;
 }
 inline void TraceConfig::clear_trace_uuid_msb() {
   trace_uuid_msb_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00200000u;
+  _has_bits_[0] &= ~0x00100000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int64 TraceConfig::trace_uuid_msb() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.trace_uuid_msb)
   return trace_uuid_msb_;
 }
 inline void TraceConfig::set_trace_uuid_msb(::PROTOBUF_NAMESPACE_ID::int64 value) {
-  _has_bits_[0] |= 0x00200000u;
+  _has_bits_[0] |= 0x00100000u;
   trace_uuid_msb_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.trace_uuid_msb)
 }
 
 // optional int64 trace_uuid_lsb = 28;
 inline bool TraceConfig::has_trace_uuid_lsb() const {
-  return (_has_bits_[0] & 0x01000000u) != 0;
+  return (_has_bits_[0] & 0x00800000u) != 0;
 }
 inline void TraceConfig::clear_trace_uuid_lsb() {
   trace_uuid_lsb_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x01000000u;
+  _has_bits_[0] &= ~0x00800000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int64 TraceConfig::trace_uuid_lsb() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.trace_uuid_lsb)
   return trace_uuid_lsb_;
 }
 inline void TraceConfig::set_trace_uuid_lsb(::PROTOBUF_NAMESPACE_ID::int64 value) {
-  _has_bits_[0] |= 0x01000000u;
+  _has_bits_[0] |= 0x00800000u;
   trace_uuid_lsb_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceConfig.trace_uuid_lsb)
-}
-
-// optional .perfetto.protos.TraceConfig.TraceFilter trace_filter = 33;
-inline bool TraceConfig::has_trace_filter() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
-inline void TraceConfig::clear_trace_filter() {
-  if (trace_filter_ != nullptr) trace_filter_->Clear();
-  _has_bits_[0] &= ~0x00000100u;
-}
-inline const ::perfetto::protos::TraceConfig_TraceFilter& TraceConfig::trace_filter() const {
-  const ::perfetto::protos::TraceConfig_TraceFilter* p = trace_filter_;
-  // @@protoc_insertion_point(field_get:perfetto.protos.TraceConfig.trace_filter)
-  return p != nullptr ? *p : *reinterpret_cast<const ::perfetto::protos::TraceConfig_TraceFilter*>(
-      &::perfetto::protos::_TraceConfig_TraceFilter_default_instance_);
-}
-inline ::perfetto::protos::TraceConfig_TraceFilter* TraceConfig::release_trace_filter() {
-  // @@protoc_insertion_point(field_release:perfetto.protos.TraceConfig.trace_filter)
-  _has_bits_[0] &= ~0x00000100u;
-  ::perfetto::protos::TraceConfig_TraceFilter* temp = trace_filter_;
-  trace_filter_ = nullptr;
-  return temp;
-}
-inline ::perfetto::protos::TraceConfig_TraceFilter* TraceConfig::mutable_trace_filter() {
-  _has_bits_[0] |= 0x00000100u;
-  if (trace_filter_ == nullptr) {
-    auto* p = CreateMaybeMessage<::perfetto::protos::TraceConfig_TraceFilter>(GetArenaNoVirtual());
-    trace_filter_ = p;
-  }
-  // @@protoc_insertion_point(field_mutable:perfetto.protos.TraceConfig.trace_filter)
-  return trace_filter_;
-}
-inline void TraceConfig::set_allocated_trace_filter(::perfetto::protos::TraceConfig_TraceFilter* trace_filter) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
-  if (message_arena == nullptr) {
-    delete trace_filter_;
-  }
-  if (trace_filter) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
-    if (message_arena != submessage_arena) {
-      trace_filter = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, trace_filter, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000100u;
-  } else {
-    _has_bits_[0] &= ~0x00000100u;
-  }
-  trace_filter_ = trace_filter;
-  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TraceConfig.trace_filter)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
