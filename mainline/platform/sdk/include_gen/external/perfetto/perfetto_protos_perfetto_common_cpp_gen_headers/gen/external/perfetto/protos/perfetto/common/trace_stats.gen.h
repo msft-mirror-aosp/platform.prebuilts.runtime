@@ -16,7 +16,6 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 class TraceStats;
-class TraceStats_FilterStats;
 class TraceStats_BufferStats;
 }  // namespace perfetto
 }  // namespace protos
@@ -33,7 +32,6 @@ namespace gen {
 class PERFETTO_EXPORT TraceStats : public ::protozero::CppMessageObj {
  public:
   using BufferStats = TraceStats_BufferStats;
-  using FilterStats = TraceStats_FilterStats;
   enum FieldNumbers {
     kBufferStatsFieldNumber = 1,
     kProducersConnectedFieldNumber = 2,
@@ -45,7 +43,6 @@ class PERFETTO_EXPORT TraceStats : public ::protozero::CppMessageObj {
     kChunksDiscardedFieldNumber = 8,
     kPatchesDiscardedFieldNumber = 9,
     kInvalidPacketsFieldNumber = 10,
-    kFilterStatsFieldNumber = 11,
   };
 
   TraceStats();
@@ -104,10 +101,6 @@ class PERFETTO_EXPORT TraceStats : public ::protozero::CppMessageObj {
   uint64_t invalid_packets() const { return invalid_packets_; }
   void set_invalid_packets(uint64_t value) { invalid_packets_ = value; _has_field_.set(10); }
 
-  bool has_filter_stats() const { return _has_field_[11]; }
-  const TraceStats_FilterStats& filter_stats() const { return *filter_stats_; }
-  TraceStats_FilterStats* mutable_filter_stats() { _has_field_.set(11); return filter_stats_.get(); }
-
  private:
   std::vector<TraceStats_BufferStats> buffer_stats_;
   uint32_t producers_connected_{};
@@ -119,66 +112,12 @@ class PERFETTO_EXPORT TraceStats : public ::protozero::CppMessageObj {
   uint64_t chunks_discarded_{};
   uint64_t patches_discarded_{};
   uint64_t invalid_packets_{};
-  ::protozero::CopyablePtr<TraceStats_FilterStats> filter_stats_;
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<12> _has_field_{};
-};
-
-
-class PERFETTO_EXPORT TraceStats_FilterStats : public ::protozero::CppMessageObj {
- public:
-  enum FieldNumbers {
-    kInputPacketsFieldNumber = 1,
-    kInputBytesFieldNumber = 2,
-    kOutputBytesFieldNumber = 3,
-    kErrorsFieldNumber = 4,
-  };
-
-  TraceStats_FilterStats();
-  ~TraceStats_FilterStats() override;
-  TraceStats_FilterStats(TraceStats_FilterStats&&) noexcept;
-  TraceStats_FilterStats& operator=(TraceStats_FilterStats&&);
-  TraceStats_FilterStats(const TraceStats_FilterStats&);
-  TraceStats_FilterStats& operator=(const TraceStats_FilterStats&);
-  bool operator==(const TraceStats_FilterStats&) const;
-  bool operator!=(const TraceStats_FilterStats& other) const { return !(*this == other); }
-
-  bool ParseFromArray(const void*, size_t) override;
-  std::string SerializeAsString() const override;
-  std::vector<uint8_t> SerializeAsArray() const override;
-  void Serialize(::protozero::Message*) const;
-
-  bool has_input_packets() const { return _has_field_[1]; }
-  uint64_t input_packets() const { return input_packets_; }
-  void set_input_packets(uint64_t value) { input_packets_ = value; _has_field_.set(1); }
-
-  bool has_input_bytes() const { return _has_field_[2]; }
-  uint64_t input_bytes() const { return input_bytes_; }
-  void set_input_bytes(uint64_t value) { input_bytes_ = value; _has_field_.set(2); }
-
-  bool has_output_bytes() const { return _has_field_[3]; }
-  uint64_t output_bytes() const { return output_bytes_; }
-  void set_output_bytes(uint64_t value) { output_bytes_ = value; _has_field_.set(3); }
-
-  bool has_errors() const { return _has_field_[4]; }
-  uint64_t errors() const { return errors_; }
-  void set_errors(uint64_t value) { errors_ = value; _has_field_.set(4); }
-
- private:
-  uint64_t input_packets_{};
-  uint64_t input_bytes_{};
-  uint64_t output_bytes_{};
-  uint64_t errors_{};
-
-  // Allows to preserve unknown protobuf fields for compatibility
-  // with future versions of .proto files.
-  std::string unknown_fields_;
-
-  std::bitset<5> _has_field_{};
+  std::bitset<11> _has_field_{};
 };
 
 

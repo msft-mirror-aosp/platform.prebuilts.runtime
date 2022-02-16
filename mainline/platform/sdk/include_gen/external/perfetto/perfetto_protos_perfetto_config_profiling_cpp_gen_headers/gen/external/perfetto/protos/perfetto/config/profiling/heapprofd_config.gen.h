@@ -40,7 +40,6 @@ class PERFETTO_EXPORT HeapprofdConfig : public ::protozero::CppMessageObj {
     kPidFieldNumber = 4,
     kTargetInstalledByFieldNumber = 26,
     kHeapsFieldNumber = 20,
-    kExcludeHeapsFieldNumber = 27,
     kStreamAllocationsFieldNumber = 23,
     kHeapSamplingIntervalsFieldNumber = 22,
     kAllHeapsFieldNumber = 21,
@@ -113,13 +112,6 @@ class PERFETTO_EXPORT HeapprofdConfig : public ::protozero::CppMessageObj {
   void clear_heaps() { heaps_.clear(); }
   void add_heaps(std::string value) { heaps_.emplace_back(value); }
   std::string* add_heaps() { heaps_.emplace_back(); return &heaps_.back(); }
-
-  const std::vector<std::string>& exclude_heaps() const { return exclude_heaps_; }
-  std::vector<std::string>* mutable_exclude_heaps() { return &exclude_heaps_; }
-  int exclude_heaps_size() const { return static_cast<int>(exclude_heaps_.size()); }
-  void clear_exclude_heaps() { exclude_heaps_.clear(); }
-  void add_exclude_heaps(std::string value) { exclude_heaps_.emplace_back(value); }
-  std::string* add_exclude_heaps() { exclude_heaps_.emplace_back(); return &exclude_heaps_.back(); }
 
   bool has_stream_allocations() const { return _has_field_[23]; }
   bool stream_allocations() const { return stream_allocations_; }
@@ -203,7 +195,6 @@ class PERFETTO_EXPORT HeapprofdConfig : public ::protozero::CppMessageObj {
   std::vector<uint64_t> pid_;
   std::vector<std::string> target_installed_by_;
   std::vector<std::string> heaps_;
-  std::vector<std::string> exclude_heaps_;
   bool stream_allocations_{};
   std::vector<uint64_t> heap_sampling_intervals_;
   bool all_heaps_{};
@@ -226,7 +217,7 @@ class PERFETTO_EXPORT HeapprofdConfig : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<28> _has_field_{};
+  std::bitset<27> _has_field_{};
 };
 
 

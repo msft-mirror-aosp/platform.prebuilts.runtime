@@ -17,9 +17,8 @@ namespace protos {
 namespace pbzero {
 
 class TraceStats_BufferStats;
-class TraceStats_FilterStats;
 
-class TraceStats_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/11, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class TraceStats_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   TraceStats_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceStats_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -44,8 +43,6 @@ class TraceStats_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=
   uint64_t patches_discarded() const { return at<9>().as_uint64(); }
   bool has_invalid_packets() const { return at<10>().valid(); }
   uint64_t invalid_packets() const { return at<10>().as_uint64(); }
-  bool has_filter_stats() const { return at<11>().valid(); }
-  ::protozero::ConstBytes filter_stats() const { return at<11>().as_bytes(); }
 };
 
 class TraceStats : public ::protozero::Message {
@@ -62,10 +59,8 @@ class TraceStats : public ::protozero::Message {
     kChunksDiscardedFieldNumber = 8,
     kPatchesDiscardedFieldNumber = 9,
     kInvalidPacketsFieldNumber = 10,
-    kFilterStatsFieldNumber = 11,
   };
   using BufferStats = ::perfetto::protos::pbzero::TraceStats_BufferStats;
-  using FilterStats = ::perfetto::protos::pbzero::TraceStats_FilterStats;
 
   using FieldMetadata_BufferStats =
     ::protozero::proto_utils::FieldMetadata<
@@ -306,153 +301,6 @@ class TraceStats : public ::protozero::Message {
   static constexpr FieldMetadata_InvalidPackets kInvalidPackets() { return {}; }
   void set_invalid_packets(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_InvalidPackets::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kUint64>
-        ::Append(*this, field_id, value);
-  }
-
-  using FieldMetadata_FilterStats =
-    ::protozero::proto_utils::FieldMetadata<
-      11,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kMessage,
-      TraceStats_FilterStats,
-      TraceStats>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_FilterStats kFilterStats() { return {}; }
-  template <typename T = TraceStats_FilterStats> T* set_filter_stats() {
-    return BeginNestedMessage<T>(11);
-  }
-
-};
-
-class TraceStats_FilterStats_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
- public:
-  TraceStats_FilterStats_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
-  explicit TraceStats_FilterStats_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
-  explicit TraceStats_FilterStats_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
-  bool has_input_packets() const { return at<1>().valid(); }
-  uint64_t input_packets() const { return at<1>().as_uint64(); }
-  bool has_input_bytes() const { return at<2>().valid(); }
-  uint64_t input_bytes() const { return at<2>().as_uint64(); }
-  bool has_output_bytes() const { return at<3>().valid(); }
-  uint64_t output_bytes() const { return at<3>().as_uint64(); }
-  bool has_errors() const { return at<4>().valid(); }
-  uint64_t errors() const { return at<4>().as_uint64(); }
-};
-
-class TraceStats_FilterStats : public ::protozero::Message {
- public:
-  using Decoder = TraceStats_FilterStats_Decoder;
-  enum : int32_t {
-    kInputPacketsFieldNumber = 1,
-    kInputBytesFieldNumber = 2,
-    kOutputBytesFieldNumber = 3,
-    kErrorsFieldNumber = 4,
-  };
-
-  using FieldMetadata_InputPackets =
-    ::protozero::proto_utils::FieldMetadata<
-      1,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kUint64,
-      uint64_t,
-      TraceStats_FilterStats>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_InputPackets kInputPackets() { return {}; }
-  void set_input_packets(uint64_t value) {
-    static constexpr uint32_t field_id = FieldMetadata_InputPackets::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kUint64>
-        ::Append(*this, field_id, value);
-  }
-
-  using FieldMetadata_InputBytes =
-    ::protozero::proto_utils::FieldMetadata<
-      2,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kUint64,
-      uint64_t,
-      TraceStats_FilterStats>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_InputBytes kInputBytes() { return {}; }
-  void set_input_bytes(uint64_t value) {
-    static constexpr uint32_t field_id = FieldMetadata_InputBytes::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kUint64>
-        ::Append(*this, field_id, value);
-  }
-
-  using FieldMetadata_OutputBytes =
-    ::protozero::proto_utils::FieldMetadata<
-      3,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kUint64,
-      uint64_t,
-      TraceStats_FilterStats>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_OutputBytes kOutputBytes() { return {}; }
-  void set_output_bytes(uint64_t value) {
-    static constexpr uint32_t field_id = FieldMetadata_OutputBytes::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kUint64>
-        ::Append(*this, field_id, value);
-  }
-
-  using FieldMetadata_Errors =
-    ::protozero::proto_utils::FieldMetadata<
-      4,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kUint64,
-      uint64_t,
-      TraceStats_FilterStats>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_Errors kErrors() { return {}; }
-  void set_errors(uint64_t value) {
-    static constexpr uint32_t field_id = FieldMetadata_Errors::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<

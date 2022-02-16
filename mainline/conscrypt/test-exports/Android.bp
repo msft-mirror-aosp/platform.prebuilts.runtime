@@ -1,8 +1,6 @@
 // This is auto-generated. DO NOT EDIT.
 
 package {
-    // A default list here prevents the license LSC from adding its own list which would
-    // be unnecessary as every module in the sdk already has its own licenses property.
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
@@ -15,7 +13,6 @@ java_import {
         "//external/robolectric-shadows",
     ],
     apex_available: ["//apex_available:platform"],
-    licenses: ["conscrypt-module-test-exports_external_conscrypt_license@current"],
     jars: ["java/conscrypt-for-host.jar"],
 }
 
@@ -28,7 +25,6 @@ java_import {
         "//external/robolectric-shadows",
     ],
     apex_available: ["//apex_available:platform"],
-    licenses: ["conscrypt-module-test-exports_external_conscrypt_license"],
     jars: ["java/conscrypt-for-host.jar"],
 }
 
@@ -41,7 +37,6 @@ java_test_import {
         "//external/conscrypt/apex/tests",
     ],
     apex_available: ["//apex_available:platform"],
-    licenses: ["conscrypt-module-test-exports_external_conscrypt_license@current"],
     jars: ["java/conscrypt-tests.jar"],
     test_config: "java/conscrypt-tests-AndroidTest.xml",
 }
@@ -55,40 +50,8 @@ java_test_import {
         "//external/conscrypt/apex/tests",
     ],
     apex_available: ["//apex_available:platform"],
-    licenses: ["conscrypt-module-test-exports_external_conscrypt_license"],
     jars: ["java/conscrypt-tests.jar"],
     test_config: "java/conscrypt-tests-AndroidTest.xml",
-}
-
-license {
-    name: "conscrypt-module-test-exports_external_conscrypt_license@current",
-    sdk_member_name: "external_conscrypt_license",
-    visibility: ["//visibility:private"],
-    license_kinds: [
-        "SPDX-license-identifier-Apache-2.0",
-        "legacy_unencumbered",
-    ],
-    license_text: [
-        "licenses/external/conscrypt/LICENSE",
-        "licenses/external/conscrypt/NOTICE",
-        "licenses/external/conscrypt/licenses/LICENSE.harmony.txt",
-        "licenses/external/conscrypt/licenses/LICENSE.netty.txt",
-    ],
-}
-
-license {
-    name: "conscrypt-module-test-exports_external_conscrypt_license",
-    visibility: ["//visibility:private"],
-    license_kinds: [
-        "SPDX-license-identifier-Apache-2.0",
-        "legacy_unencumbered",
-    ],
-    license_text: [
-        "licenses/external/conscrypt/LICENSE",
-        "licenses/external/conscrypt/NOTICE",
-        "licenses/external/conscrypt/licenses/LICENSE.harmony.txt",
-        "licenses/external/conscrypt/licenses/LICENSE.netty.txt",
-    ],
 }
 
 cc_prebuilt_library_shared {
@@ -99,7 +62,6 @@ cc_prebuilt_library_shared {
         "com.android.conscrypt",
         "test_com.android.conscrypt",
     ],
-    licenses: ["conscrypt-module-test-exports_external_conscrypt_license@current"],
     host_supported: true,
     installable: false,
     shared_libs: [
@@ -155,7 +117,6 @@ cc_prebuilt_library_shared {
         "com.android.conscrypt",
         "test_com.android.conscrypt",
     ],
-    licenses: ["conscrypt-module-test-exports_external_conscrypt_license"],
     host_supported: true,
     shared_libs: [
         "libcrypto",
