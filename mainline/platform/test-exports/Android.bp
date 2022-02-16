@@ -1,43 +1,7 @@
 // This is auto-generated. DO NOT EDIT.
 
 package {
-    // A default list here prevents the license LSC from adding its own list which would
-    // be unnecessary as every module in the sdk already has its own licenses property.
     default_applicable_licenses: ["Android-Apache-2.0"],
-}
-
-license {
-    name: "platform-mainline-test-exports_Android-Apache-2.0@current",
-    sdk_member_name: "Android-Apache-2.0",
-    visibility: ["//visibility:private"],
-    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
-    license_text: ["licenses/build/soong/licenses/LICENSE"],
-}
-
-license {
-    name: "platform-mainline-test-exports_Android-Apache-2.0",
-    visibility: ["//visibility:private"],
-    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
-    license_text: ["licenses/build/soong/licenses/LICENSE"],
-}
-
-license {
-    name: "platform-mainline-test-exports_system_core_debuggerd_license@current",
-    sdk_member_name: "system_core_debuggerd_license",
-    visibility: ["//visibility:private"],
-    license_kinds: [
-        "SPDX-license-identifier-Apache-2.0",
-        "SPDX-license-identifier-BSD",
-    ],
-}
-
-license {
-    name: "platform-mainline-test-exports_system_core_debuggerd_license",
-    visibility: ["//visibility:private"],
-    license_kinds: [
-        "SPDX-license-identifier-Apache-2.0",
-        "SPDX-license-identifier-BSD",
-    ],
 }
 
 cc_prebuilt_library_shared {
@@ -45,7 +9,6 @@ cc_prebuilt_library_shared {
     sdk_member_name: "libtombstoned_client",
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
-    licenses: ["platform-mainline-test-exports_system_core_debuggerd_license@current"],
     installable: false,
     compile_multilib: "both",
     shared_libs: [
@@ -77,7 +40,6 @@ cc_prebuilt_library_shared {
     prefer: false,
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
-    licenses: ["platform-mainline-test-exports_system_core_debuggerd_license"],
     compile_multilib: "both",
     shared_libs: [
         "libbase",
