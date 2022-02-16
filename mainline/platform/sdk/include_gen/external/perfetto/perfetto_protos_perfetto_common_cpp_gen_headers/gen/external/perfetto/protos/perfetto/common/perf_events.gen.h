@@ -16,7 +16,6 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 class PerfEvents;
-class PerfEvents_RawEvent;
 class PerfEvents_Tracepoint;
 class PerfEvents_Timebase;
 enum PerfEvents_Counter : int;
@@ -43,7 +42,6 @@ class PERFETTO_EXPORT PerfEvents : public ::protozero::CppMessageObj {
  public:
   using Timebase = PerfEvents_Timebase;
   using Tracepoint = PerfEvents_Tracepoint;
-  using RawEvent = PerfEvents_RawEvent;
   using Counter = PerfEvents_Counter;
   static constexpr auto UNKNOWN_COUNTER = PerfEvents_Counter_UNKNOWN_COUNTER;
   static constexpr auto SW_CPU_CLOCK = PerfEvents_Counter_SW_CPU_CLOCK;
@@ -76,59 +74,6 @@ class PERFETTO_EXPORT PerfEvents : public ::protozero::CppMessageObj {
   std::string unknown_fields_;
 
   std::bitset<2> _has_field_{};
-};
-
-
-class PERFETTO_EXPORT PerfEvents_RawEvent : public ::protozero::CppMessageObj {
- public:
-  enum FieldNumbers {
-    kTypeFieldNumber = 1,
-    kConfigFieldNumber = 2,
-    kConfig1FieldNumber = 3,
-    kConfig2FieldNumber = 4,
-  };
-
-  PerfEvents_RawEvent();
-  ~PerfEvents_RawEvent() override;
-  PerfEvents_RawEvent(PerfEvents_RawEvent&&) noexcept;
-  PerfEvents_RawEvent& operator=(PerfEvents_RawEvent&&);
-  PerfEvents_RawEvent(const PerfEvents_RawEvent&);
-  PerfEvents_RawEvent& operator=(const PerfEvents_RawEvent&);
-  bool operator==(const PerfEvents_RawEvent&) const;
-  bool operator!=(const PerfEvents_RawEvent& other) const { return !(*this == other); }
-
-  bool ParseFromArray(const void*, size_t) override;
-  std::string SerializeAsString() const override;
-  std::vector<uint8_t> SerializeAsArray() const override;
-  void Serialize(::protozero::Message*) const;
-
-  bool has_type() const { return _has_field_[1]; }
-  uint32_t type() const { return type_; }
-  void set_type(uint32_t value) { type_ = value; _has_field_.set(1); }
-
-  bool has_config() const { return _has_field_[2]; }
-  uint64_t config() const { return config_; }
-  void set_config(uint64_t value) { config_ = value; _has_field_.set(2); }
-
-  bool has_config1() const { return _has_field_[3]; }
-  uint64_t config1() const { return config1_; }
-  void set_config1(uint64_t value) { config1_ = value; _has_field_.set(3); }
-
-  bool has_config2() const { return _has_field_[4]; }
-  uint64_t config2() const { return config2_; }
-  void set_config2(uint64_t value) { config2_ = value; _has_field_.set(4); }
-
- private:
-  uint32_t type_{};
-  uint64_t config_{};
-  uint64_t config1_{};
-  uint64_t config2_{};
-
-  // Allows to preserve unknown protobuf fields for compatibility
-  // with future versions of .proto files.
-  std::string unknown_fields_;
-
-  std::bitset<5> _has_field_{};
 };
 
 
@@ -180,8 +125,6 @@ class PERFETTO_EXPORT PerfEvents_Timebase : public ::protozero::CppMessageObj {
     kPeriodFieldNumber = 1,
     kCounterFieldNumber = 4,
     kTracepointFieldNumber = 3,
-    kRawEventFieldNumber = 5,
-    kNameFieldNumber = 10,
   };
 
   PerfEvents_Timebase();
@@ -214,27 +157,17 @@ class PERFETTO_EXPORT PerfEvents_Timebase : public ::protozero::CppMessageObj {
   const PerfEvents_Tracepoint& tracepoint() const { return *tracepoint_; }
   PerfEvents_Tracepoint* mutable_tracepoint() { _has_field_.set(3); return tracepoint_.get(); }
 
-  bool has_raw_event() const { return _has_field_[5]; }
-  const PerfEvents_RawEvent& raw_event() const { return *raw_event_; }
-  PerfEvents_RawEvent* mutable_raw_event() { _has_field_.set(5); return raw_event_.get(); }
-
-  bool has_name() const { return _has_field_[10]; }
-  const std::string& name() const { return name_; }
-  void set_name(const std::string& value) { name_ = value; _has_field_.set(10); }
-
  private:
   uint64_t frequency_{};
   uint64_t period_{};
   PerfEvents_Counter counter_{};
   ::protozero::CopyablePtr<PerfEvents_Tracepoint> tracepoint_;
-  ::protozero::CopyablePtr<PerfEvents_RawEvent> raw_event_;
-  std::string name_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<11> _has_field_{};
+  std::bitset<5> _has_field_{};
 };
 
 }  // namespace perfetto
