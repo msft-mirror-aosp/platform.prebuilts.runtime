@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// ? 2017 and later: Unicode, Inc. and others.
+// © 2017 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.number;
@@ -250,8 +250,8 @@ public T integerWidth(android.icu.number.IntegerWidth style) { throw new Runtime
  * <ul>
  * <li><em>en_US</em> symbols: "12,345.67"
  * <li><em>fr_FR</em> symbols: "12&nbsp;345,67"
- * <li><em>de_CH</em> symbols: "12?345.67"
- * <li><em>my_MY</em> symbols: "??,???.??"
+ * <li><em>de_CH</em> symbols: "12’345.67"
+ * <li><em>my_MY</em> symbols: "၁၂,၃၄၅.၆၇"
  * </ul>
  *
  * <p>
@@ -290,8 +290,8 @@ public T symbols(android.icu.text.DecimalFormatSymbols symbols) { throw new Runt
  *
  * <ul>
  * <li>Latin numbering system: "12,345"
- * <li>Myanmar numbering system: "??,???"
- * <li>Math Sans Bold numbering system: "??,???"
+ * <li>Myanmar numbering system: "၁၂,၃၄၅"
+ * <li>Math Sans Bold numbering system: "𝟭𝟮,𝟯𝟰𝟱"
  * </ul>
  *
  * <p>

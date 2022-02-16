@@ -40,7 +40,6 @@ class PERFETTO_EXPORT TracingServiceState : public ::protozero::CppMessageObj {
     kDataSourcesFieldNumber = 2,
     kNumSessionsFieldNumber = 3,
     kNumSessionsStartedFieldNumber = 4,
-    kTracingServiceVersionFieldNumber = 5,
   };
 
   TracingServiceState();
@@ -77,22 +76,17 @@ class PERFETTO_EXPORT TracingServiceState : public ::protozero::CppMessageObj {
   int32_t num_sessions_started() const { return num_sessions_started_; }
   void set_num_sessions_started(int32_t value) { num_sessions_started_ = value; _has_field_.set(4); }
 
-  bool has_tracing_service_version() const { return _has_field_[5]; }
-  const std::string& tracing_service_version() const { return tracing_service_version_; }
-  void set_tracing_service_version(const std::string& value) { tracing_service_version_ = value; _has_field_.set(5); }
-
  private:
   std::vector<TracingServiceState_Producer> producers_;
   std::vector<TracingServiceState_DataSource> data_sources_;
   int32_t num_sessions_{};
   int32_t num_sessions_started_{};
-  std::string tracing_service_version_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<6> _has_field_{};
+  std::bitset<5> _has_field_{};
 };
 
 
@@ -143,7 +137,6 @@ class PERFETTO_EXPORT TracingServiceState_Producer : public ::protozero::CppMess
     kIdFieldNumber = 1,
     kNameFieldNumber = 2,
     kUidFieldNumber = 3,
-    kSdkVersionFieldNumber = 4,
   };
 
   TracingServiceState_Producer();
@@ -172,21 +165,16 @@ class PERFETTO_EXPORT TracingServiceState_Producer : public ::protozero::CppMess
   int32_t uid() const { return uid_; }
   void set_uid(int32_t value) { uid_ = value; _has_field_.set(3); }
 
-  bool has_sdk_version() const { return _has_field_[4]; }
-  const std::string& sdk_version() const { return sdk_version_; }
-  void set_sdk_version(const std::string& value) { sdk_version_ = value; _has_field_.set(4); }
-
  private:
   int32_t id_{};
   std::string name_{};
   int32_t uid_{};
-  std::string sdk_version_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<5> _has_field_{};
+  std::bitset<4> _has_field_{};
 };
 
 }  // namespace perfetto

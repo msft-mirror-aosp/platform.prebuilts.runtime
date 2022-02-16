@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// ? 2016 and later: Unicode, Inc. and others.
+// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
@@ -156,7 +156,7 @@ import java.text.AttributedCharacterIterator;
  *     <tr>
  *         <td style="text-align: center" rowspan="3">U</td>
  *         <td style="text-align: center">1..3</td>
- *         <td>??</td>
+ *         <td>甲子</td>
  *         <td rowspan="3">Cyclic year name. Calendars such as the Chinese lunar calendar (and related calendars)
  *         and the Hindu calendars use 60-year cycles of year names. Use one through three letters for the abbreviated
  *         name, four for the full (wide) name, or five for the narrow name (currently the data only provides abbreviated names,
@@ -166,11 +166,11 @@ import java.text.AttributedCharacterIterator;
  *     </tr>
  *     <tr>
  *         <td style="text-align: center">4</td>
- *         <td>(currently also ??)</td>
+ *         <td>(currently also 甲子)</td>
  *     </tr>
  *     <tr>
  *         <td style="text-align: center">5</td>
- *         <td>(currently also ??)</td>
+ *         <td>(currently also 甲子)</td>
  *     </tr>
  *     <tr>
  *         <th rowspan="6">quarter</th>
