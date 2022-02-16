@@ -264,7 +264,6 @@ class PERFETTO_EXPORT BeginFrameArgs : public ::protozero::CppMessageObj {
     kAnimateOnlyFieldNumber = 8,
     kSourceLocationIidFieldNumber = 9,
     kSourceLocationFieldNumber = 10,
-    kFramesThrottledSinceLastFieldNumber = 12,
   };
 
   BeginFrameArgs();
@@ -321,10 +320,6 @@ class PERFETTO_EXPORT BeginFrameArgs : public ::protozero::CppMessageObj {
   const SourceLocation& source_location() const { return *source_location_; }
   SourceLocation* mutable_source_location() { _has_field_.set(10); return source_location_.get(); }
 
-  bool has_frames_throttled_since_last() const { return _has_field_[12]; }
-  int64_t frames_throttled_since_last() const { return frames_throttled_since_last_; }
-  void set_frames_throttled_since_last(int64_t value) { frames_throttled_since_last_ = value; _has_field_.set(12); }
-
  private:
   BeginFrameArgs_BeginFrameArgsType type_{};
   uint64_t source_id_{};
@@ -336,13 +331,12 @@ class PERFETTO_EXPORT BeginFrameArgs : public ::protozero::CppMessageObj {
   bool animate_only_{};
   uint64_t source_location_iid_{};
   ::protozero::CopyablePtr<SourceLocation> source_location_;
-  int64_t frames_throttled_since_last_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<13> _has_field_{};
+  std::bitset<11> _has_field_{};
 };
 
 
@@ -622,6 +616,7 @@ class PERFETTO_EXPORT ChromeCompositorStateMachine_MinorState : public ::protoze
     kScrollHandlerStateFieldNumber = 32,
     kCriticalBeginMainFrameToActivateIsFastFieldNumber = 33,
     kMainThreadMissedLastDeadlineFieldNumber = 34,
+    kSkipNextBeginMainFrameToReduceLatencyFieldNumber = 35,
     kVideoNeedsBeginFramesFieldNumber = 36,
     kDeferBeginMainFrameFieldNumber = 37,
     kLastCommitHadNoUpdatesFieldNumber = 38,
@@ -785,6 +780,10 @@ class PERFETTO_EXPORT ChromeCompositorStateMachine_MinorState : public ::protoze
   bool main_thread_missed_last_deadline() const { return main_thread_missed_last_deadline_; }
   void set_main_thread_missed_last_deadline(bool value) { main_thread_missed_last_deadline_ = value; _has_field_.set(34); }
 
+  bool has_skip_next_begin_main_frame_to_reduce_latency() const { return _has_field_[35]; }
+  bool skip_next_begin_main_frame_to_reduce_latency() const { return skip_next_begin_main_frame_to_reduce_latency_; }
+  void set_skip_next_begin_main_frame_to_reduce_latency(bool value) { skip_next_begin_main_frame_to_reduce_latency_ = value; _has_field_.set(35); }
+
   bool has_video_needs_begin_frames() const { return _has_field_[36]; }
   bool video_needs_begin_frames() const { return video_needs_begin_frames_; }
   void set_video_needs_begin_frames(bool value) { video_needs_begin_frames_ = value; _has_field_.set(36); }
@@ -864,6 +863,7 @@ class PERFETTO_EXPORT ChromeCompositorStateMachine_MinorState : public ::protoze
   ChromeCompositorStateMachine_MinorState_ScrollHandlerState scroll_handler_state_{};
   bool critical_begin_main_frame_to_activate_is_fast_{};
   bool main_thread_missed_last_deadline_{};
+  bool skip_next_begin_main_frame_to_reduce_latency_{};
   bool video_needs_begin_frames_{};
   bool defer_begin_main_frame_{};
   bool last_commit_had_no_updates_{};
@@ -991,6 +991,7 @@ class PERFETTO_EXPORT ChromeCompositorSchedulerState : public ::protozero::CppMe
     kBeginImplFrameDeadlineTaskFieldNumber = 3,
     kPendingBeginFrameTaskFieldNumber = 4,
     kSkippedLastFrameMissedExceededDeadlineFieldNumber = 5,
+    kSkippedLastFrameToReduceLatencyFieldNumber = 6,
     kInsideActionFieldNumber = 7,
     kDeadlineModeFieldNumber = 8,
     kDeadlineUsFieldNumber = 9,
@@ -1037,6 +1038,10 @@ class PERFETTO_EXPORT ChromeCompositorSchedulerState : public ::protozero::CppMe
   bool has_skipped_last_frame_missed_exceeded_deadline() const { return _has_field_[5]; }
   bool skipped_last_frame_missed_exceeded_deadline() const { return skipped_last_frame_missed_exceeded_deadline_; }
   void set_skipped_last_frame_missed_exceeded_deadline(bool value) { skipped_last_frame_missed_exceeded_deadline_ = value; _has_field_.set(5); }
+
+  bool has_skipped_last_frame_to_reduce_latency() const { return _has_field_[6]; }
+  bool skipped_last_frame_to_reduce_latency() const { return skipped_last_frame_to_reduce_latency_; }
+  void set_skipped_last_frame_to_reduce_latency(bool value) { skipped_last_frame_to_reduce_latency_ = value; _has_field_.set(6); }
 
   bool has_inside_action() const { return _has_field_[7]; }
   ChromeCompositorSchedulerAction inside_action() const { return inside_action_; }
@@ -1088,6 +1093,7 @@ class PERFETTO_EXPORT ChromeCompositorSchedulerState : public ::protozero::CppMe
   bool begin_impl_frame_deadline_task_{};
   bool pending_begin_frame_task_{};
   bool skipped_last_frame_missed_exceeded_deadline_{};
+  bool skipped_last_frame_to_reduce_latency_{};
   ChromeCompositorSchedulerAction inside_action_{};
   ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode deadline_mode_{};
   int64_t deadline_us_{};

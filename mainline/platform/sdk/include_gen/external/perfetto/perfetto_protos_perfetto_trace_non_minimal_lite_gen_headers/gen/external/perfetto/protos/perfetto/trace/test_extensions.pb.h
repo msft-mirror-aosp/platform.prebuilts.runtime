@@ -31,7 +31,6 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include "protos/perfetto/trace/track_event/track_event.pb.h"
-#include "protos/perfetto/trace/track_event/debug_annotation.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_protos_2fperfetto_2ftrace_2ftest_5fextensions_2eproto
@@ -304,20 +303,8 @@ class TestExtensionChild :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDebugAnnotationsFieldNumber = 99,
     kChildFieldForTestingFieldNumber = 1,
   };
-  // repeated .perfetto.protos.DebugAnnotation debug_annotations = 99;
-  int debug_annotations_size() const;
-  void clear_debug_annotations();
-  ::perfetto::protos::DebugAnnotation* mutable_debug_annotations(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >*
-      mutable_debug_annotations();
-  const ::perfetto::protos::DebugAnnotation& debug_annotations(int index) const;
-  ::perfetto::protos::DebugAnnotation* add_debug_annotations();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >&
-      debug_annotations() const;
-
   // optional string child_field_for_testing = 1;
   bool has_child_field_for_testing() const;
   void clear_child_field_for_testing();
@@ -337,7 +324,6 @@ class TestExtensionChild :
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation > debug_annotations_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr child_field_for_testing_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftest_5fextensions_2eproto;
 };
@@ -412,33 +398,6 @@ inline void TestExtensionChild::set_allocated_child_field_for_testing(std::strin
   }
   child_field_for_testing_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), child_field_for_testing);
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TestExtensionChild.child_field_for_testing)
-}
-
-// repeated .perfetto.protos.DebugAnnotation debug_annotations = 99;
-inline int TestExtensionChild::debug_annotations_size() const {
-  return debug_annotations_.size();
-}
-inline ::perfetto::protos::DebugAnnotation* TestExtensionChild::mutable_debug_annotations(int index) {
-  // @@protoc_insertion_point(field_mutable:perfetto.protos.TestExtensionChild.debug_annotations)
-  return debug_annotations_.Mutable(index);
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >*
-TestExtensionChild::mutable_debug_annotations() {
-  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.TestExtensionChild.debug_annotations)
-  return &debug_annotations_;
-}
-inline const ::perfetto::protos::DebugAnnotation& TestExtensionChild::debug_annotations(int index) const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.TestExtensionChild.debug_annotations)
-  return debug_annotations_.Get(index);
-}
-inline ::perfetto::protos::DebugAnnotation* TestExtensionChild::add_debug_annotations() {
-  // @@protoc_insertion_point(field_add:perfetto.protos.TestExtensionChild.debug_annotations)
-  return debug_annotations_.Add();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >&
-TestExtensionChild::debug_annotations() const {
-  // @@protoc_insertion_point(field_list:perfetto.protos.TestExtensionChild.debug_annotations)
-  return debug_annotations_;
 }
 
 #ifdef __GNUC__

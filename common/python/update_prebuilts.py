@@ -170,7 +170,7 @@ def unzip(zip_file, unzip_path):
     check_call(['unzip', '-DD', zip_file, '-d', unzip_path])
 
 
-def parse_args(parser_modifier=None):
+def get_args():
     """Parses and returns command line arguments."""
     parser = argparse.ArgumentParser(
         epilog='Either --build or --local-dist is required.')
@@ -189,9 +189,6 @@ def parse_args(parser_modifier=None):
         '-v', '--verbose', action='count', default=0,
         help='Increase output verbosity.')
 
-    if parser_modifier:
-        parser_modifier(parser)
-
     args = parser.parse_args()
     if ((not args.build and not args.local_dist) or
         (args.build and args.local_dist)):
@@ -199,9 +196,10 @@ def parse_args(parser_modifier=None):
     return args
 
 
-def main(args, work_dir, prebuilts, install_list, extracted_list, commit_message_note=None):
+def main(work_dir, prebuilts, install_list, extracted_list, commit_message_note=None):
     """Program entry point."""
 
+    args = get_args()
     verbose_map = (logging.WARNING, logging.INFO, logging.DEBUG)
     verbosity = args.verbose
     if verbosity > 2:
