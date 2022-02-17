@@ -30,6 +30,7 @@
 #include <google/protobuf/message_lite.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_util.h>
 #include "protos/perfetto/trace/ftrace/ftrace_event.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -69,6 +70,27 @@ PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
 namespace protos {
 
+enum FtraceClock : int {
+  FTRACE_CLOCK_UNSPECIFIED = 0,
+  FTRACE_CLOCK_UNKNOWN = 1,
+  FTRACE_CLOCK_GLOBAL = 2,
+  FTRACE_CLOCK_LOCAL = 3
+};
+bool FtraceClock_IsValid(int value);
+constexpr FtraceClock FtraceClock_MIN = FTRACE_CLOCK_UNSPECIFIED;
+constexpr FtraceClock FtraceClock_MAX = FTRACE_CLOCK_LOCAL;
+constexpr int FtraceClock_ARRAYSIZE = FtraceClock_MAX + 1;
+
+const std::string& FtraceClock_Name(FtraceClock value);
+template<typename T>
+inline const std::string& FtraceClock_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, FtraceClock>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function FtraceClock_Name.");
+  return FtraceClock_Name(static_cast<FtraceClock>(enum_t_value));
+}
+bool FtraceClock_Parse(
+    const std::string& name, FtraceClock* value);
 // ===================================================================
 
 class FtraceEventBundle_CompactSched :
@@ -454,6 +476,7 @@ class FtraceEventBundle :
     kCompactSchedFieldNumber = 4,
     kCpuFieldNumber = 1,
     kLostEventsFieldNumber = 3,
+    kFtraceClockFieldNumber = 5,
   };
   // repeated .perfetto.protos.FtraceEvent event = 2;
   int event_size() const;
@@ -486,6 +509,12 @@ class FtraceEventBundle :
   bool lost_events() const;
   void set_lost_events(bool value);
 
+  // optional .perfetto.protos.FtraceClock ftrace_clock = 5;
+  bool has_ftrace_clock() const;
+  void clear_ftrace_clock();
+  ::perfetto::protos::FtraceClock ftrace_clock() const;
+  void set_ftrace_clock(::perfetto::protos::FtraceClock value);
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.FtraceEventBundle)
  private:
   class _Internal;
@@ -497,6 +526,7 @@ class FtraceEventBundle :
   ::perfetto::protos::FtraceEventBundle_CompactSched* compact_sched_;
   ::PROTOBUF_NAMESPACE_ID::uint32 cpu_;
   bool lost_events_;
+  int ftrace_clock_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fftrace_5fevent_5fbundle_2eproto;
 };
 // ===================================================================
@@ -991,6 +1021,25 @@ inline void FtraceEventBundle::set_allocated_compact_sched(::perfetto::protos::F
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.FtraceEventBundle.compact_sched)
 }
 
+// optional .perfetto.protos.FtraceClock ftrace_clock = 5;
+inline bool FtraceEventBundle::has_ftrace_clock() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void FtraceEventBundle::clear_ftrace_clock() {
+  ftrace_clock_ = 0;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline ::perfetto::protos::FtraceClock FtraceEventBundle::ftrace_clock() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEventBundle.ftrace_clock)
+  return static_cast< ::perfetto::protos::FtraceClock >(ftrace_clock_);
+}
+inline void FtraceEventBundle::set_ftrace_clock(::perfetto::protos::FtraceClock value) {
+  assert(::perfetto::protos::FtraceClock_IsValid(value));
+  _has_bits_[0] |= 0x00000008u;
+  ftrace_clock_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.FtraceEventBundle.ftrace_clock)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
@@ -1001,6 +1050,12 @@ inline void FtraceEventBundle::set_allocated_compact_sched(::perfetto::protos::F
 
 }  // namespace protos
 }  // namespace perfetto
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::perfetto::protos::FtraceClock> : ::std::true_type {};
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 
