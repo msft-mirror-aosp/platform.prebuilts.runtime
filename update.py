@@ -32,4 +32,5 @@ adb_extracted_list = [
 ]
 
 if __name__ == '__main__':
-    update.main(THIS_DIR, 'adb', adb_install_list, adb_extracted_list)
+    args = update.parse_args()
+    update.main(args, THIS_DIR, 'adb', adb_install_list, adb_extracted_list)
