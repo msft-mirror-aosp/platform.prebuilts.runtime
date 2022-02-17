@@ -174,6 +174,7 @@ class DataSourceDescriptor :
     kNameFieldNumber = 1,
     kGpuCounterDescriptorFieldNumber = 5,
     kTrackEventDescriptorFieldNumber = 6,
+    kIdFieldNumber = 7,
     kWillNotifyOnStopFieldNumber = 2,
     kWillNotifyOnStartFieldNumber = 3,
     kHandlesIncrementalStateClearFieldNumber = 4,
@@ -206,6 +207,12 @@ class DataSourceDescriptor :
   ::perfetto::protos::TrackEventDescriptor* mutable_track_event_descriptor();
   void set_allocated_track_event_descriptor(::perfetto::protos::TrackEventDescriptor* track_event_descriptor);
 
+  // optional uint64 id = 7;
+  bool has_id() const;
+  void clear_id();
+  ::PROTOBUF_NAMESPACE_ID::uint64 id() const;
+  void set_id(::PROTOBUF_NAMESPACE_ID::uint64 value);
+
   // optional bool will_notify_on_stop = 2;
   bool has_will_notify_on_stop() const;
   void clear_will_notify_on_stop();
@@ -234,6 +241,7 @@ class DataSourceDescriptor :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::perfetto::protos::GpuCounterDescriptor* gpu_counter_descriptor_;
   ::perfetto::protos::TrackEventDescriptor* track_event_descriptor_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 id_;
   bool will_notify_on_stop_;
   bool will_notify_on_start_;
   bool handles_incremental_state_clear_;
@@ -308,56 +316,74 @@ inline void DataSourceDescriptor::set_allocated_name(std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.DataSourceDescriptor.name)
 }
 
+// optional uint64 id = 7;
+inline bool DataSourceDescriptor::has_id() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void DataSourceDescriptor::clear_id() {
+  id_ = PROTOBUF_ULONGLONG(0);
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 DataSourceDescriptor::id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DataSourceDescriptor.id)
+  return id_;
+}
+inline void DataSourceDescriptor::set_id(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _has_bits_[0] |= 0x00000008u;
+  id_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.DataSourceDescriptor.id)
+}
+
 // optional bool will_notify_on_stop = 2;
 inline bool DataSourceDescriptor::has_will_notify_on_stop() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void DataSourceDescriptor::clear_will_notify_on_stop() {
   will_notify_on_stop_ = false;
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline bool DataSourceDescriptor::will_notify_on_stop() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.DataSourceDescriptor.will_notify_on_stop)
   return will_notify_on_stop_;
 }
 inline void DataSourceDescriptor::set_will_notify_on_stop(bool value) {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
   will_notify_on_stop_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.DataSourceDescriptor.will_notify_on_stop)
 }
 
 // optional bool will_notify_on_start = 3;
 inline bool DataSourceDescriptor::has_will_notify_on_start() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void DataSourceDescriptor::clear_will_notify_on_start() {
   will_notify_on_start_ = false;
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline bool DataSourceDescriptor::will_notify_on_start() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.DataSourceDescriptor.will_notify_on_start)
   return will_notify_on_start_;
 }
 inline void DataSourceDescriptor::set_will_notify_on_start(bool value) {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
   will_notify_on_start_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.DataSourceDescriptor.will_notify_on_start)
 }
 
 // optional bool handles_incremental_state_clear = 4;
 inline bool DataSourceDescriptor::has_handles_incremental_state_clear() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void DataSourceDescriptor::clear_handles_incremental_state_clear() {
   handles_incremental_state_clear_ = false;
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline bool DataSourceDescriptor::handles_incremental_state_clear() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.DataSourceDescriptor.handles_incremental_state_clear)
   return handles_incremental_state_clear_;
 }
 inline void DataSourceDescriptor::set_handles_incremental_state_clear(bool value) {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
   handles_incremental_state_clear_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.DataSourceDescriptor.handles_incremental_state_clear)
 }
