@@ -19,6 +19,7 @@ class PerfEventConfig;
 class PerfEventConfig_CallstackSampling;
 class PerfEventConfig_Scope;
 class PerfEvents_Timebase;
+class PerfEvents_RawEvent;
 class PerfEvents_Tracepoint;
 enum PerfEvents_Counter : int;
 }  // namespace perfetto
@@ -46,12 +47,12 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
     kMaxDaemonMemoryKbFieldNumber = 13,
     kRemoteDescriptorTimeoutMsFieldNumber = 9,
     kUnwindStateClearPeriodMsFieldNumber = 10,
+    kTargetInstalledByFieldNumber = 18,
     kAllCpusFieldNumber = 1,
     kSamplingFrequencyFieldNumber = 2,
     kKernelFramesFieldNumber = 12,
     kTargetPidFieldNumber = 4,
     kTargetCmdlineFieldNumber = 5,
-    kTargetInstalledByFieldNumber = 18,
     kExcludePidFieldNumber = 6,
     kExcludeCmdlineFieldNumber = 7,
     kAdditionalCmdlineCountFieldNumber = 11,
@@ -103,6 +104,13 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   uint32_t unwind_state_clear_period_ms() const { return unwind_state_clear_period_ms_; }
   void set_unwind_state_clear_period_ms(uint32_t value) { unwind_state_clear_period_ms_ = value; _has_field_.set(10); }
 
+  const std::vector<std::string>& target_installed_by() const { return target_installed_by_; }
+  std::vector<std::string>* mutable_target_installed_by() { return &target_installed_by_; }
+  int target_installed_by_size() const { return static_cast<int>(target_installed_by_.size()); }
+  void clear_target_installed_by() { target_installed_by_.clear(); }
+  void add_target_installed_by(std::string value) { target_installed_by_.emplace_back(value); }
+  std::string* add_target_installed_by() { target_installed_by_.emplace_back(); return &target_installed_by_.back(); }
+
   bool has_all_cpus() const { return _has_field_[1]; }
   bool all_cpus() const { return all_cpus_; }
   void set_all_cpus(bool value) { all_cpus_ = value; _has_field_.set(1); }
@@ -128,13 +136,6 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   void clear_target_cmdline() { target_cmdline_.clear(); }
   void add_target_cmdline(std::string value) { target_cmdline_.emplace_back(value); }
   std::string* add_target_cmdline() { target_cmdline_.emplace_back(); return &target_cmdline_.back(); }
-
-  const std::vector<std::string>& target_installed_by() const { return target_installed_by_; }
-  std::vector<std::string>* mutable_target_installed_by() { return &target_installed_by_; }
-  int target_installed_by_size() const { return static_cast<int>(target_installed_by_.size()); }
-  void clear_target_installed_by() { target_installed_by_.clear(); }
-  void add_target_installed_by(std::string value) { target_installed_by_.emplace_back(value); }
-  std::string* add_target_installed_by() { target_installed_by_.emplace_back(); return &target_installed_by_.back(); }
 
   const std::vector<int32_t>& exclude_pid() const { return exclude_pid_; }
   std::vector<int32_t>* mutable_exclude_pid() { return &exclude_pid_; }
@@ -163,12 +164,12 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
   uint32_t max_daemon_memory_kb_{};
   uint32_t remote_descriptor_timeout_ms_{};
   uint32_t unwind_state_clear_period_ms_{};
+  std::vector<std::string> target_installed_by_;
   bool all_cpus_{};
   uint32_t sampling_frequency_{};
   bool kernel_frames_{};
   std::vector<int32_t> target_pid_;
   std::vector<std::string> target_cmdline_;
-  std::vector<std::string> target_installed_by_;
   std::vector<int32_t> exclude_pid_;
   std::vector<std::string> exclude_cmdline_;
   uint32_t additional_cmdline_count_{};
