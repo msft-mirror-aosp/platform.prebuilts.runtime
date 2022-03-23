@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// ? 2016 and later: Unicode, Inc. and others.
+// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /*
  ******************************************************************************
@@ -47,7 +47,7 @@ import android.icu.text.LocaleDisplayNames;
  * Canonicalization additionally performs the following:
  * <ul>
  * <li>POSIX ids are converted to ICU format IDs</li>
- * <li>Legacy language tags (marked as ?Type: grandfathered? in BCP 47)
+ * <li>Legacy language tags (marked as “Type: grandfathered” in BCP 47)
  * are converted to ICU standard form</li>
  * </ul>
  * All ULocale constructors automatically normalize the locale id.  To handle
@@ -1151,7 +1151,7 @@ public java.lang.String toLanguageTag() { throw new RuntimeException("Stub!"); }
  * </ul>
  *
  * <p>This implements the 'Language-Tag' production of BCP 47, and so
- * supports legacy language tags (marked as ?Type: grandfathered? in BCP 47)
+ * supports legacy language tags (marked as “Type: grandfathered” in BCP 47)
  * (regular and irregular) as well as private use language tags.
  *
  * <p>Stand-alone private use tags are represented as empty language and extension 'x-whatever',
