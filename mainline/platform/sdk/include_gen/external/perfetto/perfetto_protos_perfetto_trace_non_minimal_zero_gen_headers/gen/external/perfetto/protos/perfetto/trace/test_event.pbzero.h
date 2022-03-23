@@ -16,7 +16,6 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-class DebugAnnotation;
 class TestEvent_TestPayload;
 
 class TestEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
@@ -173,7 +172,7 @@ class TestEvent : public ::protozero::Message {
 
 };
 
-class TestEvent_TestPayload_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class TestEvent_TestPayload_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   TestEvent_TestPayload_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TestEvent_TestPayload_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -190,8 +189,6 @@ class TestEvent_TestPayload_Decoder : public ::protozero::TypedProtoDecoder</*MA
   ::protozero::RepeatedFieldIterator<int32_t> repeated_ints() const { return GetRepeated<int32_t>(6); }
   bool has_remaining_nesting_depth() const { return at<3>().valid(); }
   uint32_t remaining_nesting_depth() const { return at<3>().as_uint32(); }
-  bool has_debug_annotations() const { return at<7>().valid(); }
-  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> debug_annotations() const { return GetRepeated<::protozero::ConstBytes>(7); }
 };
 
 class TestEvent_TestPayload : public ::protozero::Message {
@@ -204,7 +201,6 @@ class TestEvent_TestPayload : public ::protozero::Message {
     kSingleIntFieldNumber = 5,
     kRepeatedIntsFieldNumber = 6,
     kRemainingNestingDepthFieldNumber = 3,
-    kDebugAnnotationsFieldNumber = 7,
   };
 
   using FieldMetadata_Str =
@@ -358,27 +354,6 @@ class TestEvent_TestPayload : public ::protozero::Message {
       ::protozero::proto_utils::ProtoSchemaType::kUint32>
         ::Append(*this, field_id, value);
   }
-
-  using FieldMetadata_DebugAnnotations =
-    ::protozero::proto_utils::FieldMetadata<
-      7,
-      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
-      ::protozero::proto_utils::ProtoSchemaType::kMessage,
-      DebugAnnotation,
-      TestEvent_TestPayload>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_DebugAnnotations kDebugAnnotations() { return {}; }
-  template <typename T = DebugAnnotation> T* add_debug_annotations() {
-    return BeginNestedMessage<T>(7);
-  }
-
 };
 
 } // Namespace.

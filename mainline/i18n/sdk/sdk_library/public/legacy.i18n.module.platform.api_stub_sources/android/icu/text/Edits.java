@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// ? 2017 and later: Unicode, Inc. and others.
+// © 2017 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.text;
@@ -29,21 +29,21 @@ package android.icu.text;
  * calling next() on the iterator, skips over no-change edits (unchanged regions).
  * </ul>
  * <p>
- * For example, consider the string "abc?DeF", which case-folds to "abcssdef". This string has the
+ * For example, consider the string "abcßDeF", which case-folds to "abcssdef". This string has the
  * following fine edits:
  * <ul>
- * <li>abc ? abc (no-change)
- * <li>? ? ss (change)
- * <li>D ? d (change)
- * <li>e ? e (no-change)
- * <li>F ? f (change)
+ * <li>abc ⇨ abc (no-change)
+ * <li>ß ⇨ ss (change)
+ * <li>D ⇨ d (change)
+ * <li>e ⇨ e (no-change)
+ * <li>F ⇨ f (change)
  * </ul>
  * and the following coarse edits (note how adjacent change edits get merged together):
  * <ul>
- * <li>abc ? abc (no-change)
- * <li>?D ? ssd (change)
- * <li>e ? e (no-change)
- * <li>F ? f (change)
+ * <li>abc ⇨ abc (no-change)
+ * <li>ßD ⇨ ssd (change)
+ * <li>e ⇨ e (no-change)
+ * <li>F ⇨ f (change)
  * </ul>
  * <p>
  * The "fine changes" and "coarse changes" iterators will step through only the change edits when their

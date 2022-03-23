@@ -18,19 +18,8 @@ namespace pbzero {
 
 class FtraceEvent;
 class FtraceEventBundle_CompactSched;
-enum FtraceClock : int32_t;
 
-enum FtraceClock : int32_t {
-  FTRACE_CLOCK_UNSPECIFIED = 0,
-  FTRACE_CLOCK_UNKNOWN = 1,
-  FTRACE_CLOCK_GLOBAL = 2,
-  FTRACE_CLOCK_LOCAL = 3,
-};
-
-const FtraceClock FtraceClock_MIN = FTRACE_CLOCK_UNSPECIFIED;
-const FtraceClock FtraceClock_MAX = FTRACE_CLOCK_LOCAL;
-
-class FtraceEventBundle_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class FtraceEventBundle_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   FtraceEventBundle_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit FtraceEventBundle_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -43,8 +32,6 @@ class FtraceEventBundle_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FI
   bool lost_events() const { return at<3>().as_bool(); }
   bool has_compact_sched() const { return at<4>().valid(); }
   ::protozero::ConstBytes compact_sched() const { return at<4>().as_bytes(); }
-  bool has_ftrace_clock() const { return at<5>().valid(); }
-  int32_t ftrace_clock() const { return at<5>().as_int32(); }
 };
 
 class FtraceEventBundle : public ::protozero::Message {
@@ -55,7 +42,6 @@ class FtraceEventBundle : public ::protozero::Message {
     kEventFieldNumber = 2,
     kLostEventsFieldNumber = 3,
     kCompactSchedFieldNumber = 4,
-    kFtraceClockFieldNumber = 5,
   };
   using CompactSched = ::perfetto::protos::pbzero::FtraceEventBundle_CompactSched;
 
@@ -150,31 +136,6 @@ class FtraceEventBundle : public ::protozero::Message {
     return BeginNestedMessage<T>(4);
   }
 
-
-  using FieldMetadata_FtraceClock =
-    ::protozero::proto_utils::FieldMetadata<
-      5,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::FtraceClock,
-      FtraceEventBundle>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_FtraceClock kFtraceClock() { return {}; }
-  void set_ftrace_clock(::perfetto::protos::pbzero::FtraceClock value) {
-    static constexpr uint32_t field_id = FieldMetadata_FtraceClock::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kEnum>
-        ::Append(*this, field_id, value);
-  }
 };
 
 class FtraceEventBundle_CompactSched_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/11, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
