@@ -312,7 +312,6 @@ class HeapprofdConfig :
     kHeapsFieldNumber = 20,
     kHeapSamplingIntervalsFieldNumber = 22,
     kTargetInstalledByFieldNumber = 26,
-    kExcludeHeapsFieldNumber = 27,
     kContinuousDumpConfigFieldNumber = 6,
     kSamplingIntervalBytesFieldNumber = 1,
     kShmemSizeBytesFieldNumber = 8,
@@ -421,23 +420,6 @@ class HeapprofdConfig :
   void add_target_installed_by(const char* value, size_t size);
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& target_installed_by() const;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_target_installed_by();
-
-  // repeated string exclude_heaps = 27;
-  int exclude_heaps_size() const;
-  void clear_exclude_heaps();
-  const std::string& exclude_heaps(int index) const;
-  std::string* mutable_exclude_heaps(int index);
-  void set_exclude_heaps(int index, const std::string& value);
-  void set_exclude_heaps(int index, std::string&& value);
-  void set_exclude_heaps(int index, const char* value);
-  void set_exclude_heaps(int index, const char* value, size_t size);
-  std::string* add_exclude_heaps();
-  void add_exclude_heaps(const std::string& value);
-  void add_exclude_heaps(std::string&& value);
-  void add_exclude_heaps(const char* value);
-  void add_exclude_heaps(const char* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& exclude_heaps() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_exclude_heaps();
 
   // optional .perfetto.protos.HeapprofdConfig.ContinuousDumpConfig continuous_dump_config = 6;
   bool has_continuous_dump_config() const;
@@ -562,7 +544,6 @@ class HeapprofdConfig :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> heaps_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 > heap_sampling_intervals_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> target_installed_by_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> exclude_heaps_;
   ::perfetto::protos::HeapprofdConfig_ContinuousDumpConfig* continuous_dump_config_;
   ::PROTOBUF_NAMESPACE_ID::uint64 sampling_interval_bytes_;
   ::PROTOBUF_NAMESPACE_ID::uint64 shmem_size_bytes_;
@@ -911,71 +892,6 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 HeapprofdConfig::mutable_heaps() {
   // @@protoc_insertion_point(field_mutable_list:perfetto.protos.HeapprofdConfig.heaps)
   return &heaps_;
-}
-
-// repeated string exclude_heaps = 27;
-inline int HeapprofdConfig::exclude_heaps_size() const {
-  return exclude_heaps_.size();
-}
-inline void HeapprofdConfig::clear_exclude_heaps() {
-  exclude_heaps_.Clear();
-}
-inline const std::string& HeapprofdConfig::exclude_heaps(int index) const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.HeapprofdConfig.exclude_heaps)
-  return exclude_heaps_.Get(index);
-}
-inline std::string* HeapprofdConfig::mutable_exclude_heaps(int index) {
-  // @@protoc_insertion_point(field_mutable:perfetto.protos.HeapprofdConfig.exclude_heaps)
-  return exclude_heaps_.Mutable(index);
-}
-inline void HeapprofdConfig::set_exclude_heaps(int index, const std::string& value) {
-  // @@protoc_insertion_point(field_set:perfetto.protos.HeapprofdConfig.exclude_heaps)
-  exclude_heaps_.Mutable(index)->assign(value);
-}
-inline void HeapprofdConfig::set_exclude_heaps(int index, std::string&& value) {
-  // @@protoc_insertion_point(field_set:perfetto.protos.HeapprofdConfig.exclude_heaps)
-  exclude_heaps_.Mutable(index)->assign(std::move(value));
-}
-inline void HeapprofdConfig::set_exclude_heaps(int index, const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  exclude_heaps_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:perfetto.protos.HeapprofdConfig.exclude_heaps)
-}
-inline void HeapprofdConfig::set_exclude_heaps(int index, const char* value, size_t size) {
-  exclude_heaps_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.HeapprofdConfig.exclude_heaps)
-}
-inline std::string* HeapprofdConfig::add_exclude_heaps() {
-  // @@protoc_insertion_point(field_add_mutable:perfetto.protos.HeapprofdConfig.exclude_heaps)
-  return exclude_heaps_.Add();
-}
-inline void HeapprofdConfig::add_exclude_heaps(const std::string& value) {
-  exclude_heaps_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:perfetto.protos.HeapprofdConfig.exclude_heaps)
-}
-inline void HeapprofdConfig::add_exclude_heaps(std::string&& value) {
-  exclude_heaps_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:perfetto.protos.HeapprofdConfig.exclude_heaps)
-}
-inline void HeapprofdConfig::add_exclude_heaps(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  exclude_heaps_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:perfetto.protos.HeapprofdConfig.exclude_heaps)
-}
-inline void HeapprofdConfig::add_exclude_heaps(const char* value, size_t size) {
-  exclude_heaps_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:perfetto.protos.HeapprofdConfig.exclude_heaps)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-HeapprofdConfig::exclude_heaps() const {
-  // @@protoc_insertion_point(field_list:perfetto.protos.HeapprofdConfig.exclude_heaps)
-  return exclude_heaps_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-HeapprofdConfig::mutable_exclude_heaps() {
-  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.HeapprofdConfig.exclude_heaps)
-  return &exclude_heaps_;
 }
 
 // optional bool stream_allocations = 23;

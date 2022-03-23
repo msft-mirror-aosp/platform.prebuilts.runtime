@@ -30,7 +30,6 @@
 #include <google/protobuf/message_lite.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
-#include "protos/perfetto/trace/track_event/debug_annotation.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_protos_2fperfetto_2ftrace_2ftest_5fevent_2eproto
@@ -177,7 +176,6 @@ class TestEvent_TestPayload :
     kStrFieldNumber = 1,
     kNestedFieldNumber = 2,
     kRepeatedIntsFieldNumber = 6,
-    kDebugAnnotationsFieldNumber = 7,
     kSingleStringFieldNumber = 4,
     kRemainingNestingDepthFieldNumber = 3,
     kSingleIntFieldNumber = 5,
@@ -221,17 +219,6 @@ class TestEvent_TestPayload :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
       mutable_repeated_ints();
 
-  // repeated .perfetto.protos.DebugAnnotation debug_annotations = 7;
-  int debug_annotations_size() const;
-  void clear_debug_annotations();
-  ::perfetto::protos::DebugAnnotation* mutable_debug_annotations(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >*
-      mutable_debug_annotations();
-  const ::perfetto::protos::DebugAnnotation& debug_annotations(int index) const;
-  ::perfetto::protos::DebugAnnotation* add_debug_annotations();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >&
-      debug_annotations() const;
-
   // optional string single_string = 4;
   bool has_single_string() const;
   void clear_single_string();
@@ -266,7 +253,6 @@ class TestEvent_TestPayload :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> str_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TestEvent_TestPayload > nested_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > repeated_ints_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation > debug_annotations_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr single_string_;
   ::PROTOBUF_NAMESPACE_ID::uint32 remaining_nesting_depth_;
   ::PROTOBUF_NAMESPACE_ID::int32 single_int_;
@@ -665,33 +651,6 @@ inline void TestEvent_TestPayload::set_remaining_nesting_depth(::PROTOBUF_NAMESP
   _has_bits_[0] |= 0x00000002u;
   remaining_nesting_depth_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TestEvent.TestPayload.remaining_nesting_depth)
-}
-
-// repeated .perfetto.protos.DebugAnnotation debug_annotations = 7;
-inline int TestEvent_TestPayload::debug_annotations_size() const {
-  return debug_annotations_.size();
-}
-inline ::perfetto::protos::DebugAnnotation* TestEvent_TestPayload::mutable_debug_annotations(int index) {
-  // @@protoc_insertion_point(field_mutable:perfetto.protos.TestEvent.TestPayload.debug_annotations)
-  return debug_annotations_.Mutable(index);
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >*
-TestEvent_TestPayload::mutable_debug_annotations() {
-  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.TestEvent.TestPayload.debug_annotations)
-  return &debug_annotations_;
-}
-inline const ::perfetto::protos::DebugAnnotation& TestEvent_TestPayload::debug_annotations(int index) const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.TestEvent.TestPayload.debug_annotations)
-  return debug_annotations_.Get(index);
-}
-inline ::perfetto::protos::DebugAnnotation* TestEvent_TestPayload::add_debug_annotations() {
-  // @@protoc_insertion_point(field_add:perfetto.protos.TestEvent.TestPayload.debug_annotations)
-  return debug_annotations_.Add();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::DebugAnnotation >&
-TestEvent_TestPayload::debug_annotations() const {
-  // @@protoc_insertion_point(field_list:perfetto.protos.TestEvent.TestPayload.debug_annotations)
-  return debug_annotations_;
 }
 
 // -------------------------------------------------------------------

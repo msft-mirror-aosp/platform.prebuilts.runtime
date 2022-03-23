@@ -884,7 +884,7 @@ class CgroupMkdirFtraceEvent : public ::protozero::Message {
   }
 };
 
-class CgroupAttachTaskFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class CgroupAttachTaskFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   CgroupAttachTaskFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit CgroupAttachTaskFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -899,10 +899,6 @@ class CgroupAttachTaskFtraceEvent_Decoder : public ::protozero::TypedProtoDecode
   ::protozero::ConstChars comm() const { return at<4>().as_string(); }
   bool has_cname() const { return at<5>().valid(); }
   ::protozero::ConstChars cname() const { return at<5>().as_string(); }
-  bool has_dst_level() const { return at<6>().valid(); }
-  int32_t dst_level() const { return at<6>().as_int32(); }
-  bool has_dst_path() const { return at<7>().valid(); }
-  ::protozero::ConstChars dst_path() const { return at<7>().as_string(); }
 };
 
 class CgroupAttachTaskFtraceEvent : public ::protozero::Message {
@@ -914,8 +910,6 @@ class CgroupAttachTaskFtraceEvent : public ::protozero::Message {
     kPidFieldNumber = 3,
     kCommFieldNumber = 4,
     kCnameFieldNumber = 5,
-    kDstLevelFieldNumber = 6,
-    kDstPathFieldNumber = 7,
   };
 
   using FieldMetadata_DstRoot =
@@ -1042,59 +1036,6 @@ class CgroupAttachTaskFtraceEvent : public ::protozero::Message {
   }
   void set_cname(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Cname::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kString>
-        ::Append(*this, field_id, value);
-  }
-
-  using FieldMetadata_DstLevel =
-    ::protozero::proto_utils::FieldMetadata<
-      6,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kInt32,
-      int32_t,
-      CgroupAttachTaskFtraceEvent>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_DstLevel kDstLevel() { return {}; }
-  void set_dst_level(int32_t value) {
-    static constexpr uint32_t field_id = FieldMetadata_DstLevel::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kInt32>
-        ::Append(*this, field_id, value);
-  }
-
-  using FieldMetadata_DstPath =
-    ::protozero::proto_utils::FieldMetadata<
-      7,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kString,
-      std::string,
-      CgroupAttachTaskFtraceEvent>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_DstPath kDstPath() { return {}; }
-  void set_dst_path(const char* data, size_t size) {
-    AppendBytes(FieldMetadata_DstPath::kFieldId, data, size);
-  }
-  void set_dst_path(std::string value) {
-    static constexpr uint32_t field_id = FieldMetadata_DstPath::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
