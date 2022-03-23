@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// ? 2016 and later: Unicode, Inc. and others.
+// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
@@ -19,9 +19,9 @@ import android.icu.text.UnicodeSet.SpanCondition;
  * its inverse. That is, the code spans, then spans for the inverse, then spans, and so on.
  * For the inverse, the following mapping is used:
  * <ul>
- * <li>{@link android.icu.text.UnicodeSet.SpanCondition#SIMPLE UnicodeSet.SpanCondition#SIMPLE} ? {@link android.icu.text.UnicodeSet.SpanCondition#NOT_CONTAINED UnicodeSet.SpanCondition#NOT_CONTAINED}</li>
- * <li>{@link android.icu.text.UnicodeSet.SpanCondition#CONTAINED UnicodeSet.SpanCondition#CONTAINED} ? {@link android.icu.text.UnicodeSet.SpanCondition#NOT_CONTAINED UnicodeSet.SpanCondition#NOT_CONTAINED}</li>
- * <li>{@link android.icu.text.UnicodeSet.SpanCondition#NOT_CONTAINED UnicodeSet.SpanCondition#NOT_CONTAINED} ? {@link android.icu.text.UnicodeSet.SpanCondition#SIMPLE UnicodeSet.SpanCondition#SIMPLE}</li>
+ * <li>{@link android.icu.text.UnicodeSet.SpanCondition#SIMPLE UnicodeSet.SpanCondition#SIMPLE} → {@link android.icu.text.UnicodeSet.SpanCondition#NOT_CONTAINED UnicodeSet.SpanCondition#NOT_CONTAINED}</li>
+ * <li>{@link android.icu.text.UnicodeSet.SpanCondition#CONTAINED UnicodeSet.SpanCondition#CONTAINED} → {@link android.icu.text.UnicodeSet.SpanCondition#NOT_CONTAINED UnicodeSet.SpanCondition#NOT_CONTAINED}</li>
+ * <li>{@link android.icu.text.UnicodeSet.SpanCondition#NOT_CONTAINED UnicodeSet.SpanCondition#NOT_CONTAINED} → {@link android.icu.text.UnicodeSet.SpanCondition#SIMPLE UnicodeSet.SpanCondition#SIMPLE}</li>
  * </ul>
  * These are actually not complete inverses. However, the alternating works because there are no gaps.
  * For example, with [a{ab}{bc}], you get the following behavior when scanning forward:

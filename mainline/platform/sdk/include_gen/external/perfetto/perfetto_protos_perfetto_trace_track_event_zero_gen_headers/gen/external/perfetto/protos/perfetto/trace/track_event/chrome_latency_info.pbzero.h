@@ -59,7 +59,7 @@ enum ChromeLatencyInfo_LatencyComponentType : int32_t {
 const ChromeLatencyInfo_LatencyComponentType ChromeLatencyInfo_LatencyComponentType_MIN = ChromeLatencyInfo_LatencyComponentType_COMPONENT_UNSPECIFIED;
 const ChromeLatencyInfo_LatencyComponentType ChromeLatencyInfo_LatencyComponentType_MAX = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP;
 
-class ChromeLatencyInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class ChromeLatencyInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   ChromeLatencyInfo_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ChromeLatencyInfo_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -76,8 +76,6 @@ class ChromeLatencyInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FI
   bool is_coalesced() const { return at<5>().as_bool(); }
   bool has_gesture_scroll_id() const { return at<6>().valid(); }
   int64_t gesture_scroll_id() const { return at<6>().as_int64(); }
-  bool has_touch_id() const { return at<7>().valid(); }
-  int64_t touch_id() const { return at<7>().as_int64(); }
 };
 
 class ChromeLatencyInfo : public ::protozero::Message {
@@ -90,7 +88,6 @@ class ChromeLatencyInfo : public ::protozero::Message {
     kComponentInfoFieldNumber = 4,
     kIsCoalescedFieldNumber = 5,
     kGestureScrollIdFieldNumber = 6,
-    kTouchIdFieldNumber = 7,
   };
   using ComponentInfo = ::perfetto::protos::pbzero::ChromeLatencyInfo_ComponentInfo;
   using Step = ::perfetto::protos::pbzero::ChromeLatencyInfo_Step;
@@ -262,31 +259,6 @@ class ChromeLatencyInfo : public ::protozero::Message {
   static constexpr FieldMetadata_GestureScrollId kGestureScrollId() { return {}; }
   void set_gesture_scroll_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_GestureScrollId::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kInt64>
-        ::Append(*this, field_id, value);
-  }
-
-  using FieldMetadata_TouchId =
-    ::protozero::proto_utils::FieldMetadata<
-      7,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kInt64,
-      int64_t,
-      ChromeLatencyInfo>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_TouchId kTouchId() { return {}; }
-  void set_touch_id(int64_t value) {
-    static constexpr uint32_t field_id = FieldMetadata_TouchId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
