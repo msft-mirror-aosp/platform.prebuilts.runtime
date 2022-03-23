@@ -59,11 +59,10 @@ enum ChromeProcessDescriptor_ProcessType : int32_t {
   ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_IME = 37,
   ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_RECORDING = 38,
   ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHAPEDETECTION = 39,
-  ChromeProcessDescriptor_ProcessType_PROCESS_RENDERER_EXTENSION = 40,
 };
 
 const ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_MIN = ChromeProcessDescriptor_ProcessType_PROCESS_UNSPECIFIED;
-const ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_MAX = ChromeProcessDescriptor_ProcessType_PROCESS_RENDERER_EXTENSION;
+const ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_MAX = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHAPEDETECTION;
 
 class ChromeProcessDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -133,7 +132,6 @@ class ChromeProcessDescriptor : public ::protozero::Message {
   static const ProcessType PROCESS_SERVICE_IME = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_IME;
   static const ProcessType PROCESS_SERVICE_RECORDING = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_RECORDING;
   static const ProcessType PROCESS_SERVICE_SHAPEDETECTION = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHAPEDETECTION;
-  static const ProcessType PROCESS_RENDERER_EXTENSION = ChromeProcessDescriptor_ProcessType_PROCESS_RENDERER_EXTENSION;
 
   using FieldMetadata_ProcessType =
     ::protozero::proto_utils::FieldMetadata<

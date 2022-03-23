@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// ? 2016 and later: Unicode, Inc. and others.
+// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
@@ -238,7 +238,7 @@ public android.icu.text.RelativeDateTimeFormatter.FormattedRelativeDateTime form
  * using a text style if possible, e.g. "last week", "this week",
  * "next week", "yesterday", "tomorrow". Falls back to numeric
  * style if no appropriate text term is available for the specified
- * offset in the object?s locale.
+ * offset in the object’s locale.
  *
  * This method returns a String. To get more information about the
  * formatting result, use formatToValue().
@@ -257,7 +257,7 @@ public java.lang.String format(double offset, android.icu.text.RelativeDateTimeF
  * using a text style if possible, e.g. "last week", "this week",
  * "next week", "yesterday", "tomorrow". Falls back to numeric
  * style if no appropriate text term is available for the specified
- * offset in the object?s locale.
+ * offset in the object’s locale.
  *
  * This method returns a FormattedRelativeDateTime, which exposes more
  * information than the String returned by format().

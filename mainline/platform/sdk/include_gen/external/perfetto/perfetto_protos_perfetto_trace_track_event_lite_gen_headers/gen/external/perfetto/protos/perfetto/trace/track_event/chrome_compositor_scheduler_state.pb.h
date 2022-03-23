@@ -472,13 +472,14 @@ class ChromeCompositorSchedulerState :
     kBeginImplFrameDeadlineTaskFieldNumber = 3,
     kPendingBeginFrameTaskFieldNumber = 4,
     kSkippedLastFrameMissedExceededDeadlineFieldNumber = 5,
+    kSkippedLastFrameToReduceLatencyFieldNumber = 6,
     kInsideActionFieldNumber = 7,
+    kDeadlineModeFieldNumber = 8,
     kDeadlineUsFieldNumber = 9,
     kDeadlineScheduledAtUsFieldNumber = 10,
     kNowUsFieldNumber = 11,
     kNowToDeadlineDeltaUsFieldNumber = 12,
     kNowToDeadlineScheduledAtDeltaUsFieldNumber = 13,
-    kDeadlineModeFieldNumber = 8,
   };
   // optional .perfetto.protos.ChromeCompositorStateMachine state_machine = 1;
   bool has_state_machine() const;
@@ -544,11 +545,23 @@ class ChromeCompositorSchedulerState :
   bool skipped_last_frame_missed_exceeded_deadline() const;
   void set_skipped_last_frame_missed_exceeded_deadline(bool value);
 
+  // optional bool skipped_last_frame_to_reduce_latency = 6;
+  bool has_skipped_last_frame_to_reduce_latency() const;
+  void clear_skipped_last_frame_to_reduce_latency();
+  bool skipped_last_frame_to_reduce_latency() const;
+  void set_skipped_last_frame_to_reduce_latency(bool value);
+
   // optional .perfetto.protos.ChromeCompositorSchedulerAction inside_action = 7;
   bool has_inside_action() const;
   void clear_inside_action();
   ::perfetto::protos::ChromeCompositorSchedulerAction inside_action() const;
   void set_inside_action(::perfetto::protos::ChromeCompositorSchedulerAction value);
+
+  // optional .perfetto.protos.ChromeCompositorSchedulerState.BeginImplFrameDeadlineMode deadline_mode = 8;
+  bool has_deadline_mode() const;
+  void clear_deadline_mode();
+  ::perfetto::protos::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode deadline_mode() const;
+  void set_deadline_mode(::perfetto::protos::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode value);
 
   // optional int64 deadline_us = 9;
   bool has_deadline_us() const;
@@ -580,12 +593,6 @@ class ChromeCompositorSchedulerState :
   ::PROTOBUF_NAMESPACE_ID::int64 now_to_deadline_scheduled_at_delta_us() const;
   void set_now_to_deadline_scheduled_at_delta_us(::PROTOBUF_NAMESPACE_ID::int64 value);
 
-  // optional .perfetto.protos.ChromeCompositorSchedulerState.BeginImplFrameDeadlineMode deadline_mode = 8;
-  bool has_deadline_mode() const;
-  void clear_deadline_mode();
-  ::perfetto::protos::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode deadline_mode() const;
-  void set_deadline_mode(::perfetto::protos::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode value);
-
   // @@protoc_insertion_point(class_scope:perfetto.protos.ChromeCompositorSchedulerState)
  private:
   class _Internal;
@@ -602,13 +609,14 @@ class ChromeCompositorSchedulerState :
   bool begin_impl_frame_deadline_task_;
   bool pending_begin_frame_task_;
   bool skipped_last_frame_missed_exceeded_deadline_;
+  bool skipped_last_frame_to_reduce_latency_;
   int inside_action_;
+  int deadline_mode_;
   ::PROTOBUF_NAMESPACE_ID::int64 deadline_us_;
   ::PROTOBUF_NAMESPACE_ID::int64 deadline_scheduled_at_us_;
   ::PROTOBUF_NAMESPACE_ID::int64 now_us_;
   ::PROTOBUF_NAMESPACE_ID::int64 now_to_deadline_delta_us_;
   ::PROTOBUF_NAMESPACE_ID::int64 now_to_deadline_scheduled_at_delta_us_;
-  int deadline_mode_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftrack_5fevent_2fchrome_5fcompositor_5fscheduler_5fstate_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1089,6 +1097,7 @@ class ChromeCompositorStateMachine_MinorState :
     kCriticalBeginMainFrameToActivateIsFastFieldNumber = 33,
     kMainThreadMissedLastDeadlineFieldNumber = 34,
     kScrollHandlerStateFieldNumber = 32,
+    kSkipNextBeginMainFrameToReduceLatencyFieldNumber = 35,
     kVideoNeedsBeginFramesFieldNumber = 36,
     kDeferBeginMainFrameFieldNumber = 37,
     kLastCommitHadNoUpdatesFieldNumber = 38,
@@ -1305,6 +1314,12 @@ class ChromeCompositorStateMachine_MinorState :
   ::perfetto::protos::ChromeCompositorStateMachine_MinorState_ScrollHandlerState scroll_handler_state() const;
   void set_scroll_handler_state(::perfetto::protos::ChromeCompositorStateMachine_MinorState_ScrollHandlerState value);
 
+  // optional bool skip_next_begin_main_frame_to_reduce_latency = 35;
+  bool has_skip_next_begin_main_frame_to_reduce_latency() const;
+  void clear_skip_next_begin_main_frame_to_reduce_latency();
+  bool skip_next_begin_main_frame_to_reduce_latency() const;
+  void set_skip_next_begin_main_frame_to_reduce_latency(bool value);
+
   // optional bool video_needs_begin_frames = 36;
   bool has_video_needs_begin_frames() const;
   void clear_video_needs_begin_frames();
@@ -1412,6 +1427,7 @@ class ChromeCompositorStateMachine_MinorState :
   bool critical_begin_main_frame_to_activate_is_fast_;
   bool main_thread_missed_last_deadline_;
   int scroll_handler_state_;
+  bool skip_next_begin_main_frame_to_reduce_latency_;
   bool video_needs_begin_frames_;
   bool defer_begin_main_frame_;
   bool last_commit_had_no_updates_;
@@ -1712,7 +1728,6 @@ class BeginFrameArgs :
     kOnCriticalPathFieldNumber = 7,
     kAnimateOnlyFieldNumber = 8,
     kIntervalDeltaUsFieldNumber = 6,
-    kFramesThrottledSinceLastFieldNumber = 12,
     kSourceLocationIidFieldNumber = 9,
     kSourceLocationFieldNumber = 10,
   };
@@ -1764,12 +1779,6 @@ class BeginFrameArgs :
   ::PROTOBUF_NAMESPACE_ID::int64 interval_delta_us() const;
   void set_interval_delta_us(::PROTOBUF_NAMESPACE_ID::int64 value);
 
-  // optional int64 frames_throttled_since_last = 12;
-  bool has_frames_throttled_since_last() const;
-  void clear_frames_throttled_since_last();
-  ::PROTOBUF_NAMESPACE_ID::int64 frames_throttled_since_last() const;
-  void set_frames_throttled_since_last(::PROTOBUF_NAMESPACE_ID::int64 value);
-
   // optional uint64 source_location_iid = 9;
   bool has_source_location_iid() const;
   void clear_source_location_iid();
@@ -1806,7 +1815,6 @@ class BeginFrameArgs :
   bool on_critical_path_;
   bool animate_only_;
   ::PROTOBUF_NAMESPACE_ID::int64 interval_delta_us_;
-  ::PROTOBUF_NAMESPACE_ID::int64 frames_throttled_since_last_;
   union CreatedFromUnion {
     CreatedFromUnion() {}
     ::PROTOBUF_NAMESPACE_ID::uint64 source_location_iid_;
@@ -2787,13 +2795,31 @@ inline void ChromeCompositorSchedulerState::set_skipped_last_frame_missed_exceed
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorSchedulerState.skipped_last_frame_missed_exceeded_deadline)
 }
 
+// optional bool skipped_last_frame_to_reduce_latency = 6;
+inline bool ChromeCompositorSchedulerState::has_skipped_last_frame_to_reduce_latency() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void ChromeCompositorSchedulerState::clear_skipped_last_frame_to_reduce_latency() {
+  skipped_last_frame_to_reduce_latency_ = false;
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline bool ChromeCompositorSchedulerState::skipped_last_frame_to_reduce_latency() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorSchedulerState.skipped_last_frame_to_reduce_latency)
+  return skipped_last_frame_to_reduce_latency_;
+}
+inline void ChromeCompositorSchedulerState::set_skipped_last_frame_to_reduce_latency(bool value) {
+  _has_bits_[0] |= 0x00000200u;
+  skipped_last_frame_to_reduce_latency_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorSchedulerState.skipped_last_frame_to_reduce_latency)
+}
+
 // optional .perfetto.protos.ChromeCompositorSchedulerAction inside_action = 7;
 inline bool ChromeCompositorSchedulerState::has_inside_action() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void ChromeCompositorSchedulerState::clear_inside_action() {
   inside_action_ = 0;
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline ::perfetto::protos::ChromeCompositorSchedulerAction ChromeCompositorSchedulerState::inside_action() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorSchedulerState.inside_action)
@@ -2801,18 +2827,18 @@ inline ::perfetto::protos::ChromeCompositorSchedulerAction ChromeCompositorSched
 }
 inline void ChromeCompositorSchedulerState::set_inside_action(::perfetto::protos::ChromeCompositorSchedulerAction value) {
   assert(::perfetto::protos::ChromeCompositorSchedulerAction_IsValid(value));
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000400u;
   inside_action_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorSchedulerState.inside_action)
 }
 
 // optional .perfetto.protos.ChromeCompositorSchedulerState.BeginImplFrameDeadlineMode deadline_mode = 8;
 inline bool ChromeCompositorSchedulerState::has_deadline_mode() const {
-  return (_has_bits_[0] & 0x00008000u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void ChromeCompositorSchedulerState::clear_deadline_mode() {
   deadline_mode_ = 0;
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline ::perfetto::protos::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode ChromeCompositorSchedulerState::deadline_mode() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorSchedulerState.deadline_mode)
@@ -2820,97 +2846,97 @@ inline ::perfetto::protos::ChromeCompositorSchedulerState_BeginImplFrameDeadline
 }
 inline void ChromeCompositorSchedulerState::set_deadline_mode(::perfetto::protos::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode value) {
   assert(::perfetto::protos::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_IsValid(value));
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00000800u;
   deadline_mode_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorSchedulerState.deadline_mode)
 }
 
 // optional int64 deadline_us = 9;
 inline bool ChromeCompositorSchedulerState::has_deadline_us() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void ChromeCompositorSchedulerState::clear_deadline_us() {
   deadline_us_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int64 ChromeCompositorSchedulerState::deadline_us() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorSchedulerState.deadline_us)
   return deadline_us_;
 }
 inline void ChromeCompositorSchedulerState::set_deadline_us(::PROTOBUF_NAMESPACE_ID::int64 value) {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00001000u;
   deadline_us_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorSchedulerState.deadline_us)
 }
 
 // optional int64 deadline_scheduled_at_us = 10;
 inline bool ChromeCompositorSchedulerState::has_deadline_scheduled_at_us() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00002000u) != 0;
 }
 inline void ChromeCompositorSchedulerState::clear_deadline_scheduled_at_us() {
   deadline_scheduled_at_us_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int64 ChromeCompositorSchedulerState::deadline_scheduled_at_us() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorSchedulerState.deadline_scheduled_at_us)
   return deadline_scheduled_at_us_;
 }
 inline void ChromeCompositorSchedulerState::set_deadline_scheduled_at_us(::PROTOBUF_NAMESPACE_ID::int64 value) {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00002000u;
   deadline_scheduled_at_us_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorSchedulerState.deadline_scheduled_at_us)
 }
 
 // optional int64 now_us = 11;
 inline bool ChromeCompositorSchedulerState::has_now_us() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00004000u) != 0;
 }
 inline void ChromeCompositorSchedulerState::clear_now_us() {
   now_us_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int64 ChromeCompositorSchedulerState::now_us() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorSchedulerState.now_us)
   return now_us_;
 }
 inline void ChromeCompositorSchedulerState::set_now_us(::PROTOBUF_NAMESPACE_ID::int64 value) {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00004000u;
   now_us_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorSchedulerState.now_us)
 }
 
 // optional int64 now_to_deadline_delta_us = 12;
 inline bool ChromeCompositorSchedulerState::has_now_to_deadline_delta_us() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00008000u) != 0;
 }
 inline void ChromeCompositorSchedulerState::clear_now_to_deadline_delta_us() {
   now_to_deadline_delta_us_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int64 ChromeCompositorSchedulerState::now_to_deadline_delta_us() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorSchedulerState.now_to_deadline_delta_us)
   return now_to_deadline_delta_us_;
 }
 inline void ChromeCompositorSchedulerState::set_now_to_deadline_delta_us(::PROTOBUF_NAMESPACE_ID::int64 value) {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00008000u;
   now_to_deadline_delta_us_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorSchedulerState.now_to_deadline_delta_us)
 }
 
 // optional int64 now_to_deadline_scheduled_at_delta_us = 13;
 inline bool ChromeCompositorSchedulerState::has_now_to_deadline_scheduled_at_delta_us() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
+  return (_has_bits_[0] & 0x00010000u) != 0;
 }
 inline void ChromeCompositorSchedulerState::clear_now_to_deadline_scheduled_at_delta_us() {
   now_to_deadline_scheduled_at_delta_us_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int64 ChromeCompositorSchedulerState::now_to_deadline_scheduled_at_delta_us() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorSchedulerState.now_to_deadline_scheduled_at_delta_us)
   return now_to_deadline_scheduled_at_delta_us_;
 }
 inline void ChromeCompositorSchedulerState::set_now_to_deadline_scheduled_at_delta_us(::PROTOBUF_NAMESPACE_ID::int64 value) {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00010000u;
   now_to_deadline_scheduled_at_delta_us_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorSchedulerState.now_to_deadline_scheduled_at_delta_us)
 }
@@ -3828,200 +3854,218 @@ inline void ChromeCompositorStateMachine_MinorState::set_main_thread_missed_last
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorStateMachine.MinorState.main_thread_missed_last_deadline)
 }
 
+// optional bool skip_next_begin_main_frame_to_reduce_latency = 35;
+inline bool ChromeCompositorStateMachine_MinorState::has_skip_next_begin_main_frame_to_reduce_latency() const {
+  return (_has_bits_[1] & 0x00000004u) != 0;
+}
+inline void ChromeCompositorStateMachine_MinorState::clear_skip_next_begin_main_frame_to_reduce_latency() {
+  skip_next_begin_main_frame_to_reduce_latency_ = false;
+  _has_bits_[1] &= ~0x00000004u;
+}
+inline bool ChromeCompositorStateMachine_MinorState::skip_next_begin_main_frame_to_reduce_latency() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorStateMachine.MinorState.skip_next_begin_main_frame_to_reduce_latency)
+  return skip_next_begin_main_frame_to_reduce_latency_;
+}
+inline void ChromeCompositorStateMachine_MinorState::set_skip_next_begin_main_frame_to_reduce_latency(bool value) {
+  _has_bits_[1] |= 0x00000004u;
+  skip_next_begin_main_frame_to_reduce_latency_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorStateMachine.MinorState.skip_next_begin_main_frame_to_reduce_latency)
+}
+
 // optional bool video_needs_begin_frames = 36;
 inline bool ChromeCompositorStateMachine_MinorState::has_video_needs_begin_frames() const {
-  return (_has_bits_[1] & 0x00000004u) != 0;
+  return (_has_bits_[1] & 0x00000008u) != 0;
 }
 inline void ChromeCompositorStateMachine_MinorState::clear_video_needs_begin_frames() {
   video_needs_begin_frames_ = false;
-  _has_bits_[1] &= ~0x00000004u;
+  _has_bits_[1] &= ~0x00000008u;
 }
 inline bool ChromeCompositorStateMachine_MinorState::video_needs_begin_frames() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorStateMachine.MinorState.video_needs_begin_frames)
   return video_needs_begin_frames_;
 }
 inline void ChromeCompositorStateMachine_MinorState::set_video_needs_begin_frames(bool value) {
-  _has_bits_[1] |= 0x00000004u;
+  _has_bits_[1] |= 0x00000008u;
   video_needs_begin_frames_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorStateMachine.MinorState.video_needs_begin_frames)
 }
 
 // optional bool defer_begin_main_frame = 37;
 inline bool ChromeCompositorStateMachine_MinorState::has_defer_begin_main_frame() const {
-  return (_has_bits_[1] & 0x00000008u) != 0;
+  return (_has_bits_[1] & 0x00000010u) != 0;
 }
 inline void ChromeCompositorStateMachine_MinorState::clear_defer_begin_main_frame() {
   defer_begin_main_frame_ = false;
-  _has_bits_[1] &= ~0x00000008u;
+  _has_bits_[1] &= ~0x00000010u;
 }
 inline bool ChromeCompositorStateMachine_MinorState::defer_begin_main_frame() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorStateMachine.MinorState.defer_begin_main_frame)
   return defer_begin_main_frame_;
 }
 inline void ChromeCompositorStateMachine_MinorState::set_defer_begin_main_frame(bool value) {
-  _has_bits_[1] |= 0x00000008u;
+  _has_bits_[1] |= 0x00000010u;
   defer_begin_main_frame_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorStateMachine.MinorState.defer_begin_main_frame)
 }
 
 // optional bool last_commit_had_no_updates = 38;
 inline bool ChromeCompositorStateMachine_MinorState::has_last_commit_had_no_updates() const {
-  return (_has_bits_[1] & 0x00000010u) != 0;
+  return (_has_bits_[1] & 0x00000020u) != 0;
 }
 inline void ChromeCompositorStateMachine_MinorState::clear_last_commit_had_no_updates() {
   last_commit_had_no_updates_ = false;
-  _has_bits_[1] &= ~0x00000010u;
+  _has_bits_[1] &= ~0x00000020u;
 }
 inline bool ChromeCompositorStateMachine_MinorState::last_commit_had_no_updates() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorStateMachine.MinorState.last_commit_had_no_updates)
   return last_commit_had_no_updates_;
 }
 inline void ChromeCompositorStateMachine_MinorState::set_last_commit_had_no_updates(bool value) {
-  _has_bits_[1] |= 0x00000010u;
+  _has_bits_[1] |= 0x00000020u;
   last_commit_had_no_updates_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorStateMachine.MinorState.last_commit_had_no_updates)
 }
 
 // optional bool did_draw_in_last_frame = 39;
 inline bool ChromeCompositorStateMachine_MinorState::has_did_draw_in_last_frame() const {
-  return (_has_bits_[1] & 0x00000020u) != 0;
+  return (_has_bits_[1] & 0x00000040u) != 0;
 }
 inline void ChromeCompositorStateMachine_MinorState::clear_did_draw_in_last_frame() {
   did_draw_in_last_frame_ = false;
-  _has_bits_[1] &= ~0x00000020u;
+  _has_bits_[1] &= ~0x00000040u;
 }
 inline bool ChromeCompositorStateMachine_MinorState::did_draw_in_last_frame() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorStateMachine.MinorState.did_draw_in_last_frame)
   return did_draw_in_last_frame_;
 }
 inline void ChromeCompositorStateMachine_MinorState::set_did_draw_in_last_frame(bool value) {
-  _has_bits_[1] |= 0x00000020u;
+  _has_bits_[1] |= 0x00000040u;
   did_draw_in_last_frame_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorStateMachine.MinorState.did_draw_in_last_frame)
 }
 
 // optional bool did_submit_in_last_frame = 40;
 inline bool ChromeCompositorStateMachine_MinorState::has_did_submit_in_last_frame() const {
-  return (_has_bits_[1] & 0x00000040u) != 0;
+  return (_has_bits_[1] & 0x00000080u) != 0;
 }
 inline void ChromeCompositorStateMachine_MinorState::clear_did_submit_in_last_frame() {
   did_submit_in_last_frame_ = false;
-  _has_bits_[1] &= ~0x00000040u;
+  _has_bits_[1] &= ~0x00000080u;
 }
 inline bool ChromeCompositorStateMachine_MinorState::did_submit_in_last_frame() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorStateMachine.MinorState.did_submit_in_last_frame)
   return did_submit_in_last_frame_;
 }
 inline void ChromeCompositorStateMachine_MinorState::set_did_submit_in_last_frame(bool value) {
-  _has_bits_[1] |= 0x00000040u;
+  _has_bits_[1] |= 0x00000080u;
   did_submit_in_last_frame_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorStateMachine.MinorState.did_submit_in_last_frame)
 }
 
 // optional bool needs_impl_side_invalidation = 41;
 inline bool ChromeCompositorStateMachine_MinorState::has_needs_impl_side_invalidation() const {
-  return (_has_bits_[1] & 0x00000080u) != 0;
+  return (_has_bits_[1] & 0x00000100u) != 0;
 }
 inline void ChromeCompositorStateMachine_MinorState::clear_needs_impl_side_invalidation() {
   needs_impl_side_invalidation_ = false;
-  _has_bits_[1] &= ~0x00000080u;
+  _has_bits_[1] &= ~0x00000100u;
 }
 inline bool ChromeCompositorStateMachine_MinorState::needs_impl_side_invalidation() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorStateMachine.MinorState.needs_impl_side_invalidation)
   return needs_impl_side_invalidation_;
 }
 inline void ChromeCompositorStateMachine_MinorState::set_needs_impl_side_invalidation(bool value) {
-  _has_bits_[1] |= 0x00000080u;
+  _has_bits_[1] |= 0x00000100u;
   needs_impl_side_invalidation_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorStateMachine.MinorState.needs_impl_side_invalidation)
 }
 
 // optional bool current_pending_tree_is_impl_side = 42;
 inline bool ChromeCompositorStateMachine_MinorState::has_current_pending_tree_is_impl_side() const {
-  return (_has_bits_[1] & 0x00000100u) != 0;
+  return (_has_bits_[1] & 0x00000200u) != 0;
 }
 inline void ChromeCompositorStateMachine_MinorState::clear_current_pending_tree_is_impl_side() {
   current_pending_tree_is_impl_side_ = false;
-  _has_bits_[1] &= ~0x00000100u;
+  _has_bits_[1] &= ~0x00000200u;
 }
 inline bool ChromeCompositorStateMachine_MinorState::current_pending_tree_is_impl_side() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorStateMachine.MinorState.current_pending_tree_is_impl_side)
   return current_pending_tree_is_impl_side_;
 }
 inline void ChromeCompositorStateMachine_MinorState::set_current_pending_tree_is_impl_side(bool value) {
-  _has_bits_[1] |= 0x00000100u;
+  _has_bits_[1] |= 0x00000200u;
   current_pending_tree_is_impl_side_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorStateMachine.MinorState.current_pending_tree_is_impl_side)
 }
 
 // optional bool previous_pending_tree_was_impl_side = 43;
 inline bool ChromeCompositorStateMachine_MinorState::has_previous_pending_tree_was_impl_side() const {
-  return (_has_bits_[1] & 0x00000200u) != 0;
+  return (_has_bits_[1] & 0x00000400u) != 0;
 }
 inline void ChromeCompositorStateMachine_MinorState::clear_previous_pending_tree_was_impl_side() {
   previous_pending_tree_was_impl_side_ = false;
-  _has_bits_[1] &= ~0x00000200u;
+  _has_bits_[1] &= ~0x00000400u;
 }
 inline bool ChromeCompositorStateMachine_MinorState::previous_pending_tree_was_impl_side() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorStateMachine.MinorState.previous_pending_tree_was_impl_side)
   return previous_pending_tree_was_impl_side_;
 }
 inline void ChromeCompositorStateMachine_MinorState::set_previous_pending_tree_was_impl_side(bool value) {
-  _has_bits_[1] |= 0x00000200u;
+  _has_bits_[1] |= 0x00000400u;
   previous_pending_tree_was_impl_side_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorStateMachine.MinorState.previous_pending_tree_was_impl_side)
 }
 
 // optional bool processing_animation_worklets_for_active_tree = 44;
 inline bool ChromeCompositorStateMachine_MinorState::has_processing_animation_worklets_for_active_tree() const {
-  return (_has_bits_[1] & 0x00000400u) != 0;
+  return (_has_bits_[1] & 0x00000800u) != 0;
 }
 inline void ChromeCompositorStateMachine_MinorState::clear_processing_animation_worklets_for_active_tree() {
   processing_animation_worklets_for_active_tree_ = false;
-  _has_bits_[1] &= ~0x00000400u;
+  _has_bits_[1] &= ~0x00000800u;
 }
 inline bool ChromeCompositorStateMachine_MinorState::processing_animation_worklets_for_active_tree() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorStateMachine.MinorState.processing_animation_worklets_for_active_tree)
   return processing_animation_worklets_for_active_tree_;
 }
 inline void ChromeCompositorStateMachine_MinorState::set_processing_animation_worklets_for_active_tree(bool value) {
-  _has_bits_[1] |= 0x00000400u;
+  _has_bits_[1] |= 0x00000800u;
   processing_animation_worklets_for_active_tree_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorStateMachine.MinorState.processing_animation_worklets_for_active_tree)
 }
 
 // optional bool processing_animation_worklets_for_pending_tree = 45;
 inline bool ChromeCompositorStateMachine_MinorState::has_processing_animation_worklets_for_pending_tree() const {
-  return (_has_bits_[1] & 0x00000800u) != 0;
+  return (_has_bits_[1] & 0x00001000u) != 0;
 }
 inline void ChromeCompositorStateMachine_MinorState::clear_processing_animation_worklets_for_pending_tree() {
   processing_animation_worklets_for_pending_tree_ = false;
-  _has_bits_[1] &= ~0x00000800u;
+  _has_bits_[1] &= ~0x00001000u;
 }
 inline bool ChromeCompositorStateMachine_MinorState::processing_animation_worklets_for_pending_tree() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorStateMachine.MinorState.processing_animation_worklets_for_pending_tree)
   return processing_animation_worklets_for_pending_tree_;
 }
 inline void ChromeCompositorStateMachine_MinorState::set_processing_animation_worklets_for_pending_tree(bool value) {
-  _has_bits_[1] |= 0x00000800u;
+  _has_bits_[1] |= 0x00001000u;
   processing_animation_worklets_for_pending_tree_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorStateMachine.MinorState.processing_animation_worklets_for_pending_tree)
 }
 
 // optional bool processing_paint_worklets_for_pending_tree = 46;
 inline bool ChromeCompositorStateMachine_MinorState::has_processing_paint_worklets_for_pending_tree() const {
-  return (_has_bits_[1] & 0x00001000u) != 0;
+  return (_has_bits_[1] & 0x00002000u) != 0;
 }
 inline void ChromeCompositorStateMachine_MinorState::clear_processing_paint_worklets_for_pending_tree() {
   processing_paint_worklets_for_pending_tree_ = false;
-  _has_bits_[1] &= ~0x00001000u;
+  _has_bits_[1] &= ~0x00002000u;
 }
 inline bool ChromeCompositorStateMachine_MinorState::processing_paint_worklets_for_pending_tree() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeCompositorStateMachine.MinorState.processing_paint_worklets_for_pending_tree)
   return processing_paint_worklets_for_pending_tree_;
 }
 inline void ChromeCompositorStateMachine_MinorState::set_processing_paint_worklets_for_pending_tree(bool value) {
-  _has_bits_[1] |= 0x00001000u;
+  _has_bits_[1] |= 0x00002000u;
   processing_paint_worklets_for_pending_tree_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeCompositorStateMachine.MinorState.processing_paint_worklets_for_pending_tree)
 }
@@ -4339,24 +4383,6 @@ inline ::perfetto::protos::SourceLocation* BeginFrameArgs::mutable_source_locati
   }
   // @@protoc_insertion_point(field_mutable:perfetto.protos.BeginFrameArgs.source_location)
   return created_from_.source_location_;
-}
-
-// optional int64 frames_throttled_since_last = 12;
-inline bool BeginFrameArgs::has_frames_throttled_since_last() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
-inline void BeginFrameArgs::clear_frames_throttled_since_last() {
-  frames_throttled_since_last_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00000100u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::int64 BeginFrameArgs::frames_throttled_since_last() const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.BeginFrameArgs.frames_throttled_since_last)
-  return frames_throttled_since_last_;
-}
-inline void BeginFrameArgs::set_frames_throttled_since_last(::PROTOBUF_NAMESPACE_ID::int64 value) {
-  _has_bits_[0] |= 0x00000100u;
-  frames_throttled_since_last_ = value;
-  // @@protoc_insertion_point(field_set:perfetto.protos.BeginFrameArgs.frames_throttled_since_last)
 }
 
 inline bool BeginFrameArgs::has_created_from() const {
