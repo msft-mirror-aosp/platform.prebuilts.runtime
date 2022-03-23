@@ -1,9 +1,14 @@
 // This is auto-generated. DO NOT EDIT.
 
 package {
-    // A default list here prevents the license LSC from adding its own list which would
-    // be unnecessary as every module in the sdk already has its own licenses property.
-    default_applicable_licenses: ["Android-Apache-2.0"],
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "prebuilts_runtime_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    //   SPDX-license-identifier-BSD
+    //   SPDX-license-identifier-Unicode-DFS
+    default_applicable_licenses: ["prebuilts_runtime_license"],
 }
 
 java_import {
@@ -17,7 +22,6 @@ java_import {
         "//packages/modules/RuntimeI18n/apex",
     ],
     apex_available: ["//apex_available:platform"],
-    licenses: ["i18n-module-test-exports_external_icu_license@current"],
     jars: ["java/core-icu4j-for-host.jar"],
 }
 
@@ -32,91 +36,7 @@ java_import {
         "//packages/modules/RuntimeI18n/apex",
     ],
     apex_available: ["//apex_available:platform"],
-    licenses: ["i18n-module-test-exports_external_icu_license"],
     jars: ["java/core-icu4j-for-host.jar"],
-}
-
-license {
-    name: "i18n-module-test-exports_Android-Apache-2.0@current",
-    sdk_member_name: "Android-Apache-2.0",
-    visibility: ["//visibility:private"],
-    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
-    license_text: ["licenses/build/soong/licenses/LICENSE"],
-}
-
-license {
-    name: "i18n-module-test-exports_Android-Apache-2.0",
-    visibility: ["//visibility:private"],
-    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
-    license_text: ["licenses/build/soong/licenses/LICENSE"],
-}
-
-license {
-    name: "i18n-module-test-exports_external_icu_icu4c_license@current",
-    sdk_member_name: "external_icu_icu4c_license",
-    visibility: ["//visibility:private"],
-    license_kinds: [
-        "SPDX-license-identifier-BSD",
-        "SPDX-license-identifier-ICU",
-        "SPDX-license-identifier-ISC",
-        "SPDX-license-identifier-MIT",
-        "SPDX-license-identifier-Unicode-DFS",
-        "legacy_unencumbered",
-    ],
-    license_text: [
-        "licenses/external/icu/icu4c/LICENSE",
-        "licenses/external/icu/icu4c/license.html",
-    ],
-}
-
-license {
-    name: "i18n-module-test-exports_external_icu_icu4c_license",
-    visibility: ["//visibility:private"],
-    license_kinds: [
-        "SPDX-license-identifier-BSD",
-        "SPDX-license-identifier-ICU",
-        "SPDX-license-identifier-ISC",
-        "SPDX-license-identifier-MIT",
-        "SPDX-license-identifier-Unicode-DFS",
-        "legacy_unencumbered",
-    ],
-    license_text: [
-        "licenses/external/icu/icu4c/LICENSE",
-        "licenses/external/icu/icu4c/license.html",
-    ],
-}
-
-license {
-    name: "i18n-module-test-exports_external_icu_license@current",
-    sdk_member_name: "external_icu_license",
-    visibility: ["//visibility:private"],
-    license_kinds: [
-        "SPDX-license-identifier-Apache-2.0",
-        "SPDX-license-identifier-BSD",
-        "SPDX-license-identifier-EPL",
-        "SPDX-license-identifier-ICU",
-        "SPDX-license-identifier-ISC",
-        "SPDX-license-identifier-MIT",
-        "SPDX-license-identifier-Unicode-DFS",
-        "legacy_unencumbered",
-    ],
-    license_text: ["licenses/external/icu/NOTICE"],
-}
-
-license {
-    name: "i18n-module-test-exports_external_icu_license",
-    visibility: ["//visibility:private"],
-    license_kinds: [
-        "SPDX-license-identifier-Apache-2.0",
-        "SPDX-license-identifier-BSD",
-        "SPDX-license-identifier-EPL",
-        "SPDX-license-identifier-ICU",
-        "SPDX-license-identifier-ISC",
-        "SPDX-license-identifier-MIT",
-        "SPDX-license-identifier-Unicode-DFS",
-        "legacy_unencumbered",
-    ],
-    license_text: ["licenses/external/icu/NOTICE"],
 }
 
 cc_prebuilt_library_shared {
@@ -127,7 +47,6 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.i18n",
     ],
-    licenses: ["i18n-module-test-exports_external_icu_icu4c_license@current"],
     host_supported: true,
     installable: false,
     unique_host_soname: true,
@@ -181,7 +100,6 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.i18n",
     ],
-    licenses: ["i18n-module-test-exports_external_icu_icu4c_license"],
     host_supported: true,
     unique_host_soname: true,
     shared_libs: ["libicuuc"],
@@ -231,7 +149,6 @@ cc_prebuilt_library_shared {
     sdk_member_name: "libicuuc",
     visibility: ["//visibility:public"],
     apex_available: ["com.android.i18n"],
-    licenses: ["i18n-module-test-exports_external_icu_icu4c_license@current"],
     host_supported: true,
     installable: false,
     unique_host_soname: true,
@@ -298,7 +215,6 @@ cc_prebuilt_library_shared {
     prefer: false,
     visibility: ["//visibility:public"],
     apex_available: ["com.android.i18n"],
-    licenses: ["i18n-module-test-exports_external_icu_icu4c_license"],
     host_supported: true,
     unique_host_soname: true,
     target: {
@@ -367,7 +283,6 @@ cc_prebuilt_library_shared {
         "//packages/modules/RuntimeI18n/apex",
     ],
     apex_available: ["com.android.i18n"],
-    licenses: ["i18n-module-test-exports_external_icu_license@current"],
     host_supported: true,
     installable: false,
     shared_libs: [
@@ -425,7 +340,6 @@ cc_prebuilt_library_shared {
         "//packages/modules/RuntimeI18n/apex",
     ],
     apex_available: ["com.android.i18n"],
-    licenses: ["i18n-module-test-exports_external_icu_license"],
     host_supported: true,
     shared_libs: [
         "libbase",

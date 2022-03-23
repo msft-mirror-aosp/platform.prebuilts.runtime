@@ -83,7 +83,6 @@ class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
     kHasCompositorAnimationFieldNumber = 8,
     kHasSmoothInputMainFieldNumber = 9,
     kHasMissingContentFieldNumber = 10,
-    kLayerTreeHostIdFieldNumber = 11,
   };
 
   ChromeFrameReporter();
@@ -140,10 +139,6 @@ class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
   bool has_missing_content() const { return has_missing_content_; }
   void set_has_missing_content(bool value) { has_missing_content_ = value; _has_field_.set(10); }
 
-  bool has_layer_tree_host_id() const { return _has_field_[11]; }
-  uint64_t layer_tree_host_id() const { return layer_tree_host_id_; }
-  void set_layer_tree_host_id(uint64_t value) { layer_tree_host_id_ = value; _has_field_.set(11); }
-
  private:
   ChromeFrameReporter_State state_{};
   ChromeFrameReporter_FrameDropReason reason_{};
@@ -155,13 +150,12 @@ class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
   bool has_compositor_animation_{};
   bool has_smooth_input_main_{};
   bool has_missing_content_{};
-  uint64_t layer_tree_host_id_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<12> _has_field_{};
+  std::bitset<11> _has_field_{};
 };
 
 }  // namespace perfetto
