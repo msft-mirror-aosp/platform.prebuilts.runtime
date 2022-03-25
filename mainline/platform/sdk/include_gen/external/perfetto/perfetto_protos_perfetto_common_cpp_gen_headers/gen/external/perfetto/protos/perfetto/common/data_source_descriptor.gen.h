@@ -32,6 +32,7 @@ class PERFETTO_EXPORT DataSourceDescriptor : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNameFieldNumber = 1,
+    kIdFieldNumber = 7,
     kWillNotifyOnStopFieldNumber = 2,
     kWillNotifyOnStartFieldNumber = 3,
     kHandlesIncrementalStateClearFieldNumber = 4,
@@ -57,6 +58,10 @@ class PERFETTO_EXPORT DataSourceDescriptor : public ::protozero::CppMessageObj {
   const std::string& name() const { return name_; }
   void set_name(const std::string& value) { name_ = value; _has_field_.set(1); }
 
+  bool has_id() const { return _has_field_[7]; }
+  uint64_t id() const { return id_; }
+  void set_id(uint64_t value) { id_ = value; _has_field_.set(7); }
+
   bool has_will_notify_on_stop() const { return _has_field_[2]; }
   bool will_notify_on_stop() const { return will_notify_on_stop_; }
   void set_will_notify_on_stop(bool value) { will_notify_on_stop_ = value; _has_field_.set(2); }
@@ -77,6 +82,7 @@ class PERFETTO_EXPORT DataSourceDescriptor : public ::protozero::CppMessageObj {
 
  private:
   std::string name_{};
+  uint64_t id_{};
   bool will_notify_on_stop_{};
   bool will_notify_on_start_{};
   bool handles_incremental_state_clear_{};
@@ -87,7 +93,7 @@ class PERFETTO_EXPORT DataSourceDescriptor : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<7> _has_field_{};
+  std::bitset<8> _has_field_{};
 };
 
 }  // namespace perfetto
