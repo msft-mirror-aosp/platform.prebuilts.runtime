@@ -179,6 +179,7 @@ class TracingServiceState_Producer :
 
   enum : int {
     kNameFieldNumber = 2,
+    kSdkVersionFieldNumber = 4,
     kIdFieldNumber = 1,
     kUidFieldNumber = 3,
   };
@@ -193,6 +194,18 @@ class TracingServiceState_Producer :
   std::string* mutable_name();
   std::string* release_name();
   void set_allocated_name(std::string* name);
+
+  // optional string sdk_version = 4;
+  bool has_sdk_version() const;
+  void clear_sdk_version();
+  const std::string& sdk_version() const;
+  void set_sdk_version(const std::string& value);
+  void set_sdk_version(std::string&& value);
+  void set_sdk_version(const char* value);
+  void set_sdk_version(const char* value, size_t size);
+  std::string* mutable_sdk_version();
+  std::string* release_sdk_version();
+  void set_allocated_sdk_version(std::string* sdk_version);
 
   // optional int32 id = 1;
   bool has_id() const;
@@ -214,6 +227,7 @@ class TracingServiceState_Producer :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sdk_version_;
   ::PROTOBUF_NAMESPACE_ID::int32 id_;
   ::PROTOBUF_NAMESPACE_ID::int32 uid_;
   friend struct ::TableStruct_protos_2fperfetto_2fcommon_2ftracing_5fservice_5fstate_2eproto;
@@ -461,6 +475,7 @@ class TracingServiceState :
   enum : int {
     kProducersFieldNumber = 1,
     kDataSourcesFieldNumber = 2,
+    kTracingServiceVersionFieldNumber = 5,
     kNumSessionsFieldNumber = 3,
     kNumSessionsStartedFieldNumber = 4,
   };
@@ -486,6 +501,18 @@ class TracingServiceState :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TracingServiceState_DataSource >&
       data_sources() const;
 
+  // optional string tracing_service_version = 5;
+  bool has_tracing_service_version() const;
+  void clear_tracing_service_version();
+  const std::string& tracing_service_version() const;
+  void set_tracing_service_version(const std::string& value);
+  void set_tracing_service_version(std::string&& value);
+  void set_tracing_service_version(const char* value);
+  void set_tracing_service_version(const char* value, size_t size);
+  std::string* mutable_tracing_service_version();
+  std::string* release_tracing_service_version();
+  void set_allocated_tracing_service_version(std::string* tracing_service_version);
+
   // optional int32 num_sessions = 3;
   bool has_num_sessions() const;
   void clear_num_sessions();
@@ -507,6 +534,7 @@ class TracingServiceState :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TracingServiceState_Producer > producers_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TracingServiceState_DataSource > data_sources_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tracing_service_version_;
   ::PROTOBUF_NAMESPACE_ID::int32 num_sessions_;
   ::PROTOBUF_NAMESPACE_ID::int32 num_sessions_started_;
   friend struct ::TableStruct_protos_2fperfetto_2fcommon_2ftracing_5fservice_5fstate_2eproto;
@@ -524,18 +552,18 @@ class TracingServiceState :
 
 // optional int32 id = 1;
 inline bool TracingServiceState_Producer::has_id() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void TracingServiceState_Producer::clear_id() {
   id_ = 0;
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 TracingServiceState_Producer::id() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceState.Producer.id)
   return id_;
 }
 inline void TracingServiceState_Producer::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   id_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceState.Producer.id)
 }
@@ -600,20 +628,78 @@ inline void TracingServiceState_Producer::set_allocated_name(std::string* name) 
 
 // optional int32 uid = 3;
 inline bool TracingServiceState_Producer::has_uid() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void TracingServiceState_Producer::clear_uid() {
   uid_ = 0;
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 TracingServiceState_Producer::uid() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceState.Producer.uid)
   return uid_;
 }
 inline void TracingServiceState_Producer::set_uid(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
   uid_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceState.Producer.uid)
+}
+
+// optional string sdk_version = 4;
+inline bool TracingServiceState_Producer::has_sdk_version() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TracingServiceState_Producer::clear_sdk_version() {
+  sdk_version_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& TracingServiceState_Producer::sdk_version() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceState.Producer.sdk_version)
+  return sdk_version_.GetNoArena();
+}
+inline void TracingServiceState_Producer::set_sdk_version(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  sdk_version_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceState.Producer.sdk_version)
+}
+inline void TracingServiceState_Producer::set_sdk_version(std::string&& value) {
+  _has_bits_[0] |= 0x00000002u;
+  sdk_version_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.TracingServiceState.Producer.sdk_version)
+}
+inline void TracingServiceState_Producer::set_sdk_version(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000002u;
+  sdk_version_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.TracingServiceState.Producer.sdk_version)
+}
+inline void TracingServiceState_Producer::set_sdk_version(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000002u;
+  sdk_version_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.TracingServiceState.Producer.sdk_version)
+}
+inline std::string* TracingServiceState_Producer::mutable_sdk_version() {
+  _has_bits_[0] |= 0x00000002u;
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracingServiceState.Producer.sdk_version)
+  return sdk_version_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* TracingServiceState_Producer::release_sdk_version() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracingServiceState.Producer.sdk_version)
+  if (!has_sdk_version()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  return sdk_version_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void TracingServiceState_Producer::set_allocated_sdk_version(std::string* sdk_version) {
+  if (sdk_version != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  sdk_version_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), sdk_version);
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TracingServiceState.Producer.sdk_version)
 }
 
 // -------------------------------------------------------------------
@@ -749,38 +835,96 @@ TracingServiceState::data_sources() const {
 
 // optional int32 num_sessions = 3;
 inline bool TracingServiceState::has_num_sessions() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void TracingServiceState::clear_num_sessions() {
   num_sessions_ = 0;
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 TracingServiceState::num_sessions() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceState.num_sessions)
   return num_sessions_;
 }
 inline void TracingServiceState::set_num_sessions(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   num_sessions_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceState.num_sessions)
 }
 
 // optional int32 num_sessions_started = 4;
 inline bool TracingServiceState::has_num_sessions_started() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void TracingServiceState::clear_num_sessions_started() {
   num_sessions_started_ = 0;
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 TracingServiceState::num_sessions_started() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceState.num_sessions_started)
   return num_sessions_started_;
 }
 inline void TracingServiceState::set_num_sessions_started(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   num_sessions_started_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceState.num_sessions_started)
+}
+
+// optional string tracing_service_version = 5;
+inline bool TracingServiceState::has_tracing_service_version() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TracingServiceState::clear_tracing_service_version() {
+  tracing_service_version_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& TracingServiceState::tracing_service_version() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceState.tracing_service_version)
+  return tracing_service_version_.GetNoArena();
+}
+inline void TracingServiceState::set_tracing_service_version(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  tracing_service_version_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceState.tracing_service_version)
+}
+inline void TracingServiceState::set_tracing_service_version(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  tracing_service_version_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.TracingServiceState.tracing_service_version)
+}
+inline void TracingServiceState::set_tracing_service_version(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  tracing_service_version_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.TracingServiceState.tracing_service_version)
+}
+inline void TracingServiceState::set_tracing_service_version(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  tracing_service_version_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.TracingServiceState.tracing_service_version)
+}
+inline std::string* TracingServiceState::mutable_tracing_service_version() {
+  _has_bits_[0] |= 0x00000001u;
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracingServiceState.tracing_service_version)
+  return tracing_service_version_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* TracingServiceState::release_tracing_service_version() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracingServiceState.tracing_service_version)
+  if (!has_tracing_service_version()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return tracing_service_version_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void TracingServiceState::set_allocated_tracing_service_version(std::string* tracing_service_version) {
+  if (tracing_service_version != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  tracing_service_version_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), tracing_service_version);
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TracingServiceState.tracing_service_version)
 }
 
 #ifdef __GNUC__

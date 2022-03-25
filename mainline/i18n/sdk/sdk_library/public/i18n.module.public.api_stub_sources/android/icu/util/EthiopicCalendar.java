@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// © 2016 and later: Unicode, Inc. and others.
+// ? 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
@@ -171,79 +171,79 @@ protected int handleGetLimit(int field, int limitType) { throw new RuntimeExcept
 protected int handleComputeMonthStart(int eyear, int emonth, boolean useMonth) { throw new RuntimeException("Stub!"); }
 
 /** 
- * Constant for ግንቦት, the 9th month of the Ethiopic year.
+ * Constant for ????, the 9th month of the Ethiopic year.
  */
 
 public static final int GENBOT = 8; // 0x8
 
 /** 
- * Constant for ሐምሌ, the 11th month of the Ethiopic year.
+ * Constant for ???, the 11th month of the Ethiopic year.
  */
 
 public static final int HAMLE = 10; // 0xa
 
 /** 
- * Constant for ኅዳር, the 3rd month of the Ethiopic year.
+ * Constant for ???, the 3rd month of the Ethiopic year.
  */
 
 public static final int HEDAR = 2; // 0x2
 
 /** 
- * Constant for መጋቢት, the 7th month of the Ethiopic year.
+ * Constant for ????, the 7th month of the Ethiopic year.
  */
 
 public static final int MEGABIT = 6; // 0x6
 
 /** 
- * Constant for መስከረም, the 1st month of the Ethiopic year.
+ * Constant for ?????, the 1st month of the Ethiopic year.
  */
 
 public static final int MESKEREM = 0; // 0x0
 
 /** 
- * Constant for ሚያዝያ, the 8th month of the Ethiopic year.
+ * Constant for ????, the 8th month of the Ethiopic year.
  */
 
 public static final int MIAZIA = 7; // 0x7
 
 /** 
- * Constant for ነሐሴ, the 12th month of the Ethiopic year.
+ * Constant for ???, the 12th month of the Ethiopic year.
  */
 
 public static final int NEHASSE = 11; // 0xb
 
 /** 
- * Constant for ጳጉሜን, the 13th month of the Ethiopic year.
+ * Constant for ????, the 13th month of the Ethiopic year.
  */
 
 public static final int PAGUMEN = 12; // 0xc
 
 /** 
- * Constant for ሰኔ, the 10th month of the Ethiopic year.
+ * Constant for ??, the 10th month of the Ethiopic year.
  */
 
 public static final int SENE = 9; // 0x9
 
 /** 
- * Constant for ታኅሣሥ, the 4th month of the Ethiopic year.
+ * Constant for ????, the 4th month of the Ethiopic year.
  */
 
 public static final int TAHSAS = 3; // 0x3
 
 /** 
- * Constant for ጥቅምት, the 2nd month of the Ethiopic year.
+ * Constant for ????, the 2nd month of the Ethiopic year.
  */
 
 public static final int TEKEMT = 1; // 0x1
 
 /** 
- * Constant for ጥር, the 5th month of the Ethiopic year.
+ * Constant for ??, the 5th month of the Ethiopic year.
  */
 
 public static final int TER = 4; // 0x4
 
 /** 
- * Constant for የካቲት, the 6th month of the Ethiopic year.
+ * Constant for ????, the 6th month of the Ethiopic year.
  */
 
 public static final int YEKATIT = 5; // 0x5
