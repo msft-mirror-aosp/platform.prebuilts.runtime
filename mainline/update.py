@@ -25,99 +25,104 @@ sys.path.append(THIS_DIR + '/../common/python')
 import update_prebuilts as update
 
 PREBUILT_DESCRIPTION = 'mainline'
-TARGET = 'mainline_modules'
+MODULE_TARGET = 'mainline_modules-userdebug'
+SDK_TARGET = "mainline_modules_sdks-userdebug"
 
-COMMIT_MESSAGE_NOTE_TEMPLATE = """\
-CL prepared by prebuilts/runtime/mainline/update.py with the following
-targets: {}
+COMMIT_MESSAGE_NOTE = """\
+CL prepared by prebuilts/runtime/mainline/update.py.
 
 See prebuilts/runtime/mainline/README.md for update instructions.
 
 Test: Presubmits
 """
 
-def InstallApexEntries(apex_name, install_dir):
+def InstallApexEntries(apex_base_name, install_dir):
   res = []
   for arch in ['arm', 'arm64', 'x86', 'x86_64']:
     res.append(update.InstallEntry(
-        TARGET,
-        arch + '/' + apex_name + '.apex',
-        install_dir + '/' + apex_name + '-' + arch + '.apex',
+        MODULE_TARGET,
+        os.path.join('mainline_modules_' + arch,
+                     'com.android.' + apex_base_name + '.apex'),
+        os.path.join(install_dir,
+                     'com.android.' + apex_base_name + '-' + arch + '.apex'),
         install_unzipped=False))
   return res
+
+def InstallUnbundledSdkEntries(apex_base_name, sdk_type):
+  return [update.InstallEntry(
+      SDK_TARGET,
+      os.path.join('mainline-sdks/for-latest-build/current',
+                   'com.android.' + apex_base_name,
+                   sdk_type,
+                   apex_base_name + '-module-' + sdk_type + '-current.zip'),
+      os.path.join(apex_base_name, sdk_type),
+      install_unzipped=True)]
+
+def InstallBundledSdkEntries(apex_base_name, sdk_type):
+  return [update.InstallEntry(
+      SDK_TARGET,
+      os.path.join('bundled-mainline-sdks',
+                   'com.android.' + apex_base_name,
+                   sdk_type,
+                   apex_base_name + '-module-' + sdk_type + '-current.zip'),
+      os.path.join(apex_base_name, sdk_type),
+      install_unzipped=True)]
+
+def InstallPlatformMainlineSdkEntries(sdk_type):
+  return [update.InstallEntry(
+      SDK_TARGET,
+      os.path.join('bundled-mainline-sdks',
+                   'platform-mainline',
+                   sdk_type,
+                   'platform-mainline-' + sdk_type + '-current.zip'),
+      os.path.join('platform', sdk_type),
+      install_unzipped=True)]
 
 def InstallSharedLibEntries(lib_name, install_dir):
   res = []
   for arch in ['arm', 'arm64', 'x86', 'x86_64']:
     res.append(update.InstallEntry(
-        TARGET,
-        arch + '/' + lib_name + '.so',
-        install_dir + '/' + arch + '/' + lib_name  + '.so',
+        MODULE_TARGET,
+        os.path.join(arch, lib_name + '.so'),
+        os.path.join(install_dir, arch, lib_name  + '.so'),
         install_unzipped=False))
   return res
 
-def InstallSdkEntries(mainline_sdk_name, install_dir):
-  return [update.InstallEntry(
-      TARGET,
-      'mainline-sdks/' + mainline_sdk_name + '-current.zip',
-      install_dir,
-      install_unzipped=True)]
-
-PREBUILT_INSTALL_MODULES = {
+PREBUILT_INSTALL_MODULES = (
     # Conscrypt
-    'conscrypt': (
-        InstallApexEntries('com.android.conscrypt', 'conscrypt/apex') +
-        InstallSdkEntries('conscrypt-module-test-exports', 'conscrypt/test-exports') +
-        InstallSdkEntries('conscrypt-module-host-exports', 'conscrypt/host-exports')),
+    #InstallApexEntries('conscrypt', 'conscrypt/apex') +
+    #InstallUnbundledSdkEntries('conscrypt', 'test-exports') +
+    #InstallUnbundledSdkEntries('conscrypt', 'host-exports') +
 
     # Runtime (Bionic)
-    'runtime': (
-        InstallApexEntries('com.android.runtime', 'runtime/apex') +
-        InstallSdkEntries('runtime-module-sdk', 'runtime/sdk') +
-        InstallSdkEntries('runtime-module-host-exports', 'runtime/host-exports')),
+    #InstallApexEntries('runtime', 'runtime/apex') +
+    InstallBundledSdkEntries('runtime', 'sdk') +
+    #InstallBundledSdkEntries('runtime', 'host-exports') +
 
     # I18N
-    'i18n': (
-        InstallApexEntries('com.android.i18n', 'i18n/apex') +
-        InstallSdkEntries('i18n-module-sdk', 'i18n/sdk') +
-        InstallSdkEntries('i18n-module-test-exports', 'i18n/test-exports')),
+    #InstallApexEntries('i18n', 'i18n/apex') +
+    #InstallBundledSdkEntries('i18n', 'sdk') +
+    #InstallBundledSdkEntries('i18n', 'test-exports') +
 
     # tzdata
-    'tzdata': (
-        InstallApexEntries('com.android.tzdata', 'tzdata/apex') +
-        InstallSdkEntries('tzdata-module-test-exports', 'tzdata/test-exports')),
+    #InstallApexEntries('tzdata', 'tzdata/apex') +
+    #InstallBundledSdkEntries('tzdata', 'test-exports') +
 
     # statsd
-    'statsd': InstallApexEntries('com.android.os.statsd', 'statsd/apex'),
+    #InstallApexEntries('os.statsd', 'statsd/apex') +
 
     # Platform
-    'platform': (
-        InstallSdkEntries('platform-mainline-sdk', 'platform/sdk') +
-        InstallSdkEntries('platform-mainline-test-exports', 'platform/test-exports') +
-        # Shared libraries that are stubs in SDKs, but for which we need their
-        # implementation for device testing.
-        InstallSharedLibEntries('heapprofd_client_api', 'platform/impl') +
-        InstallSharedLibEntries('libartpalette-system', 'platform/impl') +
-        InstallSharedLibEntries('liblog', 'platform/impl')),
-}
+    #InstallPlatformMainlineSdkEntries('sdk') +
+    #InstallPlatformMainlineSdkEntries('test-exports') +
+    # Shared libraries that are stubs in SDKs, but for which we need their
+    # implementation for device testing.
+    #InstallSharedLibEntries('heapprofd_client_api', 'platform/impl') +
+    #InstallSharedLibEntries('libartpalette-system', 'platform/impl') +
+    #InstallSharedLibEntries('liblog', 'platform/impl') +
 
-def add_additional_arguments(parser):
-    parser.add_argument('--install-module', choices=['all'] + PREBUILT_INSTALL_MODULES.keys(),
-                        default='all',
-                        help="The prebuilt module(s) to install.")
+    [])
 
 if __name__ == '__main__':
-    args = update.parse_args(add_additional_arguments)
-
-    mainline_install_list = []
-    if args.install_module == 'all':
-      modules = PREBUILT_INSTALL_MODULES.keys()
-    else:
-      modules = [args.install_module]
-    for module in modules:
-      mainline_install_list.extend(PREBUILT_INSTALL_MODULES[module])
-
-    commit_message_note = COMMIT_MESSAGE_NOTE_TEMPLATE.format(', '.join(modules))
-
-    update.main(args, THIS_DIR, PREBUILT_DESCRIPTION, mainline_install_list, [],
-                commit_message_note)
+  args = update.parse_args()
+  update.main(args, THIS_DIR, PREBUILT_DESCRIPTION, PREBUILT_INSTALL_MODULES,
+              [], COMMIT_MESSAGE_NOTE)
