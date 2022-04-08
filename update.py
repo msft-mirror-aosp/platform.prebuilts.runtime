@@ -1,4 +1,4 @@
-#!/usr/bin/env -S python -B
+#!/usr/bin/env python
 #
 # Copyright (C) 2019 The Android Open Source Project
 #
