@@ -96,8 +96,12 @@ PREBUILT_INSTALL_MODULES = (
 
     # Runtime (Bionic)
     #InstallApexEntries('runtime', 'runtime/apex') +
+    # sdk and host-exports must always be updated together, because the linker
+    # and the CRT object files gets embedded in the binaries on linux host
+    # Bionic (see code and comments around host_bionic_linker_script in
+    # build/soong).
     InstallBundledSdkEntries('runtime', 'sdk') +
-    #InstallBundledSdkEntries('runtime', 'host-exports') +
+    InstallBundledSdkEntries('runtime', 'host-exports') +
 
     # I18N
     #InstallApexEntries('i18n', 'i18n/apex') +
