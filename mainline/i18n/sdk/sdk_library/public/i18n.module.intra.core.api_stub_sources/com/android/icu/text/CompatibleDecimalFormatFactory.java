@@ -29,7 +29,7 @@ import android.icu.text.DecimalFormat;
 @SuppressWarnings({"unchecked", "deprecation", "all"})
 public class CompatibleDecimalFormatFactory {
 
-CompatibleDecimalFormatFactory() { throw new RuntimeException("Stub!"); }
+private CompatibleDecimalFormatFactory() { throw new RuntimeException("Stub!"); }
 
 /**
  * Creates an instance compatible with {@link java.text.DecimalFormat}.

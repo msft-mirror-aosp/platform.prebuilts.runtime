@@ -45,7 +45,7 @@ struct TableStruct_protos_2fperfetto_2fcommon_2ftrace_5fstats_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[2]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[3]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -59,11 +59,15 @@ extern TraceStatsDefaultTypeInternal _TraceStats_default_instance_;
 class TraceStats_BufferStats;
 class TraceStats_BufferStatsDefaultTypeInternal;
 extern TraceStats_BufferStatsDefaultTypeInternal _TraceStats_BufferStats_default_instance_;
+class TraceStats_FilterStats;
+class TraceStats_FilterStatsDefaultTypeInternal;
+extern TraceStats_FilterStatsDefaultTypeInternal _TraceStats_FilterStats_default_instance_;
 }  // namespace protos
 }  // namespace perfetto
 PROTOBUF_NAMESPACE_OPEN
 template<> ::perfetto::protos::TraceStats* Arena::CreateMaybeMessage<::perfetto::protos::TraceStats>(Arena*);
 template<> ::perfetto::protos::TraceStats_BufferStats* Arena::CreateMaybeMessage<::perfetto::protos::TraceStats_BufferStats>(Arena*);
+template<> ::perfetto::protos::TraceStats_FilterStats* Arena::CreateMaybeMessage<::perfetto::protos::TraceStats_FilterStats>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
 namespace protos {
@@ -337,6 +341,153 @@ class TraceStats_BufferStats :
 };
 // -------------------------------------------------------------------
 
+class TraceStats_FilterStats :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.TraceStats.FilterStats) */ {
+ public:
+  TraceStats_FilterStats();
+  virtual ~TraceStats_FilterStats();
+
+  TraceStats_FilterStats(const TraceStats_FilterStats& from);
+  TraceStats_FilterStats(TraceStats_FilterStats&& from) noexcept
+    : TraceStats_FilterStats() {
+    *this = ::std::move(from);
+  }
+
+  inline TraceStats_FilterStats& operator=(const TraceStats_FilterStats& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TraceStats_FilterStats& operator=(TraceStats_FilterStats&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const TraceStats_FilterStats& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TraceStats_FilterStats* internal_default_instance() {
+    return reinterpret_cast<const TraceStats_FilterStats*>(
+               &_TraceStats_FilterStats_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(TraceStats_FilterStats& a, TraceStats_FilterStats& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TraceStats_FilterStats* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TraceStats_FilterStats* New() const final {
+    return CreateMaybeMessage<TraceStats_FilterStats>(nullptr);
+  }
+
+  TraceStats_FilterStats* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<TraceStats_FilterStats>(arena);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)
+    final;
+  void CopyFrom(const TraceStats_FilterStats& from);
+  void MergeFrom(const TraceStats_FilterStats& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
+  void DiscardUnknownFields();
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(TraceStats_FilterStats* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.TraceStats.FilterStats";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kInputPacketsFieldNumber = 1,
+    kInputBytesFieldNumber = 2,
+    kOutputBytesFieldNumber = 3,
+    kErrorsFieldNumber = 4,
+  };
+  // optional uint64 input_packets = 1;
+  bool has_input_packets() const;
+  void clear_input_packets();
+  ::PROTOBUF_NAMESPACE_ID::uint64 input_packets() const;
+  void set_input_packets(::PROTOBUF_NAMESPACE_ID::uint64 value);
+
+  // optional uint64 input_bytes = 2;
+  bool has_input_bytes() const;
+  void clear_input_bytes();
+  ::PROTOBUF_NAMESPACE_ID::uint64 input_bytes() const;
+  void set_input_bytes(::PROTOBUF_NAMESPACE_ID::uint64 value);
+
+  // optional uint64 output_bytes = 3;
+  bool has_output_bytes() const;
+  void clear_output_bytes();
+  ::PROTOBUF_NAMESPACE_ID::uint64 output_bytes() const;
+  void set_output_bytes(::PROTOBUF_NAMESPACE_ID::uint64 value);
+
+  // optional uint64 errors = 4;
+  bool has_errors() const;
+  void clear_errors();
+  ::PROTOBUF_NAMESPACE_ID::uint64 errors() const;
+  void set_errors(::PROTOBUF_NAMESPACE_ID::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.TraceStats.FilterStats)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArenaLite _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 input_packets_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 input_bytes_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 output_bytes_;
+  ::PROTOBUF_NAMESPACE_ID::uint64 errors_;
+  friend struct ::TableStruct_protos_2fperfetto_2fcommon_2ftrace_5fstats_2eproto;
+};
+// -------------------------------------------------------------------
+
 class TraceStats :
     public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.TraceStats) */ {
  public:
@@ -377,7 +528,7 @@ class TraceStats :
                &_TraceStats_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(TraceStats& a, TraceStats& b) {
     a.Swap(&b);
@@ -438,11 +589,13 @@ class TraceStats :
   // nested types ----------------------------------------------------
 
   typedef TraceStats_BufferStats BufferStats;
+  typedef TraceStats_FilterStats FilterStats;
 
   // accessors -------------------------------------------------------
 
   enum : int {
     kBufferStatsFieldNumber = 1,
+    kFilterStatsFieldNumber = 11,
     kProducersSeenFieldNumber = 3,
     kProducersConnectedFieldNumber = 2,
     kDataSourcesRegisteredFieldNumber = 4,
@@ -463,6 +616,14 @@ class TraceStats :
   ::perfetto::protos::TraceStats_BufferStats* add_buffer_stats();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TraceStats_BufferStats >&
       buffer_stats() const;
+
+  // optional .perfetto.protos.TraceStats.FilterStats filter_stats = 11;
+  bool has_filter_stats() const;
+  void clear_filter_stats();
+  const ::perfetto::protos::TraceStats_FilterStats& filter_stats() const;
+  ::perfetto::protos::TraceStats_FilterStats* release_filter_stats();
+  ::perfetto::protos::TraceStats_FilterStats* mutable_filter_stats();
+  void set_allocated_filter_stats(::perfetto::protos::TraceStats_FilterStats* filter_stats);
 
   // optional uint64 producers_seen = 3;
   bool has_producers_seen() const;
@@ -526,6 +687,7 @@ class TraceStats :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TraceStats_BufferStats > buffer_stats_;
+  ::perfetto::protos::TraceStats_FilterStats* filter_stats_;
   ::PROTOBUF_NAMESPACE_ID::uint64 producers_seen_;
   ::PROTOBUF_NAMESPACE_ID::uint32 producers_connected_;
   ::PROTOBUF_NAMESPACE_ID::uint32 data_sources_registered_;
@@ -892,6 +1054,82 @@ inline void TraceStats_BufferStats::set_trace_writer_packet_loss(::PROTOBUF_NAME
 
 // -------------------------------------------------------------------
 
+// TraceStats_FilterStats
+
+// optional uint64 input_packets = 1;
+inline bool TraceStats_FilterStats::has_input_packets() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TraceStats_FilterStats::clear_input_packets() {
+  input_packets_ = PROTOBUF_ULONGLONG(0);
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 TraceStats_FilterStats::input_packets() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.FilterStats.input_packets)
+  return input_packets_;
+}
+inline void TraceStats_FilterStats::set_input_packets(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _has_bits_[0] |= 0x00000001u;
+  input_packets_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.TraceStats.FilterStats.input_packets)
+}
+
+// optional uint64 input_bytes = 2;
+inline bool TraceStats_FilterStats::has_input_bytes() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TraceStats_FilterStats::clear_input_bytes() {
+  input_bytes_ = PROTOBUF_ULONGLONG(0);
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 TraceStats_FilterStats::input_bytes() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.FilterStats.input_bytes)
+  return input_bytes_;
+}
+inline void TraceStats_FilterStats::set_input_bytes(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _has_bits_[0] |= 0x00000002u;
+  input_bytes_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.TraceStats.FilterStats.input_bytes)
+}
+
+// optional uint64 output_bytes = 3;
+inline bool TraceStats_FilterStats::has_output_bytes() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void TraceStats_FilterStats::clear_output_bytes() {
+  output_bytes_ = PROTOBUF_ULONGLONG(0);
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 TraceStats_FilterStats::output_bytes() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.FilterStats.output_bytes)
+  return output_bytes_;
+}
+inline void TraceStats_FilterStats::set_output_bytes(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _has_bits_[0] |= 0x00000004u;
+  output_bytes_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.TraceStats.FilterStats.output_bytes)
+}
+
+// optional uint64 errors = 4;
+inline bool TraceStats_FilterStats::has_errors() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void TraceStats_FilterStats::clear_errors() {
+  errors_ = PROTOBUF_ULONGLONG(0);
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint64 TraceStats_FilterStats::errors() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.FilterStats.errors)
+  return errors_;
+}
+inline void TraceStats_FilterStats::set_errors(::PROTOBUF_NAMESPACE_ID::uint64 value) {
+  _has_bits_[0] |= 0x00000008u;
+  errors_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.TraceStats.FilterStats.errors)
+}
+
+// -------------------------------------------------------------------
+
 // TraceStats
 
 // repeated .perfetto.protos.TraceStats.BufferStats buffer_stats = 1;
@@ -926,169 +1164,220 @@ TraceStats::buffer_stats() const {
 
 // optional uint32 producers_connected = 2;
 inline bool TraceStats::has_producers_connected() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void TraceStats::clear_producers_connected() {
   producers_connected_ = 0u;
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 TraceStats::producers_connected() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.producers_connected)
   return producers_connected_;
 }
 inline void TraceStats::set_producers_connected(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   producers_connected_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceStats.producers_connected)
 }
 
 // optional uint64 producers_seen = 3;
 inline bool TraceStats::has_producers_seen() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void TraceStats::clear_producers_seen() {
   producers_seen_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 TraceStats::producers_seen() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.producers_seen)
   return producers_seen_;
 }
 inline void TraceStats::set_producers_seen(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   producers_seen_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceStats.producers_seen)
 }
 
 // optional uint32 data_sources_registered = 4;
 inline bool TraceStats::has_data_sources_registered() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void TraceStats::clear_data_sources_registered() {
   data_sources_registered_ = 0u;
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 TraceStats::data_sources_registered() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.data_sources_registered)
   return data_sources_registered_;
 }
 inline void TraceStats::set_data_sources_registered(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
   data_sources_registered_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceStats.data_sources_registered)
 }
 
 // optional uint64 data_sources_seen = 5;
 inline bool TraceStats::has_data_sources_seen() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void TraceStats::clear_data_sources_seen() {
   data_sources_seen_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 TraceStats::data_sources_seen() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.data_sources_seen)
   return data_sources_seen_;
 }
 inline void TraceStats::set_data_sources_seen(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
   data_sources_seen_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceStats.data_sources_seen)
 }
 
 // optional uint32 tracing_sessions = 6;
 inline bool TraceStats::has_tracing_sessions() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void TraceStats::clear_tracing_sessions() {
   tracing_sessions_ = 0u;
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 TraceStats::tracing_sessions() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.tracing_sessions)
   return tracing_sessions_;
 }
 inline void TraceStats::set_tracing_sessions(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
   tracing_sessions_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceStats.tracing_sessions)
 }
 
 // optional uint32 total_buffers = 7;
 inline bool TraceStats::has_total_buffers() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void TraceStats::clear_total_buffers() {
   total_buffers_ = 0u;
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 TraceStats::total_buffers() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.total_buffers)
   return total_buffers_;
 }
 inline void TraceStats::set_total_buffers(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
   total_buffers_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceStats.total_buffers)
 }
 
 // optional uint64 chunks_discarded = 8;
 inline bool TraceStats::has_chunks_discarded() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void TraceStats::clear_chunks_discarded() {
   chunks_discarded_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 TraceStats::chunks_discarded() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.chunks_discarded)
   return chunks_discarded_;
 }
 inline void TraceStats::set_chunks_discarded(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000080u;
   chunks_discarded_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceStats.chunks_discarded)
 }
 
 // optional uint64 patches_discarded = 9;
 inline bool TraceStats::has_patches_discarded() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void TraceStats::clear_patches_discarded() {
   patches_discarded_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 TraceStats::patches_discarded() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.patches_discarded)
   return patches_discarded_;
 }
 inline void TraceStats::set_patches_discarded(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000100u;
   patches_discarded_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceStats.patches_discarded)
 }
 
 // optional uint64 invalid_packets = 10;
 inline bool TraceStats::has_invalid_packets() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void TraceStats::clear_invalid_packets() {
   invalid_packets_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 TraceStats::invalid_packets() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.invalid_packets)
   return invalid_packets_;
 }
 inline void TraceStats::set_invalid_packets(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000200u;
   invalid_packets_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.TraceStats.invalid_packets)
+}
+
+// optional .perfetto.protos.TraceStats.FilterStats filter_stats = 11;
+inline bool TraceStats::has_filter_stats() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TraceStats::clear_filter_stats() {
+  if (filter_stats_ != nullptr) filter_stats_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const ::perfetto::protos::TraceStats_FilterStats& TraceStats::filter_stats() const {
+  const ::perfetto::protos::TraceStats_FilterStats* p = filter_stats_;
+  // @@protoc_insertion_point(field_get:perfetto.protos.TraceStats.filter_stats)
+  return p != nullptr ? *p : *reinterpret_cast<const ::perfetto::protos::TraceStats_FilterStats*>(
+      &::perfetto::protos::_TraceStats_FilterStats_default_instance_);
+}
+inline ::perfetto::protos::TraceStats_FilterStats* TraceStats::release_filter_stats() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TraceStats.filter_stats)
+  _has_bits_[0] &= ~0x00000001u;
+  ::perfetto::protos::TraceStats_FilterStats* temp = filter_stats_;
+  filter_stats_ = nullptr;
+  return temp;
+}
+inline ::perfetto::protos::TraceStats_FilterStats* TraceStats::mutable_filter_stats() {
+  _has_bits_[0] |= 0x00000001u;
+  if (filter_stats_ == nullptr) {
+    auto* p = CreateMaybeMessage<::perfetto::protos::TraceStats_FilterStats>(GetArenaNoVirtual());
+    filter_stats_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TraceStats.filter_stats)
+  return filter_stats_;
+}
+inline void TraceStats::set_allocated_filter_stats(::perfetto::protos::TraceStats_FilterStats* filter_stats) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete filter_stats_;
+  }
+  if (filter_stats) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      filter_stats = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, filter_stats, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  filter_stats_ = filter_stats;
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TraceStats.filter_stats)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 

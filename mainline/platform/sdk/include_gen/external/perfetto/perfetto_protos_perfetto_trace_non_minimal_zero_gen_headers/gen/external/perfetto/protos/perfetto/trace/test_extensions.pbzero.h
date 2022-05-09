@@ -17,14 +17,17 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
+class DebugAnnotation;
 
-class TestExtensionChild_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class TestExtensionChild_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/99, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   TestExtensionChild_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TestExtensionChild_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit TestExtensionChild_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_child_field_for_testing() const { return at<1>().valid(); }
   ::protozero::ConstChars child_field_for_testing() const { return at<1>().as_string(); }
+  bool has_debug_annotations() const { return at<99>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> debug_annotations() const { return GetRepeated<::protozero::ConstBytes>(99); }
 };
 
 class TestExtensionChild : public ::protozero::Message {
@@ -32,6 +35,7 @@ class TestExtensionChild : public ::protozero::Message {
   using Decoder = TestExtensionChild_Decoder;
   enum : int32_t {
     kChildFieldForTestingFieldNumber = 1,
+    kDebugAnnotationsFieldNumber = 99,
   };
 
   using FieldMetadata_ChildFieldForTesting =
@@ -61,6 +65,27 @@ class TestExtensionChild : public ::protozero::Message {
       ::protozero::proto_utils::ProtoSchemaType::kString>
         ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_DebugAnnotations =
+    ::protozero::proto_utils::FieldMetadata<
+      99,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      DebugAnnotation,
+      TestExtensionChild>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_DebugAnnotations kDebugAnnotations() { return {}; }
+  template <typename T = DebugAnnotation> T* add_debug_annotations() {
+    return BeginNestedMessage<T>(99);
+  }
+
 };
 
 class TestExtension : public ::perfetto::protos::pbzero::TrackEvent {
