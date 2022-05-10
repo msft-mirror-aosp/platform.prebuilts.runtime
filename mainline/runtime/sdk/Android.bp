@@ -1,16 +1,93 @@
 // This is auto-generated. DO NOT EDIT.
 
 package {
-    // See: http://go/android-license-faq
-    // A large-scale-change added 'default_applicable_licenses' to import
-    // all of the 'license_kinds' from "prebuilts_runtime_license"
-    // to get the below license kinds:
-    //   SPDX-license-identifier-Apache-2.0
-    //   SPDX-license-identifier-BSD
-    //   SPDX-license-identifier-ISC
-    //   SPDX-license-identifier-MIT
-    //   legacy_unencumbered
-    default_applicable_licenses: ["prebuilts_runtime_license"],
+    // A default list here prevents the license LSC from adding its own list which would
+    // be unnecessary as every module in the sdk already has its own licenses property.
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+license {
+    name: "runtime-module-sdk_bionic_apex_license@current",
+    sdk_member_name: "bionic_apex_license",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/bionic/apex/NOTICE"],
+}
+
+license {
+    name: "runtime-module-sdk_bionic_apex_license",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/bionic/apex/NOTICE"],
+}
+
+license {
+    name: "runtime-module-sdk_bionic_libc_license@current",
+    sdk_member_name: "bionic_libc_license",
+    visibility: ["//visibility:private"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+        "SPDX-license-identifier-BSD",
+        "SPDX-license-identifier-ISC",
+        "SPDX-license-identifier-MIT",
+        "legacy_notice",
+        "legacy_unencumbered",
+    ],
+    license_text: ["licenses/bionic/libc/NOTICE"],
+}
+
+license {
+    name: "runtime-module-sdk_bionic_libc_license",
+    visibility: ["//visibility:private"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+        "SPDX-license-identifier-BSD",
+        "SPDX-license-identifier-ISC",
+        "SPDX-license-identifier-MIT",
+        "legacy_notice",
+        "legacy_unencumbered",
+    ],
+    license_text: ["licenses/bionic/libc/NOTICE"],
+}
+
+license {
+    name: "runtime-module-sdk_bionic_libdl_license@current",
+    sdk_member_name: "bionic_libdl_license",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/bionic/libdl/NOTICE"],
+}
+
+license {
+    name: "runtime-module-sdk_bionic_libdl_license",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/bionic/libdl/NOTICE"],
+}
+
+license {
+    name: "runtime-module-sdk_bionic_libm_license@current",
+    sdk_member_name: "bionic_libm_license",
+    visibility: ["//visibility:private"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+        "SPDX-license-identifier-BSD",
+        "SPDX-license-identifier-MIT",
+        "legacy_unencumbered",
+    ],
+    license_text: ["licenses/bionic/libm/NOTICE"],
+}
+
+license {
+    name: "runtime-module-sdk_bionic_libm_license",
+    visibility: ["//visibility:private"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+        "SPDX-license-identifier-BSD",
+        "SPDX-license-identifier-MIT",
+        "legacy_unencumbered",
+    ],
+    license_text: ["licenses/bionic/libm/NOTICE"],
 }
 
 cc_prebuilt_library_headers {
@@ -36,8 +113,8 @@ cc_prebuilt_library_headers {
         "com.android.media",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     sdk_version: "current",
@@ -83,8 +160,8 @@ cc_prebuilt_library_headers {
         "com.android.media",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     sdk_version: "current",
@@ -111,14 +188,11 @@ cc_prebuilt_library_headers {
     name: "runtime-module-sdk_libc_headers@current",
     sdk_member_name: "libc_headers",
     visibility: [
-        "//art/tools/cpp-define-generator",
         "//bionic:__subpackages__",
         "//external/arm-optimized-routines",
-        "//external/boringssl",
         "//external/gwp_asan",
         "//external/jemalloc_new",
         "//external/libunwind_llvm",
-        "//external/minijail",
         "//external/scudo",
         "//system/core/property_service/libpropertyinfoparser",
         "//system/extras/toolchain-extras",
@@ -127,8 +201,8 @@ cc_prebuilt_library_headers {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     sdk_version: "1",
@@ -144,47 +218,47 @@ cc_prebuilt_library_headers {
         android_arm64: {
             export_system_include_dirs: [
                 "android/arm64/include/bionic/libc/include",
+                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
                 "android/arm64/include/bionic/libc/kernel/uapi",
                 "android/arm64/include/bionic/libc/kernel/android/scsi",
                 "android/arm64/include/bionic/libc/kernel/android/uapi",
-                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
             ],
         },
         android_x86_64: {
             export_system_include_dirs: [
                 "android/x86_64/include/bionic/libc/include",
+                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86_64/include/bionic/libc/kernel/uapi",
                 "android/x86_64/include/bionic/libc/kernel/android/scsi",
                 "android/x86_64/include/bionic/libc/kernel/android/uapi",
-                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         android_arm: {
             export_system_include_dirs: [
                 "android/arm/include/bionic/libc/include",
+                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
                 "android/arm/include/bionic/libc/kernel/uapi",
                 "android/arm/include/bionic/libc/kernel/android/scsi",
                 "android/arm/include/bionic/libc/kernel/android/uapi",
-                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
             ],
         },
         android_x86: {
             export_system_include_dirs: [
                 "android/x86/include/bionic/libc/include",
+                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86/include/bionic/libc/kernel/uapi",
                 "android/x86/include/bionic/libc/kernel/android/scsi",
                 "android/x86/include/bionic/libc/kernel/android/uapi",
-                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic: {
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
+                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
                 "linux_bionic/include/bionic/libc/kernel/uapi",
                 "linux_bionic/include/bionic/libc/kernel/android/scsi",
                 "linux_bionic/include/bionic/libc/kernel/android/uapi",
-                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic_x86_64: {
@@ -197,14 +271,11 @@ cc_prebuilt_library_headers {
     name: "libc_headers",
     prefer: false,
     visibility: [
-        "//art/tools/cpp-define-generator",
         "//bionic:__subpackages__",
         "//external/arm-optimized-routines",
-        "//external/boringssl",
         "//external/gwp_asan",
         "//external/jemalloc_new",
         "//external/libunwind_llvm",
-        "//external/minijail",
         "//external/scudo",
         "//system/core/property_service/libpropertyinfoparser",
         "//system/extras/toolchain-extras",
@@ -213,8 +284,8 @@ cc_prebuilt_library_headers {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     sdk_version: "1",
@@ -230,47 +301,47 @@ cc_prebuilt_library_headers {
         android_arm64: {
             export_system_include_dirs: [
                 "android/arm64/include/bionic/libc/include",
+                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
                 "android/arm64/include/bionic/libc/kernel/uapi",
                 "android/arm64/include/bionic/libc/kernel/android/scsi",
                 "android/arm64/include/bionic/libc/kernel/android/uapi",
-                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
             ],
         },
         android_x86_64: {
             export_system_include_dirs: [
                 "android/x86_64/include/bionic/libc/include",
+                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86_64/include/bionic/libc/kernel/uapi",
                 "android/x86_64/include/bionic/libc/kernel/android/scsi",
                 "android/x86_64/include/bionic/libc/kernel/android/uapi",
-                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         android_arm: {
             export_system_include_dirs: [
                 "android/arm/include/bionic/libc/include",
+                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
                 "android/arm/include/bionic/libc/kernel/uapi",
                 "android/arm/include/bionic/libc/kernel/android/scsi",
                 "android/arm/include/bionic/libc/kernel/android/uapi",
-                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
             ],
         },
         android_x86: {
             export_system_include_dirs: [
                 "android/x86/include/bionic/libc/include",
+                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86/include/bionic/libc/kernel/uapi",
                 "android/x86/include/bionic/libc/kernel/android/scsi",
                 "android/x86/include/bionic/libc/kernel/android/uapi",
-                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic: {
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
+                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
                 "linux_bionic/include/bionic/libc/kernel/uapi",
                 "linux_bionic/include/bionic/libc/kernel/android/scsi",
                 "linux_bionic/include/bionic/libc/kernel/android/uapi",
-                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic_x86_64: {
@@ -287,11 +358,12 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -328,11 +400,12 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -369,11 +442,12 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -410,11 +484,12 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -451,11 +526,12 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -492,11 +568,12 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -533,11 +610,12 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -574,11 +652,12 @@ cc_prebuilt_object {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
+    system_shared_libs: [],
     sanitize: {
         never: true,
     },
@@ -615,13 +694,12 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     installable: false,
-    recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     export_include_dirs: [
-        "common_os/include/external/jemalloc_new/include",
         "common_os/include/bionic/libc/async_safe/include",
         "common_os/include/system/logging/liblog/include",
         "common_os/include/bionic/libc/system_properties/include",
@@ -650,50 +728,50 @@ cc_prebuilt_library_shared {
             srcs: ["android/arm64/lib/libc.so"],
             export_system_include_dirs: [
                 "android/arm64/include/bionic/libc/include",
+                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
                 "android/arm64/include/bionic/libc/kernel/uapi",
                 "android/arm64/include/bionic/libc/kernel/android/scsi",
                 "android/arm64/include/bionic/libc/kernel/android/uapi",
-                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
             ],
         },
         android_x86_64: {
             srcs: ["android/x86_64/lib/libc.so"],
             export_system_include_dirs: [
                 "android/x86_64/include/bionic/libc/include",
+                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86_64/include/bionic/libc/kernel/uapi",
                 "android/x86_64/include/bionic/libc/kernel/android/scsi",
                 "android/x86_64/include/bionic/libc/kernel/android/uapi",
-                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         android_arm: {
             srcs: ["android/arm/lib/libc.so"],
             export_system_include_dirs: [
                 "android/arm/include/bionic/libc/include",
+                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
                 "android/arm/include/bionic/libc/kernel/uapi",
                 "android/arm/include/bionic/libc/kernel/android/scsi",
                 "android/arm/include/bionic/libc/kernel/android/uapi",
-                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
             ],
         },
         android_x86: {
             srcs: ["android/x86/lib/libc.so"],
             export_system_include_dirs: [
                 "android/x86/include/bionic/libc/include",
+                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86/include/bionic/libc/kernel/uapi",
                 "android/x86/include/bionic/libc/kernel/android/scsi",
                 "android/x86/include/bionic/libc/kernel/android/uapi",
-                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic: {
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
+                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
                 "linux_bionic/include/bionic/libc/kernel/uapi",
                 "linux_bionic/include/bionic/libc/kernel/android/scsi",
                 "linux_bionic/include/bionic/libc/kernel/android/uapi",
-                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic_x86_64: {
@@ -711,12 +789,11 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
-    recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     export_include_dirs: [
-        "common_os/include/external/jemalloc_new/include",
         "common_os/include/bionic/libc/async_safe/include",
         "common_os/include/system/logging/liblog/include",
         "common_os/include/bionic/libc/system_properties/include",
@@ -745,50 +822,50 @@ cc_prebuilt_library_shared {
             srcs: ["android/arm64/lib/libc.so"],
             export_system_include_dirs: [
                 "android/arm64/include/bionic/libc/include",
+                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
                 "android/arm64/include/bionic/libc/kernel/uapi",
                 "android/arm64/include/bionic/libc/kernel/android/scsi",
                 "android/arm64/include/bionic/libc/kernel/android/uapi",
-                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
             ],
         },
         android_x86_64: {
             srcs: ["android/x86_64/lib/libc.so"],
             export_system_include_dirs: [
                 "android/x86_64/include/bionic/libc/include",
+                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86_64/include/bionic/libc/kernel/uapi",
                 "android/x86_64/include/bionic/libc/kernel/android/scsi",
                 "android/x86_64/include/bionic/libc/kernel/android/uapi",
-                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         android_arm: {
             srcs: ["android/arm/lib/libc.so"],
             export_system_include_dirs: [
                 "android/arm/include/bionic/libc/include",
+                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
                 "android/arm/include/bionic/libc/kernel/uapi",
                 "android/arm/include/bionic/libc/kernel/android/scsi",
                 "android/arm/include/bionic/libc/kernel/android/uapi",
-                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
             ],
         },
         android_x86: {
             srcs: ["android/x86/lib/libc.so"],
             export_system_include_dirs: [
                 "android/x86/include/bionic/libc/include",
+                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86/include/bionic/libc/kernel/uapi",
                 "android/x86/include/bionic/libc/kernel/android/scsi",
                 "android/x86/include/bionic/libc/kernel/android/uapi",
-                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic: {
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
+                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
                 "linux_bionic/include/bionic/libc/kernel/uapi",
                 "linux_bionic/include/bionic/libc/kernel/android/scsi",
                 "linux_bionic/include/bionic/libc/kernel/android/uapi",
-                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic_x86_64: {
@@ -806,9 +883,9 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-sdk_bionic_libdl_license@current"],
     host_supported: true,
     installable: false,
-    recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     sanitize: {
@@ -831,50 +908,50 @@ cc_prebuilt_library_shared {
             srcs: ["android/arm64/lib/libdl.so"],
             export_system_include_dirs: [
                 "android/arm64/include/bionic/libc/include",
+                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
                 "android/arm64/include/bionic/libc/kernel/uapi",
                 "android/arm64/include/bionic/libc/kernel/android/scsi",
                 "android/arm64/include/bionic/libc/kernel/android/uapi",
-                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
             ],
         },
         android_x86_64: {
             srcs: ["android/x86_64/lib/libdl.so"],
             export_system_include_dirs: [
                 "android/x86_64/include/bionic/libc/include",
+                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86_64/include/bionic/libc/kernel/uapi",
                 "android/x86_64/include/bionic/libc/kernel/android/scsi",
                 "android/x86_64/include/bionic/libc/kernel/android/uapi",
-                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         android_arm: {
             srcs: ["android/arm/lib/libdl.so"],
             export_system_include_dirs: [
                 "android/arm/include/bionic/libc/include",
+                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
                 "android/arm/include/bionic/libc/kernel/uapi",
                 "android/arm/include/bionic/libc/kernel/android/scsi",
                 "android/arm/include/bionic/libc/kernel/android/uapi",
-                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
             ],
         },
         android_x86: {
             srcs: ["android/x86/lib/libdl.so"],
             export_system_include_dirs: [
                 "android/x86/include/bionic/libc/include",
+                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86/include/bionic/libc/kernel/uapi",
                 "android/x86/include/bionic/libc/kernel/android/scsi",
                 "android/x86/include/bionic/libc/kernel/android/uapi",
-                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic: {
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
+                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
                 "linux_bionic/include/bionic/libc/kernel/uapi",
                 "linux_bionic/include/bionic/libc/kernel/android/scsi",
                 "linux_bionic/include/bionic/libc/kernel/android/uapi",
-                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic_x86_64: {
@@ -892,8 +969,8 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-sdk_bionic_libdl_license"],
     host_supported: true,
-    recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     sanitize: {
@@ -916,50 +993,50 @@ cc_prebuilt_library_shared {
             srcs: ["android/arm64/lib/libdl.so"],
             export_system_include_dirs: [
                 "android/arm64/include/bionic/libc/include",
+                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
                 "android/arm64/include/bionic/libc/kernel/uapi",
                 "android/arm64/include/bionic/libc/kernel/android/scsi",
                 "android/arm64/include/bionic/libc/kernel/android/uapi",
-                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
             ],
         },
         android_x86_64: {
             srcs: ["android/x86_64/lib/libdl.so"],
             export_system_include_dirs: [
                 "android/x86_64/include/bionic/libc/include",
+                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86_64/include/bionic/libc/kernel/uapi",
                 "android/x86_64/include/bionic/libc/kernel/android/scsi",
                 "android/x86_64/include/bionic/libc/kernel/android/uapi",
-                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         android_arm: {
             srcs: ["android/arm/lib/libdl.so"],
             export_system_include_dirs: [
                 "android/arm/include/bionic/libc/include",
+                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
                 "android/arm/include/bionic/libc/kernel/uapi",
                 "android/arm/include/bionic/libc/kernel/android/scsi",
                 "android/arm/include/bionic/libc/kernel/android/uapi",
-                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
             ],
         },
         android_x86: {
             srcs: ["android/x86/lib/libdl.so"],
             export_system_include_dirs: [
                 "android/x86/include/bionic/libc/include",
+                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86/include/bionic/libc/kernel/uapi",
                 "android/x86/include/bionic/libc/kernel/android/scsi",
                 "android/x86/include/bionic/libc/kernel/android/uapi",
-                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic: {
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
+                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
                 "linux_bionic/include/bionic/libc/kernel/uapi",
                 "linux_bionic/include/bionic/libc/kernel/android/scsi",
                 "linux_bionic/include/bionic/libc/kernel/android/uapi",
-                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic_x86_64: {
@@ -977,9 +1054,9 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-sdk_bionic_libdl_license@current"],
     host_supported: true,
     installable: false,
-    recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     sanitize: {
@@ -1025,8 +1102,8 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-sdk_bionic_libdl_license"],
     host_supported: true,
-    recovery_available: true,
     stl: "none",
     system_shared_libs: [],
     sanitize: {
@@ -1072,9 +1149,9 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-sdk_bionic_libm_license@current"],
     host_supported: true,
     installable: false,
-    recovery_available: true,
     stl: "none",
     system_shared_libs: ["runtime-module-sdk_libc@current"],
     sanitize: {
@@ -1125,8 +1202,8 @@ cc_prebuilt_library_shared {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-sdk_bionic_libm_license"],
     host_supported: true,
-    recovery_available: true,
     stl: "none",
     system_shared_libs: ["libc"],
     sanitize: {
@@ -1181,9 +1258,9 @@ cc_prebuilt_library_static {
         "com.android.media.swcodec",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     installable: false,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
@@ -1208,50 +1285,50 @@ cc_prebuilt_library_static {
             srcs: ["android/arm64/lib/libasync_safe.a"],
             export_system_include_dirs: [
                 "android/arm64/include/bionic/libc/include",
+                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
                 "android/arm64/include/bionic/libc/kernel/uapi",
                 "android/arm64/include/bionic/libc/kernel/android/scsi",
                 "android/arm64/include/bionic/libc/kernel/android/uapi",
-                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
             ],
         },
         android_x86_64: {
             srcs: ["android/x86_64/lib/libasync_safe.a"],
             export_system_include_dirs: [
                 "android/x86_64/include/bionic/libc/include",
+                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86_64/include/bionic/libc/kernel/uapi",
                 "android/x86_64/include/bionic/libc/kernel/android/scsi",
                 "android/x86_64/include/bionic/libc/kernel/android/uapi",
-                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         android_arm: {
             srcs: ["android/arm/lib/libasync_safe.a"],
             export_system_include_dirs: [
                 "android/arm/include/bionic/libc/include",
+                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
                 "android/arm/include/bionic/libc/kernel/uapi",
                 "android/arm/include/bionic/libc/kernel/android/scsi",
                 "android/arm/include/bionic/libc/kernel/android/uapi",
-                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
             ],
         },
         android_x86: {
             srcs: ["android/x86/lib/libasync_safe.a"],
             export_system_include_dirs: [
                 "android/x86/include/bionic/libc/include",
+                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86/include/bionic/libc/kernel/uapi",
                 "android/x86/include/bionic/libc/kernel/android/scsi",
                 "android/x86/include/bionic/libc/kernel/android/uapi",
-                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic: {
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
+                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
                 "linux_bionic/include/bionic/libc/kernel/uapi",
                 "linux_bionic/include/bionic/libc/kernel/android/scsi",
                 "linux_bionic/include/bionic/libc/kernel/android/uapi",
-                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic_x86_64: {
@@ -1273,8 +1350,8 @@ cc_prebuilt_library_static {
         "com.android.media.swcodec",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     stl: "none",
@@ -1299,50 +1376,50 @@ cc_prebuilt_library_static {
             srcs: ["android/arm64/lib/libasync_safe.a"],
             export_system_include_dirs: [
                 "android/arm64/include/bionic/libc/include",
+                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
                 "android/arm64/include/bionic/libc/kernel/uapi",
                 "android/arm64/include/bionic/libc/kernel/android/scsi",
                 "android/arm64/include/bionic/libc/kernel/android/uapi",
-                "android/arm64/include/bionic/libc/kernel/uapi/asm-arm64",
             ],
         },
         android_x86_64: {
             srcs: ["android/x86_64/lib/libasync_safe.a"],
             export_system_include_dirs: [
                 "android/x86_64/include/bionic/libc/include",
+                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86_64/include/bionic/libc/kernel/uapi",
                 "android/x86_64/include/bionic/libc/kernel/android/scsi",
                 "android/x86_64/include/bionic/libc/kernel/android/uapi",
-                "android/x86_64/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         android_arm: {
             srcs: ["android/arm/lib/libasync_safe.a"],
             export_system_include_dirs: [
                 "android/arm/include/bionic/libc/include",
+                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
                 "android/arm/include/bionic/libc/kernel/uapi",
                 "android/arm/include/bionic/libc/kernel/android/scsi",
                 "android/arm/include/bionic/libc/kernel/android/uapi",
-                "android/arm/include/bionic/libc/kernel/uapi/asm-arm",
             ],
         },
         android_x86: {
             srcs: ["android/x86/lib/libasync_safe.a"],
             export_system_include_dirs: [
                 "android/x86/include/bionic/libc/include",
+                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
                 "android/x86/include/bionic/libc/kernel/uapi",
                 "android/x86/include/bionic/libc/kernel/android/scsi",
                 "android/x86/include/bionic/libc/kernel/android/uapi",
-                "android/x86/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic: {
             compile_multilib: "64",
             export_system_include_dirs: [
                 "linux_bionic/include/bionic/libc/include",
+                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
                 "linux_bionic/include/bionic/libc/kernel/uapi",
                 "linux_bionic/include/bionic/libc/kernel/android/scsi",
                 "linux_bionic/include/bionic/libc/kernel/android/uapi",
-                "linux_bionic/include/bionic/libc/kernel/uapi/asm-x86",
             ],
         },
         linux_bionic_x86_64: {
@@ -1360,9 +1437,9 @@ cc_prebuilt_library_static {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     installable: false,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     sdk_version: "minimum",
@@ -1407,8 +1484,8 @@ cc_prebuilt_library_static {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     sdk_version: "minimum",
@@ -1453,9 +1530,9 @@ cc_prebuilt_library_static {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license@current"],
     host_supported: true,
     installable: false,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     sdk_version: "minimum",
@@ -1500,8 +1577,8 @@ cc_prebuilt_library_static {
         "//apex_available:anyapex",
         "//apex_available:platform",
     ],
+    licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
-    recovery_available: true,
     vendor_available: true,
     product_available: true,
     sdk_version: "minimum",
