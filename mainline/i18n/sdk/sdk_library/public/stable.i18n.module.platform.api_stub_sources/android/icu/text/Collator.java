@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// © 2016 and later: Unicode, Inc. and others.
+// ? 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /**
 *******************************************************************************
@@ -45,7 +45,7 @@ import android.icu.util.ULocale.Category;
  * <li>TERTIARY strength: Upper and lower case differences in characters are
  *     distinguished at tertiary strength (for example, "ao" &lt; "Ao" &lt;
  *     "a&ograve;"). In addition, a variant of a letter differs from the base
- *     form on the tertiary strength (such as "A" and "Ⓐ"). Another
+ *     form on the tertiary strength (such as "A" and "?"). Another
  *     example is the
  *     difference between large and small Kana. A tertiary difference is ignored
  *     when there is a primary or secondary difference anywhere in the strings.

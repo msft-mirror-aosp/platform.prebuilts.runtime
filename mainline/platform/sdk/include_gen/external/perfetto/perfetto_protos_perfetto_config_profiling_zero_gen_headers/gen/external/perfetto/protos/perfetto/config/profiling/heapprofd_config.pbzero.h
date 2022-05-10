@@ -18,7 +18,7 @@ namespace pbzero {
 
 class HeapprofdConfig_ContinuousDumpConfig;
 
-class HeapprofdConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/26, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class HeapprofdConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/27, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   HeapprofdConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit HeapprofdConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -37,6 +37,8 @@ class HeapprofdConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIEL
   ::protozero::RepeatedFieldIterator<::protozero::ConstChars> target_installed_by() const { return GetRepeated<::protozero::ConstChars>(26); }
   bool has_heaps() const { return at<20>().valid(); }
   ::protozero::RepeatedFieldIterator<::protozero::ConstChars> heaps() const { return GetRepeated<::protozero::ConstChars>(20); }
+  bool has_exclude_heaps() const { return at<27>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstChars> exclude_heaps() const { return GetRepeated<::protozero::ConstChars>(27); }
   bool has_stream_allocations() const { return at<23>().valid(); }
   bool stream_allocations() const { return at<23>().as_bool(); }
   bool has_heap_sampling_intervals() const { return at<22>().valid(); }
@@ -84,6 +86,7 @@ class HeapprofdConfig : public ::protozero::Message {
     kPidFieldNumber = 4,
     kTargetInstalledByFieldNumber = 26,
     kHeapsFieldNumber = 20,
+    kExcludeHeapsFieldNumber = 27,
     kStreamAllocationsFieldNumber = 23,
     kHeapSamplingIntervalsFieldNumber = 22,
     kAllHeapsFieldNumber = 21,
@@ -281,6 +284,34 @@ class HeapprofdConfig : public ::protozero::Message {
   }
   void add_heaps(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Heaps::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_ExcludeHeaps =
+    ::protozero::proto_utils::FieldMetadata<
+      27,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      HeapprofdConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_ExcludeHeaps kExcludeHeaps() { return {}; }
+  void add_exclude_heaps(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_ExcludeHeaps::kFieldId, data, size);
+  }
+  void add_exclude_heaps(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_ExcludeHeaps::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<

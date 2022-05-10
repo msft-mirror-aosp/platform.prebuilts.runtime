@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// © 2016 and later: Unicode, Inc. and others.
+// ? 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
@@ -80,7 +80,7 @@ import android.icu.number.NumberFormatter;
  * relation      = not? expr not? rel not? range_list
  * expr          = ('n' | 'i' | 'f' | 'v' | 't') (mod value)?
  * not           = 'not' | '!'
- * rel           = 'in' | 'is' | '=' | '≠' | 'within'
+ * rel           = 'in' | 'is' | '=' | '?' | 'within'
  * mod           = 'mod' | '%'
  * range_list    = (range | value) (',' range_list)*
  * value         = digit+
@@ -94,7 +94,7 @@ import android.icu.number.NumberFormatter;
  * <ul>
  * <li>i to be the integer digits.</li>
  * <li>f to be the visible decimal digits, as an integer.</li>
- * <li>t to be the visible decimal digits—without trailing zeros—as an integer.</li>
+ * <li>t to be the visible decimal digits?without trailing zeros?as an integer.</li>
  * <li>v to be the number of visible fraction digits.</li>
  * <li>j is defined to only match integers. That is j is 3 fails if v != 0 (eg for 3.1 or 3.0).</li>
  * </ul>
