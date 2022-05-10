@@ -281,7 +281,7 @@ class HeapGraph : public ::protozero::Message {
   }
 };
 
-class HeapGraphObject_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class HeapGraphObject_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/8, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   HeapGraphObject_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit HeapGraphObject_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -300,6 +300,8 @@ class HeapGraphObject_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIEL
   ::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t> reference_field_id(bool* parse_error_ptr) const { return GetPackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t>(4, parse_error_ptr); }
   bool has_reference_object_id() const { return at<5>().valid(); }
   ::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t> reference_object_id(bool* parse_error_ptr) const { return GetPackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t>(5, parse_error_ptr); }
+  bool has_native_allocation_registry_size_field() const { return at<8>().valid(); }
+  int64_t native_allocation_registry_size_field() const { return at<8>().as_int64(); }
 };
 
 class HeapGraphObject : public ::protozero::Message {
@@ -313,6 +315,7 @@ class HeapGraphObject : public ::protozero::Message {
     kReferenceFieldIdBaseFieldNumber = 6,
     kReferenceFieldIdFieldNumber = 4,
     kReferenceObjectIdFieldNumber = 5,
+    kNativeAllocationRegistrySizeFieldFieldNumber = 8,
   };
 
   using FieldMetadata_Id =
@@ -480,6 +483,31 @@ class HeapGraphObject : public ::protozero::Message {
   void set_reference_object_id(const ::protozero::PackedVarInt& packed_buffer) {
     AppendBytes(FieldMetadata_ReferenceObjectId::kFieldId, packed_buffer.data(),
                 packed_buffer.size());
+  }
+
+  using FieldMetadata_NativeAllocationRegistrySizeField =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt64,
+      int64_t,
+      HeapGraphObject>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_NativeAllocationRegistrySizeField kNativeAllocationRegistrySizeField() { return {}; }
+  void set_native_allocation_registry_size_field(int64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_NativeAllocationRegistrySizeField::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
   }
 };
 
