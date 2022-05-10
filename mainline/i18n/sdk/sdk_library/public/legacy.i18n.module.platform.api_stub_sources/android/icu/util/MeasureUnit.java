@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// © 2016 and later: Unicode, Inc. and others.
+// ? 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
@@ -33,7 +33,7 @@ MeasureUnit() { throw new RuntimeException("Stub!"); }
 public java.lang.String getType() { throw new RuntimeException("Stub!"); }
 
 /**
- * Get the subType, such as “foot”. May return null.
+ * Get the subType, such as ?foot?. May return null.
  */
 
 public java.lang.String getSubtype() { throw new RuntimeException("Stub!"); }
