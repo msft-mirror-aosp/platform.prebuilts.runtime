@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// © 2016 and later: Unicode, Inc. and others.
+// ? 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
@@ -24,7 +24,7 @@ import android.icu.util.ULocale;
  *         en, "&lt;sup&gt;", "&lt;/sup&gt;");
  * </pre>
  * <pre>
- * // Output: "1.23456×10&lt;sup&gt;-78&lt;/sup&gt;"
+ * // Output: "1.23456?10&lt;sup&gt;-78&lt;/sup&gt;"
  * System.out.println(fmt.format(1.23456e-78));
  * </pre>
  *
