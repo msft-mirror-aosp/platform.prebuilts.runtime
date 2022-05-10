@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// © 2016 and later: Unicode, Inc. and others.
+// ? 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 /*
  *******************************************************************************
@@ -197,7 +197,7 @@ public abstract java.lang.String keyValueDisplayName(java.lang.String key, java.
 
 /**
  * Return a list of information used to construct a UI list of locale names.
- * @param collator how to collate—should normally be Collator.getInstance(getDisplayLocale())
+ * @param collator how to collate?should normally be Collator.getInstance(getDisplayLocale())
  * @param inSelf if true, compares the nameInSelf, otherwise the nameInDisplayLocale.
  * Set depending on which field (displayLocale vs self) is to show up in the UI.
  * If both are to show up in the UI, then it should be the one used for the primary sort order.
@@ -284,14 +284,14 @@ public java.lang.String toString() { throw new RuntimeException("Stub!"); }
 public static java.util.Comparator<android.icu.text.LocaleDisplayNames.UiListItem> getComparator(java.util.Comparator<java.lang.Object> comparator, boolean inSelf) { throw new RuntimeException("Stub!"); }
 
 /**
- * Returns the minimized locale for an input locale, such as sr-Cyrl → sr
+ * Returns the minimized locale for an input locale, such as sr-Cyrl ? sr
  */
 
 public final android.icu.util.ULocale minimized;
 { minimized = null; }
 
 /**
- * Returns the modified locale for an input locale, such as sr → sr-Cyrl, where there is also an sr-Latn in the list
+ * Returns the modified locale for an input locale, such as sr ? sr-Cyrl, where there is also an sr-Latn in the list
  */
 
 public final android.icu.util.ULocale modified;

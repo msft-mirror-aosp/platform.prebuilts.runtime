@@ -25,6 +25,7 @@ class TraceConfig_IncidentReportConfig;
 class TraceConfig_IncrementalStateConfig;
 class TraceConfig_ProducerConfig;
 class TraceConfig_StatsdMetadata;
+class TraceConfig_TraceFilter;
 class TraceConfig_TriggerConfig;
 class TraceConfig_TriggerConfig_Trigger;
 enum BuiltinClock : int32_t;
@@ -78,7 +79,7 @@ enum TraceConfig_BufferConfig_FillPolicy : int32_t {
 const TraceConfig_BufferConfig_FillPolicy TraceConfig_BufferConfig_FillPolicy_MIN = TraceConfig_BufferConfig_FillPolicy_UNSPECIFIED;
 const TraceConfig_BufferConfig_FillPolicy TraceConfig_BufferConfig_FillPolicy_MAX = TraceConfig_BufferConfig_FillPolicy_DISCARD;
 
-class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/31, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/33, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   TraceConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -141,6 +142,8 @@ class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   int64_t trace_uuid_msb() const { return at<27>().as_int64(); }
   bool has_trace_uuid_lsb() const { return at<28>().valid(); }
   int64_t trace_uuid_lsb() const { return at<28>().as_int64(); }
+  bool has_trace_filter() const { return at<33>().valid(); }
+  ::protozero::ConstBytes trace_filter() const { return at<33>().as_bytes(); }
 };
 
 class TraceConfig : public ::protozero::Message {
@@ -176,6 +179,7 @@ class TraceConfig : public ::protozero::Message {
     kStatsdLoggingFieldNumber = 31,
     kTraceUuidMsbFieldNumber = 27,
     kTraceUuidLsbFieldNumber = 28,
+    kTraceFilterFieldNumber = 33,
   };
   using BufferConfig = ::perfetto::protos::pbzero::TraceConfig_BufferConfig;
   using DataSource = ::perfetto::protos::pbzero::TraceConfig_DataSource;
@@ -186,6 +190,7 @@ class TraceConfig : public ::protozero::Message {
   using TriggerConfig = ::perfetto::protos::pbzero::TraceConfig_TriggerConfig;
   using IncrementalStateConfig = ::perfetto::protos::pbzero::TraceConfig_IncrementalStateConfig;
   using IncidentReportConfig = ::perfetto::protos::pbzero::TraceConfig_IncidentReportConfig;
+  using TraceFilter = ::perfetto::protos::pbzero::TraceConfig_TraceFilter;
   using LockdownModeOperation = ::perfetto::protos::pbzero::TraceConfig_LockdownModeOperation;
   using CompressionType = ::perfetto::protos::pbzero::TraceConfig_CompressionType;
   using StatsdLogging = ::perfetto::protos::pbzero::TraceConfig_StatsdLogging;
@@ -893,6 +898,72 @@ class TraceConfig : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TraceFilter =
+    ::protozero::proto_utils::FieldMetadata<
+      33,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      TraceConfig_TraceFilter,
+      TraceConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_TraceFilter kTraceFilter() { return {}; }
+  template <typename T = TraceConfig_TraceFilter> T* set_trace_filter() {
+    return BeginNestedMessage<T>(33);
+  }
+
+};
+
+class TraceConfig_TraceFilter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  TraceConfig_TraceFilter_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit TraceConfig_TraceFilter_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit TraceConfig_TraceFilter_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_bytecode() const { return at<1>().valid(); }
+  ::protozero::ConstBytes bytecode() const { return at<1>().as_bytes(); }
+};
+
+class TraceConfig_TraceFilter : public ::protozero::Message {
+ public:
+  using Decoder = TraceConfig_TraceFilter_Decoder;
+  enum : int32_t {
+    kBytecodeFieldNumber = 1,
+  };
+
+  using FieldMetadata_Bytecode =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBytes,
+      std::string,
+      TraceConfig_TraceFilter>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_Bytecode kBytecode() { return {}; }
+  void set_bytecode(const uint8_t* data, size_t size) {
+    AppendBytes(FieldMetadata_Bytecode::kFieldId, data, size);
+  }
+  void set_bytecode(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Bytecode::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBytes>
         ::Append(*this, field_id, value);
   }
 };
