@@ -18,7 +18,7 @@ namespace pbzero {
 
 class Utsname;
 
-class SystemInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class SystemInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   SystemInfo_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit SystemInfo_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -29,6 +29,8 @@ class SystemInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=
   ::protozero::ConstChars android_build_fingerprint() const { return at<2>().as_string(); }
   bool has_hz() const { return at<3>().valid(); }
   int64_t hz() const { return at<3>().as_int64(); }
+  bool has_tracing_service_version() const { return at<4>().valid(); }
+  ::protozero::ConstChars tracing_service_version() const { return at<4>().as_string(); }
 };
 
 class SystemInfo : public ::protozero::Message {
@@ -38,6 +40,7 @@ class SystemInfo : public ::protozero::Message {
     kUtsnameFieldNumber = 1,
     kAndroidBuildFingerprintFieldNumber = 2,
     kHzFieldNumber = 3,
+    kTracingServiceVersionFieldNumber = 4,
   };
 
   using FieldMetadata_Utsname =
@@ -111,6 +114,34 @@ class SystemInfo : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TracingServiceVersion =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      SystemInfo>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  static constexpr FieldMetadata_TracingServiceVersion kTracingServiceVersion() { return {}; }
+  void set_tracing_service_version(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_TracingServiceVersion::kFieldId, data, size);
+  }
+  void set_tracing_service_version(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_TracingServiceVersion::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
         ::Append(*this, field_id, value);
   }
 };
