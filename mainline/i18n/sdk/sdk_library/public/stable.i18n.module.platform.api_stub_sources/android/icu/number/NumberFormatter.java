@@ -1,5 +1,5 @@
 /* GENERATED SOURCE. DO NOT MODIFY. */
-// © 2017 and later: Unicode, Inc. and others.
+// ? 2017 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
 
 package android.icu.number;
@@ -22,7 +22,7 @@ import java.util.Locale;
  *     .precision(Precision.maxDigits(2))
  *     .locale(...)
  *     .format(1234)
- *     .toString();  // €1.2K in en-US
+ *     .toString();  // ?1.2K in en-US
  *
  * // Create a formatter in a private static final field:
  * private static final LocalizedNumberFormatter formatter = NumberFormatter.withLocale(...)
@@ -318,9 +318,9 @@ ACCOUNTING_EXCEPT_ZERO;
  *
  * <ul>
  * <li>NARROW: "$123.00" and "123 m"
- * <li>SHORT: "US$ 123.00" and "123 m"
+ * <li>SHORT: "US$?123.00" and "123 m"
  * <li>FULL_NAME: "123.00 US dollars" and "123 meters"
- * <li>ISO_CODE: "USD 123.00" and undefined behavior
+ * <li>ISO_CODE: "USD?123.00" and undefined behavior
  * <li>HIDDEN: "123.00" and "123"
  * </ul>
  *
@@ -339,7 +339,7 @@ public enum UnitWidth {
  * SHORT.
  *
  * <p>
- * In CLDR, this option corresponds to the "Narrow" format for measure units and the "¤¤¤¤¤"
+ * In CLDR, this option corresponds to the "Narrow" format for measure units and the "?????"
  * placeholder for currencies.
  *
  * @see android.icu.number.NumberFormatter
@@ -351,11 +351,11 @@ NARROW,
  * abbreviation or symbol when there may be ambiguity. This is the default behavior.
  *
  * <p>
- * For example, in <em>es-US</em>, the SHORT form for Fahrenheit is "{0} °F", but the NARROW form
- * is "{0}°", since Fahrenheit is the customary unit for temperature in that locale.
+ * For example, in <em>es-US</em>, the SHORT form for Fahrenheit is "{0} ?F", but the NARROW form
+ * is "{0}?", since Fahrenheit is the customary unit for temperature in that locale.
  *
  * <p>
- * In CLDR, this option corresponds to the "Short" format for measure units and the "¤"
+ * In CLDR, this option corresponds to the "Short" format for measure units and the "?"
  * placeholder for currencies.
  *
  * @see android.icu.number.NumberFormatter
@@ -366,7 +366,7 @@ SHORT,
  * Print the full name of the unit, without any abbreviations.
  *
  * <p>
- * In CLDR, this option corresponds to the default format for measure units and the "¤¤¤"
+ * In CLDR, this option corresponds to the default format for measure units and the "???"
  * placeholder for currencies.
  *
  * @see android.icu.number.NumberFormatter
@@ -380,7 +380,7 @@ FULL_NAME,
  * Behavior of this option with non-currency units is not defined at this time.
  *
  * <p>
- * In CLDR, this option corresponds to the "¤¤" placeholder for currencies.
+ * In CLDR, this option corresponds to the "??" placeholder for currencies.
  *
  * @see android.icu.number.NumberFormatter
  */
