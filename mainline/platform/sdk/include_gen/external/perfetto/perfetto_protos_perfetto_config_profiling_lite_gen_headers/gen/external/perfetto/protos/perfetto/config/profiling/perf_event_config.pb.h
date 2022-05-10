@@ -1190,6 +1190,71 @@ inline void PerfEventConfig::set_unwind_state_clear_period_ms(::PROTOBUF_NAMESPA
   // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.unwind_state_clear_period_ms)
 }
 
+// repeated string target_installed_by = 18;
+inline int PerfEventConfig::target_installed_by_size() const {
+  return target_installed_by_.size();
+}
+inline void PerfEventConfig::clear_target_installed_by() {
+  target_installed_by_.Clear();
+}
+inline const std::string& PerfEventConfig::target_installed_by(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.target_installed_by)
+  return target_installed_by_.Get(index);
+}
+inline std::string* PerfEventConfig::mutable_target_installed_by(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.PerfEventConfig.target_installed_by)
+  return target_installed_by_.Mutable(index);
+}
+inline void PerfEventConfig::set_target_installed_by(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.target_installed_by)
+  target_installed_by_.Mutable(index)->assign(value);
+}
+inline void PerfEventConfig::set_target_installed_by(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.target_installed_by)
+  target_installed_by_.Mutable(index)->assign(std::move(value));
+}
+inline void PerfEventConfig::set_target_installed_by(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  target_installed_by_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.PerfEventConfig.target_installed_by)
+}
+inline void PerfEventConfig::set_target_installed_by(int index, const char* value, size_t size) {
+  target_installed_by_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.PerfEventConfig.target_installed_by)
+}
+inline std::string* PerfEventConfig::add_target_installed_by() {
+  // @@protoc_insertion_point(field_add_mutable:perfetto.protos.PerfEventConfig.target_installed_by)
+  return target_installed_by_.Add();
+}
+inline void PerfEventConfig::add_target_installed_by(const std::string& value) {
+  target_installed_by_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:perfetto.protos.PerfEventConfig.target_installed_by)
+}
+inline void PerfEventConfig::add_target_installed_by(std::string&& value) {
+  target_installed_by_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:perfetto.protos.PerfEventConfig.target_installed_by)
+}
+inline void PerfEventConfig::add_target_installed_by(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  target_installed_by_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:perfetto.protos.PerfEventConfig.target_installed_by)
+}
+inline void PerfEventConfig::add_target_installed_by(const char* value, size_t size) {
+  target_installed_by_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:perfetto.protos.PerfEventConfig.target_installed_by)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+PerfEventConfig::target_installed_by() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.PerfEventConfig.target_installed_by)
+  return target_installed_by_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+PerfEventConfig::mutable_target_installed_by() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.PerfEventConfig.target_installed_by)
+  return &target_installed_by_;
+}
+
 // optional bool all_cpus = 1;
 inline bool PerfEventConfig::has_all_cpus() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
@@ -1337,71 +1402,6 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 PerfEventConfig::mutable_target_cmdline() {
   // @@protoc_insertion_point(field_mutable_list:perfetto.protos.PerfEventConfig.target_cmdline)
   return &target_cmdline_;
-}
-
-// repeated string target_installed_by = 18;
-inline int PerfEventConfig::target_installed_by_size() const {
-  return target_installed_by_.size();
-}
-inline void PerfEventConfig::clear_target_installed_by() {
-  target_installed_by_.Clear();
-}
-inline const std::string& PerfEventConfig::target_installed_by(int index) const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.target_installed_by)
-  return target_installed_by_.Get(index);
-}
-inline std::string* PerfEventConfig::mutable_target_installed_by(int index) {
-  // @@protoc_insertion_point(field_mutable:perfetto.protos.PerfEventConfig.target_installed_by)
-  return target_installed_by_.Mutable(index);
-}
-inline void PerfEventConfig::set_target_installed_by(int index, const std::string& value) {
-  // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.target_installed_by)
-  target_installed_by_.Mutable(index)->assign(value);
-}
-inline void PerfEventConfig::set_target_installed_by(int index, std::string&& value) {
-  // @@protoc_insertion_point(field_set:perfetto.protos.PerfEventConfig.target_installed_by)
-  target_installed_by_.Mutable(index)->assign(std::move(value));
-}
-inline void PerfEventConfig::set_target_installed_by(int index, const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  target_installed_by_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:perfetto.protos.PerfEventConfig.target_installed_by)
-}
-inline void PerfEventConfig::set_target_installed_by(int index, const char* value, size_t size) {
-  target_installed_by_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.PerfEventConfig.target_installed_by)
-}
-inline std::string* PerfEventConfig::add_target_installed_by() {
-  // @@protoc_insertion_point(field_add_mutable:perfetto.protos.PerfEventConfig.target_installed_by)
-  return target_installed_by_.Add();
-}
-inline void PerfEventConfig::add_target_installed_by(const std::string& value) {
-  target_installed_by_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:perfetto.protos.PerfEventConfig.target_installed_by)
-}
-inline void PerfEventConfig::add_target_installed_by(std::string&& value) {
-  target_installed_by_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:perfetto.protos.PerfEventConfig.target_installed_by)
-}
-inline void PerfEventConfig::add_target_installed_by(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  target_installed_by_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:perfetto.protos.PerfEventConfig.target_installed_by)
-}
-inline void PerfEventConfig::add_target_installed_by(const char* value, size_t size) {
-  target_installed_by_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:perfetto.protos.PerfEventConfig.target_installed_by)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-PerfEventConfig::target_installed_by() const {
-  // @@protoc_insertion_point(field_list:perfetto.protos.PerfEventConfig.target_installed_by)
-  return target_installed_by_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-PerfEventConfig::mutable_target_installed_by() {
-  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.PerfEventConfig.target_installed_by)
-  return &target_installed_by_;
 }
 
 // repeated int32 exclude_pid = 6;
