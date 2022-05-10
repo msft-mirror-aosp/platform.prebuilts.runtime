@@ -203,9 +203,11 @@ class CgroupAttachTaskFtraceEvent :
   enum : int {
     kCommFieldNumber = 4,
     kCnameFieldNumber = 5,
+    kDstPathFieldNumber = 7,
     kDstRootFieldNumber = 1,
     kDstIdFieldNumber = 2,
     kPidFieldNumber = 3,
+    kDstLevelFieldNumber = 6,
   };
   // optional string comm = 4;
   bool has_comm() const;
@@ -231,6 +233,18 @@ class CgroupAttachTaskFtraceEvent :
   std::string* release_cname();
   void set_allocated_cname(std::string* cname);
 
+  // optional string dst_path = 7;
+  bool has_dst_path() const;
+  void clear_dst_path();
+  const std::string& dst_path() const;
+  void set_dst_path(const std::string& value);
+  void set_dst_path(std::string&& value);
+  void set_dst_path(const char* value);
+  void set_dst_path(const char* value, size_t size);
+  std::string* mutable_dst_path();
+  std::string* release_dst_path();
+  void set_allocated_dst_path(std::string* dst_path);
+
   // optional int32 dst_root = 1;
   bool has_dst_root() const;
   void clear_dst_root();
@@ -249,6 +263,12 @@ class CgroupAttachTaskFtraceEvent :
   ::PROTOBUF_NAMESPACE_ID::int32 pid() const;
   void set_pid(::PROTOBUF_NAMESPACE_ID::int32 value);
 
+  // optional int32 dst_level = 6;
+  bool has_dst_level() const;
+  void clear_dst_level();
+  ::PROTOBUF_NAMESPACE_ID::int32 dst_level() const;
+  void set_dst_level(::PROTOBUF_NAMESPACE_ID::int32 value);
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.CgroupAttachTaskFtraceEvent)
  private:
   class _Internal;
@@ -258,9 +278,11 @@ class CgroupAttachTaskFtraceEvent :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr comm_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr cname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr dst_path_;
   ::PROTOBUF_NAMESPACE_ID::int32 dst_root_;
   ::PROTOBUF_NAMESPACE_ID::int32 dst_id_;
   ::PROTOBUF_NAMESPACE_ID::int32 pid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 dst_level_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fcgroup_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1458,54 +1480,54 @@ class CgroupSetupRootFtraceEvent :
 
 // optional int32 dst_root = 1;
 inline bool CgroupAttachTaskFtraceEvent::has_dst_root() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void CgroupAttachTaskFtraceEvent::clear_dst_root() {
   dst_root_ = 0;
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 CgroupAttachTaskFtraceEvent::dst_root() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_root)
   return dst_root_;
 }
 inline void CgroupAttachTaskFtraceEvent::set_dst_root(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
   dst_root_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_root)
 }
 
 // optional int32 dst_id = 2;
 inline bool CgroupAttachTaskFtraceEvent::has_dst_id() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void CgroupAttachTaskFtraceEvent::clear_dst_id() {
   dst_id_ = 0;
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 CgroupAttachTaskFtraceEvent::dst_id() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_id)
   return dst_id_;
 }
 inline void CgroupAttachTaskFtraceEvent::set_dst_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
   dst_id_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_id)
 }
 
 // optional int32 pid = 3;
 inline bool CgroupAttachTaskFtraceEvent::has_pid() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void CgroupAttachTaskFtraceEvent::clear_pid() {
   pid_ = 0;
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 CgroupAttachTaskFtraceEvent::pid() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.CgroupAttachTaskFtraceEvent.pid)
   return pid_;
 }
 inline void CgroupAttachTaskFtraceEvent::set_pid(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
   pid_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.CgroupAttachTaskFtraceEvent.pid)
 }
@@ -1624,6 +1646,82 @@ inline void CgroupAttachTaskFtraceEvent::set_allocated_cname(std::string* cname)
   }
   cname_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), cname);
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.CgroupAttachTaskFtraceEvent.cname)
+}
+
+// optional int32 dst_level = 6;
+inline bool CgroupAttachTaskFtraceEvent::has_dst_level() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void CgroupAttachTaskFtraceEvent::clear_dst_level() {
+  dst_level_ = 0;
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 CgroupAttachTaskFtraceEvent::dst_level() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_level)
+  return dst_level_;
+}
+inline void CgroupAttachTaskFtraceEvent::set_dst_level(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000040u;
+  dst_level_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_level)
+}
+
+// optional string dst_path = 7;
+inline bool CgroupAttachTaskFtraceEvent::has_dst_path() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CgroupAttachTaskFtraceEvent::clear_dst_path() {
+  dst_path_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline const std::string& CgroupAttachTaskFtraceEvent::dst_path() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_path)
+  return dst_path_.GetNoArena();
+}
+inline void CgroupAttachTaskFtraceEvent::set_dst_path(const std::string& value) {
+  _has_bits_[0] |= 0x00000004u;
+  dst_path_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_path)
+}
+inline void CgroupAttachTaskFtraceEvent::set_dst_path(std::string&& value) {
+  _has_bits_[0] |= 0x00000004u;
+  dst_path_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_path)
+}
+inline void CgroupAttachTaskFtraceEvent::set_dst_path(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000004u;
+  dst_path_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_path)
+}
+inline void CgroupAttachTaskFtraceEvent::set_dst_path(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000004u;
+  dst_path_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_path)
+}
+inline std::string* CgroupAttachTaskFtraceEvent::mutable_dst_path() {
+  _has_bits_[0] |= 0x00000004u;
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_path)
+  return dst_path_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* CgroupAttachTaskFtraceEvent::release_dst_path() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_path)
+  if (!has_dst_path()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000004u;
+  return dst_path_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void CgroupAttachTaskFtraceEvent::set_allocated_dst_path(std::string* dst_path) {
+  if (dst_path != nullptr) {
+    _has_bits_[0] |= 0x00000004u;
+  } else {
+    _has_bits_[0] &= ~0x00000004u;
+  }
+  dst_path_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), dst_path);
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.CgroupAttachTaskFtraceEvent.dst_path)
 }
 
 // -------------------------------------------------------------------

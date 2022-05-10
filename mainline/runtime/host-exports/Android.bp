@@ -1,7 +1,54 @@
 // This is auto-generated. DO NOT EDIT.
 
 package {
+    // A default list here prevents the license LSC from adding its own list which would
+    // be unnecessary as every module in the sdk already has its own licenses property.
     default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+license {
+    name: "runtime-module-host-exports_bionic_apex_license@current",
+    sdk_member_name: "bionic_apex_license",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/bionic/apex/NOTICE"],
+}
+
+license {
+    name: "runtime-module-host-exports_bionic_apex_license",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/bionic/apex/NOTICE"],
+}
+
+license {
+    name: "runtime-module-host-exports_Android-Apache-2.0@current",
+    sdk_member_name: "Android-Apache-2.0",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/build/soong/licenses/LICENSE"],
+}
+
+license {
+    name: "runtime-module-host-exports_Android-Apache-2.0",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["licenses/build/soong/licenses/LICENSE"],
+}
+
+license {
+    name: "runtime-module-host-exports_bionic_linker_license@current",
+    sdk_member_name: "bionic_linker_license",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-BSD"],
+    license_text: ["licenses/bionic/linker/NOTICE"],
+}
+
+license {
+    name: "runtime-module-host-exports_bionic_linker_license",
+    visibility: ["//visibility:private"],
+    license_kinds: ["SPDX-license-identifier-BSD"],
+    license_text: ["licenses/bionic/linker/NOTICE"],
 }
 
 cc_prebuilt_binary {
@@ -12,6 +59,7 @@ cc_prebuilt_binary {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-host-exports_Android-Apache-2.0@current"],
     device_supported: false,
     host_supported: true,
     installable: false,
@@ -40,6 +88,7 @@ cc_prebuilt_binary {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-host-exports_Android-Apache-2.0"],
     device_supported: false,
     host_supported: true,
     stl: "c++_static",
@@ -67,6 +116,7 @@ cc_prebuilt_binary {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-host-exports_bionic_linker_license@current"],
     device_supported: false,
     host_supported: true,
     installable: false,
@@ -94,6 +144,7 @@ cc_prebuilt_binary {
         "//apex_available:platform",
         "com.android.runtime",
     ],
+    licenses: ["runtime-module-host-exports_bionic_linker_license"],
     device_supported: false,
     host_supported: true,
     stl: "none",
