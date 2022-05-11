@@ -682,6 +682,7 @@ class HeapGraphObject :
     kTypeIdFieldNumber = 2,
     kSelfSizeFieldNumber = 3,
     kReferenceFieldIdBaseFieldNumber = 6,
+    kNativeAllocationRegistrySizeFieldFieldNumber = 8,
     kIdFieldNumber = 1,
     kIdDeltaFieldNumber = 7,
   };
@@ -725,6 +726,12 @@ class HeapGraphObject :
   ::PROTOBUF_NAMESPACE_ID::uint64 reference_field_id_base() const;
   void set_reference_field_id_base(::PROTOBUF_NAMESPACE_ID::uint64 value);
 
+  // optional int64 native_allocation_registry_size_field = 8;
+  bool has_native_allocation_registry_size_field() const;
+  void clear_native_allocation_registry_size_field();
+  ::PROTOBUF_NAMESPACE_ID::int64 native_allocation_registry_size_field() const;
+  void set_native_allocation_registry_size_field(::PROTOBUF_NAMESPACE_ID::int64 value);
+
   // optional uint64 id = 1;
   bool has_id() const;
   void clear_id();
@@ -758,6 +765,7 @@ class HeapGraphObject :
   ::PROTOBUF_NAMESPACE_ID::uint64 type_id_;
   ::PROTOBUF_NAMESPACE_ID::uint64 self_size_;
   ::PROTOBUF_NAMESPACE_ID::uint64 reference_field_id_base_;
+  ::PROTOBUF_NAMESPACE_ID::int64 native_allocation_registry_size_field_;
   union IdentifierUnion {
     IdentifierUnion() {}
     ::PROTOBUF_NAMESPACE_ID::uint64 id_;
@@ -1406,6 +1414,24 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::uint64 >
 HeapGraphObject::mutable_reference_object_id() {
   // @@protoc_insertion_point(field_mutable_list:perfetto.protos.HeapGraphObject.reference_object_id)
   return &reference_object_id_;
+}
+
+// optional int64 native_allocation_registry_size_field = 8;
+inline bool HeapGraphObject::has_native_allocation_registry_size_field() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void HeapGraphObject::clear_native_allocation_registry_size_field() {
+  native_allocation_registry_size_field_ = PROTOBUF_LONGLONG(0);
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 HeapGraphObject::native_allocation_registry_size_field() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.HeapGraphObject.native_allocation_registry_size_field)
+  return native_allocation_registry_size_field_;
+}
+inline void HeapGraphObject::set_native_allocation_registry_size_field(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _has_bits_[0] |= 0x00000008u;
+  native_allocation_registry_size_field_ = value;
+  // @@protoc_insertion_point(field_set:perfetto.protos.HeapGraphObject.native_allocation_registry_size_field)
 }
 
 inline bool HeapGraphObject::has_identifier() const {
