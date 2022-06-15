@@ -25,108 +25,83 @@ sys.path.append(THIS_DIR + '/../common/python')
 import update_prebuilts as update
 
 PREBUILT_DESCRIPTION = 'mainline'
-MODULE_TARGET = 'mainline_modules-userdebug'
-SDK_TARGET = "mainline_modules_sdks-userdebug"
+TARGET = 'mainline_modules'
 
 COMMIT_MESSAGE_NOTE = """\
-CL prepared by prebuilts/runtime/mainline/update.py.
-
-See prebuilts/runtime/mainline/README.md for update instructions.
+CL prepared by prebuilts/runtime/mainline/update.py. See
+prebuilts/runtime/mainline/README.md for update instructions.
 
 Test: Presubmits
 """
 
-def InstallApexEntries(apex_base_name, install_dir):
+mainline_install_list = []
+mainline_extracted_list = []
+
+def InstallApexEntries(apex_name, install_dir):
   res = []
   for arch in ['arm', 'arm64', 'x86', 'x86_64']:
     res.append(update.InstallEntry(
-        MODULE_TARGET,
-        os.path.join('mainline_modules_' + arch,
-                     'com.android.' + apex_base_name + '.apex'),
-        os.path.join(install_dir,
-                     'com.android.' + apex_base_name + '-' + arch + '.apex'),
+        TARGET,
+        arch + '/' + apex_name + '.apex',
+        install_dir + '/' + apex_name + '-' + arch + '.apex',
         install_unzipped=False))
   return res
-
-def InstallUnbundledSdkEntries(apex_base_name, sdk_type):
-  return [update.InstallEntry(
-      SDK_TARGET,
-      os.path.join('mainline-sdks/for-latest-build/current',
-                   'com.android.' + apex_base_name,
-                   sdk_type,
-                   apex_base_name + '-module-' + sdk_type + '-current.zip'),
-      os.path.join(apex_base_name, sdk_type),
-      install_unzipped=True)]
-
-def InstallBundledSdkEntries(apex_base_name, sdk_type):
-  return [update.InstallEntry(
-      SDK_TARGET,
-      os.path.join('bundled-mainline-sdks',
-                   'com.android.' + apex_base_name,
-                   sdk_type,
-                   apex_base_name + '-module-' + sdk_type + '-current.zip'),
-      os.path.join(apex_base_name, sdk_type),
-      install_unzipped=True)]
-
-def InstallPlatformMainlineSdkEntries(sdk_type):
-  return [update.InstallEntry(
-      SDK_TARGET,
-      os.path.join('bundled-mainline-sdks',
-                   'platform-mainline',
-                   sdk_type,
-                   'platform-mainline-' + sdk_type + '-current.zip'),
-      os.path.join('platform', sdk_type),
-      install_unzipped=True)]
 
 def InstallSharedLibEntries(lib_name, install_dir):
   res = []
   for arch in ['arm', 'arm64', 'x86', 'x86_64']:
     res.append(update.InstallEntry(
-        MODULE_TARGET,
-        os.path.join(arch, lib_name + '.so'),
-        os.path.join(install_dir, arch, lib_name  + '.so'),
+        TARGET,
+        arch + '/' + lib_name + '.so',
+        install_dir + '/' + arch + '/' + lib_name  + '.so',
         install_unzipped=False))
   return res
 
-PREBUILT_INSTALL_MODULES = (
-    # Conscrypt
-    #InstallApexEntries('conscrypt', 'conscrypt/apex') +
-    #InstallUnbundledSdkEntries('conscrypt', 'test-exports') +
-    #InstallUnbundledSdkEntries('conscrypt', 'host-exports') +
+def InstallSdkEntries(mainline_sdk_name, install_dir):
+  return [update.InstallEntry(
+      TARGET,
+      'mainline-sdks/' + mainline_sdk_name + '-current.zip',
+      install_dir,
+      install_unzipped=True)]
 
-    # Runtime (Bionic)
-    #InstallApexEntries('runtime', 'runtime/apex') +
-    # sdk and host-exports must always be updated together, because the linker
-    # and the CRT object files gets embedded in the binaries on linux host
-    # Bionic (see code and comments around host_bionic_linker_script in
-    # build/soong).
-    InstallBundledSdkEntries('runtime', 'sdk') +
-    InstallBundledSdkEntries('runtime', 'host-exports') +
+# Conscrypt
+mainline_install_list.extend(
+    InstallApexEntries('com.android.conscrypt', 'conscrypt/apex') +
+    InstallSdkEntries('conscrypt-module-test-exports', 'conscrypt/test-exports') +
+    InstallSdkEntries('conscrypt-module-host-exports', 'conscrypt/host-exports'))
 
-    # I18N
-    #InstallApexEntries('i18n', 'i18n/apex') +
-    #InstallBundledSdkEntries('i18n', 'sdk') +
-    #InstallBundledSdkEntries('i18n', 'test-exports') +
+# Runtime (Bionic)
+mainline_install_list.extend(
+    InstallApexEntries('com.android.runtime', 'runtime/apex') +
+    InstallSdkEntries('runtime-module-sdk', 'runtime/sdk') +
+    InstallSdkEntries('runtime-module-host-exports', 'runtime/host-exports'))
 
-    # tzdata
-    #InstallApexEntries('tzdata', 'tzdata/apex') +
-    #InstallBundledSdkEntries('tzdata', 'test-exports') +
+# I18N
+mainline_install_list.extend(
+    InstallApexEntries('com.android.i18n', 'i18n/apex') +
+    InstallSdkEntries('i18n-module-sdk', 'i18n/sdk') +
+    InstallSdkEntries('i18n-module-test-exports', 'i18n/test-exports'))
 
-    # statsd
-    #InstallApexEntries('os.statsd', 'statsd/apex') +
+# tzdata
+mainline_install_list.extend(
+    InstallApexEntries('com.android.tzdata', 'tzdata/apex') +
+    InstallSdkEntries('tzdata-module-test-exports', 'tzdata/test-exports'))
 
-    # Platform
-    #InstallPlatformMainlineSdkEntries('sdk') +
-    #InstallPlatformMainlineSdkEntries('test-exports') +
+# statsd
+mainline_install_list.extend(
+    InstallApexEntries('com.android.os.statsd', 'statsd/apex'))
+
+# Platform
+mainline_install_list.extend(
+    InstallSdkEntries('platform-mainline-sdk', 'platform/sdk') +
+    InstallSdkEntries('platform-mainline-test-exports', 'platform/test-exports') +
     # Shared libraries that are stubs in SDKs, but for which we need their
     # implementation for device testing.
-    #InstallSharedLibEntries('heapprofd_client_api', 'platform/impl') +
-    #InstallSharedLibEntries('libartpalette-system', 'platform/impl') +
-    #InstallSharedLibEntries('liblog', 'platform/impl') +
-
-    [])
+    InstallSharedLibEntries('heapprofd_client_api', 'platform/impl') +
+    InstallSharedLibEntries('libartpalette-system', 'platform/impl') +
+    InstallSharedLibEntries('liblog', 'platform/impl'))
 
 if __name__ == '__main__':
-  args = update.parse_args()
-  update.main(args, THIS_DIR, PREBUILT_DESCRIPTION, PREBUILT_INSTALL_MODULES,
-              [], COMMIT_MESSAGE_NOTE)
+    update.main(THIS_DIR, PREBUILT_DESCRIPTION,
+                mainline_install_list, mainline_extracted_list,
+                COMMIT_MESSAGE_NOTE)

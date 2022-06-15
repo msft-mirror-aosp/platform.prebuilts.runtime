@@ -471,7 +471,6 @@ class ChromeLatencyInfo :
     kStepFieldNumber = 2,
     kFrameTreeNodeIdFieldNumber = 3,
     kGestureScrollIdFieldNumber = 6,
-    kTouchIdFieldNumber = 7,
     kIsCoalescedFieldNumber = 5,
   };
   // repeated .perfetto.protos.ChromeLatencyInfo.ComponentInfo component_info = 4;
@@ -509,12 +508,6 @@ class ChromeLatencyInfo :
   ::PROTOBUF_NAMESPACE_ID::int64 gesture_scroll_id() const;
   void set_gesture_scroll_id(::PROTOBUF_NAMESPACE_ID::int64 value);
 
-  // optional int64 touch_id = 7;
-  bool has_touch_id() const;
-  void clear_touch_id();
-  ::PROTOBUF_NAMESPACE_ID::int64 touch_id() const;
-  void set_touch_id(::PROTOBUF_NAMESPACE_ID::int64 value);
-
   // optional bool is_coalesced = 5;
   bool has_is_coalesced() const;
   void clear_is_coalesced();
@@ -533,7 +526,6 @@ class ChromeLatencyInfo :
   int step_;
   ::PROTOBUF_NAMESPACE_ID::int32 frame_tree_node_id_;
   ::PROTOBUF_NAMESPACE_ID::int64 gesture_scroll_id_;
-  ::PROTOBUF_NAMESPACE_ID::int64 touch_id_;
   bool is_coalesced_;
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftrack_5fevent_2fchrome_5flatency_5finfo_2eproto;
 };
@@ -676,18 +668,18 @@ ChromeLatencyInfo::component_info() const {
 
 // optional bool is_coalesced = 5;
 inline bool ChromeLatencyInfo::has_is_coalesced() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void ChromeLatencyInfo::clear_is_coalesced() {
   is_coalesced_ = false;
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline bool ChromeLatencyInfo::is_coalesced() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.ChromeLatencyInfo.is_coalesced)
   return is_coalesced_;
 }
 inline void ChromeLatencyInfo::set_is_coalesced(bool value) {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
   is_coalesced_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeLatencyInfo.is_coalesced)
 }
@@ -708,24 +700,6 @@ inline void ChromeLatencyInfo::set_gesture_scroll_id(::PROTOBUF_NAMESPACE_ID::in
   _has_bits_[0] |= 0x00000008u;
   gesture_scroll_id_ = value;
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeLatencyInfo.gesture_scroll_id)
-}
-
-// optional int64 touch_id = 7;
-inline bool ChromeLatencyInfo::has_touch_id() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void ChromeLatencyInfo::clear_touch_id() {
-  touch_id_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline ::PROTOBUF_NAMESPACE_ID::int64 ChromeLatencyInfo::touch_id() const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeLatencyInfo.touch_id)
-  return touch_id_;
-}
-inline void ChromeLatencyInfo::set_touch_id(::PROTOBUF_NAMESPACE_ID::int64 value) {
-  _has_bits_[0] |= 0x00000010u;
-  touch_id_ = value;
-  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeLatencyInfo.touch_id)
 }
 
 #ifdef __GNUC__
