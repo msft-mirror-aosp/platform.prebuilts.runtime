@@ -21,6 +21,17 @@ license {
 }
 
 license {
+    name: "platform-mainline-sdk_external_libcap_license",
+    visibility: ["//visibility:private"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+        "SPDX-license-identifier-BSD",
+        "SPDX-license-identifier-BSD-3-Clause",
+    ],
+    license_text: ["licenses/external/libcap/NOTICE"],
+}
+
+license {
     name: "platform-mainline-sdk_external_perfetto_license",
     visibility: ["//visibility:private"],
     license_kinds: [
@@ -252,6 +263,64 @@ cc_prebuilt_library_shared {
         },
         x86: {
             srcs: ["x86/lib/libbinder_ndk.so"],
+        },
+    },
+}
+
+cc_prebuilt_library_static {
+    name: "libcap",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.adbd",
+        "com.android.art",
+        "com.android.art.debug",
+        "com.android.compos",
+        "com.android.media.swcodec",
+        "com.android.virt",
+    ],
+    licenses: ["platform-mainline-sdk_external_libcap_license"],
+    host_supported: true,
+    vendor_available: true,
+    product_available: true,
+    export_include_dirs: ["common_os/include/external/libcap/libcap/include"],
+    target: {
+        host: {
+            enabled: false,
+        },
+        android: {
+            compile_multilib: "both",
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/libcap.a"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/libcap.a"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/libcap.a"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/libcap.a"],
+        },
+        linux_bionic: {
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            enabled: true,
+            srcs: ["linux_bionic/x86_64/lib/libcap.a"],
+        },
+        linux_glibc: {
+            compile_multilib: "both",
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+            srcs: ["linux_glibc/x86_64/lib/libcap.a"],
+        },
+        linux_glibc_x86: {
+            enabled: true,
+            srcs: ["linux_glibc/x86/lib/libcap.a"],
         },
     },
 }
