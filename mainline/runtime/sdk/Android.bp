@@ -1343,12 +1343,8 @@ cc_prebuilt_library_static {
     prefer: false,
     visibility: ["//visibility:public"],
     apex_available: [
+        "//apex_available:anyapex",
         "//apex_available:platform",
-        "com.android.art",
-        "com.android.art.debug",
-        "com.android.media",
-        "com.android.media.swcodec",
-        "com.android.runtime",
     ],
     licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
