@@ -40,6 +40,8 @@ class TracePacketDefaults : public ::protozero::Message {
     kTrackEventDefaultsFieldNumber = 11,
     kPerfSampleDefaultsFieldNumber = 12,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.TracePacketDefaults"; }
+
 
   using FieldMetadata_TimestampClockId =
     ::protozero::proto_utils::FieldMetadata<
@@ -55,7 +57,7 @@ class TracePacketDefaults : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TimestampClockId kTimestampClockId() { return {}; }
   void set_timestamp_clock_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimestampClockId::kFieldId;
@@ -80,7 +82,7 @@ class TracePacketDefaults : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TrackEventDefaults kTrackEventDefaults() { return {}; }
   template <typename T = TrackEventDefaults> T* set_track_event_defaults() {
     return BeginNestedMessage<T>(11);
@@ -101,7 +103,7 @@ class TracePacketDefaults : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PerfSampleDefaults kPerfSampleDefaults() { return {}; }
   template <typename T = PerfSampleDefaults> T* set_perf_sample_defaults() {
     return BeginNestedMessage<T>(12);

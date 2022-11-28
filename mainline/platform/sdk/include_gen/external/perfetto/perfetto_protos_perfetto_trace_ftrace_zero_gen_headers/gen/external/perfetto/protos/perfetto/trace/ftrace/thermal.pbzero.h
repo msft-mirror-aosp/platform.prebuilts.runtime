@@ -35,6 +35,8 @@ class CdevUpdateFtraceEvent : public ::protozero::Message {
     kTargetFieldNumber = 1,
     kTypeFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.CdevUpdateFtraceEvent"; }
+
 
   using FieldMetadata_Target =
     ::protozero::proto_utils::FieldMetadata<
@@ -50,7 +52,7 @@ class CdevUpdateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Target kTarget() { return {}; }
   void set_target(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Target::kFieldId;
@@ -75,10 +77,13 @@ class CdevUpdateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Type::kFieldId, data, size);
+  }
+  void set_type(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Type::kFieldId, chars.data, chars.size);
   }
   void set_type(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
@@ -114,6 +119,8 @@ class ThermalTemperatureFtraceEvent : public ::protozero::Message {
     kTempPrevFieldNumber = 3,
     kThermalZoneFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ThermalTemperatureFtraceEvent"; }
+
 
   using FieldMetadata_Id =
     ::protozero::proto_utils::FieldMetadata<
@@ -129,7 +136,7 @@ class ThermalTemperatureFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Id kId() { return {}; }
   void set_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
@@ -154,7 +161,7 @@ class ThermalTemperatureFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Temp kTemp() { return {}; }
   void set_temp(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Temp::kFieldId;
@@ -179,7 +186,7 @@ class ThermalTemperatureFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TempPrev kTempPrev() { return {}; }
   void set_temp_prev(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TempPrev::kFieldId;
@@ -204,10 +211,13 @@ class ThermalTemperatureFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ThermalZone kThermalZone() { return {}; }
   void set_thermal_zone(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ThermalZone::kFieldId, data, size);
+  }
+  void set_thermal_zone(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ThermalZone::kFieldId, chars.data, chars.size);
   }
   void set_thermal_zone(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ThermalZone::kFieldId;

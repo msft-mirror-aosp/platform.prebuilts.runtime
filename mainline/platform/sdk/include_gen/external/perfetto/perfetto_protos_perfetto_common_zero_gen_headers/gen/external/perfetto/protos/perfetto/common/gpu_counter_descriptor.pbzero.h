@@ -18,68 +18,240 @@ namespace pbzero {
 
 class GpuCounterDescriptor_GpuCounterBlock;
 class GpuCounterDescriptor_GpuCounterSpec;
-enum GpuCounterDescriptor_GpuCounterGroup : int32_t;
-enum GpuCounterDescriptor_MeasureUnit : int32_t;
+namespace perfetto_pbzero_enum_GpuCounterDescriptor {
+enum GpuCounterGroup : int32_t;
+}  // namespace perfetto_pbzero_enum_GpuCounterDescriptor
+using GpuCounterDescriptor_GpuCounterGroup = perfetto_pbzero_enum_GpuCounterDescriptor::GpuCounterGroup;
+namespace perfetto_pbzero_enum_GpuCounterDescriptor {
+enum MeasureUnit : int32_t;
+}  // namespace perfetto_pbzero_enum_GpuCounterDescriptor
+using GpuCounterDescriptor_MeasureUnit = perfetto_pbzero_enum_GpuCounterDescriptor::MeasureUnit;
 
-enum GpuCounterDescriptor_GpuCounterGroup : int32_t {
-  GpuCounterDescriptor_GpuCounterGroup_UNCLASSIFIED = 0,
-  GpuCounterDescriptor_GpuCounterGroup_SYSTEM = 1,
-  GpuCounterDescriptor_GpuCounterGroup_VERTICES = 2,
-  GpuCounterDescriptor_GpuCounterGroup_FRAGMENTS = 3,
-  GpuCounterDescriptor_GpuCounterGroup_PRIMITIVES = 4,
-  GpuCounterDescriptor_GpuCounterGroup_MEMORY = 5,
-  GpuCounterDescriptor_GpuCounterGroup_COMPUTE = 6,
+namespace perfetto_pbzero_enum_GpuCounterDescriptor {
+enum GpuCounterGroup : int32_t {
+  UNCLASSIFIED = 0,
+  SYSTEM = 1,
+  VERTICES = 2,
+  FRAGMENTS = 3,
+  PRIMITIVES = 4,
+  MEMORY = 5,
+  COMPUTE = 6,
 };
+} // namespace perfetto_pbzero_enum_GpuCounterDescriptor
+using GpuCounterDescriptor_GpuCounterGroup = perfetto_pbzero_enum_GpuCounterDescriptor::GpuCounterGroup;
 
-const GpuCounterDescriptor_GpuCounterGroup GpuCounterDescriptor_GpuCounterGroup_MIN = GpuCounterDescriptor_GpuCounterGroup_UNCLASSIFIED;
-const GpuCounterDescriptor_GpuCounterGroup GpuCounterDescriptor_GpuCounterGroup_MAX = GpuCounterDescriptor_GpuCounterGroup_COMPUTE;
 
-enum GpuCounterDescriptor_MeasureUnit : int32_t {
-  GpuCounterDescriptor_MeasureUnit_NONE = 0,
-  GpuCounterDescriptor_MeasureUnit_BIT = 1,
-  GpuCounterDescriptor_MeasureUnit_KILOBIT = 2,
-  GpuCounterDescriptor_MeasureUnit_MEGABIT = 3,
-  GpuCounterDescriptor_MeasureUnit_GIGABIT = 4,
-  GpuCounterDescriptor_MeasureUnit_TERABIT = 5,
-  GpuCounterDescriptor_MeasureUnit_PETABIT = 6,
-  GpuCounterDescriptor_MeasureUnit_BYTE = 7,
-  GpuCounterDescriptor_MeasureUnit_KILOBYTE = 8,
-  GpuCounterDescriptor_MeasureUnit_MEGABYTE = 9,
-  GpuCounterDescriptor_MeasureUnit_GIGABYTE = 10,
-  GpuCounterDescriptor_MeasureUnit_TERABYTE = 11,
-  GpuCounterDescriptor_MeasureUnit_PETABYTE = 12,
-  GpuCounterDescriptor_MeasureUnit_HERTZ = 13,
-  GpuCounterDescriptor_MeasureUnit_KILOHERTZ = 14,
-  GpuCounterDescriptor_MeasureUnit_MEGAHERTZ = 15,
-  GpuCounterDescriptor_MeasureUnit_GIGAHERTZ = 16,
-  GpuCounterDescriptor_MeasureUnit_TERAHERTZ = 17,
-  GpuCounterDescriptor_MeasureUnit_PETAHERTZ = 18,
-  GpuCounterDescriptor_MeasureUnit_NANOSECOND = 19,
-  GpuCounterDescriptor_MeasureUnit_MICROSECOND = 20,
-  GpuCounterDescriptor_MeasureUnit_MILLISECOND = 21,
-  GpuCounterDescriptor_MeasureUnit_SECOND = 22,
-  GpuCounterDescriptor_MeasureUnit_MINUTE = 23,
-  GpuCounterDescriptor_MeasureUnit_HOUR = 24,
-  GpuCounterDescriptor_MeasureUnit_VERTEX = 25,
-  GpuCounterDescriptor_MeasureUnit_PIXEL = 26,
-  GpuCounterDescriptor_MeasureUnit_TRIANGLE = 27,
-  GpuCounterDescriptor_MeasureUnit_PRIMITIVE = 38,
-  GpuCounterDescriptor_MeasureUnit_FRAGMENT = 39,
-  GpuCounterDescriptor_MeasureUnit_MILLIWATT = 28,
-  GpuCounterDescriptor_MeasureUnit_WATT = 29,
-  GpuCounterDescriptor_MeasureUnit_KILOWATT = 30,
-  GpuCounterDescriptor_MeasureUnit_JOULE = 31,
-  GpuCounterDescriptor_MeasureUnit_VOLT = 32,
-  GpuCounterDescriptor_MeasureUnit_AMPERE = 33,
-  GpuCounterDescriptor_MeasureUnit_CELSIUS = 34,
-  GpuCounterDescriptor_MeasureUnit_FAHRENHEIT = 35,
-  GpuCounterDescriptor_MeasureUnit_KELVIN = 36,
-  GpuCounterDescriptor_MeasureUnit_PERCENT = 37,
-  GpuCounterDescriptor_MeasureUnit_INSTRUCTION = 40,
+constexpr GpuCounterDescriptor_GpuCounterGroup GpuCounterDescriptor_GpuCounterGroup_MIN = GpuCounterDescriptor_GpuCounterGroup::UNCLASSIFIED;
+constexpr GpuCounterDescriptor_GpuCounterGroup GpuCounterDescriptor_GpuCounterGroup_MAX = GpuCounterDescriptor_GpuCounterGroup::COMPUTE;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* GpuCounterDescriptor_GpuCounterGroup_Name(::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup::UNCLASSIFIED:
+    return "UNCLASSIFIED";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup::SYSTEM:
+    return "SYSTEM";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup::VERTICES:
+    return "VERTICES";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup::FRAGMENTS:
+    return "FRAGMENTS";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup::PRIMITIVES:
+    return "PRIMITIVES";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup::MEMORY:
+    return "MEMORY";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup::COMPUTE:
+    return "COMPUTE";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_GpuCounterDescriptor {
+enum MeasureUnit : int32_t {
+  NONE = 0,
+  BIT = 1,
+  KILOBIT = 2,
+  MEGABIT = 3,
+  GIGABIT = 4,
+  TERABIT = 5,
+  PETABIT = 6,
+  BYTE = 7,
+  KILOBYTE = 8,
+  MEGABYTE = 9,
+  GIGABYTE = 10,
+  TERABYTE = 11,
+  PETABYTE = 12,
+  HERTZ = 13,
+  KILOHERTZ = 14,
+  MEGAHERTZ = 15,
+  GIGAHERTZ = 16,
+  TERAHERTZ = 17,
+  PETAHERTZ = 18,
+  NANOSECOND = 19,
+  MICROSECOND = 20,
+  MILLISECOND = 21,
+  SECOND = 22,
+  MINUTE = 23,
+  HOUR = 24,
+  VERTEX = 25,
+  PIXEL = 26,
+  TRIANGLE = 27,
+  PRIMITIVE = 38,
+  FRAGMENT = 39,
+  MILLIWATT = 28,
+  WATT = 29,
+  KILOWATT = 30,
+  JOULE = 31,
+  VOLT = 32,
+  AMPERE = 33,
+  CELSIUS = 34,
+  FAHRENHEIT = 35,
+  KELVIN = 36,
+  PERCENT = 37,
+  INSTRUCTION = 40,
 };
+} // namespace perfetto_pbzero_enum_GpuCounterDescriptor
+using GpuCounterDescriptor_MeasureUnit = perfetto_pbzero_enum_GpuCounterDescriptor::MeasureUnit;
 
-const GpuCounterDescriptor_MeasureUnit GpuCounterDescriptor_MeasureUnit_MIN = GpuCounterDescriptor_MeasureUnit_NONE;
-const GpuCounterDescriptor_MeasureUnit GpuCounterDescriptor_MeasureUnit_MAX = GpuCounterDescriptor_MeasureUnit_INSTRUCTION;
+
+constexpr GpuCounterDescriptor_MeasureUnit GpuCounterDescriptor_MeasureUnit_MIN = GpuCounterDescriptor_MeasureUnit::NONE;
+constexpr GpuCounterDescriptor_MeasureUnit GpuCounterDescriptor_MeasureUnit_MAX = GpuCounterDescriptor_MeasureUnit::INSTRUCTION;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* GpuCounterDescriptor_MeasureUnit_Name(::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::NONE:
+    return "NONE";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::BIT:
+    return "BIT";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::KILOBIT:
+    return "KILOBIT";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::MEGABIT:
+    return "MEGABIT";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::GIGABIT:
+    return "GIGABIT";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::TERABIT:
+    return "TERABIT";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::PETABIT:
+    return "PETABIT";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::BYTE:
+    return "BYTE";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::KILOBYTE:
+    return "KILOBYTE";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::MEGABYTE:
+    return "MEGABYTE";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::GIGABYTE:
+    return "GIGABYTE";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::TERABYTE:
+    return "TERABYTE";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::PETABYTE:
+    return "PETABYTE";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::HERTZ:
+    return "HERTZ";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::KILOHERTZ:
+    return "KILOHERTZ";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::MEGAHERTZ:
+    return "MEGAHERTZ";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::GIGAHERTZ:
+    return "GIGAHERTZ";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::TERAHERTZ:
+    return "TERAHERTZ";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::PETAHERTZ:
+    return "PETAHERTZ";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::NANOSECOND:
+    return "NANOSECOND";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::MICROSECOND:
+    return "MICROSECOND";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::MILLISECOND:
+    return "MILLISECOND";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::SECOND:
+    return "SECOND";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::MINUTE:
+    return "MINUTE";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::HOUR:
+    return "HOUR";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::VERTEX:
+    return "VERTEX";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::PIXEL:
+    return "PIXEL";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::TRIANGLE:
+    return "TRIANGLE";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::PRIMITIVE:
+    return "PRIMITIVE";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::FRAGMENT:
+    return "FRAGMENT";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::MILLIWATT:
+    return "MILLIWATT";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::WATT:
+    return "WATT";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::KILOWATT:
+    return "KILOWATT";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::JOULE:
+    return "JOULE";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::VOLT:
+    return "VOLT";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::AMPERE:
+    return "AMPERE";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::CELSIUS:
+    return "CELSIUS";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::FAHRENHEIT:
+    return "FAHRENHEIT";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::KELVIN:
+    return "KELVIN";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::PERCENT:
+    return "PERCENT";
+
+  case ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit::INSTRUCTION:
+    return "INSTRUCTION";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class GpuCounterDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -108,58 +280,68 @@ class GpuCounterDescriptor : public ::protozero::Message {
     kMaxSamplingPeriodNsFieldNumber = 4,
     kSupportsInstrumentedSamplingFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuCounterDescriptor"; }
+
   using GpuCounterSpec = ::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterSpec;
   using GpuCounterBlock = ::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterBlock;
+
   using GpuCounterGroup = ::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup;
+  static inline const char* GpuCounterGroup_Name(GpuCounterGroup value) {
+    return ::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup_Name(value);
+  }
+
   using MeasureUnit = ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit;
-  static const GpuCounterGroup UNCLASSIFIED = GpuCounterDescriptor_GpuCounterGroup_UNCLASSIFIED;
-  static const GpuCounterGroup SYSTEM = GpuCounterDescriptor_GpuCounterGroup_SYSTEM;
-  static const GpuCounterGroup VERTICES = GpuCounterDescriptor_GpuCounterGroup_VERTICES;
-  static const GpuCounterGroup FRAGMENTS = GpuCounterDescriptor_GpuCounterGroup_FRAGMENTS;
-  static const GpuCounterGroup PRIMITIVES = GpuCounterDescriptor_GpuCounterGroup_PRIMITIVES;
-  static const GpuCounterGroup MEMORY = GpuCounterDescriptor_GpuCounterGroup_MEMORY;
-  static const GpuCounterGroup COMPUTE = GpuCounterDescriptor_GpuCounterGroup_COMPUTE;
-  static const MeasureUnit NONE = GpuCounterDescriptor_MeasureUnit_NONE;
-  static const MeasureUnit BIT = GpuCounterDescriptor_MeasureUnit_BIT;
-  static const MeasureUnit KILOBIT = GpuCounterDescriptor_MeasureUnit_KILOBIT;
-  static const MeasureUnit MEGABIT = GpuCounterDescriptor_MeasureUnit_MEGABIT;
-  static const MeasureUnit GIGABIT = GpuCounterDescriptor_MeasureUnit_GIGABIT;
-  static const MeasureUnit TERABIT = GpuCounterDescriptor_MeasureUnit_TERABIT;
-  static const MeasureUnit PETABIT = GpuCounterDescriptor_MeasureUnit_PETABIT;
-  static const MeasureUnit BYTE = GpuCounterDescriptor_MeasureUnit_BYTE;
-  static const MeasureUnit KILOBYTE = GpuCounterDescriptor_MeasureUnit_KILOBYTE;
-  static const MeasureUnit MEGABYTE = GpuCounterDescriptor_MeasureUnit_MEGABYTE;
-  static const MeasureUnit GIGABYTE = GpuCounterDescriptor_MeasureUnit_GIGABYTE;
-  static const MeasureUnit TERABYTE = GpuCounterDescriptor_MeasureUnit_TERABYTE;
-  static const MeasureUnit PETABYTE = GpuCounterDescriptor_MeasureUnit_PETABYTE;
-  static const MeasureUnit HERTZ = GpuCounterDescriptor_MeasureUnit_HERTZ;
-  static const MeasureUnit KILOHERTZ = GpuCounterDescriptor_MeasureUnit_KILOHERTZ;
-  static const MeasureUnit MEGAHERTZ = GpuCounterDescriptor_MeasureUnit_MEGAHERTZ;
-  static const MeasureUnit GIGAHERTZ = GpuCounterDescriptor_MeasureUnit_GIGAHERTZ;
-  static const MeasureUnit TERAHERTZ = GpuCounterDescriptor_MeasureUnit_TERAHERTZ;
-  static const MeasureUnit PETAHERTZ = GpuCounterDescriptor_MeasureUnit_PETAHERTZ;
-  static const MeasureUnit NANOSECOND = GpuCounterDescriptor_MeasureUnit_NANOSECOND;
-  static const MeasureUnit MICROSECOND = GpuCounterDescriptor_MeasureUnit_MICROSECOND;
-  static const MeasureUnit MILLISECOND = GpuCounterDescriptor_MeasureUnit_MILLISECOND;
-  static const MeasureUnit SECOND = GpuCounterDescriptor_MeasureUnit_SECOND;
-  static const MeasureUnit MINUTE = GpuCounterDescriptor_MeasureUnit_MINUTE;
-  static const MeasureUnit HOUR = GpuCounterDescriptor_MeasureUnit_HOUR;
-  static const MeasureUnit VERTEX = GpuCounterDescriptor_MeasureUnit_VERTEX;
-  static const MeasureUnit PIXEL = GpuCounterDescriptor_MeasureUnit_PIXEL;
-  static const MeasureUnit TRIANGLE = GpuCounterDescriptor_MeasureUnit_TRIANGLE;
-  static const MeasureUnit PRIMITIVE = GpuCounterDescriptor_MeasureUnit_PRIMITIVE;
-  static const MeasureUnit FRAGMENT = GpuCounterDescriptor_MeasureUnit_FRAGMENT;
-  static const MeasureUnit MILLIWATT = GpuCounterDescriptor_MeasureUnit_MILLIWATT;
-  static const MeasureUnit WATT = GpuCounterDescriptor_MeasureUnit_WATT;
-  static const MeasureUnit KILOWATT = GpuCounterDescriptor_MeasureUnit_KILOWATT;
-  static const MeasureUnit JOULE = GpuCounterDescriptor_MeasureUnit_JOULE;
-  static const MeasureUnit VOLT = GpuCounterDescriptor_MeasureUnit_VOLT;
-  static const MeasureUnit AMPERE = GpuCounterDescriptor_MeasureUnit_AMPERE;
-  static const MeasureUnit CELSIUS = GpuCounterDescriptor_MeasureUnit_CELSIUS;
-  static const MeasureUnit FAHRENHEIT = GpuCounterDescriptor_MeasureUnit_FAHRENHEIT;
-  static const MeasureUnit KELVIN = GpuCounterDescriptor_MeasureUnit_KELVIN;
-  static const MeasureUnit PERCENT = GpuCounterDescriptor_MeasureUnit_PERCENT;
-  static const MeasureUnit INSTRUCTION = GpuCounterDescriptor_MeasureUnit_INSTRUCTION;
+  static inline const char* MeasureUnit_Name(MeasureUnit value) {
+    return ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit_Name(value);
+  }
+  static const GpuCounterGroup UNCLASSIFIED = GpuCounterGroup::UNCLASSIFIED;
+  static const GpuCounterGroup SYSTEM = GpuCounterGroup::SYSTEM;
+  static const GpuCounterGroup VERTICES = GpuCounterGroup::VERTICES;
+  static const GpuCounterGroup FRAGMENTS = GpuCounterGroup::FRAGMENTS;
+  static const GpuCounterGroup PRIMITIVES = GpuCounterGroup::PRIMITIVES;
+  static const GpuCounterGroup MEMORY = GpuCounterGroup::MEMORY;
+  static const GpuCounterGroup COMPUTE = GpuCounterGroup::COMPUTE;
+  static const MeasureUnit NONE = MeasureUnit::NONE;
+  static const MeasureUnit BIT = MeasureUnit::BIT;
+  static const MeasureUnit KILOBIT = MeasureUnit::KILOBIT;
+  static const MeasureUnit MEGABIT = MeasureUnit::MEGABIT;
+  static const MeasureUnit GIGABIT = MeasureUnit::GIGABIT;
+  static const MeasureUnit TERABIT = MeasureUnit::TERABIT;
+  static const MeasureUnit PETABIT = MeasureUnit::PETABIT;
+  static const MeasureUnit BYTE = MeasureUnit::BYTE;
+  static const MeasureUnit KILOBYTE = MeasureUnit::KILOBYTE;
+  static const MeasureUnit MEGABYTE = MeasureUnit::MEGABYTE;
+  static const MeasureUnit GIGABYTE = MeasureUnit::GIGABYTE;
+  static const MeasureUnit TERABYTE = MeasureUnit::TERABYTE;
+  static const MeasureUnit PETABYTE = MeasureUnit::PETABYTE;
+  static const MeasureUnit HERTZ = MeasureUnit::HERTZ;
+  static const MeasureUnit KILOHERTZ = MeasureUnit::KILOHERTZ;
+  static const MeasureUnit MEGAHERTZ = MeasureUnit::MEGAHERTZ;
+  static const MeasureUnit GIGAHERTZ = MeasureUnit::GIGAHERTZ;
+  static const MeasureUnit TERAHERTZ = MeasureUnit::TERAHERTZ;
+  static const MeasureUnit PETAHERTZ = MeasureUnit::PETAHERTZ;
+  static const MeasureUnit NANOSECOND = MeasureUnit::NANOSECOND;
+  static const MeasureUnit MICROSECOND = MeasureUnit::MICROSECOND;
+  static const MeasureUnit MILLISECOND = MeasureUnit::MILLISECOND;
+  static const MeasureUnit SECOND = MeasureUnit::SECOND;
+  static const MeasureUnit MINUTE = MeasureUnit::MINUTE;
+  static const MeasureUnit HOUR = MeasureUnit::HOUR;
+  static const MeasureUnit VERTEX = MeasureUnit::VERTEX;
+  static const MeasureUnit PIXEL = MeasureUnit::PIXEL;
+  static const MeasureUnit TRIANGLE = MeasureUnit::TRIANGLE;
+  static const MeasureUnit PRIMITIVE = MeasureUnit::PRIMITIVE;
+  static const MeasureUnit FRAGMENT = MeasureUnit::FRAGMENT;
+  static const MeasureUnit MILLIWATT = MeasureUnit::MILLIWATT;
+  static const MeasureUnit WATT = MeasureUnit::WATT;
+  static const MeasureUnit KILOWATT = MeasureUnit::KILOWATT;
+  static const MeasureUnit JOULE = MeasureUnit::JOULE;
+  static const MeasureUnit VOLT = MeasureUnit::VOLT;
+  static const MeasureUnit AMPERE = MeasureUnit::AMPERE;
+  static const MeasureUnit CELSIUS = MeasureUnit::CELSIUS;
+  static const MeasureUnit FAHRENHEIT = MeasureUnit::FAHRENHEIT;
+  static const MeasureUnit KELVIN = MeasureUnit::KELVIN;
+  static const MeasureUnit PERCENT = MeasureUnit::PERCENT;
+  static const MeasureUnit INSTRUCTION = MeasureUnit::INSTRUCTION;
 
   using FieldMetadata_Specs =
     ::protozero::proto_utils::FieldMetadata<
@@ -175,7 +357,7 @@ class GpuCounterDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Specs kSpecs() { return {}; }
   template <typename T = GpuCounterDescriptor_GpuCounterSpec> T* add_specs() {
     return BeginNestedMessage<T>(1);
@@ -196,7 +378,7 @@ class GpuCounterDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Blocks kBlocks() { return {}; }
   template <typename T = GpuCounterDescriptor_GpuCounterBlock> T* add_blocks() {
     return BeginNestedMessage<T>(2);
@@ -217,7 +399,7 @@ class GpuCounterDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MinSamplingPeriodNs kMinSamplingPeriodNs() { return {}; }
   void set_min_sampling_period_ns(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MinSamplingPeriodNs::kFieldId;
@@ -242,7 +424,7 @@ class GpuCounterDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MaxSamplingPeriodNs kMaxSamplingPeriodNs() { return {}; }
   void set_max_sampling_period_ns(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxSamplingPeriodNs::kFieldId;
@@ -267,7 +449,7 @@ class GpuCounterDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SupportsInstrumentedSampling kSupportsInstrumentedSampling() { return {}; }
   void set_supports_instrumented_sampling(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_SupportsInstrumentedSampling::kFieldId;
@@ -306,6 +488,8 @@ class GpuCounterDescriptor_GpuCounterBlock : public ::protozero::Message {
     kDescriptionFieldNumber = 4,
     kCounterIdsFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuCounterDescriptor.GpuCounterBlock"; }
+
 
   using FieldMetadata_BlockId =
     ::protozero::proto_utils::FieldMetadata<
@@ -321,7 +505,7 @@ class GpuCounterDescriptor_GpuCounterBlock : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BlockId kBlockId() { return {}; }
   void set_block_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BlockId::kFieldId;
@@ -346,7 +530,7 @@ class GpuCounterDescriptor_GpuCounterBlock : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BlockCapacity kBlockCapacity() { return {}; }
   void set_block_capacity(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BlockCapacity::kFieldId;
@@ -371,10 +555,13 @@ class GpuCounterDescriptor_GpuCounterBlock : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -399,10 +586,13 @@ class GpuCounterDescriptor_GpuCounterBlock : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Description kDescription() { return {}; }
   void set_description(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Description::kFieldId, data, size);
+  }
+  void set_description(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Description::kFieldId, chars.data, chars.size);
   }
   void set_description(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Description::kFieldId;
@@ -427,7 +617,7 @@ class GpuCounterDescriptor_GpuCounterBlock : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CounterIds kCounterIds() { return {}; }
   void add_counter_ids(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CounterIds::kFieldId;
@@ -478,6 +668,8 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
     kSelectByDefaultFieldNumber = 9,
     kGroupsFieldNumber = 10,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuCounterDescriptor.GpuCounterSpec"; }
+
 
   using FieldMetadata_CounterId =
     ::protozero::proto_utils::FieldMetadata<
@@ -493,7 +685,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CounterId kCounterId() { return {}; }
   void set_counter_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CounterId::kFieldId;
@@ -518,10 +710,13 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -546,10 +741,13 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Description kDescription() { return {}; }
   void set_description(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Description::kFieldId, data, size);
+  }
+  void set_description(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Description::kFieldId, chars.data, chars.size);
   }
   void set_description(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Description::kFieldId;
@@ -574,7 +772,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IntPeakValue kIntPeakValue() { return {}; }
   void set_int_peak_value(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IntPeakValue::kFieldId;
@@ -599,7 +797,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DoublePeakValue kDoublePeakValue() { return {}; }
   void set_double_peak_value(double value) {
     static constexpr uint32_t field_id = FieldMetadata_DoublePeakValue::kFieldId;
@@ -624,7 +822,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NumeratorUnits kNumeratorUnits() { return {}; }
   void add_numerator_units(::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit value) {
     static constexpr uint32_t field_id = FieldMetadata_NumeratorUnits::kFieldId;
@@ -649,7 +847,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DenominatorUnits kDenominatorUnits() { return {}; }
   void add_denominator_units(::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit value) {
     static constexpr uint32_t field_id = FieldMetadata_DenominatorUnits::kFieldId;
@@ -674,7 +872,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SelectByDefault kSelectByDefault() { return {}; }
   void set_select_by_default(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_SelectByDefault::kFieldId;
@@ -699,7 +897,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Groups kGroups() { return {}; }
   void add_groups(::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup value) {
     static constexpr uint32_t field_id = FieldMetadata_Groups::kFieldId;
