@@ -36,6 +36,8 @@ class GenericFtraceEvent : public ::protozero::Message {
     kEventNameFieldNumber = 1,
     kFieldFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GenericFtraceEvent"; }
+
   using Field = ::perfetto::protos::pbzero::GenericFtraceEvent_Field;
 
   using FieldMetadata_EventName =
@@ -52,10 +54,13 @@ class GenericFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EventName kEventName() { return {}; }
   void set_event_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_EventName::kFieldId, data, size);
+  }
+  void set_event_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_EventName::kFieldId, chars.data, chars.size);
   }
   void set_event_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_EventName::kFieldId;
@@ -80,7 +85,7 @@ class GenericFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Field kField() { return {}; }
   template <typename T = GenericFtraceEvent_Field> T* add_field() {
     return BeginNestedMessage<T>(2);
@@ -112,6 +117,8 @@ class GenericFtraceEvent_Field : public ::protozero::Message {
     kIntValueFieldNumber = 4,
     kUintValueFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GenericFtraceEvent.Field"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -127,10 +134,13 @@ class GenericFtraceEvent_Field : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -155,10 +165,13 @@ class GenericFtraceEvent_Field : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StrValue kStrValue() { return {}; }
   void set_str_value(const char* data, size_t size) {
     AppendBytes(FieldMetadata_StrValue::kFieldId, data, size);
+  }
+  void set_str_value(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_StrValue::kFieldId, chars.data, chars.size);
   }
   void set_str_value(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_StrValue::kFieldId;
@@ -183,7 +196,7 @@ class GenericFtraceEvent_Field : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IntValue kIntValue() { return {}; }
   void set_int_value(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IntValue::kFieldId;
@@ -208,7 +221,7 @@ class GenericFtraceEvent_Field : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_UintValue kUintValue() { return {}; }
   void set_uint_value(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_UintValue::kFieldId;

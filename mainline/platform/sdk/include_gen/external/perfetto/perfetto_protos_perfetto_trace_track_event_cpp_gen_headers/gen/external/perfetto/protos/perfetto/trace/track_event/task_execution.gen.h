@@ -28,7 +28,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT TaskExecution : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TaskExecution : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kPostedFromIidFieldNumber = 1,
