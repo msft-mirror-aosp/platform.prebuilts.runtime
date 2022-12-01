@@ -45,7 +45,7 @@ enum ThreadDescriptor_ChromeThreadType : int {
   ThreadDescriptor_ChromeThreadType_CHROME_THREAD_SAMPLING_PROFILER = 51,
 };
 
-class PERFETTO_EXPORT ThreadDescriptor : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ThreadDescriptor : public ::protozero::CppMessageObj {
  public:
   using ChromeThreadType = ThreadDescriptor_ChromeThreadType;
   static constexpr auto CHROME_THREAD_UNSPECIFIED = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_UNSPECIFIED;

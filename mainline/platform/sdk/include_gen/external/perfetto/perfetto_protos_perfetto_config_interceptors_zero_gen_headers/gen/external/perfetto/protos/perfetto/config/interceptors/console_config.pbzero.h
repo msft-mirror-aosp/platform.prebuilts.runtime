@@ -16,16 +16,39 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-enum ConsoleConfig_Output : int32_t;
+namespace perfetto_pbzero_enum_ConsoleConfig {
+enum Output : int32_t;
+}  // namespace perfetto_pbzero_enum_ConsoleConfig
+using ConsoleConfig_Output = perfetto_pbzero_enum_ConsoleConfig::Output;
 
-enum ConsoleConfig_Output : int32_t {
-  ConsoleConfig_Output_OUTPUT_UNSPECIFIED = 0,
-  ConsoleConfig_Output_OUTPUT_STDOUT = 1,
-  ConsoleConfig_Output_OUTPUT_STDERR = 2,
+namespace perfetto_pbzero_enum_ConsoleConfig {
+enum Output : int32_t {
+  OUTPUT_UNSPECIFIED = 0,
+  OUTPUT_STDOUT = 1,
+  OUTPUT_STDERR = 2,
 };
+} // namespace perfetto_pbzero_enum_ConsoleConfig
+using ConsoleConfig_Output = perfetto_pbzero_enum_ConsoleConfig::Output;
 
-const ConsoleConfig_Output ConsoleConfig_Output_MIN = ConsoleConfig_Output_OUTPUT_UNSPECIFIED;
-const ConsoleConfig_Output ConsoleConfig_Output_MAX = ConsoleConfig_Output_OUTPUT_STDERR;
+
+constexpr ConsoleConfig_Output ConsoleConfig_Output_MIN = ConsoleConfig_Output::OUTPUT_UNSPECIFIED;
+constexpr ConsoleConfig_Output ConsoleConfig_Output_MAX = ConsoleConfig_Output::OUTPUT_STDERR;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ConsoleConfig_Output_Name(::perfetto::protos::pbzero::ConsoleConfig_Output value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ConsoleConfig_Output::OUTPUT_UNSPECIFIED:
+    return "OUTPUT_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ConsoleConfig_Output::OUTPUT_STDOUT:
+    return "OUTPUT_STDOUT";
+
+  case ::perfetto::protos::pbzero::ConsoleConfig_Output::OUTPUT_STDERR:
+    return "OUTPUT_STDERR";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class ConsoleConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -45,10 +68,16 @@ class ConsoleConfig : public ::protozero::Message {
     kOutputFieldNumber = 1,
     kEnableColorsFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ConsoleConfig"; }
+
+
   using Output = ::perfetto::protos::pbzero::ConsoleConfig_Output;
-  static const Output OUTPUT_UNSPECIFIED = ConsoleConfig_Output_OUTPUT_UNSPECIFIED;
-  static const Output OUTPUT_STDOUT = ConsoleConfig_Output_OUTPUT_STDOUT;
-  static const Output OUTPUT_STDERR = ConsoleConfig_Output_OUTPUT_STDERR;
+  static inline const char* Output_Name(Output value) {
+    return ::perfetto::protos::pbzero::ConsoleConfig_Output_Name(value);
+  }
+  static const Output OUTPUT_UNSPECIFIED = Output::OUTPUT_UNSPECIFIED;
+  static const Output OUTPUT_STDOUT = Output::OUTPUT_STDOUT;
+  static const Output OUTPUT_STDERR = Output::OUTPUT_STDERR;
 
   using FieldMetadata_Output =
     ::protozero::proto_utils::FieldMetadata<
@@ -64,7 +93,7 @@ class ConsoleConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Output kOutput() { return {}; }
   void set_output(::perfetto::protos::pbzero::ConsoleConfig_Output value) {
     static constexpr uint32_t field_id = FieldMetadata_Output::kFieldId;
@@ -89,7 +118,7 @@ class ConsoleConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EnableColors kEnableColors() { return {}; }
   void set_enable_colors(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_EnableColors::kFieldId;

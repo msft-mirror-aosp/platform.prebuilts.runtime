@@ -41,6 +41,8 @@ class GpuCounterConfig : public ::protozero::Message {
     kInstrumentedSamplingFieldNumber = 3,
     kFixGpuClockFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuCounterConfig"; }
+
 
   using FieldMetadata_CounterPeriodNs =
     ::protozero::proto_utils::FieldMetadata<
@@ -56,7 +58,7 @@ class GpuCounterConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CounterPeriodNs kCounterPeriodNs() { return {}; }
   void set_counter_period_ns(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CounterPeriodNs::kFieldId;
@@ -81,7 +83,7 @@ class GpuCounterConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CounterIds kCounterIds() { return {}; }
   void add_counter_ids(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CounterIds::kFieldId;
@@ -106,7 +108,7 @@ class GpuCounterConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_InstrumentedSampling kInstrumentedSampling() { return {}; }
   void set_instrumented_sampling(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_InstrumentedSampling::kFieldId;
@@ -131,7 +133,7 @@ class GpuCounterConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FixGpuClock kFixGpuClock() { return {}; }
   void set_fix_gpu_clock(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_FixGpuClock::kFieldId;

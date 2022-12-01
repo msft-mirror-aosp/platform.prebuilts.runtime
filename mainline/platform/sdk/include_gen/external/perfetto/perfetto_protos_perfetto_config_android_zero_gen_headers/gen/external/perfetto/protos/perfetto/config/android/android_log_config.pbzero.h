@@ -40,6 +40,8 @@ class AndroidLogConfig : public ::protozero::Message {
     kMinPrioFieldNumber = 3,
     kFilterTagsFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.AndroidLogConfig"; }
+
 
   using FieldMetadata_LogIds =
     ::protozero::proto_utils::FieldMetadata<
@@ -55,7 +57,7 @@ class AndroidLogConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LogIds kLogIds() { return {}; }
   void add_log_ids(::perfetto::protos::pbzero::AndroidLogId value) {
     static constexpr uint32_t field_id = FieldMetadata_LogIds::kFieldId;
@@ -80,7 +82,7 @@ class AndroidLogConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MinPrio kMinPrio() { return {}; }
   void set_min_prio(::perfetto::protos::pbzero::AndroidLogPriority value) {
     static constexpr uint32_t field_id = FieldMetadata_MinPrio::kFieldId;
@@ -105,10 +107,13 @@ class AndroidLogConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FilterTags kFilterTags() { return {}; }
   void add_filter_tags(const char* data, size_t size) {
     AppendBytes(FieldMetadata_FilterTags::kFieldId, data, size);
+  }
+  void add_filter_tags(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_FilterTags::kFieldId, chars.data, chars.size);
   }
   void add_filter_tags(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_FilterTags::kFieldId;

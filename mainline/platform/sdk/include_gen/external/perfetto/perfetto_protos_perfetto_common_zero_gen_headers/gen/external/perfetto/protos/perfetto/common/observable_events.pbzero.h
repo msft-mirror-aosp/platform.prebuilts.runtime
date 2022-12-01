@@ -17,24 +17,64 @@ namespace protos {
 namespace pbzero {
 
 class ObservableEvents_DataSourceInstanceStateChange;
-enum ObservableEvents_DataSourceInstanceState : int32_t;
+namespace perfetto_pbzero_enum_ObservableEvents {
+enum DataSourceInstanceState : int32_t;
+}  // namespace perfetto_pbzero_enum_ObservableEvents
+using ObservableEvents_DataSourceInstanceState = perfetto_pbzero_enum_ObservableEvents::DataSourceInstanceState;
 
-enum ObservableEvents_Type : int32_t {
-  ObservableEvents_Type_TYPE_UNSPECIFIED = 0,
-  ObservableEvents_Type_TYPE_DATA_SOURCES_INSTANCES = 1,
-  ObservableEvents_Type_TYPE_ALL_DATA_SOURCES_STARTED = 2,
+namespace perfetto_pbzero_enum_ObservableEvents {
+enum Type : int32_t {
+  TYPE_UNSPECIFIED = 0,
+  TYPE_DATA_SOURCES_INSTANCES = 1,
+  TYPE_ALL_DATA_SOURCES_STARTED = 2,
 };
+} // namespace perfetto_pbzero_enum_ObservableEvents
+using ObservableEvents_Type = perfetto_pbzero_enum_ObservableEvents::Type;
 
-const ObservableEvents_Type ObservableEvents_Type_MIN = ObservableEvents_Type_TYPE_UNSPECIFIED;
-const ObservableEvents_Type ObservableEvents_Type_MAX = ObservableEvents_Type_TYPE_ALL_DATA_SOURCES_STARTED;
 
-enum ObservableEvents_DataSourceInstanceState : int32_t {
-  ObservableEvents_DataSourceInstanceState_DATA_SOURCE_INSTANCE_STATE_STOPPED = 1,
-  ObservableEvents_DataSourceInstanceState_DATA_SOURCE_INSTANCE_STATE_STARTED = 2,
+constexpr ObservableEvents_Type ObservableEvents_Type_MIN = ObservableEvents_Type::TYPE_UNSPECIFIED;
+constexpr ObservableEvents_Type ObservableEvents_Type_MAX = ObservableEvents_Type::TYPE_ALL_DATA_SOURCES_STARTED;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ObservableEvents_Type_Name(::perfetto::protos::pbzero::ObservableEvents_Type value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ObservableEvents_Type::TYPE_UNSPECIFIED:
+    return "TYPE_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ObservableEvents_Type::TYPE_DATA_SOURCES_INSTANCES:
+    return "TYPE_DATA_SOURCES_INSTANCES";
+
+  case ::perfetto::protos::pbzero::ObservableEvents_Type::TYPE_ALL_DATA_SOURCES_STARTED:
+    return "TYPE_ALL_DATA_SOURCES_STARTED";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_ObservableEvents {
+enum DataSourceInstanceState : int32_t {
+  DATA_SOURCE_INSTANCE_STATE_STOPPED = 1,
+  DATA_SOURCE_INSTANCE_STATE_STARTED = 2,
 };
+} // namespace perfetto_pbzero_enum_ObservableEvents
+using ObservableEvents_DataSourceInstanceState = perfetto_pbzero_enum_ObservableEvents::DataSourceInstanceState;
 
-const ObservableEvents_DataSourceInstanceState ObservableEvents_DataSourceInstanceState_MIN = ObservableEvents_DataSourceInstanceState_DATA_SOURCE_INSTANCE_STATE_STOPPED;
-const ObservableEvents_DataSourceInstanceState ObservableEvents_DataSourceInstanceState_MAX = ObservableEvents_DataSourceInstanceState_DATA_SOURCE_INSTANCE_STATE_STARTED;
+
+constexpr ObservableEvents_DataSourceInstanceState ObservableEvents_DataSourceInstanceState_MIN = ObservableEvents_DataSourceInstanceState::DATA_SOURCE_INSTANCE_STATE_STOPPED;
+constexpr ObservableEvents_DataSourceInstanceState ObservableEvents_DataSourceInstanceState_MAX = ObservableEvents_DataSourceInstanceState::DATA_SOURCE_INSTANCE_STATE_STARTED;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ObservableEvents_DataSourceInstanceState_Name(::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceState value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceState::DATA_SOURCE_INSTANCE_STATE_STOPPED:
+    return "DATA_SOURCE_INSTANCE_STATE_STOPPED";
+
+  case ::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceState::DATA_SOURCE_INSTANCE_STATE_STARTED:
+    return "DATA_SOURCE_INSTANCE_STATE_STARTED";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class ObservableEvents_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -54,14 +94,24 @@ class ObservableEvents : public ::protozero::Message {
     kInstanceStateChangesFieldNumber = 1,
     kAllDataSourcesStartedFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ObservableEvents"; }
+
   using DataSourceInstanceStateChange = ::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceStateChange;
+
   using Type = ::perfetto::protos::pbzero::ObservableEvents_Type;
+  static inline const char* Type_Name(Type value) {
+    return ::perfetto::protos::pbzero::ObservableEvents_Type_Name(value);
+  }
+
   using DataSourceInstanceState = ::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceState;
-  static const Type TYPE_UNSPECIFIED = ObservableEvents_Type_TYPE_UNSPECIFIED;
-  static const Type TYPE_DATA_SOURCES_INSTANCES = ObservableEvents_Type_TYPE_DATA_SOURCES_INSTANCES;
-  static const Type TYPE_ALL_DATA_SOURCES_STARTED = ObservableEvents_Type_TYPE_ALL_DATA_SOURCES_STARTED;
-  static const DataSourceInstanceState DATA_SOURCE_INSTANCE_STATE_STOPPED = ObservableEvents_DataSourceInstanceState_DATA_SOURCE_INSTANCE_STATE_STOPPED;
-  static const DataSourceInstanceState DATA_SOURCE_INSTANCE_STATE_STARTED = ObservableEvents_DataSourceInstanceState_DATA_SOURCE_INSTANCE_STATE_STARTED;
+  static inline const char* DataSourceInstanceState_Name(DataSourceInstanceState value) {
+    return ::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceState_Name(value);
+  }
+  static const Type TYPE_UNSPECIFIED = Type::TYPE_UNSPECIFIED;
+  static const Type TYPE_DATA_SOURCES_INSTANCES = Type::TYPE_DATA_SOURCES_INSTANCES;
+  static const Type TYPE_ALL_DATA_SOURCES_STARTED = Type::TYPE_ALL_DATA_SOURCES_STARTED;
+  static const DataSourceInstanceState DATA_SOURCE_INSTANCE_STATE_STOPPED = DataSourceInstanceState::DATA_SOURCE_INSTANCE_STATE_STOPPED;
+  static const DataSourceInstanceState DATA_SOURCE_INSTANCE_STATE_STARTED = DataSourceInstanceState::DATA_SOURCE_INSTANCE_STATE_STARTED;
 
   using FieldMetadata_InstanceStateChanges =
     ::protozero::proto_utils::FieldMetadata<
@@ -77,7 +127,7 @@ class ObservableEvents : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_InstanceStateChanges kInstanceStateChanges() { return {}; }
   template <typename T = ObservableEvents_DataSourceInstanceStateChange> T* add_instance_state_changes() {
     return BeginNestedMessage<T>(1);
@@ -98,7 +148,7 @@ class ObservableEvents : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AllDataSourcesStarted kAllDataSourcesStarted() { return {}; }
   void set_all_data_sources_started(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_AllDataSourcesStarted::kFieldId;
@@ -131,6 +181,8 @@ class ObservableEvents_DataSourceInstanceStateChange : public ::protozero::Messa
     kDataSourceNameFieldNumber = 2,
     kStateFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ObservableEvents.DataSourceInstanceStateChange"; }
+
 
   using FieldMetadata_ProducerName =
     ::protozero::proto_utils::FieldMetadata<
@@ -146,10 +198,13 @@ class ObservableEvents_DataSourceInstanceStateChange : public ::protozero::Messa
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProducerName kProducerName() { return {}; }
   void set_producer_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProducerName::kFieldId, data, size);
+  }
+  void set_producer_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ProducerName::kFieldId, chars.data, chars.size);
   }
   void set_producer_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ProducerName::kFieldId;
@@ -174,10 +229,13 @@ class ObservableEvents_DataSourceInstanceStateChange : public ::protozero::Messa
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DataSourceName kDataSourceName() { return {}; }
   void set_data_source_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_DataSourceName::kFieldId, data, size);
+  }
+  void set_data_source_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_DataSourceName::kFieldId, chars.data, chars.size);
   }
   void set_data_source_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_DataSourceName::kFieldId;
@@ -202,7 +260,7 @@ class ObservableEvents_DataSourceInstanceStateChange : public ::protozero::Messa
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_State kState() { return {}; }
   void set_state(::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceState value) {
     static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;

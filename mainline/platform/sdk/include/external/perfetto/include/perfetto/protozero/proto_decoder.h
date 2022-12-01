@@ -40,7 +40,7 @@ namespace protozero {
 // (see proto_decoder_fuzzer.cc).
 // This class serves also as a building block for TypedProtoDecoder, used when
 // the schema is known at compile time.
-class PERFETTO_EXPORT ProtoDecoder {
+class PERFETTO_EXPORT_COMPONENT ProtoDecoder {
  public:
   // Creates a ProtoDecoder using the given |buffer| with size |length| bytes.
   ProtoDecoder(const void* buffer, size_t length)
@@ -279,7 +279,7 @@ class PackedRepeatedFieldIterator {
 //                                        num_fields_        size_
 // Note that if a message has high field numbers, upon creation |size_| can be
 // < |num_fields_| (until a heap expansion is hit while inserting).
-class PERFETTO_EXPORT TypedProtoDecoderBase : public ProtoDecoder {
+class PERFETTO_EXPORT_COMPONENT TypedProtoDecoderBase : public ProtoDecoder {
  public:
   // If the field |id| is known at compile time, prefer the templated
   // specialization at<kFieldNumber>().
@@ -357,7 +357,10 @@ class PERFETTO_EXPORT TypedProtoDecoderBase : public ProtoDecoder {
       : ProtoDecoder(buffer, length),
         fields_(storage),
         num_fields_(num_fields),
-        size_(std::min(num_fields, capacity)),
+        // The reason for "capacity -1" is to avoid hitting the expansion path
+        // in TypedProtoDecoderBase::ParseAllFields() when we are just setting
+        // fields < INITIAL_STACK_CAPACITY (which is the most common case).
+        size_(std::min(num_fields, capacity - 1)),
         capacity_(capacity) {
     // The reason why Field needs to be trivially de/constructible is to avoid
     // implicit initializers on all the ~1000 entries. We need it to initialize
@@ -368,6 +371,7 @@ class PERFETTO_EXPORT TypedProtoDecoderBase : public ProtoDecoder {
                       std::is_trivial<Field>::value,
                   "Field must be a trivial aggregate type");
     memset(fields_, 0, sizeof(Field) * capacity_);
+    PERFETTO_DCHECK(capacity > 0);
   }
 
   void ParseAllFields();
@@ -398,7 +402,7 @@ class PERFETTO_EXPORT TypedProtoDecoderBase : public ProtoDecoder {
   uint32_t num_fields_;
 
   // Number of active |fields_| entries. This is initially equal to
-  // min(num_fields_, INITIAL_STACK_CAPACITY) and after ExpandHeapStorage() it
+  // min(num_fields_, INITIAL_STACK_CAPACITY - 1) and after ExpandHeapStorage()
   // becomes == |num_fields_|. If the message has non-packed repeated fields, it
   // can grow further, up to |capacity_|.
   // |size_| is always <= |capacity_|. But |num_fields_| can be > |size_|.

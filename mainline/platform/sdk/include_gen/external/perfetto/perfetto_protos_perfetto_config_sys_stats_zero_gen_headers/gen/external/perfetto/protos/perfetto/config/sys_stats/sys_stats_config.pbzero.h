@@ -17,21 +17,50 @@ namespace protos {
 namespace pbzero {
 
 enum MeminfoCounters : int32_t;
-enum SysStatsConfig_StatCounters : int32_t;
+namespace perfetto_pbzero_enum_SysStatsConfig {
+enum StatCounters : int32_t;
+}  // namespace perfetto_pbzero_enum_SysStatsConfig
+using SysStatsConfig_StatCounters = perfetto_pbzero_enum_SysStatsConfig::StatCounters;
 enum VmstatCounters : int32_t;
 
-enum SysStatsConfig_StatCounters : int32_t {
-  SysStatsConfig_StatCounters_STAT_UNSPECIFIED = 0,
-  SysStatsConfig_StatCounters_STAT_CPU_TIMES = 1,
-  SysStatsConfig_StatCounters_STAT_IRQ_COUNTS = 2,
-  SysStatsConfig_StatCounters_STAT_SOFTIRQ_COUNTS = 3,
-  SysStatsConfig_StatCounters_STAT_FORK_COUNT = 4,
+namespace perfetto_pbzero_enum_SysStatsConfig {
+enum StatCounters : int32_t {
+  STAT_UNSPECIFIED = 0,
+  STAT_CPU_TIMES = 1,
+  STAT_IRQ_COUNTS = 2,
+  STAT_SOFTIRQ_COUNTS = 3,
+  STAT_FORK_COUNT = 4,
 };
+} // namespace perfetto_pbzero_enum_SysStatsConfig
+using SysStatsConfig_StatCounters = perfetto_pbzero_enum_SysStatsConfig::StatCounters;
 
-const SysStatsConfig_StatCounters SysStatsConfig_StatCounters_MIN = SysStatsConfig_StatCounters_STAT_UNSPECIFIED;
-const SysStatsConfig_StatCounters SysStatsConfig_StatCounters_MAX = SysStatsConfig_StatCounters_STAT_FORK_COUNT;
 
-class SysStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+constexpr SysStatsConfig_StatCounters SysStatsConfig_StatCounters_MIN = SysStatsConfig_StatCounters::STAT_UNSPECIFIED;
+constexpr SysStatsConfig_StatCounters SysStatsConfig_StatCounters_MAX = SysStatsConfig_StatCounters::STAT_FORK_COUNT;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* SysStatsConfig_StatCounters_Name(::perfetto::protos::pbzero::SysStatsConfig_StatCounters value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::SysStatsConfig_StatCounters::STAT_UNSPECIFIED:
+    return "STAT_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::SysStatsConfig_StatCounters::STAT_CPU_TIMES:
+    return "STAT_CPU_TIMES";
+
+  case ::perfetto::protos::pbzero::SysStatsConfig_StatCounters::STAT_IRQ_COUNTS:
+    return "STAT_IRQ_COUNTS";
+
+  case ::perfetto::protos::pbzero::SysStatsConfig_StatCounters::STAT_SOFTIRQ_COUNTS:
+    return "STAT_SOFTIRQ_COUNTS";
+
+  case ::perfetto::protos::pbzero::SysStatsConfig_StatCounters::STAT_FORK_COUNT:
+    return "STAT_FORK_COUNT";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+class SysStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   SysStatsConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit SysStatsConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -50,6 +79,12 @@ class SysStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD
   ::protozero::RepeatedFieldIterator<int32_t> stat_counters() const { return GetRepeated<int32_t>(6); }
   bool has_devfreq_period_ms() const { return at<7>().valid(); }
   uint32_t devfreq_period_ms() const { return at<7>().as_uint32(); }
+  bool has_cpufreq_period_ms() const { return at<8>().valid(); }
+  uint32_t cpufreq_period_ms() const { return at<8>().as_uint32(); }
+  bool has_buddyinfo_period_ms() const { return at<9>().valid(); }
+  uint32_t buddyinfo_period_ms() const { return at<9>().as_uint32(); }
+  bool has_diskstat_period_ms() const { return at<10>().valid(); }
+  uint32_t diskstat_period_ms() const { return at<10>().as_uint32(); }
 };
 
 class SysStatsConfig : public ::protozero::Message {
@@ -63,13 +98,22 @@ class SysStatsConfig : public ::protozero::Message {
     kStatPeriodMsFieldNumber = 5,
     kStatCountersFieldNumber = 6,
     kDevfreqPeriodMsFieldNumber = 7,
+    kCpufreqPeriodMsFieldNumber = 8,
+    kBuddyinfoPeriodMsFieldNumber = 9,
+    kDiskstatPeriodMsFieldNumber = 10,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.SysStatsConfig"; }
+
+
   using StatCounters = ::perfetto::protos::pbzero::SysStatsConfig_StatCounters;
-  static const StatCounters STAT_UNSPECIFIED = SysStatsConfig_StatCounters_STAT_UNSPECIFIED;
-  static const StatCounters STAT_CPU_TIMES = SysStatsConfig_StatCounters_STAT_CPU_TIMES;
-  static const StatCounters STAT_IRQ_COUNTS = SysStatsConfig_StatCounters_STAT_IRQ_COUNTS;
-  static const StatCounters STAT_SOFTIRQ_COUNTS = SysStatsConfig_StatCounters_STAT_SOFTIRQ_COUNTS;
-  static const StatCounters STAT_FORK_COUNT = SysStatsConfig_StatCounters_STAT_FORK_COUNT;
+  static inline const char* StatCounters_Name(StatCounters value) {
+    return ::perfetto::protos::pbzero::SysStatsConfig_StatCounters_Name(value);
+  }
+  static const StatCounters STAT_UNSPECIFIED = StatCounters::STAT_UNSPECIFIED;
+  static const StatCounters STAT_CPU_TIMES = StatCounters::STAT_CPU_TIMES;
+  static const StatCounters STAT_IRQ_COUNTS = StatCounters::STAT_IRQ_COUNTS;
+  static const StatCounters STAT_SOFTIRQ_COUNTS = StatCounters::STAT_SOFTIRQ_COUNTS;
+  static const StatCounters STAT_FORK_COUNT = StatCounters::STAT_FORK_COUNT;
 
   using FieldMetadata_MeminfoPeriodMs =
     ::protozero::proto_utils::FieldMetadata<
@@ -85,7 +129,7 @@ class SysStatsConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MeminfoPeriodMs kMeminfoPeriodMs() { return {}; }
   void set_meminfo_period_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MeminfoPeriodMs::kFieldId;
@@ -110,7 +154,7 @@ class SysStatsConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MeminfoCounters kMeminfoCounters() { return {}; }
   void add_meminfo_counters(::perfetto::protos::pbzero::MeminfoCounters value) {
     static constexpr uint32_t field_id = FieldMetadata_MeminfoCounters::kFieldId;
@@ -135,7 +179,7 @@ class SysStatsConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_VmstatPeriodMs kVmstatPeriodMs() { return {}; }
   void set_vmstat_period_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VmstatPeriodMs::kFieldId;
@@ -160,7 +204,7 @@ class SysStatsConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_VmstatCounters kVmstatCounters() { return {}; }
   void add_vmstat_counters(::perfetto::protos::pbzero::VmstatCounters value) {
     static constexpr uint32_t field_id = FieldMetadata_VmstatCounters::kFieldId;
@@ -185,7 +229,7 @@ class SysStatsConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StatPeriodMs kStatPeriodMs() { return {}; }
   void set_stat_period_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StatPeriodMs::kFieldId;
@@ -210,7 +254,7 @@ class SysStatsConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StatCounters kStatCounters() { return {}; }
   void add_stat_counters(::perfetto::protos::pbzero::SysStatsConfig_StatCounters value) {
     static constexpr uint32_t field_id = FieldMetadata_StatCounters::kFieldId;
@@ -235,10 +279,85 @@ class SysStatsConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DevfreqPeriodMs kDevfreqPeriodMs() { return {}; }
   void set_devfreq_period_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DevfreqPeriodMs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_CpufreqPeriodMs =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SysStatsConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_CpufreqPeriodMs kCpufreqPeriodMs() { return {}; }
+  void set_cpufreq_period_ms(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_CpufreqPeriodMs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_BuddyinfoPeriodMs =
+    ::protozero::proto_utils::FieldMetadata<
+      9,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SysStatsConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_BuddyinfoPeriodMs kBuddyinfoPeriodMs() { return {}; }
+  void set_buddyinfo_period_ms(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_BuddyinfoPeriodMs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DiskstatPeriodMs =
+    ::protozero::proto_utils::FieldMetadata<
+      10,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SysStatsConfig>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_DiskstatPeriodMs kDiskstatPeriodMs() { return {}; }
+  void set_diskstat_period_ms(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DiskstatPeriodMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<

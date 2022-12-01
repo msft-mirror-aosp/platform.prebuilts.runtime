@@ -33,6 +33,8 @@ class Trace : public ::protozero::Message {
   enum : int32_t {
     kPacketFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.Trace"; }
+
 
   using FieldMetadata_Packet =
     ::protozero::proto_utils::FieldMetadata<
@@ -48,7 +50,7 @@ class Trace : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Packet kPacket() { return {}; }
   template <typename T = TracePacket> T* add_packet() {
     return BeginNestedMessage<T>(1);

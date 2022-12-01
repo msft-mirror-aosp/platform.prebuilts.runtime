@@ -35,6 +35,8 @@ class ChromeUserEvent : public ::protozero::Message {
     kActionFieldNumber = 1,
     kActionHashFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeUserEvent"; }
+
 
   using FieldMetadata_Action =
     ::protozero::proto_utils::FieldMetadata<
@@ -50,10 +52,13 @@ class ChromeUserEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Action kAction() { return {}; }
   void set_action(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Action::kFieldId, data, size);
+  }
+  void set_action(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Action::kFieldId, chars.data, chars.size);
   }
   void set_action(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Action::kFieldId;
@@ -78,7 +83,7 @@ class ChromeUserEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ActionHash kActionHash() { return {}; }
   void set_action_hash(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ActionHash::kFieldId;

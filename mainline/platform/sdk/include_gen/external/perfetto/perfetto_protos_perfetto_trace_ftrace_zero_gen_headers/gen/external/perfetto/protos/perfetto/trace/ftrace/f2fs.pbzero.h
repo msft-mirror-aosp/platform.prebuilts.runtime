@@ -17,6 +17,1466 @@ namespace protos {
 namespace pbzero {
 
 
+class F2fsIostatLatencyFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/28, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  F2fsIostatLatencyFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit F2fsIostatLatencyFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit F2fsIostatLatencyFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_d_rd_avg() const { return at<1>().valid(); }
+  uint32_t d_rd_avg() const { return at<1>().as_uint32(); }
+  bool has_d_rd_cnt() const { return at<2>().valid(); }
+  uint32_t d_rd_cnt() const { return at<2>().as_uint32(); }
+  bool has_d_rd_peak() const { return at<3>().valid(); }
+  uint32_t d_rd_peak() const { return at<3>().as_uint32(); }
+  bool has_d_wr_as_avg() const { return at<4>().valid(); }
+  uint32_t d_wr_as_avg() const { return at<4>().as_uint32(); }
+  bool has_d_wr_as_cnt() const { return at<5>().valid(); }
+  uint32_t d_wr_as_cnt() const { return at<5>().as_uint32(); }
+  bool has_d_wr_as_peak() const { return at<6>().valid(); }
+  uint32_t d_wr_as_peak() const { return at<6>().as_uint32(); }
+  bool has_d_wr_s_avg() const { return at<7>().valid(); }
+  uint32_t d_wr_s_avg() const { return at<7>().as_uint32(); }
+  bool has_d_wr_s_cnt() const { return at<8>().valid(); }
+  uint32_t d_wr_s_cnt() const { return at<8>().as_uint32(); }
+  bool has_d_wr_s_peak() const { return at<9>().valid(); }
+  uint32_t d_wr_s_peak() const { return at<9>().as_uint32(); }
+  bool has_dev() const { return at<10>().valid(); }
+  uint64_t dev() const { return at<10>().as_uint64(); }
+  bool has_m_rd_avg() const { return at<11>().valid(); }
+  uint32_t m_rd_avg() const { return at<11>().as_uint32(); }
+  bool has_m_rd_cnt() const { return at<12>().valid(); }
+  uint32_t m_rd_cnt() const { return at<12>().as_uint32(); }
+  bool has_m_rd_peak() const { return at<13>().valid(); }
+  uint32_t m_rd_peak() const { return at<13>().as_uint32(); }
+  bool has_m_wr_as_avg() const { return at<14>().valid(); }
+  uint32_t m_wr_as_avg() const { return at<14>().as_uint32(); }
+  bool has_m_wr_as_cnt() const { return at<15>().valid(); }
+  uint32_t m_wr_as_cnt() const { return at<15>().as_uint32(); }
+  bool has_m_wr_as_peak() const { return at<16>().valid(); }
+  uint32_t m_wr_as_peak() const { return at<16>().as_uint32(); }
+  bool has_m_wr_s_avg() const { return at<17>().valid(); }
+  uint32_t m_wr_s_avg() const { return at<17>().as_uint32(); }
+  bool has_m_wr_s_cnt() const { return at<18>().valid(); }
+  uint32_t m_wr_s_cnt() const { return at<18>().as_uint32(); }
+  bool has_m_wr_s_peak() const { return at<19>().valid(); }
+  uint32_t m_wr_s_peak() const { return at<19>().as_uint32(); }
+  bool has_n_rd_avg() const { return at<20>().valid(); }
+  uint32_t n_rd_avg() const { return at<20>().as_uint32(); }
+  bool has_n_rd_cnt() const { return at<21>().valid(); }
+  uint32_t n_rd_cnt() const { return at<21>().as_uint32(); }
+  bool has_n_rd_peak() const { return at<22>().valid(); }
+  uint32_t n_rd_peak() const { return at<22>().as_uint32(); }
+  bool has_n_wr_as_avg() const { return at<23>().valid(); }
+  uint32_t n_wr_as_avg() const { return at<23>().as_uint32(); }
+  bool has_n_wr_as_cnt() const { return at<24>().valid(); }
+  uint32_t n_wr_as_cnt() const { return at<24>().as_uint32(); }
+  bool has_n_wr_as_peak() const { return at<25>().valid(); }
+  uint32_t n_wr_as_peak() const { return at<25>().as_uint32(); }
+  bool has_n_wr_s_avg() const { return at<26>().valid(); }
+  uint32_t n_wr_s_avg() const { return at<26>().as_uint32(); }
+  bool has_n_wr_s_cnt() const { return at<27>().valid(); }
+  uint32_t n_wr_s_cnt() const { return at<27>().as_uint32(); }
+  bool has_n_wr_s_peak() const { return at<28>().valid(); }
+  uint32_t n_wr_s_peak() const { return at<28>().as_uint32(); }
+};
+
+class F2fsIostatLatencyFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = F2fsIostatLatencyFtraceEvent_Decoder;
+  enum : int32_t {
+    kDRdAvgFieldNumber = 1,
+    kDRdCntFieldNumber = 2,
+    kDRdPeakFieldNumber = 3,
+    kDWrAsAvgFieldNumber = 4,
+    kDWrAsCntFieldNumber = 5,
+    kDWrAsPeakFieldNumber = 6,
+    kDWrSAvgFieldNumber = 7,
+    kDWrSCntFieldNumber = 8,
+    kDWrSPeakFieldNumber = 9,
+    kDevFieldNumber = 10,
+    kMRdAvgFieldNumber = 11,
+    kMRdCntFieldNumber = 12,
+    kMRdPeakFieldNumber = 13,
+    kMWrAsAvgFieldNumber = 14,
+    kMWrAsCntFieldNumber = 15,
+    kMWrAsPeakFieldNumber = 16,
+    kMWrSAvgFieldNumber = 17,
+    kMWrSCntFieldNumber = 18,
+    kMWrSPeakFieldNumber = 19,
+    kNRdAvgFieldNumber = 20,
+    kNRdCntFieldNumber = 21,
+    kNRdPeakFieldNumber = 22,
+    kNWrAsAvgFieldNumber = 23,
+    kNWrAsCntFieldNumber = 24,
+    kNWrAsPeakFieldNumber = 25,
+    kNWrSAvgFieldNumber = 26,
+    kNWrSCntFieldNumber = 27,
+    kNWrSPeakFieldNumber = 28,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsIostatLatencyFtraceEvent"; }
+
+
+  using FieldMetadata_DRdAvg =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_DRdAvg kDRdAvg() { return {}; }
+  void set_d_rd_avg(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DRdAvg::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DRdCnt =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_DRdCnt kDRdCnt() { return {}; }
+  void set_d_rd_cnt(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DRdCnt::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DRdPeak =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_DRdPeak kDRdPeak() { return {}; }
+  void set_d_rd_peak(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DRdPeak::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DWrAsAvg =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_DWrAsAvg kDWrAsAvg() { return {}; }
+  void set_d_wr_as_avg(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DWrAsAvg::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DWrAsCnt =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_DWrAsCnt kDWrAsCnt() { return {}; }
+  void set_d_wr_as_cnt(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DWrAsCnt::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DWrAsPeak =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_DWrAsPeak kDWrAsPeak() { return {}; }
+  void set_d_wr_as_peak(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DWrAsPeak::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DWrSAvg =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_DWrSAvg kDWrSAvg() { return {}; }
+  void set_d_wr_s_avg(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DWrSAvg::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DWrSCnt =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_DWrSCnt kDWrSCnt() { return {}; }
+  void set_d_wr_s_cnt(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DWrSCnt::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DWrSPeak =
+    ::protozero::proto_utils::FieldMetadata<
+      9,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_DWrSPeak kDWrSPeak() { return {}; }
+  void set_d_wr_s_peak(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DWrSPeak::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Dev =
+    ::protozero::proto_utils::FieldMetadata<
+      10,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Dev kDev() { return {}; }
+  void set_dev(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_MRdAvg =
+    ::protozero::proto_utils::FieldMetadata<
+      11,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_MRdAvg kMRdAvg() { return {}; }
+  void set_m_rd_avg(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_MRdAvg::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_MRdCnt =
+    ::protozero::proto_utils::FieldMetadata<
+      12,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_MRdCnt kMRdCnt() { return {}; }
+  void set_m_rd_cnt(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_MRdCnt::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_MRdPeak =
+    ::protozero::proto_utils::FieldMetadata<
+      13,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_MRdPeak kMRdPeak() { return {}; }
+  void set_m_rd_peak(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_MRdPeak::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_MWrAsAvg =
+    ::protozero::proto_utils::FieldMetadata<
+      14,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_MWrAsAvg kMWrAsAvg() { return {}; }
+  void set_m_wr_as_avg(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_MWrAsAvg::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_MWrAsCnt =
+    ::protozero::proto_utils::FieldMetadata<
+      15,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_MWrAsCnt kMWrAsCnt() { return {}; }
+  void set_m_wr_as_cnt(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_MWrAsCnt::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_MWrAsPeak =
+    ::protozero::proto_utils::FieldMetadata<
+      16,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_MWrAsPeak kMWrAsPeak() { return {}; }
+  void set_m_wr_as_peak(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_MWrAsPeak::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_MWrSAvg =
+    ::protozero::proto_utils::FieldMetadata<
+      17,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_MWrSAvg kMWrSAvg() { return {}; }
+  void set_m_wr_s_avg(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_MWrSAvg::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_MWrSCnt =
+    ::protozero::proto_utils::FieldMetadata<
+      18,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_MWrSCnt kMWrSCnt() { return {}; }
+  void set_m_wr_s_cnt(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_MWrSCnt::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_MWrSPeak =
+    ::protozero::proto_utils::FieldMetadata<
+      19,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_MWrSPeak kMWrSPeak() { return {}; }
+  void set_m_wr_s_peak(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_MWrSPeak::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_NRdAvg =
+    ::protozero::proto_utils::FieldMetadata<
+      20,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_NRdAvg kNRdAvg() { return {}; }
+  void set_n_rd_avg(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_NRdAvg::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_NRdCnt =
+    ::protozero::proto_utils::FieldMetadata<
+      21,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_NRdCnt kNRdCnt() { return {}; }
+  void set_n_rd_cnt(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_NRdCnt::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_NRdPeak =
+    ::protozero::proto_utils::FieldMetadata<
+      22,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_NRdPeak kNRdPeak() { return {}; }
+  void set_n_rd_peak(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_NRdPeak::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_NWrAsAvg =
+    ::protozero::proto_utils::FieldMetadata<
+      23,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_NWrAsAvg kNWrAsAvg() { return {}; }
+  void set_n_wr_as_avg(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_NWrAsAvg::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_NWrAsCnt =
+    ::protozero::proto_utils::FieldMetadata<
+      24,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_NWrAsCnt kNWrAsCnt() { return {}; }
+  void set_n_wr_as_cnt(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_NWrAsCnt::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_NWrAsPeak =
+    ::protozero::proto_utils::FieldMetadata<
+      25,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_NWrAsPeak kNWrAsPeak() { return {}; }
+  void set_n_wr_as_peak(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_NWrAsPeak::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_NWrSAvg =
+    ::protozero::proto_utils::FieldMetadata<
+      26,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_NWrSAvg kNWrSAvg() { return {}; }
+  void set_n_wr_s_avg(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_NWrSAvg::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_NWrSCnt =
+    ::protozero::proto_utils::FieldMetadata<
+      27,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_NWrSCnt kNWrSCnt() { return {}; }
+  void set_n_wr_s_cnt(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_NWrSCnt::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_NWrSPeak =
+    ::protozero::proto_utils::FieldMetadata<
+      28,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsIostatLatencyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_NWrSPeak kNWrSPeak() { return {}; }
+  void set_n_wr_s_peak(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_NWrSPeak::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class F2fsIostatFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/23, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  F2fsIostatFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit F2fsIostatFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit F2fsIostatFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_app_bio() const { return at<1>().valid(); }
+  uint64_t app_bio() const { return at<1>().as_uint64(); }
+  bool has_app_brio() const { return at<2>().valid(); }
+  uint64_t app_brio() const { return at<2>().as_uint64(); }
+  bool has_app_dio() const { return at<3>().valid(); }
+  uint64_t app_dio() const { return at<3>().as_uint64(); }
+  bool has_app_drio() const { return at<4>().valid(); }
+  uint64_t app_drio() const { return at<4>().as_uint64(); }
+  bool has_app_mio() const { return at<5>().valid(); }
+  uint64_t app_mio() const { return at<5>().as_uint64(); }
+  bool has_app_mrio() const { return at<6>().valid(); }
+  uint64_t app_mrio() const { return at<6>().as_uint64(); }
+  bool has_app_rio() const { return at<7>().valid(); }
+  uint64_t app_rio() const { return at<7>().as_uint64(); }
+  bool has_app_wio() const { return at<8>().valid(); }
+  uint64_t app_wio() const { return at<8>().as_uint64(); }
+  bool has_dev() const { return at<9>().valid(); }
+  uint64_t dev() const { return at<9>().as_uint64(); }
+  bool has_fs_cdrio() const { return at<10>().valid(); }
+  uint64_t fs_cdrio() const { return at<10>().as_uint64(); }
+  bool has_fs_cp_dio() const { return at<11>().valid(); }
+  uint64_t fs_cp_dio() const { return at<11>().as_uint64(); }
+  bool has_fs_cp_mio() const { return at<12>().valid(); }
+  uint64_t fs_cp_mio() const { return at<12>().as_uint64(); }
+  bool has_fs_cp_nio() const { return at<13>().valid(); }
+  uint64_t fs_cp_nio() const { return at<13>().as_uint64(); }
+  bool has_fs_dio() const { return at<14>().valid(); }
+  uint64_t fs_dio() const { return at<14>().as_uint64(); }
+  bool has_fs_discard() const { return at<15>().valid(); }
+  uint64_t fs_discard() const { return at<15>().as_uint64(); }
+  bool has_fs_drio() const { return at<16>().valid(); }
+  uint64_t fs_drio() const { return at<16>().as_uint64(); }
+  bool has_fs_gc_dio() const { return at<17>().valid(); }
+  uint64_t fs_gc_dio() const { return at<17>().as_uint64(); }
+  bool has_fs_gc_nio() const { return at<18>().valid(); }
+  uint64_t fs_gc_nio() const { return at<18>().as_uint64(); }
+  bool has_fs_gdrio() const { return at<19>().valid(); }
+  uint64_t fs_gdrio() const { return at<19>().as_uint64(); }
+  bool has_fs_mio() const { return at<20>().valid(); }
+  uint64_t fs_mio() const { return at<20>().as_uint64(); }
+  bool has_fs_mrio() const { return at<21>().valid(); }
+  uint64_t fs_mrio() const { return at<21>().as_uint64(); }
+  bool has_fs_nio() const { return at<22>().valid(); }
+  uint64_t fs_nio() const { return at<22>().as_uint64(); }
+  bool has_fs_nrio() const { return at<23>().valid(); }
+  uint64_t fs_nrio() const { return at<23>().as_uint64(); }
+};
+
+class F2fsIostatFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = F2fsIostatFtraceEvent_Decoder;
+  enum : int32_t {
+    kAppBioFieldNumber = 1,
+    kAppBrioFieldNumber = 2,
+    kAppDioFieldNumber = 3,
+    kAppDrioFieldNumber = 4,
+    kAppMioFieldNumber = 5,
+    kAppMrioFieldNumber = 6,
+    kAppRioFieldNumber = 7,
+    kAppWioFieldNumber = 8,
+    kDevFieldNumber = 9,
+    kFsCdrioFieldNumber = 10,
+    kFsCpDioFieldNumber = 11,
+    kFsCpMioFieldNumber = 12,
+    kFsCpNioFieldNumber = 13,
+    kFsDioFieldNumber = 14,
+    kFsDiscardFieldNumber = 15,
+    kFsDrioFieldNumber = 16,
+    kFsGcDioFieldNumber = 17,
+    kFsGcNioFieldNumber = 18,
+    kFsGdrioFieldNumber = 19,
+    kFsMioFieldNumber = 20,
+    kFsMrioFieldNumber = 21,
+    kFsNioFieldNumber = 22,
+    kFsNrioFieldNumber = 23,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsIostatFtraceEvent"; }
+
+
+  using FieldMetadata_AppBio =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_AppBio kAppBio() { return {}; }
+  void set_app_bio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_AppBio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_AppBrio =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_AppBrio kAppBrio() { return {}; }
+  void set_app_brio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_AppBrio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_AppDio =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_AppDio kAppDio() { return {}; }
+  void set_app_dio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_AppDio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_AppDrio =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_AppDrio kAppDrio() { return {}; }
+  void set_app_drio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_AppDrio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_AppMio =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_AppMio kAppMio() { return {}; }
+  void set_app_mio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_AppMio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_AppMrio =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_AppMrio kAppMrio() { return {}; }
+  void set_app_mrio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_AppMrio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_AppRio =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_AppRio kAppRio() { return {}; }
+  void set_app_rio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_AppRio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_AppWio =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_AppWio kAppWio() { return {}; }
+  void set_app_wio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_AppWio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Dev =
+    ::protozero::proto_utils::FieldMetadata<
+      9,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Dev kDev() { return {}; }
+  void set_dev(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsCdrio =
+    ::protozero::proto_utils::FieldMetadata<
+      10,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsCdrio kFsCdrio() { return {}; }
+  void set_fs_cdrio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsCdrio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsCpDio =
+    ::protozero::proto_utils::FieldMetadata<
+      11,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsCpDio kFsCpDio() { return {}; }
+  void set_fs_cp_dio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsCpDio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsCpMio =
+    ::protozero::proto_utils::FieldMetadata<
+      12,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsCpMio kFsCpMio() { return {}; }
+  void set_fs_cp_mio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsCpMio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsCpNio =
+    ::protozero::proto_utils::FieldMetadata<
+      13,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsCpNio kFsCpNio() { return {}; }
+  void set_fs_cp_nio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsCpNio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsDio =
+    ::protozero::proto_utils::FieldMetadata<
+      14,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsDio kFsDio() { return {}; }
+  void set_fs_dio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsDio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsDiscard =
+    ::protozero::proto_utils::FieldMetadata<
+      15,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsDiscard kFsDiscard() { return {}; }
+  void set_fs_discard(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsDiscard::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsDrio =
+    ::protozero::proto_utils::FieldMetadata<
+      16,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsDrio kFsDrio() { return {}; }
+  void set_fs_drio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsDrio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsGcDio =
+    ::protozero::proto_utils::FieldMetadata<
+      17,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsGcDio kFsGcDio() { return {}; }
+  void set_fs_gc_dio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsGcDio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsGcNio =
+    ::protozero::proto_utils::FieldMetadata<
+      18,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsGcNio kFsGcNio() { return {}; }
+  void set_fs_gc_nio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsGcNio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsGdrio =
+    ::protozero::proto_utils::FieldMetadata<
+      19,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsGdrio kFsGdrio() { return {}; }
+  void set_fs_gdrio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsGdrio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsMio =
+    ::protozero::proto_utils::FieldMetadata<
+      20,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsMio kFsMio() { return {}; }
+  void set_fs_mio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsMio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsMrio =
+    ::protozero::proto_utils::FieldMetadata<
+      21,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsMrio kFsMrio() { return {}; }
+  void set_fs_mrio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsMrio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsNio =
+    ::protozero::proto_utils::FieldMetadata<
+      22,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsNio kFsNio() { return {}; }
+  void set_fs_nio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsNio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FsNrio =
+    ::protozero::proto_utils::FieldMetadata<
+      23,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      F2fsIostatFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FsNrio kFsNrio() { return {}; }
+  void set_fs_nrio(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FsNrio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
+
 class F2fsWriteEndFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   F2fsWriteEndFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
@@ -44,6 +1504,8 @@ class F2fsWriteEndFtraceEvent : public ::protozero::Message {
     kLenFieldNumber = 4,
     kCopiedFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsWriteEndFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -59,7 +1521,7 @@ class F2fsWriteEndFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -84,7 +1546,7 @@ class F2fsWriteEndFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -109,7 +1571,7 @@ class F2fsWriteEndFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pos kPos() { return {}; }
   void set_pos(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pos::kFieldId;
@@ -134,7 +1596,7 @@ class F2fsWriteEndFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Len kLen() { return {}; }
   void set_len(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Len::kFieldId;
@@ -159,7 +1621,7 @@ class F2fsWriteEndFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Copied kCopied() { return {}; }
   void set_copied(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Copied::kFieldId;
@@ -171,7 +1633,7 @@ class F2fsWriteEndFtraceEvent : public ::protozero::Message {
   }
 };
 
-class F2fsWriteCheckpointFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class F2fsWriteCheckpointFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   F2fsWriteCheckpointFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit F2fsWriteCheckpointFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -182,6 +1644,8 @@ class F2fsWriteCheckpointFtraceEvent_Decoder : public ::protozero::TypedProtoDec
   uint32_t is_umount() const { return at<2>().as_uint32(); }
   bool has_msg() const { return at<3>().valid(); }
   ::protozero::ConstChars msg() const { return at<3>().as_string(); }
+  bool has_reason() const { return at<4>().valid(); }
+  int32_t reason() const { return at<4>().as_int32(); }
 };
 
 class F2fsWriteCheckpointFtraceEvent : public ::protozero::Message {
@@ -191,7 +1655,10 @@ class F2fsWriteCheckpointFtraceEvent : public ::protozero::Message {
     kDevFieldNumber = 1,
     kIsUmountFieldNumber = 2,
     kMsgFieldNumber = 3,
+    kReasonFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsWriteCheckpointFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -207,7 +1674,7 @@ class F2fsWriteCheckpointFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -232,7 +1699,7 @@ class F2fsWriteCheckpointFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IsUmount kIsUmount() { return {}; }
   void set_is_umount(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IsUmount::kFieldId;
@@ -257,10 +1724,13 @@ class F2fsWriteCheckpointFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Msg kMsg() { return {}; }
   void set_msg(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Msg::kFieldId, data, size);
+  }
+  void set_msg(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Msg::kFieldId, chars.data, chars.size);
   }
   void set_msg(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Msg::kFieldId;
@@ -268,6 +1738,31 @@ class F2fsWriteCheckpointFtraceEvent : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Reason =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      F2fsWriteCheckpointFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Reason kReason() { return {}; }
+  void set_reason(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Reason::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
         ::Append(*this, field_id, value);
   }
 };
@@ -299,6 +1794,8 @@ class F2fsWriteBeginFtraceEvent : public ::protozero::Message {
     kLenFieldNumber = 4,
     kFlagsFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsWriteBeginFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -314,7 +1811,7 @@ class F2fsWriteBeginFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -339,7 +1836,7 @@ class F2fsWriteBeginFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -364,7 +1861,7 @@ class F2fsWriteBeginFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pos kPos() { return {}; }
   void set_pos(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pos::kFieldId;
@@ -389,7 +1886,7 @@ class F2fsWriteBeginFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Len kLen() { return {}; }
   void set_len(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Len::kFieldId;
@@ -414,7 +1911,7 @@ class F2fsWriteBeginFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Flags kFlags() { return {}; }
   void set_flags(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Flags::kFieldId;
@@ -426,7 +1923,7 @@ class F2fsWriteBeginFtraceEvent : public ::protozero::Message {
   }
 };
 
-class F2fsVmPageMkwriteFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class F2fsVmPageMkwriteFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   F2fsVmPageMkwriteFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit F2fsVmPageMkwriteFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -443,6 +1940,8 @@ class F2fsVmPageMkwriteFtraceEvent_Decoder : public ::protozero::TypedProtoDecod
   uint64_t index() const { return at<5>().as_uint64(); }
   bool has_dirty() const { return at<6>().valid(); }
   int32_t dirty() const { return at<6>().as_int32(); }
+  bool has_uptodate() const { return at<7>().valid(); }
+  int32_t uptodate() const { return at<7>().as_int32(); }
 };
 
 class F2fsVmPageMkwriteFtraceEvent : public ::protozero::Message {
@@ -455,7 +1954,10 @@ class F2fsVmPageMkwriteFtraceEvent : public ::protozero::Message {
     kDirFieldNumber = 4,
     kIndexFieldNumber = 5,
     kDirtyFieldNumber = 6,
+    kUptodateFieldNumber = 7,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsVmPageMkwriteFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -471,7 +1973,7 @@ class F2fsVmPageMkwriteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -496,7 +1998,7 @@ class F2fsVmPageMkwriteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -521,7 +2023,7 @@ class F2fsVmPageMkwriteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
@@ -546,7 +2048,7 @@ class F2fsVmPageMkwriteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dir kDir() { return {}; }
   void set_dir(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dir::kFieldId;
@@ -571,7 +2073,7 @@ class F2fsVmPageMkwriteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Index kIndex() { return {}; }
   void set_index(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Index::kFieldId;
@@ -596,10 +2098,35 @@ class F2fsVmPageMkwriteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dirty kDirty() { return {}; }
   void set_dirty(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dirty::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Uptodate =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      F2fsVmPageMkwriteFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Uptodate kUptodate() { return {}; }
+  void set_uptodate(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Uptodate::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
@@ -629,6 +2156,8 @@ class F2fsUnlinkExitFtraceEvent : public ::protozero::Message {
     kInoFieldNumber = 2,
     kRetFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsUnlinkExitFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -644,7 +2173,7 @@ class F2fsUnlinkExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -669,7 +2198,7 @@ class F2fsUnlinkExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -694,7 +2223,7 @@ class F2fsUnlinkExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ret kRet() { return {}; }
   void set_ret(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ret::kFieldId;
@@ -733,6 +2262,8 @@ class F2fsUnlinkEnterFtraceEvent : public ::protozero::Message {
     kBlocksFieldNumber = 4,
     kNameFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsUnlinkEnterFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -748,7 +2279,7 @@ class F2fsUnlinkEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -773,7 +2304,7 @@ class F2fsUnlinkEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -798,7 +2329,7 @@ class F2fsUnlinkEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Size kSize() { return {}; }
   void set_size(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Size::kFieldId;
@@ -823,7 +2354,7 @@ class F2fsUnlinkEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Blocks kBlocks() { return {}; }
   void set_blocks(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Blocks::kFieldId;
@@ -848,10 +2379,13 @@ class F2fsUnlinkEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -890,6 +2424,8 @@ class F2fsTruncatePartialNodesFtraceEvent : public ::protozero::Message {
     kDepthFieldNumber = 4,
     kErrFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsTruncatePartialNodesFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -905,7 +2441,7 @@ class F2fsTruncatePartialNodesFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -930,7 +2466,7 @@ class F2fsTruncatePartialNodesFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -955,7 +2491,7 @@ class F2fsTruncatePartialNodesFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Nid kNid() { return {}; }
   void set_nid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Nid::kFieldId;
@@ -980,7 +2516,7 @@ class F2fsTruncatePartialNodesFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Depth kDepth() { return {}; }
   void set_depth(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Depth::kFieldId;
@@ -1005,7 +2541,7 @@ class F2fsTruncatePartialNodesFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Err kErr() { return {}; }
   void set_err(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Err::kFieldId;
@@ -1038,6 +2574,8 @@ class F2fsTruncateNodesExitFtraceEvent : public ::protozero::Message {
     kInoFieldNumber = 2,
     kRetFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsTruncateNodesExitFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -1053,7 +2591,7 @@ class F2fsTruncateNodesExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -1078,7 +2616,7 @@ class F2fsTruncateNodesExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -1103,7 +2641,7 @@ class F2fsTruncateNodesExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ret kRet() { return {}; }
   void set_ret(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ret::kFieldId;
@@ -1139,6 +2677,8 @@ class F2fsTruncateNodesEnterFtraceEvent : public ::protozero::Message {
     kNidFieldNumber = 3,
     kBlkAddrFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsTruncateNodesEnterFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -1154,7 +2694,7 @@ class F2fsTruncateNodesEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -1179,7 +2719,7 @@ class F2fsTruncateNodesEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -1204,7 +2744,7 @@ class F2fsTruncateNodesEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Nid kNid() { return {}; }
   void set_nid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Nid::kFieldId;
@@ -1229,7 +2769,7 @@ class F2fsTruncateNodesEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BlkAddr kBlkAddr() { return {}; }
   void set_blk_addr(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BlkAddr::kFieldId;
@@ -1265,6 +2805,8 @@ class F2fsTruncateNodeFtraceEvent : public ::protozero::Message {
     kNidFieldNumber = 3,
     kBlkAddrFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsTruncateNodeFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -1280,7 +2822,7 @@ class F2fsTruncateNodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -1305,7 +2847,7 @@ class F2fsTruncateNodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -1330,7 +2872,7 @@ class F2fsTruncateNodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Nid kNid() { return {}; }
   void set_nid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Nid::kFieldId;
@@ -1355,7 +2897,7 @@ class F2fsTruncateNodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BlkAddr kBlkAddr() { return {}; }
   void set_blk_addr(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BlkAddr::kFieldId;
@@ -1388,6 +2930,8 @@ class F2fsTruncateInodeBlocksExitFtraceEvent : public ::protozero::Message {
     kInoFieldNumber = 2,
     kRetFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsTruncateInodeBlocksExitFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -1403,7 +2947,7 @@ class F2fsTruncateInodeBlocksExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -1428,7 +2972,7 @@ class F2fsTruncateInodeBlocksExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -1453,7 +2997,7 @@ class F2fsTruncateInodeBlocksExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ret kRet() { return {}; }
   void set_ret(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ret::kFieldId;
@@ -1492,6 +3036,8 @@ class F2fsTruncateInodeBlocksEnterFtraceEvent : public ::protozero::Message {
     kBlocksFieldNumber = 4,
     kFromFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsTruncateInodeBlocksEnterFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -1507,7 +3053,7 @@ class F2fsTruncateInodeBlocksEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -1532,7 +3078,7 @@ class F2fsTruncateInodeBlocksEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -1557,7 +3103,7 @@ class F2fsTruncateInodeBlocksEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Size kSize() { return {}; }
   void set_size(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Size::kFieldId;
@@ -1582,7 +3128,7 @@ class F2fsTruncateInodeBlocksEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Blocks kBlocks() { return {}; }
   void set_blocks(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Blocks::kFieldId;
@@ -1607,7 +3153,7 @@ class F2fsTruncateInodeBlocksEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_From kFrom() { return {}; }
   void set_from(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_From::kFieldId;
@@ -1646,6 +3192,8 @@ class F2fsTruncateDataBlocksRangeFtraceEvent : public ::protozero::Message {
     kOfsFieldNumber = 4,
     kFreeFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsTruncateDataBlocksRangeFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -1661,7 +3209,7 @@ class F2fsTruncateDataBlocksRangeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -1686,7 +3234,7 @@ class F2fsTruncateDataBlocksRangeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -1711,7 +3259,7 @@ class F2fsTruncateDataBlocksRangeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Nid kNid() { return {}; }
   void set_nid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Nid::kFieldId;
@@ -1736,7 +3284,7 @@ class F2fsTruncateDataBlocksRangeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ofs kOfs() { return {}; }
   void set_ofs(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ofs::kFieldId;
@@ -1761,7 +3309,7 @@ class F2fsTruncateDataBlocksRangeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Free kFree() { return {}; }
   void set_free(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Free::kFieldId;
@@ -1794,6 +3342,8 @@ class F2fsTruncateBlocksExitFtraceEvent : public ::protozero::Message {
     kInoFieldNumber = 2,
     kRetFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsTruncateBlocksExitFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -1809,7 +3359,7 @@ class F2fsTruncateBlocksExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -1834,7 +3384,7 @@ class F2fsTruncateBlocksExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -1859,7 +3409,7 @@ class F2fsTruncateBlocksExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ret kRet() { return {}; }
   void set_ret(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ret::kFieldId;
@@ -1898,6 +3448,8 @@ class F2fsTruncateBlocksEnterFtraceEvent : public ::protozero::Message {
     kBlocksFieldNumber = 4,
     kFromFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsTruncateBlocksEnterFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -1913,7 +3465,7 @@ class F2fsTruncateBlocksEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -1938,7 +3490,7 @@ class F2fsTruncateBlocksEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -1963,7 +3515,7 @@ class F2fsTruncateBlocksEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Size kSize() { return {}; }
   void set_size(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Size::kFieldId;
@@ -1988,7 +3540,7 @@ class F2fsTruncateBlocksEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Blocks kBlocks() { return {}; }
   void set_blocks(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Blocks::kFieldId;
@@ -2013,7 +3565,7 @@ class F2fsTruncateBlocksEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_From kFrom() { return {}; }
   void set_from(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_From::kFieldId;
@@ -2061,6 +3613,8 @@ class F2fsTruncateFtraceEvent : public ::protozero::Message {
     kBlocksFieldNumber = 7,
     kAdviseFieldNumber = 8,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsTruncateFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -2076,7 +3630,7 @@ class F2fsTruncateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -2101,7 +3655,7 @@ class F2fsTruncateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -2126,7 +3680,7 @@ class F2fsTruncateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pino kPino() { return {}; }
   void set_pino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pino::kFieldId;
@@ -2151,7 +3705,7 @@ class F2fsTruncateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Mode kMode() { return {}; }
   void set_mode(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Mode::kFieldId;
@@ -2176,7 +3730,7 @@ class F2fsTruncateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Size kSize() { return {}; }
   void set_size(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Size::kFieldId;
@@ -2201,7 +3755,7 @@ class F2fsTruncateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Nlink kNlink() { return {}; }
   void set_nlink(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Nlink::kFieldId;
@@ -2226,7 +3780,7 @@ class F2fsTruncateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Blocks kBlocks() { return {}; }
   void set_blocks(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Blocks::kFieldId;
@@ -2251,7 +3805,7 @@ class F2fsTruncateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Advise kAdvise() { return {}; }
   void set_advise(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Advise::kFieldId;
@@ -2284,6 +3838,8 @@ class F2fsSyncFsFtraceEvent : public ::protozero::Message {
     kDirtyFieldNumber = 2,
     kWaitFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsSyncFsFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -2299,7 +3855,7 @@ class F2fsSyncFsFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -2324,7 +3880,7 @@ class F2fsSyncFsFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dirty kDirty() { return {}; }
   void set_dirty(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dirty::kFieldId;
@@ -2349,7 +3905,7 @@ class F2fsSyncFsFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Wait kWait() { return {}; }
   void set_wait(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Wait::kFieldId;
@@ -2361,7 +3917,7 @@ class F2fsSyncFsFtraceEvent : public ::protozero::Message {
   }
 };
 
-class F2fsSyncFileExitFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class F2fsSyncFileExitFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   F2fsSyncFileExitFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit F2fsSyncFileExitFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -2376,6 +3932,8 @@ class F2fsSyncFileExitFtraceEvent_Decoder : public ::protozero::TypedProtoDecode
   int32_t datasync() const { return at<4>().as_int32(); }
   bool has_ret() const { return at<5>().valid(); }
   int32_t ret() const { return at<5>().as_int32(); }
+  bool has_cp_reason() const { return at<6>().valid(); }
+  int32_t cp_reason() const { return at<6>().as_int32(); }
 };
 
 class F2fsSyncFileExitFtraceEvent : public ::protozero::Message {
@@ -2387,7 +3945,10 @@ class F2fsSyncFileExitFtraceEvent : public ::protozero::Message {
     kNeedCpFieldNumber = 3,
     kDatasyncFieldNumber = 4,
     kRetFieldNumber = 5,
+    kCpReasonFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsSyncFileExitFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -2403,7 +3964,7 @@ class F2fsSyncFileExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -2428,7 +3989,7 @@ class F2fsSyncFileExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -2453,7 +4014,7 @@ class F2fsSyncFileExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NeedCp kNeedCp() { return {}; }
   void set_need_cp(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NeedCp::kFieldId;
@@ -2478,7 +4039,7 @@ class F2fsSyncFileExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Datasync kDatasync() { return {}; }
   void set_datasync(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Datasync::kFieldId;
@@ -2503,10 +4064,35 @@ class F2fsSyncFileExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ret kRet() { return {}; }
   void set_ret(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ret::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_CpReason =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      F2fsSyncFileExitFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_CpReason kCpReason() { return {}; }
+  void set_cp_reason(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_CpReason::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
@@ -2551,6 +4137,8 @@ class F2fsSyncFileEnterFtraceEvent : public ::protozero::Message {
     kBlocksFieldNumber = 7,
     kAdviseFieldNumber = 8,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsSyncFileEnterFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -2566,7 +4154,7 @@ class F2fsSyncFileEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -2591,7 +4179,7 @@ class F2fsSyncFileEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -2616,7 +4204,7 @@ class F2fsSyncFileEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pino kPino() { return {}; }
   void set_pino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pino::kFieldId;
@@ -2641,7 +4229,7 @@ class F2fsSyncFileEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Mode kMode() { return {}; }
   void set_mode(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Mode::kFieldId;
@@ -2666,7 +4254,7 @@ class F2fsSyncFileEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Size kSize() { return {}; }
   void set_size(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Size::kFieldId;
@@ -2691,7 +4279,7 @@ class F2fsSyncFileEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Nlink kNlink() { return {}; }
   void set_nlink(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Nlink::kFieldId;
@@ -2716,7 +4304,7 @@ class F2fsSyncFileEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Blocks kBlocks() { return {}; }
   void set_blocks(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Blocks::kFieldId;
@@ -2741,7 +4329,7 @@ class F2fsSyncFileEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Advise kAdvise() { return {}; }
   void set_advise(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Advise::kFieldId;
@@ -2780,6 +4368,8 @@ class F2fsSubmitWritePageFtraceEvent : public ::protozero::Message {
     kIndexFieldNumber = 4,
     kBlockFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsSubmitWritePageFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -2795,7 +4385,7 @@ class F2fsSubmitWritePageFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -2820,7 +4410,7 @@ class F2fsSubmitWritePageFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -2845,7 +4435,7 @@ class F2fsSubmitWritePageFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
@@ -2870,7 +4460,7 @@ class F2fsSubmitWritePageFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Index kIndex() { return {}; }
   void set_index(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Index::kFieldId;
@@ -2895,7 +4485,7 @@ class F2fsSubmitWritePageFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Block kBlock() { return {}; }
   void set_block(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Block::kFieldId;
@@ -2907,7 +4497,7 @@ class F2fsSubmitWritePageFtraceEvent : public ::protozero::Message {
   }
 };
 
-class F2fsSetPageDirtyFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class F2fsSetPageDirtyFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   F2fsSetPageDirtyFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit F2fsSetPageDirtyFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -2924,6 +4514,8 @@ class F2fsSetPageDirtyFtraceEvent_Decoder : public ::protozero::TypedProtoDecode
   uint64_t index() const { return at<5>().as_uint64(); }
   bool has_dirty() const { return at<6>().valid(); }
   int32_t dirty() const { return at<6>().as_int32(); }
+  bool has_uptodate() const { return at<7>().valid(); }
+  int32_t uptodate() const { return at<7>().as_int32(); }
 };
 
 class F2fsSetPageDirtyFtraceEvent : public ::protozero::Message {
@@ -2936,7 +4528,10 @@ class F2fsSetPageDirtyFtraceEvent : public ::protozero::Message {
     kDirFieldNumber = 4,
     kIndexFieldNumber = 5,
     kDirtyFieldNumber = 6,
+    kUptodateFieldNumber = 7,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsSetPageDirtyFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -2952,7 +4547,7 @@ class F2fsSetPageDirtyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -2977,7 +4572,7 @@ class F2fsSetPageDirtyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -3002,7 +4597,7 @@ class F2fsSetPageDirtyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
@@ -3027,7 +4622,7 @@ class F2fsSetPageDirtyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dir kDir() { return {}; }
   void set_dir(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dir::kFieldId;
@@ -3052,7 +4647,7 @@ class F2fsSetPageDirtyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Index kIndex() { return {}; }
   void set_index(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Index::kFieldId;
@@ -3077,10 +4672,35 @@ class F2fsSetPageDirtyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dirty kDirty() { return {}; }
   void set_dirty(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dirty::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Uptodate =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      F2fsSetPageDirtyFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Uptodate kUptodate() { return {}; }
+  void set_uptodate(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Uptodate::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
@@ -3110,6 +4730,8 @@ class F2fsReserveNewBlockFtraceEvent : public ::protozero::Message {
     kNidFieldNumber = 2,
     kOfsInNodeFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsReserveNewBlockFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -3125,7 +4747,7 @@ class F2fsReserveNewBlockFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -3150,7 +4772,7 @@ class F2fsReserveNewBlockFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Nid kNid() { return {}; }
   void set_nid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Nid::kFieldId;
@@ -3175,7 +4797,7 @@ class F2fsReserveNewBlockFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_OfsInNode kOfsInNode() { return {}; }
   void set_ofs_in_node(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_OfsInNode::kFieldId;
@@ -3187,7 +4809,7 @@ class F2fsReserveNewBlockFtraceEvent : public ::protozero::Message {
   }
 };
 
-class F2fsReadpageFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class F2fsReadpageFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/8, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   F2fsReadpageFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit F2fsReadpageFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -3202,6 +4824,12 @@ class F2fsReadpageFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*
   uint64_t blkaddr() const { return at<4>().as_uint64(); }
   bool has_type() const { return at<5>().valid(); }
   int32_t type() const { return at<5>().as_int32(); }
+  bool has_dir() const { return at<6>().valid(); }
+  int32_t dir() const { return at<6>().as_int32(); }
+  bool has_dirty() const { return at<7>().valid(); }
+  int32_t dirty() const { return at<7>().as_int32(); }
+  bool has_uptodate() const { return at<8>().valid(); }
+  int32_t uptodate() const { return at<8>().as_int32(); }
 };
 
 class F2fsReadpageFtraceEvent : public ::protozero::Message {
@@ -3213,7 +4841,12 @@ class F2fsReadpageFtraceEvent : public ::protozero::Message {
     kIndexFieldNumber = 3,
     kBlkaddrFieldNumber = 4,
     kTypeFieldNumber = 5,
+    kDirFieldNumber = 6,
+    kDirtyFieldNumber = 7,
+    kUptodateFieldNumber = 8,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsReadpageFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -3229,7 +4862,7 @@ class F2fsReadpageFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -3254,7 +4887,7 @@ class F2fsReadpageFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -3279,7 +4912,7 @@ class F2fsReadpageFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Index kIndex() { return {}; }
   void set_index(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Index::kFieldId;
@@ -3304,7 +4937,7 @@ class F2fsReadpageFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Blkaddr kBlkaddr() { return {}; }
   void set_blkaddr(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Blkaddr::kFieldId;
@@ -3329,10 +4962,85 @@ class F2fsReadpageFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Dir =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      F2fsReadpageFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Dir kDir() { return {}; }
+  void set_dir(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Dir::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Dirty =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      F2fsReadpageFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Dirty kDirty() { return {}; }
+  void set_dirty(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Dirty::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Uptodate =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      F2fsReadpageFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Uptodate kUptodate() { return {}; }
+  void set_uptodate(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Uptodate::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
@@ -3362,6 +5070,8 @@ class F2fsNewInodeFtraceEvent : public ::protozero::Message {
     kInoFieldNumber = 2,
     kRetFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsNewInodeFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -3377,7 +5087,7 @@ class F2fsNewInodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -3402,7 +5112,7 @@ class F2fsNewInodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -3427,7 +5137,7 @@ class F2fsNewInodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ret kRet() { return {}; }
   void set_ret(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ret::kFieldId;
@@ -3460,6 +5170,8 @@ class F2fsIgetExitFtraceEvent : public ::protozero::Message {
     kInoFieldNumber = 2,
     kRetFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsIgetExitFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -3475,7 +5187,7 @@ class F2fsIgetExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -3500,7 +5212,7 @@ class F2fsIgetExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -3525,7 +5237,7 @@ class F2fsIgetExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ret kRet() { return {}; }
   void set_ret(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ret::kFieldId;
@@ -3573,6 +5285,8 @@ class F2fsIgetFtraceEvent : public ::protozero::Message {
     kBlocksFieldNumber = 7,
     kAdviseFieldNumber = 8,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsIgetFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -3588,7 +5302,7 @@ class F2fsIgetFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -3613,7 +5327,7 @@ class F2fsIgetFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -3638,7 +5352,7 @@ class F2fsIgetFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pino kPino() { return {}; }
   void set_pino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pino::kFieldId;
@@ -3663,7 +5377,7 @@ class F2fsIgetFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Mode kMode() { return {}; }
   void set_mode(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Mode::kFieldId;
@@ -3688,7 +5402,7 @@ class F2fsIgetFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Size kSize() { return {}; }
   void set_size(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Size::kFieldId;
@@ -3713,7 +5427,7 @@ class F2fsIgetFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Nlink kNlink() { return {}; }
   void set_nlink(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Nlink::kFieldId;
@@ -3738,7 +5452,7 @@ class F2fsIgetFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Blocks kBlocks() { return {}; }
   void set_blocks(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Blocks::kFieldId;
@@ -3763,7 +5477,7 @@ class F2fsIgetFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Advise kAdvise() { return {}; }
   void set_advise(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Advise::kFieldId;
@@ -3775,7 +5489,7 @@ class F2fsIgetFtraceEvent : public ::protozero::Message {
   }
 };
 
-class F2fsGetVictimFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class F2fsGetVictimFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/11, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   F2fsGetVictimFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit F2fsGetVictimFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -3800,6 +5514,8 @@ class F2fsGetVictimFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</
   uint32_t prefree() const { return at<9>().as_uint32(); }
   bool has_free() const { return at<10>().valid(); }
   uint32_t free() const { return at<10>().as_uint32(); }
+  bool has_cost() const { return at<11>().valid(); }
+  uint32_t cost() const { return at<11>().as_uint32(); }
 };
 
 class F2fsGetVictimFtraceEvent : public ::protozero::Message {
@@ -3816,7 +5532,10 @@ class F2fsGetVictimFtraceEvent : public ::protozero::Message {
     kPreVictimFieldNumber = 8,
     kPrefreeFieldNumber = 9,
     kFreeFieldNumber = 10,
+    kCostFieldNumber = 11,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsGetVictimFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -3832,7 +5551,7 @@ class F2fsGetVictimFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -3857,7 +5576,7 @@ class F2fsGetVictimFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
@@ -3882,7 +5601,7 @@ class F2fsGetVictimFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_GcType kGcType() { return {}; }
   void set_gc_type(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_GcType::kFieldId;
@@ -3907,7 +5626,7 @@ class F2fsGetVictimFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AllocMode kAllocMode() { return {}; }
   void set_alloc_mode(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_AllocMode::kFieldId;
@@ -3932,7 +5651,7 @@ class F2fsGetVictimFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_GcMode kGcMode() { return {}; }
   void set_gc_mode(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_GcMode::kFieldId;
@@ -3957,7 +5676,7 @@ class F2fsGetVictimFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Victim kVictim() { return {}; }
   void set_victim(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Victim::kFieldId;
@@ -3982,7 +5701,7 @@ class F2fsGetVictimFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_OfsUnit kOfsUnit() { return {}; }
   void set_ofs_unit(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_OfsUnit::kFieldId;
@@ -4007,7 +5726,7 @@ class F2fsGetVictimFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PreVictim kPreVictim() { return {}; }
   void set_pre_victim(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PreVictim::kFieldId;
@@ -4032,7 +5751,7 @@ class F2fsGetVictimFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Prefree kPrefree() { return {}; }
   void set_prefree(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Prefree::kFieldId;
@@ -4057,10 +5776,35 @@ class F2fsGetVictimFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Free kFree() { return {}; }
   void set_free(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Free::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Cost =
+    ::protozero::proto_utils::FieldMetadata<
+      11,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      F2fsGetVictimFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Cost kCost() { return {}; }
+  void set_cost(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Cost::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
@@ -4099,6 +5843,8 @@ class F2fsGetDataBlockFtraceEvent : public ::protozero::Message {
     kBhSizeFieldNumber = 5,
     kRetFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsGetDataBlockFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -4114,7 +5860,7 @@ class F2fsGetDataBlockFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -4139,7 +5885,7 @@ class F2fsGetDataBlockFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -4164,7 +5910,7 @@ class F2fsGetDataBlockFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Iblock kIblock() { return {}; }
   void set_iblock(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Iblock::kFieldId;
@@ -4189,7 +5935,7 @@ class F2fsGetDataBlockFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BhStart kBhStart() { return {}; }
   void set_bh_start(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BhStart::kFieldId;
@@ -4214,7 +5960,7 @@ class F2fsGetDataBlockFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BhSize kBhSize() { return {}; }
   void set_bh_size(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BhSize::kFieldId;
@@ -4239,7 +5985,7 @@ class F2fsGetDataBlockFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ret kRet() { return {}; }
   void set_ret(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ret::kFieldId;
@@ -4287,6 +6033,8 @@ class F2fsFallocateFtraceEvent : public ::protozero::Message {
     kBlocksFieldNumber = 7,
     kRetFieldNumber = 8,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsFallocateFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -4302,7 +6050,7 @@ class F2fsFallocateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -4327,7 +6075,7 @@ class F2fsFallocateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -4352,7 +6100,7 @@ class F2fsFallocateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Mode kMode() { return {}; }
   void set_mode(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Mode::kFieldId;
@@ -4377,7 +6125,7 @@ class F2fsFallocateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Offset kOffset() { return {}; }
   void set_offset(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Offset::kFieldId;
@@ -4402,7 +6150,7 @@ class F2fsFallocateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Len kLen() { return {}; }
   void set_len(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Len::kFieldId;
@@ -4427,7 +6175,7 @@ class F2fsFallocateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Size kSize() { return {}; }
   void set_size(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Size::kFieldId;
@@ -4452,7 +6200,7 @@ class F2fsFallocateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Blocks kBlocks() { return {}; }
   void set_blocks(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Blocks::kFieldId;
@@ -4477,7 +6225,7 @@ class F2fsFallocateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ret kRet() { return {}; }
   void set_ret(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ret::kFieldId;
@@ -4525,6 +6273,8 @@ class F2fsEvictInodeFtraceEvent : public ::protozero::Message {
     kBlocksFieldNumber = 7,
     kAdviseFieldNumber = 8,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsEvictInodeFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -4540,7 +6290,7 @@ class F2fsEvictInodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -4565,7 +6315,7 @@ class F2fsEvictInodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ino kIno() { return {}; }
   void set_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ino::kFieldId;
@@ -4590,7 +6340,7 @@ class F2fsEvictInodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pino kPino() { return {}; }
   void set_pino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pino::kFieldId;
@@ -4615,7 +6365,7 @@ class F2fsEvictInodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Mode kMode() { return {}; }
   void set_mode(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Mode::kFieldId;
@@ -4640,7 +6390,7 @@ class F2fsEvictInodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Size kSize() { return {}; }
   void set_size(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Size::kFieldId;
@@ -4665,7 +6415,7 @@ class F2fsEvictInodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Nlink kNlink() { return {}; }
   void set_nlink(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Nlink::kFieldId;
@@ -4690,7 +6440,7 @@ class F2fsEvictInodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Blocks kBlocks() { return {}; }
   void set_blocks(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Blocks::kFieldId;
@@ -4715,7 +6465,7 @@ class F2fsEvictInodeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Advise kAdvise() { return {}; }
   void set_advise(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Advise::kFieldId;
@@ -4754,6 +6504,8 @@ class F2fsDoSubmitBioFtraceEvent : public ::protozero::Message {
     kSectorFieldNumber = 4,
     kSizeFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.F2fsDoSubmitBioFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -4769,7 +6521,7 @@ class F2fsDoSubmitBioFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -4794,7 +6546,7 @@ class F2fsDoSubmitBioFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Btype kBtype() { return {}; }
   void set_btype(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Btype::kFieldId;
@@ -4819,7 +6571,7 @@ class F2fsDoSubmitBioFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sync kSync() { return {}; }
   void set_sync(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sync::kFieldId;
@@ -4844,7 +6596,7 @@ class F2fsDoSubmitBioFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -4869,7 +6621,7 @@ class F2fsDoSubmitBioFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Size kSize() { return {}; }
   void set_size(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Size::kFieldId;

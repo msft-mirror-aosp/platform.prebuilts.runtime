@@ -20,30 +20,88 @@ class BackgroundTracingMetadata;
 class BackgroundTracingMetadata_TriggerRule;
 class BackgroundTracingMetadata_TriggerRule_HistogramRule;
 class BackgroundTracingMetadata_TriggerRule_NamedRule;
-enum BackgroundTracingMetadata_TriggerRule_NamedRule_EventType : int32_t;
-enum BackgroundTracingMetadata_TriggerRule_TriggerType : int32_t;
+namespace perfetto_pbzero_enum_BackgroundTracingMetadata_TriggerRule_NamedRule {
+enum EventType : int32_t;
+}  // namespace perfetto_pbzero_enum_BackgroundTracingMetadata_TriggerRule_NamedRule
+using BackgroundTracingMetadata_TriggerRule_NamedRule_EventType = perfetto_pbzero_enum_BackgroundTracingMetadata_TriggerRule_NamedRule::EventType;
+namespace perfetto_pbzero_enum_BackgroundTracingMetadata_TriggerRule {
+enum TriggerType : int32_t;
+}  // namespace perfetto_pbzero_enum_BackgroundTracingMetadata_TriggerRule
+using BackgroundTracingMetadata_TriggerRule_TriggerType = perfetto_pbzero_enum_BackgroundTracingMetadata_TriggerRule::TriggerType;
 
-enum BackgroundTracingMetadata_TriggerRule_TriggerType : int32_t {
-  BackgroundTracingMetadata_TriggerRule_TriggerType_TRIGGER_UNSPECIFIED = 0,
-  BackgroundTracingMetadata_TriggerRule_TriggerType_MONITOR_AND_DUMP_WHEN_SPECIFIC_HISTOGRAM_AND_VALUE = 1,
-  BackgroundTracingMetadata_TriggerRule_TriggerType_MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED = 2,
+namespace perfetto_pbzero_enum_BackgroundTracingMetadata_TriggerRule {
+enum TriggerType : int32_t {
+  TRIGGER_UNSPECIFIED = 0,
+  MONITOR_AND_DUMP_WHEN_SPECIFIC_HISTOGRAM_AND_VALUE = 1,
+  MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED = 2,
 };
+} // namespace perfetto_pbzero_enum_BackgroundTracingMetadata_TriggerRule
+using BackgroundTracingMetadata_TriggerRule_TriggerType = perfetto_pbzero_enum_BackgroundTracingMetadata_TriggerRule::TriggerType;
 
-const BackgroundTracingMetadata_TriggerRule_TriggerType BackgroundTracingMetadata_TriggerRule_TriggerType_MIN = BackgroundTracingMetadata_TriggerRule_TriggerType_TRIGGER_UNSPECIFIED;
-const BackgroundTracingMetadata_TriggerRule_TriggerType BackgroundTracingMetadata_TriggerRule_TriggerType_MAX = BackgroundTracingMetadata_TriggerRule_TriggerType_MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED;
 
-enum BackgroundTracingMetadata_TriggerRule_NamedRule_EventType : int32_t {
-  BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_UNSPECIFIED = 0,
-  BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_SESSION_RESTORE = 1,
-  BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_NAVIGATION = 2,
-  BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_STARTUP = 3,
-  BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_REACHED_CODE = 4,
-  BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_CONTENT_TRIGGER = 5,
-  BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_TEST_RULE = 1000,
+constexpr BackgroundTracingMetadata_TriggerRule_TriggerType BackgroundTracingMetadata_TriggerRule_TriggerType_MIN = BackgroundTracingMetadata_TriggerRule_TriggerType::TRIGGER_UNSPECIFIED;
+constexpr BackgroundTracingMetadata_TriggerRule_TriggerType BackgroundTracingMetadata_TriggerRule_TriggerType_MAX = BackgroundTracingMetadata_TriggerRule_TriggerType::MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* BackgroundTracingMetadata_TriggerRule_TriggerType_Name(::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_TriggerType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_TriggerType::TRIGGER_UNSPECIFIED:
+    return "TRIGGER_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_TriggerType::MONITOR_AND_DUMP_WHEN_SPECIFIC_HISTOGRAM_AND_VALUE:
+    return "MONITOR_AND_DUMP_WHEN_SPECIFIC_HISTOGRAM_AND_VALUE";
+
+  case ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_TriggerType::MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED:
+    return "MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_BackgroundTracingMetadata_TriggerRule_NamedRule {
+enum EventType : int32_t {
+  UNSPECIFIED = 0,
+  SESSION_RESTORE = 1,
+  NAVIGATION = 2,
+  STARTUP = 3,
+  REACHED_CODE = 4,
+  CONTENT_TRIGGER = 5,
+  TEST_RULE = 1000,
 };
+} // namespace perfetto_pbzero_enum_BackgroundTracingMetadata_TriggerRule_NamedRule
+using BackgroundTracingMetadata_TriggerRule_NamedRule_EventType = perfetto_pbzero_enum_BackgroundTracingMetadata_TriggerRule_NamedRule::EventType;
 
-const BackgroundTracingMetadata_TriggerRule_NamedRule_EventType BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_MIN = BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_UNSPECIFIED;
-const BackgroundTracingMetadata_TriggerRule_NamedRule_EventType BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_MAX = BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_TEST_RULE;
+
+constexpr BackgroundTracingMetadata_TriggerRule_NamedRule_EventType BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_MIN = BackgroundTracingMetadata_TriggerRule_NamedRule_EventType::UNSPECIFIED;
+constexpr BackgroundTracingMetadata_TriggerRule_NamedRule_EventType BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_MAX = BackgroundTracingMetadata_TriggerRule_NamedRule_EventType::TEST_RULE;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_Name(::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType::UNSPECIFIED:
+    return "UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType::SESSION_RESTORE:
+    return "SESSION_RESTORE";
+
+  case ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType::NAVIGATION:
+    return "NAVIGATION";
+
+  case ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType::STARTUP:
+    return "STARTUP";
+
+  case ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType::REACHED_CODE:
+    return "REACHED_CODE";
+
+  case ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType::CONTENT_TRIGGER:
+    return "CONTENT_TRIGGER";
+
+  case ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType::TEST_RULE:
+    return "TEST_RULE";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class BackgroundTracingMetadata_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -63,6 +121,8 @@ class BackgroundTracingMetadata : public ::protozero::Message {
     kTriggeredRuleFieldNumber = 1,
     kActiveRulesFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BackgroundTracingMetadata"; }
+
   using TriggerRule = ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule;
 
   using FieldMetadata_TriggeredRule =
@@ -79,7 +139,7 @@ class BackgroundTracingMetadata : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TriggeredRule kTriggeredRule() { return {}; }
   template <typename T = BackgroundTracingMetadata_TriggerRule> T* set_triggered_rule() {
     return BeginNestedMessage<T>(1);
@@ -100,7 +160,7 @@ class BackgroundTracingMetadata : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ActiveRules kActiveRules() { return {}; }
   template <typename T = BackgroundTracingMetadata_TriggerRule> T* add_active_rules() {
     return BeginNestedMessage<T>(2);
@@ -129,12 +189,18 @@ class BackgroundTracingMetadata_TriggerRule : public ::protozero::Message {
     kHistogramRuleFieldNumber = 2,
     kNamedRuleFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BackgroundTracingMetadata.TriggerRule"; }
+
   using HistogramRule = ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_HistogramRule;
   using NamedRule = ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule;
+
   using TriggerType = ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_TriggerType;
-  static const TriggerType TRIGGER_UNSPECIFIED = BackgroundTracingMetadata_TriggerRule_TriggerType_TRIGGER_UNSPECIFIED;
-  static const TriggerType MONITOR_AND_DUMP_WHEN_SPECIFIC_HISTOGRAM_AND_VALUE = BackgroundTracingMetadata_TriggerRule_TriggerType_MONITOR_AND_DUMP_WHEN_SPECIFIC_HISTOGRAM_AND_VALUE;
-  static const TriggerType MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED = BackgroundTracingMetadata_TriggerRule_TriggerType_MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED;
+  static inline const char* TriggerType_Name(TriggerType value) {
+    return ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_TriggerType_Name(value);
+  }
+  static const TriggerType TRIGGER_UNSPECIFIED = TriggerType::TRIGGER_UNSPECIFIED;
+  static const TriggerType MONITOR_AND_DUMP_WHEN_SPECIFIC_HISTOGRAM_AND_VALUE = TriggerType::MONITOR_AND_DUMP_WHEN_SPECIFIC_HISTOGRAM_AND_VALUE;
+  static const TriggerType MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED = TriggerType::MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED;
 
   using FieldMetadata_TriggerType =
     ::protozero::proto_utils::FieldMetadata<
@@ -150,7 +216,7 @@ class BackgroundTracingMetadata_TriggerRule : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TriggerType kTriggerType() { return {}; }
   void set_trigger_type(::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_TriggerType value) {
     static constexpr uint32_t field_id = FieldMetadata_TriggerType::kFieldId;
@@ -175,7 +241,7 @@ class BackgroundTracingMetadata_TriggerRule : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HistogramRule kHistogramRule() { return {}; }
   template <typename T = BackgroundTracingMetadata_TriggerRule_HistogramRule> T* set_histogram_rule() {
     return BeginNestedMessage<T>(2);
@@ -196,7 +262,7 @@ class BackgroundTracingMetadata_TriggerRule : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NamedRule kNamedRule() { return {}; }
   template <typename T = BackgroundTracingMetadata_TriggerRule_NamedRule> T* set_named_rule() {
     return BeginNestedMessage<T>(3);
@@ -222,14 +288,20 @@ class BackgroundTracingMetadata_TriggerRule_NamedRule : public ::protozero::Mess
     kEventTypeFieldNumber = 1,
     kContentTriggerNameHashFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BackgroundTracingMetadata.TriggerRule.NamedRule"; }
+
+
   using EventType = ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType;
-  static const EventType UNSPECIFIED = BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_UNSPECIFIED;
-  static const EventType SESSION_RESTORE = BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_SESSION_RESTORE;
-  static const EventType NAVIGATION = BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_NAVIGATION;
-  static const EventType STARTUP = BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_STARTUP;
-  static const EventType REACHED_CODE = BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_REACHED_CODE;
-  static const EventType CONTENT_TRIGGER = BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_CONTENT_TRIGGER;
-  static const EventType TEST_RULE = BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_TEST_RULE;
+  static inline const char* EventType_Name(EventType value) {
+    return ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_Name(value);
+  }
+  static const EventType UNSPECIFIED = EventType::UNSPECIFIED;
+  static const EventType SESSION_RESTORE = EventType::SESSION_RESTORE;
+  static const EventType NAVIGATION = EventType::NAVIGATION;
+  static const EventType STARTUP = EventType::STARTUP;
+  static const EventType REACHED_CODE = EventType::REACHED_CODE;
+  static const EventType CONTENT_TRIGGER = EventType::CONTENT_TRIGGER;
+  static const EventType TEST_RULE = EventType::TEST_RULE;
 
   using FieldMetadata_EventType =
     ::protozero::proto_utils::FieldMetadata<
@@ -245,7 +317,7 @@ class BackgroundTracingMetadata_TriggerRule_NamedRule : public ::protozero::Mess
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EventType kEventType() { return {}; }
   void set_event_type(::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType value) {
     static constexpr uint32_t field_id = FieldMetadata_EventType::kFieldId;
@@ -270,7 +342,7 @@ class BackgroundTracingMetadata_TriggerRule_NamedRule : public ::protozero::Mess
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ContentTriggerNameHash kContentTriggerNameHash() { return {}; }
   void set_content_trigger_name_hash(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ContentTriggerNameHash::kFieldId;
@@ -303,6 +375,8 @@ class BackgroundTracingMetadata_TriggerRule_HistogramRule : public ::protozero::
     kHistogramMinTriggerFieldNumber = 2,
     kHistogramMaxTriggerFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BackgroundTracingMetadata.TriggerRule.HistogramRule"; }
+
 
   using FieldMetadata_HistogramNameHash =
     ::protozero::proto_utils::FieldMetadata<
@@ -318,7 +392,7 @@ class BackgroundTracingMetadata_TriggerRule_HistogramRule : public ::protozero::
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HistogramNameHash kHistogramNameHash() { return {}; }
   void set_histogram_name_hash(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HistogramNameHash::kFieldId;
@@ -343,7 +417,7 @@ class BackgroundTracingMetadata_TriggerRule_HistogramRule : public ::protozero::
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HistogramMinTrigger kHistogramMinTrigger() { return {}; }
   void set_histogram_min_trigger(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HistogramMinTrigger::kFieldId;
@@ -368,7 +442,7 @@ class BackgroundTracingMetadata_TriggerRule_HistogramRule : public ::protozero::
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HistogramMaxTrigger kHistogramMaxTrigger() { return {}; }
   void set_histogram_max_trigger(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HistogramMaxTrigger::kFieldId;
@@ -401,6 +475,8 @@ class ChromeMetadataPacket : public ::protozero::Message {
     kChromeVersionCodeFieldNumber = 2,
     kEnabledCategoriesFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeMetadataPacket"; }
+
 
   using FieldMetadata_BackgroundTracingMetadata =
     ::protozero::proto_utils::FieldMetadata<
@@ -416,7 +492,7 @@ class ChromeMetadataPacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BackgroundTracingMetadata kBackgroundTracingMetadata() { return {}; }
   template <typename T = BackgroundTracingMetadata> T* set_background_tracing_metadata() {
     return BeginNestedMessage<T>(1);
@@ -437,7 +513,7 @@ class ChromeMetadataPacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ChromeVersionCode kChromeVersionCode() { return {}; }
   void set_chrome_version_code(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ChromeVersionCode::kFieldId;
@@ -462,10 +538,13 @@ class ChromeMetadataPacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EnabledCategories kEnabledCategories() { return {}; }
   void set_enabled_categories(const char* data, size_t size) {
     AppendBytes(FieldMetadata_EnabledCategories::kFieldId, data, size);
+  }
+  void set_enabled_categories(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_EnabledCategories::kFieldId, chars.data, chars.size);
   }
   void set_enabled_categories(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_EnabledCategories::kFieldId;
