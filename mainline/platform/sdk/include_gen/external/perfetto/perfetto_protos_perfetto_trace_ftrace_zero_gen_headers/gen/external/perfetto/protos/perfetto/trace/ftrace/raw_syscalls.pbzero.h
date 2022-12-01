@@ -35,6 +35,8 @@ class SysExitFtraceEvent : public ::protozero::Message {
     kIdFieldNumber = 1,
     kRetFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.SysExitFtraceEvent"; }
+
 
   using FieldMetadata_Id =
     ::protozero::proto_utils::FieldMetadata<
@@ -50,7 +52,7 @@ class SysExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Id kId() { return {}; }
   void set_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
@@ -75,7 +77,7 @@ class SysExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ret kRet() { return {}; }
   void set_ret(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ret::kFieldId;
@@ -102,6 +104,8 @@ class SysEnterFtraceEvent : public ::protozero::Message {
   enum : int32_t {
     kIdFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.SysEnterFtraceEvent"; }
+
 
   using FieldMetadata_Id =
     ::protozero::proto_utils::FieldMetadata<
@@ -117,7 +121,7 @@ class SysEnterFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Id kId() { return {}; }
   void set_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;

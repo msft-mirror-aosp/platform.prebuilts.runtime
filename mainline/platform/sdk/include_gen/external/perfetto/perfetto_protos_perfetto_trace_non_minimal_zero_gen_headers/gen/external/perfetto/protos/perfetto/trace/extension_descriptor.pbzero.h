@@ -33,6 +33,8 @@ class ExtensionDescriptor : public ::protozero::Message {
   enum : int32_t {
     kExtensionSetFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ExtensionDescriptor"; }
+
 
   using FieldMetadata_ExtensionSet =
     ::protozero::proto_utils::FieldMetadata<
@@ -48,7 +50,7 @@ class ExtensionDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ExtensionSet kExtensionSet() { return {}; }
   template <typename T = FileDescriptorSet> T* set_extension_set() {
     return BeginNestedMessage<T>(1);

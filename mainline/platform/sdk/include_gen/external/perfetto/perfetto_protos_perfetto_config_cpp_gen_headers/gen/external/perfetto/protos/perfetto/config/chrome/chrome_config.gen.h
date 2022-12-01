@@ -34,7 +34,7 @@ enum ChromeConfig_ClientPriority : int {
   ChromeConfig_ClientPriority_USER_INITIATED = 2,
 };
 
-class PERFETTO_EXPORT ChromeConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeConfig : public ::protozero::CppMessageObj {
  public:
   using ClientPriority = ChromeConfig_ClientPriority;
   static constexpr auto UNKNOWN = ChromeConfig_ClientPriority_UNKNOWN;
