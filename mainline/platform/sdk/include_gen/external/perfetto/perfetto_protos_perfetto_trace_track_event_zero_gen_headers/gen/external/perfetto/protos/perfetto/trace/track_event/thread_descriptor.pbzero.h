@@ -16,27 +16,83 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-enum ThreadDescriptor_ChromeThreadType : int32_t;
+namespace perfetto_pbzero_enum_ThreadDescriptor {
+enum ChromeThreadType : int32_t;
+}  // namespace perfetto_pbzero_enum_ThreadDescriptor
+using ThreadDescriptor_ChromeThreadType = perfetto_pbzero_enum_ThreadDescriptor::ChromeThreadType;
 
-enum ThreadDescriptor_ChromeThreadType : int32_t {
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_UNSPECIFIED = 0,
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_MAIN = 1,
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_IO = 2,
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_POOL_BG_WORKER = 3,
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_POOL_FG_WORKER = 4,
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_POOL_FB_BLOCKING = 5,
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_POOL_BG_BLOCKING = 6,
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_POOL_SERVICE = 7,
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_COMPOSITOR = 8,
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_VIZ_COMPOSITOR = 9,
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_COMPOSITOR_WORKER = 10,
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_SERVICE_WORKER = 11,
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_MEMORY_INFRA = 50,
-  ThreadDescriptor_ChromeThreadType_CHROME_THREAD_SAMPLING_PROFILER = 51,
+namespace perfetto_pbzero_enum_ThreadDescriptor {
+enum ChromeThreadType : int32_t {
+  CHROME_THREAD_UNSPECIFIED = 0,
+  CHROME_THREAD_MAIN = 1,
+  CHROME_THREAD_IO = 2,
+  CHROME_THREAD_POOL_BG_WORKER = 3,
+  CHROME_THREAD_POOL_FG_WORKER = 4,
+  CHROME_THREAD_POOL_FB_BLOCKING = 5,
+  CHROME_THREAD_POOL_BG_BLOCKING = 6,
+  CHROME_THREAD_POOL_SERVICE = 7,
+  CHROME_THREAD_COMPOSITOR = 8,
+  CHROME_THREAD_VIZ_COMPOSITOR = 9,
+  CHROME_THREAD_COMPOSITOR_WORKER = 10,
+  CHROME_THREAD_SERVICE_WORKER = 11,
+  CHROME_THREAD_MEMORY_INFRA = 50,
+  CHROME_THREAD_SAMPLING_PROFILER = 51,
 };
+} // namespace perfetto_pbzero_enum_ThreadDescriptor
+using ThreadDescriptor_ChromeThreadType = perfetto_pbzero_enum_ThreadDescriptor::ChromeThreadType;
 
-const ThreadDescriptor_ChromeThreadType ThreadDescriptor_ChromeThreadType_MIN = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_UNSPECIFIED;
-const ThreadDescriptor_ChromeThreadType ThreadDescriptor_ChromeThreadType_MAX = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_SAMPLING_PROFILER;
+
+constexpr ThreadDescriptor_ChromeThreadType ThreadDescriptor_ChromeThreadType_MIN = ThreadDescriptor_ChromeThreadType::CHROME_THREAD_UNSPECIFIED;
+constexpr ThreadDescriptor_ChromeThreadType ThreadDescriptor_ChromeThreadType_MAX = ThreadDescriptor_ChromeThreadType::CHROME_THREAD_SAMPLING_PROFILER;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ThreadDescriptor_ChromeThreadType_Name(::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_UNSPECIFIED:
+    return "CHROME_THREAD_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_MAIN:
+    return "CHROME_THREAD_MAIN";
+
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_IO:
+    return "CHROME_THREAD_IO";
+
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_POOL_BG_WORKER:
+    return "CHROME_THREAD_POOL_BG_WORKER";
+
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_POOL_FG_WORKER:
+    return "CHROME_THREAD_POOL_FG_WORKER";
+
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_POOL_FB_BLOCKING:
+    return "CHROME_THREAD_POOL_FB_BLOCKING";
+
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_POOL_BG_BLOCKING:
+    return "CHROME_THREAD_POOL_BG_BLOCKING";
+
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_POOL_SERVICE:
+    return "CHROME_THREAD_POOL_SERVICE";
+
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_COMPOSITOR:
+    return "CHROME_THREAD_COMPOSITOR";
+
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_VIZ_COMPOSITOR:
+    return "CHROME_THREAD_VIZ_COMPOSITOR";
+
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_COMPOSITOR_WORKER:
+    return "CHROME_THREAD_COMPOSITOR_WORKER";
+
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_SERVICE_WORKER:
+    return "CHROME_THREAD_SERVICE_WORKER";
+
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_MEMORY_INFRA:
+    return "CHROME_THREAD_MEMORY_INFRA";
+
+  case ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType::CHROME_THREAD_SAMPLING_PROFILER:
+    return "CHROME_THREAD_SAMPLING_PROFILER";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class ThreadDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/8, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -74,21 +130,27 @@ class ThreadDescriptor : public ::protozero::Message {
     kReferenceThreadInstructionCountFieldNumber = 8,
     kLegacySortIndexFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ThreadDescriptor"; }
+
+
   using ChromeThreadType = ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType;
-  static const ChromeThreadType CHROME_THREAD_UNSPECIFIED = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_UNSPECIFIED;
-  static const ChromeThreadType CHROME_THREAD_MAIN = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_MAIN;
-  static const ChromeThreadType CHROME_THREAD_IO = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_IO;
-  static const ChromeThreadType CHROME_THREAD_POOL_BG_WORKER = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_POOL_BG_WORKER;
-  static const ChromeThreadType CHROME_THREAD_POOL_FG_WORKER = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_POOL_FG_WORKER;
-  static const ChromeThreadType CHROME_THREAD_POOL_FB_BLOCKING = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_POOL_FB_BLOCKING;
-  static const ChromeThreadType CHROME_THREAD_POOL_BG_BLOCKING = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_POOL_BG_BLOCKING;
-  static const ChromeThreadType CHROME_THREAD_POOL_SERVICE = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_POOL_SERVICE;
-  static const ChromeThreadType CHROME_THREAD_COMPOSITOR = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_COMPOSITOR;
-  static const ChromeThreadType CHROME_THREAD_VIZ_COMPOSITOR = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_VIZ_COMPOSITOR;
-  static const ChromeThreadType CHROME_THREAD_COMPOSITOR_WORKER = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_COMPOSITOR_WORKER;
-  static const ChromeThreadType CHROME_THREAD_SERVICE_WORKER = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_SERVICE_WORKER;
-  static const ChromeThreadType CHROME_THREAD_MEMORY_INFRA = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_MEMORY_INFRA;
-  static const ChromeThreadType CHROME_THREAD_SAMPLING_PROFILER = ThreadDescriptor_ChromeThreadType_CHROME_THREAD_SAMPLING_PROFILER;
+  static inline const char* ChromeThreadType_Name(ChromeThreadType value) {
+    return ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType_Name(value);
+  }
+  static const ChromeThreadType CHROME_THREAD_UNSPECIFIED = ChromeThreadType::CHROME_THREAD_UNSPECIFIED;
+  static const ChromeThreadType CHROME_THREAD_MAIN = ChromeThreadType::CHROME_THREAD_MAIN;
+  static const ChromeThreadType CHROME_THREAD_IO = ChromeThreadType::CHROME_THREAD_IO;
+  static const ChromeThreadType CHROME_THREAD_POOL_BG_WORKER = ChromeThreadType::CHROME_THREAD_POOL_BG_WORKER;
+  static const ChromeThreadType CHROME_THREAD_POOL_FG_WORKER = ChromeThreadType::CHROME_THREAD_POOL_FG_WORKER;
+  static const ChromeThreadType CHROME_THREAD_POOL_FB_BLOCKING = ChromeThreadType::CHROME_THREAD_POOL_FB_BLOCKING;
+  static const ChromeThreadType CHROME_THREAD_POOL_BG_BLOCKING = ChromeThreadType::CHROME_THREAD_POOL_BG_BLOCKING;
+  static const ChromeThreadType CHROME_THREAD_POOL_SERVICE = ChromeThreadType::CHROME_THREAD_POOL_SERVICE;
+  static const ChromeThreadType CHROME_THREAD_COMPOSITOR = ChromeThreadType::CHROME_THREAD_COMPOSITOR;
+  static const ChromeThreadType CHROME_THREAD_VIZ_COMPOSITOR = ChromeThreadType::CHROME_THREAD_VIZ_COMPOSITOR;
+  static const ChromeThreadType CHROME_THREAD_COMPOSITOR_WORKER = ChromeThreadType::CHROME_THREAD_COMPOSITOR_WORKER;
+  static const ChromeThreadType CHROME_THREAD_SERVICE_WORKER = ChromeThreadType::CHROME_THREAD_SERVICE_WORKER;
+  static const ChromeThreadType CHROME_THREAD_MEMORY_INFRA = ChromeThreadType::CHROME_THREAD_MEMORY_INFRA;
+  static const ChromeThreadType CHROME_THREAD_SAMPLING_PROFILER = ChromeThreadType::CHROME_THREAD_SAMPLING_PROFILER;
 
   using FieldMetadata_Pid =
     ::protozero::proto_utils::FieldMetadata<
@@ -104,7 +166,7 @@ class ThreadDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -129,7 +191,7 @@ class ThreadDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Tid kTid() { return {}; }
   void set_tid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Tid::kFieldId;
@@ -154,10 +216,13 @@ class ThreadDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ThreadName kThreadName() { return {}; }
   void set_thread_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ThreadName::kFieldId, data, size);
+  }
+  void set_thread_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ThreadName::kFieldId, chars.data, chars.size);
   }
   void set_thread_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ThreadName::kFieldId;
@@ -182,7 +247,7 @@ class ThreadDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ChromeThreadType kChromeThreadType() { return {}; }
   void set_chrome_thread_type(::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType value) {
     static constexpr uint32_t field_id = FieldMetadata_ChromeThreadType::kFieldId;
@@ -207,7 +272,7 @@ class ThreadDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ReferenceTimestampUs kReferenceTimestampUs() { return {}; }
   void set_reference_timestamp_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ReferenceTimestampUs::kFieldId;
@@ -232,7 +297,7 @@ class ThreadDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ReferenceThreadTimeUs kReferenceThreadTimeUs() { return {}; }
   void set_reference_thread_time_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ReferenceThreadTimeUs::kFieldId;
@@ -257,7 +322,7 @@ class ThreadDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ReferenceThreadInstructionCount kReferenceThreadInstructionCount() { return {}; }
   void set_reference_thread_instruction_count(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ReferenceThreadInstructionCount::kFieldId;
@@ -282,7 +347,7 @@ class ThreadDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LegacySortIndex kLegacySortIndex() { return {}; }
   void set_legacy_sort_index(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_LegacySortIndex::kFieldId;

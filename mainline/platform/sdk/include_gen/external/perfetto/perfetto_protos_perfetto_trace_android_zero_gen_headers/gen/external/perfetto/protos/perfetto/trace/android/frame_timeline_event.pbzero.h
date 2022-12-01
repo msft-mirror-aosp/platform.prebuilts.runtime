@@ -21,47 +21,149 @@ class FrameTimelineEvent_ActualSurfaceFrameStart;
 class FrameTimelineEvent_ExpectedDisplayFrameStart;
 class FrameTimelineEvent_ExpectedSurfaceFrameStart;
 class FrameTimelineEvent_FrameEnd;
-enum FrameTimelineEvent_PredictionType : int32_t;
-enum FrameTimelineEvent_PresentType : int32_t;
+namespace perfetto_pbzero_enum_FrameTimelineEvent {
+enum PredictionType : int32_t;
+}  // namespace perfetto_pbzero_enum_FrameTimelineEvent
+using FrameTimelineEvent_PredictionType = perfetto_pbzero_enum_FrameTimelineEvent::PredictionType;
+namespace perfetto_pbzero_enum_FrameTimelineEvent {
+enum PresentType : int32_t;
+}  // namespace perfetto_pbzero_enum_FrameTimelineEvent
+using FrameTimelineEvent_PresentType = perfetto_pbzero_enum_FrameTimelineEvent::PresentType;
 
-enum FrameTimelineEvent_JankType : int32_t {
-  FrameTimelineEvent_JankType_JANK_UNSPECIFIED = 0,
-  FrameTimelineEvent_JankType_JANK_NONE = 1,
-  FrameTimelineEvent_JankType_JANK_SF_SCHEDULING = 2,
-  FrameTimelineEvent_JankType_JANK_PREDICTION_ERROR = 4,
-  FrameTimelineEvent_JankType_JANK_DISPLAY_HAL = 8,
-  FrameTimelineEvent_JankType_JANK_SF_CPU_DEADLINE_MISSED = 16,
-  FrameTimelineEvent_JankType_JANK_SF_GPU_DEADLINE_MISSED = 32,
-  FrameTimelineEvent_JankType_JANK_APP_DEADLINE_MISSED = 64,
-  FrameTimelineEvent_JankType_JANK_BUFFER_STUFFING = 128,
-  FrameTimelineEvent_JankType_JANK_UNKNOWN = 256,
-  FrameTimelineEvent_JankType_JANK_SF_STUFFING = 512,
+namespace perfetto_pbzero_enum_FrameTimelineEvent {
+enum JankType : int32_t {
+  JANK_UNSPECIFIED = 0,
+  JANK_NONE = 1,
+  JANK_SF_SCHEDULING = 2,
+  JANK_PREDICTION_ERROR = 4,
+  JANK_DISPLAY_HAL = 8,
+  JANK_SF_CPU_DEADLINE_MISSED = 16,
+  JANK_SF_GPU_DEADLINE_MISSED = 32,
+  JANK_APP_DEADLINE_MISSED = 64,
+  JANK_BUFFER_STUFFING = 128,
+  JANK_UNKNOWN = 256,
+  JANK_SF_STUFFING = 512,
 };
+} // namespace perfetto_pbzero_enum_FrameTimelineEvent
+using FrameTimelineEvent_JankType = perfetto_pbzero_enum_FrameTimelineEvent::JankType;
 
-const FrameTimelineEvent_JankType FrameTimelineEvent_JankType_MIN = FrameTimelineEvent_JankType_JANK_UNSPECIFIED;
-const FrameTimelineEvent_JankType FrameTimelineEvent_JankType_MAX = FrameTimelineEvent_JankType_JANK_SF_STUFFING;
 
-enum FrameTimelineEvent_PresentType : int32_t {
-  FrameTimelineEvent_PresentType_PRESENT_UNSPECIFIED = 0,
-  FrameTimelineEvent_PresentType_PRESENT_ON_TIME = 1,
-  FrameTimelineEvent_PresentType_PRESENT_LATE = 2,
-  FrameTimelineEvent_PresentType_PRESENT_EARLY = 3,
-  FrameTimelineEvent_PresentType_PRESENT_DROPPED = 4,
-  FrameTimelineEvent_PresentType_PRESENT_UNKNOWN = 5,
+constexpr FrameTimelineEvent_JankType FrameTimelineEvent_JankType_MIN = FrameTimelineEvent_JankType::JANK_UNSPECIFIED;
+constexpr FrameTimelineEvent_JankType FrameTimelineEvent_JankType_MAX = FrameTimelineEvent_JankType::JANK_SF_STUFFING;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* FrameTimelineEvent_JankType_Name(::perfetto::protos::pbzero::FrameTimelineEvent_JankType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_UNSPECIFIED:
+    return "JANK_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_NONE:
+    return "JANK_NONE";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_SF_SCHEDULING:
+    return "JANK_SF_SCHEDULING";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_PREDICTION_ERROR:
+    return "JANK_PREDICTION_ERROR";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_DISPLAY_HAL:
+    return "JANK_DISPLAY_HAL";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_SF_CPU_DEADLINE_MISSED:
+    return "JANK_SF_CPU_DEADLINE_MISSED";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_SF_GPU_DEADLINE_MISSED:
+    return "JANK_SF_GPU_DEADLINE_MISSED";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_APP_DEADLINE_MISSED:
+    return "JANK_APP_DEADLINE_MISSED";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_BUFFER_STUFFING:
+    return "JANK_BUFFER_STUFFING";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_UNKNOWN:
+    return "JANK_UNKNOWN";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_SF_STUFFING:
+    return "JANK_SF_STUFFING";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_FrameTimelineEvent {
+enum PresentType : int32_t {
+  PRESENT_UNSPECIFIED = 0,
+  PRESENT_ON_TIME = 1,
+  PRESENT_LATE = 2,
+  PRESENT_EARLY = 3,
+  PRESENT_DROPPED = 4,
+  PRESENT_UNKNOWN = 5,
 };
+} // namespace perfetto_pbzero_enum_FrameTimelineEvent
+using FrameTimelineEvent_PresentType = perfetto_pbzero_enum_FrameTimelineEvent::PresentType;
 
-const FrameTimelineEvent_PresentType FrameTimelineEvent_PresentType_MIN = FrameTimelineEvent_PresentType_PRESENT_UNSPECIFIED;
-const FrameTimelineEvent_PresentType FrameTimelineEvent_PresentType_MAX = FrameTimelineEvent_PresentType_PRESENT_UNKNOWN;
 
-enum FrameTimelineEvent_PredictionType : int32_t {
-  FrameTimelineEvent_PredictionType_PREDICTION_UNSPECIFIED = 0,
-  FrameTimelineEvent_PredictionType_PREDICTION_VALID = 1,
-  FrameTimelineEvent_PredictionType_PREDICTION_EXPIRED = 2,
-  FrameTimelineEvent_PredictionType_PREDICTION_UNKNOWN = 3,
+constexpr FrameTimelineEvent_PresentType FrameTimelineEvent_PresentType_MIN = FrameTimelineEvent_PresentType::PRESENT_UNSPECIFIED;
+constexpr FrameTimelineEvent_PresentType FrameTimelineEvent_PresentType_MAX = FrameTimelineEvent_PresentType::PRESENT_UNKNOWN;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* FrameTimelineEvent_PresentType_Name(::perfetto::protos::pbzero::FrameTimelineEvent_PresentType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_PresentType::PRESENT_UNSPECIFIED:
+    return "PRESENT_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_PresentType::PRESENT_ON_TIME:
+    return "PRESENT_ON_TIME";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_PresentType::PRESENT_LATE:
+    return "PRESENT_LATE";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_PresentType::PRESENT_EARLY:
+    return "PRESENT_EARLY";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_PresentType::PRESENT_DROPPED:
+    return "PRESENT_DROPPED";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_PresentType::PRESENT_UNKNOWN:
+    return "PRESENT_UNKNOWN";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_FrameTimelineEvent {
+enum PredictionType : int32_t {
+  PREDICTION_UNSPECIFIED = 0,
+  PREDICTION_VALID = 1,
+  PREDICTION_EXPIRED = 2,
+  PREDICTION_UNKNOWN = 3,
 };
+} // namespace perfetto_pbzero_enum_FrameTimelineEvent
+using FrameTimelineEvent_PredictionType = perfetto_pbzero_enum_FrameTimelineEvent::PredictionType;
 
-const FrameTimelineEvent_PredictionType FrameTimelineEvent_PredictionType_MIN = FrameTimelineEvent_PredictionType_PREDICTION_UNSPECIFIED;
-const FrameTimelineEvent_PredictionType FrameTimelineEvent_PredictionType_MAX = FrameTimelineEvent_PredictionType_PREDICTION_UNKNOWN;
+
+constexpr FrameTimelineEvent_PredictionType FrameTimelineEvent_PredictionType_MIN = FrameTimelineEvent_PredictionType::PREDICTION_UNSPECIFIED;
+constexpr FrameTimelineEvent_PredictionType FrameTimelineEvent_PredictionType_MAX = FrameTimelineEvent_PredictionType::PREDICTION_UNKNOWN;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* FrameTimelineEvent_PredictionType_Name(::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType::PREDICTION_UNSPECIFIED:
+    return "PREDICTION_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType::PREDICTION_VALID:
+    return "PREDICTION_VALID";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType::PREDICTION_EXPIRED:
+    return "PREDICTION_EXPIRED";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType::PREDICTION_UNKNOWN:
+    return "PREDICTION_UNKNOWN";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class FrameTimelineEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -90,35 +192,49 @@ class FrameTimelineEvent : public ::protozero::Message {
     kActualSurfaceFrameStartFieldNumber = 4,
     kFrameEndFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.FrameTimelineEvent"; }
+
   using ExpectedSurfaceFrameStart = ::perfetto::protos::pbzero::FrameTimelineEvent_ExpectedSurfaceFrameStart;
   using ActualSurfaceFrameStart = ::perfetto::protos::pbzero::FrameTimelineEvent_ActualSurfaceFrameStart;
   using ExpectedDisplayFrameStart = ::perfetto::protos::pbzero::FrameTimelineEvent_ExpectedDisplayFrameStart;
   using ActualDisplayFrameStart = ::perfetto::protos::pbzero::FrameTimelineEvent_ActualDisplayFrameStart;
   using FrameEnd = ::perfetto::protos::pbzero::FrameTimelineEvent_FrameEnd;
+
   using JankType = ::perfetto::protos::pbzero::FrameTimelineEvent_JankType;
+  static inline const char* JankType_Name(JankType value) {
+    return ::perfetto::protos::pbzero::FrameTimelineEvent_JankType_Name(value);
+  }
+
   using PresentType = ::perfetto::protos::pbzero::FrameTimelineEvent_PresentType;
+  static inline const char* PresentType_Name(PresentType value) {
+    return ::perfetto::protos::pbzero::FrameTimelineEvent_PresentType_Name(value);
+  }
+
   using PredictionType = ::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType;
-  static const JankType JANK_UNSPECIFIED = FrameTimelineEvent_JankType_JANK_UNSPECIFIED;
-  static const JankType JANK_NONE = FrameTimelineEvent_JankType_JANK_NONE;
-  static const JankType JANK_SF_SCHEDULING = FrameTimelineEvent_JankType_JANK_SF_SCHEDULING;
-  static const JankType JANK_PREDICTION_ERROR = FrameTimelineEvent_JankType_JANK_PREDICTION_ERROR;
-  static const JankType JANK_DISPLAY_HAL = FrameTimelineEvent_JankType_JANK_DISPLAY_HAL;
-  static const JankType JANK_SF_CPU_DEADLINE_MISSED = FrameTimelineEvent_JankType_JANK_SF_CPU_DEADLINE_MISSED;
-  static const JankType JANK_SF_GPU_DEADLINE_MISSED = FrameTimelineEvent_JankType_JANK_SF_GPU_DEADLINE_MISSED;
-  static const JankType JANK_APP_DEADLINE_MISSED = FrameTimelineEvent_JankType_JANK_APP_DEADLINE_MISSED;
-  static const JankType JANK_BUFFER_STUFFING = FrameTimelineEvent_JankType_JANK_BUFFER_STUFFING;
-  static const JankType JANK_UNKNOWN = FrameTimelineEvent_JankType_JANK_UNKNOWN;
-  static const JankType JANK_SF_STUFFING = FrameTimelineEvent_JankType_JANK_SF_STUFFING;
-  static const PresentType PRESENT_UNSPECIFIED = FrameTimelineEvent_PresentType_PRESENT_UNSPECIFIED;
-  static const PresentType PRESENT_ON_TIME = FrameTimelineEvent_PresentType_PRESENT_ON_TIME;
-  static const PresentType PRESENT_LATE = FrameTimelineEvent_PresentType_PRESENT_LATE;
-  static const PresentType PRESENT_EARLY = FrameTimelineEvent_PresentType_PRESENT_EARLY;
-  static const PresentType PRESENT_DROPPED = FrameTimelineEvent_PresentType_PRESENT_DROPPED;
-  static const PresentType PRESENT_UNKNOWN = FrameTimelineEvent_PresentType_PRESENT_UNKNOWN;
-  static const PredictionType PREDICTION_UNSPECIFIED = FrameTimelineEvent_PredictionType_PREDICTION_UNSPECIFIED;
-  static const PredictionType PREDICTION_VALID = FrameTimelineEvent_PredictionType_PREDICTION_VALID;
-  static const PredictionType PREDICTION_EXPIRED = FrameTimelineEvent_PredictionType_PREDICTION_EXPIRED;
-  static const PredictionType PREDICTION_UNKNOWN = FrameTimelineEvent_PredictionType_PREDICTION_UNKNOWN;
+  static inline const char* PredictionType_Name(PredictionType value) {
+    return ::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType_Name(value);
+  }
+  static const JankType JANK_UNSPECIFIED = JankType::JANK_UNSPECIFIED;
+  static const JankType JANK_NONE = JankType::JANK_NONE;
+  static const JankType JANK_SF_SCHEDULING = JankType::JANK_SF_SCHEDULING;
+  static const JankType JANK_PREDICTION_ERROR = JankType::JANK_PREDICTION_ERROR;
+  static const JankType JANK_DISPLAY_HAL = JankType::JANK_DISPLAY_HAL;
+  static const JankType JANK_SF_CPU_DEADLINE_MISSED = JankType::JANK_SF_CPU_DEADLINE_MISSED;
+  static const JankType JANK_SF_GPU_DEADLINE_MISSED = JankType::JANK_SF_GPU_DEADLINE_MISSED;
+  static const JankType JANK_APP_DEADLINE_MISSED = JankType::JANK_APP_DEADLINE_MISSED;
+  static const JankType JANK_BUFFER_STUFFING = JankType::JANK_BUFFER_STUFFING;
+  static const JankType JANK_UNKNOWN = JankType::JANK_UNKNOWN;
+  static const JankType JANK_SF_STUFFING = JankType::JANK_SF_STUFFING;
+  static const PresentType PRESENT_UNSPECIFIED = PresentType::PRESENT_UNSPECIFIED;
+  static const PresentType PRESENT_ON_TIME = PresentType::PRESENT_ON_TIME;
+  static const PresentType PRESENT_LATE = PresentType::PRESENT_LATE;
+  static const PresentType PRESENT_EARLY = PresentType::PRESENT_EARLY;
+  static const PresentType PRESENT_DROPPED = PresentType::PRESENT_DROPPED;
+  static const PresentType PRESENT_UNKNOWN = PresentType::PRESENT_UNKNOWN;
+  static const PredictionType PREDICTION_UNSPECIFIED = PredictionType::PREDICTION_UNSPECIFIED;
+  static const PredictionType PREDICTION_VALID = PredictionType::PREDICTION_VALID;
+  static const PredictionType PREDICTION_EXPIRED = PredictionType::PREDICTION_EXPIRED;
+  static const PredictionType PREDICTION_UNKNOWN = PredictionType::PREDICTION_UNKNOWN;
 
   using FieldMetadata_ExpectedDisplayFrameStart =
     ::protozero::proto_utils::FieldMetadata<
@@ -134,7 +250,7 @@ class FrameTimelineEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ExpectedDisplayFrameStart kExpectedDisplayFrameStart() { return {}; }
   template <typename T = FrameTimelineEvent_ExpectedDisplayFrameStart> T* set_expected_display_frame_start() {
     return BeginNestedMessage<T>(1);
@@ -155,7 +271,7 @@ class FrameTimelineEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ActualDisplayFrameStart kActualDisplayFrameStart() { return {}; }
   template <typename T = FrameTimelineEvent_ActualDisplayFrameStart> T* set_actual_display_frame_start() {
     return BeginNestedMessage<T>(2);
@@ -176,7 +292,7 @@ class FrameTimelineEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ExpectedSurfaceFrameStart kExpectedSurfaceFrameStart() { return {}; }
   template <typename T = FrameTimelineEvent_ExpectedSurfaceFrameStart> T* set_expected_surface_frame_start() {
     return BeginNestedMessage<T>(3);
@@ -197,7 +313,7 @@ class FrameTimelineEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ActualSurfaceFrameStart kActualSurfaceFrameStart() { return {}; }
   template <typename T = FrameTimelineEvent_ActualSurfaceFrameStart> T* set_actual_surface_frame_start() {
     return BeginNestedMessage<T>(4);
@@ -218,7 +334,7 @@ class FrameTimelineEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FrameEnd kFrameEnd() { return {}; }
   template <typename T = FrameTimelineEvent_FrameEnd> T* set_frame_end() {
     return BeginNestedMessage<T>(5);
@@ -241,6 +357,8 @@ class FrameTimelineEvent_FrameEnd : public ::protozero::Message {
   enum : int32_t {
     kCookieFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.FrameTimelineEvent.FrameEnd"; }
+
 
   using FieldMetadata_Cookie =
     ::protozero::proto_utils::FieldMetadata<
@@ -256,7 +374,7 @@ class FrameTimelineEvent_FrameEnd : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cookie kCookie() { return {}; }
   void set_cookie(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Cookie::kFieldId;
@@ -304,6 +422,8 @@ class FrameTimelineEvent_ActualDisplayFrameStart : public ::protozero::Message {
     kJankTypeFieldNumber = 7,
     kPredictionTypeFieldNumber = 8,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.FrameTimelineEvent.ActualDisplayFrameStart"; }
+
 
   using FieldMetadata_Cookie =
     ::protozero::proto_utils::FieldMetadata<
@@ -319,7 +439,7 @@ class FrameTimelineEvent_ActualDisplayFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cookie kCookie() { return {}; }
   void set_cookie(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Cookie::kFieldId;
@@ -344,7 +464,7 @@ class FrameTimelineEvent_ActualDisplayFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Token kToken() { return {}; }
   void set_token(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Token::kFieldId;
@@ -369,7 +489,7 @@ class FrameTimelineEvent_ActualDisplayFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -394,7 +514,7 @@ class FrameTimelineEvent_ActualDisplayFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PresentType kPresentType() { return {}; }
   void set_present_type(::perfetto::protos::pbzero::FrameTimelineEvent_PresentType value) {
     static constexpr uint32_t field_id = FieldMetadata_PresentType::kFieldId;
@@ -419,7 +539,7 @@ class FrameTimelineEvent_ActualDisplayFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_OnTimeFinish kOnTimeFinish() { return {}; }
   void set_on_time_finish(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_OnTimeFinish::kFieldId;
@@ -444,7 +564,7 @@ class FrameTimelineEvent_ActualDisplayFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_GpuComposition kGpuComposition() { return {}; }
   void set_gpu_composition(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_GpuComposition::kFieldId;
@@ -469,7 +589,7 @@ class FrameTimelineEvent_ActualDisplayFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_JankType kJankType() { return {}; }
   void set_jank_type(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_JankType::kFieldId;
@@ -494,7 +614,7 @@ class FrameTimelineEvent_ActualDisplayFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PredictionType kPredictionType() { return {}; }
   void set_prediction_type(::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType value) {
     static constexpr uint32_t field_id = FieldMetadata_PredictionType::kFieldId;
@@ -527,6 +647,8 @@ class FrameTimelineEvent_ExpectedDisplayFrameStart : public ::protozero::Message
     kTokenFieldNumber = 2,
     kPidFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.FrameTimelineEvent.ExpectedDisplayFrameStart"; }
+
 
   using FieldMetadata_Cookie =
     ::protozero::proto_utils::FieldMetadata<
@@ -542,7 +664,7 @@ class FrameTimelineEvent_ExpectedDisplayFrameStart : public ::protozero::Message
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cookie kCookie() { return {}; }
   void set_cookie(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Cookie::kFieldId;
@@ -567,7 +689,7 @@ class FrameTimelineEvent_ExpectedDisplayFrameStart : public ::protozero::Message
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Token kToken() { return {}; }
   void set_token(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Token::kFieldId;
@@ -592,7 +714,7 @@ class FrameTimelineEvent_ExpectedDisplayFrameStart : public ::protozero::Message
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -649,6 +771,8 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
     kPredictionTypeFieldNumber = 10,
     kIsBufferFieldNumber = 11,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.FrameTimelineEvent.ActualSurfaceFrameStart"; }
+
 
   using FieldMetadata_Cookie =
     ::protozero::proto_utils::FieldMetadata<
@@ -664,7 +788,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cookie kCookie() { return {}; }
   void set_cookie(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Cookie::kFieldId;
@@ -689,7 +813,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Token kToken() { return {}; }
   void set_token(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Token::kFieldId;
@@ -714,7 +838,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DisplayFrameToken kDisplayFrameToken() { return {}; }
   void set_display_frame_token(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DisplayFrameToken::kFieldId;
@@ -739,7 +863,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -764,10 +888,13 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LayerName kLayerName() { return {}; }
   void set_layer_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_LayerName::kFieldId, data, size);
+  }
+  void set_layer_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_LayerName::kFieldId, chars.data, chars.size);
   }
   void set_layer_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_LayerName::kFieldId;
@@ -792,7 +919,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PresentType kPresentType() { return {}; }
   void set_present_type(::perfetto::protos::pbzero::FrameTimelineEvent_PresentType value) {
     static constexpr uint32_t field_id = FieldMetadata_PresentType::kFieldId;
@@ -817,7 +944,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_OnTimeFinish kOnTimeFinish() { return {}; }
   void set_on_time_finish(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_OnTimeFinish::kFieldId;
@@ -842,7 +969,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_GpuComposition kGpuComposition() { return {}; }
   void set_gpu_composition(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_GpuComposition::kFieldId;
@@ -867,7 +994,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_JankType kJankType() { return {}; }
   void set_jank_type(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_JankType::kFieldId;
@@ -892,7 +1019,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PredictionType kPredictionType() { return {}; }
   void set_prediction_type(::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType value) {
     static constexpr uint32_t field_id = FieldMetadata_PredictionType::kFieldId;
@@ -917,7 +1044,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IsBuffer kIsBuffer() { return {}; }
   void set_is_buffer(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_IsBuffer::kFieldId;
@@ -956,6 +1083,8 @@ class FrameTimelineEvent_ExpectedSurfaceFrameStart : public ::protozero::Message
     kPidFieldNumber = 4,
     kLayerNameFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.FrameTimelineEvent.ExpectedSurfaceFrameStart"; }
+
 
   using FieldMetadata_Cookie =
     ::protozero::proto_utils::FieldMetadata<
@@ -971,7 +1100,7 @@ class FrameTimelineEvent_ExpectedSurfaceFrameStart : public ::protozero::Message
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cookie kCookie() { return {}; }
   void set_cookie(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Cookie::kFieldId;
@@ -996,7 +1125,7 @@ class FrameTimelineEvent_ExpectedSurfaceFrameStart : public ::protozero::Message
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Token kToken() { return {}; }
   void set_token(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Token::kFieldId;
@@ -1021,7 +1150,7 @@ class FrameTimelineEvent_ExpectedSurfaceFrameStart : public ::protozero::Message
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DisplayFrameToken kDisplayFrameToken() { return {}; }
   void set_display_frame_token(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DisplayFrameToken::kFieldId;
@@ -1046,7 +1175,7 @@ class FrameTimelineEvent_ExpectedSurfaceFrameStart : public ::protozero::Message
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -1071,10 +1200,13 @@ class FrameTimelineEvent_ExpectedSurfaceFrameStart : public ::protozero::Message
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LayerName kLayerName() { return {}; }
   void set_layer_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_LayerName::kFieldId, data, size);
+  }
+  void set_layer_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_LayerName::kFieldId, chars.data, chars.size);
   }
   void set_layer_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_LayerName::kFieldId;

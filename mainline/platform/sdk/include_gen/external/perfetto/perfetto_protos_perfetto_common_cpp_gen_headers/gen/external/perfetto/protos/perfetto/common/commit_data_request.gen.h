@@ -31,7 +31,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT CommitDataRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT CommitDataRequest : public ::protozero::CppMessageObj {
  public:
   using ChunksToMove = CommitDataRequest_ChunksToMove;
   using ChunkToPatch = CommitDataRequest_ChunkToPatch;
@@ -84,7 +84,7 @@ class PERFETTO_EXPORT CommitDataRequest : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT CommitDataRequest_ChunkToPatch : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT CommitDataRequest_ChunkToPatch : public ::protozero::CppMessageObj {
  public:
   using Patch = CommitDataRequest_ChunkToPatch_Patch;
   enum FieldNumbers {
@@ -146,7 +146,7 @@ class PERFETTO_EXPORT CommitDataRequest_ChunkToPatch : public ::protozero::CppMe
 };
 
 
-class PERFETTO_EXPORT CommitDataRequest_ChunkToPatch_Patch : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT CommitDataRequest_ChunkToPatch_Patch : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kOffsetFieldNumber = 1,
@@ -188,7 +188,7 @@ class PERFETTO_EXPORT CommitDataRequest_ChunkToPatch_Patch : public ::protozero:
 };
 
 
-class PERFETTO_EXPORT CommitDataRequest_ChunksToMove : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT CommitDataRequest_ChunksToMove : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kPageFieldNumber = 1,

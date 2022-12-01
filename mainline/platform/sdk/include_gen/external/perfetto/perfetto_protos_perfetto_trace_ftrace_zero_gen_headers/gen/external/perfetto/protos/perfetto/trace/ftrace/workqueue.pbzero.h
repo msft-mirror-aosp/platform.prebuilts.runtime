@@ -44,6 +44,8 @@ class WorkqueueQueueWorkFtraceEvent : public ::protozero::Message {
     kReqCpuFieldNumber = 4,
     kCpuFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.WorkqueueQueueWorkFtraceEvent"; }
+
 
   using FieldMetadata_Work =
     ::protozero::proto_utils::FieldMetadata<
@@ -59,7 +61,7 @@ class WorkqueueQueueWorkFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Work kWork() { return {}; }
   void set_work(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Work::kFieldId;
@@ -84,7 +86,7 @@ class WorkqueueQueueWorkFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Function kFunction() { return {}; }
   void set_function(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Function::kFieldId;
@@ -109,7 +111,7 @@ class WorkqueueQueueWorkFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Workqueue kWorkqueue() { return {}; }
   void set_workqueue(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Workqueue::kFieldId;
@@ -134,7 +136,7 @@ class WorkqueueQueueWorkFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ReqCpu kReqCpu() { return {}; }
   void set_req_cpu(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ReqCpu::kFieldId;
@@ -159,7 +161,7 @@ class WorkqueueQueueWorkFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cpu kCpu() { return {}; }
   void set_cpu(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Cpu::kFieldId;
@@ -189,6 +191,8 @@ class WorkqueueExecuteStartFtraceEvent : public ::protozero::Message {
     kWorkFieldNumber = 1,
     kFunctionFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.WorkqueueExecuteStartFtraceEvent"; }
+
 
   using FieldMetadata_Work =
     ::protozero::proto_utils::FieldMetadata<
@@ -204,7 +208,7 @@ class WorkqueueExecuteStartFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Work kWork() { return {}; }
   void set_work(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Work::kFieldId;
@@ -229,7 +233,7 @@ class WorkqueueExecuteStartFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Function kFunction() { return {}; }
   void set_function(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Function::kFieldId;
@@ -241,13 +245,15 @@ class WorkqueueExecuteStartFtraceEvent : public ::protozero::Message {
   }
 };
 
-class WorkqueueExecuteEndFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class WorkqueueExecuteEndFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   WorkqueueExecuteEndFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit WorkqueueExecuteEndFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit WorkqueueExecuteEndFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_work() const { return at<1>().valid(); }
   uint64_t work() const { return at<1>().as_uint64(); }
+  bool has_function() const { return at<2>().valid(); }
+  uint64_t function() const { return at<2>().as_uint64(); }
 };
 
 class WorkqueueExecuteEndFtraceEvent : public ::protozero::Message {
@@ -255,7 +261,10 @@ class WorkqueueExecuteEndFtraceEvent : public ::protozero::Message {
   using Decoder = WorkqueueExecuteEndFtraceEvent_Decoder;
   enum : int32_t {
     kWorkFieldNumber = 1,
+    kFunctionFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.WorkqueueExecuteEndFtraceEvent"; }
+
 
   using FieldMetadata_Work =
     ::protozero::proto_utils::FieldMetadata<
@@ -271,10 +280,35 @@ class WorkqueueExecuteEndFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Work kWork() { return {}; }
   void set_work(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Work::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Function =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      WorkqueueExecuteEndFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Function kFunction() { return {}; }
+  void set_function(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Function::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
@@ -298,6 +332,8 @@ class WorkqueueActivateWorkFtraceEvent : public ::protozero::Message {
   enum : int32_t {
     kWorkFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.WorkqueueActivateWorkFtraceEvent"; }
+
 
   using FieldMetadata_Work =
     ::protozero::proto_utils::FieldMetadata<
@@ -313,7 +349,7 @@ class WorkqueueActivateWorkFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Work kWork() { return {}; }
   void set_work(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Work::kFieldId;

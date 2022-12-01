@@ -29,7 +29,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT JavaHprofConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT JavaHprofConfig : public ::protozero::CppMessageObj {
  public:
   using ContinuousDumpConfig = JavaHprofConfig_ContinuousDumpConfig;
   enum FieldNumbers {
@@ -113,11 +113,12 @@ class PERFETTO_EXPORT JavaHprofConfig : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT JavaHprofConfig_ContinuousDumpConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT JavaHprofConfig_ContinuousDumpConfig : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDumpPhaseMsFieldNumber = 1,
     kDumpIntervalMsFieldNumber = 2,
+    kScanPidsOnlyOnStartFieldNumber = 3,
   };
 
   JavaHprofConfig_ContinuousDumpConfig();
@@ -142,15 +143,20 @@ class PERFETTO_EXPORT JavaHprofConfig_ContinuousDumpConfig : public ::protozero:
   uint32_t dump_interval_ms() const { return dump_interval_ms_; }
   void set_dump_interval_ms(uint32_t value) { dump_interval_ms_ = value; _has_field_.set(2); }
 
+  bool has_scan_pids_only_on_start() const { return _has_field_[3]; }
+  bool scan_pids_only_on_start() const { return scan_pids_only_on_start_; }
+  void set_scan_pids_only_on_start(bool value) { scan_pids_only_on_start_ = value; _has_field_.set(3); }
+
  private:
   uint32_t dump_phase_ms_{};
   uint32_t dump_interval_ms_{};
+  bool scan_pids_only_on_start_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<3> _has_field_{};
+  std::bitset<4> _has_field_{};
 };
 
 }  // namespace perfetto

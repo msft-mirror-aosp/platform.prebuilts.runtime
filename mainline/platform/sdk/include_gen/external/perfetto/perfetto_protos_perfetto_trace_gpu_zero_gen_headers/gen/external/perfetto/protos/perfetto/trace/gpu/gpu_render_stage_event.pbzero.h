@@ -20,27 +20,76 @@ class GpuRenderStageEvent_ExtraData;
 class GpuRenderStageEvent_Specifications;
 class GpuRenderStageEvent_Specifications_ContextSpec;
 class GpuRenderStageEvent_Specifications_Description;
-enum InternedGpuRenderStageSpecification_RenderStageCategory : int32_t;
-enum InternedGraphicsContext_Api : int32_t;
+namespace perfetto_pbzero_enum_InternedGpuRenderStageSpecification {
+enum RenderStageCategory : int32_t;
+}  // namespace perfetto_pbzero_enum_InternedGpuRenderStageSpecification
+using InternedGpuRenderStageSpecification_RenderStageCategory = perfetto_pbzero_enum_InternedGpuRenderStageSpecification::RenderStageCategory;
+namespace perfetto_pbzero_enum_InternedGraphicsContext {
+enum Api : int32_t;
+}  // namespace perfetto_pbzero_enum_InternedGraphicsContext
+using InternedGraphicsContext_Api = perfetto_pbzero_enum_InternedGraphicsContext::Api;
 
-enum InternedGpuRenderStageSpecification_RenderStageCategory : int32_t {
-  InternedGpuRenderStageSpecification_RenderStageCategory_OTHER = 0,
-  InternedGpuRenderStageSpecification_RenderStageCategory_GRAPHICS = 1,
-  InternedGpuRenderStageSpecification_RenderStageCategory_COMPUTE = 2,
+namespace perfetto_pbzero_enum_InternedGpuRenderStageSpecification {
+enum RenderStageCategory : int32_t {
+  OTHER = 0,
+  GRAPHICS = 1,
+  COMPUTE = 2,
 };
+} // namespace perfetto_pbzero_enum_InternedGpuRenderStageSpecification
+using InternedGpuRenderStageSpecification_RenderStageCategory = perfetto_pbzero_enum_InternedGpuRenderStageSpecification::RenderStageCategory;
 
-const InternedGpuRenderStageSpecification_RenderStageCategory InternedGpuRenderStageSpecification_RenderStageCategory_MIN = InternedGpuRenderStageSpecification_RenderStageCategory_OTHER;
-const InternedGpuRenderStageSpecification_RenderStageCategory InternedGpuRenderStageSpecification_RenderStageCategory_MAX = InternedGpuRenderStageSpecification_RenderStageCategory_COMPUTE;
 
-enum InternedGraphicsContext_Api : int32_t {
-  InternedGraphicsContext_Api_UNDEFINED = 0,
-  InternedGraphicsContext_Api_OPEN_GL = 1,
-  InternedGraphicsContext_Api_VULKAN = 2,
-  InternedGraphicsContext_Api_OPEN_CL = 3,
+constexpr InternedGpuRenderStageSpecification_RenderStageCategory InternedGpuRenderStageSpecification_RenderStageCategory_MIN = InternedGpuRenderStageSpecification_RenderStageCategory::OTHER;
+constexpr InternedGpuRenderStageSpecification_RenderStageCategory InternedGpuRenderStageSpecification_RenderStageCategory_MAX = InternedGpuRenderStageSpecification_RenderStageCategory::COMPUTE;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* InternedGpuRenderStageSpecification_RenderStageCategory_Name(::perfetto::protos::pbzero::InternedGpuRenderStageSpecification_RenderStageCategory value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::InternedGpuRenderStageSpecification_RenderStageCategory::OTHER:
+    return "OTHER";
+
+  case ::perfetto::protos::pbzero::InternedGpuRenderStageSpecification_RenderStageCategory::GRAPHICS:
+    return "GRAPHICS";
+
+  case ::perfetto::protos::pbzero::InternedGpuRenderStageSpecification_RenderStageCategory::COMPUTE:
+    return "COMPUTE";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_InternedGraphicsContext {
+enum Api : int32_t {
+  UNDEFINED = 0,
+  OPEN_GL = 1,
+  VULKAN = 2,
+  OPEN_CL = 3,
 };
+} // namespace perfetto_pbzero_enum_InternedGraphicsContext
+using InternedGraphicsContext_Api = perfetto_pbzero_enum_InternedGraphicsContext::Api;
 
-const InternedGraphicsContext_Api InternedGraphicsContext_Api_MIN = InternedGraphicsContext_Api_UNDEFINED;
-const InternedGraphicsContext_Api InternedGraphicsContext_Api_MAX = InternedGraphicsContext_Api_OPEN_CL;
+
+constexpr InternedGraphicsContext_Api InternedGraphicsContext_Api_MIN = InternedGraphicsContext_Api::UNDEFINED;
+constexpr InternedGraphicsContext_Api InternedGraphicsContext_Api_MAX = InternedGraphicsContext_Api::OPEN_CL;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* InternedGraphicsContext_Api_Name(::perfetto::protos::pbzero::InternedGraphicsContext_Api value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::InternedGraphicsContext_Api::UNDEFINED:
+    return "UNDEFINED";
+
+  case ::perfetto::protos::pbzero::InternedGraphicsContext_Api::OPEN_GL:
+    return "OPEN_GL";
+
+  case ::perfetto::protos::pbzero::InternedGraphicsContext_Api::VULKAN:
+    return "VULKAN";
+
+  case ::perfetto::protos::pbzero::InternedGraphicsContext_Api::OPEN_CL:
+    return "OPEN_CL";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class InternedGpuRenderStageSpecification_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -66,10 +115,16 @@ class InternedGpuRenderStageSpecification : public ::protozero::Message {
     kDescriptionFieldNumber = 3,
     kCategoryFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.InternedGpuRenderStageSpecification"; }
+
+
   using RenderStageCategory = ::perfetto::protos::pbzero::InternedGpuRenderStageSpecification_RenderStageCategory;
-  static const RenderStageCategory OTHER = InternedGpuRenderStageSpecification_RenderStageCategory_OTHER;
-  static const RenderStageCategory GRAPHICS = InternedGpuRenderStageSpecification_RenderStageCategory_GRAPHICS;
-  static const RenderStageCategory COMPUTE = InternedGpuRenderStageSpecification_RenderStageCategory_COMPUTE;
+  static inline const char* RenderStageCategory_Name(RenderStageCategory value) {
+    return ::perfetto::protos::pbzero::InternedGpuRenderStageSpecification_RenderStageCategory_Name(value);
+  }
+  static const RenderStageCategory OTHER = RenderStageCategory::OTHER;
+  static const RenderStageCategory GRAPHICS = RenderStageCategory::GRAPHICS;
+  static const RenderStageCategory COMPUTE = RenderStageCategory::COMPUTE;
 
   using FieldMetadata_Iid =
     ::protozero::proto_utils::FieldMetadata<
@@ -85,7 +140,7 @@ class InternedGpuRenderStageSpecification : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Iid kIid() { return {}; }
   void set_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Iid::kFieldId;
@@ -110,10 +165,13 @@ class InternedGpuRenderStageSpecification : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -138,10 +196,13 @@ class InternedGpuRenderStageSpecification : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Description kDescription() { return {}; }
   void set_description(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Description::kFieldId, data, size);
+  }
+  void set_description(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Description::kFieldId, chars.data, chars.size);
   }
   void set_description(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Description::kFieldId;
@@ -166,7 +227,7 @@ class InternedGpuRenderStageSpecification : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Category kCategory() { return {}; }
   void set_category(::perfetto::protos::pbzero::InternedGpuRenderStageSpecification_RenderStageCategory value) {
     static constexpr uint32_t field_id = FieldMetadata_Category::kFieldId;
@@ -199,11 +260,17 @@ class InternedGraphicsContext : public ::protozero::Message {
     kPidFieldNumber = 2,
     kApiFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.InternedGraphicsContext"; }
+
+
   using Api = ::perfetto::protos::pbzero::InternedGraphicsContext_Api;
-  static const Api UNDEFINED = InternedGraphicsContext_Api_UNDEFINED;
-  static const Api OPEN_GL = InternedGraphicsContext_Api_OPEN_GL;
-  static const Api VULKAN = InternedGraphicsContext_Api_VULKAN;
-  static const Api OPEN_CL = InternedGraphicsContext_Api_OPEN_CL;
+  static inline const char* Api_Name(Api value) {
+    return ::perfetto::protos::pbzero::InternedGraphicsContext_Api_Name(value);
+  }
+  static const Api UNDEFINED = Api::UNDEFINED;
+  static const Api OPEN_GL = Api::OPEN_GL;
+  static const Api VULKAN = Api::VULKAN;
+  static const Api OPEN_CL = Api::OPEN_CL;
 
   using FieldMetadata_Iid =
     ::protozero::proto_utils::FieldMetadata<
@@ -219,7 +286,7 @@ class InternedGraphicsContext : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Iid kIid() { return {}; }
   void set_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Iid::kFieldId;
@@ -244,7 +311,7 @@ class InternedGraphicsContext : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -269,7 +336,7 @@ class InternedGraphicsContext : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Api kApi() { return {}; }
   void set_api(::perfetto::protos::pbzero::InternedGraphicsContext_Api value) {
     static constexpr uint32_t field_id = FieldMetadata_Api::kFieldId;
@@ -338,6 +405,8 @@ class GpuRenderStageEvent : public ::protozero::Message {
     kHwQueueIdFieldNumber = 3,
     kStageIdFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuRenderStageEvent"; }
+
   using ExtraData = ::perfetto::protos::pbzero::GpuRenderStageEvent_ExtraData;
   using Specifications = ::perfetto::protos::pbzero::GpuRenderStageEvent_Specifications;
 
@@ -355,7 +424,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EventId kEventId() { return {}; }
   void set_event_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_EventId::kFieldId;
@@ -380,7 +449,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Duration kDuration() { return {}; }
   void set_duration(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Duration::kFieldId;
@@ -405,7 +474,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HwQueueIid kHwQueueIid() { return {}; }
   void set_hw_queue_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HwQueueIid::kFieldId;
@@ -430,7 +499,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StageIid kStageIid() { return {}; }
   void set_stage_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StageIid::kFieldId;
@@ -455,7 +524,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_GpuId kGpuId() { return {}; }
   void set_gpu_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_GpuId::kFieldId;
@@ -480,7 +549,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Context kContext() { return {}; }
   void set_context(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Context::kFieldId;
@@ -505,7 +574,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RenderTargetHandle kRenderTargetHandle() { return {}; }
   void set_render_target_handle(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RenderTargetHandle::kFieldId;
@@ -530,7 +599,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SubmissionId kSubmissionId() { return {}; }
   void set_submission_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SubmissionId::kFieldId;
@@ -555,7 +624,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ExtraData kExtraData() { return {}; }
   template <typename T = GpuRenderStageEvent_ExtraData> T* add_extra_data() {
     return BeginNestedMessage<T>(6);
@@ -576,7 +645,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RenderPassHandle kRenderPassHandle() { return {}; }
   void set_render_pass_handle(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RenderPassHandle::kFieldId;
@@ -601,7 +670,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RenderSubpassIndexMask kRenderSubpassIndexMask() { return {}; }
   void add_render_subpass_index_mask(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RenderSubpassIndexMask::kFieldId;
@@ -626,7 +695,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CommandBufferHandle kCommandBufferHandle() { return {}; }
   void set_command_buffer_handle(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CommandBufferHandle::kFieldId;
@@ -651,7 +720,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Specifications kSpecifications() { return {}; }
   template <typename T = GpuRenderStageEvent_Specifications> T* set_specifications() {
     return BeginNestedMessage<T>(7);
@@ -672,7 +741,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HwQueueId kHwQueueId() { return {}; }
   void set_hw_queue_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HwQueueId::kFieldId;
@@ -697,7 +766,7 @@ class GpuRenderStageEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StageId kStageId() { return {}; }
   void set_stage_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StageId::kFieldId;
@@ -730,6 +799,8 @@ class GpuRenderStageEvent_Specifications : public ::protozero::Message {
     kHwQueueFieldNumber = 2,
     kStageFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuRenderStageEvent.Specifications"; }
+
   using ContextSpec = ::perfetto::protos::pbzero::GpuRenderStageEvent_Specifications_ContextSpec;
   using Description = ::perfetto::protos::pbzero::GpuRenderStageEvent_Specifications_Description;
 
@@ -747,7 +818,7 @@ class GpuRenderStageEvent_Specifications : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ContextSpec kContextSpec() { return {}; }
   template <typename T = GpuRenderStageEvent_Specifications_ContextSpec> T* set_context_spec() {
     return BeginNestedMessage<T>(1);
@@ -768,7 +839,7 @@ class GpuRenderStageEvent_Specifications : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HwQueue kHwQueue() { return {}; }
   template <typename T = GpuRenderStageEvent_Specifications_Description> T* add_hw_queue() {
     return BeginNestedMessage<T>(2);
@@ -789,7 +860,7 @@ class GpuRenderStageEvent_Specifications : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Stage kStage() { return {}; }
   template <typename T = GpuRenderStageEvent_Specifications_Description> T* add_stage() {
     return BeginNestedMessage<T>(3);
@@ -815,6 +886,8 @@ class GpuRenderStageEvent_Specifications_Description : public ::protozero::Messa
     kNameFieldNumber = 1,
     kDescriptionFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuRenderStageEvent.Specifications.Description"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -830,10 +903,13 @@ class GpuRenderStageEvent_Specifications_Description : public ::protozero::Messa
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -858,10 +934,13 @@ class GpuRenderStageEvent_Specifications_Description : public ::protozero::Messa
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Description kDescription() { return {}; }
   void set_description(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Description::kFieldId, data, size);
+  }
+  void set_description(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Description::kFieldId, chars.data, chars.size);
   }
   void set_description(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Description::kFieldId;
@@ -891,6 +970,8 @@ class GpuRenderStageEvent_Specifications_ContextSpec : public ::protozero::Messa
     kContextFieldNumber = 1,
     kPidFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuRenderStageEvent.Specifications.ContextSpec"; }
+
 
   using FieldMetadata_Context =
     ::protozero::proto_utils::FieldMetadata<
@@ -906,7 +987,7 @@ class GpuRenderStageEvent_Specifications_ContextSpec : public ::protozero::Messa
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Context kContext() { return {}; }
   void set_context(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Context::kFieldId;
@@ -931,7 +1012,7 @@ class GpuRenderStageEvent_Specifications_ContextSpec : public ::protozero::Messa
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -961,6 +1042,8 @@ class GpuRenderStageEvent_ExtraData : public ::protozero::Message {
     kNameFieldNumber = 1,
     kValueFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuRenderStageEvent.ExtraData"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -976,10 +1059,13 @@ class GpuRenderStageEvent_ExtraData : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -1004,10 +1090,13 @@ class GpuRenderStageEvent_ExtraData : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Value kValue() { return {}; }
   void set_value(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Value::kFieldId, data, size);
+  }
+  void set_value(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Value::kFieldId, chars.data, chars.size);
   }
   void set_value(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Value::kFieldId;
