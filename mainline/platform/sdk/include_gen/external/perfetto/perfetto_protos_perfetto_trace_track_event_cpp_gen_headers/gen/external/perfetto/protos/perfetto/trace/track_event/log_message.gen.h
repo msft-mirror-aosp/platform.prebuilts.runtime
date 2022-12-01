@@ -29,7 +29,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT LogMessageBody : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT LogMessageBody : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kIidFieldNumber = 1,
@@ -70,7 +70,7 @@ class PERFETTO_EXPORT LogMessageBody : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT LogMessage : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT LogMessage : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kSourceLocationIidFieldNumber = 1,

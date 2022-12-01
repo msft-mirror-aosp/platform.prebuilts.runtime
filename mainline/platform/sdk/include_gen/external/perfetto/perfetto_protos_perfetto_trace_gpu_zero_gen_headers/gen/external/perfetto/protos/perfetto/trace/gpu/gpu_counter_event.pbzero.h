@@ -40,6 +40,8 @@ class GpuCounterEvent : public ::protozero::Message {
     kCountersFieldNumber = 2,
     kGpuIdFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuCounterEvent"; }
+
   using GpuCounter = ::perfetto::protos::pbzero::GpuCounterEvent_GpuCounter;
 
   using FieldMetadata_CounterDescriptor =
@@ -56,7 +58,7 @@ class GpuCounterEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CounterDescriptor kCounterDescriptor() { return {}; }
   template <typename T = GpuCounterDescriptor> T* set_counter_descriptor() {
     return BeginNestedMessage<T>(1);
@@ -77,7 +79,7 @@ class GpuCounterEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Counters kCounters() { return {}; }
   template <typename T = GpuCounterEvent_GpuCounter> T* add_counters() {
     return BeginNestedMessage<T>(2);
@@ -98,7 +100,7 @@ class GpuCounterEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_GpuId kGpuId() { return {}; }
   void set_gpu_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_GpuId::kFieldId;
@@ -131,6 +133,8 @@ class GpuCounterEvent_GpuCounter : public ::protozero::Message {
     kIntValueFieldNumber = 2,
     kDoubleValueFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuCounterEvent.GpuCounter"; }
+
 
   using FieldMetadata_CounterId =
     ::protozero::proto_utils::FieldMetadata<
@@ -146,7 +150,7 @@ class GpuCounterEvent_GpuCounter : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CounterId kCounterId() { return {}; }
   void set_counter_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CounterId::kFieldId;
@@ -171,7 +175,7 @@ class GpuCounterEvent_GpuCounter : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IntValue kIntValue() { return {}; }
   void set_int_value(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IntValue::kFieldId;
@@ -196,7 +200,7 @@ class GpuCounterEvent_GpuCounter : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DoubleValue kDoubleValue() { return {}; }
   void set_double_value(double value) {
     static constexpr uint32_t field_id = FieldMetadata_DoubleValue::kFieldId;

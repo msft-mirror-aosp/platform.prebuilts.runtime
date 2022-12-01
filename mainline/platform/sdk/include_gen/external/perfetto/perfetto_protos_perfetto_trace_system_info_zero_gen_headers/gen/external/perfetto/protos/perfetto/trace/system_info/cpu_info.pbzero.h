@@ -33,6 +33,8 @@ class CpuInfo : public ::protozero::Message {
   enum : int32_t {
     kCpusFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.CpuInfo"; }
+
   using Cpu = ::perfetto::protos::pbzero::CpuInfo_Cpu;
 
   using FieldMetadata_Cpus =
@@ -49,7 +51,7 @@ class CpuInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cpus kCpus() { return {}; }
   template <typename T = CpuInfo_Cpu> T* add_cpus() {
     return BeginNestedMessage<T>(1);
@@ -75,6 +77,8 @@ class CpuInfo_Cpu : public ::protozero::Message {
     kProcessorFieldNumber = 1,
     kFrequenciesFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.CpuInfo.Cpu"; }
+
 
   using FieldMetadata_Processor =
     ::protozero::proto_utils::FieldMetadata<
@@ -90,10 +94,13 @@ class CpuInfo_Cpu : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Processor kProcessor() { return {}; }
   void set_processor(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Processor::kFieldId, data, size);
+  }
+  void set_processor(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Processor::kFieldId, chars.data, chars.size);
   }
   void set_processor(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Processor::kFieldId;
@@ -118,7 +125,7 @@ class CpuInfo_Cpu : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Frequencies kFrequencies() { return {}; }
   void add_frequencies(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Frequencies::kFieldId;
