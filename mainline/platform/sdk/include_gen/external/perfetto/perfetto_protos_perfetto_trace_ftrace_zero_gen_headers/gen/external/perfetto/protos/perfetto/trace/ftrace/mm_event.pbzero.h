@@ -41,6 +41,8 @@ class MmEventRecordFtraceEvent : public ::protozero::Message {
     kMaxLatFieldNumber = 3,
     kTypeFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.MmEventRecordFtraceEvent"; }
+
 
   using FieldMetadata_AvgLat =
     ::protozero::proto_utils::FieldMetadata<
@@ -56,7 +58,7 @@ class MmEventRecordFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AvgLat kAvgLat() { return {}; }
   void set_avg_lat(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_AvgLat::kFieldId;
@@ -81,7 +83,7 @@ class MmEventRecordFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Count kCount() { return {}; }
   void set_count(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Count::kFieldId;
@@ -106,7 +108,7 @@ class MmEventRecordFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MaxLat kMaxLat() { return {}; }
   void set_max_lat(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxLat::kFieldId;
@@ -131,7 +133,7 @@ class MmEventRecordFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;

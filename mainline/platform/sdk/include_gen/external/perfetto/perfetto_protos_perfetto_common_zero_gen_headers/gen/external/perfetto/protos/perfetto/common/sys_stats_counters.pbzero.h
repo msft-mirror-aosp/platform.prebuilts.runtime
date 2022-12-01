@@ -54,8 +54,117 @@ enum MeminfoCounters : int32_t {
   MEMINFO_CMA_FREE = 33,
 };
 
-const MeminfoCounters MeminfoCounters_MIN = MEMINFO_UNSPECIFIED;
-const MeminfoCounters MeminfoCounters_MAX = MEMINFO_CMA_FREE;
+constexpr MeminfoCounters MeminfoCounters_MIN = MeminfoCounters::MEMINFO_UNSPECIFIED;
+constexpr MeminfoCounters MeminfoCounters_MAX = MeminfoCounters::MEMINFO_CMA_FREE;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* MeminfoCounters_Name(::perfetto::protos::pbzero::MeminfoCounters value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_UNSPECIFIED:
+    return "MEMINFO_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_MEM_TOTAL:
+    return "MEMINFO_MEM_TOTAL";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_MEM_FREE:
+    return "MEMINFO_MEM_FREE";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_MEM_AVAILABLE:
+    return "MEMINFO_MEM_AVAILABLE";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_BUFFERS:
+    return "MEMINFO_BUFFERS";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_CACHED:
+    return "MEMINFO_CACHED";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_SWAP_CACHED:
+    return "MEMINFO_SWAP_CACHED";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_ACTIVE:
+    return "MEMINFO_ACTIVE";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_INACTIVE:
+    return "MEMINFO_INACTIVE";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_ACTIVE_ANON:
+    return "MEMINFO_ACTIVE_ANON";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_INACTIVE_ANON:
+    return "MEMINFO_INACTIVE_ANON";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_ACTIVE_FILE:
+    return "MEMINFO_ACTIVE_FILE";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_INACTIVE_FILE:
+    return "MEMINFO_INACTIVE_FILE";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_UNEVICTABLE:
+    return "MEMINFO_UNEVICTABLE";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_MLOCKED:
+    return "MEMINFO_MLOCKED";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_SWAP_TOTAL:
+    return "MEMINFO_SWAP_TOTAL";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_SWAP_FREE:
+    return "MEMINFO_SWAP_FREE";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_DIRTY:
+    return "MEMINFO_DIRTY";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_WRITEBACK:
+    return "MEMINFO_WRITEBACK";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_ANON_PAGES:
+    return "MEMINFO_ANON_PAGES";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_MAPPED:
+    return "MEMINFO_MAPPED";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_SHMEM:
+    return "MEMINFO_SHMEM";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_SLAB:
+    return "MEMINFO_SLAB";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_SLAB_RECLAIMABLE:
+    return "MEMINFO_SLAB_RECLAIMABLE";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_SLAB_UNRECLAIMABLE:
+    return "MEMINFO_SLAB_UNRECLAIMABLE";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_KERNEL_STACK:
+    return "MEMINFO_KERNEL_STACK";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_PAGE_TABLES:
+    return "MEMINFO_PAGE_TABLES";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_COMMIT_LIMIT:
+    return "MEMINFO_COMMIT_LIMIT";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_COMMITED_AS:
+    return "MEMINFO_COMMITED_AS";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_VMALLOC_TOTAL:
+    return "MEMINFO_VMALLOC_TOTAL";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_VMALLOC_USED:
+    return "MEMINFO_VMALLOC_USED";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_VMALLOC_CHUNK:
+    return "MEMINFO_VMALLOC_CHUNK";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_CMA_TOTAL:
+    return "MEMINFO_CMA_TOTAL";
+
+  case ::perfetto::protos::pbzero::MeminfoCounters::MEMINFO_CMA_FREE:
+    return "MEMINFO_CMA_FREE";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 enum VmstatCounters : int32_t {
   VMSTAT_UNSPECIFIED = 0,
@@ -189,8 +298,402 @@ enum VmstatCounters : int32_t {
   VMSTAT_WORKINGSET_RESTORE = 128,
 };
 
-const VmstatCounters VmstatCounters_MIN = VMSTAT_UNSPECIFIED;
-const VmstatCounters VmstatCounters_MAX = VMSTAT_WORKINGSET_RESTORE;
+constexpr VmstatCounters VmstatCounters_MIN = VmstatCounters::VMSTAT_UNSPECIFIED;
+constexpr VmstatCounters VmstatCounters_MAX = VmstatCounters::VMSTAT_WORKINGSET_RESTORE;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* VmstatCounters_Name(::perfetto::protos::pbzero::VmstatCounters value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_UNSPECIFIED:
+    return "VMSTAT_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_FREE_PAGES:
+    return "VMSTAT_NR_FREE_PAGES";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ALLOC_BATCH:
+    return "VMSTAT_NR_ALLOC_BATCH";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_INACTIVE_ANON:
+    return "VMSTAT_NR_INACTIVE_ANON";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ACTIVE_ANON:
+    return "VMSTAT_NR_ACTIVE_ANON";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_INACTIVE_FILE:
+    return "VMSTAT_NR_INACTIVE_FILE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ACTIVE_FILE:
+    return "VMSTAT_NR_ACTIVE_FILE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_UNEVICTABLE:
+    return "VMSTAT_NR_UNEVICTABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_MLOCK:
+    return "VMSTAT_NR_MLOCK";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ANON_PAGES:
+    return "VMSTAT_NR_ANON_PAGES";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_MAPPED:
+    return "VMSTAT_NR_MAPPED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_FILE_PAGES:
+    return "VMSTAT_NR_FILE_PAGES";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_DIRTY:
+    return "VMSTAT_NR_DIRTY";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_WRITEBACK:
+    return "VMSTAT_NR_WRITEBACK";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_SLAB_RECLAIMABLE:
+    return "VMSTAT_NR_SLAB_RECLAIMABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_SLAB_UNRECLAIMABLE:
+    return "VMSTAT_NR_SLAB_UNRECLAIMABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_PAGE_TABLE_PAGES:
+    return "VMSTAT_NR_PAGE_TABLE_PAGES";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_KERNEL_STACK:
+    return "VMSTAT_NR_KERNEL_STACK";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_OVERHEAD:
+    return "VMSTAT_NR_OVERHEAD";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_UNSTABLE:
+    return "VMSTAT_NR_UNSTABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_BOUNCE:
+    return "VMSTAT_NR_BOUNCE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_VMSCAN_WRITE:
+    return "VMSTAT_NR_VMSCAN_WRITE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_VMSCAN_IMMEDIATE_RECLAIM:
+    return "VMSTAT_NR_VMSCAN_IMMEDIATE_RECLAIM";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_WRITEBACK_TEMP:
+    return "VMSTAT_NR_WRITEBACK_TEMP";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ISOLATED_ANON:
+    return "VMSTAT_NR_ISOLATED_ANON";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ISOLATED_FILE:
+    return "VMSTAT_NR_ISOLATED_FILE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_SHMEM:
+    return "VMSTAT_NR_SHMEM";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_DIRTIED:
+    return "VMSTAT_NR_DIRTIED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_WRITTEN:
+    return "VMSTAT_NR_WRITTEN";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_PAGES_SCANNED:
+    return "VMSTAT_NR_PAGES_SCANNED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_WORKINGSET_REFAULT:
+    return "VMSTAT_WORKINGSET_REFAULT";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_WORKINGSET_ACTIVATE:
+    return "VMSTAT_WORKINGSET_ACTIVATE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_WORKINGSET_NODERECLAIM:
+    return "VMSTAT_WORKINGSET_NODERECLAIM";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ANON_TRANSPARENT_HUGEPAGES:
+    return "VMSTAT_NR_ANON_TRANSPARENT_HUGEPAGES";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_FREE_CMA:
+    return "VMSTAT_NR_FREE_CMA";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_SWAPCACHE:
+    return "VMSTAT_NR_SWAPCACHE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_DIRTY_THRESHOLD:
+    return "VMSTAT_NR_DIRTY_THRESHOLD";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_DIRTY_BACKGROUND_THRESHOLD:
+    return "VMSTAT_NR_DIRTY_BACKGROUND_THRESHOLD";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGPGIN:
+    return "VMSTAT_PGPGIN";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGPGOUT:
+    return "VMSTAT_PGPGOUT";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGPGOUTCLEAN:
+    return "VMSTAT_PGPGOUTCLEAN";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PSWPIN:
+    return "VMSTAT_PSWPIN";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PSWPOUT:
+    return "VMSTAT_PSWPOUT";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGALLOC_DMA:
+    return "VMSTAT_PGALLOC_DMA";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGALLOC_NORMAL:
+    return "VMSTAT_PGALLOC_NORMAL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGALLOC_MOVABLE:
+    return "VMSTAT_PGALLOC_MOVABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGFREE:
+    return "VMSTAT_PGFREE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGACTIVATE:
+    return "VMSTAT_PGACTIVATE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGDEACTIVATE:
+    return "VMSTAT_PGDEACTIVATE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGFAULT:
+    return "VMSTAT_PGFAULT";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGMAJFAULT:
+    return "VMSTAT_PGMAJFAULT";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGREFILL_DMA:
+    return "VMSTAT_PGREFILL_DMA";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGREFILL_NORMAL:
+    return "VMSTAT_PGREFILL_NORMAL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGREFILL_MOVABLE:
+    return "VMSTAT_PGREFILL_MOVABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSTEAL_KSWAPD_DMA:
+    return "VMSTAT_PGSTEAL_KSWAPD_DMA";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSTEAL_KSWAPD_NORMAL:
+    return "VMSTAT_PGSTEAL_KSWAPD_NORMAL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSTEAL_KSWAPD_MOVABLE:
+    return "VMSTAT_PGSTEAL_KSWAPD_MOVABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSTEAL_DIRECT_DMA:
+    return "VMSTAT_PGSTEAL_DIRECT_DMA";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSTEAL_DIRECT_NORMAL:
+    return "VMSTAT_PGSTEAL_DIRECT_NORMAL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSTEAL_DIRECT_MOVABLE:
+    return "VMSTAT_PGSTEAL_DIRECT_MOVABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSCAN_KSWAPD_DMA:
+    return "VMSTAT_PGSCAN_KSWAPD_DMA";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSCAN_KSWAPD_NORMAL:
+    return "VMSTAT_PGSCAN_KSWAPD_NORMAL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSCAN_KSWAPD_MOVABLE:
+    return "VMSTAT_PGSCAN_KSWAPD_MOVABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSCAN_DIRECT_DMA:
+    return "VMSTAT_PGSCAN_DIRECT_DMA";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSCAN_DIRECT_NORMAL:
+    return "VMSTAT_PGSCAN_DIRECT_NORMAL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSCAN_DIRECT_MOVABLE:
+    return "VMSTAT_PGSCAN_DIRECT_MOVABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSCAN_DIRECT_THROTTLE:
+    return "VMSTAT_PGSCAN_DIRECT_THROTTLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGINODESTEAL:
+    return "VMSTAT_PGINODESTEAL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_SLABS_SCANNED:
+    return "VMSTAT_SLABS_SCANNED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_KSWAPD_INODESTEAL:
+    return "VMSTAT_KSWAPD_INODESTEAL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_KSWAPD_LOW_WMARK_HIT_QUICKLY:
+    return "VMSTAT_KSWAPD_LOW_WMARK_HIT_QUICKLY";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_KSWAPD_HIGH_WMARK_HIT_QUICKLY:
+    return "VMSTAT_KSWAPD_HIGH_WMARK_HIT_QUICKLY";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PAGEOUTRUN:
+    return "VMSTAT_PAGEOUTRUN";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_ALLOCSTALL:
+    return "VMSTAT_ALLOCSTALL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGROTATED:
+    return "VMSTAT_PGROTATED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_DROP_PAGECACHE:
+    return "VMSTAT_DROP_PAGECACHE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_DROP_SLAB:
+    return "VMSTAT_DROP_SLAB";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGMIGRATE_SUCCESS:
+    return "VMSTAT_PGMIGRATE_SUCCESS";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGMIGRATE_FAIL:
+    return "VMSTAT_PGMIGRATE_FAIL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_COMPACT_MIGRATE_SCANNED:
+    return "VMSTAT_COMPACT_MIGRATE_SCANNED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_COMPACT_FREE_SCANNED:
+    return "VMSTAT_COMPACT_FREE_SCANNED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_COMPACT_ISOLATED:
+    return "VMSTAT_COMPACT_ISOLATED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_COMPACT_STALL:
+    return "VMSTAT_COMPACT_STALL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_COMPACT_FAIL:
+    return "VMSTAT_COMPACT_FAIL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_COMPACT_SUCCESS:
+    return "VMSTAT_COMPACT_SUCCESS";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_COMPACT_DAEMON_WAKE:
+    return "VMSTAT_COMPACT_DAEMON_WAKE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_UNEVICTABLE_PGS_CULLED:
+    return "VMSTAT_UNEVICTABLE_PGS_CULLED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_UNEVICTABLE_PGS_SCANNED:
+    return "VMSTAT_UNEVICTABLE_PGS_SCANNED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_UNEVICTABLE_PGS_RESCUED:
+    return "VMSTAT_UNEVICTABLE_PGS_RESCUED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_UNEVICTABLE_PGS_MLOCKED:
+    return "VMSTAT_UNEVICTABLE_PGS_MLOCKED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_UNEVICTABLE_PGS_MUNLOCKED:
+    return "VMSTAT_UNEVICTABLE_PGS_MUNLOCKED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_UNEVICTABLE_PGS_CLEARED:
+    return "VMSTAT_UNEVICTABLE_PGS_CLEARED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_UNEVICTABLE_PGS_STRANDED:
+    return "VMSTAT_UNEVICTABLE_PGS_STRANDED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ZSPAGES:
+    return "VMSTAT_NR_ZSPAGES";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ION_HEAP:
+    return "VMSTAT_NR_ION_HEAP";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_GPU_HEAP:
+    return "VMSTAT_NR_GPU_HEAP";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_ALLOCSTALL_DMA:
+    return "VMSTAT_ALLOCSTALL_DMA";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_ALLOCSTALL_MOVABLE:
+    return "VMSTAT_ALLOCSTALL_MOVABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_ALLOCSTALL_NORMAL:
+    return "VMSTAT_ALLOCSTALL_NORMAL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_COMPACT_DAEMON_FREE_SCANNED:
+    return "VMSTAT_COMPACT_DAEMON_FREE_SCANNED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_COMPACT_DAEMON_MIGRATE_SCANNED:
+    return "VMSTAT_COMPACT_DAEMON_MIGRATE_SCANNED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_FASTRPC:
+    return "VMSTAT_NR_FASTRPC";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_INDIRECTLY_RECLAIMABLE:
+    return "VMSTAT_NR_INDIRECTLY_RECLAIMABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ION_HEAP_POOL:
+    return "VMSTAT_NR_ION_HEAP_POOL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_KERNEL_MISC_RECLAIMABLE:
+    return "VMSTAT_NR_KERNEL_MISC_RECLAIMABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_SHADOW_CALL_STACK_BYTES:
+    return "VMSTAT_NR_SHADOW_CALL_STACK_BYTES";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_SHMEM_HUGEPAGES:
+    return "VMSTAT_NR_SHMEM_HUGEPAGES";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_SHMEM_PMDMAPPED:
+    return "VMSTAT_NR_SHMEM_PMDMAPPED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_UNRECLAIMABLE_PAGES:
+    return "VMSTAT_NR_UNRECLAIMABLE_PAGES";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ZONE_ACTIVE_ANON:
+    return "VMSTAT_NR_ZONE_ACTIVE_ANON";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ZONE_ACTIVE_FILE:
+    return "VMSTAT_NR_ZONE_ACTIVE_FILE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ZONE_INACTIVE_ANON:
+    return "VMSTAT_NR_ZONE_INACTIVE_ANON";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ZONE_INACTIVE_FILE:
+    return "VMSTAT_NR_ZONE_INACTIVE_FILE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ZONE_UNEVICTABLE:
+    return "VMSTAT_NR_ZONE_UNEVICTABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_NR_ZONE_WRITE_PENDING:
+    return "VMSTAT_NR_ZONE_WRITE_PENDING";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_OOM_KILL:
+    return "VMSTAT_OOM_KILL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGLAZYFREE:
+    return "VMSTAT_PGLAZYFREE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGLAZYFREED:
+    return "VMSTAT_PGLAZYFREED";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGREFILL:
+    return "VMSTAT_PGREFILL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSCAN_DIRECT:
+    return "VMSTAT_PGSCAN_DIRECT";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSCAN_KSWAPD:
+    return "VMSTAT_PGSCAN_KSWAPD";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSKIP_DMA:
+    return "VMSTAT_PGSKIP_DMA";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSKIP_MOVABLE:
+    return "VMSTAT_PGSKIP_MOVABLE";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSKIP_NORMAL:
+    return "VMSTAT_PGSKIP_NORMAL";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSTEAL_DIRECT:
+    return "VMSTAT_PGSTEAL_DIRECT";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_PGSTEAL_KSWAPD:
+    return "VMSTAT_PGSTEAL_KSWAPD";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_SWAP_RA:
+    return "VMSTAT_SWAP_RA";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_SWAP_RA_HIT:
+    return "VMSTAT_SWAP_RA_HIT";
+
+  case ::perfetto::protos::pbzero::VmstatCounters::VMSTAT_WORKINGSET_RESTORE:
+    return "VMSTAT_WORKINGSET_RESTORE";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 } // Namespace.
 } // Namespace.

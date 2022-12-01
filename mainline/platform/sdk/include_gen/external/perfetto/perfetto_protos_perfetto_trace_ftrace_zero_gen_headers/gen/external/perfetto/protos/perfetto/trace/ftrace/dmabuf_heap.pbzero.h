@@ -38,6 +38,8 @@ class DmaHeapStatFtraceEvent : public ::protozero::Message {
     kLenFieldNumber = 2,
     kTotalAllocatedFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.DmaHeapStatFtraceEvent"; }
+
 
   using FieldMetadata_Inode =
     ::protozero::proto_utils::FieldMetadata<
@@ -53,7 +55,7 @@ class DmaHeapStatFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Inode kInode() { return {}; }
   void set_inode(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Inode::kFieldId;
@@ -78,7 +80,7 @@ class DmaHeapStatFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Len kLen() { return {}; }
   void set_len(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Len::kFieldId;
@@ -103,7 +105,7 @@ class DmaHeapStatFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TotalAllocated kTotalAllocated() { return {}; }
   void set_total_allocated(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TotalAllocated::kFieldId;

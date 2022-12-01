@@ -40,7 +40,7 @@ enum ProcessDescriptor_ChromeProcessType : int {
   ProcessDescriptor_ChromeProcessType_PROCESS_PPAPI_BROKER = 8,
 };
 
-class PERFETTO_EXPORT ProcessDescriptor : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ProcessDescriptor : public ::protozero::CppMessageObj {
  public:
   using ChromeProcessType = ProcessDescriptor_ChromeProcessType;
   static constexpr auto PROCESS_UNSPECIFIED = ProcessDescriptor_ChromeProcessType_PROCESS_UNSPECIFIED;
@@ -62,6 +62,7 @@ class PERFETTO_EXPORT ProcessDescriptor : public ::protozero::CppMessageObj {
     kStartTimestampNsFieldNumber = 7,
     kChromeProcessTypeFieldNumber = 4,
     kLegacySortIndexFieldNumber = 3,
+    kProcessLabelsFieldNumber = 8,
   };
 
   ProcessDescriptor();
@@ -109,6 +110,13 @@ class PERFETTO_EXPORT ProcessDescriptor : public ::protozero::CppMessageObj {
   int32_t legacy_sort_index() const { return legacy_sort_index_; }
   void set_legacy_sort_index(int32_t value) { legacy_sort_index_ = value; _has_field_.set(3); }
 
+  const std::vector<std::string>& process_labels() const { return process_labels_; }
+  std::vector<std::string>* mutable_process_labels() { return &process_labels_; }
+  int process_labels_size() const { return static_cast<int>(process_labels_.size()); }
+  void clear_process_labels() { process_labels_.clear(); }
+  void add_process_labels(std::string value) { process_labels_.emplace_back(value); }
+  std::string* add_process_labels() { process_labels_.emplace_back(); return &process_labels_.back(); }
+
  private:
   int32_t pid_{};
   std::vector<std::string> cmdline_;
@@ -117,12 +125,13 @@ class PERFETTO_EXPORT ProcessDescriptor : public ::protozero::CppMessageObj {
   int64_t start_timestamp_ns_{};
   ProcessDescriptor_ChromeProcessType chrome_process_type_{};
   int32_t legacy_sort_index_{};
+  std::vector<std::string> process_labels_;
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<8> _has_field_{};
+  std::bitset<9> _has_field_{};
 };
 
 }  // namespace perfetto

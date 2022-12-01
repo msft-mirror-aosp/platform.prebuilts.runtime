@@ -47,6 +47,8 @@ class TracingServiceEvent : public ::protozero::Message {
     kTracingDisabledFieldNumber = 5,
     kSeizedForBugreportFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.TracingServiceEvent"; }
+
 
   using FieldMetadata_TracingStarted =
     ::protozero::proto_utils::FieldMetadata<
@@ -62,7 +64,7 @@ class TracingServiceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TracingStarted kTracingStarted() { return {}; }
   void set_tracing_started(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_TracingStarted::kFieldId;
@@ -87,7 +89,7 @@ class TracingServiceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AllDataSourcesStarted kAllDataSourcesStarted() { return {}; }
   void set_all_data_sources_started(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_AllDataSourcesStarted::kFieldId;
@@ -112,7 +114,7 @@ class TracingServiceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AllDataSourcesFlushed kAllDataSourcesFlushed() { return {}; }
   void set_all_data_sources_flushed(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_AllDataSourcesFlushed::kFieldId;
@@ -137,7 +139,7 @@ class TracingServiceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ReadTracingBuffersCompleted kReadTracingBuffersCompleted() { return {}; }
   void set_read_tracing_buffers_completed(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ReadTracingBuffersCompleted::kFieldId;
@@ -162,7 +164,7 @@ class TracingServiceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TracingDisabled kTracingDisabled() { return {}; }
   void set_tracing_disabled(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_TracingDisabled::kFieldId;
@@ -187,7 +189,7 @@ class TracingServiceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SeizedForBugreport kSeizedForBugreport() { return {}; }
   void set_seized_for_bugreport(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_SeizedForBugreport::kFieldId;

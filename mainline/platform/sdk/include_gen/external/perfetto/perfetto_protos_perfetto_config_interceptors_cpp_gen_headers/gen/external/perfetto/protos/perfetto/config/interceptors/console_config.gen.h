@@ -34,7 +34,7 @@ enum ConsoleConfig_Output : int {
   ConsoleConfig_Output_OUTPUT_STDERR = 2,
 };
 
-class PERFETTO_EXPORT ConsoleConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ConsoleConfig : public ::protozero::CppMessageObj {
  public:
   using Output = ConsoleConfig_Output;
   static constexpr auto OUTPUT_UNSPECIFIED = ConsoleConfig_Output_OUTPUT_UNSPECIFIED;

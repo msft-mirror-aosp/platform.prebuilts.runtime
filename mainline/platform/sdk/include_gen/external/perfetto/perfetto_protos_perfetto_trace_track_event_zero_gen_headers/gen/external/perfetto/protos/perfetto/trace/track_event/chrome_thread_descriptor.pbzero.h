@@ -16,56 +16,203 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-enum ChromeThreadDescriptor_ThreadType : int32_t;
+namespace perfetto_pbzero_enum_ChromeThreadDescriptor {
+enum ThreadType : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeThreadDescriptor
+using ChromeThreadDescriptor_ThreadType = perfetto_pbzero_enum_ChromeThreadDescriptor::ThreadType;
 
-enum ChromeThreadDescriptor_ThreadType : int32_t {
-  ChromeThreadDescriptor_ThreadType_THREAD_UNSPECIFIED = 0,
-  ChromeThreadDescriptor_ThreadType_THREAD_MAIN = 1,
-  ChromeThreadDescriptor_ThreadType_THREAD_IO = 2,
-  ChromeThreadDescriptor_ThreadType_THREAD_POOL_BG_WORKER = 3,
-  ChromeThreadDescriptor_ThreadType_THREAD_POOL_FG_WORKER = 4,
-  ChromeThreadDescriptor_ThreadType_THREAD_POOL_FG_BLOCKING = 5,
-  ChromeThreadDescriptor_ThreadType_THREAD_POOL_BG_BLOCKING = 6,
-  ChromeThreadDescriptor_ThreadType_THREAD_POOL_SERVICE = 7,
-  ChromeThreadDescriptor_ThreadType_THREAD_COMPOSITOR = 8,
-  ChromeThreadDescriptor_ThreadType_THREAD_VIZ_COMPOSITOR = 9,
-  ChromeThreadDescriptor_ThreadType_THREAD_COMPOSITOR_WORKER = 10,
-  ChromeThreadDescriptor_ThreadType_THREAD_SERVICE_WORKER = 11,
-  ChromeThreadDescriptor_ThreadType_THREAD_NETWORK_SERVICE = 12,
-  ChromeThreadDescriptor_ThreadType_THREAD_CHILD_IO = 13,
-  ChromeThreadDescriptor_ThreadType_THREAD_BROWSER_IO = 14,
-  ChromeThreadDescriptor_ThreadType_THREAD_BROWSER_MAIN = 15,
-  ChromeThreadDescriptor_ThreadType_THREAD_RENDERER_MAIN = 16,
-  ChromeThreadDescriptor_ThreadType_THREAD_UTILITY_MAIN = 17,
-  ChromeThreadDescriptor_ThreadType_THREAD_GPU_MAIN = 18,
-  ChromeThreadDescriptor_ThreadType_THREAD_CACHE_BLOCKFILE = 19,
-  ChromeThreadDescriptor_ThreadType_THREAD_MEDIA = 20,
-  ChromeThreadDescriptor_ThreadType_THREAD_AUDIO_OUTPUTDEVICE = 21,
-  ChromeThreadDescriptor_ThreadType_THREAD_AUDIO_INPUTDEVICE = 22,
-  ChromeThreadDescriptor_ThreadType_THREAD_GPU_MEMORY = 23,
-  ChromeThreadDescriptor_ThreadType_THREAD_GPU_VSYNC = 24,
-  ChromeThreadDescriptor_ThreadType_THREAD_DXA_VIDEODECODER = 25,
-  ChromeThreadDescriptor_ThreadType_THREAD_BROWSER_WATCHDOG = 26,
-  ChromeThreadDescriptor_ThreadType_THREAD_WEBRTC_NETWORK = 27,
-  ChromeThreadDescriptor_ThreadType_THREAD_WINDOW_OWNER = 28,
-  ChromeThreadDescriptor_ThreadType_THREAD_WEBRTC_SIGNALING = 29,
-  ChromeThreadDescriptor_ThreadType_THREAD_WEBRTC_WORKER = 30,
-  ChromeThreadDescriptor_ThreadType_THREAD_PPAPI_MAIN = 31,
-  ChromeThreadDescriptor_ThreadType_THREAD_GPU_WATCHDOG = 32,
-  ChromeThreadDescriptor_ThreadType_THREAD_SWAPPER = 33,
-  ChromeThreadDescriptor_ThreadType_THREAD_GAMEPAD_POLLING = 34,
-  ChromeThreadDescriptor_ThreadType_THREAD_WEBCRYPTO = 35,
-  ChromeThreadDescriptor_ThreadType_THREAD_DATABASE = 36,
-  ChromeThreadDescriptor_ThreadType_THREAD_PROXYRESOLVER = 37,
-  ChromeThreadDescriptor_ThreadType_THREAD_DEVTOOLSADB = 38,
-  ChromeThreadDescriptor_ThreadType_THREAD_NETWORKCONFIGWATCHER = 39,
-  ChromeThreadDescriptor_ThreadType_THREAD_WASAPI_RENDER = 40,
-  ChromeThreadDescriptor_ThreadType_THREAD_MEMORY_INFRA = 50,
-  ChromeThreadDescriptor_ThreadType_THREAD_SAMPLING_PROFILER = 51,
+namespace perfetto_pbzero_enum_ChromeThreadDescriptor {
+enum ThreadType : int32_t {
+  THREAD_UNSPECIFIED = 0,
+  THREAD_MAIN = 1,
+  THREAD_IO = 2,
+  THREAD_POOL_BG_WORKER = 3,
+  THREAD_POOL_FG_WORKER = 4,
+  THREAD_POOL_FG_BLOCKING = 5,
+  THREAD_POOL_BG_BLOCKING = 6,
+  THREAD_POOL_SERVICE = 7,
+  THREAD_COMPOSITOR = 8,
+  THREAD_VIZ_COMPOSITOR = 9,
+  THREAD_COMPOSITOR_WORKER = 10,
+  THREAD_SERVICE_WORKER = 11,
+  THREAD_NETWORK_SERVICE = 12,
+  THREAD_CHILD_IO = 13,
+  THREAD_BROWSER_IO = 14,
+  THREAD_BROWSER_MAIN = 15,
+  THREAD_RENDERER_MAIN = 16,
+  THREAD_UTILITY_MAIN = 17,
+  THREAD_GPU_MAIN = 18,
+  THREAD_CACHE_BLOCKFILE = 19,
+  THREAD_MEDIA = 20,
+  THREAD_AUDIO_OUTPUTDEVICE = 21,
+  THREAD_AUDIO_INPUTDEVICE = 22,
+  THREAD_GPU_MEMORY = 23,
+  THREAD_GPU_VSYNC = 24,
+  THREAD_DXA_VIDEODECODER = 25,
+  THREAD_BROWSER_WATCHDOG = 26,
+  THREAD_WEBRTC_NETWORK = 27,
+  THREAD_WINDOW_OWNER = 28,
+  THREAD_WEBRTC_SIGNALING = 29,
+  THREAD_WEBRTC_WORKER = 30,
+  THREAD_PPAPI_MAIN = 31,
+  THREAD_GPU_WATCHDOG = 32,
+  THREAD_SWAPPER = 33,
+  THREAD_GAMEPAD_POLLING = 34,
+  THREAD_WEBCRYPTO = 35,
+  THREAD_DATABASE = 36,
+  THREAD_PROXYRESOLVER = 37,
+  THREAD_DEVTOOLSADB = 38,
+  THREAD_NETWORKCONFIGWATCHER = 39,
+  THREAD_WASAPI_RENDER = 40,
+  THREAD_LOADER_LOCK_SAMPLER = 41,
+  THREAD_MEMORY_INFRA = 50,
+  THREAD_SAMPLING_PROFILER = 51,
 };
+} // namespace perfetto_pbzero_enum_ChromeThreadDescriptor
+using ChromeThreadDescriptor_ThreadType = perfetto_pbzero_enum_ChromeThreadDescriptor::ThreadType;
 
-const ChromeThreadDescriptor_ThreadType ChromeThreadDescriptor_ThreadType_MIN = ChromeThreadDescriptor_ThreadType_THREAD_UNSPECIFIED;
-const ChromeThreadDescriptor_ThreadType ChromeThreadDescriptor_ThreadType_MAX = ChromeThreadDescriptor_ThreadType_THREAD_SAMPLING_PROFILER;
+
+constexpr ChromeThreadDescriptor_ThreadType ChromeThreadDescriptor_ThreadType_MIN = ChromeThreadDescriptor_ThreadType::THREAD_UNSPECIFIED;
+constexpr ChromeThreadDescriptor_ThreadType ChromeThreadDescriptor_ThreadType_MAX = ChromeThreadDescriptor_ThreadType::THREAD_SAMPLING_PROFILER;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeThreadDescriptor_ThreadType_Name(::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_UNSPECIFIED:
+    return "THREAD_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_MAIN:
+    return "THREAD_MAIN";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_IO:
+    return "THREAD_IO";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_POOL_BG_WORKER:
+    return "THREAD_POOL_BG_WORKER";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_POOL_FG_WORKER:
+    return "THREAD_POOL_FG_WORKER";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_POOL_FG_BLOCKING:
+    return "THREAD_POOL_FG_BLOCKING";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_POOL_BG_BLOCKING:
+    return "THREAD_POOL_BG_BLOCKING";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_POOL_SERVICE:
+    return "THREAD_POOL_SERVICE";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_COMPOSITOR:
+    return "THREAD_COMPOSITOR";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_VIZ_COMPOSITOR:
+    return "THREAD_VIZ_COMPOSITOR";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_COMPOSITOR_WORKER:
+    return "THREAD_COMPOSITOR_WORKER";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_SERVICE_WORKER:
+    return "THREAD_SERVICE_WORKER";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_NETWORK_SERVICE:
+    return "THREAD_NETWORK_SERVICE";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_CHILD_IO:
+    return "THREAD_CHILD_IO";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_BROWSER_IO:
+    return "THREAD_BROWSER_IO";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_BROWSER_MAIN:
+    return "THREAD_BROWSER_MAIN";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_RENDERER_MAIN:
+    return "THREAD_RENDERER_MAIN";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_UTILITY_MAIN:
+    return "THREAD_UTILITY_MAIN";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_GPU_MAIN:
+    return "THREAD_GPU_MAIN";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_CACHE_BLOCKFILE:
+    return "THREAD_CACHE_BLOCKFILE";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_MEDIA:
+    return "THREAD_MEDIA";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_AUDIO_OUTPUTDEVICE:
+    return "THREAD_AUDIO_OUTPUTDEVICE";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_AUDIO_INPUTDEVICE:
+    return "THREAD_AUDIO_INPUTDEVICE";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_GPU_MEMORY:
+    return "THREAD_GPU_MEMORY";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_GPU_VSYNC:
+    return "THREAD_GPU_VSYNC";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_DXA_VIDEODECODER:
+    return "THREAD_DXA_VIDEODECODER";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_BROWSER_WATCHDOG:
+    return "THREAD_BROWSER_WATCHDOG";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_WEBRTC_NETWORK:
+    return "THREAD_WEBRTC_NETWORK";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_WINDOW_OWNER:
+    return "THREAD_WINDOW_OWNER";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_WEBRTC_SIGNALING:
+    return "THREAD_WEBRTC_SIGNALING";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_WEBRTC_WORKER:
+    return "THREAD_WEBRTC_WORKER";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_PPAPI_MAIN:
+    return "THREAD_PPAPI_MAIN";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_GPU_WATCHDOG:
+    return "THREAD_GPU_WATCHDOG";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_SWAPPER:
+    return "THREAD_SWAPPER";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_GAMEPAD_POLLING:
+    return "THREAD_GAMEPAD_POLLING";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_WEBCRYPTO:
+    return "THREAD_WEBCRYPTO";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_DATABASE:
+    return "THREAD_DATABASE";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_PROXYRESOLVER:
+    return "THREAD_PROXYRESOLVER";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_DEVTOOLSADB:
+    return "THREAD_DEVTOOLSADB";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_NETWORKCONFIGWATCHER:
+    return "THREAD_NETWORKCONFIGWATCHER";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_WASAPI_RENDER:
+    return "THREAD_WASAPI_RENDER";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_LOADER_LOCK_SAMPLER:
+    return "THREAD_LOADER_LOCK_SAMPLER";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_MEMORY_INFRA:
+    return "THREAD_MEMORY_INFRA";
+
+  case ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType::THREAD_SAMPLING_PROFILER:
+    return "THREAD_SAMPLING_PROFILER";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class ChromeThreadDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -85,50 +232,57 @@ class ChromeThreadDescriptor : public ::protozero::Message {
     kThreadTypeFieldNumber = 1,
     kLegacySortIndexFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeThreadDescriptor"; }
+
+
   using ThreadType = ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType;
-  static const ThreadType THREAD_UNSPECIFIED = ChromeThreadDescriptor_ThreadType_THREAD_UNSPECIFIED;
-  static const ThreadType THREAD_MAIN = ChromeThreadDescriptor_ThreadType_THREAD_MAIN;
-  static const ThreadType THREAD_IO = ChromeThreadDescriptor_ThreadType_THREAD_IO;
-  static const ThreadType THREAD_POOL_BG_WORKER = ChromeThreadDescriptor_ThreadType_THREAD_POOL_BG_WORKER;
-  static const ThreadType THREAD_POOL_FG_WORKER = ChromeThreadDescriptor_ThreadType_THREAD_POOL_FG_WORKER;
-  static const ThreadType THREAD_POOL_FG_BLOCKING = ChromeThreadDescriptor_ThreadType_THREAD_POOL_FG_BLOCKING;
-  static const ThreadType THREAD_POOL_BG_BLOCKING = ChromeThreadDescriptor_ThreadType_THREAD_POOL_BG_BLOCKING;
-  static const ThreadType THREAD_POOL_SERVICE = ChromeThreadDescriptor_ThreadType_THREAD_POOL_SERVICE;
-  static const ThreadType THREAD_COMPOSITOR = ChromeThreadDescriptor_ThreadType_THREAD_COMPOSITOR;
-  static const ThreadType THREAD_VIZ_COMPOSITOR = ChromeThreadDescriptor_ThreadType_THREAD_VIZ_COMPOSITOR;
-  static const ThreadType THREAD_COMPOSITOR_WORKER = ChromeThreadDescriptor_ThreadType_THREAD_COMPOSITOR_WORKER;
-  static const ThreadType THREAD_SERVICE_WORKER = ChromeThreadDescriptor_ThreadType_THREAD_SERVICE_WORKER;
-  static const ThreadType THREAD_NETWORK_SERVICE = ChromeThreadDescriptor_ThreadType_THREAD_NETWORK_SERVICE;
-  static const ThreadType THREAD_CHILD_IO = ChromeThreadDescriptor_ThreadType_THREAD_CHILD_IO;
-  static const ThreadType THREAD_BROWSER_IO = ChromeThreadDescriptor_ThreadType_THREAD_BROWSER_IO;
-  static const ThreadType THREAD_BROWSER_MAIN = ChromeThreadDescriptor_ThreadType_THREAD_BROWSER_MAIN;
-  static const ThreadType THREAD_RENDERER_MAIN = ChromeThreadDescriptor_ThreadType_THREAD_RENDERER_MAIN;
-  static const ThreadType THREAD_UTILITY_MAIN = ChromeThreadDescriptor_ThreadType_THREAD_UTILITY_MAIN;
-  static const ThreadType THREAD_GPU_MAIN = ChromeThreadDescriptor_ThreadType_THREAD_GPU_MAIN;
-  static const ThreadType THREAD_CACHE_BLOCKFILE = ChromeThreadDescriptor_ThreadType_THREAD_CACHE_BLOCKFILE;
-  static const ThreadType THREAD_MEDIA = ChromeThreadDescriptor_ThreadType_THREAD_MEDIA;
-  static const ThreadType THREAD_AUDIO_OUTPUTDEVICE = ChromeThreadDescriptor_ThreadType_THREAD_AUDIO_OUTPUTDEVICE;
-  static const ThreadType THREAD_AUDIO_INPUTDEVICE = ChromeThreadDescriptor_ThreadType_THREAD_AUDIO_INPUTDEVICE;
-  static const ThreadType THREAD_GPU_MEMORY = ChromeThreadDescriptor_ThreadType_THREAD_GPU_MEMORY;
-  static const ThreadType THREAD_GPU_VSYNC = ChromeThreadDescriptor_ThreadType_THREAD_GPU_VSYNC;
-  static const ThreadType THREAD_DXA_VIDEODECODER = ChromeThreadDescriptor_ThreadType_THREAD_DXA_VIDEODECODER;
-  static const ThreadType THREAD_BROWSER_WATCHDOG = ChromeThreadDescriptor_ThreadType_THREAD_BROWSER_WATCHDOG;
-  static const ThreadType THREAD_WEBRTC_NETWORK = ChromeThreadDescriptor_ThreadType_THREAD_WEBRTC_NETWORK;
-  static const ThreadType THREAD_WINDOW_OWNER = ChromeThreadDescriptor_ThreadType_THREAD_WINDOW_OWNER;
-  static const ThreadType THREAD_WEBRTC_SIGNALING = ChromeThreadDescriptor_ThreadType_THREAD_WEBRTC_SIGNALING;
-  static const ThreadType THREAD_WEBRTC_WORKER = ChromeThreadDescriptor_ThreadType_THREAD_WEBRTC_WORKER;
-  static const ThreadType THREAD_PPAPI_MAIN = ChromeThreadDescriptor_ThreadType_THREAD_PPAPI_MAIN;
-  static const ThreadType THREAD_GPU_WATCHDOG = ChromeThreadDescriptor_ThreadType_THREAD_GPU_WATCHDOG;
-  static const ThreadType THREAD_SWAPPER = ChromeThreadDescriptor_ThreadType_THREAD_SWAPPER;
-  static const ThreadType THREAD_GAMEPAD_POLLING = ChromeThreadDescriptor_ThreadType_THREAD_GAMEPAD_POLLING;
-  static const ThreadType THREAD_WEBCRYPTO = ChromeThreadDescriptor_ThreadType_THREAD_WEBCRYPTO;
-  static const ThreadType THREAD_DATABASE = ChromeThreadDescriptor_ThreadType_THREAD_DATABASE;
-  static const ThreadType THREAD_PROXYRESOLVER = ChromeThreadDescriptor_ThreadType_THREAD_PROXYRESOLVER;
-  static const ThreadType THREAD_DEVTOOLSADB = ChromeThreadDescriptor_ThreadType_THREAD_DEVTOOLSADB;
-  static const ThreadType THREAD_NETWORKCONFIGWATCHER = ChromeThreadDescriptor_ThreadType_THREAD_NETWORKCONFIGWATCHER;
-  static const ThreadType THREAD_WASAPI_RENDER = ChromeThreadDescriptor_ThreadType_THREAD_WASAPI_RENDER;
-  static const ThreadType THREAD_MEMORY_INFRA = ChromeThreadDescriptor_ThreadType_THREAD_MEMORY_INFRA;
-  static const ThreadType THREAD_SAMPLING_PROFILER = ChromeThreadDescriptor_ThreadType_THREAD_SAMPLING_PROFILER;
+  static inline const char* ThreadType_Name(ThreadType value) {
+    return ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType_Name(value);
+  }
+  static const ThreadType THREAD_UNSPECIFIED = ThreadType::THREAD_UNSPECIFIED;
+  static const ThreadType THREAD_MAIN = ThreadType::THREAD_MAIN;
+  static const ThreadType THREAD_IO = ThreadType::THREAD_IO;
+  static const ThreadType THREAD_POOL_BG_WORKER = ThreadType::THREAD_POOL_BG_WORKER;
+  static const ThreadType THREAD_POOL_FG_WORKER = ThreadType::THREAD_POOL_FG_WORKER;
+  static const ThreadType THREAD_POOL_FG_BLOCKING = ThreadType::THREAD_POOL_FG_BLOCKING;
+  static const ThreadType THREAD_POOL_BG_BLOCKING = ThreadType::THREAD_POOL_BG_BLOCKING;
+  static const ThreadType THREAD_POOL_SERVICE = ThreadType::THREAD_POOL_SERVICE;
+  static const ThreadType THREAD_COMPOSITOR = ThreadType::THREAD_COMPOSITOR;
+  static const ThreadType THREAD_VIZ_COMPOSITOR = ThreadType::THREAD_VIZ_COMPOSITOR;
+  static const ThreadType THREAD_COMPOSITOR_WORKER = ThreadType::THREAD_COMPOSITOR_WORKER;
+  static const ThreadType THREAD_SERVICE_WORKER = ThreadType::THREAD_SERVICE_WORKER;
+  static const ThreadType THREAD_NETWORK_SERVICE = ThreadType::THREAD_NETWORK_SERVICE;
+  static const ThreadType THREAD_CHILD_IO = ThreadType::THREAD_CHILD_IO;
+  static const ThreadType THREAD_BROWSER_IO = ThreadType::THREAD_BROWSER_IO;
+  static const ThreadType THREAD_BROWSER_MAIN = ThreadType::THREAD_BROWSER_MAIN;
+  static const ThreadType THREAD_RENDERER_MAIN = ThreadType::THREAD_RENDERER_MAIN;
+  static const ThreadType THREAD_UTILITY_MAIN = ThreadType::THREAD_UTILITY_MAIN;
+  static const ThreadType THREAD_GPU_MAIN = ThreadType::THREAD_GPU_MAIN;
+  static const ThreadType THREAD_CACHE_BLOCKFILE = ThreadType::THREAD_CACHE_BLOCKFILE;
+  static const ThreadType THREAD_MEDIA = ThreadType::THREAD_MEDIA;
+  static const ThreadType THREAD_AUDIO_OUTPUTDEVICE = ThreadType::THREAD_AUDIO_OUTPUTDEVICE;
+  static const ThreadType THREAD_AUDIO_INPUTDEVICE = ThreadType::THREAD_AUDIO_INPUTDEVICE;
+  static const ThreadType THREAD_GPU_MEMORY = ThreadType::THREAD_GPU_MEMORY;
+  static const ThreadType THREAD_GPU_VSYNC = ThreadType::THREAD_GPU_VSYNC;
+  static const ThreadType THREAD_DXA_VIDEODECODER = ThreadType::THREAD_DXA_VIDEODECODER;
+  static const ThreadType THREAD_BROWSER_WATCHDOG = ThreadType::THREAD_BROWSER_WATCHDOG;
+  static const ThreadType THREAD_WEBRTC_NETWORK = ThreadType::THREAD_WEBRTC_NETWORK;
+  static const ThreadType THREAD_WINDOW_OWNER = ThreadType::THREAD_WINDOW_OWNER;
+  static const ThreadType THREAD_WEBRTC_SIGNALING = ThreadType::THREAD_WEBRTC_SIGNALING;
+  static const ThreadType THREAD_WEBRTC_WORKER = ThreadType::THREAD_WEBRTC_WORKER;
+  static const ThreadType THREAD_PPAPI_MAIN = ThreadType::THREAD_PPAPI_MAIN;
+  static const ThreadType THREAD_GPU_WATCHDOG = ThreadType::THREAD_GPU_WATCHDOG;
+  static const ThreadType THREAD_SWAPPER = ThreadType::THREAD_SWAPPER;
+  static const ThreadType THREAD_GAMEPAD_POLLING = ThreadType::THREAD_GAMEPAD_POLLING;
+  static const ThreadType THREAD_WEBCRYPTO = ThreadType::THREAD_WEBCRYPTO;
+  static const ThreadType THREAD_DATABASE = ThreadType::THREAD_DATABASE;
+  static const ThreadType THREAD_PROXYRESOLVER = ThreadType::THREAD_PROXYRESOLVER;
+  static const ThreadType THREAD_DEVTOOLSADB = ThreadType::THREAD_DEVTOOLSADB;
+  static const ThreadType THREAD_NETWORKCONFIGWATCHER = ThreadType::THREAD_NETWORKCONFIGWATCHER;
+  static const ThreadType THREAD_WASAPI_RENDER = ThreadType::THREAD_WASAPI_RENDER;
+  static const ThreadType THREAD_LOADER_LOCK_SAMPLER = ThreadType::THREAD_LOADER_LOCK_SAMPLER;
+  static const ThreadType THREAD_MEMORY_INFRA = ThreadType::THREAD_MEMORY_INFRA;
+  static const ThreadType THREAD_SAMPLING_PROFILER = ThreadType::THREAD_SAMPLING_PROFILER;
 
   using FieldMetadata_ThreadType =
     ::protozero::proto_utils::FieldMetadata<
@@ -144,7 +298,7 @@ class ChromeThreadDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ThreadType kThreadType() { return {}; }
   void set_thread_type(::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType value) {
     static constexpr uint32_t field_id = FieldMetadata_ThreadType::kFieldId;
@@ -169,7 +323,7 @@ class ChromeThreadDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LegacySortIndex kLegacySortIndex() { return {}; }
   void set_legacy_sort_index(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_LegacySortIndex::kFieldId;
