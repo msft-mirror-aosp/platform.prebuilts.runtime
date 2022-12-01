@@ -17,27 +17,83 @@ namespace protos {
 namespace pbzero {
 
 class GraphicsFrameEvent_BufferEvent;
-enum GraphicsFrameEvent_BufferEventType : int32_t;
+namespace perfetto_pbzero_enum_GraphicsFrameEvent {
+enum BufferEventType : int32_t;
+}  // namespace perfetto_pbzero_enum_GraphicsFrameEvent
+using GraphicsFrameEvent_BufferEventType = perfetto_pbzero_enum_GraphicsFrameEvent::BufferEventType;
 
-enum GraphicsFrameEvent_BufferEventType : int32_t {
-  GraphicsFrameEvent_BufferEventType_UNSPECIFIED = 0,
-  GraphicsFrameEvent_BufferEventType_DEQUEUE = 1,
-  GraphicsFrameEvent_BufferEventType_QUEUE = 2,
-  GraphicsFrameEvent_BufferEventType_POST = 3,
-  GraphicsFrameEvent_BufferEventType_ACQUIRE_FENCE = 4,
-  GraphicsFrameEvent_BufferEventType_LATCH = 5,
-  GraphicsFrameEvent_BufferEventType_HWC_COMPOSITION_QUEUED = 6,
-  GraphicsFrameEvent_BufferEventType_FALLBACK_COMPOSITION = 7,
-  GraphicsFrameEvent_BufferEventType_PRESENT_FENCE = 8,
-  GraphicsFrameEvent_BufferEventType_RELEASE_FENCE = 9,
-  GraphicsFrameEvent_BufferEventType_MODIFY = 10,
-  GraphicsFrameEvent_BufferEventType_DETACH = 11,
-  GraphicsFrameEvent_BufferEventType_ATTACH = 12,
-  GraphicsFrameEvent_BufferEventType_CANCEL = 13,
+namespace perfetto_pbzero_enum_GraphicsFrameEvent {
+enum BufferEventType : int32_t {
+  UNSPECIFIED = 0,
+  DEQUEUE = 1,
+  QUEUE = 2,
+  POST = 3,
+  ACQUIRE_FENCE = 4,
+  LATCH = 5,
+  HWC_COMPOSITION_QUEUED = 6,
+  FALLBACK_COMPOSITION = 7,
+  PRESENT_FENCE = 8,
+  RELEASE_FENCE = 9,
+  MODIFY = 10,
+  DETACH = 11,
+  ATTACH = 12,
+  CANCEL = 13,
 };
+} // namespace perfetto_pbzero_enum_GraphicsFrameEvent
+using GraphicsFrameEvent_BufferEventType = perfetto_pbzero_enum_GraphicsFrameEvent::BufferEventType;
 
-const GraphicsFrameEvent_BufferEventType GraphicsFrameEvent_BufferEventType_MIN = GraphicsFrameEvent_BufferEventType_UNSPECIFIED;
-const GraphicsFrameEvent_BufferEventType GraphicsFrameEvent_BufferEventType_MAX = GraphicsFrameEvent_BufferEventType_CANCEL;
+
+constexpr GraphicsFrameEvent_BufferEventType GraphicsFrameEvent_BufferEventType_MIN = GraphicsFrameEvent_BufferEventType::UNSPECIFIED;
+constexpr GraphicsFrameEvent_BufferEventType GraphicsFrameEvent_BufferEventType_MAX = GraphicsFrameEvent_BufferEventType::CANCEL;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* GraphicsFrameEvent_BufferEventType_Name(::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::UNSPECIFIED:
+    return "UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::DEQUEUE:
+    return "DEQUEUE";
+
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::QUEUE:
+    return "QUEUE";
+
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::POST:
+    return "POST";
+
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::ACQUIRE_FENCE:
+    return "ACQUIRE_FENCE";
+
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::LATCH:
+    return "LATCH";
+
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::HWC_COMPOSITION_QUEUED:
+    return "HWC_COMPOSITION_QUEUED";
+
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::FALLBACK_COMPOSITION:
+    return "FALLBACK_COMPOSITION";
+
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::PRESENT_FENCE:
+    return "PRESENT_FENCE";
+
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::RELEASE_FENCE:
+    return "RELEASE_FENCE";
+
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::MODIFY:
+    return "MODIFY";
+
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::DETACH:
+    return "DETACH";
+
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::ATTACH:
+    return "ATTACH";
+
+  case ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType::CANCEL:
+    return "CANCEL";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class GraphicsFrameEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -54,22 +110,28 @@ class GraphicsFrameEvent : public ::protozero::Message {
   enum : int32_t {
     kBufferEventFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GraphicsFrameEvent"; }
+
   using BufferEvent = ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEvent;
+
   using BufferEventType = ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType;
-  static const BufferEventType UNSPECIFIED = GraphicsFrameEvent_BufferEventType_UNSPECIFIED;
-  static const BufferEventType DEQUEUE = GraphicsFrameEvent_BufferEventType_DEQUEUE;
-  static const BufferEventType QUEUE = GraphicsFrameEvent_BufferEventType_QUEUE;
-  static const BufferEventType POST = GraphicsFrameEvent_BufferEventType_POST;
-  static const BufferEventType ACQUIRE_FENCE = GraphicsFrameEvent_BufferEventType_ACQUIRE_FENCE;
-  static const BufferEventType LATCH = GraphicsFrameEvent_BufferEventType_LATCH;
-  static const BufferEventType HWC_COMPOSITION_QUEUED = GraphicsFrameEvent_BufferEventType_HWC_COMPOSITION_QUEUED;
-  static const BufferEventType FALLBACK_COMPOSITION = GraphicsFrameEvent_BufferEventType_FALLBACK_COMPOSITION;
-  static const BufferEventType PRESENT_FENCE = GraphicsFrameEvent_BufferEventType_PRESENT_FENCE;
-  static const BufferEventType RELEASE_FENCE = GraphicsFrameEvent_BufferEventType_RELEASE_FENCE;
-  static const BufferEventType MODIFY = GraphicsFrameEvent_BufferEventType_MODIFY;
-  static const BufferEventType DETACH = GraphicsFrameEvent_BufferEventType_DETACH;
-  static const BufferEventType ATTACH = GraphicsFrameEvent_BufferEventType_ATTACH;
-  static const BufferEventType CANCEL = GraphicsFrameEvent_BufferEventType_CANCEL;
+  static inline const char* BufferEventType_Name(BufferEventType value) {
+    return ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType_Name(value);
+  }
+  static const BufferEventType UNSPECIFIED = BufferEventType::UNSPECIFIED;
+  static const BufferEventType DEQUEUE = BufferEventType::DEQUEUE;
+  static const BufferEventType QUEUE = BufferEventType::QUEUE;
+  static const BufferEventType POST = BufferEventType::POST;
+  static const BufferEventType ACQUIRE_FENCE = BufferEventType::ACQUIRE_FENCE;
+  static const BufferEventType LATCH = BufferEventType::LATCH;
+  static const BufferEventType HWC_COMPOSITION_QUEUED = BufferEventType::HWC_COMPOSITION_QUEUED;
+  static const BufferEventType FALLBACK_COMPOSITION = BufferEventType::FALLBACK_COMPOSITION;
+  static const BufferEventType PRESENT_FENCE = BufferEventType::PRESENT_FENCE;
+  static const BufferEventType RELEASE_FENCE = BufferEventType::RELEASE_FENCE;
+  static const BufferEventType MODIFY = BufferEventType::MODIFY;
+  static const BufferEventType DETACH = BufferEventType::DETACH;
+  static const BufferEventType ATTACH = BufferEventType::ATTACH;
+  static const BufferEventType CANCEL = BufferEventType::CANCEL;
 
   using FieldMetadata_BufferEvent =
     ::protozero::proto_utils::FieldMetadata<
@@ -85,7 +147,7 @@ class GraphicsFrameEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BufferEvent kBufferEvent() { return {}; }
   template <typename T = GraphicsFrameEvent_BufferEvent> T* set_buffer_event() {
     return BeginNestedMessage<T>(1);
@@ -120,6 +182,8 @@ class GraphicsFrameEvent_BufferEvent : public ::protozero::Message {
     kDurationNsFieldNumber = 4,
     kBufferIdFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GraphicsFrameEvent.BufferEvent"; }
+
 
   using FieldMetadata_FrameNumber =
     ::protozero::proto_utils::FieldMetadata<
@@ -135,7 +199,7 @@ class GraphicsFrameEvent_BufferEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FrameNumber kFrameNumber() { return {}; }
   void set_frame_number(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FrameNumber::kFieldId;
@@ -160,7 +224,7 @@ class GraphicsFrameEvent_BufferEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
@@ -185,10 +249,13 @@ class GraphicsFrameEvent_BufferEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LayerName kLayerName() { return {}; }
   void set_layer_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_LayerName::kFieldId, data, size);
+  }
+  void set_layer_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_LayerName::kFieldId, chars.data, chars.size);
   }
   void set_layer_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_LayerName::kFieldId;
@@ -213,7 +280,7 @@ class GraphicsFrameEvent_BufferEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DurationNs kDurationNs() { return {}; }
   void set_duration_ns(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DurationNs::kFieldId;
@@ -238,7 +305,7 @@ class GraphicsFrameEvent_BufferEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BufferId kBufferId() { return {}; }
   void set_buffer_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BufferId::kFieldId;

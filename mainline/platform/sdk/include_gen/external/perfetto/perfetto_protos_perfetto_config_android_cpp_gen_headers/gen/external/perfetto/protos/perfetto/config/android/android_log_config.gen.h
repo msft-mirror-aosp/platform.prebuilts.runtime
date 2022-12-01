@@ -30,7 +30,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT AndroidLogConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT AndroidLogConfig : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kLogIdsFieldNumber = 1,
