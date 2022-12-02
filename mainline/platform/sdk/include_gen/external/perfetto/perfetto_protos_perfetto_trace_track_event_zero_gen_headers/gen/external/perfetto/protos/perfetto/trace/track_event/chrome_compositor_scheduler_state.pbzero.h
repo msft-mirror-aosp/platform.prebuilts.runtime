@@ -26,16 +26,43 @@ class ChromeCompositorStateMachine_MajorState;
 class ChromeCompositorStateMachine_MinorState;
 class CompositorTimingHistory;
 class SourceLocation;
-enum BeginFrameArgs_BeginFrameArgsType : int32_t;
-enum BeginImplFrameArgs_State : int32_t;
+namespace perfetto_pbzero_enum_BeginFrameArgs {
+enum BeginFrameArgsType : int32_t;
+}  // namespace perfetto_pbzero_enum_BeginFrameArgs
+using BeginFrameArgs_BeginFrameArgsType = perfetto_pbzero_enum_BeginFrameArgs::BeginFrameArgsType;
+namespace perfetto_pbzero_enum_BeginImplFrameArgs {
+enum State : int32_t;
+}  // namespace perfetto_pbzero_enum_BeginImplFrameArgs
+using BeginImplFrameArgs_State = perfetto_pbzero_enum_BeginImplFrameArgs::State;
 enum ChromeCompositorSchedulerAction : int32_t;
-enum ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode : int32_t;
-enum ChromeCompositorStateMachine_MajorState_BeginImplFrameState : int32_t;
-enum ChromeCompositorStateMachine_MajorState_BeginMainFrameState : int32_t;
-enum ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState : int32_t;
-enum ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState : int32_t;
-enum ChromeCompositorStateMachine_MinorState_ScrollHandlerState : int32_t;
-enum ChromeCompositorStateMachine_MinorState_TreePriority : int32_t;
+namespace perfetto_pbzero_enum_ChromeCompositorSchedulerState {
+enum BeginImplFrameDeadlineMode : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeCompositorSchedulerState
+using ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode = perfetto_pbzero_enum_ChromeCompositorSchedulerState::BeginImplFrameDeadlineMode;
+namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState {
+enum BeginImplFrameState : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState
+using ChromeCompositorStateMachine_MajorState_BeginImplFrameState = perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState::BeginImplFrameState;
+namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState {
+enum BeginMainFrameState : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState
+using ChromeCompositorStateMachine_MajorState_BeginMainFrameState = perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState::BeginMainFrameState;
+namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState {
+enum ForcedRedrawOnTimeoutState : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState
+using ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState = perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState::ForcedRedrawOnTimeoutState;
+namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState {
+enum LayerTreeFrameSinkState : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState
+using ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState = perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState::LayerTreeFrameSinkState;
+namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState {
+enum ScrollHandlerState : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState
+using ChromeCompositorStateMachine_MinorState_ScrollHandlerState = perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState::ScrollHandlerState;
+namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState {
+enum TreePriority : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState
+using ChromeCompositorStateMachine_MinorState_TreePriority = perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState::TreePriority;
 
 enum ChromeCompositorSchedulerAction : int32_t {
   CC_SCHEDULER_ACTION_UNSPECIFIED = 0,
@@ -54,100 +81,362 @@ enum ChromeCompositorSchedulerAction : int32_t {
   CC_SCHEDULER_ACTION_NOTIFY_BEGIN_MAIN_FRAME_NOT_EXPECTED_SOON = 13,
 };
 
-const ChromeCompositorSchedulerAction ChromeCompositorSchedulerAction_MIN = CC_SCHEDULER_ACTION_UNSPECIFIED;
-const ChromeCompositorSchedulerAction ChromeCompositorSchedulerAction_MAX = CC_SCHEDULER_ACTION_NOTIFY_BEGIN_MAIN_FRAME_NOT_EXPECTED_SOON;
+constexpr ChromeCompositorSchedulerAction ChromeCompositorSchedulerAction_MIN = ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_UNSPECIFIED;
+constexpr ChromeCompositorSchedulerAction ChromeCompositorSchedulerAction_MAX = ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_NOTIFY_BEGIN_MAIN_FRAME_NOT_EXPECTED_SOON;
 
-enum BeginImplFrameArgs_State : int32_t {
-  BeginImplFrameArgs_State_BEGIN_FRAME_FINISHED = 0,
-  BeginImplFrameArgs_State_BEGIN_FRAME_USING = 1,
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeCompositorSchedulerAction_Name(::perfetto::protos::pbzero::ChromeCompositorSchedulerAction value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_UNSPECIFIED:
+    return "CC_SCHEDULER_ACTION_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_NONE:
+    return "CC_SCHEDULER_ACTION_NONE";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_SEND_BEGIN_MAIN_FRAME:
+    return "CC_SCHEDULER_ACTION_SEND_BEGIN_MAIN_FRAME";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_COMMIT:
+    return "CC_SCHEDULER_ACTION_COMMIT";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_ACTIVATE_SYNC_TREE:
+    return "CC_SCHEDULER_ACTION_ACTIVATE_SYNC_TREE";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_DRAW_IF_POSSIBLE:
+    return "CC_SCHEDULER_ACTION_DRAW_IF_POSSIBLE";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_DRAW_FORCED:
+    return "CC_SCHEDULER_ACTION_DRAW_FORCED";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_DRAW_ABORT:
+    return "CC_SCHEDULER_ACTION_DRAW_ABORT";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_BEGIN_LAYER_TREE_FRAME_SINK_CREATION:
+    return "CC_SCHEDULER_ACTION_BEGIN_LAYER_TREE_FRAME_SINK_CREATION";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_PREPARE_TILES:
+    return "CC_SCHEDULER_ACTION_PREPARE_TILES";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_INVALIDATE_LAYER_TREE_FRAME_SINK:
+    return "CC_SCHEDULER_ACTION_INVALIDATE_LAYER_TREE_FRAME_SINK";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_PERFORM_IMPL_SIDE_INVALIDATION:
+    return "CC_SCHEDULER_ACTION_PERFORM_IMPL_SIDE_INVALIDATION";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_NOTIFY_BEGIN_MAIN_FRAME_NOT_EXPECTED_UNTIL:
+    return "CC_SCHEDULER_ACTION_NOTIFY_BEGIN_MAIN_FRAME_NOT_EXPECTED_UNTIL";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction::CC_SCHEDULER_ACTION_NOTIFY_BEGIN_MAIN_FRAME_NOT_EXPECTED_SOON:
+    return "CC_SCHEDULER_ACTION_NOTIFY_BEGIN_MAIN_FRAME_NOT_EXPECTED_SOON";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_BeginImplFrameArgs {
+enum State : int32_t {
+  BEGIN_FRAME_FINISHED = 0,
+  BEGIN_FRAME_USING = 1,
 };
+} // namespace perfetto_pbzero_enum_BeginImplFrameArgs
+using BeginImplFrameArgs_State = perfetto_pbzero_enum_BeginImplFrameArgs::State;
 
-const BeginImplFrameArgs_State BeginImplFrameArgs_State_MIN = BeginImplFrameArgs_State_BEGIN_FRAME_FINISHED;
-const BeginImplFrameArgs_State BeginImplFrameArgs_State_MAX = BeginImplFrameArgs_State_BEGIN_FRAME_USING;
 
-enum BeginFrameArgs_BeginFrameArgsType : int32_t {
-  BeginFrameArgs_BeginFrameArgsType_BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED = 0,
-  BeginFrameArgs_BeginFrameArgsType_BEGIN_FRAME_ARGS_TYPE_INVALID = 1,
-  BeginFrameArgs_BeginFrameArgsType_BEGIN_FRAME_ARGS_TYPE_NORMAL = 2,
-  BeginFrameArgs_BeginFrameArgsType_BEGIN_FRAME_ARGS_TYPE_MISSED = 3,
+constexpr BeginImplFrameArgs_State BeginImplFrameArgs_State_MIN = BeginImplFrameArgs_State::BEGIN_FRAME_FINISHED;
+constexpr BeginImplFrameArgs_State BeginImplFrameArgs_State_MAX = BeginImplFrameArgs_State::BEGIN_FRAME_USING;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* BeginImplFrameArgs_State_Name(::perfetto::protos::pbzero::BeginImplFrameArgs_State value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::BeginImplFrameArgs_State::BEGIN_FRAME_FINISHED:
+    return "BEGIN_FRAME_FINISHED";
+
+  case ::perfetto::protos::pbzero::BeginImplFrameArgs_State::BEGIN_FRAME_USING:
+    return "BEGIN_FRAME_USING";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_BeginFrameArgs {
+enum BeginFrameArgsType : int32_t {
+  BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED = 0,
+  BEGIN_FRAME_ARGS_TYPE_INVALID = 1,
+  BEGIN_FRAME_ARGS_TYPE_NORMAL = 2,
+  BEGIN_FRAME_ARGS_TYPE_MISSED = 3,
 };
+} // namespace perfetto_pbzero_enum_BeginFrameArgs
+using BeginFrameArgs_BeginFrameArgsType = perfetto_pbzero_enum_BeginFrameArgs::BeginFrameArgsType;
 
-const BeginFrameArgs_BeginFrameArgsType BeginFrameArgs_BeginFrameArgsType_MIN = BeginFrameArgs_BeginFrameArgsType_BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED;
-const BeginFrameArgs_BeginFrameArgsType BeginFrameArgs_BeginFrameArgsType_MAX = BeginFrameArgs_BeginFrameArgsType_BEGIN_FRAME_ARGS_TYPE_MISSED;
 
-enum ChromeCompositorStateMachine_MinorState_TreePriority : int32_t {
-  ChromeCompositorStateMachine_MinorState_TreePriority_TREE_PRIORITY_UNSPECIFIED = 0,
-  ChromeCompositorStateMachine_MinorState_TreePriority_TREE_PRIORITY_SAME_PRIORITY_FOR_BOTH_TREES = 1,
-  ChromeCompositorStateMachine_MinorState_TreePriority_TREE_PRIORITY_SMOOTHNESS_TAKES_PRIORITY = 2,
-  ChromeCompositorStateMachine_MinorState_TreePriority_TREE_PRIORITY_NEW_CONTENT_TAKES_PRIORITY = 3,
+constexpr BeginFrameArgs_BeginFrameArgsType BeginFrameArgs_BeginFrameArgsType_MIN = BeginFrameArgs_BeginFrameArgsType::BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED;
+constexpr BeginFrameArgs_BeginFrameArgsType BeginFrameArgs_BeginFrameArgsType_MAX = BeginFrameArgs_BeginFrameArgsType::BEGIN_FRAME_ARGS_TYPE_MISSED;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* BeginFrameArgs_BeginFrameArgsType_Name(::perfetto::protos::pbzero::BeginFrameArgs_BeginFrameArgsType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::BeginFrameArgs_BeginFrameArgsType::BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED:
+    return "BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::BeginFrameArgs_BeginFrameArgsType::BEGIN_FRAME_ARGS_TYPE_INVALID:
+    return "BEGIN_FRAME_ARGS_TYPE_INVALID";
+
+  case ::perfetto::protos::pbzero::BeginFrameArgs_BeginFrameArgsType::BEGIN_FRAME_ARGS_TYPE_NORMAL:
+    return "BEGIN_FRAME_ARGS_TYPE_NORMAL";
+
+  case ::perfetto::protos::pbzero::BeginFrameArgs_BeginFrameArgsType::BEGIN_FRAME_ARGS_TYPE_MISSED:
+    return "BEGIN_FRAME_ARGS_TYPE_MISSED";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState {
+enum TreePriority : int32_t {
+  TREE_PRIORITY_UNSPECIFIED = 0,
+  TREE_PRIORITY_SAME_PRIORITY_FOR_BOTH_TREES = 1,
+  TREE_PRIORITY_SMOOTHNESS_TAKES_PRIORITY = 2,
+  TREE_PRIORITY_NEW_CONTENT_TAKES_PRIORITY = 3,
 };
+} // namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState
+using ChromeCompositorStateMachine_MinorState_TreePriority = perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState::TreePriority;
 
-const ChromeCompositorStateMachine_MinorState_TreePriority ChromeCompositorStateMachine_MinorState_TreePriority_MIN = ChromeCompositorStateMachine_MinorState_TreePriority_TREE_PRIORITY_UNSPECIFIED;
-const ChromeCompositorStateMachine_MinorState_TreePriority ChromeCompositorStateMachine_MinorState_TreePriority_MAX = ChromeCompositorStateMachine_MinorState_TreePriority_TREE_PRIORITY_NEW_CONTENT_TAKES_PRIORITY;
 
-enum ChromeCompositorStateMachine_MinorState_ScrollHandlerState : int32_t {
-  ChromeCompositorStateMachine_MinorState_ScrollHandlerState_SCROLL_HANDLER_UNSPECIFIED = 0,
-  ChromeCompositorStateMachine_MinorState_ScrollHandlerState_SCROLL_AFFECTS_SCROLL_HANDLER = 1,
-  ChromeCompositorStateMachine_MinorState_ScrollHandlerState_SCROLL_DOES_NOT_AFFECT_SCROLL_HANDLER = 2,
+constexpr ChromeCompositorStateMachine_MinorState_TreePriority ChromeCompositorStateMachine_MinorState_TreePriority_MIN = ChromeCompositorStateMachine_MinorState_TreePriority::TREE_PRIORITY_UNSPECIFIED;
+constexpr ChromeCompositorStateMachine_MinorState_TreePriority ChromeCompositorStateMachine_MinorState_TreePriority_MAX = ChromeCompositorStateMachine_MinorState_TreePriority::TREE_PRIORITY_NEW_CONTENT_TAKES_PRIORITY;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeCompositorStateMachine_MinorState_TreePriority_Name(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_TreePriority value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_TreePriority::TREE_PRIORITY_UNSPECIFIED:
+    return "TREE_PRIORITY_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_TreePriority::TREE_PRIORITY_SAME_PRIORITY_FOR_BOTH_TREES:
+    return "TREE_PRIORITY_SAME_PRIORITY_FOR_BOTH_TREES";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_TreePriority::TREE_PRIORITY_SMOOTHNESS_TAKES_PRIORITY:
+    return "TREE_PRIORITY_SMOOTHNESS_TAKES_PRIORITY";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_TreePriority::TREE_PRIORITY_NEW_CONTENT_TAKES_PRIORITY:
+    return "TREE_PRIORITY_NEW_CONTENT_TAKES_PRIORITY";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState {
+enum ScrollHandlerState : int32_t {
+  SCROLL_HANDLER_UNSPECIFIED = 0,
+  SCROLL_AFFECTS_SCROLL_HANDLER = 1,
+  SCROLL_DOES_NOT_AFFECT_SCROLL_HANDLER = 2,
 };
+} // namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState
+using ChromeCompositorStateMachine_MinorState_ScrollHandlerState = perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState::ScrollHandlerState;
 
-const ChromeCompositorStateMachine_MinorState_ScrollHandlerState ChromeCompositorStateMachine_MinorState_ScrollHandlerState_MIN = ChromeCompositorStateMachine_MinorState_ScrollHandlerState_SCROLL_HANDLER_UNSPECIFIED;
-const ChromeCompositorStateMachine_MinorState_ScrollHandlerState ChromeCompositorStateMachine_MinorState_ScrollHandlerState_MAX = ChromeCompositorStateMachine_MinorState_ScrollHandlerState_SCROLL_DOES_NOT_AFFECT_SCROLL_HANDLER;
 
-enum ChromeCompositorStateMachine_MajorState_BeginImplFrameState : int32_t {
-  ChromeCompositorStateMachine_MajorState_BeginImplFrameState_BEGIN_IMPL_FRAME_UNSPECIFIED = 0,
-  ChromeCompositorStateMachine_MajorState_BeginImplFrameState_BEGIN_IMPL_FRAME_IDLE = 1,
-  ChromeCompositorStateMachine_MajorState_BeginImplFrameState_BEGIN_IMPL_FRAME_INSIDE_BEGIN_FRAME = 2,
-  ChromeCompositorStateMachine_MajorState_BeginImplFrameState_BEGIN_IMPL_FRAME_INSIDE_DEADLINE = 3,
+constexpr ChromeCompositorStateMachine_MinorState_ScrollHandlerState ChromeCompositorStateMachine_MinorState_ScrollHandlerState_MIN = ChromeCompositorStateMachine_MinorState_ScrollHandlerState::SCROLL_HANDLER_UNSPECIFIED;
+constexpr ChromeCompositorStateMachine_MinorState_ScrollHandlerState ChromeCompositorStateMachine_MinorState_ScrollHandlerState_MAX = ChromeCompositorStateMachine_MinorState_ScrollHandlerState::SCROLL_DOES_NOT_AFFECT_SCROLL_HANDLER;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeCompositorStateMachine_MinorState_ScrollHandlerState_Name(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_ScrollHandlerState value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_ScrollHandlerState::SCROLL_HANDLER_UNSPECIFIED:
+    return "SCROLL_HANDLER_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_ScrollHandlerState::SCROLL_AFFECTS_SCROLL_HANDLER:
+    return "SCROLL_AFFECTS_SCROLL_HANDLER";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_ScrollHandlerState::SCROLL_DOES_NOT_AFFECT_SCROLL_HANDLER:
+    return "SCROLL_DOES_NOT_AFFECT_SCROLL_HANDLER";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState {
+enum BeginImplFrameState : int32_t {
+  BEGIN_IMPL_FRAME_UNSPECIFIED = 0,
+  BEGIN_IMPL_FRAME_IDLE = 1,
+  BEGIN_IMPL_FRAME_INSIDE_BEGIN_FRAME = 2,
+  BEGIN_IMPL_FRAME_INSIDE_DEADLINE = 3,
 };
+} // namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState
+using ChromeCompositorStateMachine_MajorState_BeginImplFrameState = perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState::BeginImplFrameState;
 
-const ChromeCompositorStateMachine_MajorState_BeginImplFrameState ChromeCompositorStateMachine_MajorState_BeginImplFrameState_MIN = ChromeCompositorStateMachine_MajorState_BeginImplFrameState_BEGIN_IMPL_FRAME_UNSPECIFIED;
-const ChromeCompositorStateMachine_MajorState_BeginImplFrameState ChromeCompositorStateMachine_MajorState_BeginImplFrameState_MAX = ChromeCompositorStateMachine_MajorState_BeginImplFrameState_BEGIN_IMPL_FRAME_INSIDE_DEADLINE;
 
-enum ChromeCompositorStateMachine_MajorState_BeginMainFrameState : int32_t {
-  ChromeCompositorStateMachine_MajorState_BeginMainFrameState_BEGIN_MAIN_FRAME_UNSPECIFIED = 0,
-  ChromeCompositorStateMachine_MajorState_BeginMainFrameState_BEGIN_MAIN_FRAME_IDLE = 1,
-  ChromeCompositorStateMachine_MajorState_BeginMainFrameState_BEGIN_MAIN_FRAME_SENT = 2,
-  ChromeCompositorStateMachine_MajorState_BeginMainFrameState_BEGIN_MAIN_FRAME_READY_TO_COMMIT = 3,
+constexpr ChromeCompositorStateMachine_MajorState_BeginImplFrameState ChromeCompositorStateMachine_MajorState_BeginImplFrameState_MIN = ChromeCompositorStateMachine_MajorState_BeginImplFrameState::BEGIN_IMPL_FRAME_UNSPECIFIED;
+constexpr ChromeCompositorStateMachine_MajorState_BeginImplFrameState ChromeCompositorStateMachine_MajorState_BeginImplFrameState_MAX = ChromeCompositorStateMachine_MajorState_BeginImplFrameState::BEGIN_IMPL_FRAME_INSIDE_DEADLINE;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeCompositorStateMachine_MajorState_BeginImplFrameState_Name(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginImplFrameState value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginImplFrameState::BEGIN_IMPL_FRAME_UNSPECIFIED:
+    return "BEGIN_IMPL_FRAME_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginImplFrameState::BEGIN_IMPL_FRAME_IDLE:
+    return "BEGIN_IMPL_FRAME_IDLE";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginImplFrameState::BEGIN_IMPL_FRAME_INSIDE_BEGIN_FRAME:
+    return "BEGIN_IMPL_FRAME_INSIDE_BEGIN_FRAME";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginImplFrameState::BEGIN_IMPL_FRAME_INSIDE_DEADLINE:
+    return "BEGIN_IMPL_FRAME_INSIDE_DEADLINE";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState {
+enum BeginMainFrameState : int32_t {
+  BEGIN_MAIN_FRAME_UNSPECIFIED = 0,
+  BEGIN_MAIN_FRAME_IDLE = 1,
+  BEGIN_MAIN_FRAME_SENT = 2,
+  BEGIN_MAIN_FRAME_READY_TO_COMMIT = 3,
 };
+} // namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState
+using ChromeCompositorStateMachine_MajorState_BeginMainFrameState = perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState::BeginMainFrameState;
 
-const ChromeCompositorStateMachine_MajorState_BeginMainFrameState ChromeCompositorStateMachine_MajorState_BeginMainFrameState_MIN = ChromeCompositorStateMachine_MajorState_BeginMainFrameState_BEGIN_MAIN_FRAME_UNSPECIFIED;
-const ChromeCompositorStateMachine_MajorState_BeginMainFrameState ChromeCompositorStateMachine_MajorState_BeginMainFrameState_MAX = ChromeCompositorStateMachine_MajorState_BeginMainFrameState_BEGIN_MAIN_FRAME_READY_TO_COMMIT;
 
-enum ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState : int32_t {
-  ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_UNSPECIFIED = 0,
-  ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_NONE = 1,
-  ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_ACTIVE = 2,
-  ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_CREATING = 3,
-  ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_WAITING_FOR_FIRST_COMMIT = 4,
-  ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_WAITING_FOR_FIRST_ACTIVATION = 5,
+constexpr ChromeCompositorStateMachine_MajorState_BeginMainFrameState ChromeCompositorStateMachine_MajorState_BeginMainFrameState_MIN = ChromeCompositorStateMachine_MajorState_BeginMainFrameState::BEGIN_MAIN_FRAME_UNSPECIFIED;
+constexpr ChromeCompositorStateMachine_MajorState_BeginMainFrameState ChromeCompositorStateMachine_MajorState_BeginMainFrameState_MAX = ChromeCompositorStateMachine_MajorState_BeginMainFrameState::BEGIN_MAIN_FRAME_READY_TO_COMMIT;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeCompositorStateMachine_MajorState_BeginMainFrameState_Name(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginMainFrameState value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginMainFrameState::BEGIN_MAIN_FRAME_UNSPECIFIED:
+    return "BEGIN_MAIN_FRAME_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginMainFrameState::BEGIN_MAIN_FRAME_IDLE:
+    return "BEGIN_MAIN_FRAME_IDLE";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginMainFrameState::BEGIN_MAIN_FRAME_SENT:
+    return "BEGIN_MAIN_FRAME_SENT";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginMainFrameState::BEGIN_MAIN_FRAME_READY_TO_COMMIT:
+    return "BEGIN_MAIN_FRAME_READY_TO_COMMIT";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState {
+enum LayerTreeFrameSinkState : int32_t {
+  LAYER_TREE_FRAME_UNSPECIFIED = 0,
+  LAYER_TREE_FRAME_NONE = 1,
+  LAYER_TREE_FRAME_ACTIVE = 2,
+  LAYER_TREE_FRAME_CREATING = 3,
+  LAYER_TREE_FRAME_WAITING_FOR_FIRST_COMMIT = 4,
+  LAYER_TREE_FRAME_WAITING_FOR_FIRST_ACTIVATION = 5,
 };
+} // namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState
+using ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState = perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState::LayerTreeFrameSinkState;
 
-const ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_MIN = ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_UNSPECIFIED;
-const ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_MAX = ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_WAITING_FOR_FIRST_ACTIVATION;
 
-enum ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState : int32_t {
-  ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_FORCED_REDRAW_UNSPECIFIED = 0,
-  ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_FORCED_REDRAW_IDLE = 1,
-  ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_FORCED_REDRAW_WAITING_FOR_COMMIT = 2,
-  ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_FORCED_REDRAW_WAITING_FOR_ACTIVATION = 3,
-  ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_FORCED_REDRAW_WAITING_FOR_DRAW = 4,
+constexpr ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_MIN = ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState::LAYER_TREE_FRAME_UNSPECIFIED;
+constexpr ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_MAX = ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState::LAYER_TREE_FRAME_WAITING_FOR_FIRST_ACTIVATION;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_Name(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState::LAYER_TREE_FRAME_UNSPECIFIED:
+    return "LAYER_TREE_FRAME_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState::LAYER_TREE_FRAME_NONE:
+    return "LAYER_TREE_FRAME_NONE";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState::LAYER_TREE_FRAME_ACTIVE:
+    return "LAYER_TREE_FRAME_ACTIVE";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState::LAYER_TREE_FRAME_CREATING:
+    return "LAYER_TREE_FRAME_CREATING";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState::LAYER_TREE_FRAME_WAITING_FOR_FIRST_COMMIT:
+    return "LAYER_TREE_FRAME_WAITING_FOR_FIRST_COMMIT";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState::LAYER_TREE_FRAME_WAITING_FOR_FIRST_ACTIVATION:
+    return "LAYER_TREE_FRAME_WAITING_FOR_FIRST_ACTIVATION";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState {
+enum ForcedRedrawOnTimeoutState : int32_t {
+  FORCED_REDRAW_UNSPECIFIED = 0,
+  FORCED_REDRAW_IDLE = 1,
+  FORCED_REDRAW_WAITING_FOR_COMMIT = 2,
+  FORCED_REDRAW_WAITING_FOR_ACTIVATION = 3,
+  FORCED_REDRAW_WAITING_FOR_DRAW = 4,
 };
+} // namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState
+using ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState = perfetto_pbzero_enum_ChromeCompositorStateMachine_MajorState::ForcedRedrawOnTimeoutState;
 
-const ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_MIN = ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_FORCED_REDRAW_UNSPECIFIED;
-const ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_MAX = ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_FORCED_REDRAW_WAITING_FOR_DRAW;
 
-enum ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode : int32_t {
-  ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_UNSPECIFIED = 0,
-  ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_NONE = 1,
-  ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_IMMEDIATE = 2,
-  ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_REGULAR = 3,
-  ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_LATE = 4,
-  ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_BLOCKED = 5,
+constexpr ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_MIN = ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState::FORCED_REDRAW_UNSPECIFIED;
+constexpr ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_MAX = ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState::FORCED_REDRAW_WAITING_FOR_DRAW;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_Name(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState::FORCED_REDRAW_UNSPECIFIED:
+    return "FORCED_REDRAW_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState::FORCED_REDRAW_IDLE:
+    return "FORCED_REDRAW_IDLE";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState::FORCED_REDRAW_WAITING_FOR_COMMIT:
+    return "FORCED_REDRAW_WAITING_FOR_COMMIT";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState::FORCED_REDRAW_WAITING_FOR_ACTIVATION:
+    return "FORCED_REDRAW_WAITING_FOR_ACTIVATION";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState::FORCED_REDRAW_WAITING_FOR_DRAW:
+    return "FORCED_REDRAW_WAITING_FOR_DRAW";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_ChromeCompositorSchedulerState {
+enum BeginImplFrameDeadlineMode : int32_t {
+  DEADLINE_MODE_UNSPECIFIED = 0,
+  DEADLINE_MODE_NONE = 1,
+  DEADLINE_MODE_IMMEDIATE = 2,
+  DEADLINE_MODE_REGULAR = 3,
+  DEADLINE_MODE_LATE = 4,
+  DEADLINE_MODE_BLOCKED = 5,
 };
+} // namespace perfetto_pbzero_enum_ChromeCompositorSchedulerState
+using ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode = perfetto_pbzero_enum_ChromeCompositorSchedulerState::BeginImplFrameDeadlineMode;
 
-const ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_MIN = ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_UNSPECIFIED;
-const ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_MAX = ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_BLOCKED;
+
+constexpr ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_MIN = ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode::DEADLINE_MODE_UNSPECIFIED;
+constexpr ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_MAX = ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode::DEADLINE_MODE_BLOCKED;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_Name(::perfetto::protos::pbzero::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode::DEADLINE_MODE_UNSPECIFIED:
+    return "DEADLINE_MODE_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode::DEADLINE_MODE_NONE:
+    return "DEADLINE_MODE_NONE";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode::DEADLINE_MODE_IMMEDIATE:
+    return "DEADLINE_MODE_IMMEDIATE";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode::DEADLINE_MODE_REGULAR:
+    return "DEADLINE_MODE_REGULAR";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode::DEADLINE_MODE_LATE:
+    return "DEADLINE_MODE_LATE";
+
+  case ::perfetto::protos::pbzero::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode::DEADLINE_MODE_BLOCKED:
+    return "DEADLINE_MODE_BLOCKED";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class CompositorTimingHistory_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -182,6 +471,8 @@ class CompositorTimingHistory : public ::protozero::Message {
     kActivateEstimateDeltaUsFieldNumber = 6,
     kDrawEstimateDeltaUsFieldNumber = 7,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.CompositorTimingHistory"; }
+
 
   using FieldMetadata_BeginMainFrameQueueCriticalEstimateDeltaUs =
     ::protozero::proto_utils::FieldMetadata<
@@ -197,7 +488,7 @@ class CompositorTimingHistory : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BeginMainFrameQueueCriticalEstimateDeltaUs kBeginMainFrameQueueCriticalEstimateDeltaUs() { return {}; }
   void set_begin_main_frame_queue_critical_estimate_delta_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BeginMainFrameQueueCriticalEstimateDeltaUs::kFieldId;
@@ -222,7 +513,7 @@ class CompositorTimingHistory : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BeginMainFrameQueueNotCriticalEstimateDeltaUs kBeginMainFrameQueueNotCriticalEstimateDeltaUs() { return {}; }
   void set_begin_main_frame_queue_not_critical_estimate_delta_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BeginMainFrameQueueNotCriticalEstimateDeltaUs::kFieldId;
@@ -247,7 +538,7 @@ class CompositorTimingHistory : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BeginMainFrameStartToReadyToCommitEstimateDeltaUs kBeginMainFrameStartToReadyToCommitEstimateDeltaUs() { return {}; }
   void set_begin_main_frame_start_to_ready_to_commit_estimate_delta_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BeginMainFrameStartToReadyToCommitEstimateDeltaUs::kFieldId;
@@ -272,7 +563,7 @@ class CompositorTimingHistory : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CommitToReadyToActivateEstimateDeltaUs kCommitToReadyToActivateEstimateDeltaUs() { return {}; }
   void set_commit_to_ready_to_activate_estimate_delta_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CommitToReadyToActivateEstimateDeltaUs::kFieldId;
@@ -297,7 +588,7 @@ class CompositorTimingHistory : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PrepareTilesEstimateDeltaUs kPrepareTilesEstimateDeltaUs() { return {}; }
   void set_prepare_tiles_estimate_delta_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PrepareTilesEstimateDeltaUs::kFieldId;
@@ -322,7 +613,7 @@ class CompositorTimingHistory : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ActivateEstimateDeltaUs kActivateEstimateDeltaUs() { return {}; }
   void set_activate_estimate_delta_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ActivateEstimateDeltaUs::kFieldId;
@@ -347,7 +638,7 @@ class CompositorTimingHistory : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DrawEstimateDeltaUs kDrawEstimateDeltaUs() { return {}; }
   void set_draw_estimate_delta_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DrawEstimateDeltaUs::kFieldId;
@@ -383,6 +674,8 @@ class BeginFrameSourceState : public ::protozero::Message {
     kNumObserversFieldNumber = 3,
     kLastBeginFrameArgsFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BeginFrameSourceState"; }
+
 
   using FieldMetadata_SourceId =
     ::protozero::proto_utils::FieldMetadata<
@@ -398,7 +691,7 @@ class BeginFrameSourceState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SourceId kSourceId() { return {}; }
   void set_source_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SourceId::kFieldId;
@@ -423,7 +716,7 @@ class BeginFrameSourceState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Paused kPaused() { return {}; }
   void set_paused(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_Paused::kFieldId;
@@ -448,7 +741,7 @@ class BeginFrameSourceState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NumObservers kNumObservers() { return {}; }
   void set_num_observers(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NumObservers::kFieldId;
@@ -473,7 +766,7 @@ class BeginFrameSourceState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LastBeginFrameArgs kLastBeginFrameArgs() { return {}; }
   template <typename T = BeginFrameArgs> T* set_last_begin_frame_args() {
     return BeginNestedMessage<T>(4);
@@ -499,6 +792,8 @@ class BeginFrameObserverState : public ::protozero::Message {
     kDroppedBeginFrameArgsFieldNumber = 1,
     kLastBeginFrameArgsFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BeginFrameObserverState"; }
+
 
   using FieldMetadata_DroppedBeginFrameArgs =
     ::protozero::proto_utils::FieldMetadata<
@@ -514,7 +809,7 @@ class BeginFrameObserverState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DroppedBeginFrameArgs kDroppedBeginFrameArgs() { return {}; }
   void set_dropped_begin_frame_args(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DroppedBeginFrameArgs::kFieldId;
@@ -539,7 +834,7 @@ class BeginFrameObserverState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LastBeginFrameArgs kLastBeginFrameArgs() { return {}; }
   template <typename T = BeginFrameArgs> T* set_last_begin_frame_args() {
     return BeginNestedMessage<T>(2);
@@ -577,10 +872,16 @@ class BeginImplFrameArgs : public ::protozero::Message {
     kLastArgsFieldNumber = 5,
     kTimestampsInUsFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BeginImplFrameArgs"; }
+
   using TimestampsInUs = ::perfetto::protos::pbzero::BeginImplFrameArgs_TimestampsInUs;
+
   using State = ::perfetto::protos::pbzero::BeginImplFrameArgs_State;
-  static const State BEGIN_FRAME_FINISHED = BeginImplFrameArgs_State_BEGIN_FRAME_FINISHED;
-  static const State BEGIN_FRAME_USING = BeginImplFrameArgs_State_BEGIN_FRAME_USING;
+  static inline const char* State_Name(State value) {
+    return ::perfetto::protos::pbzero::BeginImplFrameArgs_State_Name(value);
+  }
+  static const State BEGIN_FRAME_FINISHED = State::BEGIN_FRAME_FINISHED;
+  static const State BEGIN_FRAME_USING = State::BEGIN_FRAME_USING;
 
   using FieldMetadata_UpdatedAtUs =
     ::protozero::proto_utils::FieldMetadata<
@@ -596,7 +897,7 @@ class BeginImplFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_UpdatedAtUs kUpdatedAtUs() { return {}; }
   void set_updated_at_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_UpdatedAtUs::kFieldId;
@@ -621,7 +922,7 @@ class BeginImplFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FinishedAtUs kFinishedAtUs() { return {}; }
   void set_finished_at_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FinishedAtUs::kFieldId;
@@ -646,7 +947,7 @@ class BeginImplFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_State kState() { return {}; }
   void set_state(::perfetto::protos::pbzero::BeginImplFrameArgs_State value) {
     static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
@@ -671,7 +972,7 @@ class BeginImplFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CurrentArgs kCurrentArgs() { return {}; }
   template <typename T = BeginFrameArgs> T* set_current_args() {
     return BeginNestedMessage<T>(4);
@@ -692,7 +993,7 @@ class BeginImplFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LastArgs kLastArgs() { return {}; }
   template <typename T = BeginFrameArgs> T* set_last_args() {
     return BeginNestedMessage<T>(5);
@@ -713,7 +1014,7 @@ class BeginImplFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TimestampsInUs kTimestampsInUs() { return {}; }
   template <typename T = BeginImplFrameArgs_TimestampsInUs> T* set_timestamps_in_us() {
     return BeginNestedMessage<T>(6);
@@ -754,6 +1055,8 @@ class BeginImplFrameArgs_TimestampsInUs : public ::protozero::Message {
     kFrameTimeFieldNumber = 6,
     kDeadlineFieldNumber = 7,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BeginImplFrameArgs.TimestampsInUs"; }
+
 
   using FieldMetadata_IntervalDelta =
     ::protozero::proto_utils::FieldMetadata<
@@ -769,7 +1072,7 @@ class BeginImplFrameArgs_TimestampsInUs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IntervalDelta kIntervalDelta() { return {}; }
   void set_interval_delta(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IntervalDelta::kFieldId;
@@ -794,7 +1097,7 @@ class BeginImplFrameArgs_TimestampsInUs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NowToDeadlineDelta kNowToDeadlineDelta() { return {}; }
   void set_now_to_deadline_delta(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NowToDeadlineDelta::kFieldId;
@@ -819,7 +1122,7 @@ class BeginImplFrameArgs_TimestampsInUs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FrameTimeToNowDelta kFrameTimeToNowDelta() { return {}; }
   void set_frame_time_to_now_delta(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FrameTimeToNowDelta::kFieldId;
@@ -844,7 +1147,7 @@ class BeginImplFrameArgs_TimestampsInUs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FrameTimeToDeadlineDelta kFrameTimeToDeadlineDelta() { return {}; }
   void set_frame_time_to_deadline_delta(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FrameTimeToDeadlineDelta::kFieldId;
@@ -869,7 +1172,7 @@ class BeginImplFrameArgs_TimestampsInUs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Now kNow() { return {}; }
   void set_now(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Now::kFieldId;
@@ -894,7 +1197,7 @@ class BeginImplFrameArgs_TimestampsInUs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FrameTime kFrameTime() { return {}; }
   void set_frame_time(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FrameTime::kFieldId;
@@ -919,7 +1222,7 @@ class BeginImplFrameArgs_TimestampsInUs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Deadline kDeadline() { return {}; }
   void set_deadline(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Deadline::kFieldId;
@@ -976,11 +1279,17 @@ class BeginFrameArgs : public ::protozero::Message {
     kSourceLocationFieldNumber = 10,
     kFramesThrottledSinceLastFieldNumber = 12,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BeginFrameArgs"; }
+
+
   using BeginFrameArgsType = ::perfetto::protos::pbzero::BeginFrameArgs_BeginFrameArgsType;
-  static const BeginFrameArgsType BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED = BeginFrameArgs_BeginFrameArgsType_BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED;
-  static const BeginFrameArgsType BEGIN_FRAME_ARGS_TYPE_INVALID = BeginFrameArgs_BeginFrameArgsType_BEGIN_FRAME_ARGS_TYPE_INVALID;
-  static const BeginFrameArgsType BEGIN_FRAME_ARGS_TYPE_NORMAL = BeginFrameArgs_BeginFrameArgsType_BEGIN_FRAME_ARGS_TYPE_NORMAL;
-  static const BeginFrameArgsType BEGIN_FRAME_ARGS_TYPE_MISSED = BeginFrameArgs_BeginFrameArgsType_BEGIN_FRAME_ARGS_TYPE_MISSED;
+  static inline const char* BeginFrameArgsType_Name(BeginFrameArgsType value) {
+    return ::perfetto::protos::pbzero::BeginFrameArgs_BeginFrameArgsType_Name(value);
+  }
+  static const BeginFrameArgsType BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED = BeginFrameArgsType::BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED;
+  static const BeginFrameArgsType BEGIN_FRAME_ARGS_TYPE_INVALID = BeginFrameArgsType::BEGIN_FRAME_ARGS_TYPE_INVALID;
+  static const BeginFrameArgsType BEGIN_FRAME_ARGS_TYPE_NORMAL = BeginFrameArgsType::BEGIN_FRAME_ARGS_TYPE_NORMAL;
+  static const BeginFrameArgsType BEGIN_FRAME_ARGS_TYPE_MISSED = BeginFrameArgsType::BEGIN_FRAME_ARGS_TYPE_MISSED;
 
   using FieldMetadata_Type =
     ::protozero::proto_utils::FieldMetadata<
@@ -996,7 +1305,7 @@ class BeginFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(::perfetto::protos::pbzero::BeginFrameArgs_BeginFrameArgsType value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
@@ -1021,7 +1330,7 @@ class BeginFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SourceId kSourceId() { return {}; }
   void set_source_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SourceId::kFieldId;
@@ -1046,7 +1355,7 @@ class BeginFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SequenceNumber kSequenceNumber() { return {}; }
   void set_sequence_number(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SequenceNumber::kFieldId;
@@ -1071,7 +1380,7 @@ class BeginFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FrameTimeUs kFrameTimeUs() { return {}; }
   void set_frame_time_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FrameTimeUs::kFieldId;
@@ -1096,7 +1405,7 @@ class BeginFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DeadlineUs kDeadlineUs() { return {}; }
   void set_deadline_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DeadlineUs::kFieldId;
@@ -1121,7 +1430,7 @@ class BeginFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IntervalDeltaUs kIntervalDeltaUs() { return {}; }
   void set_interval_delta_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IntervalDeltaUs::kFieldId;
@@ -1146,7 +1455,7 @@ class BeginFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_OnCriticalPath kOnCriticalPath() { return {}; }
   void set_on_critical_path(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_OnCriticalPath::kFieldId;
@@ -1171,7 +1480,7 @@ class BeginFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AnimateOnly kAnimateOnly() { return {}; }
   void set_animate_only(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_AnimateOnly::kFieldId;
@@ -1196,7 +1505,7 @@ class BeginFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SourceLocationIid kSourceLocationIid() { return {}; }
   void set_source_location_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SourceLocationIid::kFieldId;
@@ -1221,7 +1530,7 @@ class BeginFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SourceLocation kSourceLocation() { return {}; }
   template <typename T = SourceLocation> T* set_source_location() {
     return BeginNestedMessage<T>(10);
@@ -1242,7 +1551,7 @@ class BeginFrameArgs : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FramesThrottledSinceLast kFramesThrottledSinceLast() { return {}; }
   void set_frames_throttled_since_last(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FramesThrottledSinceLast::kFieldId;
@@ -1272,6 +1581,8 @@ class ChromeCompositorStateMachine : public ::protozero::Message {
     kMajorStateFieldNumber = 1,
     kMinorStateFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeCompositorStateMachine"; }
+
   using MajorState = ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState;
   using MinorState = ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState;
 
@@ -1289,7 +1600,7 @@ class ChromeCompositorStateMachine : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MajorState kMajorState() { return {}; }
   template <typename T = ChromeCompositorStateMachine_MajorState> T* set_major_state() {
     return BeginNestedMessage<T>(1);
@@ -1310,7 +1621,7 @@ class ChromeCompositorStateMachine : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MinorState kMinorState() { return {}; }
   template <typename T = ChromeCompositorStateMachine_MinorState> T* set_minor_state() {
     return BeginNestedMessage<T>(2);
@@ -1465,15 +1776,25 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
     kProcessingAnimationWorkletsForPendingTreeFieldNumber = 45,
     kProcessingPaintWorkletsForPendingTreeFieldNumber = 46,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeCompositorStateMachine.MinorState"; }
+
+
   using TreePriority = ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_TreePriority;
+  static inline const char* TreePriority_Name(TreePriority value) {
+    return ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_TreePriority_Name(value);
+  }
+
   using ScrollHandlerState = ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_ScrollHandlerState;
-  static const TreePriority TREE_PRIORITY_UNSPECIFIED = ChromeCompositorStateMachine_MinorState_TreePriority_TREE_PRIORITY_UNSPECIFIED;
-  static const TreePriority TREE_PRIORITY_SAME_PRIORITY_FOR_BOTH_TREES = ChromeCompositorStateMachine_MinorState_TreePriority_TREE_PRIORITY_SAME_PRIORITY_FOR_BOTH_TREES;
-  static const TreePriority TREE_PRIORITY_SMOOTHNESS_TAKES_PRIORITY = ChromeCompositorStateMachine_MinorState_TreePriority_TREE_PRIORITY_SMOOTHNESS_TAKES_PRIORITY;
-  static const TreePriority TREE_PRIORITY_NEW_CONTENT_TAKES_PRIORITY = ChromeCompositorStateMachine_MinorState_TreePriority_TREE_PRIORITY_NEW_CONTENT_TAKES_PRIORITY;
-  static const ScrollHandlerState SCROLL_HANDLER_UNSPECIFIED = ChromeCompositorStateMachine_MinorState_ScrollHandlerState_SCROLL_HANDLER_UNSPECIFIED;
-  static const ScrollHandlerState SCROLL_AFFECTS_SCROLL_HANDLER = ChromeCompositorStateMachine_MinorState_ScrollHandlerState_SCROLL_AFFECTS_SCROLL_HANDLER;
-  static const ScrollHandlerState SCROLL_DOES_NOT_AFFECT_SCROLL_HANDLER = ChromeCompositorStateMachine_MinorState_ScrollHandlerState_SCROLL_DOES_NOT_AFFECT_SCROLL_HANDLER;
+  static inline const char* ScrollHandlerState_Name(ScrollHandlerState value) {
+    return ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_ScrollHandlerState_Name(value);
+  }
+  static const TreePriority TREE_PRIORITY_UNSPECIFIED = TreePriority::TREE_PRIORITY_UNSPECIFIED;
+  static const TreePriority TREE_PRIORITY_SAME_PRIORITY_FOR_BOTH_TREES = TreePriority::TREE_PRIORITY_SAME_PRIORITY_FOR_BOTH_TREES;
+  static const TreePriority TREE_PRIORITY_SMOOTHNESS_TAKES_PRIORITY = TreePriority::TREE_PRIORITY_SMOOTHNESS_TAKES_PRIORITY;
+  static const TreePriority TREE_PRIORITY_NEW_CONTENT_TAKES_PRIORITY = TreePriority::TREE_PRIORITY_NEW_CONTENT_TAKES_PRIORITY;
+  static const ScrollHandlerState SCROLL_HANDLER_UNSPECIFIED = ScrollHandlerState::SCROLL_HANDLER_UNSPECIFIED;
+  static const ScrollHandlerState SCROLL_AFFECTS_SCROLL_HANDLER = ScrollHandlerState::SCROLL_AFFECTS_SCROLL_HANDLER;
+  static const ScrollHandlerState SCROLL_DOES_NOT_AFFECT_SCROLL_HANDLER = ScrollHandlerState::SCROLL_DOES_NOT_AFFECT_SCROLL_HANDLER;
 
   using FieldMetadata_CommitCount =
     ::protozero::proto_utils::FieldMetadata<
@@ -1489,7 +1810,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CommitCount kCommitCount() { return {}; }
   void set_commit_count(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CommitCount::kFieldId;
@@ -1514,7 +1835,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CurrentFrameNumber kCurrentFrameNumber() { return {}; }
   void set_current_frame_number(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CurrentFrameNumber::kFieldId;
@@ -1539,7 +1860,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LastFrameNumberSubmitPerformed kLastFrameNumberSubmitPerformed() { return {}; }
   void set_last_frame_number_submit_performed(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_LastFrameNumberSubmitPerformed::kFieldId;
@@ -1564,7 +1885,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LastFrameNumberDrawPerformed kLastFrameNumberDrawPerformed() { return {}; }
   void set_last_frame_number_draw_performed(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_LastFrameNumberDrawPerformed::kFieldId;
@@ -1589,7 +1910,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LastFrameNumberBeginMainFrameSent kLastFrameNumberBeginMainFrameSent() { return {}; }
   void set_last_frame_number_begin_main_frame_sent(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_LastFrameNumberBeginMainFrameSent::kFieldId;
@@ -1614,7 +1935,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DidDraw kDidDraw() { return {}; }
   void set_did_draw(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DidDraw::kFieldId;
@@ -1639,7 +1960,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DidSendBeginMainFrameForCurrentFrame kDidSendBeginMainFrameForCurrentFrame() { return {}; }
   void set_did_send_begin_main_frame_for_current_frame(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DidSendBeginMainFrameForCurrentFrame::kFieldId;
@@ -1664,7 +1985,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DidNotifyBeginMainFrameNotExpectedUntil kDidNotifyBeginMainFrameNotExpectedUntil() { return {}; }
   void set_did_notify_begin_main_frame_not_expected_until(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DidNotifyBeginMainFrameNotExpectedUntil::kFieldId;
@@ -1689,7 +2010,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DidNotifyBeginMainFrameNotExpectedSoon kDidNotifyBeginMainFrameNotExpectedSoon() { return {}; }
   void set_did_notify_begin_main_frame_not_expected_soon(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DidNotifyBeginMainFrameNotExpectedSoon::kFieldId;
@@ -1714,7 +2035,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_WantsBeginMainFrameNotExpected kWantsBeginMainFrameNotExpected() { return {}; }
   void set_wants_begin_main_frame_not_expected(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_WantsBeginMainFrameNotExpected::kFieldId;
@@ -1739,7 +2060,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DidCommitDuringFrame kDidCommitDuringFrame() { return {}; }
   void set_did_commit_during_frame(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DidCommitDuringFrame::kFieldId;
@@ -1764,7 +2085,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DidInvalidateLayerTreeFrameSink kDidInvalidateLayerTreeFrameSink() { return {}; }
   void set_did_invalidate_layer_tree_frame_sink(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DidInvalidateLayerTreeFrameSink::kFieldId;
@@ -1789,7 +2110,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DidPerformImplSideInvalidaion kDidPerformImplSideInvalidaion() { return {}; }
   void set_did_perform_impl_side_invalidaion(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DidPerformImplSideInvalidaion::kFieldId;
@@ -1814,7 +2135,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DidPrepareTiles kDidPrepareTiles() { return {}; }
   void set_did_prepare_tiles(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DidPrepareTiles::kFieldId;
@@ -1839,7 +2160,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ConsecutiveCheckerboardAnimations kConsecutiveCheckerboardAnimations() { return {}; }
   void set_consecutive_checkerboard_animations(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ConsecutiveCheckerboardAnimations::kFieldId;
@@ -1864,7 +2185,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PendingSubmitFrames kPendingSubmitFrames() { return {}; }
   void set_pending_submit_frames(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PendingSubmitFrames::kFieldId;
@@ -1889,7 +2210,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SubmitFramesWithCurrentLayerTreeFrameSink kSubmitFramesWithCurrentLayerTreeFrameSink() { return {}; }
   void set_submit_frames_with_current_layer_tree_frame_sink(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SubmitFramesWithCurrentLayerTreeFrameSink::kFieldId;
@@ -1914,7 +2235,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NeedsRedraw kNeedsRedraw() { return {}; }
   void set_needs_redraw(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_NeedsRedraw::kFieldId;
@@ -1939,7 +2260,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NeedsPrepareTiles kNeedsPrepareTiles() { return {}; }
   void set_needs_prepare_tiles(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_NeedsPrepareTiles::kFieldId;
@@ -1964,7 +2285,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NeedsBeginMainFrame kNeedsBeginMainFrame() { return {}; }
   void set_needs_begin_main_frame(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_NeedsBeginMainFrame::kFieldId;
@@ -1989,7 +2310,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NeedsOneBeginImplFrame kNeedsOneBeginImplFrame() { return {}; }
   void set_needs_one_begin_impl_frame(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_NeedsOneBeginImplFrame::kFieldId;
@@ -2014,7 +2335,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Visible kVisible() { return {}; }
   void set_visible(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_Visible::kFieldId;
@@ -2039,7 +2360,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BeginFrameSourcePaused kBeginFrameSourcePaused() { return {}; }
   void set_begin_frame_source_paused(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_BeginFrameSourcePaused::kFieldId;
@@ -2064,7 +2385,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CanDraw kCanDraw() { return {}; }
   void set_can_draw(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_CanDraw::kFieldId;
@@ -2089,7 +2410,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ResourcelessDraw kResourcelessDraw() { return {}; }
   void set_resourceless_draw(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ResourcelessDraw::kFieldId;
@@ -2114,7 +2435,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HasPendingTree kHasPendingTree() { return {}; }
   void set_has_pending_tree(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_HasPendingTree::kFieldId;
@@ -2139,7 +2460,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PendingTreeIsReadyForActivation kPendingTreeIsReadyForActivation() { return {}; }
   void set_pending_tree_is_ready_for_activation(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_PendingTreeIsReadyForActivation::kFieldId;
@@ -2164,7 +2485,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ActiveTreeNeedsFirstDraw kActiveTreeNeedsFirstDraw() { return {}; }
   void set_active_tree_needs_first_draw(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ActiveTreeNeedsFirstDraw::kFieldId;
@@ -2189,7 +2510,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ActiveTreeIsReadyToDraw kActiveTreeIsReadyToDraw() { return {}; }
   void set_active_tree_is_ready_to_draw(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ActiveTreeIsReadyToDraw::kFieldId;
@@ -2214,7 +2535,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DidCreateAndInitializeFirstLayerTreeFrameSink kDidCreateAndInitializeFirstLayerTreeFrameSink() { return {}; }
   void set_did_create_and_initialize_first_layer_tree_frame_sink(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DidCreateAndInitializeFirstLayerTreeFrameSink::kFieldId;
@@ -2239,7 +2560,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TreePriority kTreePriority() { return {}; }
   void set_tree_priority(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_TreePriority value) {
     static constexpr uint32_t field_id = FieldMetadata_TreePriority::kFieldId;
@@ -2264,7 +2585,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ScrollHandlerState kScrollHandlerState() { return {}; }
   void set_scroll_handler_state(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_ScrollHandlerState value) {
     static constexpr uint32_t field_id = FieldMetadata_ScrollHandlerState::kFieldId;
@@ -2289,7 +2610,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CriticalBeginMainFrameToActivateIsFast kCriticalBeginMainFrameToActivateIsFast() { return {}; }
   void set_critical_begin_main_frame_to_activate_is_fast(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_CriticalBeginMainFrameToActivateIsFast::kFieldId;
@@ -2314,7 +2635,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MainThreadMissedLastDeadline kMainThreadMissedLastDeadline() { return {}; }
   void set_main_thread_missed_last_deadline(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_MainThreadMissedLastDeadline::kFieldId;
@@ -2339,7 +2660,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_VideoNeedsBeginFrames kVideoNeedsBeginFrames() { return {}; }
   void set_video_needs_begin_frames(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_VideoNeedsBeginFrames::kFieldId;
@@ -2364,7 +2685,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DeferBeginMainFrame kDeferBeginMainFrame() { return {}; }
   void set_defer_begin_main_frame(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DeferBeginMainFrame::kFieldId;
@@ -2389,7 +2710,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LastCommitHadNoUpdates kLastCommitHadNoUpdates() { return {}; }
   void set_last_commit_had_no_updates(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_LastCommitHadNoUpdates::kFieldId;
@@ -2414,7 +2735,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DidDrawInLastFrame kDidDrawInLastFrame() { return {}; }
   void set_did_draw_in_last_frame(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DidDrawInLastFrame::kFieldId;
@@ -2439,7 +2760,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DidSubmitInLastFrame kDidSubmitInLastFrame() { return {}; }
   void set_did_submit_in_last_frame(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DidSubmitInLastFrame::kFieldId;
@@ -2464,7 +2785,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NeedsImplSideInvalidation kNeedsImplSideInvalidation() { return {}; }
   void set_needs_impl_side_invalidation(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_NeedsImplSideInvalidation::kFieldId;
@@ -2489,7 +2810,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CurrentPendingTreeIsImplSide kCurrentPendingTreeIsImplSide() { return {}; }
   void set_current_pending_tree_is_impl_side(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_CurrentPendingTreeIsImplSide::kFieldId;
@@ -2514,7 +2835,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PreviousPendingTreeWasImplSide kPreviousPendingTreeWasImplSide() { return {}; }
   void set_previous_pending_tree_was_impl_side(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_PreviousPendingTreeWasImplSide::kFieldId;
@@ -2539,7 +2860,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProcessingAnimationWorkletsForActiveTree kProcessingAnimationWorkletsForActiveTree() { return {}; }
   void set_processing_animation_worklets_for_active_tree(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ProcessingAnimationWorkletsForActiveTree::kFieldId;
@@ -2564,7 +2885,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProcessingAnimationWorkletsForPendingTree kProcessingAnimationWorkletsForPendingTree() { return {}; }
   void set_processing_animation_worklets_for_pending_tree(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ProcessingAnimationWorkletsForPendingTree::kFieldId;
@@ -2589,7 +2910,7 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProcessingPaintWorkletsForPendingTree kProcessingPaintWorkletsForPendingTree() { return {}; }
   void set_processing_paint_worklets_for_pending_tree(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ProcessingPaintWorkletsForPendingTree::kFieldId;
@@ -2628,29 +2949,47 @@ class ChromeCompositorStateMachine_MajorState : public ::protozero::Message {
     kLayerTreeFrameSinkStateFieldNumber = 4,
     kForcedRedrawStateFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeCompositorStateMachine.MajorState"; }
+
+
   using BeginImplFrameState = ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginImplFrameState;
+  static inline const char* BeginImplFrameState_Name(BeginImplFrameState value) {
+    return ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginImplFrameState_Name(value);
+  }
+
   using BeginMainFrameState = ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginMainFrameState;
+  static inline const char* BeginMainFrameState_Name(BeginMainFrameState value) {
+    return ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginMainFrameState_Name(value);
+  }
+
   using LayerTreeFrameSinkState = ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState;
+  static inline const char* LayerTreeFrameSinkState_Name(LayerTreeFrameSinkState value) {
+    return ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_Name(value);
+  }
+
   using ForcedRedrawOnTimeoutState = ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState;
-  static const BeginImplFrameState BEGIN_IMPL_FRAME_UNSPECIFIED = ChromeCompositorStateMachine_MajorState_BeginImplFrameState_BEGIN_IMPL_FRAME_UNSPECIFIED;
-  static const BeginImplFrameState BEGIN_IMPL_FRAME_IDLE = ChromeCompositorStateMachine_MajorState_BeginImplFrameState_BEGIN_IMPL_FRAME_IDLE;
-  static const BeginImplFrameState BEGIN_IMPL_FRAME_INSIDE_BEGIN_FRAME = ChromeCompositorStateMachine_MajorState_BeginImplFrameState_BEGIN_IMPL_FRAME_INSIDE_BEGIN_FRAME;
-  static const BeginImplFrameState BEGIN_IMPL_FRAME_INSIDE_DEADLINE = ChromeCompositorStateMachine_MajorState_BeginImplFrameState_BEGIN_IMPL_FRAME_INSIDE_DEADLINE;
-  static const BeginMainFrameState BEGIN_MAIN_FRAME_UNSPECIFIED = ChromeCompositorStateMachine_MajorState_BeginMainFrameState_BEGIN_MAIN_FRAME_UNSPECIFIED;
-  static const BeginMainFrameState BEGIN_MAIN_FRAME_IDLE = ChromeCompositorStateMachine_MajorState_BeginMainFrameState_BEGIN_MAIN_FRAME_IDLE;
-  static const BeginMainFrameState BEGIN_MAIN_FRAME_SENT = ChromeCompositorStateMachine_MajorState_BeginMainFrameState_BEGIN_MAIN_FRAME_SENT;
-  static const BeginMainFrameState BEGIN_MAIN_FRAME_READY_TO_COMMIT = ChromeCompositorStateMachine_MajorState_BeginMainFrameState_BEGIN_MAIN_FRAME_READY_TO_COMMIT;
-  static const LayerTreeFrameSinkState LAYER_TREE_FRAME_UNSPECIFIED = ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_UNSPECIFIED;
-  static const LayerTreeFrameSinkState LAYER_TREE_FRAME_NONE = ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_NONE;
-  static const LayerTreeFrameSinkState LAYER_TREE_FRAME_ACTIVE = ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_ACTIVE;
-  static const LayerTreeFrameSinkState LAYER_TREE_FRAME_CREATING = ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_CREATING;
-  static const LayerTreeFrameSinkState LAYER_TREE_FRAME_WAITING_FOR_FIRST_COMMIT = ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_WAITING_FOR_FIRST_COMMIT;
-  static const LayerTreeFrameSinkState LAYER_TREE_FRAME_WAITING_FOR_FIRST_ACTIVATION = ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState_LAYER_TREE_FRAME_WAITING_FOR_FIRST_ACTIVATION;
-  static const ForcedRedrawOnTimeoutState FORCED_REDRAW_UNSPECIFIED = ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_FORCED_REDRAW_UNSPECIFIED;
-  static const ForcedRedrawOnTimeoutState FORCED_REDRAW_IDLE = ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_FORCED_REDRAW_IDLE;
-  static const ForcedRedrawOnTimeoutState FORCED_REDRAW_WAITING_FOR_COMMIT = ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_FORCED_REDRAW_WAITING_FOR_COMMIT;
-  static const ForcedRedrawOnTimeoutState FORCED_REDRAW_WAITING_FOR_ACTIVATION = ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_FORCED_REDRAW_WAITING_FOR_ACTIVATION;
-  static const ForcedRedrawOnTimeoutState FORCED_REDRAW_WAITING_FOR_DRAW = ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_FORCED_REDRAW_WAITING_FOR_DRAW;
+  static inline const char* ForcedRedrawOnTimeoutState_Name(ForcedRedrawOnTimeoutState value) {
+    return ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState_Name(value);
+  }
+  static const BeginImplFrameState BEGIN_IMPL_FRAME_UNSPECIFIED = BeginImplFrameState::BEGIN_IMPL_FRAME_UNSPECIFIED;
+  static const BeginImplFrameState BEGIN_IMPL_FRAME_IDLE = BeginImplFrameState::BEGIN_IMPL_FRAME_IDLE;
+  static const BeginImplFrameState BEGIN_IMPL_FRAME_INSIDE_BEGIN_FRAME = BeginImplFrameState::BEGIN_IMPL_FRAME_INSIDE_BEGIN_FRAME;
+  static const BeginImplFrameState BEGIN_IMPL_FRAME_INSIDE_DEADLINE = BeginImplFrameState::BEGIN_IMPL_FRAME_INSIDE_DEADLINE;
+  static const BeginMainFrameState BEGIN_MAIN_FRAME_UNSPECIFIED = BeginMainFrameState::BEGIN_MAIN_FRAME_UNSPECIFIED;
+  static const BeginMainFrameState BEGIN_MAIN_FRAME_IDLE = BeginMainFrameState::BEGIN_MAIN_FRAME_IDLE;
+  static const BeginMainFrameState BEGIN_MAIN_FRAME_SENT = BeginMainFrameState::BEGIN_MAIN_FRAME_SENT;
+  static const BeginMainFrameState BEGIN_MAIN_FRAME_READY_TO_COMMIT = BeginMainFrameState::BEGIN_MAIN_FRAME_READY_TO_COMMIT;
+  static const LayerTreeFrameSinkState LAYER_TREE_FRAME_UNSPECIFIED = LayerTreeFrameSinkState::LAYER_TREE_FRAME_UNSPECIFIED;
+  static const LayerTreeFrameSinkState LAYER_TREE_FRAME_NONE = LayerTreeFrameSinkState::LAYER_TREE_FRAME_NONE;
+  static const LayerTreeFrameSinkState LAYER_TREE_FRAME_ACTIVE = LayerTreeFrameSinkState::LAYER_TREE_FRAME_ACTIVE;
+  static const LayerTreeFrameSinkState LAYER_TREE_FRAME_CREATING = LayerTreeFrameSinkState::LAYER_TREE_FRAME_CREATING;
+  static const LayerTreeFrameSinkState LAYER_TREE_FRAME_WAITING_FOR_FIRST_COMMIT = LayerTreeFrameSinkState::LAYER_TREE_FRAME_WAITING_FOR_FIRST_COMMIT;
+  static const LayerTreeFrameSinkState LAYER_TREE_FRAME_WAITING_FOR_FIRST_ACTIVATION = LayerTreeFrameSinkState::LAYER_TREE_FRAME_WAITING_FOR_FIRST_ACTIVATION;
+  static const ForcedRedrawOnTimeoutState FORCED_REDRAW_UNSPECIFIED = ForcedRedrawOnTimeoutState::FORCED_REDRAW_UNSPECIFIED;
+  static const ForcedRedrawOnTimeoutState FORCED_REDRAW_IDLE = ForcedRedrawOnTimeoutState::FORCED_REDRAW_IDLE;
+  static const ForcedRedrawOnTimeoutState FORCED_REDRAW_WAITING_FOR_COMMIT = ForcedRedrawOnTimeoutState::FORCED_REDRAW_WAITING_FOR_COMMIT;
+  static const ForcedRedrawOnTimeoutState FORCED_REDRAW_WAITING_FOR_ACTIVATION = ForcedRedrawOnTimeoutState::FORCED_REDRAW_WAITING_FOR_ACTIVATION;
+  static const ForcedRedrawOnTimeoutState FORCED_REDRAW_WAITING_FOR_DRAW = ForcedRedrawOnTimeoutState::FORCED_REDRAW_WAITING_FOR_DRAW;
 
   using FieldMetadata_NextAction =
     ::protozero::proto_utils::FieldMetadata<
@@ -2666,7 +3005,7 @@ class ChromeCompositorStateMachine_MajorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NextAction kNextAction() { return {}; }
   void set_next_action(::perfetto::protos::pbzero::ChromeCompositorSchedulerAction value) {
     static constexpr uint32_t field_id = FieldMetadata_NextAction::kFieldId;
@@ -2691,7 +3030,7 @@ class ChromeCompositorStateMachine_MajorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BeginImplFrameState kBeginImplFrameState() { return {}; }
   void set_begin_impl_frame_state(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginImplFrameState value) {
     static constexpr uint32_t field_id = FieldMetadata_BeginImplFrameState::kFieldId;
@@ -2716,7 +3055,7 @@ class ChromeCompositorStateMachine_MajorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BeginMainFrameState kBeginMainFrameState() { return {}; }
   void set_begin_main_frame_state(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginMainFrameState value) {
     static constexpr uint32_t field_id = FieldMetadata_BeginMainFrameState::kFieldId;
@@ -2741,7 +3080,7 @@ class ChromeCompositorStateMachine_MajorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LayerTreeFrameSinkState kLayerTreeFrameSinkState() { return {}; }
   void set_layer_tree_frame_sink_state(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState value) {
     static constexpr uint32_t field_id = FieldMetadata_LayerTreeFrameSinkState::kFieldId;
@@ -2766,7 +3105,7 @@ class ChromeCompositorStateMachine_MajorState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ForcedRedrawState kForcedRedrawState() { return {}; }
   void set_forced_redraw_state(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState value) {
     static constexpr uint32_t field_id = FieldMetadata_ForcedRedrawState::kFieldId;
@@ -2838,13 +3177,19 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
     kBeginFrameSourceStateFieldNumber = 16,
     kCompositorTimingHistoryFieldNumber = 17,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeCompositorSchedulerState"; }
+
+
   using BeginImplFrameDeadlineMode = ::perfetto::protos::pbzero::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode;
-  static const BeginImplFrameDeadlineMode DEADLINE_MODE_UNSPECIFIED = ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_UNSPECIFIED;
-  static const BeginImplFrameDeadlineMode DEADLINE_MODE_NONE = ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_NONE;
-  static const BeginImplFrameDeadlineMode DEADLINE_MODE_IMMEDIATE = ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_IMMEDIATE;
-  static const BeginImplFrameDeadlineMode DEADLINE_MODE_REGULAR = ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_REGULAR;
-  static const BeginImplFrameDeadlineMode DEADLINE_MODE_LATE = ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_LATE;
-  static const BeginImplFrameDeadlineMode DEADLINE_MODE_BLOCKED = ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_BLOCKED;
+  static inline const char* BeginImplFrameDeadlineMode_Name(BeginImplFrameDeadlineMode value) {
+    return ::perfetto::protos::pbzero::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_Name(value);
+  }
+  static const BeginImplFrameDeadlineMode DEADLINE_MODE_UNSPECIFIED = BeginImplFrameDeadlineMode::DEADLINE_MODE_UNSPECIFIED;
+  static const BeginImplFrameDeadlineMode DEADLINE_MODE_NONE = BeginImplFrameDeadlineMode::DEADLINE_MODE_NONE;
+  static const BeginImplFrameDeadlineMode DEADLINE_MODE_IMMEDIATE = BeginImplFrameDeadlineMode::DEADLINE_MODE_IMMEDIATE;
+  static const BeginImplFrameDeadlineMode DEADLINE_MODE_REGULAR = BeginImplFrameDeadlineMode::DEADLINE_MODE_REGULAR;
+  static const BeginImplFrameDeadlineMode DEADLINE_MODE_LATE = BeginImplFrameDeadlineMode::DEADLINE_MODE_LATE;
+  static const BeginImplFrameDeadlineMode DEADLINE_MODE_BLOCKED = BeginImplFrameDeadlineMode::DEADLINE_MODE_BLOCKED;
 
   using FieldMetadata_StateMachine =
     ::protozero::proto_utils::FieldMetadata<
@@ -2860,7 +3205,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StateMachine kStateMachine() { return {}; }
   template <typename T = ChromeCompositorStateMachine> T* set_state_machine() {
     return BeginNestedMessage<T>(1);
@@ -2881,7 +3226,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ObservingBeginFrameSource kObservingBeginFrameSource() { return {}; }
   void set_observing_begin_frame_source(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ObservingBeginFrameSource::kFieldId;
@@ -2906,7 +3251,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BeginImplFrameDeadlineTask kBeginImplFrameDeadlineTask() { return {}; }
   void set_begin_impl_frame_deadline_task(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_BeginImplFrameDeadlineTask::kFieldId;
@@ -2931,7 +3276,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PendingBeginFrameTask kPendingBeginFrameTask() { return {}; }
   void set_pending_begin_frame_task(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_PendingBeginFrameTask::kFieldId;
@@ -2956,7 +3301,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SkippedLastFrameMissedExceededDeadline kSkippedLastFrameMissedExceededDeadline() { return {}; }
   void set_skipped_last_frame_missed_exceeded_deadline(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_SkippedLastFrameMissedExceededDeadline::kFieldId;
@@ -2981,7 +3326,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_InsideAction kInsideAction() { return {}; }
   void set_inside_action(::perfetto::protos::pbzero::ChromeCompositorSchedulerAction value) {
     static constexpr uint32_t field_id = FieldMetadata_InsideAction::kFieldId;
@@ -3006,7 +3351,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DeadlineMode kDeadlineMode() { return {}; }
   void set_deadline_mode(::perfetto::protos::pbzero::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode value) {
     static constexpr uint32_t field_id = FieldMetadata_DeadlineMode::kFieldId;
@@ -3031,7 +3376,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DeadlineUs kDeadlineUs() { return {}; }
   void set_deadline_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DeadlineUs::kFieldId;
@@ -3056,7 +3401,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DeadlineScheduledAtUs kDeadlineScheduledAtUs() { return {}; }
   void set_deadline_scheduled_at_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DeadlineScheduledAtUs::kFieldId;
@@ -3081,7 +3426,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NowUs kNowUs() { return {}; }
   void set_now_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NowUs::kFieldId;
@@ -3106,7 +3451,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NowToDeadlineDeltaUs kNowToDeadlineDeltaUs() { return {}; }
   void set_now_to_deadline_delta_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NowToDeadlineDeltaUs::kFieldId;
@@ -3131,7 +3476,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NowToDeadlineScheduledAtDeltaUs kNowToDeadlineScheduledAtDeltaUs() { return {}; }
   void set_now_to_deadline_scheduled_at_delta_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NowToDeadlineScheduledAtDeltaUs::kFieldId;
@@ -3156,7 +3501,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BeginImplFrameArgs kBeginImplFrameArgs() { return {}; }
   template <typename T = BeginImplFrameArgs> T* set_begin_impl_frame_args() {
     return BeginNestedMessage<T>(14);
@@ -3177,7 +3522,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BeginFrameObserverState kBeginFrameObserverState() { return {}; }
   template <typename T = BeginFrameObserverState> T* set_begin_frame_observer_state() {
     return BeginNestedMessage<T>(15);
@@ -3198,7 +3543,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BeginFrameSourceState kBeginFrameSourceState() { return {}; }
   template <typename T = BeginFrameSourceState> T* set_begin_frame_source_state() {
     return BeginNestedMessage<T>(16);
@@ -3219,7 +3564,7 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CompositorTimingHistory kCompositorTimingHistory() { return {}; }
   template <typename T = CompositorTimingHistory> T* set_compositor_timing_history() {
     return BeginNestedMessage<T>(17);

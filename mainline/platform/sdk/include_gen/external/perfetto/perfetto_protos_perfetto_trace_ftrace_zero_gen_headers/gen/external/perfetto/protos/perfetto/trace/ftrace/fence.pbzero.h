@@ -41,6 +41,8 @@ class FenceSignaledFtraceEvent : public ::protozero::Message {
     kSeqnoFieldNumber = 3,
     kTimelineFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.FenceSignaledFtraceEvent"; }
+
 
   using FieldMetadata_Context =
     ::protozero::proto_utils::FieldMetadata<
@@ -56,7 +58,7 @@ class FenceSignaledFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Context kContext() { return {}; }
   void set_context(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Context::kFieldId;
@@ -81,10 +83,13 @@ class FenceSignaledFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Driver kDriver() { return {}; }
   void set_driver(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Driver::kFieldId, data, size);
+  }
+  void set_driver(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Driver::kFieldId, chars.data, chars.size);
   }
   void set_driver(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Driver::kFieldId;
@@ -109,7 +114,7 @@ class FenceSignaledFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Seqno kSeqno() { return {}; }
   void set_seqno(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Seqno::kFieldId;
@@ -134,10 +139,13 @@ class FenceSignaledFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Timeline kTimeline() { return {}; }
   void set_timeline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Timeline::kFieldId, data, size);
+  }
+  void set_timeline(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Timeline::kFieldId, chars.data, chars.size);
   }
   void set_timeline(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Timeline::kFieldId;
@@ -173,6 +181,8 @@ class FenceEnableSignalFtraceEvent : public ::protozero::Message {
     kSeqnoFieldNumber = 3,
     kTimelineFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.FenceEnableSignalFtraceEvent"; }
+
 
   using FieldMetadata_Context =
     ::protozero::proto_utils::FieldMetadata<
@@ -188,7 +198,7 @@ class FenceEnableSignalFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Context kContext() { return {}; }
   void set_context(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Context::kFieldId;
@@ -213,10 +223,13 @@ class FenceEnableSignalFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Driver kDriver() { return {}; }
   void set_driver(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Driver::kFieldId, data, size);
+  }
+  void set_driver(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Driver::kFieldId, chars.data, chars.size);
   }
   void set_driver(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Driver::kFieldId;
@@ -241,7 +254,7 @@ class FenceEnableSignalFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Seqno kSeqno() { return {}; }
   void set_seqno(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Seqno::kFieldId;
@@ -266,10 +279,13 @@ class FenceEnableSignalFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Timeline kTimeline() { return {}; }
   void set_timeline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Timeline::kFieldId, data, size);
+  }
+  void set_timeline(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Timeline::kFieldId, chars.data, chars.size);
   }
   void set_timeline(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Timeline::kFieldId;
@@ -305,6 +321,8 @@ class FenceDestroyFtraceEvent : public ::protozero::Message {
     kSeqnoFieldNumber = 3,
     kTimelineFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.FenceDestroyFtraceEvent"; }
+
 
   using FieldMetadata_Context =
     ::protozero::proto_utils::FieldMetadata<
@@ -320,7 +338,7 @@ class FenceDestroyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Context kContext() { return {}; }
   void set_context(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Context::kFieldId;
@@ -345,10 +363,13 @@ class FenceDestroyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Driver kDriver() { return {}; }
   void set_driver(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Driver::kFieldId, data, size);
+  }
+  void set_driver(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Driver::kFieldId, chars.data, chars.size);
   }
   void set_driver(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Driver::kFieldId;
@@ -373,7 +394,7 @@ class FenceDestroyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Seqno kSeqno() { return {}; }
   void set_seqno(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Seqno::kFieldId;
@@ -398,10 +419,13 @@ class FenceDestroyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Timeline kTimeline() { return {}; }
   void set_timeline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Timeline::kFieldId, data, size);
+  }
+  void set_timeline(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Timeline::kFieldId, chars.data, chars.size);
   }
   void set_timeline(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Timeline::kFieldId;
@@ -437,6 +461,8 @@ class FenceInitFtraceEvent : public ::protozero::Message {
     kSeqnoFieldNumber = 3,
     kTimelineFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.FenceInitFtraceEvent"; }
+
 
   using FieldMetadata_Context =
     ::protozero::proto_utils::FieldMetadata<
@@ -452,7 +478,7 @@ class FenceInitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Context kContext() { return {}; }
   void set_context(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Context::kFieldId;
@@ -477,10 +503,13 @@ class FenceInitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Driver kDriver() { return {}; }
   void set_driver(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Driver::kFieldId, data, size);
+  }
+  void set_driver(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Driver::kFieldId, chars.data, chars.size);
   }
   void set_driver(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Driver::kFieldId;
@@ -505,7 +534,7 @@ class FenceInitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Seqno kSeqno() { return {}; }
   void set_seqno(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Seqno::kFieldId;
@@ -530,10 +559,13 @@ class FenceInitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Timeline kTimeline() { return {}; }
   void set_timeline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Timeline::kFieldId, data, size);
+  }
+  void set_timeline(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Timeline::kFieldId, chars.data, chars.size);
   }
   void set_timeline(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Timeline::kFieldId;

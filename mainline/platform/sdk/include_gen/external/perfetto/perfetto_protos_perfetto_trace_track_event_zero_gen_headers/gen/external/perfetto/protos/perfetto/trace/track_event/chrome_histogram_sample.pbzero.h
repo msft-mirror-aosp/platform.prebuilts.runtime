@@ -41,6 +41,8 @@ class ChromeHistogramSample : public ::protozero::Message {
     kSampleFieldNumber = 3,
     kNameIidFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeHistogramSample"; }
+
 
   using FieldMetadata_NameHash =
     ::protozero::proto_utils::FieldMetadata<
@@ -56,7 +58,7 @@ class ChromeHistogramSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NameHash kNameHash() { return {}; }
   void set_name_hash(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NameHash::kFieldId;
@@ -81,10 +83,13 @@ class ChromeHistogramSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -109,7 +114,7 @@ class ChromeHistogramSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sample kSample() { return {}; }
   void set_sample(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sample::kFieldId;
@@ -134,7 +139,7 @@ class ChromeHistogramSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NameIid kNameIid() { return {}; }
   void set_name_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NameIid::kFieldId;
@@ -164,6 +169,8 @@ class HistogramName : public ::protozero::Message {
     kIidFieldNumber = 1,
     kNameFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.HistogramName"; }
+
 
   using FieldMetadata_Iid =
     ::protozero::proto_utils::FieldMetadata<
@@ -179,7 +186,7 @@ class HistogramName : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Iid kIid() { return {}; }
   void set_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Iid::kFieldId;
@@ -204,10 +211,13 @@ class HistogramName : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
