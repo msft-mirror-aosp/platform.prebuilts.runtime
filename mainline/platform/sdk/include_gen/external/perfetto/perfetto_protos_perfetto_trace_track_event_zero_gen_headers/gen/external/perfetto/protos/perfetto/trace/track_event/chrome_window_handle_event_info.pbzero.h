@@ -38,6 +38,8 @@ class ChromeWindowHandleEventInfo : public ::protozero::Message {
     kMessageIdFieldNumber = 2,
     kHwndPtrFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeWindowHandleEventInfo"; }
+
 
   using FieldMetadata_Dpi =
     ::protozero::proto_utils::FieldMetadata<
@@ -53,7 +55,7 @@ class ChromeWindowHandleEventInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dpi kDpi() { return {}; }
   void set_dpi(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dpi::kFieldId;
@@ -78,7 +80,7 @@ class ChromeWindowHandleEventInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MessageId kMessageId() { return {}; }
   void set_message_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MessageId::kFieldId;
@@ -103,7 +105,7 @@ class ChromeWindowHandleEventInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HwndPtr kHwndPtr() { return {}; }
   void set_hwnd_ptr(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HwndPtr::kFieldId;

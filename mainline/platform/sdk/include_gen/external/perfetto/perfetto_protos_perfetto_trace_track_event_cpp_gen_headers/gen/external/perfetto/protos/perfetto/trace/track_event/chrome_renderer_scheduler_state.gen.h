@@ -36,10 +36,12 @@ enum ChromeRAILMode : int {
   RAIL_MODE_LOAD = 4,
 };
 
-class PERFETTO_EXPORT ChromeRendererSchedulerState : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeRendererSchedulerState : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kRailModeFieldNumber = 1,
+    kIsBackgroundedFieldNumber = 2,
+    kIsHiddenFieldNumber = 3,
   };
 
   ChromeRendererSchedulerState();
@@ -60,14 +62,24 @@ class PERFETTO_EXPORT ChromeRendererSchedulerState : public ::protozero::CppMess
   ChromeRAILMode rail_mode() const { return rail_mode_; }
   void set_rail_mode(ChromeRAILMode value) { rail_mode_ = value; _has_field_.set(1); }
 
+  bool has_is_backgrounded() const { return _has_field_[2]; }
+  bool is_backgrounded() const { return is_backgrounded_; }
+  void set_is_backgrounded(bool value) { is_backgrounded_ = value; _has_field_.set(2); }
+
+  bool has_is_hidden() const { return _has_field_[3]; }
+  bool is_hidden() const { return is_hidden_; }
+  void set_is_hidden(bool value) { is_hidden_ = value; _has_field_.set(3); }
+
  private:
   ChromeRAILMode rail_mode_{};
+  bool is_backgrounded_{};
+  bool is_hidden_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<2> _has_field_{};
+  std::bitset<4> _has_field_{};
 };
 
 }  // namespace perfetto

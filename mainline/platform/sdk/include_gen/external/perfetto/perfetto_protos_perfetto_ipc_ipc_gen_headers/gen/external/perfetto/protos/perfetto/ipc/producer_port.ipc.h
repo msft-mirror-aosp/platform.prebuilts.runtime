@@ -62,6 +62,9 @@ class ProducerPort : public ::perfetto::ipc::Service {
   using DeferredSyncResponse = ::perfetto::ipc::Deferred<SyncResponse>;
   virtual void Sync(const SyncRequest&, DeferredSyncResponse) = 0;
 
+  using DeferredUpdateDataSourceResponse = ::perfetto::ipc::Deferred<UpdateDataSourceResponse>;
+  virtual void UpdateDataSource(const UpdateDataSourceRequest&, DeferredUpdateDataSourceResponse) = 0;
+
 };
 
 
@@ -106,6 +109,9 @@ class ProducerPortProxy : public ::perfetto::ipc::ServiceProxy {
 
   using DeferredSyncResponse = ::perfetto::ipc::Deferred<SyncResponse>;
   void Sync(const SyncRequest&, DeferredSyncResponse, int fd = -1);
+
+  using DeferredUpdateDataSourceResponse = ::perfetto::ipc::Deferred<UpdateDataSourceResponse>;
+  void UpdateDataSource(const UpdateDataSourceRequest&, DeferredUpdateDataSourceResponse, int fd = -1);
 
 };
 
