@@ -17,45 +17,141 @@ namespace protos {
 namespace pbzero {
 
 class VulkanMemoryEventAnnotation;
-enum VulkanMemoryEvent_AllocationScope : int32_t;
-enum VulkanMemoryEvent_Operation : int32_t;
-enum VulkanMemoryEvent_Source : int32_t;
+namespace perfetto_pbzero_enum_VulkanMemoryEvent {
+enum AllocationScope : int32_t;
+}  // namespace perfetto_pbzero_enum_VulkanMemoryEvent
+using VulkanMemoryEvent_AllocationScope = perfetto_pbzero_enum_VulkanMemoryEvent::AllocationScope;
+namespace perfetto_pbzero_enum_VulkanMemoryEvent {
+enum Operation : int32_t;
+}  // namespace perfetto_pbzero_enum_VulkanMemoryEvent
+using VulkanMemoryEvent_Operation = perfetto_pbzero_enum_VulkanMemoryEvent::Operation;
+namespace perfetto_pbzero_enum_VulkanMemoryEvent {
+enum Source : int32_t;
+}  // namespace perfetto_pbzero_enum_VulkanMemoryEvent
+using VulkanMemoryEvent_Source = perfetto_pbzero_enum_VulkanMemoryEvent::Source;
 
-enum VulkanMemoryEvent_Source : int32_t {
-  VulkanMemoryEvent_Source_SOURCE_UNSPECIFIED = 0,
-  VulkanMemoryEvent_Source_SOURCE_DRIVER = 1,
-  VulkanMemoryEvent_Source_SOURCE_DEVICE = 2,
-  VulkanMemoryEvent_Source_SOURCE_DEVICE_MEMORY = 3,
-  VulkanMemoryEvent_Source_SOURCE_BUFFER = 4,
-  VulkanMemoryEvent_Source_SOURCE_IMAGE = 5,
+namespace perfetto_pbzero_enum_VulkanMemoryEvent {
+enum Source : int32_t {
+  SOURCE_UNSPECIFIED = 0,
+  SOURCE_DRIVER = 1,
+  SOURCE_DEVICE = 2,
+  SOURCE_DEVICE_MEMORY = 3,
+  SOURCE_BUFFER = 4,
+  SOURCE_IMAGE = 5,
 };
+} // namespace perfetto_pbzero_enum_VulkanMemoryEvent
+using VulkanMemoryEvent_Source = perfetto_pbzero_enum_VulkanMemoryEvent::Source;
 
-const VulkanMemoryEvent_Source VulkanMemoryEvent_Source_MIN = VulkanMemoryEvent_Source_SOURCE_UNSPECIFIED;
-const VulkanMemoryEvent_Source VulkanMemoryEvent_Source_MAX = VulkanMemoryEvent_Source_SOURCE_IMAGE;
 
-enum VulkanMemoryEvent_Operation : int32_t {
-  VulkanMemoryEvent_Operation_OP_UNSPECIFIED = 0,
-  VulkanMemoryEvent_Operation_OP_CREATE = 1,
-  VulkanMemoryEvent_Operation_OP_DESTROY = 2,
-  VulkanMemoryEvent_Operation_OP_BIND = 3,
-  VulkanMemoryEvent_Operation_OP_DESTROY_BOUND = 4,
-  VulkanMemoryEvent_Operation_OP_ANNOTATIONS = 5,
+constexpr VulkanMemoryEvent_Source VulkanMemoryEvent_Source_MIN = VulkanMemoryEvent_Source::SOURCE_UNSPECIFIED;
+constexpr VulkanMemoryEvent_Source VulkanMemoryEvent_Source_MAX = VulkanMemoryEvent_Source::SOURCE_IMAGE;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* VulkanMemoryEvent_Source_Name(::perfetto::protos::pbzero::VulkanMemoryEvent_Source value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_Source::SOURCE_UNSPECIFIED:
+    return "SOURCE_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_Source::SOURCE_DRIVER:
+    return "SOURCE_DRIVER";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_Source::SOURCE_DEVICE:
+    return "SOURCE_DEVICE";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_Source::SOURCE_DEVICE_MEMORY:
+    return "SOURCE_DEVICE_MEMORY";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_Source::SOURCE_BUFFER:
+    return "SOURCE_BUFFER";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_Source::SOURCE_IMAGE:
+    return "SOURCE_IMAGE";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_VulkanMemoryEvent {
+enum Operation : int32_t {
+  OP_UNSPECIFIED = 0,
+  OP_CREATE = 1,
+  OP_DESTROY = 2,
+  OP_BIND = 3,
+  OP_DESTROY_BOUND = 4,
+  OP_ANNOTATIONS = 5,
 };
+} // namespace perfetto_pbzero_enum_VulkanMemoryEvent
+using VulkanMemoryEvent_Operation = perfetto_pbzero_enum_VulkanMemoryEvent::Operation;
 
-const VulkanMemoryEvent_Operation VulkanMemoryEvent_Operation_MIN = VulkanMemoryEvent_Operation_OP_UNSPECIFIED;
-const VulkanMemoryEvent_Operation VulkanMemoryEvent_Operation_MAX = VulkanMemoryEvent_Operation_OP_ANNOTATIONS;
 
-enum VulkanMemoryEvent_AllocationScope : int32_t {
-  VulkanMemoryEvent_AllocationScope_SCOPE_UNSPECIFIED = 0,
-  VulkanMemoryEvent_AllocationScope_SCOPE_COMMAND = 1,
-  VulkanMemoryEvent_AllocationScope_SCOPE_OBJECT = 2,
-  VulkanMemoryEvent_AllocationScope_SCOPE_CACHE = 3,
-  VulkanMemoryEvent_AllocationScope_SCOPE_DEVICE = 4,
-  VulkanMemoryEvent_AllocationScope_SCOPE_INSTANCE = 5,
+constexpr VulkanMemoryEvent_Operation VulkanMemoryEvent_Operation_MIN = VulkanMemoryEvent_Operation::OP_UNSPECIFIED;
+constexpr VulkanMemoryEvent_Operation VulkanMemoryEvent_Operation_MAX = VulkanMemoryEvent_Operation::OP_ANNOTATIONS;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* VulkanMemoryEvent_Operation_Name(::perfetto::protos::pbzero::VulkanMemoryEvent_Operation value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_Operation::OP_UNSPECIFIED:
+    return "OP_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_Operation::OP_CREATE:
+    return "OP_CREATE";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_Operation::OP_DESTROY:
+    return "OP_DESTROY";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_Operation::OP_BIND:
+    return "OP_BIND";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_Operation::OP_DESTROY_BOUND:
+    return "OP_DESTROY_BOUND";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_Operation::OP_ANNOTATIONS:
+    return "OP_ANNOTATIONS";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_VulkanMemoryEvent {
+enum AllocationScope : int32_t {
+  SCOPE_UNSPECIFIED = 0,
+  SCOPE_COMMAND = 1,
+  SCOPE_OBJECT = 2,
+  SCOPE_CACHE = 3,
+  SCOPE_DEVICE = 4,
+  SCOPE_INSTANCE = 5,
 };
+} // namespace perfetto_pbzero_enum_VulkanMemoryEvent
+using VulkanMemoryEvent_AllocationScope = perfetto_pbzero_enum_VulkanMemoryEvent::AllocationScope;
 
-const VulkanMemoryEvent_AllocationScope VulkanMemoryEvent_AllocationScope_MIN = VulkanMemoryEvent_AllocationScope_SCOPE_UNSPECIFIED;
-const VulkanMemoryEvent_AllocationScope VulkanMemoryEvent_AllocationScope_MAX = VulkanMemoryEvent_AllocationScope_SCOPE_INSTANCE;
+
+constexpr VulkanMemoryEvent_AllocationScope VulkanMemoryEvent_AllocationScope_MIN = VulkanMemoryEvent_AllocationScope::SCOPE_UNSPECIFIED;
+constexpr VulkanMemoryEvent_AllocationScope VulkanMemoryEvent_AllocationScope_MAX = VulkanMemoryEvent_AllocationScope::SCOPE_INSTANCE;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* VulkanMemoryEvent_AllocationScope_Name(::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope::SCOPE_UNSPECIFIED:
+    return "SCOPE_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope::SCOPE_COMMAND:
+    return "SCOPE_COMMAND";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope::SCOPE_OBJECT:
+    return "SCOPE_OBJECT";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope::SCOPE_CACHE:
+    return "SCOPE_CACHE";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope::SCOPE_DEVICE:
+    return "SCOPE_DEVICE";
+
+  case ::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope::SCOPE_INSTANCE:
+    return "SCOPE_INSTANCE";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class VulkanMemoryEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/20, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -111,27 +207,41 @@ class VulkanMemoryEvent : public ::protozero::Message {
     kHeapFieldNumber = 19,
     kObjectHandleFieldNumber = 20,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.VulkanMemoryEvent"; }
+
+
   using Source = ::perfetto::protos::pbzero::VulkanMemoryEvent_Source;
+  static inline const char* Source_Name(Source value) {
+    return ::perfetto::protos::pbzero::VulkanMemoryEvent_Source_Name(value);
+  }
+
   using Operation = ::perfetto::protos::pbzero::VulkanMemoryEvent_Operation;
+  static inline const char* Operation_Name(Operation value) {
+    return ::perfetto::protos::pbzero::VulkanMemoryEvent_Operation_Name(value);
+  }
+
   using AllocationScope = ::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope;
-  static const Source SOURCE_UNSPECIFIED = VulkanMemoryEvent_Source_SOURCE_UNSPECIFIED;
-  static const Source SOURCE_DRIVER = VulkanMemoryEvent_Source_SOURCE_DRIVER;
-  static const Source SOURCE_DEVICE = VulkanMemoryEvent_Source_SOURCE_DEVICE;
-  static const Source SOURCE_DEVICE_MEMORY = VulkanMemoryEvent_Source_SOURCE_DEVICE_MEMORY;
-  static const Source SOURCE_BUFFER = VulkanMemoryEvent_Source_SOURCE_BUFFER;
-  static const Source SOURCE_IMAGE = VulkanMemoryEvent_Source_SOURCE_IMAGE;
-  static const Operation OP_UNSPECIFIED = VulkanMemoryEvent_Operation_OP_UNSPECIFIED;
-  static const Operation OP_CREATE = VulkanMemoryEvent_Operation_OP_CREATE;
-  static const Operation OP_DESTROY = VulkanMemoryEvent_Operation_OP_DESTROY;
-  static const Operation OP_BIND = VulkanMemoryEvent_Operation_OP_BIND;
-  static const Operation OP_DESTROY_BOUND = VulkanMemoryEvent_Operation_OP_DESTROY_BOUND;
-  static const Operation OP_ANNOTATIONS = VulkanMemoryEvent_Operation_OP_ANNOTATIONS;
-  static const AllocationScope SCOPE_UNSPECIFIED = VulkanMemoryEvent_AllocationScope_SCOPE_UNSPECIFIED;
-  static const AllocationScope SCOPE_COMMAND = VulkanMemoryEvent_AllocationScope_SCOPE_COMMAND;
-  static const AllocationScope SCOPE_OBJECT = VulkanMemoryEvent_AllocationScope_SCOPE_OBJECT;
-  static const AllocationScope SCOPE_CACHE = VulkanMemoryEvent_AllocationScope_SCOPE_CACHE;
-  static const AllocationScope SCOPE_DEVICE = VulkanMemoryEvent_AllocationScope_SCOPE_DEVICE;
-  static const AllocationScope SCOPE_INSTANCE = VulkanMemoryEvent_AllocationScope_SCOPE_INSTANCE;
+  static inline const char* AllocationScope_Name(AllocationScope value) {
+    return ::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope_Name(value);
+  }
+  static const Source SOURCE_UNSPECIFIED = Source::SOURCE_UNSPECIFIED;
+  static const Source SOURCE_DRIVER = Source::SOURCE_DRIVER;
+  static const Source SOURCE_DEVICE = Source::SOURCE_DEVICE;
+  static const Source SOURCE_DEVICE_MEMORY = Source::SOURCE_DEVICE_MEMORY;
+  static const Source SOURCE_BUFFER = Source::SOURCE_BUFFER;
+  static const Source SOURCE_IMAGE = Source::SOURCE_IMAGE;
+  static const Operation OP_UNSPECIFIED = Operation::OP_UNSPECIFIED;
+  static const Operation OP_CREATE = Operation::OP_CREATE;
+  static const Operation OP_DESTROY = Operation::OP_DESTROY;
+  static const Operation OP_BIND = Operation::OP_BIND;
+  static const Operation OP_DESTROY_BOUND = Operation::OP_DESTROY_BOUND;
+  static const Operation OP_ANNOTATIONS = Operation::OP_ANNOTATIONS;
+  static const AllocationScope SCOPE_UNSPECIFIED = AllocationScope::SCOPE_UNSPECIFIED;
+  static const AllocationScope SCOPE_COMMAND = AllocationScope::SCOPE_COMMAND;
+  static const AllocationScope SCOPE_OBJECT = AllocationScope::SCOPE_OBJECT;
+  static const AllocationScope SCOPE_CACHE = AllocationScope::SCOPE_CACHE;
+  static const AllocationScope SCOPE_DEVICE = AllocationScope::SCOPE_DEVICE;
+  static const AllocationScope SCOPE_INSTANCE = AllocationScope::SCOPE_INSTANCE;
 
   using FieldMetadata_Source =
     ::protozero::proto_utils::FieldMetadata<
@@ -147,7 +257,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Source kSource() { return {}; }
   void set_source(::perfetto::protos::pbzero::VulkanMemoryEvent_Source value) {
     static constexpr uint32_t field_id = FieldMetadata_Source::kFieldId;
@@ -172,7 +282,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Operation kOperation() { return {}; }
   void set_operation(::perfetto::protos::pbzero::VulkanMemoryEvent_Operation value) {
     static constexpr uint32_t field_id = FieldMetadata_Operation::kFieldId;
@@ -197,7 +307,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Timestamp kTimestamp() { return {}; }
   void set_timestamp(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Timestamp::kFieldId;
@@ -222,7 +332,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -247,7 +357,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MemoryAddress kMemoryAddress() { return {}; }
   void set_memory_address(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MemoryAddress::kFieldId;
@@ -272,7 +382,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MemorySize kMemorySize() { return {}; }
   void set_memory_size(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MemorySize::kFieldId;
@@ -297,7 +407,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CallerIid kCallerIid() { return {}; }
   void set_caller_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CallerIid::kFieldId;
@@ -322,7 +432,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AllocationScope kAllocationScope() { return {}; }
   void set_allocation_scope(::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope value) {
     static constexpr uint32_t field_id = FieldMetadata_AllocationScope::kFieldId;
@@ -347,7 +457,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Annotations kAnnotations() { return {}; }
   template <typename T = VulkanMemoryEventAnnotation> T* add_annotations() {
     return BeginNestedMessage<T>(9);
@@ -368,7 +478,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Device kDevice() { return {}; }
   void set_device(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Device::kFieldId;
@@ -393,7 +503,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DeviceMemory kDeviceMemory() { return {}; }
   void set_device_memory(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DeviceMemory::kFieldId;
@@ -418,7 +528,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MemoryType kMemoryType() { return {}; }
   void set_memory_type(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MemoryType::kFieldId;
@@ -443,7 +553,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Heap kHeap() { return {}; }
   void set_heap(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Heap::kFieldId;
@@ -468,7 +578,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ObjectHandle kObjectHandle() { return {}; }
   void set_object_handle(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ObjectHandle::kFieldId;
@@ -504,6 +614,8 @@ class VulkanMemoryEventAnnotation : public ::protozero::Message {
     kDoubleValueFieldNumber = 3,
     kStringIidFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.VulkanMemoryEventAnnotation"; }
+
 
   using FieldMetadata_KeyIid =
     ::protozero::proto_utils::FieldMetadata<
@@ -519,7 +631,7 @@ class VulkanMemoryEventAnnotation : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_KeyIid kKeyIid() { return {}; }
   void set_key_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_KeyIid::kFieldId;
@@ -544,7 +656,7 @@ class VulkanMemoryEventAnnotation : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IntValue kIntValue() { return {}; }
   void set_int_value(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IntValue::kFieldId;
@@ -569,7 +681,7 @@ class VulkanMemoryEventAnnotation : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DoubleValue kDoubleValue() { return {}; }
   void set_double_value(double value) {
     static constexpr uint32_t field_id = FieldMetadata_DoubleValue::kFieldId;
@@ -594,7 +706,7 @@ class VulkanMemoryEventAnnotation : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StringIid kStringIid() { return {}; }
   void set_string_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StringIid::kFieldId;

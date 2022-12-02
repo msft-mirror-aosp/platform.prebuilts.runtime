@@ -27,76 +27,247 @@ class ProfilePacket_Histogram;
 class ProfilePacket_Histogram_Bucket;
 class ProfilePacket_ProcessHeapSamples;
 class ProfilePacket_ProcessStats;
-enum PerfSample_ProducerEvent_DataSourceStopReason : int32_t;
-enum PerfSample_SampleSkipReason : int32_t;
-enum ProfilePacket_ProcessHeapSamples_ClientError : int32_t;
-enum Profiling_CpuMode : int32_t;
-enum Profiling_StackUnwindError : int32_t;
+namespace perfetto_pbzero_enum_PerfSample_ProducerEvent {
+enum DataSourceStopReason : int32_t;
+}  // namespace perfetto_pbzero_enum_PerfSample_ProducerEvent
+using PerfSample_ProducerEvent_DataSourceStopReason = perfetto_pbzero_enum_PerfSample_ProducerEvent::DataSourceStopReason;
+namespace perfetto_pbzero_enum_PerfSample {
+enum SampleSkipReason : int32_t;
+}  // namespace perfetto_pbzero_enum_PerfSample
+using PerfSample_SampleSkipReason = perfetto_pbzero_enum_PerfSample::SampleSkipReason;
+namespace perfetto_pbzero_enum_ProfilePacket_ProcessHeapSamples {
+enum ClientError : int32_t;
+}  // namespace perfetto_pbzero_enum_ProfilePacket_ProcessHeapSamples
+using ProfilePacket_ProcessHeapSamples_ClientError = perfetto_pbzero_enum_ProfilePacket_ProcessHeapSamples::ClientError;
+namespace perfetto_pbzero_enum_Profiling {
+enum CpuMode : int32_t;
+}  // namespace perfetto_pbzero_enum_Profiling
+using Profiling_CpuMode = perfetto_pbzero_enum_Profiling::CpuMode;
+namespace perfetto_pbzero_enum_Profiling {
+enum StackUnwindError : int32_t;
+}  // namespace perfetto_pbzero_enum_Profiling
+using Profiling_StackUnwindError = perfetto_pbzero_enum_Profiling::StackUnwindError;
 
-enum PerfSample_SampleSkipReason : int32_t {
-  PerfSample_SampleSkipReason_PROFILER_SKIP_UNKNOWN = 0,
-  PerfSample_SampleSkipReason_PROFILER_SKIP_READ_STAGE = 1,
-  PerfSample_SampleSkipReason_PROFILER_SKIP_UNWIND_STAGE = 2,
-  PerfSample_SampleSkipReason_PROFILER_SKIP_UNWIND_ENQUEUE = 3,
+namespace perfetto_pbzero_enum_PerfSample {
+enum SampleSkipReason : int32_t {
+  PROFILER_SKIP_UNKNOWN = 0,
+  PROFILER_SKIP_READ_STAGE = 1,
+  PROFILER_SKIP_UNWIND_STAGE = 2,
+  PROFILER_SKIP_UNWIND_ENQUEUE = 3,
 };
+} // namespace perfetto_pbzero_enum_PerfSample
+using PerfSample_SampleSkipReason = perfetto_pbzero_enum_PerfSample::SampleSkipReason;
 
-const PerfSample_SampleSkipReason PerfSample_SampleSkipReason_MIN = PerfSample_SampleSkipReason_PROFILER_SKIP_UNKNOWN;
-const PerfSample_SampleSkipReason PerfSample_SampleSkipReason_MAX = PerfSample_SampleSkipReason_PROFILER_SKIP_UNWIND_ENQUEUE;
 
-enum PerfSample_ProducerEvent_DataSourceStopReason : int32_t {
-  PerfSample_ProducerEvent_DataSourceStopReason_PROFILER_STOP_UNKNOWN = 0,
-  PerfSample_ProducerEvent_DataSourceStopReason_PROFILER_STOP_GUARDRAIL = 1,
+constexpr PerfSample_SampleSkipReason PerfSample_SampleSkipReason_MIN = PerfSample_SampleSkipReason::PROFILER_SKIP_UNKNOWN;
+constexpr PerfSample_SampleSkipReason PerfSample_SampleSkipReason_MAX = PerfSample_SampleSkipReason::PROFILER_SKIP_UNWIND_ENQUEUE;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* PerfSample_SampleSkipReason_Name(::perfetto::protos::pbzero::PerfSample_SampleSkipReason value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::PerfSample_SampleSkipReason::PROFILER_SKIP_UNKNOWN:
+    return "PROFILER_SKIP_UNKNOWN";
+
+  case ::perfetto::protos::pbzero::PerfSample_SampleSkipReason::PROFILER_SKIP_READ_STAGE:
+    return "PROFILER_SKIP_READ_STAGE";
+
+  case ::perfetto::protos::pbzero::PerfSample_SampleSkipReason::PROFILER_SKIP_UNWIND_STAGE:
+    return "PROFILER_SKIP_UNWIND_STAGE";
+
+  case ::perfetto::protos::pbzero::PerfSample_SampleSkipReason::PROFILER_SKIP_UNWIND_ENQUEUE:
+    return "PROFILER_SKIP_UNWIND_ENQUEUE";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_PerfSample_ProducerEvent {
+enum DataSourceStopReason : int32_t {
+  PROFILER_STOP_UNKNOWN = 0,
+  PROFILER_STOP_GUARDRAIL = 1,
 };
+} // namespace perfetto_pbzero_enum_PerfSample_ProducerEvent
+using PerfSample_ProducerEvent_DataSourceStopReason = perfetto_pbzero_enum_PerfSample_ProducerEvent::DataSourceStopReason;
 
-const PerfSample_ProducerEvent_DataSourceStopReason PerfSample_ProducerEvent_DataSourceStopReason_MIN = PerfSample_ProducerEvent_DataSourceStopReason_PROFILER_STOP_UNKNOWN;
-const PerfSample_ProducerEvent_DataSourceStopReason PerfSample_ProducerEvent_DataSourceStopReason_MAX = PerfSample_ProducerEvent_DataSourceStopReason_PROFILER_STOP_GUARDRAIL;
 
-enum Profiling_CpuMode : int32_t {
-  Profiling_CpuMode_MODE_UNKNOWN = 0,
-  Profiling_CpuMode_MODE_KERNEL = 1,
-  Profiling_CpuMode_MODE_USER = 2,
-  Profiling_CpuMode_MODE_HYPERVISOR = 3,
-  Profiling_CpuMode_MODE_GUEST_KERNEL = 4,
-  Profiling_CpuMode_MODE_GUEST_USER = 5,
+constexpr PerfSample_ProducerEvent_DataSourceStopReason PerfSample_ProducerEvent_DataSourceStopReason_MIN = PerfSample_ProducerEvent_DataSourceStopReason::PROFILER_STOP_UNKNOWN;
+constexpr PerfSample_ProducerEvent_DataSourceStopReason PerfSample_ProducerEvent_DataSourceStopReason_MAX = PerfSample_ProducerEvent_DataSourceStopReason::PROFILER_STOP_GUARDRAIL;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* PerfSample_ProducerEvent_DataSourceStopReason_Name(::perfetto::protos::pbzero::PerfSample_ProducerEvent_DataSourceStopReason value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::PerfSample_ProducerEvent_DataSourceStopReason::PROFILER_STOP_UNKNOWN:
+    return "PROFILER_STOP_UNKNOWN";
+
+  case ::perfetto::protos::pbzero::PerfSample_ProducerEvent_DataSourceStopReason::PROFILER_STOP_GUARDRAIL:
+    return "PROFILER_STOP_GUARDRAIL";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_Profiling {
+enum CpuMode : int32_t {
+  MODE_UNKNOWN = 0,
+  MODE_KERNEL = 1,
+  MODE_USER = 2,
+  MODE_HYPERVISOR = 3,
+  MODE_GUEST_KERNEL = 4,
+  MODE_GUEST_USER = 5,
 };
+} // namespace perfetto_pbzero_enum_Profiling
+using Profiling_CpuMode = perfetto_pbzero_enum_Profiling::CpuMode;
 
-const Profiling_CpuMode Profiling_CpuMode_MIN = Profiling_CpuMode_MODE_UNKNOWN;
-const Profiling_CpuMode Profiling_CpuMode_MAX = Profiling_CpuMode_MODE_GUEST_USER;
 
-enum Profiling_StackUnwindError : int32_t {
-  Profiling_StackUnwindError_UNWIND_ERROR_UNKNOWN = 0,
-  Profiling_StackUnwindError_UNWIND_ERROR_NONE = 1,
-  Profiling_StackUnwindError_UNWIND_ERROR_MEMORY_INVALID = 2,
-  Profiling_StackUnwindError_UNWIND_ERROR_UNWIND_INFO = 3,
-  Profiling_StackUnwindError_UNWIND_ERROR_UNSUPPORTED = 4,
-  Profiling_StackUnwindError_UNWIND_ERROR_INVALID_MAP = 5,
-  Profiling_StackUnwindError_UNWIND_ERROR_MAX_FRAMES_EXCEEDED = 6,
-  Profiling_StackUnwindError_UNWIND_ERROR_REPEATED_FRAME = 7,
-  Profiling_StackUnwindError_UNWIND_ERROR_INVALID_ELF = 8,
-  Profiling_StackUnwindError_UNWIND_ERROR_SYSTEM_CALL = 9,
-  Profiling_StackUnwindError_UNWIND_ERROR_THREAD_TIMEOUT = 10,
-  Profiling_StackUnwindError_UNWIND_ERROR_THREAD_DOES_NOT_EXIST = 11,
+constexpr Profiling_CpuMode Profiling_CpuMode_MIN = Profiling_CpuMode::MODE_UNKNOWN;
+constexpr Profiling_CpuMode Profiling_CpuMode_MAX = Profiling_CpuMode::MODE_GUEST_USER;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* Profiling_CpuMode_Name(::perfetto::protos::pbzero::Profiling_CpuMode value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::Profiling_CpuMode::MODE_UNKNOWN:
+    return "MODE_UNKNOWN";
+
+  case ::perfetto::protos::pbzero::Profiling_CpuMode::MODE_KERNEL:
+    return "MODE_KERNEL";
+
+  case ::perfetto::protos::pbzero::Profiling_CpuMode::MODE_USER:
+    return "MODE_USER";
+
+  case ::perfetto::protos::pbzero::Profiling_CpuMode::MODE_HYPERVISOR:
+    return "MODE_HYPERVISOR";
+
+  case ::perfetto::protos::pbzero::Profiling_CpuMode::MODE_GUEST_KERNEL:
+    return "MODE_GUEST_KERNEL";
+
+  case ::perfetto::protos::pbzero::Profiling_CpuMode::MODE_GUEST_USER:
+    return "MODE_GUEST_USER";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_Profiling {
+enum StackUnwindError : int32_t {
+  UNWIND_ERROR_UNKNOWN = 0,
+  UNWIND_ERROR_NONE = 1,
+  UNWIND_ERROR_MEMORY_INVALID = 2,
+  UNWIND_ERROR_UNWIND_INFO = 3,
+  UNWIND_ERROR_UNSUPPORTED = 4,
+  UNWIND_ERROR_INVALID_MAP = 5,
+  UNWIND_ERROR_MAX_FRAMES_EXCEEDED = 6,
+  UNWIND_ERROR_REPEATED_FRAME = 7,
+  UNWIND_ERROR_INVALID_ELF = 8,
+  UNWIND_ERROR_SYSTEM_CALL = 9,
+  UNWIND_ERROR_THREAD_TIMEOUT = 10,
+  UNWIND_ERROR_THREAD_DOES_NOT_EXIST = 11,
+  UNWIND_ERROR_BAD_ARCH = 12,
+  UNWIND_ERROR_MAPS_PARSE = 13,
+  UNWIND_ERROR_INVALID_PARAMETER = 14,
+  UNWIND_ERROR_PTRACE_CALL = 15,
 };
+} // namespace perfetto_pbzero_enum_Profiling
+using Profiling_StackUnwindError = perfetto_pbzero_enum_Profiling::StackUnwindError;
 
-const Profiling_StackUnwindError Profiling_StackUnwindError_MIN = Profiling_StackUnwindError_UNWIND_ERROR_UNKNOWN;
-const Profiling_StackUnwindError Profiling_StackUnwindError_MAX = Profiling_StackUnwindError_UNWIND_ERROR_THREAD_DOES_NOT_EXIST;
 
-enum ProfilePacket_ProcessHeapSamples_ClientError : int32_t {
-  ProfilePacket_ProcessHeapSamples_ClientError_CLIENT_ERROR_NONE = 0,
-  ProfilePacket_ProcessHeapSamples_ClientError_CLIENT_ERROR_HIT_TIMEOUT = 1,
-  ProfilePacket_ProcessHeapSamples_ClientError_CLIENT_ERROR_INVALID_STACK_BOUNDS = 2,
+constexpr Profiling_StackUnwindError Profiling_StackUnwindError_MIN = Profiling_StackUnwindError::UNWIND_ERROR_UNKNOWN;
+constexpr Profiling_StackUnwindError Profiling_StackUnwindError_MAX = Profiling_StackUnwindError::UNWIND_ERROR_PTRACE_CALL;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* Profiling_StackUnwindError_Name(::perfetto::protos::pbzero::Profiling_StackUnwindError value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_UNKNOWN:
+    return "UNWIND_ERROR_UNKNOWN";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_NONE:
+    return "UNWIND_ERROR_NONE";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_MEMORY_INVALID:
+    return "UNWIND_ERROR_MEMORY_INVALID";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_UNWIND_INFO:
+    return "UNWIND_ERROR_UNWIND_INFO";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_UNSUPPORTED:
+    return "UNWIND_ERROR_UNSUPPORTED";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_INVALID_MAP:
+    return "UNWIND_ERROR_INVALID_MAP";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_MAX_FRAMES_EXCEEDED:
+    return "UNWIND_ERROR_MAX_FRAMES_EXCEEDED";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_REPEATED_FRAME:
+    return "UNWIND_ERROR_REPEATED_FRAME";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_INVALID_ELF:
+    return "UNWIND_ERROR_INVALID_ELF";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_SYSTEM_CALL:
+    return "UNWIND_ERROR_SYSTEM_CALL";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_THREAD_TIMEOUT:
+    return "UNWIND_ERROR_THREAD_TIMEOUT";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_THREAD_DOES_NOT_EXIST:
+    return "UNWIND_ERROR_THREAD_DOES_NOT_EXIST";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_BAD_ARCH:
+    return "UNWIND_ERROR_BAD_ARCH";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_MAPS_PARSE:
+    return "UNWIND_ERROR_MAPS_PARSE";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_INVALID_PARAMETER:
+    return "UNWIND_ERROR_INVALID_PARAMETER";
+
+  case ::perfetto::protos::pbzero::Profiling_StackUnwindError::UNWIND_ERROR_PTRACE_CALL:
+    return "UNWIND_ERROR_PTRACE_CALL";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_ProfilePacket_ProcessHeapSamples {
+enum ClientError : int32_t {
+  CLIENT_ERROR_NONE = 0,
+  CLIENT_ERROR_HIT_TIMEOUT = 1,
+  CLIENT_ERROR_INVALID_STACK_BOUNDS = 2,
 };
+} // namespace perfetto_pbzero_enum_ProfilePacket_ProcessHeapSamples
+using ProfilePacket_ProcessHeapSamples_ClientError = perfetto_pbzero_enum_ProfilePacket_ProcessHeapSamples::ClientError;
 
-const ProfilePacket_ProcessHeapSamples_ClientError ProfilePacket_ProcessHeapSamples_ClientError_MIN = ProfilePacket_ProcessHeapSamples_ClientError_CLIENT_ERROR_NONE;
-const ProfilePacket_ProcessHeapSamples_ClientError ProfilePacket_ProcessHeapSamples_ClientError_MAX = ProfilePacket_ProcessHeapSamples_ClientError_CLIENT_ERROR_INVALID_STACK_BOUNDS;
 
-class PerfSampleDefaults_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+constexpr ProfilePacket_ProcessHeapSamples_ClientError ProfilePacket_ProcessHeapSamples_ClientError_MIN = ProfilePacket_ProcessHeapSamples_ClientError::CLIENT_ERROR_NONE;
+constexpr ProfilePacket_ProcessHeapSamples_ClientError ProfilePacket_ProcessHeapSamples_ClientError_MAX = ProfilePacket_ProcessHeapSamples_ClientError::CLIENT_ERROR_INVALID_STACK_BOUNDS;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ProfilePacket_ProcessHeapSamples_ClientError_Name(::perfetto::protos::pbzero::ProfilePacket_ProcessHeapSamples_ClientError value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ProfilePacket_ProcessHeapSamples_ClientError::CLIENT_ERROR_NONE:
+    return "CLIENT_ERROR_NONE";
+
+  case ::perfetto::protos::pbzero::ProfilePacket_ProcessHeapSamples_ClientError::CLIENT_ERROR_HIT_TIMEOUT:
+    return "CLIENT_ERROR_HIT_TIMEOUT";
+
+  case ::perfetto::protos::pbzero::ProfilePacket_ProcessHeapSamples_ClientError::CLIENT_ERROR_INVALID_STACK_BOUNDS:
+    return "CLIENT_ERROR_INVALID_STACK_BOUNDS";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+class PerfSampleDefaults_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   PerfSampleDefaults_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit PerfSampleDefaults_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit PerfSampleDefaults_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_timebase() const { return at<1>().valid(); }
   ::protozero::ConstBytes timebase() const { return at<1>().as_bytes(); }
+  bool has_process_shard_count() const { return at<2>().valid(); }
+  uint32_t process_shard_count() const { return at<2>().as_uint32(); }
+  bool has_chosen_process_shard() const { return at<3>().valid(); }
+  uint32_t chosen_process_shard() const { return at<3>().as_uint32(); }
 };
 
 class PerfSampleDefaults : public ::protozero::Message {
@@ -104,7 +275,11 @@ class PerfSampleDefaults : public ::protozero::Message {
   using Decoder = PerfSampleDefaults_Decoder;
   enum : int32_t {
     kTimebaseFieldNumber = 1,
+    kProcessShardCountFieldNumber = 2,
+    kChosenProcessShardFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PerfSampleDefaults"; }
+
 
   using FieldMetadata_Timebase =
     ::protozero::proto_utils::FieldMetadata<
@@ -120,12 +295,62 @@ class PerfSampleDefaults : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Timebase kTimebase() { return {}; }
   template <typename T = PerfEvents_Timebase> T* set_timebase() {
     return BeginNestedMessage<T>(1);
   }
 
+
+  using FieldMetadata_ProcessShardCount =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      PerfSampleDefaults>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_ProcessShardCount kProcessShardCount() { return {}; }
+  void set_process_shard_count(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_ProcessShardCount::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_ChosenProcessShard =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      PerfSampleDefaults>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_ChosenProcessShard kChosenProcessShard() { return {}; }
+  void set_chosen_process_shard(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_ChosenProcessShard::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
 };
 
 class PerfSample_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/19, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
@@ -170,12 +395,18 @@ class PerfSample : public ::protozero::Message {
     kSampleSkippedReasonFieldNumber = 18,
     kProducerEventFieldNumber = 19,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PerfSample"; }
+
   using ProducerEvent = ::perfetto::protos::pbzero::PerfSample_ProducerEvent;
+
   using SampleSkipReason = ::perfetto::protos::pbzero::PerfSample_SampleSkipReason;
-  static const SampleSkipReason PROFILER_SKIP_UNKNOWN = PerfSample_SampleSkipReason_PROFILER_SKIP_UNKNOWN;
-  static const SampleSkipReason PROFILER_SKIP_READ_STAGE = PerfSample_SampleSkipReason_PROFILER_SKIP_READ_STAGE;
-  static const SampleSkipReason PROFILER_SKIP_UNWIND_STAGE = PerfSample_SampleSkipReason_PROFILER_SKIP_UNWIND_STAGE;
-  static const SampleSkipReason PROFILER_SKIP_UNWIND_ENQUEUE = PerfSample_SampleSkipReason_PROFILER_SKIP_UNWIND_ENQUEUE;
+  static inline const char* SampleSkipReason_Name(SampleSkipReason value) {
+    return ::perfetto::protos::pbzero::PerfSample_SampleSkipReason_Name(value);
+  }
+  static const SampleSkipReason PROFILER_SKIP_UNKNOWN = SampleSkipReason::PROFILER_SKIP_UNKNOWN;
+  static const SampleSkipReason PROFILER_SKIP_READ_STAGE = SampleSkipReason::PROFILER_SKIP_READ_STAGE;
+  static const SampleSkipReason PROFILER_SKIP_UNWIND_STAGE = SampleSkipReason::PROFILER_SKIP_UNWIND_STAGE;
+  static const SampleSkipReason PROFILER_SKIP_UNWIND_ENQUEUE = SampleSkipReason::PROFILER_SKIP_UNWIND_ENQUEUE;
 
   using FieldMetadata_Cpu =
     ::protozero::proto_utils::FieldMetadata<
@@ -191,7 +422,7 @@ class PerfSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cpu kCpu() { return {}; }
   void set_cpu(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Cpu::kFieldId;
@@ -216,7 +447,7 @@ class PerfSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -241,7 +472,7 @@ class PerfSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Tid kTid() { return {}; }
   void set_tid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Tid::kFieldId;
@@ -266,7 +497,7 @@ class PerfSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CpuMode kCpuMode() { return {}; }
   void set_cpu_mode(::perfetto::protos::pbzero::Profiling_CpuMode value) {
     static constexpr uint32_t field_id = FieldMetadata_CpuMode::kFieldId;
@@ -291,7 +522,7 @@ class PerfSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TimebaseCount kTimebaseCount() { return {}; }
   void set_timebase_count(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimebaseCount::kFieldId;
@@ -316,7 +547,7 @@ class PerfSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CallstackIid kCallstackIid() { return {}; }
   void set_callstack_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CallstackIid::kFieldId;
@@ -341,7 +572,7 @@ class PerfSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_UnwindError kUnwindError() { return {}; }
   void set_unwind_error(::perfetto::protos::pbzero::Profiling_StackUnwindError value) {
     static constexpr uint32_t field_id = FieldMetadata_UnwindError::kFieldId;
@@ -366,7 +597,7 @@ class PerfSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_KernelRecordsLost kKernelRecordsLost() { return {}; }
   void set_kernel_records_lost(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_KernelRecordsLost::kFieldId;
@@ -391,7 +622,7 @@ class PerfSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SampleSkippedReason kSampleSkippedReason() { return {}; }
   void set_sample_skipped_reason(::perfetto::protos::pbzero::PerfSample_SampleSkipReason value) {
     static constexpr uint32_t field_id = FieldMetadata_SampleSkippedReason::kFieldId;
@@ -416,7 +647,7 @@ class PerfSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProducerEvent kProducerEvent() { return {}; }
   template <typename T = PerfSample_ProducerEvent> T* set_producer_event() {
     return BeginNestedMessage<T>(19);
@@ -439,9 +670,15 @@ class PerfSample_ProducerEvent : public ::protozero::Message {
   enum : int32_t {
     kSourceStopReasonFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PerfSample.ProducerEvent"; }
+
+
   using DataSourceStopReason = ::perfetto::protos::pbzero::PerfSample_ProducerEvent_DataSourceStopReason;
-  static const DataSourceStopReason PROFILER_STOP_UNKNOWN = PerfSample_ProducerEvent_DataSourceStopReason_PROFILER_STOP_UNKNOWN;
-  static const DataSourceStopReason PROFILER_STOP_GUARDRAIL = PerfSample_ProducerEvent_DataSourceStopReason_PROFILER_STOP_GUARDRAIL;
+  static inline const char* DataSourceStopReason_Name(DataSourceStopReason value) {
+    return ::perfetto::protos::pbzero::PerfSample_ProducerEvent_DataSourceStopReason_Name(value);
+  }
+  static const DataSourceStopReason PROFILER_STOP_UNKNOWN = DataSourceStopReason::PROFILER_STOP_UNKNOWN;
+  static const DataSourceStopReason PROFILER_STOP_GUARDRAIL = DataSourceStopReason::PROFILER_STOP_GUARDRAIL;
 
   using FieldMetadata_SourceStopReason =
     ::protozero::proto_utils::FieldMetadata<
@@ -457,7 +694,7 @@ class PerfSample_ProducerEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SourceStopReason kSourceStopReason() { return {}; }
   void set_source_stop_reason(::perfetto::protos::pbzero::PerfSample_ProducerEvent_DataSourceStopReason value) {
     static constexpr uint32_t field_id = FieldMetadata_SourceStopReason::kFieldId;
@@ -479,26 +716,40 @@ class Profiling_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*
 class Profiling : public ::protozero::Message {
  public:
   using Decoder = Profiling_Decoder;
+  static constexpr const char* GetName() { return ".perfetto.protos.Profiling"; }
+
+
   using CpuMode = ::perfetto::protos::pbzero::Profiling_CpuMode;
+  static inline const char* CpuMode_Name(CpuMode value) {
+    return ::perfetto::protos::pbzero::Profiling_CpuMode_Name(value);
+  }
+
   using StackUnwindError = ::perfetto::protos::pbzero::Profiling_StackUnwindError;
-  static const CpuMode MODE_UNKNOWN = Profiling_CpuMode_MODE_UNKNOWN;
-  static const CpuMode MODE_KERNEL = Profiling_CpuMode_MODE_KERNEL;
-  static const CpuMode MODE_USER = Profiling_CpuMode_MODE_USER;
-  static const CpuMode MODE_HYPERVISOR = Profiling_CpuMode_MODE_HYPERVISOR;
-  static const CpuMode MODE_GUEST_KERNEL = Profiling_CpuMode_MODE_GUEST_KERNEL;
-  static const CpuMode MODE_GUEST_USER = Profiling_CpuMode_MODE_GUEST_USER;
-  static const StackUnwindError UNWIND_ERROR_UNKNOWN = Profiling_StackUnwindError_UNWIND_ERROR_UNKNOWN;
-  static const StackUnwindError UNWIND_ERROR_NONE = Profiling_StackUnwindError_UNWIND_ERROR_NONE;
-  static const StackUnwindError UNWIND_ERROR_MEMORY_INVALID = Profiling_StackUnwindError_UNWIND_ERROR_MEMORY_INVALID;
-  static const StackUnwindError UNWIND_ERROR_UNWIND_INFO = Profiling_StackUnwindError_UNWIND_ERROR_UNWIND_INFO;
-  static const StackUnwindError UNWIND_ERROR_UNSUPPORTED = Profiling_StackUnwindError_UNWIND_ERROR_UNSUPPORTED;
-  static const StackUnwindError UNWIND_ERROR_INVALID_MAP = Profiling_StackUnwindError_UNWIND_ERROR_INVALID_MAP;
-  static const StackUnwindError UNWIND_ERROR_MAX_FRAMES_EXCEEDED = Profiling_StackUnwindError_UNWIND_ERROR_MAX_FRAMES_EXCEEDED;
-  static const StackUnwindError UNWIND_ERROR_REPEATED_FRAME = Profiling_StackUnwindError_UNWIND_ERROR_REPEATED_FRAME;
-  static const StackUnwindError UNWIND_ERROR_INVALID_ELF = Profiling_StackUnwindError_UNWIND_ERROR_INVALID_ELF;
-  static const StackUnwindError UNWIND_ERROR_SYSTEM_CALL = Profiling_StackUnwindError_UNWIND_ERROR_SYSTEM_CALL;
-  static const StackUnwindError UNWIND_ERROR_THREAD_TIMEOUT = Profiling_StackUnwindError_UNWIND_ERROR_THREAD_TIMEOUT;
-  static const StackUnwindError UNWIND_ERROR_THREAD_DOES_NOT_EXIST = Profiling_StackUnwindError_UNWIND_ERROR_THREAD_DOES_NOT_EXIST;
+  static inline const char* StackUnwindError_Name(StackUnwindError value) {
+    return ::perfetto::protos::pbzero::Profiling_StackUnwindError_Name(value);
+  }
+  static const CpuMode MODE_UNKNOWN = CpuMode::MODE_UNKNOWN;
+  static const CpuMode MODE_KERNEL = CpuMode::MODE_KERNEL;
+  static const CpuMode MODE_USER = CpuMode::MODE_USER;
+  static const CpuMode MODE_HYPERVISOR = CpuMode::MODE_HYPERVISOR;
+  static const CpuMode MODE_GUEST_KERNEL = CpuMode::MODE_GUEST_KERNEL;
+  static const CpuMode MODE_GUEST_USER = CpuMode::MODE_GUEST_USER;
+  static const StackUnwindError UNWIND_ERROR_UNKNOWN = StackUnwindError::UNWIND_ERROR_UNKNOWN;
+  static const StackUnwindError UNWIND_ERROR_NONE = StackUnwindError::UNWIND_ERROR_NONE;
+  static const StackUnwindError UNWIND_ERROR_MEMORY_INVALID = StackUnwindError::UNWIND_ERROR_MEMORY_INVALID;
+  static const StackUnwindError UNWIND_ERROR_UNWIND_INFO = StackUnwindError::UNWIND_ERROR_UNWIND_INFO;
+  static const StackUnwindError UNWIND_ERROR_UNSUPPORTED = StackUnwindError::UNWIND_ERROR_UNSUPPORTED;
+  static const StackUnwindError UNWIND_ERROR_INVALID_MAP = StackUnwindError::UNWIND_ERROR_INVALID_MAP;
+  static const StackUnwindError UNWIND_ERROR_MAX_FRAMES_EXCEEDED = StackUnwindError::UNWIND_ERROR_MAX_FRAMES_EXCEEDED;
+  static const StackUnwindError UNWIND_ERROR_REPEATED_FRAME = StackUnwindError::UNWIND_ERROR_REPEATED_FRAME;
+  static const StackUnwindError UNWIND_ERROR_INVALID_ELF = StackUnwindError::UNWIND_ERROR_INVALID_ELF;
+  static const StackUnwindError UNWIND_ERROR_SYSTEM_CALL = StackUnwindError::UNWIND_ERROR_SYSTEM_CALL;
+  static const StackUnwindError UNWIND_ERROR_THREAD_TIMEOUT = StackUnwindError::UNWIND_ERROR_THREAD_TIMEOUT;
+  static const StackUnwindError UNWIND_ERROR_THREAD_DOES_NOT_EXIST = StackUnwindError::UNWIND_ERROR_THREAD_DOES_NOT_EXIST;
+  static const StackUnwindError UNWIND_ERROR_BAD_ARCH = StackUnwindError::UNWIND_ERROR_BAD_ARCH;
+  static const StackUnwindError UNWIND_ERROR_MAPS_PARSE = StackUnwindError::UNWIND_ERROR_MAPS_PARSE;
+  static const StackUnwindError UNWIND_ERROR_INVALID_PARAMETER = StackUnwindError::UNWIND_ERROR_INVALID_PARAMETER;
+  static const StackUnwindError UNWIND_ERROR_PTRACE_CALL = StackUnwindError::UNWIND_ERROR_PTRACE_CALL;
 };
 
 class StreamingProfilePacket_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
@@ -522,6 +773,8 @@ class StreamingProfilePacket : public ::protozero::Message {
     kTimestampDeltaUsFieldNumber = 2,
     kProcessPriorityFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.StreamingProfilePacket"; }
+
 
   using FieldMetadata_CallstackIid =
     ::protozero::proto_utils::FieldMetadata<
@@ -537,7 +790,7 @@ class StreamingProfilePacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CallstackIid kCallstackIid() { return {}; }
   void add_callstack_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CallstackIid::kFieldId;
@@ -562,7 +815,7 @@ class StreamingProfilePacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TimestampDeltaUs kTimestampDeltaUs() { return {}; }
   void add_timestamp_delta_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimestampDeltaUs::kFieldId;
@@ -587,7 +840,7 @@ class StreamingProfilePacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProcessPriority kProcessPriority() { return {}; }
   void set_process_priority(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ProcessPriority::kFieldId;
@@ -620,6 +873,8 @@ class StreamingFree : public ::protozero::Message {
     kHeapIdFieldNumber = 2,
     kSequenceNumberFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.StreamingFree"; }
+
 
   using FieldMetadata_Address =
     ::protozero::proto_utils::FieldMetadata<
@@ -635,7 +890,7 @@ class StreamingFree : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Address kAddress() { return {}; }
   void add_address(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Address::kFieldId;
@@ -660,7 +915,7 @@ class StreamingFree : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HeapId kHeapId() { return {}; }
   void add_heap_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HeapId::kFieldId;
@@ -685,7 +940,7 @@ class StreamingFree : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SequenceNumber kSequenceNumber() { return {}; }
   void add_sequence_number(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SequenceNumber::kFieldId;
@@ -727,6 +982,8 @@ class StreamingAllocation : public ::protozero::Message {
     kHeapIdFieldNumber = 5,
     kSequenceNumberFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.StreamingAllocation"; }
+
 
   using FieldMetadata_Address =
     ::protozero::proto_utils::FieldMetadata<
@@ -742,7 +999,7 @@ class StreamingAllocation : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Address kAddress() { return {}; }
   void add_address(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Address::kFieldId;
@@ -767,7 +1024,7 @@ class StreamingAllocation : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Size kSize() { return {}; }
   void add_size(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Size::kFieldId;
@@ -792,7 +1049,7 @@ class StreamingAllocation : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SampleSize kSampleSize() { return {}; }
   void add_sample_size(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SampleSize::kFieldId;
@@ -817,7 +1074,7 @@ class StreamingAllocation : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ClockMonotonicCoarseTimestamp kClockMonotonicCoarseTimestamp() { return {}; }
   void add_clock_monotonic_coarse_timestamp(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ClockMonotonicCoarseTimestamp::kFieldId;
@@ -842,7 +1099,7 @@ class StreamingAllocation : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HeapId kHeapId() { return {}; }
   void add_heap_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HeapId::kFieldId;
@@ -867,7 +1124,7 @@ class StreamingAllocation : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SequenceNumber kSequenceNumber() { return {}; }
   void add_sequence_number(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SequenceNumber::kFieldId;
@@ -912,6 +1169,8 @@ class ProfilePacket : public ::protozero::Message {
     kContinuedFieldNumber = 6,
     kIndexFieldNumber = 7,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProfilePacket"; }
+
   using HeapSample = ::perfetto::protos::pbzero::ProfilePacket_HeapSample;
   using Histogram = ::perfetto::protos::pbzero::ProfilePacket_Histogram;
   using ProcessStats = ::perfetto::protos::pbzero::ProfilePacket_ProcessStats;
@@ -931,7 +1190,7 @@ class ProfilePacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Strings kStrings() { return {}; }
   template <typename T = InternedString> T* add_strings() {
     return BeginNestedMessage<T>(1);
@@ -952,7 +1211,7 @@ class ProfilePacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Mappings kMappings() { return {}; }
   template <typename T = Mapping> T* add_mappings() {
     return BeginNestedMessage<T>(4);
@@ -973,7 +1232,7 @@ class ProfilePacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Frames kFrames() { return {}; }
   template <typename T = Frame> T* add_frames() {
     return BeginNestedMessage<T>(2);
@@ -994,7 +1253,7 @@ class ProfilePacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Callstacks kCallstacks() { return {}; }
   template <typename T = Callstack> T* add_callstacks() {
     return BeginNestedMessage<T>(3);
@@ -1015,7 +1274,7 @@ class ProfilePacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProcessDumps kProcessDumps() { return {}; }
   template <typename T = ProfilePacket_ProcessHeapSamples> T* add_process_dumps() {
     return BeginNestedMessage<T>(5);
@@ -1036,7 +1295,7 @@ class ProfilePacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Continued kContinued() { return {}; }
   void set_continued(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_Continued::kFieldId;
@@ -1061,7 +1320,7 @@ class ProfilePacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Index kIndex() { return {}; }
   void set_index(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Index::kFieldId;
@@ -1127,10 +1386,16 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
     kStatsFieldNumber = 5,
     kSamplesFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProfilePacket.ProcessHeapSamples"; }
+
+
   using ClientError = ::perfetto::protos::pbzero::ProfilePacket_ProcessHeapSamples_ClientError;
-  static const ClientError CLIENT_ERROR_NONE = ProfilePacket_ProcessHeapSamples_ClientError_CLIENT_ERROR_NONE;
-  static const ClientError CLIENT_ERROR_HIT_TIMEOUT = ProfilePacket_ProcessHeapSamples_ClientError_CLIENT_ERROR_HIT_TIMEOUT;
-  static const ClientError CLIENT_ERROR_INVALID_STACK_BOUNDS = ProfilePacket_ProcessHeapSamples_ClientError_CLIENT_ERROR_INVALID_STACK_BOUNDS;
+  static inline const char* ClientError_Name(ClientError value) {
+    return ::perfetto::protos::pbzero::ProfilePacket_ProcessHeapSamples_ClientError_Name(value);
+  }
+  static const ClientError CLIENT_ERROR_NONE = ClientError::CLIENT_ERROR_NONE;
+  static const ClientError CLIENT_ERROR_HIT_TIMEOUT = ClientError::CLIENT_ERROR_HIT_TIMEOUT;
+  static const ClientError CLIENT_ERROR_INVALID_STACK_BOUNDS = ClientError::CLIENT_ERROR_INVALID_STACK_BOUNDS;
 
   using FieldMetadata_Pid =
     ::protozero::proto_utils::FieldMetadata<
@@ -1146,7 +1411,7 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -1171,7 +1436,7 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FromStartup kFromStartup() { return {}; }
   void set_from_startup(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_FromStartup::kFieldId;
@@ -1196,7 +1461,7 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RejectedConcurrent kRejectedConcurrent() { return {}; }
   void set_rejected_concurrent(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_RejectedConcurrent::kFieldId;
@@ -1221,7 +1486,7 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Disconnected kDisconnected() { return {}; }
   void set_disconnected(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_Disconnected::kFieldId;
@@ -1246,7 +1511,7 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BufferOverran kBufferOverran() { return {}; }
   void set_buffer_overran(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_BufferOverran::kFieldId;
@@ -1271,7 +1536,7 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ClientError kClientError() { return {}; }
   void set_client_error(::perfetto::protos::pbzero::ProfilePacket_ProcessHeapSamples_ClientError value) {
     static constexpr uint32_t field_id = FieldMetadata_ClientError::kFieldId;
@@ -1296,7 +1561,7 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BufferCorrupted kBufferCorrupted() { return {}; }
   void set_buffer_corrupted(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_BufferCorrupted::kFieldId;
@@ -1321,7 +1586,7 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HitGuardrail kHitGuardrail() { return {}; }
   void set_hit_guardrail(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_HitGuardrail::kFieldId;
@@ -1346,10 +1611,13 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HeapName kHeapName() { return {}; }
   void set_heap_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_HeapName::kFieldId, data, size);
+  }
+  void set_heap_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_HeapName::kFieldId, chars.data, chars.size);
   }
   void set_heap_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_HeapName::kFieldId;
@@ -1374,7 +1642,7 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SamplingIntervalBytes kSamplingIntervalBytes() { return {}; }
   void set_sampling_interval_bytes(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SamplingIntervalBytes::kFieldId;
@@ -1399,7 +1667,7 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_OrigSamplingIntervalBytes kOrigSamplingIntervalBytes() { return {}; }
   void set_orig_sampling_interval_bytes(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_OrigSamplingIntervalBytes::kFieldId;
@@ -1424,7 +1692,7 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Timestamp kTimestamp() { return {}; }
   void set_timestamp(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Timestamp::kFieldId;
@@ -1449,7 +1717,7 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Stats kStats() { return {}; }
   template <typename T = ProfilePacket_ProcessStats> T* set_stats() {
     return BeginNestedMessage<T>(5);
@@ -1470,7 +1738,7 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Samples kSamples() { return {}; }
   template <typename T = ProfilePacket_HeapSample> T* add_samples() {
     return BeginNestedMessage<T>(2);
@@ -1508,6 +1776,8 @@ class ProfilePacket_ProcessStats : public ::protozero::Message {
     kTotalUnwindingTimeUsFieldNumber = 5,
     kClientSpinlockBlockedUsFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProfilePacket.ProcessStats"; }
+
 
   using FieldMetadata_UnwindingErrors =
     ::protozero::proto_utils::FieldMetadata<
@@ -1523,7 +1793,7 @@ class ProfilePacket_ProcessStats : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_UnwindingErrors kUnwindingErrors() { return {}; }
   void set_unwinding_errors(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_UnwindingErrors::kFieldId;
@@ -1548,7 +1818,7 @@ class ProfilePacket_ProcessStats : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HeapSamples kHeapSamples() { return {}; }
   void set_heap_samples(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HeapSamples::kFieldId;
@@ -1573,7 +1843,7 @@ class ProfilePacket_ProcessStats : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MapReparses kMapReparses() { return {}; }
   void set_map_reparses(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MapReparses::kFieldId;
@@ -1598,7 +1868,7 @@ class ProfilePacket_ProcessStats : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_UnwindingTimeUs kUnwindingTimeUs() { return {}; }
   template <typename T = ProfilePacket_Histogram> T* set_unwinding_time_us() {
     return BeginNestedMessage<T>(4);
@@ -1619,7 +1889,7 @@ class ProfilePacket_ProcessStats : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TotalUnwindingTimeUs kTotalUnwindingTimeUs() { return {}; }
   void set_total_unwinding_time_us(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TotalUnwindingTimeUs::kFieldId;
@@ -1644,7 +1914,7 @@ class ProfilePacket_ProcessStats : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ClientSpinlockBlockedUs kClientSpinlockBlockedUs() { return {}; }
   void set_client_spinlock_blocked_us(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ClientSpinlockBlockedUs::kFieldId;
@@ -1671,6 +1941,8 @@ class ProfilePacket_Histogram : public ::protozero::Message {
   enum : int32_t {
     kBucketsFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProfilePacket.Histogram"; }
+
   using Bucket = ::perfetto::protos::pbzero::ProfilePacket_Histogram_Bucket;
 
   using FieldMetadata_Buckets =
@@ -1687,7 +1959,7 @@ class ProfilePacket_Histogram : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Buckets kBuckets() { return {}; }
   template <typename T = ProfilePacket_Histogram_Bucket> T* add_buckets() {
     return BeginNestedMessage<T>(1);
@@ -1716,6 +1988,8 @@ class ProfilePacket_Histogram_Bucket : public ::protozero::Message {
     kMaxBucketFieldNumber = 2,
     kCountFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProfilePacket.Histogram.Bucket"; }
+
 
   using FieldMetadata_UpperLimit =
     ::protozero::proto_utils::FieldMetadata<
@@ -1731,7 +2005,7 @@ class ProfilePacket_Histogram_Bucket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_UpperLimit kUpperLimit() { return {}; }
   void set_upper_limit(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_UpperLimit::kFieldId;
@@ -1756,7 +2030,7 @@ class ProfilePacket_Histogram_Bucket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MaxBucket kMaxBucket() { return {}; }
   void set_max_bucket(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxBucket::kFieldId;
@@ -1781,7 +2055,7 @@ class ProfilePacket_Histogram_Bucket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Count kCount() { return {}; }
   void set_count(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Count::kFieldId;
@@ -1829,6 +2103,8 @@ class ProfilePacket_HeapSample : public ::protozero::Message {
     kAllocCountFieldNumber = 5,
     kFreeCountFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProfilePacket.HeapSample"; }
+
 
   using FieldMetadata_CallstackId =
     ::protozero::proto_utils::FieldMetadata<
@@ -1844,7 +2120,7 @@ class ProfilePacket_HeapSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CallstackId kCallstackId() { return {}; }
   void set_callstack_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CallstackId::kFieldId;
@@ -1869,7 +2145,7 @@ class ProfilePacket_HeapSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SelfAllocated kSelfAllocated() { return {}; }
   void set_self_allocated(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SelfAllocated::kFieldId;
@@ -1894,7 +2170,7 @@ class ProfilePacket_HeapSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SelfFreed kSelfFreed() { return {}; }
   void set_self_freed(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SelfFreed::kFieldId;
@@ -1919,7 +2195,7 @@ class ProfilePacket_HeapSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SelfMax kSelfMax() { return {}; }
   void set_self_max(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SelfMax::kFieldId;
@@ -1944,7 +2220,7 @@ class ProfilePacket_HeapSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SelfMaxCount kSelfMaxCount() { return {}; }
   void set_self_max_count(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SelfMaxCount::kFieldId;
@@ -1969,7 +2245,7 @@ class ProfilePacket_HeapSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Timestamp kTimestamp() { return {}; }
   void set_timestamp(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Timestamp::kFieldId;
@@ -1994,7 +2270,7 @@ class ProfilePacket_HeapSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AllocCount kAllocCount() { return {}; }
   void set_alloc_count(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_AllocCount::kFieldId;
@@ -2019,7 +2295,7 @@ class ProfilePacket_HeapSample : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FreeCount kFreeCount() { return {}; }
   void set_free_count(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FreeCount::kFieldId;

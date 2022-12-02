@@ -64,6 +64,8 @@ class StressTestConfig : public ::protozero::Message {
     kBurstDurationMsFieldNumber = 10,
     kBurstTimingsFieldNumber = 11,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.StressTestConfig"; }
+
   using WriterTiming = ::perfetto::protos::pbzero::StressTestConfig_WriterTiming;
 
   using FieldMetadata_TraceConfig =
@@ -80,7 +82,7 @@ class StressTestConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TraceConfig kTraceConfig() { return {}; }
   template <typename T = TraceConfig> T* set_trace_config() {
     return BeginNestedMessage<T>(1);
@@ -101,7 +103,7 @@ class StressTestConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ShmemSizeKb kShmemSizeKb() { return {}; }
   void set_shmem_size_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ShmemSizeKb::kFieldId;
@@ -126,7 +128,7 @@ class StressTestConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ShmemPageSizeKb kShmemPageSizeKb() { return {}; }
   void set_shmem_page_size_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ShmemPageSizeKb::kFieldId;
@@ -151,7 +153,7 @@ class StressTestConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NumProcesses kNumProcesses() { return {}; }
   void set_num_processes(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NumProcesses::kFieldId;
@@ -176,7 +178,7 @@ class StressTestConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NumThreads kNumThreads() { return {}; }
   void set_num_threads(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NumThreads::kFieldId;
@@ -201,7 +203,7 @@ class StressTestConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MaxEvents kMaxEvents() { return {}; }
   void set_max_events(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxEvents::kFieldId;
@@ -226,7 +228,7 @@ class StressTestConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Nesting kNesting() { return {}; }
   void set_nesting(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Nesting::kFieldId;
@@ -251,7 +253,7 @@ class StressTestConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SteadyStateTimings kSteadyStateTimings() { return {}; }
   template <typename T = StressTestConfig_WriterTiming> T* set_steady_state_timings() {
     return BeginNestedMessage<T>(8);
@@ -272,7 +274,7 @@ class StressTestConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BurstPeriodMs kBurstPeriodMs() { return {}; }
   void set_burst_period_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BurstPeriodMs::kFieldId;
@@ -297,7 +299,7 @@ class StressTestConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BurstDurationMs kBurstDurationMs() { return {}; }
   void set_burst_duration_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BurstDurationMs::kFieldId;
@@ -322,7 +324,7 @@ class StressTestConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BurstTimings kBurstTimings() { return {}; }
   template <typename T = StressTestConfig_WriterTiming> T* set_burst_timings() {
     return BeginNestedMessage<T>(11);
@@ -357,6 +359,8 @@ class StressTestConfig_WriterTiming : public ::protozero::Message {
     kRateStddevFieldNumber = 4,
     kPayloadWriteTimeMsFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.StressTestConfig.WriterTiming"; }
+
 
   using FieldMetadata_PayloadMean =
     ::protozero::proto_utils::FieldMetadata<
@@ -372,7 +376,7 @@ class StressTestConfig_WriterTiming : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PayloadMean kPayloadMean() { return {}; }
   void set_payload_mean(double value) {
     static constexpr uint32_t field_id = FieldMetadata_PayloadMean::kFieldId;
@@ -397,7 +401,7 @@ class StressTestConfig_WriterTiming : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PayloadStddev kPayloadStddev() { return {}; }
   void set_payload_stddev(double value) {
     static constexpr uint32_t field_id = FieldMetadata_PayloadStddev::kFieldId;
@@ -422,7 +426,7 @@ class StressTestConfig_WriterTiming : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RateMean kRateMean() { return {}; }
   void set_rate_mean(double value) {
     static constexpr uint32_t field_id = FieldMetadata_RateMean::kFieldId;
@@ -447,7 +451,7 @@ class StressTestConfig_WriterTiming : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RateStddev kRateStddev() { return {}; }
   void set_rate_stddev(double value) {
     static constexpr uint32_t field_id = FieldMetadata_RateStddev::kFieldId;
@@ -472,7 +476,7 @@ class StressTestConfig_WriterTiming : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PayloadWriteTimeMs kPayloadWriteTimeMs() { return {}; }
   void set_payload_write_time_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PayloadWriteTimeMs::kFieldId;

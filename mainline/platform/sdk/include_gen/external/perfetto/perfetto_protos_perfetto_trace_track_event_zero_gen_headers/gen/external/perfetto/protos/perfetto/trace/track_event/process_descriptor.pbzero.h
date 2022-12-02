@@ -16,24 +16,65 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-enum ProcessDescriptor_ChromeProcessType : int32_t;
+namespace perfetto_pbzero_enum_ProcessDescriptor {
+enum ChromeProcessType : int32_t;
+}  // namespace perfetto_pbzero_enum_ProcessDescriptor
+using ProcessDescriptor_ChromeProcessType = perfetto_pbzero_enum_ProcessDescriptor::ChromeProcessType;
 
-enum ProcessDescriptor_ChromeProcessType : int32_t {
-  ProcessDescriptor_ChromeProcessType_PROCESS_UNSPECIFIED = 0,
-  ProcessDescriptor_ChromeProcessType_PROCESS_BROWSER = 1,
-  ProcessDescriptor_ChromeProcessType_PROCESS_RENDERER = 2,
-  ProcessDescriptor_ChromeProcessType_PROCESS_UTILITY = 3,
-  ProcessDescriptor_ChromeProcessType_PROCESS_ZYGOTE = 4,
-  ProcessDescriptor_ChromeProcessType_PROCESS_SANDBOX_HELPER = 5,
-  ProcessDescriptor_ChromeProcessType_PROCESS_GPU = 6,
-  ProcessDescriptor_ChromeProcessType_PROCESS_PPAPI_PLUGIN = 7,
-  ProcessDescriptor_ChromeProcessType_PROCESS_PPAPI_BROKER = 8,
+namespace perfetto_pbzero_enum_ProcessDescriptor {
+enum ChromeProcessType : int32_t {
+  PROCESS_UNSPECIFIED = 0,
+  PROCESS_BROWSER = 1,
+  PROCESS_RENDERER = 2,
+  PROCESS_UTILITY = 3,
+  PROCESS_ZYGOTE = 4,
+  PROCESS_SANDBOX_HELPER = 5,
+  PROCESS_GPU = 6,
+  PROCESS_PPAPI_PLUGIN = 7,
+  PROCESS_PPAPI_BROKER = 8,
 };
+} // namespace perfetto_pbzero_enum_ProcessDescriptor
+using ProcessDescriptor_ChromeProcessType = perfetto_pbzero_enum_ProcessDescriptor::ChromeProcessType;
 
-const ProcessDescriptor_ChromeProcessType ProcessDescriptor_ChromeProcessType_MIN = ProcessDescriptor_ChromeProcessType_PROCESS_UNSPECIFIED;
-const ProcessDescriptor_ChromeProcessType ProcessDescriptor_ChromeProcessType_MAX = ProcessDescriptor_ChromeProcessType_PROCESS_PPAPI_BROKER;
 
-class ProcessDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+constexpr ProcessDescriptor_ChromeProcessType ProcessDescriptor_ChromeProcessType_MIN = ProcessDescriptor_ChromeProcessType::PROCESS_UNSPECIFIED;
+constexpr ProcessDescriptor_ChromeProcessType ProcessDescriptor_ChromeProcessType_MAX = ProcessDescriptor_ChromeProcessType::PROCESS_PPAPI_BROKER;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ProcessDescriptor_ChromeProcessType_Name(::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType::PROCESS_UNSPECIFIED:
+    return "PROCESS_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType::PROCESS_BROWSER:
+    return "PROCESS_BROWSER";
+
+  case ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType::PROCESS_RENDERER:
+    return "PROCESS_RENDERER";
+
+  case ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType::PROCESS_UTILITY:
+    return "PROCESS_UTILITY";
+
+  case ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType::PROCESS_ZYGOTE:
+    return "PROCESS_ZYGOTE";
+
+  case ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType::PROCESS_SANDBOX_HELPER:
+    return "PROCESS_SANDBOX_HELPER";
+
+  case ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType::PROCESS_GPU:
+    return "PROCESS_GPU";
+
+  case ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType::PROCESS_PPAPI_PLUGIN:
+    return "PROCESS_PPAPI_PLUGIN";
+
+  case ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType::PROCESS_PPAPI_BROKER:
+    return "PROCESS_PPAPI_BROKER";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+class ProcessDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/8, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   ProcessDescriptor_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ProcessDescriptor_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -52,6 +93,8 @@ class ProcessDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FI
   int32_t chrome_process_type() const { return at<4>().as_int32(); }
   bool has_legacy_sort_index() const { return at<3>().valid(); }
   int32_t legacy_sort_index() const { return at<3>().as_int32(); }
+  bool has_process_labels() const { return at<8>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstChars> process_labels() const { return GetRepeated<::protozero::ConstChars>(8); }
 };
 
 class ProcessDescriptor : public ::protozero::Message {
@@ -65,17 +108,24 @@ class ProcessDescriptor : public ::protozero::Message {
     kStartTimestampNsFieldNumber = 7,
     kChromeProcessTypeFieldNumber = 4,
     kLegacySortIndexFieldNumber = 3,
+    kProcessLabelsFieldNumber = 8,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProcessDescriptor"; }
+
+
   using ChromeProcessType = ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType;
-  static const ChromeProcessType PROCESS_UNSPECIFIED = ProcessDescriptor_ChromeProcessType_PROCESS_UNSPECIFIED;
-  static const ChromeProcessType PROCESS_BROWSER = ProcessDescriptor_ChromeProcessType_PROCESS_BROWSER;
-  static const ChromeProcessType PROCESS_RENDERER = ProcessDescriptor_ChromeProcessType_PROCESS_RENDERER;
-  static const ChromeProcessType PROCESS_UTILITY = ProcessDescriptor_ChromeProcessType_PROCESS_UTILITY;
-  static const ChromeProcessType PROCESS_ZYGOTE = ProcessDescriptor_ChromeProcessType_PROCESS_ZYGOTE;
-  static const ChromeProcessType PROCESS_SANDBOX_HELPER = ProcessDescriptor_ChromeProcessType_PROCESS_SANDBOX_HELPER;
-  static const ChromeProcessType PROCESS_GPU = ProcessDescriptor_ChromeProcessType_PROCESS_GPU;
-  static const ChromeProcessType PROCESS_PPAPI_PLUGIN = ProcessDescriptor_ChromeProcessType_PROCESS_PPAPI_PLUGIN;
-  static const ChromeProcessType PROCESS_PPAPI_BROKER = ProcessDescriptor_ChromeProcessType_PROCESS_PPAPI_BROKER;
+  static inline const char* ChromeProcessType_Name(ChromeProcessType value) {
+    return ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType_Name(value);
+  }
+  static const ChromeProcessType PROCESS_UNSPECIFIED = ChromeProcessType::PROCESS_UNSPECIFIED;
+  static const ChromeProcessType PROCESS_BROWSER = ChromeProcessType::PROCESS_BROWSER;
+  static const ChromeProcessType PROCESS_RENDERER = ChromeProcessType::PROCESS_RENDERER;
+  static const ChromeProcessType PROCESS_UTILITY = ChromeProcessType::PROCESS_UTILITY;
+  static const ChromeProcessType PROCESS_ZYGOTE = ChromeProcessType::PROCESS_ZYGOTE;
+  static const ChromeProcessType PROCESS_SANDBOX_HELPER = ChromeProcessType::PROCESS_SANDBOX_HELPER;
+  static const ChromeProcessType PROCESS_GPU = ChromeProcessType::PROCESS_GPU;
+  static const ChromeProcessType PROCESS_PPAPI_PLUGIN = ChromeProcessType::PROCESS_PPAPI_PLUGIN;
+  static const ChromeProcessType PROCESS_PPAPI_BROKER = ChromeProcessType::PROCESS_PPAPI_BROKER;
 
   using FieldMetadata_Pid =
     ::protozero::proto_utils::FieldMetadata<
@@ -91,7 +141,7 @@ class ProcessDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -116,10 +166,13 @@ class ProcessDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cmdline kCmdline() { return {}; }
   void add_cmdline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Cmdline::kFieldId, data, size);
+  }
+  void add_cmdline(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Cmdline::kFieldId, chars.data, chars.size);
   }
   void add_cmdline(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Cmdline::kFieldId;
@@ -144,10 +197,13 @@ class ProcessDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProcessName kProcessName() { return {}; }
   void set_process_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProcessName::kFieldId, data, size);
+  }
+  void set_process_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ProcessName::kFieldId, chars.data, chars.size);
   }
   void set_process_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ProcessName::kFieldId;
@@ -172,7 +228,7 @@ class ProcessDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProcessPriority kProcessPriority() { return {}; }
   void set_process_priority(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ProcessPriority::kFieldId;
@@ -197,7 +253,7 @@ class ProcessDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StartTimestampNs kStartTimestampNs() { return {}; }
   void set_start_timestamp_ns(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StartTimestampNs::kFieldId;
@@ -222,7 +278,7 @@ class ProcessDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ChromeProcessType kChromeProcessType() { return {}; }
   void set_chrome_process_type(::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType value) {
     static constexpr uint32_t field_id = FieldMetadata_ChromeProcessType::kFieldId;
@@ -247,7 +303,7 @@ class ProcessDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LegacySortIndex kLegacySortIndex() { return {}; }
   void set_legacy_sort_index(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_LegacySortIndex::kFieldId;
@@ -255,6 +311,37 @@ class ProcessDescriptor : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_ProcessLabels =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      ProcessDescriptor>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_ProcessLabels kProcessLabels() { return {}; }
+  void add_process_labels(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_ProcessLabels::kFieldId, data, size);
+  }
+  void add_process_labels(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ProcessLabels::kFieldId, chars.data, chars.size);
+  }
+  void add_process_labels(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_ProcessLabels::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
         ::Append(*this, field_id, value);
   }
 };
