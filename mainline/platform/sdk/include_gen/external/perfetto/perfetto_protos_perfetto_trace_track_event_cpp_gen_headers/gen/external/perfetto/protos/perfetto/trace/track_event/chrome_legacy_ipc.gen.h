@@ -69,7 +69,7 @@ enum ChromeLegacyIpc_MessageClass : int {
   ChromeLegacyIpc_MessageClass_CLASS_UNFREEZABLE_FRAME = 37,
 };
 
-class PERFETTO_EXPORT ChromeLegacyIpc : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeLegacyIpc : public ::protozero::CppMessageObj {
  public:
   using MessageClass = ChromeLegacyIpc_MessageClass;
   static constexpr auto CLASS_UNSPECIFIED = ChromeLegacyIpc_MessageClass_CLASS_UNSPECIFIED;

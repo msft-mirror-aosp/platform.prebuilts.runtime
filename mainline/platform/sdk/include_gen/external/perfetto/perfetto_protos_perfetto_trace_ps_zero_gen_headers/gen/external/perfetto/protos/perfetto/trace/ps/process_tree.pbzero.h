@@ -40,6 +40,8 @@ class ProcessTree : public ::protozero::Message {
     kThreadsFieldNumber = 2,
     kCollectionEndTimestampFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProcessTree"; }
+
   using Thread = ::perfetto::protos::pbzero::ProcessTree_Thread;
   using Process = ::perfetto::protos::pbzero::ProcessTree_Process;
 
@@ -57,7 +59,7 @@ class ProcessTree : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Processes kProcesses() { return {}; }
   template <typename T = ProcessTree_Process> T* add_processes() {
     return BeginNestedMessage<T>(1);
@@ -78,7 +80,7 @@ class ProcessTree : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Threads kThreads() { return {}; }
   template <typename T = ProcessTree_Thread> T* add_threads() {
     return BeginNestedMessage<T>(2);
@@ -99,7 +101,7 @@ class ProcessTree : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CollectionEndTimestamp kCollectionEndTimestamp() { return {}; }
   void set_collection_end_timestamp(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CollectionEndTimestamp::kFieldId;
@@ -111,7 +113,7 @@ class ProcessTree : public ::protozero::Message {
   }
 };
 
-class ProcessTree_Process_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class ProcessTree_Process_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   ProcessTree_Process_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ProcessTree_Process_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -126,6 +128,8 @@ class ProcessTree_Process_Decoder : public ::protozero::TypedProtoDecoder</*MAX_
   ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> threads_deprecated() const { return GetRepeated<::protozero::ConstBytes>(4); }
   bool has_uid() const { return at<5>().valid(); }
   int32_t uid() const { return at<5>().as_int32(); }
+  bool has_nspid() const { return at<6>().valid(); }
+  ::protozero::RepeatedFieldIterator<int32_t> nspid() const { return GetRepeated<int32_t>(6); }
 };
 
 class ProcessTree_Process : public ::protozero::Message {
@@ -137,7 +141,10 @@ class ProcessTree_Process : public ::protozero::Message {
     kCmdlineFieldNumber = 3,
     kThreadsDeprecatedFieldNumber = 4,
     kUidFieldNumber = 5,
+    kNspidFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProcessTree.Process"; }
+
 
   using FieldMetadata_Pid =
     ::protozero::proto_utils::FieldMetadata<
@@ -153,7 +160,7 @@ class ProcessTree_Process : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -178,7 +185,7 @@ class ProcessTree_Process : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ppid kPpid() { return {}; }
   void set_ppid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ppid::kFieldId;
@@ -203,10 +210,13 @@ class ProcessTree_Process : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cmdline kCmdline() { return {}; }
   void add_cmdline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Cmdline::kFieldId, data, size);
+  }
+  void add_cmdline(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Cmdline::kFieldId, chars.data, chars.size);
   }
   void add_cmdline(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Cmdline::kFieldId;
@@ -231,7 +241,7 @@ class ProcessTree_Process : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ThreadsDeprecated kThreadsDeprecated() { return {}; }
   template <typename T = ProcessTree_Thread> T* add_threads_deprecated() {
     return BeginNestedMessage<T>(4);
@@ -252,7 +262,7 @@ class ProcessTree_Process : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Uid kUid() { return {}; }
   void set_uid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Uid::kFieldId;
@@ -262,9 +272,34 @@ class ProcessTree_Process : public ::protozero::Message {
       ::protozero::proto_utils::ProtoSchemaType::kInt32>
         ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_Nspid =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      ProcessTree_Process>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Nspid kNspid() { return {}; }
+  void add_nspid(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Nspid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
 };
 
-class ProcessTree_Thread_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class ProcessTree_Thread_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   ProcessTree_Thread_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ProcessTree_Thread_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -275,6 +310,8 @@ class ProcessTree_Thread_Decoder : public ::protozero::TypedProtoDecoder</*MAX_F
   int32_t tgid() const { return at<3>().as_int32(); }
   bool has_name() const { return at<2>().valid(); }
   ::protozero::ConstChars name() const { return at<2>().as_string(); }
+  bool has_nstid() const { return at<4>().valid(); }
+  ::protozero::RepeatedFieldIterator<int32_t> nstid() const { return GetRepeated<int32_t>(4); }
 };
 
 class ProcessTree_Thread : public ::protozero::Message {
@@ -284,7 +321,10 @@ class ProcessTree_Thread : public ::protozero::Message {
     kTidFieldNumber = 1,
     kTgidFieldNumber = 3,
     kNameFieldNumber = 2,
+    kNstidFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProcessTree.Thread"; }
+
 
   using FieldMetadata_Tid =
     ::protozero::proto_utils::FieldMetadata<
@@ -300,7 +340,7 @@ class ProcessTree_Thread : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Tid kTid() { return {}; }
   void set_tid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Tid::kFieldId;
@@ -325,7 +365,7 @@ class ProcessTree_Thread : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Tgid kTgid() { return {}; }
   void set_tgid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Tgid::kFieldId;
@@ -350,10 +390,13 @@ class ProcessTree_Thread : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -361,6 +404,31 @@ class ProcessTree_Thread : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Nstid =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      ProcessTree_Thread>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Nstid kNstid() { return {}; }
+  void add_nstid(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Nstid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
         ::Append(*this, field_id, value);
   }
 };

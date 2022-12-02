@@ -28,8 +28,39 @@ enum AndroidLogId : int32_t {
   LID_KERNEL = 7,
 };
 
-const AndroidLogId AndroidLogId_MIN = LID_DEFAULT;
-const AndroidLogId AndroidLogId_MAX = LID_KERNEL;
+constexpr AndroidLogId AndroidLogId_MIN = AndroidLogId::LID_DEFAULT;
+constexpr AndroidLogId AndroidLogId_MAX = AndroidLogId::LID_KERNEL;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* AndroidLogId_Name(::perfetto::protos::pbzero::AndroidLogId value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::AndroidLogId::LID_DEFAULT:
+    return "LID_DEFAULT";
+
+  case ::perfetto::protos::pbzero::AndroidLogId::LID_RADIO:
+    return "LID_RADIO";
+
+  case ::perfetto::protos::pbzero::AndroidLogId::LID_EVENTS:
+    return "LID_EVENTS";
+
+  case ::perfetto::protos::pbzero::AndroidLogId::LID_SYSTEM:
+    return "LID_SYSTEM";
+
+  case ::perfetto::protos::pbzero::AndroidLogId::LID_CRASH:
+    return "LID_CRASH";
+
+  case ::perfetto::protos::pbzero::AndroidLogId::LID_STATS:
+    return "LID_STATS";
+
+  case ::perfetto::protos::pbzero::AndroidLogId::LID_SECURITY:
+    return "LID_SECURITY";
+
+  case ::perfetto::protos::pbzero::AndroidLogId::LID_KERNEL:
+    return "LID_KERNEL";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 enum AndroidLogPriority : int32_t {
   PRIO_UNSPECIFIED = 0,
@@ -42,8 +73,39 @@ enum AndroidLogPriority : int32_t {
   PRIO_FATAL = 7,
 };
 
-const AndroidLogPriority AndroidLogPriority_MIN = PRIO_UNSPECIFIED;
-const AndroidLogPriority AndroidLogPriority_MAX = PRIO_FATAL;
+constexpr AndroidLogPriority AndroidLogPriority_MIN = AndroidLogPriority::PRIO_UNSPECIFIED;
+constexpr AndroidLogPriority AndroidLogPriority_MAX = AndroidLogPriority::PRIO_FATAL;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* AndroidLogPriority_Name(::perfetto::protos::pbzero::AndroidLogPriority value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::AndroidLogPriority::PRIO_UNSPECIFIED:
+    return "PRIO_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::AndroidLogPriority::PRIO_UNUSED:
+    return "PRIO_UNUSED";
+
+  case ::perfetto::protos::pbzero::AndroidLogPriority::PRIO_VERBOSE:
+    return "PRIO_VERBOSE";
+
+  case ::perfetto::protos::pbzero::AndroidLogPriority::PRIO_DEBUG:
+    return "PRIO_DEBUG";
+
+  case ::perfetto::protos::pbzero::AndroidLogPriority::PRIO_INFO:
+    return "PRIO_INFO";
+
+  case ::perfetto::protos::pbzero::AndroidLogPriority::PRIO_WARN:
+    return "PRIO_WARN";
+
+  case ::perfetto::protos::pbzero::AndroidLogPriority::PRIO_ERROR:
+    return "PRIO_ERROR";
+
+  case ::perfetto::protos::pbzero::AndroidLogPriority::PRIO_FATAL:
+    return "PRIO_FATAL";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 } // Namespace.
 } // Namespace.

@@ -40,6 +40,8 @@ class AndroidLogPacket : public ::protozero::Message {
     kEventsFieldNumber = 1,
     kStatsFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.AndroidLogPacket"; }
+
   using LogEvent = ::perfetto::protos::pbzero::AndroidLogPacket_LogEvent;
   using Stats = ::perfetto::protos::pbzero::AndroidLogPacket_Stats;
 
@@ -57,7 +59,7 @@ class AndroidLogPacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Events kEvents() { return {}; }
   template <typename T = AndroidLogPacket_LogEvent> T* add_events() {
     return BeginNestedMessage<T>(1);
@@ -78,7 +80,7 @@ class AndroidLogPacket : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Stats kStats() { return {}; }
   template <typename T = AndroidLogPacket_Stats> T* set_stats() {
     return BeginNestedMessage<T>(2);
@@ -107,6 +109,8 @@ class AndroidLogPacket_Stats : public ::protozero::Message {
     kNumFailedFieldNumber = 2,
     kNumSkippedFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.AndroidLogPacket.Stats"; }
+
 
   using FieldMetadata_NumTotal =
     ::protozero::proto_utils::FieldMetadata<
@@ -122,7 +126,7 @@ class AndroidLogPacket_Stats : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NumTotal kNumTotal() { return {}; }
   void set_num_total(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NumTotal::kFieldId;
@@ -147,7 +151,7 @@ class AndroidLogPacket_Stats : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NumFailed kNumFailed() { return {}; }
   void set_num_failed(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NumFailed::kFieldId;
@@ -172,7 +176,7 @@ class AndroidLogPacket_Stats : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NumSkipped kNumSkipped() { return {}; }
   void set_num_skipped(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NumSkipped::kFieldId;
@@ -223,6 +227,8 @@ class AndroidLogPacket_LogEvent : public ::protozero::Message {
     kMessageFieldNumber = 8,
     kArgsFieldNumber = 9,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.AndroidLogPacket.LogEvent"; }
+
   using Arg = ::perfetto::protos::pbzero::AndroidLogPacket_LogEvent_Arg;
 
   using FieldMetadata_LogId =
@@ -239,7 +245,7 @@ class AndroidLogPacket_LogEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LogId kLogId() { return {}; }
   void set_log_id(::perfetto::protos::pbzero::AndroidLogId value) {
     static constexpr uint32_t field_id = FieldMetadata_LogId::kFieldId;
@@ -264,7 +270,7 @@ class AndroidLogPacket_LogEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -289,7 +295,7 @@ class AndroidLogPacket_LogEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Tid kTid() { return {}; }
   void set_tid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Tid::kFieldId;
@@ -314,7 +320,7 @@ class AndroidLogPacket_LogEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Uid kUid() { return {}; }
   void set_uid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Uid::kFieldId;
@@ -339,7 +345,7 @@ class AndroidLogPacket_LogEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Timestamp kTimestamp() { return {}; }
   void set_timestamp(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Timestamp::kFieldId;
@@ -364,10 +370,13 @@ class AndroidLogPacket_LogEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Tag kTag() { return {}; }
   void set_tag(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Tag::kFieldId, data, size);
+  }
+  void set_tag(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Tag::kFieldId, chars.data, chars.size);
   }
   void set_tag(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Tag::kFieldId;
@@ -392,7 +401,7 @@ class AndroidLogPacket_LogEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Prio kPrio() { return {}; }
   void set_prio(::perfetto::protos::pbzero::AndroidLogPriority value) {
     static constexpr uint32_t field_id = FieldMetadata_Prio::kFieldId;
@@ -417,10 +426,13 @@ class AndroidLogPacket_LogEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Message kMessage() { return {}; }
   void set_message(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Message::kFieldId, data, size);
+  }
+  void set_message(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Message::kFieldId, chars.data, chars.size);
   }
   void set_message(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Message::kFieldId;
@@ -445,7 +457,7 @@ class AndroidLogPacket_LogEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Args kArgs() { return {}; }
   template <typename T = AndroidLogPacket_LogEvent_Arg> T* add_args() {
     return BeginNestedMessage<T>(9);
@@ -477,6 +489,8 @@ class AndroidLogPacket_LogEvent_Arg : public ::protozero::Message {
     kFloatValueFieldNumber = 3,
     kStringValueFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.AndroidLogPacket.LogEvent.Arg"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -492,10 +506,13 @@ class AndroidLogPacket_LogEvent_Arg : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -520,7 +537,7 @@ class AndroidLogPacket_LogEvent_Arg : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IntValue kIntValue() { return {}; }
   void set_int_value(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IntValue::kFieldId;
@@ -545,7 +562,7 @@ class AndroidLogPacket_LogEvent_Arg : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FloatValue kFloatValue() { return {}; }
   void set_float_value(float value) {
     static constexpr uint32_t field_id = FieldMetadata_FloatValue::kFieldId;
@@ -570,10 +587,13 @@ class AndroidLogPacket_LogEvent_Arg : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StringValue kStringValue() { return {}; }
   void set_string_value(const char* data, size_t size) {
     AppendBytes(FieldMetadata_StringValue::kFieldId, data, size);
+  }
+  void set_string_value(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_StringValue::kFieldId, chars.data, chars.size);
   }
   void set_string_value(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_StringValue::kFieldId;

@@ -19,19 +19,54 @@ namespace pbzero {
 class ClockSnapshot_Clock;
 enum BuiltinClock : int32_t;
 
-enum ClockSnapshot_Clock_BuiltinClocks : int32_t {
-  ClockSnapshot_Clock_BuiltinClocks_UNKNOWN = 0,
-  ClockSnapshot_Clock_BuiltinClocks_REALTIME = 1,
-  ClockSnapshot_Clock_BuiltinClocks_REALTIME_COARSE = 2,
-  ClockSnapshot_Clock_BuiltinClocks_MONOTONIC = 3,
-  ClockSnapshot_Clock_BuiltinClocks_MONOTONIC_COARSE = 4,
-  ClockSnapshot_Clock_BuiltinClocks_MONOTONIC_RAW = 5,
-  ClockSnapshot_Clock_BuiltinClocks_BOOTTIME = 6,
-  ClockSnapshot_Clock_BuiltinClocks_BUILTIN_CLOCK_MAX_ID = 63,
+namespace perfetto_pbzero_enum_ClockSnapshot_Clock {
+enum BuiltinClocks : int32_t {
+  UNKNOWN = 0,
+  REALTIME = 1,
+  REALTIME_COARSE = 2,
+  MONOTONIC = 3,
+  MONOTONIC_COARSE = 4,
+  MONOTONIC_RAW = 5,
+  BOOTTIME = 6,
+  BUILTIN_CLOCK_MAX_ID = 63,
 };
+} // namespace perfetto_pbzero_enum_ClockSnapshot_Clock
+using ClockSnapshot_Clock_BuiltinClocks = perfetto_pbzero_enum_ClockSnapshot_Clock::BuiltinClocks;
 
-const ClockSnapshot_Clock_BuiltinClocks ClockSnapshot_Clock_BuiltinClocks_MIN = ClockSnapshot_Clock_BuiltinClocks_UNKNOWN;
-const ClockSnapshot_Clock_BuiltinClocks ClockSnapshot_Clock_BuiltinClocks_MAX = ClockSnapshot_Clock_BuiltinClocks_BUILTIN_CLOCK_MAX_ID;
+
+constexpr ClockSnapshot_Clock_BuiltinClocks ClockSnapshot_Clock_BuiltinClocks_MIN = ClockSnapshot_Clock_BuiltinClocks::UNKNOWN;
+constexpr ClockSnapshot_Clock_BuiltinClocks ClockSnapshot_Clock_BuiltinClocks_MAX = ClockSnapshot_Clock_BuiltinClocks::BUILTIN_CLOCK_MAX_ID;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ClockSnapshot_Clock_BuiltinClocks_Name(::perfetto::protos::pbzero::ClockSnapshot_Clock_BuiltinClocks value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ClockSnapshot_Clock_BuiltinClocks::UNKNOWN:
+    return "UNKNOWN";
+
+  case ::perfetto::protos::pbzero::ClockSnapshot_Clock_BuiltinClocks::REALTIME:
+    return "REALTIME";
+
+  case ::perfetto::protos::pbzero::ClockSnapshot_Clock_BuiltinClocks::REALTIME_COARSE:
+    return "REALTIME_COARSE";
+
+  case ::perfetto::protos::pbzero::ClockSnapshot_Clock_BuiltinClocks::MONOTONIC:
+    return "MONOTONIC";
+
+  case ::perfetto::protos::pbzero::ClockSnapshot_Clock_BuiltinClocks::MONOTONIC_COARSE:
+    return "MONOTONIC_COARSE";
+
+  case ::perfetto::protos::pbzero::ClockSnapshot_Clock_BuiltinClocks::MONOTONIC_RAW:
+    return "MONOTONIC_RAW";
+
+  case ::perfetto::protos::pbzero::ClockSnapshot_Clock_BuiltinClocks::BOOTTIME:
+    return "BOOTTIME";
+
+  case ::perfetto::protos::pbzero::ClockSnapshot_Clock_BuiltinClocks::BUILTIN_CLOCK_MAX_ID:
+    return "BUILTIN_CLOCK_MAX_ID";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class ClockSnapshot_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -51,6 +86,8 @@ class ClockSnapshot : public ::protozero::Message {
     kClocksFieldNumber = 1,
     kPrimaryTraceClockFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ClockSnapshot"; }
+
   using Clock = ::perfetto::protos::pbzero::ClockSnapshot_Clock;
 
   using FieldMetadata_Clocks =
@@ -67,7 +104,7 @@ class ClockSnapshot : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Clocks kClocks() { return {}; }
   template <typename T = ClockSnapshot_Clock> T* add_clocks() {
     return BeginNestedMessage<T>(1);
@@ -88,7 +125,7 @@ class ClockSnapshot : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PrimaryTraceClock kPrimaryTraceClock() { return {}; }
   void set_primary_trace_clock(::perfetto::protos::pbzero::BuiltinClock value) {
     static constexpr uint32_t field_id = FieldMetadata_PrimaryTraceClock::kFieldId;
@@ -124,15 +161,21 @@ class ClockSnapshot_Clock : public ::protozero::Message {
     kIsIncrementalFieldNumber = 3,
     kUnitMultiplierNsFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ClockSnapshot.Clock"; }
+
+
   using BuiltinClocks = ::perfetto::protos::pbzero::ClockSnapshot_Clock_BuiltinClocks;
-  static const BuiltinClocks UNKNOWN = ClockSnapshot_Clock_BuiltinClocks_UNKNOWN;
-  static const BuiltinClocks REALTIME = ClockSnapshot_Clock_BuiltinClocks_REALTIME;
-  static const BuiltinClocks REALTIME_COARSE = ClockSnapshot_Clock_BuiltinClocks_REALTIME_COARSE;
-  static const BuiltinClocks MONOTONIC = ClockSnapshot_Clock_BuiltinClocks_MONOTONIC;
-  static const BuiltinClocks MONOTONIC_COARSE = ClockSnapshot_Clock_BuiltinClocks_MONOTONIC_COARSE;
-  static const BuiltinClocks MONOTONIC_RAW = ClockSnapshot_Clock_BuiltinClocks_MONOTONIC_RAW;
-  static const BuiltinClocks BOOTTIME = ClockSnapshot_Clock_BuiltinClocks_BOOTTIME;
-  static const BuiltinClocks BUILTIN_CLOCK_MAX_ID = ClockSnapshot_Clock_BuiltinClocks_BUILTIN_CLOCK_MAX_ID;
+  static inline const char* BuiltinClocks_Name(BuiltinClocks value) {
+    return ::perfetto::protos::pbzero::ClockSnapshot_Clock_BuiltinClocks_Name(value);
+  }
+  static const BuiltinClocks UNKNOWN = BuiltinClocks::UNKNOWN;
+  static const BuiltinClocks REALTIME = BuiltinClocks::REALTIME;
+  static const BuiltinClocks REALTIME_COARSE = BuiltinClocks::REALTIME_COARSE;
+  static const BuiltinClocks MONOTONIC = BuiltinClocks::MONOTONIC;
+  static const BuiltinClocks MONOTONIC_COARSE = BuiltinClocks::MONOTONIC_COARSE;
+  static const BuiltinClocks MONOTONIC_RAW = BuiltinClocks::MONOTONIC_RAW;
+  static const BuiltinClocks BOOTTIME = BuiltinClocks::BOOTTIME;
+  static const BuiltinClocks BUILTIN_CLOCK_MAX_ID = BuiltinClocks::BUILTIN_CLOCK_MAX_ID;
 
   using FieldMetadata_ClockId =
     ::protozero::proto_utils::FieldMetadata<
@@ -148,7 +191,7 @@ class ClockSnapshot_Clock : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ClockId kClockId() { return {}; }
   void set_clock_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ClockId::kFieldId;
@@ -173,7 +216,7 @@ class ClockSnapshot_Clock : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Timestamp kTimestamp() { return {}; }
   void set_timestamp(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Timestamp::kFieldId;
@@ -198,7 +241,7 @@ class ClockSnapshot_Clock : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IsIncremental kIsIncremental() { return {}; }
   void set_is_incremental(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_IsIncremental::kFieldId;
@@ -223,7 +266,7 @@ class ClockSnapshot_Clock : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_UnitMultiplierNs kUnitMultiplierNs() { return {}; }
   void set_unit_multiplier_ns(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_UnitMultiplierNs::kFieldId;
