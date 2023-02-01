@@ -63,7 +63,7 @@ enum FieldDescriptorProto_Label : int {
   FieldDescriptorProto_Label_LABEL_REPEATED = 3,
 };
 
-class PERFETTO_EXPORT OneofOptions : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT OneofOptions : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -92,7 +92,7 @@ class PERFETTO_EXPORT OneofOptions : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT EnumValueDescriptorProto : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT EnumValueDescriptorProto : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNameFieldNumber = 1,
@@ -133,7 +133,7 @@ class PERFETTO_EXPORT EnumValueDescriptorProto : public ::protozero::CppMessageO
 };
 
 
-class PERFETTO_EXPORT EnumDescriptorProto : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT EnumDescriptorProto : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNameFieldNumber = 1,
@@ -185,7 +185,7 @@ class PERFETTO_EXPORT EnumDescriptorProto : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT OneofDescriptorProto : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT OneofDescriptorProto : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNameFieldNumber = 1,
@@ -226,7 +226,7 @@ class PERFETTO_EXPORT OneofDescriptorProto : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT FieldDescriptorProto : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT FieldDescriptorProto : public ::protozero::CppMessageObj {
  public:
   using Type = FieldDescriptorProto_Type;
   static constexpr auto TYPE_DOUBLE = FieldDescriptorProto_Type_TYPE_DOUBLE;
@@ -330,7 +330,7 @@ class PERFETTO_EXPORT FieldDescriptorProto : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT DescriptorProto : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT DescriptorProto : public ::protozero::CppMessageObj {
  public:
   using ReservedRange = DescriptorProto_ReservedRange;
   enum FieldNumbers {
@@ -423,7 +423,7 @@ class PERFETTO_EXPORT DescriptorProto : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT DescriptorProto_ReservedRange : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT DescriptorProto_ReservedRange : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kStartFieldNumber = 1,
@@ -464,7 +464,7 @@ class PERFETTO_EXPORT DescriptorProto_ReservedRange : public ::protozero::CppMes
 };
 
 
-class PERFETTO_EXPORT FileDescriptorProto : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT FileDescriptorProto : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNameFieldNumber = 1,
@@ -556,7 +556,7 @@ class PERFETTO_EXPORT FileDescriptorProto : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT FileDescriptorSet : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT FileDescriptorSet : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kFileFieldNumber = 1,

@@ -40,7 +40,7 @@ enum ObservableEvents_DataSourceInstanceState : int {
   ObservableEvents_DataSourceInstanceState_DATA_SOURCE_INSTANCE_STATE_STARTED = 2,
 };
 
-class PERFETTO_EXPORT ObservableEvents : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ObservableEvents : public ::protozero::CppMessageObj {
  public:
   using DataSourceInstanceStateChange = ObservableEvents_DataSourceInstanceStateChange;
   using Type = ObservableEvents_Type;
@@ -95,7 +95,7 @@ class PERFETTO_EXPORT ObservableEvents : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT ObservableEvents_DataSourceInstanceStateChange : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ObservableEvents_DataSourceInstanceStateChange : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kProducerNameFieldNumber = 1,

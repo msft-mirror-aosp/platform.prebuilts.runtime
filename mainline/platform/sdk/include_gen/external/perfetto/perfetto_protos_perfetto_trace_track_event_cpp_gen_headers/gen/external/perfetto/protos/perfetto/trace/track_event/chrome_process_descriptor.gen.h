@@ -72,7 +72,7 @@ enum ChromeProcessDescriptor_ProcessType : int {
   ChromeProcessDescriptor_ProcessType_PROCESS_RENDERER_EXTENSION = 40,
 };
 
-class PERFETTO_EXPORT ChromeProcessDescriptor : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeProcessDescriptor : public ::protozero::CppMessageObj {
  public:
   using ProcessType = ChromeProcessDescriptor_ProcessType;
   static constexpr auto PROCESS_UNSPECIFIED = ChromeProcessDescriptor_ProcessType_PROCESS_UNSPECIFIED;

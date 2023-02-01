@@ -39,6 +39,8 @@ class TestBundleWrapper : public ::protozero::Message {
     kBundleFieldNumber = 2,
     kAfterFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.TestBundleWrapper"; }
+
 
   using FieldMetadata_Before =
     ::protozero::proto_utils::FieldMetadata<
@@ -54,10 +56,13 @@ class TestBundleWrapper : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Before kBefore() { return {}; }
   void set_before(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Before::kFieldId, data, size);
+  }
+  void set_before(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Before::kFieldId, chars.data, chars.size);
   }
   void set_before(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Before::kFieldId;
@@ -82,7 +87,7 @@ class TestBundleWrapper : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Bundle kBundle() { return {}; }
   template <typename T = FtraceEventBundle> T* add_bundle() {
     return BeginNestedMessage<T>(2);
@@ -103,10 +108,13 @@ class TestBundleWrapper : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_After kAfter() { return {}; }
   void set_after(const char* data, size_t size) {
     AppendBytes(FieldMetadata_After::kFieldId, data, size);
+  }
+  void set_after(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_After::kFieldId, chars.data, chars.size);
   }
   void set_after(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_After::kFieldId;

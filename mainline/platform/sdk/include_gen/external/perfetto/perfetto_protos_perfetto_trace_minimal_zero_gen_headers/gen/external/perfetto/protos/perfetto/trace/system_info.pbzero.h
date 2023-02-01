@@ -18,7 +18,7 @@ namespace pbzero {
 
 class Utsname;
 
-class SystemInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class SystemInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   SystemInfo_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit SystemInfo_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -31,6 +31,10 @@ class SystemInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=
   int64_t hz() const { return at<3>().as_int64(); }
   bool has_tracing_service_version() const { return at<4>().valid(); }
   ::protozero::ConstChars tracing_service_version() const { return at<4>().as_string(); }
+  bool has_android_sdk_version() const { return at<5>().valid(); }
+  uint64_t android_sdk_version() const { return at<5>().as_uint64(); }
+  bool has_page_size() const { return at<6>().valid(); }
+  uint32_t page_size() const { return at<6>().as_uint32(); }
 };
 
 class SystemInfo : public ::protozero::Message {
@@ -41,7 +45,11 @@ class SystemInfo : public ::protozero::Message {
     kAndroidBuildFingerprintFieldNumber = 2,
     kHzFieldNumber = 3,
     kTracingServiceVersionFieldNumber = 4,
+    kAndroidSdkVersionFieldNumber = 5,
+    kPageSizeFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.SystemInfo"; }
+
 
   using FieldMetadata_Utsname =
     ::protozero::proto_utils::FieldMetadata<
@@ -57,7 +65,7 @@ class SystemInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Utsname kUtsname() { return {}; }
   template <typename T = Utsname> T* set_utsname() {
     return BeginNestedMessage<T>(1);
@@ -78,10 +86,13 @@ class SystemInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AndroidBuildFingerprint kAndroidBuildFingerprint() { return {}; }
   void set_android_build_fingerprint(const char* data, size_t size) {
     AppendBytes(FieldMetadata_AndroidBuildFingerprint::kFieldId, data, size);
+  }
+  void set_android_build_fingerprint(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_AndroidBuildFingerprint::kFieldId, chars.data, chars.size);
   }
   void set_android_build_fingerprint(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_AndroidBuildFingerprint::kFieldId;
@@ -106,7 +117,7 @@ class SystemInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Hz kHz() { return {}; }
   void set_hz(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Hz::kFieldId;
@@ -131,10 +142,13 @@ class SystemInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TracingServiceVersion kTracingServiceVersion() { return {}; }
   void set_tracing_service_version(const char* data, size_t size) {
     AppendBytes(FieldMetadata_TracingServiceVersion::kFieldId, data, size);
+  }
+  void set_tracing_service_version(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_TracingServiceVersion::kFieldId, chars.data, chars.size);
   }
   void set_tracing_service_version(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_TracingServiceVersion::kFieldId;
@@ -142,6 +156,56 @@ class SystemInfo : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_AndroidSdkVersion =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      SystemInfo>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_AndroidSdkVersion kAndroidSdkVersion() { return {}; }
+  void set_android_sdk_version(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_AndroidSdkVersion::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_PageSize =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SystemInfo>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_PageSize kPageSize() { return {}; }
+  void set_page_size(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_PageSize::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
         ::Append(*this, field_id, value);
   }
 };
@@ -170,6 +234,8 @@ class Utsname : public ::protozero::Message {
     kReleaseFieldNumber = 3,
     kMachineFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.Utsname"; }
+
 
   using FieldMetadata_Sysname =
     ::protozero::proto_utils::FieldMetadata<
@@ -185,10 +251,13 @@ class Utsname : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sysname kSysname() { return {}; }
   void set_sysname(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Sysname::kFieldId, data, size);
+  }
+  void set_sysname(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Sysname::kFieldId, chars.data, chars.size);
   }
   void set_sysname(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Sysname::kFieldId;
@@ -213,10 +282,13 @@ class Utsname : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Version kVersion() { return {}; }
   void set_version(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Version::kFieldId, data, size);
+  }
+  void set_version(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Version::kFieldId, chars.data, chars.size);
   }
   void set_version(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Version::kFieldId;
@@ -241,10 +313,13 @@ class Utsname : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Release kRelease() { return {}; }
   void set_release(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Release::kFieldId, data, size);
+  }
+  void set_release(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Release::kFieldId, chars.data, chars.size);
   }
   void set_release(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Release::kFieldId;
@@ -269,10 +344,13 @@ class Utsname : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Machine kMachine() { return {}; }
   void set_machine(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Machine::kFieldId, data, size);
+  }
+  void set_machine(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Machine::kFieldId, chars.data, chars.size);
   }
   void set_machine(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Machine::kFieldId;
