@@ -16,18 +16,47 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-enum ChromeApplicationStateInfo_ChromeApplicationState : int32_t;
+namespace perfetto_pbzero_enum_ChromeApplicationStateInfo {
+enum ChromeApplicationState : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeApplicationStateInfo
+using ChromeApplicationStateInfo_ChromeApplicationState = perfetto_pbzero_enum_ChromeApplicationStateInfo::ChromeApplicationState;
 
-enum ChromeApplicationStateInfo_ChromeApplicationState : int32_t {
-  ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_UNKNOWN = 0,
-  ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_HAS_RUNNING_ACTIVITIES = 1,
-  ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_HAS_PAUSED_ACTIVITIES = 2,
-  ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_HAS_STOPPED_ACTIVITIES = 3,
-  ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES = 4,
+namespace perfetto_pbzero_enum_ChromeApplicationStateInfo {
+enum ChromeApplicationState : int32_t {
+  APPLICATION_STATE_UNKNOWN = 0,
+  APPLICATION_STATE_HAS_RUNNING_ACTIVITIES = 1,
+  APPLICATION_STATE_HAS_PAUSED_ACTIVITIES = 2,
+  APPLICATION_STATE_HAS_STOPPED_ACTIVITIES = 3,
+  APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES = 4,
 };
+} // namespace perfetto_pbzero_enum_ChromeApplicationStateInfo
+using ChromeApplicationStateInfo_ChromeApplicationState = perfetto_pbzero_enum_ChromeApplicationStateInfo::ChromeApplicationState;
 
-const ChromeApplicationStateInfo_ChromeApplicationState ChromeApplicationStateInfo_ChromeApplicationState_MIN = ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_UNKNOWN;
-const ChromeApplicationStateInfo_ChromeApplicationState ChromeApplicationStateInfo_ChromeApplicationState_MAX = ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES;
+
+constexpr ChromeApplicationStateInfo_ChromeApplicationState ChromeApplicationStateInfo_ChromeApplicationState_MIN = ChromeApplicationStateInfo_ChromeApplicationState::APPLICATION_STATE_UNKNOWN;
+constexpr ChromeApplicationStateInfo_ChromeApplicationState ChromeApplicationStateInfo_ChromeApplicationState_MAX = ChromeApplicationStateInfo_ChromeApplicationState::APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeApplicationStateInfo_ChromeApplicationState_Name(::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState::APPLICATION_STATE_UNKNOWN:
+    return "APPLICATION_STATE_UNKNOWN";
+
+  case ::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState::APPLICATION_STATE_HAS_RUNNING_ACTIVITIES:
+    return "APPLICATION_STATE_HAS_RUNNING_ACTIVITIES";
+
+  case ::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState::APPLICATION_STATE_HAS_PAUSED_ACTIVITIES:
+    return "APPLICATION_STATE_HAS_PAUSED_ACTIVITIES";
+
+  case ::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState::APPLICATION_STATE_HAS_STOPPED_ACTIVITIES:
+    return "APPLICATION_STATE_HAS_STOPPED_ACTIVITIES";
+
+  case ::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState::APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES:
+    return "APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class ChromeApplicationStateInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -44,12 +73,18 @@ class ChromeApplicationStateInfo : public ::protozero::Message {
   enum : int32_t {
     kApplicationStateFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeApplicationStateInfo"; }
+
+
   using ChromeApplicationState = ::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState;
-  static const ChromeApplicationState APPLICATION_STATE_UNKNOWN = ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_UNKNOWN;
-  static const ChromeApplicationState APPLICATION_STATE_HAS_RUNNING_ACTIVITIES = ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_HAS_RUNNING_ACTIVITIES;
-  static const ChromeApplicationState APPLICATION_STATE_HAS_PAUSED_ACTIVITIES = ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_HAS_PAUSED_ACTIVITIES;
-  static const ChromeApplicationState APPLICATION_STATE_HAS_STOPPED_ACTIVITIES = ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_HAS_STOPPED_ACTIVITIES;
-  static const ChromeApplicationState APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES = ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES;
+  static inline const char* ChromeApplicationState_Name(ChromeApplicationState value) {
+    return ::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState_Name(value);
+  }
+  static const ChromeApplicationState APPLICATION_STATE_UNKNOWN = ChromeApplicationState::APPLICATION_STATE_UNKNOWN;
+  static const ChromeApplicationState APPLICATION_STATE_HAS_RUNNING_ACTIVITIES = ChromeApplicationState::APPLICATION_STATE_HAS_RUNNING_ACTIVITIES;
+  static const ChromeApplicationState APPLICATION_STATE_HAS_PAUSED_ACTIVITIES = ChromeApplicationState::APPLICATION_STATE_HAS_PAUSED_ACTIVITIES;
+  static const ChromeApplicationState APPLICATION_STATE_HAS_STOPPED_ACTIVITIES = ChromeApplicationState::APPLICATION_STATE_HAS_STOPPED_ACTIVITIES;
+  static const ChromeApplicationState APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES = ChromeApplicationState::APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES;
 
   using FieldMetadata_ApplicationState =
     ::protozero::proto_utils::FieldMetadata<
@@ -65,7 +100,7 @@ class ChromeApplicationStateInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ApplicationState kApplicationState() { return {}; }
   void set_application_state(::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState value) {
     static constexpr uint32_t field_id = FieldMetadata_ApplicationState::kFieldId;

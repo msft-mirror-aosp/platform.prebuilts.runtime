@@ -39,6 +39,8 @@ class PackagesList : public ::protozero::Message {
     kParseErrorFieldNumber = 2,
     kReadErrorFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PackagesList"; }
+
   using PackageInfo = ::perfetto::protos::pbzero::PackagesList_PackageInfo;
 
   using FieldMetadata_Packages =
@@ -55,7 +57,7 @@ class PackagesList : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Packages kPackages() { return {}; }
   template <typename T = PackagesList_PackageInfo> T* add_packages() {
     return BeginNestedMessage<T>(1);
@@ -76,7 +78,7 @@ class PackagesList : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ParseError kParseError() { return {}; }
   void set_parse_error(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ParseError::kFieldId;
@@ -101,7 +103,7 @@ class PackagesList : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ReadError kReadError() { return {}; }
   void set_read_error(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ReadError::kFieldId;
@@ -140,6 +142,8 @@ class PackagesList_PackageInfo : public ::protozero::Message {
     kProfileableFromShellFieldNumber = 4,
     kVersionCodeFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PackagesList.PackageInfo"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -155,10 +159,13 @@ class PackagesList_PackageInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -183,7 +190,7 @@ class PackagesList_PackageInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Uid kUid() { return {}; }
   void set_uid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Uid::kFieldId;
@@ -208,7 +215,7 @@ class PackagesList_PackageInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Debuggable kDebuggable() { return {}; }
   void set_debuggable(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_Debuggable::kFieldId;
@@ -233,7 +240,7 @@ class PackagesList_PackageInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProfileableFromShell kProfileableFromShell() { return {}; }
   void set_profileable_from_shell(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ProfileableFromShell::kFieldId;
@@ -258,7 +265,7 @@ class PackagesList_PackageInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_VersionCode kVersionCode() { return {}; }
   void set_version_code(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VersionCode::kFieldId;

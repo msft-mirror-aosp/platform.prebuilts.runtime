@@ -40,6 +40,8 @@ class DeobfuscationMapping : public ::protozero::Message {
     kVersionCodeFieldNumber = 2,
     kObfuscatedClassesFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.DeobfuscationMapping"; }
+
 
   using FieldMetadata_PackageName =
     ::protozero::proto_utils::FieldMetadata<
@@ -55,10 +57,13 @@ class DeobfuscationMapping : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PackageName kPackageName() { return {}; }
   void set_package_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_PackageName::kFieldId, data, size);
+  }
+  void set_package_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_PackageName::kFieldId, chars.data, chars.size);
   }
   void set_package_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_PackageName::kFieldId;
@@ -83,7 +88,7 @@ class DeobfuscationMapping : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_VersionCode kVersionCode() { return {}; }
   void set_version_code(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VersionCode::kFieldId;
@@ -108,7 +113,7 @@ class DeobfuscationMapping : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ObfuscatedClasses kObfuscatedClasses() { return {}; }
   template <typename T = ObfuscatedClass> T* add_obfuscated_classes() {
     return BeginNestedMessage<T>(3);
@@ -140,6 +145,8 @@ class ObfuscatedClass : public ::protozero::Message {
     kObfuscatedMembersFieldNumber = 3,
     kObfuscatedMethodsFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ObfuscatedClass"; }
+
 
   using FieldMetadata_ObfuscatedName =
     ::protozero::proto_utils::FieldMetadata<
@@ -155,10 +162,13 @@ class ObfuscatedClass : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ObfuscatedName kObfuscatedName() { return {}; }
   void set_obfuscated_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ObfuscatedName::kFieldId, data, size);
+  }
+  void set_obfuscated_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ObfuscatedName::kFieldId, chars.data, chars.size);
   }
   void set_obfuscated_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ObfuscatedName::kFieldId;
@@ -183,10 +193,13 @@ class ObfuscatedClass : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DeobfuscatedName kDeobfuscatedName() { return {}; }
   void set_deobfuscated_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_DeobfuscatedName::kFieldId, data, size);
+  }
+  void set_deobfuscated_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_DeobfuscatedName::kFieldId, chars.data, chars.size);
   }
   void set_deobfuscated_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_DeobfuscatedName::kFieldId;
@@ -211,7 +224,7 @@ class ObfuscatedClass : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ObfuscatedMembers kObfuscatedMembers() { return {}; }
   template <typename T = ObfuscatedMember> T* add_obfuscated_members() {
     return BeginNestedMessage<T>(3);
@@ -232,7 +245,7 @@ class ObfuscatedClass : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ObfuscatedMethods kObfuscatedMethods() { return {}; }
   template <typename T = ObfuscatedMember> T* add_obfuscated_methods() {
     return BeginNestedMessage<T>(4);
@@ -258,6 +271,8 @@ class ObfuscatedMember : public ::protozero::Message {
     kObfuscatedNameFieldNumber = 1,
     kDeobfuscatedNameFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ObfuscatedMember"; }
+
 
   using FieldMetadata_ObfuscatedName =
     ::protozero::proto_utils::FieldMetadata<
@@ -273,10 +288,13 @@ class ObfuscatedMember : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ObfuscatedName kObfuscatedName() { return {}; }
   void set_obfuscated_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ObfuscatedName::kFieldId, data, size);
+  }
+  void set_obfuscated_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ObfuscatedName::kFieldId, chars.data, chars.size);
   }
   void set_obfuscated_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ObfuscatedName::kFieldId;
@@ -301,10 +319,13 @@ class ObfuscatedMember : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DeobfuscatedName kDeobfuscatedName() { return {}; }
   void set_deobfuscated_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_DeobfuscatedName::kFieldId, data, size);
+  }
+  void set_deobfuscated_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_DeobfuscatedName::kFieldId, chars.data, chars.size);
   }
   void set_deobfuscated_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_DeobfuscatedName::kFieldId;

@@ -16,18 +16,41 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-enum ProcessStatsConfig_Quirks : int32_t;
+namespace perfetto_pbzero_enum_ProcessStatsConfig {
+enum Quirks : int32_t;
+}  // namespace perfetto_pbzero_enum_ProcessStatsConfig
+using ProcessStatsConfig_Quirks = perfetto_pbzero_enum_ProcessStatsConfig::Quirks;
 
-enum ProcessStatsConfig_Quirks : int32_t {
-  ProcessStatsConfig_Quirks_QUIRKS_UNSPECIFIED = 0,
-  ProcessStatsConfig_Quirks_DISABLE_INITIAL_DUMP = 1,
-  ProcessStatsConfig_Quirks_DISABLE_ON_DEMAND = 2,
+namespace perfetto_pbzero_enum_ProcessStatsConfig {
+enum Quirks : int32_t {
+  QUIRKS_UNSPECIFIED = 0,
+  DISABLE_INITIAL_DUMP = 1,
+  DISABLE_ON_DEMAND = 2,
 };
+} // namespace perfetto_pbzero_enum_ProcessStatsConfig
+using ProcessStatsConfig_Quirks = perfetto_pbzero_enum_ProcessStatsConfig::Quirks;
 
-const ProcessStatsConfig_Quirks ProcessStatsConfig_Quirks_MIN = ProcessStatsConfig_Quirks_QUIRKS_UNSPECIFIED;
-const ProcessStatsConfig_Quirks ProcessStatsConfig_Quirks_MAX = ProcessStatsConfig_Quirks_DISABLE_ON_DEMAND;
 
-class ProcessStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/8, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+constexpr ProcessStatsConfig_Quirks ProcessStatsConfig_Quirks_MIN = ProcessStatsConfig_Quirks::QUIRKS_UNSPECIFIED;
+constexpr ProcessStatsConfig_Quirks ProcessStatsConfig_Quirks_MAX = ProcessStatsConfig_Quirks::DISABLE_ON_DEMAND;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ProcessStatsConfig_Quirks_Name(::perfetto::protos::pbzero::ProcessStatsConfig_Quirks value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ProcessStatsConfig_Quirks::QUIRKS_UNSPECIFIED:
+    return "QUIRKS_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ProcessStatsConfig_Quirks::DISABLE_INITIAL_DUMP:
+    return "DISABLE_INITIAL_DUMP";
+
+  case ::perfetto::protos::pbzero::ProcessStatsConfig_Quirks::DISABLE_ON_DEMAND:
+    return "DISABLE_ON_DEMAND";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+class ProcessStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   ProcessStatsConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ProcessStatsConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -42,10 +65,6 @@ class ProcessStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_F
   uint32_t proc_stats_poll_ms() const { return at<4>().as_uint32(); }
   bool has_proc_stats_cache_ttl_ms() const { return at<6>().valid(); }
   uint32_t proc_stats_cache_ttl_ms() const { return at<6>().as_uint32(); }
-  bool has_record_thread_time_in_state() const { return at<7>().valid(); }
-  bool record_thread_time_in_state() const { return at<7>().as_bool(); }
-  bool has_thread_time_in_state_cache_size() const { return at<8>().valid(); }
-  uint32_t thread_time_in_state_cache_size() const { return at<8>().as_uint32(); }
 };
 
 class ProcessStatsConfig : public ::protozero::Message {
@@ -57,13 +76,17 @@ class ProcessStatsConfig : public ::protozero::Message {
     kRecordThreadNamesFieldNumber = 3,
     kProcStatsPollMsFieldNumber = 4,
     kProcStatsCacheTtlMsFieldNumber = 6,
-    kRecordThreadTimeInStateFieldNumber = 7,
-    kThreadTimeInStateCacheSizeFieldNumber = 8,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProcessStatsConfig"; }
+
+
   using Quirks = ::perfetto::protos::pbzero::ProcessStatsConfig_Quirks;
-  static const Quirks QUIRKS_UNSPECIFIED = ProcessStatsConfig_Quirks_QUIRKS_UNSPECIFIED;
-  static const Quirks DISABLE_INITIAL_DUMP = ProcessStatsConfig_Quirks_DISABLE_INITIAL_DUMP;
-  static const Quirks DISABLE_ON_DEMAND = ProcessStatsConfig_Quirks_DISABLE_ON_DEMAND;
+  static inline const char* Quirks_Name(Quirks value) {
+    return ::perfetto::protos::pbzero::ProcessStatsConfig_Quirks_Name(value);
+  }
+  static const Quirks QUIRKS_UNSPECIFIED = Quirks::QUIRKS_UNSPECIFIED;
+  static const Quirks DISABLE_INITIAL_DUMP = Quirks::DISABLE_INITIAL_DUMP;
+  static const Quirks DISABLE_ON_DEMAND = Quirks::DISABLE_ON_DEMAND;
 
   using FieldMetadata_Quirks =
     ::protozero::proto_utils::FieldMetadata<
@@ -79,7 +102,7 @@ class ProcessStatsConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Quirks kQuirks() { return {}; }
   void add_quirks(::perfetto::protos::pbzero::ProcessStatsConfig_Quirks value) {
     static constexpr uint32_t field_id = FieldMetadata_Quirks::kFieldId;
@@ -104,7 +127,7 @@ class ProcessStatsConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ScanAllProcessesOnStart kScanAllProcessesOnStart() { return {}; }
   void set_scan_all_processes_on_start(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ScanAllProcessesOnStart::kFieldId;
@@ -129,7 +152,7 @@ class ProcessStatsConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RecordThreadNames kRecordThreadNames() { return {}; }
   void set_record_thread_names(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_RecordThreadNames::kFieldId;
@@ -154,7 +177,7 @@ class ProcessStatsConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProcStatsPollMs kProcStatsPollMs() { return {}; }
   void set_proc_stats_poll_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ProcStatsPollMs::kFieldId;
@@ -179,60 +202,10 @@ class ProcessStatsConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProcStatsCacheTtlMs kProcStatsCacheTtlMs() { return {}; }
   void set_proc_stats_cache_ttl_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ProcStatsCacheTtlMs::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kUint32>
-        ::Append(*this, field_id, value);
-  }
-
-  using FieldMetadata_RecordThreadTimeInState =
-    ::protozero::proto_utils::FieldMetadata<
-      7,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kBool,
-      bool,
-      ProcessStatsConfig>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_RecordThreadTimeInState kRecordThreadTimeInState() { return {}; }
-  void set_record_thread_time_in_state(bool value) {
-    static constexpr uint32_t field_id = FieldMetadata_RecordThreadTimeInState::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kBool>
-        ::Append(*this, field_id, value);
-  }
-
-  using FieldMetadata_ThreadTimeInStateCacheSize =
-    ::protozero::proto_utils::FieldMetadata<
-      8,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kUint32,
-      uint32_t,
-      ProcessStatsConfig>;
-
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
-  static constexpr FieldMetadata_ThreadTimeInStateCacheSize kThreadTimeInStateCacheSize() { return {}; }
-  void set_thread_time_in_state_cache_size(uint32_t value) {
-    static constexpr uint32_t field_id = FieldMetadata_ThreadTimeInStateCacheSize::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
