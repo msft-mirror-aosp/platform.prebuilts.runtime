@@ -35,6 +35,8 @@ class IrqHandlerExitFtraceEvent : public ::protozero::Message {
     kIrqFieldNumber = 1,
     kRetFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.IrqHandlerExitFtraceEvent"; }
+
 
   using FieldMetadata_Irq =
     ::protozero::proto_utils::FieldMetadata<
@@ -50,7 +52,7 @@ class IrqHandlerExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Irq kIrq() { return {}; }
   void set_irq(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Irq::kFieldId;
@@ -75,7 +77,7 @@ class IrqHandlerExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ret kRet() { return {}; }
   void set_ret(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ret::kFieldId;
@@ -108,6 +110,8 @@ class IrqHandlerEntryFtraceEvent : public ::protozero::Message {
     kNameFieldNumber = 2,
     kHandlerFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.IrqHandlerEntryFtraceEvent"; }
+
 
   using FieldMetadata_Irq =
     ::protozero::proto_utils::FieldMetadata<
@@ -123,7 +127,7 @@ class IrqHandlerEntryFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Irq kIrq() { return {}; }
   void set_irq(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Irq::kFieldId;
@@ -148,10 +152,13 @@ class IrqHandlerEntryFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -176,7 +183,7 @@ class IrqHandlerEntryFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Handler kHandler() { return {}; }
   void set_handler(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Handler::kFieldId;
@@ -203,6 +210,8 @@ class SoftirqRaiseFtraceEvent : public ::protozero::Message {
   enum : int32_t {
     kVecFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.SoftirqRaiseFtraceEvent"; }
+
 
   using FieldMetadata_Vec =
     ::protozero::proto_utils::FieldMetadata<
@@ -218,7 +227,7 @@ class SoftirqRaiseFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Vec kVec() { return {}; }
   void set_vec(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Vec::kFieldId;
@@ -245,6 +254,8 @@ class SoftirqExitFtraceEvent : public ::protozero::Message {
   enum : int32_t {
     kVecFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.SoftirqExitFtraceEvent"; }
+
 
   using FieldMetadata_Vec =
     ::protozero::proto_utils::FieldMetadata<
@@ -260,7 +271,7 @@ class SoftirqExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Vec kVec() { return {}; }
   void set_vec(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Vec::kFieldId;
@@ -287,6 +298,8 @@ class SoftirqEntryFtraceEvent : public ::protozero::Message {
   enum : int32_t {
     kVecFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.SoftirqEntryFtraceEvent"; }
+
 
   using FieldMetadata_Vec =
     ::protozero::proto_utils::FieldMetadata<
@@ -302,7 +315,7 @@ class SoftirqEntryFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Vec kVec() { return {}; }
   void set_vec(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Vec::kFieldId;

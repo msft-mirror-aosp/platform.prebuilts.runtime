@@ -29,7 +29,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT TrackEventDescriptor : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TrackEventDescriptor : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kAvailableCategoriesFieldNumber = 1,
@@ -66,7 +66,7 @@ class PERFETTO_EXPORT TrackEventDescriptor : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT TrackEventCategory : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TrackEventCategory : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNameFieldNumber = 1,

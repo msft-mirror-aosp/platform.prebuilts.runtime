@@ -35,6 +35,8 @@ class IpiRaiseFtraceEvent : public ::protozero::Message {
     kTargetCpusFieldNumber = 1,
     kReasonFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.IpiRaiseFtraceEvent"; }
+
 
   using FieldMetadata_TargetCpus =
     ::protozero::proto_utils::FieldMetadata<
@@ -50,7 +52,7 @@ class IpiRaiseFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TargetCpus kTargetCpus() { return {}; }
   void set_target_cpus(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TargetCpus::kFieldId;
@@ -75,10 +77,13 @@ class IpiRaiseFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Reason kReason() { return {}; }
   void set_reason(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Reason::kFieldId, data, size);
+  }
+  void set_reason(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Reason::kFieldId, chars.data, chars.size);
   }
   void set_reason(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Reason::kFieldId;
@@ -105,6 +110,8 @@ class IpiExitFtraceEvent : public ::protozero::Message {
   enum : int32_t {
     kReasonFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.IpiExitFtraceEvent"; }
+
 
   using FieldMetadata_Reason =
     ::protozero::proto_utils::FieldMetadata<
@@ -120,10 +127,13 @@ class IpiExitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Reason kReason() { return {}; }
   void set_reason(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Reason::kFieldId, data, size);
+  }
+  void set_reason(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Reason::kFieldId, chars.data, chars.size);
   }
   void set_reason(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Reason::kFieldId;
@@ -150,6 +160,8 @@ class IpiEntryFtraceEvent : public ::protozero::Message {
   enum : int32_t {
     kReasonFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.IpiEntryFtraceEvent"; }
+
 
   using FieldMetadata_Reason =
     ::protozero::proto_utils::FieldMetadata<
@@ -165,10 +177,13 @@ class IpiEntryFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Reason kReason() { return {}; }
   void set_reason(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Reason::kFieldId, data, size);
+  }
+  void set_reason(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Reason::kFieldId, chars.data, chars.size);
   }
   void set_reason(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Reason::kFieldId;

@@ -17,47 +17,156 @@ namespace protos {
 namespace pbzero {
 
 class ChromeLatencyInfo_ComponentInfo;
-enum ChromeLatencyInfo_LatencyComponentType : int32_t;
-enum ChromeLatencyInfo_Step : int32_t;
+namespace perfetto_pbzero_enum_ChromeLatencyInfo {
+enum LatencyComponentType : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeLatencyInfo
+using ChromeLatencyInfo_LatencyComponentType = perfetto_pbzero_enum_ChromeLatencyInfo::LatencyComponentType;
+namespace perfetto_pbzero_enum_ChromeLatencyInfo {
+enum Step : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeLatencyInfo
+using ChromeLatencyInfo_Step = perfetto_pbzero_enum_ChromeLatencyInfo::Step;
 
-enum ChromeLatencyInfo_Step : int32_t {
-  ChromeLatencyInfo_Step_STEP_UNSPECIFIED = 0,
-  ChromeLatencyInfo_Step_STEP_SEND_INPUT_EVENT_UI = 3,
-  ChromeLatencyInfo_Step_STEP_HANDLE_INPUT_EVENT_IMPL = 5,
-  ChromeLatencyInfo_Step_STEP_DID_HANDLE_INPUT_AND_OVERSCROLL = 8,
-  ChromeLatencyInfo_Step_STEP_HANDLE_INPUT_EVENT_MAIN = 4,
-  ChromeLatencyInfo_Step_STEP_MAIN_THREAD_SCROLL_UPDATE = 2,
-  ChromeLatencyInfo_Step_STEP_HANDLE_INPUT_EVENT_MAIN_COMMIT = 1,
-  ChromeLatencyInfo_Step_STEP_HANDLED_INPUT_EVENT_MAIN_OR_IMPL = 9,
-  ChromeLatencyInfo_Step_STEP_HANDLED_INPUT_EVENT_IMPL = 10,
-  ChromeLatencyInfo_Step_STEP_SWAP_BUFFERS = 6,
-  ChromeLatencyInfo_Step_STEP_DRAW_AND_SWAP = 7,
-  ChromeLatencyInfo_Step_STEP_FINISHED_SWAP_BUFFERS = 11,
+namespace perfetto_pbzero_enum_ChromeLatencyInfo {
+enum Step : int32_t {
+  STEP_UNSPECIFIED = 0,
+  STEP_SEND_INPUT_EVENT_UI = 3,
+  STEP_HANDLE_INPUT_EVENT_IMPL = 5,
+  STEP_DID_HANDLE_INPUT_AND_OVERSCROLL = 8,
+  STEP_HANDLE_INPUT_EVENT_MAIN = 4,
+  STEP_MAIN_THREAD_SCROLL_UPDATE = 2,
+  STEP_HANDLE_INPUT_EVENT_MAIN_COMMIT = 1,
+  STEP_HANDLED_INPUT_EVENT_MAIN_OR_IMPL = 9,
+  STEP_HANDLED_INPUT_EVENT_IMPL = 10,
+  STEP_SWAP_BUFFERS = 6,
+  STEP_DRAW_AND_SWAP = 7,
+  STEP_FINISHED_SWAP_BUFFERS = 11,
 };
+} // namespace perfetto_pbzero_enum_ChromeLatencyInfo
+using ChromeLatencyInfo_Step = perfetto_pbzero_enum_ChromeLatencyInfo::Step;
 
-const ChromeLatencyInfo_Step ChromeLatencyInfo_Step_MIN = ChromeLatencyInfo_Step_STEP_UNSPECIFIED;
-const ChromeLatencyInfo_Step ChromeLatencyInfo_Step_MAX = ChromeLatencyInfo_Step_STEP_FINISHED_SWAP_BUFFERS;
 
-enum ChromeLatencyInfo_LatencyComponentType : int32_t {
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_UNSPECIFIED = 0,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_BEGIN_RWH = 1,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL = 2,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_FIRST_SCROLL_UPDATE_ORIGINAL = 3,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_ORIGINAL = 4,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_UI = 5,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_RENDERER_MAIN = 6,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN = 7,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL = 8,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_LAST_EVENT = 9,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_ACK_RWH = 10,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_RENDERER_SWAP = 11,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME = 12,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER = 13,
-  ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP = 14,
+constexpr ChromeLatencyInfo_Step ChromeLatencyInfo_Step_MIN = ChromeLatencyInfo_Step::STEP_UNSPECIFIED;
+constexpr ChromeLatencyInfo_Step ChromeLatencyInfo_Step_MAX = ChromeLatencyInfo_Step::STEP_FINISHED_SWAP_BUFFERS;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeLatencyInfo_Step_Name(::perfetto::protos::pbzero::ChromeLatencyInfo_Step value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_Step::STEP_UNSPECIFIED:
+    return "STEP_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_Step::STEP_SEND_INPUT_EVENT_UI:
+    return "STEP_SEND_INPUT_EVENT_UI";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_Step::STEP_HANDLE_INPUT_EVENT_IMPL:
+    return "STEP_HANDLE_INPUT_EVENT_IMPL";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_Step::STEP_DID_HANDLE_INPUT_AND_OVERSCROLL:
+    return "STEP_DID_HANDLE_INPUT_AND_OVERSCROLL";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_Step::STEP_HANDLE_INPUT_EVENT_MAIN:
+    return "STEP_HANDLE_INPUT_EVENT_MAIN";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_Step::STEP_MAIN_THREAD_SCROLL_UPDATE:
+    return "STEP_MAIN_THREAD_SCROLL_UPDATE";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_Step::STEP_HANDLE_INPUT_EVENT_MAIN_COMMIT:
+    return "STEP_HANDLE_INPUT_EVENT_MAIN_COMMIT";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_Step::STEP_HANDLED_INPUT_EVENT_MAIN_OR_IMPL:
+    return "STEP_HANDLED_INPUT_EVENT_MAIN_OR_IMPL";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_Step::STEP_HANDLED_INPUT_EVENT_IMPL:
+    return "STEP_HANDLED_INPUT_EVENT_IMPL";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_Step::STEP_SWAP_BUFFERS:
+    return "STEP_SWAP_BUFFERS";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_Step::STEP_DRAW_AND_SWAP:
+    return "STEP_DRAW_AND_SWAP";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_Step::STEP_FINISHED_SWAP_BUFFERS:
+    return "STEP_FINISHED_SWAP_BUFFERS";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_ChromeLatencyInfo {
+enum LatencyComponentType : int32_t {
+  COMPONENT_UNSPECIFIED = 0,
+  COMPONENT_INPUT_EVENT_LATENCY_BEGIN_RWH = 1,
+  COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL = 2,
+  COMPONENT_INPUT_EVENT_LATENCY_FIRST_SCROLL_UPDATE_ORIGINAL = 3,
+  COMPONENT_INPUT_EVENT_LATENCY_ORIGINAL = 4,
+  COMPONENT_INPUT_EVENT_LATENCY_UI = 5,
+  COMPONENT_INPUT_EVENT_LATENCY_RENDERER_MAIN = 6,
+  COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN = 7,
+  COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL = 8,
+  COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_LAST_EVENT = 9,
+  COMPONENT_INPUT_EVENT_LATENCY_ACK_RWH = 10,
+  COMPONENT_INPUT_EVENT_LATENCY_RENDERER_SWAP = 11,
+  COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME = 12,
+  COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER = 13,
+  COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP = 14,
 };
+} // namespace perfetto_pbzero_enum_ChromeLatencyInfo
+using ChromeLatencyInfo_LatencyComponentType = perfetto_pbzero_enum_ChromeLatencyInfo::LatencyComponentType;
 
-const ChromeLatencyInfo_LatencyComponentType ChromeLatencyInfo_LatencyComponentType_MIN = ChromeLatencyInfo_LatencyComponentType_COMPONENT_UNSPECIFIED;
-const ChromeLatencyInfo_LatencyComponentType ChromeLatencyInfo_LatencyComponentType_MAX = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP;
+
+constexpr ChromeLatencyInfo_LatencyComponentType ChromeLatencyInfo_LatencyComponentType_MIN = ChromeLatencyInfo_LatencyComponentType::COMPONENT_UNSPECIFIED;
+constexpr ChromeLatencyInfo_LatencyComponentType ChromeLatencyInfo_LatencyComponentType_MAX = ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeLatencyInfo_LatencyComponentType_Name(::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_UNSPECIFIED:
+    return "COMPONENT_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_BEGIN_RWH:
+    return "COMPONENT_INPUT_EVENT_LATENCY_BEGIN_RWH";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL:
+    return "COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_FIRST_SCROLL_UPDATE_ORIGINAL:
+    return "COMPONENT_INPUT_EVENT_LATENCY_FIRST_SCROLL_UPDATE_ORIGINAL";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_ORIGINAL:
+    return "COMPONENT_INPUT_EVENT_LATENCY_ORIGINAL";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_UI:
+    return "COMPONENT_INPUT_EVENT_LATENCY_UI";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERER_MAIN:
+    return "COMPONENT_INPUT_EVENT_LATENCY_RENDERER_MAIN";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN:
+    return "COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL:
+    return "COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_LAST_EVENT:
+    return "COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_LAST_EVENT";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_ACK_RWH:
+    return "COMPONENT_INPUT_EVENT_LATENCY_ACK_RWH";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERER_SWAP:
+    return "COMPONENT_INPUT_EVENT_LATENCY_RENDERER_SWAP";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME:
+    return "COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER:
+    return "COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP:
+    return "COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class ChromeLatencyInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -92,36 +201,46 @@ class ChromeLatencyInfo : public ::protozero::Message {
     kGestureScrollIdFieldNumber = 6,
     kTouchIdFieldNumber = 7,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeLatencyInfo"; }
+
   using ComponentInfo = ::perfetto::protos::pbzero::ChromeLatencyInfo_ComponentInfo;
+
   using Step = ::perfetto::protos::pbzero::ChromeLatencyInfo_Step;
+  static inline const char* Step_Name(Step value) {
+    return ::perfetto::protos::pbzero::ChromeLatencyInfo_Step_Name(value);
+  }
+
   using LatencyComponentType = ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType;
-  static const Step STEP_UNSPECIFIED = ChromeLatencyInfo_Step_STEP_UNSPECIFIED;
-  static const Step STEP_SEND_INPUT_EVENT_UI = ChromeLatencyInfo_Step_STEP_SEND_INPUT_EVENT_UI;
-  static const Step STEP_HANDLE_INPUT_EVENT_IMPL = ChromeLatencyInfo_Step_STEP_HANDLE_INPUT_EVENT_IMPL;
-  static const Step STEP_DID_HANDLE_INPUT_AND_OVERSCROLL = ChromeLatencyInfo_Step_STEP_DID_HANDLE_INPUT_AND_OVERSCROLL;
-  static const Step STEP_HANDLE_INPUT_EVENT_MAIN = ChromeLatencyInfo_Step_STEP_HANDLE_INPUT_EVENT_MAIN;
-  static const Step STEP_MAIN_THREAD_SCROLL_UPDATE = ChromeLatencyInfo_Step_STEP_MAIN_THREAD_SCROLL_UPDATE;
-  static const Step STEP_HANDLE_INPUT_EVENT_MAIN_COMMIT = ChromeLatencyInfo_Step_STEP_HANDLE_INPUT_EVENT_MAIN_COMMIT;
-  static const Step STEP_HANDLED_INPUT_EVENT_MAIN_OR_IMPL = ChromeLatencyInfo_Step_STEP_HANDLED_INPUT_EVENT_MAIN_OR_IMPL;
-  static const Step STEP_HANDLED_INPUT_EVENT_IMPL = ChromeLatencyInfo_Step_STEP_HANDLED_INPUT_EVENT_IMPL;
-  static const Step STEP_SWAP_BUFFERS = ChromeLatencyInfo_Step_STEP_SWAP_BUFFERS;
-  static const Step STEP_DRAW_AND_SWAP = ChromeLatencyInfo_Step_STEP_DRAW_AND_SWAP;
-  static const Step STEP_FINISHED_SWAP_BUFFERS = ChromeLatencyInfo_Step_STEP_FINISHED_SWAP_BUFFERS;
-  static const LatencyComponentType COMPONENT_UNSPECIFIED = ChromeLatencyInfo_LatencyComponentType_COMPONENT_UNSPECIFIED;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_BEGIN_RWH = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_BEGIN_RWH;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_FIRST_SCROLL_UPDATE_ORIGINAL = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_FIRST_SCROLL_UPDATE_ORIGINAL;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_ORIGINAL = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_ORIGINAL;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_UI = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_UI;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERER_MAIN = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_RENDERER_MAIN;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_LAST_EVENT = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_LAST_EVENT;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_ACK_RWH = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_ACK_RWH;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERER_SWAP = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_RENDERER_SWAP;
-  static const LatencyComponentType COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME = ChromeLatencyInfo_LatencyComponentType_COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP;
+  static inline const char* LatencyComponentType_Name(LatencyComponentType value) {
+    return ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType_Name(value);
+  }
+  static const Step STEP_UNSPECIFIED = Step::STEP_UNSPECIFIED;
+  static const Step STEP_SEND_INPUT_EVENT_UI = Step::STEP_SEND_INPUT_EVENT_UI;
+  static const Step STEP_HANDLE_INPUT_EVENT_IMPL = Step::STEP_HANDLE_INPUT_EVENT_IMPL;
+  static const Step STEP_DID_HANDLE_INPUT_AND_OVERSCROLL = Step::STEP_DID_HANDLE_INPUT_AND_OVERSCROLL;
+  static const Step STEP_HANDLE_INPUT_EVENT_MAIN = Step::STEP_HANDLE_INPUT_EVENT_MAIN;
+  static const Step STEP_MAIN_THREAD_SCROLL_UPDATE = Step::STEP_MAIN_THREAD_SCROLL_UPDATE;
+  static const Step STEP_HANDLE_INPUT_EVENT_MAIN_COMMIT = Step::STEP_HANDLE_INPUT_EVENT_MAIN_COMMIT;
+  static const Step STEP_HANDLED_INPUT_EVENT_MAIN_OR_IMPL = Step::STEP_HANDLED_INPUT_EVENT_MAIN_OR_IMPL;
+  static const Step STEP_HANDLED_INPUT_EVENT_IMPL = Step::STEP_HANDLED_INPUT_EVENT_IMPL;
+  static const Step STEP_SWAP_BUFFERS = Step::STEP_SWAP_BUFFERS;
+  static const Step STEP_DRAW_AND_SWAP = Step::STEP_DRAW_AND_SWAP;
+  static const Step STEP_FINISHED_SWAP_BUFFERS = Step::STEP_FINISHED_SWAP_BUFFERS;
+  static const LatencyComponentType COMPONENT_UNSPECIFIED = LatencyComponentType::COMPONENT_UNSPECIFIED;
+  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_BEGIN_RWH = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_BEGIN_RWH;
+  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL;
+  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_FIRST_SCROLL_UPDATE_ORIGINAL = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_FIRST_SCROLL_UPDATE_ORIGINAL;
+  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_ORIGINAL = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_ORIGINAL;
+  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_UI = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_UI;
+  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERER_MAIN = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERER_MAIN;
+  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN;
+  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL;
+  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_LAST_EVENT = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_LAST_EVENT;
+  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_ACK_RWH = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_ACK_RWH;
+  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERER_SWAP = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERER_SWAP;
+  static const LatencyComponentType COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME = LatencyComponentType::COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME;
+  static const LatencyComponentType COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER = LatencyComponentType::COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER;
+  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP;
 
   using FieldMetadata_TraceId =
     ::protozero::proto_utils::FieldMetadata<
@@ -137,7 +256,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TraceId kTraceId() { return {}; }
   void set_trace_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TraceId::kFieldId;
@@ -162,7 +281,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Step kStep() { return {}; }
   void set_step(::perfetto::protos::pbzero::ChromeLatencyInfo_Step value) {
     static constexpr uint32_t field_id = FieldMetadata_Step::kFieldId;
@@ -187,7 +306,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FrameTreeNodeId kFrameTreeNodeId() { return {}; }
   void set_frame_tree_node_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FrameTreeNodeId::kFieldId;
@@ -212,7 +331,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ComponentInfo kComponentInfo() { return {}; }
   template <typename T = ChromeLatencyInfo_ComponentInfo> T* add_component_info() {
     return BeginNestedMessage<T>(4);
@@ -233,7 +352,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IsCoalesced kIsCoalesced() { return {}; }
   void set_is_coalesced(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_IsCoalesced::kFieldId;
@@ -258,7 +377,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_GestureScrollId kGestureScrollId() { return {}; }
   void set_gesture_scroll_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_GestureScrollId::kFieldId;
@@ -283,7 +402,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TouchId kTouchId() { return {}; }
   void set_touch_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TouchId::kFieldId;
@@ -313,6 +432,8 @@ class ChromeLatencyInfo_ComponentInfo : public ::protozero::Message {
     kComponentTypeFieldNumber = 1,
     kTimeUsFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeLatencyInfo.ComponentInfo"; }
+
 
   using FieldMetadata_ComponentType =
     ::protozero::proto_utils::FieldMetadata<
@@ -328,7 +449,7 @@ class ChromeLatencyInfo_ComponentInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ComponentType kComponentType() { return {}; }
   void set_component_type(::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType value) {
     static constexpr uint32_t field_id = FieldMetadata_ComponentType::kFieldId;
@@ -353,7 +474,7 @@ class ChromeLatencyInfo_ComponentInfo : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TimeUs kTimeUs() { return {}; }
   void set_time_us(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimeUs::kFieldId;

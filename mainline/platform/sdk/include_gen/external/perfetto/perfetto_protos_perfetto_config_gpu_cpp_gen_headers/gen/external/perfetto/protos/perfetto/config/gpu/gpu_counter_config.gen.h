@@ -28,7 +28,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT GpuCounterConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GpuCounterConfig : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kCounterPeriodNsFieldNumber = 1,

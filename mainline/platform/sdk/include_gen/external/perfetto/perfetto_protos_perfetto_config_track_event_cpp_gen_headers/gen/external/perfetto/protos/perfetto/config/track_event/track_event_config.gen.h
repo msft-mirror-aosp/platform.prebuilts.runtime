@@ -28,13 +28,18 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT TrackEventConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TrackEventConfig : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDisabledCategoriesFieldNumber = 1,
     kEnabledCategoriesFieldNumber = 2,
     kDisabledTagsFieldNumber = 3,
     kEnabledTagsFieldNumber = 4,
+    kDisableIncrementalTimestampsFieldNumber = 5,
+    kTimestampUnitMultiplierFieldNumber = 6,
+    kFilterDebugAnnotationsFieldNumber = 7,
+    kEnableThreadTimeSamplingFieldNumber = 8,
+    kFilterDynamicEventNamesFieldNumber = 9,
   };
 
   TrackEventConfig();
@@ -79,17 +84,42 @@ class PERFETTO_EXPORT TrackEventConfig : public ::protozero::CppMessageObj {
   void add_enabled_tags(std::string value) { enabled_tags_.emplace_back(value); }
   std::string* add_enabled_tags() { enabled_tags_.emplace_back(); return &enabled_tags_.back(); }
 
+  bool has_disable_incremental_timestamps() const { return _has_field_[5]; }
+  bool disable_incremental_timestamps() const { return disable_incremental_timestamps_; }
+  void set_disable_incremental_timestamps(bool value) { disable_incremental_timestamps_ = value; _has_field_.set(5); }
+
+  bool has_timestamp_unit_multiplier() const { return _has_field_[6]; }
+  uint64_t timestamp_unit_multiplier() const { return timestamp_unit_multiplier_; }
+  void set_timestamp_unit_multiplier(uint64_t value) { timestamp_unit_multiplier_ = value; _has_field_.set(6); }
+
+  bool has_filter_debug_annotations() const { return _has_field_[7]; }
+  bool filter_debug_annotations() const { return filter_debug_annotations_; }
+  void set_filter_debug_annotations(bool value) { filter_debug_annotations_ = value; _has_field_.set(7); }
+
+  bool has_enable_thread_time_sampling() const { return _has_field_[8]; }
+  bool enable_thread_time_sampling() const { return enable_thread_time_sampling_; }
+  void set_enable_thread_time_sampling(bool value) { enable_thread_time_sampling_ = value; _has_field_.set(8); }
+
+  bool has_filter_dynamic_event_names() const { return _has_field_[9]; }
+  bool filter_dynamic_event_names() const { return filter_dynamic_event_names_; }
+  void set_filter_dynamic_event_names(bool value) { filter_dynamic_event_names_ = value; _has_field_.set(9); }
+
  private:
   std::vector<std::string> disabled_categories_;
   std::vector<std::string> enabled_categories_;
   std::vector<std::string> disabled_tags_;
   std::vector<std::string> enabled_tags_;
+  bool disable_incremental_timestamps_{};
+  uint64_t timestamp_unit_multiplier_{};
+  bool filter_debug_annotations_{};
+  bool enable_thread_time_sampling_{};
+  bool filter_dynamic_event_names_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<5> _has_field_{};
+  std::bitset<10> _has_field_{};
 };
 
 }  // namespace perfetto

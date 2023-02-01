@@ -33,6 +33,8 @@ class AndroidEnergyConsumerDescriptor : public ::protozero::Message {
   enum : int32_t {
     kEnergyConsumersFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.AndroidEnergyConsumerDescriptor"; }
+
 
   using FieldMetadata_EnergyConsumers =
     ::protozero::proto_utils::FieldMetadata<
@@ -48,7 +50,7 @@ class AndroidEnergyConsumerDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EnergyConsumers kEnergyConsumers() { return {}; }
   template <typename T = AndroidEnergyConsumer> T* add_energy_consumers() {
     return BeginNestedMessage<T>(1);
@@ -80,6 +82,8 @@ class AndroidEnergyConsumer : public ::protozero::Message {
     kTypeFieldNumber = 3,
     kNameFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.AndroidEnergyConsumer"; }
+
 
   using FieldMetadata_EnergyConsumerId =
     ::protozero::proto_utils::FieldMetadata<
@@ -95,7 +99,7 @@ class AndroidEnergyConsumer : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EnergyConsumerId kEnergyConsumerId() { return {}; }
   void set_energy_consumer_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_EnergyConsumerId::kFieldId;
@@ -120,7 +124,7 @@ class AndroidEnergyConsumer : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ordinal kOrdinal() { return {}; }
   void set_ordinal(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ordinal::kFieldId;
@@ -145,10 +149,13 @@ class AndroidEnergyConsumer : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Type::kFieldId, data, size);
+  }
+  void set_type(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Type::kFieldId, chars.data, chars.size);
   }
   void set_type(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
@@ -173,10 +180,13 @@ class AndroidEnergyConsumer : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
