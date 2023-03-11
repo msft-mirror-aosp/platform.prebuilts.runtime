@@ -29,7 +29,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT ChromeHistogramSample : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeHistogramSample : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNameHashFieldNumber = 1,
@@ -82,7 +82,7 @@ class PERFETTO_EXPORT ChromeHistogramSample : public ::protozero::CppMessageObj 
 };
 
 
-class PERFETTO_EXPORT HistogramName : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT HistogramName : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kIidFieldNumber = 1,

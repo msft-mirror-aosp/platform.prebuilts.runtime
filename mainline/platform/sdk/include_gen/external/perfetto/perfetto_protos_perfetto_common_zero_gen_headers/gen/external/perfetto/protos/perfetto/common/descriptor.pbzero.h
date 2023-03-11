@@ -24,41 +24,132 @@ class FieldDescriptorProto;
 class FileDescriptorProto;
 class OneofDescriptorProto;
 class OneofOptions;
-enum FieldDescriptorProto_Label : int32_t;
-enum FieldDescriptorProto_Type : int32_t;
+namespace perfetto_pbzero_enum_FieldDescriptorProto {
+enum Label : int32_t;
+}  // namespace perfetto_pbzero_enum_FieldDescriptorProto
+using FieldDescriptorProto_Label = perfetto_pbzero_enum_FieldDescriptorProto::Label;
+namespace perfetto_pbzero_enum_FieldDescriptorProto {
+enum Type : int32_t;
+}  // namespace perfetto_pbzero_enum_FieldDescriptorProto
+using FieldDescriptorProto_Type = perfetto_pbzero_enum_FieldDescriptorProto::Type;
 
-enum FieldDescriptorProto_Type : int32_t {
-  FieldDescriptorProto_Type_TYPE_DOUBLE = 1,
-  FieldDescriptorProto_Type_TYPE_FLOAT = 2,
-  FieldDescriptorProto_Type_TYPE_INT64 = 3,
-  FieldDescriptorProto_Type_TYPE_UINT64 = 4,
-  FieldDescriptorProto_Type_TYPE_INT32 = 5,
-  FieldDescriptorProto_Type_TYPE_FIXED64 = 6,
-  FieldDescriptorProto_Type_TYPE_FIXED32 = 7,
-  FieldDescriptorProto_Type_TYPE_BOOL = 8,
-  FieldDescriptorProto_Type_TYPE_STRING = 9,
-  FieldDescriptorProto_Type_TYPE_GROUP = 10,
-  FieldDescriptorProto_Type_TYPE_MESSAGE = 11,
-  FieldDescriptorProto_Type_TYPE_BYTES = 12,
-  FieldDescriptorProto_Type_TYPE_UINT32 = 13,
-  FieldDescriptorProto_Type_TYPE_ENUM = 14,
-  FieldDescriptorProto_Type_TYPE_SFIXED32 = 15,
-  FieldDescriptorProto_Type_TYPE_SFIXED64 = 16,
-  FieldDescriptorProto_Type_TYPE_SINT32 = 17,
-  FieldDescriptorProto_Type_TYPE_SINT64 = 18,
+namespace perfetto_pbzero_enum_FieldDescriptorProto {
+enum Type : int32_t {
+  TYPE_DOUBLE = 1,
+  TYPE_FLOAT = 2,
+  TYPE_INT64 = 3,
+  TYPE_UINT64 = 4,
+  TYPE_INT32 = 5,
+  TYPE_FIXED64 = 6,
+  TYPE_FIXED32 = 7,
+  TYPE_BOOL = 8,
+  TYPE_STRING = 9,
+  TYPE_GROUP = 10,
+  TYPE_MESSAGE = 11,
+  TYPE_BYTES = 12,
+  TYPE_UINT32 = 13,
+  TYPE_ENUM = 14,
+  TYPE_SFIXED32 = 15,
+  TYPE_SFIXED64 = 16,
+  TYPE_SINT32 = 17,
+  TYPE_SINT64 = 18,
 };
+} // namespace perfetto_pbzero_enum_FieldDescriptorProto
+using FieldDescriptorProto_Type = perfetto_pbzero_enum_FieldDescriptorProto::Type;
 
-const FieldDescriptorProto_Type FieldDescriptorProto_Type_MIN = FieldDescriptorProto_Type_TYPE_DOUBLE;
-const FieldDescriptorProto_Type FieldDescriptorProto_Type_MAX = FieldDescriptorProto_Type_TYPE_SINT64;
 
-enum FieldDescriptorProto_Label : int32_t {
-  FieldDescriptorProto_Label_LABEL_OPTIONAL = 1,
-  FieldDescriptorProto_Label_LABEL_REQUIRED = 2,
-  FieldDescriptorProto_Label_LABEL_REPEATED = 3,
+constexpr FieldDescriptorProto_Type FieldDescriptorProto_Type_MIN = FieldDescriptorProto_Type::TYPE_DOUBLE;
+constexpr FieldDescriptorProto_Type FieldDescriptorProto_Type_MAX = FieldDescriptorProto_Type::TYPE_SINT64;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* FieldDescriptorProto_Type_Name(::perfetto::protos::pbzero::FieldDescriptorProto_Type value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_DOUBLE:
+    return "TYPE_DOUBLE";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_FLOAT:
+    return "TYPE_FLOAT";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_INT64:
+    return "TYPE_INT64";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_UINT64:
+    return "TYPE_UINT64";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_INT32:
+    return "TYPE_INT32";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_FIXED64:
+    return "TYPE_FIXED64";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_FIXED32:
+    return "TYPE_FIXED32";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_BOOL:
+    return "TYPE_BOOL";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_STRING:
+    return "TYPE_STRING";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_GROUP:
+    return "TYPE_GROUP";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_MESSAGE:
+    return "TYPE_MESSAGE";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_BYTES:
+    return "TYPE_BYTES";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_UINT32:
+    return "TYPE_UINT32";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_ENUM:
+    return "TYPE_ENUM";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_SFIXED32:
+    return "TYPE_SFIXED32";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_SFIXED64:
+    return "TYPE_SFIXED64";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_SINT32:
+    return "TYPE_SINT32";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Type::TYPE_SINT64:
+    return "TYPE_SINT64";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_FieldDescriptorProto {
+enum Label : int32_t {
+  LABEL_OPTIONAL = 1,
+  LABEL_REQUIRED = 2,
+  LABEL_REPEATED = 3,
 };
+} // namespace perfetto_pbzero_enum_FieldDescriptorProto
+using FieldDescriptorProto_Label = perfetto_pbzero_enum_FieldDescriptorProto::Label;
 
-const FieldDescriptorProto_Label FieldDescriptorProto_Label_MIN = FieldDescriptorProto_Label_LABEL_OPTIONAL;
-const FieldDescriptorProto_Label FieldDescriptorProto_Label_MAX = FieldDescriptorProto_Label_LABEL_REPEATED;
+
+constexpr FieldDescriptorProto_Label FieldDescriptorProto_Label_MIN = FieldDescriptorProto_Label::LABEL_OPTIONAL;
+constexpr FieldDescriptorProto_Label FieldDescriptorProto_Label_MAX = FieldDescriptorProto_Label::LABEL_REPEATED;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* FieldDescriptorProto_Label_Name(::perfetto::protos::pbzero::FieldDescriptorProto_Label value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Label::LABEL_OPTIONAL:
+    return "LABEL_OPTIONAL";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Label::LABEL_REQUIRED:
+    return "LABEL_REQUIRED";
+
+  case ::perfetto::protos::pbzero::FieldDescriptorProto_Label::LABEL_REPEATED:
+    return "LABEL_REPEATED";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class OneofOptions_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/0, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -70,6 +161,8 @@ class OneofOptions_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_I
 class OneofOptions : public ::protozero::Message {
  public:
   using Decoder = OneofOptions_Decoder;
+  static constexpr const char* GetName() { return ".perfetto.protos.OneofOptions"; }
+
 };
 
 class EnumValueDescriptorProto_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
@@ -90,6 +183,8 @@ class EnumValueDescriptorProto : public ::protozero::Message {
     kNameFieldNumber = 1,
     kNumberFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.EnumValueDescriptorProto"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -105,10 +200,13 @@ class EnumValueDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -133,7 +231,7 @@ class EnumValueDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Number kNumber() { return {}; }
   void set_number(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Number::kFieldId;
@@ -166,6 +264,8 @@ class EnumDescriptorProto : public ::protozero::Message {
     kValueFieldNumber = 2,
     kReservedNameFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.EnumDescriptorProto"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -181,10 +281,13 @@ class EnumDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -209,7 +312,7 @@ class EnumDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Value kValue() { return {}; }
   template <typename T = EnumValueDescriptorProto> T* add_value() {
     return BeginNestedMessage<T>(2);
@@ -230,10 +333,13 @@ class EnumDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ReservedName kReservedName() { return {}; }
   void add_reserved_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ReservedName::kFieldId, data, size);
+  }
+  void add_reserved_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ReservedName::kFieldId, chars.data, chars.size);
   }
   void add_reserved_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ReservedName::kFieldId;
@@ -263,6 +369,8 @@ class OneofDescriptorProto : public ::protozero::Message {
     kNameFieldNumber = 1,
     kOptionsFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.OneofDescriptorProto"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -278,10 +386,13 @@ class OneofDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -306,7 +417,7 @@ class OneofDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Options kOptions() { return {}; }
   template <typename T = OneofOptions> T* set_options() {
     return BeginNestedMessage<T>(2);
@@ -350,29 +461,39 @@ class FieldDescriptorProto : public ::protozero::Message {
     kDefaultValueFieldNumber = 7,
     kOneofIndexFieldNumber = 9,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.FieldDescriptorProto"; }
+
+
   using Type = ::perfetto::protos::pbzero::FieldDescriptorProto_Type;
+  static inline const char* Type_Name(Type value) {
+    return ::perfetto::protos::pbzero::FieldDescriptorProto_Type_Name(value);
+  }
+
   using Label = ::perfetto::protos::pbzero::FieldDescriptorProto_Label;
-  static const Type TYPE_DOUBLE = FieldDescriptorProto_Type_TYPE_DOUBLE;
-  static const Type TYPE_FLOAT = FieldDescriptorProto_Type_TYPE_FLOAT;
-  static const Type TYPE_INT64 = FieldDescriptorProto_Type_TYPE_INT64;
-  static const Type TYPE_UINT64 = FieldDescriptorProto_Type_TYPE_UINT64;
-  static const Type TYPE_INT32 = FieldDescriptorProto_Type_TYPE_INT32;
-  static const Type TYPE_FIXED64 = FieldDescriptorProto_Type_TYPE_FIXED64;
-  static const Type TYPE_FIXED32 = FieldDescriptorProto_Type_TYPE_FIXED32;
-  static const Type TYPE_BOOL = FieldDescriptorProto_Type_TYPE_BOOL;
-  static const Type TYPE_STRING = FieldDescriptorProto_Type_TYPE_STRING;
-  static const Type TYPE_GROUP = FieldDescriptorProto_Type_TYPE_GROUP;
-  static const Type TYPE_MESSAGE = FieldDescriptorProto_Type_TYPE_MESSAGE;
-  static const Type TYPE_BYTES = FieldDescriptorProto_Type_TYPE_BYTES;
-  static const Type TYPE_UINT32 = FieldDescriptorProto_Type_TYPE_UINT32;
-  static const Type TYPE_ENUM = FieldDescriptorProto_Type_TYPE_ENUM;
-  static const Type TYPE_SFIXED32 = FieldDescriptorProto_Type_TYPE_SFIXED32;
-  static const Type TYPE_SFIXED64 = FieldDescriptorProto_Type_TYPE_SFIXED64;
-  static const Type TYPE_SINT32 = FieldDescriptorProto_Type_TYPE_SINT32;
-  static const Type TYPE_SINT64 = FieldDescriptorProto_Type_TYPE_SINT64;
-  static const Label LABEL_OPTIONAL = FieldDescriptorProto_Label_LABEL_OPTIONAL;
-  static const Label LABEL_REQUIRED = FieldDescriptorProto_Label_LABEL_REQUIRED;
-  static const Label LABEL_REPEATED = FieldDescriptorProto_Label_LABEL_REPEATED;
+  static inline const char* Label_Name(Label value) {
+    return ::perfetto::protos::pbzero::FieldDescriptorProto_Label_Name(value);
+  }
+  static const Type TYPE_DOUBLE = Type::TYPE_DOUBLE;
+  static const Type TYPE_FLOAT = Type::TYPE_FLOAT;
+  static const Type TYPE_INT64 = Type::TYPE_INT64;
+  static const Type TYPE_UINT64 = Type::TYPE_UINT64;
+  static const Type TYPE_INT32 = Type::TYPE_INT32;
+  static const Type TYPE_FIXED64 = Type::TYPE_FIXED64;
+  static const Type TYPE_FIXED32 = Type::TYPE_FIXED32;
+  static const Type TYPE_BOOL = Type::TYPE_BOOL;
+  static const Type TYPE_STRING = Type::TYPE_STRING;
+  static const Type TYPE_GROUP = Type::TYPE_GROUP;
+  static const Type TYPE_MESSAGE = Type::TYPE_MESSAGE;
+  static const Type TYPE_BYTES = Type::TYPE_BYTES;
+  static const Type TYPE_UINT32 = Type::TYPE_UINT32;
+  static const Type TYPE_ENUM = Type::TYPE_ENUM;
+  static const Type TYPE_SFIXED32 = Type::TYPE_SFIXED32;
+  static const Type TYPE_SFIXED64 = Type::TYPE_SFIXED64;
+  static const Type TYPE_SINT32 = Type::TYPE_SINT32;
+  static const Type TYPE_SINT64 = Type::TYPE_SINT64;
+  static const Label LABEL_OPTIONAL = Label::LABEL_OPTIONAL;
+  static const Label LABEL_REQUIRED = Label::LABEL_REQUIRED;
+  static const Label LABEL_REPEATED = Label::LABEL_REPEATED;
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -388,10 +509,13 @@ class FieldDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -416,7 +540,7 @@ class FieldDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Number kNumber() { return {}; }
   void set_number(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Number::kFieldId;
@@ -441,7 +565,7 @@ class FieldDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Label kLabel() { return {}; }
   void set_label(::perfetto::protos::pbzero::FieldDescriptorProto_Label value) {
     static constexpr uint32_t field_id = FieldMetadata_Label::kFieldId;
@@ -466,7 +590,7 @@ class FieldDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(::perfetto::protos::pbzero::FieldDescriptorProto_Type value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
@@ -491,10 +615,13 @@ class FieldDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TypeName kTypeName() { return {}; }
   void set_type_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_TypeName::kFieldId, data, size);
+  }
+  void set_type_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_TypeName::kFieldId, chars.data, chars.size);
   }
   void set_type_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_TypeName::kFieldId;
@@ -519,10 +646,13 @@ class FieldDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Extendee kExtendee() { return {}; }
   void set_extendee(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Extendee::kFieldId, data, size);
+  }
+  void set_extendee(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Extendee::kFieldId, chars.data, chars.size);
   }
   void set_extendee(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Extendee::kFieldId;
@@ -547,10 +677,13 @@ class FieldDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DefaultValue kDefaultValue() { return {}; }
   void set_default_value(const char* data, size_t size) {
     AppendBytes(FieldMetadata_DefaultValue::kFieldId, data, size);
+  }
+  void set_default_value(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_DefaultValue::kFieldId, chars.data, chars.size);
   }
   void set_default_value(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_DefaultValue::kFieldId;
@@ -575,7 +708,7 @@ class FieldDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_OneofIndex kOneofIndex() { return {}; }
   void set_oneof_index(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_OneofIndex::kFieldId;
@@ -623,6 +756,8 @@ class DescriptorProto : public ::protozero::Message {
     kReservedRangeFieldNumber = 9,
     kReservedNameFieldNumber = 10,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.DescriptorProto"; }
+
   using ReservedRange = ::perfetto::protos::pbzero::DescriptorProto_ReservedRange;
 
   using FieldMetadata_Name =
@@ -639,10 +774,13 @@ class DescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -667,7 +805,7 @@ class DescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Field kField() { return {}; }
   template <typename T = FieldDescriptorProto> T* add_field() {
     return BeginNestedMessage<T>(2);
@@ -688,7 +826,7 @@ class DescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Extension kExtension() { return {}; }
   template <typename T = FieldDescriptorProto> T* add_extension() {
     return BeginNestedMessage<T>(6);
@@ -709,7 +847,7 @@ class DescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NestedType kNestedType() { return {}; }
   template <typename T = DescriptorProto> T* add_nested_type() {
     return BeginNestedMessage<T>(3);
@@ -730,7 +868,7 @@ class DescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EnumType kEnumType() { return {}; }
   template <typename T = EnumDescriptorProto> T* add_enum_type() {
     return BeginNestedMessage<T>(4);
@@ -751,7 +889,7 @@ class DescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_OneofDecl kOneofDecl() { return {}; }
   template <typename T = OneofDescriptorProto> T* add_oneof_decl() {
     return BeginNestedMessage<T>(8);
@@ -772,7 +910,7 @@ class DescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ReservedRange kReservedRange() { return {}; }
   template <typename T = DescriptorProto_ReservedRange> T* add_reserved_range() {
     return BeginNestedMessage<T>(9);
@@ -793,10 +931,13 @@ class DescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ReservedName kReservedName() { return {}; }
   void add_reserved_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ReservedName::kFieldId, data, size);
+  }
+  void add_reserved_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ReservedName::kFieldId, chars.data, chars.size);
   }
   void add_reserved_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ReservedName::kFieldId;
@@ -826,6 +967,8 @@ class DescriptorProto_ReservedRange : public ::protozero::Message {
     kStartFieldNumber = 1,
     kEndFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.DescriptorProto.ReservedRange"; }
+
 
   using FieldMetadata_Start =
     ::protozero::proto_utils::FieldMetadata<
@@ -841,7 +984,7 @@ class DescriptorProto_ReservedRange : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Start kStart() { return {}; }
   void set_start(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Start::kFieldId;
@@ -866,7 +1009,7 @@ class DescriptorProto_ReservedRange : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_End kEnd() { return {}; }
   void set_end(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_End::kFieldId;
@@ -914,6 +1057,8 @@ class FileDescriptorProto : public ::protozero::Message {
     kEnumTypeFieldNumber = 5,
     kExtensionFieldNumber = 7,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.FileDescriptorProto"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -929,10 +1074,13 @@ class FileDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -957,10 +1105,13 @@ class FileDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Package kPackage() { return {}; }
   void set_package(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Package::kFieldId, data, size);
+  }
+  void set_package(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Package::kFieldId, chars.data, chars.size);
   }
   void set_package(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Package::kFieldId;
@@ -985,10 +1136,13 @@ class FileDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dependency kDependency() { return {}; }
   void add_dependency(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Dependency::kFieldId, data, size);
+  }
+  void add_dependency(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Dependency::kFieldId, chars.data, chars.size);
   }
   void add_dependency(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Dependency::kFieldId;
@@ -1013,7 +1167,7 @@ class FileDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PublicDependency kPublicDependency() { return {}; }
   void add_public_dependency(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PublicDependency::kFieldId;
@@ -1038,7 +1192,7 @@ class FileDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_WeakDependency kWeakDependency() { return {}; }
   void add_weak_dependency(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_WeakDependency::kFieldId;
@@ -1063,7 +1217,7 @@ class FileDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MessageType kMessageType() { return {}; }
   template <typename T = DescriptorProto> T* add_message_type() {
     return BeginNestedMessage<T>(4);
@@ -1084,7 +1238,7 @@ class FileDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EnumType kEnumType() { return {}; }
   template <typename T = EnumDescriptorProto> T* add_enum_type() {
     return BeginNestedMessage<T>(5);
@@ -1105,7 +1259,7 @@ class FileDescriptorProto : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Extension kExtension() { return {}; }
   template <typename T = FieldDescriptorProto> T* add_extension() {
     return BeginNestedMessage<T>(7);
@@ -1128,6 +1282,8 @@ class FileDescriptorSet : public ::protozero::Message {
   enum : int32_t {
     kFileFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.FileDescriptorSet"; }
+
 
   using FieldMetadata_File =
     ::protozero::proto_utils::FieldMetadata<
@@ -1143,7 +1299,7 @@ class FileDescriptorSet : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_File kFile() { return {}; }
   template <typename T = FileDescriptorProto> T* add_file() {
     return BeginNestedMessage<T>(1);

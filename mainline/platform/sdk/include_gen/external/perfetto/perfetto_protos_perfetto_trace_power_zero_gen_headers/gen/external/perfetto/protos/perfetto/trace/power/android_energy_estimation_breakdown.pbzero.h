@@ -43,6 +43,8 @@ class AndroidEnergyEstimationBreakdown : public ::protozero::Message {
     kEnergyUwsFieldNumber = 3,
     kPerUidBreakdownFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.AndroidEnergyEstimationBreakdown"; }
+
   using EnergyUidBreakdown = ::perfetto::protos::pbzero::AndroidEnergyEstimationBreakdown_EnergyUidBreakdown;
 
   using FieldMetadata_EnergyConsumerDescriptor =
@@ -59,7 +61,7 @@ class AndroidEnergyEstimationBreakdown : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EnergyConsumerDescriptor kEnergyConsumerDescriptor() { return {}; }
   template <typename T = AndroidEnergyConsumerDescriptor> T* set_energy_consumer_descriptor() {
     return BeginNestedMessage<T>(1);
@@ -80,7 +82,7 @@ class AndroidEnergyEstimationBreakdown : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EnergyConsumerId kEnergyConsumerId() { return {}; }
   void set_energy_consumer_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_EnergyConsumerId::kFieldId;
@@ -105,7 +107,7 @@ class AndroidEnergyEstimationBreakdown : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EnergyUws kEnergyUws() { return {}; }
   void set_energy_uws(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_EnergyUws::kFieldId;
@@ -130,7 +132,7 @@ class AndroidEnergyEstimationBreakdown : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PerUidBreakdown kPerUidBreakdown() { return {}; }
   template <typename T = AndroidEnergyEstimationBreakdown_EnergyUidBreakdown> T* add_per_uid_breakdown() {
     return BeginNestedMessage<T>(4);
@@ -156,6 +158,8 @@ class AndroidEnergyEstimationBreakdown_EnergyUidBreakdown : public ::protozero::
     kUidFieldNumber = 1,
     kEnergyUwsFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.AndroidEnergyEstimationBreakdown.EnergyUidBreakdown"; }
+
 
   using FieldMetadata_Uid =
     ::protozero::proto_utils::FieldMetadata<
@@ -171,7 +175,7 @@ class AndroidEnergyEstimationBreakdown_EnergyUidBreakdown : public ::protozero::
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Uid kUid() { return {}; }
   void set_uid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Uid::kFieldId;
@@ -196,7 +200,7 @@ class AndroidEnergyEstimationBreakdown_EnergyUidBreakdown : public ::protozero::
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EnergyUws kEnergyUws() { return {}; }
   void set_energy_uws(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_EnergyUws::kFieldId;

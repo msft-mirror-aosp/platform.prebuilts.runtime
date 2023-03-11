@@ -15,6 +15,7 @@
 namespace perfetto {
 namespace protos {
 namespace gen {
+class DebugAnnotationValueTypeName;
 class DebugAnnotationName;
 class DebugAnnotation;
 class DebugAnnotation_NestedValue;
@@ -36,7 +37,48 @@ enum DebugAnnotation_NestedValue_NestedType : int {
   DebugAnnotation_NestedValue_NestedType_ARRAY = 2,
 };
 
-class PERFETTO_EXPORT DebugAnnotationName : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT DebugAnnotationValueTypeName : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kIidFieldNumber = 1,
+    kNameFieldNumber = 2,
+  };
+
+  DebugAnnotationValueTypeName();
+  ~DebugAnnotationValueTypeName() override;
+  DebugAnnotationValueTypeName(DebugAnnotationValueTypeName&&) noexcept;
+  DebugAnnotationValueTypeName& operator=(DebugAnnotationValueTypeName&&);
+  DebugAnnotationValueTypeName(const DebugAnnotationValueTypeName&);
+  DebugAnnotationValueTypeName& operator=(const DebugAnnotationValueTypeName&);
+  bool operator==(const DebugAnnotationValueTypeName&) const;
+  bool operator!=(const DebugAnnotationValueTypeName& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_iid() const { return _has_field_[1]; }
+  uint64_t iid() const { return iid_; }
+  void set_iid(uint64_t value) { iid_ = value; _has_field_.set(1); }
+
+  bool has_name() const { return _has_field_[2]; }
+  const std::string& name() const { return name_; }
+  void set_name(const std::string& value) { name_ = value; _has_field_.set(2); }
+
+ private:
+  uint64_t iid_{};
+  std::string name_{};
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<3> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT DebugAnnotationName : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kIidFieldNumber = 1,
@@ -77,7 +119,7 @@ class PERFETTO_EXPORT DebugAnnotationName : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT DebugAnnotation : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT DebugAnnotation : public ::protozero::CppMessageObj {
  public:
   using NestedValue = DebugAnnotation_NestedValue;
   enum FieldNumbers {
@@ -91,6 +133,9 @@ class PERFETTO_EXPORT DebugAnnotation : public ::protozero::CppMessageObj {
     kPointerValueFieldNumber = 7,
     kNestedValueFieldNumber = 8,
     kLegacyJsonValueFieldNumber = 9,
+    kProtoTypeNameFieldNumber = 16,
+    kProtoTypeNameIidFieldNumber = 13,
+    kProtoValueFieldNumber = 14,
     kDictEntriesFieldNumber = 11,
     kArrayValuesFieldNumber = 12,
   };
@@ -149,6 +194,19 @@ class PERFETTO_EXPORT DebugAnnotation : public ::protozero::CppMessageObj {
   const std::string& legacy_json_value() const { return legacy_json_value_; }
   void set_legacy_json_value(const std::string& value) { legacy_json_value_ = value; _has_field_.set(9); }
 
+  bool has_proto_type_name() const { return _has_field_[16]; }
+  const std::string& proto_type_name() const { return proto_type_name_; }
+  void set_proto_type_name(const std::string& value) { proto_type_name_ = value; _has_field_.set(16); }
+
+  bool has_proto_type_name_iid() const { return _has_field_[13]; }
+  uint64_t proto_type_name_iid() const { return proto_type_name_iid_; }
+  void set_proto_type_name_iid(uint64_t value) { proto_type_name_iid_ = value; _has_field_.set(13); }
+
+  bool has_proto_value() const { return _has_field_[14]; }
+  const std::string& proto_value() const { return proto_value_; }
+  void set_proto_value(const std::string& value) { proto_value_ = value; _has_field_.set(14); }
+  void set_proto_value(const void* p, size_t s) { proto_value_.assign(reinterpret_cast<const char*>(p), s); _has_field_.set(14); }
+
   const std::vector<DebugAnnotation>& dict_entries() const { return dict_entries_; }
   std::vector<DebugAnnotation>* mutable_dict_entries() { return &dict_entries_; }
   int dict_entries_size() const;
@@ -172,6 +230,9 @@ class PERFETTO_EXPORT DebugAnnotation : public ::protozero::CppMessageObj {
   uint64_t pointer_value_{};
   ::protozero::CopyablePtr<DebugAnnotation_NestedValue> nested_value_;
   std::string legacy_json_value_{};
+  std::string proto_type_name_{};
+  uint64_t proto_type_name_iid_{};
+  std::string proto_value_{};
   std::vector<DebugAnnotation> dict_entries_;
   std::vector<DebugAnnotation> array_values_;
 
@@ -179,11 +240,11 @@ class PERFETTO_EXPORT DebugAnnotation : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<13> _has_field_{};
+  std::bitset<17> _has_field_{};
 };
 
 
-class PERFETTO_EXPORT DebugAnnotation_NestedValue : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT DebugAnnotation_NestedValue : public ::protozero::CppMessageObj {
  public:
   using NestedType = DebugAnnotation_NestedValue_NestedType;
   static constexpr auto UNSPECIFIED = DebugAnnotation_NestedValue_NestedType_UNSPECIFIED;

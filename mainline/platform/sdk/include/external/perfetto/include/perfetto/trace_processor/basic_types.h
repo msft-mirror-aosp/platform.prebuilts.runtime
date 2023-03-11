@@ -25,6 +25,7 @@
 #include <string>
 #include <vector>
 
+#include "perfetto/base/build_config.h"
 #include "perfetto/base/export.h"
 #include "perfetto/base/logging.h"
 
@@ -76,7 +77,8 @@ enum class SortingMode {
 enum class DropFtraceDataBefore {
   // Drops ftrace data before timestmap specified by the
   // TracingServiceEvent::tracing_started packet. If this packet is not in the
-  // trace, no data is dropped.
+  // trace, no data is dropped. If preserve_ftrace_buffer (from the trace
+  // config) is set, no data is dropped.
   // Note: this event was introduced in S+ so no data will be dropped on R-
   // traces.
   // This is the default approach.
@@ -94,7 +96,7 @@ enum class DropFtraceDataBefore {
 };
 
 // Struct for configuring a TraceProcessor instance (see trace_processor.h).
-struct PERFETTO_EXPORT Config {
+struct PERFETTO_EXPORT_COMPONENT Config {
   // Indicates the sortinng mode that trace processor should use on the passed
   // trace packets. See the enum documentation for more details.
   SortingMode sorting_mode = SortingMode::kDefaultHeuristics;
@@ -117,10 +119,23 @@ struct PERFETTO_EXPORT Config {
   // Any built-in metric proto or sql files matching these paths are skipped
   // during trace processor metric initialization.
   std::vector<std::string> skip_builtin_metric_paths;
+
+  // When set to true, the trace processor analyzes trace proto content, and
+  // exports the field path -> total size mapping into an SQL table.
+  //
+  // The analysis feature is hidden behind the flag so that the users who don't
+  // need this feature don't pay the performance costs.
+  //
+  // The flag has no impact on non-proto traces.
+  bool analyze_trace_proto_content = false;
+
+  // When set to true, trace processor will be augmented with a bunch of helpful
+  // features for local development such as extra SQL fuctions.
+  bool enable_dev_features = false;
 };
 
 // Represents a dynamically typed value returned by SQL.
-struct PERFETTO_EXPORT SqlValue {
+struct PERFETTO_EXPORT_COMPONENT SqlValue {
   // Represents the type of the value.
   enum Type {
     kNull = 0,
