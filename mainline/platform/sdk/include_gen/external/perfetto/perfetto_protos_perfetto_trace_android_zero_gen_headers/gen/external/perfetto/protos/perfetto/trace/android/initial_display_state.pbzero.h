@@ -35,6 +35,8 @@ class InitialDisplayState : public ::protozero::Message {
     kDisplayStateFieldNumber = 1,
     kBrightnessFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.InitialDisplayState"; }
+
 
   using FieldMetadata_DisplayState =
     ::protozero::proto_utils::FieldMetadata<
@@ -50,7 +52,7 @@ class InitialDisplayState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DisplayState kDisplayState() { return {}; }
   void set_display_state(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DisplayState::kFieldId;
@@ -75,7 +77,7 @@ class InitialDisplayState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Brightness kBrightness() { return {}; }
   void set_brightness(double value) {
     static constexpr uint32_t field_id = FieldMetadata_Brightness::kFieldId;

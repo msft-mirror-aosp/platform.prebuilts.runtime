@@ -27,6 +27,8 @@ class ScmCallEndFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MA
 class ScmCallEndFtraceEvent : public ::protozero::Message {
  public:
   using Decoder = ScmCallEndFtraceEvent_Decoder;
+  static constexpr const char* GetName() { return ".perfetto.protos.ScmCallEndFtraceEvent"; }
+
 };
 
 class ScmCallStartFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
@@ -50,6 +52,8 @@ class ScmCallStartFtraceEvent : public ::protozero::Message {
     kX0FieldNumber = 2,
     kX5FieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ScmCallStartFtraceEvent"; }
+
 
   using FieldMetadata_Arginfo =
     ::protozero::proto_utils::FieldMetadata<
@@ -65,7 +69,7 @@ class ScmCallStartFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Arginfo kArginfo() { return {}; }
   void set_arginfo(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Arginfo::kFieldId;
@@ -90,7 +94,7 @@ class ScmCallStartFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_X0 kX0() { return {}; }
   void set_x0(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_X0::kFieldId;
@@ -115,7 +119,7 @@ class ScmCallStartFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_X5 kX5() { return {}; }
   void set_x5(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_X5::kFieldId;

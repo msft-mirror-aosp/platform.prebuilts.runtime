@@ -17,6 +17,162 @@ namespace protos {
 namespace pbzero {
 
 
+class WakeupSourceDeactivateFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  WakeupSourceDeactivateFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit WakeupSourceDeactivateFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit WakeupSourceDeactivateFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_name() const { return at<1>().valid(); }
+  ::protozero::ConstChars name() const { return at<1>().as_string(); }
+  bool has_state() const { return at<2>().valid(); }
+  uint64_t state() const { return at<2>().as_uint64(); }
+};
+
+class WakeupSourceDeactivateFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = WakeupSourceDeactivateFtraceEvent_Decoder;
+  enum : int32_t {
+    kNameFieldNumber = 1,
+    kStateFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.WakeupSourceDeactivateFtraceEvent"; }
+
+
+  using FieldMetadata_Name =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      WakeupSourceDeactivateFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Name kName() { return {}; }
+  void set_name(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
+  }
+  void set_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_State =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      WakeupSourceDeactivateFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_State kState() { return {}; }
+  void set_state(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class WakeupSourceActivateFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  WakeupSourceActivateFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit WakeupSourceActivateFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit WakeupSourceActivateFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_name() const { return at<1>().valid(); }
+  ::protozero::ConstChars name() const { return at<1>().as_string(); }
+  bool has_state() const { return at<2>().valid(); }
+  uint64_t state() const { return at<2>().as_uint64(); }
+};
+
+class WakeupSourceActivateFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = WakeupSourceActivateFtraceEvent_Decoder;
+  enum : int32_t {
+    kNameFieldNumber = 1,
+    kStateFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.WakeupSourceActivateFtraceEvent"; }
+
+
+  using FieldMetadata_Name =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      WakeupSourceActivateFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Name kName() { return {}; }
+  void set_name(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
+  }
+  void set_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_State =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      WakeupSourceActivateFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_State kState() { return {}; }
+  void set_state(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
+
 class GpuFrequencyFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   GpuFrequencyFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
@@ -35,6 +191,8 @@ class GpuFrequencyFtraceEvent : public ::protozero::Message {
     kGpuIdFieldNumber = 1,
     kStateFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuFrequencyFtraceEvent"; }
+
 
   using FieldMetadata_GpuId =
     ::protozero::proto_utils::FieldMetadata<
@@ -50,7 +208,7 @@ class GpuFrequencyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_GpuId kGpuId() { return {}; }
   void set_gpu_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_GpuId::kFieldId;
@@ -75,7 +233,7 @@ class GpuFrequencyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_State kState() { return {}; }
   void set_state(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
@@ -108,6 +266,8 @@ class SuspendResumeFtraceEvent : public ::protozero::Message {
     kValFieldNumber = 2,
     kStartFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.SuspendResumeFtraceEvent"; }
+
 
   using FieldMetadata_Action =
     ::protozero::proto_utils::FieldMetadata<
@@ -123,10 +283,13 @@ class SuspendResumeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Action kAction() { return {}; }
   void set_action(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Action::kFieldId, data, size);
+  }
+  void set_action(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Action::kFieldId, chars.data, chars.size);
   }
   void set_action(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Action::kFieldId;
@@ -151,7 +314,7 @@ class SuspendResumeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Val kVal() { return {}; }
   void set_val(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Val::kFieldId;
@@ -176,7 +339,7 @@ class SuspendResumeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Start kStart() { return {}; }
   void set_start(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Start::kFieldId;
@@ -209,6 +372,8 @@ class ClockSetRateFtraceEvent : public ::protozero::Message {
     kStateFieldNumber = 2,
     kCpuIdFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ClockSetRateFtraceEvent"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -224,10 +389,13 @@ class ClockSetRateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -252,7 +420,7 @@ class ClockSetRateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_State kState() { return {}; }
   void set_state(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
@@ -277,7 +445,7 @@ class ClockSetRateFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CpuId kCpuId() { return {}; }
   void set_cpu_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CpuId::kFieldId;
@@ -310,6 +478,8 @@ class ClockDisableFtraceEvent : public ::protozero::Message {
     kStateFieldNumber = 2,
     kCpuIdFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ClockDisableFtraceEvent"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -325,10 +495,13 @@ class ClockDisableFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -353,7 +526,7 @@ class ClockDisableFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_State kState() { return {}; }
   void set_state(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
@@ -378,7 +551,7 @@ class ClockDisableFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CpuId kCpuId() { return {}; }
   void set_cpu_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CpuId::kFieldId;
@@ -411,6 +584,8 @@ class ClockEnableFtraceEvent : public ::protozero::Message {
     kStateFieldNumber = 2,
     kCpuIdFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ClockEnableFtraceEvent"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -426,10 +601,13 @@ class ClockEnableFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -454,7 +632,7 @@ class ClockEnableFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_State kState() { return {}; }
   void set_state(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
@@ -479,7 +657,7 @@ class ClockEnableFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CpuId kCpuId() { return {}; }
   void set_cpu_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CpuId::kFieldId;
@@ -509,6 +687,8 @@ class CpuIdleFtraceEvent : public ::protozero::Message {
     kStateFieldNumber = 1,
     kCpuIdFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.CpuIdleFtraceEvent"; }
+
 
   using FieldMetadata_State =
     ::protozero::proto_utils::FieldMetadata<
@@ -524,7 +704,7 @@ class CpuIdleFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_State kState() { return {}; }
   void set_state(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
@@ -549,7 +729,7 @@ class CpuIdleFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CpuId kCpuId() { return {}; }
   void set_cpu_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CpuId::kFieldId;
@@ -582,6 +762,8 @@ class CpuFrequencyLimitsFtraceEvent : public ::protozero::Message {
     kMaxFreqFieldNumber = 2,
     kCpuIdFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.CpuFrequencyLimitsFtraceEvent"; }
+
 
   using FieldMetadata_MinFreq =
     ::protozero::proto_utils::FieldMetadata<
@@ -597,7 +779,7 @@ class CpuFrequencyLimitsFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MinFreq kMinFreq() { return {}; }
   void set_min_freq(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MinFreq::kFieldId;
@@ -622,7 +804,7 @@ class CpuFrequencyLimitsFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MaxFreq kMaxFreq() { return {}; }
   void set_max_freq(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxFreq::kFieldId;
@@ -647,7 +829,7 @@ class CpuFrequencyLimitsFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CpuId kCpuId() { return {}; }
   void set_cpu_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CpuId::kFieldId;
@@ -677,6 +859,8 @@ class CpuFrequencyFtraceEvent : public ::protozero::Message {
     kStateFieldNumber = 1,
     kCpuIdFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.CpuFrequencyFtraceEvent"; }
+
 
   using FieldMetadata_State =
     ::protozero::proto_utils::FieldMetadata<
@@ -692,7 +876,7 @@ class CpuFrequencyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_State kState() { return {}; }
   void set_state(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
@@ -717,7 +901,7 @@ class CpuFrequencyFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CpuId kCpuId() { return {}; }
   void set_cpu_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CpuId::kFieldId;
