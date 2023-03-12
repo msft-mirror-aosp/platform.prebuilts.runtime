@@ -16,51 +16,179 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-enum ChromeLegacyIpc_MessageClass : int32_t;
+namespace perfetto_pbzero_enum_ChromeLegacyIpc {
+enum MessageClass : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeLegacyIpc
+using ChromeLegacyIpc_MessageClass = perfetto_pbzero_enum_ChromeLegacyIpc::MessageClass;
 
-enum ChromeLegacyIpc_MessageClass : int32_t {
-  ChromeLegacyIpc_MessageClass_CLASS_UNSPECIFIED = 0,
-  ChromeLegacyIpc_MessageClass_CLASS_AUTOMATION = 1,
-  ChromeLegacyIpc_MessageClass_CLASS_FRAME = 2,
-  ChromeLegacyIpc_MessageClass_CLASS_PAGE = 3,
-  ChromeLegacyIpc_MessageClass_CLASS_VIEW = 4,
-  ChromeLegacyIpc_MessageClass_CLASS_WIDGET = 5,
-  ChromeLegacyIpc_MessageClass_CLASS_INPUT = 6,
-  ChromeLegacyIpc_MessageClass_CLASS_TEST = 7,
-  ChromeLegacyIpc_MessageClass_CLASS_WORKER = 8,
-  ChromeLegacyIpc_MessageClass_CLASS_NACL = 9,
-  ChromeLegacyIpc_MessageClass_CLASS_GPU_CHANNEL = 10,
-  ChromeLegacyIpc_MessageClass_CLASS_MEDIA = 11,
-  ChromeLegacyIpc_MessageClass_CLASS_PPAPI = 12,
-  ChromeLegacyIpc_MessageClass_CLASS_CHROME = 13,
-  ChromeLegacyIpc_MessageClass_CLASS_DRAG = 14,
-  ChromeLegacyIpc_MessageClass_CLASS_PRINT = 15,
-  ChromeLegacyIpc_MessageClass_CLASS_EXTENSION = 16,
-  ChromeLegacyIpc_MessageClass_CLASS_TEXT_INPUT_CLIENT = 17,
-  ChromeLegacyIpc_MessageClass_CLASS_BLINK_TEST = 18,
-  ChromeLegacyIpc_MessageClass_CLASS_ACCESSIBILITY = 19,
-  ChromeLegacyIpc_MessageClass_CLASS_PRERENDER = 20,
-  ChromeLegacyIpc_MessageClass_CLASS_CHROMOTING = 21,
-  ChromeLegacyIpc_MessageClass_CLASS_BROWSER_PLUGIN = 22,
-  ChromeLegacyIpc_MessageClass_CLASS_ANDROID_WEB_VIEW = 23,
-  ChromeLegacyIpc_MessageClass_CLASS_NACL_HOST = 24,
-  ChromeLegacyIpc_MessageClass_CLASS_ENCRYPTED_MEDIA = 25,
-  ChromeLegacyIpc_MessageClass_CLASS_CAST = 26,
-  ChromeLegacyIpc_MessageClass_CLASS_GIN_JAVA_BRIDGE = 27,
-  ChromeLegacyIpc_MessageClass_CLASS_CHROME_UTILITY_PRINTING = 28,
-  ChromeLegacyIpc_MessageClass_CLASS_OZONE_GPU = 29,
-  ChromeLegacyIpc_MessageClass_CLASS_WEB_TEST = 30,
-  ChromeLegacyIpc_MessageClass_CLASS_NETWORK_HINTS = 31,
-  ChromeLegacyIpc_MessageClass_CLASS_EXTENSIONS_GUEST_VIEW = 32,
-  ChromeLegacyIpc_MessageClass_CLASS_GUEST_VIEW = 33,
-  ChromeLegacyIpc_MessageClass_CLASS_MEDIA_PLAYER_DELEGATE = 34,
-  ChromeLegacyIpc_MessageClass_CLASS_EXTENSION_WORKER = 35,
-  ChromeLegacyIpc_MessageClass_CLASS_SUBRESOURCE_FILTER = 36,
-  ChromeLegacyIpc_MessageClass_CLASS_UNFREEZABLE_FRAME = 37,
+namespace perfetto_pbzero_enum_ChromeLegacyIpc {
+enum MessageClass : int32_t {
+  CLASS_UNSPECIFIED = 0,
+  CLASS_AUTOMATION = 1,
+  CLASS_FRAME = 2,
+  CLASS_PAGE = 3,
+  CLASS_VIEW = 4,
+  CLASS_WIDGET = 5,
+  CLASS_INPUT = 6,
+  CLASS_TEST = 7,
+  CLASS_WORKER = 8,
+  CLASS_NACL = 9,
+  CLASS_GPU_CHANNEL = 10,
+  CLASS_MEDIA = 11,
+  CLASS_PPAPI = 12,
+  CLASS_CHROME = 13,
+  CLASS_DRAG = 14,
+  CLASS_PRINT = 15,
+  CLASS_EXTENSION = 16,
+  CLASS_TEXT_INPUT_CLIENT = 17,
+  CLASS_BLINK_TEST = 18,
+  CLASS_ACCESSIBILITY = 19,
+  CLASS_PRERENDER = 20,
+  CLASS_CHROMOTING = 21,
+  CLASS_BROWSER_PLUGIN = 22,
+  CLASS_ANDROID_WEB_VIEW = 23,
+  CLASS_NACL_HOST = 24,
+  CLASS_ENCRYPTED_MEDIA = 25,
+  CLASS_CAST = 26,
+  CLASS_GIN_JAVA_BRIDGE = 27,
+  CLASS_CHROME_UTILITY_PRINTING = 28,
+  CLASS_OZONE_GPU = 29,
+  CLASS_WEB_TEST = 30,
+  CLASS_NETWORK_HINTS = 31,
+  CLASS_EXTENSIONS_GUEST_VIEW = 32,
+  CLASS_GUEST_VIEW = 33,
+  CLASS_MEDIA_PLAYER_DELEGATE = 34,
+  CLASS_EXTENSION_WORKER = 35,
+  CLASS_SUBRESOURCE_FILTER = 36,
+  CLASS_UNFREEZABLE_FRAME = 37,
 };
+} // namespace perfetto_pbzero_enum_ChromeLegacyIpc
+using ChromeLegacyIpc_MessageClass = perfetto_pbzero_enum_ChromeLegacyIpc::MessageClass;
 
-const ChromeLegacyIpc_MessageClass ChromeLegacyIpc_MessageClass_MIN = ChromeLegacyIpc_MessageClass_CLASS_UNSPECIFIED;
-const ChromeLegacyIpc_MessageClass ChromeLegacyIpc_MessageClass_MAX = ChromeLegacyIpc_MessageClass_CLASS_UNFREEZABLE_FRAME;
+
+constexpr ChromeLegacyIpc_MessageClass ChromeLegacyIpc_MessageClass_MIN = ChromeLegacyIpc_MessageClass::CLASS_UNSPECIFIED;
+constexpr ChromeLegacyIpc_MessageClass ChromeLegacyIpc_MessageClass_MAX = ChromeLegacyIpc_MessageClass::CLASS_UNFREEZABLE_FRAME;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeLegacyIpc_MessageClass_Name(::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_UNSPECIFIED:
+    return "CLASS_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_AUTOMATION:
+    return "CLASS_AUTOMATION";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_FRAME:
+    return "CLASS_FRAME";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_PAGE:
+    return "CLASS_PAGE";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_VIEW:
+    return "CLASS_VIEW";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_WIDGET:
+    return "CLASS_WIDGET";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_INPUT:
+    return "CLASS_INPUT";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_TEST:
+    return "CLASS_TEST";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_WORKER:
+    return "CLASS_WORKER";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_NACL:
+    return "CLASS_NACL";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_GPU_CHANNEL:
+    return "CLASS_GPU_CHANNEL";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_MEDIA:
+    return "CLASS_MEDIA";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_PPAPI:
+    return "CLASS_PPAPI";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_CHROME:
+    return "CLASS_CHROME";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_DRAG:
+    return "CLASS_DRAG";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_PRINT:
+    return "CLASS_PRINT";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_EXTENSION:
+    return "CLASS_EXTENSION";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_TEXT_INPUT_CLIENT:
+    return "CLASS_TEXT_INPUT_CLIENT";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_BLINK_TEST:
+    return "CLASS_BLINK_TEST";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_ACCESSIBILITY:
+    return "CLASS_ACCESSIBILITY";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_PRERENDER:
+    return "CLASS_PRERENDER";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_CHROMOTING:
+    return "CLASS_CHROMOTING";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_BROWSER_PLUGIN:
+    return "CLASS_BROWSER_PLUGIN";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_ANDROID_WEB_VIEW:
+    return "CLASS_ANDROID_WEB_VIEW";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_NACL_HOST:
+    return "CLASS_NACL_HOST";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_ENCRYPTED_MEDIA:
+    return "CLASS_ENCRYPTED_MEDIA";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_CAST:
+    return "CLASS_CAST";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_GIN_JAVA_BRIDGE:
+    return "CLASS_GIN_JAVA_BRIDGE";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_CHROME_UTILITY_PRINTING:
+    return "CLASS_CHROME_UTILITY_PRINTING";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_OZONE_GPU:
+    return "CLASS_OZONE_GPU";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_WEB_TEST:
+    return "CLASS_WEB_TEST";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_NETWORK_HINTS:
+    return "CLASS_NETWORK_HINTS";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_EXTENSIONS_GUEST_VIEW:
+    return "CLASS_EXTENSIONS_GUEST_VIEW";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_GUEST_VIEW:
+    return "CLASS_GUEST_VIEW";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_MEDIA_PLAYER_DELEGATE:
+    return "CLASS_MEDIA_PLAYER_DELEGATE";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_EXTENSION_WORKER:
+    return "CLASS_EXTENSION_WORKER";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_SUBRESOURCE_FILTER:
+    return "CLASS_SUBRESOURCE_FILTER";
+
+  case ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass::CLASS_UNFREEZABLE_FRAME:
+    return "CLASS_UNFREEZABLE_FRAME";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class ChromeLegacyIpc_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -80,45 +208,51 @@ class ChromeLegacyIpc : public ::protozero::Message {
     kMessageClassFieldNumber = 1,
     kMessageLineFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeLegacyIpc"; }
+
+
   using MessageClass = ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass;
-  static const MessageClass CLASS_UNSPECIFIED = ChromeLegacyIpc_MessageClass_CLASS_UNSPECIFIED;
-  static const MessageClass CLASS_AUTOMATION = ChromeLegacyIpc_MessageClass_CLASS_AUTOMATION;
-  static const MessageClass CLASS_FRAME = ChromeLegacyIpc_MessageClass_CLASS_FRAME;
-  static const MessageClass CLASS_PAGE = ChromeLegacyIpc_MessageClass_CLASS_PAGE;
-  static const MessageClass CLASS_VIEW = ChromeLegacyIpc_MessageClass_CLASS_VIEW;
-  static const MessageClass CLASS_WIDGET = ChromeLegacyIpc_MessageClass_CLASS_WIDGET;
-  static const MessageClass CLASS_INPUT = ChromeLegacyIpc_MessageClass_CLASS_INPUT;
-  static const MessageClass CLASS_TEST = ChromeLegacyIpc_MessageClass_CLASS_TEST;
-  static const MessageClass CLASS_WORKER = ChromeLegacyIpc_MessageClass_CLASS_WORKER;
-  static const MessageClass CLASS_NACL = ChromeLegacyIpc_MessageClass_CLASS_NACL;
-  static const MessageClass CLASS_GPU_CHANNEL = ChromeLegacyIpc_MessageClass_CLASS_GPU_CHANNEL;
-  static const MessageClass CLASS_MEDIA = ChromeLegacyIpc_MessageClass_CLASS_MEDIA;
-  static const MessageClass CLASS_PPAPI = ChromeLegacyIpc_MessageClass_CLASS_PPAPI;
-  static const MessageClass CLASS_CHROME = ChromeLegacyIpc_MessageClass_CLASS_CHROME;
-  static const MessageClass CLASS_DRAG = ChromeLegacyIpc_MessageClass_CLASS_DRAG;
-  static const MessageClass CLASS_PRINT = ChromeLegacyIpc_MessageClass_CLASS_PRINT;
-  static const MessageClass CLASS_EXTENSION = ChromeLegacyIpc_MessageClass_CLASS_EXTENSION;
-  static const MessageClass CLASS_TEXT_INPUT_CLIENT = ChromeLegacyIpc_MessageClass_CLASS_TEXT_INPUT_CLIENT;
-  static const MessageClass CLASS_BLINK_TEST = ChromeLegacyIpc_MessageClass_CLASS_BLINK_TEST;
-  static const MessageClass CLASS_ACCESSIBILITY = ChromeLegacyIpc_MessageClass_CLASS_ACCESSIBILITY;
-  static const MessageClass CLASS_PRERENDER = ChromeLegacyIpc_MessageClass_CLASS_PRERENDER;
-  static const MessageClass CLASS_CHROMOTING = ChromeLegacyIpc_MessageClass_CLASS_CHROMOTING;
-  static const MessageClass CLASS_BROWSER_PLUGIN = ChromeLegacyIpc_MessageClass_CLASS_BROWSER_PLUGIN;
-  static const MessageClass CLASS_ANDROID_WEB_VIEW = ChromeLegacyIpc_MessageClass_CLASS_ANDROID_WEB_VIEW;
-  static const MessageClass CLASS_NACL_HOST = ChromeLegacyIpc_MessageClass_CLASS_NACL_HOST;
-  static const MessageClass CLASS_ENCRYPTED_MEDIA = ChromeLegacyIpc_MessageClass_CLASS_ENCRYPTED_MEDIA;
-  static const MessageClass CLASS_CAST = ChromeLegacyIpc_MessageClass_CLASS_CAST;
-  static const MessageClass CLASS_GIN_JAVA_BRIDGE = ChromeLegacyIpc_MessageClass_CLASS_GIN_JAVA_BRIDGE;
-  static const MessageClass CLASS_CHROME_UTILITY_PRINTING = ChromeLegacyIpc_MessageClass_CLASS_CHROME_UTILITY_PRINTING;
-  static const MessageClass CLASS_OZONE_GPU = ChromeLegacyIpc_MessageClass_CLASS_OZONE_GPU;
-  static const MessageClass CLASS_WEB_TEST = ChromeLegacyIpc_MessageClass_CLASS_WEB_TEST;
-  static const MessageClass CLASS_NETWORK_HINTS = ChromeLegacyIpc_MessageClass_CLASS_NETWORK_HINTS;
-  static const MessageClass CLASS_EXTENSIONS_GUEST_VIEW = ChromeLegacyIpc_MessageClass_CLASS_EXTENSIONS_GUEST_VIEW;
-  static const MessageClass CLASS_GUEST_VIEW = ChromeLegacyIpc_MessageClass_CLASS_GUEST_VIEW;
-  static const MessageClass CLASS_MEDIA_PLAYER_DELEGATE = ChromeLegacyIpc_MessageClass_CLASS_MEDIA_PLAYER_DELEGATE;
-  static const MessageClass CLASS_EXTENSION_WORKER = ChromeLegacyIpc_MessageClass_CLASS_EXTENSION_WORKER;
-  static const MessageClass CLASS_SUBRESOURCE_FILTER = ChromeLegacyIpc_MessageClass_CLASS_SUBRESOURCE_FILTER;
-  static const MessageClass CLASS_UNFREEZABLE_FRAME = ChromeLegacyIpc_MessageClass_CLASS_UNFREEZABLE_FRAME;
+  static inline const char* MessageClass_Name(MessageClass value) {
+    return ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass_Name(value);
+  }
+  static const MessageClass CLASS_UNSPECIFIED = MessageClass::CLASS_UNSPECIFIED;
+  static const MessageClass CLASS_AUTOMATION = MessageClass::CLASS_AUTOMATION;
+  static const MessageClass CLASS_FRAME = MessageClass::CLASS_FRAME;
+  static const MessageClass CLASS_PAGE = MessageClass::CLASS_PAGE;
+  static const MessageClass CLASS_VIEW = MessageClass::CLASS_VIEW;
+  static const MessageClass CLASS_WIDGET = MessageClass::CLASS_WIDGET;
+  static const MessageClass CLASS_INPUT = MessageClass::CLASS_INPUT;
+  static const MessageClass CLASS_TEST = MessageClass::CLASS_TEST;
+  static const MessageClass CLASS_WORKER = MessageClass::CLASS_WORKER;
+  static const MessageClass CLASS_NACL = MessageClass::CLASS_NACL;
+  static const MessageClass CLASS_GPU_CHANNEL = MessageClass::CLASS_GPU_CHANNEL;
+  static const MessageClass CLASS_MEDIA = MessageClass::CLASS_MEDIA;
+  static const MessageClass CLASS_PPAPI = MessageClass::CLASS_PPAPI;
+  static const MessageClass CLASS_CHROME = MessageClass::CLASS_CHROME;
+  static const MessageClass CLASS_DRAG = MessageClass::CLASS_DRAG;
+  static const MessageClass CLASS_PRINT = MessageClass::CLASS_PRINT;
+  static const MessageClass CLASS_EXTENSION = MessageClass::CLASS_EXTENSION;
+  static const MessageClass CLASS_TEXT_INPUT_CLIENT = MessageClass::CLASS_TEXT_INPUT_CLIENT;
+  static const MessageClass CLASS_BLINK_TEST = MessageClass::CLASS_BLINK_TEST;
+  static const MessageClass CLASS_ACCESSIBILITY = MessageClass::CLASS_ACCESSIBILITY;
+  static const MessageClass CLASS_PRERENDER = MessageClass::CLASS_PRERENDER;
+  static const MessageClass CLASS_CHROMOTING = MessageClass::CLASS_CHROMOTING;
+  static const MessageClass CLASS_BROWSER_PLUGIN = MessageClass::CLASS_BROWSER_PLUGIN;
+  static const MessageClass CLASS_ANDROID_WEB_VIEW = MessageClass::CLASS_ANDROID_WEB_VIEW;
+  static const MessageClass CLASS_NACL_HOST = MessageClass::CLASS_NACL_HOST;
+  static const MessageClass CLASS_ENCRYPTED_MEDIA = MessageClass::CLASS_ENCRYPTED_MEDIA;
+  static const MessageClass CLASS_CAST = MessageClass::CLASS_CAST;
+  static const MessageClass CLASS_GIN_JAVA_BRIDGE = MessageClass::CLASS_GIN_JAVA_BRIDGE;
+  static const MessageClass CLASS_CHROME_UTILITY_PRINTING = MessageClass::CLASS_CHROME_UTILITY_PRINTING;
+  static const MessageClass CLASS_OZONE_GPU = MessageClass::CLASS_OZONE_GPU;
+  static const MessageClass CLASS_WEB_TEST = MessageClass::CLASS_WEB_TEST;
+  static const MessageClass CLASS_NETWORK_HINTS = MessageClass::CLASS_NETWORK_HINTS;
+  static const MessageClass CLASS_EXTENSIONS_GUEST_VIEW = MessageClass::CLASS_EXTENSIONS_GUEST_VIEW;
+  static const MessageClass CLASS_GUEST_VIEW = MessageClass::CLASS_GUEST_VIEW;
+  static const MessageClass CLASS_MEDIA_PLAYER_DELEGATE = MessageClass::CLASS_MEDIA_PLAYER_DELEGATE;
+  static const MessageClass CLASS_EXTENSION_WORKER = MessageClass::CLASS_EXTENSION_WORKER;
+  static const MessageClass CLASS_SUBRESOURCE_FILTER = MessageClass::CLASS_SUBRESOURCE_FILTER;
+  static const MessageClass CLASS_UNFREEZABLE_FRAME = MessageClass::CLASS_UNFREEZABLE_FRAME;
 
   using FieldMetadata_MessageClass =
     ::protozero::proto_utils::FieldMetadata<
@@ -134,7 +268,7 @@ class ChromeLegacyIpc : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MessageClass kMessageClass() { return {}; }
   void set_message_class(::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass value) {
     static constexpr uint32_t field_id = FieldMetadata_MessageClass::kFieldId;
@@ -159,7 +293,7 @@ class ChromeLegacyIpc : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MessageLine kMessageLine() { return {}; }
   void set_message_line(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MessageLine::kFieldId;

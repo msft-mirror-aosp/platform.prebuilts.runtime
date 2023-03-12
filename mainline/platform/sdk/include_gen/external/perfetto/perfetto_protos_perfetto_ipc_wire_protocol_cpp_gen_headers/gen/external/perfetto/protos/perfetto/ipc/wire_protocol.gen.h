@@ -34,7 +34,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT IPCFrame : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT IPCFrame : public ::protozero::CppMessageObj {
  public:
   using BindService = IPCFrame_BindService;
   using BindServiceReply = IPCFrame_BindServiceReply;
@@ -113,7 +113,7 @@ class PERFETTO_EXPORT IPCFrame : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT IPCFrame_RequestError : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT IPCFrame_RequestError : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kErrorFieldNumber = 1,
@@ -148,7 +148,7 @@ class PERFETTO_EXPORT IPCFrame_RequestError : public ::protozero::CppMessageObj 
 };
 
 
-class PERFETTO_EXPORT IPCFrame_InvokeMethodReply : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT IPCFrame_InvokeMethodReply : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kSuccessFieldNumber = 1,
@@ -196,7 +196,7 @@ class PERFETTO_EXPORT IPCFrame_InvokeMethodReply : public ::protozero::CppMessag
 };
 
 
-class PERFETTO_EXPORT IPCFrame_InvokeMethod : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT IPCFrame_InvokeMethod : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kServiceIdFieldNumber = 1,
@@ -250,7 +250,7 @@ class PERFETTO_EXPORT IPCFrame_InvokeMethod : public ::protozero::CppMessageObj 
 };
 
 
-class PERFETTO_EXPORT IPCFrame_BindServiceReply : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT IPCFrame_BindServiceReply : public ::protozero::CppMessageObj {
  public:
   using MethodInfo = IPCFrame_BindServiceReply_MethodInfo;
   enum FieldNumbers {
@@ -300,7 +300,7 @@ class PERFETTO_EXPORT IPCFrame_BindServiceReply : public ::protozero::CppMessage
 };
 
 
-class PERFETTO_EXPORT IPCFrame_BindServiceReply_MethodInfo : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT IPCFrame_BindServiceReply_MethodInfo : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kIdFieldNumber = 1,
@@ -341,7 +341,7 @@ class PERFETTO_EXPORT IPCFrame_BindServiceReply_MethodInfo : public ::protozero:
 };
 
 
-class PERFETTO_EXPORT IPCFrame_BindService : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT IPCFrame_BindService : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kServiceNameFieldNumber = 1,

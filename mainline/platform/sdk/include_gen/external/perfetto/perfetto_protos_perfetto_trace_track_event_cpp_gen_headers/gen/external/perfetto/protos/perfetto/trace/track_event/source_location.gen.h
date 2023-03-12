@@ -16,6 +16,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 class SourceLocation;
+class UnsymbolizedSourceLocation;
 }  // namespace perfetto
 }  // namespace protos
 }  // namespace gen
@@ -28,7 +29,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT SourceLocation : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT SourceLocation : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kIidFieldNumber = 1,
@@ -78,6 +79,53 @@ class PERFETTO_EXPORT SourceLocation : public ::protozero::CppMessageObj {
   std::string unknown_fields_;
 
   std::bitset<5> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT UnsymbolizedSourceLocation : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kIidFieldNumber = 1,
+    kMappingIdFieldNumber = 2,
+    kRelPcFieldNumber = 3,
+  };
+
+  UnsymbolizedSourceLocation();
+  ~UnsymbolizedSourceLocation() override;
+  UnsymbolizedSourceLocation(UnsymbolizedSourceLocation&&) noexcept;
+  UnsymbolizedSourceLocation& operator=(UnsymbolizedSourceLocation&&);
+  UnsymbolizedSourceLocation(const UnsymbolizedSourceLocation&);
+  UnsymbolizedSourceLocation& operator=(const UnsymbolizedSourceLocation&);
+  bool operator==(const UnsymbolizedSourceLocation&) const;
+  bool operator!=(const UnsymbolizedSourceLocation& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_iid() const { return _has_field_[1]; }
+  uint64_t iid() const { return iid_; }
+  void set_iid(uint64_t value) { iid_ = value; _has_field_.set(1); }
+
+  bool has_mapping_id() const { return _has_field_[2]; }
+  uint64_t mapping_id() const { return mapping_id_; }
+  void set_mapping_id(uint64_t value) { mapping_id_ = value; _has_field_.set(2); }
+
+  bool has_rel_pc() const { return _has_field_[3]; }
+  uint64_t rel_pc() const { return rel_pc_; }
+  void set_rel_pc(uint64_t value) { rel_pc_ = value; _has_field_.set(3); }
+
+ private:
+  uint64_t iid_{};
+  uint64_t mapping_id_{};
+  uint64_t rel_pc_{};
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<4> _has_field_{};
 };
 
 }  // namespace perfetto

@@ -16,7 +16,10 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-enum ObservableEvents_Type : int32_t;
+namespace perfetto_pbzero_enum_ObservableEvents {
+enum Type : int32_t;
+}  // namespace perfetto_pbzero_enum_ObservableEvents
+using ObservableEvents_Type = perfetto_pbzero_enum_ObservableEvents::Type;
 
 class TracingServiceCapabilities_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -39,6 +42,8 @@ class TracingServiceCapabilities : public ::protozero::Message {
     kObservableEventsFieldNumber = 2,
     kHasTraceConfigOutputPathFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.TracingServiceCapabilities"; }
+
 
   using FieldMetadata_HasQueryCapabilities =
     ::protozero::proto_utils::FieldMetadata<
@@ -54,7 +59,7 @@ class TracingServiceCapabilities : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HasQueryCapabilities kHasQueryCapabilities() { return {}; }
   void set_has_query_capabilities(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_HasQueryCapabilities::kFieldId;
@@ -79,7 +84,7 @@ class TracingServiceCapabilities : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ObservableEvents kObservableEvents() { return {}; }
   void add_observable_events(::perfetto::protos::pbzero::ObservableEvents_Type value) {
     static constexpr uint32_t field_id = FieldMetadata_ObservableEvents::kFieldId;
@@ -104,7 +109,7 @@ class TracingServiceCapabilities : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HasTraceConfigOutputPath kHasTraceConfigOutputPath() { return {}; }
   void set_has_trace_config_output_path(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_HasTraceConfigOutputPath::kFieldId;

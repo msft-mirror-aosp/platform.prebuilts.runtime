@@ -19,18 +19,152 @@ namespace pbzero {
 class PerfEvents_RawEvent;
 class PerfEvents_Timebase;
 class PerfEvents_Tracepoint;
-enum PerfEvents_Counter : int32_t;
+namespace perfetto_pbzero_enum_PerfEvents {
+enum Counter : int32_t;
+}  // namespace perfetto_pbzero_enum_PerfEvents
+using PerfEvents_Counter = perfetto_pbzero_enum_PerfEvents::Counter;
+namespace perfetto_pbzero_enum_PerfEvents {
+enum PerfClock : int32_t;
+}  // namespace perfetto_pbzero_enum_PerfEvents
+using PerfEvents_PerfClock = perfetto_pbzero_enum_PerfEvents::PerfClock;
 
-enum PerfEvents_Counter : int32_t {
-  PerfEvents_Counter_UNKNOWN_COUNTER = 0,
-  PerfEvents_Counter_SW_CPU_CLOCK = 1,
-  PerfEvents_Counter_SW_PAGE_FAULTS = 2,
-  PerfEvents_Counter_HW_CPU_CYCLES = 10,
-  PerfEvents_Counter_HW_INSTRUCTIONS = 11,
+namespace perfetto_pbzero_enum_PerfEvents {
+enum Counter : int32_t {
+  UNKNOWN_COUNTER = 0,
+  SW_CPU_CLOCK = 1,
+  SW_PAGE_FAULTS = 2,
+  SW_TASK_CLOCK = 3,
+  SW_CONTEXT_SWITCHES = 4,
+  SW_CPU_MIGRATIONS = 5,
+  SW_PAGE_FAULTS_MIN = 6,
+  SW_PAGE_FAULTS_MAJ = 7,
+  SW_ALIGNMENT_FAULTS = 8,
+  SW_EMULATION_FAULTS = 9,
+  SW_DUMMY = 20,
+  HW_CPU_CYCLES = 10,
+  HW_INSTRUCTIONS = 11,
+  HW_CACHE_REFERENCES = 12,
+  HW_CACHE_MISSES = 13,
+  HW_BRANCH_INSTRUCTIONS = 14,
+  HW_BRANCH_MISSES = 15,
+  HW_BUS_CYCLES = 16,
+  HW_STALLED_CYCLES_FRONTEND = 17,
+  HW_STALLED_CYCLES_BACKEND = 18,
+  HW_REF_CPU_CYCLES = 19,
 };
+} // namespace perfetto_pbzero_enum_PerfEvents
+using PerfEvents_Counter = perfetto_pbzero_enum_PerfEvents::Counter;
 
-const PerfEvents_Counter PerfEvents_Counter_MIN = PerfEvents_Counter_UNKNOWN_COUNTER;
-const PerfEvents_Counter PerfEvents_Counter_MAX = PerfEvents_Counter_HW_INSTRUCTIONS;
+
+constexpr PerfEvents_Counter PerfEvents_Counter_MIN = PerfEvents_Counter::UNKNOWN_COUNTER;
+constexpr PerfEvents_Counter PerfEvents_Counter_MAX = PerfEvents_Counter::SW_DUMMY;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* PerfEvents_Counter_Name(::perfetto::protos::pbzero::PerfEvents_Counter value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::UNKNOWN_COUNTER:
+    return "UNKNOWN_COUNTER";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::SW_CPU_CLOCK:
+    return "SW_CPU_CLOCK";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::SW_PAGE_FAULTS:
+    return "SW_PAGE_FAULTS";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::SW_TASK_CLOCK:
+    return "SW_TASK_CLOCK";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::SW_CONTEXT_SWITCHES:
+    return "SW_CONTEXT_SWITCHES";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::SW_CPU_MIGRATIONS:
+    return "SW_CPU_MIGRATIONS";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::SW_PAGE_FAULTS_MIN:
+    return "SW_PAGE_FAULTS_MIN";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::SW_PAGE_FAULTS_MAJ:
+    return "SW_PAGE_FAULTS_MAJ";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::SW_ALIGNMENT_FAULTS:
+    return "SW_ALIGNMENT_FAULTS";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::SW_EMULATION_FAULTS:
+    return "SW_EMULATION_FAULTS";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::SW_DUMMY:
+    return "SW_DUMMY";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::HW_CPU_CYCLES:
+    return "HW_CPU_CYCLES";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::HW_INSTRUCTIONS:
+    return "HW_INSTRUCTIONS";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::HW_CACHE_REFERENCES:
+    return "HW_CACHE_REFERENCES";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::HW_CACHE_MISSES:
+    return "HW_CACHE_MISSES";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::HW_BRANCH_INSTRUCTIONS:
+    return "HW_BRANCH_INSTRUCTIONS";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::HW_BRANCH_MISSES:
+    return "HW_BRANCH_MISSES";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::HW_BUS_CYCLES:
+    return "HW_BUS_CYCLES";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::HW_STALLED_CYCLES_FRONTEND:
+    return "HW_STALLED_CYCLES_FRONTEND";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::HW_STALLED_CYCLES_BACKEND:
+    return "HW_STALLED_CYCLES_BACKEND";
+
+  case ::perfetto::protos::pbzero::PerfEvents_Counter::HW_REF_CPU_CYCLES:
+    return "HW_REF_CPU_CYCLES";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_PerfEvents {
+enum PerfClock : int32_t {
+  UNKNOWN_PERF_CLOCK = 0,
+  PERF_CLOCK_REALTIME = 1,
+  PERF_CLOCK_MONOTONIC = 2,
+  PERF_CLOCK_MONOTONIC_RAW = 3,
+  PERF_CLOCK_BOOTTIME = 4,
+};
+} // namespace perfetto_pbzero_enum_PerfEvents
+using PerfEvents_PerfClock = perfetto_pbzero_enum_PerfEvents::PerfClock;
+
+
+constexpr PerfEvents_PerfClock PerfEvents_PerfClock_MIN = PerfEvents_PerfClock::UNKNOWN_PERF_CLOCK;
+constexpr PerfEvents_PerfClock PerfEvents_PerfClock_MAX = PerfEvents_PerfClock::PERF_CLOCK_BOOTTIME;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* PerfEvents_PerfClock_Name(::perfetto::protos::pbzero::PerfEvents_PerfClock value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::PerfEvents_PerfClock::UNKNOWN_PERF_CLOCK:
+    return "UNKNOWN_PERF_CLOCK";
+
+  case ::perfetto::protos::pbzero::PerfEvents_PerfClock::PERF_CLOCK_REALTIME:
+    return "PERF_CLOCK_REALTIME";
+
+  case ::perfetto::protos::pbzero::PerfEvents_PerfClock::PERF_CLOCK_MONOTONIC:
+    return "PERF_CLOCK_MONOTONIC";
+
+  case ::perfetto::protos::pbzero::PerfEvents_PerfClock::PERF_CLOCK_MONOTONIC_RAW:
+    return "PERF_CLOCK_MONOTONIC_RAW";
+
+  case ::perfetto::protos::pbzero::PerfEvents_PerfClock::PERF_CLOCK_BOOTTIME:
+    return "PERF_CLOCK_BOOTTIME";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class PerfEvents_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/0, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -42,15 +176,47 @@ class PerfEvents_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=
 class PerfEvents : public ::protozero::Message {
  public:
   using Decoder = PerfEvents_Decoder;
+  static constexpr const char* GetName() { return ".perfetto.protos.PerfEvents"; }
+
   using Timebase = ::perfetto::protos::pbzero::PerfEvents_Timebase;
   using Tracepoint = ::perfetto::protos::pbzero::PerfEvents_Tracepoint;
   using RawEvent = ::perfetto::protos::pbzero::PerfEvents_RawEvent;
+
   using Counter = ::perfetto::protos::pbzero::PerfEvents_Counter;
-  static const Counter UNKNOWN_COUNTER = PerfEvents_Counter_UNKNOWN_COUNTER;
-  static const Counter SW_CPU_CLOCK = PerfEvents_Counter_SW_CPU_CLOCK;
-  static const Counter SW_PAGE_FAULTS = PerfEvents_Counter_SW_PAGE_FAULTS;
-  static const Counter HW_CPU_CYCLES = PerfEvents_Counter_HW_CPU_CYCLES;
-  static const Counter HW_INSTRUCTIONS = PerfEvents_Counter_HW_INSTRUCTIONS;
+  static inline const char* Counter_Name(Counter value) {
+    return ::perfetto::protos::pbzero::PerfEvents_Counter_Name(value);
+  }
+
+  using PerfClock = ::perfetto::protos::pbzero::PerfEvents_PerfClock;
+  static inline const char* PerfClock_Name(PerfClock value) {
+    return ::perfetto::protos::pbzero::PerfEvents_PerfClock_Name(value);
+  }
+  static const Counter UNKNOWN_COUNTER = Counter::UNKNOWN_COUNTER;
+  static const Counter SW_CPU_CLOCK = Counter::SW_CPU_CLOCK;
+  static const Counter SW_PAGE_FAULTS = Counter::SW_PAGE_FAULTS;
+  static const Counter SW_TASK_CLOCK = Counter::SW_TASK_CLOCK;
+  static const Counter SW_CONTEXT_SWITCHES = Counter::SW_CONTEXT_SWITCHES;
+  static const Counter SW_CPU_MIGRATIONS = Counter::SW_CPU_MIGRATIONS;
+  static const Counter SW_PAGE_FAULTS_MIN = Counter::SW_PAGE_FAULTS_MIN;
+  static const Counter SW_PAGE_FAULTS_MAJ = Counter::SW_PAGE_FAULTS_MAJ;
+  static const Counter SW_ALIGNMENT_FAULTS = Counter::SW_ALIGNMENT_FAULTS;
+  static const Counter SW_EMULATION_FAULTS = Counter::SW_EMULATION_FAULTS;
+  static const Counter SW_DUMMY = Counter::SW_DUMMY;
+  static const Counter HW_CPU_CYCLES = Counter::HW_CPU_CYCLES;
+  static const Counter HW_INSTRUCTIONS = Counter::HW_INSTRUCTIONS;
+  static const Counter HW_CACHE_REFERENCES = Counter::HW_CACHE_REFERENCES;
+  static const Counter HW_CACHE_MISSES = Counter::HW_CACHE_MISSES;
+  static const Counter HW_BRANCH_INSTRUCTIONS = Counter::HW_BRANCH_INSTRUCTIONS;
+  static const Counter HW_BRANCH_MISSES = Counter::HW_BRANCH_MISSES;
+  static const Counter HW_BUS_CYCLES = Counter::HW_BUS_CYCLES;
+  static const Counter HW_STALLED_CYCLES_FRONTEND = Counter::HW_STALLED_CYCLES_FRONTEND;
+  static const Counter HW_STALLED_CYCLES_BACKEND = Counter::HW_STALLED_CYCLES_BACKEND;
+  static const Counter HW_REF_CPU_CYCLES = Counter::HW_REF_CPU_CYCLES;
+  static const PerfClock UNKNOWN_PERF_CLOCK = PerfClock::UNKNOWN_PERF_CLOCK;
+  static const PerfClock PERF_CLOCK_REALTIME = PerfClock::PERF_CLOCK_REALTIME;
+  static const PerfClock PERF_CLOCK_MONOTONIC = PerfClock::PERF_CLOCK_MONOTONIC;
+  static const PerfClock PERF_CLOCK_MONOTONIC_RAW = PerfClock::PERF_CLOCK_MONOTONIC_RAW;
+  static const PerfClock PERF_CLOCK_BOOTTIME = PerfClock::PERF_CLOCK_BOOTTIME;
 };
 
 class PerfEvents_RawEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
@@ -77,6 +243,8 @@ class PerfEvents_RawEvent : public ::protozero::Message {
     kConfig1FieldNumber = 3,
     kConfig2FieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PerfEvents.RawEvent"; }
+
 
   using FieldMetadata_Type =
     ::protozero::proto_utils::FieldMetadata<
@@ -92,7 +260,7 @@ class PerfEvents_RawEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
@@ -117,7 +285,7 @@ class PerfEvents_RawEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Config kConfig() { return {}; }
   void set_config(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Config::kFieldId;
@@ -142,7 +310,7 @@ class PerfEvents_RawEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Config1 kConfig1() { return {}; }
   void set_config1(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Config1::kFieldId;
@@ -167,7 +335,7 @@ class PerfEvents_RawEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Config2 kConfig2() { return {}; }
   void set_config2(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Config2::kFieldId;
@@ -197,6 +365,8 @@ class PerfEvents_Tracepoint : public ::protozero::Message {
     kNameFieldNumber = 1,
     kFilterFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PerfEvents.Tracepoint"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -212,10 +382,13 @@ class PerfEvents_Tracepoint : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -240,10 +413,13 @@ class PerfEvents_Tracepoint : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Filter kFilter() { return {}; }
   void set_filter(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Filter::kFieldId, data, size);
+  }
+  void set_filter(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Filter::kFieldId, chars.data, chars.size);
   }
   void set_filter(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Filter::kFieldId;
@@ -255,7 +431,7 @@ class PerfEvents_Tracepoint : public ::protozero::Message {
   }
 };
 
-class PerfEvents_Timebase_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class PerfEvents_Timebase_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/11, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   PerfEvents_Timebase_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit PerfEvents_Timebase_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -270,6 +446,8 @@ class PerfEvents_Timebase_Decoder : public ::protozero::TypedProtoDecoder</*MAX_
   ::protozero::ConstBytes tracepoint() const { return at<3>().as_bytes(); }
   bool has_raw_event() const { return at<5>().valid(); }
   ::protozero::ConstBytes raw_event() const { return at<5>().as_bytes(); }
+  bool has_timestamp_clock() const { return at<11>().valid(); }
+  int32_t timestamp_clock() const { return at<11>().as_int32(); }
   bool has_name() const { return at<10>().valid(); }
   ::protozero::ConstChars name() const { return at<10>().as_string(); }
 };
@@ -283,8 +461,11 @@ class PerfEvents_Timebase : public ::protozero::Message {
     kCounterFieldNumber = 4,
     kTracepointFieldNumber = 3,
     kRawEventFieldNumber = 5,
+    kTimestampClockFieldNumber = 11,
     kNameFieldNumber = 10,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PerfEvents.Timebase"; }
+
 
   using FieldMetadata_Frequency =
     ::protozero::proto_utils::FieldMetadata<
@@ -300,7 +481,7 @@ class PerfEvents_Timebase : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Frequency kFrequency() { return {}; }
   void set_frequency(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Frequency::kFieldId;
@@ -325,7 +506,7 @@ class PerfEvents_Timebase : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Period kPeriod() { return {}; }
   void set_period(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Period::kFieldId;
@@ -350,7 +531,7 @@ class PerfEvents_Timebase : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Counter kCounter() { return {}; }
   void set_counter(::perfetto::protos::pbzero::PerfEvents_Counter value) {
     static constexpr uint32_t field_id = FieldMetadata_Counter::kFieldId;
@@ -375,7 +556,7 @@ class PerfEvents_Timebase : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Tracepoint kTracepoint() { return {}; }
   template <typename T = PerfEvents_Tracepoint> T* set_tracepoint() {
     return BeginNestedMessage<T>(3);
@@ -396,12 +577,37 @@ class PerfEvents_Timebase : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RawEvent kRawEvent() { return {}; }
   template <typename T = PerfEvents_RawEvent> T* set_raw_event() {
     return BeginNestedMessage<T>(5);
   }
 
+
+  using FieldMetadata_TimestampClock =
+    ::protozero::proto_utils::FieldMetadata<
+      11,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::PerfEvents_PerfClock,
+      PerfEvents_Timebase>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_TimestampClock kTimestampClock() { return {}; }
+  void set_timestamp_clock(::perfetto::protos::pbzero::PerfEvents_PerfClock value) {
+    static constexpr uint32_t field_id = FieldMetadata_TimestampClock::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
+  }
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -417,10 +623,13 @@ class PerfEvents_Timebase : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
