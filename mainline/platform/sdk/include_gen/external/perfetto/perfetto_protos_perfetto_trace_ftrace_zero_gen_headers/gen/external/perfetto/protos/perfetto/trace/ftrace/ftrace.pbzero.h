@@ -17,6 +17,234 @@ namespace protos {
 namespace pbzero {
 
 
+class FuncgraphExitFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  FuncgraphExitFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit FuncgraphExitFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit FuncgraphExitFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_calltime() const { return at<1>().valid(); }
+  uint64_t calltime() const { return at<1>().as_uint64(); }
+  bool has_depth() const { return at<2>().valid(); }
+  int32_t depth() const { return at<2>().as_int32(); }
+  bool has_func() const { return at<3>().valid(); }
+  uint64_t func() const { return at<3>().as_uint64(); }
+  bool has_overrun() const { return at<4>().valid(); }
+  uint64_t overrun() const { return at<4>().as_uint64(); }
+  bool has_rettime() const { return at<5>().valid(); }
+  uint64_t rettime() const { return at<5>().as_uint64(); }
+};
+
+class FuncgraphExitFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = FuncgraphExitFtraceEvent_Decoder;
+  enum : int32_t {
+    kCalltimeFieldNumber = 1,
+    kDepthFieldNumber = 2,
+    kFuncFieldNumber = 3,
+    kOverrunFieldNumber = 4,
+    kRettimeFieldNumber = 5,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.FuncgraphExitFtraceEvent"; }
+
+
+  using FieldMetadata_Calltime =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      FuncgraphExitFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Calltime kCalltime() { return {}; }
+  void set_calltime(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Calltime::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Depth =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      FuncgraphExitFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Depth kDepth() { return {}; }
+  void set_depth(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Depth::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Func =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      FuncgraphExitFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Func kFunc() { return {}; }
+  void set_func(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Func::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Overrun =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      FuncgraphExitFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Overrun kOverrun() { return {}; }
+  void set_overrun(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Overrun::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Rettime =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      FuncgraphExitFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Rettime kRettime() { return {}; }
+  void set_rettime(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Rettime::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class FuncgraphEntryFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  FuncgraphEntryFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit FuncgraphEntryFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit FuncgraphEntryFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_depth() const { return at<1>().valid(); }
+  int32_t depth() const { return at<1>().as_int32(); }
+  bool has_func() const { return at<2>().valid(); }
+  uint64_t func() const { return at<2>().as_uint64(); }
+};
+
+class FuncgraphEntryFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = FuncgraphEntryFtraceEvent_Decoder;
+  enum : int32_t {
+    kDepthFieldNumber = 1,
+    kFuncFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.FuncgraphEntryFtraceEvent"; }
+
+
+  using FieldMetadata_Depth =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      FuncgraphEntryFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Depth kDepth() { return {}; }
+  void set_depth(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Depth::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Func =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      FuncgraphEntryFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Func kFunc() { return {}; }
+  void set_func(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Func::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
+
 class PrintFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   PrintFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
@@ -35,6 +263,8 @@ class PrintFtraceEvent : public ::protozero::Message {
     kIpFieldNumber = 1,
     kBufFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PrintFtraceEvent"; }
+
 
   using FieldMetadata_Ip =
     ::protozero::proto_utils::FieldMetadata<
@@ -50,7 +280,7 @@ class PrintFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Ip kIp() { return {}; }
   void set_ip(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ip::kFieldId;
@@ -75,10 +305,13 @@ class PrintFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Buf kBuf() { return {}; }
   void set_buf(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Buf::kFieldId, data, size);
+  }
+  void set_buf(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Buf::kFieldId, chars.data, chars.size);
   }
   void set_buf(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Buf::kFieldId;

@@ -28,7 +28,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT ChromeContentSettingsEventInfo : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeContentSettingsEventInfo : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNumberOfExceptionsFieldNumber = 1,

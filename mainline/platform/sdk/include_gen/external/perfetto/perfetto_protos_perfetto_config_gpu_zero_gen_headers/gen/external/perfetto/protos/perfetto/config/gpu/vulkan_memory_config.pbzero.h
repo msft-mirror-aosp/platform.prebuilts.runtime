@@ -35,6 +35,8 @@ class VulkanMemoryConfig : public ::protozero::Message {
     kTrackDriverMemoryUsageFieldNumber = 1,
     kTrackDeviceMemoryUsageFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.VulkanMemoryConfig"; }
+
 
   using FieldMetadata_TrackDriverMemoryUsage =
     ::protozero::proto_utils::FieldMetadata<
@@ -50,7 +52,7 @@ class VulkanMemoryConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TrackDriverMemoryUsage kTrackDriverMemoryUsage() { return {}; }
   void set_track_driver_memory_usage(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_TrackDriverMemoryUsage::kFieldId;
@@ -75,7 +77,7 @@ class VulkanMemoryConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TrackDeviceMemoryUsage kTrackDeviceMemoryUsage() { return {}; }
   void set_track_device_memory_usage(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_TrackDeviceMemoryUsage::kFieldId;

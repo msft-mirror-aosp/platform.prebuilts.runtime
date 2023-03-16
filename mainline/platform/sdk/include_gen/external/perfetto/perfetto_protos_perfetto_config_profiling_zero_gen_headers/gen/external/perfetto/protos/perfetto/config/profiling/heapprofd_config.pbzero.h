@@ -105,6 +105,8 @@ class HeapprofdConfig : public ::protozero::Message {
     kDisableForkTeardownFieldNumber = 18,
     kDisableVforkDetectionFieldNumber = 19,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.HeapprofdConfig"; }
+
   using ContinuousDumpConfig = ::perfetto::protos::pbzero::HeapprofdConfig_ContinuousDumpConfig;
 
   using FieldMetadata_SamplingIntervalBytes =
@@ -121,7 +123,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SamplingIntervalBytes kSamplingIntervalBytes() { return {}; }
   void set_sampling_interval_bytes(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SamplingIntervalBytes::kFieldId;
@@ -146,7 +148,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AdaptiveSamplingShmemThreshold kAdaptiveSamplingShmemThreshold() { return {}; }
   void set_adaptive_sampling_shmem_threshold(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_AdaptiveSamplingShmemThreshold::kFieldId;
@@ -171,7 +173,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AdaptiveSamplingMaxSamplingIntervalBytes kAdaptiveSamplingMaxSamplingIntervalBytes() { return {}; }
   void set_adaptive_sampling_max_sampling_interval_bytes(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_AdaptiveSamplingMaxSamplingIntervalBytes::kFieldId;
@@ -196,10 +198,13 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProcessCmdline kProcessCmdline() { return {}; }
   void add_process_cmdline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProcessCmdline::kFieldId, data, size);
+  }
+  void add_process_cmdline(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ProcessCmdline::kFieldId, chars.data, chars.size);
   }
   void add_process_cmdline(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ProcessCmdline::kFieldId;
@@ -224,7 +229,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void add_pid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -249,10 +254,13 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TargetInstalledBy kTargetInstalledBy() { return {}; }
   void add_target_installed_by(const char* data, size_t size) {
     AppendBytes(FieldMetadata_TargetInstalledBy::kFieldId, data, size);
+  }
+  void add_target_installed_by(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_TargetInstalledBy::kFieldId, chars.data, chars.size);
   }
   void add_target_installed_by(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_TargetInstalledBy::kFieldId;
@@ -277,10 +285,13 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Heaps kHeaps() { return {}; }
   void add_heaps(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Heaps::kFieldId, data, size);
+  }
+  void add_heaps(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Heaps::kFieldId, chars.data, chars.size);
   }
   void add_heaps(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Heaps::kFieldId;
@@ -305,10 +316,13 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ExcludeHeaps kExcludeHeaps() { return {}; }
   void add_exclude_heaps(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ExcludeHeaps::kFieldId, data, size);
+  }
+  void add_exclude_heaps(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ExcludeHeaps::kFieldId, chars.data, chars.size);
   }
   void add_exclude_heaps(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ExcludeHeaps::kFieldId;
@@ -333,7 +347,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StreamAllocations kStreamAllocations() { return {}; }
   void set_stream_allocations(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_StreamAllocations::kFieldId;
@@ -358,7 +372,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HeapSamplingIntervals kHeapSamplingIntervals() { return {}; }
   void add_heap_sampling_intervals(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HeapSamplingIntervals::kFieldId;
@@ -383,7 +397,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AllHeaps kAllHeaps() { return {}; }
   void set_all_heaps(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_AllHeaps::kFieldId;
@@ -408,7 +422,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_All kAll() { return {}; }
   void set_all(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_All::kFieldId;
@@ -433,7 +447,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MinAnonymousMemoryKb kMinAnonymousMemoryKb() { return {}; }
   void set_min_anonymous_memory_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MinAnonymousMemoryKb::kFieldId;
@@ -458,7 +472,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MaxHeapprofdMemoryKb kMaxHeapprofdMemoryKb() { return {}; }
   void set_max_heapprofd_memory_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxHeapprofdMemoryKb::kFieldId;
@@ -483,7 +497,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MaxHeapprofdCpuSecs kMaxHeapprofdCpuSecs() { return {}; }
   void set_max_heapprofd_cpu_secs(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxHeapprofdCpuSecs::kFieldId;
@@ -508,10 +522,13 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SkipSymbolPrefix kSkipSymbolPrefix() { return {}; }
   void add_skip_symbol_prefix(const char* data, size_t size) {
     AppendBytes(FieldMetadata_SkipSymbolPrefix::kFieldId, data, size);
+  }
+  void add_skip_symbol_prefix(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_SkipSymbolPrefix::kFieldId, chars.data, chars.size);
   }
   void add_skip_symbol_prefix(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_SkipSymbolPrefix::kFieldId;
@@ -536,7 +553,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ContinuousDumpConfig kContinuousDumpConfig() { return {}; }
   template <typename T = HeapprofdConfig_ContinuousDumpConfig> T* set_continuous_dump_config() {
     return BeginNestedMessage<T>(6);
@@ -557,7 +574,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ShmemSizeBytes kShmemSizeBytes() { return {}; }
   void set_shmem_size_bytes(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ShmemSizeBytes::kFieldId;
@@ -582,7 +599,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BlockClient kBlockClient() { return {}; }
   void set_block_client(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_BlockClient::kFieldId;
@@ -607,7 +624,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BlockClientTimeoutUs kBlockClientTimeoutUs() { return {}; }
   void set_block_client_timeout_us(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BlockClientTimeoutUs::kFieldId;
@@ -632,7 +649,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NoStartup kNoStartup() { return {}; }
   void set_no_startup(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_NoStartup::kFieldId;
@@ -657,7 +674,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NoRunning kNoRunning() { return {}; }
   void set_no_running(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_NoRunning::kFieldId;
@@ -682,7 +699,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DumpAtMax kDumpAtMax() { return {}; }
   void set_dump_at_max(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DumpAtMax::kFieldId;
@@ -707,7 +724,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DisableForkTeardown kDisableForkTeardown() { return {}; }
   void set_disable_fork_teardown(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DisableForkTeardown::kFieldId;
@@ -732,7 +749,7 @@ class HeapprofdConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DisableVforkDetection kDisableVforkDetection() { return {}; }
   void set_disable_vfork_detection(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DisableVforkDetection::kFieldId;
@@ -762,6 +779,8 @@ class HeapprofdConfig_ContinuousDumpConfig : public ::protozero::Message {
     kDumpPhaseMsFieldNumber = 5,
     kDumpIntervalMsFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.HeapprofdConfig.ContinuousDumpConfig"; }
+
 
   using FieldMetadata_DumpPhaseMs =
     ::protozero::proto_utils::FieldMetadata<
@@ -777,7 +796,7 @@ class HeapprofdConfig_ContinuousDumpConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DumpPhaseMs kDumpPhaseMs() { return {}; }
   void set_dump_phase_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DumpPhaseMs::kFieldId;
@@ -802,7 +821,7 @@ class HeapprofdConfig_ContinuousDumpConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DumpIntervalMs kDumpIntervalMs() { return {}; }
   void set_dump_interval_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DumpIntervalMs::kFieldId;
