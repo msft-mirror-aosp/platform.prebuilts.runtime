@@ -19,6 +19,39 @@ namespace pbzero {
 class PerfEventConfig_CallstackSampling;
 class PerfEventConfig_Scope;
 class PerfEvents_Timebase;
+namespace perfetto_pbzero_enum_PerfEventConfig {
+enum UnwindMode : int32_t;
+}  // namespace perfetto_pbzero_enum_PerfEventConfig
+using PerfEventConfig_UnwindMode = perfetto_pbzero_enum_PerfEventConfig::UnwindMode;
+
+namespace perfetto_pbzero_enum_PerfEventConfig {
+enum UnwindMode : int32_t {
+  UNWIND_UNKNOWN = 0,
+  UNWIND_SKIP = 1,
+  UNWIND_DWARF = 2,
+};
+} // namespace perfetto_pbzero_enum_PerfEventConfig
+using PerfEventConfig_UnwindMode = perfetto_pbzero_enum_PerfEventConfig::UnwindMode;
+
+
+constexpr PerfEventConfig_UnwindMode PerfEventConfig_UnwindMode_MIN = PerfEventConfig_UnwindMode::UNWIND_UNKNOWN;
+constexpr PerfEventConfig_UnwindMode PerfEventConfig_UnwindMode_MAX = PerfEventConfig_UnwindMode::UNWIND_DWARF;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* PerfEventConfig_UnwindMode_Name(::perfetto::protos::pbzero::PerfEventConfig_UnwindMode value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::PerfEventConfig_UnwindMode::UNWIND_UNKNOWN:
+    return "UNWIND_UNKNOWN";
+
+  case ::perfetto::protos::pbzero::PerfEventConfig_UnwindMode::UNWIND_SKIP:
+    return "UNWIND_SKIP";
+
+  case ::perfetto::protos::pbzero::PerfEventConfig_UnwindMode::UNWIND_DWARF:
+    return "UNWIND_DWARF";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class PerfEventConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/18, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -83,8 +116,18 @@ class PerfEventConfig : public ::protozero::Message {
     kExcludeCmdlineFieldNumber = 7,
     kAdditionalCmdlineCountFieldNumber = 11,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PerfEventConfig"; }
+
   using CallstackSampling = ::perfetto::protos::pbzero::PerfEventConfig_CallstackSampling;
   using Scope = ::perfetto::protos::pbzero::PerfEventConfig_Scope;
+
+  using UnwindMode = ::perfetto::protos::pbzero::PerfEventConfig_UnwindMode;
+  static inline const char* UnwindMode_Name(UnwindMode value) {
+    return ::perfetto::protos::pbzero::PerfEventConfig_UnwindMode_Name(value);
+  }
+  static const UnwindMode UNWIND_UNKNOWN = UnwindMode::UNWIND_UNKNOWN;
+  static const UnwindMode UNWIND_SKIP = UnwindMode::UNWIND_SKIP;
+  static const UnwindMode UNWIND_DWARF = UnwindMode::UNWIND_DWARF;
 
   using FieldMetadata_Timebase =
     ::protozero::proto_utils::FieldMetadata<
@@ -100,7 +143,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Timebase kTimebase() { return {}; }
   template <typename T = PerfEvents_Timebase> T* set_timebase() {
     return BeginNestedMessage<T>(15);
@@ -121,7 +164,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CallstackSampling kCallstackSampling() { return {}; }
   template <typename T = PerfEventConfig_CallstackSampling> T* set_callstack_sampling() {
     return BeginNestedMessage<T>(16);
@@ -142,7 +185,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RingBufferReadPeriodMs kRingBufferReadPeriodMs() { return {}; }
   void set_ring_buffer_read_period_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RingBufferReadPeriodMs::kFieldId;
@@ -167,7 +210,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RingBufferPages kRingBufferPages() { return {}; }
   void set_ring_buffer_pages(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RingBufferPages::kFieldId;
@@ -192,7 +235,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MaxEnqueuedFootprintKb kMaxEnqueuedFootprintKb() { return {}; }
   void set_max_enqueued_footprint_kb(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxEnqueuedFootprintKb::kFieldId;
@@ -217,7 +260,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MaxDaemonMemoryKb kMaxDaemonMemoryKb() { return {}; }
   void set_max_daemon_memory_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxDaemonMemoryKb::kFieldId;
@@ -242,7 +285,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RemoteDescriptorTimeoutMs kRemoteDescriptorTimeoutMs() { return {}; }
   void set_remote_descriptor_timeout_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RemoteDescriptorTimeoutMs::kFieldId;
@@ -267,7 +310,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_UnwindStateClearPeriodMs kUnwindStateClearPeriodMs() { return {}; }
   void set_unwind_state_clear_period_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_UnwindStateClearPeriodMs::kFieldId;
@@ -292,10 +335,13 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TargetInstalledBy kTargetInstalledBy() { return {}; }
   void add_target_installed_by(const char* data, size_t size) {
     AppendBytes(FieldMetadata_TargetInstalledBy::kFieldId, data, size);
+  }
+  void add_target_installed_by(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_TargetInstalledBy::kFieldId, chars.data, chars.size);
   }
   void add_target_installed_by(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_TargetInstalledBy::kFieldId;
@@ -320,7 +366,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AllCpus kAllCpus() { return {}; }
   void set_all_cpus(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_AllCpus::kFieldId;
@@ -345,7 +391,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SamplingFrequency kSamplingFrequency() { return {}; }
   void set_sampling_frequency(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SamplingFrequency::kFieldId;
@@ -370,7 +416,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_KernelFrames kKernelFrames() { return {}; }
   void set_kernel_frames(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_KernelFrames::kFieldId;
@@ -395,7 +441,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TargetPid kTargetPid() { return {}; }
   void add_target_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TargetPid::kFieldId;
@@ -420,10 +466,13 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TargetCmdline kTargetCmdline() { return {}; }
   void add_target_cmdline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_TargetCmdline::kFieldId, data, size);
+  }
+  void add_target_cmdline(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_TargetCmdline::kFieldId, chars.data, chars.size);
   }
   void add_target_cmdline(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_TargetCmdline::kFieldId;
@@ -448,7 +497,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ExcludePid kExcludePid() { return {}; }
   void add_exclude_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ExcludePid::kFieldId;
@@ -473,10 +522,13 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ExcludeCmdline kExcludeCmdline() { return {}; }
   void add_exclude_cmdline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ExcludeCmdline::kFieldId, data, size);
+  }
+  void add_exclude_cmdline(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ExcludeCmdline::kFieldId, chars.data, chars.size);
   }
   void add_exclude_cmdline(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ExcludeCmdline::kFieldId;
@@ -501,7 +553,7 @@ class PerfEventConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AdditionalCmdlineCount kAdditionalCmdlineCount() { return {}; }
   void set_additional_cmdline_count(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_AdditionalCmdlineCount::kFieldId;
@@ -513,7 +565,7 @@ class PerfEventConfig : public ::protozero::Message {
   }
 };
 
-class PerfEventConfig_Scope_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class PerfEventConfig_Scope_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   PerfEventConfig_Scope_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit PerfEventConfig_Scope_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -528,6 +580,8 @@ class PerfEventConfig_Scope_Decoder : public ::protozero::TypedProtoDecoder</*MA
   ::protozero::RepeatedFieldIterator<::protozero::ConstChars> exclude_cmdline() const { return GetRepeated<::protozero::ConstChars>(4); }
   bool has_additional_cmdline_count() const { return at<5>().valid(); }
   uint32_t additional_cmdline_count() const { return at<5>().as_uint32(); }
+  bool has_process_shard_count() const { return at<6>().valid(); }
+  uint32_t process_shard_count() const { return at<6>().as_uint32(); }
 };
 
 class PerfEventConfig_Scope : public ::protozero::Message {
@@ -539,7 +593,10 @@ class PerfEventConfig_Scope : public ::protozero::Message {
     kExcludePidFieldNumber = 3,
     kExcludeCmdlineFieldNumber = 4,
     kAdditionalCmdlineCountFieldNumber = 5,
+    kProcessShardCountFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PerfEventConfig.Scope"; }
+
 
   using FieldMetadata_TargetPid =
     ::protozero::proto_utils::FieldMetadata<
@@ -555,7 +612,7 @@ class PerfEventConfig_Scope : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TargetPid kTargetPid() { return {}; }
   void add_target_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TargetPid::kFieldId;
@@ -580,10 +637,13 @@ class PerfEventConfig_Scope : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TargetCmdline kTargetCmdline() { return {}; }
   void add_target_cmdline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_TargetCmdline::kFieldId, data, size);
+  }
+  void add_target_cmdline(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_TargetCmdline::kFieldId, chars.data, chars.size);
   }
   void add_target_cmdline(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_TargetCmdline::kFieldId;
@@ -608,7 +668,7 @@ class PerfEventConfig_Scope : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ExcludePid kExcludePid() { return {}; }
   void add_exclude_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ExcludePid::kFieldId;
@@ -633,10 +693,13 @@ class PerfEventConfig_Scope : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ExcludeCmdline kExcludeCmdline() { return {}; }
   void add_exclude_cmdline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ExcludeCmdline::kFieldId, data, size);
+  }
+  void add_exclude_cmdline(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ExcludeCmdline::kFieldId, chars.data, chars.size);
   }
   void add_exclude_cmdline(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ExcludeCmdline::kFieldId;
@@ -661,7 +724,7 @@ class PerfEventConfig_Scope : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_AdditionalCmdlineCount kAdditionalCmdlineCount() { return {}; }
   void set_additional_cmdline_count(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_AdditionalCmdlineCount::kFieldId;
@@ -671,9 +734,34 @@ class PerfEventConfig_Scope : public ::protozero::Message {
       ::protozero::proto_utils::ProtoSchemaType::kUint32>
         ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_ProcessShardCount =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      PerfEventConfig_Scope>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_ProcessShardCount kProcessShardCount() { return {}; }
+  void set_process_shard_count(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_ProcessShardCount::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
 };
 
-class PerfEventConfig_CallstackSampling_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class PerfEventConfig_CallstackSampling_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   PerfEventConfig_CallstackSampling_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit PerfEventConfig_CallstackSampling_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -682,6 +770,8 @@ class PerfEventConfig_CallstackSampling_Decoder : public ::protozero::TypedProto
   ::protozero::ConstBytes scope() const { return at<1>().as_bytes(); }
   bool has_kernel_frames() const { return at<2>().valid(); }
   bool kernel_frames() const { return at<2>().as_bool(); }
+  bool has_user_frames() const { return at<3>().valid(); }
+  int32_t user_frames() const { return at<3>().as_int32(); }
 };
 
 class PerfEventConfig_CallstackSampling : public ::protozero::Message {
@@ -690,7 +780,10 @@ class PerfEventConfig_CallstackSampling : public ::protozero::Message {
   enum : int32_t {
     kScopeFieldNumber = 1,
     kKernelFramesFieldNumber = 2,
+    kUserFramesFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PerfEventConfig.CallstackSampling"; }
+
 
   using FieldMetadata_Scope =
     ::protozero::proto_utils::FieldMetadata<
@@ -706,7 +799,7 @@ class PerfEventConfig_CallstackSampling : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Scope kScope() { return {}; }
   template <typename T = PerfEventConfig_Scope> T* set_scope() {
     return BeginNestedMessage<T>(1);
@@ -727,7 +820,7 @@ class PerfEventConfig_CallstackSampling : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_KernelFrames kKernelFrames() { return {}; }
   void set_kernel_frames(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_KernelFrames::kFieldId;
@@ -735,6 +828,31 @@ class PerfEventConfig_CallstackSampling : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_UserFrames =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::PerfEventConfig_UnwindMode,
+      PerfEventConfig_CallstackSampling>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_UserFrames kUserFrames() { return {}; }
+  void set_user_frames(::perfetto::protos::pbzero::PerfEventConfig_UnwindMode value) {
+    static constexpr uint32_t field_id = FieldMetadata_UserFrames::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
         ::Append(*this, field_id, value);
   }
 };

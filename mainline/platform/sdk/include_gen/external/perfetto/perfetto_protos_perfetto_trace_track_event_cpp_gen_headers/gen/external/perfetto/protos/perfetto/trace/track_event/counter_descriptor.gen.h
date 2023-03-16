@@ -41,7 +41,7 @@ enum CounterDescriptor_Unit : int {
   CounterDescriptor_Unit_UNIT_SIZE_BYTES = 3,
 };
 
-class PERFETTO_EXPORT CounterDescriptor : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT CounterDescriptor : public ::protozero::CppMessageObj {
  public:
   using BuiltinCounterType = CounterDescriptor_BuiltinCounterType;
   static constexpr auto COUNTER_UNSPECIFIED = CounterDescriptor_BuiltinCounterType_COUNTER_UNSPECIFIED;

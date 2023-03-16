@@ -16,10 +16,11 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
+class FtraceDescriptor;
 class GpuCounterDescriptor;
 class TrackEventDescriptor;
 
-class DataSourceDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class DataSourceDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/8, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   DataSourceDescriptor_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit DataSourceDescriptor_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -38,6 +39,8 @@ class DataSourceDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX
   ::protozero::ConstBytes gpu_counter_descriptor() const { return at<5>().as_bytes(); }
   bool has_track_event_descriptor() const { return at<6>().valid(); }
   ::protozero::ConstBytes track_event_descriptor() const { return at<6>().as_bytes(); }
+  bool has_ftrace_descriptor() const { return at<8>().valid(); }
+  ::protozero::ConstBytes ftrace_descriptor() const { return at<8>().as_bytes(); }
 };
 
 class DataSourceDescriptor : public ::protozero::Message {
@@ -51,7 +54,10 @@ class DataSourceDescriptor : public ::protozero::Message {
     kHandlesIncrementalStateClearFieldNumber = 4,
     kGpuCounterDescriptorFieldNumber = 5,
     kTrackEventDescriptorFieldNumber = 6,
+    kFtraceDescriptorFieldNumber = 8,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.DataSourceDescriptor"; }
+
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -67,10 +73,13 @@ class DataSourceDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -95,7 +104,7 @@ class DataSourceDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Id kId() { return {}; }
   void set_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
@@ -120,7 +129,7 @@ class DataSourceDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_WillNotifyOnStop kWillNotifyOnStop() { return {}; }
   void set_will_notify_on_stop(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_WillNotifyOnStop::kFieldId;
@@ -145,7 +154,7 @@ class DataSourceDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_WillNotifyOnStart kWillNotifyOnStart() { return {}; }
   void set_will_notify_on_start(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_WillNotifyOnStart::kFieldId;
@@ -170,7 +179,7 @@ class DataSourceDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HandlesIncrementalStateClear kHandlesIncrementalStateClear() { return {}; }
   void set_handles_incremental_state_clear(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_HandlesIncrementalStateClear::kFieldId;
@@ -195,7 +204,7 @@ class DataSourceDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_GpuCounterDescriptor kGpuCounterDescriptor() { return {}; }
   template <typename T = GpuCounterDescriptor> T* set_gpu_counter_descriptor() {
     return BeginNestedMessage<T>(5);
@@ -220,7 +229,7 @@ class DataSourceDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TrackEventDescriptor kTrackEventDescriptor() { return {}; }
   template <typename T = TrackEventDescriptor> T* set_track_event_descriptor() {
     return BeginNestedMessage<T>(6);
@@ -228,6 +237,31 @@ class DataSourceDescriptor : public ::protozero::Message {
 
   void set_track_event_descriptor_raw(const std::string& raw) {
     return AppendBytes(6, raw.data(), raw.size());
+  }
+
+
+  using FieldMetadata_FtraceDescriptor =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FtraceDescriptor,
+      DataSourceDescriptor>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_FtraceDescriptor kFtraceDescriptor() { return {}; }
+  template <typename T = FtraceDescriptor> T* set_ftrace_descriptor() {
+    return BeginNestedMessage<T>(8);
+  }
+
+  void set_ftrace_descriptor_raw(const std::string& raw) {
+    return AppendBytes(8, raw.data(), raw.size());
   }
 
 };

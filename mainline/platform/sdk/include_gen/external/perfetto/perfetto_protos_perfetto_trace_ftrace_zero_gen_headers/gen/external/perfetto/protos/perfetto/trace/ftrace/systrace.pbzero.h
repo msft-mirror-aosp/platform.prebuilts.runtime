@@ -41,6 +41,8 @@ class ZeroFtraceEvent : public ::protozero::Message {
     kPidFieldNumber = 3,
     kValueFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ZeroFtraceEvent"; }
+
 
   using FieldMetadata_Flag =
     ::protozero::proto_utils::FieldMetadata<
@@ -56,7 +58,7 @@ class ZeroFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Flag kFlag() { return {}; }
   void set_flag(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Flag::kFieldId;
@@ -81,10 +83,13 @@ class ZeroFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -109,7 +114,7 @@ class ZeroFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -134,7 +139,7 @@ class ZeroFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Value kValue() { return {}; }
   void set_value(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Value::kFieldId;

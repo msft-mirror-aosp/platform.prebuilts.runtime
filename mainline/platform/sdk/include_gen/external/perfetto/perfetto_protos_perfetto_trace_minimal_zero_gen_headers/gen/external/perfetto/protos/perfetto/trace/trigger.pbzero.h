@@ -38,6 +38,8 @@ class Trigger : public ::protozero::Message {
     kProducerNameFieldNumber = 2,
     kTrustedProducerUidFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.Trigger"; }
+
 
   using FieldMetadata_TriggerName =
     ::protozero::proto_utils::FieldMetadata<
@@ -53,10 +55,13 @@ class Trigger : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TriggerName kTriggerName() { return {}; }
   void set_trigger_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_TriggerName::kFieldId, data, size);
+  }
+  void set_trigger_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_TriggerName::kFieldId, chars.data, chars.size);
   }
   void set_trigger_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_TriggerName::kFieldId;
@@ -81,10 +86,13 @@ class Trigger : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProducerName kProducerName() { return {}; }
   void set_producer_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProducerName::kFieldId, data, size);
+  }
+  void set_producer_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ProducerName::kFieldId, chars.data, chars.size);
   }
   void set_producer_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ProducerName::kFieldId;
@@ -109,7 +117,7 @@ class Trigger : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TrustedProducerUid kTrustedProducerUid() { return {}; }
   void set_trusted_producer_uid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TrustedProducerUid::kFieldId;
