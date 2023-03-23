@@ -16,6 +16,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 class TracingServiceState;
+class TracingServiceState_TracingSession;
 class TracingServiceState_DataSource;
 class DataSourceDescriptor;
 class TracingServiceState_Producer;
@@ -31,13 +32,16 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT TracingServiceState : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TracingServiceState : public ::protozero::CppMessageObj {
  public:
   using Producer = TracingServiceState_Producer;
   using DataSource = TracingServiceState_DataSource;
+  using TracingSession = TracingServiceState_TracingSession;
   enum FieldNumbers {
     kProducersFieldNumber = 1,
     kDataSourcesFieldNumber = 2,
+    kTracingSessionsFieldNumber = 6,
+    kSupportsTracingSessionsFieldNumber = 7,
     kNumSessionsFieldNumber = 3,
     kNumSessionsStartedFieldNumber = 4,
     kTracingServiceVersionFieldNumber = 5,
@@ -69,6 +73,16 @@ class PERFETTO_EXPORT TracingServiceState : public ::protozero::CppMessageObj {
   void clear_data_sources();
   TracingServiceState_DataSource* add_data_sources();
 
+  const std::vector<TracingServiceState_TracingSession>& tracing_sessions() const { return tracing_sessions_; }
+  std::vector<TracingServiceState_TracingSession>* mutable_tracing_sessions() { return &tracing_sessions_; }
+  int tracing_sessions_size() const;
+  void clear_tracing_sessions();
+  TracingServiceState_TracingSession* add_tracing_sessions();
+
+  bool has_supports_tracing_sessions() const { return _has_field_[7]; }
+  bool supports_tracing_sessions() const { return supports_tracing_sessions_; }
+  void set_supports_tracing_sessions(bool value) { supports_tracing_sessions_ = value; _has_field_.set(7); }
+
   bool has_num_sessions() const { return _has_field_[3]; }
   int32_t num_sessions() const { return num_sessions_; }
   void set_num_sessions(int32_t value) { num_sessions_ = value; _has_field_.set(3); }
@@ -84,6 +98,8 @@ class PERFETTO_EXPORT TracingServiceState : public ::protozero::CppMessageObj {
  private:
   std::vector<TracingServiceState_Producer> producers_;
   std::vector<TracingServiceState_DataSource> data_sources_;
+  std::vector<TracingServiceState_TracingSession> tracing_sessions_;
+  bool supports_tracing_sessions_{};
   int32_t num_sessions_{};
   int32_t num_sessions_started_{};
   std::string tracing_service_version_{};
@@ -92,11 +108,91 @@ class PERFETTO_EXPORT TracingServiceState : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<6> _has_field_{};
+  std::bitset<8> _has_field_{};
 };
 
 
-class PERFETTO_EXPORT TracingServiceState_DataSource : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TracingServiceState_TracingSession : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kIdFieldNumber = 1,
+    kConsumerUidFieldNumber = 2,
+    kStateFieldNumber = 3,
+    kUniqueSessionNameFieldNumber = 4,
+    kBufferSizeKbFieldNumber = 5,
+    kDurationMsFieldNumber = 6,
+    kNumDataSourcesFieldNumber = 7,
+    kStartRealtimeNsFieldNumber = 8,
+  };
+
+  TracingServiceState_TracingSession();
+  ~TracingServiceState_TracingSession() override;
+  TracingServiceState_TracingSession(TracingServiceState_TracingSession&&) noexcept;
+  TracingServiceState_TracingSession& operator=(TracingServiceState_TracingSession&&);
+  TracingServiceState_TracingSession(const TracingServiceState_TracingSession&);
+  TracingServiceState_TracingSession& operator=(const TracingServiceState_TracingSession&);
+  bool operator==(const TracingServiceState_TracingSession&) const;
+  bool operator!=(const TracingServiceState_TracingSession& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_id() const { return _has_field_[1]; }
+  uint64_t id() const { return id_; }
+  void set_id(uint64_t value) { id_ = value; _has_field_.set(1); }
+
+  bool has_consumer_uid() const { return _has_field_[2]; }
+  int32_t consumer_uid() const { return consumer_uid_; }
+  void set_consumer_uid(int32_t value) { consumer_uid_ = value; _has_field_.set(2); }
+
+  bool has_state() const { return _has_field_[3]; }
+  const std::string& state() const { return state_; }
+  void set_state(const std::string& value) { state_ = value; _has_field_.set(3); }
+
+  bool has_unique_session_name() const { return _has_field_[4]; }
+  const std::string& unique_session_name() const { return unique_session_name_; }
+  void set_unique_session_name(const std::string& value) { unique_session_name_ = value; _has_field_.set(4); }
+
+  const std::vector<uint32_t>& buffer_size_kb() const { return buffer_size_kb_; }
+  std::vector<uint32_t>* mutable_buffer_size_kb() { return &buffer_size_kb_; }
+  int buffer_size_kb_size() const { return static_cast<int>(buffer_size_kb_.size()); }
+  void clear_buffer_size_kb() { buffer_size_kb_.clear(); }
+  void add_buffer_size_kb(uint32_t value) { buffer_size_kb_.emplace_back(value); }
+  uint32_t* add_buffer_size_kb() { buffer_size_kb_.emplace_back(); return &buffer_size_kb_.back(); }
+
+  bool has_duration_ms() const { return _has_field_[6]; }
+  uint32_t duration_ms() const { return duration_ms_; }
+  void set_duration_ms(uint32_t value) { duration_ms_ = value; _has_field_.set(6); }
+
+  bool has_num_data_sources() const { return _has_field_[7]; }
+  uint32_t num_data_sources() const { return num_data_sources_; }
+  void set_num_data_sources(uint32_t value) { num_data_sources_ = value; _has_field_.set(7); }
+
+  bool has_start_realtime_ns() const { return _has_field_[8]; }
+  int64_t start_realtime_ns() const { return start_realtime_ns_; }
+  void set_start_realtime_ns(int64_t value) { start_realtime_ns_ = value; _has_field_.set(8); }
+
+ private:
+  uint64_t id_{};
+  int32_t consumer_uid_{};
+  std::string state_{};
+  std::string unique_session_name_{};
+  std::vector<uint32_t> buffer_size_kb_;
+  uint32_t duration_ms_{};
+  uint32_t num_data_sources_{};
+  int64_t start_realtime_ns_{};
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<9> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT TracingServiceState_DataSource : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDsDescriptorFieldNumber = 1,
@@ -137,11 +233,12 @@ class PERFETTO_EXPORT TracingServiceState_DataSource : public ::protozero::CppMe
 };
 
 
-class PERFETTO_EXPORT TracingServiceState_Producer : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TracingServiceState_Producer : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kIdFieldNumber = 1,
     kNameFieldNumber = 2,
+    kPidFieldNumber = 5,
     kUidFieldNumber = 3,
     kSdkVersionFieldNumber = 4,
   };
@@ -168,6 +265,10 @@ class PERFETTO_EXPORT TracingServiceState_Producer : public ::protozero::CppMess
   const std::string& name() const { return name_; }
   void set_name(const std::string& value) { name_ = value; _has_field_.set(2); }
 
+  bool has_pid() const { return _has_field_[5]; }
+  int32_t pid() const { return pid_; }
+  void set_pid(int32_t value) { pid_ = value; _has_field_.set(5); }
+
   bool has_uid() const { return _has_field_[3]; }
   int32_t uid() const { return uid_; }
   void set_uid(int32_t value) { uid_ = value; _has_field_.set(3); }
@@ -179,6 +280,7 @@ class PERFETTO_EXPORT TracingServiceState_Producer : public ::protozero::CppMess
  private:
   int32_t id_{};
   std::string name_{};
+  int32_t pid_{};
   int32_t uid_{};
   std::string sdk_version_{};
 
@@ -186,7 +288,7 @@ class PERFETTO_EXPORT TracingServiceState_Producer : public ::protozero::CppMess
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<5> _has_field_{};
+  std::bitset<6> _has_field_{};
 };
 
 }  // namespace perfetto

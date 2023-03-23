@@ -20,6 +20,7 @@ class TestConfig;
 class TestConfig_DummyFields;
 class InterceptorConfig;
 class ChromeConfig;
+class SystemInfoConfig;
 enum DataSourceConfig_SessionInitiator : int;
 enum ChromeConfig_ClientPriority : int;
 }  // namespace perfetto
@@ -38,7 +39,7 @@ enum DataSourceConfig_SessionInitiator : int {
   DataSourceConfig_SessionInitiator_SESSION_INITIATOR_TRUSTED_SYSTEM = 1,
 };
 
-class PERFETTO_EXPORT DataSourceConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT DataSourceConfig : public ::protozero::CppMessageObj {
  public:
   using SessionInitiator = DataSourceConfig_SessionInitiator;
   static constexpr auto SESSION_INITIATOR_UNSPECIFIED = DataSourceConfig_SessionInitiator_SESSION_INITIATOR_UNSPECIFIED;
@@ -62,13 +63,18 @@ class PERFETTO_EXPORT DataSourceConfig : public ::protozero::CppMessageObj {
     kAndroidPowerConfigFieldNumber = 106,
     kAndroidLogConfigFieldNumber = 107,
     kGpuCounterConfigFieldNumber = 108,
+    kAndroidGameInterventionListConfigFieldNumber = 116,
     kPackagesListConfigFieldNumber = 109,
     kPerfEventConfigFieldNumber = 111,
     kVulkanMemoryConfigFieldNumber = 112,
     kTrackEventConfigFieldNumber = 113,
     kAndroidPolledStateConfigFieldNumber = 114,
+    kAndroidSystemPropertyConfigFieldNumber = 118,
+    kStatsdTracingConfigFieldNumber = 117,
+    kSystemInfoConfigFieldNumber = 119,
     kChromeConfigFieldNumber = 101,
     kInterceptorConfigFieldNumber = 115,
+    kNetworkPacketTraceConfigFieldNumber = 120,
     kLegacyConfigFieldNumber = 1000,
     kForTestingFieldNumber = 1001,
   };
@@ -142,6 +148,9 @@ class PERFETTO_EXPORT DataSourceConfig : public ::protozero::CppMessageObj {
   const std::string& gpu_counter_config_raw() const { return gpu_counter_config_; }
   void set_gpu_counter_config_raw(const std::string& raw) { gpu_counter_config_ = raw; _has_field_.set(108); }
 
+  const std::string& android_game_intervention_list_config_raw() const { return android_game_intervention_list_config_; }
+  void set_android_game_intervention_list_config_raw(const std::string& raw) { android_game_intervention_list_config_ = raw; _has_field_.set(116); }
+
   const std::string& packages_list_config_raw() const { return packages_list_config_; }
   void set_packages_list_config_raw(const std::string& raw) { packages_list_config_ = raw; _has_field_.set(109); }
 
@@ -157,6 +166,16 @@ class PERFETTO_EXPORT DataSourceConfig : public ::protozero::CppMessageObj {
   const std::string& android_polled_state_config_raw() const { return android_polled_state_config_; }
   void set_android_polled_state_config_raw(const std::string& raw) { android_polled_state_config_ = raw; _has_field_.set(114); }
 
+  const std::string& android_system_property_config_raw() const { return android_system_property_config_; }
+  void set_android_system_property_config_raw(const std::string& raw) { android_system_property_config_ = raw; _has_field_.set(118); }
+
+  const std::string& statsd_tracing_config_raw() const { return statsd_tracing_config_; }
+  void set_statsd_tracing_config_raw(const std::string& raw) { statsd_tracing_config_ = raw; _has_field_.set(117); }
+
+  bool has_system_info_config() const { return _has_field_[119]; }
+  const SystemInfoConfig& system_info_config() const { return *system_info_config_; }
+  SystemInfoConfig* mutable_system_info_config() { _has_field_.set(119); return system_info_config_.get(); }
+
   bool has_chrome_config() const { return _has_field_[101]; }
   const ChromeConfig& chrome_config() const { return *chrome_config_; }
   ChromeConfig* mutable_chrome_config() { _has_field_.set(101); return chrome_config_.get(); }
@@ -164,6 +183,9 @@ class PERFETTO_EXPORT DataSourceConfig : public ::protozero::CppMessageObj {
   bool has_interceptor_config() const { return _has_field_[115]; }
   const InterceptorConfig& interceptor_config() const { return *interceptor_config_; }
   InterceptorConfig* mutable_interceptor_config() { _has_field_.set(115); return interceptor_config_.get(); }
+
+  const std::string& network_packet_trace_config_raw() const { return network_packet_trace_config_; }
+  void set_network_packet_trace_config_raw(const std::string& raw) { network_packet_trace_config_ = raw; _has_field_.set(120); }
 
   bool has_legacy_config() const { return _has_field_[1000]; }
   const std::string& legacy_config() const { return legacy_config_; }
@@ -190,13 +212,18 @@ class PERFETTO_EXPORT DataSourceConfig : public ::protozero::CppMessageObj {
   std::string android_power_config_;  // [lazy=true]
   std::string android_log_config_;  // [lazy=true]
   std::string gpu_counter_config_;  // [lazy=true]
+  std::string android_game_intervention_list_config_;  // [lazy=true]
   std::string packages_list_config_;  // [lazy=true]
   std::string perf_event_config_;  // [lazy=true]
   std::string vulkan_memory_config_;  // [lazy=true]
   std::string track_event_config_;  // [lazy=true]
   std::string android_polled_state_config_;  // [lazy=true]
+  std::string android_system_property_config_;  // [lazy=true]
+  std::string statsd_tracing_config_;  // [lazy=true]
+  ::protozero::CopyablePtr<SystemInfoConfig> system_info_config_;
   ::protozero::CopyablePtr<ChromeConfig> chrome_config_;
   ::protozero::CopyablePtr<InterceptorConfig> interceptor_config_;
+  std::string network_packet_trace_config_;  // [lazy=true]
   std::string legacy_config_{};
   ::protozero::CopyablePtr<TestConfig> for_testing_;
 

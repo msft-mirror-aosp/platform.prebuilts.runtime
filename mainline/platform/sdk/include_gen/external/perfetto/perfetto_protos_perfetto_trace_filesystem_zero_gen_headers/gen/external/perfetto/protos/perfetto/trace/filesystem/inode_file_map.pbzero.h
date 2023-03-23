@@ -17,16 +17,39 @@ namespace protos {
 namespace pbzero {
 
 class InodeFileMap_Entry;
-enum InodeFileMap_Entry_Type : int32_t;
+namespace perfetto_pbzero_enum_InodeFileMap_Entry {
+enum Type : int32_t;
+}  // namespace perfetto_pbzero_enum_InodeFileMap_Entry
+using InodeFileMap_Entry_Type = perfetto_pbzero_enum_InodeFileMap_Entry::Type;
 
-enum InodeFileMap_Entry_Type : int32_t {
-  InodeFileMap_Entry_Type_UNKNOWN = 0,
-  InodeFileMap_Entry_Type_FILE = 1,
-  InodeFileMap_Entry_Type_DIRECTORY = 2,
+namespace perfetto_pbzero_enum_InodeFileMap_Entry {
+enum Type : int32_t {
+  UNKNOWN = 0,
+  FILE = 1,
+  DIRECTORY = 2,
 };
+} // namespace perfetto_pbzero_enum_InodeFileMap_Entry
+using InodeFileMap_Entry_Type = perfetto_pbzero_enum_InodeFileMap_Entry::Type;
 
-const InodeFileMap_Entry_Type InodeFileMap_Entry_Type_MIN = InodeFileMap_Entry_Type_UNKNOWN;
-const InodeFileMap_Entry_Type InodeFileMap_Entry_Type_MAX = InodeFileMap_Entry_Type_DIRECTORY;
+
+constexpr InodeFileMap_Entry_Type InodeFileMap_Entry_Type_MIN = InodeFileMap_Entry_Type::UNKNOWN;
+constexpr InodeFileMap_Entry_Type InodeFileMap_Entry_Type_MAX = InodeFileMap_Entry_Type::DIRECTORY;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* InodeFileMap_Entry_Type_Name(::perfetto::protos::pbzero::InodeFileMap_Entry_Type value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::InodeFileMap_Entry_Type::UNKNOWN:
+    return "UNKNOWN";
+
+  case ::perfetto::protos::pbzero::InodeFileMap_Entry_Type::FILE:
+    return "FILE";
+
+  case ::perfetto::protos::pbzero::InodeFileMap_Entry_Type::DIRECTORY:
+    return "DIRECTORY";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class InodeFileMap_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -49,6 +72,8 @@ class InodeFileMap : public ::protozero::Message {
     kMountPointsFieldNumber = 2,
     kEntriesFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.InodeFileMap"; }
+
   using Entry = ::perfetto::protos::pbzero::InodeFileMap_Entry;
 
   using FieldMetadata_BlockDeviceId =
@@ -65,7 +90,7 @@ class InodeFileMap : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BlockDeviceId kBlockDeviceId() { return {}; }
   void set_block_device_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BlockDeviceId::kFieldId;
@@ -90,10 +115,13 @@ class InodeFileMap : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MountPoints kMountPoints() { return {}; }
   void add_mount_points(const char* data, size_t size) {
     AppendBytes(FieldMetadata_MountPoints::kFieldId, data, size);
+  }
+  void add_mount_points(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_MountPoints::kFieldId, chars.data, chars.size);
   }
   void add_mount_points(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_MountPoints::kFieldId;
@@ -118,7 +146,7 @@ class InodeFileMap : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Entries kEntries() { return {}; }
   template <typename T = InodeFileMap_Entry> T* add_entries() {
     return BeginNestedMessage<T>(3);
@@ -147,10 +175,16 @@ class InodeFileMap_Entry : public ::protozero::Message {
     kPathsFieldNumber = 2,
     kTypeFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.InodeFileMap.Entry"; }
+
+
   using Type = ::perfetto::protos::pbzero::InodeFileMap_Entry_Type;
-  static const Type UNKNOWN = InodeFileMap_Entry_Type_UNKNOWN;
-  static const Type FILE = InodeFileMap_Entry_Type_FILE;
-  static const Type DIRECTORY = InodeFileMap_Entry_Type_DIRECTORY;
+  static inline const char* Type_Name(Type value) {
+    return ::perfetto::protos::pbzero::InodeFileMap_Entry_Type_Name(value);
+  }
+  static const Type UNKNOWN = Type::UNKNOWN;
+  static const Type FILE = Type::FILE;
+  static const Type DIRECTORY = Type::DIRECTORY;
 
   using FieldMetadata_InodeNumber =
     ::protozero::proto_utils::FieldMetadata<
@@ -166,7 +200,7 @@ class InodeFileMap_Entry : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_InodeNumber kInodeNumber() { return {}; }
   void set_inode_number(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_InodeNumber::kFieldId;
@@ -191,10 +225,13 @@ class InodeFileMap_Entry : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Paths kPaths() { return {}; }
   void add_paths(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Paths::kFieldId, data, size);
+  }
+  void add_paths(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Paths::kFieldId, chars.data, chars.size);
   }
   void add_paths(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Paths::kFieldId;
@@ -219,7 +256,7 @@ class InodeFileMap_Entry : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(::perfetto::protos::pbzero::InodeFileMap_Entry_Type value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;

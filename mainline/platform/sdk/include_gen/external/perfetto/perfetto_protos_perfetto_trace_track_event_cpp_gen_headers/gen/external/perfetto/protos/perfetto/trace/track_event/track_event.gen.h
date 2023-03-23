@@ -23,6 +23,7 @@ class TrackEvent_LegacyEvent;
 class ChromeMojoEventInfo;
 class ChromeMessagePump;
 class SourceLocation;
+class ChromeActiveProcesses;
 class ChromeContentSettingsEventInfo;
 class ChromeWindowHandleEventInfo;
 class ChromeRendererSchedulerState;
@@ -56,6 +57,7 @@ enum ChromeApplicationStateInfo_ChromeApplicationState : int;
 enum ChromeFrameReporter_State : int;
 enum ChromeFrameReporter_FrameDropReason : int;
 enum ChromeFrameReporter_ScrollState : int;
+enum ChromeFrameReporter_FrameType : int;
 enum ChromeLatencyInfo_Step : int;
 enum ChromeLatencyInfo_LatencyComponentType : int;
 enum ChromeLegacyIpc_MessageClass : int;
@@ -101,7 +103,7 @@ enum TrackEvent_LegacyEvent_InstantEventScope : int {
   TrackEvent_LegacyEvent_InstantEventScope_SCOPE_THREAD = 3,
 };
 
-class PERFETTO_EXPORT EventName : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT EventName : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kIidFieldNumber = 1,
@@ -142,7 +144,7 @@ class PERFETTO_EXPORT EventName : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT EventCategory : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT EventCategory : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kIidFieldNumber = 1,
@@ -183,7 +185,7 @@ class PERFETTO_EXPORT EventCategory : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT TrackEventDefaults : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TrackEventDefaults : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kTrackUuidFieldNumber = 11,
@@ -236,7 +238,7 @@ class PERFETTO_EXPORT TrackEventDefaults : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT TrackEvent : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TrackEvent : public ::protozero::CppMessageObj {
  public:
   using LegacyEvent = TrackEvent_LegacyEvent;
   using Type = TrackEvent_Type;
@@ -260,8 +262,10 @@ class PERFETTO_EXPORT TrackEvent : public ::protozero::CppMessageObj {
     kExtraCounterValuesFieldNumber = 12,
     kExtraDoubleCounterTrackUuidsFieldNumber = 45,
     kExtraDoubleCounterValuesFieldNumber = 46,
-    kFlowIdsFieldNumber = 36,
-    kTerminatingFlowIdsFieldNumber = 42,
+    kFlowIdsOldFieldNumber = 36,
+    kFlowIdsFieldNumber = 47,
+    kTerminatingFlowIdsOldFieldNumber = 42,
+    kTerminatingFlowIdsFieldNumber = 48,
     kDebugAnnotationsFieldNumber = 4,
     kTaskExecutionFieldNumber = 5,
     kLogMessageFieldNumber = 21,
@@ -276,6 +280,7 @@ class PERFETTO_EXPORT TrackEvent : public ::protozero::CppMessageObj {
     kChromeRendererSchedulerStateFieldNumber = 40,
     kChromeWindowHandleEventInfoFieldNumber = 41,
     kChromeContentSettingsEventInfoFieldNumber = 43,
+    kChromeActiveProcessesFieldNumber = 49,
     kSourceLocationFieldNumber = 33,
     kSourceLocationIidFieldNumber = 34,
     kChromeMessagePumpFieldNumber = 35,
@@ -369,12 +374,26 @@ class PERFETTO_EXPORT TrackEvent : public ::protozero::CppMessageObj {
   void add_extra_double_counter_values(double value) { extra_double_counter_values_.emplace_back(value); }
   double* add_extra_double_counter_values() { extra_double_counter_values_.emplace_back(); return &extra_double_counter_values_.back(); }
 
+  const std::vector<uint64_t>& flow_ids_old() const { return flow_ids_old_; }
+  std::vector<uint64_t>* mutable_flow_ids_old() { return &flow_ids_old_; }
+  int flow_ids_old_size() const { return static_cast<int>(flow_ids_old_.size()); }
+  void clear_flow_ids_old() { flow_ids_old_.clear(); }
+  void add_flow_ids_old(uint64_t value) { flow_ids_old_.emplace_back(value); }
+  uint64_t* add_flow_ids_old() { flow_ids_old_.emplace_back(); return &flow_ids_old_.back(); }
+
   const std::vector<uint64_t>& flow_ids() const { return flow_ids_; }
   std::vector<uint64_t>* mutable_flow_ids() { return &flow_ids_; }
   int flow_ids_size() const { return static_cast<int>(flow_ids_.size()); }
   void clear_flow_ids() { flow_ids_.clear(); }
   void add_flow_ids(uint64_t value) { flow_ids_.emplace_back(value); }
   uint64_t* add_flow_ids() { flow_ids_.emplace_back(); return &flow_ids_.back(); }
+
+  const std::vector<uint64_t>& terminating_flow_ids_old() const { return terminating_flow_ids_old_; }
+  std::vector<uint64_t>* mutable_terminating_flow_ids_old() { return &terminating_flow_ids_old_; }
+  int terminating_flow_ids_old_size() const { return static_cast<int>(terminating_flow_ids_old_.size()); }
+  void clear_terminating_flow_ids_old() { terminating_flow_ids_old_.clear(); }
+  void add_terminating_flow_ids_old(uint64_t value) { terminating_flow_ids_old_.emplace_back(value); }
+  uint64_t* add_terminating_flow_ids_old() { terminating_flow_ids_old_.emplace_back(); return &terminating_flow_ids_old_.back(); }
 
   const std::vector<uint64_t>& terminating_flow_ids() const { return terminating_flow_ids_; }
   std::vector<uint64_t>* mutable_terminating_flow_ids() { return &terminating_flow_ids_; }
@@ -441,6 +460,10 @@ class PERFETTO_EXPORT TrackEvent : public ::protozero::CppMessageObj {
   const ChromeContentSettingsEventInfo& chrome_content_settings_event_info() const { return *chrome_content_settings_event_info_; }
   ChromeContentSettingsEventInfo* mutable_chrome_content_settings_event_info() { _has_field_.set(43); return chrome_content_settings_event_info_.get(); }
 
+  bool has_chrome_active_processes() const { return _has_field_[49]; }
+  const ChromeActiveProcesses& chrome_active_processes() const { return *chrome_active_processes_; }
+  ChromeActiveProcesses* mutable_chrome_active_processes() { _has_field_.set(49); return chrome_active_processes_.get(); }
+
   bool has_source_location() const { return _has_field_[33]; }
   const SourceLocation& source_location() const { return *source_location_; }
   SourceLocation* mutable_source_location() { _has_field_.set(33); return source_location_.get(); }
@@ -498,7 +521,9 @@ class PERFETTO_EXPORT TrackEvent : public ::protozero::CppMessageObj {
   std::vector<int64_t> extra_counter_values_;
   std::vector<uint64_t> extra_double_counter_track_uuids_;
   std::vector<double> extra_double_counter_values_;
+  std::vector<uint64_t> flow_ids_old_;
   std::vector<uint64_t> flow_ids_;
+  std::vector<uint64_t> terminating_flow_ids_old_;
   std::vector<uint64_t> terminating_flow_ids_;
   std::vector<DebugAnnotation> debug_annotations_;
   ::protozero::CopyablePtr<TaskExecution> task_execution_;
@@ -514,6 +539,7 @@ class PERFETTO_EXPORT TrackEvent : public ::protozero::CppMessageObj {
   ::protozero::CopyablePtr<ChromeRendererSchedulerState> chrome_renderer_scheduler_state_;
   ::protozero::CopyablePtr<ChromeWindowHandleEventInfo> chrome_window_handle_event_info_;
   ::protozero::CopyablePtr<ChromeContentSettingsEventInfo> chrome_content_settings_event_info_;
+  ::protozero::CopyablePtr<ChromeActiveProcesses> chrome_active_processes_;
   ::protozero::CopyablePtr<SourceLocation> source_location_;
   uint64_t source_location_iid_{};
   ::protozero::CopyablePtr<ChromeMessagePump> chrome_message_pump_;
@@ -530,11 +556,11 @@ class PERFETTO_EXPORT TrackEvent : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<47> _has_field_{};
+  std::bitset<50> _has_field_{};
 };
 
 
-class PERFETTO_EXPORT TrackEvent_LegacyEvent : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TrackEvent_LegacyEvent : public ::protozero::CppMessageObj {
  public:
   using FlowDirection = TrackEvent_LegacyEvent_FlowDirection;
   static constexpr auto FLOW_UNSPECIFIED = TrackEvent_LegacyEvent_FlowDirection_FLOW_UNSPECIFIED;

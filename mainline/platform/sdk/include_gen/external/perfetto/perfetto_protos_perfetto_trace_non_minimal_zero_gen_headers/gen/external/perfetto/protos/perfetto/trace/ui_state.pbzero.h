@@ -39,6 +39,8 @@ class UiState : public ::protozero::Message {
     kTimelineEndTsFieldNumber = 2,
     kHighlightProcessFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.UiState"; }
+
   using HighlightProcess = ::perfetto::protos::pbzero::UiState_HighlightProcess;
 
   using FieldMetadata_TimelineStartTs =
@@ -55,7 +57,7 @@ class UiState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TimelineStartTs kTimelineStartTs() { return {}; }
   void set_timeline_start_ts(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimelineStartTs::kFieldId;
@@ -80,7 +82,7 @@ class UiState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TimelineEndTs kTimelineEndTs() { return {}; }
   void set_timeline_end_ts(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimelineEndTs::kFieldId;
@@ -105,7 +107,7 @@ class UiState : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HighlightProcess kHighlightProcess() { return {}; }
   template <typename T = UiState_HighlightProcess> T* set_highlight_process() {
     return BeginNestedMessage<T>(3);
@@ -131,6 +133,8 @@ class UiState_HighlightProcess : public ::protozero::Message {
     kPidFieldNumber = 1,
     kCmdlineFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.UiState.HighlightProcess"; }
+
 
   using FieldMetadata_Pid =
     ::protozero::proto_utils::FieldMetadata<
@@ -146,7 +150,7 @@ class UiState_HighlightProcess : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -171,10 +175,13 @@ class UiState_HighlightProcess : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cmdline kCmdline() { return {}; }
   void set_cmdline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Cmdline::kFieldId, data, size);
+  }
+  void set_cmdline(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Cmdline::kFieldId, chars.data, chars.size);
   }
   void set_cmdline(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Cmdline::kFieldId;
