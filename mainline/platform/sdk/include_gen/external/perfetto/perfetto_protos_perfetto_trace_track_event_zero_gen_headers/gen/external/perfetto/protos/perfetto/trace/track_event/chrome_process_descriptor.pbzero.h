@@ -16,54 +16,191 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-enum ChromeProcessDescriptor_ProcessType : int32_t;
+namespace perfetto_pbzero_enum_ChromeProcessDescriptor {
+enum ProcessType : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeProcessDescriptor
+using ChromeProcessDescriptor_ProcessType = perfetto_pbzero_enum_ChromeProcessDescriptor::ProcessType;
 
-enum ChromeProcessDescriptor_ProcessType : int32_t {
-  ChromeProcessDescriptor_ProcessType_PROCESS_UNSPECIFIED = 0,
-  ChromeProcessDescriptor_ProcessType_PROCESS_BROWSER = 1,
-  ChromeProcessDescriptor_ProcessType_PROCESS_RENDERER = 2,
-  ChromeProcessDescriptor_ProcessType_PROCESS_UTILITY = 3,
-  ChromeProcessDescriptor_ProcessType_PROCESS_ZYGOTE = 4,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SANDBOX_HELPER = 5,
-  ChromeProcessDescriptor_ProcessType_PROCESS_GPU = 6,
-  ChromeProcessDescriptor_ProcessType_PROCESS_PPAPI_PLUGIN = 7,
-  ChromeProcessDescriptor_ProcessType_PROCESS_PPAPI_BROKER = 8,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_NETWORK = 9,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_TRACING = 10,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_STORAGE = 11,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_AUDIO = 12,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_DATA_DECODER = 13,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_UTIL_WIN = 14,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PROXY_RESOLVER = 15,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_CDM = 16,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_VIDEO_CAPTURE = 17,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_UNZIPPER = 18,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_MIRRORING = 19,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_FILEPATCHER = 20,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_TTS = 21,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PRINTING = 22,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_QUARANTINE = 23,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_CROS_LOCALSEARCH = 24,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_CROS_ASSISTANT_AUDIO_DECODER = 25,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_FILEUTIL = 26,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PRINTCOMPOSITOR = 27,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PAINTPREVIEW = 28,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SPEECHRECOGNITION = 29,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_XRDEVICE = 30,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_READICON = 31,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_LANGUAGEDETECTION = 32,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHARING = 33,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_MEDIAPARSER = 34,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_QRCODEGENERATOR = 35,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PROFILEIMPORT = 36,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_IME = 37,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_RECORDING = 38,
-  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHAPEDETECTION = 39,
-  ChromeProcessDescriptor_ProcessType_PROCESS_RENDERER_EXTENSION = 40,
+namespace perfetto_pbzero_enum_ChromeProcessDescriptor {
+enum ProcessType : int32_t {
+  PROCESS_UNSPECIFIED = 0,
+  PROCESS_BROWSER = 1,
+  PROCESS_RENDERER = 2,
+  PROCESS_UTILITY = 3,
+  PROCESS_ZYGOTE = 4,
+  PROCESS_SANDBOX_HELPER = 5,
+  PROCESS_GPU = 6,
+  PROCESS_PPAPI_PLUGIN = 7,
+  PROCESS_PPAPI_BROKER = 8,
+  PROCESS_SERVICE_NETWORK = 9,
+  PROCESS_SERVICE_TRACING = 10,
+  PROCESS_SERVICE_STORAGE = 11,
+  PROCESS_SERVICE_AUDIO = 12,
+  PROCESS_SERVICE_DATA_DECODER = 13,
+  PROCESS_SERVICE_UTIL_WIN = 14,
+  PROCESS_SERVICE_PROXY_RESOLVER = 15,
+  PROCESS_SERVICE_CDM = 16,
+  PROCESS_SERVICE_VIDEO_CAPTURE = 17,
+  PROCESS_SERVICE_UNZIPPER = 18,
+  PROCESS_SERVICE_MIRRORING = 19,
+  PROCESS_SERVICE_FILEPATCHER = 20,
+  PROCESS_SERVICE_TTS = 21,
+  PROCESS_SERVICE_PRINTING = 22,
+  PROCESS_SERVICE_QUARANTINE = 23,
+  PROCESS_SERVICE_CROS_LOCALSEARCH = 24,
+  PROCESS_SERVICE_CROS_ASSISTANT_AUDIO_DECODER = 25,
+  PROCESS_SERVICE_FILEUTIL = 26,
+  PROCESS_SERVICE_PRINTCOMPOSITOR = 27,
+  PROCESS_SERVICE_PAINTPREVIEW = 28,
+  PROCESS_SERVICE_SPEECHRECOGNITION = 29,
+  PROCESS_SERVICE_XRDEVICE = 30,
+  PROCESS_SERVICE_READICON = 31,
+  PROCESS_SERVICE_LANGUAGEDETECTION = 32,
+  PROCESS_SERVICE_SHARING = 33,
+  PROCESS_SERVICE_MEDIAPARSER = 34,
+  PROCESS_SERVICE_QRCODEGENERATOR = 35,
+  PROCESS_SERVICE_PROFILEIMPORT = 36,
+  PROCESS_SERVICE_IME = 37,
+  PROCESS_SERVICE_RECORDING = 38,
+  PROCESS_SERVICE_SHAPEDETECTION = 39,
+  PROCESS_RENDERER_EXTENSION = 40,
 };
+} // namespace perfetto_pbzero_enum_ChromeProcessDescriptor
+using ChromeProcessDescriptor_ProcessType = perfetto_pbzero_enum_ChromeProcessDescriptor::ProcessType;
 
-const ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_MIN = ChromeProcessDescriptor_ProcessType_PROCESS_UNSPECIFIED;
-const ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_MAX = ChromeProcessDescriptor_ProcessType_PROCESS_RENDERER_EXTENSION;
+
+constexpr ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_MIN = ChromeProcessDescriptor_ProcessType::PROCESS_UNSPECIFIED;
+constexpr ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_MAX = ChromeProcessDescriptor_ProcessType::PROCESS_RENDERER_EXTENSION;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeProcessDescriptor_ProcessType_Name(::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_UNSPECIFIED:
+    return "PROCESS_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_BROWSER:
+    return "PROCESS_BROWSER";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_RENDERER:
+    return "PROCESS_RENDERER";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_UTILITY:
+    return "PROCESS_UTILITY";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_ZYGOTE:
+    return "PROCESS_ZYGOTE";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SANDBOX_HELPER:
+    return "PROCESS_SANDBOX_HELPER";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_GPU:
+    return "PROCESS_GPU";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_PPAPI_PLUGIN:
+    return "PROCESS_PPAPI_PLUGIN";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_PPAPI_BROKER:
+    return "PROCESS_PPAPI_BROKER";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_NETWORK:
+    return "PROCESS_SERVICE_NETWORK";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_TRACING:
+    return "PROCESS_SERVICE_TRACING";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_STORAGE:
+    return "PROCESS_SERVICE_STORAGE";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_AUDIO:
+    return "PROCESS_SERVICE_AUDIO";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_DATA_DECODER:
+    return "PROCESS_SERVICE_DATA_DECODER";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_UTIL_WIN:
+    return "PROCESS_SERVICE_UTIL_WIN";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_PROXY_RESOLVER:
+    return "PROCESS_SERVICE_PROXY_RESOLVER";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_CDM:
+    return "PROCESS_SERVICE_CDM";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_VIDEO_CAPTURE:
+    return "PROCESS_SERVICE_VIDEO_CAPTURE";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_UNZIPPER:
+    return "PROCESS_SERVICE_UNZIPPER";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_MIRRORING:
+    return "PROCESS_SERVICE_MIRRORING";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_FILEPATCHER:
+    return "PROCESS_SERVICE_FILEPATCHER";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_TTS:
+    return "PROCESS_SERVICE_TTS";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_PRINTING:
+    return "PROCESS_SERVICE_PRINTING";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_QUARANTINE:
+    return "PROCESS_SERVICE_QUARANTINE";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_CROS_LOCALSEARCH:
+    return "PROCESS_SERVICE_CROS_LOCALSEARCH";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_CROS_ASSISTANT_AUDIO_DECODER:
+    return "PROCESS_SERVICE_CROS_ASSISTANT_AUDIO_DECODER";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_FILEUTIL:
+    return "PROCESS_SERVICE_FILEUTIL";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_PRINTCOMPOSITOR:
+    return "PROCESS_SERVICE_PRINTCOMPOSITOR";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_PAINTPREVIEW:
+    return "PROCESS_SERVICE_PAINTPREVIEW";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_SPEECHRECOGNITION:
+    return "PROCESS_SERVICE_SPEECHRECOGNITION";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_XRDEVICE:
+    return "PROCESS_SERVICE_XRDEVICE";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_READICON:
+    return "PROCESS_SERVICE_READICON";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_LANGUAGEDETECTION:
+    return "PROCESS_SERVICE_LANGUAGEDETECTION";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_SHARING:
+    return "PROCESS_SERVICE_SHARING";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_MEDIAPARSER:
+    return "PROCESS_SERVICE_MEDIAPARSER";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_QRCODEGENERATOR:
+    return "PROCESS_SERVICE_QRCODEGENERATOR";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_PROFILEIMPORT:
+    return "PROCESS_SERVICE_PROFILEIMPORT";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_IME:
+    return "PROCESS_SERVICE_IME";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_RECORDING:
+    return "PROCESS_SERVICE_RECORDING";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_SERVICE_SHAPEDETECTION:
+    return "PROCESS_SERVICE_SHAPEDETECTION";
+
+  case ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType::PROCESS_RENDERER_EXTENSION:
+    return "PROCESS_RENDERER_EXTENSION";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class ChromeProcessDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -92,48 +229,54 @@ class ChromeProcessDescriptor : public ::protozero::Message {
     kHostAppPackageNameFieldNumber = 4,
     kCrashTraceIdFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeProcessDescriptor"; }
+
+
   using ProcessType = ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType;
-  static const ProcessType PROCESS_UNSPECIFIED = ChromeProcessDescriptor_ProcessType_PROCESS_UNSPECIFIED;
-  static const ProcessType PROCESS_BROWSER = ChromeProcessDescriptor_ProcessType_PROCESS_BROWSER;
-  static const ProcessType PROCESS_RENDERER = ChromeProcessDescriptor_ProcessType_PROCESS_RENDERER;
-  static const ProcessType PROCESS_UTILITY = ChromeProcessDescriptor_ProcessType_PROCESS_UTILITY;
-  static const ProcessType PROCESS_ZYGOTE = ChromeProcessDescriptor_ProcessType_PROCESS_ZYGOTE;
-  static const ProcessType PROCESS_SANDBOX_HELPER = ChromeProcessDescriptor_ProcessType_PROCESS_SANDBOX_HELPER;
-  static const ProcessType PROCESS_GPU = ChromeProcessDescriptor_ProcessType_PROCESS_GPU;
-  static const ProcessType PROCESS_PPAPI_PLUGIN = ChromeProcessDescriptor_ProcessType_PROCESS_PPAPI_PLUGIN;
-  static const ProcessType PROCESS_PPAPI_BROKER = ChromeProcessDescriptor_ProcessType_PROCESS_PPAPI_BROKER;
-  static const ProcessType PROCESS_SERVICE_NETWORK = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_NETWORK;
-  static const ProcessType PROCESS_SERVICE_TRACING = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_TRACING;
-  static const ProcessType PROCESS_SERVICE_STORAGE = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_STORAGE;
-  static const ProcessType PROCESS_SERVICE_AUDIO = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_AUDIO;
-  static const ProcessType PROCESS_SERVICE_DATA_DECODER = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_DATA_DECODER;
-  static const ProcessType PROCESS_SERVICE_UTIL_WIN = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_UTIL_WIN;
-  static const ProcessType PROCESS_SERVICE_PROXY_RESOLVER = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PROXY_RESOLVER;
-  static const ProcessType PROCESS_SERVICE_CDM = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_CDM;
-  static const ProcessType PROCESS_SERVICE_VIDEO_CAPTURE = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_VIDEO_CAPTURE;
-  static const ProcessType PROCESS_SERVICE_UNZIPPER = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_UNZIPPER;
-  static const ProcessType PROCESS_SERVICE_MIRRORING = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_MIRRORING;
-  static const ProcessType PROCESS_SERVICE_FILEPATCHER = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_FILEPATCHER;
-  static const ProcessType PROCESS_SERVICE_TTS = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_TTS;
-  static const ProcessType PROCESS_SERVICE_PRINTING = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PRINTING;
-  static const ProcessType PROCESS_SERVICE_QUARANTINE = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_QUARANTINE;
-  static const ProcessType PROCESS_SERVICE_CROS_LOCALSEARCH = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_CROS_LOCALSEARCH;
-  static const ProcessType PROCESS_SERVICE_CROS_ASSISTANT_AUDIO_DECODER = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_CROS_ASSISTANT_AUDIO_DECODER;
-  static const ProcessType PROCESS_SERVICE_FILEUTIL = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_FILEUTIL;
-  static const ProcessType PROCESS_SERVICE_PRINTCOMPOSITOR = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PRINTCOMPOSITOR;
-  static const ProcessType PROCESS_SERVICE_PAINTPREVIEW = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PAINTPREVIEW;
-  static const ProcessType PROCESS_SERVICE_SPEECHRECOGNITION = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SPEECHRECOGNITION;
-  static const ProcessType PROCESS_SERVICE_XRDEVICE = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_XRDEVICE;
-  static const ProcessType PROCESS_SERVICE_READICON = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_READICON;
-  static const ProcessType PROCESS_SERVICE_LANGUAGEDETECTION = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_LANGUAGEDETECTION;
-  static const ProcessType PROCESS_SERVICE_SHARING = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHARING;
-  static const ProcessType PROCESS_SERVICE_MEDIAPARSER = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_MEDIAPARSER;
-  static const ProcessType PROCESS_SERVICE_QRCODEGENERATOR = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_QRCODEGENERATOR;
-  static const ProcessType PROCESS_SERVICE_PROFILEIMPORT = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_PROFILEIMPORT;
-  static const ProcessType PROCESS_SERVICE_IME = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_IME;
-  static const ProcessType PROCESS_SERVICE_RECORDING = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_RECORDING;
-  static const ProcessType PROCESS_SERVICE_SHAPEDETECTION = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHAPEDETECTION;
-  static const ProcessType PROCESS_RENDERER_EXTENSION = ChromeProcessDescriptor_ProcessType_PROCESS_RENDERER_EXTENSION;
+  static inline const char* ProcessType_Name(ProcessType value) {
+    return ::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType_Name(value);
+  }
+  static const ProcessType PROCESS_UNSPECIFIED = ProcessType::PROCESS_UNSPECIFIED;
+  static const ProcessType PROCESS_BROWSER = ProcessType::PROCESS_BROWSER;
+  static const ProcessType PROCESS_RENDERER = ProcessType::PROCESS_RENDERER;
+  static const ProcessType PROCESS_UTILITY = ProcessType::PROCESS_UTILITY;
+  static const ProcessType PROCESS_ZYGOTE = ProcessType::PROCESS_ZYGOTE;
+  static const ProcessType PROCESS_SANDBOX_HELPER = ProcessType::PROCESS_SANDBOX_HELPER;
+  static const ProcessType PROCESS_GPU = ProcessType::PROCESS_GPU;
+  static const ProcessType PROCESS_PPAPI_PLUGIN = ProcessType::PROCESS_PPAPI_PLUGIN;
+  static const ProcessType PROCESS_PPAPI_BROKER = ProcessType::PROCESS_PPAPI_BROKER;
+  static const ProcessType PROCESS_SERVICE_NETWORK = ProcessType::PROCESS_SERVICE_NETWORK;
+  static const ProcessType PROCESS_SERVICE_TRACING = ProcessType::PROCESS_SERVICE_TRACING;
+  static const ProcessType PROCESS_SERVICE_STORAGE = ProcessType::PROCESS_SERVICE_STORAGE;
+  static const ProcessType PROCESS_SERVICE_AUDIO = ProcessType::PROCESS_SERVICE_AUDIO;
+  static const ProcessType PROCESS_SERVICE_DATA_DECODER = ProcessType::PROCESS_SERVICE_DATA_DECODER;
+  static const ProcessType PROCESS_SERVICE_UTIL_WIN = ProcessType::PROCESS_SERVICE_UTIL_WIN;
+  static const ProcessType PROCESS_SERVICE_PROXY_RESOLVER = ProcessType::PROCESS_SERVICE_PROXY_RESOLVER;
+  static const ProcessType PROCESS_SERVICE_CDM = ProcessType::PROCESS_SERVICE_CDM;
+  static const ProcessType PROCESS_SERVICE_VIDEO_CAPTURE = ProcessType::PROCESS_SERVICE_VIDEO_CAPTURE;
+  static const ProcessType PROCESS_SERVICE_UNZIPPER = ProcessType::PROCESS_SERVICE_UNZIPPER;
+  static const ProcessType PROCESS_SERVICE_MIRRORING = ProcessType::PROCESS_SERVICE_MIRRORING;
+  static const ProcessType PROCESS_SERVICE_FILEPATCHER = ProcessType::PROCESS_SERVICE_FILEPATCHER;
+  static const ProcessType PROCESS_SERVICE_TTS = ProcessType::PROCESS_SERVICE_TTS;
+  static const ProcessType PROCESS_SERVICE_PRINTING = ProcessType::PROCESS_SERVICE_PRINTING;
+  static const ProcessType PROCESS_SERVICE_QUARANTINE = ProcessType::PROCESS_SERVICE_QUARANTINE;
+  static const ProcessType PROCESS_SERVICE_CROS_LOCALSEARCH = ProcessType::PROCESS_SERVICE_CROS_LOCALSEARCH;
+  static const ProcessType PROCESS_SERVICE_CROS_ASSISTANT_AUDIO_DECODER = ProcessType::PROCESS_SERVICE_CROS_ASSISTANT_AUDIO_DECODER;
+  static const ProcessType PROCESS_SERVICE_FILEUTIL = ProcessType::PROCESS_SERVICE_FILEUTIL;
+  static const ProcessType PROCESS_SERVICE_PRINTCOMPOSITOR = ProcessType::PROCESS_SERVICE_PRINTCOMPOSITOR;
+  static const ProcessType PROCESS_SERVICE_PAINTPREVIEW = ProcessType::PROCESS_SERVICE_PAINTPREVIEW;
+  static const ProcessType PROCESS_SERVICE_SPEECHRECOGNITION = ProcessType::PROCESS_SERVICE_SPEECHRECOGNITION;
+  static const ProcessType PROCESS_SERVICE_XRDEVICE = ProcessType::PROCESS_SERVICE_XRDEVICE;
+  static const ProcessType PROCESS_SERVICE_READICON = ProcessType::PROCESS_SERVICE_READICON;
+  static const ProcessType PROCESS_SERVICE_LANGUAGEDETECTION = ProcessType::PROCESS_SERVICE_LANGUAGEDETECTION;
+  static const ProcessType PROCESS_SERVICE_SHARING = ProcessType::PROCESS_SERVICE_SHARING;
+  static const ProcessType PROCESS_SERVICE_MEDIAPARSER = ProcessType::PROCESS_SERVICE_MEDIAPARSER;
+  static const ProcessType PROCESS_SERVICE_QRCODEGENERATOR = ProcessType::PROCESS_SERVICE_QRCODEGENERATOR;
+  static const ProcessType PROCESS_SERVICE_PROFILEIMPORT = ProcessType::PROCESS_SERVICE_PROFILEIMPORT;
+  static const ProcessType PROCESS_SERVICE_IME = ProcessType::PROCESS_SERVICE_IME;
+  static const ProcessType PROCESS_SERVICE_RECORDING = ProcessType::PROCESS_SERVICE_RECORDING;
+  static const ProcessType PROCESS_SERVICE_SHAPEDETECTION = ProcessType::PROCESS_SERVICE_SHAPEDETECTION;
+  static const ProcessType PROCESS_RENDERER_EXTENSION = ProcessType::PROCESS_RENDERER_EXTENSION;
 
   using FieldMetadata_ProcessType =
     ::protozero::proto_utils::FieldMetadata<
@@ -149,7 +292,7 @@ class ChromeProcessDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProcessType kProcessType() { return {}; }
   void set_process_type(::perfetto::protos::pbzero::ChromeProcessDescriptor_ProcessType value) {
     static constexpr uint32_t field_id = FieldMetadata_ProcessType::kFieldId;
@@ -174,7 +317,7 @@ class ChromeProcessDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ProcessPriority kProcessPriority() { return {}; }
   void set_process_priority(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ProcessPriority::kFieldId;
@@ -199,7 +342,7 @@ class ChromeProcessDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LegacySortIndex kLegacySortIndex() { return {}; }
   void set_legacy_sort_index(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_LegacySortIndex::kFieldId;
@@ -224,10 +367,13 @@ class ChromeProcessDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HostAppPackageName kHostAppPackageName() { return {}; }
   void set_host_app_package_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_HostAppPackageName::kFieldId, data, size);
+  }
+  void set_host_app_package_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_HostAppPackageName::kFieldId, chars.data, chars.size);
   }
   void set_host_app_package_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_HostAppPackageName::kFieldId;
@@ -252,7 +398,7 @@ class ChromeProcessDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CrashTraceId kCrashTraceId() { return {}; }
   void set_crash_trace_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CrashTraceId::kFieldId;

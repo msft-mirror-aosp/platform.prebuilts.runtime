@@ -21,47 +21,156 @@ class HeapGraphObject;
 class HeapGraphRoot;
 class HeapGraphType;
 class InternedString;
-enum HeapGraphRoot_Type : int32_t;
-enum HeapGraphType_Kind : int32_t;
+namespace perfetto_pbzero_enum_HeapGraphRoot {
+enum Type : int32_t;
+}  // namespace perfetto_pbzero_enum_HeapGraphRoot
+using HeapGraphRoot_Type = perfetto_pbzero_enum_HeapGraphRoot::Type;
+namespace perfetto_pbzero_enum_HeapGraphType {
+enum Kind : int32_t;
+}  // namespace perfetto_pbzero_enum_HeapGraphType
+using HeapGraphType_Kind = perfetto_pbzero_enum_HeapGraphType::Kind;
 
-enum HeapGraphType_Kind : int32_t {
-  HeapGraphType_Kind_KIND_UNKNOWN = 0,
-  HeapGraphType_Kind_KIND_NORMAL = 1,
-  HeapGraphType_Kind_KIND_NOREFERENCES = 2,
-  HeapGraphType_Kind_KIND_STRING = 3,
-  HeapGraphType_Kind_KIND_ARRAY = 4,
-  HeapGraphType_Kind_KIND_CLASS = 5,
-  HeapGraphType_Kind_KIND_CLASSLOADER = 6,
-  HeapGraphType_Kind_KIND_DEXCACHE = 7,
-  HeapGraphType_Kind_KIND_SOFT_REFERENCE = 8,
-  HeapGraphType_Kind_KIND_WEAK_REFERENCE = 9,
-  HeapGraphType_Kind_KIND_FINALIZER_REFERENCE = 10,
-  HeapGraphType_Kind_KIND_PHANTOM_REFERENCE = 11,
+namespace perfetto_pbzero_enum_HeapGraphType {
+enum Kind : int32_t {
+  KIND_UNKNOWN = 0,
+  KIND_NORMAL = 1,
+  KIND_NOREFERENCES = 2,
+  KIND_STRING = 3,
+  KIND_ARRAY = 4,
+  KIND_CLASS = 5,
+  KIND_CLASSLOADER = 6,
+  KIND_DEXCACHE = 7,
+  KIND_SOFT_REFERENCE = 8,
+  KIND_WEAK_REFERENCE = 9,
+  KIND_FINALIZER_REFERENCE = 10,
+  KIND_PHANTOM_REFERENCE = 11,
 };
+} // namespace perfetto_pbzero_enum_HeapGraphType
+using HeapGraphType_Kind = perfetto_pbzero_enum_HeapGraphType::Kind;
 
-const HeapGraphType_Kind HeapGraphType_Kind_MIN = HeapGraphType_Kind_KIND_UNKNOWN;
-const HeapGraphType_Kind HeapGraphType_Kind_MAX = HeapGraphType_Kind_KIND_PHANTOM_REFERENCE;
 
-enum HeapGraphRoot_Type : int32_t {
-  HeapGraphRoot_Type_ROOT_UNKNOWN = 0,
-  HeapGraphRoot_Type_ROOT_JNI_GLOBAL = 1,
-  HeapGraphRoot_Type_ROOT_JNI_LOCAL = 2,
-  HeapGraphRoot_Type_ROOT_JAVA_FRAME = 3,
-  HeapGraphRoot_Type_ROOT_NATIVE_STACK = 4,
-  HeapGraphRoot_Type_ROOT_STICKY_CLASS = 5,
-  HeapGraphRoot_Type_ROOT_THREAD_BLOCK = 6,
-  HeapGraphRoot_Type_ROOT_MONITOR_USED = 7,
-  HeapGraphRoot_Type_ROOT_THREAD_OBJECT = 8,
-  HeapGraphRoot_Type_ROOT_INTERNED_STRING = 9,
-  HeapGraphRoot_Type_ROOT_FINALIZING = 10,
-  HeapGraphRoot_Type_ROOT_DEBUGGER = 11,
-  HeapGraphRoot_Type_ROOT_REFERENCE_CLEANUP = 12,
-  HeapGraphRoot_Type_ROOT_VM_INTERNAL = 13,
-  HeapGraphRoot_Type_ROOT_JNI_MONITOR = 14,
+constexpr HeapGraphType_Kind HeapGraphType_Kind_MIN = HeapGraphType_Kind::KIND_UNKNOWN;
+constexpr HeapGraphType_Kind HeapGraphType_Kind_MAX = HeapGraphType_Kind::KIND_PHANTOM_REFERENCE;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* HeapGraphType_Kind_Name(::perfetto::protos::pbzero::HeapGraphType_Kind value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::HeapGraphType_Kind::KIND_UNKNOWN:
+    return "KIND_UNKNOWN";
+
+  case ::perfetto::protos::pbzero::HeapGraphType_Kind::KIND_NORMAL:
+    return "KIND_NORMAL";
+
+  case ::perfetto::protos::pbzero::HeapGraphType_Kind::KIND_NOREFERENCES:
+    return "KIND_NOREFERENCES";
+
+  case ::perfetto::protos::pbzero::HeapGraphType_Kind::KIND_STRING:
+    return "KIND_STRING";
+
+  case ::perfetto::protos::pbzero::HeapGraphType_Kind::KIND_ARRAY:
+    return "KIND_ARRAY";
+
+  case ::perfetto::protos::pbzero::HeapGraphType_Kind::KIND_CLASS:
+    return "KIND_CLASS";
+
+  case ::perfetto::protos::pbzero::HeapGraphType_Kind::KIND_CLASSLOADER:
+    return "KIND_CLASSLOADER";
+
+  case ::perfetto::protos::pbzero::HeapGraphType_Kind::KIND_DEXCACHE:
+    return "KIND_DEXCACHE";
+
+  case ::perfetto::protos::pbzero::HeapGraphType_Kind::KIND_SOFT_REFERENCE:
+    return "KIND_SOFT_REFERENCE";
+
+  case ::perfetto::protos::pbzero::HeapGraphType_Kind::KIND_WEAK_REFERENCE:
+    return "KIND_WEAK_REFERENCE";
+
+  case ::perfetto::protos::pbzero::HeapGraphType_Kind::KIND_FINALIZER_REFERENCE:
+    return "KIND_FINALIZER_REFERENCE";
+
+  case ::perfetto::protos::pbzero::HeapGraphType_Kind::KIND_PHANTOM_REFERENCE:
+    return "KIND_PHANTOM_REFERENCE";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_HeapGraphRoot {
+enum Type : int32_t {
+  ROOT_UNKNOWN = 0,
+  ROOT_JNI_GLOBAL = 1,
+  ROOT_JNI_LOCAL = 2,
+  ROOT_JAVA_FRAME = 3,
+  ROOT_NATIVE_STACK = 4,
+  ROOT_STICKY_CLASS = 5,
+  ROOT_THREAD_BLOCK = 6,
+  ROOT_MONITOR_USED = 7,
+  ROOT_THREAD_OBJECT = 8,
+  ROOT_INTERNED_STRING = 9,
+  ROOT_FINALIZING = 10,
+  ROOT_DEBUGGER = 11,
+  ROOT_REFERENCE_CLEANUP = 12,
+  ROOT_VM_INTERNAL = 13,
+  ROOT_JNI_MONITOR = 14,
 };
+} // namespace perfetto_pbzero_enum_HeapGraphRoot
+using HeapGraphRoot_Type = perfetto_pbzero_enum_HeapGraphRoot::Type;
 
-const HeapGraphRoot_Type HeapGraphRoot_Type_MIN = HeapGraphRoot_Type_ROOT_UNKNOWN;
-const HeapGraphRoot_Type HeapGraphRoot_Type_MAX = HeapGraphRoot_Type_ROOT_JNI_MONITOR;
+
+constexpr HeapGraphRoot_Type HeapGraphRoot_Type_MIN = HeapGraphRoot_Type::ROOT_UNKNOWN;
+constexpr HeapGraphRoot_Type HeapGraphRoot_Type_MAX = HeapGraphRoot_Type::ROOT_JNI_MONITOR;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* HeapGraphRoot_Type_Name(::perfetto::protos::pbzero::HeapGraphRoot_Type value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_UNKNOWN:
+    return "ROOT_UNKNOWN";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_JNI_GLOBAL:
+    return "ROOT_JNI_GLOBAL";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_JNI_LOCAL:
+    return "ROOT_JNI_LOCAL";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_JAVA_FRAME:
+    return "ROOT_JAVA_FRAME";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_NATIVE_STACK:
+    return "ROOT_NATIVE_STACK";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_STICKY_CLASS:
+    return "ROOT_STICKY_CLASS";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_THREAD_BLOCK:
+    return "ROOT_THREAD_BLOCK";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_MONITOR_USED:
+    return "ROOT_MONITOR_USED";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_THREAD_OBJECT:
+    return "ROOT_THREAD_OBJECT";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_INTERNED_STRING:
+    return "ROOT_INTERNED_STRING";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_FINALIZING:
+    return "ROOT_FINALIZING";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_DEBUGGER:
+    return "ROOT_DEBUGGER";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_REFERENCE_CLEANUP:
+    return "ROOT_REFERENCE_CLEANUP";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_VM_INTERNAL:
+    return "ROOT_VM_INTERNAL";
+
+  case ::perfetto::protos::pbzero::HeapGraphRoot_Type::ROOT_JNI_MONITOR:
+    return "ROOT_JNI_MONITOR";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class HeapGraph_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/9, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -99,6 +208,8 @@ class HeapGraph : public ::protozero::Message {
     kContinuedFieldNumber = 5,
     kIndexFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.HeapGraph"; }
+
 
   using FieldMetadata_Pid =
     ::protozero::proto_utils::FieldMetadata<
@@ -114,7 +225,7 @@ class HeapGraph : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -139,7 +250,7 @@ class HeapGraph : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Objects kObjects() { return {}; }
   template <typename T = HeapGraphObject> T* add_objects() {
     return BeginNestedMessage<T>(2);
@@ -160,7 +271,7 @@ class HeapGraph : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Roots kRoots() { return {}; }
   template <typename T = HeapGraphRoot> T* add_roots() {
     return BeginNestedMessage<T>(7);
@@ -181,7 +292,7 @@ class HeapGraph : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Types kTypes() { return {}; }
   template <typename T = HeapGraphType> T* add_types() {
     return BeginNestedMessage<T>(9);
@@ -202,7 +313,7 @@ class HeapGraph : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FieldNames kFieldNames() { return {}; }
   template <typename T = InternedString> T* add_field_names() {
     return BeginNestedMessage<T>(4);
@@ -223,7 +334,7 @@ class HeapGraph : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LocationNames kLocationNames() { return {}; }
   template <typename T = InternedString> T* add_location_names() {
     return BeginNestedMessage<T>(8);
@@ -244,7 +355,7 @@ class HeapGraph : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Continued kContinued() { return {}; }
   void set_continued(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_Continued::kFieldId;
@@ -269,7 +380,7 @@ class HeapGraph : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Index kIndex() { return {}; }
   void set_index(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Index::kFieldId;
@@ -317,6 +428,8 @@ class HeapGraphObject : public ::protozero::Message {
     kReferenceObjectIdFieldNumber = 5,
     kNativeAllocationRegistrySizeFieldFieldNumber = 8,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.HeapGraphObject"; }
+
 
   using FieldMetadata_Id =
     ::protozero::proto_utils::FieldMetadata<
@@ -332,7 +445,7 @@ class HeapGraphObject : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Id kId() { return {}; }
   void set_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
@@ -357,7 +470,7 @@ class HeapGraphObject : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IdDelta kIdDelta() { return {}; }
   void set_id_delta(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IdDelta::kFieldId;
@@ -382,7 +495,7 @@ class HeapGraphObject : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TypeId kTypeId() { return {}; }
   void set_type_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TypeId::kFieldId;
@@ -407,7 +520,7 @@ class HeapGraphObject : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SelfSize kSelfSize() { return {}; }
   void set_self_size(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SelfSize::kFieldId;
@@ -432,7 +545,7 @@ class HeapGraphObject : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ReferenceFieldIdBase kReferenceFieldIdBase() { return {}; }
   void set_reference_field_id_base(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ReferenceFieldIdBase::kFieldId;
@@ -457,7 +570,7 @@ class HeapGraphObject : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ReferenceFieldId kReferenceFieldId() { return {}; }
   void set_reference_field_id(const ::protozero::PackedVarInt& packed_buffer) {
     AppendBytes(FieldMetadata_ReferenceFieldId::kFieldId, packed_buffer.data(),
@@ -478,7 +591,7 @@ class HeapGraphObject : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ReferenceObjectId kReferenceObjectId() { return {}; }
   void set_reference_object_id(const ::protozero::PackedVarInt& packed_buffer) {
     AppendBytes(FieldMetadata_ReferenceObjectId::kFieldId, packed_buffer.data(),
@@ -499,7 +612,7 @@ class HeapGraphObject : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NativeAllocationRegistrySizeField kNativeAllocationRegistrySizeField() { return {}; }
   void set_native_allocation_registry_size_field(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NativeAllocationRegistrySizeField::kFieldId;
@@ -547,19 +660,25 @@ class HeapGraphType : public ::protozero::Message {
     kKindFieldNumber = 7,
     kClassloaderIdFieldNumber = 8,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.HeapGraphType"; }
+
+
   using Kind = ::perfetto::protos::pbzero::HeapGraphType_Kind;
-  static const Kind KIND_UNKNOWN = HeapGraphType_Kind_KIND_UNKNOWN;
-  static const Kind KIND_NORMAL = HeapGraphType_Kind_KIND_NORMAL;
-  static const Kind KIND_NOREFERENCES = HeapGraphType_Kind_KIND_NOREFERENCES;
-  static const Kind KIND_STRING = HeapGraphType_Kind_KIND_STRING;
-  static const Kind KIND_ARRAY = HeapGraphType_Kind_KIND_ARRAY;
-  static const Kind KIND_CLASS = HeapGraphType_Kind_KIND_CLASS;
-  static const Kind KIND_CLASSLOADER = HeapGraphType_Kind_KIND_CLASSLOADER;
-  static const Kind KIND_DEXCACHE = HeapGraphType_Kind_KIND_DEXCACHE;
-  static const Kind KIND_SOFT_REFERENCE = HeapGraphType_Kind_KIND_SOFT_REFERENCE;
-  static const Kind KIND_WEAK_REFERENCE = HeapGraphType_Kind_KIND_WEAK_REFERENCE;
-  static const Kind KIND_FINALIZER_REFERENCE = HeapGraphType_Kind_KIND_FINALIZER_REFERENCE;
-  static const Kind KIND_PHANTOM_REFERENCE = HeapGraphType_Kind_KIND_PHANTOM_REFERENCE;
+  static inline const char* Kind_Name(Kind value) {
+    return ::perfetto::protos::pbzero::HeapGraphType_Kind_Name(value);
+  }
+  static const Kind KIND_UNKNOWN = Kind::KIND_UNKNOWN;
+  static const Kind KIND_NORMAL = Kind::KIND_NORMAL;
+  static const Kind KIND_NOREFERENCES = Kind::KIND_NOREFERENCES;
+  static const Kind KIND_STRING = Kind::KIND_STRING;
+  static const Kind KIND_ARRAY = Kind::KIND_ARRAY;
+  static const Kind KIND_CLASS = Kind::KIND_CLASS;
+  static const Kind KIND_CLASSLOADER = Kind::KIND_CLASSLOADER;
+  static const Kind KIND_DEXCACHE = Kind::KIND_DEXCACHE;
+  static const Kind KIND_SOFT_REFERENCE = Kind::KIND_SOFT_REFERENCE;
+  static const Kind KIND_WEAK_REFERENCE = Kind::KIND_WEAK_REFERENCE;
+  static const Kind KIND_FINALIZER_REFERENCE = Kind::KIND_FINALIZER_REFERENCE;
+  static const Kind KIND_PHANTOM_REFERENCE = Kind::KIND_PHANTOM_REFERENCE;
 
   using FieldMetadata_Id =
     ::protozero::proto_utils::FieldMetadata<
@@ -575,7 +694,7 @@ class HeapGraphType : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Id kId() { return {}; }
   void set_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
@@ -600,7 +719,7 @@ class HeapGraphType : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LocationId kLocationId() { return {}; }
   void set_location_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_LocationId::kFieldId;
@@ -625,10 +744,13 @@ class HeapGraphType : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ClassName kClassName() { return {}; }
   void set_class_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ClassName::kFieldId, data, size);
+  }
+  void set_class_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ClassName::kFieldId, chars.data, chars.size);
   }
   void set_class_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ClassName::kFieldId;
@@ -653,7 +775,7 @@ class HeapGraphType : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ObjectSize kObjectSize() { return {}; }
   void set_object_size(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ObjectSize::kFieldId;
@@ -678,7 +800,7 @@ class HeapGraphType : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SuperclassId kSuperclassId() { return {}; }
   void set_superclass_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SuperclassId::kFieldId;
@@ -703,7 +825,7 @@ class HeapGraphType : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ReferenceFieldId kReferenceFieldId() { return {}; }
   void set_reference_field_id(const ::protozero::PackedVarInt& packed_buffer) {
     AppendBytes(FieldMetadata_ReferenceFieldId::kFieldId, packed_buffer.data(),
@@ -724,7 +846,7 @@ class HeapGraphType : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Kind kKind() { return {}; }
   void set_kind(::perfetto::protos::pbzero::HeapGraphType_Kind value) {
     static constexpr uint32_t field_id = FieldMetadata_Kind::kFieldId;
@@ -749,7 +871,7 @@ class HeapGraphType : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ClassloaderId kClassloaderId() { return {}; }
   void set_classloader_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ClassloaderId::kFieldId;
@@ -779,22 +901,28 @@ class HeapGraphRoot : public ::protozero::Message {
     kObjectIdsFieldNumber = 1,
     kRootTypeFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.HeapGraphRoot"; }
+
+
   using Type = ::perfetto::protos::pbzero::HeapGraphRoot_Type;
-  static const Type ROOT_UNKNOWN = HeapGraphRoot_Type_ROOT_UNKNOWN;
-  static const Type ROOT_JNI_GLOBAL = HeapGraphRoot_Type_ROOT_JNI_GLOBAL;
-  static const Type ROOT_JNI_LOCAL = HeapGraphRoot_Type_ROOT_JNI_LOCAL;
-  static const Type ROOT_JAVA_FRAME = HeapGraphRoot_Type_ROOT_JAVA_FRAME;
-  static const Type ROOT_NATIVE_STACK = HeapGraphRoot_Type_ROOT_NATIVE_STACK;
-  static const Type ROOT_STICKY_CLASS = HeapGraphRoot_Type_ROOT_STICKY_CLASS;
-  static const Type ROOT_THREAD_BLOCK = HeapGraphRoot_Type_ROOT_THREAD_BLOCK;
-  static const Type ROOT_MONITOR_USED = HeapGraphRoot_Type_ROOT_MONITOR_USED;
-  static const Type ROOT_THREAD_OBJECT = HeapGraphRoot_Type_ROOT_THREAD_OBJECT;
-  static const Type ROOT_INTERNED_STRING = HeapGraphRoot_Type_ROOT_INTERNED_STRING;
-  static const Type ROOT_FINALIZING = HeapGraphRoot_Type_ROOT_FINALIZING;
-  static const Type ROOT_DEBUGGER = HeapGraphRoot_Type_ROOT_DEBUGGER;
-  static const Type ROOT_REFERENCE_CLEANUP = HeapGraphRoot_Type_ROOT_REFERENCE_CLEANUP;
-  static const Type ROOT_VM_INTERNAL = HeapGraphRoot_Type_ROOT_VM_INTERNAL;
-  static const Type ROOT_JNI_MONITOR = HeapGraphRoot_Type_ROOT_JNI_MONITOR;
+  static inline const char* Type_Name(Type value) {
+    return ::perfetto::protos::pbzero::HeapGraphRoot_Type_Name(value);
+  }
+  static const Type ROOT_UNKNOWN = Type::ROOT_UNKNOWN;
+  static const Type ROOT_JNI_GLOBAL = Type::ROOT_JNI_GLOBAL;
+  static const Type ROOT_JNI_LOCAL = Type::ROOT_JNI_LOCAL;
+  static const Type ROOT_JAVA_FRAME = Type::ROOT_JAVA_FRAME;
+  static const Type ROOT_NATIVE_STACK = Type::ROOT_NATIVE_STACK;
+  static const Type ROOT_STICKY_CLASS = Type::ROOT_STICKY_CLASS;
+  static const Type ROOT_THREAD_BLOCK = Type::ROOT_THREAD_BLOCK;
+  static const Type ROOT_MONITOR_USED = Type::ROOT_MONITOR_USED;
+  static const Type ROOT_THREAD_OBJECT = Type::ROOT_THREAD_OBJECT;
+  static const Type ROOT_INTERNED_STRING = Type::ROOT_INTERNED_STRING;
+  static const Type ROOT_FINALIZING = Type::ROOT_FINALIZING;
+  static const Type ROOT_DEBUGGER = Type::ROOT_DEBUGGER;
+  static const Type ROOT_REFERENCE_CLEANUP = Type::ROOT_REFERENCE_CLEANUP;
+  static const Type ROOT_VM_INTERNAL = Type::ROOT_VM_INTERNAL;
+  static const Type ROOT_JNI_MONITOR = Type::ROOT_JNI_MONITOR;
 
   using FieldMetadata_ObjectIds =
     ::protozero::proto_utils::FieldMetadata<
@@ -810,7 +938,7 @@ class HeapGraphRoot : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ObjectIds kObjectIds() { return {}; }
   void set_object_ids(const ::protozero::PackedVarInt& packed_buffer) {
     AppendBytes(FieldMetadata_ObjectIds::kFieldId, packed_buffer.data(),
@@ -831,7 +959,7 @@ class HeapGraphRoot : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RootType kRootType() { return {}; }
   void set_root_type(::perfetto::protos::pbzero::HeapGraphRoot_Type value) {
     static constexpr uint32_t field_id = FieldMetadata_RootType::kFieldId;

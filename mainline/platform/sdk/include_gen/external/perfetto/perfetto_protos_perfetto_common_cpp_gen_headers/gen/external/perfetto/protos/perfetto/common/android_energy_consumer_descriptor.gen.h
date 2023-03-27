@@ -29,7 +29,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT AndroidEnergyConsumerDescriptor : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT AndroidEnergyConsumerDescriptor : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kEnergyConsumersFieldNumber = 1,
@@ -66,7 +66,7 @@ class PERFETTO_EXPORT AndroidEnergyConsumerDescriptor : public ::protozero::CppM
 };
 
 
-class PERFETTO_EXPORT AndroidEnergyConsumer : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT AndroidEnergyConsumer : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kEnergyConsumerIdFieldNumber = 1,
