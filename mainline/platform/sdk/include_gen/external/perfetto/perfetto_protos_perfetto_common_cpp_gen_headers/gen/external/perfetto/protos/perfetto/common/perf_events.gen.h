@@ -20,6 +20,7 @@ class PerfEvents_RawEvent;
 class PerfEvents_Tracepoint;
 class PerfEvents_Timebase;
 enum PerfEvents_Counter : int;
+enum PerfEvents_PerfClock : int;
 }  // namespace perfetto
 }  // namespace protos
 }  // namespace gen
@@ -35,11 +36,34 @@ enum PerfEvents_Counter : int {
   PerfEvents_Counter_UNKNOWN_COUNTER = 0,
   PerfEvents_Counter_SW_CPU_CLOCK = 1,
   PerfEvents_Counter_SW_PAGE_FAULTS = 2,
+  PerfEvents_Counter_SW_TASK_CLOCK = 3,
+  PerfEvents_Counter_SW_CONTEXT_SWITCHES = 4,
+  PerfEvents_Counter_SW_CPU_MIGRATIONS = 5,
+  PerfEvents_Counter_SW_PAGE_FAULTS_MIN = 6,
+  PerfEvents_Counter_SW_PAGE_FAULTS_MAJ = 7,
+  PerfEvents_Counter_SW_ALIGNMENT_FAULTS = 8,
+  PerfEvents_Counter_SW_EMULATION_FAULTS = 9,
+  PerfEvents_Counter_SW_DUMMY = 20,
   PerfEvents_Counter_HW_CPU_CYCLES = 10,
   PerfEvents_Counter_HW_INSTRUCTIONS = 11,
+  PerfEvents_Counter_HW_CACHE_REFERENCES = 12,
+  PerfEvents_Counter_HW_CACHE_MISSES = 13,
+  PerfEvents_Counter_HW_BRANCH_INSTRUCTIONS = 14,
+  PerfEvents_Counter_HW_BRANCH_MISSES = 15,
+  PerfEvents_Counter_HW_BUS_CYCLES = 16,
+  PerfEvents_Counter_HW_STALLED_CYCLES_FRONTEND = 17,
+  PerfEvents_Counter_HW_STALLED_CYCLES_BACKEND = 18,
+  PerfEvents_Counter_HW_REF_CPU_CYCLES = 19,
+};
+enum PerfEvents_PerfClock : int {
+  PerfEvents_PerfClock_UNKNOWN_PERF_CLOCK = 0,
+  PerfEvents_PerfClock_PERF_CLOCK_REALTIME = 1,
+  PerfEvents_PerfClock_PERF_CLOCK_MONOTONIC = 2,
+  PerfEvents_PerfClock_PERF_CLOCK_MONOTONIC_RAW = 3,
+  PerfEvents_PerfClock_PERF_CLOCK_BOOTTIME = 4,
 };
 
-class PERFETTO_EXPORT PerfEvents : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT PerfEvents : public ::protozero::CppMessageObj {
  public:
   using Timebase = PerfEvents_Timebase;
   using Tracepoint = PerfEvents_Tracepoint;
@@ -48,10 +72,34 @@ class PERFETTO_EXPORT PerfEvents : public ::protozero::CppMessageObj {
   static constexpr auto UNKNOWN_COUNTER = PerfEvents_Counter_UNKNOWN_COUNTER;
   static constexpr auto SW_CPU_CLOCK = PerfEvents_Counter_SW_CPU_CLOCK;
   static constexpr auto SW_PAGE_FAULTS = PerfEvents_Counter_SW_PAGE_FAULTS;
+  static constexpr auto SW_TASK_CLOCK = PerfEvents_Counter_SW_TASK_CLOCK;
+  static constexpr auto SW_CONTEXT_SWITCHES = PerfEvents_Counter_SW_CONTEXT_SWITCHES;
+  static constexpr auto SW_CPU_MIGRATIONS = PerfEvents_Counter_SW_CPU_MIGRATIONS;
+  static constexpr auto SW_PAGE_FAULTS_MIN = PerfEvents_Counter_SW_PAGE_FAULTS_MIN;
+  static constexpr auto SW_PAGE_FAULTS_MAJ = PerfEvents_Counter_SW_PAGE_FAULTS_MAJ;
+  static constexpr auto SW_ALIGNMENT_FAULTS = PerfEvents_Counter_SW_ALIGNMENT_FAULTS;
+  static constexpr auto SW_EMULATION_FAULTS = PerfEvents_Counter_SW_EMULATION_FAULTS;
+  static constexpr auto SW_DUMMY = PerfEvents_Counter_SW_DUMMY;
   static constexpr auto HW_CPU_CYCLES = PerfEvents_Counter_HW_CPU_CYCLES;
   static constexpr auto HW_INSTRUCTIONS = PerfEvents_Counter_HW_INSTRUCTIONS;
+  static constexpr auto HW_CACHE_REFERENCES = PerfEvents_Counter_HW_CACHE_REFERENCES;
+  static constexpr auto HW_CACHE_MISSES = PerfEvents_Counter_HW_CACHE_MISSES;
+  static constexpr auto HW_BRANCH_INSTRUCTIONS = PerfEvents_Counter_HW_BRANCH_INSTRUCTIONS;
+  static constexpr auto HW_BRANCH_MISSES = PerfEvents_Counter_HW_BRANCH_MISSES;
+  static constexpr auto HW_BUS_CYCLES = PerfEvents_Counter_HW_BUS_CYCLES;
+  static constexpr auto HW_STALLED_CYCLES_FRONTEND = PerfEvents_Counter_HW_STALLED_CYCLES_FRONTEND;
+  static constexpr auto HW_STALLED_CYCLES_BACKEND = PerfEvents_Counter_HW_STALLED_CYCLES_BACKEND;
+  static constexpr auto HW_REF_CPU_CYCLES = PerfEvents_Counter_HW_REF_CPU_CYCLES;
   static constexpr auto Counter_MIN = PerfEvents_Counter_UNKNOWN_COUNTER;
-  static constexpr auto Counter_MAX = PerfEvents_Counter_HW_INSTRUCTIONS;
+  static constexpr auto Counter_MAX = PerfEvents_Counter_SW_DUMMY;
+  using PerfClock = PerfEvents_PerfClock;
+  static constexpr auto UNKNOWN_PERF_CLOCK = PerfEvents_PerfClock_UNKNOWN_PERF_CLOCK;
+  static constexpr auto PERF_CLOCK_REALTIME = PerfEvents_PerfClock_PERF_CLOCK_REALTIME;
+  static constexpr auto PERF_CLOCK_MONOTONIC = PerfEvents_PerfClock_PERF_CLOCK_MONOTONIC;
+  static constexpr auto PERF_CLOCK_MONOTONIC_RAW = PerfEvents_PerfClock_PERF_CLOCK_MONOTONIC_RAW;
+  static constexpr auto PERF_CLOCK_BOOTTIME = PerfEvents_PerfClock_PERF_CLOCK_BOOTTIME;
+  static constexpr auto PerfClock_MIN = PerfEvents_PerfClock_UNKNOWN_PERF_CLOCK;
+  static constexpr auto PerfClock_MAX = PerfEvents_PerfClock_PERF_CLOCK_BOOTTIME;
   enum FieldNumbers {
   };
 
@@ -79,7 +127,7 @@ class PERFETTO_EXPORT PerfEvents : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT PerfEvents_RawEvent : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT PerfEvents_RawEvent : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kTypeFieldNumber = 1,
@@ -132,7 +180,7 @@ class PERFETTO_EXPORT PerfEvents_RawEvent : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT PerfEvents_Tracepoint : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT PerfEvents_Tracepoint : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNameFieldNumber = 1,
@@ -173,7 +221,7 @@ class PERFETTO_EXPORT PerfEvents_Tracepoint : public ::protozero::CppMessageObj 
 };
 
 
-class PERFETTO_EXPORT PerfEvents_Timebase : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT PerfEvents_Timebase : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kFrequencyFieldNumber = 2,
@@ -181,6 +229,7 @@ class PERFETTO_EXPORT PerfEvents_Timebase : public ::protozero::CppMessageObj {
     kCounterFieldNumber = 4,
     kTracepointFieldNumber = 3,
     kRawEventFieldNumber = 5,
+    kTimestampClockFieldNumber = 11,
     kNameFieldNumber = 10,
   };
 
@@ -218,6 +267,10 @@ class PERFETTO_EXPORT PerfEvents_Timebase : public ::protozero::CppMessageObj {
   const PerfEvents_RawEvent& raw_event() const { return *raw_event_; }
   PerfEvents_RawEvent* mutable_raw_event() { _has_field_.set(5); return raw_event_.get(); }
 
+  bool has_timestamp_clock() const { return _has_field_[11]; }
+  PerfEvents_PerfClock timestamp_clock() const { return timestamp_clock_; }
+  void set_timestamp_clock(PerfEvents_PerfClock value) { timestamp_clock_ = value; _has_field_.set(11); }
+
   bool has_name() const { return _has_field_[10]; }
   const std::string& name() const { return name_; }
   void set_name(const std::string& value) { name_ = value; _has_field_.set(10); }
@@ -228,13 +281,14 @@ class PERFETTO_EXPORT PerfEvents_Timebase : public ::protozero::CppMessageObj {
   PerfEvents_Counter counter_{};
   ::protozero::CopyablePtr<PerfEvents_Tracepoint> tracepoint_;
   ::protozero::CopyablePtr<PerfEvents_RawEvent> raw_event_;
+  PerfEvents_PerfClock timestamp_clock_{};
   std::string name_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<11> _has_field_{};
+  std::bitset<12> _has_field_{};
 };
 
 }  // namespace perfetto

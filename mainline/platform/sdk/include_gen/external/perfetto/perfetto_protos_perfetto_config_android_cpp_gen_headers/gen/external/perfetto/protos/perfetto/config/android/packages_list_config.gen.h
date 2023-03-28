@@ -28,7 +28,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT PackagesListConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT PackagesListConfig : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kPackageNameFilterFieldNumber = 1,

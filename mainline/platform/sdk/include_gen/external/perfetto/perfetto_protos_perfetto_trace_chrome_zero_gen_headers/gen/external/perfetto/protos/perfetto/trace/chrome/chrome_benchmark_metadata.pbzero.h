@@ -56,6 +56,8 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
     kStoryRunIndexFieldNumber = 8,
     kHadFailuresFieldNumber = 9,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeBenchmarkMetadata"; }
+
 
   using FieldMetadata_BenchmarkStartTimeUs =
     ::protozero::proto_utils::FieldMetadata<
@@ -71,7 +73,7 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BenchmarkStartTimeUs kBenchmarkStartTimeUs() { return {}; }
   void set_benchmark_start_time_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BenchmarkStartTimeUs::kFieldId;
@@ -96,7 +98,7 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StoryRunTimeUs kStoryRunTimeUs() { return {}; }
   void set_story_run_time_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StoryRunTimeUs::kFieldId;
@@ -121,10 +123,13 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BenchmarkName kBenchmarkName() { return {}; }
   void set_benchmark_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_BenchmarkName::kFieldId, data, size);
+  }
+  void set_benchmark_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_BenchmarkName::kFieldId, chars.data, chars.size);
   }
   void set_benchmark_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_BenchmarkName::kFieldId;
@@ -149,10 +154,13 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BenchmarkDescription kBenchmarkDescription() { return {}; }
   void set_benchmark_description(const char* data, size_t size) {
     AppendBytes(FieldMetadata_BenchmarkDescription::kFieldId, data, size);
+  }
+  void set_benchmark_description(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_BenchmarkDescription::kFieldId, chars.data, chars.size);
   }
   void set_benchmark_description(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_BenchmarkDescription::kFieldId;
@@ -177,10 +185,13 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Label kLabel() { return {}; }
   void set_label(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Label::kFieldId, data, size);
+  }
+  void set_label(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Label::kFieldId, chars.data, chars.size);
   }
   void set_label(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Label::kFieldId;
@@ -205,10 +216,13 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StoryName kStoryName() { return {}; }
   void set_story_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_StoryName::kFieldId, data, size);
+  }
+  void set_story_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_StoryName::kFieldId, chars.data, chars.size);
   }
   void set_story_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_StoryName::kFieldId;
@@ -233,10 +247,13 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StoryTags kStoryTags() { return {}; }
   void add_story_tags(const char* data, size_t size) {
     AppendBytes(FieldMetadata_StoryTags::kFieldId, data, size);
+  }
+  void add_story_tags(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_StoryTags::kFieldId, chars.data, chars.size);
   }
   void add_story_tags(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_StoryTags::kFieldId;
@@ -261,7 +278,7 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StoryRunIndex kStoryRunIndex() { return {}; }
   void set_story_run_index(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StoryRunIndex::kFieldId;
@@ -286,7 +303,7 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HadFailures kHadFailures() { return {}; }
   void set_had_failures(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_HadFailures::kFieldId;

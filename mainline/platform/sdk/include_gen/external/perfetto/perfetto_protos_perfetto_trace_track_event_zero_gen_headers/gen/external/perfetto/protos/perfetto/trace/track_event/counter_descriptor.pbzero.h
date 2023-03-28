@@ -16,27 +16,76 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-enum CounterDescriptor_BuiltinCounterType : int32_t;
-enum CounterDescriptor_Unit : int32_t;
+namespace perfetto_pbzero_enum_CounterDescriptor {
+enum BuiltinCounterType : int32_t;
+}  // namespace perfetto_pbzero_enum_CounterDescriptor
+using CounterDescriptor_BuiltinCounterType = perfetto_pbzero_enum_CounterDescriptor::BuiltinCounterType;
+namespace perfetto_pbzero_enum_CounterDescriptor {
+enum Unit : int32_t;
+}  // namespace perfetto_pbzero_enum_CounterDescriptor
+using CounterDescriptor_Unit = perfetto_pbzero_enum_CounterDescriptor::Unit;
 
-enum CounterDescriptor_BuiltinCounterType : int32_t {
-  CounterDescriptor_BuiltinCounterType_COUNTER_UNSPECIFIED = 0,
-  CounterDescriptor_BuiltinCounterType_COUNTER_THREAD_TIME_NS = 1,
-  CounterDescriptor_BuiltinCounterType_COUNTER_THREAD_INSTRUCTION_COUNT = 2,
+namespace perfetto_pbzero_enum_CounterDescriptor {
+enum BuiltinCounterType : int32_t {
+  COUNTER_UNSPECIFIED = 0,
+  COUNTER_THREAD_TIME_NS = 1,
+  COUNTER_THREAD_INSTRUCTION_COUNT = 2,
 };
+} // namespace perfetto_pbzero_enum_CounterDescriptor
+using CounterDescriptor_BuiltinCounterType = perfetto_pbzero_enum_CounterDescriptor::BuiltinCounterType;
 
-const CounterDescriptor_BuiltinCounterType CounterDescriptor_BuiltinCounterType_MIN = CounterDescriptor_BuiltinCounterType_COUNTER_UNSPECIFIED;
-const CounterDescriptor_BuiltinCounterType CounterDescriptor_BuiltinCounterType_MAX = CounterDescriptor_BuiltinCounterType_COUNTER_THREAD_INSTRUCTION_COUNT;
 
-enum CounterDescriptor_Unit : int32_t {
-  CounterDescriptor_Unit_UNIT_UNSPECIFIED = 0,
-  CounterDescriptor_Unit_UNIT_TIME_NS = 1,
-  CounterDescriptor_Unit_UNIT_COUNT = 2,
-  CounterDescriptor_Unit_UNIT_SIZE_BYTES = 3,
+constexpr CounterDescriptor_BuiltinCounterType CounterDescriptor_BuiltinCounterType_MIN = CounterDescriptor_BuiltinCounterType::COUNTER_UNSPECIFIED;
+constexpr CounterDescriptor_BuiltinCounterType CounterDescriptor_BuiltinCounterType_MAX = CounterDescriptor_BuiltinCounterType::COUNTER_THREAD_INSTRUCTION_COUNT;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* CounterDescriptor_BuiltinCounterType_Name(::perfetto::protos::pbzero::CounterDescriptor_BuiltinCounterType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::CounterDescriptor_BuiltinCounterType::COUNTER_UNSPECIFIED:
+    return "COUNTER_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::CounterDescriptor_BuiltinCounterType::COUNTER_THREAD_TIME_NS:
+    return "COUNTER_THREAD_TIME_NS";
+
+  case ::perfetto::protos::pbzero::CounterDescriptor_BuiltinCounterType::COUNTER_THREAD_INSTRUCTION_COUNT:
+    return "COUNTER_THREAD_INSTRUCTION_COUNT";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_CounterDescriptor {
+enum Unit : int32_t {
+  UNIT_UNSPECIFIED = 0,
+  UNIT_TIME_NS = 1,
+  UNIT_COUNT = 2,
+  UNIT_SIZE_BYTES = 3,
 };
+} // namespace perfetto_pbzero_enum_CounterDescriptor
+using CounterDescriptor_Unit = perfetto_pbzero_enum_CounterDescriptor::Unit;
 
-const CounterDescriptor_Unit CounterDescriptor_Unit_MIN = CounterDescriptor_Unit_UNIT_UNSPECIFIED;
-const CounterDescriptor_Unit CounterDescriptor_Unit_MAX = CounterDescriptor_Unit_UNIT_SIZE_BYTES;
+
+constexpr CounterDescriptor_Unit CounterDescriptor_Unit_MIN = CounterDescriptor_Unit::UNIT_UNSPECIFIED;
+constexpr CounterDescriptor_Unit CounterDescriptor_Unit_MAX = CounterDescriptor_Unit::UNIT_SIZE_BYTES;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* CounterDescriptor_Unit_Name(::perfetto::protos::pbzero::CounterDescriptor_Unit value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::CounterDescriptor_Unit::UNIT_UNSPECIFIED:
+    return "UNIT_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::CounterDescriptor_Unit::UNIT_TIME_NS:
+    return "UNIT_TIME_NS";
+
+  case ::perfetto::protos::pbzero::CounterDescriptor_Unit::UNIT_COUNT:
+    return "UNIT_COUNT";
+
+  case ::perfetto::protos::pbzero::CounterDescriptor_Unit::UNIT_SIZE_BYTES:
+    return "UNIT_SIZE_BYTES";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class CounterDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -68,15 +117,25 @@ class CounterDescriptor : public ::protozero::Message {
     kUnitMultiplierFieldNumber = 4,
     kIsIncrementalFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.CounterDescriptor"; }
+
+
   using BuiltinCounterType = ::perfetto::protos::pbzero::CounterDescriptor_BuiltinCounterType;
+  static inline const char* BuiltinCounterType_Name(BuiltinCounterType value) {
+    return ::perfetto::protos::pbzero::CounterDescriptor_BuiltinCounterType_Name(value);
+  }
+
   using Unit = ::perfetto::protos::pbzero::CounterDescriptor_Unit;
-  static const BuiltinCounterType COUNTER_UNSPECIFIED = CounterDescriptor_BuiltinCounterType_COUNTER_UNSPECIFIED;
-  static const BuiltinCounterType COUNTER_THREAD_TIME_NS = CounterDescriptor_BuiltinCounterType_COUNTER_THREAD_TIME_NS;
-  static const BuiltinCounterType COUNTER_THREAD_INSTRUCTION_COUNT = CounterDescriptor_BuiltinCounterType_COUNTER_THREAD_INSTRUCTION_COUNT;
-  static const Unit UNIT_UNSPECIFIED = CounterDescriptor_Unit_UNIT_UNSPECIFIED;
-  static const Unit UNIT_TIME_NS = CounterDescriptor_Unit_UNIT_TIME_NS;
-  static const Unit UNIT_COUNT = CounterDescriptor_Unit_UNIT_COUNT;
-  static const Unit UNIT_SIZE_BYTES = CounterDescriptor_Unit_UNIT_SIZE_BYTES;
+  static inline const char* Unit_Name(Unit value) {
+    return ::perfetto::protos::pbzero::CounterDescriptor_Unit_Name(value);
+  }
+  static const BuiltinCounterType COUNTER_UNSPECIFIED = BuiltinCounterType::COUNTER_UNSPECIFIED;
+  static const BuiltinCounterType COUNTER_THREAD_TIME_NS = BuiltinCounterType::COUNTER_THREAD_TIME_NS;
+  static const BuiltinCounterType COUNTER_THREAD_INSTRUCTION_COUNT = BuiltinCounterType::COUNTER_THREAD_INSTRUCTION_COUNT;
+  static const Unit UNIT_UNSPECIFIED = Unit::UNIT_UNSPECIFIED;
+  static const Unit UNIT_TIME_NS = Unit::UNIT_TIME_NS;
+  static const Unit UNIT_COUNT = Unit::UNIT_COUNT;
+  static const Unit UNIT_SIZE_BYTES = Unit::UNIT_SIZE_BYTES;
 
   using FieldMetadata_Type =
     ::protozero::proto_utils::FieldMetadata<
@@ -92,7 +151,7 @@ class CounterDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Type kType() { return {}; }
   void set_type(::perfetto::protos::pbzero::CounterDescriptor_BuiltinCounterType value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
@@ -117,10 +176,13 @@ class CounterDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Categories kCategories() { return {}; }
   void add_categories(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Categories::kFieldId, data, size);
+  }
+  void add_categories(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Categories::kFieldId, chars.data, chars.size);
   }
   void add_categories(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Categories::kFieldId;
@@ -145,7 +207,7 @@ class CounterDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Unit kUnit() { return {}; }
   void set_unit(::perfetto::protos::pbzero::CounterDescriptor_Unit value) {
     static constexpr uint32_t field_id = FieldMetadata_Unit::kFieldId;
@@ -170,10 +232,13 @@ class CounterDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_UnitName kUnitName() { return {}; }
   void set_unit_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_UnitName::kFieldId, data, size);
+  }
+  void set_unit_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_UnitName::kFieldId, chars.data, chars.size);
   }
   void set_unit_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_UnitName::kFieldId;
@@ -198,7 +263,7 @@ class CounterDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_UnitMultiplier kUnitMultiplier() { return {}; }
   void set_unit_multiplier(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_UnitMultiplier::kFieldId;
@@ -223,7 +288,7 @@ class CounterDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IsIncremental kIsIncremental() { return {}; }
   void set_is_incremental(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_IsIncremental::kFieldId;
