@@ -28,7 +28,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT VulkanMemoryConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT VulkanMemoryConfig : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kTrackDriverMemoryUsageFieldNumber = 1,

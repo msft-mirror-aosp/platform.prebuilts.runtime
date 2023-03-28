@@ -22,6 +22,7 @@ class TracingServiceCapabilities;
 class QueryCapabilitiesRequest;
 class QueryServiceStateResponse;
 class TracingServiceState;
+class TracingServiceState_TracingSession;
 class TracingServiceState_DataSource;
 class DataSourceDescriptor;
 class TracingServiceState_Producer;
@@ -37,6 +38,8 @@ class TraceStats_BufferStats;
 class GetTraceStatsRequest;
 class AttachResponse;
 class TraceConfig;
+class TraceConfig_CmdTraceStartDelay;
+class TraceConfig_AndroidReportConfig;
 class TraceConfig_TraceFilter;
 class TraceConfig_IncidentReportConfig;
 class TraceConfig_IncrementalStateConfig;
@@ -52,6 +55,7 @@ class TestConfig;
 class TestConfig_DummyFields;
 class InterceptorConfig;
 class ChromeConfig;
+class SystemInfoConfig;
 class TraceConfig_BufferConfig;
 class AttachRequest;
 class DetachResponse;
@@ -73,6 +77,7 @@ class EnableTracingResponse;
 class EnableTracingRequest;
 enum ObservableEvents_Type : int;
 enum ObservableEvents_DataSourceInstanceState : int;
+enum TraceStats_FinalFlushOutcome : int;
 enum TraceConfig_LockdownModeOperation : int;
 enum TraceConfig_CompressionType : int;
 enum TraceConfig_StatsdLogging : int;
@@ -93,7 +98,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT SaveTraceForBugreportResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT SaveTraceForBugreportResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kSuccessFieldNumber = 1,
@@ -134,7 +139,7 @@ class PERFETTO_EXPORT SaveTraceForBugreportResponse : public ::protozero::CppMes
 };
 
 
-class PERFETTO_EXPORT SaveTraceForBugreportRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT SaveTraceForBugreportRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -163,7 +168,7 @@ class PERFETTO_EXPORT SaveTraceForBugreportRequest : public ::protozero::CppMess
 };
 
 
-class PERFETTO_EXPORT QueryCapabilitiesResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT QueryCapabilitiesResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kCapabilitiesFieldNumber = 1,
@@ -198,7 +203,7 @@ class PERFETTO_EXPORT QueryCapabilitiesResponse : public ::protozero::CppMessage
 };
 
 
-class PERFETTO_EXPORT QueryCapabilitiesRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT QueryCapabilitiesRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -227,7 +232,7 @@ class PERFETTO_EXPORT QueryCapabilitiesRequest : public ::protozero::CppMessageO
 };
 
 
-class PERFETTO_EXPORT QueryServiceStateResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT QueryServiceStateResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kServiceStateFieldNumber = 1,
@@ -262,7 +267,7 @@ class PERFETTO_EXPORT QueryServiceStateResponse : public ::protozero::CppMessage
 };
 
 
-class PERFETTO_EXPORT QueryServiceStateRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT QueryServiceStateRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -291,7 +296,7 @@ class PERFETTO_EXPORT QueryServiceStateRequest : public ::protozero::CppMessageO
 };
 
 
-class PERFETTO_EXPORT ObserveEventsResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ObserveEventsResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kEventsFieldNumber = 1,
@@ -326,7 +331,7 @@ class PERFETTO_EXPORT ObserveEventsResponse : public ::protozero::CppMessageObj 
 };
 
 
-class PERFETTO_EXPORT ObserveEventsRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ObserveEventsRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kEventsToObserveFieldNumber = 1,
@@ -364,7 +369,7 @@ class PERFETTO_EXPORT ObserveEventsRequest : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT GetTraceStatsResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GetTraceStatsResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kTraceStatsFieldNumber = 1,
@@ -399,7 +404,7 @@ class PERFETTO_EXPORT GetTraceStatsResponse : public ::protozero::CppMessageObj 
 };
 
 
-class PERFETTO_EXPORT GetTraceStatsRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GetTraceStatsRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -428,7 +433,7 @@ class PERFETTO_EXPORT GetTraceStatsRequest : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT AttachResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT AttachResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kTraceConfigFieldNumber = 1,
@@ -463,7 +468,7 @@ class PERFETTO_EXPORT AttachResponse : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT AttachRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT AttachRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kKeyFieldNumber = 1,
@@ -498,7 +503,7 @@ class PERFETTO_EXPORT AttachRequest : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT DetachResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT DetachResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -527,7 +532,7 @@ class PERFETTO_EXPORT DetachResponse : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT DetachRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT DetachRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kKeyFieldNumber = 1,
@@ -562,7 +567,7 @@ class PERFETTO_EXPORT DetachRequest : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT FlushResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT FlushResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -591,7 +596,7 @@ class PERFETTO_EXPORT FlushResponse : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT FlushRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT FlushRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kTimeoutMsFieldNumber = 1,
@@ -626,7 +631,7 @@ class PERFETTO_EXPORT FlushRequest : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT FreeBuffersResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT FreeBuffersResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -655,7 +660,7 @@ class PERFETTO_EXPORT FreeBuffersResponse : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT FreeBuffersRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT FreeBuffersRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kBufferIdsFieldNumber = 1,
@@ -693,7 +698,7 @@ class PERFETTO_EXPORT FreeBuffersRequest : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT ReadBuffersResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ReadBuffersResponse : public ::protozero::CppMessageObj {
  public:
   using Slice = ReadBuffersResponse_Slice;
   enum FieldNumbers {
@@ -731,7 +736,7 @@ class PERFETTO_EXPORT ReadBuffersResponse : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT ReadBuffersResponse_Slice : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ReadBuffersResponse_Slice : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDataFieldNumber = 1,
@@ -773,7 +778,7 @@ class PERFETTO_EXPORT ReadBuffersResponse_Slice : public ::protozero::CppMessage
 };
 
 
-class PERFETTO_EXPORT ReadBuffersRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ReadBuffersRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -802,7 +807,7 @@ class PERFETTO_EXPORT ReadBuffersRequest : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT DisableTracingResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT DisableTracingResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -831,7 +836,7 @@ class PERFETTO_EXPORT DisableTracingResponse : public ::protozero::CppMessageObj
 };
 
 
-class PERFETTO_EXPORT DisableTracingRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT DisableTracingRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -860,7 +865,7 @@ class PERFETTO_EXPORT DisableTracingRequest : public ::protozero::CppMessageObj 
 };
 
 
-class PERFETTO_EXPORT ChangeTraceConfigResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChangeTraceConfigResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -889,7 +894,7 @@ class PERFETTO_EXPORT ChangeTraceConfigResponse : public ::protozero::CppMessage
 };
 
 
-class PERFETTO_EXPORT ChangeTraceConfigRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChangeTraceConfigRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kTraceConfigFieldNumber = 1,
@@ -924,7 +929,7 @@ class PERFETTO_EXPORT ChangeTraceConfigRequest : public ::protozero::CppMessageO
 };
 
 
-class PERFETTO_EXPORT StartTracingResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT StartTracingResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -953,7 +958,7 @@ class PERFETTO_EXPORT StartTracingResponse : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT StartTracingRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT StartTracingRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -982,7 +987,7 @@ class PERFETTO_EXPORT StartTracingRequest : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT EnableTracingResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT EnableTracingResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDisabledFieldNumber = 1,
@@ -1023,7 +1028,7 @@ class PERFETTO_EXPORT EnableTracingResponse : public ::protozero::CppMessageObj 
 };
 
 
-class PERFETTO_EXPORT EnableTracingRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT EnableTracingRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kTraceConfigFieldNumber = 1,

@@ -27,6 +27,7 @@ class TestConfig;
 class TestConfig_DummyFields;
 class InterceptorConfig;
 class ChromeConfig;
+class SystemInfoConfig;
 class GetAsyncCommandResponse_SetupDataSource;
 class GetAsyncCommandResponse_SetupTracing;
 class GetAsyncCommandRequest;
@@ -43,9 +44,11 @@ class RegisterTraceWriterResponse;
 class RegisterTraceWriterRequest;
 class UnregisterDataSourceResponse;
 class UnregisterDataSourceRequest;
+class UpdateDataSourceResponse;
+class UpdateDataSourceRequest;
+class DataSourceDescriptor;
 class RegisterDataSourceResponse;
 class RegisterDataSourceRequest;
-class DataSourceDescriptor;
 class InitializeConnectionResponse;
 class InitializeConnectionRequest;
 enum DataSourceConfig_SessionInitiator : int;
@@ -68,7 +71,7 @@ enum InitializeConnectionRequest_ProducerSMBScrapingMode : int {
   InitializeConnectionRequest_ProducerSMBScrapingMode_SMB_SCRAPING_DISABLED = 2,
 };
 
-class PERFETTO_EXPORT SyncResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT SyncResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -97,7 +100,7 @@ class PERFETTO_EXPORT SyncResponse : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT SyncRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT SyncRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -126,7 +129,7 @@ class PERFETTO_EXPORT SyncRequest : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT GetAsyncCommandResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GetAsyncCommandResponse : public ::protozero::CppMessageObj {
  public:
   using SetupDataSource = GetAsyncCommandResponse_SetupDataSource;
   using StartDataSource = GetAsyncCommandResponse_StartDataSource;
@@ -197,7 +200,7 @@ class PERFETTO_EXPORT GetAsyncCommandResponse : public ::protozero::CppMessageOb
 };
 
 
-class PERFETTO_EXPORT GetAsyncCommandResponse_ClearIncrementalState : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GetAsyncCommandResponse_ClearIncrementalState : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDataSourceIdsFieldNumber = 1,
@@ -235,7 +238,7 @@ class PERFETTO_EXPORT GetAsyncCommandResponse_ClearIncrementalState : public ::p
 };
 
 
-class PERFETTO_EXPORT GetAsyncCommandResponse_Flush : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GetAsyncCommandResponse_Flush : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDataSourceIdsFieldNumber = 1,
@@ -279,7 +282,7 @@ class PERFETTO_EXPORT GetAsyncCommandResponse_Flush : public ::protozero::CppMes
 };
 
 
-class PERFETTO_EXPORT GetAsyncCommandResponse_StopDataSource : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GetAsyncCommandResponse_StopDataSource : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kInstanceIdFieldNumber = 1,
@@ -314,7 +317,7 @@ class PERFETTO_EXPORT GetAsyncCommandResponse_StopDataSource : public ::protozer
 };
 
 
-class PERFETTO_EXPORT GetAsyncCommandResponse_StartDataSource : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GetAsyncCommandResponse_StartDataSource : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNewInstanceIdFieldNumber = 1,
@@ -355,7 +358,7 @@ class PERFETTO_EXPORT GetAsyncCommandResponse_StartDataSource : public ::protoze
 };
 
 
-class PERFETTO_EXPORT GetAsyncCommandResponse_SetupDataSource : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GetAsyncCommandResponse_SetupDataSource : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNewInstanceIdFieldNumber = 1,
@@ -396,7 +399,7 @@ class PERFETTO_EXPORT GetAsyncCommandResponse_SetupDataSource : public ::protoze
 };
 
 
-class PERFETTO_EXPORT GetAsyncCommandResponse_SetupTracing : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GetAsyncCommandResponse_SetupTracing : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kSharedBufferPageSizeKbFieldNumber = 1,
@@ -437,7 +440,7 @@ class PERFETTO_EXPORT GetAsyncCommandResponse_SetupTracing : public ::protozero:
 };
 
 
-class PERFETTO_EXPORT GetAsyncCommandRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GetAsyncCommandRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -466,7 +469,7 @@ class PERFETTO_EXPORT GetAsyncCommandRequest : public ::protozero::CppMessageObj
 };
 
 
-class PERFETTO_EXPORT ActivateTriggersResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ActivateTriggersResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -495,7 +498,7 @@ class PERFETTO_EXPORT ActivateTriggersResponse : public ::protozero::CppMessageO
 };
 
 
-class PERFETTO_EXPORT ActivateTriggersRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ActivateTriggersRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kTriggerNamesFieldNumber = 1,
@@ -533,7 +536,7 @@ class PERFETTO_EXPORT ActivateTriggersRequest : public ::protozero::CppMessageOb
 };
 
 
-class PERFETTO_EXPORT NotifyDataSourceStoppedResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT NotifyDataSourceStoppedResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -562,7 +565,7 @@ class PERFETTO_EXPORT NotifyDataSourceStoppedResponse : public ::protozero::CppM
 };
 
 
-class PERFETTO_EXPORT NotifyDataSourceStoppedRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT NotifyDataSourceStoppedRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDataSourceIdFieldNumber = 1,
@@ -597,7 +600,7 @@ class PERFETTO_EXPORT NotifyDataSourceStoppedRequest : public ::protozero::CppMe
 };
 
 
-class PERFETTO_EXPORT NotifyDataSourceStartedResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT NotifyDataSourceStartedResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -626,7 +629,7 @@ class PERFETTO_EXPORT NotifyDataSourceStartedResponse : public ::protozero::CppM
 };
 
 
-class PERFETTO_EXPORT NotifyDataSourceStartedRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT NotifyDataSourceStartedRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDataSourceIdFieldNumber = 1,
@@ -661,7 +664,7 @@ class PERFETTO_EXPORT NotifyDataSourceStartedRequest : public ::protozero::CppMe
 };
 
 
-class PERFETTO_EXPORT CommitDataResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT CommitDataResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -690,7 +693,7 @@ class PERFETTO_EXPORT CommitDataResponse : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT UnregisterTraceWriterResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT UnregisterTraceWriterResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -719,7 +722,7 @@ class PERFETTO_EXPORT UnregisterTraceWriterResponse : public ::protozero::CppMes
 };
 
 
-class PERFETTO_EXPORT UnregisterTraceWriterRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT UnregisterTraceWriterRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kTraceWriterIdFieldNumber = 1,
@@ -754,7 +757,7 @@ class PERFETTO_EXPORT UnregisterTraceWriterRequest : public ::protozero::CppMess
 };
 
 
-class PERFETTO_EXPORT RegisterTraceWriterResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT RegisterTraceWriterResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -783,7 +786,7 @@ class PERFETTO_EXPORT RegisterTraceWriterResponse : public ::protozero::CppMessa
 };
 
 
-class PERFETTO_EXPORT RegisterTraceWriterRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT RegisterTraceWriterRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kTraceWriterIdFieldNumber = 1,
@@ -824,7 +827,7 @@ class PERFETTO_EXPORT RegisterTraceWriterRequest : public ::protozero::CppMessag
 };
 
 
-class PERFETTO_EXPORT UnregisterDataSourceResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT UnregisterDataSourceResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
   };
@@ -853,7 +856,7 @@ class PERFETTO_EXPORT UnregisterDataSourceResponse : public ::protozero::CppMess
 };
 
 
-class PERFETTO_EXPORT UnregisterDataSourceRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT UnregisterDataSourceRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDataSourceNameFieldNumber = 1,
@@ -888,7 +891,71 @@ class PERFETTO_EXPORT UnregisterDataSourceRequest : public ::protozero::CppMessa
 };
 
 
-class PERFETTO_EXPORT RegisterDataSourceResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT UpdateDataSourceResponse : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+  };
+
+  UpdateDataSourceResponse();
+  ~UpdateDataSourceResponse() override;
+  UpdateDataSourceResponse(UpdateDataSourceResponse&&) noexcept;
+  UpdateDataSourceResponse& operator=(UpdateDataSourceResponse&&);
+  UpdateDataSourceResponse(const UpdateDataSourceResponse&);
+  UpdateDataSourceResponse& operator=(const UpdateDataSourceResponse&);
+  bool operator==(const UpdateDataSourceResponse&) const;
+  bool operator!=(const UpdateDataSourceResponse& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+ private:
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<2> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT UpdateDataSourceRequest : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kDataSourceDescriptorFieldNumber = 1,
+  };
+
+  UpdateDataSourceRequest();
+  ~UpdateDataSourceRequest() override;
+  UpdateDataSourceRequest(UpdateDataSourceRequest&&) noexcept;
+  UpdateDataSourceRequest& operator=(UpdateDataSourceRequest&&);
+  UpdateDataSourceRequest(const UpdateDataSourceRequest&);
+  UpdateDataSourceRequest& operator=(const UpdateDataSourceRequest&);
+  bool operator==(const UpdateDataSourceRequest&) const;
+  bool operator!=(const UpdateDataSourceRequest& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_data_source_descriptor() const { return _has_field_[1]; }
+  const DataSourceDescriptor& data_source_descriptor() const { return *data_source_descriptor_; }
+  DataSourceDescriptor* mutable_data_source_descriptor() { _has_field_.set(1); return data_source_descriptor_.get(); }
+
+ private:
+  ::protozero::CopyablePtr<DataSourceDescriptor> data_source_descriptor_;
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<2> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT RegisterDataSourceResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kErrorFieldNumber = 1,
@@ -923,7 +990,7 @@ class PERFETTO_EXPORT RegisterDataSourceResponse : public ::protozero::CppMessag
 };
 
 
-class PERFETTO_EXPORT RegisterDataSourceRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT RegisterDataSourceRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDataSourceDescriptorFieldNumber = 1,
@@ -958,7 +1025,7 @@ class PERFETTO_EXPORT RegisterDataSourceRequest : public ::protozero::CppMessage
 };
 
 
-class PERFETTO_EXPORT InitializeConnectionResponse : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT InitializeConnectionResponse : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kUsingShmemProvidedByProducerFieldNumber = 1,
@@ -999,7 +1066,7 @@ class PERFETTO_EXPORT InitializeConnectionResponse : public ::protozero::CppMess
 };
 
 
-class PERFETTO_EXPORT InitializeConnectionRequest : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT InitializeConnectionRequest : public ::protozero::CppMessageObj {
  public:
   using ProducerSMBScrapingMode = InitializeConnectionRequest_ProducerSMBScrapingMode;
   static constexpr auto SMB_SCRAPING_UNSPECIFIED = InitializeConnectionRequest_ProducerSMBScrapingMode_SMB_SCRAPING_UNSPECIFIED;

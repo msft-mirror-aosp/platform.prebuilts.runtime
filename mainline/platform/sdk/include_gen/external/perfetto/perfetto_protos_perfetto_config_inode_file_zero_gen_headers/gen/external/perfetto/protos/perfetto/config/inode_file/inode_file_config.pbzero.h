@@ -48,6 +48,8 @@ class InodeFileConfig : public ::protozero::Message {
     kScanMountPointsFieldNumber = 5,
     kMountPointMappingFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.InodeFileConfig"; }
+
   using MountPointMappingEntry = ::perfetto::protos::pbzero::InodeFileConfig_MountPointMappingEntry;
 
   using FieldMetadata_ScanIntervalMs =
@@ -64,7 +66,7 @@ class InodeFileConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ScanIntervalMs kScanIntervalMs() { return {}; }
   void set_scan_interval_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ScanIntervalMs::kFieldId;
@@ -89,7 +91,7 @@ class InodeFileConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ScanDelayMs kScanDelayMs() { return {}; }
   void set_scan_delay_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ScanDelayMs::kFieldId;
@@ -114,7 +116,7 @@ class InodeFileConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ScanBatchSize kScanBatchSize() { return {}; }
   void set_scan_batch_size(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ScanBatchSize::kFieldId;
@@ -139,7 +141,7 @@ class InodeFileConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DoNotScan kDoNotScan() { return {}; }
   void set_do_not_scan(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DoNotScan::kFieldId;
@@ -164,10 +166,13 @@ class InodeFileConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ScanMountPoints kScanMountPoints() { return {}; }
   void add_scan_mount_points(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ScanMountPoints::kFieldId, data, size);
+  }
+  void add_scan_mount_points(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ScanMountPoints::kFieldId, chars.data, chars.size);
   }
   void add_scan_mount_points(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ScanMountPoints::kFieldId;
@@ -192,7 +197,7 @@ class InodeFileConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_MountPointMapping kMountPointMapping() { return {}; }
   template <typename T = InodeFileConfig_MountPointMappingEntry> T* add_mount_point_mapping() {
     return BeginNestedMessage<T>(6);
@@ -218,6 +223,8 @@ class InodeFileConfig_MountPointMappingEntry : public ::protozero::Message {
     kMountpointFieldNumber = 1,
     kScanRootsFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.InodeFileConfig.MountPointMappingEntry"; }
+
 
   using FieldMetadata_Mountpoint =
     ::protozero::proto_utils::FieldMetadata<
@@ -233,10 +240,13 @@ class InodeFileConfig_MountPointMappingEntry : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Mountpoint kMountpoint() { return {}; }
   void set_mountpoint(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Mountpoint::kFieldId, data, size);
+  }
+  void set_mountpoint(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Mountpoint::kFieldId, chars.data, chars.size);
   }
   void set_mountpoint(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Mountpoint::kFieldId;
@@ -261,10 +271,13 @@ class InodeFileConfig_MountPointMappingEntry : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ScanRoots kScanRoots() { return {}; }
   void add_scan_roots(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ScanRoots::kFieldId, data, size);
+  }
+  void add_scan_roots(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ScanRoots::kFieldId, chars.data, chars.size);
   }
   void add_scan_roots(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ScanRoots::kFieldId;
