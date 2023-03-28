@@ -44,6 +44,8 @@ class LowmemoryKillFtraceEvent : public ::protozero::Message {
     kPagecacheLimitFieldNumber = 4,
     kFreeFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.LowmemoryKillFtraceEvent"; }
+
 
   using FieldMetadata_Comm =
     ::protozero::proto_utils::FieldMetadata<
@@ -59,10 +61,13 @@ class LowmemoryKillFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Comm kComm() { return {}; }
   void set_comm(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
+  }
+  void set_comm(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, chars.data, chars.size);
   }
   void set_comm(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Comm::kFieldId;
@@ -87,7 +92,7 @@ class LowmemoryKillFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -112,7 +117,7 @@ class LowmemoryKillFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PagecacheSize kPagecacheSize() { return {}; }
   void set_pagecache_size(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PagecacheSize::kFieldId;
@@ -137,7 +142,7 @@ class LowmemoryKillFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PagecacheLimit kPagecacheLimit() { return {}; }
   void set_pagecache_limit(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PagecacheLimit::kFieldId;
@@ -162,7 +167,7 @@ class LowmemoryKillFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Free kFree() { return {}; }
   void set_free(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Free::kFieldId;

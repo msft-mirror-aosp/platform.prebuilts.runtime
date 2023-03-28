@@ -38,7 +38,7 @@ enum SysStatsConfig_StatCounters : int {
   SysStatsConfig_StatCounters_STAT_FORK_COUNT = 4,
 };
 
-class PERFETTO_EXPORT SysStatsConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT SysStatsConfig : public ::protozero::CppMessageObj {
  public:
   using StatCounters = SysStatsConfig_StatCounters;
   static constexpr auto STAT_UNSPECIFIED = SysStatsConfig_StatCounters_STAT_UNSPECIFIED;
@@ -56,6 +56,9 @@ class PERFETTO_EXPORT SysStatsConfig : public ::protozero::CppMessageObj {
     kStatPeriodMsFieldNumber = 5,
     kStatCountersFieldNumber = 6,
     kDevfreqPeriodMsFieldNumber = 7,
+    kCpufreqPeriodMsFieldNumber = 8,
+    kBuddyinfoPeriodMsFieldNumber = 9,
+    kDiskstatPeriodMsFieldNumber = 10,
   };
 
   SysStatsConfig();
@@ -109,6 +112,18 @@ class PERFETTO_EXPORT SysStatsConfig : public ::protozero::CppMessageObj {
   uint32_t devfreq_period_ms() const { return devfreq_period_ms_; }
   void set_devfreq_period_ms(uint32_t value) { devfreq_period_ms_ = value; _has_field_.set(7); }
 
+  bool has_cpufreq_period_ms() const { return _has_field_[8]; }
+  uint32_t cpufreq_period_ms() const { return cpufreq_period_ms_; }
+  void set_cpufreq_period_ms(uint32_t value) { cpufreq_period_ms_ = value; _has_field_.set(8); }
+
+  bool has_buddyinfo_period_ms() const { return _has_field_[9]; }
+  uint32_t buddyinfo_period_ms() const { return buddyinfo_period_ms_; }
+  void set_buddyinfo_period_ms(uint32_t value) { buddyinfo_period_ms_ = value; _has_field_.set(9); }
+
+  bool has_diskstat_period_ms() const { return _has_field_[10]; }
+  uint32_t diskstat_period_ms() const { return diskstat_period_ms_; }
+  void set_diskstat_period_ms(uint32_t value) { diskstat_period_ms_ = value; _has_field_.set(10); }
+
  private:
   uint32_t meminfo_period_ms_{};
   std::vector<MeminfoCounters> meminfo_counters_;
@@ -117,12 +132,15 @@ class PERFETTO_EXPORT SysStatsConfig : public ::protozero::CppMessageObj {
   uint32_t stat_period_ms_{};
   std::vector<SysStatsConfig_StatCounters> stat_counters_;
   uint32_t devfreq_period_ms_{};
+  uint32_t cpufreq_period_ms_{};
+  uint32_t buddyinfo_period_ms_{};
+  uint32_t diskstat_period_ms_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<8> _has_field_{};
+  std::bitset<11> _has_field_{};
 };
 
 }  // namespace perfetto

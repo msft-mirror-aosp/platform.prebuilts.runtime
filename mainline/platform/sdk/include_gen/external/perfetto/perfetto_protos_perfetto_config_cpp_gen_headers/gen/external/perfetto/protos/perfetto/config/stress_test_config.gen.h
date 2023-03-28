@@ -18,6 +18,8 @@ namespace gen {
 class StressTestConfig;
 class StressTestConfig_WriterTiming;
 class TraceConfig;
+class TraceConfig_CmdTraceStartDelay;
+class TraceConfig_AndroidReportConfig;
 class TraceConfig_TraceFilter;
 class TraceConfig_IncidentReportConfig;
 class TraceConfig_IncrementalStateConfig;
@@ -33,6 +35,7 @@ class TestConfig;
 class TestConfig_DummyFields;
 class InterceptorConfig;
 class ChromeConfig;
+class SystemInfoConfig;
 class TraceConfig_BufferConfig;
 enum TraceConfig_LockdownModeOperation : int;
 enum TraceConfig_CompressionType : int;
@@ -54,7 +57,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT StressTestConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT StressTestConfig : public ::protozero::CppMessageObj {
  public:
   using WriterTiming = StressTestConfig_WriterTiming;
   enum FieldNumbers {
@@ -150,7 +153,7 @@ class PERFETTO_EXPORT StressTestConfig : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT StressTestConfig_WriterTiming : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT StressTestConfig_WriterTiming : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kPayloadMeanFieldNumber = 1,
