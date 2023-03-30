@@ -36,7 +36,7 @@ enum AndroidPowerConfig_BatteryCounters : int {
   AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_CURRENT_AVG = 4,
 };
 
-class PERFETTO_EXPORT AndroidPowerConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT AndroidPowerConfig : public ::protozero::CppMessageObj {
  public:
   using BatteryCounters = AndroidPowerConfig_BatteryCounters;
   static constexpr auto BATTERY_COUNTER_UNSPECIFIED = AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_UNSPECIFIED;

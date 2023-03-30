@@ -28,7 +28,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT ChromeMessagePump : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeMessagePump : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kSentMessagesInQueueFieldNumber = 1,

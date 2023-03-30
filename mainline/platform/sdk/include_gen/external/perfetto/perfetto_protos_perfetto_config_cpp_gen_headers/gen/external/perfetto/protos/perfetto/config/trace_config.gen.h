@@ -16,6 +16,8 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 class TraceConfig;
+class TraceConfig_CmdTraceStartDelay;
+class TraceConfig_AndroidReportConfig;
 class TraceConfig_TraceFilter;
 class TraceConfig_IncidentReportConfig;
 class TraceConfig_IncrementalStateConfig;
@@ -31,6 +33,7 @@ class TestConfig;
 class TestConfig_DummyFields;
 class InterceptorConfig;
 class ChromeConfig;
+class SystemInfoConfig;
 class TraceConfig_BufferConfig;
 enum TraceConfig_LockdownModeOperation : int;
 enum TraceConfig_CompressionType : int;
@@ -76,7 +79,7 @@ enum TraceConfig_BufferConfig_FillPolicy : int {
   TraceConfig_BufferConfig_FillPolicy_DISCARD = 2,
 };
 
-class PERFETTO_EXPORT TraceConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceConfig : public ::protozero::CppMessageObj {
  public:
   using BufferConfig = TraceConfig_BufferConfig;
   using DataSource = TraceConfig_DataSource;
@@ -88,6 +91,8 @@ class PERFETTO_EXPORT TraceConfig : public ::protozero::CppMessageObj {
   using IncrementalStateConfig = TraceConfig_IncrementalStateConfig;
   using IncidentReportConfig = TraceConfig_IncidentReportConfig;
   using TraceFilter = TraceConfig_TraceFilter;
+  using AndroidReportConfig = TraceConfig_AndroidReportConfig;
+  using CmdTraceStartDelay = TraceConfig_CmdTraceStartDelay;
   using LockdownModeOperation = TraceConfig_LockdownModeOperation;
   static constexpr auto LOCKDOWN_UNCHANGED = TraceConfig_LockdownModeOperation_LOCKDOWN_UNCHANGED;
   static constexpr auto LOCKDOWN_CLEAR = TraceConfig_LockdownModeOperation_LOCKDOWN_CLEAR;
@@ -136,6 +141,8 @@ class PERFETTO_EXPORT TraceConfig : public ::protozero::CppMessageObj {
     kTraceUuidMsbFieldNumber = 27,
     kTraceUuidLsbFieldNumber = 28,
     kTraceFilterFieldNumber = 33,
+    kAndroidReportConfigFieldNumber = 34,
+    kCmdTraceStartDelayFieldNumber = 35,
   };
 
   TraceConfig();
@@ -281,6 +288,14 @@ class PERFETTO_EXPORT TraceConfig : public ::protozero::CppMessageObj {
   const TraceConfig_TraceFilter& trace_filter() const { return *trace_filter_; }
   TraceConfig_TraceFilter* mutable_trace_filter() { _has_field_.set(33); return trace_filter_.get(); }
 
+  bool has_android_report_config() const { return _has_field_[34]; }
+  const TraceConfig_AndroidReportConfig& android_report_config() const { return *android_report_config_; }
+  TraceConfig_AndroidReportConfig* mutable_android_report_config() { _has_field_.set(34); return android_report_config_.get(); }
+
+  bool has_cmd_trace_start_delay() const { return _has_field_[35]; }
+  const TraceConfig_CmdTraceStartDelay& cmd_trace_start_delay() const { return *cmd_trace_start_delay_; }
+  TraceConfig_CmdTraceStartDelay* mutable_cmd_trace_start_delay() { _has_field_.set(35); return cmd_trace_start_delay_.get(); }
+
  private:
   std::vector<TraceConfig_BufferConfig> buffers_;
   std::vector<TraceConfig_DataSource> data_sources_;
@@ -312,16 +327,112 @@ class PERFETTO_EXPORT TraceConfig : public ::protozero::CppMessageObj {
   int64_t trace_uuid_msb_{};
   int64_t trace_uuid_lsb_{};
   ::protozero::CopyablePtr<TraceConfig_TraceFilter> trace_filter_;
+  ::protozero::CopyablePtr<TraceConfig_AndroidReportConfig> android_report_config_;
+  ::protozero::CopyablePtr<TraceConfig_CmdTraceStartDelay> cmd_trace_start_delay_;
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<34> _has_field_{};
+  std::bitset<36> _has_field_{};
 };
 
 
-class PERFETTO_EXPORT TraceConfig_TraceFilter : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceConfig_CmdTraceStartDelay : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kMinDelayMsFieldNumber = 1,
+    kMaxDelayMsFieldNumber = 2,
+  };
+
+  TraceConfig_CmdTraceStartDelay();
+  ~TraceConfig_CmdTraceStartDelay() override;
+  TraceConfig_CmdTraceStartDelay(TraceConfig_CmdTraceStartDelay&&) noexcept;
+  TraceConfig_CmdTraceStartDelay& operator=(TraceConfig_CmdTraceStartDelay&&);
+  TraceConfig_CmdTraceStartDelay(const TraceConfig_CmdTraceStartDelay&);
+  TraceConfig_CmdTraceStartDelay& operator=(const TraceConfig_CmdTraceStartDelay&);
+  bool operator==(const TraceConfig_CmdTraceStartDelay&) const;
+  bool operator!=(const TraceConfig_CmdTraceStartDelay& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_min_delay_ms() const { return _has_field_[1]; }
+  uint32_t min_delay_ms() const { return min_delay_ms_; }
+  void set_min_delay_ms(uint32_t value) { min_delay_ms_ = value; _has_field_.set(1); }
+
+  bool has_max_delay_ms() const { return _has_field_[2]; }
+  uint32_t max_delay_ms() const { return max_delay_ms_; }
+  void set_max_delay_ms(uint32_t value) { max_delay_ms_ = value; _has_field_.set(2); }
+
+ private:
+  uint32_t min_delay_ms_{};
+  uint32_t max_delay_ms_{};
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<3> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT TraceConfig_AndroidReportConfig : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kReporterServicePackageFieldNumber = 1,
+    kReporterServiceClassFieldNumber = 2,
+    kSkipReportFieldNumber = 3,
+    kUsePipeInFrameworkForTestingFieldNumber = 4,
+  };
+
+  TraceConfig_AndroidReportConfig();
+  ~TraceConfig_AndroidReportConfig() override;
+  TraceConfig_AndroidReportConfig(TraceConfig_AndroidReportConfig&&) noexcept;
+  TraceConfig_AndroidReportConfig& operator=(TraceConfig_AndroidReportConfig&&);
+  TraceConfig_AndroidReportConfig(const TraceConfig_AndroidReportConfig&);
+  TraceConfig_AndroidReportConfig& operator=(const TraceConfig_AndroidReportConfig&);
+  bool operator==(const TraceConfig_AndroidReportConfig&) const;
+  bool operator!=(const TraceConfig_AndroidReportConfig& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_reporter_service_package() const { return _has_field_[1]; }
+  const std::string& reporter_service_package() const { return reporter_service_package_; }
+  void set_reporter_service_package(const std::string& value) { reporter_service_package_ = value; _has_field_.set(1); }
+
+  bool has_reporter_service_class() const { return _has_field_[2]; }
+  const std::string& reporter_service_class() const { return reporter_service_class_; }
+  void set_reporter_service_class(const std::string& value) { reporter_service_class_ = value; _has_field_.set(2); }
+
+  bool has_skip_report() const { return _has_field_[3]; }
+  bool skip_report() const { return skip_report_; }
+  void set_skip_report(bool value) { skip_report_ = value; _has_field_.set(3); }
+
+  bool has_use_pipe_in_framework_for_testing() const { return _has_field_[4]; }
+  bool use_pipe_in_framework_for_testing() const { return use_pipe_in_framework_for_testing_; }
+  void set_use_pipe_in_framework_for_testing(bool value) { use_pipe_in_framework_for_testing_ = value; _has_field_.set(4); }
+
+ private:
+  std::string reporter_service_package_{};
+  std::string reporter_service_class_{};
+  bool skip_report_{};
+  bool use_pipe_in_framework_for_testing_{};
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<5> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT TraceConfig_TraceFilter : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kBytecodeFieldNumber = 1,
@@ -357,7 +468,7 @@ class PERFETTO_EXPORT TraceConfig_TraceFilter : public ::protozero::CppMessageOb
 };
 
 
-class PERFETTO_EXPORT TraceConfig_IncidentReportConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceConfig_IncidentReportConfig : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDestinationPackageFieldNumber = 1,
@@ -416,7 +527,7 @@ class PERFETTO_EXPORT TraceConfig_IncidentReportConfig : public ::protozero::Cpp
 };
 
 
-class PERFETTO_EXPORT TraceConfig_IncrementalStateConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceConfig_IncrementalStateConfig : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kClearPeriodMsFieldNumber = 1,
@@ -451,7 +562,7 @@ class PERFETTO_EXPORT TraceConfig_IncrementalStateConfig : public ::protozero::C
 };
 
 
-class PERFETTO_EXPORT TraceConfig_TriggerConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceConfig_TriggerConfig : public ::protozero::CppMessageObj {
  public:
   using Trigger = TraceConfig_TriggerConfig_Trigger;
   using TriggerMode = TraceConfig_TriggerConfig_TriggerMode;
@@ -507,7 +618,7 @@ class PERFETTO_EXPORT TraceConfig_TriggerConfig : public ::protozero::CppMessage
 };
 
 
-class PERFETTO_EXPORT TraceConfig_TriggerConfig_Trigger : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceConfig_TriggerConfig_Trigger : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNameFieldNumber = 1,
@@ -566,7 +677,7 @@ class PERFETTO_EXPORT TraceConfig_TriggerConfig_Trigger : public ::protozero::Cp
 };
 
 
-class PERFETTO_EXPORT TraceConfig_GuardrailOverrides : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceConfig_GuardrailOverrides : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kMaxUploadPerDayBytesFieldNumber = 1,
@@ -601,7 +712,7 @@ class PERFETTO_EXPORT TraceConfig_GuardrailOverrides : public ::protozero::CppMe
 };
 
 
-class PERFETTO_EXPORT TraceConfig_StatsdMetadata : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceConfig_StatsdMetadata : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kTriggeringAlertIdFieldNumber = 1,
@@ -654,7 +765,7 @@ class PERFETTO_EXPORT TraceConfig_StatsdMetadata : public ::protozero::CppMessag
 };
 
 
-class PERFETTO_EXPORT TraceConfig_ProducerConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceConfig_ProducerConfig : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kProducerNameFieldNumber = 1,
@@ -701,7 +812,7 @@ class PERFETTO_EXPORT TraceConfig_ProducerConfig : public ::protozero::CppMessag
 };
 
 
-class PERFETTO_EXPORT TraceConfig_BuiltinDataSource : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceConfig_BuiltinDataSource : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDisableClockSnapshottingFieldNumber = 1,
@@ -772,7 +883,7 @@ class PERFETTO_EXPORT TraceConfig_BuiltinDataSource : public ::protozero::CppMes
 };
 
 
-class PERFETTO_EXPORT TraceConfig_DataSource : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceConfig_DataSource : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kConfigFieldNumber = 1,
@@ -825,7 +936,7 @@ class PERFETTO_EXPORT TraceConfig_DataSource : public ::protozero::CppMessageObj
 };
 
 
-class PERFETTO_EXPORT TraceConfig_BufferConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceConfig_BufferConfig : public ::protozero::CppMessageObj {
  public:
   using FillPolicy = TraceConfig_BufferConfig_FillPolicy;
   static constexpr auto UNSPECIFIED = TraceConfig_BufferConfig_FillPolicy_UNSPECIFIED;
