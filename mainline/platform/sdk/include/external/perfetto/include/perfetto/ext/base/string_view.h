@@ -33,6 +33,8 @@ namespace base {
 // Strings are internally NOT null terminated.
 class StringView {
  public:
+  // Allow hashing with base::Hash.
+  static constexpr bool kHashable = true;
   static constexpr size_t npos = static_cast<size_t>(-1);
 
   StringView() : data_(nullptr), size_(0) {}
@@ -106,7 +108,7 @@ class StringView {
     return StringView(data_ + pos, rcount);
   }
 
-  bool CaseInsensitiveEq(const StringView& other) {
+  bool CaseInsensitiveEq(const StringView& other) const {
     if (size() != other.size())
       return false;
     if (size() == 0)
@@ -118,7 +120,7 @@ class StringView {
 #endif
   }
 
-  bool StartsWith(const StringView& other) {
+  bool StartsWith(const StringView& other) const {
     if (other.size() == 0)
       return true;
     if (size() == 0)
@@ -132,12 +134,27 @@ class StringView {
     return true;
   }
 
+  bool EndsWith(const StringView& other) const {
+    if (other.size() == 0)
+      return true;
+    if (size() == 0)
+      return false;
+    if (other.size() > size())
+      return false;
+    const size_t off = size() - other.size();
+    for (size_t i = 0; i < other.size(); ++i) {
+      if (at(off + i) != other.at(i))
+        return false;
+    }
+    return true;
+  }
+
   std::string ToStdString() const {
     return size_ == 0 ? "" : std::string(data_, size_);
   }
 
   uint64_t Hash() const {
-    base::Hash hasher;
+    base::Hasher hasher;
     hasher.Update(data_, size_);
     return hasher.digest();
   }
