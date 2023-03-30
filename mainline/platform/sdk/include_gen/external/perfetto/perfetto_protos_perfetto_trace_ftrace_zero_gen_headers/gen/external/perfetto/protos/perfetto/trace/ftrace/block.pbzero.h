@@ -35,6 +35,8 @@ class BlockUnplugFtraceEvent : public ::protozero::Message {
     kNrRqFieldNumber = 1,
     kCommFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockUnplugFtraceEvent"; }
+
 
   using FieldMetadata_NrRq =
     ::protozero::proto_utils::FieldMetadata<
@@ -50,7 +52,7 @@ class BlockUnplugFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrRq kNrRq() { return {}; }
   void set_nr_rq(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrRq::kFieldId;
@@ -75,10 +77,13 @@ class BlockUnplugFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Comm kComm() { return {}; }
   void set_comm(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
+  }
+  void set_comm(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, chars.data, chars.size);
   }
   void set_comm(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Comm::kFieldId;
@@ -111,6 +116,8 @@ class BlockTouchBufferFtraceEvent : public ::protozero::Message {
     kSectorFieldNumber = 2,
     kSizeFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockTouchBufferFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -126,7 +133,7 @@ class BlockTouchBufferFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -151,7 +158,7 @@ class BlockTouchBufferFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -176,7 +183,7 @@ class BlockTouchBufferFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Size kSize() { return {}; }
   void set_size(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Size::kFieldId;
@@ -215,6 +222,8 @@ class BlockSplitFtraceEvent : public ::protozero::Message {
     kRwbsFieldNumber = 4,
     kCommFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockSplitFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -230,7 +239,7 @@ class BlockSplitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -255,7 +264,7 @@ class BlockSplitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -280,7 +289,7 @@ class BlockSplitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NewSector kNewSector() { return {}; }
   void set_new_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NewSector::kFieldId;
@@ -305,10 +314,13 @@ class BlockSplitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -333,10 +345,13 @@ class BlockSplitFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Comm kComm() { return {}; }
   void set_comm(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
+  }
+  void set_comm(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, chars.data, chars.size);
   }
   void set_comm(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Comm::kFieldId;
@@ -375,6 +390,8 @@ class BlockSleeprqFtraceEvent : public ::protozero::Message {
     kRwbsFieldNumber = 4,
     kCommFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockSleeprqFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -390,7 +407,7 @@ class BlockSleeprqFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -415,7 +432,7 @@ class BlockSleeprqFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -440,7 +457,7 @@ class BlockSleeprqFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -465,10 +482,13 @@ class BlockSleeprqFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -493,10 +513,13 @@ class BlockSleeprqFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Comm kComm() { return {}; }
   void set_comm(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
+  }
+  void set_comm(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, chars.data, chars.size);
   }
   void set_comm(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Comm::kFieldId;
@@ -538,6 +561,8 @@ class BlockRqRequeueFtraceEvent : public ::protozero::Message {
     kRwbsFieldNumber = 5,
     kCmdFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockRqRequeueFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -553,7 +578,7 @@ class BlockRqRequeueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -578,7 +603,7 @@ class BlockRqRequeueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -603,7 +628,7 @@ class BlockRqRequeueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -628,7 +653,7 @@ class BlockRqRequeueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Errors kErrors() { return {}; }
   void set_errors(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Errors::kFieldId;
@@ -653,10 +678,13 @@ class BlockRqRequeueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -681,10 +709,13 @@ class BlockRqRequeueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cmd kCmd() { return {}; }
   void set_cmd(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Cmd::kFieldId, data, size);
+  }
+  void set_cmd(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Cmd::kFieldId, chars.data, chars.size);
   }
   void set_cmd(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Cmd::kFieldId;
@@ -729,6 +760,8 @@ class BlockRqRemapFtraceEvent : public ::protozero::Message {
     kNrBiosFieldNumber = 6,
     kRwbsFieldNumber = 7,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockRqRemapFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -744,7 +777,7 @@ class BlockRqRemapFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -769,7 +802,7 @@ class BlockRqRemapFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -794,7 +827,7 @@ class BlockRqRemapFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -819,7 +852,7 @@ class BlockRqRemapFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_OldDev kOldDev() { return {}; }
   void set_old_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_OldDev::kFieldId;
@@ -844,7 +877,7 @@ class BlockRqRemapFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_OldSector kOldSector() { return {}; }
   void set_old_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_OldSector::kFieldId;
@@ -869,7 +902,7 @@ class BlockRqRemapFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrBios kNrBios() { return {}; }
   void set_nr_bios(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrBios::kFieldId;
@@ -894,10 +927,13 @@ class BlockRqRemapFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -942,6 +978,8 @@ class BlockRqInsertFtraceEvent : public ::protozero::Message {
     kCommFieldNumber = 6,
     kCmdFieldNumber = 7,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockRqInsertFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -957,7 +995,7 @@ class BlockRqInsertFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -982,7 +1020,7 @@ class BlockRqInsertFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -1007,7 +1045,7 @@ class BlockRqInsertFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -1032,7 +1070,7 @@ class BlockRqInsertFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Bytes kBytes() { return {}; }
   void set_bytes(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Bytes::kFieldId;
@@ -1057,10 +1095,13 @@ class BlockRqInsertFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -1085,10 +1126,13 @@ class BlockRqInsertFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Comm kComm() { return {}; }
   void set_comm(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
+  }
+  void set_comm(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, chars.data, chars.size);
   }
   void set_comm(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Comm::kFieldId;
@@ -1113,10 +1157,13 @@ class BlockRqInsertFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cmd kCmd() { return {}; }
   void set_cmd(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Cmd::kFieldId, data, size);
+  }
+  void set_cmd(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Cmd::kFieldId, chars.data, chars.size);
   }
   void set_cmd(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Cmd::kFieldId;
@@ -1128,7 +1175,7 @@ class BlockRqInsertFtraceEvent : public ::protozero::Message {
   }
 };
 
-class BlockRqCompleteFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class BlockRqCompleteFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   BlockRqCompleteFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit BlockRqCompleteFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -1145,6 +1192,8 @@ class BlockRqCompleteFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder
   ::protozero::ConstChars rwbs() const { return at<5>().as_string(); }
   bool has_cmd() const { return at<6>().valid(); }
   ::protozero::ConstChars cmd() const { return at<6>().as_string(); }
+  bool has_error() const { return at<7>().valid(); }
+  int32_t error() const { return at<7>().as_int32(); }
 };
 
 class BlockRqCompleteFtraceEvent : public ::protozero::Message {
@@ -1157,7 +1206,10 @@ class BlockRqCompleteFtraceEvent : public ::protozero::Message {
     kErrorsFieldNumber = 4,
     kRwbsFieldNumber = 5,
     kCmdFieldNumber = 6,
+    kErrorFieldNumber = 7,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockRqCompleteFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -1173,7 +1225,7 @@ class BlockRqCompleteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -1198,7 +1250,7 @@ class BlockRqCompleteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -1223,7 +1275,7 @@ class BlockRqCompleteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -1248,7 +1300,7 @@ class BlockRqCompleteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Errors kErrors() { return {}; }
   void set_errors(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Errors::kFieldId;
@@ -1273,10 +1325,13 @@ class BlockRqCompleteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -1301,10 +1356,13 @@ class BlockRqCompleteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cmd kCmd() { return {}; }
   void set_cmd(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Cmd::kFieldId, data, size);
+  }
+  void set_cmd(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Cmd::kFieldId, chars.data, chars.size);
   }
   void set_cmd(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Cmd::kFieldId;
@@ -1312,6 +1370,31 @@ class BlockRqCompleteFtraceEvent : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Error =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      BlockRqCompleteFtraceEvent>;
+
+  // Ceci n'est pas une pipe.
+  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
+  // type (and users are expected to use it as such, hence kCamelCase name).
+  // It is declared as a function to keep protozero bindings header-only as
+  // inline constexpr variables are not available until C++17 (while inline
+  // functions are).
+  // TODO(altimin): Use inline variable instead after adopting C++17.
+  static constexpr FieldMetadata_Error kError() { return {}; }
+  void set_error(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Error::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
         ::Append(*this, field_id, value);
   }
 };
@@ -1346,6 +1429,8 @@ class BlockRqAbortFtraceEvent : public ::protozero::Message {
     kRwbsFieldNumber = 5,
     kCmdFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockRqAbortFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -1361,7 +1446,7 @@ class BlockRqAbortFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -1386,7 +1471,7 @@ class BlockRqAbortFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -1411,7 +1496,7 @@ class BlockRqAbortFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -1436,7 +1521,7 @@ class BlockRqAbortFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Errors kErrors() { return {}; }
   void set_errors(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Errors::kFieldId;
@@ -1461,10 +1546,13 @@ class BlockRqAbortFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -1489,10 +1577,13 @@ class BlockRqAbortFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cmd kCmd() { return {}; }
   void set_cmd(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Cmd::kFieldId, data, size);
+  }
+  void set_cmd(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Cmd::kFieldId, chars.data, chars.size);
   }
   void set_cmd(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Cmd::kFieldId;
@@ -1519,6 +1610,8 @@ class BlockPlugFtraceEvent : public ::protozero::Message {
   enum : int32_t {
     kCommFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockPlugFtraceEvent"; }
+
 
   using FieldMetadata_Comm =
     ::protozero::proto_utils::FieldMetadata<
@@ -1534,10 +1627,13 @@ class BlockPlugFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Comm kComm() { return {}; }
   void set_comm(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
+  }
+  void set_comm(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, chars.data, chars.size);
   }
   void set_comm(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Comm::kFieldId;
@@ -1576,6 +1672,8 @@ class BlockGetrqFtraceEvent : public ::protozero::Message {
     kRwbsFieldNumber = 4,
     kCommFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockGetrqFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -1591,7 +1689,7 @@ class BlockGetrqFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -1616,7 +1714,7 @@ class BlockGetrqFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -1641,7 +1739,7 @@ class BlockGetrqFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -1666,10 +1764,13 @@ class BlockGetrqFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -1694,10 +1795,13 @@ class BlockGetrqFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Comm kComm() { return {}; }
   void set_comm(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
+  }
+  void set_comm(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, chars.data, chars.size);
   }
   void set_comm(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Comm::kFieldId;
@@ -1730,6 +1834,8 @@ class BlockDirtyBufferFtraceEvent : public ::protozero::Message {
     kSectorFieldNumber = 2,
     kSizeFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockDirtyBufferFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -1745,7 +1851,7 @@ class BlockDirtyBufferFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -1770,7 +1876,7 @@ class BlockDirtyBufferFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -1795,7 +1901,7 @@ class BlockDirtyBufferFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Size kSize() { return {}; }
   void set_size(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Size::kFieldId;
@@ -1837,6 +1943,8 @@ class BlockBioRemapFtraceEvent : public ::protozero::Message {
     kOldSectorFieldNumber = 5,
     kRwbsFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockBioRemapFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -1852,7 +1960,7 @@ class BlockBioRemapFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -1877,7 +1985,7 @@ class BlockBioRemapFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -1902,7 +2010,7 @@ class BlockBioRemapFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -1927,7 +2035,7 @@ class BlockBioRemapFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_OldDev kOldDev() { return {}; }
   void set_old_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_OldDev::kFieldId;
@@ -1952,7 +2060,7 @@ class BlockBioRemapFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_OldSector kOldSector() { return {}; }
   void set_old_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_OldSector::kFieldId;
@@ -1977,10 +2085,13 @@ class BlockBioRemapFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -2019,6 +2130,8 @@ class BlockBioQueueFtraceEvent : public ::protozero::Message {
     kRwbsFieldNumber = 4,
     kCommFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockBioQueueFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -2034,7 +2147,7 @@ class BlockBioQueueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -2059,7 +2172,7 @@ class BlockBioQueueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -2084,7 +2197,7 @@ class BlockBioQueueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -2109,10 +2222,13 @@ class BlockBioQueueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -2137,10 +2253,13 @@ class BlockBioQueueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Comm kComm() { return {}; }
   void set_comm(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
+  }
+  void set_comm(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, chars.data, chars.size);
   }
   void set_comm(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Comm::kFieldId;
@@ -2179,6 +2298,8 @@ class BlockBioFrontmergeFtraceEvent : public ::protozero::Message {
     kRwbsFieldNumber = 4,
     kCommFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockBioFrontmergeFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -2194,7 +2315,7 @@ class BlockBioFrontmergeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -2219,7 +2340,7 @@ class BlockBioFrontmergeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -2244,7 +2365,7 @@ class BlockBioFrontmergeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -2269,10 +2390,13 @@ class BlockBioFrontmergeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -2297,10 +2421,13 @@ class BlockBioFrontmergeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Comm kComm() { return {}; }
   void set_comm(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
+  }
+  void set_comm(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, chars.data, chars.size);
   }
   void set_comm(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Comm::kFieldId;
@@ -2339,6 +2466,8 @@ class BlockBioCompleteFtraceEvent : public ::protozero::Message {
     kErrorFieldNumber = 4,
     kRwbsFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockBioCompleteFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -2354,7 +2483,7 @@ class BlockBioCompleteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -2379,7 +2508,7 @@ class BlockBioCompleteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -2404,7 +2533,7 @@ class BlockBioCompleteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -2429,7 +2558,7 @@ class BlockBioCompleteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Error kError() { return {}; }
   void set_error(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Error::kFieldId;
@@ -2454,10 +2583,13 @@ class BlockBioCompleteFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -2496,6 +2628,8 @@ class BlockBioBounceFtraceEvent : public ::protozero::Message {
     kRwbsFieldNumber = 4,
     kCommFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockBioBounceFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -2511,7 +2645,7 @@ class BlockBioBounceFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -2536,7 +2670,7 @@ class BlockBioBounceFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -2561,7 +2695,7 @@ class BlockBioBounceFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -2586,10 +2720,13 @@ class BlockBioBounceFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -2614,10 +2751,13 @@ class BlockBioBounceFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Comm kComm() { return {}; }
   void set_comm(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
+  }
+  void set_comm(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, chars.data, chars.size);
   }
   void set_comm(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Comm::kFieldId;
@@ -2656,6 +2796,8 @@ class BlockBioBackmergeFtraceEvent : public ::protozero::Message {
     kRwbsFieldNumber = 4,
     kCommFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockBioBackmergeFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -2671,7 +2813,7 @@ class BlockBioBackmergeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -2696,7 +2838,7 @@ class BlockBioBackmergeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -2721,7 +2863,7 @@ class BlockBioBackmergeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -2746,10 +2888,13 @@ class BlockBioBackmergeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -2774,10 +2919,13 @@ class BlockBioBackmergeFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Comm kComm() { return {}; }
   void set_comm(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
+  }
+  void set_comm(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, chars.data, chars.size);
   }
   void set_comm(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Comm::kFieldId;
@@ -2822,6 +2970,8 @@ class BlockRqIssueFtraceEvent : public ::protozero::Message {
     kCommFieldNumber = 6,
     kCmdFieldNumber = 7,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.BlockRqIssueFtraceEvent"; }
+
 
   using FieldMetadata_Dev =
     ::protozero::proto_utils::FieldMetadata<
@@ -2837,7 +2987,7 @@ class BlockRqIssueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Dev kDev() { return {}; }
   void set_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dev::kFieldId;
@@ -2862,7 +3012,7 @@ class BlockRqIssueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Sector kSector() { return {}; }
   void set_sector(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Sector::kFieldId;
@@ -2887,7 +3037,7 @@ class BlockRqIssueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NrSector kNrSector() { return {}; }
   void set_nr_sector(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NrSector::kFieldId;
@@ -2912,7 +3062,7 @@ class BlockRqIssueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Bytes kBytes() { return {}; }
   void set_bytes(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Bytes::kFieldId;
@@ -2937,10 +3087,13 @@ class BlockRqIssueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Rwbs kRwbs() { return {}; }
   void set_rwbs(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Rwbs::kFieldId, data, size);
+  }
+  void set_rwbs(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Rwbs::kFieldId, chars.data, chars.size);
   }
   void set_rwbs(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Rwbs::kFieldId;
@@ -2965,10 +3118,13 @@ class BlockRqIssueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Comm kComm() { return {}; }
   void set_comm(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
+  }
+  void set_comm(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, chars.data, chars.size);
   }
   void set_comm(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Comm::kFieldId;
@@ -2993,10 +3149,13 @@ class BlockRqIssueFtraceEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Cmd kCmd() { return {}; }
   void set_cmd(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Cmd::kFieldId, data, size);
+  }
+  void set_cmd(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Cmd::kFieldId, chars.data, chars.size);
   }
   void set_cmd(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Cmd::kFieldId;
