@@ -34,7 +34,7 @@ enum ProcessStatsConfig_Quirks : int {
   ProcessStatsConfig_Quirks_DISABLE_ON_DEMAND = 2,
 };
 
-class PERFETTO_EXPORT ProcessStatsConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ProcessStatsConfig : public ::protozero::CppMessageObj {
  public:
   using Quirks = ProcessStatsConfig_Quirks;
   static constexpr auto QUIRKS_UNSPECIFIED = ProcessStatsConfig_Quirks_QUIRKS_UNSPECIFIED;
@@ -48,8 +48,6 @@ class PERFETTO_EXPORT ProcessStatsConfig : public ::protozero::CppMessageObj {
     kRecordThreadNamesFieldNumber = 3,
     kProcStatsPollMsFieldNumber = 4,
     kProcStatsCacheTtlMsFieldNumber = 6,
-    kRecordThreadTimeInStateFieldNumber = 7,
-    kThreadTimeInStateCacheSizeFieldNumber = 8,
   };
 
   ProcessStatsConfig();
@@ -89,28 +87,18 @@ class PERFETTO_EXPORT ProcessStatsConfig : public ::protozero::CppMessageObj {
   uint32_t proc_stats_cache_ttl_ms() const { return proc_stats_cache_ttl_ms_; }
   void set_proc_stats_cache_ttl_ms(uint32_t value) { proc_stats_cache_ttl_ms_ = value; _has_field_.set(6); }
 
-  bool has_record_thread_time_in_state() const { return _has_field_[7]; }
-  bool record_thread_time_in_state() const { return record_thread_time_in_state_; }
-  void set_record_thread_time_in_state(bool value) { record_thread_time_in_state_ = value; _has_field_.set(7); }
-
-  bool has_thread_time_in_state_cache_size() const { return _has_field_[8]; }
-  uint32_t thread_time_in_state_cache_size() const { return thread_time_in_state_cache_size_; }
-  void set_thread_time_in_state_cache_size(uint32_t value) { thread_time_in_state_cache_size_ = value; _has_field_.set(8); }
-
  private:
   std::vector<ProcessStatsConfig_Quirks> quirks_;
   bool scan_all_processes_on_start_{};
   bool record_thread_names_{};
   uint32_t proc_stats_poll_ms_{};
   uint32_t proc_stats_cache_ttl_ms_{};
-  bool record_thread_time_in_state_{};
-  uint32_t thread_time_in_state_cache_size_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<9> _has_field_{};
+  std::bitset<7> _has_field_{};
 };
 
 }  // namespace perfetto

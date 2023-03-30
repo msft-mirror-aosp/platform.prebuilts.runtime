@@ -28,7 +28,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT ChromeKeyedService : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeKeyedService : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNameFieldNumber = 1,

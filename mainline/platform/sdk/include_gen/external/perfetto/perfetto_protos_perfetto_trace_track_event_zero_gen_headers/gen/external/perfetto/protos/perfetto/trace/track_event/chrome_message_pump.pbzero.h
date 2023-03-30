@@ -35,6 +35,8 @@ class ChromeMessagePump : public ::protozero::Message {
     kSentMessagesInQueueFieldNumber = 1,
     kIoHandlerLocationIidFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeMessagePump"; }
+
 
   using FieldMetadata_SentMessagesInQueue =
     ::protozero::proto_utils::FieldMetadata<
@@ -50,7 +52,7 @@ class ChromeMessagePump : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SentMessagesInQueue kSentMessagesInQueue() { return {}; }
   void set_sent_messages_in_queue(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_SentMessagesInQueue::kFieldId;
@@ -75,7 +77,7 @@ class ChromeMessagePump : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IoHandlerLocationIid kIoHandlerLocationIid() { return {}; }
   void set_io_handler_location_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IoHandlerLocationIid::kFieldId;
