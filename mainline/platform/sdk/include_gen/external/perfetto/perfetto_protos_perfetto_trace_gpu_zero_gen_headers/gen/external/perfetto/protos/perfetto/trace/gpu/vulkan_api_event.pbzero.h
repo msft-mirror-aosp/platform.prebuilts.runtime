@@ -37,6 +37,8 @@ class VulkanApiEvent : public ::protozero::Message {
     kVkDebugUtilsObjectNameFieldNumber = 1,
     kVkQueueSubmitFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.VulkanApiEvent"; }
+
   using VkDebugUtilsObjectName = ::perfetto::protos::pbzero::VulkanApiEvent_VkDebugUtilsObjectName;
   using VkQueueSubmit = ::perfetto::protos::pbzero::VulkanApiEvent_VkQueueSubmit;
 
@@ -54,7 +56,7 @@ class VulkanApiEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_VkDebugUtilsObjectName kVkDebugUtilsObjectName() { return {}; }
   template <typename T = VulkanApiEvent_VkDebugUtilsObjectName> T* set_vk_debug_utils_object_name() {
     return BeginNestedMessage<T>(1);
@@ -75,7 +77,7 @@ class VulkanApiEvent : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_VkQueueSubmit kVkQueueSubmit() { return {}; }
   template <typename T = VulkanApiEvent_VkQueueSubmit> T* set_vk_queue_submit() {
     return BeginNestedMessage<T>(2);
@@ -113,6 +115,8 @@ class VulkanApiEvent_VkQueueSubmit : public ::protozero::Message {
     kVkCommandBuffersFieldNumber = 5,
     kSubmissionIdFieldNumber = 6,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.VulkanApiEvent.VkQueueSubmit"; }
+
 
   using FieldMetadata_DurationNs =
     ::protozero::proto_utils::FieldMetadata<
@@ -128,7 +132,7 @@ class VulkanApiEvent_VkQueueSubmit : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DurationNs kDurationNs() { return {}; }
   void set_duration_ns(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DurationNs::kFieldId;
@@ -153,7 +157,7 @@ class VulkanApiEvent_VkQueueSubmit : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -178,7 +182,7 @@ class VulkanApiEvent_VkQueueSubmit : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Tid kTid() { return {}; }
   void set_tid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Tid::kFieldId;
@@ -203,7 +207,7 @@ class VulkanApiEvent_VkQueueSubmit : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_VkQueue kVkQueue() { return {}; }
   void set_vk_queue(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VkQueue::kFieldId;
@@ -228,7 +232,7 @@ class VulkanApiEvent_VkQueueSubmit : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_VkCommandBuffers kVkCommandBuffers() { return {}; }
   void add_vk_command_buffers(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VkCommandBuffers::kFieldId;
@@ -253,7 +257,7 @@ class VulkanApiEvent_VkQueueSubmit : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SubmissionId kSubmissionId() { return {}; }
   void set_submission_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SubmissionId::kFieldId;
@@ -292,6 +296,8 @@ class VulkanApiEvent_VkDebugUtilsObjectName : public ::protozero::Message {
     kObjectFieldNumber = 4,
     kObjectNameFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.VulkanApiEvent.VkDebugUtilsObjectName"; }
+
 
   using FieldMetadata_Pid =
     ::protozero::proto_utils::FieldMetadata<
@@ -307,7 +313,7 @@ class VulkanApiEvent_VkDebugUtilsObjectName : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Pid kPid() { return {}; }
   void set_pid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
@@ -332,7 +338,7 @@ class VulkanApiEvent_VkDebugUtilsObjectName : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_VkDevice kVkDevice() { return {}; }
   void set_vk_device(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VkDevice::kFieldId;
@@ -357,7 +363,7 @@ class VulkanApiEvent_VkDebugUtilsObjectName : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ObjectType kObjectType() { return {}; }
   void set_object_type(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ObjectType::kFieldId;
@@ -382,7 +388,7 @@ class VulkanApiEvent_VkDebugUtilsObjectName : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Object kObject() { return {}; }
   void set_object(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Object::kFieldId;
@@ -407,10 +413,13 @@ class VulkanApiEvent_VkDebugUtilsObjectName : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ObjectName kObjectName() { return {}; }
   void set_object_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ObjectName::kFieldId, data, size);
+  }
+  void set_object_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ObjectName::kFieldId, chars.data, chars.size);
   }
   void set_object_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ObjectName::kFieldId;

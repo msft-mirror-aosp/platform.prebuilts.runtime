@@ -28,7 +28,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT AndroidPolledStateConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT AndroidPolledStateConfig : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kPollMsFieldNumber = 1,

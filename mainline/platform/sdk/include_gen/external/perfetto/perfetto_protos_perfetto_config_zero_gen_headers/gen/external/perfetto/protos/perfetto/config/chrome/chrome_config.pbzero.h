@@ -16,16 +16,39 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-enum ChromeConfig_ClientPriority : int32_t;
+namespace perfetto_pbzero_enum_ChromeConfig {
+enum ClientPriority : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeConfig
+using ChromeConfig_ClientPriority = perfetto_pbzero_enum_ChromeConfig::ClientPriority;
 
-enum ChromeConfig_ClientPriority : int32_t {
-  ChromeConfig_ClientPriority_UNKNOWN = 0,
-  ChromeConfig_ClientPriority_BACKGROUND = 1,
-  ChromeConfig_ClientPriority_USER_INITIATED = 2,
+namespace perfetto_pbzero_enum_ChromeConfig {
+enum ClientPriority : int32_t {
+  UNKNOWN = 0,
+  BACKGROUND = 1,
+  USER_INITIATED = 2,
 };
+} // namespace perfetto_pbzero_enum_ChromeConfig
+using ChromeConfig_ClientPriority = perfetto_pbzero_enum_ChromeConfig::ClientPriority;
 
-const ChromeConfig_ClientPriority ChromeConfig_ClientPriority_MIN = ChromeConfig_ClientPriority_UNKNOWN;
-const ChromeConfig_ClientPriority ChromeConfig_ClientPriority_MAX = ChromeConfig_ClientPriority_USER_INITIATED;
+
+constexpr ChromeConfig_ClientPriority ChromeConfig_ClientPriority_MIN = ChromeConfig_ClientPriority::UNKNOWN;
+constexpr ChromeConfig_ClientPriority ChromeConfig_ClientPriority_MAX = ChromeConfig_ClientPriority::USER_INITIATED;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeConfig_ClientPriority_Name(::perfetto::protos::pbzero::ChromeConfig_ClientPriority value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeConfig_ClientPriority::UNKNOWN:
+    return "UNKNOWN";
+
+  case ::perfetto::protos::pbzero::ChromeConfig_ClientPriority::BACKGROUND:
+    return "BACKGROUND";
+
+  case ::perfetto::protos::pbzero::ChromeConfig_ClientPriority::USER_INITIATED:
+    return "USER_INITIATED";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class ChromeConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -54,10 +77,16 @@ class ChromeConfig : public ::protozero::Message {
     kClientPriorityFieldNumber = 4,
     kJsonAgentLabelFilterFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.ChromeConfig"; }
+
+
   using ClientPriority = ::perfetto::protos::pbzero::ChromeConfig_ClientPriority;
-  static const ClientPriority UNKNOWN = ChromeConfig_ClientPriority_UNKNOWN;
-  static const ClientPriority BACKGROUND = ChromeConfig_ClientPriority_BACKGROUND;
-  static const ClientPriority USER_INITIATED = ChromeConfig_ClientPriority_USER_INITIATED;
+  static inline const char* ClientPriority_Name(ClientPriority value) {
+    return ::perfetto::protos::pbzero::ChromeConfig_ClientPriority_Name(value);
+  }
+  static const ClientPriority UNKNOWN = ClientPriority::UNKNOWN;
+  static const ClientPriority BACKGROUND = ClientPriority::BACKGROUND;
+  static const ClientPriority USER_INITIATED = ClientPriority::USER_INITIATED;
 
   using FieldMetadata_TraceConfig =
     ::protozero::proto_utils::FieldMetadata<
@@ -73,10 +102,13 @@ class ChromeConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TraceConfig kTraceConfig() { return {}; }
   void set_trace_config(const char* data, size_t size) {
     AppendBytes(FieldMetadata_TraceConfig::kFieldId, data, size);
+  }
+  void set_trace_config(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_TraceConfig::kFieldId, chars.data, chars.size);
   }
   void set_trace_config(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_TraceConfig::kFieldId;
@@ -101,7 +133,7 @@ class ChromeConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PrivacyFilteringEnabled kPrivacyFilteringEnabled() { return {}; }
   void set_privacy_filtering_enabled(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_PrivacyFilteringEnabled::kFieldId;
@@ -126,7 +158,7 @@ class ChromeConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ConvertToLegacyJson kConvertToLegacyJson() { return {}; }
   void set_convert_to_legacy_json(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ConvertToLegacyJson::kFieldId;
@@ -151,7 +183,7 @@ class ChromeConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ClientPriority kClientPriority() { return {}; }
   void set_client_priority(::perfetto::protos::pbzero::ChromeConfig_ClientPriority value) {
     static constexpr uint32_t field_id = FieldMetadata_ClientPriority::kFieldId;
@@ -176,10 +208,13 @@ class ChromeConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_JsonAgentLabelFilter kJsonAgentLabelFilter() { return {}; }
   void set_json_agent_label_filter(const char* data, size_t size) {
     AppendBytes(FieldMetadata_JsonAgentLabelFilter::kFieldId, data, size);
+  }
+  void set_json_agent_label_filter(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_JsonAgentLabelFilter::kFieldId, chars.data, chars.size);
   }
   void set_json_agent_label_filter(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_JsonAgentLabelFilter::kFieldId;

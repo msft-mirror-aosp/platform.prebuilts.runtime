@@ -28,8 +28,39 @@ enum BuiltinClock : int32_t {
   BUILTIN_CLOCK_MAX_ID = 63,
 };
 
-const BuiltinClock BuiltinClock_MIN = BUILTIN_CLOCK_UNKNOWN;
-const BuiltinClock BuiltinClock_MAX = BUILTIN_CLOCK_MAX_ID;
+constexpr BuiltinClock BuiltinClock_MIN = BuiltinClock::BUILTIN_CLOCK_UNKNOWN;
+constexpr BuiltinClock BuiltinClock_MAX = BuiltinClock::BUILTIN_CLOCK_MAX_ID;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* BuiltinClock_Name(::perfetto::protos::pbzero::BuiltinClock value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::BuiltinClock::BUILTIN_CLOCK_UNKNOWN:
+    return "BUILTIN_CLOCK_UNKNOWN";
+
+  case ::perfetto::protos::pbzero::BuiltinClock::BUILTIN_CLOCK_REALTIME:
+    return "BUILTIN_CLOCK_REALTIME";
+
+  case ::perfetto::protos::pbzero::BuiltinClock::BUILTIN_CLOCK_REALTIME_COARSE:
+    return "BUILTIN_CLOCK_REALTIME_COARSE";
+
+  case ::perfetto::protos::pbzero::BuiltinClock::BUILTIN_CLOCK_MONOTONIC:
+    return "BUILTIN_CLOCK_MONOTONIC";
+
+  case ::perfetto::protos::pbzero::BuiltinClock::BUILTIN_CLOCK_MONOTONIC_COARSE:
+    return "BUILTIN_CLOCK_MONOTONIC_COARSE";
+
+  case ::perfetto::protos::pbzero::BuiltinClock::BUILTIN_CLOCK_MONOTONIC_RAW:
+    return "BUILTIN_CLOCK_MONOTONIC_RAW";
+
+  case ::perfetto::protos::pbzero::BuiltinClock::BUILTIN_CLOCK_BOOTTIME:
+    return "BUILTIN_CLOCK_BOOTTIME";
+
+  case ::perfetto::protos::pbzero::BuiltinClock::BUILTIN_CLOCK_MAX_ID:
+    return "BUILTIN_CLOCK_MAX_ID";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 } // Namespace.
 } // Namespace.
