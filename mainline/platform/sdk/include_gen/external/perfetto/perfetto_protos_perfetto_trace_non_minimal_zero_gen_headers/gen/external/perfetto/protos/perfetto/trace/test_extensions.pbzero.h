@@ -37,6 +37,8 @@ class TestExtensionChild : public ::protozero::Message {
     kChildFieldForTestingFieldNumber = 1,
     kDebugAnnotationsFieldNumber = 99,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.TestExtensionChild"; }
+
 
   using FieldMetadata_ChildFieldForTesting =
     ::protozero::proto_utils::FieldMetadata<
@@ -52,10 +54,13 @@ class TestExtensionChild : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ChildFieldForTesting kChildFieldForTesting() { return {}; }
   void set_child_field_for_testing(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ChildFieldForTesting::kFieldId, data, size);
+  }
+  void set_child_field_for_testing(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_ChildFieldForTesting::kFieldId, chars.data, chars.size);
   }
   void set_child_field_for_testing(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_ChildFieldForTesting::kFieldId;
@@ -80,7 +85,7 @@ class TestExtensionChild : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_DebugAnnotations kDebugAnnotations() { return {}; }
   template <typename T = DebugAnnotation> T* add_debug_annotations() {
     return BeginNestedMessage<T>(99);
@@ -105,10 +110,13 @@ class TestExtension : public ::perfetto::protos::pbzero::TrackEvent {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_StringExtensionForTesting kStringExtensionForTesting() { return {}; }
   void set_string_extension_for_testing(const char* data, size_t size) {
     AppendBytes(FieldMetadata_StringExtensionForTesting::kFieldId, data, size);
+  }
+  void set_string_extension_for_testing(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_StringExtensionForTesting::kFieldId, chars.data, chars.size);
   }
   void set_string_extension_for_testing(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_StringExtensionForTesting::kFieldId;
@@ -133,7 +141,7 @@ class TestExtension : public ::perfetto::protos::pbzero::TrackEvent {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_IntExtensionForTesting kIntExtensionForTesting() { return {}; }
   void add_int_extension_for_testing(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IntExtensionForTesting::kFieldId;
@@ -158,10 +166,13 @@ class TestExtension : public ::perfetto::protos::pbzero::TrackEvent {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_OmittedExtensionForTesting kOmittedExtensionForTesting() { return {}; }
   void set_omitted_extension_for_testing(const char* data, size_t size) {
     AppendBytes(FieldMetadata_OmittedExtensionForTesting::kFieldId, data, size);
+  }
+  void set_omitted_extension_for_testing(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_OmittedExtensionForTesting::kFieldId, chars.data, chars.size);
   }
   void set_omitted_extension_for_testing(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_OmittedExtensionForTesting::kFieldId;
@@ -186,7 +197,7 @@ class TestExtension : public ::perfetto::protos::pbzero::TrackEvent {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_NestedMessageExtensionForTesting kNestedMessageExtensionForTesting() { return {}; }
   template <typename T = TestExtensionChild> T* set_nested_message_extension_for_testing() {
     return BeginNestedMessage<T>(9903);

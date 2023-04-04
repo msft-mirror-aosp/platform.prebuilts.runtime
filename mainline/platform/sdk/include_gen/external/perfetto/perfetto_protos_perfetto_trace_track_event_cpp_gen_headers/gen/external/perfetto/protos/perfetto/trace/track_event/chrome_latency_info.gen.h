@@ -62,7 +62,7 @@ enum ChromeLatencyInfo_LatencyComponentType : int {
   ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP = 14,
 };
 
-class PERFETTO_EXPORT ChromeLatencyInfo : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeLatencyInfo : public ::protozero::CppMessageObj {
  public:
   using ComponentInfo = ChromeLatencyInfo_ComponentInfo;
   using Step = ChromeLatencyInfo_Step;
@@ -169,7 +169,7 @@ class PERFETTO_EXPORT ChromeLatencyInfo : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT ChromeLatencyInfo_ComponentInfo : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeLatencyInfo_ComponentInfo : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kComponentTypeFieldNumber = 1,

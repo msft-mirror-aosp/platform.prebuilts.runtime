@@ -28,7 +28,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT InterceptorConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT InterceptorConfig : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNameFieldNumber = 1,

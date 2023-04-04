@@ -36,7 +36,7 @@ enum ChromeApplicationStateInfo_ChromeApplicationState : int {
   ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES = 4,
 };
 
-class PERFETTO_EXPORT ChromeApplicationStateInfo : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeApplicationStateInfo : public ::protozero::CppMessageObj {
  public:
   using ChromeApplicationState = ChromeApplicationStateInfo_ChromeApplicationState;
   static constexpr auto APPLICATION_STATE_UNKNOWN = ChromeApplicationStateInfo_ChromeApplicationState_APPLICATION_STATE_UNKNOWN;

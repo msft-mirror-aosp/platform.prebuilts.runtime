@@ -29,7 +29,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT InodeFileConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT InodeFileConfig : public ::protozero::CppMessageObj {
  public:
   using MountPointMappingEntry = InodeFileConfig_MountPointMappingEntry;
   enum FieldNumbers {
@@ -100,7 +100,7 @@ class PERFETTO_EXPORT InodeFileConfig : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT InodeFileConfig_MountPointMappingEntry : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT InodeFileConfig_MountPointMappingEntry : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kMountpointFieldNumber = 1,

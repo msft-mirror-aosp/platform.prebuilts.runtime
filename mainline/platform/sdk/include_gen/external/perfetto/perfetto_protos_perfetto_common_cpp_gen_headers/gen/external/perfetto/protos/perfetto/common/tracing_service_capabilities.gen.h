@@ -29,7 +29,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT TracingServiceCapabilities : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TracingServiceCapabilities : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kHasQueryCapabilitiesFieldNumber = 1,
