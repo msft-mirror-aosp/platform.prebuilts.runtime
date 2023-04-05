@@ -41,6 +41,8 @@ class CommitDataRequest : public ::protozero::Message {
     kChunksToPatchFieldNumber = 2,
     kFlushRequestIdFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.CommitDataRequest"; }
+
   using ChunksToMove = ::perfetto::protos::pbzero::CommitDataRequest_ChunksToMove;
   using ChunkToPatch = ::perfetto::protos::pbzero::CommitDataRequest_ChunkToPatch;
 
@@ -58,7 +60,7 @@ class CommitDataRequest : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ChunksToMove kChunksToMove() { return {}; }
   template <typename T = CommitDataRequest_ChunksToMove> T* add_chunks_to_move() {
     return BeginNestedMessage<T>(1);
@@ -79,7 +81,7 @@ class CommitDataRequest : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ChunksToPatch kChunksToPatch() { return {}; }
   template <typename T = CommitDataRequest_ChunkToPatch> T* add_chunks_to_patch() {
     return BeginNestedMessage<T>(2);
@@ -100,7 +102,7 @@ class CommitDataRequest : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_FlushRequestId kFlushRequestId() { return {}; }
   void set_flush_request_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FlushRequestId::kFieldId;
@@ -139,6 +141,8 @@ class CommitDataRequest_ChunkToPatch : public ::protozero::Message {
     kPatchesFieldNumber = 4,
     kHasMorePatchesFieldNumber = 5,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.CommitDataRequest.ChunkToPatch"; }
+
   using Patch = ::perfetto::protos::pbzero::CommitDataRequest_ChunkToPatch_Patch;
 
   using FieldMetadata_TargetBuffer =
@@ -155,7 +159,7 @@ class CommitDataRequest_ChunkToPatch : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TargetBuffer kTargetBuffer() { return {}; }
   void set_target_buffer(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TargetBuffer::kFieldId;
@@ -180,7 +184,7 @@ class CommitDataRequest_ChunkToPatch : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_WriterId kWriterId() { return {}; }
   void set_writer_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_WriterId::kFieldId;
@@ -205,7 +209,7 @@ class CommitDataRequest_ChunkToPatch : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ChunkId kChunkId() { return {}; }
   void set_chunk_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ChunkId::kFieldId;
@@ -230,7 +234,7 @@ class CommitDataRequest_ChunkToPatch : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Patches kPatches() { return {}; }
   template <typename T = CommitDataRequest_ChunkToPatch_Patch> T* add_patches() {
     return BeginNestedMessage<T>(4);
@@ -251,7 +255,7 @@ class CommitDataRequest_ChunkToPatch : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_HasMorePatches kHasMorePatches() { return {}; }
   void set_has_more_patches(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_HasMorePatches::kFieldId;
@@ -281,6 +285,8 @@ class CommitDataRequest_ChunkToPatch_Patch : public ::protozero::Message {
     kOffsetFieldNumber = 1,
     kDataFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.CommitDataRequest.ChunkToPatch.Patch"; }
+
 
   using FieldMetadata_Offset =
     ::protozero::proto_utils::FieldMetadata<
@@ -296,7 +302,7 @@ class CommitDataRequest_ChunkToPatch_Patch : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Offset kOffset() { return {}; }
   void set_offset(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Offset::kFieldId;
@@ -321,10 +327,13 @@ class CommitDataRequest_ChunkToPatch_Patch : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Data kData() { return {}; }
   void set_data(const uint8_t* data, size_t size) {
     AppendBytes(FieldMetadata_Data::kFieldId, data, size);
+  }
+  void set_data(::protozero::ConstBytes bytes) {
+    AppendBytes(FieldMetadata_Data::kFieldId, bytes.data, bytes.size);
   }
   void set_data(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Data::kFieldId;
@@ -357,6 +366,8 @@ class CommitDataRequest_ChunksToMove : public ::protozero::Message {
     kChunkFieldNumber = 2,
     kTargetBufferFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.CommitDataRequest.ChunksToMove"; }
+
 
   using FieldMetadata_Page =
     ::protozero::proto_utils::FieldMetadata<
@@ -372,7 +383,7 @@ class CommitDataRequest_ChunksToMove : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Page kPage() { return {}; }
   void set_page(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Page::kFieldId;
@@ -397,7 +408,7 @@ class CommitDataRequest_ChunksToMove : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Chunk kChunk() { return {}; }
   void set_chunk(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Chunk::kFieldId;
@@ -422,7 +433,7 @@ class CommitDataRequest_ChunksToMove : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TargetBuffer kTargetBuffer() { return {}; }
   void set_target_buffer(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TargetBuffer::kFieldId;

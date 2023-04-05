@@ -28,7 +28,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT ChromeWindowHandleEventInfo : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeWindowHandleEventInfo : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDpiFieldNumber = 1,
