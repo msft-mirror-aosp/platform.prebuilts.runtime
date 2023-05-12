@@ -18,6 +18,7 @@ namespace gen {
 class TraceStats;
 class TraceStats_FilterStats;
 class TraceStats_BufferStats;
+enum TraceStats_FinalFlushOutcome : int;
 }  // namespace perfetto
 }  // namespace protos
 }  // namespace gen
@@ -29,11 +30,22 @@ class Message;
 namespace perfetto {
 namespace protos {
 namespace gen {
+enum TraceStats_FinalFlushOutcome : int {
+  TraceStats_FinalFlushOutcome_FINAL_FLUSH_UNSPECIFIED = 0,
+  TraceStats_FinalFlushOutcome_FINAL_FLUSH_SUCCEEDED = 1,
+  TraceStats_FinalFlushOutcome_FINAL_FLUSH_FAILED = 2,
+};
 
-class PERFETTO_EXPORT TraceStats : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceStats : public ::protozero::CppMessageObj {
  public:
   using BufferStats = TraceStats_BufferStats;
   using FilterStats = TraceStats_FilterStats;
+  using FinalFlushOutcome = TraceStats_FinalFlushOutcome;
+  static constexpr auto FINAL_FLUSH_UNSPECIFIED = TraceStats_FinalFlushOutcome_FINAL_FLUSH_UNSPECIFIED;
+  static constexpr auto FINAL_FLUSH_SUCCEEDED = TraceStats_FinalFlushOutcome_FINAL_FLUSH_SUCCEEDED;
+  static constexpr auto FINAL_FLUSH_FAILED = TraceStats_FinalFlushOutcome_FINAL_FLUSH_FAILED;
+  static constexpr auto FinalFlushOutcome_MIN = TraceStats_FinalFlushOutcome_FINAL_FLUSH_UNSPECIFIED;
+  static constexpr auto FinalFlushOutcome_MAX = TraceStats_FinalFlushOutcome_FINAL_FLUSH_FAILED;
   enum FieldNumbers {
     kBufferStatsFieldNumber = 1,
     kProducersConnectedFieldNumber = 2,
@@ -46,6 +58,10 @@ class PERFETTO_EXPORT TraceStats : public ::protozero::CppMessageObj {
     kPatchesDiscardedFieldNumber = 9,
     kInvalidPacketsFieldNumber = 10,
     kFilterStatsFieldNumber = 11,
+    kFlushesRequestedFieldNumber = 12,
+    kFlushesSucceededFieldNumber = 13,
+    kFlushesFailedFieldNumber = 14,
+    kFinalFlushOutcomeFieldNumber = 15,
   };
 
   TraceStats();
@@ -108,6 +124,22 @@ class PERFETTO_EXPORT TraceStats : public ::protozero::CppMessageObj {
   const TraceStats_FilterStats& filter_stats() const { return *filter_stats_; }
   TraceStats_FilterStats* mutable_filter_stats() { _has_field_.set(11); return filter_stats_.get(); }
 
+  bool has_flushes_requested() const { return _has_field_[12]; }
+  uint64_t flushes_requested() const { return flushes_requested_; }
+  void set_flushes_requested(uint64_t value) { flushes_requested_ = value; _has_field_.set(12); }
+
+  bool has_flushes_succeeded() const { return _has_field_[13]; }
+  uint64_t flushes_succeeded() const { return flushes_succeeded_; }
+  void set_flushes_succeeded(uint64_t value) { flushes_succeeded_ = value; _has_field_.set(13); }
+
+  bool has_flushes_failed() const { return _has_field_[14]; }
+  uint64_t flushes_failed() const { return flushes_failed_; }
+  void set_flushes_failed(uint64_t value) { flushes_failed_ = value; _has_field_.set(14); }
+
+  bool has_final_flush_outcome() const { return _has_field_[15]; }
+  TraceStats_FinalFlushOutcome final_flush_outcome() const { return final_flush_outcome_; }
+  void set_final_flush_outcome(TraceStats_FinalFlushOutcome value) { final_flush_outcome_ = value; _has_field_.set(15); }
+
  private:
   std::vector<TraceStats_BufferStats> buffer_stats_;
   uint32_t producers_connected_{};
@@ -120,16 +152,20 @@ class PERFETTO_EXPORT TraceStats : public ::protozero::CppMessageObj {
   uint64_t patches_discarded_{};
   uint64_t invalid_packets_{};
   ::protozero::CopyablePtr<TraceStats_FilterStats> filter_stats_;
+  uint64_t flushes_requested_{};
+  uint64_t flushes_succeeded_{};
+  uint64_t flushes_failed_{};
+  TraceStats_FinalFlushOutcome final_flush_outcome_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<12> _has_field_{};
+  std::bitset<16> _has_field_{};
 };
 
 
-class PERFETTO_EXPORT TraceStats_FilterStats : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceStats_FilterStats : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kInputPacketsFieldNumber = 1,
@@ -182,7 +218,7 @@ class PERFETTO_EXPORT TraceStats_FilterStats : public ::protozero::CppMessageObj
 };
 
 
-class PERFETTO_EXPORT TraceStats_BufferStats : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TraceStats_BufferStats : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kBufferSizeFieldNumber = 12,

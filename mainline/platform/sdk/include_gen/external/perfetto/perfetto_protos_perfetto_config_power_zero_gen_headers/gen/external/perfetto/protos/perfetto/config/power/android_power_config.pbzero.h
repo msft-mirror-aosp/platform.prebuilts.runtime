@@ -16,18 +16,47 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-enum AndroidPowerConfig_BatteryCounters : int32_t;
+namespace perfetto_pbzero_enum_AndroidPowerConfig {
+enum BatteryCounters : int32_t;
+}  // namespace perfetto_pbzero_enum_AndroidPowerConfig
+using AndroidPowerConfig_BatteryCounters = perfetto_pbzero_enum_AndroidPowerConfig::BatteryCounters;
 
-enum AndroidPowerConfig_BatteryCounters : int32_t {
-  AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_UNSPECIFIED = 0,
-  AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_CHARGE = 1,
-  AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_CAPACITY_PERCENT = 2,
-  AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_CURRENT = 3,
-  AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_CURRENT_AVG = 4,
+namespace perfetto_pbzero_enum_AndroidPowerConfig {
+enum BatteryCounters : int32_t {
+  BATTERY_COUNTER_UNSPECIFIED = 0,
+  BATTERY_COUNTER_CHARGE = 1,
+  BATTERY_COUNTER_CAPACITY_PERCENT = 2,
+  BATTERY_COUNTER_CURRENT = 3,
+  BATTERY_COUNTER_CURRENT_AVG = 4,
 };
+} // namespace perfetto_pbzero_enum_AndroidPowerConfig
+using AndroidPowerConfig_BatteryCounters = perfetto_pbzero_enum_AndroidPowerConfig::BatteryCounters;
 
-const AndroidPowerConfig_BatteryCounters AndroidPowerConfig_BatteryCounters_MIN = AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_UNSPECIFIED;
-const AndroidPowerConfig_BatteryCounters AndroidPowerConfig_BatteryCounters_MAX = AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_CURRENT_AVG;
+
+constexpr AndroidPowerConfig_BatteryCounters AndroidPowerConfig_BatteryCounters_MIN = AndroidPowerConfig_BatteryCounters::BATTERY_COUNTER_UNSPECIFIED;
+constexpr AndroidPowerConfig_BatteryCounters AndroidPowerConfig_BatteryCounters_MAX = AndroidPowerConfig_BatteryCounters::BATTERY_COUNTER_CURRENT_AVG;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* AndroidPowerConfig_BatteryCounters_Name(::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters::BATTERY_COUNTER_UNSPECIFIED:
+    return "BATTERY_COUNTER_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters::BATTERY_COUNTER_CHARGE:
+    return "BATTERY_COUNTER_CHARGE";
+
+  case ::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters::BATTERY_COUNTER_CAPACITY_PERCENT:
+    return "BATTERY_COUNTER_CAPACITY_PERCENT";
+
+  case ::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters::BATTERY_COUNTER_CURRENT:
+    return "BATTERY_COUNTER_CURRENT";
+
+  case ::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters::BATTERY_COUNTER_CURRENT_AVG:
+    return "BATTERY_COUNTER_CURRENT_AVG";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class AndroidPowerConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -53,12 +82,18 @@ class AndroidPowerConfig : public ::protozero::Message {
     kCollectPowerRailsFieldNumber = 3,
     kCollectEnergyEstimationBreakdownFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.AndroidPowerConfig"; }
+
+
   using BatteryCounters = ::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters;
-  static const BatteryCounters BATTERY_COUNTER_UNSPECIFIED = AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_UNSPECIFIED;
-  static const BatteryCounters BATTERY_COUNTER_CHARGE = AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_CHARGE;
-  static const BatteryCounters BATTERY_COUNTER_CAPACITY_PERCENT = AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_CAPACITY_PERCENT;
-  static const BatteryCounters BATTERY_COUNTER_CURRENT = AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_CURRENT;
-  static const BatteryCounters BATTERY_COUNTER_CURRENT_AVG = AndroidPowerConfig_BatteryCounters_BATTERY_COUNTER_CURRENT_AVG;
+  static inline const char* BatteryCounters_Name(BatteryCounters value) {
+    return ::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters_Name(value);
+  }
+  static const BatteryCounters BATTERY_COUNTER_UNSPECIFIED = BatteryCounters::BATTERY_COUNTER_UNSPECIFIED;
+  static const BatteryCounters BATTERY_COUNTER_CHARGE = BatteryCounters::BATTERY_COUNTER_CHARGE;
+  static const BatteryCounters BATTERY_COUNTER_CAPACITY_PERCENT = BatteryCounters::BATTERY_COUNTER_CAPACITY_PERCENT;
+  static const BatteryCounters BATTERY_COUNTER_CURRENT = BatteryCounters::BATTERY_COUNTER_CURRENT;
+  static const BatteryCounters BATTERY_COUNTER_CURRENT_AVG = BatteryCounters::BATTERY_COUNTER_CURRENT_AVG;
 
   using FieldMetadata_BatteryPollMs =
     ::protozero::proto_utils::FieldMetadata<
@@ -74,7 +109,7 @@ class AndroidPowerConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BatteryPollMs kBatteryPollMs() { return {}; }
   void set_battery_poll_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BatteryPollMs::kFieldId;
@@ -99,7 +134,7 @@ class AndroidPowerConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_BatteryCounters kBatteryCounters() { return {}; }
   void add_battery_counters(::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters value) {
     static constexpr uint32_t field_id = FieldMetadata_BatteryCounters::kFieldId;
@@ -124,7 +159,7 @@ class AndroidPowerConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CollectPowerRails kCollectPowerRails() { return {}; }
   void set_collect_power_rails(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_CollectPowerRails::kFieldId;
@@ -149,7 +184,7 @@ class AndroidPowerConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_CollectEnergyEstimationBreakdown kCollectEnergyEstimationBreakdown() { return {}; }
   void set_collect_energy_estimation_breakdown(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_CollectEnergyEstimationBreakdown::kFieldId;

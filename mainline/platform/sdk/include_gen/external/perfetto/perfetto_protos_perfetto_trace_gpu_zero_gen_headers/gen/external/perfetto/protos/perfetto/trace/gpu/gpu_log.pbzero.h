@@ -16,19 +16,51 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
-enum GpuLog_Severity : int32_t;
+namespace perfetto_pbzero_enum_GpuLog {
+enum Severity : int32_t;
+}  // namespace perfetto_pbzero_enum_GpuLog
+using GpuLog_Severity = perfetto_pbzero_enum_GpuLog::Severity;
 
-enum GpuLog_Severity : int32_t {
-  GpuLog_Severity_LOG_SEVERITY_UNSPECIFIED = 0,
-  GpuLog_Severity_LOG_SEVERITY_VERBOSE = 1,
-  GpuLog_Severity_LOG_SEVERITY_DEBUG = 2,
-  GpuLog_Severity_LOG_SEVERITY_INFO = 3,
-  GpuLog_Severity_LOG_SEVERITY_WARNING = 4,
-  GpuLog_Severity_LOG_SEVERITY_ERROR = 5,
+namespace perfetto_pbzero_enum_GpuLog {
+enum Severity : int32_t {
+  LOG_SEVERITY_UNSPECIFIED = 0,
+  LOG_SEVERITY_VERBOSE = 1,
+  LOG_SEVERITY_DEBUG = 2,
+  LOG_SEVERITY_INFO = 3,
+  LOG_SEVERITY_WARNING = 4,
+  LOG_SEVERITY_ERROR = 5,
 };
+} // namespace perfetto_pbzero_enum_GpuLog
+using GpuLog_Severity = perfetto_pbzero_enum_GpuLog::Severity;
 
-const GpuLog_Severity GpuLog_Severity_MIN = GpuLog_Severity_LOG_SEVERITY_UNSPECIFIED;
-const GpuLog_Severity GpuLog_Severity_MAX = GpuLog_Severity_LOG_SEVERITY_ERROR;
+
+constexpr GpuLog_Severity GpuLog_Severity_MIN = GpuLog_Severity::LOG_SEVERITY_UNSPECIFIED;
+constexpr GpuLog_Severity GpuLog_Severity_MAX = GpuLog_Severity::LOG_SEVERITY_ERROR;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* GpuLog_Severity_Name(::perfetto::protos::pbzero::GpuLog_Severity value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::GpuLog_Severity::LOG_SEVERITY_UNSPECIFIED:
+    return "LOG_SEVERITY_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::GpuLog_Severity::LOG_SEVERITY_VERBOSE:
+    return "LOG_SEVERITY_VERBOSE";
+
+  case ::perfetto::protos::pbzero::GpuLog_Severity::LOG_SEVERITY_DEBUG:
+    return "LOG_SEVERITY_DEBUG";
+
+  case ::perfetto::protos::pbzero::GpuLog_Severity::LOG_SEVERITY_INFO:
+    return "LOG_SEVERITY_INFO";
+
+  case ::perfetto::protos::pbzero::GpuLog_Severity::LOG_SEVERITY_WARNING:
+    return "LOG_SEVERITY_WARNING";
+
+  case ::perfetto::protos::pbzero::GpuLog_Severity::LOG_SEVERITY_ERROR:
+    return "LOG_SEVERITY_ERROR";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 class GpuLog_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -51,13 +83,19 @@ class GpuLog : public ::protozero::Message {
     kTagFieldNumber = 2,
     kLogMessageFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuLog"; }
+
+
   using Severity = ::perfetto::protos::pbzero::GpuLog_Severity;
-  static const Severity LOG_SEVERITY_UNSPECIFIED = GpuLog_Severity_LOG_SEVERITY_UNSPECIFIED;
-  static const Severity LOG_SEVERITY_VERBOSE = GpuLog_Severity_LOG_SEVERITY_VERBOSE;
-  static const Severity LOG_SEVERITY_DEBUG = GpuLog_Severity_LOG_SEVERITY_DEBUG;
-  static const Severity LOG_SEVERITY_INFO = GpuLog_Severity_LOG_SEVERITY_INFO;
-  static const Severity LOG_SEVERITY_WARNING = GpuLog_Severity_LOG_SEVERITY_WARNING;
-  static const Severity LOG_SEVERITY_ERROR = GpuLog_Severity_LOG_SEVERITY_ERROR;
+  static inline const char* Severity_Name(Severity value) {
+    return ::perfetto::protos::pbzero::GpuLog_Severity_Name(value);
+  }
+  static const Severity LOG_SEVERITY_UNSPECIFIED = Severity::LOG_SEVERITY_UNSPECIFIED;
+  static const Severity LOG_SEVERITY_VERBOSE = Severity::LOG_SEVERITY_VERBOSE;
+  static const Severity LOG_SEVERITY_DEBUG = Severity::LOG_SEVERITY_DEBUG;
+  static const Severity LOG_SEVERITY_INFO = Severity::LOG_SEVERITY_INFO;
+  static const Severity LOG_SEVERITY_WARNING = Severity::LOG_SEVERITY_WARNING;
+  static const Severity LOG_SEVERITY_ERROR = Severity::LOG_SEVERITY_ERROR;
 
   using FieldMetadata_Severity =
     ::protozero::proto_utils::FieldMetadata<
@@ -73,7 +111,7 @@ class GpuLog : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Severity kSeverity() { return {}; }
   void set_severity(::perfetto::protos::pbzero::GpuLog_Severity value) {
     static constexpr uint32_t field_id = FieldMetadata_Severity::kFieldId;
@@ -98,10 +136,13 @@ class GpuLog : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Tag kTag() { return {}; }
   void set_tag(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Tag::kFieldId, data, size);
+  }
+  void set_tag(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Tag::kFieldId, chars.data, chars.size);
   }
   void set_tag(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Tag::kFieldId;
@@ -126,10 +167,13 @@ class GpuLog : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_LogMessage kLogMessage() { return {}; }
   void set_log_message(const char* data, size_t size) {
     AppendBytes(FieldMetadata_LogMessage::kFieldId, data, size);
+  }
+  void set_log_message(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_LogMessage::kFieldId, chars.data, chars.size);
   }
   void set_log_message(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_LogMessage::kFieldId;
