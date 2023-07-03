@@ -55,14 +55,7 @@ class MmFilemapDeleteFromPageCacheFtraceEvent : public ::protozero::Message {
       uint64_t,
       MmFilemapDeleteFromPageCacheFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Pfn kPfn() { return {}; }
+  static constexpr FieldMetadata_Pfn kPfn{};
   void set_pfn(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pfn::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -80,14 +73,7 @@ class MmFilemapDeleteFromPageCacheFtraceEvent : public ::protozero::Message {
       uint64_t,
       MmFilemapDeleteFromPageCacheFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IIno kIIno() { return {}; }
+  static constexpr FieldMetadata_IIno kIIno{};
   void set_i_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IIno::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -105,14 +91,7 @@ class MmFilemapDeleteFromPageCacheFtraceEvent : public ::protozero::Message {
       uint64_t,
       MmFilemapDeleteFromPageCacheFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Index kIndex() { return {}; }
+  static constexpr FieldMetadata_Index kIndex{};
   void set_index(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Index::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -130,14 +109,7 @@ class MmFilemapDeleteFromPageCacheFtraceEvent : public ::protozero::Message {
       uint64_t,
       MmFilemapDeleteFromPageCacheFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SDev kSDev() { return {}; }
+  static constexpr FieldMetadata_SDev kSDev{};
   void set_s_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SDev::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -155,14 +127,7 @@ class MmFilemapDeleteFromPageCacheFtraceEvent : public ::protozero::Message {
       uint64_t,
       MmFilemapDeleteFromPageCacheFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Page kPage() { return {}; }
+  static constexpr FieldMetadata_Page kPage{};
   void set_page(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Page::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -211,14 +176,7 @@ class MmFilemapAddToPageCacheFtraceEvent : public ::protozero::Message {
       uint64_t,
       MmFilemapAddToPageCacheFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Pfn kPfn() { return {}; }
+  static constexpr FieldMetadata_Pfn kPfn{};
   void set_pfn(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pfn::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -236,14 +194,7 @@ class MmFilemapAddToPageCacheFtraceEvent : public ::protozero::Message {
       uint64_t,
       MmFilemapAddToPageCacheFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IIno kIIno() { return {}; }
+  static constexpr FieldMetadata_IIno kIIno{};
   void set_i_ino(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IIno::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -261,14 +212,7 @@ class MmFilemapAddToPageCacheFtraceEvent : public ::protozero::Message {
       uint64_t,
       MmFilemapAddToPageCacheFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Index kIndex() { return {}; }
+  static constexpr FieldMetadata_Index kIndex{};
   void set_index(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Index::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -286,14 +230,7 @@ class MmFilemapAddToPageCacheFtraceEvent : public ::protozero::Message {
       uint64_t,
       MmFilemapAddToPageCacheFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SDev kSDev() { return {}; }
+  static constexpr FieldMetadata_SDev kSDev{};
   void set_s_dev(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SDev::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -311,14 +248,7 @@ class MmFilemapAddToPageCacheFtraceEvent : public ::protozero::Message {
       uint64_t,
       MmFilemapAddToPageCacheFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Page kPage() { return {}; }
+  static constexpr FieldMetadata_Page kPage{};
   void set_page(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Page::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

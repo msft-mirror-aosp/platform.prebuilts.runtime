@@ -53,14 +53,7 @@ class AndroidGameInterventionList : public ::protozero::Message {
       AndroidGameInterventionList_GamePackageInfo,
       AndroidGameInterventionList>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_GamePackages kGamePackages() { return {}; }
+  static constexpr FieldMetadata_GamePackages kGamePackages{};
   template <typename T = AndroidGameInterventionList_GamePackageInfo> T* add_game_packages() {
     return BeginNestedMessage<T>(1);
   }
@@ -74,14 +67,7 @@ class AndroidGameInterventionList : public ::protozero::Message {
       bool,
       AndroidGameInterventionList>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ParseError kParseError() { return {}; }
+  static constexpr FieldMetadata_ParseError kParseError{};
   void set_parse_error(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ParseError::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -99,14 +85,7 @@ class AndroidGameInterventionList : public ::protozero::Message {
       bool,
       AndroidGameInterventionList>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReadError kReadError() { return {}; }
+  static constexpr FieldMetadata_ReadError kReadError{};
   void set_read_error(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ReadError::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -152,14 +131,7 @@ class AndroidGameInterventionList_GamePackageInfo : public ::protozero::Message 
       std::string,
       AndroidGameInterventionList_GamePackageInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -183,14 +155,7 @@ class AndroidGameInterventionList_GamePackageInfo : public ::protozero::Message 
       uint64_t,
       AndroidGameInterventionList_GamePackageInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Uid kUid() { return {}; }
+  static constexpr FieldMetadata_Uid kUid{};
   void set_uid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Uid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -208,14 +173,7 @@ class AndroidGameInterventionList_GamePackageInfo : public ::protozero::Message 
       uint32_t,
       AndroidGameInterventionList_GamePackageInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CurrentMode kCurrentMode() { return {}; }
+  static constexpr FieldMetadata_CurrentMode kCurrentMode{};
   void set_current_mode(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CurrentMode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -233,14 +191,7 @@ class AndroidGameInterventionList_GamePackageInfo : public ::protozero::Message 
       AndroidGameInterventionList_GameModeInfo,
       AndroidGameInterventionList_GamePackageInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_GameModeInfo kGameModeInfo() { return {}; }
+  static constexpr FieldMetadata_GameModeInfo kGameModeInfo{};
   template <typename T = AndroidGameInterventionList_GameModeInfo> T* add_game_mode_info() {
     return BeginNestedMessage<T>(4);
   }
@@ -282,14 +233,7 @@ class AndroidGameInterventionList_GameModeInfo : public ::protozero::Message {
       uint32_t,
       AndroidGameInterventionList_GameModeInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Mode kMode() { return {}; }
+  static constexpr FieldMetadata_Mode kMode{};
   void set_mode(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Mode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -307,14 +251,7 @@ class AndroidGameInterventionList_GameModeInfo : public ::protozero::Message {
       bool,
       AndroidGameInterventionList_GameModeInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_UseAngle kUseAngle() { return {}; }
+  static constexpr FieldMetadata_UseAngle kUseAngle{};
   void set_use_angle(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_UseAngle::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -332,14 +269,7 @@ class AndroidGameInterventionList_GameModeInfo : public ::protozero::Message {
       float,
       AndroidGameInterventionList_GameModeInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ResolutionDownscale kResolutionDownscale() { return {}; }
+  static constexpr FieldMetadata_ResolutionDownscale kResolutionDownscale{};
   void set_resolution_downscale(float value) {
     static constexpr uint32_t field_id = FieldMetadata_ResolutionDownscale::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -357,14 +287,7 @@ class AndroidGameInterventionList_GameModeInfo : public ::protozero::Message {
       float,
       AndroidGameInterventionList_GameModeInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Fps kFps() { return {}; }
+  static constexpr FieldMetadata_Fps kFps{};
   void set_fps(float value) {
     static constexpr uint32_t field_id = FieldMetadata_Fps::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

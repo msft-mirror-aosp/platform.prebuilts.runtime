@@ -51,14 +51,7 @@ class UiState : public ::protozero::Message {
       int64_t,
       UiState>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TimelineStartTs kTimelineStartTs() { return {}; }
+  static constexpr FieldMetadata_TimelineStartTs kTimelineStartTs{};
   void set_timeline_start_ts(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimelineStartTs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -76,14 +69,7 @@ class UiState : public ::protozero::Message {
       int64_t,
       UiState>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TimelineEndTs kTimelineEndTs() { return {}; }
+  static constexpr FieldMetadata_TimelineEndTs kTimelineEndTs{};
   void set_timeline_end_ts(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimelineEndTs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -101,14 +87,7 @@ class UiState : public ::protozero::Message {
       UiState_HighlightProcess,
       UiState>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_HighlightProcess kHighlightProcess() { return {}; }
+  static constexpr FieldMetadata_HighlightProcess kHighlightProcess{};
   template <typename T = UiState_HighlightProcess> T* set_highlight_process() {
     return BeginNestedMessage<T>(3);
   }
@@ -144,14 +123,7 @@ class UiState_HighlightProcess : public ::protozero::Message {
       uint32_t,
       UiState_HighlightProcess>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Pid kPid() { return {}; }
+  static constexpr FieldMetadata_Pid kPid{};
   void set_pid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -169,14 +141,7 @@ class UiState_HighlightProcess : public ::protozero::Message {
       std::string,
       UiState_HighlightProcess>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Cmdline kCmdline() { return {}; }
+  static constexpr FieldMetadata_Cmdline kCmdline{};
   void set_cmdline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Cmdline::kFieldId, data, size);
   }

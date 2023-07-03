@@ -53,14 +53,7 @@ class ProcessTree : public ::protozero::Message {
       ProcessTree_Process,
       ProcessTree>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Processes kProcesses() { return {}; }
+  static constexpr FieldMetadata_Processes kProcesses{};
   template <typename T = ProcessTree_Process> T* add_processes() {
     return BeginNestedMessage<T>(1);
   }
@@ -74,14 +67,7 @@ class ProcessTree : public ::protozero::Message {
       ProcessTree_Thread,
       ProcessTree>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Threads kThreads() { return {}; }
+  static constexpr FieldMetadata_Threads kThreads{};
   template <typename T = ProcessTree_Thread> T* add_threads() {
     return BeginNestedMessage<T>(2);
   }
@@ -95,14 +81,7 @@ class ProcessTree : public ::protozero::Message {
       uint64_t,
       ProcessTree>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CollectionEndTimestamp kCollectionEndTimestamp() { return {}; }
+  static constexpr FieldMetadata_CollectionEndTimestamp kCollectionEndTimestamp{};
   void set_collection_end_timestamp(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CollectionEndTimestamp::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -154,14 +133,7 @@ class ProcessTree_Process : public ::protozero::Message {
       int32_t,
       ProcessTree_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Pid kPid() { return {}; }
+  static constexpr FieldMetadata_Pid kPid{};
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -179,14 +151,7 @@ class ProcessTree_Process : public ::protozero::Message {
       int32_t,
       ProcessTree_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Ppid kPpid() { return {}; }
+  static constexpr FieldMetadata_Ppid kPpid{};
   void set_ppid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ppid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -204,14 +169,7 @@ class ProcessTree_Process : public ::protozero::Message {
       std::string,
       ProcessTree_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Cmdline kCmdline() { return {}; }
+  static constexpr FieldMetadata_Cmdline kCmdline{};
   void add_cmdline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Cmdline::kFieldId, data, size);
   }
@@ -235,14 +193,7 @@ class ProcessTree_Process : public ::protozero::Message {
       ProcessTree_Thread,
       ProcessTree_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ThreadsDeprecated kThreadsDeprecated() { return {}; }
+  static constexpr FieldMetadata_ThreadsDeprecated kThreadsDeprecated{};
   template <typename T = ProcessTree_Thread> T* add_threads_deprecated() {
     return BeginNestedMessage<T>(4);
   }
@@ -256,14 +207,7 @@ class ProcessTree_Process : public ::protozero::Message {
       int32_t,
       ProcessTree_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Uid kUid() { return {}; }
+  static constexpr FieldMetadata_Uid kUid{};
   void set_uid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Uid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -281,14 +225,7 @@ class ProcessTree_Process : public ::protozero::Message {
       int32_t,
       ProcessTree_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Nspid kNspid() { return {}; }
+  static constexpr FieldMetadata_Nspid kNspid{};
   void add_nspid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Nspid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -334,14 +271,7 @@ class ProcessTree_Thread : public ::protozero::Message {
       int32_t,
       ProcessTree_Thread>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Tid kTid() { return {}; }
+  static constexpr FieldMetadata_Tid kTid{};
   void set_tid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Tid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -359,14 +289,7 @@ class ProcessTree_Thread : public ::protozero::Message {
       int32_t,
       ProcessTree_Thread>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Tgid kTgid() { return {}; }
+  static constexpr FieldMetadata_Tgid kTgid{};
   void set_tgid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Tgid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -384,14 +307,7 @@ class ProcessTree_Thread : public ::protozero::Message {
       std::string,
       ProcessTree_Thread>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -415,14 +331,7 @@ class ProcessTree_Thread : public ::protozero::Message {
       int32_t,
       ProcessTree_Thread>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Nstid kNstid() { return {}; }
+  static constexpr FieldMetadata_Nstid kNstid{};
   void add_nstid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Nstid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

@@ -90,12 +90,12 @@ class GpuLog : public ::protozero::Message {
   static inline const char* Severity_Name(Severity value) {
     return ::perfetto::protos::pbzero::GpuLog_Severity_Name(value);
   }
-  static const Severity LOG_SEVERITY_UNSPECIFIED = Severity::LOG_SEVERITY_UNSPECIFIED;
-  static const Severity LOG_SEVERITY_VERBOSE = Severity::LOG_SEVERITY_VERBOSE;
-  static const Severity LOG_SEVERITY_DEBUG = Severity::LOG_SEVERITY_DEBUG;
-  static const Severity LOG_SEVERITY_INFO = Severity::LOG_SEVERITY_INFO;
-  static const Severity LOG_SEVERITY_WARNING = Severity::LOG_SEVERITY_WARNING;
-  static const Severity LOG_SEVERITY_ERROR = Severity::LOG_SEVERITY_ERROR;
+  static inline const Severity LOG_SEVERITY_UNSPECIFIED = Severity::LOG_SEVERITY_UNSPECIFIED;
+  static inline const Severity LOG_SEVERITY_VERBOSE = Severity::LOG_SEVERITY_VERBOSE;
+  static inline const Severity LOG_SEVERITY_DEBUG = Severity::LOG_SEVERITY_DEBUG;
+  static inline const Severity LOG_SEVERITY_INFO = Severity::LOG_SEVERITY_INFO;
+  static inline const Severity LOG_SEVERITY_WARNING = Severity::LOG_SEVERITY_WARNING;
+  static inline const Severity LOG_SEVERITY_ERROR = Severity::LOG_SEVERITY_ERROR;
 
   using FieldMetadata_Severity =
     ::protozero::proto_utils::FieldMetadata<
@@ -105,14 +105,7 @@ class GpuLog : public ::protozero::Message {
       ::perfetto::protos::pbzero::GpuLog_Severity,
       GpuLog>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Severity kSeverity() { return {}; }
+  static constexpr FieldMetadata_Severity kSeverity{};
   void set_severity(::perfetto::protos::pbzero::GpuLog_Severity value) {
     static constexpr uint32_t field_id = FieldMetadata_Severity::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -130,14 +123,7 @@ class GpuLog : public ::protozero::Message {
       std::string,
       GpuLog>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Tag kTag() { return {}; }
+  static constexpr FieldMetadata_Tag kTag{};
   void set_tag(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Tag::kFieldId, data, size);
   }
@@ -161,14 +147,7 @@ class GpuLog : public ::protozero::Message {
       std::string,
       GpuLog>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_LogMessage kLogMessage() { return {}; }
+  static constexpr FieldMetadata_LogMessage kLogMessage{};
   void set_log_message(const char* data, size_t size) {
     AppendBytes(FieldMetadata_LogMessage::kFieldId, data, size);
   }

@@ -67,14 +67,7 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
       int64_t,
       ChromeBenchmarkMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BenchmarkStartTimeUs kBenchmarkStartTimeUs() { return {}; }
+  static constexpr FieldMetadata_BenchmarkStartTimeUs kBenchmarkStartTimeUs{};
   void set_benchmark_start_time_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BenchmarkStartTimeUs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -92,14 +85,7 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
       int64_t,
       ChromeBenchmarkMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StoryRunTimeUs kStoryRunTimeUs() { return {}; }
+  static constexpr FieldMetadata_StoryRunTimeUs kStoryRunTimeUs{};
   void set_story_run_time_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StoryRunTimeUs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -117,14 +103,7 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
       std::string,
       ChromeBenchmarkMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BenchmarkName kBenchmarkName() { return {}; }
+  static constexpr FieldMetadata_BenchmarkName kBenchmarkName{};
   void set_benchmark_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_BenchmarkName::kFieldId, data, size);
   }
@@ -148,14 +127,7 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
       std::string,
       ChromeBenchmarkMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BenchmarkDescription kBenchmarkDescription() { return {}; }
+  static constexpr FieldMetadata_BenchmarkDescription kBenchmarkDescription{};
   void set_benchmark_description(const char* data, size_t size) {
     AppendBytes(FieldMetadata_BenchmarkDescription::kFieldId, data, size);
   }
@@ -179,14 +151,7 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
       std::string,
       ChromeBenchmarkMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Label kLabel() { return {}; }
+  static constexpr FieldMetadata_Label kLabel{};
   void set_label(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Label::kFieldId, data, size);
   }
@@ -210,14 +175,7 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
       std::string,
       ChromeBenchmarkMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StoryName kStoryName() { return {}; }
+  static constexpr FieldMetadata_StoryName kStoryName{};
   void set_story_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_StoryName::kFieldId, data, size);
   }
@@ -241,14 +199,7 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
       std::string,
       ChromeBenchmarkMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StoryTags kStoryTags() { return {}; }
+  static constexpr FieldMetadata_StoryTags kStoryTags{};
   void add_story_tags(const char* data, size_t size) {
     AppendBytes(FieldMetadata_StoryTags::kFieldId, data, size);
   }
@@ -272,14 +223,7 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
       int32_t,
       ChromeBenchmarkMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StoryRunIndex kStoryRunIndex() { return {}; }
+  static constexpr FieldMetadata_StoryRunIndex kStoryRunIndex{};
   void set_story_run_index(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StoryRunIndex::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -297,14 +241,7 @@ class ChromeBenchmarkMetadata : public ::protozero::Message {
       bool,
       ChromeBenchmarkMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_HadFailures kHadFailures() { return {}; }
+  static constexpr FieldMetadata_HadFailures kHadFailures{};
   void set_had_failures(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_HadFailures::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
