@@ -55,14 +55,7 @@ class AndroidEnergyEstimationBreakdown : public ::protozero::Message {
       AndroidEnergyConsumerDescriptor,
       AndroidEnergyEstimationBreakdown>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnergyConsumerDescriptor kEnergyConsumerDescriptor() { return {}; }
+  static constexpr FieldMetadata_EnergyConsumerDescriptor kEnergyConsumerDescriptor{};
   template <typename T = AndroidEnergyConsumerDescriptor> T* set_energy_consumer_descriptor() {
     return BeginNestedMessage<T>(1);
   }
@@ -76,14 +69,7 @@ class AndroidEnergyEstimationBreakdown : public ::protozero::Message {
       int32_t,
       AndroidEnergyEstimationBreakdown>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnergyConsumerId kEnergyConsumerId() { return {}; }
+  static constexpr FieldMetadata_EnergyConsumerId kEnergyConsumerId{};
   void set_energy_consumer_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_EnergyConsumerId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -101,14 +87,7 @@ class AndroidEnergyEstimationBreakdown : public ::protozero::Message {
       int64_t,
       AndroidEnergyEstimationBreakdown>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnergyUws kEnergyUws() { return {}; }
+  static constexpr FieldMetadata_EnergyUws kEnergyUws{};
   void set_energy_uws(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_EnergyUws::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -126,14 +105,7 @@ class AndroidEnergyEstimationBreakdown : public ::protozero::Message {
       AndroidEnergyEstimationBreakdown_EnergyUidBreakdown,
       AndroidEnergyEstimationBreakdown>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PerUidBreakdown kPerUidBreakdown() { return {}; }
+  static constexpr FieldMetadata_PerUidBreakdown kPerUidBreakdown{};
   template <typename T = AndroidEnergyEstimationBreakdown_EnergyUidBreakdown> T* add_per_uid_breakdown() {
     return BeginNestedMessage<T>(4);
   }
@@ -169,14 +141,7 @@ class AndroidEnergyEstimationBreakdown_EnergyUidBreakdown : public ::protozero::
       int32_t,
       AndroidEnergyEstimationBreakdown_EnergyUidBreakdown>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Uid kUid() { return {}; }
+  static constexpr FieldMetadata_Uid kUid{};
   void set_uid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Uid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -194,14 +159,7 @@ class AndroidEnergyEstimationBreakdown_EnergyUidBreakdown : public ::protozero::
       int64_t,
       AndroidEnergyEstimationBreakdown_EnergyUidBreakdown>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnergyUws kEnergyUws() { return {}; }
+  static constexpr FieldMetadata_EnergyUws kEnergyUws{};
   void set_energy_uws(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_EnergyUws::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

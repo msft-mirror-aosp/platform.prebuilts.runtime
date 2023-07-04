@@ -75,6 +75,7 @@ struct sockaddr_ll {
 #define PACKET_FANOUT_EBPF 7
 #define PACKET_FANOUT_FLAG_ROLLOVER 0x1000
 #define PACKET_FANOUT_FLAG_UNIQUEID 0x2000
+#define PACKET_FANOUT_FLAG_IGNORE_OUTGOING 0x4000
 #define PACKET_FANOUT_FLAG_DEFRAG 0x8000
 struct tpacket_stats {
   unsigned int tp_packets;
@@ -112,6 +113,7 @@ struct tpacket_auxdata {
 #define TP_STATUS_BLK_TMO (1 << 5)
 #define TP_STATUS_VLAN_TPID_VALID (1 << 6)
 #define TP_STATUS_CSUM_VALID (1 << 7)
+#define TP_STATUS_GSO_TCP (1 << 8)
 #define TP_STATUS_AVAILABLE 0
 #define TP_STATUS_SEND_REQUEST (1 << 0)
 #define TP_STATUS_SENDING (1 << 1)

@@ -51,14 +51,7 @@ class DeobfuscationMapping : public ::protozero::Message {
       std::string,
       DeobfuscationMapping>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PackageName kPackageName() { return {}; }
+  static constexpr FieldMetadata_PackageName kPackageName{};
   void set_package_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_PackageName::kFieldId, data, size);
   }
@@ -82,14 +75,7 @@ class DeobfuscationMapping : public ::protozero::Message {
       int64_t,
       DeobfuscationMapping>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_VersionCode kVersionCode() { return {}; }
+  static constexpr FieldMetadata_VersionCode kVersionCode{};
   void set_version_code(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VersionCode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -107,14 +93,7 @@ class DeobfuscationMapping : public ::protozero::Message {
       ObfuscatedClass,
       DeobfuscationMapping>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ObfuscatedClasses kObfuscatedClasses() { return {}; }
+  static constexpr FieldMetadata_ObfuscatedClasses kObfuscatedClasses{};
   template <typename T = ObfuscatedClass> T* add_obfuscated_classes() {
     return BeginNestedMessage<T>(3);
   }
@@ -156,14 +135,7 @@ class ObfuscatedClass : public ::protozero::Message {
       std::string,
       ObfuscatedClass>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ObfuscatedName kObfuscatedName() { return {}; }
+  static constexpr FieldMetadata_ObfuscatedName kObfuscatedName{};
   void set_obfuscated_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ObfuscatedName::kFieldId, data, size);
   }
@@ -187,14 +159,7 @@ class ObfuscatedClass : public ::protozero::Message {
       std::string,
       ObfuscatedClass>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DeobfuscatedName kDeobfuscatedName() { return {}; }
+  static constexpr FieldMetadata_DeobfuscatedName kDeobfuscatedName{};
   void set_deobfuscated_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_DeobfuscatedName::kFieldId, data, size);
   }
@@ -218,14 +183,7 @@ class ObfuscatedClass : public ::protozero::Message {
       ObfuscatedMember,
       ObfuscatedClass>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ObfuscatedMembers kObfuscatedMembers() { return {}; }
+  static constexpr FieldMetadata_ObfuscatedMembers kObfuscatedMembers{};
   template <typename T = ObfuscatedMember> T* add_obfuscated_members() {
     return BeginNestedMessage<T>(3);
   }
@@ -239,14 +197,7 @@ class ObfuscatedClass : public ::protozero::Message {
       ObfuscatedMember,
       ObfuscatedClass>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ObfuscatedMethods kObfuscatedMethods() { return {}; }
+  static constexpr FieldMetadata_ObfuscatedMethods kObfuscatedMethods{};
   template <typename T = ObfuscatedMember> T* add_obfuscated_methods() {
     return BeginNestedMessage<T>(4);
   }
@@ -282,14 +233,7 @@ class ObfuscatedMember : public ::protozero::Message {
       std::string,
       ObfuscatedMember>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ObfuscatedName kObfuscatedName() { return {}; }
+  static constexpr FieldMetadata_ObfuscatedName kObfuscatedName{};
   void set_obfuscated_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ObfuscatedName::kFieldId, data, size);
   }
@@ -313,14 +257,7 @@ class ObfuscatedMember : public ::protozero::Message {
       std::string,
       ObfuscatedMember>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DeobfuscatedName kDeobfuscatedName() { return {}; }
+  static constexpr FieldMetadata_DeobfuscatedName kDeobfuscatedName{};
   void set_deobfuscated_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_DeobfuscatedName::kFieldId, data, size);
   }

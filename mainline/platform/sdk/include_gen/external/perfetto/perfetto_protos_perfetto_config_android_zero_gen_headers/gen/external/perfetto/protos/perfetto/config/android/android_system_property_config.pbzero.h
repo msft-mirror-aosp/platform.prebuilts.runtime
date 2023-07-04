@@ -46,14 +46,7 @@ class AndroidSystemPropertyConfig : public ::protozero::Message {
       uint32_t,
       AndroidSystemPropertyConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PollMs kPollMs() { return {}; }
+  static constexpr FieldMetadata_PollMs kPollMs{};
   void set_poll_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PollMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -71,14 +64,7 @@ class AndroidSystemPropertyConfig : public ::protozero::Message {
       std::string,
       AndroidSystemPropertyConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PropertyName kPropertyName() { return {}; }
+  static constexpr FieldMetadata_PropertyName kPropertyName{};
   void add_property_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_PropertyName::kFieldId, data, size);
   }

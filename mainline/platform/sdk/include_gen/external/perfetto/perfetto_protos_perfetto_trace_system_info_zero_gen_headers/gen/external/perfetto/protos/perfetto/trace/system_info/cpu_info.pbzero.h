@@ -45,14 +45,7 @@ class CpuInfo : public ::protozero::Message {
       CpuInfo_Cpu,
       CpuInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Cpus kCpus() { return {}; }
+  static constexpr FieldMetadata_Cpus kCpus{};
   template <typename T = CpuInfo_Cpu> T* add_cpus() {
     return BeginNestedMessage<T>(1);
   }
@@ -88,14 +81,7 @@ class CpuInfo_Cpu : public ::protozero::Message {
       std::string,
       CpuInfo_Cpu>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Processor kProcessor() { return {}; }
+  static constexpr FieldMetadata_Processor kProcessor{};
   void set_processor(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Processor::kFieldId, data, size);
   }
@@ -119,14 +105,7 @@ class CpuInfo_Cpu : public ::protozero::Message {
       uint32_t,
       CpuInfo_Cpu>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Frequencies kFrequencies() { return {}; }
+  static constexpr FieldMetadata_Frequencies kFrequencies{};
   void add_frequencies(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Frequencies::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

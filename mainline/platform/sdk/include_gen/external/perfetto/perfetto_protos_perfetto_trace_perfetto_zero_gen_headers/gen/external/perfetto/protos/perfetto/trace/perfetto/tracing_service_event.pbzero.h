@@ -58,14 +58,7 @@ class TracingServiceEvent : public ::protozero::Message {
       bool,
       TracingServiceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TracingStarted kTracingStarted() { return {}; }
+  static constexpr FieldMetadata_TracingStarted kTracingStarted{};
   void set_tracing_started(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_TracingStarted::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -83,14 +76,7 @@ class TracingServiceEvent : public ::protozero::Message {
       bool,
       TracingServiceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_AllDataSourcesStarted kAllDataSourcesStarted() { return {}; }
+  static constexpr FieldMetadata_AllDataSourcesStarted kAllDataSourcesStarted{};
   void set_all_data_sources_started(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_AllDataSourcesStarted::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -108,14 +94,7 @@ class TracingServiceEvent : public ::protozero::Message {
       bool,
       TracingServiceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_AllDataSourcesFlushed kAllDataSourcesFlushed() { return {}; }
+  static constexpr FieldMetadata_AllDataSourcesFlushed kAllDataSourcesFlushed{};
   void set_all_data_sources_flushed(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_AllDataSourcesFlushed::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -133,14 +112,7 @@ class TracingServiceEvent : public ::protozero::Message {
       bool,
       TracingServiceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReadTracingBuffersCompleted kReadTracingBuffersCompleted() { return {}; }
+  static constexpr FieldMetadata_ReadTracingBuffersCompleted kReadTracingBuffersCompleted{};
   void set_read_tracing_buffers_completed(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ReadTracingBuffersCompleted::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -158,14 +130,7 @@ class TracingServiceEvent : public ::protozero::Message {
       bool,
       TracingServiceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TracingDisabled kTracingDisabled() { return {}; }
+  static constexpr FieldMetadata_TracingDisabled kTracingDisabled{};
   void set_tracing_disabled(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_TracingDisabled::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -183,14 +148,7 @@ class TracingServiceEvent : public ::protozero::Message {
       bool,
       TracingServiceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SeizedForBugreport kSeizedForBugreport() { return {}; }
+  static constexpr FieldMetadata_SeizedForBugreport kSeizedForBugreport{};
   void set_seized_for_bugreport(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_SeizedForBugreport::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

@@ -16,6 +16,7 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
+class ProcessStats_FDInfo;
 class ProcessStats_Process;
 class ProcessStats_Thread;
 
@@ -40,6 +41,7 @@ class ProcessStats : public ::protozero::Message {
   static constexpr const char* GetName() { return ".perfetto.protos.ProcessStats"; }
 
   using Thread = ::perfetto::protos::pbzero::ProcessStats_Thread;
+  using FDInfo = ::perfetto::protos::pbzero::ProcessStats_FDInfo;
   using Process = ::perfetto::protos::pbzero::ProcessStats_Process;
 
   using FieldMetadata_Processes =
@@ -50,14 +52,7 @@ class ProcessStats : public ::protozero::Message {
       ProcessStats_Process,
       ProcessStats>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Processes kProcesses() { return {}; }
+  static constexpr FieldMetadata_Processes kProcesses{};
   template <typename T = ProcessStats_Process> T* add_processes() {
     return BeginNestedMessage<T>(1);
   }
@@ -71,14 +66,7 @@ class ProcessStats : public ::protozero::Message {
       uint64_t,
       ProcessStats>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CollectionEndTimestamp kCollectionEndTimestamp() { return {}; }
+  static constexpr FieldMetadata_CollectionEndTimestamp kCollectionEndTimestamp{};
   void set_collection_end_timestamp(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CollectionEndTimestamp::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -89,7 +77,7 @@ class ProcessStats : public ::protozero::Message {
   }
 };
 
-class ProcessStats_Process_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/14, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class ProcessStats_Process_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/20, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   ProcessStats_Process_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ProcessStats_Process_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -122,6 +110,18 @@ class ProcessStats_Process_Decoder : public ::protozero::TypedProtoDecoder</*MAX
   uint32_t chrome_private_footprint_kb() const { return at<13>().as_uint32(); }
   bool has_chrome_peak_resident_set_kb() const { return at<14>().valid(); }
   uint32_t chrome_peak_resident_set_kb() const { return at<14>().as_uint32(); }
+  bool has_fds() const { return at<15>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> fds() const { return GetRepeated<::protozero::ConstBytes>(15); }
+  bool has_smr_rss_kb() const { return at<16>().valid(); }
+  uint64_t smr_rss_kb() const { return at<16>().as_uint64(); }
+  bool has_smr_pss_kb() const { return at<17>().valid(); }
+  uint64_t smr_pss_kb() const { return at<17>().as_uint64(); }
+  bool has_smr_pss_anon_kb() const { return at<18>().valid(); }
+  uint64_t smr_pss_anon_kb() const { return at<18>().as_uint64(); }
+  bool has_smr_pss_file_kb() const { return at<19>().valid(); }
+  uint64_t smr_pss_file_kb() const { return at<19>().as_uint64(); }
+  bool has_smr_pss_shmem_kb() const { return at<20>().valid(); }
+  uint64_t smr_pss_shmem_kb() const { return at<20>().as_uint64(); }
 };
 
 class ProcessStats_Process : public ::protozero::Message {
@@ -142,6 +142,12 @@ class ProcessStats_Process : public ::protozero::Message {
     kIsPeakRssResettableFieldNumber = 12,
     kChromePrivateFootprintKbFieldNumber = 13,
     kChromePeakResidentSetKbFieldNumber = 14,
+    kFdsFieldNumber = 15,
+    kSmrRssKbFieldNumber = 16,
+    kSmrPssKbFieldNumber = 17,
+    kSmrPssAnonKbFieldNumber = 18,
+    kSmrPssFileKbFieldNumber = 19,
+    kSmrPssShmemKbFieldNumber = 20,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.ProcessStats.Process"; }
 
@@ -154,14 +160,7 @@ class ProcessStats_Process : public ::protozero::Message {
       int32_t,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Pid kPid() { return {}; }
+  static constexpr FieldMetadata_Pid kPid{};
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -179,14 +178,7 @@ class ProcessStats_Process : public ::protozero::Message {
       uint64_t,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_VmSizeKb kVmSizeKb() { return {}; }
+  static constexpr FieldMetadata_VmSizeKb kVmSizeKb{};
   void set_vm_size_kb(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VmSizeKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -204,14 +196,7 @@ class ProcessStats_Process : public ::protozero::Message {
       uint64_t,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_VmRssKb kVmRssKb() { return {}; }
+  static constexpr FieldMetadata_VmRssKb kVmRssKb{};
   void set_vm_rss_kb(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VmRssKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -229,14 +214,7 @@ class ProcessStats_Process : public ::protozero::Message {
       uint64_t,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RssAnonKb kRssAnonKb() { return {}; }
+  static constexpr FieldMetadata_RssAnonKb kRssAnonKb{};
   void set_rss_anon_kb(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RssAnonKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -254,14 +232,7 @@ class ProcessStats_Process : public ::protozero::Message {
       uint64_t,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RssFileKb kRssFileKb() { return {}; }
+  static constexpr FieldMetadata_RssFileKb kRssFileKb{};
   void set_rss_file_kb(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RssFileKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -279,14 +250,7 @@ class ProcessStats_Process : public ::protozero::Message {
       uint64_t,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RssShmemKb kRssShmemKb() { return {}; }
+  static constexpr FieldMetadata_RssShmemKb kRssShmemKb{};
   void set_rss_shmem_kb(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RssShmemKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -304,14 +268,7 @@ class ProcessStats_Process : public ::protozero::Message {
       uint64_t,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_VmSwapKb kVmSwapKb() { return {}; }
+  static constexpr FieldMetadata_VmSwapKb kVmSwapKb{};
   void set_vm_swap_kb(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VmSwapKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -329,14 +286,7 @@ class ProcessStats_Process : public ::protozero::Message {
       uint64_t,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_VmLockedKb kVmLockedKb() { return {}; }
+  static constexpr FieldMetadata_VmLockedKb kVmLockedKb{};
   void set_vm_locked_kb(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VmLockedKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -354,14 +304,7 @@ class ProcessStats_Process : public ::protozero::Message {
       uint64_t,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_VmHwmKb kVmHwmKb() { return {}; }
+  static constexpr FieldMetadata_VmHwmKb kVmHwmKb{};
   void set_vm_hwm_kb(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VmHwmKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -379,14 +322,7 @@ class ProcessStats_Process : public ::protozero::Message {
       int64_t,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_OomScoreAdj kOomScoreAdj() { return {}; }
+  static constexpr FieldMetadata_OomScoreAdj kOomScoreAdj{};
   void set_oom_score_adj(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_OomScoreAdj::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -404,14 +340,7 @@ class ProcessStats_Process : public ::protozero::Message {
       ProcessStats_Thread,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Threads kThreads() { return {}; }
+  static constexpr FieldMetadata_Threads kThreads{};
   template <typename T = ProcessStats_Thread> T* add_threads() {
     return BeginNestedMessage<T>(11);
   }
@@ -425,14 +354,7 @@ class ProcessStats_Process : public ::protozero::Message {
       bool,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IsPeakRssResettable kIsPeakRssResettable() { return {}; }
+  static constexpr FieldMetadata_IsPeakRssResettable kIsPeakRssResettable{};
   void set_is_peak_rss_resettable(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_IsPeakRssResettable::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -450,14 +372,7 @@ class ProcessStats_Process : public ::protozero::Message {
       uint32_t,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ChromePrivateFootprintKb kChromePrivateFootprintKb() { return {}; }
+  static constexpr FieldMetadata_ChromePrivateFootprintKb kChromePrivateFootprintKb{};
   void set_chrome_private_footprint_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ChromePrivateFootprintKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -475,20 +390,181 @@ class ProcessStats_Process : public ::protozero::Message {
       uint32_t,
       ProcessStats_Process>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ChromePeakResidentSetKb kChromePeakResidentSetKb() { return {}; }
+  static constexpr FieldMetadata_ChromePeakResidentSetKb kChromePeakResidentSetKb{};
   void set_chrome_peak_resident_set_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ChromePeakResidentSetKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Fds =
+    ::protozero::proto_utils::FieldMetadata<
+      15,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ProcessStats_FDInfo,
+      ProcessStats_Process>;
+
+  static constexpr FieldMetadata_Fds kFds{};
+  template <typename T = ProcessStats_FDInfo> T* add_fds() {
+    return BeginNestedMessage<T>(15);
+  }
+
+
+  using FieldMetadata_SmrRssKb =
+    ::protozero::proto_utils::FieldMetadata<
+      16,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      ProcessStats_Process>;
+
+  static constexpr FieldMetadata_SmrRssKb kSmrRssKb{};
+  void set_smr_rss_kb(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_SmrRssKb::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_SmrPssKb =
+    ::protozero::proto_utils::FieldMetadata<
+      17,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      ProcessStats_Process>;
+
+  static constexpr FieldMetadata_SmrPssKb kSmrPssKb{};
+  void set_smr_pss_kb(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_SmrPssKb::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_SmrPssAnonKb =
+    ::protozero::proto_utils::FieldMetadata<
+      18,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      ProcessStats_Process>;
+
+  static constexpr FieldMetadata_SmrPssAnonKb kSmrPssAnonKb{};
+  void set_smr_pss_anon_kb(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_SmrPssAnonKb::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_SmrPssFileKb =
+    ::protozero::proto_utils::FieldMetadata<
+      19,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      ProcessStats_Process>;
+
+  static constexpr FieldMetadata_SmrPssFileKb kSmrPssFileKb{};
+  void set_smr_pss_file_kb(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_SmrPssFileKb::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_SmrPssShmemKb =
+    ::protozero::proto_utils::FieldMetadata<
+      20,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      ProcessStats_Process>;
+
+  static constexpr FieldMetadata_SmrPssShmemKb kSmrPssShmemKb{};
+  void set_smr_pss_shmem_kb(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_SmrPssShmemKb::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class ProcessStats_FDInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  ProcessStats_FDInfo_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit ProcessStats_FDInfo_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit ProcessStats_FDInfo_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_fd() const { return at<1>().valid(); }
+  uint64_t fd() const { return at<1>().as_uint64(); }
+  bool has_path() const { return at<2>().valid(); }
+  ::protozero::ConstChars path() const { return at<2>().as_string(); }
+};
+
+class ProcessStats_FDInfo : public ::protozero::Message {
+ public:
+  using Decoder = ProcessStats_FDInfo_Decoder;
+  enum : int32_t {
+    kFdFieldNumber = 1,
+    kPathFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProcessStats.FDInfo"; }
+
+
+  using FieldMetadata_Fd =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      ProcessStats_FDInfo>;
+
+  static constexpr FieldMetadata_Fd kFd{};
+  void set_fd(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Fd::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Path =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      ProcessStats_FDInfo>;
+
+  static constexpr FieldMetadata_Path kPath{};
+  void set_path(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Path::kFieldId, data, size);
+  }
+  void set_path(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Path::kFieldId, chars.data, chars.size);
+  }
+  void set_path(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Path::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
         ::Append(*this, field_id, value);
   }
 };
@@ -519,14 +595,7 @@ class ProcessStats_Thread : public ::protozero::Message {
       int32_t,
       ProcessStats_Thread>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Tid kTid() { return {}; }
+  static constexpr FieldMetadata_Tid kTid{};
   void set_tid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Tid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

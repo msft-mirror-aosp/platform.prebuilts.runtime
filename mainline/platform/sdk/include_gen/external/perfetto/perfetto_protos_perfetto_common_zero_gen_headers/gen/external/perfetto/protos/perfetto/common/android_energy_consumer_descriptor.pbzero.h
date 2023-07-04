@@ -44,14 +44,7 @@ class AndroidEnergyConsumerDescriptor : public ::protozero::Message {
       AndroidEnergyConsumer,
       AndroidEnergyConsumerDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnergyConsumers kEnergyConsumers() { return {}; }
+  static constexpr FieldMetadata_EnergyConsumers kEnergyConsumers{};
   template <typename T = AndroidEnergyConsumer> T* add_energy_consumers() {
     return BeginNestedMessage<T>(1);
   }
@@ -93,14 +86,7 @@ class AndroidEnergyConsumer : public ::protozero::Message {
       int32_t,
       AndroidEnergyConsumer>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnergyConsumerId kEnergyConsumerId() { return {}; }
+  static constexpr FieldMetadata_EnergyConsumerId kEnergyConsumerId{};
   void set_energy_consumer_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_EnergyConsumerId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -118,14 +104,7 @@ class AndroidEnergyConsumer : public ::protozero::Message {
       int32_t,
       AndroidEnergyConsumer>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Ordinal kOrdinal() { return {}; }
+  static constexpr FieldMetadata_Ordinal kOrdinal{};
   void set_ordinal(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Ordinal::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -143,14 +122,7 @@ class AndroidEnergyConsumer : public ::protozero::Message {
       std::string,
       AndroidEnergyConsumer>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Type kType() { return {}; }
+  static constexpr FieldMetadata_Type kType{};
   void set_type(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Type::kFieldId, data, size);
   }
@@ -174,14 +146,7 @@ class AndroidEnergyConsumer : public ::protozero::Message {
       std::string,
       AndroidEnergyConsumer>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }

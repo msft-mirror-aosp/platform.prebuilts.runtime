@@ -17,6 +17,7 @@ namespace protos {
 namespace gen {
 class TraceStats;
 class TraceStats_FilterStats;
+class TraceStats_WriterStats;
 class TraceStats_BufferStats;
 enum TraceStats_FinalFlushOutcome : int;
 }  // namespace perfetto
@@ -39,6 +40,7 @@ enum TraceStats_FinalFlushOutcome : int {
 class PERFETTO_EXPORT_COMPONENT TraceStats : public ::protozero::CppMessageObj {
  public:
   using BufferStats = TraceStats_BufferStats;
+  using WriterStats = TraceStats_WriterStats;
   using FilterStats = TraceStats_FilterStats;
   using FinalFlushOutcome = TraceStats_FinalFlushOutcome;
   static constexpr auto FINAL_FLUSH_UNSPECIFIED = TraceStats_FinalFlushOutcome_FINAL_FLUSH_UNSPECIFIED;
@@ -48,6 +50,8 @@ class PERFETTO_EXPORT_COMPONENT TraceStats : public ::protozero::CppMessageObj {
   static constexpr auto FinalFlushOutcome_MAX = TraceStats_FinalFlushOutcome_FINAL_FLUSH_FAILED;
   enum FieldNumbers {
     kBufferStatsFieldNumber = 1,
+    kChunkPayloadHistogramDefFieldNumber = 17,
+    kWriterStatsFieldNumber = 18,
     kProducersConnectedFieldNumber = 2,
     kProducersSeenFieldNumber = 3,
     kDataSourcesRegisteredFieldNumber = 4,
@@ -83,6 +87,19 @@ class PERFETTO_EXPORT_COMPONENT TraceStats : public ::protozero::CppMessageObj {
   int buffer_stats_size() const;
   void clear_buffer_stats();
   TraceStats_BufferStats* add_buffer_stats();
+
+  const std::vector<int64_t>& chunk_payload_histogram_def() const { return chunk_payload_histogram_def_; }
+  std::vector<int64_t>* mutable_chunk_payload_histogram_def() { return &chunk_payload_histogram_def_; }
+  int chunk_payload_histogram_def_size() const { return static_cast<int>(chunk_payload_histogram_def_.size()); }
+  void clear_chunk_payload_histogram_def() { chunk_payload_histogram_def_.clear(); }
+  void add_chunk_payload_histogram_def(int64_t value) { chunk_payload_histogram_def_.emplace_back(value); }
+  int64_t* add_chunk_payload_histogram_def() { chunk_payload_histogram_def_.emplace_back(); return &chunk_payload_histogram_def_.back(); }
+
+  const std::vector<TraceStats_WriterStats>& writer_stats() const { return writer_stats_; }
+  std::vector<TraceStats_WriterStats>* mutable_writer_stats() { return &writer_stats_; }
+  int writer_stats_size() const;
+  void clear_writer_stats();
+  TraceStats_WriterStats* add_writer_stats();
 
   bool has_producers_connected() const { return _has_field_[2]; }
   uint32_t producers_connected() const { return producers_connected_; }
@@ -142,6 +159,8 @@ class PERFETTO_EXPORT_COMPONENT TraceStats : public ::protozero::CppMessageObj {
 
  private:
   std::vector<TraceStats_BufferStats> buffer_stats_;
+  std::vector<int64_t> chunk_payload_histogram_def_;
+  std::vector<TraceStats_WriterStats> writer_stats_;
   uint32_t producers_connected_{};
   uint64_t producers_seen_{};
   uint32_t data_sources_registered_{};
@@ -161,7 +180,7 @@ class PERFETTO_EXPORT_COMPONENT TraceStats : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<16> _has_field_{};
+  std::bitset<19> _has_field_{};
 };
 
 
@@ -172,6 +191,7 @@ class PERFETTO_EXPORT_COMPONENT TraceStats_FilterStats : public ::protozero::Cpp
     kInputBytesFieldNumber = 2,
     kOutputBytesFieldNumber = 3,
     kErrorsFieldNumber = 4,
+    kTimeTakenNsFieldNumber = 5,
   };
 
   TraceStats_FilterStats();
@@ -204,17 +224,75 @@ class PERFETTO_EXPORT_COMPONENT TraceStats_FilterStats : public ::protozero::Cpp
   uint64_t errors() const { return errors_; }
   void set_errors(uint64_t value) { errors_ = value; _has_field_.set(4); }
 
+  bool has_time_taken_ns() const { return _has_field_[5]; }
+  uint64_t time_taken_ns() const { return time_taken_ns_; }
+  void set_time_taken_ns(uint64_t value) { time_taken_ns_ = value; _has_field_.set(5); }
+
  private:
   uint64_t input_packets_{};
   uint64_t input_bytes_{};
   uint64_t output_bytes_{};
   uint64_t errors_{};
+  uint64_t time_taken_ns_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<5> _has_field_{};
+  std::bitset<6> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT TraceStats_WriterStats : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kSequenceIdFieldNumber = 1,
+    kChunkPayloadHistogramCountsFieldNumber = 2,
+    kChunkPayloadHistogramSumFieldNumber = 3,
+  };
+
+  TraceStats_WriterStats();
+  ~TraceStats_WriterStats() override;
+  TraceStats_WriterStats(TraceStats_WriterStats&&) noexcept;
+  TraceStats_WriterStats& operator=(TraceStats_WriterStats&&);
+  TraceStats_WriterStats(const TraceStats_WriterStats&);
+  TraceStats_WriterStats& operator=(const TraceStats_WriterStats&);
+  bool operator==(const TraceStats_WriterStats&) const;
+  bool operator!=(const TraceStats_WriterStats& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_sequence_id() const { return _has_field_[1]; }
+  uint64_t sequence_id() const { return sequence_id_; }
+  void set_sequence_id(uint64_t value) { sequence_id_ = value; _has_field_.set(1); }
+
+  const std::vector<uint64_t>& chunk_payload_histogram_counts() const { return chunk_payload_histogram_counts_; }
+  std::vector<uint64_t>* mutable_chunk_payload_histogram_counts() { return &chunk_payload_histogram_counts_; }
+  int chunk_payload_histogram_counts_size() const { return static_cast<int>(chunk_payload_histogram_counts_.size()); }
+  void clear_chunk_payload_histogram_counts() { chunk_payload_histogram_counts_.clear(); }
+  void add_chunk_payload_histogram_counts(uint64_t value) { chunk_payload_histogram_counts_.emplace_back(value); }
+  uint64_t* add_chunk_payload_histogram_counts() { chunk_payload_histogram_counts_.emplace_back(); return &chunk_payload_histogram_counts_.back(); }
+
+  const std::vector<int64_t>& chunk_payload_histogram_sum() const { return chunk_payload_histogram_sum_; }
+  std::vector<int64_t>* mutable_chunk_payload_histogram_sum() { return &chunk_payload_histogram_sum_; }
+  int chunk_payload_histogram_sum_size() const { return static_cast<int>(chunk_payload_histogram_sum_.size()); }
+  void clear_chunk_payload_histogram_sum() { chunk_payload_histogram_sum_.clear(); }
+  void add_chunk_payload_histogram_sum(int64_t value) { chunk_payload_histogram_sum_.emplace_back(value); }
+  int64_t* add_chunk_payload_histogram_sum() { chunk_payload_histogram_sum_.emplace_back(); return &chunk_payload_histogram_sum_.back(); }
+
+ private:
+  uint64_t sequence_id_{};
+  std::vector<uint64_t> chunk_payload_histogram_counts_;
+  std::vector<int64_t> chunk_payload_histogram_sum_;
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<4> _has_field_{};
 };
 
 
