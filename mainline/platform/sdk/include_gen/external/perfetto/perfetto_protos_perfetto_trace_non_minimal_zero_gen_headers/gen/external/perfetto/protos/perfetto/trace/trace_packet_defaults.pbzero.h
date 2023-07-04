@@ -51,14 +51,7 @@ class TracePacketDefaults : public ::protozero::Message {
       uint32_t,
       TracePacketDefaults>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TimestampClockId kTimestampClockId() { return {}; }
+  static constexpr FieldMetadata_TimestampClockId kTimestampClockId{};
   void set_timestamp_clock_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimestampClockId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -76,14 +69,7 @@ class TracePacketDefaults : public ::protozero::Message {
       TrackEventDefaults,
       TracePacketDefaults>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TrackEventDefaults kTrackEventDefaults() { return {}; }
+  static constexpr FieldMetadata_TrackEventDefaults kTrackEventDefaults{};
   template <typename T = TrackEventDefaults> T* set_track_event_defaults() {
     return BeginNestedMessage<T>(11);
   }
@@ -97,14 +83,7 @@ class TracePacketDefaults : public ::protozero::Message {
       PerfSampleDefaults,
       TracePacketDefaults>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PerfSampleDefaults kPerfSampleDefaults() { return {}; }
+  static constexpr FieldMetadata_PerfSampleDefaults kPerfSampleDefaults{};
   template <typename T = PerfSampleDefaults> T* set_perf_sample_defaults() {
     return BeginNestedMessage<T>(12);
   }

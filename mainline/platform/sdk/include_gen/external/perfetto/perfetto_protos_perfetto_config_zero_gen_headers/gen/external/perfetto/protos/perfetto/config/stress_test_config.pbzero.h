@@ -76,14 +76,7 @@ class StressTestConfig : public ::protozero::Message {
       TraceConfig,
       StressTestConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TraceConfig kTraceConfig() { return {}; }
+  static constexpr FieldMetadata_TraceConfig kTraceConfig{};
   template <typename T = TraceConfig> T* set_trace_config() {
     return BeginNestedMessage<T>(1);
   }
@@ -97,14 +90,7 @@ class StressTestConfig : public ::protozero::Message {
       uint32_t,
       StressTestConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ShmemSizeKb kShmemSizeKb() { return {}; }
+  static constexpr FieldMetadata_ShmemSizeKb kShmemSizeKb{};
   void set_shmem_size_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ShmemSizeKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -122,14 +108,7 @@ class StressTestConfig : public ::protozero::Message {
       uint32_t,
       StressTestConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ShmemPageSizeKb kShmemPageSizeKb() { return {}; }
+  static constexpr FieldMetadata_ShmemPageSizeKb kShmemPageSizeKb{};
   void set_shmem_page_size_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ShmemPageSizeKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -147,14 +126,7 @@ class StressTestConfig : public ::protozero::Message {
       uint32_t,
       StressTestConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NumProcesses kNumProcesses() { return {}; }
+  static constexpr FieldMetadata_NumProcesses kNumProcesses{};
   void set_num_processes(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NumProcesses::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -172,14 +144,7 @@ class StressTestConfig : public ::protozero::Message {
       uint32_t,
       StressTestConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NumThreads kNumThreads() { return {}; }
+  static constexpr FieldMetadata_NumThreads kNumThreads{};
   void set_num_threads(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NumThreads::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -197,14 +162,7 @@ class StressTestConfig : public ::protozero::Message {
       uint32_t,
       StressTestConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MaxEvents kMaxEvents() { return {}; }
+  static constexpr FieldMetadata_MaxEvents kMaxEvents{};
   void set_max_events(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxEvents::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -222,14 +180,7 @@ class StressTestConfig : public ::protozero::Message {
       uint32_t,
       StressTestConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Nesting kNesting() { return {}; }
+  static constexpr FieldMetadata_Nesting kNesting{};
   void set_nesting(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Nesting::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -247,14 +198,7 @@ class StressTestConfig : public ::protozero::Message {
       StressTestConfig_WriterTiming,
       StressTestConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SteadyStateTimings kSteadyStateTimings() { return {}; }
+  static constexpr FieldMetadata_SteadyStateTimings kSteadyStateTimings{};
   template <typename T = StressTestConfig_WriterTiming> T* set_steady_state_timings() {
     return BeginNestedMessage<T>(8);
   }
@@ -268,14 +212,7 @@ class StressTestConfig : public ::protozero::Message {
       uint32_t,
       StressTestConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BurstPeriodMs kBurstPeriodMs() { return {}; }
+  static constexpr FieldMetadata_BurstPeriodMs kBurstPeriodMs{};
   void set_burst_period_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BurstPeriodMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -293,14 +230,7 @@ class StressTestConfig : public ::protozero::Message {
       uint32_t,
       StressTestConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BurstDurationMs kBurstDurationMs() { return {}; }
+  static constexpr FieldMetadata_BurstDurationMs kBurstDurationMs{};
   void set_burst_duration_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BurstDurationMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -318,14 +248,7 @@ class StressTestConfig : public ::protozero::Message {
       StressTestConfig_WriterTiming,
       StressTestConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BurstTimings kBurstTimings() { return {}; }
+  static constexpr FieldMetadata_BurstTimings kBurstTimings{};
   template <typename T = StressTestConfig_WriterTiming> T* set_burst_timings() {
     return BeginNestedMessage<T>(11);
   }
@@ -370,14 +293,7 @@ class StressTestConfig_WriterTiming : public ::protozero::Message {
       double,
       StressTestConfig_WriterTiming>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PayloadMean kPayloadMean() { return {}; }
+  static constexpr FieldMetadata_PayloadMean kPayloadMean{};
   void set_payload_mean(double value) {
     static constexpr uint32_t field_id = FieldMetadata_PayloadMean::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -395,14 +311,7 @@ class StressTestConfig_WriterTiming : public ::protozero::Message {
       double,
       StressTestConfig_WriterTiming>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PayloadStddev kPayloadStddev() { return {}; }
+  static constexpr FieldMetadata_PayloadStddev kPayloadStddev{};
   void set_payload_stddev(double value) {
     static constexpr uint32_t field_id = FieldMetadata_PayloadStddev::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -420,14 +329,7 @@ class StressTestConfig_WriterTiming : public ::protozero::Message {
       double,
       StressTestConfig_WriterTiming>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RateMean kRateMean() { return {}; }
+  static constexpr FieldMetadata_RateMean kRateMean{};
   void set_rate_mean(double value) {
     static constexpr uint32_t field_id = FieldMetadata_RateMean::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -445,14 +347,7 @@ class StressTestConfig_WriterTiming : public ::protozero::Message {
       double,
       StressTestConfig_WriterTiming>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RateStddev kRateStddev() { return {}; }
+  static constexpr FieldMetadata_RateStddev kRateStddev{};
   void set_rate_stddev(double value) {
     static constexpr uint32_t field_id = FieldMetadata_RateStddev::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -470,14 +365,7 @@ class StressTestConfig_WriterTiming : public ::protozero::Message {
       uint32_t,
       StressTestConfig_WriterTiming>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PayloadWriteTimeMs kPayloadWriteTimeMs() { return {}; }
+  static constexpr FieldMetadata_PayloadWriteTimeMs kPayloadWriteTimeMs{};
   void set_payload_write_time_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PayloadWriteTimeMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

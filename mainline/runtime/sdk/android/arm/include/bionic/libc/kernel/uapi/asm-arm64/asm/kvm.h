@@ -35,6 +35,7 @@
 #define __KVM_HAVE_READONLY_MEM
 #define __KVM_HAVE_VCPU_EVENTS
 #define KVM_COALESCED_MMIO_PAGE_OFFSET 1
+#define KVM_DIRTY_LOG_PAGE_OFFSET 64
 #define KVM_REG_SIZE(id) (1U << (((id) & KVM_REG_SIZE_MASK) >> KVM_REG_SIZE_SHIFT))
 struct kvm_regs {
   struct user_pt_regs regs;
@@ -73,6 +74,7 @@ struct kvm_regs {
 #define KVM_ARM_VCPU_SVE 4
 #define KVM_ARM_VCPU_PTRAUTH_ADDRESS 5
 #define KVM_ARM_VCPU_PTRAUTH_GENERIC 6
+#define KVM_ARM_VCPU_HAS_EL2 7
 struct kvm_vcpu_init {
   __u32 target;
   __u32 features[7];
@@ -120,7 +122,7 @@ struct kvm_vcpu_events {
 struct kvm_arm_copy_mte_tags {
   __u64 guest_ipa;
   __u64 length;
-  void __user * addr;
+  void  * addr;
   __u64 flags;
   __u64 reserved[2];
 };

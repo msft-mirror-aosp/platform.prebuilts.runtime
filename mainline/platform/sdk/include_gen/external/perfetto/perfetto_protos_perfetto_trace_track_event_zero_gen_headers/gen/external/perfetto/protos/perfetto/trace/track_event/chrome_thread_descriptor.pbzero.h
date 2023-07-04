@@ -239,50 +239,50 @@ class ChromeThreadDescriptor : public ::protozero::Message {
   static inline const char* ThreadType_Name(ThreadType value) {
     return ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType_Name(value);
   }
-  static const ThreadType THREAD_UNSPECIFIED = ThreadType::THREAD_UNSPECIFIED;
-  static const ThreadType THREAD_MAIN = ThreadType::THREAD_MAIN;
-  static const ThreadType THREAD_IO = ThreadType::THREAD_IO;
-  static const ThreadType THREAD_POOL_BG_WORKER = ThreadType::THREAD_POOL_BG_WORKER;
-  static const ThreadType THREAD_POOL_FG_WORKER = ThreadType::THREAD_POOL_FG_WORKER;
-  static const ThreadType THREAD_POOL_FG_BLOCKING = ThreadType::THREAD_POOL_FG_BLOCKING;
-  static const ThreadType THREAD_POOL_BG_BLOCKING = ThreadType::THREAD_POOL_BG_BLOCKING;
-  static const ThreadType THREAD_POOL_SERVICE = ThreadType::THREAD_POOL_SERVICE;
-  static const ThreadType THREAD_COMPOSITOR = ThreadType::THREAD_COMPOSITOR;
-  static const ThreadType THREAD_VIZ_COMPOSITOR = ThreadType::THREAD_VIZ_COMPOSITOR;
-  static const ThreadType THREAD_COMPOSITOR_WORKER = ThreadType::THREAD_COMPOSITOR_WORKER;
-  static const ThreadType THREAD_SERVICE_WORKER = ThreadType::THREAD_SERVICE_WORKER;
-  static const ThreadType THREAD_NETWORK_SERVICE = ThreadType::THREAD_NETWORK_SERVICE;
-  static const ThreadType THREAD_CHILD_IO = ThreadType::THREAD_CHILD_IO;
-  static const ThreadType THREAD_BROWSER_IO = ThreadType::THREAD_BROWSER_IO;
-  static const ThreadType THREAD_BROWSER_MAIN = ThreadType::THREAD_BROWSER_MAIN;
-  static const ThreadType THREAD_RENDERER_MAIN = ThreadType::THREAD_RENDERER_MAIN;
-  static const ThreadType THREAD_UTILITY_MAIN = ThreadType::THREAD_UTILITY_MAIN;
-  static const ThreadType THREAD_GPU_MAIN = ThreadType::THREAD_GPU_MAIN;
-  static const ThreadType THREAD_CACHE_BLOCKFILE = ThreadType::THREAD_CACHE_BLOCKFILE;
-  static const ThreadType THREAD_MEDIA = ThreadType::THREAD_MEDIA;
-  static const ThreadType THREAD_AUDIO_OUTPUTDEVICE = ThreadType::THREAD_AUDIO_OUTPUTDEVICE;
-  static const ThreadType THREAD_AUDIO_INPUTDEVICE = ThreadType::THREAD_AUDIO_INPUTDEVICE;
-  static const ThreadType THREAD_GPU_MEMORY = ThreadType::THREAD_GPU_MEMORY;
-  static const ThreadType THREAD_GPU_VSYNC = ThreadType::THREAD_GPU_VSYNC;
-  static const ThreadType THREAD_DXA_VIDEODECODER = ThreadType::THREAD_DXA_VIDEODECODER;
-  static const ThreadType THREAD_BROWSER_WATCHDOG = ThreadType::THREAD_BROWSER_WATCHDOG;
-  static const ThreadType THREAD_WEBRTC_NETWORK = ThreadType::THREAD_WEBRTC_NETWORK;
-  static const ThreadType THREAD_WINDOW_OWNER = ThreadType::THREAD_WINDOW_OWNER;
-  static const ThreadType THREAD_WEBRTC_SIGNALING = ThreadType::THREAD_WEBRTC_SIGNALING;
-  static const ThreadType THREAD_WEBRTC_WORKER = ThreadType::THREAD_WEBRTC_WORKER;
-  static const ThreadType THREAD_PPAPI_MAIN = ThreadType::THREAD_PPAPI_MAIN;
-  static const ThreadType THREAD_GPU_WATCHDOG = ThreadType::THREAD_GPU_WATCHDOG;
-  static const ThreadType THREAD_SWAPPER = ThreadType::THREAD_SWAPPER;
-  static const ThreadType THREAD_GAMEPAD_POLLING = ThreadType::THREAD_GAMEPAD_POLLING;
-  static const ThreadType THREAD_WEBCRYPTO = ThreadType::THREAD_WEBCRYPTO;
-  static const ThreadType THREAD_DATABASE = ThreadType::THREAD_DATABASE;
-  static const ThreadType THREAD_PROXYRESOLVER = ThreadType::THREAD_PROXYRESOLVER;
-  static const ThreadType THREAD_DEVTOOLSADB = ThreadType::THREAD_DEVTOOLSADB;
-  static const ThreadType THREAD_NETWORKCONFIGWATCHER = ThreadType::THREAD_NETWORKCONFIGWATCHER;
-  static const ThreadType THREAD_WASAPI_RENDER = ThreadType::THREAD_WASAPI_RENDER;
-  static const ThreadType THREAD_LOADER_LOCK_SAMPLER = ThreadType::THREAD_LOADER_LOCK_SAMPLER;
-  static const ThreadType THREAD_MEMORY_INFRA = ThreadType::THREAD_MEMORY_INFRA;
-  static const ThreadType THREAD_SAMPLING_PROFILER = ThreadType::THREAD_SAMPLING_PROFILER;
+  static inline const ThreadType THREAD_UNSPECIFIED = ThreadType::THREAD_UNSPECIFIED;
+  static inline const ThreadType THREAD_MAIN = ThreadType::THREAD_MAIN;
+  static inline const ThreadType THREAD_IO = ThreadType::THREAD_IO;
+  static inline const ThreadType THREAD_POOL_BG_WORKER = ThreadType::THREAD_POOL_BG_WORKER;
+  static inline const ThreadType THREAD_POOL_FG_WORKER = ThreadType::THREAD_POOL_FG_WORKER;
+  static inline const ThreadType THREAD_POOL_FG_BLOCKING = ThreadType::THREAD_POOL_FG_BLOCKING;
+  static inline const ThreadType THREAD_POOL_BG_BLOCKING = ThreadType::THREAD_POOL_BG_BLOCKING;
+  static inline const ThreadType THREAD_POOL_SERVICE = ThreadType::THREAD_POOL_SERVICE;
+  static inline const ThreadType THREAD_COMPOSITOR = ThreadType::THREAD_COMPOSITOR;
+  static inline const ThreadType THREAD_VIZ_COMPOSITOR = ThreadType::THREAD_VIZ_COMPOSITOR;
+  static inline const ThreadType THREAD_COMPOSITOR_WORKER = ThreadType::THREAD_COMPOSITOR_WORKER;
+  static inline const ThreadType THREAD_SERVICE_WORKER = ThreadType::THREAD_SERVICE_WORKER;
+  static inline const ThreadType THREAD_NETWORK_SERVICE = ThreadType::THREAD_NETWORK_SERVICE;
+  static inline const ThreadType THREAD_CHILD_IO = ThreadType::THREAD_CHILD_IO;
+  static inline const ThreadType THREAD_BROWSER_IO = ThreadType::THREAD_BROWSER_IO;
+  static inline const ThreadType THREAD_BROWSER_MAIN = ThreadType::THREAD_BROWSER_MAIN;
+  static inline const ThreadType THREAD_RENDERER_MAIN = ThreadType::THREAD_RENDERER_MAIN;
+  static inline const ThreadType THREAD_UTILITY_MAIN = ThreadType::THREAD_UTILITY_MAIN;
+  static inline const ThreadType THREAD_GPU_MAIN = ThreadType::THREAD_GPU_MAIN;
+  static inline const ThreadType THREAD_CACHE_BLOCKFILE = ThreadType::THREAD_CACHE_BLOCKFILE;
+  static inline const ThreadType THREAD_MEDIA = ThreadType::THREAD_MEDIA;
+  static inline const ThreadType THREAD_AUDIO_OUTPUTDEVICE = ThreadType::THREAD_AUDIO_OUTPUTDEVICE;
+  static inline const ThreadType THREAD_AUDIO_INPUTDEVICE = ThreadType::THREAD_AUDIO_INPUTDEVICE;
+  static inline const ThreadType THREAD_GPU_MEMORY = ThreadType::THREAD_GPU_MEMORY;
+  static inline const ThreadType THREAD_GPU_VSYNC = ThreadType::THREAD_GPU_VSYNC;
+  static inline const ThreadType THREAD_DXA_VIDEODECODER = ThreadType::THREAD_DXA_VIDEODECODER;
+  static inline const ThreadType THREAD_BROWSER_WATCHDOG = ThreadType::THREAD_BROWSER_WATCHDOG;
+  static inline const ThreadType THREAD_WEBRTC_NETWORK = ThreadType::THREAD_WEBRTC_NETWORK;
+  static inline const ThreadType THREAD_WINDOW_OWNER = ThreadType::THREAD_WINDOW_OWNER;
+  static inline const ThreadType THREAD_WEBRTC_SIGNALING = ThreadType::THREAD_WEBRTC_SIGNALING;
+  static inline const ThreadType THREAD_WEBRTC_WORKER = ThreadType::THREAD_WEBRTC_WORKER;
+  static inline const ThreadType THREAD_PPAPI_MAIN = ThreadType::THREAD_PPAPI_MAIN;
+  static inline const ThreadType THREAD_GPU_WATCHDOG = ThreadType::THREAD_GPU_WATCHDOG;
+  static inline const ThreadType THREAD_SWAPPER = ThreadType::THREAD_SWAPPER;
+  static inline const ThreadType THREAD_GAMEPAD_POLLING = ThreadType::THREAD_GAMEPAD_POLLING;
+  static inline const ThreadType THREAD_WEBCRYPTO = ThreadType::THREAD_WEBCRYPTO;
+  static inline const ThreadType THREAD_DATABASE = ThreadType::THREAD_DATABASE;
+  static inline const ThreadType THREAD_PROXYRESOLVER = ThreadType::THREAD_PROXYRESOLVER;
+  static inline const ThreadType THREAD_DEVTOOLSADB = ThreadType::THREAD_DEVTOOLSADB;
+  static inline const ThreadType THREAD_NETWORKCONFIGWATCHER = ThreadType::THREAD_NETWORKCONFIGWATCHER;
+  static inline const ThreadType THREAD_WASAPI_RENDER = ThreadType::THREAD_WASAPI_RENDER;
+  static inline const ThreadType THREAD_LOADER_LOCK_SAMPLER = ThreadType::THREAD_LOADER_LOCK_SAMPLER;
+  static inline const ThreadType THREAD_MEMORY_INFRA = ThreadType::THREAD_MEMORY_INFRA;
+  static inline const ThreadType THREAD_SAMPLING_PROFILER = ThreadType::THREAD_SAMPLING_PROFILER;
 
   using FieldMetadata_ThreadType =
     ::protozero::proto_utils::FieldMetadata<
@@ -292,14 +292,7 @@ class ChromeThreadDescriptor : public ::protozero::Message {
       ::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType,
       ChromeThreadDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ThreadType kThreadType() { return {}; }
+  static constexpr FieldMetadata_ThreadType kThreadType{};
   void set_thread_type(::perfetto::protos::pbzero::ChromeThreadDescriptor_ThreadType value) {
     static constexpr uint32_t field_id = FieldMetadata_ThreadType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -317,14 +310,7 @@ class ChromeThreadDescriptor : public ::protozero::Message {
       int32_t,
       ChromeThreadDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_LegacySortIndex kLegacySortIndex() { return {}; }
+  static constexpr FieldMetadata_LegacySortIndex kLegacySortIndex{};
   void set_legacy_sort_index(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_LegacySortIndex::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

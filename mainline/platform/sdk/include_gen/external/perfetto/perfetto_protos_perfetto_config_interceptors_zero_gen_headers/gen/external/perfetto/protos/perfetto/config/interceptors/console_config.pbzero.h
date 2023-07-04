@@ -75,9 +75,9 @@ class ConsoleConfig : public ::protozero::Message {
   static inline const char* Output_Name(Output value) {
     return ::perfetto::protos::pbzero::ConsoleConfig_Output_Name(value);
   }
-  static const Output OUTPUT_UNSPECIFIED = Output::OUTPUT_UNSPECIFIED;
-  static const Output OUTPUT_STDOUT = Output::OUTPUT_STDOUT;
-  static const Output OUTPUT_STDERR = Output::OUTPUT_STDERR;
+  static inline const Output OUTPUT_UNSPECIFIED = Output::OUTPUT_UNSPECIFIED;
+  static inline const Output OUTPUT_STDOUT = Output::OUTPUT_STDOUT;
+  static inline const Output OUTPUT_STDERR = Output::OUTPUT_STDERR;
 
   using FieldMetadata_Output =
     ::protozero::proto_utils::FieldMetadata<
@@ -87,14 +87,7 @@ class ConsoleConfig : public ::protozero::Message {
       ::perfetto::protos::pbzero::ConsoleConfig_Output,
       ConsoleConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Output kOutput() { return {}; }
+  static constexpr FieldMetadata_Output kOutput{};
   void set_output(::perfetto::protos::pbzero::ConsoleConfig_Output value) {
     static constexpr uint32_t field_id = FieldMetadata_Output::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -112,14 +105,7 @@ class ConsoleConfig : public ::protozero::Message {
       bool,
       ConsoleConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnableColors kEnableColors() { return {}; }
+  static constexpr FieldMetadata_EnableColors kEnableColors{};
   void set_enable_colors(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_EnableColors::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

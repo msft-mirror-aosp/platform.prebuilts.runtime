@@ -28,6 +28,8 @@ class TraceConfig_IncrementalStateConfig;
 class TraceConfig_ProducerConfig;
 class TraceConfig_StatsdMetadata;
 class TraceConfig_TraceFilter;
+class TraceConfig_TraceFilter_StringFilterChain;
+class TraceConfig_TraceFilter_StringFilterRule;
 class TraceConfig_TriggerConfig;
 class TraceConfig_TriggerConfig_Trigger;
 enum BuiltinClock : int32_t;
@@ -47,6 +49,10 @@ namespace perfetto_pbzero_enum_TraceConfig {
 enum StatsdLogging : int32_t;
 }  // namespace perfetto_pbzero_enum_TraceConfig
 using TraceConfig_StatsdLogging = perfetto_pbzero_enum_TraceConfig::StatsdLogging;
+namespace perfetto_pbzero_enum_TraceConfig_TraceFilter {
+enum StringFilterPolicy : int32_t;
+}  // namespace perfetto_pbzero_enum_TraceConfig_TraceFilter
+using TraceConfig_TraceFilter_StringFilterPolicy = perfetto_pbzero_enum_TraceConfig_TraceFilter::StringFilterPolicy;
 namespace perfetto_pbzero_enum_TraceConfig_TriggerConfig {
 enum TriggerMode : int32_t;
 }  // namespace perfetto_pbzero_enum_TraceConfig_TriggerConfig
@@ -135,18 +141,56 @@ const char* TraceConfig_StatsdLogging_Name(::perfetto::protos::pbzero::TraceConf
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
+namespace perfetto_pbzero_enum_TraceConfig_TraceFilter {
+enum StringFilterPolicy : int32_t {
+  SFP_UNSPECIFIED = 0,
+  SFP_MATCH_REDACT_GROUPS = 1,
+  SFP_ATRACE_MATCH_REDACT_GROUPS = 2,
+  SFP_MATCH_BREAK = 3,
+  SFP_ATRACE_MATCH_BREAK = 4,
+};
+} // namespace perfetto_pbzero_enum_TraceConfig_TraceFilter
+using TraceConfig_TraceFilter_StringFilterPolicy = perfetto_pbzero_enum_TraceConfig_TraceFilter::StringFilterPolicy;
+
+
+constexpr TraceConfig_TraceFilter_StringFilterPolicy TraceConfig_TraceFilter_StringFilterPolicy_MIN = TraceConfig_TraceFilter_StringFilterPolicy::SFP_UNSPECIFIED;
+constexpr TraceConfig_TraceFilter_StringFilterPolicy TraceConfig_TraceFilter_StringFilterPolicy_MAX = TraceConfig_TraceFilter_StringFilterPolicy::SFP_ATRACE_MATCH_BREAK;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* TraceConfig_TraceFilter_StringFilterPolicy_Name(::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy::SFP_UNSPECIFIED:
+    return "SFP_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy::SFP_MATCH_REDACT_GROUPS:
+    return "SFP_MATCH_REDACT_GROUPS";
+
+  case ::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy::SFP_ATRACE_MATCH_REDACT_GROUPS:
+    return "SFP_ATRACE_MATCH_REDACT_GROUPS";
+
+  case ::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy::SFP_MATCH_BREAK:
+    return "SFP_MATCH_BREAK";
+
+  case ::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy::SFP_ATRACE_MATCH_BREAK:
+    return "SFP_ATRACE_MATCH_BREAK";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
 namespace perfetto_pbzero_enum_TraceConfig_TriggerConfig {
 enum TriggerMode : int32_t {
   UNSPECIFIED = 0,
   START_TRACING = 1,
   STOP_TRACING = 2,
+  CLONE_SNAPSHOT = 3,
 };
 } // namespace perfetto_pbzero_enum_TraceConfig_TriggerConfig
 using TraceConfig_TriggerConfig_TriggerMode = perfetto_pbzero_enum_TraceConfig_TriggerConfig::TriggerMode;
 
 
 constexpr TraceConfig_TriggerConfig_TriggerMode TraceConfig_TriggerConfig_TriggerMode_MIN = TraceConfig_TriggerConfig_TriggerMode::UNSPECIFIED;
-constexpr TraceConfig_TriggerConfig_TriggerMode TraceConfig_TriggerConfig_TriggerMode_MAX = TraceConfig_TriggerConfig_TriggerMode::STOP_TRACING;
+constexpr TraceConfig_TriggerConfig_TriggerMode TraceConfig_TriggerConfig_TriggerMode_MAX = TraceConfig_TriggerConfig_TriggerMode::CLONE_SNAPSHOT;
 
 
 PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
@@ -160,6 +204,9 @@ const char* TraceConfig_TriggerConfig_TriggerMode_Name(::perfetto::protos::pbzer
 
   case ::perfetto::protos::pbzero::TraceConfig_TriggerConfig_TriggerMode::STOP_TRACING:
     return "STOP_TRACING";
+
+  case ::perfetto::protos::pbzero::TraceConfig_TriggerConfig_TriggerMode::CLONE_SNAPSHOT:
+    return "CLONE_SNAPSHOT";
   }
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
@@ -193,7 +240,7 @@ const char* TraceConfig_BufferConfig_FillPolicy_Name(::perfetto::protos::pbzero:
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/35, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/37, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   TraceConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -206,6 +253,8 @@ class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstBytes builtin_data_sources() const { return at<20>().as_bytes(); }
   bool has_duration_ms() const { return at<3>().valid(); }
   uint32_t duration_ms() const { return at<3>().as_uint32(); }
+  bool has_prefer_suspend_clock_for_duration() const { return at<36>().valid(); }
+  bool prefer_suspend_clock_for_duration() const { return at<36>().as_bool(); }
   bool has_enable_extra_guardrails() const { return at<4>().valid(); }
   bool enable_extra_guardrails() const { return at<4>().as_bool(); }
   bool has_lockdown_mode() const { return at<5>().valid(); }
@@ -248,6 +297,8 @@ class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstChars unique_session_name() const { return at<22>().as_string(); }
   bool has_compression_type() const { return at<24>().valid(); }
   int32_t compression_type() const { return at<24>().as_int32(); }
+  bool has_compress_from_cli() const { return at<37>().valid(); }
+  bool compress_from_cli() const { return at<37>().as_bool(); }
   bool has_incident_report_config() const { return at<25>().valid(); }
   ::protozero::ConstBytes incident_report_config() const { return at<25>().as_bytes(); }
   bool has_statsd_logging() const { return at<31>().valid(); }
@@ -272,6 +323,7 @@ class TraceConfig : public ::protozero::Message {
     kDataSourcesFieldNumber = 2,
     kBuiltinDataSourcesFieldNumber = 20,
     kDurationMsFieldNumber = 3,
+    kPreferSuspendClockForDurationFieldNumber = 36,
     kEnableExtraGuardrailsFieldNumber = 4,
     kLockdownModeFieldNumber = 5,
     kProducersFieldNumber = 6,
@@ -293,6 +345,7 @@ class TraceConfig : public ::protozero::Message {
     kAllowUserBuildTracingFieldNumber = 19,
     kUniqueSessionNameFieldNumber = 22,
     kCompressionTypeFieldNumber = 24,
+    kCompressFromCliFieldNumber = 37,
     kIncidentReportConfigFieldNumber = 25,
     kStatsdLoggingFieldNumber = 31,
     kTraceUuidMsbFieldNumber = 27,
@@ -330,14 +383,14 @@ class TraceConfig : public ::protozero::Message {
   static inline const char* StatsdLogging_Name(StatsdLogging value) {
     return ::perfetto::protos::pbzero::TraceConfig_StatsdLogging_Name(value);
   }
-  static const LockdownModeOperation LOCKDOWN_UNCHANGED = LockdownModeOperation::LOCKDOWN_UNCHANGED;
-  static const LockdownModeOperation LOCKDOWN_CLEAR = LockdownModeOperation::LOCKDOWN_CLEAR;
-  static const LockdownModeOperation LOCKDOWN_SET = LockdownModeOperation::LOCKDOWN_SET;
-  static const CompressionType COMPRESSION_TYPE_UNSPECIFIED = CompressionType::COMPRESSION_TYPE_UNSPECIFIED;
-  static const CompressionType COMPRESSION_TYPE_DEFLATE = CompressionType::COMPRESSION_TYPE_DEFLATE;
-  static const StatsdLogging STATSD_LOGGING_UNSPECIFIED = StatsdLogging::STATSD_LOGGING_UNSPECIFIED;
-  static const StatsdLogging STATSD_LOGGING_ENABLED = StatsdLogging::STATSD_LOGGING_ENABLED;
-  static const StatsdLogging STATSD_LOGGING_DISABLED = StatsdLogging::STATSD_LOGGING_DISABLED;
+  static inline const LockdownModeOperation LOCKDOWN_UNCHANGED = LockdownModeOperation::LOCKDOWN_UNCHANGED;
+  static inline const LockdownModeOperation LOCKDOWN_CLEAR = LockdownModeOperation::LOCKDOWN_CLEAR;
+  static inline const LockdownModeOperation LOCKDOWN_SET = LockdownModeOperation::LOCKDOWN_SET;
+  static inline const CompressionType COMPRESSION_TYPE_UNSPECIFIED = CompressionType::COMPRESSION_TYPE_UNSPECIFIED;
+  static inline const CompressionType COMPRESSION_TYPE_DEFLATE = CompressionType::COMPRESSION_TYPE_DEFLATE;
+  static inline const StatsdLogging STATSD_LOGGING_UNSPECIFIED = StatsdLogging::STATSD_LOGGING_UNSPECIFIED;
+  static inline const StatsdLogging STATSD_LOGGING_ENABLED = StatsdLogging::STATSD_LOGGING_ENABLED;
+  static inline const StatsdLogging STATSD_LOGGING_DISABLED = StatsdLogging::STATSD_LOGGING_DISABLED;
 
   using FieldMetadata_Buffers =
     ::protozero::proto_utils::FieldMetadata<
@@ -347,14 +400,7 @@ class TraceConfig : public ::protozero::Message {
       TraceConfig_BufferConfig,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Buffers kBuffers() { return {}; }
+  static constexpr FieldMetadata_Buffers kBuffers{};
   template <typename T = TraceConfig_BufferConfig> T* add_buffers() {
     return BeginNestedMessage<T>(1);
   }
@@ -368,14 +414,7 @@ class TraceConfig : public ::protozero::Message {
       TraceConfig_DataSource,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DataSources kDataSources() { return {}; }
+  static constexpr FieldMetadata_DataSources kDataSources{};
   template <typename T = TraceConfig_DataSource> T* add_data_sources() {
     return BeginNestedMessage<T>(2);
   }
@@ -389,14 +428,7 @@ class TraceConfig : public ::protozero::Message {
       TraceConfig_BuiltinDataSource,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BuiltinDataSources kBuiltinDataSources() { return {}; }
+  static constexpr FieldMetadata_BuiltinDataSources kBuiltinDataSources{};
   template <typename T = TraceConfig_BuiltinDataSource> T* set_builtin_data_sources() {
     return BeginNestedMessage<T>(20);
   }
@@ -410,20 +442,31 @@ class TraceConfig : public ::protozero::Message {
       uint32_t,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DurationMs kDurationMs() { return {}; }
+  static constexpr FieldMetadata_DurationMs kDurationMs{};
   void set_duration_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DurationMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_PreferSuspendClockForDuration =
+    ::protozero::proto_utils::FieldMetadata<
+      36,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      TraceConfig>;
+
+  static constexpr FieldMetadata_PreferSuspendClockForDuration kPreferSuspendClockForDuration{};
+  void set_prefer_suspend_clock_for_duration(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_PreferSuspendClockForDuration::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
         ::Append(*this, field_id, value);
   }
 
@@ -435,14 +478,7 @@ class TraceConfig : public ::protozero::Message {
       bool,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnableExtraGuardrails kEnableExtraGuardrails() { return {}; }
+  static constexpr FieldMetadata_EnableExtraGuardrails kEnableExtraGuardrails{};
   void set_enable_extra_guardrails(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_EnableExtraGuardrails::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -460,14 +496,7 @@ class TraceConfig : public ::protozero::Message {
       ::perfetto::protos::pbzero::TraceConfig_LockdownModeOperation,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_LockdownMode kLockdownMode() { return {}; }
+  static constexpr FieldMetadata_LockdownMode kLockdownMode{};
   void set_lockdown_mode(::perfetto::protos::pbzero::TraceConfig_LockdownModeOperation value) {
     static constexpr uint32_t field_id = FieldMetadata_LockdownMode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -485,14 +514,7 @@ class TraceConfig : public ::protozero::Message {
       TraceConfig_ProducerConfig,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Producers kProducers() { return {}; }
+  static constexpr FieldMetadata_Producers kProducers{};
   template <typename T = TraceConfig_ProducerConfig> T* add_producers() {
     return BeginNestedMessage<T>(6);
   }
@@ -506,14 +528,7 @@ class TraceConfig : public ::protozero::Message {
       TraceConfig_StatsdMetadata,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StatsdMetadata kStatsdMetadata() { return {}; }
+  static constexpr FieldMetadata_StatsdMetadata kStatsdMetadata{};
   template <typename T = TraceConfig_StatsdMetadata> T* set_statsd_metadata() {
     return BeginNestedMessage<T>(7);
   }
@@ -527,14 +542,7 @@ class TraceConfig : public ::protozero::Message {
       bool,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_WriteIntoFile kWriteIntoFile() { return {}; }
+  static constexpr FieldMetadata_WriteIntoFile kWriteIntoFile{};
   void set_write_into_file(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_WriteIntoFile::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -552,14 +560,7 @@ class TraceConfig : public ::protozero::Message {
       std::string,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_OutputPath kOutputPath() { return {}; }
+  static constexpr FieldMetadata_OutputPath kOutputPath{};
   void set_output_path(const char* data, size_t size) {
     AppendBytes(FieldMetadata_OutputPath::kFieldId, data, size);
   }
@@ -583,14 +584,7 @@ class TraceConfig : public ::protozero::Message {
       uint32_t,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FileWritePeriodMs kFileWritePeriodMs() { return {}; }
+  static constexpr FieldMetadata_FileWritePeriodMs kFileWritePeriodMs{};
   void set_file_write_period_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FileWritePeriodMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -608,14 +602,7 @@ class TraceConfig : public ::protozero::Message {
       uint64_t,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MaxFileSizeBytes kMaxFileSizeBytes() { return {}; }
+  static constexpr FieldMetadata_MaxFileSizeBytes kMaxFileSizeBytes{};
   void set_max_file_size_bytes(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxFileSizeBytes::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -633,14 +620,7 @@ class TraceConfig : public ::protozero::Message {
       TraceConfig_GuardrailOverrides,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_GuardrailOverrides kGuardrailOverrides() { return {}; }
+  static constexpr FieldMetadata_GuardrailOverrides kGuardrailOverrides{};
   template <typename T = TraceConfig_GuardrailOverrides> T* set_guardrail_overrides() {
     return BeginNestedMessage<T>(11);
   }
@@ -654,14 +634,7 @@ class TraceConfig : public ::protozero::Message {
       bool,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DeferredStart kDeferredStart() { return {}; }
+  static constexpr FieldMetadata_DeferredStart kDeferredStart{};
   void set_deferred_start(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DeferredStart::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -679,14 +652,7 @@ class TraceConfig : public ::protozero::Message {
       uint32_t,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FlushPeriodMs kFlushPeriodMs() { return {}; }
+  static constexpr FieldMetadata_FlushPeriodMs kFlushPeriodMs{};
   void set_flush_period_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FlushPeriodMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -704,14 +670,7 @@ class TraceConfig : public ::protozero::Message {
       uint32_t,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FlushTimeoutMs kFlushTimeoutMs() { return {}; }
+  static constexpr FieldMetadata_FlushTimeoutMs kFlushTimeoutMs{};
   void set_flush_timeout_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FlushTimeoutMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -729,14 +688,7 @@ class TraceConfig : public ::protozero::Message {
       uint32_t,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DataSourceStopTimeoutMs kDataSourceStopTimeoutMs() { return {}; }
+  static constexpr FieldMetadata_DataSourceStopTimeoutMs kDataSourceStopTimeoutMs{};
   void set_data_source_stop_timeout_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DataSourceStopTimeoutMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -754,14 +706,7 @@ class TraceConfig : public ::protozero::Message {
       bool,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NotifyTraceur kNotifyTraceur() { return {}; }
+  static constexpr FieldMetadata_NotifyTraceur kNotifyTraceur{};
   void set_notify_traceur(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_NotifyTraceur::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -779,14 +724,7 @@ class TraceConfig : public ::protozero::Message {
       int32_t,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BugreportScore kBugreportScore() { return {}; }
+  static constexpr FieldMetadata_BugreportScore kBugreportScore{};
   void set_bugreport_score(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BugreportScore::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -804,14 +742,7 @@ class TraceConfig : public ::protozero::Message {
       TraceConfig_TriggerConfig,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TriggerConfig kTriggerConfig() { return {}; }
+  static constexpr FieldMetadata_TriggerConfig kTriggerConfig{};
   template <typename T = TraceConfig_TriggerConfig> T* set_trigger_config() {
     return BeginNestedMessage<T>(17);
   }
@@ -825,14 +756,7 @@ class TraceConfig : public ::protozero::Message {
       std::string,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ActivateTriggers kActivateTriggers() { return {}; }
+  static constexpr FieldMetadata_ActivateTriggers kActivateTriggers{};
   void add_activate_triggers(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ActivateTriggers::kFieldId, data, size);
   }
@@ -856,14 +780,7 @@ class TraceConfig : public ::protozero::Message {
       TraceConfig_IncrementalStateConfig,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IncrementalStateConfig kIncrementalStateConfig() { return {}; }
+  static constexpr FieldMetadata_IncrementalStateConfig kIncrementalStateConfig{};
   template <typename T = TraceConfig_IncrementalStateConfig> T* set_incremental_state_config() {
     return BeginNestedMessage<T>(21);
   }
@@ -877,14 +794,7 @@ class TraceConfig : public ::protozero::Message {
       bool,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_AllowUserBuildTracing kAllowUserBuildTracing() { return {}; }
+  static constexpr FieldMetadata_AllowUserBuildTracing kAllowUserBuildTracing{};
   void set_allow_user_build_tracing(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_AllowUserBuildTracing::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -902,14 +812,7 @@ class TraceConfig : public ::protozero::Message {
       std::string,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_UniqueSessionName kUniqueSessionName() { return {}; }
+  static constexpr FieldMetadata_UniqueSessionName kUniqueSessionName{};
   void set_unique_session_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_UniqueSessionName::kFieldId, data, size);
   }
@@ -933,20 +836,31 @@ class TraceConfig : public ::protozero::Message {
       ::perfetto::protos::pbzero::TraceConfig_CompressionType,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CompressionType kCompressionType() { return {}; }
+  static constexpr FieldMetadata_CompressionType kCompressionType{};
   void set_compression_type(::perfetto::protos::pbzero::TraceConfig_CompressionType value) {
     static constexpr uint32_t field_id = FieldMetadata_CompressionType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_CompressFromCli =
+    ::protozero::proto_utils::FieldMetadata<
+      37,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      TraceConfig>;
+
+  static constexpr FieldMetadata_CompressFromCli kCompressFromCli{};
+  void set_compress_from_cli(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_CompressFromCli::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
         ::Append(*this, field_id, value);
   }
 
@@ -958,14 +872,7 @@ class TraceConfig : public ::protozero::Message {
       TraceConfig_IncidentReportConfig,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IncidentReportConfig kIncidentReportConfig() { return {}; }
+  static constexpr FieldMetadata_IncidentReportConfig kIncidentReportConfig{};
   template <typename T = TraceConfig_IncidentReportConfig> T* set_incident_report_config() {
     return BeginNestedMessage<T>(25);
   }
@@ -979,14 +886,7 @@ class TraceConfig : public ::protozero::Message {
       ::perfetto::protos::pbzero::TraceConfig_StatsdLogging,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StatsdLogging kStatsdLogging() { return {}; }
+  static constexpr FieldMetadata_StatsdLogging kStatsdLogging{};
   void set_statsd_logging(::perfetto::protos::pbzero::TraceConfig_StatsdLogging value) {
     static constexpr uint32_t field_id = FieldMetadata_StatsdLogging::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1004,14 +904,7 @@ class TraceConfig : public ::protozero::Message {
       int64_t,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TraceUuidMsb kTraceUuidMsb() { return {}; }
+  static constexpr FieldMetadata_TraceUuidMsb kTraceUuidMsb{};
   void set_trace_uuid_msb(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TraceUuidMsb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1029,14 +922,7 @@ class TraceConfig : public ::protozero::Message {
       int64_t,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TraceUuidLsb kTraceUuidLsb() { return {}; }
+  static constexpr FieldMetadata_TraceUuidLsb kTraceUuidLsb{};
   void set_trace_uuid_lsb(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TraceUuidLsb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1054,14 +940,7 @@ class TraceConfig : public ::protozero::Message {
       TraceConfig_TraceFilter,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TraceFilter kTraceFilter() { return {}; }
+  static constexpr FieldMetadata_TraceFilter kTraceFilter{};
   template <typename T = TraceConfig_TraceFilter> T* set_trace_filter() {
     return BeginNestedMessage<T>(33);
   }
@@ -1075,14 +954,7 @@ class TraceConfig : public ::protozero::Message {
       TraceConfig_AndroidReportConfig,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_AndroidReportConfig kAndroidReportConfig() { return {}; }
+  static constexpr FieldMetadata_AndroidReportConfig kAndroidReportConfig{};
   template <typename T = TraceConfig_AndroidReportConfig> T* set_android_report_config() {
     return BeginNestedMessage<T>(34);
   }
@@ -1096,14 +968,7 @@ class TraceConfig : public ::protozero::Message {
       TraceConfig_CmdTraceStartDelay,
       TraceConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CmdTraceStartDelay kCmdTraceStartDelay() { return {}; }
+  static constexpr FieldMetadata_CmdTraceStartDelay kCmdTraceStartDelay{};
   template <typename T = TraceConfig_CmdTraceStartDelay> T* set_cmd_trace_start_delay() {
     return BeginNestedMessage<T>(35);
   }
@@ -1139,14 +1004,7 @@ class TraceConfig_CmdTraceStartDelay : public ::protozero::Message {
       uint32_t,
       TraceConfig_CmdTraceStartDelay>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MinDelayMs kMinDelayMs() { return {}; }
+  static constexpr FieldMetadata_MinDelayMs kMinDelayMs{};
   void set_min_delay_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MinDelayMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1164,14 +1022,7 @@ class TraceConfig_CmdTraceStartDelay : public ::protozero::Message {
       uint32_t,
       TraceConfig_CmdTraceStartDelay>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MaxDelayMs kMaxDelayMs() { return {}; }
+  static constexpr FieldMetadata_MaxDelayMs kMaxDelayMs{};
   void set_max_delay_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxDelayMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1217,14 +1068,7 @@ class TraceConfig_AndroidReportConfig : public ::protozero::Message {
       std::string,
       TraceConfig_AndroidReportConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReporterServicePackage kReporterServicePackage() { return {}; }
+  static constexpr FieldMetadata_ReporterServicePackage kReporterServicePackage{};
   void set_reporter_service_package(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ReporterServicePackage::kFieldId, data, size);
   }
@@ -1248,14 +1092,7 @@ class TraceConfig_AndroidReportConfig : public ::protozero::Message {
       std::string,
       TraceConfig_AndroidReportConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReporterServiceClass kReporterServiceClass() { return {}; }
+  static constexpr FieldMetadata_ReporterServiceClass kReporterServiceClass{};
   void set_reporter_service_class(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ReporterServiceClass::kFieldId, data, size);
   }
@@ -1279,14 +1116,7 @@ class TraceConfig_AndroidReportConfig : public ::protozero::Message {
       bool,
       TraceConfig_AndroidReportConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SkipReport kSkipReport() { return {}; }
+  static constexpr FieldMetadata_SkipReport kSkipReport{};
   void set_skip_report(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_SkipReport::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1304,14 +1134,7 @@ class TraceConfig_AndroidReportConfig : public ::protozero::Message {
       bool,
       TraceConfig_AndroidReportConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_UsePipeInFrameworkForTesting kUsePipeInFrameworkForTesting() { return {}; }
+  static constexpr FieldMetadata_UsePipeInFrameworkForTesting kUsePipeInFrameworkForTesting{};
   void set_use_pipe_in_framework_for_testing(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_UsePipeInFrameworkForTesting::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1322,13 +1145,17 @@ class TraceConfig_AndroidReportConfig : public ::protozero::Message {
   }
 };
 
-class TraceConfig_TraceFilter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class TraceConfig_TraceFilter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   TraceConfig_TraceFilter_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_TraceFilter_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit TraceConfig_TraceFilter_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_bytecode() const { return at<1>().valid(); }
   ::protozero::ConstBytes bytecode() const { return at<1>().as_bytes(); }
+  bool has_bytecode_v2() const { return at<2>().valid(); }
+  ::protozero::ConstBytes bytecode_v2() const { return at<2>().as_bytes(); }
+  bool has_string_filter_chain() const { return at<3>().valid(); }
+  ::protozero::ConstBytes string_filter_chain() const { return at<3>().as_bytes(); }
 };
 
 class TraceConfig_TraceFilter : public ::protozero::Message {
@@ -1336,9 +1163,23 @@ class TraceConfig_TraceFilter : public ::protozero::Message {
   using Decoder = TraceConfig_TraceFilter_Decoder;
   enum : int32_t {
     kBytecodeFieldNumber = 1,
+    kBytecodeV2FieldNumber = 2,
+    kStringFilterChainFieldNumber = 3,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.TraceConfig.TraceFilter"; }
 
+  using StringFilterRule = ::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterRule;
+  using StringFilterChain = ::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterChain;
+
+  using StringFilterPolicy = ::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy;
+  static inline const char* StringFilterPolicy_Name(StringFilterPolicy value) {
+    return ::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy_Name(value);
+  }
+  static inline const StringFilterPolicy SFP_UNSPECIFIED = StringFilterPolicy::SFP_UNSPECIFIED;
+  static inline const StringFilterPolicy SFP_MATCH_REDACT_GROUPS = StringFilterPolicy::SFP_MATCH_REDACT_GROUPS;
+  static inline const StringFilterPolicy SFP_ATRACE_MATCH_REDACT_GROUPS = StringFilterPolicy::SFP_ATRACE_MATCH_REDACT_GROUPS;
+  static inline const StringFilterPolicy SFP_MATCH_BREAK = StringFilterPolicy::SFP_MATCH_BREAK;
+  static inline const StringFilterPolicy SFP_ATRACE_MATCH_BREAK = StringFilterPolicy::SFP_ATRACE_MATCH_BREAK;
 
   using FieldMetadata_Bytecode =
     ::protozero::proto_utils::FieldMetadata<
@@ -1348,14 +1189,7 @@ class TraceConfig_TraceFilter : public ::protozero::Message {
       std::string,
       TraceConfig_TraceFilter>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Bytecode kBytecode() { return {}; }
+  static constexpr FieldMetadata_Bytecode kBytecode{};
   void set_bytecode(const uint8_t* data, size_t size) {
     AppendBytes(FieldMetadata_Bytecode::kFieldId, data, size);
   }
@@ -1368,6 +1202,168 @@ class TraceConfig_TraceFilter : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kBytes>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_BytecodeV2 =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBytes,
+      std::string,
+      TraceConfig_TraceFilter>;
+
+  static constexpr FieldMetadata_BytecodeV2 kBytecodeV2{};
+  void set_bytecode_v2(const uint8_t* data, size_t size) {
+    AppendBytes(FieldMetadata_BytecodeV2::kFieldId, data, size);
+  }
+  void set_bytecode_v2(::protozero::ConstBytes bytes) {
+    AppendBytes(FieldMetadata_BytecodeV2::kFieldId, bytes.data, bytes.size);
+  }
+  void set_bytecode_v2(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_BytecodeV2::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBytes>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_StringFilterChain =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      TraceConfig_TraceFilter_StringFilterChain,
+      TraceConfig_TraceFilter>;
+
+  static constexpr FieldMetadata_StringFilterChain kStringFilterChain{};
+  template <typename T = TraceConfig_TraceFilter_StringFilterChain> T* set_string_filter_chain() {
+    return BeginNestedMessage<T>(3);
+  }
+
+};
+
+class TraceConfig_TraceFilter_StringFilterChain_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+ public:
+  TraceConfig_TraceFilter_StringFilterChain_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit TraceConfig_TraceFilter_StringFilterChain_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit TraceConfig_TraceFilter_StringFilterChain_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_rules() const { return at<1>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> rules() const { return GetRepeated<::protozero::ConstBytes>(1); }
+};
+
+class TraceConfig_TraceFilter_StringFilterChain : public ::protozero::Message {
+ public:
+  using Decoder = TraceConfig_TraceFilter_StringFilterChain_Decoder;
+  enum : int32_t {
+    kRulesFieldNumber = 1,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.TraceConfig.TraceFilter.StringFilterChain"; }
+
+
+  using FieldMetadata_Rules =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      TraceConfig_TraceFilter_StringFilterRule,
+      TraceConfig_TraceFilter_StringFilterChain>;
+
+  static constexpr FieldMetadata_Rules kRules{};
+  template <typename T = TraceConfig_TraceFilter_StringFilterRule> T* add_rules() {
+    return BeginNestedMessage<T>(1);
+  }
+
+};
+
+class TraceConfig_TraceFilter_StringFilterRule_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  TraceConfig_TraceFilter_StringFilterRule_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit TraceConfig_TraceFilter_StringFilterRule_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit TraceConfig_TraceFilter_StringFilterRule_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_policy() const { return at<1>().valid(); }
+  int32_t policy() const { return at<1>().as_int32(); }
+  bool has_regex_pattern() const { return at<2>().valid(); }
+  ::protozero::ConstChars regex_pattern() const { return at<2>().as_string(); }
+  bool has_atrace_payload_starts_with() const { return at<3>().valid(); }
+  ::protozero::ConstChars atrace_payload_starts_with() const { return at<3>().as_string(); }
+};
+
+class TraceConfig_TraceFilter_StringFilterRule : public ::protozero::Message {
+ public:
+  using Decoder = TraceConfig_TraceFilter_StringFilterRule_Decoder;
+  enum : int32_t {
+    kPolicyFieldNumber = 1,
+    kRegexPatternFieldNumber = 2,
+    kAtracePayloadStartsWithFieldNumber = 3,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.TraceConfig.TraceFilter.StringFilterRule"; }
+
+
+  using FieldMetadata_Policy =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy,
+      TraceConfig_TraceFilter_StringFilterRule>;
+
+  static constexpr FieldMetadata_Policy kPolicy{};
+  void set_policy(::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy value) {
+    static constexpr uint32_t field_id = FieldMetadata_Policy::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_RegexPattern =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      TraceConfig_TraceFilter_StringFilterRule>;
+
+  static constexpr FieldMetadata_RegexPattern kRegexPattern{};
+  void set_regex_pattern(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_RegexPattern::kFieldId, data, size);
+  }
+  void set_regex_pattern(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_RegexPattern::kFieldId, chars.data, chars.size);
+  }
+  void set_regex_pattern(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_RegexPattern::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_AtracePayloadStartsWith =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      TraceConfig_TraceFilter_StringFilterRule>;
+
+  static constexpr FieldMetadata_AtracePayloadStartsWith kAtracePayloadStartsWith{};
+  void set_atrace_payload_starts_with(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_AtracePayloadStartsWith::kFieldId, data, size);
+  }
+  void set_atrace_payload_starts_with(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_AtracePayloadStartsWith::kFieldId, chars.data, chars.size);
+  }
+  void set_atrace_payload_starts_with(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_AtracePayloadStartsWith::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
         ::Append(*this, field_id, value);
   }
 };
@@ -1410,14 +1406,7 @@ class TraceConfig_IncidentReportConfig : public ::protozero::Message {
       std::string,
       TraceConfig_IncidentReportConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DestinationPackage kDestinationPackage() { return {}; }
+  static constexpr FieldMetadata_DestinationPackage kDestinationPackage{};
   void set_destination_package(const char* data, size_t size) {
     AppendBytes(FieldMetadata_DestinationPackage::kFieldId, data, size);
   }
@@ -1441,14 +1430,7 @@ class TraceConfig_IncidentReportConfig : public ::protozero::Message {
       std::string,
       TraceConfig_IncidentReportConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DestinationClass kDestinationClass() { return {}; }
+  static constexpr FieldMetadata_DestinationClass kDestinationClass{};
   void set_destination_class(const char* data, size_t size) {
     AppendBytes(FieldMetadata_DestinationClass::kFieldId, data, size);
   }
@@ -1472,14 +1454,7 @@ class TraceConfig_IncidentReportConfig : public ::protozero::Message {
       int32_t,
       TraceConfig_IncidentReportConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PrivacyLevel kPrivacyLevel() { return {}; }
+  static constexpr FieldMetadata_PrivacyLevel kPrivacyLevel{};
   void set_privacy_level(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PrivacyLevel::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1497,14 +1472,7 @@ class TraceConfig_IncidentReportConfig : public ::protozero::Message {
       bool,
       TraceConfig_IncidentReportConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SkipIncidentd kSkipIncidentd() { return {}; }
+  static constexpr FieldMetadata_SkipIncidentd kSkipIncidentd{};
   void set_skip_incidentd(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_SkipIncidentd::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1522,14 +1490,7 @@ class TraceConfig_IncidentReportConfig : public ::protozero::Message {
       bool,
       TraceConfig_IncidentReportConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SkipDropbox kSkipDropbox() { return {}; }
+  static constexpr FieldMetadata_SkipDropbox kSkipDropbox{};
   void set_skip_dropbox(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_SkipDropbox::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1566,14 +1527,7 @@ class TraceConfig_IncrementalStateConfig : public ::protozero::Message {
       uint32_t,
       TraceConfig_IncrementalStateConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ClearPeriodMs kClearPeriodMs() { return {}; }
+  static constexpr FieldMetadata_ClearPeriodMs kClearPeriodMs{};
   void set_clear_period_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ClearPeriodMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1584,13 +1538,15 @@ class TraceConfig_IncrementalStateConfig : public ::protozero::Message {
   }
 };
 
-class TraceConfig_TriggerConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class TraceConfig_TriggerConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   TraceConfig_TriggerConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_TriggerConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit TraceConfig_TriggerConfig_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_trigger_mode() const { return at<1>().valid(); }
   int32_t trigger_mode() const { return at<1>().as_int32(); }
+  bool has_use_clone_snapshot_if_available() const { return at<4>().valid(); }
+  bool use_clone_snapshot_if_available() const { return at<4>().as_bool(); }
   bool has_triggers() const { return at<2>().valid(); }
   ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> triggers() const { return GetRepeated<::protozero::ConstBytes>(2); }
   bool has_trigger_timeout_ms() const { return at<3>().valid(); }
@@ -1602,6 +1558,7 @@ class TraceConfig_TriggerConfig : public ::protozero::Message {
   using Decoder = TraceConfig_TriggerConfig_Decoder;
   enum : int32_t {
     kTriggerModeFieldNumber = 1,
+    kUseCloneSnapshotIfAvailableFieldNumber = 4,
     kTriggersFieldNumber = 2,
     kTriggerTimeoutMsFieldNumber = 3,
   };
@@ -1613,9 +1570,10 @@ class TraceConfig_TriggerConfig : public ::protozero::Message {
   static inline const char* TriggerMode_Name(TriggerMode value) {
     return ::perfetto::protos::pbzero::TraceConfig_TriggerConfig_TriggerMode_Name(value);
   }
-  static const TriggerMode UNSPECIFIED = TriggerMode::UNSPECIFIED;
-  static const TriggerMode START_TRACING = TriggerMode::START_TRACING;
-  static const TriggerMode STOP_TRACING = TriggerMode::STOP_TRACING;
+  static inline const TriggerMode UNSPECIFIED = TriggerMode::UNSPECIFIED;
+  static inline const TriggerMode START_TRACING = TriggerMode::START_TRACING;
+  static inline const TriggerMode STOP_TRACING = TriggerMode::STOP_TRACING;
+  static inline const TriggerMode CLONE_SNAPSHOT = TriggerMode::CLONE_SNAPSHOT;
 
   using FieldMetadata_TriggerMode =
     ::protozero::proto_utils::FieldMetadata<
@@ -1625,20 +1583,31 @@ class TraceConfig_TriggerConfig : public ::protozero::Message {
       ::perfetto::protos::pbzero::TraceConfig_TriggerConfig_TriggerMode,
       TraceConfig_TriggerConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TriggerMode kTriggerMode() { return {}; }
+  static constexpr FieldMetadata_TriggerMode kTriggerMode{};
   void set_trigger_mode(::perfetto::protos::pbzero::TraceConfig_TriggerConfig_TriggerMode value) {
     static constexpr uint32_t field_id = FieldMetadata_TriggerMode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_UseCloneSnapshotIfAvailable =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      TraceConfig_TriggerConfig>;
+
+  static constexpr FieldMetadata_UseCloneSnapshotIfAvailable kUseCloneSnapshotIfAvailable{};
+  void set_use_clone_snapshot_if_available(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_UseCloneSnapshotIfAvailable::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
         ::Append(*this, field_id, value);
   }
 
@@ -1650,14 +1619,7 @@ class TraceConfig_TriggerConfig : public ::protozero::Message {
       TraceConfig_TriggerConfig_Trigger,
       TraceConfig_TriggerConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Triggers kTriggers() { return {}; }
+  static constexpr FieldMetadata_Triggers kTriggers{};
   template <typename T = TraceConfig_TriggerConfig_Trigger> T* add_triggers() {
     return BeginNestedMessage<T>(2);
   }
@@ -1671,14 +1633,7 @@ class TraceConfig_TriggerConfig : public ::protozero::Message {
       uint32_t,
       TraceConfig_TriggerConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TriggerTimeoutMs kTriggerTimeoutMs() { return {}; }
+  static constexpr FieldMetadata_TriggerTimeoutMs kTriggerTimeoutMs{};
   void set_trigger_timeout_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TriggerTimeoutMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1727,14 +1682,7 @@ class TraceConfig_TriggerConfig_Trigger : public ::protozero::Message {
       std::string,
       TraceConfig_TriggerConfig_Trigger>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -1758,14 +1706,7 @@ class TraceConfig_TriggerConfig_Trigger : public ::protozero::Message {
       std::string,
       TraceConfig_TriggerConfig_Trigger>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ProducerNameRegex kProducerNameRegex() { return {}; }
+  static constexpr FieldMetadata_ProducerNameRegex kProducerNameRegex{};
   void set_producer_name_regex(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProducerNameRegex::kFieldId, data, size);
   }
@@ -1789,14 +1730,7 @@ class TraceConfig_TriggerConfig_Trigger : public ::protozero::Message {
       uint32_t,
       TraceConfig_TriggerConfig_Trigger>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StopDelayMs kStopDelayMs() { return {}; }
+  static constexpr FieldMetadata_StopDelayMs kStopDelayMs{};
   void set_stop_delay_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StopDelayMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1814,14 +1748,7 @@ class TraceConfig_TriggerConfig_Trigger : public ::protozero::Message {
       uint32_t,
       TraceConfig_TriggerConfig_Trigger>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MaxPer24H kMaxPer24H() { return {}; }
+  static constexpr FieldMetadata_MaxPer24H kMaxPer24H{};
   void set_max_per_24_h(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxPer24H::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1839,14 +1766,7 @@ class TraceConfig_TriggerConfig_Trigger : public ::protozero::Message {
       double,
       TraceConfig_TriggerConfig_Trigger>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SkipProbability kSkipProbability() { return {}; }
+  static constexpr FieldMetadata_SkipProbability kSkipProbability{};
   void set_skip_probability(double value) {
     static constexpr uint32_t field_id = FieldMetadata_SkipProbability::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1857,13 +1777,15 @@ class TraceConfig_TriggerConfig_Trigger : public ::protozero::Message {
   }
 };
 
-class TraceConfig_GuardrailOverrides_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class TraceConfig_GuardrailOverrides_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   TraceConfig_GuardrailOverrides_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_GuardrailOverrides_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit TraceConfig_GuardrailOverrides_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_max_upload_per_day_bytes() const { return at<1>().valid(); }
   uint64_t max_upload_per_day_bytes() const { return at<1>().as_uint64(); }
+  bool has_max_tracing_buffer_size_kb() const { return at<2>().valid(); }
+  uint32_t max_tracing_buffer_size_kb() const { return at<2>().as_uint32(); }
 };
 
 class TraceConfig_GuardrailOverrides : public ::protozero::Message {
@@ -1871,6 +1793,7 @@ class TraceConfig_GuardrailOverrides : public ::protozero::Message {
   using Decoder = TraceConfig_GuardrailOverrides_Decoder;
   enum : int32_t {
     kMaxUploadPerDayBytesFieldNumber = 1,
+    kMaxTracingBufferSizeKbFieldNumber = 2,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.TraceConfig.GuardrailOverrides"; }
 
@@ -1883,20 +1806,31 @@ class TraceConfig_GuardrailOverrides : public ::protozero::Message {
       uint64_t,
       TraceConfig_GuardrailOverrides>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MaxUploadPerDayBytes kMaxUploadPerDayBytes() { return {}; }
+  static constexpr FieldMetadata_MaxUploadPerDayBytes kMaxUploadPerDayBytes{};
   void set_max_upload_per_day_bytes(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxUploadPerDayBytes::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_MaxTracingBufferSizeKb =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      TraceConfig_GuardrailOverrides>;
+
+  static constexpr FieldMetadata_MaxTracingBufferSizeKb kMaxTracingBufferSizeKb{};
+  void set_max_tracing_buffer_size_kb(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_MaxTracingBufferSizeKb::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
         ::Append(*this, field_id, value);
   }
 };
@@ -1936,14 +1870,7 @@ class TraceConfig_StatsdMetadata : public ::protozero::Message {
       int64_t,
       TraceConfig_StatsdMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TriggeringAlertId kTriggeringAlertId() { return {}; }
+  static constexpr FieldMetadata_TriggeringAlertId kTriggeringAlertId{};
   void set_triggering_alert_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TriggeringAlertId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1961,14 +1888,7 @@ class TraceConfig_StatsdMetadata : public ::protozero::Message {
       int32_t,
       TraceConfig_StatsdMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TriggeringConfigUid kTriggeringConfigUid() { return {}; }
+  static constexpr FieldMetadata_TriggeringConfigUid kTriggeringConfigUid{};
   void set_triggering_config_uid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TriggeringConfigUid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1986,14 +1906,7 @@ class TraceConfig_StatsdMetadata : public ::protozero::Message {
       int64_t,
       TraceConfig_StatsdMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TriggeringConfigId kTriggeringConfigId() { return {}; }
+  static constexpr FieldMetadata_TriggeringConfigId kTriggeringConfigId{};
   void set_triggering_config_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TriggeringConfigId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -2011,14 +1924,7 @@ class TraceConfig_StatsdMetadata : public ::protozero::Message {
       int64_t,
       TraceConfig_StatsdMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TriggeringSubscriptionId kTriggeringSubscriptionId() { return {}; }
+  static constexpr FieldMetadata_TriggeringSubscriptionId kTriggeringSubscriptionId{};
   void set_triggering_subscription_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TriggeringSubscriptionId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -2061,14 +1967,7 @@ class TraceConfig_ProducerConfig : public ::protozero::Message {
       std::string,
       TraceConfig_ProducerConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ProducerName kProducerName() { return {}; }
+  static constexpr FieldMetadata_ProducerName kProducerName{};
   void set_producer_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProducerName::kFieldId, data, size);
   }
@@ -2092,14 +1991,7 @@ class TraceConfig_ProducerConfig : public ::protozero::Message {
       uint32_t,
       TraceConfig_ProducerConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ShmSizeKb kShmSizeKb() { return {}; }
+  static constexpr FieldMetadata_ShmSizeKb kShmSizeKb{};
   void set_shm_size_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ShmSizeKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -2117,14 +2009,7 @@ class TraceConfig_ProducerConfig : public ::protozero::Message {
       uint32_t,
       TraceConfig_ProducerConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PageSizeKb kPageSizeKb() { return {}; }
+  static constexpr FieldMetadata_PageSizeKb kPageSizeKb{};
   void set_page_size_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PageSizeKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -2135,7 +2020,7 @@ class TraceConfig_ProducerConfig : public ::protozero::Message {
   }
 };
 
-class TraceConfig_BuiltinDataSource_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class TraceConfig_BuiltinDataSource_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/8, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   TraceConfig_BuiltinDataSource_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_BuiltinDataSource_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -2154,6 +2039,8 @@ class TraceConfig_BuiltinDataSource_Decoder : public ::protozero::TypedProtoDeco
   uint32_t snapshot_interval_ms() const { return at<6>().as_uint32(); }
   bool has_prefer_suspend_clock_for_snapshot() const { return at<7>().valid(); }
   bool prefer_suspend_clock_for_snapshot() const { return at<7>().as_bool(); }
+  bool has_disable_chunk_usage_histograms() const { return at<8>().valid(); }
+  bool disable_chunk_usage_histograms() const { return at<8>().as_bool(); }
 };
 
 class TraceConfig_BuiltinDataSource : public ::protozero::Message {
@@ -2167,6 +2054,7 @@ class TraceConfig_BuiltinDataSource : public ::protozero::Message {
     kPrimaryTraceClockFieldNumber = 5,
     kSnapshotIntervalMsFieldNumber = 6,
     kPreferSuspendClockForSnapshotFieldNumber = 7,
+    kDisableChunkUsageHistogramsFieldNumber = 8,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.TraceConfig.BuiltinDataSource"; }
 
@@ -2179,14 +2067,7 @@ class TraceConfig_BuiltinDataSource : public ::protozero::Message {
       bool,
       TraceConfig_BuiltinDataSource>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DisableClockSnapshotting kDisableClockSnapshotting() { return {}; }
+  static constexpr FieldMetadata_DisableClockSnapshotting kDisableClockSnapshotting{};
   void set_disable_clock_snapshotting(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DisableClockSnapshotting::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -2204,14 +2085,7 @@ class TraceConfig_BuiltinDataSource : public ::protozero::Message {
       bool,
       TraceConfig_BuiltinDataSource>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DisableTraceConfig kDisableTraceConfig() { return {}; }
+  static constexpr FieldMetadata_DisableTraceConfig kDisableTraceConfig{};
   void set_disable_trace_config(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DisableTraceConfig::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -2229,14 +2103,7 @@ class TraceConfig_BuiltinDataSource : public ::protozero::Message {
       bool,
       TraceConfig_BuiltinDataSource>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DisableSystemInfo kDisableSystemInfo() { return {}; }
+  static constexpr FieldMetadata_DisableSystemInfo kDisableSystemInfo{};
   void set_disable_system_info(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DisableSystemInfo::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -2254,14 +2121,7 @@ class TraceConfig_BuiltinDataSource : public ::protozero::Message {
       bool,
       TraceConfig_BuiltinDataSource>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DisableServiceEvents kDisableServiceEvents() { return {}; }
+  static constexpr FieldMetadata_DisableServiceEvents kDisableServiceEvents{};
   void set_disable_service_events(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DisableServiceEvents::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -2279,14 +2139,7 @@ class TraceConfig_BuiltinDataSource : public ::protozero::Message {
       ::perfetto::protos::pbzero::BuiltinClock,
       TraceConfig_BuiltinDataSource>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PrimaryTraceClock kPrimaryTraceClock() { return {}; }
+  static constexpr FieldMetadata_PrimaryTraceClock kPrimaryTraceClock{};
   void set_primary_trace_clock(::perfetto::protos::pbzero::BuiltinClock value) {
     static constexpr uint32_t field_id = FieldMetadata_PrimaryTraceClock::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -2304,14 +2157,7 @@ class TraceConfig_BuiltinDataSource : public ::protozero::Message {
       uint32_t,
       TraceConfig_BuiltinDataSource>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SnapshotIntervalMs kSnapshotIntervalMs() { return {}; }
+  static constexpr FieldMetadata_SnapshotIntervalMs kSnapshotIntervalMs{};
   void set_snapshot_interval_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SnapshotIntervalMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -2329,16 +2175,27 @@ class TraceConfig_BuiltinDataSource : public ::protozero::Message {
       bool,
       TraceConfig_BuiltinDataSource>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PreferSuspendClockForSnapshot kPreferSuspendClockForSnapshot() { return {}; }
+  static constexpr FieldMetadata_PreferSuspendClockForSnapshot kPreferSuspendClockForSnapshot{};
   void set_prefer_suspend_clock_for_snapshot(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_PreferSuspendClockForSnapshot::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DisableChunkUsageHistograms =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      TraceConfig_BuiltinDataSource>;
+
+  static constexpr FieldMetadata_DisableChunkUsageHistograms kDisableChunkUsageHistograms{};
+  void set_disable_chunk_usage_histograms(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_DisableChunkUsageHistograms::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
@@ -2379,14 +2236,7 @@ class TraceConfig_DataSource : public ::protozero::Message {
       DataSourceConfig,
       TraceConfig_DataSource>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Config kConfig() { return {}; }
+  static constexpr FieldMetadata_Config kConfig{};
   template <typename T = DataSourceConfig> T* set_config() {
     return BeginNestedMessage<T>(1);
   }
@@ -2400,14 +2250,7 @@ class TraceConfig_DataSource : public ::protozero::Message {
       std::string,
       TraceConfig_DataSource>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ProducerNameFilter kProducerNameFilter() { return {}; }
+  static constexpr FieldMetadata_ProducerNameFilter kProducerNameFilter{};
   void add_producer_name_filter(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProducerNameFilter::kFieldId, data, size);
   }
@@ -2431,14 +2274,7 @@ class TraceConfig_DataSource : public ::protozero::Message {
       std::string,
       TraceConfig_DataSource>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ProducerNameRegexFilter kProducerNameRegexFilter() { return {}; }
+  static constexpr FieldMetadata_ProducerNameRegexFilter kProducerNameRegexFilter{};
   void add_producer_name_regex_filter(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProducerNameRegexFilter::kFieldId, data, size);
   }
@@ -2480,9 +2316,9 @@ class TraceConfig_BufferConfig : public ::protozero::Message {
   static inline const char* FillPolicy_Name(FillPolicy value) {
     return ::perfetto::protos::pbzero::TraceConfig_BufferConfig_FillPolicy_Name(value);
   }
-  static const FillPolicy UNSPECIFIED = FillPolicy::UNSPECIFIED;
-  static const FillPolicy RING_BUFFER = FillPolicy::RING_BUFFER;
-  static const FillPolicy DISCARD = FillPolicy::DISCARD;
+  static inline const FillPolicy UNSPECIFIED = FillPolicy::UNSPECIFIED;
+  static inline const FillPolicy RING_BUFFER = FillPolicy::RING_BUFFER;
+  static inline const FillPolicy DISCARD = FillPolicy::DISCARD;
 
   using FieldMetadata_SizeKb =
     ::protozero::proto_utils::FieldMetadata<
@@ -2492,14 +2328,7 @@ class TraceConfig_BufferConfig : public ::protozero::Message {
       uint32_t,
       TraceConfig_BufferConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SizeKb kSizeKb() { return {}; }
+  static constexpr FieldMetadata_SizeKb kSizeKb{};
   void set_size_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SizeKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -2517,14 +2346,7 @@ class TraceConfig_BufferConfig : public ::protozero::Message {
       ::perfetto::protos::pbzero::TraceConfig_BufferConfig_FillPolicy,
       TraceConfig_BufferConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FillPolicy kFillPolicy() { return {}; }
+  static constexpr FieldMetadata_FillPolicy kFillPolicy{};
   void set_fill_policy(::perfetto::protos::pbzero::TraceConfig_BufferConfig_FillPolicy value) {
     static constexpr uint32_t field_id = FieldMetadata_FillPolicy::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

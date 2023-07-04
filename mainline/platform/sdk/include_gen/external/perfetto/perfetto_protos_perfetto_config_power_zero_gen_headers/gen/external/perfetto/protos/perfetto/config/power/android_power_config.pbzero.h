@@ -58,7 +58,7 @@ const char* AndroidPowerConfig_BatteryCounters_Name(::perfetto::protos::pbzero::
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class AndroidPowerConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class AndroidPowerConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   AndroidPowerConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit AndroidPowerConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -71,6 +71,8 @@ class AndroidPowerConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_F
   bool collect_power_rails() const { return at<3>().as_bool(); }
   bool has_collect_energy_estimation_breakdown() const { return at<4>().valid(); }
   bool collect_energy_estimation_breakdown() const { return at<4>().as_bool(); }
+  bool has_collect_entity_state_residency() const { return at<5>().valid(); }
+  bool collect_entity_state_residency() const { return at<5>().as_bool(); }
 };
 
 class AndroidPowerConfig : public ::protozero::Message {
@@ -81,6 +83,7 @@ class AndroidPowerConfig : public ::protozero::Message {
     kBatteryCountersFieldNumber = 2,
     kCollectPowerRailsFieldNumber = 3,
     kCollectEnergyEstimationBreakdownFieldNumber = 4,
+    kCollectEntityStateResidencyFieldNumber = 5,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.AndroidPowerConfig"; }
 
@@ -89,11 +92,11 @@ class AndroidPowerConfig : public ::protozero::Message {
   static inline const char* BatteryCounters_Name(BatteryCounters value) {
     return ::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters_Name(value);
   }
-  static const BatteryCounters BATTERY_COUNTER_UNSPECIFIED = BatteryCounters::BATTERY_COUNTER_UNSPECIFIED;
-  static const BatteryCounters BATTERY_COUNTER_CHARGE = BatteryCounters::BATTERY_COUNTER_CHARGE;
-  static const BatteryCounters BATTERY_COUNTER_CAPACITY_PERCENT = BatteryCounters::BATTERY_COUNTER_CAPACITY_PERCENT;
-  static const BatteryCounters BATTERY_COUNTER_CURRENT = BatteryCounters::BATTERY_COUNTER_CURRENT;
-  static const BatteryCounters BATTERY_COUNTER_CURRENT_AVG = BatteryCounters::BATTERY_COUNTER_CURRENT_AVG;
+  static inline const BatteryCounters BATTERY_COUNTER_UNSPECIFIED = BatteryCounters::BATTERY_COUNTER_UNSPECIFIED;
+  static inline const BatteryCounters BATTERY_COUNTER_CHARGE = BatteryCounters::BATTERY_COUNTER_CHARGE;
+  static inline const BatteryCounters BATTERY_COUNTER_CAPACITY_PERCENT = BatteryCounters::BATTERY_COUNTER_CAPACITY_PERCENT;
+  static inline const BatteryCounters BATTERY_COUNTER_CURRENT = BatteryCounters::BATTERY_COUNTER_CURRENT;
+  static inline const BatteryCounters BATTERY_COUNTER_CURRENT_AVG = BatteryCounters::BATTERY_COUNTER_CURRENT_AVG;
 
   using FieldMetadata_BatteryPollMs =
     ::protozero::proto_utils::FieldMetadata<
@@ -103,14 +106,7 @@ class AndroidPowerConfig : public ::protozero::Message {
       uint32_t,
       AndroidPowerConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BatteryPollMs kBatteryPollMs() { return {}; }
+  static constexpr FieldMetadata_BatteryPollMs kBatteryPollMs{};
   void set_battery_poll_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BatteryPollMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -128,14 +124,7 @@ class AndroidPowerConfig : public ::protozero::Message {
       ::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters,
       AndroidPowerConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BatteryCounters kBatteryCounters() { return {}; }
+  static constexpr FieldMetadata_BatteryCounters kBatteryCounters{};
   void add_battery_counters(::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters value) {
     static constexpr uint32_t field_id = FieldMetadata_BatteryCounters::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -153,14 +142,7 @@ class AndroidPowerConfig : public ::protozero::Message {
       bool,
       AndroidPowerConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CollectPowerRails kCollectPowerRails() { return {}; }
+  static constexpr FieldMetadata_CollectPowerRails kCollectPowerRails{};
   void set_collect_power_rails(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_CollectPowerRails::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -178,16 +160,27 @@ class AndroidPowerConfig : public ::protozero::Message {
       bool,
       AndroidPowerConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CollectEnergyEstimationBreakdown kCollectEnergyEstimationBreakdown() { return {}; }
+  static constexpr FieldMetadata_CollectEnergyEstimationBreakdown kCollectEnergyEstimationBreakdown{};
   void set_collect_energy_estimation_breakdown(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_CollectEnergyEstimationBreakdown::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_CollectEntityStateResidency =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      AndroidPowerConfig>;
+
+  static constexpr FieldMetadata_CollectEntityStateResidency kCollectEntityStateResidency{};
+  void set_collect_entity_state_residency(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_CollectEntityStateResidency::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<

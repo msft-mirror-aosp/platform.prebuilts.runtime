@@ -50,6 +50,7 @@ class PERFETTO_EXPORT_COMPONENT TrackDescriptor : public ::protozero::CppMessage
     kThreadFieldNumber = 4,
     kChromeThreadFieldNumber = 7,
     kCounterFieldNumber = 8,
+    kDisallowMergingWithSystemTracksFieldNumber = 9,
   };
 
   TrackDescriptor();
@@ -98,6 +99,10 @@ class PERFETTO_EXPORT_COMPONENT TrackDescriptor : public ::protozero::CppMessage
   const CounterDescriptor& counter() const { return *counter_; }
   CounterDescriptor* mutable_counter() { _has_field_.set(8); return counter_.get(); }
 
+  bool has_disallow_merging_with_system_tracks() const { return _has_field_[9]; }
+  bool disallow_merging_with_system_tracks() const { return disallow_merging_with_system_tracks_; }
+  void set_disallow_merging_with_system_tracks(bool value) { disallow_merging_with_system_tracks_ = value; _has_field_.set(9); }
+
  private:
   uint64_t uuid_{};
   uint64_t parent_uuid_{};
@@ -107,12 +112,13 @@ class PERFETTO_EXPORT_COMPONENT TrackDescriptor : public ::protozero::CppMessage
   ::protozero::CopyablePtr<ThreadDescriptor> thread_;
   ::protozero::CopyablePtr<ChromeThreadDescriptor> chrome_thread_;
   ::protozero::CopyablePtr<CounterDescriptor> counter_;
+  bool disallow_merging_with_system_tracks_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<9> _has_field_{};
+  std::bitset<10> _has_field_{};
 };
 
 }  // namespace perfetto

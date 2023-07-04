@@ -96,14 +96,7 @@ class AndroidCameraSessionStats : public ::protozero::Message {
       uint64_t,
       AndroidCameraSessionStats>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SessionId kSessionId() { return {}; }
+  static constexpr FieldMetadata_SessionId kSessionId{};
   void set_session_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SessionId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -121,14 +114,7 @@ class AndroidCameraSessionStats : public ::protozero::Message {
       AndroidCameraSessionStats_CameraGraph,
       AndroidCameraSessionStats>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Graph kGraph() { return {}; }
+  static constexpr FieldMetadata_Graph kGraph{};
   template <typename T = AndroidCameraSessionStats_CameraGraph> T* set_graph() {
     return BeginNestedMessage<T>(2);
   }
@@ -166,14 +152,7 @@ class AndroidCameraSessionStats_CameraGraph : public ::protozero::Message {
       AndroidCameraSessionStats_CameraGraph_CameraNode,
       AndroidCameraSessionStats_CameraGraph>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Nodes kNodes() { return {}; }
+  static constexpr FieldMetadata_Nodes kNodes{};
   template <typename T = AndroidCameraSessionStats_CameraGraph_CameraNode> T* add_nodes() {
     return BeginNestedMessage<T>(1);
   }
@@ -187,14 +166,7 @@ class AndroidCameraSessionStats_CameraGraph : public ::protozero::Message {
       AndroidCameraSessionStats_CameraGraph_CameraEdge,
       AndroidCameraSessionStats_CameraGraph>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Edges kEdges() { return {}; }
+  static constexpr FieldMetadata_Edges kEdges{};
   template <typename T = AndroidCameraSessionStats_CameraGraph_CameraEdge> T* add_edges() {
     return BeginNestedMessage<T>(2);
   }
@@ -242,14 +214,7 @@ class AndroidCameraSessionStats_CameraGraph_CameraEdge : public ::protozero::Mes
       int64_t,
       AndroidCameraSessionStats_CameraGraph_CameraEdge>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_OutputNodeId kOutputNodeId() { return {}; }
+  static constexpr FieldMetadata_OutputNodeId kOutputNodeId{};
   void set_output_node_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_OutputNodeId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -267,14 +232,7 @@ class AndroidCameraSessionStats_CameraGraph_CameraEdge : public ::protozero::Mes
       int64_t,
       AndroidCameraSessionStats_CameraGraph_CameraEdge>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_OutputId kOutputId() { return {}; }
+  static constexpr FieldMetadata_OutputId kOutputId{};
   void set_output_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_OutputId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -292,14 +250,7 @@ class AndroidCameraSessionStats_CameraGraph_CameraEdge : public ::protozero::Mes
       int64_t,
       AndroidCameraSessionStats_CameraGraph_CameraEdge>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_InputNodeId kInputNodeId() { return {}; }
+  static constexpr FieldMetadata_InputNodeId kInputNodeId{};
   void set_input_node_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_InputNodeId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -317,14 +268,7 @@ class AndroidCameraSessionStats_CameraGraph_CameraEdge : public ::protozero::Mes
       int64_t,
       AndroidCameraSessionStats_CameraGraph_CameraEdge>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_InputId kInputId() { return {}; }
+  static constexpr FieldMetadata_InputId kInputId{};
   void set_input_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_InputId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -342,14 +286,7 @@ class AndroidCameraSessionStats_CameraGraph_CameraEdge : public ::protozero::Mes
       int32_t,
       AndroidCameraSessionStats_CameraGraph_CameraEdge>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_VendorDataVersion kVendorDataVersion() { return {}; }
+  static constexpr FieldMetadata_VendorDataVersion kVendorDataVersion{};
   void set_vendor_data_version(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VendorDataVersion::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -367,14 +304,7 @@ class AndroidCameraSessionStats_CameraGraph_CameraEdge : public ::protozero::Mes
       std::string,
       AndroidCameraSessionStats_CameraGraph_CameraEdge>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_VendorData kVendorData() { return {}; }
+  static constexpr FieldMetadata_VendorData kVendorData{};
   void set_vendor_data(const uint8_t* data, size_t size) {
     AppendBytes(FieldMetadata_VendorData::kFieldId, data, size);
   }
@@ -429,14 +359,7 @@ class AndroidCameraSessionStats_CameraGraph_CameraNode : public ::protozero::Mes
       int64_t,
       AndroidCameraSessionStats_CameraGraph_CameraNode>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NodeId kNodeId() { return {}; }
+  static constexpr FieldMetadata_NodeId kNodeId{};
   void set_node_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NodeId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -454,14 +377,7 @@ class AndroidCameraSessionStats_CameraGraph_CameraNode : public ::protozero::Mes
       int64_t,
       AndroidCameraSessionStats_CameraGraph_CameraNode>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_InputIds kInputIds() { return {}; }
+  static constexpr FieldMetadata_InputIds kInputIds{};
   void add_input_ids(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_InputIds::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -479,14 +395,7 @@ class AndroidCameraSessionStats_CameraGraph_CameraNode : public ::protozero::Mes
       int64_t,
       AndroidCameraSessionStats_CameraGraph_CameraNode>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_OutputIds kOutputIds() { return {}; }
+  static constexpr FieldMetadata_OutputIds kOutputIds{};
   void add_output_ids(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_OutputIds::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -504,14 +413,7 @@ class AndroidCameraSessionStats_CameraGraph_CameraNode : public ::protozero::Mes
       int32_t,
       AndroidCameraSessionStats_CameraGraph_CameraNode>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_VendorDataVersion kVendorDataVersion() { return {}; }
+  static constexpr FieldMetadata_VendorDataVersion kVendorDataVersion{};
   void set_vendor_data_version(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VendorDataVersion::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -529,14 +431,7 @@ class AndroidCameraSessionStats_CameraGraph_CameraNode : public ::protozero::Mes
       std::string,
       AndroidCameraSessionStats_CameraGraph_CameraNode>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_VendorData kVendorData() { return {}; }
+  static constexpr FieldMetadata_VendorData kVendorData{};
   void set_vendor_data(const uint8_t* data, size_t size) {
     AppendBytes(FieldMetadata_VendorData::kFieldId, data, size);
   }
@@ -621,12 +516,12 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
   static inline const char* CaptureResultStatus_Name(CaptureResultStatus value) {
     return ::perfetto::protos::pbzero::AndroidCameraFrameEvent_CaptureResultStatus_Name(value);
   }
-  static const CaptureResultStatus STATUS_UNSPECIFIED = CaptureResultStatus::STATUS_UNSPECIFIED;
-  static const CaptureResultStatus STATUS_OK = CaptureResultStatus::STATUS_OK;
-  static const CaptureResultStatus STATUS_EARLY_METADATA_ERROR = CaptureResultStatus::STATUS_EARLY_METADATA_ERROR;
-  static const CaptureResultStatus STATUS_FINAL_METADATA_ERROR = CaptureResultStatus::STATUS_FINAL_METADATA_ERROR;
-  static const CaptureResultStatus STATUS_BUFFER_ERROR = CaptureResultStatus::STATUS_BUFFER_ERROR;
-  static const CaptureResultStatus STATUS_FLUSH_ERROR = CaptureResultStatus::STATUS_FLUSH_ERROR;
+  static inline const CaptureResultStatus STATUS_UNSPECIFIED = CaptureResultStatus::STATUS_UNSPECIFIED;
+  static inline const CaptureResultStatus STATUS_OK = CaptureResultStatus::STATUS_OK;
+  static inline const CaptureResultStatus STATUS_EARLY_METADATA_ERROR = CaptureResultStatus::STATUS_EARLY_METADATA_ERROR;
+  static inline const CaptureResultStatus STATUS_FINAL_METADATA_ERROR = CaptureResultStatus::STATUS_FINAL_METADATA_ERROR;
+  static inline const CaptureResultStatus STATUS_BUFFER_ERROR = CaptureResultStatus::STATUS_BUFFER_ERROR;
+  static inline const CaptureResultStatus STATUS_FLUSH_ERROR = CaptureResultStatus::STATUS_FLUSH_ERROR;
 
   using FieldMetadata_SessionId =
     ::protozero::proto_utils::FieldMetadata<
@@ -636,14 +531,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       uint64_t,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SessionId kSessionId() { return {}; }
+  static constexpr FieldMetadata_SessionId kSessionId{};
   void set_session_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SessionId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -661,14 +549,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       uint32_t,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CameraId kCameraId() { return {}; }
+  static constexpr FieldMetadata_CameraId kCameraId{};
   void set_camera_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CameraId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -686,14 +567,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       int64_t,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FrameNumber kFrameNumber() { return {}; }
+  static constexpr FieldMetadata_FrameNumber kFrameNumber{};
   void set_frame_number(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FrameNumber::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -711,14 +585,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       int64_t,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RequestId kRequestId() { return {}; }
+  static constexpr FieldMetadata_RequestId kRequestId{};
   void set_request_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RequestId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -736,14 +603,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       int64_t,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RequestReceivedNs kRequestReceivedNs() { return {}; }
+  static constexpr FieldMetadata_RequestReceivedNs kRequestReceivedNs{};
   void set_request_received_ns(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RequestReceivedNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -761,14 +621,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       int64_t,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RequestProcessingStartedNs kRequestProcessingStartedNs() { return {}; }
+  static constexpr FieldMetadata_RequestProcessingStartedNs kRequestProcessingStartedNs{};
   void set_request_processing_started_ns(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RequestProcessingStartedNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -786,14 +639,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       int64_t,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StartOfExposureNs kStartOfExposureNs() { return {}; }
+  static constexpr FieldMetadata_StartOfExposureNs kStartOfExposureNs{};
   void set_start_of_exposure_ns(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StartOfExposureNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -811,14 +657,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       int64_t,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StartOfFrameNs kStartOfFrameNs() { return {}; }
+  static constexpr FieldMetadata_StartOfFrameNs kStartOfFrameNs{};
   void set_start_of_frame_ns(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StartOfFrameNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -836,14 +675,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       int64_t,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ResponsesAllSentNs kResponsesAllSentNs() { return {}; }
+  static constexpr FieldMetadata_ResponsesAllSentNs kResponsesAllSentNs{};
   void set_responses_all_sent_ns(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ResponsesAllSentNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -861,14 +693,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       ::perfetto::protos::pbzero::AndroidCameraFrameEvent_CaptureResultStatus,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CaptureResultStatus kCaptureResultStatus() { return {}; }
+  static constexpr FieldMetadata_CaptureResultStatus kCaptureResultStatus{};
   void set_capture_result_status(::perfetto::protos::pbzero::AndroidCameraFrameEvent_CaptureResultStatus value) {
     static constexpr uint32_t field_id = FieldMetadata_CaptureResultStatus::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -886,14 +711,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       int32_t,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SkippedSensorFrames kSkippedSensorFrames() { return {}; }
+  static constexpr FieldMetadata_SkippedSensorFrames kSkippedSensorFrames{};
   void set_skipped_sensor_frames(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SkippedSensorFrames::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -911,14 +729,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       int32_t,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CaptureIntent kCaptureIntent() { return {}; }
+  static constexpr FieldMetadata_CaptureIntent kCaptureIntent{};
   void set_capture_intent(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CaptureIntent::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -936,14 +747,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       int32_t,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NumStreams kNumStreams() { return {}; }
+  static constexpr FieldMetadata_NumStreams kNumStreams{};
   void set_num_streams(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NumStreams::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -961,14 +765,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       AndroidCameraFrameEvent_CameraNodeProcessingDetails,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NodeProcessingDetails kNodeProcessingDetails() { return {}; }
+  static constexpr FieldMetadata_NodeProcessingDetails kNodeProcessingDetails{};
   template <typename T = AndroidCameraFrameEvent_CameraNodeProcessingDetails> T* add_node_processing_details() {
     return BeginNestedMessage<T>(14);
   }
@@ -982,14 +779,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       int32_t,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_VendorDataVersion kVendorDataVersion() { return {}; }
+  static constexpr FieldMetadata_VendorDataVersion kVendorDataVersion{};
   void set_vendor_data_version(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_VendorDataVersion::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1007,14 +797,7 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       std::string,
       AndroidCameraFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_VendorData kVendorData() { return {}; }
+  static constexpr FieldMetadata_VendorData kVendorData{};
   void set_vendor_data(const uint8_t* data, size_t size) {
     AppendBytes(FieldMetadata_VendorData::kFieldId, data, size);
   }
@@ -1066,14 +849,7 @@ class AndroidCameraFrameEvent_CameraNodeProcessingDetails : public ::protozero::
       int64_t,
       AndroidCameraFrameEvent_CameraNodeProcessingDetails>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NodeId kNodeId() { return {}; }
+  static constexpr FieldMetadata_NodeId kNodeId{};
   void set_node_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NodeId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1091,14 +867,7 @@ class AndroidCameraFrameEvent_CameraNodeProcessingDetails : public ::protozero::
       int64_t,
       AndroidCameraFrameEvent_CameraNodeProcessingDetails>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StartProcessingNs kStartProcessingNs() { return {}; }
+  static constexpr FieldMetadata_StartProcessingNs kStartProcessingNs{};
   void set_start_processing_ns(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StartProcessingNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1116,14 +885,7 @@ class AndroidCameraFrameEvent_CameraNodeProcessingDetails : public ::protozero::
       int64_t,
       AndroidCameraFrameEvent_CameraNodeProcessingDetails>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EndProcessingNs kEndProcessingNs() { return {}; }
+  static constexpr FieldMetadata_EndProcessingNs kEndProcessingNs{};
   void set_end_processing_ns(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_EndProcessingNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1141,14 +903,7 @@ class AndroidCameraFrameEvent_CameraNodeProcessingDetails : public ::protozero::
       int64_t,
       AndroidCameraFrameEvent_CameraNodeProcessingDetails>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SchedulingLatencyNs kSchedulingLatencyNs() { return {}; }
+  static constexpr FieldMetadata_SchedulingLatencyNs kSchedulingLatencyNs{};
   void set_scheduling_latency_ns(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SchedulingLatencyNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

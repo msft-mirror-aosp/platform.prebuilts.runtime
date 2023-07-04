@@ -17,6 +17,7 @@ namespace protos {
 namespace gen {
 class LogMessageBody;
 class LogMessage;
+enum LogMessage_Priority : int;
 }  // namespace perfetto
 }  // namespace protos
 }  // namespace gen
@@ -28,6 +29,16 @@ class Message;
 namespace perfetto {
 namespace protos {
 namespace gen {
+enum LogMessage_Priority : int {
+  LogMessage_Priority_PRIO_UNSPECIFIED = 0,
+  LogMessage_Priority_PRIO_UNUSED = 1,
+  LogMessage_Priority_PRIO_VERBOSE = 2,
+  LogMessage_Priority_PRIO_DEBUG = 3,
+  LogMessage_Priority_PRIO_INFO = 4,
+  LogMessage_Priority_PRIO_WARN = 5,
+  LogMessage_Priority_PRIO_ERROR = 6,
+  LogMessage_Priority_PRIO_FATAL = 7,
+};
 
 class PERFETTO_EXPORT_COMPONENT LogMessageBody : public ::protozero::CppMessageObj {
  public:
@@ -72,9 +83,21 @@ class PERFETTO_EXPORT_COMPONENT LogMessageBody : public ::protozero::CppMessageO
 
 class PERFETTO_EXPORT_COMPONENT LogMessage : public ::protozero::CppMessageObj {
  public:
+  using Priority = LogMessage_Priority;
+  static constexpr auto PRIO_UNSPECIFIED = LogMessage_Priority_PRIO_UNSPECIFIED;
+  static constexpr auto PRIO_UNUSED = LogMessage_Priority_PRIO_UNUSED;
+  static constexpr auto PRIO_VERBOSE = LogMessage_Priority_PRIO_VERBOSE;
+  static constexpr auto PRIO_DEBUG = LogMessage_Priority_PRIO_DEBUG;
+  static constexpr auto PRIO_INFO = LogMessage_Priority_PRIO_INFO;
+  static constexpr auto PRIO_WARN = LogMessage_Priority_PRIO_WARN;
+  static constexpr auto PRIO_ERROR = LogMessage_Priority_PRIO_ERROR;
+  static constexpr auto PRIO_FATAL = LogMessage_Priority_PRIO_FATAL;
+  static constexpr auto Priority_MIN = LogMessage_Priority_PRIO_UNSPECIFIED;
+  static constexpr auto Priority_MAX = LogMessage_Priority_PRIO_FATAL;
   enum FieldNumbers {
     kSourceLocationIidFieldNumber = 1,
     kBodyIidFieldNumber = 2,
+    kPrioFieldNumber = 3,
   };
 
   LogMessage();
@@ -99,15 +122,20 @@ class PERFETTO_EXPORT_COMPONENT LogMessage : public ::protozero::CppMessageObj {
   uint64_t body_iid() const { return body_iid_; }
   void set_body_iid(uint64_t value) { body_iid_ = value; _has_field_.set(2); }
 
+  bool has_prio() const { return _has_field_[3]; }
+  LogMessage_Priority prio() const { return prio_; }
+  void set_prio(LogMessage_Priority value) { prio_ = value; _has_field_.set(3); }
+
  private:
   uint64_t source_location_iid_{};
   uint64_t body_iid_{};
+  LogMessage_Priority prio_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<3> _has_field_{};
+  std::bitset<4> _has_field_{};
 };
 
 }  // namespace perfetto
