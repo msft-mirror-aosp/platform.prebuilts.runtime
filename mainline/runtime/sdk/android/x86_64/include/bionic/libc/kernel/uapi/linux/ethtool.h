@@ -269,6 +269,11 @@ enum ethtool_stringset {
   ETH_SS_STATS_RMON,
   ETH_SS_COUNT
 };
+enum ethtool_mac_stats_src {
+  ETHTOOL_MAC_STATS_SRC_AGGREGATE,
+  ETHTOOL_MAC_STATS_SRC_EMAC,
+  ETHTOOL_MAC_STATS_SRC_PMAC,
+};
 enum ethtool_module_power_mode_policy {
   ETHTOOL_MODULE_POWER_MODE_POLICY_HIGH = 1,
   ETHTOOL_MODULE_POWER_MODE_POLICY_AUTO,
@@ -290,6 +295,14 @@ enum ethtool_podl_pse_pw_d_status {
   ETHTOOL_PODL_PSE_PW_D_STATUS_SLEEP,
   ETHTOOL_PODL_PSE_PW_D_STATUS_IDLE,
   ETHTOOL_PODL_PSE_PW_D_STATUS_ERROR,
+};
+enum ethtool_mm_verify_status {
+  ETHTOOL_MM_VERIFY_STATUS_UNKNOWN,
+  ETHTOOL_MM_VERIFY_STATUS_INITIAL,
+  ETHTOOL_MM_VERIFY_STATUS_VERIFYING,
+  ETHTOOL_MM_VERIFY_STATUS_SUCCEEDED,
+  ETHTOOL_MM_VERIFY_STATUS_FAILED,
+  ETHTOOL_MM_VERIFY_STATUS_DISABLED,
 };
 struct ethtool_gstrings {
   __u32 cmd;
@@ -419,7 +432,7 @@ struct ethtool_rxnfc {
     __u32 rule_cnt;
     __u32 rss_context;
   };
-  __u32 rule_locs[0];
+  __u32 rule_locs[];
 };
 struct ethtool_rxfh_indir {
   __u32 cmd;
@@ -719,6 +732,15 @@ enum ethtool_link_mode_bit_indices {
   ETHTOOL_LINK_MODE_100baseFX_Half_BIT = 90,
   ETHTOOL_LINK_MODE_100baseFX_Full_BIT = 91,
   ETHTOOL_LINK_MODE_10baseT1L_Full_BIT = 92,
+  ETHTOOL_LINK_MODE_800000baseCR8_Full_BIT = 93,
+  ETHTOOL_LINK_MODE_800000baseKR8_Full_BIT = 94,
+  ETHTOOL_LINK_MODE_800000baseDR8_Full_BIT = 95,
+  ETHTOOL_LINK_MODE_800000baseDR8_2_Full_BIT = 96,
+  ETHTOOL_LINK_MODE_800000baseSR8_Full_BIT = 97,
+  ETHTOOL_LINK_MODE_800000baseVR8_Full_BIT = 98,
+  ETHTOOL_LINK_MODE_10baseT1S_Full_BIT = 99,
+  ETHTOOL_LINK_MODE_10baseT1S_Half_BIT = 100,
+  ETHTOOL_LINK_MODE_10baseT1S_P2MP_Half_BIT = 101,
   __ETHTOOL_LINK_MODE_MASK_NBITS
 };
 #define __ETHTOOL_LINK_MODE_LEGACY_MASK(base_name) (1UL << (ETHTOOL_LINK_MODE_ ##base_name ##_BIT))
@@ -799,6 +821,7 @@ enum ethtool_link_mode_bit_indices {
 #define SPEED_100000 100000
 #define SPEED_200000 200000
 #define SPEED_400000 400000
+#define SPEED_800000 800000
 #define SPEED_UNKNOWN - 1
 #define DUPLEX_HALF 0x00
 #define DUPLEX_FULL 0x01

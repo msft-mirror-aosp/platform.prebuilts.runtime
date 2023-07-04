@@ -21,6 +21,7 @@ class DescriptorProto_ReservedRange;
 class EnumDescriptorProto;
 class EnumValueDescriptorProto;
 class FieldDescriptorProto;
+class FieldOptions;
 class FileDescriptorProto;
 class OneofDescriptorProto;
 class OneofOptions;
@@ -194,14 +195,7 @@ class EnumValueDescriptorProto : public ::protozero::Message {
       std::string,
       EnumValueDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -225,14 +219,7 @@ class EnumValueDescriptorProto : public ::protozero::Message {
       int32_t,
       EnumValueDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Number kNumber() { return {}; }
+  static constexpr FieldMetadata_Number kNumber{};
   void set_number(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Number::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -275,14 +262,7 @@ class EnumDescriptorProto : public ::protozero::Message {
       std::string,
       EnumDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -306,14 +286,7 @@ class EnumDescriptorProto : public ::protozero::Message {
       EnumValueDescriptorProto,
       EnumDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Value kValue() { return {}; }
+  static constexpr FieldMetadata_Value kValue{};
   template <typename T = EnumValueDescriptorProto> T* add_value() {
     return BeginNestedMessage<T>(2);
   }
@@ -327,14 +300,7 @@ class EnumDescriptorProto : public ::protozero::Message {
       std::string,
       EnumDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReservedName kReservedName() { return {}; }
+  static constexpr FieldMetadata_ReservedName kReservedName{};
   void add_reserved_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ReservedName::kFieldId, data, size);
   }
@@ -380,14 +346,7 @@ class OneofDescriptorProto : public ::protozero::Message {
       std::string,
       OneofDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -411,14 +370,7 @@ class OneofDescriptorProto : public ::protozero::Message {
       OneofOptions,
       OneofDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Options kOptions() { return {}; }
+  static constexpr FieldMetadata_Options kOptions{};
   template <typename T = OneofOptions> T* set_options() {
     return BeginNestedMessage<T>(2);
   }
@@ -444,6 +396,8 @@ class FieldDescriptorProto_Decoder : public ::protozero::TypedProtoDecoder</*MAX
   ::protozero::ConstChars extendee() const { return at<2>().as_string(); }
   bool has_default_value() const { return at<7>().valid(); }
   ::protozero::ConstChars default_value() const { return at<7>().as_string(); }
+  bool has_options() const { return at<8>().valid(); }
+  ::protozero::ConstBytes options() const { return at<8>().as_bytes(); }
   bool has_oneof_index() const { return at<9>().valid(); }
   int32_t oneof_index() const { return at<9>().as_int32(); }
 };
@@ -459,6 +413,7 @@ class FieldDescriptorProto : public ::protozero::Message {
     kTypeNameFieldNumber = 6,
     kExtendeeFieldNumber = 2,
     kDefaultValueFieldNumber = 7,
+    kOptionsFieldNumber = 8,
     kOneofIndexFieldNumber = 9,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.FieldDescriptorProto"; }
@@ -473,27 +428,27 @@ class FieldDescriptorProto : public ::protozero::Message {
   static inline const char* Label_Name(Label value) {
     return ::perfetto::protos::pbzero::FieldDescriptorProto_Label_Name(value);
   }
-  static const Type TYPE_DOUBLE = Type::TYPE_DOUBLE;
-  static const Type TYPE_FLOAT = Type::TYPE_FLOAT;
-  static const Type TYPE_INT64 = Type::TYPE_INT64;
-  static const Type TYPE_UINT64 = Type::TYPE_UINT64;
-  static const Type TYPE_INT32 = Type::TYPE_INT32;
-  static const Type TYPE_FIXED64 = Type::TYPE_FIXED64;
-  static const Type TYPE_FIXED32 = Type::TYPE_FIXED32;
-  static const Type TYPE_BOOL = Type::TYPE_BOOL;
-  static const Type TYPE_STRING = Type::TYPE_STRING;
-  static const Type TYPE_GROUP = Type::TYPE_GROUP;
-  static const Type TYPE_MESSAGE = Type::TYPE_MESSAGE;
-  static const Type TYPE_BYTES = Type::TYPE_BYTES;
-  static const Type TYPE_UINT32 = Type::TYPE_UINT32;
-  static const Type TYPE_ENUM = Type::TYPE_ENUM;
-  static const Type TYPE_SFIXED32 = Type::TYPE_SFIXED32;
-  static const Type TYPE_SFIXED64 = Type::TYPE_SFIXED64;
-  static const Type TYPE_SINT32 = Type::TYPE_SINT32;
-  static const Type TYPE_SINT64 = Type::TYPE_SINT64;
-  static const Label LABEL_OPTIONAL = Label::LABEL_OPTIONAL;
-  static const Label LABEL_REQUIRED = Label::LABEL_REQUIRED;
-  static const Label LABEL_REPEATED = Label::LABEL_REPEATED;
+  static inline const Type TYPE_DOUBLE = Type::TYPE_DOUBLE;
+  static inline const Type TYPE_FLOAT = Type::TYPE_FLOAT;
+  static inline const Type TYPE_INT64 = Type::TYPE_INT64;
+  static inline const Type TYPE_UINT64 = Type::TYPE_UINT64;
+  static inline const Type TYPE_INT32 = Type::TYPE_INT32;
+  static inline const Type TYPE_FIXED64 = Type::TYPE_FIXED64;
+  static inline const Type TYPE_FIXED32 = Type::TYPE_FIXED32;
+  static inline const Type TYPE_BOOL = Type::TYPE_BOOL;
+  static inline const Type TYPE_STRING = Type::TYPE_STRING;
+  static inline const Type TYPE_GROUP = Type::TYPE_GROUP;
+  static inline const Type TYPE_MESSAGE = Type::TYPE_MESSAGE;
+  static inline const Type TYPE_BYTES = Type::TYPE_BYTES;
+  static inline const Type TYPE_UINT32 = Type::TYPE_UINT32;
+  static inline const Type TYPE_ENUM = Type::TYPE_ENUM;
+  static inline const Type TYPE_SFIXED32 = Type::TYPE_SFIXED32;
+  static inline const Type TYPE_SFIXED64 = Type::TYPE_SFIXED64;
+  static inline const Type TYPE_SINT32 = Type::TYPE_SINT32;
+  static inline const Type TYPE_SINT64 = Type::TYPE_SINT64;
+  static inline const Label LABEL_OPTIONAL = Label::LABEL_OPTIONAL;
+  static inline const Label LABEL_REQUIRED = Label::LABEL_REQUIRED;
+  static inline const Label LABEL_REPEATED = Label::LABEL_REPEATED;
 
   using FieldMetadata_Name =
     ::protozero::proto_utils::FieldMetadata<
@@ -503,14 +458,7 @@ class FieldDescriptorProto : public ::protozero::Message {
       std::string,
       FieldDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -534,14 +482,7 @@ class FieldDescriptorProto : public ::protozero::Message {
       int32_t,
       FieldDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Number kNumber() { return {}; }
+  static constexpr FieldMetadata_Number kNumber{};
   void set_number(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Number::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -559,14 +500,7 @@ class FieldDescriptorProto : public ::protozero::Message {
       ::perfetto::protos::pbzero::FieldDescriptorProto_Label,
       FieldDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Label kLabel() { return {}; }
+  static constexpr FieldMetadata_Label kLabel{};
   void set_label(::perfetto::protos::pbzero::FieldDescriptorProto_Label value) {
     static constexpr uint32_t field_id = FieldMetadata_Label::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -584,14 +518,7 @@ class FieldDescriptorProto : public ::protozero::Message {
       ::perfetto::protos::pbzero::FieldDescriptorProto_Type,
       FieldDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Type kType() { return {}; }
+  static constexpr FieldMetadata_Type kType{};
   void set_type(::perfetto::protos::pbzero::FieldDescriptorProto_Type value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -609,14 +536,7 @@ class FieldDescriptorProto : public ::protozero::Message {
       std::string,
       FieldDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TypeName kTypeName() { return {}; }
+  static constexpr FieldMetadata_TypeName kTypeName{};
   void set_type_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_TypeName::kFieldId, data, size);
   }
@@ -640,14 +560,7 @@ class FieldDescriptorProto : public ::protozero::Message {
       std::string,
       FieldDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Extendee kExtendee() { return {}; }
+  static constexpr FieldMetadata_Extendee kExtendee{};
   void set_extendee(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Extendee::kFieldId, data, size);
   }
@@ -671,14 +584,7 @@ class FieldDescriptorProto : public ::protozero::Message {
       std::string,
       FieldDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DefaultValue kDefaultValue() { return {}; }
+  static constexpr FieldMetadata_DefaultValue kDefaultValue{};
   void set_default_value(const char* data, size_t size) {
     AppendBytes(FieldMetadata_DefaultValue::kFieldId, data, size);
   }
@@ -694,6 +600,20 @@ class FieldDescriptorProto : public ::protozero::Message {
         ::Append(*this, field_id, value);
   }
 
+  using FieldMetadata_Options =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FieldOptions,
+      FieldDescriptorProto>;
+
+  static constexpr FieldMetadata_Options kOptions{};
+  template <typename T = FieldOptions> T* set_options() {
+    return BeginNestedMessage<T>(8);
+  }
+
+
   using FieldMetadata_OneofIndex =
     ::protozero::proto_utils::FieldMetadata<
       9,
@@ -702,20 +622,50 @@ class FieldDescriptorProto : public ::protozero::Message {
       int32_t,
       FieldDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_OneofIndex kOneofIndex() { return {}; }
+  static constexpr FieldMetadata_OneofIndex kOneofIndex{};
   void set_oneof_index(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_OneofIndex::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class FieldOptions_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  FieldOptions_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit FieldOptions_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit FieldOptions_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_packed() const { return at<2>().valid(); }
+  bool packed() const { return at<2>().as_bool(); }
+};
+
+class FieldOptions : public ::protozero::Message {
+ public:
+  using Decoder = FieldOptions_Decoder;
+  enum : int32_t {
+    kPackedFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.FieldOptions"; }
+
+
+  using FieldMetadata_Packed =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      FieldOptions>;
+
+  static constexpr FieldMetadata_Packed kPacked{};
+  void set_packed(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_Packed::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
         ::Append(*this, field_id, value);
   }
 };
@@ -768,14 +718,7 @@ class DescriptorProto : public ::protozero::Message {
       std::string,
       DescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -799,14 +742,7 @@ class DescriptorProto : public ::protozero::Message {
       FieldDescriptorProto,
       DescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Field kField() { return {}; }
+  static constexpr FieldMetadata_Field kField{};
   template <typename T = FieldDescriptorProto> T* add_field() {
     return BeginNestedMessage<T>(2);
   }
@@ -820,14 +756,7 @@ class DescriptorProto : public ::protozero::Message {
       FieldDescriptorProto,
       DescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Extension kExtension() { return {}; }
+  static constexpr FieldMetadata_Extension kExtension{};
   template <typename T = FieldDescriptorProto> T* add_extension() {
     return BeginNestedMessage<T>(6);
   }
@@ -841,14 +770,7 @@ class DescriptorProto : public ::protozero::Message {
       DescriptorProto,
       DescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NestedType kNestedType() { return {}; }
+  static constexpr FieldMetadata_NestedType kNestedType{};
   template <typename T = DescriptorProto> T* add_nested_type() {
     return BeginNestedMessage<T>(3);
   }
@@ -862,14 +784,7 @@ class DescriptorProto : public ::protozero::Message {
       EnumDescriptorProto,
       DescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnumType kEnumType() { return {}; }
+  static constexpr FieldMetadata_EnumType kEnumType{};
   template <typename T = EnumDescriptorProto> T* add_enum_type() {
     return BeginNestedMessage<T>(4);
   }
@@ -883,14 +798,7 @@ class DescriptorProto : public ::protozero::Message {
       OneofDescriptorProto,
       DescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_OneofDecl kOneofDecl() { return {}; }
+  static constexpr FieldMetadata_OneofDecl kOneofDecl{};
   template <typename T = OneofDescriptorProto> T* add_oneof_decl() {
     return BeginNestedMessage<T>(8);
   }
@@ -904,14 +812,7 @@ class DescriptorProto : public ::protozero::Message {
       DescriptorProto_ReservedRange,
       DescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReservedRange kReservedRange() { return {}; }
+  static constexpr FieldMetadata_ReservedRange kReservedRange{};
   template <typename T = DescriptorProto_ReservedRange> T* add_reserved_range() {
     return BeginNestedMessage<T>(9);
   }
@@ -925,14 +826,7 @@ class DescriptorProto : public ::protozero::Message {
       std::string,
       DescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReservedName kReservedName() { return {}; }
+  static constexpr FieldMetadata_ReservedName kReservedName{};
   void add_reserved_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ReservedName::kFieldId, data, size);
   }
@@ -978,14 +872,7 @@ class DescriptorProto_ReservedRange : public ::protozero::Message {
       int32_t,
       DescriptorProto_ReservedRange>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Start kStart() { return {}; }
+  static constexpr FieldMetadata_Start kStart{};
   void set_start(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Start::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1003,14 +890,7 @@ class DescriptorProto_ReservedRange : public ::protozero::Message {
       int32_t,
       DescriptorProto_ReservedRange>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_End kEnd() { return {}; }
+  static constexpr FieldMetadata_End kEnd{};
   void set_end(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_End::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1068,14 +948,7 @@ class FileDescriptorProto : public ::protozero::Message {
       std::string,
       FileDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -1099,14 +972,7 @@ class FileDescriptorProto : public ::protozero::Message {
       std::string,
       FileDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Package kPackage() { return {}; }
+  static constexpr FieldMetadata_Package kPackage{};
   void set_package(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Package::kFieldId, data, size);
   }
@@ -1130,14 +996,7 @@ class FileDescriptorProto : public ::protozero::Message {
       std::string,
       FileDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Dependency kDependency() { return {}; }
+  static constexpr FieldMetadata_Dependency kDependency{};
   void add_dependency(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Dependency::kFieldId, data, size);
   }
@@ -1161,14 +1020,7 @@ class FileDescriptorProto : public ::protozero::Message {
       int32_t,
       FileDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PublicDependency kPublicDependency() { return {}; }
+  static constexpr FieldMetadata_PublicDependency kPublicDependency{};
   void add_public_dependency(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PublicDependency::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1186,14 +1038,7 @@ class FileDescriptorProto : public ::protozero::Message {
       int32_t,
       FileDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_WeakDependency kWeakDependency() { return {}; }
+  static constexpr FieldMetadata_WeakDependency kWeakDependency{};
   void add_weak_dependency(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_WeakDependency::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -1211,14 +1056,7 @@ class FileDescriptorProto : public ::protozero::Message {
       DescriptorProto,
       FileDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MessageType kMessageType() { return {}; }
+  static constexpr FieldMetadata_MessageType kMessageType{};
   template <typename T = DescriptorProto> T* add_message_type() {
     return BeginNestedMessage<T>(4);
   }
@@ -1232,14 +1070,7 @@ class FileDescriptorProto : public ::protozero::Message {
       EnumDescriptorProto,
       FileDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnumType kEnumType() { return {}; }
+  static constexpr FieldMetadata_EnumType kEnumType{};
   template <typename T = EnumDescriptorProto> T* add_enum_type() {
     return BeginNestedMessage<T>(5);
   }
@@ -1253,14 +1084,7 @@ class FileDescriptorProto : public ::protozero::Message {
       FieldDescriptorProto,
       FileDescriptorProto>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Extension kExtension() { return {}; }
+  static constexpr FieldMetadata_Extension kExtension{};
   template <typename T = FieldDescriptorProto> T* add_extension() {
     return BeginNestedMessage<T>(7);
   }
@@ -1293,14 +1117,7 @@ class FileDescriptorSet : public ::protozero::Message {
       FileDescriptorProto,
       FileDescriptorSet>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_File kFile() { return {}; }
+  static constexpr FieldMetadata_File kFile{};
   template <typename T = FileDescriptorProto> T* add_file() {
     return BeginNestedMessage<T>(1);
   }

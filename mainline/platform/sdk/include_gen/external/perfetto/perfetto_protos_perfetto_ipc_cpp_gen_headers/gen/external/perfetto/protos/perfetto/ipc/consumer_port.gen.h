@@ -15,6 +15,8 @@
 namespace perfetto {
 namespace protos {
 namespace gen {
+class CloneSessionResponse;
+class CloneSessionRequest;
 class SaveTraceForBugreportResponse;
 class SaveTraceForBugreportRequest;
 class QueryCapabilitiesResponse;
@@ -29,11 +31,13 @@ class TracingServiceState_Producer;
 class QueryServiceStateRequest;
 class ObserveEventsResponse;
 class ObservableEvents;
+class ObservableEvents_CloneTriggerHit;
 class ObservableEvents_DataSourceInstanceStateChange;
 class ObserveEventsRequest;
 class GetTraceStatsResponse;
 class TraceStats;
 class TraceStats_FilterStats;
+class TraceStats_WriterStats;
 class TraceStats_BufferStats;
 class GetTraceStatsRequest;
 class AttachResponse;
@@ -41,6 +45,8 @@ class TraceConfig;
 class TraceConfig_CmdTraceStartDelay;
 class TraceConfig_AndroidReportConfig;
 class TraceConfig_TraceFilter;
+class TraceConfig_TraceFilter_StringFilterChain;
+class TraceConfig_TraceFilter_StringFilterRule;
 class TraceConfig_IncidentReportConfig;
 class TraceConfig_IncrementalStateConfig;
 class TraceConfig_TriggerConfig;
@@ -81,6 +87,7 @@ enum TraceStats_FinalFlushOutcome : int;
 enum TraceConfig_LockdownModeOperation : int;
 enum TraceConfig_CompressionType : int;
 enum TraceConfig_StatsdLogging : int;
+enum TraceConfig_TraceFilter_StringFilterPolicy : int;
 enum TraceConfig_TriggerConfig_TriggerMode : int;
 enum BuiltinClock : int;
 enum DataSourceConfig_SessionInitiator : int;
@@ -97,6 +104,94 @@ class Message;
 namespace perfetto {
 namespace protos {
 namespace gen {
+
+class PERFETTO_EXPORT_COMPONENT CloneSessionResponse : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kSuccessFieldNumber = 1,
+    kErrorFieldNumber = 2,
+    kUuidMsbFieldNumber = 3,
+    kUuidLsbFieldNumber = 4,
+  };
+
+  CloneSessionResponse();
+  ~CloneSessionResponse() override;
+  CloneSessionResponse(CloneSessionResponse&&) noexcept;
+  CloneSessionResponse& operator=(CloneSessionResponse&&);
+  CloneSessionResponse(const CloneSessionResponse&);
+  CloneSessionResponse& operator=(const CloneSessionResponse&);
+  bool operator==(const CloneSessionResponse&) const;
+  bool operator!=(const CloneSessionResponse& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_success() const { return _has_field_[1]; }
+  bool success() const { return success_; }
+  void set_success(bool value) { success_ = value; _has_field_.set(1); }
+
+  bool has_error() const { return _has_field_[2]; }
+  const std::string& error() const { return error_; }
+  void set_error(const std::string& value) { error_ = value; _has_field_.set(2); }
+
+  bool has_uuid_msb() const { return _has_field_[3]; }
+  int64_t uuid_msb() const { return uuid_msb_; }
+  void set_uuid_msb(int64_t value) { uuid_msb_ = value; _has_field_.set(3); }
+
+  bool has_uuid_lsb() const { return _has_field_[4]; }
+  int64_t uuid_lsb() const { return uuid_lsb_; }
+  void set_uuid_lsb(int64_t value) { uuid_lsb_ = value; _has_field_.set(4); }
+
+ private:
+  bool success_{};
+  std::string error_{};
+  int64_t uuid_msb_{};
+  int64_t uuid_lsb_{};
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<5> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT CloneSessionRequest : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kSessionIdFieldNumber = 1,
+  };
+
+  CloneSessionRequest();
+  ~CloneSessionRequest() override;
+  CloneSessionRequest(CloneSessionRequest&&) noexcept;
+  CloneSessionRequest& operator=(CloneSessionRequest&&);
+  CloneSessionRequest(const CloneSessionRequest&);
+  CloneSessionRequest& operator=(const CloneSessionRequest&);
+  bool operator==(const CloneSessionRequest&) const;
+  bool operator!=(const CloneSessionRequest& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_session_id() const { return _has_field_[1]; }
+  uint64_t session_id() const { return session_id_; }
+  void set_session_id(uint64_t value) { session_id_ = value; _has_field_.set(1); }
+
+ private:
+  uint64_t session_id_{};
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<2> _has_field_{};
+};
+
 
 class PERFETTO_EXPORT_COMPONENT SaveTraceForBugreportResponse : public ::protozero::CppMessageObj {
  public:

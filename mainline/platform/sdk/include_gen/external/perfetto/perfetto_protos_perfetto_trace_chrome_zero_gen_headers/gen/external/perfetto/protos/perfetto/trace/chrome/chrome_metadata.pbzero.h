@@ -103,7 +103,7 @@ const char* BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_Name(::per
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class BackgroundTracingMetadata_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class BackgroundTracingMetadata_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   BackgroundTracingMetadata_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit BackgroundTracingMetadata_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -112,6 +112,8 @@ class BackgroundTracingMetadata_Decoder : public ::protozero::TypedProtoDecoder<
   ::protozero::ConstBytes triggered_rule() const { return at<1>().as_bytes(); }
   bool has_active_rules() const { return at<2>().valid(); }
   ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> active_rules() const { return GetRepeated<::protozero::ConstBytes>(2); }
+  bool has_scenario_name_hash() const { return at<3>().valid(); }
+  uint32_t scenario_name_hash() const { return at<3>().as_uint32(); }
 };
 
 class BackgroundTracingMetadata : public ::protozero::Message {
@@ -120,6 +122,7 @@ class BackgroundTracingMetadata : public ::protozero::Message {
   enum : int32_t {
     kTriggeredRuleFieldNumber = 1,
     kActiveRulesFieldNumber = 2,
+    kScenarioNameHashFieldNumber = 3,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.BackgroundTracingMetadata"; }
 
@@ -133,14 +136,7 @@ class BackgroundTracingMetadata : public ::protozero::Message {
       BackgroundTracingMetadata_TriggerRule,
       BackgroundTracingMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TriggeredRule kTriggeredRule() { return {}; }
+  static constexpr FieldMetadata_TriggeredRule kTriggeredRule{};
   template <typename T = BackgroundTracingMetadata_TriggerRule> T* set_triggered_rule() {
     return BeginNestedMessage<T>(1);
   }
@@ -154,21 +150,32 @@ class BackgroundTracingMetadata : public ::protozero::Message {
       BackgroundTracingMetadata_TriggerRule,
       BackgroundTracingMetadata>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ActiveRules kActiveRules() { return {}; }
+  static constexpr FieldMetadata_ActiveRules kActiveRules{};
   template <typename T = BackgroundTracingMetadata_TriggerRule> T* add_active_rules() {
     return BeginNestedMessage<T>(2);
   }
 
+
+  using FieldMetadata_ScenarioNameHash =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kFixed32,
+      uint32_t,
+      BackgroundTracingMetadata>;
+
+  static constexpr FieldMetadata_ScenarioNameHash kScenarioNameHash{};
+  void set_scenario_name_hash(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_ScenarioNameHash::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kFixed32>
+        ::Append(*this, field_id, value);
+  }
 };
 
-class BackgroundTracingMetadata_TriggerRule_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class BackgroundTracingMetadata_TriggerRule_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   BackgroundTracingMetadata_TriggerRule_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit BackgroundTracingMetadata_TriggerRule_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -179,6 +186,8 @@ class BackgroundTracingMetadata_TriggerRule_Decoder : public ::protozero::TypedP
   ::protozero::ConstBytes histogram_rule() const { return at<2>().as_bytes(); }
   bool has_named_rule() const { return at<3>().valid(); }
   ::protozero::ConstBytes named_rule() const { return at<3>().as_bytes(); }
+  bool has_name_hash() const { return at<4>().valid(); }
+  uint32_t name_hash() const { return at<4>().as_uint32(); }
 };
 
 class BackgroundTracingMetadata_TriggerRule : public ::protozero::Message {
@@ -188,6 +197,7 @@ class BackgroundTracingMetadata_TriggerRule : public ::protozero::Message {
     kTriggerTypeFieldNumber = 1,
     kHistogramRuleFieldNumber = 2,
     kNamedRuleFieldNumber = 3,
+    kNameHashFieldNumber = 4,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.BackgroundTracingMetadata.TriggerRule"; }
 
@@ -198,9 +208,9 @@ class BackgroundTracingMetadata_TriggerRule : public ::protozero::Message {
   static inline const char* TriggerType_Name(TriggerType value) {
     return ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_TriggerType_Name(value);
   }
-  static const TriggerType TRIGGER_UNSPECIFIED = TriggerType::TRIGGER_UNSPECIFIED;
-  static const TriggerType MONITOR_AND_DUMP_WHEN_SPECIFIC_HISTOGRAM_AND_VALUE = TriggerType::MONITOR_AND_DUMP_WHEN_SPECIFIC_HISTOGRAM_AND_VALUE;
-  static const TriggerType MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED = TriggerType::MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED;
+  static inline const TriggerType TRIGGER_UNSPECIFIED = TriggerType::TRIGGER_UNSPECIFIED;
+  static inline const TriggerType MONITOR_AND_DUMP_WHEN_SPECIFIC_HISTOGRAM_AND_VALUE = TriggerType::MONITOR_AND_DUMP_WHEN_SPECIFIC_HISTOGRAM_AND_VALUE;
+  static inline const TriggerType MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED = TriggerType::MONITOR_AND_DUMP_WHEN_TRIGGER_NAMED;
 
   using FieldMetadata_TriggerType =
     ::protozero::proto_utils::FieldMetadata<
@@ -210,14 +220,7 @@ class BackgroundTracingMetadata_TriggerRule : public ::protozero::Message {
       ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_TriggerType,
       BackgroundTracingMetadata_TriggerRule>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TriggerType kTriggerType() { return {}; }
+  static constexpr FieldMetadata_TriggerType kTriggerType{};
   void set_trigger_type(::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_TriggerType value) {
     static constexpr uint32_t field_id = FieldMetadata_TriggerType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -235,14 +238,7 @@ class BackgroundTracingMetadata_TriggerRule : public ::protozero::Message {
       BackgroundTracingMetadata_TriggerRule_HistogramRule,
       BackgroundTracingMetadata_TriggerRule>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_HistogramRule kHistogramRule() { return {}; }
+  static constexpr FieldMetadata_HistogramRule kHistogramRule{};
   template <typename T = BackgroundTracingMetadata_TriggerRule_HistogramRule> T* set_histogram_rule() {
     return BeginNestedMessage<T>(2);
   }
@@ -256,18 +252,29 @@ class BackgroundTracingMetadata_TriggerRule : public ::protozero::Message {
       BackgroundTracingMetadata_TriggerRule_NamedRule,
       BackgroundTracingMetadata_TriggerRule>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NamedRule kNamedRule() { return {}; }
+  static constexpr FieldMetadata_NamedRule kNamedRule{};
   template <typename T = BackgroundTracingMetadata_TriggerRule_NamedRule> T* set_named_rule() {
     return BeginNestedMessage<T>(3);
   }
 
+
+  using FieldMetadata_NameHash =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kFixed32,
+      uint32_t,
+      BackgroundTracingMetadata_TriggerRule>;
+
+  static constexpr FieldMetadata_NameHash kNameHash{};
+  void set_name_hash(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_NameHash::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kFixed32>
+        ::Append(*this, field_id, value);
+  }
 };
 
 class BackgroundTracingMetadata_TriggerRule_NamedRule_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
@@ -295,13 +302,13 @@ class BackgroundTracingMetadata_TriggerRule_NamedRule : public ::protozero::Mess
   static inline const char* EventType_Name(EventType value) {
     return ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType_Name(value);
   }
-  static const EventType UNSPECIFIED = EventType::UNSPECIFIED;
-  static const EventType SESSION_RESTORE = EventType::SESSION_RESTORE;
-  static const EventType NAVIGATION = EventType::NAVIGATION;
-  static const EventType STARTUP = EventType::STARTUP;
-  static const EventType REACHED_CODE = EventType::REACHED_CODE;
-  static const EventType CONTENT_TRIGGER = EventType::CONTENT_TRIGGER;
-  static const EventType TEST_RULE = EventType::TEST_RULE;
+  static inline const EventType UNSPECIFIED = EventType::UNSPECIFIED;
+  static inline const EventType SESSION_RESTORE = EventType::SESSION_RESTORE;
+  static inline const EventType NAVIGATION = EventType::NAVIGATION;
+  static inline const EventType STARTUP = EventType::STARTUP;
+  static inline const EventType REACHED_CODE = EventType::REACHED_CODE;
+  static inline const EventType CONTENT_TRIGGER = EventType::CONTENT_TRIGGER;
+  static inline const EventType TEST_RULE = EventType::TEST_RULE;
 
   using FieldMetadata_EventType =
     ::protozero::proto_utils::FieldMetadata<
@@ -311,14 +318,7 @@ class BackgroundTracingMetadata_TriggerRule_NamedRule : public ::protozero::Mess
       ::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType,
       BackgroundTracingMetadata_TriggerRule_NamedRule>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EventType kEventType() { return {}; }
+  static constexpr FieldMetadata_EventType kEventType{};
   void set_event_type(::perfetto::protos::pbzero::BackgroundTracingMetadata_TriggerRule_NamedRule_EventType value) {
     static constexpr uint32_t field_id = FieldMetadata_EventType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -336,14 +336,7 @@ class BackgroundTracingMetadata_TriggerRule_NamedRule : public ::protozero::Mess
       uint64_t,
       BackgroundTracingMetadata_TriggerRule_NamedRule>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ContentTriggerNameHash kContentTriggerNameHash() { return {}; }
+  static constexpr FieldMetadata_ContentTriggerNameHash kContentTriggerNameHash{};
   void set_content_trigger_name_hash(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ContentTriggerNameHash::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -386,14 +379,7 @@ class BackgroundTracingMetadata_TriggerRule_HistogramRule : public ::protozero::
       uint64_t,
       BackgroundTracingMetadata_TriggerRule_HistogramRule>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_HistogramNameHash kHistogramNameHash() { return {}; }
+  static constexpr FieldMetadata_HistogramNameHash kHistogramNameHash{};
   void set_histogram_name_hash(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HistogramNameHash::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -411,14 +397,7 @@ class BackgroundTracingMetadata_TriggerRule_HistogramRule : public ::protozero::
       int64_t,
       BackgroundTracingMetadata_TriggerRule_HistogramRule>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_HistogramMinTrigger kHistogramMinTrigger() { return {}; }
+  static constexpr FieldMetadata_HistogramMinTrigger kHistogramMinTrigger{};
   void set_histogram_min_trigger(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HistogramMinTrigger::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -436,14 +415,7 @@ class BackgroundTracingMetadata_TriggerRule_HistogramRule : public ::protozero::
       int64_t,
       BackgroundTracingMetadata_TriggerRule_HistogramRule>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_HistogramMaxTrigger kHistogramMaxTrigger() { return {}; }
+  static constexpr FieldMetadata_HistogramMaxTrigger kHistogramMaxTrigger{};
   void set_histogram_max_trigger(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HistogramMaxTrigger::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -486,14 +458,7 @@ class ChromeMetadataPacket : public ::protozero::Message {
       BackgroundTracingMetadata,
       ChromeMetadataPacket>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BackgroundTracingMetadata kBackgroundTracingMetadata() { return {}; }
+  static constexpr FieldMetadata_BackgroundTracingMetadata kBackgroundTracingMetadata{};
   template <typename T = BackgroundTracingMetadata> T* set_background_tracing_metadata() {
     return BeginNestedMessage<T>(1);
   }
@@ -507,14 +472,7 @@ class ChromeMetadataPacket : public ::protozero::Message {
       int32_t,
       ChromeMetadataPacket>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ChromeVersionCode kChromeVersionCode() { return {}; }
+  static constexpr FieldMetadata_ChromeVersionCode kChromeVersionCode{};
   void set_chrome_version_code(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ChromeVersionCode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -532,14 +490,7 @@ class ChromeMetadataPacket : public ::protozero::Message {
       std::string,
       ChromeMetadataPacket>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnabledCategories kEnabledCategories() { return {}; }
+  static constexpr FieldMetadata_EnabledCategories kEnabledCategories{};
   void set_enabled_categories(const char* data, size_t size) {
     AppendBytes(FieldMetadata_EnabledCategories::kFieldId, data, size);
   }

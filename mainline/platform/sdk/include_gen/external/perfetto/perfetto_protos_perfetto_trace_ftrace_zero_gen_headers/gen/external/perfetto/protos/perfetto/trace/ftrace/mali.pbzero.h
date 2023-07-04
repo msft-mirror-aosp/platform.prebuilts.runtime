@@ -17,6 +17,890 @@ namespace protos {
 namespace pbzero {
 
 
+class MaliMaliCSFINTERRUPTENDFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  MaliMaliCSFINTERRUPTENDFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit MaliMaliCSFINTERRUPTENDFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit MaliMaliCSFINTERRUPTENDFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_kctx_tgid() const { return at<1>().valid(); }
+  int32_t kctx_tgid() const { return at<1>().as_int32(); }
+  bool has_kctx_id() const { return at<2>().valid(); }
+  uint32_t kctx_id() const { return at<2>().as_uint32(); }
+  bool has_info_val() const { return at<3>().valid(); }
+  uint64_t info_val() const { return at<3>().as_uint64(); }
+};
+
+class MaliMaliCSFINTERRUPTENDFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = MaliMaliCSFINTERRUPTENDFtraceEvent_Decoder;
+  enum : int32_t {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.MaliMaliCSFINTERRUPTENDFtraceEvent"; }
+
+
+  using FieldMetadata_KctxTgid =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      MaliMaliCSFINTERRUPTENDFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxTgid kKctxTgid{};
+  void set_kctx_tgid(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxTgid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxId =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliCSFINTERRUPTENDFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxId kKctxId{};
+  void set_kctx_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_InfoVal =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliCSFINTERRUPTENDFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal kInfoVal{};
+  void set_info_val(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class MaliMaliCSFINTERRUPTSTARTFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  MaliMaliCSFINTERRUPTSTARTFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit MaliMaliCSFINTERRUPTSTARTFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit MaliMaliCSFINTERRUPTSTARTFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_kctx_tgid() const { return at<1>().valid(); }
+  int32_t kctx_tgid() const { return at<1>().as_int32(); }
+  bool has_kctx_id() const { return at<2>().valid(); }
+  uint32_t kctx_id() const { return at<2>().as_uint32(); }
+  bool has_info_val() const { return at<3>().valid(); }
+  uint64_t info_val() const { return at<3>().as_uint64(); }
+};
+
+class MaliMaliCSFINTERRUPTSTARTFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = MaliMaliCSFINTERRUPTSTARTFtraceEvent_Decoder;
+  enum : int32_t {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.MaliMaliCSFINTERRUPTSTARTFtraceEvent"; }
+
+
+  using FieldMetadata_KctxTgid =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      MaliMaliCSFINTERRUPTSTARTFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxTgid kKctxTgid{};
+  void set_kctx_tgid(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxTgid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxId =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliCSFINTERRUPTSTARTFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxId kKctxId{};
+  void set_kctx_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_InfoVal =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliCSFINTERRUPTSTARTFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal kInfoVal{};
+  void set_info_val(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class MaliMaliKCPUFENCEWAITENDFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  MaliMaliKCPUFENCEWAITENDFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit MaliMaliKCPUFENCEWAITENDFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit MaliMaliKCPUFENCEWAITENDFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_info_val1() const { return at<1>().valid(); }
+  uint64_t info_val1() const { return at<1>().as_uint64(); }
+  bool has_info_val2() const { return at<2>().valid(); }
+  uint64_t info_val2() const { return at<2>().as_uint64(); }
+  bool has_kctx_tgid() const { return at<3>().valid(); }
+  int32_t kctx_tgid() const { return at<3>().as_int32(); }
+  bool has_kctx_id() const { return at<4>().valid(); }
+  uint32_t kctx_id() const { return at<4>().as_uint32(); }
+  bool has_id() const { return at<5>().valid(); }
+  uint32_t id() const { return at<5>().as_uint32(); }
+};
+
+class MaliMaliKCPUFENCEWAITENDFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = MaliMaliKCPUFENCEWAITENDFtraceEvent_Decoder;
+  enum : int32_t {
+    kInfoVal1FieldNumber = 1,
+    kInfoVal2FieldNumber = 2,
+    kKctxTgidFieldNumber = 3,
+    kKctxIdFieldNumber = 4,
+    kIdFieldNumber = 5,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.MaliMaliKCPUFENCEWAITENDFtraceEvent"; }
+
+
+  using FieldMetadata_InfoVal1 =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliKCPUFENCEWAITENDFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal1 kInfoVal1{};
+  void set_info_val1(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal1::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_InfoVal2 =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliKCPUFENCEWAITENDFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal2 kInfoVal2{};
+  void set_info_val2(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal2::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxTgid =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      MaliMaliKCPUFENCEWAITENDFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxTgid kKctxTgid{};
+  void set_kctx_tgid(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxTgid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxId =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliKCPUFENCEWAITENDFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxId kKctxId{};
+  void set_kctx_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Id =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliKCPUFENCEWAITENDFtraceEvent>;
+
+  static constexpr FieldMetadata_Id kId{};
+  void set_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class MaliMaliKCPUFENCEWAITSTARTFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  MaliMaliKCPUFENCEWAITSTARTFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit MaliMaliKCPUFENCEWAITSTARTFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit MaliMaliKCPUFENCEWAITSTARTFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_info_val1() const { return at<1>().valid(); }
+  uint64_t info_val1() const { return at<1>().as_uint64(); }
+  bool has_info_val2() const { return at<2>().valid(); }
+  uint64_t info_val2() const { return at<2>().as_uint64(); }
+  bool has_kctx_tgid() const { return at<3>().valid(); }
+  int32_t kctx_tgid() const { return at<3>().as_int32(); }
+  bool has_kctx_id() const { return at<4>().valid(); }
+  uint32_t kctx_id() const { return at<4>().as_uint32(); }
+  bool has_id() const { return at<5>().valid(); }
+  uint32_t id() const { return at<5>().as_uint32(); }
+};
+
+class MaliMaliKCPUFENCEWAITSTARTFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = MaliMaliKCPUFENCEWAITSTARTFtraceEvent_Decoder;
+  enum : int32_t {
+    kInfoVal1FieldNumber = 1,
+    kInfoVal2FieldNumber = 2,
+    kKctxTgidFieldNumber = 3,
+    kKctxIdFieldNumber = 4,
+    kIdFieldNumber = 5,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.MaliMaliKCPUFENCEWAITSTARTFtraceEvent"; }
+
+
+  using FieldMetadata_InfoVal1 =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliKCPUFENCEWAITSTARTFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal1 kInfoVal1{};
+  void set_info_val1(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal1::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_InfoVal2 =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliKCPUFENCEWAITSTARTFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal2 kInfoVal2{};
+  void set_info_val2(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal2::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxTgid =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      MaliMaliKCPUFENCEWAITSTARTFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxTgid kKctxTgid{};
+  void set_kctx_tgid(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxTgid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxId =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliKCPUFENCEWAITSTARTFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxId kKctxId{};
+  void set_kctx_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Id =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliKCPUFENCEWAITSTARTFtraceEvent>;
+
+  static constexpr FieldMetadata_Id kId{};
+  void set_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class MaliMaliKCPUFENCESIGNALFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  MaliMaliKCPUFENCESIGNALFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit MaliMaliKCPUFENCESIGNALFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit MaliMaliKCPUFENCESIGNALFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_info_val1() const { return at<1>().valid(); }
+  uint64_t info_val1() const { return at<1>().as_uint64(); }
+  bool has_info_val2() const { return at<2>().valid(); }
+  uint64_t info_val2() const { return at<2>().as_uint64(); }
+  bool has_kctx_tgid() const { return at<3>().valid(); }
+  int32_t kctx_tgid() const { return at<3>().as_int32(); }
+  bool has_kctx_id() const { return at<4>().valid(); }
+  uint32_t kctx_id() const { return at<4>().as_uint32(); }
+  bool has_id() const { return at<5>().valid(); }
+  uint32_t id() const { return at<5>().as_uint32(); }
+};
+
+class MaliMaliKCPUFENCESIGNALFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = MaliMaliKCPUFENCESIGNALFtraceEvent_Decoder;
+  enum : int32_t {
+    kInfoVal1FieldNumber = 1,
+    kInfoVal2FieldNumber = 2,
+    kKctxTgidFieldNumber = 3,
+    kKctxIdFieldNumber = 4,
+    kIdFieldNumber = 5,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.MaliMaliKCPUFENCESIGNALFtraceEvent"; }
+
+
+  using FieldMetadata_InfoVal1 =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliKCPUFENCESIGNALFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal1 kInfoVal1{};
+  void set_info_val1(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal1::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_InfoVal2 =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliKCPUFENCESIGNALFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal2 kInfoVal2{};
+  void set_info_val2(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal2::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxTgid =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      MaliMaliKCPUFENCESIGNALFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxTgid kKctxTgid{};
+  void set_kctx_tgid(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxTgid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxId =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliKCPUFENCESIGNALFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxId kKctxId{};
+  void set_kctx_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Id =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliKCPUFENCESIGNALFtraceEvent>;
+
+  static constexpr FieldMetadata_Id kId{};
+  void set_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class MaliMaliKCPUCQSWAITENDFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  MaliMaliKCPUCQSWAITENDFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit MaliMaliKCPUCQSWAITENDFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit MaliMaliKCPUCQSWAITENDFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_id() const { return at<1>().valid(); }
+  uint32_t id() const { return at<1>().as_uint32(); }
+  bool has_info_val1() const { return at<2>().valid(); }
+  uint64_t info_val1() const { return at<2>().as_uint64(); }
+  bool has_info_val2() const { return at<3>().valid(); }
+  uint64_t info_val2() const { return at<3>().as_uint64(); }
+  bool has_kctx_id() const { return at<4>().valid(); }
+  uint32_t kctx_id() const { return at<4>().as_uint32(); }
+  bool has_kctx_tgid() const { return at<5>().valid(); }
+  int32_t kctx_tgid() const { return at<5>().as_int32(); }
+};
+
+class MaliMaliKCPUCQSWAITENDFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = MaliMaliKCPUCQSWAITENDFtraceEvent_Decoder;
+  enum : int32_t {
+    kIdFieldNumber = 1,
+    kInfoVal1FieldNumber = 2,
+    kInfoVal2FieldNumber = 3,
+    kKctxIdFieldNumber = 4,
+    kKctxTgidFieldNumber = 5,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.MaliMaliKCPUCQSWAITENDFtraceEvent"; }
+
+
+  using FieldMetadata_Id =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliKCPUCQSWAITENDFtraceEvent>;
+
+  static constexpr FieldMetadata_Id kId{};
+  void set_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_InfoVal1 =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliKCPUCQSWAITENDFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal1 kInfoVal1{};
+  void set_info_val1(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal1::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_InfoVal2 =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliKCPUCQSWAITENDFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal2 kInfoVal2{};
+  void set_info_val2(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal2::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxId =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliKCPUCQSWAITENDFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxId kKctxId{};
+  void set_kctx_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxTgid =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      MaliMaliKCPUCQSWAITENDFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxTgid kKctxTgid{};
+  void set_kctx_tgid(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxTgid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class MaliMaliKCPUCQSWAITSTARTFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  MaliMaliKCPUCQSWAITSTARTFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit MaliMaliKCPUCQSWAITSTARTFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit MaliMaliKCPUCQSWAITSTARTFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_id() const { return at<1>().valid(); }
+  uint32_t id() const { return at<1>().as_uint32(); }
+  bool has_info_val1() const { return at<2>().valid(); }
+  uint64_t info_val1() const { return at<2>().as_uint64(); }
+  bool has_info_val2() const { return at<3>().valid(); }
+  uint64_t info_val2() const { return at<3>().as_uint64(); }
+  bool has_kctx_id() const { return at<4>().valid(); }
+  uint32_t kctx_id() const { return at<4>().as_uint32(); }
+  bool has_kctx_tgid() const { return at<5>().valid(); }
+  int32_t kctx_tgid() const { return at<5>().as_int32(); }
+};
+
+class MaliMaliKCPUCQSWAITSTARTFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = MaliMaliKCPUCQSWAITSTARTFtraceEvent_Decoder;
+  enum : int32_t {
+    kIdFieldNumber = 1,
+    kInfoVal1FieldNumber = 2,
+    kInfoVal2FieldNumber = 3,
+    kKctxIdFieldNumber = 4,
+    kKctxTgidFieldNumber = 5,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.MaliMaliKCPUCQSWAITSTARTFtraceEvent"; }
+
+
+  using FieldMetadata_Id =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliKCPUCQSWAITSTARTFtraceEvent>;
+
+  static constexpr FieldMetadata_Id kId{};
+  void set_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_InfoVal1 =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliKCPUCQSWAITSTARTFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal1 kInfoVal1{};
+  void set_info_val1(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal1::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_InfoVal2 =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliKCPUCQSWAITSTARTFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal2 kInfoVal2{};
+  void set_info_val2(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal2::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxId =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliKCPUCQSWAITSTARTFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxId kKctxId{};
+  void set_kctx_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxTgid =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      MaliMaliKCPUCQSWAITSTARTFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxTgid kKctxTgid{};
+  void set_kctx_tgid(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxTgid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class MaliMaliKCPUCQSSETFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  MaliMaliKCPUCQSSETFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit MaliMaliKCPUCQSSETFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit MaliMaliKCPUCQSSETFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_id() const { return at<1>().valid(); }
+  uint32_t id() const { return at<1>().as_uint32(); }
+  bool has_info_val1() const { return at<2>().valid(); }
+  uint64_t info_val1() const { return at<2>().as_uint64(); }
+  bool has_info_val2() const { return at<3>().valid(); }
+  uint64_t info_val2() const { return at<3>().as_uint64(); }
+  bool has_kctx_id() const { return at<4>().valid(); }
+  uint32_t kctx_id() const { return at<4>().as_uint32(); }
+  bool has_kctx_tgid() const { return at<5>().valid(); }
+  int32_t kctx_tgid() const { return at<5>().as_int32(); }
+};
+
+class MaliMaliKCPUCQSSETFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = MaliMaliKCPUCQSSETFtraceEvent_Decoder;
+  enum : int32_t {
+    kIdFieldNumber = 1,
+    kInfoVal1FieldNumber = 2,
+    kInfoVal2FieldNumber = 3,
+    kKctxIdFieldNumber = 4,
+    kKctxTgidFieldNumber = 5,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.MaliMaliKCPUCQSSETFtraceEvent"; }
+
+
+  using FieldMetadata_Id =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliKCPUCQSSETFtraceEvent>;
+
+  static constexpr FieldMetadata_Id kId{};
+  void set_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_InfoVal1 =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliKCPUCQSSETFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal1 kInfoVal1{};
+  void set_info_val1(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal1::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_InfoVal2 =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      MaliMaliKCPUCQSSETFtraceEvent>;
+
+  static constexpr FieldMetadata_InfoVal2 kInfoVal2{};
+  void set_info_val2(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_InfoVal2::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxId =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      MaliMaliKCPUCQSSETFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxId kKctxId{};
+  void set_kctx_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_KctxTgid =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      MaliMaliKCPUCQSSETFtraceEvent>;
+
+  static constexpr FieldMetadata_KctxTgid kKctxTgid{};
+  void set_kctx_tgid(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_KctxTgid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+};
+
 class MaliTracingMarkWriteFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   MaliTracingMarkWriteFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
@@ -52,14 +936,7 @@ class MaliTracingMarkWriteFtraceEvent : public ::protozero::Message {
       std::string,
       MaliTracingMarkWriteFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -83,14 +960,7 @@ class MaliTracingMarkWriteFtraceEvent : public ::protozero::Message {
       int32_t,
       MaliTracingMarkWriteFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Pid kPid() { return {}; }
+  static constexpr FieldMetadata_Pid kPid{};
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -108,14 +978,7 @@ class MaliTracingMarkWriteFtraceEvent : public ::protozero::Message {
       uint32_t,
       MaliTracingMarkWriteFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Type kType() { return {}; }
+  static constexpr FieldMetadata_Type kType{};
   void set_type(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -133,14 +996,7 @@ class MaliTracingMarkWriteFtraceEvent : public ::protozero::Message {
       int32_t,
       MaliTracingMarkWriteFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Value kValue() { return {}; }
+  static constexpr FieldMetadata_Value kValue{};
   void set_value(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Value::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

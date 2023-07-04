@@ -98,14 +98,7 @@ class ClockSnapshot : public ::protozero::Message {
       ClockSnapshot_Clock,
       ClockSnapshot>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Clocks kClocks() { return {}; }
+  static constexpr FieldMetadata_Clocks kClocks{};
   template <typename T = ClockSnapshot_Clock> T* add_clocks() {
     return BeginNestedMessage<T>(1);
   }
@@ -119,14 +112,7 @@ class ClockSnapshot : public ::protozero::Message {
       ::perfetto::protos::pbzero::BuiltinClock,
       ClockSnapshot>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PrimaryTraceClock kPrimaryTraceClock() { return {}; }
+  static constexpr FieldMetadata_PrimaryTraceClock kPrimaryTraceClock{};
   void set_primary_trace_clock(::perfetto::protos::pbzero::BuiltinClock value) {
     static constexpr uint32_t field_id = FieldMetadata_PrimaryTraceClock::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -168,14 +154,14 @@ class ClockSnapshot_Clock : public ::protozero::Message {
   static inline const char* BuiltinClocks_Name(BuiltinClocks value) {
     return ::perfetto::protos::pbzero::ClockSnapshot_Clock_BuiltinClocks_Name(value);
   }
-  static const BuiltinClocks UNKNOWN = BuiltinClocks::UNKNOWN;
-  static const BuiltinClocks REALTIME = BuiltinClocks::REALTIME;
-  static const BuiltinClocks REALTIME_COARSE = BuiltinClocks::REALTIME_COARSE;
-  static const BuiltinClocks MONOTONIC = BuiltinClocks::MONOTONIC;
-  static const BuiltinClocks MONOTONIC_COARSE = BuiltinClocks::MONOTONIC_COARSE;
-  static const BuiltinClocks MONOTONIC_RAW = BuiltinClocks::MONOTONIC_RAW;
-  static const BuiltinClocks BOOTTIME = BuiltinClocks::BOOTTIME;
-  static const BuiltinClocks BUILTIN_CLOCK_MAX_ID = BuiltinClocks::BUILTIN_CLOCK_MAX_ID;
+  static inline const BuiltinClocks UNKNOWN = BuiltinClocks::UNKNOWN;
+  static inline const BuiltinClocks REALTIME = BuiltinClocks::REALTIME;
+  static inline const BuiltinClocks REALTIME_COARSE = BuiltinClocks::REALTIME_COARSE;
+  static inline const BuiltinClocks MONOTONIC = BuiltinClocks::MONOTONIC;
+  static inline const BuiltinClocks MONOTONIC_COARSE = BuiltinClocks::MONOTONIC_COARSE;
+  static inline const BuiltinClocks MONOTONIC_RAW = BuiltinClocks::MONOTONIC_RAW;
+  static inline const BuiltinClocks BOOTTIME = BuiltinClocks::BOOTTIME;
+  static inline const BuiltinClocks BUILTIN_CLOCK_MAX_ID = BuiltinClocks::BUILTIN_CLOCK_MAX_ID;
 
   using FieldMetadata_ClockId =
     ::protozero::proto_utils::FieldMetadata<
@@ -185,14 +171,7 @@ class ClockSnapshot_Clock : public ::protozero::Message {
       uint32_t,
       ClockSnapshot_Clock>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ClockId kClockId() { return {}; }
+  static constexpr FieldMetadata_ClockId kClockId{};
   void set_clock_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ClockId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -210,14 +189,7 @@ class ClockSnapshot_Clock : public ::protozero::Message {
       uint64_t,
       ClockSnapshot_Clock>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Timestamp kTimestamp() { return {}; }
+  static constexpr FieldMetadata_Timestamp kTimestamp{};
   void set_timestamp(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Timestamp::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -235,14 +207,7 @@ class ClockSnapshot_Clock : public ::protozero::Message {
       bool,
       ClockSnapshot_Clock>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IsIncremental kIsIncremental() { return {}; }
+  static constexpr FieldMetadata_IsIncremental kIsIncremental{};
   void set_is_incremental(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_IsIncremental::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -260,14 +225,7 @@ class ClockSnapshot_Clock : public ::protozero::Message {
       uint64_t,
       ClockSnapshot_Clock>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_UnitMultiplierNs kUnitMultiplierNs() { return {}; }
+  static constexpr FieldMetadata_UnitMultiplierNs kUnitMultiplierNs{};
   void set_unit_multiplier_ns(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_UnitMultiplierNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
