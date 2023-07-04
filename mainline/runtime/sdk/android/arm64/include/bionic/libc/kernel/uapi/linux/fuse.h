@@ -20,7 +20,7 @@
 #define _LINUX_FUSE_H
 #include <stdint.h>
 #define FUSE_KERNEL_VERSION 7
-#define FUSE_KERNEL_MINOR_VERSION 37
+#define FUSE_KERNEL_MINOR_VERSION 38
 #define FUSE_ROOT_ID 1
 struct fuse_attr {
   uint64_t ino;
@@ -76,6 +76,7 @@ struct fuse_file_lock {
 #define FOPEN_CACHE_DIR (1 << 3)
 #define FOPEN_STREAM (1 << 4)
 #define FOPEN_NOFLUSH (1 << 5)
+#define FOPEN_PARALLEL_DIRECT_WRITES (1 << 6)
 #define FUSE_ASYNC_READ (1 << 0)
 #define FUSE_POSIX_LOCKS (1 << 1)
 #define FUSE_FILE_OPS (1 << 2)
@@ -110,6 +111,7 @@ struct fuse_file_lock {
 #define FUSE_INIT_RESERVED (1 << 31)
 #define FUSE_SECURITY_CTX (1ULL << 32)
 #define FUSE_HAS_INODE_DAX (1ULL << 33)
+#define FUSE_CREATE_SUPP_GROUP (1ULL << 34)
 #if FUSE_KERNEL_VERSION > 7 || FUSE_KERNEL_VERSION == 7 && FUSE_KERNEL_MINOR_VERSION >= 36
 #define FUSE_PASSTHROUGH (1ULL << 63)
 #else
@@ -138,6 +140,11 @@ struct fuse_file_lock {
 #define FUSE_ATTR_DAX (1 << 1)
 #define FUSE_OPEN_KILL_SUIDGID (1 << 0)
 #define FUSE_SETXATTR_ACL_KILL_SGID (1 << 0)
+#define FUSE_EXPIRE_ONLY (1 << 0)
+enum fuse_ext_type {
+  FUSE_MAX_NR_SECCTX = 31,
+  FUSE_EXT_GROUPS = 32,
+};
 enum fuse_opcode {
   FUSE_LOOKUP = 1,
   FUSE_FORGET = 2,
@@ -463,7 +470,8 @@ struct fuse_in_header {
   uint32_t uid;
   uint32_t gid;
   uint32_t pid;
-  uint32_t padding;
+  uint16_t total_extlen;
+  uint16_t padding;
 };
 struct fuse_out_header {
   uint32_t len;
@@ -495,7 +503,7 @@ struct fuse_notify_inval_inode_out {
 struct fuse_notify_inval_entry_out {
   uint64_t parent;
   uint32_t namelen;
-  uint32_t padding;
+  uint32_t flags;
 };
 struct fuse_notify_delete_out {
   uint64_t parent;
@@ -572,5 +580,13 @@ struct fuse_secctx {
 struct fuse_secctx_header {
   uint32_t size;
   uint32_t nr_secctx;
+};
+struct fuse_ext_header {
+  uint32_t size;
+  uint32_t type;
+};
+struct fuse_supp_groups {
+  uint32_t nr_groups;
+  uint32_t groups[];
 };
 #endif

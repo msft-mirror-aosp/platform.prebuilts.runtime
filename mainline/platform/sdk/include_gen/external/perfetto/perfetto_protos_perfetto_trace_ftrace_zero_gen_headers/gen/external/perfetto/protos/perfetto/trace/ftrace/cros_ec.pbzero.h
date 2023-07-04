@@ -58,14 +58,7 @@ class CrosEcSensorhubDataFtraceEvent : public ::protozero::Message {
       int64_t,
       CrosEcSensorhubDataFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CurrentTime kCurrentTime() { return {}; }
+  static constexpr FieldMetadata_CurrentTime kCurrentTime{};
   void set_current_time(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CurrentTime::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -83,14 +76,7 @@ class CrosEcSensorhubDataFtraceEvent : public ::protozero::Message {
       int64_t,
       CrosEcSensorhubDataFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CurrentTimestamp kCurrentTimestamp() { return {}; }
+  static constexpr FieldMetadata_CurrentTimestamp kCurrentTimestamp{};
   void set_current_timestamp(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CurrentTimestamp::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -108,14 +94,7 @@ class CrosEcSensorhubDataFtraceEvent : public ::protozero::Message {
       int64_t,
       CrosEcSensorhubDataFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Delta kDelta() { return {}; }
+  static constexpr FieldMetadata_Delta kDelta{};
   void set_delta(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Delta::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -133,14 +112,7 @@ class CrosEcSensorhubDataFtraceEvent : public ::protozero::Message {
       uint32_t,
       CrosEcSensorhubDataFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EcFifoTimestamp kEcFifoTimestamp() { return {}; }
+  static constexpr FieldMetadata_EcFifoTimestamp kEcFifoTimestamp{};
   void set_ec_fifo_timestamp(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_EcFifoTimestamp::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -158,14 +130,7 @@ class CrosEcSensorhubDataFtraceEvent : public ::protozero::Message {
       uint32_t,
       CrosEcSensorhubDataFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EcSensorNum kEcSensorNum() { return {}; }
+  static constexpr FieldMetadata_EcSensorNum kEcSensorNum{};
   void set_ec_sensor_num(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_EcSensorNum::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -183,14 +148,7 @@ class CrosEcSensorhubDataFtraceEvent : public ::protozero::Message {
       int64_t,
       CrosEcSensorhubDataFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FifoTimestamp kFifoTimestamp() { return {}; }
+  static constexpr FieldMetadata_FifoTimestamp kFifoTimestamp{};
   void set_fifo_timestamp(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FifoTimestamp::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

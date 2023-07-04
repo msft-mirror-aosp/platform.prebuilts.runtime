@@ -285,6 +285,9 @@ cc_prebuilt_library_shared {
         android_arm64: {
             srcs: ["android/arm64/lib/libandroidicu.so"],
         },
+        android_riscv64: {
+            srcs: ["android/riscv64/lib/libandroidicu.so"],
+        },
         android_x86_64: {
             srcs: ["android/x86_64/lib/libandroidicu.so"],
         },
@@ -338,6 +341,9 @@ cc_prebuilt_library_shared {
         },
         android_arm64: {
             srcs: ["android/arm64/lib/libicu.so"],
+        },
+        android_riscv64: {
+            srcs: ["android/riscv64/lib/libicu.so"],
         },
         android_x86_64: {
             srcs: ["android/x86_64/lib/libicu.so"],
