@@ -35,7 +35,7 @@ BuildSource = collections.namedtuple("BuildSource", [
 ])
 
 
-ARCHES = ["arm", "arm64", "x86", "x86_64"]
+ARCHES = ["arm", "arm64", "riscv64", "x86", "x86_64"]
 
 # CI build for SDK snapshots
 SDK_SOURCE = BuildSource("aosp-master", "mainline_modules_sdks-userdebug")
@@ -62,6 +62,7 @@ APEX_SOURCE = {
 IMPL_LIB_SOURCE = {
     "arm": BuildSource("aosp-master-throttled", "aosp_arm-userdebug"),
     "arm64": BuildSource("aosp-master", "aosp_arm64-userdebug"),
+    "riscv64": BuildSource("aosp-master", "aosp_cf_riscv64_minidroid-userdebug"),
     "x86": BuildSource("aosp-master", "aosp_x86-eng"),
     "x86_64": BuildSource("aosp-master", "aosp_x86_64-userdebug"),
 }
@@ -170,7 +171,9 @@ def install_impl_lib_entries(lib_name):
       InstallEntry(
           type="impl_lib",
           source_build=IMPL_LIB_SOURCE[arch],
-          source_path="aosp_" + arch + "-target_files-{BUILD}.zip",
+          source_path=(
+              IMPL_LIB_SOURCE[arch].target.rpartition("-")[0] +
+              "-target_files-{BUILD}.zip"),
           unzip_single_file=os.path.join(
               "SYSTEM",
               "lib64" if arch.endswith("64") else "lib",
@@ -323,8 +326,13 @@ def install_entry(tmp_dir, local_dist, build_numbers, entry):
     print("WARNING: No CI build for {} - skipping.".format(entry.source_path))
     return None
 
-  build_number = build_numbers[entry.source_build.branch]
-  source_path = entry.source_path.replace("{BUILD}", str(build_number))
+  build_number = (build_numbers[entry.source_build.branch]
+                  if build_numbers else None)
+
+  # Fall back to the username as the build ID if we have no build number. That's
+  # what a dist install does in a local build.
+  source_path = entry.source_path.replace(
+      "{BUILD}", str(build_number) if build_number else os.getenv("USER"))
 
   source_dir, source_file = os.path.split(source_path)
 
