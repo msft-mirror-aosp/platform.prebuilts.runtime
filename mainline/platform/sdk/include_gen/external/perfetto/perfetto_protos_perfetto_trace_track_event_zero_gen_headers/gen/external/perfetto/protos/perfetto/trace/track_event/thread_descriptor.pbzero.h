@@ -137,20 +137,20 @@ class ThreadDescriptor : public ::protozero::Message {
   static inline const char* ChromeThreadType_Name(ChromeThreadType value) {
     return ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType_Name(value);
   }
-  static const ChromeThreadType CHROME_THREAD_UNSPECIFIED = ChromeThreadType::CHROME_THREAD_UNSPECIFIED;
-  static const ChromeThreadType CHROME_THREAD_MAIN = ChromeThreadType::CHROME_THREAD_MAIN;
-  static const ChromeThreadType CHROME_THREAD_IO = ChromeThreadType::CHROME_THREAD_IO;
-  static const ChromeThreadType CHROME_THREAD_POOL_BG_WORKER = ChromeThreadType::CHROME_THREAD_POOL_BG_WORKER;
-  static const ChromeThreadType CHROME_THREAD_POOL_FG_WORKER = ChromeThreadType::CHROME_THREAD_POOL_FG_WORKER;
-  static const ChromeThreadType CHROME_THREAD_POOL_FB_BLOCKING = ChromeThreadType::CHROME_THREAD_POOL_FB_BLOCKING;
-  static const ChromeThreadType CHROME_THREAD_POOL_BG_BLOCKING = ChromeThreadType::CHROME_THREAD_POOL_BG_BLOCKING;
-  static const ChromeThreadType CHROME_THREAD_POOL_SERVICE = ChromeThreadType::CHROME_THREAD_POOL_SERVICE;
-  static const ChromeThreadType CHROME_THREAD_COMPOSITOR = ChromeThreadType::CHROME_THREAD_COMPOSITOR;
-  static const ChromeThreadType CHROME_THREAD_VIZ_COMPOSITOR = ChromeThreadType::CHROME_THREAD_VIZ_COMPOSITOR;
-  static const ChromeThreadType CHROME_THREAD_COMPOSITOR_WORKER = ChromeThreadType::CHROME_THREAD_COMPOSITOR_WORKER;
-  static const ChromeThreadType CHROME_THREAD_SERVICE_WORKER = ChromeThreadType::CHROME_THREAD_SERVICE_WORKER;
-  static const ChromeThreadType CHROME_THREAD_MEMORY_INFRA = ChromeThreadType::CHROME_THREAD_MEMORY_INFRA;
-  static const ChromeThreadType CHROME_THREAD_SAMPLING_PROFILER = ChromeThreadType::CHROME_THREAD_SAMPLING_PROFILER;
+  static inline const ChromeThreadType CHROME_THREAD_UNSPECIFIED = ChromeThreadType::CHROME_THREAD_UNSPECIFIED;
+  static inline const ChromeThreadType CHROME_THREAD_MAIN = ChromeThreadType::CHROME_THREAD_MAIN;
+  static inline const ChromeThreadType CHROME_THREAD_IO = ChromeThreadType::CHROME_THREAD_IO;
+  static inline const ChromeThreadType CHROME_THREAD_POOL_BG_WORKER = ChromeThreadType::CHROME_THREAD_POOL_BG_WORKER;
+  static inline const ChromeThreadType CHROME_THREAD_POOL_FG_WORKER = ChromeThreadType::CHROME_THREAD_POOL_FG_WORKER;
+  static inline const ChromeThreadType CHROME_THREAD_POOL_FB_BLOCKING = ChromeThreadType::CHROME_THREAD_POOL_FB_BLOCKING;
+  static inline const ChromeThreadType CHROME_THREAD_POOL_BG_BLOCKING = ChromeThreadType::CHROME_THREAD_POOL_BG_BLOCKING;
+  static inline const ChromeThreadType CHROME_THREAD_POOL_SERVICE = ChromeThreadType::CHROME_THREAD_POOL_SERVICE;
+  static inline const ChromeThreadType CHROME_THREAD_COMPOSITOR = ChromeThreadType::CHROME_THREAD_COMPOSITOR;
+  static inline const ChromeThreadType CHROME_THREAD_VIZ_COMPOSITOR = ChromeThreadType::CHROME_THREAD_VIZ_COMPOSITOR;
+  static inline const ChromeThreadType CHROME_THREAD_COMPOSITOR_WORKER = ChromeThreadType::CHROME_THREAD_COMPOSITOR_WORKER;
+  static inline const ChromeThreadType CHROME_THREAD_SERVICE_WORKER = ChromeThreadType::CHROME_THREAD_SERVICE_WORKER;
+  static inline const ChromeThreadType CHROME_THREAD_MEMORY_INFRA = ChromeThreadType::CHROME_THREAD_MEMORY_INFRA;
+  static inline const ChromeThreadType CHROME_THREAD_SAMPLING_PROFILER = ChromeThreadType::CHROME_THREAD_SAMPLING_PROFILER;
 
   using FieldMetadata_Pid =
     ::protozero::proto_utils::FieldMetadata<
@@ -160,14 +160,7 @@ class ThreadDescriptor : public ::protozero::Message {
       int32_t,
       ThreadDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Pid kPid() { return {}; }
+  static constexpr FieldMetadata_Pid kPid{};
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -185,14 +178,7 @@ class ThreadDescriptor : public ::protozero::Message {
       int32_t,
       ThreadDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Tid kTid() { return {}; }
+  static constexpr FieldMetadata_Tid kTid{};
   void set_tid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Tid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -210,14 +196,7 @@ class ThreadDescriptor : public ::protozero::Message {
       std::string,
       ThreadDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ThreadName kThreadName() { return {}; }
+  static constexpr FieldMetadata_ThreadName kThreadName{};
   void set_thread_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ThreadName::kFieldId, data, size);
   }
@@ -241,14 +220,7 @@ class ThreadDescriptor : public ::protozero::Message {
       ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType,
       ThreadDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ChromeThreadType kChromeThreadType() { return {}; }
+  static constexpr FieldMetadata_ChromeThreadType kChromeThreadType{};
   void set_chrome_thread_type(::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType value) {
     static constexpr uint32_t field_id = FieldMetadata_ChromeThreadType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -266,14 +238,7 @@ class ThreadDescriptor : public ::protozero::Message {
       int64_t,
       ThreadDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReferenceTimestampUs kReferenceTimestampUs() { return {}; }
+  static constexpr FieldMetadata_ReferenceTimestampUs kReferenceTimestampUs{};
   void set_reference_timestamp_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ReferenceTimestampUs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -291,14 +256,7 @@ class ThreadDescriptor : public ::protozero::Message {
       int64_t,
       ThreadDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReferenceThreadTimeUs kReferenceThreadTimeUs() { return {}; }
+  static constexpr FieldMetadata_ReferenceThreadTimeUs kReferenceThreadTimeUs{};
   void set_reference_thread_time_us(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ReferenceThreadTimeUs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -316,14 +274,7 @@ class ThreadDescriptor : public ::protozero::Message {
       int64_t,
       ThreadDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReferenceThreadInstructionCount kReferenceThreadInstructionCount() { return {}; }
+  static constexpr FieldMetadata_ReferenceThreadInstructionCount kReferenceThreadInstructionCount{};
   void set_reference_thread_instruction_count(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ReferenceThreadInstructionCount::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -341,14 +292,7 @@ class ThreadDescriptor : public ::protozero::Message {
       int32_t,
       ThreadDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_LegacySortIndex kLegacySortIndex() { return {}; }
+  static constexpr FieldMetadata_LegacySortIndex kLegacySortIndex{};
   void set_legacy_sort_index(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_LegacySortIndex::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

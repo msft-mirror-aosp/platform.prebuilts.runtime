@@ -46,14 +46,7 @@ class ChromeUserEvent : public ::protozero::Message {
       std::string,
       ChromeUserEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Action kAction() { return {}; }
+  static constexpr FieldMetadata_Action kAction{};
   void set_action(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Action::kFieldId, data, size);
   }
@@ -77,14 +70,7 @@ class ChromeUserEvent : public ::protozero::Message {
       uint64_t,
       ChromeUserEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ActionHash kActionHash() { return {}; }
+  static constexpr FieldMetadata_ActionHash kActionHash{};
   void set_action_hash(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ActionHash::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
