@@ -294,54 +294,54 @@ class GpuCounterDescriptor : public ::protozero::Message {
   static inline const char* MeasureUnit_Name(MeasureUnit value) {
     return ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit_Name(value);
   }
-  static const GpuCounterGroup UNCLASSIFIED = GpuCounterGroup::UNCLASSIFIED;
-  static const GpuCounterGroup SYSTEM = GpuCounterGroup::SYSTEM;
-  static const GpuCounterGroup VERTICES = GpuCounterGroup::VERTICES;
-  static const GpuCounterGroup FRAGMENTS = GpuCounterGroup::FRAGMENTS;
-  static const GpuCounterGroup PRIMITIVES = GpuCounterGroup::PRIMITIVES;
-  static const GpuCounterGroup MEMORY = GpuCounterGroup::MEMORY;
-  static const GpuCounterGroup COMPUTE = GpuCounterGroup::COMPUTE;
-  static const MeasureUnit NONE = MeasureUnit::NONE;
-  static const MeasureUnit BIT = MeasureUnit::BIT;
-  static const MeasureUnit KILOBIT = MeasureUnit::KILOBIT;
-  static const MeasureUnit MEGABIT = MeasureUnit::MEGABIT;
-  static const MeasureUnit GIGABIT = MeasureUnit::GIGABIT;
-  static const MeasureUnit TERABIT = MeasureUnit::TERABIT;
-  static const MeasureUnit PETABIT = MeasureUnit::PETABIT;
-  static const MeasureUnit BYTE = MeasureUnit::BYTE;
-  static const MeasureUnit KILOBYTE = MeasureUnit::KILOBYTE;
-  static const MeasureUnit MEGABYTE = MeasureUnit::MEGABYTE;
-  static const MeasureUnit GIGABYTE = MeasureUnit::GIGABYTE;
-  static const MeasureUnit TERABYTE = MeasureUnit::TERABYTE;
-  static const MeasureUnit PETABYTE = MeasureUnit::PETABYTE;
-  static const MeasureUnit HERTZ = MeasureUnit::HERTZ;
-  static const MeasureUnit KILOHERTZ = MeasureUnit::KILOHERTZ;
-  static const MeasureUnit MEGAHERTZ = MeasureUnit::MEGAHERTZ;
-  static const MeasureUnit GIGAHERTZ = MeasureUnit::GIGAHERTZ;
-  static const MeasureUnit TERAHERTZ = MeasureUnit::TERAHERTZ;
-  static const MeasureUnit PETAHERTZ = MeasureUnit::PETAHERTZ;
-  static const MeasureUnit NANOSECOND = MeasureUnit::NANOSECOND;
-  static const MeasureUnit MICROSECOND = MeasureUnit::MICROSECOND;
-  static const MeasureUnit MILLISECOND = MeasureUnit::MILLISECOND;
-  static const MeasureUnit SECOND = MeasureUnit::SECOND;
-  static const MeasureUnit MINUTE = MeasureUnit::MINUTE;
-  static const MeasureUnit HOUR = MeasureUnit::HOUR;
-  static const MeasureUnit VERTEX = MeasureUnit::VERTEX;
-  static const MeasureUnit PIXEL = MeasureUnit::PIXEL;
-  static const MeasureUnit TRIANGLE = MeasureUnit::TRIANGLE;
-  static const MeasureUnit PRIMITIVE = MeasureUnit::PRIMITIVE;
-  static const MeasureUnit FRAGMENT = MeasureUnit::FRAGMENT;
-  static const MeasureUnit MILLIWATT = MeasureUnit::MILLIWATT;
-  static const MeasureUnit WATT = MeasureUnit::WATT;
-  static const MeasureUnit KILOWATT = MeasureUnit::KILOWATT;
-  static const MeasureUnit JOULE = MeasureUnit::JOULE;
-  static const MeasureUnit VOLT = MeasureUnit::VOLT;
-  static const MeasureUnit AMPERE = MeasureUnit::AMPERE;
-  static const MeasureUnit CELSIUS = MeasureUnit::CELSIUS;
-  static const MeasureUnit FAHRENHEIT = MeasureUnit::FAHRENHEIT;
-  static const MeasureUnit KELVIN = MeasureUnit::KELVIN;
-  static const MeasureUnit PERCENT = MeasureUnit::PERCENT;
-  static const MeasureUnit INSTRUCTION = MeasureUnit::INSTRUCTION;
+  static inline const GpuCounterGroup UNCLASSIFIED = GpuCounterGroup::UNCLASSIFIED;
+  static inline const GpuCounterGroup SYSTEM = GpuCounterGroup::SYSTEM;
+  static inline const GpuCounterGroup VERTICES = GpuCounterGroup::VERTICES;
+  static inline const GpuCounterGroup FRAGMENTS = GpuCounterGroup::FRAGMENTS;
+  static inline const GpuCounterGroup PRIMITIVES = GpuCounterGroup::PRIMITIVES;
+  static inline const GpuCounterGroup MEMORY = GpuCounterGroup::MEMORY;
+  static inline const GpuCounterGroup COMPUTE = GpuCounterGroup::COMPUTE;
+  static inline const MeasureUnit NONE = MeasureUnit::NONE;
+  static inline const MeasureUnit BIT = MeasureUnit::BIT;
+  static inline const MeasureUnit KILOBIT = MeasureUnit::KILOBIT;
+  static inline const MeasureUnit MEGABIT = MeasureUnit::MEGABIT;
+  static inline const MeasureUnit GIGABIT = MeasureUnit::GIGABIT;
+  static inline const MeasureUnit TERABIT = MeasureUnit::TERABIT;
+  static inline const MeasureUnit PETABIT = MeasureUnit::PETABIT;
+  static inline const MeasureUnit BYTE = MeasureUnit::BYTE;
+  static inline const MeasureUnit KILOBYTE = MeasureUnit::KILOBYTE;
+  static inline const MeasureUnit MEGABYTE = MeasureUnit::MEGABYTE;
+  static inline const MeasureUnit GIGABYTE = MeasureUnit::GIGABYTE;
+  static inline const MeasureUnit TERABYTE = MeasureUnit::TERABYTE;
+  static inline const MeasureUnit PETABYTE = MeasureUnit::PETABYTE;
+  static inline const MeasureUnit HERTZ = MeasureUnit::HERTZ;
+  static inline const MeasureUnit KILOHERTZ = MeasureUnit::KILOHERTZ;
+  static inline const MeasureUnit MEGAHERTZ = MeasureUnit::MEGAHERTZ;
+  static inline const MeasureUnit GIGAHERTZ = MeasureUnit::GIGAHERTZ;
+  static inline const MeasureUnit TERAHERTZ = MeasureUnit::TERAHERTZ;
+  static inline const MeasureUnit PETAHERTZ = MeasureUnit::PETAHERTZ;
+  static inline const MeasureUnit NANOSECOND = MeasureUnit::NANOSECOND;
+  static inline const MeasureUnit MICROSECOND = MeasureUnit::MICROSECOND;
+  static inline const MeasureUnit MILLISECOND = MeasureUnit::MILLISECOND;
+  static inline const MeasureUnit SECOND = MeasureUnit::SECOND;
+  static inline const MeasureUnit MINUTE = MeasureUnit::MINUTE;
+  static inline const MeasureUnit HOUR = MeasureUnit::HOUR;
+  static inline const MeasureUnit VERTEX = MeasureUnit::VERTEX;
+  static inline const MeasureUnit PIXEL = MeasureUnit::PIXEL;
+  static inline const MeasureUnit TRIANGLE = MeasureUnit::TRIANGLE;
+  static inline const MeasureUnit PRIMITIVE = MeasureUnit::PRIMITIVE;
+  static inline const MeasureUnit FRAGMENT = MeasureUnit::FRAGMENT;
+  static inline const MeasureUnit MILLIWATT = MeasureUnit::MILLIWATT;
+  static inline const MeasureUnit WATT = MeasureUnit::WATT;
+  static inline const MeasureUnit KILOWATT = MeasureUnit::KILOWATT;
+  static inline const MeasureUnit JOULE = MeasureUnit::JOULE;
+  static inline const MeasureUnit VOLT = MeasureUnit::VOLT;
+  static inline const MeasureUnit AMPERE = MeasureUnit::AMPERE;
+  static inline const MeasureUnit CELSIUS = MeasureUnit::CELSIUS;
+  static inline const MeasureUnit FAHRENHEIT = MeasureUnit::FAHRENHEIT;
+  static inline const MeasureUnit KELVIN = MeasureUnit::KELVIN;
+  static inline const MeasureUnit PERCENT = MeasureUnit::PERCENT;
+  static inline const MeasureUnit INSTRUCTION = MeasureUnit::INSTRUCTION;
 
   using FieldMetadata_Specs =
     ::protozero::proto_utils::FieldMetadata<
@@ -351,14 +351,7 @@ class GpuCounterDescriptor : public ::protozero::Message {
       GpuCounterDescriptor_GpuCounterSpec,
       GpuCounterDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Specs kSpecs() { return {}; }
+  static constexpr FieldMetadata_Specs kSpecs{};
   template <typename T = GpuCounterDescriptor_GpuCounterSpec> T* add_specs() {
     return BeginNestedMessage<T>(1);
   }
@@ -372,14 +365,7 @@ class GpuCounterDescriptor : public ::protozero::Message {
       GpuCounterDescriptor_GpuCounterBlock,
       GpuCounterDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Blocks kBlocks() { return {}; }
+  static constexpr FieldMetadata_Blocks kBlocks{};
   template <typename T = GpuCounterDescriptor_GpuCounterBlock> T* add_blocks() {
     return BeginNestedMessage<T>(2);
   }
@@ -393,14 +379,7 @@ class GpuCounterDescriptor : public ::protozero::Message {
       uint64_t,
       GpuCounterDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MinSamplingPeriodNs kMinSamplingPeriodNs() { return {}; }
+  static constexpr FieldMetadata_MinSamplingPeriodNs kMinSamplingPeriodNs{};
   void set_min_sampling_period_ns(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MinSamplingPeriodNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -418,14 +397,7 @@ class GpuCounterDescriptor : public ::protozero::Message {
       uint64_t,
       GpuCounterDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MaxSamplingPeriodNs kMaxSamplingPeriodNs() { return {}; }
+  static constexpr FieldMetadata_MaxSamplingPeriodNs kMaxSamplingPeriodNs{};
   void set_max_sampling_period_ns(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxSamplingPeriodNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -443,14 +415,7 @@ class GpuCounterDescriptor : public ::protozero::Message {
       bool,
       GpuCounterDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SupportsInstrumentedSampling kSupportsInstrumentedSampling() { return {}; }
+  static constexpr FieldMetadata_SupportsInstrumentedSampling kSupportsInstrumentedSampling{};
   void set_supports_instrumented_sampling(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_SupportsInstrumentedSampling::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -499,14 +464,7 @@ class GpuCounterDescriptor_GpuCounterBlock : public ::protozero::Message {
       uint32_t,
       GpuCounterDescriptor_GpuCounterBlock>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BlockId kBlockId() { return {}; }
+  static constexpr FieldMetadata_BlockId kBlockId{};
   void set_block_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BlockId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -524,14 +482,7 @@ class GpuCounterDescriptor_GpuCounterBlock : public ::protozero::Message {
       uint32_t,
       GpuCounterDescriptor_GpuCounterBlock>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BlockCapacity kBlockCapacity() { return {}; }
+  static constexpr FieldMetadata_BlockCapacity kBlockCapacity{};
   void set_block_capacity(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BlockCapacity::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -549,14 +500,7 @@ class GpuCounterDescriptor_GpuCounterBlock : public ::protozero::Message {
       std::string,
       GpuCounterDescriptor_GpuCounterBlock>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -580,14 +524,7 @@ class GpuCounterDescriptor_GpuCounterBlock : public ::protozero::Message {
       std::string,
       GpuCounterDescriptor_GpuCounterBlock>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Description kDescription() { return {}; }
+  static constexpr FieldMetadata_Description kDescription{};
   void set_description(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Description::kFieldId, data, size);
   }
@@ -611,14 +548,7 @@ class GpuCounterDescriptor_GpuCounterBlock : public ::protozero::Message {
       uint32_t,
       GpuCounterDescriptor_GpuCounterBlock>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CounterIds kCounterIds() { return {}; }
+  static constexpr FieldMetadata_CounterIds kCounterIds{};
   void add_counter_ids(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CounterIds::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -679,14 +609,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
       uint32_t,
       GpuCounterDescriptor_GpuCounterSpec>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CounterId kCounterId() { return {}; }
+  static constexpr FieldMetadata_CounterId kCounterId{};
   void set_counter_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CounterId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -704,14 +627,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
       std::string,
       GpuCounterDescriptor_GpuCounterSpec>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -735,14 +651,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
       std::string,
       GpuCounterDescriptor_GpuCounterSpec>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Description kDescription() { return {}; }
+  static constexpr FieldMetadata_Description kDescription{};
   void set_description(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Description::kFieldId, data, size);
   }
@@ -766,14 +675,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
       int64_t,
       GpuCounterDescriptor_GpuCounterSpec>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IntPeakValue kIntPeakValue() { return {}; }
+  static constexpr FieldMetadata_IntPeakValue kIntPeakValue{};
   void set_int_peak_value(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IntPeakValue::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -791,14 +693,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
       double,
       GpuCounterDescriptor_GpuCounterSpec>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DoublePeakValue kDoublePeakValue() { return {}; }
+  static constexpr FieldMetadata_DoublePeakValue kDoublePeakValue{};
   void set_double_peak_value(double value) {
     static constexpr uint32_t field_id = FieldMetadata_DoublePeakValue::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -816,14 +711,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
       ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit,
       GpuCounterDescriptor_GpuCounterSpec>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NumeratorUnits kNumeratorUnits() { return {}; }
+  static constexpr FieldMetadata_NumeratorUnits kNumeratorUnits{};
   void add_numerator_units(::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit value) {
     static constexpr uint32_t field_id = FieldMetadata_NumeratorUnits::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -841,14 +729,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
       ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit,
       GpuCounterDescriptor_GpuCounterSpec>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DenominatorUnits kDenominatorUnits() { return {}; }
+  static constexpr FieldMetadata_DenominatorUnits kDenominatorUnits{};
   void add_denominator_units(::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit value) {
     static constexpr uint32_t field_id = FieldMetadata_DenominatorUnits::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -866,14 +747,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
       bool,
       GpuCounterDescriptor_GpuCounterSpec>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SelectByDefault kSelectByDefault() { return {}; }
+  static constexpr FieldMetadata_SelectByDefault kSelectByDefault{};
   void set_select_by_default(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_SelectByDefault::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -891,14 +765,7 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
       ::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup,
       GpuCounterDescriptor_GpuCounterSpec>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Groups kGroups() { return {}; }
+  static constexpr FieldMetadata_Groups kGroups{};
   void add_groups(::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup value) {
     static constexpr uint32_t field_id = FieldMetadata_Groups::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

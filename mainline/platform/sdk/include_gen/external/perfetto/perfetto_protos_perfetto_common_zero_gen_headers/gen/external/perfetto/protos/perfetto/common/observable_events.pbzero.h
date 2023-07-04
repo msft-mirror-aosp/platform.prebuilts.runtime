@@ -16,6 +16,7 @@ namespace perfetto {
 namespace protos {
 namespace pbzero {
 
+class ObservableEvents_CloneTriggerHit;
 class ObservableEvents_DataSourceInstanceStateChange;
 namespace perfetto_pbzero_enum_ObservableEvents {
 enum DataSourceInstanceState : int32_t;
@@ -27,13 +28,14 @@ enum Type : int32_t {
   TYPE_UNSPECIFIED = 0,
   TYPE_DATA_SOURCES_INSTANCES = 1,
   TYPE_ALL_DATA_SOURCES_STARTED = 2,
+  TYPE_CLONE_TRIGGER_HIT = 4,
 };
 } // namespace perfetto_pbzero_enum_ObservableEvents
 using ObservableEvents_Type = perfetto_pbzero_enum_ObservableEvents::Type;
 
 
 constexpr ObservableEvents_Type ObservableEvents_Type_MIN = ObservableEvents_Type::TYPE_UNSPECIFIED;
-constexpr ObservableEvents_Type ObservableEvents_Type_MAX = ObservableEvents_Type::TYPE_ALL_DATA_SOURCES_STARTED;
+constexpr ObservableEvents_Type ObservableEvents_Type_MAX = ObservableEvents_Type::TYPE_CLONE_TRIGGER_HIT;
 
 
 PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
@@ -47,6 +49,9 @@ const char* ObservableEvents_Type_Name(::perfetto::protos::pbzero::ObservableEve
 
   case ::perfetto::protos::pbzero::ObservableEvents_Type::TYPE_ALL_DATA_SOURCES_STARTED:
     return "TYPE_ALL_DATA_SOURCES_STARTED";
+
+  case ::perfetto::protos::pbzero::ObservableEvents_Type::TYPE_CLONE_TRIGGER_HIT:
+    return "TYPE_CLONE_TRIGGER_HIT";
   }
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
@@ -76,7 +81,7 @@ const char* ObservableEvents_DataSourceInstanceState_Name(::perfetto::protos::pb
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class ObservableEvents_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class ObservableEvents_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   ObservableEvents_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ObservableEvents_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -85,6 +90,8 @@ class ObservableEvents_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIE
   ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> instance_state_changes() const { return GetRepeated<::protozero::ConstBytes>(1); }
   bool has_all_data_sources_started() const { return at<2>().valid(); }
   bool all_data_sources_started() const { return at<2>().as_bool(); }
+  bool has_clone_trigger_hit() const { return at<3>().valid(); }
+  ::protozero::ConstBytes clone_trigger_hit() const { return at<3>().as_bytes(); }
 };
 
 class ObservableEvents : public ::protozero::Message {
@@ -93,10 +100,12 @@ class ObservableEvents : public ::protozero::Message {
   enum : int32_t {
     kInstanceStateChangesFieldNumber = 1,
     kAllDataSourcesStartedFieldNumber = 2,
+    kCloneTriggerHitFieldNumber = 3,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.ObservableEvents"; }
 
   using DataSourceInstanceStateChange = ::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceStateChange;
+  using CloneTriggerHit = ::perfetto::protos::pbzero::ObservableEvents_CloneTriggerHit;
 
   using Type = ::perfetto::protos::pbzero::ObservableEvents_Type;
   static inline const char* Type_Name(Type value) {
@@ -107,11 +116,12 @@ class ObservableEvents : public ::protozero::Message {
   static inline const char* DataSourceInstanceState_Name(DataSourceInstanceState value) {
     return ::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceState_Name(value);
   }
-  static const Type TYPE_UNSPECIFIED = Type::TYPE_UNSPECIFIED;
-  static const Type TYPE_DATA_SOURCES_INSTANCES = Type::TYPE_DATA_SOURCES_INSTANCES;
-  static const Type TYPE_ALL_DATA_SOURCES_STARTED = Type::TYPE_ALL_DATA_SOURCES_STARTED;
-  static const DataSourceInstanceState DATA_SOURCE_INSTANCE_STATE_STOPPED = DataSourceInstanceState::DATA_SOURCE_INSTANCE_STATE_STOPPED;
-  static const DataSourceInstanceState DATA_SOURCE_INSTANCE_STATE_STARTED = DataSourceInstanceState::DATA_SOURCE_INSTANCE_STATE_STARTED;
+  static inline const Type TYPE_UNSPECIFIED = Type::TYPE_UNSPECIFIED;
+  static inline const Type TYPE_DATA_SOURCES_INSTANCES = Type::TYPE_DATA_SOURCES_INSTANCES;
+  static inline const Type TYPE_ALL_DATA_SOURCES_STARTED = Type::TYPE_ALL_DATA_SOURCES_STARTED;
+  static inline const Type TYPE_CLONE_TRIGGER_HIT = Type::TYPE_CLONE_TRIGGER_HIT;
+  static inline const DataSourceInstanceState DATA_SOURCE_INSTANCE_STATE_STOPPED = DataSourceInstanceState::DATA_SOURCE_INSTANCE_STATE_STOPPED;
+  static inline const DataSourceInstanceState DATA_SOURCE_INSTANCE_STATE_STARTED = DataSourceInstanceState::DATA_SOURCE_INSTANCE_STATE_STARTED;
 
   using FieldMetadata_InstanceStateChanges =
     ::protozero::proto_utils::FieldMetadata<
@@ -121,14 +131,7 @@ class ObservableEvents : public ::protozero::Message {
       ObservableEvents_DataSourceInstanceStateChange,
       ObservableEvents>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_InstanceStateChanges kInstanceStateChanges() { return {}; }
+  static constexpr FieldMetadata_InstanceStateChanges kInstanceStateChanges{};
   template <typename T = ObservableEvents_DataSourceInstanceStateChange> T* add_instance_state_changes() {
     return BeginNestedMessage<T>(1);
   }
@@ -142,20 +145,64 @@ class ObservableEvents : public ::protozero::Message {
       bool,
       ObservableEvents>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_AllDataSourcesStarted kAllDataSourcesStarted() { return {}; }
+  static constexpr FieldMetadata_AllDataSourcesStarted kAllDataSourcesStarted{};
   void set_all_data_sources_started(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_AllDataSourcesStarted::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_CloneTriggerHit =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ObservableEvents_CloneTriggerHit,
+      ObservableEvents>;
+
+  static constexpr FieldMetadata_CloneTriggerHit kCloneTriggerHit{};
+  template <typename T = ObservableEvents_CloneTriggerHit> T* set_clone_trigger_hit() {
+    return BeginNestedMessage<T>(3);
+  }
+
+};
+
+class ObservableEvents_CloneTriggerHit_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  ObservableEvents_CloneTriggerHit_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit ObservableEvents_CloneTriggerHit_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit ObservableEvents_CloneTriggerHit_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_tracing_session_id() const { return at<1>().valid(); }
+  int64_t tracing_session_id() const { return at<1>().as_int64(); }
+};
+
+class ObservableEvents_CloneTriggerHit : public ::protozero::Message {
+ public:
+  using Decoder = ObservableEvents_CloneTriggerHit_Decoder;
+  enum : int32_t {
+    kTracingSessionIdFieldNumber = 1,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.ObservableEvents.CloneTriggerHit"; }
+
+
+  using FieldMetadata_TracingSessionId =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt64,
+      int64_t,
+      ObservableEvents_CloneTriggerHit>;
+
+  static constexpr FieldMetadata_TracingSessionId kTracingSessionId{};
+  void set_tracing_session_id(int64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_TracingSessionId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt64>
         ::Append(*this, field_id, value);
   }
 };
@@ -192,14 +239,7 @@ class ObservableEvents_DataSourceInstanceStateChange : public ::protozero::Messa
       std::string,
       ObservableEvents_DataSourceInstanceStateChange>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ProducerName kProducerName() { return {}; }
+  static constexpr FieldMetadata_ProducerName kProducerName{};
   void set_producer_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProducerName::kFieldId, data, size);
   }
@@ -223,14 +263,7 @@ class ObservableEvents_DataSourceInstanceStateChange : public ::protozero::Messa
       std::string,
       ObservableEvents_DataSourceInstanceStateChange>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DataSourceName kDataSourceName() { return {}; }
+  static constexpr FieldMetadata_DataSourceName kDataSourceName{};
   void set_data_source_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_DataSourceName::kFieldId, data, size);
   }
@@ -254,14 +287,7 @@ class ObservableEvents_DataSourceInstanceStateChange : public ::protozero::Messa
       ::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceState,
       ObservableEvents_DataSourceInstanceStateChange>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_State kState() { return {}; }
+  static constexpr FieldMetadata_State kState{};
   void set_state(::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceState value) {
     static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

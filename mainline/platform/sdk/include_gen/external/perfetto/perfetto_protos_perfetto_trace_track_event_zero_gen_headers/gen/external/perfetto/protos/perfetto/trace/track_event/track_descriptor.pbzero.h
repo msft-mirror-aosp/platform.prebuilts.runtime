@@ -22,7 +22,7 @@ class CounterDescriptor;
 class ProcessDescriptor;
 class ThreadDescriptor;
 
-class TrackDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/8, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class TrackDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/9, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   TrackDescriptor_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TrackDescriptor_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -43,6 +43,8 @@ class TrackDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIEL
   ::protozero::ConstBytes chrome_thread() const { return at<7>().as_bytes(); }
   bool has_counter() const { return at<8>().valid(); }
   ::protozero::ConstBytes counter() const { return at<8>().as_bytes(); }
+  bool has_disallow_merging_with_system_tracks() const { return at<9>().valid(); }
+  bool disallow_merging_with_system_tracks() const { return at<9>().as_bool(); }
 };
 
 class TrackDescriptor : public ::protozero::Message {
@@ -57,6 +59,7 @@ class TrackDescriptor : public ::protozero::Message {
     kThreadFieldNumber = 4,
     kChromeThreadFieldNumber = 7,
     kCounterFieldNumber = 8,
+    kDisallowMergingWithSystemTracksFieldNumber = 9,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.TrackDescriptor"; }
 
@@ -69,14 +72,7 @@ class TrackDescriptor : public ::protozero::Message {
       uint64_t,
       TrackDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Uuid kUuid() { return {}; }
+  static constexpr FieldMetadata_Uuid kUuid{};
   void set_uuid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Uuid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -94,14 +90,7 @@ class TrackDescriptor : public ::protozero::Message {
       uint64_t,
       TrackDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ParentUuid kParentUuid() { return {}; }
+  static constexpr FieldMetadata_ParentUuid kParentUuid{};
   void set_parent_uuid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ParentUuid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -119,14 +108,7 @@ class TrackDescriptor : public ::protozero::Message {
       std::string,
       TrackDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -150,14 +132,7 @@ class TrackDescriptor : public ::protozero::Message {
       ProcessDescriptor,
       TrackDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Process kProcess() { return {}; }
+  static constexpr FieldMetadata_Process kProcess{};
   template <typename T = ProcessDescriptor> T* set_process() {
     return BeginNestedMessage<T>(3);
   }
@@ -171,14 +146,7 @@ class TrackDescriptor : public ::protozero::Message {
       ChromeProcessDescriptor,
       TrackDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ChromeProcess kChromeProcess() { return {}; }
+  static constexpr FieldMetadata_ChromeProcess kChromeProcess{};
   template <typename T = ChromeProcessDescriptor> T* set_chrome_process() {
     return BeginNestedMessage<T>(6);
   }
@@ -192,14 +160,7 @@ class TrackDescriptor : public ::protozero::Message {
       ThreadDescriptor,
       TrackDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Thread kThread() { return {}; }
+  static constexpr FieldMetadata_Thread kThread{};
   template <typename T = ThreadDescriptor> T* set_thread() {
     return BeginNestedMessage<T>(4);
   }
@@ -213,14 +174,7 @@ class TrackDescriptor : public ::protozero::Message {
       ChromeThreadDescriptor,
       TrackDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ChromeThread kChromeThread() { return {}; }
+  static constexpr FieldMetadata_ChromeThread kChromeThread{};
   template <typename T = ChromeThreadDescriptor> T* set_chrome_thread() {
     return BeginNestedMessage<T>(7);
   }
@@ -234,18 +188,29 @@ class TrackDescriptor : public ::protozero::Message {
       CounterDescriptor,
       TrackDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Counter kCounter() { return {}; }
+  static constexpr FieldMetadata_Counter kCounter{};
   template <typename T = CounterDescriptor> T* set_counter() {
     return BeginNestedMessage<T>(8);
   }
 
+
+  using FieldMetadata_DisallowMergingWithSystemTracks =
+    ::protozero::proto_utils::FieldMetadata<
+      9,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      TrackDescriptor>;
+
+  static constexpr FieldMetadata_DisallowMergingWithSystemTracks kDisallowMergingWithSystemTracks{};
+  void set_disallow_merging_with_system_tracks(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_DisallowMergingWithSystemTracks::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
 };
 
 } // Namespace.

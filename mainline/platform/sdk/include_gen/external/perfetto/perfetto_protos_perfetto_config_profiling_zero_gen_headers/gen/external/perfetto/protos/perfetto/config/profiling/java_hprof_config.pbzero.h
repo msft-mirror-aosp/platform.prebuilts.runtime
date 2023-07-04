@@ -63,14 +63,7 @@ class JavaHprofConfig : public ::protozero::Message {
       std::string,
       JavaHprofConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ProcessCmdline kProcessCmdline() { return {}; }
+  static constexpr FieldMetadata_ProcessCmdline kProcessCmdline{};
   void add_process_cmdline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProcessCmdline::kFieldId, data, size);
   }
@@ -94,14 +87,7 @@ class JavaHprofConfig : public ::protozero::Message {
       uint64_t,
       JavaHprofConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Pid kPid() { return {}; }
+  static constexpr FieldMetadata_Pid kPid{};
   void add_pid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -119,14 +105,7 @@ class JavaHprofConfig : public ::protozero::Message {
       std::string,
       JavaHprofConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TargetInstalledBy kTargetInstalledBy() { return {}; }
+  static constexpr FieldMetadata_TargetInstalledBy kTargetInstalledBy{};
   void add_target_installed_by(const char* data, size_t size) {
     AppendBytes(FieldMetadata_TargetInstalledBy::kFieldId, data, size);
   }
@@ -150,14 +129,7 @@ class JavaHprofConfig : public ::protozero::Message {
       JavaHprofConfig_ContinuousDumpConfig,
       JavaHprofConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ContinuousDumpConfig kContinuousDumpConfig() { return {}; }
+  static constexpr FieldMetadata_ContinuousDumpConfig kContinuousDumpConfig{};
   template <typename T = JavaHprofConfig_ContinuousDumpConfig> T* set_continuous_dump_config() {
     return BeginNestedMessage<T>(3);
   }
@@ -171,14 +143,7 @@ class JavaHprofConfig : public ::protozero::Message {
       uint32_t,
       JavaHprofConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MinAnonymousMemoryKb kMinAnonymousMemoryKb() { return {}; }
+  static constexpr FieldMetadata_MinAnonymousMemoryKb kMinAnonymousMemoryKb{};
   void set_min_anonymous_memory_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MinAnonymousMemoryKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -196,14 +161,7 @@ class JavaHprofConfig : public ::protozero::Message {
       bool,
       JavaHprofConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DumpSmaps kDumpSmaps() { return {}; }
+  static constexpr FieldMetadata_DumpSmaps kDumpSmaps{};
   void set_dump_smaps(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DumpSmaps::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -221,14 +179,7 @@ class JavaHprofConfig : public ::protozero::Message {
       std::string,
       JavaHprofConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IgnoredTypes kIgnoredTypes() { return {}; }
+  static constexpr FieldMetadata_IgnoredTypes kIgnoredTypes{};
   void add_ignored_types(const char* data, size_t size) {
     AppendBytes(FieldMetadata_IgnoredTypes::kFieldId, data, size);
   }
@@ -277,14 +228,7 @@ class JavaHprofConfig_ContinuousDumpConfig : public ::protozero::Message {
       uint32_t,
       JavaHprofConfig_ContinuousDumpConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DumpPhaseMs kDumpPhaseMs() { return {}; }
+  static constexpr FieldMetadata_DumpPhaseMs kDumpPhaseMs{};
   void set_dump_phase_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DumpPhaseMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -302,14 +246,7 @@ class JavaHprofConfig_ContinuousDumpConfig : public ::protozero::Message {
       uint32_t,
       JavaHprofConfig_ContinuousDumpConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DumpIntervalMs kDumpIntervalMs() { return {}; }
+  static constexpr FieldMetadata_DumpIntervalMs kDumpIntervalMs{};
   void set_dump_interval_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DumpIntervalMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -327,14 +264,7 @@ class JavaHprofConfig_ContinuousDumpConfig : public ::protozero::Message {
       bool,
       JavaHprofConfig_ContinuousDumpConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ScanPidsOnlyOnStart kScanPidsOnlyOnStart() { return {}; }
+  static constexpr FieldMetadata_ScanPidsOnlyOnStart kScanPidsOnlyOnStart{};
   void set_scan_pids_only_on_start(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ScanPidsOnlyOnStart::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
