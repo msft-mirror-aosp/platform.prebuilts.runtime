@@ -215,44 +215,44 @@ class ChromeLegacyIpc : public ::protozero::Message {
   static inline const char* MessageClass_Name(MessageClass value) {
     return ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass_Name(value);
   }
-  static const MessageClass CLASS_UNSPECIFIED = MessageClass::CLASS_UNSPECIFIED;
-  static const MessageClass CLASS_AUTOMATION = MessageClass::CLASS_AUTOMATION;
-  static const MessageClass CLASS_FRAME = MessageClass::CLASS_FRAME;
-  static const MessageClass CLASS_PAGE = MessageClass::CLASS_PAGE;
-  static const MessageClass CLASS_VIEW = MessageClass::CLASS_VIEW;
-  static const MessageClass CLASS_WIDGET = MessageClass::CLASS_WIDGET;
-  static const MessageClass CLASS_INPUT = MessageClass::CLASS_INPUT;
-  static const MessageClass CLASS_TEST = MessageClass::CLASS_TEST;
-  static const MessageClass CLASS_WORKER = MessageClass::CLASS_WORKER;
-  static const MessageClass CLASS_NACL = MessageClass::CLASS_NACL;
-  static const MessageClass CLASS_GPU_CHANNEL = MessageClass::CLASS_GPU_CHANNEL;
-  static const MessageClass CLASS_MEDIA = MessageClass::CLASS_MEDIA;
-  static const MessageClass CLASS_PPAPI = MessageClass::CLASS_PPAPI;
-  static const MessageClass CLASS_CHROME = MessageClass::CLASS_CHROME;
-  static const MessageClass CLASS_DRAG = MessageClass::CLASS_DRAG;
-  static const MessageClass CLASS_PRINT = MessageClass::CLASS_PRINT;
-  static const MessageClass CLASS_EXTENSION = MessageClass::CLASS_EXTENSION;
-  static const MessageClass CLASS_TEXT_INPUT_CLIENT = MessageClass::CLASS_TEXT_INPUT_CLIENT;
-  static const MessageClass CLASS_BLINK_TEST = MessageClass::CLASS_BLINK_TEST;
-  static const MessageClass CLASS_ACCESSIBILITY = MessageClass::CLASS_ACCESSIBILITY;
-  static const MessageClass CLASS_PRERENDER = MessageClass::CLASS_PRERENDER;
-  static const MessageClass CLASS_CHROMOTING = MessageClass::CLASS_CHROMOTING;
-  static const MessageClass CLASS_BROWSER_PLUGIN = MessageClass::CLASS_BROWSER_PLUGIN;
-  static const MessageClass CLASS_ANDROID_WEB_VIEW = MessageClass::CLASS_ANDROID_WEB_VIEW;
-  static const MessageClass CLASS_NACL_HOST = MessageClass::CLASS_NACL_HOST;
-  static const MessageClass CLASS_ENCRYPTED_MEDIA = MessageClass::CLASS_ENCRYPTED_MEDIA;
-  static const MessageClass CLASS_CAST = MessageClass::CLASS_CAST;
-  static const MessageClass CLASS_GIN_JAVA_BRIDGE = MessageClass::CLASS_GIN_JAVA_BRIDGE;
-  static const MessageClass CLASS_CHROME_UTILITY_PRINTING = MessageClass::CLASS_CHROME_UTILITY_PRINTING;
-  static const MessageClass CLASS_OZONE_GPU = MessageClass::CLASS_OZONE_GPU;
-  static const MessageClass CLASS_WEB_TEST = MessageClass::CLASS_WEB_TEST;
-  static const MessageClass CLASS_NETWORK_HINTS = MessageClass::CLASS_NETWORK_HINTS;
-  static const MessageClass CLASS_EXTENSIONS_GUEST_VIEW = MessageClass::CLASS_EXTENSIONS_GUEST_VIEW;
-  static const MessageClass CLASS_GUEST_VIEW = MessageClass::CLASS_GUEST_VIEW;
-  static const MessageClass CLASS_MEDIA_PLAYER_DELEGATE = MessageClass::CLASS_MEDIA_PLAYER_DELEGATE;
-  static const MessageClass CLASS_EXTENSION_WORKER = MessageClass::CLASS_EXTENSION_WORKER;
-  static const MessageClass CLASS_SUBRESOURCE_FILTER = MessageClass::CLASS_SUBRESOURCE_FILTER;
-  static const MessageClass CLASS_UNFREEZABLE_FRAME = MessageClass::CLASS_UNFREEZABLE_FRAME;
+  static inline const MessageClass CLASS_UNSPECIFIED = MessageClass::CLASS_UNSPECIFIED;
+  static inline const MessageClass CLASS_AUTOMATION = MessageClass::CLASS_AUTOMATION;
+  static inline const MessageClass CLASS_FRAME = MessageClass::CLASS_FRAME;
+  static inline const MessageClass CLASS_PAGE = MessageClass::CLASS_PAGE;
+  static inline const MessageClass CLASS_VIEW = MessageClass::CLASS_VIEW;
+  static inline const MessageClass CLASS_WIDGET = MessageClass::CLASS_WIDGET;
+  static inline const MessageClass CLASS_INPUT = MessageClass::CLASS_INPUT;
+  static inline const MessageClass CLASS_TEST = MessageClass::CLASS_TEST;
+  static inline const MessageClass CLASS_WORKER = MessageClass::CLASS_WORKER;
+  static inline const MessageClass CLASS_NACL = MessageClass::CLASS_NACL;
+  static inline const MessageClass CLASS_GPU_CHANNEL = MessageClass::CLASS_GPU_CHANNEL;
+  static inline const MessageClass CLASS_MEDIA = MessageClass::CLASS_MEDIA;
+  static inline const MessageClass CLASS_PPAPI = MessageClass::CLASS_PPAPI;
+  static inline const MessageClass CLASS_CHROME = MessageClass::CLASS_CHROME;
+  static inline const MessageClass CLASS_DRAG = MessageClass::CLASS_DRAG;
+  static inline const MessageClass CLASS_PRINT = MessageClass::CLASS_PRINT;
+  static inline const MessageClass CLASS_EXTENSION = MessageClass::CLASS_EXTENSION;
+  static inline const MessageClass CLASS_TEXT_INPUT_CLIENT = MessageClass::CLASS_TEXT_INPUT_CLIENT;
+  static inline const MessageClass CLASS_BLINK_TEST = MessageClass::CLASS_BLINK_TEST;
+  static inline const MessageClass CLASS_ACCESSIBILITY = MessageClass::CLASS_ACCESSIBILITY;
+  static inline const MessageClass CLASS_PRERENDER = MessageClass::CLASS_PRERENDER;
+  static inline const MessageClass CLASS_CHROMOTING = MessageClass::CLASS_CHROMOTING;
+  static inline const MessageClass CLASS_BROWSER_PLUGIN = MessageClass::CLASS_BROWSER_PLUGIN;
+  static inline const MessageClass CLASS_ANDROID_WEB_VIEW = MessageClass::CLASS_ANDROID_WEB_VIEW;
+  static inline const MessageClass CLASS_NACL_HOST = MessageClass::CLASS_NACL_HOST;
+  static inline const MessageClass CLASS_ENCRYPTED_MEDIA = MessageClass::CLASS_ENCRYPTED_MEDIA;
+  static inline const MessageClass CLASS_CAST = MessageClass::CLASS_CAST;
+  static inline const MessageClass CLASS_GIN_JAVA_BRIDGE = MessageClass::CLASS_GIN_JAVA_BRIDGE;
+  static inline const MessageClass CLASS_CHROME_UTILITY_PRINTING = MessageClass::CLASS_CHROME_UTILITY_PRINTING;
+  static inline const MessageClass CLASS_OZONE_GPU = MessageClass::CLASS_OZONE_GPU;
+  static inline const MessageClass CLASS_WEB_TEST = MessageClass::CLASS_WEB_TEST;
+  static inline const MessageClass CLASS_NETWORK_HINTS = MessageClass::CLASS_NETWORK_HINTS;
+  static inline const MessageClass CLASS_EXTENSIONS_GUEST_VIEW = MessageClass::CLASS_EXTENSIONS_GUEST_VIEW;
+  static inline const MessageClass CLASS_GUEST_VIEW = MessageClass::CLASS_GUEST_VIEW;
+  static inline const MessageClass CLASS_MEDIA_PLAYER_DELEGATE = MessageClass::CLASS_MEDIA_PLAYER_DELEGATE;
+  static inline const MessageClass CLASS_EXTENSION_WORKER = MessageClass::CLASS_EXTENSION_WORKER;
+  static inline const MessageClass CLASS_SUBRESOURCE_FILTER = MessageClass::CLASS_SUBRESOURCE_FILTER;
+  static inline const MessageClass CLASS_UNFREEZABLE_FRAME = MessageClass::CLASS_UNFREEZABLE_FRAME;
 
   using FieldMetadata_MessageClass =
     ::protozero::proto_utils::FieldMetadata<
@@ -262,14 +262,7 @@ class ChromeLegacyIpc : public ::protozero::Message {
       ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass,
       ChromeLegacyIpc>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MessageClass kMessageClass() { return {}; }
+  static constexpr FieldMetadata_MessageClass kMessageClass{};
   void set_message_class(::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass value) {
     static constexpr uint32_t field_id = FieldMetadata_MessageClass::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -287,14 +280,7 @@ class ChromeLegacyIpc : public ::protozero::Message {
       uint32_t,
       ChromeLegacyIpc>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MessageLine kMessageLine() { return {}; }
+  static constexpr FieldMetadata_MessageLine kMessageLine{};
   void set_message_line(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MessageLine::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

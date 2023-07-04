@@ -28,11 +28,12 @@ class InternedGraphicsContext;
 class InternedString;
 class LogMessageBody;
 class Mapping;
+class NetworkPacketContext;
 class ProfiledFrameSymbols;
 class SourceLocation;
 class UnsymbolizedSourceLocation;
 
-class InternedData_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/28, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class InternedData_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/30, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   InternedData_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit InternedData_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -77,6 +78,10 @@ class InternedData_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_I
   ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> gpu_specifications() const { return GetRepeated<::protozero::ConstBytes>(24); }
   bool has_kernel_symbols() const { return at<26>().valid(); }
   ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> kernel_symbols() const { return GetRepeated<::protozero::ConstBytes>(26); }
+  bool has_debug_annotation_string_values() const { return at<29>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> debug_annotation_string_values() const { return GetRepeated<::protozero::ConstBytes>(29); }
+  bool has_packet_context() const { return at<30>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> packet_context() const { return GetRepeated<::protozero::ConstBytes>(30); }
 };
 
 class InternedData : public ::protozero::Message {
@@ -103,6 +108,8 @@ class InternedData : public ::protozero::Message {
     kGraphicsContextsFieldNumber = 23,
     kGpuSpecificationsFieldNumber = 24,
     kKernelSymbolsFieldNumber = 26,
+    kDebugAnnotationStringValuesFieldNumber = 29,
+    kPacketContextFieldNumber = 30,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.InternedData"; }
 
@@ -115,14 +122,7 @@ class InternedData : public ::protozero::Message {
       EventCategory,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EventCategories kEventCategories() { return {}; }
+  static constexpr FieldMetadata_EventCategories kEventCategories{};
   template <typename T = EventCategory> T* add_event_categories() {
     return BeginNestedMessage<T>(1);
   }
@@ -136,14 +136,7 @@ class InternedData : public ::protozero::Message {
       EventName,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EventNames kEventNames() { return {}; }
+  static constexpr FieldMetadata_EventNames kEventNames{};
   template <typename T = EventName> T* add_event_names() {
     return BeginNestedMessage<T>(2);
   }
@@ -157,14 +150,7 @@ class InternedData : public ::protozero::Message {
       DebugAnnotationName,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DebugAnnotationNames kDebugAnnotationNames() { return {}; }
+  static constexpr FieldMetadata_DebugAnnotationNames kDebugAnnotationNames{};
   template <typename T = DebugAnnotationName> T* add_debug_annotation_names() {
     return BeginNestedMessage<T>(3);
   }
@@ -178,14 +164,7 @@ class InternedData : public ::protozero::Message {
       DebugAnnotationValueTypeName,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DebugAnnotationValueTypeNames kDebugAnnotationValueTypeNames() { return {}; }
+  static constexpr FieldMetadata_DebugAnnotationValueTypeNames kDebugAnnotationValueTypeNames{};
   template <typename T = DebugAnnotationValueTypeName> T* add_debug_annotation_value_type_names() {
     return BeginNestedMessage<T>(27);
   }
@@ -199,14 +178,7 @@ class InternedData : public ::protozero::Message {
       SourceLocation,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SourceLocations kSourceLocations() { return {}; }
+  static constexpr FieldMetadata_SourceLocations kSourceLocations{};
   template <typename T = SourceLocation> T* add_source_locations() {
     return BeginNestedMessage<T>(4);
   }
@@ -220,14 +192,7 @@ class InternedData : public ::protozero::Message {
       UnsymbolizedSourceLocation,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_UnsymbolizedSourceLocations kUnsymbolizedSourceLocations() { return {}; }
+  static constexpr FieldMetadata_UnsymbolizedSourceLocations kUnsymbolizedSourceLocations{};
   template <typename T = UnsymbolizedSourceLocation> T* add_unsymbolized_source_locations() {
     return BeginNestedMessage<T>(28);
   }
@@ -241,14 +206,7 @@ class InternedData : public ::protozero::Message {
       LogMessageBody,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_LogMessageBody kLogMessageBody() { return {}; }
+  static constexpr FieldMetadata_LogMessageBody kLogMessageBody{};
   template <typename T = LogMessageBody> T* add_log_message_body() {
     return BeginNestedMessage<T>(20);
   }
@@ -262,14 +220,7 @@ class InternedData : public ::protozero::Message {
       HistogramName,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_HistogramNames kHistogramNames() { return {}; }
+  static constexpr FieldMetadata_HistogramNames kHistogramNames{};
   template <typename T = HistogramName> T* add_histogram_names() {
     return BeginNestedMessage<T>(25);
   }
@@ -283,14 +234,7 @@ class InternedData : public ::protozero::Message {
       InternedString,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BuildIds kBuildIds() { return {}; }
+  static constexpr FieldMetadata_BuildIds kBuildIds{};
   template <typename T = InternedString> T* add_build_ids() {
     return BeginNestedMessage<T>(16);
   }
@@ -304,14 +248,7 @@ class InternedData : public ::protozero::Message {
       InternedString,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MappingPaths kMappingPaths() { return {}; }
+  static constexpr FieldMetadata_MappingPaths kMappingPaths{};
   template <typename T = InternedString> T* add_mapping_paths() {
     return BeginNestedMessage<T>(17);
   }
@@ -325,14 +262,7 @@ class InternedData : public ::protozero::Message {
       InternedString,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SourcePaths kSourcePaths() { return {}; }
+  static constexpr FieldMetadata_SourcePaths kSourcePaths{};
   template <typename T = InternedString> T* add_source_paths() {
     return BeginNestedMessage<T>(18);
   }
@@ -346,14 +276,7 @@ class InternedData : public ::protozero::Message {
       InternedString,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FunctionNames kFunctionNames() { return {}; }
+  static constexpr FieldMetadata_FunctionNames kFunctionNames{};
   template <typename T = InternedString> T* add_function_names() {
     return BeginNestedMessage<T>(5);
   }
@@ -367,14 +290,7 @@ class InternedData : public ::protozero::Message {
       ProfiledFrameSymbols,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ProfiledFrameSymbols kProfiledFrameSymbols() { return {}; }
+  static constexpr FieldMetadata_ProfiledFrameSymbols kProfiledFrameSymbols{};
   template <typename T = ProfiledFrameSymbols> T* add_profiled_frame_symbols() {
     return BeginNestedMessage<T>(21);
   }
@@ -388,14 +304,7 @@ class InternedData : public ::protozero::Message {
       Mapping,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Mappings kMappings() { return {}; }
+  static constexpr FieldMetadata_Mappings kMappings{};
   template <typename T = Mapping> T* add_mappings() {
     return BeginNestedMessage<T>(19);
   }
@@ -409,14 +318,7 @@ class InternedData : public ::protozero::Message {
       Frame,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Frames kFrames() { return {}; }
+  static constexpr FieldMetadata_Frames kFrames{};
   template <typename T = Frame> T* add_frames() {
     return BeginNestedMessage<T>(6);
   }
@@ -430,14 +332,7 @@ class InternedData : public ::protozero::Message {
       Callstack,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Callstacks kCallstacks() { return {}; }
+  static constexpr FieldMetadata_Callstacks kCallstacks{};
   template <typename T = Callstack> T* add_callstacks() {
     return BeginNestedMessage<T>(7);
   }
@@ -451,14 +346,7 @@ class InternedData : public ::protozero::Message {
       InternedString,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_VulkanMemoryKeys kVulkanMemoryKeys() { return {}; }
+  static constexpr FieldMetadata_VulkanMemoryKeys kVulkanMemoryKeys{};
   template <typename T = InternedString> T* add_vulkan_memory_keys() {
     return BeginNestedMessage<T>(22);
   }
@@ -472,14 +360,7 @@ class InternedData : public ::protozero::Message {
       InternedGraphicsContext,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_GraphicsContexts kGraphicsContexts() { return {}; }
+  static constexpr FieldMetadata_GraphicsContexts kGraphicsContexts{};
   template <typename T = InternedGraphicsContext> T* add_graphics_contexts() {
     return BeginNestedMessage<T>(23);
   }
@@ -493,14 +374,7 @@ class InternedData : public ::protozero::Message {
       InternedGpuRenderStageSpecification,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_GpuSpecifications kGpuSpecifications() { return {}; }
+  static constexpr FieldMetadata_GpuSpecifications kGpuSpecifications{};
   template <typename T = InternedGpuRenderStageSpecification> T* add_gpu_specifications() {
     return BeginNestedMessage<T>(24);
   }
@@ -514,16 +388,37 @@ class InternedData : public ::protozero::Message {
       InternedString,
       InternedData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_KernelSymbols kKernelSymbols() { return {}; }
+  static constexpr FieldMetadata_KernelSymbols kKernelSymbols{};
   template <typename T = InternedString> T* add_kernel_symbols() {
     return BeginNestedMessage<T>(26);
+  }
+
+
+  using FieldMetadata_DebugAnnotationStringValues =
+    ::protozero::proto_utils::FieldMetadata<
+      29,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      InternedString,
+      InternedData>;
+
+  static constexpr FieldMetadata_DebugAnnotationStringValues kDebugAnnotationStringValues{};
+  template <typename T = InternedString> T* add_debug_annotation_string_values() {
+    return BeginNestedMessage<T>(29);
+  }
+
+
+  using FieldMetadata_PacketContext =
+    ::protozero::proto_utils::FieldMetadata<
+      30,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      NetworkPacketContext,
+      InternedData>;
+
+  static constexpr FieldMetadata_PacketContext kPacketContext{};
+  template <typename T = NetworkPacketContext> T* add_packet_context() {
+    return BeginNestedMessage<T>(30);
   }
 
 };

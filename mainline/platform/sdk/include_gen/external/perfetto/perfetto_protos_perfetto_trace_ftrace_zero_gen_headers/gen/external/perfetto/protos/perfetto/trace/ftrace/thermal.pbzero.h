@@ -46,14 +46,7 @@ class CdevUpdateFtraceEvent : public ::protozero::Message {
       uint64_t,
       CdevUpdateFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Target kTarget() { return {}; }
+  static constexpr FieldMetadata_Target kTarget{};
   void set_target(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Target::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -71,14 +64,7 @@ class CdevUpdateFtraceEvent : public ::protozero::Message {
       std::string,
       CdevUpdateFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Type kType() { return {}; }
+  static constexpr FieldMetadata_Type kType{};
   void set_type(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Type::kFieldId, data, size);
   }
@@ -130,14 +116,7 @@ class ThermalTemperatureFtraceEvent : public ::protozero::Message {
       int32_t,
       ThermalTemperatureFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Id kId() { return {}; }
+  static constexpr FieldMetadata_Id kId{};
   void set_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -155,14 +134,7 @@ class ThermalTemperatureFtraceEvent : public ::protozero::Message {
       int32_t,
       ThermalTemperatureFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Temp kTemp() { return {}; }
+  static constexpr FieldMetadata_Temp kTemp{};
   void set_temp(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Temp::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -180,14 +152,7 @@ class ThermalTemperatureFtraceEvent : public ::protozero::Message {
       int32_t,
       ThermalTemperatureFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TempPrev kTempPrev() { return {}; }
+  static constexpr FieldMetadata_TempPrev kTempPrev{};
   void set_temp_prev(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TempPrev::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -205,14 +170,7 @@ class ThermalTemperatureFtraceEvent : public ::protozero::Message {
       std::string,
       ThermalTemperatureFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ThermalZone kThermalZone() { return {}; }
+  static constexpr FieldMetadata_ThermalZone kThermalZone{};
   void set_thermal_zone(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ThermalZone::kFieldId, data, size);
   }

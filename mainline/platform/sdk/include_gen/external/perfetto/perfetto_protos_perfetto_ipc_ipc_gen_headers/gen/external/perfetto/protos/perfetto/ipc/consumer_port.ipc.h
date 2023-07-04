@@ -73,6 +73,9 @@ class ConsumerPort : public ::perfetto::ipc::Service {
   using DeferredSaveTraceForBugreportResponse = ::perfetto::ipc::Deferred<SaveTraceForBugreportResponse>;
   virtual void SaveTraceForBugreport(const SaveTraceForBugreportRequest&, DeferredSaveTraceForBugreportResponse) = 0;
 
+  using DeferredCloneSessionResponse = ::perfetto::ipc::Deferred<CloneSessionResponse>;
+  virtual void CloneSession(const CloneSessionRequest&, DeferredCloneSessionResponse) = 0;
+
 };
 
 
@@ -126,6 +129,9 @@ class ConsumerPortProxy : public ::perfetto::ipc::ServiceProxy {
 
   using DeferredSaveTraceForBugreportResponse = ::perfetto::ipc::Deferred<SaveTraceForBugreportResponse>;
   void SaveTraceForBugreport(const SaveTraceForBugreportRequest&, DeferredSaveTraceForBugreportResponse, int fd = -1);
+
+  using DeferredCloneSessionResponse = ::perfetto::ipc::Deferred<CloneSessionResponse>;
+  void CloneSession(const CloneSessionRequest&, DeferredCloneSessionResponse, int fd = -1);
 
 };
 

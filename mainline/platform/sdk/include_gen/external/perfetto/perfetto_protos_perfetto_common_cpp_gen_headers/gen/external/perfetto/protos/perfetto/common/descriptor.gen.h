@@ -20,6 +20,7 @@ class EnumValueDescriptorProto;
 class EnumDescriptorProto;
 class OneofDescriptorProto;
 class FieldDescriptorProto;
+class FieldOptions;
 class DescriptorProto;
 class DescriptorProto_ReservedRange;
 class FileDescriptorProto;
@@ -263,6 +264,7 @@ class PERFETTO_EXPORT_COMPONENT FieldDescriptorProto : public ::protozero::CppMe
     kTypeNameFieldNumber = 6,
     kExtendeeFieldNumber = 2,
     kDefaultValueFieldNumber = 7,
+    kOptionsFieldNumber = 8,
     kOneofIndexFieldNumber = 9,
   };
 
@@ -308,6 +310,10 @@ class PERFETTO_EXPORT_COMPONENT FieldDescriptorProto : public ::protozero::CppMe
   const std::string& default_value() const { return default_value_; }
   void set_default_value(const std::string& value) { default_value_ = value; _has_field_.set(7); }
 
+  bool has_options() const { return _has_field_[8]; }
+  const FieldOptions& options() const { return *options_; }
+  FieldOptions* mutable_options() { _has_field_.set(8); return options_.get(); }
+
   bool has_oneof_index() const { return _has_field_[9]; }
   int32_t oneof_index() const { return oneof_index_; }
   void set_oneof_index(int32_t value) { oneof_index_ = value; _has_field_.set(9); }
@@ -320,6 +326,7 @@ class PERFETTO_EXPORT_COMPONENT FieldDescriptorProto : public ::protozero::CppMe
   std::string type_name_{};
   std::string extendee_{};
   std::string default_value_{};
+  ::protozero::CopyablePtr<FieldOptions> options_;
   int32_t oneof_index_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
@@ -327,6 +334,41 @@ class PERFETTO_EXPORT_COMPONENT FieldDescriptorProto : public ::protozero::CppMe
   std::string unknown_fields_;
 
   std::bitset<10> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT FieldOptions : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kPackedFieldNumber = 2,
+  };
+
+  FieldOptions();
+  ~FieldOptions() override;
+  FieldOptions(FieldOptions&&) noexcept;
+  FieldOptions& operator=(FieldOptions&&);
+  FieldOptions(const FieldOptions&);
+  FieldOptions& operator=(const FieldOptions&);
+  bool operator==(const FieldOptions&) const;
+  bool operator!=(const FieldOptions& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_packed() const { return _has_field_[2]; }
+  bool packed() const { return packed_; }
+  void set_packed(bool value) { packed_ = value; _has_field_.set(2); }
+
+ private:
+  bool packed_{};
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<3> _has_field_{};
 };
 
 

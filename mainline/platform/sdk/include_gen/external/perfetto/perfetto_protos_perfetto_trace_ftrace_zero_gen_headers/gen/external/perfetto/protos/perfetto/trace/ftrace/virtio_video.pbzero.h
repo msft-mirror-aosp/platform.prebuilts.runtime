@@ -64,14 +64,7 @@ class VirtioVideoResourceQueueDoneFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoResourceQueueDoneFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DataSize0 kDataSize0() { return {}; }
+  static constexpr FieldMetadata_DataSize0 kDataSize0{};
   void set_data_size0(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DataSize0::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -89,14 +82,7 @@ class VirtioVideoResourceQueueDoneFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoResourceQueueDoneFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DataSize1 kDataSize1() { return {}; }
+  static constexpr FieldMetadata_DataSize1 kDataSize1{};
   void set_data_size1(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DataSize1::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -114,14 +100,7 @@ class VirtioVideoResourceQueueDoneFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoResourceQueueDoneFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DataSize2 kDataSize2() { return {}; }
+  static constexpr FieldMetadata_DataSize2 kDataSize2{};
   void set_data_size2(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DataSize2::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -139,14 +118,7 @@ class VirtioVideoResourceQueueDoneFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoResourceQueueDoneFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DataSize3 kDataSize3() { return {}; }
+  static constexpr FieldMetadata_DataSize3 kDataSize3{};
   void set_data_size3(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DataSize3::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -164,14 +136,7 @@ class VirtioVideoResourceQueueDoneFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoResourceQueueDoneFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_QueueType kQueueType() { return {}; }
+  static constexpr FieldMetadata_QueueType kQueueType{};
   void set_queue_type(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_QueueType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -189,14 +154,7 @@ class VirtioVideoResourceQueueDoneFtraceEvent : public ::protozero::Message {
       int32_t,
       VirtioVideoResourceQueueDoneFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ResourceId kResourceId() { return {}; }
+  static constexpr FieldMetadata_ResourceId kResourceId{};
   void set_resource_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ResourceId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -214,14 +172,7 @@ class VirtioVideoResourceQueueDoneFtraceEvent : public ::protozero::Message {
       int32_t,
       VirtioVideoResourceQueueDoneFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StreamId kStreamId() { return {}; }
+  static constexpr FieldMetadata_StreamId kStreamId{};
   void set_stream_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StreamId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -239,14 +190,7 @@ class VirtioVideoResourceQueueDoneFtraceEvent : public ::protozero::Message {
       uint64_t,
       VirtioVideoResourceQueueDoneFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Timestamp kTimestamp() { return {}; }
+  static constexpr FieldMetadata_Timestamp kTimestamp{};
   void set_timestamp(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Timestamp::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -304,14 +248,7 @@ class VirtioVideoResourceQueueFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoResourceQueueFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DataSize0 kDataSize0() { return {}; }
+  static constexpr FieldMetadata_DataSize0 kDataSize0{};
   void set_data_size0(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DataSize0::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -329,14 +266,7 @@ class VirtioVideoResourceQueueFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoResourceQueueFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DataSize1 kDataSize1() { return {}; }
+  static constexpr FieldMetadata_DataSize1 kDataSize1{};
   void set_data_size1(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DataSize1::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -354,14 +284,7 @@ class VirtioVideoResourceQueueFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoResourceQueueFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DataSize2 kDataSize2() { return {}; }
+  static constexpr FieldMetadata_DataSize2 kDataSize2{};
   void set_data_size2(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DataSize2::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -379,14 +302,7 @@ class VirtioVideoResourceQueueFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoResourceQueueFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DataSize3 kDataSize3() { return {}; }
+  static constexpr FieldMetadata_DataSize3 kDataSize3{};
   void set_data_size3(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DataSize3::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -404,14 +320,7 @@ class VirtioVideoResourceQueueFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoResourceQueueFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_QueueType kQueueType() { return {}; }
+  static constexpr FieldMetadata_QueueType kQueueType{};
   void set_queue_type(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_QueueType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -429,14 +338,7 @@ class VirtioVideoResourceQueueFtraceEvent : public ::protozero::Message {
       int32_t,
       VirtioVideoResourceQueueFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ResourceId kResourceId() { return {}; }
+  static constexpr FieldMetadata_ResourceId kResourceId{};
   void set_resource_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ResourceId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -454,14 +356,7 @@ class VirtioVideoResourceQueueFtraceEvent : public ::protozero::Message {
       int32_t,
       VirtioVideoResourceQueueFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StreamId kStreamId() { return {}; }
+  static constexpr FieldMetadata_StreamId kStreamId{};
   void set_stream_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StreamId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -479,14 +374,7 @@ class VirtioVideoResourceQueueFtraceEvent : public ::protozero::Message {
       uint64_t,
       VirtioVideoResourceQueueFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Timestamp kTimestamp() { return {}; }
+  static constexpr FieldMetadata_Timestamp kTimestamp{};
   void set_timestamp(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Timestamp::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -526,14 +414,7 @@ class VirtioVideoCmdDoneFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoCmdDoneFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StreamId kStreamId() { return {}; }
+  static constexpr FieldMetadata_StreamId kStreamId{};
   void set_stream_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StreamId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -551,14 +432,7 @@ class VirtioVideoCmdDoneFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoCmdDoneFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Type kType() { return {}; }
+  static constexpr FieldMetadata_Type kType{};
   void set_type(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -598,14 +472,7 @@ class VirtioVideoCmdFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoCmdFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StreamId kStreamId() { return {}; }
+  static constexpr FieldMetadata_StreamId kStreamId{};
   void set_stream_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StreamId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -623,14 +490,7 @@ class VirtioVideoCmdFtraceEvent : public ::protozero::Message {
       uint32_t,
       VirtioVideoCmdFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Type kType() { return {}; }
+  static constexpr FieldMetadata_Type kType{};
   void set_type(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

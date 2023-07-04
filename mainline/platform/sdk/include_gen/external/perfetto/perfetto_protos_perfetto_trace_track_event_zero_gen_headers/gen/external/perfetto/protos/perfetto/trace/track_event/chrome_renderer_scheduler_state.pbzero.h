@@ -83,14 +83,7 @@ class ChromeRendererSchedulerState : public ::protozero::Message {
       ::perfetto::protos::pbzero::ChromeRAILMode,
       ChromeRendererSchedulerState>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RailMode kRailMode() { return {}; }
+  static constexpr FieldMetadata_RailMode kRailMode{};
   void set_rail_mode(::perfetto::protos::pbzero::ChromeRAILMode value) {
     static constexpr uint32_t field_id = FieldMetadata_RailMode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -108,14 +101,7 @@ class ChromeRendererSchedulerState : public ::protozero::Message {
       bool,
       ChromeRendererSchedulerState>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IsBackgrounded kIsBackgrounded() { return {}; }
+  static constexpr FieldMetadata_IsBackgrounded kIsBackgrounded{};
   void set_is_backgrounded(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_IsBackgrounded::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -133,14 +119,7 @@ class ChromeRendererSchedulerState : public ::protozero::Message {
       bool,
       ChromeRendererSchedulerState>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IsHidden kIsHidden() { return {}; }
+  static constexpr FieldMetadata_IsHidden kIsHidden{};
   void set_is_hidden(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_IsHidden::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

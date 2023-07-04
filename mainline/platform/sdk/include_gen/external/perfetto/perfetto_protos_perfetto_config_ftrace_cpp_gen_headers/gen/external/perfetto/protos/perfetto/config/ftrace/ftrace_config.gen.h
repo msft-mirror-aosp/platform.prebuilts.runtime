@@ -18,6 +18,7 @@ namespace gen {
 class FtraceConfig;
 class FtraceConfig_PrintFilter;
 class FtraceConfig_PrintFilter_Rule;
+class FtraceConfig_PrintFilter_Rule_AtraceMessage;
 class FtraceConfig_CompactSchedConfig;
 enum FtraceConfig_KsymsMemPolicy : int;
 }  // namespace perfetto
@@ -65,6 +66,8 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig : public ::protozero::CppMessageObj
     kFunctionFiltersFieldNumber = 20,
     kFunctionGraphRootsFieldNumber = 21,
     kPreserveFtraceBufferFieldNumber = 23,
+    kUseMonotonicRawClockFieldNumber = 24,
+    kInstanceNameFieldNumber = 25,
   };
 
   FtraceConfig();
@@ -167,6 +170,14 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig : public ::protozero::CppMessageObj
   bool preserve_ftrace_buffer() const { return preserve_ftrace_buffer_; }
   void set_preserve_ftrace_buffer(bool value) { preserve_ftrace_buffer_ = value; _has_field_.set(23); }
 
+  bool has_use_monotonic_raw_clock() const { return _has_field_[24]; }
+  bool use_monotonic_raw_clock() const { return use_monotonic_raw_clock_; }
+  void set_use_monotonic_raw_clock(bool value) { use_monotonic_raw_clock_ = value; _has_field_.set(24); }
+
+  bool has_instance_name() const { return _has_field_[25]; }
+  const std::string& instance_name() const { return instance_name_; }
+  void set_instance_name(const std::string& value) { instance_name_ = value; _has_field_.set(25); }
+
  private:
   std::vector<std::string> ftrace_events_;
   std::vector<std::string> atrace_categories_;
@@ -185,12 +196,14 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig : public ::protozero::CppMessageObj
   std::vector<std::string> function_filters_;
   std::vector<std::string> function_graph_roots_;
   bool preserve_ftrace_buffer_{};
+  bool use_monotonic_raw_clock_{};
+  std::string instance_name_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<24> _has_field_{};
+  std::bitset<26> _has_field_{};
 };
 
 
@@ -234,8 +247,10 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig_PrintFilter : public ::protozero::C
 
 class PERFETTO_EXPORT_COMPONENT FtraceConfig_PrintFilter_Rule : public ::protozero::CppMessageObj {
  public:
+  using AtraceMessage = FtraceConfig_PrintFilter_Rule_AtraceMessage;
   enum FieldNumbers {
     kPrefixFieldNumber = 1,
+    kAtraceMsgFieldNumber = 3,
     kAllowFieldNumber = 2,
   };
 
@@ -257,13 +272,59 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig_PrintFilter_Rule : public ::protoze
   const std::string& prefix() const { return prefix_; }
   void set_prefix(const std::string& value) { prefix_ = value; _has_field_.set(1); }
 
+  bool has_atrace_msg() const { return _has_field_[3]; }
+  const FtraceConfig_PrintFilter_Rule_AtraceMessage& atrace_msg() const { return *atrace_msg_; }
+  FtraceConfig_PrintFilter_Rule_AtraceMessage* mutable_atrace_msg() { _has_field_.set(3); return atrace_msg_.get(); }
+
   bool has_allow() const { return _has_field_[2]; }
   bool allow() const { return allow_; }
   void set_allow(bool value) { allow_ = value; _has_field_.set(2); }
 
  private:
   std::string prefix_{};
+  ::protozero::CopyablePtr<FtraceConfig_PrintFilter_Rule_AtraceMessage> atrace_msg_;
   bool allow_{};
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<4> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT FtraceConfig_PrintFilter_Rule_AtraceMessage : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kTypeFieldNumber = 1,
+    kPrefixFieldNumber = 2,
+  };
+
+  FtraceConfig_PrintFilter_Rule_AtraceMessage();
+  ~FtraceConfig_PrintFilter_Rule_AtraceMessage() override;
+  FtraceConfig_PrintFilter_Rule_AtraceMessage(FtraceConfig_PrintFilter_Rule_AtraceMessage&&) noexcept;
+  FtraceConfig_PrintFilter_Rule_AtraceMessage& operator=(FtraceConfig_PrintFilter_Rule_AtraceMessage&&);
+  FtraceConfig_PrintFilter_Rule_AtraceMessage(const FtraceConfig_PrintFilter_Rule_AtraceMessage&);
+  FtraceConfig_PrintFilter_Rule_AtraceMessage& operator=(const FtraceConfig_PrintFilter_Rule_AtraceMessage&);
+  bool operator==(const FtraceConfig_PrintFilter_Rule_AtraceMessage&) const;
+  bool operator!=(const FtraceConfig_PrintFilter_Rule_AtraceMessage& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_type() const { return _has_field_[1]; }
+  const std::string& type() const { return type_; }
+  void set_type(const std::string& value) { type_ = value; _has_field_.set(1); }
+
+  bool has_prefix() const { return _has_field_[2]; }
+  const std::string& prefix() const { return prefix_; }
+  void set_prefix(const std::string& value) { prefix_ = value; _has_field_.set(2); }
+
+ private:
+  std::string type_{};
+  std::string prefix_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
