@@ -29,7 +29,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT TestConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TestConfig : public ::protozero::CppMessageObj {
  public:
   using DummyFields = TestConfig_DummyFields;
   enum FieldNumbers {
@@ -95,7 +95,7 @@ class PERFETTO_EXPORT TestConfig : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT TestConfig_DummyFields : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT TestConfig_DummyFields : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kFieldUint32FieldNumber = 1,

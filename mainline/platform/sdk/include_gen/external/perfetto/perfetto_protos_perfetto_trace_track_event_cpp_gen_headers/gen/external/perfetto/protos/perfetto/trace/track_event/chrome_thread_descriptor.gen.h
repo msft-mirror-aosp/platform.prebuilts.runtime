@@ -70,11 +70,12 @@ enum ChromeThreadDescriptor_ThreadType : int {
   ChromeThreadDescriptor_ThreadType_THREAD_DEVTOOLSADB = 38,
   ChromeThreadDescriptor_ThreadType_THREAD_NETWORKCONFIGWATCHER = 39,
   ChromeThreadDescriptor_ThreadType_THREAD_WASAPI_RENDER = 40,
+  ChromeThreadDescriptor_ThreadType_THREAD_LOADER_LOCK_SAMPLER = 41,
   ChromeThreadDescriptor_ThreadType_THREAD_MEMORY_INFRA = 50,
   ChromeThreadDescriptor_ThreadType_THREAD_SAMPLING_PROFILER = 51,
 };
 
-class PERFETTO_EXPORT ChromeThreadDescriptor : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeThreadDescriptor : public ::protozero::CppMessageObj {
  public:
   using ThreadType = ChromeThreadDescriptor_ThreadType;
   static constexpr auto THREAD_UNSPECIFIED = ChromeThreadDescriptor_ThreadType_THREAD_UNSPECIFIED;
@@ -118,6 +119,7 @@ class PERFETTO_EXPORT ChromeThreadDescriptor : public ::protozero::CppMessageObj
   static constexpr auto THREAD_DEVTOOLSADB = ChromeThreadDescriptor_ThreadType_THREAD_DEVTOOLSADB;
   static constexpr auto THREAD_NETWORKCONFIGWATCHER = ChromeThreadDescriptor_ThreadType_THREAD_NETWORKCONFIGWATCHER;
   static constexpr auto THREAD_WASAPI_RENDER = ChromeThreadDescriptor_ThreadType_THREAD_WASAPI_RENDER;
+  static constexpr auto THREAD_LOADER_LOCK_SAMPLER = ChromeThreadDescriptor_ThreadType_THREAD_LOADER_LOCK_SAMPLER;
   static constexpr auto THREAD_MEMORY_INFRA = ChromeThreadDescriptor_ThreadType_THREAD_MEMORY_INFRA;
   static constexpr auto THREAD_SAMPLING_PROFILER = ChromeThreadDescriptor_ThreadType_THREAD_SAMPLING_PROFILER;
   static constexpr auto ThreadType_MIN = ChromeThreadDescriptor_ThreadType_THREAD_UNSPECIFIED;

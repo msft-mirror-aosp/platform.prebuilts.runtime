@@ -84,7 +84,7 @@ enum GpuCounterDescriptor_MeasureUnit : int {
   GpuCounterDescriptor_MeasureUnit_INSTRUCTION = 40,
 };
 
-class PERFETTO_EXPORT GpuCounterDescriptor : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GpuCounterDescriptor : public ::protozero::CppMessageObj {
  public:
   using GpuCounterSpec = GpuCounterDescriptor_GpuCounterSpec;
   using GpuCounterBlock = GpuCounterDescriptor_GpuCounterBlock;
@@ -203,7 +203,7 @@ class PERFETTO_EXPORT GpuCounterDescriptor : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT GpuCounterDescriptor_GpuCounterBlock : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GpuCounterDescriptor_GpuCounterBlock : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kBlockIdFieldNumber = 1,
@@ -265,7 +265,7 @@ class PERFETTO_EXPORT GpuCounterDescriptor_GpuCounterBlock : public ::protozero:
 };
 
 
-class PERFETTO_EXPORT GpuCounterDescriptor_GpuCounterSpec : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT GpuCounterDescriptor_GpuCounterSpec : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kCounterIdFieldNumber = 1,
