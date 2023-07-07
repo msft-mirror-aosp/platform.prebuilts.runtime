@@ -120,7 +120,7 @@ enum ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode : int {
   ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_BLOCKED = 5,
 };
 
-class PERFETTO_EXPORT CompositorTimingHistory : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT CompositorTimingHistory : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kBeginMainFrameQueueCriticalEstimateDeltaUsFieldNumber = 1,
@@ -191,7 +191,7 @@ class PERFETTO_EXPORT CompositorTimingHistory : public ::protozero::CppMessageOb
 };
 
 
-class PERFETTO_EXPORT BeginFrameSourceState : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT BeginFrameSourceState : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kSourceIdFieldNumber = 1,
@@ -244,7 +244,7 @@ class PERFETTO_EXPORT BeginFrameSourceState : public ::protozero::CppMessageObj 
 };
 
 
-class PERFETTO_EXPORT BeginFrameArgs : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT BeginFrameArgs : public ::protozero::CppMessageObj {
  public:
   using BeginFrameArgsType = BeginFrameArgs_BeginFrameArgsType;
   static constexpr auto BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED = BeginFrameArgs_BeginFrameArgsType_BEGIN_FRAME_ARGS_TYPE_UNSPECIFIED;
@@ -346,7 +346,7 @@ class PERFETTO_EXPORT BeginFrameArgs : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT BeginFrameObserverState : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT BeginFrameObserverState : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDroppedBeginFrameArgsFieldNumber = 1,
@@ -387,7 +387,7 @@ class PERFETTO_EXPORT BeginFrameObserverState : public ::protozero::CppMessageOb
 };
 
 
-class PERFETTO_EXPORT BeginImplFrameArgs : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT BeginImplFrameArgs : public ::protozero::CppMessageObj {
  public:
   using TimestampsInUs = BeginImplFrameArgs_TimestampsInUs;
   using State = BeginImplFrameArgs_State;
@@ -458,7 +458,7 @@ class PERFETTO_EXPORT BeginImplFrameArgs : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT BeginImplFrameArgs_TimestampsInUs : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT BeginImplFrameArgs_TimestampsInUs : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kIntervalDeltaFieldNumber = 1,
@@ -529,7 +529,7 @@ class PERFETTO_EXPORT BeginImplFrameArgs_TimestampsInUs : public ::protozero::Cp
 };
 
 
-class PERFETTO_EXPORT ChromeCompositorStateMachine : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeCompositorStateMachine : public ::protozero::CppMessageObj {
  public:
   using MajorState = ChromeCompositorStateMachine_MajorState;
   using MinorState = ChromeCompositorStateMachine_MinorState;
@@ -572,7 +572,7 @@ class PERFETTO_EXPORT ChromeCompositorStateMachine : public ::protozero::CppMess
 };
 
 
-class PERFETTO_EXPORT ChromeCompositorStateMachine_MinorState : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeCompositorStateMachine_MinorState : public ::protozero::CppMessageObj {
  public:
   using TreePriority = ChromeCompositorStateMachine_MinorState_TreePriority;
   static constexpr auto TREE_PRIORITY_UNSPECIFIED = ChromeCompositorStateMachine_MinorState_TreePriority_TREE_PRIORITY_UNSPECIFIED;
@@ -884,7 +884,7 @@ class PERFETTO_EXPORT ChromeCompositorStateMachine_MinorState : public ::protoze
 };
 
 
-class PERFETTO_EXPORT ChromeCompositorStateMachine_MajorState : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeCompositorStateMachine_MajorState : public ::protozero::CppMessageObj {
  public:
   using BeginImplFrameState = ChromeCompositorStateMachine_MajorState_BeginImplFrameState;
   static constexpr auto BEGIN_IMPL_FRAME_UNSPECIFIED = ChromeCompositorStateMachine_MajorState_BeginImplFrameState_BEGIN_IMPL_FRAME_UNSPECIFIED;
@@ -974,7 +974,7 @@ class PERFETTO_EXPORT ChromeCompositorStateMachine_MajorState : public ::protoze
 };
 
 
-class PERFETTO_EXPORT ChromeCompositorSchedulerState : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeCompositorSchedulerState : public ::protozero::CppMessageObj {
  public:
   using BeginImplFrameDeadlineMode = ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode;
   static constexpr auto DEADLINE_MODE_UNSPECIFIED = ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode_DEADLINE_MODE_UNSPECIFIED;

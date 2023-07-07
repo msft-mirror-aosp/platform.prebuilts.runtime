@@ -58,6 +58,8 @@ class TrackDescriptor : public ::protozero::Message {
     kChromeThreadFieldNumber = 7,
     kCounterFieldNumber = 8,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.TrackDescriptor"; }
+
 
   using FieldMetadata_Uuid =
     ::protozero::proto_utils::FieldMetadata<
@@ -73,7 +75,7 @@ class TrackDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Uuid kUuid() { return {}; }
   void set_uuid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Uuid::kFieldId;
@@ -98,7 +100,7 @@ class TrackDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ParentUuid kParentUuid() { return {}; }
   void set_parent_uuid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ParentUuid::kFieldId;
@@ -123,10 +125,13 @@ class TrackDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Name kName() { return {}; }
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
@@ -151,7 +156,7 @@ class TrackDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Process kProcess() { return {}; }
   template <typename T = ProcessDescriptor> T* set_process() {
     return BeginNestedMessage<T>(3);
@@ -172,7 +177,7 @@ class TrackDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ChromeProcess kChromeProcess() { return {}; }
   template <typename T = ChromeProcessDescriptor> T* set_chrome_process() {
     return BeginNestedMessage<T>(6);
@@ -193,7 +198,7 @@ class TrackDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Thread kThread() { return {}; }
   template <typename T = ThreadDescriptor> T* set_thread() {
     return BeginNestedMessage<T>(4);
@@ -214,7 +219,7 @@ class TrackDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_ChromeThread kChromeThread() { return {}; }
   template <typename T = ChromeThreadDescriptor> T* set_chrome_thread() {
     return BeginNestedMessage<T>(7);
@@ -235,7 +240,7 @@ class TrackDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Counter kCounter() { return {}; }
   template <typename T = CounterDescriptor> T* set_counter() {
     return BeginNestedMessage<T>(8);

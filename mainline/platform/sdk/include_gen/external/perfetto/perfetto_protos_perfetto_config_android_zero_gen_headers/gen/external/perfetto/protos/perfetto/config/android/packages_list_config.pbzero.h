@@ -32,6 +32,8 @@ class PackagesListConfig : public ::protozero::Message {
   enum : int32_t {
     kPackageNameFilterFieldNumber = 1,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PackagesListConfig"; }
+
 
   using FieldMetadata_PackageNameFilter =
     ::protozero::proto_utils::FieldMetadata<
@@ -47,10 +49,13 @@ class PackagesListConfig : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_PackageNameFilter kPackageNameFilter() { return {}; }
   void add_package_name_filter(const char* data, size_t size) {
     AppendBytes(FieldMetadata_PackageNameFilter::kFieldId, data, size);
+  }
+  void add_package_name_filter(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_PackageNameFilter::kFieldId, chars.data, chars.size);
   }
   void add_package_name_filter(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_PackageNameFilter::kFieldId;

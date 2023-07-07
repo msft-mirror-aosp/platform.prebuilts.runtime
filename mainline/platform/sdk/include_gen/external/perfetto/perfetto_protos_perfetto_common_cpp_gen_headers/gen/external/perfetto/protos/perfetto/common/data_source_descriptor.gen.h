@@ -28,7 +28,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT DataSourceDescriptor : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT DataSourceDescriptor : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kNameFieldNumber = 1,
@@ -38,6 +38,7 @@ class PERFETTO_EXPORT DataSourceDescriptor : public ::protozero::CppMessageObj {
     kHandlesIncrementalStateClearFieldNumber = 4,
     kGpuCounterDescriptorFieldNumber = 5,
     kTrackEventDescriptorFieldNumber = 6,
+    kFtraceDescriptorFieldNumber = 8,
   };
 
   DataSourceDescriptor();
@@ -80,6 +81,9 @@ class PERFETTO_EXPORT DataSourceDescriptor : public ::protozero::CppMessageObj {
   const std::string& track_event_descriptor_raw() const { return track_event_descriptor_; }
   void set_track_event_descriptor_raw(const std::string& raw) { track_event_descriptor_ = raw; _has_field_.set(6); }
 
+  const std::string& ftrace_descriptor_raw() const { return ftrace_descriptor_; }
+  void set_ftrace_descriptor_raw(const std::string& raw) { ftrace_descriptor_ = raw; _has_field_.set(8); }
+
  private:
   std::string name_{};
   uint64_t id_{};
@@ -88,12 +92,13 @@ class PERFETTO_EXPORT DataSourceDescriptor : public ::protozero::CppMessageObj {
   bool handles_incremental_state_clear_{};
   std::string gpu_counter_descriptor_;  // [lazy=true]
   std::string track_event_descriptor_;  // [lazy=true]
+  std::string ftrace_descriptor_;  // [lazy=true]
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<8> _has_field_{};
+  std::bitset<9> _has_field_{};
 };
 
 }  // namespace perfetto

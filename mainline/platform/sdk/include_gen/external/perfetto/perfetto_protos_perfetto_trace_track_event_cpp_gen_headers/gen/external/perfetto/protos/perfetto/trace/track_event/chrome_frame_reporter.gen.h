@@ -19,6 +19,7 @@ class ChromeFrameReporter;
 enum ChromeFrameReporter_State : int;
 enum ChromeFrameReporter_FrameDropReason : int;
 enum ChromeFrameReporter_ScrollState : int;
+enum ChromeFrameReporter_FrameType : int;
 }  // namespace perfetto
 }  // namespace protos
 }  // namespace gen
@@ -48,8 +49,12 @@ enum ChromeFrameReporter_ScrollState : int {
   ChromeFrameReporter_ScrollState_SCROLL_COMPOSITOR_THREAD = 2,
   ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN = 3,
 };
+enum ChromeFrameReporter_FrameType : int {
+  ChromeFrameReporter_FrameType_FORKED = 0,
+  ChromeFrameReporter_FrameType_BACKFILL = 1,
+};
 
-class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT ChromeFrameReporter : public ::protozero::CppMessageObj {
  public:
   using State = ChromeFrameReporter_State;
   static constexpr auto STATE_NO_UPDATE_DESIRED = ChromeFrameReporter_State_STATE_NO_UPDATE_DESIRED;
@@ -72,6 +77,11 @@ class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
   static constexpr auto SCROLL_UNKNOWN = ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN;
   static constexpr auto ScrollState_MIN = ChromeFrameReporter_ScrollState_SCROLL_NONE;
   static constexpr auto ScrollState_MAX = ChromeFrameReporter_ScrollState_SCROLL_UNKNOWN;
+  using FrameType = ChromeFrameReporter_FrameType;
+  static constexpr auto FORKED = ChromeFrameReporter_FrameType_FORKED;
+  static constexpr auto BACKFILL = ChromeFrameReporter_FrameType_BACKFILL;
+  static constexpr auto FrameType_MIN = ChromeFrameReporter_FrameType_FORKED;
+  static constexpr auto FrameType_MAX = ChromeFrameReporter_FrameType_BACKFILL;
   enum FieldNumbers {
     kStateFieldNumber = 1,
     kReasonFieldNumber = 2,
@@ -84,6 +94,9 @@ class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
     kHasSmoothInputMainFieldNumber = 9,
     kHasMissingContentFieldNumber = 10,
     kLayerTreeHostIdFieldNumber = 11,
+    kHasHighLatencyFieldNumber = 12,
+    kFrameTypeFieldNumber = 13,
+    kHighLatencyContributionStageFieldNumber = 14,
   };
 
   ChromeFrameReporter();
@@ -144,6 +157,21 @@ class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
   uint64_t layer_tree_host_id() const { return layer_tree_host_id_; }
   void set_layer_tree_host_id(uint64_t value) { layer_tree_host_id_ = value; _has_field_.set(11); }
 
+  bool has_has_high_latency() const { return _has_field_[12]; }
+  bool has_high_latency() const { return has_high_latency_; }
+  void set_has_high_latency(bool value) { has_high_latency_ = value; _has_field_.set(12); }
+
+  bool has_frame_type() const { return _has_field_[13]; }
+  ChromeFrameReporter_FrameType frame_type() const { return frame_type_; }
+  void set_frame_type(ChromeFrameReporter_FrameType value) { frame_type_ = value; _has_field_.set(13); }
+
+  const std::vector<std::string>& high_latency_contribution_stage() const { return high_latency_contribution_stage_; }
+  std::vector<std::string>* mutable_high_latency_contribution_stage() { return &high_latency_contribution_stage_; }
+  int high_latency_contribution_stage_size() const { return static_cast<int>(high_latency_contribution_stage_.size()); }
+  void clear_high_latency_contribution_stage() { high_latency_contribution_stage_.clear(); }
+  void add_high_latency_contribution_stage(std::string value) { high_latency_contribution_stage_.emplace_back(value); }
+  std::string* add_high_latency_contribution_stage() { high_latency_contribution_stage_.emplace_back(); return &high_latency_contribution_stage_.back(); }
+
  private:
   ChromeFrameReporter_State state_{};
   ChromeFrameReporter_FrameDropReason reason_{};
@@ -156,12 +184,15 @@ class PERFETTO_EXPORT ChromeFrameReporter : public ::protozero::CppMessageObj {
   bool has_smooth_input_main_{};
   bool has_missing_content_{};
   uint64_t layer_tree_host_id_{};
+  bool has_high_latency_{};
+  ChromeFrameReporter_FrameType frame_type_{};
+  std::vector<std::string> high_latency_contribution_stage_;
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<12> _has_field_{};
+  std::bitset<15> _has_field_{};
 };
 
 }  // namespace perfetto
