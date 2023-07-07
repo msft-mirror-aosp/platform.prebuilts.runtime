@@ -31,15 +31,16 @@ cc_prebuilt_binary {
     name: "linkerconfig",
     prefer: false,
     visibility: ["//visibility:public"],
-    apex_available: [
-        "//apex_available:platform",
-        "com.android.runtime",
-    ],
+    apex_available: ["com.android.runtime"],
     licenses: ["runtime-module-host-exports_Android-Apache-2.0"],
     device_supported: false,
     host_supported: true,
     stl: "c++_static",
     compile_multilib: "64",
+    shared_libs: [
+        "libbase",
+        "libbase",
+    ],
     target: {
         host: {
             enabled: false,
