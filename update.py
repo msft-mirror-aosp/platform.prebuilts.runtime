@@ -1,4 +1,4 @@
-#!/usr/bin/env -S python -B
+#!/usr/bin/env -S python3 -B
 #
 # Copyright (C) 2019 The Android Open Source Project
 #
@@ -25,7 +25,7 @@ sys.path.append(THIS_DIR + '/common/python')
 import update_prebuilts as update
 
 adb_install_list = [
-    update.InstallEntry('sdk_arm64-sdk', 'adb', 'adb', need_exec=True),
+    update.InstallEntry('sdk', 'adb', 'adb', need_exec=True),
 ]
 
 adb_extracted_list = [
