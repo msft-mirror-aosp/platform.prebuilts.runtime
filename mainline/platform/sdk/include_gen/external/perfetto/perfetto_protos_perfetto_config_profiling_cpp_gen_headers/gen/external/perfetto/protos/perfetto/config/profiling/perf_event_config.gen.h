@@ -21,7 +21,9 @@ class PerfEventConfig_Scope;
 class PerfEvents_Timebase;
 class PerfEvents_RawEvent;
 class PerfEvents_Tracepoint;
+enum PerfEventConfig_UnwindMode : int;
 enum PerfEvents_Counter : int;
+enum PerfEvents_PerfClock : int;
 }  // namespace perfetto
 }  // namespace protos
 }  // namespace gen
@@ -33,11 +35,22 @@ class Message;
 namespace perfetto {
 namespace protos {
 namespace gen {
+enum PerfEventConfig_UnwindMode : int {
+  PerfEventConfig_UnwindMode_UNWIND_UNKNOWN = 0,
+  PerfEventConfig_UnwindMode_UNWIND_SKIP = 1,
+  PerfEventConfig_UnwindMode_UNWIND_DWARF = 2,
+};
 
-class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT PerfEventConfig : public ::protozero::CppMessageObj {
  public:
   using CallstackSampling = PerfEventConfig_CallstackSampling;
   using Scope = PerfEventConfig_Scope;
+  using UnwindMode = PerfEventConfig_UnwindMode;
+  static constexpr auto UNWIND_UNKNOWN = PerfEventConfig_UnwindMode_UNWIND_UNKNOWN;
+  static constexpr auto UNWIND_SKIP = PerfEventConfig_UnwindMode_UNWIND_SKIP;
+  static constexpr auto UNWIND_DWARF = PerfEventConfig_UnwindMode_UNWIND_DWARF;
+  static constexpr auto UnwindMode_MIN = PerfEventConfig_UnwindMode_UNWIND_UNKNOWN;
+  static constexpr auto UnwindMode_MAX = PerfEventConfig_UnwindMode_UNWIND_DWARF;
   enum FieldNumbers {
     kTimebaseFieldNumber = 15,
     kCallstackSamplingFieldNumber = 16,
@@ -182,11 +195,12 @@ class PERFETTO_EXPORT PerfEventConfig : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT PerfEventConfig_CallstackSampling : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT PerfEventConfig_CallstackSampling : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kScopeFieldNumber = 1,
     kKernelFramesFieldNumber = 2,
+    kUserFramesFieldNumber = 3,
   };
 
   PerfEventConfig_CallstackSampling();
@@ -211,19 +225,24 @@ class PERFETTO_EXPORT PerfEventConfig_CallstackSampling : public ::protozero::Cp
   bool kernel_frames() const { return kernel_frames_; }
   void set_kernel_frames(bool value) { kernel_frames_ = value; _has_field_.set(2); }
 
+  bool has_user_frames() const { return _has_field_[3]; }
+  PerfEventConfig_UnwindMode user_frames() const { return user_frames_; }
+  void set_user_frames(PerfEventConfig_UnwindMode value) { user_frames_ = value; _has_field_.set(3); }
+
  private:
   ::protozero::CopyablePtr<PerfEventConfig_Scope> scope_;
   bool kernel_frames_{};
+  PerfEventConfig_UnwindMode user_frames_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<3> _has_field_{};
+  std::bitset<4> _has_field_{};
 };
 
 
-class PERFETTO_EXPORT PerfEventConfig_Scope : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT PerfEventConfig_Scope : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kTargetPidFieldNumber = 1,
@@ -231,6 +250,7 @@ class PERFETTO_EXPORT PerfEventConfig_Scope : public ::protozero::CppMessageObj 
     kExcludePidFieldNumber = 3,
     kExcludeCmdlineFieldNumber = 4,
     kAdditionalCmdlineCountFieldNumber = 5,
+    kProcessShardCountFieldNumber = 6,
   };
 
   PerfEventConfig_Scope();
@@ -279,18 +299,23 @@ class PERFETTO_EXPORT PerfEventConfig_Scope : public ::protozero::CppMessageObj 
   uint32_t additional_cmdline_count() const { return additional_cmdline_count_; }
   void set_additional_cmdline_count(uint32_t value) { additional_cmdline_count_ = value; _has_field_.set(5); }
 
+  bool has_process_shard_count() const { return _has_field_[6]; }
+  uint32_t process_shard_count() const { return process_shard_count_; }
+  void set_process_shard_count(uint32_t value) { process_shard_count_ = value; _has_field_.set(6); }
+
  private:
   std::vector<int32_t> target_pid_;
   std::vector<std::string> target_cmdline_;
   std::vector<int32_t> exclude_pid_;
   std::vector<std::string> exclude_cmdline_;
   uint32_t additional_cmdline_count_{};
+  uint32_t process_shard_count_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<6> _has_field_{};
+  std::bitset<7> _has_field_{};
 };
 
 }  // namespace perfetto

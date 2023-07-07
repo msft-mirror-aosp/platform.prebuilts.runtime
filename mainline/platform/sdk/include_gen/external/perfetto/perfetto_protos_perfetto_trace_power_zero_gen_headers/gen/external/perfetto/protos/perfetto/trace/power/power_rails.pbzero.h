@@ -37,6 +37,8 @@ class PowerRails : public ::protozero::Message {
     kRailDescriptorFieldNumber = 1,
     kEnergyDataFieldNumber = 2,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PowerRails"; }
+
   using RailDescriptor = ::perfetto::protos::pbzero::PowerRails_RailDescriptor;
   using EnergyData = ::perfetto::protos::pbzero::PowerRails_EnergyData;
 
@@ -54,7 +56,7 @@ class PowerRails : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RailDescriptor kRailDescriptor() { return {}; }
   template <typename T = PowerRails_RailDescriptor> T* add_rail_descriptor() {
     return BeginNestedMessage<T>(1);
@@ -75,7 +77,7 @@ class PowerRails : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_EnergyData kEnergyData() { return {}; }
   template <typename T = PowerRails_EnergyData> T* add_energy_data() {
     return BeginNestedMessage<T>(2);
@@ -104,6 +106,8 @@ class PowerRails_EnergyData : public ::protozero::Message {
     kTimestampMsFieldNumber = 2,
     kEnergyFieldNumber = 3,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PowerRails.EnergyData"; }
+
 
   using FieldMetadata_Index =
     ::protozero::proto_utils::FieldMetadata<
@@ -119,7 +123,7 @@ class PowerRails_EnergyData : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Index kIndex() { return {}; }
   void set_index(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Index::kFieldId;
@@ -144,7 +148,7 @@ class PowerRails_EnergyData : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_TimestampMs kTimestampMs() { return {}; }
   void set_timestamp_ms(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimestampMs::kFieldId;
@@ -169,7 +173,7 @@ class PowerRails_EnergyData : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Energy kEnergy() { return {}; }
   void set_energy(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Energy::kFieldId;
@@ -205,6 +209,8 @@ class PowerRails_RailDescriptor : public ::protozero::Message {
     kSubsysNameFieldNumber = 3,
     kSamplingRateFieldNumber = 4,
   };
+  static constexpr const char* GetName() { return ".perfetto.protos.PowerRails.RailDescriptor"; }
+
 
   using FieldMetadata_Index =
     ::protozero::proto_utils::FieldMetadata<
@@ -220,7 +226,7 @@ class PowerRails_RailDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_Index kIndex() { return {}; }
   void set_index(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Index::kFieldId;
@@ -245,10 +251,13 @@ class PowerRails_RailDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_RailName kRailName() { return {}; }
   void set_rail_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_RailName::kFieldId, data, size);
+  }
+  void set_rail_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_RailName::kFieldId, chars.data, chars.size);
   }
   void set_rail_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_RailName::kFieldId;
@@ -273,10 +282,13 @@ class PowerRails_RailDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SubsysName kSubsysName() { return {}; }
   void set_subsys_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_SubsysName::kFieldId, data, size);
+  }
+  void set_subsys_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_SubsysName::kFieldId, chars.data, chars.size);
   }
   void set_subsys_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_SubsysName::kFieldId;
@@ -301,7 +313,7 @@ class PowerRails_RailDescriptor : public ::protozero::Message {
   // It is declared as a function to keep protozero bindings header-only as
   // inline constexpr variables are not available until C++17 (while inline
   // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.  
+  // TODO(altimin): Use inline variable instead after adopting C++17.
   static constexpr FieldMetadata_SamplingRate kSamplingRate() { return {}; }
   void set_sampling_rate(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SamplingRate::kFieldId;
