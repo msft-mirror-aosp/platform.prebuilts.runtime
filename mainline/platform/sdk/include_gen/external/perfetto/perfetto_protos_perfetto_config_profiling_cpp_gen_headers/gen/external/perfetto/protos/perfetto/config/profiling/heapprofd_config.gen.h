@@ -29,7 +29,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 
-class PERFETTO_EXPORT HeapprofdConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT HeapprofdConfig : public ::protozero::CppMessageObj {
  public:
   using ContinuousDumpConfig = HeapprofdConfig_ContinuousDumpConfig;
   enum FieldNumbers {
@@ -230,7 +230,7 @@ class PERFETTO_EXPORT HeapprofdConfig : public ::protozero::CppMessageObj {
 };
 
 
-class PERFETTO_EXPORT HeapprofdConfig_ContinuousDumpConfig : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT HeapprofdConfig_ContinuousDumpConfig : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
     kDumpPhaseMsFieldNumber = 5,
