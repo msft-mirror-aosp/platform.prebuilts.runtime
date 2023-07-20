@@ -54,14 +54,7 @@ class CommitDataRequest : public ::protozero::Message {
       CommitDataRequest_ChunksToMove,
       CommitDataRequest>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ChunksToMove kChunksToMove() { return {}; }
+  static constexpr FieldMetadata_ChunksToMove kChunksToMove{};
   template <typename T = CommitDataRequest_ChunksToMove> T* add_chunks_to_move() {
     return BeginNestedMessage<T>(1);
   }
@@ -75,14 +68,7 @@ class CommitDataRequest : public ::protozero::Message {
       CommitDataRequest_ChunkToPatch,
       CommitDataRequest>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ChunksToPatch kChunksToPatch() { return {}; }
+  static constexpr FieldMetadata_ChunksToPatch kChunksToPatch{};
   template <typename T = CommitDataRequest_ChunkToPatch> T* add_chunks_to_patch() {
     return BeginNestedMessage<T>(2);
   }
@@ -96,14 +82,7 @@ class CommitDataRequest : public ::protozero::Message {
       uint64_t,
       CommitDataRequest>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FlushRequestId kFlushRequestId() { return {}; }
+  static constexpr FieldMetadata_FlushRequestId kFlushRequestId{};
   void set_flush_request_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FlushRequestId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -153,14 +132,7 @@ class CommitDataRequest_ChunkToPatch : public ::protozero::Message {
       uint32_t,
       CommitDataRequest_ChunkToPatch>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TargetBuffer kTargetBuffer() { return {}; }
+  static constexpr FieldMetadata_TargetBuffer kTargetBuffer{};
   void set_target_buffer(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TargetBuffer::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -178,14 +150,7 @@ class CommitDataRequest_ChunkToPatch : public ::protozero::Message {
       uint32_t,
       CommitDataRequest_ChunkToPatch>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_WriterId kWriterId() { return {}; }
+  static constexpr FieldMetadata_WriterId kWriterId{};
   void set_writer_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_WriterId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -203,14 +168,7 @@ class CommitDataRequest_ChunkToPatch : public ::protozero::Message {
       uint32_t,
       CommitDataRequest_ChunkToPatch>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ChunkId kChunkId() { return {}; }
+  static constexpr FieldMetadata_ChunkId kChunkId{};
   void set_chunk_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ChunkId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -228,14 +186,7 @@ class CommitDataRequest_ChunkToPatch : public ::protozero::Message {
       CommitDataRequest_ChunkToPatch_Patch,
       CommitDataRequest_ChunkToPatch>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Patches kPatches() { return {}; }
+  static constexpr FieldMetadata_Patches kPatches{};
   template <typename T = CommitDataRequest_ChunkToPatch_Patch> T* add_patches() {
     return BeginNestedMessage<T>(4);
   }
@@ -249,14 +200,7 @@ class CommitDataRequest_ChunkToPatch : public ::protozero::Message {
       bool,
       CommitDataRequest_ChunkToPatch>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_HasMorePatches kHasMorePatches() { return {}; }
+  static constexpr FieldMetadata_HasMorePatches kHasMorePatches{};
   void set_has_more_patches(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_HasMorePatches::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -296,14 +240,7 @@ class CommitDataRequest_ChunkToPatch_Patch : public ::protozero::Message {
       uint32_t,
       CommitDataRequest_ChunkToPatch_Patch>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Offset kOffset() { return {}; }
+  static constexpr FieldMetadata_Offset kOffset{};
   void set_offset(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Offset::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -321,14 +258,7 @@ class CommitDataRequest_ChunkToPatch_Patch : public ::protozero::Message {
       std::string,
       CommitDataRequest_ChunkToPatch_Patch>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Data kData() { return {}; }
+  static constexpr FieldMetadata_Data kData{};
   void set_data(const uint8_t* data, size_t size) {
     AppendBytes(FieldMetadata_Data::kFieldId, data, size);
   }
@@ -377,14 +307,7 @@ class CommitDataRequest_ChunksToMove : public ::protozero::Message {
       uint32_t,
       CommitDataRequest_ChunksToMove>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Page kPage() { return {}; }
+  static constexpr FieldMetadata_Page kPage{};
   void set_page(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Page::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -402,14 +325,7 @@ class CommitDataRequest_ChunksToMove : public ::protozero::Message {
       uint32_t,
       CommitDataRequest_ChunksToMove>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Chunk kChunk() { return {}; }
+  static constexpr FieldMetadata_Chunk kChunk{};
   void set_chunk(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Chunk::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -427,14 +343,7 @@ class CommitDataRequest_ChunksToMove : public ::protozero::Message {
       uint32_t,
       CommitDataRequest_ChunksToMove>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TargetBuffer kTargetBuffer() { return {}; }
+  static constexpr FieldMetadata_TargetBuffer kTargetBuffer{};
   void set_target_buffer(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TargetBuffer::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

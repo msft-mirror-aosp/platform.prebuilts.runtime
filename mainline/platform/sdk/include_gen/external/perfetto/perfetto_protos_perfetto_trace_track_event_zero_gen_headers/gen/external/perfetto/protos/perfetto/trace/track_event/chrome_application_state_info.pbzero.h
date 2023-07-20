@@ -80,11 +80,11 @@ class ChromeApplicationStateInfo : public ::protozero::Message {
   static inline const char* ChromeApplicationState_Name(ChromeApplicationState value) {
     return ::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState_Name(value);
   }
-  static const ChromeApplicationState APPLICATION_STATE_UNKNOWN = ChromeApplicationState::APPLICATION_STATE_UNKNOWN;
-  static const ChromeApplicationState APPLICATION_STATE_HAS_RUNNING_ACTIVITIES = ChromeApplicationState::APPLICATION_STATE_HAS_RUNNING_ACTIVITIES;
-  static const ChromeApplicationState APPLICATION_STATE_HAS_PAUSED_ACTIVITIES = ChromeApplicationState::APPLICATION_STATE_HAS_PAUSED_ACTIVITIES;
-  static const ChromeApplicationState APPLICATION_STATE_HAS_STOPPED_ACTIVITIES = ChromeApplicationState::APPLICATION_STATE_HAS_STOPPED_ACTIVITIES;
-  static const ChromeApplicationState APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES = ChromeApplicationState::APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES;
+  static inline const ChromeApplicationState APPLICATION_STATE_UNKNOWN = ChromeApplicationState::APPLICATION_STATE_UNKNOWN;
+  static inline const ChromeApplicationState APPLICATION_STATE_HAS_RUNNING_ACTIVITIES = ChromeApplicationState::APPLICATION_STATE_HAS_RUNNING_ACTIVITIES;
+  static inline const ChromeApplicationState APPLICATION_STATE_HAS_PAUSED_ACTIVITIES = ChromeApplicationState::APPLICATION_STATE_HAS_PAUSED_ACTIVITIES;
+  static inline const ChromeApplicationState APPLICATION_STATE_HAS_STOPPED_ACTIVITIES = ChromeApplicationState::APPLICATION_STATE_HAS_STOPPED_ACTIVITIES;
+  static inline const ChromeApplicationState APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES = ChromeApplicationState::APPLICATION_STATE_HAS_DESTROYED_ACTIVITIES;
 
   using FieldMetadata_ApplicationState =
     ::protozero::proto_utils::FieldMetadata<
@@ -94,14 +94,7 @@ class ChromeApplicationStateInfo : public ::protozero::Message {
       ::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState,
       ChromeApplicationStateInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ApplicationState kApplicationState() { return {}; }
+  static constexpr FieldMetadata_ApplicationState kApplicationState{};
   void set_application_state(::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState value) {
     static constexpr uint32_t field_id = FieldMetadata_ApplicationState::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

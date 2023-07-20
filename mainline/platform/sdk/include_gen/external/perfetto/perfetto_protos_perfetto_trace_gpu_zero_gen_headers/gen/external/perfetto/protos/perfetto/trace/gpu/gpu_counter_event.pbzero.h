@@ -52,14 +52,7 @@ class GpuCounterEvent : public ::protozero::Message {
       GpuCounterDescriptor,
       GpuCounterEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CounterDescriptor kCounterDescriptor() { return {}; }
+  static constexpr FieldMetadata_CounterDescriptor kCounterDescriptor{};
   template <typename T = GpuCounterDescriptor> T* set_counter_descriptor() {
     return BeginNestedMessage<T>(1);
   }
@@ -73,14 +66,7 @@ class GpuCounterEvent : public ::protozero::Message {
       GpuCounterEvent_GpuCounter,
       GpuCounterEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Counters kCounters() { return {}; }
+  static constexpr FieldMetadata_Counters kCounters{};
   template <typename T = GpuCounterEvent_GpuCounter> T* add_counters() {
     return BeginNestedMessage<T>(2);
   }
@@ -94,14 +80,7 @@ class GpuCounterEvent : public ::protozero::Message {
       int32_t,
       GpuCounterEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_GpuId kGpuId() { return {}; }
+  static constexpr FieldMetadata_GpuId kGpuId{};
   void set_gpu_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_GpuId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -144,14 +123,7 @@ class GpuCounterEvent_GpuCounter : public ::protozero::Message {
       uint32_t,
       GpuCounterEvent_GpuCounter>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CounterId kCounterId() { return {}; }
+  static constexpr FieldMetadata_CounterId kCounterId{};
   void set_counter_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CounterId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -169,14 +141,7 @@ class GpuCounterEvent_GpuCounter : public ::protozero::Message {
       int64_t,
       GpuCounterEvent_GpuCounter>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IntValue kIntValue() { return {}; }
+  static constexpr FieldMetadata_IntValue kIntValue{};
   void set_int_value(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IntValue::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -194,14 +159,7 @@ class GpuCounterEvent_GpuCounter : public ::protozero::Message {
       double,
       GpuCounterEvent_GpuCounter>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DoubleValue kDoubleValue() { return {}; }
+  static constexpr FieldMetadata_DoubleValue kDoubleValue{};
   void set_double_value(double value) {
     static constexpr uint32_t field_id = FieldMetadata_DoubleValue::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

@@ -117,15 +117,15 @@ class ProcessDescriptor : public ::protozero::Message {
   static inline const char* ChromeProcessType_Name(ChromeProcessType value) {
     return ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType_Name(value);
   }
-  static const ChromeProcessType PROCESS_UNSPECIFIED = ChromeProcessType::PROCESS_UNSPECIFIED;
-  static const ChromeProcessType PROCESS_BROWSER = ChromeProcessType::PROCESS_BROWSER;
-  static const ChromeProcessType PROCESS_RENDERER = ChromeProcessType::PROCESS_RENDERER;
-  static const ChromeProcessType PROCESS_UTILITY = ChromeProcessType::PROCESS_UTILITY;
-  static const ChromeProcessType PROCESS_ZYGOTE = ChromeProcessType::PROCESS_ZYGOTE;
-  static const ChromeProcessType PROCESS_SANDBOX_HELPER = ChromeProcessType::PROCESS_SANDBOX_HELPER;
-  static const ChromeProcessType PROCESS_GPU = ChromeProcessType::PROCESS_GPU;
-  static const ChromeProcessType PROCESS_PPAPI_PLUGIN = ChromeProcessType::PROCESS_PPAPI_PLUGIN;
-  static const ChromeProcessType PROCESS_PPAPI_BROKER = ChromeProcessType::PROCESS_PPAPI_BROKER;
+  static inline const ChromeProcessType PROCESS_UNSPECIFIED = ChromeProcessType::PROCESS_UNSPECIFIED;
+  static inline const ChromeProcessType PROCESS_BROWSER = ChromeProcessType::PROCESS_BROWSER;
+  static inline const ChromeProcessType PROCESS_RENDERER = ChromeProcessType::PROCESS_RENDERER;
+  static inline const ChromeProcessType PROCESS_UTILITY = ChromeProcessType::PROCESS_UTILITY;
+  static inline const ChromeProcessType PROCESS_ZYGOTE = ChromeProcessType::PROCESS_ZYGOTE;
+  static inline const ChromeProcessType PROCESS_SANDBOX_HELPER = ChromeProcessType::PROCESS_SANDBOX_HELPER;
+  static inline const ChromeProcessType PROCESS_GPU = ChromeProcessType::PROCESS_GPU;
+  static inline const ChromeProcessType PROCESS_PPAPI_PLUGIN = ChromeProcessType::PROCESS_PPAPI_PLUGIN;
+  static inline const ChromeProcessType PROCESS_PPAPI_BROKER = ChromeProcessType::PROCESS_PPAPI_BROKER;
 
   using FieldMetadata_Pid =
     ::protozero::proto_utils::FieldMetadata<
@@ -135,14 +135,7 @@ class ProcessDescriptor : public ::protozero::Message {
       int32_t,
       ProcessDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Pid kPid() { return {}; }
+  static constexpr FieldMetadata_Pid kPid{};
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -160,14 +153,7 @@ class ProcessDescriptor : public ::protozero::Message {
       std::string,
       ProcessDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Cmdline kCmdline() { return {}; }
+  static constexpr FieldMetadata_Cmdline kCmdline{};
   void add_cmdline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Cmdline::kFieldId, data, size);
   }
@@ -191,14 +177,7 @@ class ProcessDescriptor : public ::protozero::Message {
       std::string,
       ProcessDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ProcessName kProcessName() { return {}; }
+  static constexpr FieldMetadata_ProcessName kProcessName{};
   void set_process_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProcessName::kFieldId, data, size);
   }
@@ -222,14 +201,7 @@ class ProcessDescriptor : public ::protozero::Message {
       int32_t,
       ProcessDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ProcessPriority kProcessPriority() { return {}; }
+  static constexpr FieldMetadata_ProcessPriority kProcessPriority{};
   void set_process_priority(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ProcessPriority::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -247,14 +219,7 @@ class ProcessDescriptor : public ::protozero::Message {
       int64_t,
       ProcessDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StartTimestampNs kStartTimestampNs() { return {}; }
+  static constexpr FieldMetadata_StartTimestampNs kStartTimestampNs{};
   void set_start_timestamp_ns(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StartTimestampNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -272,14 +237,7 @@ class ProcessDescriptor : public ::protozero::Message {
       ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType,
       ProcessDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ChromeProcessType kChromeProcessType() { return {}; }
+  static constexpr FieldMetadata_ChromeProcessType kChromeProcessType{};
   void set_chrome_process_type(::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType value) {
     static constexpr uint32_t field_id = FieldMetadata_ChromeProcessType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -297,14 +255,7 @@ class ProcessDescriptor : public ::protozero::Message {
       int32_t,
       ProcessDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_LegacySortIndex kLegacySortIndex() { return {}; }
+  static constexpr FieldMetadata_LegacySortIndex kLegacySortIndex{};
   void set_legacy_sort_index(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_LegacySortIndex::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -322,14 +273,7 @@ class ProcessDescriptor : public ::protozero::Message {
       std::string,
       ProcessDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ProcessLabels kProcessLabels() { return {}; }
+  static constexpr FieldMetadata_ProcessLabels kProcessLabels{};
   void add_process_labels(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProcessLabels::kFieldId, data, size);
   }

@@ -55,14 +55,7 @@ class LowmemoryKillFtraceEvent : public ::protozero::Message {
       std::string,
       LowmemoryKillFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Comm kComm() { return {}; }
+  static constexpr FieldMetadata_Comm kComm{};
   void set_comm(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
   }
@@ -86,14 +79,7 @@ class LowmemoryKillFtraceEvent : public ::protozero::Message {
       int32_t,
       LowmemoryKillFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Pid kPid() { return {}; }
+  static constexpr FieldMetadata_Pid kPid{};
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -111,14 +97,7 @@ class LowmemoryKillFtraceEvent : public ::protozero::Message {
       int64_t,
       LowmemoryKillFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PagecacheSize kPagecacheSize() { return {}; }
+  static constexpr FieldMetadata_PagecacheSize kPagecacheSize{};
   void set_pagecache_size(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PagecacheSize::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -136,14 +115,7 @@ class LowmemoryKillFtraceEvent : public ::protozero::Message {
       int64_t,
       LowmemoryKillFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PagecacheLimit kPagecacheLimit() { return {}; }
+  static constexpr FieldMetadata_PagecacheLimit kPagecacheLimit{};
   void set_pagecache_limit(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PagecacheLimit::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -161,14 +133,7 @@ class LowmemoryKillFtraceEvent : public ::protozero::Message {
       int64_t,
       LowmemoryKillFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Free kFree() { return {}; }
+  static constexpr FieldMetadata_Free kFree{};
   void set_free(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Free::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

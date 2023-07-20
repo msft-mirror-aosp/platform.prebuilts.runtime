@@ -35,6 +35,7 @@ class PERFETTO_EXPORT_COMPONENT TracingServiceCapabilities : public ::protozero:
     kHasQueryCapabilitiesFieldNumber = 1,
     kObservableEventsFieldNumber = 2,
     kHasTraceConfigOutputPathFieldNumber = 3,
+    kHasCloneSessionFieldNumber = 4,
   };
 
   TracingServiceCapabilities();
@@ -66,16 +67,21 @@ class PERFETTO_EXPORT_COMPONENT TracingServiceCapabilities : public ::protozero:
   bool has_trace_config_output_path() const { return has_trace_config_output_path_; }
   void set_has_trace_config_output_path(bool value) { has_trace_config_output_path_ = value; _has_field_.set(3); }
 
+  bool has_has_clone_session() const { return _has_field_[4]; }
+  bool has_clone_session() const { return has_clone_session_; }
+  void set_has_clone_session(bool value) { has_clone_session_ = value; _has_field_.set(4); }
+
  private:
   bool has_query_capabilities_{};
   std::vector<ObservableEvents_Type> observable_events_;
   bool has_trace_config_output_path_{};
+  bool has_clone_session_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<4> _has_field_{};
+  std::bitset<5> _has_field_{};
 };
 
 }  // namespace perfetto
