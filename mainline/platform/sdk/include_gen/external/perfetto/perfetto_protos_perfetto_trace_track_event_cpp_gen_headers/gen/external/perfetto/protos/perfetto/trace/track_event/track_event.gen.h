@@ -71,6 +71,7 @@ enum ChromeCompositorStateMachine_MajorState_BeginImplFrameState : int;
 enum ChromeCompositorStateMachine_MajorState_BeginMainFrameState : int;
 enum ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState : int;
 enum ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState : int;
+enum LogMessage_Priority : int;
 enum DebugAnnotation_NestedValue_NestedType : int;
 }  // namespace perfetto
 }  // namespace protos

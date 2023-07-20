@@ -49,14 +49,7 @@ class IonStatFtraceEvent : public ::protozero::Message {
       uint32_t,
       IonStatFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BufferId kBufferId() { return {}; }
+  static constexpr FieldMetadata_BufferId kBufferId{};
   void set_buffer_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BufferId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -74,14 +67,7 @@ class IonStatFtraceEvent : public ::protozero::Message {
       int64_t,
       IonStatFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Len kLen() { return {}; }
+  static constexpr FieldMetadata_Len kLen{};
   void set_len(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Len::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -99,14 +85,7 @@ class IonStatFtraceEvent : public ::protozero::Message {
       uint64_t,
       IonStatFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TotalAllocated kTotalAllocated() { return {}; }
+  static constexpr FieldMetadata_TotalAllocated kTotalAllocated{};
   void set_total_allocated(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TotalAllocated::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

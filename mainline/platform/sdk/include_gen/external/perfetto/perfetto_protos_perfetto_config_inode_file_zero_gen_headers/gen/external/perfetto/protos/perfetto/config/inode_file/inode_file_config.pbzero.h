@@ -60,14 +60,7 @@ class InodeFileConfig : public ::protozero::Message {
       uint32_t,
       InodeFileConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ScanIntervalMs kScanIntervalMs() { return {}; }
+  static constexpr FieldMetadata_ScanIntervalMs kScanIntervalMs{};
   void set_scan_interval_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ScanIntervalMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -85,14 +78,7 @@ class InodeFileConfig : public ::protozero::Message {
       uint32_t,
       InodeFileConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ScanDelayMs kScanDelayMs() { return {}; }
+  static constexpr FieldMetadata_ScanDelayMs kScanDelayMs{};
   void set_scan_delay_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ScanDelayMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -110,14 +96,7 @@ class InodeFileConfig : public ::protozero::Message {
       uint32_t,
       InodeFileConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ScanBatchSize kScanBatchSize() { return {}; }
+  static constexpr FieldMetadata_ScanBatchSize kScanBatchSize{};
   void set_scan_batch_size(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ScanBatchSize::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -135,14 +114,7 @@ class InodeFileConfig : public ::protozero::Message {
       bool,
       InodeFileConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DoNotScan kDoNotScan() { return {}; }
+  static constexpr FieldMetadata_DoNotScan kDoNotScan{};
   void set_do_not_scan(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DoNotScan::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -160,14 +132,7 @@ class InodeFileConfig : public ::protozero::Message {
       std::string,
       InodeFileConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ScanMountPoints kScanMountPoints() { return {}; }
+  static constexpr FieldMetadata_ScanMountPoints kScanMountPoints{};
   void add_scan_mount_points(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ScanMountPoints::kFieldId, data, size);
   }
@@ -191,14 +156,7 @@ class InodeFileConfig : public ::protozero::Message {
       InodeFileConfig_MountPointMappingEntry,
       InodeFileConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MountPointMapping kMountPointMapping() { return {}; }
+  static constexpr FieldMetadata_MountPointMapping kMountPointMapping{};
   template <typename T = InodeFileConfig_MountPointMappingEntry> T* add_mount_point_mapping() {
     return BeginNestedMessage<T>(6);
   }
@@ -234,14 +192,7 @@ class InodeFileConfig_MountPointMappingEntry : public ::protozero::Message {
       std::string,
       InodeFileConfig_MountPointMappingEntry>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Mountpoint kMountpoint() { return {}; }
+  static constexpr FieldMetadata_Mountpoint kMountpoint{};
   void set_mountpoint(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Mountpoint::kFieldId, data, size);
   }
@@ -265,14 +216,7 @@ class InodeFileConfig_MountPointMappingEntry : public ::protozero::Message {
       std::string,
       InodeFileConfig_MountPointMappingEntry>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ScanRoots kScanRoots() { return {}; }
+  static constexpr FieldMetadata_ScanRoots kScanRoots{};
   void add_scan_roots(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ScanRoots::kFieldId, data, size);
   }
