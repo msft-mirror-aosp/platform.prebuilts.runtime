@@ -35,7 +35,12 @@ BuildSource = collections.namedtuple("BuildSource", [
 ])
 
 
-ARCHES = ["arm", "arm64", "riscv64", "x86", "x86_64"]
+# The list of arches does not include riscv64: it is not supported by mainline,
+# and it is updated from a local build with --local-dist-riscv64 option (which
+# overwrites the list of arches to include only riscv64).
+#
+# TODO(b/286551985): add riscv64 here and don't override the global list.
+ARCHES = ["arm", "arm64", "x86", "x86_64"]
 
 # CI build for SDK snapshots
 SDK_SOURCE = BuildSource("aosp-master", "mainline_modules_sdks-userdebug")
@@ -59,10 +64,12 @@ APEX_SOURCE = {
 # As long as they're new enough to contain the required changes (see README.md
 # instructions) and pass tests, it doesn't matter much which builds they come
 # from. Also, x86 has no userdebug build available, so we use eng for that.
+# riscv64 is updated from a local build (it is not supported by mainline), the
+# target here is used only to construct path in `install_impl_lib_entries`.
 IMPL_LIB_SOURCE = {
     "arm": BuildSource("aosp-master-throttled", "aosp_arm-userdebug"),
     "arm64": BuildSource("aosp-master", "aosp_arm64-userdebug"),
-    "riscv64": BuildSource("aosp-master", "aosp_cf_riscv64_minidroid-userdebug"),
+    "riscv64": BuildSource("aosp-master", "aosp_riscv64-userdebug"),
     "x86": BuildSource("aosp-master", "aosp_x86-eng"),
     "x86_64": BuildSource("aosp-master", "aosp_x86_64-userdebug"),
 }
@@ -119,6 +126,11 @@ def install_apex_entries(module_name, apex_name):
 
 
 def install_unbundled_sdk_entries(apex_name, mainline_sdk_name, sdk_type, install_path):
+  if "riscv64" in ARCHES:
+    if sdk_type == "host-exports": # no host prebuilts for riscv64
+      return []
+    install_path = os.path.join("prebuilts/runtime/mainline/local_riscv64",
+                                install_path)
   return [
       InstallEntry(
           type="module_sdk",
@@ -134,6 +146,9 @@ def install_unbundled_sdk_entries(apex_name, mainline_sdk_name, sdk_type, instal
 
 
 def install_bundled_sdk_entries(module_name, sdk_type):
+  if "riscv64" in ARCHES:
+    if sdk_type == "host-exports": # no host prebuilts for riscv64
+      return []
   return [
       InstallEntry(
           type="module_sdk",
@@ -151,6 +166,9 @@ def install_bundled_sdk_entries(module_name, sdk_type):
 
 
 def install_platform_mainline_sdk_entries(sdk_type):
+  if "riscv64" in ARCHES:
+    if sdk_type == "host-exports": # no host prebuilts for riscv64
+      return []
   return [
       InstallEntry(
           type="module_sdk",
@@ -185,7 +203,10 @@ def install_impl_lib_entries(lib_name):
       for arch in ARCHES]
 
 
-install_entries = (
+# This is defined as a function (not a global list) because it depends on the
+# list of architectures, which may change after parsing options.
+def install_entries():
+  return (
     # Conscrypt
     install_apex_entries("conscrypt", "com.android.conscrypt") +
     install_unbundled_sdk_entries(
@@ -299,8 +320,10 @@ def commit(git_root, prebuilt_descr, installed_sources, add_paths, bug_number):
       message += "Taken from:\n{}".format(
           "\n".join([s.capitalize() for s in installed_sources]))
   else:
-    message = (
-        "DO NOT SUBMIT: Update {prebuilt_descr} prebuilts from local build."
+    # For riscv64, update from a local tree is the only available option.
+    message = "" if "riscv64" in ARCHES else "DO NOT SUBMIT: "
+    message += (
+        "Update {prebuilt_descr} prebuilts from local build."
         .format(prebuilt_descr=prebuilt_descr))
   message += ("\n\nCL prepared by {}."
               "\n\nTest: Presubmits".format(SCRIPT_PATH))
@@ -386,10 +409,32 @@ def install_entry(tmp_dir, local_dist, build_numbers, entry):
   os.makedirs(install_dir, exist_ok=True)
 
   if entry.install_unzipped:
-    check_call(["mkdir", install_file], cwd=install_dir)
-    # Add -DD to not extract timestamps that may confuse the build system.
-    check_call(["unzip", "-DD", download_file, "-d", install_file],
-               cwd=install_dir)
+    if "riscv64" in ARCHES:
+      tmp_dir = os.path.join(install_file, "tmp")
+      check_call(["mkdir", "-p", tmp_dir], cwd=install_dir)
+      check_call(["unzip", "-DD", "-o", download_file, "-d", tmp_dir],
+                 cwd=install_dir)
+      # Conscrypt and statsd are not owned by the ART team, so we keep a local
+      # copy if their prebuilts with Android.bp files renamed to ArtThinBuild.bp
+      # to avoid Soong adding them as part of the build graph.
+      if "local_riscv64" in install_dir:
+        patch_cmd = ("sed -i 's|This is auto-generated. DO NOT EDIT.|"
+            "DO NOT COMMIT. Changes in this file are temporary and generated "
+            "by art/tools/buildbot-build.sh. See b/286551985.|g' {} ; ")
+        rename_cmd = 'f="{}" ; mv "$f" "$(dirname $f)"/ArtThinBuild.bp'
+        check_call(["find", "-type", "f", "-name", "Android.bp",
+                       "-exec", "sh", "-c", patch_cmd + rename_cmd, ";"],
+                   cwd=os.path.join(install_dir, tmp_dir))
+      check_call(["find", "-type", "f", "-regextype", "posix-extended",
+                     "-regex", ".*riscv64.*|.*Android.bp|.*ArtThinBuild.bp",
+                     "-exec", "cp", "--parents", "{}", "..", ";"],
+                 cwd=os.path.join(install_dir, tmp_dir))
+      check_call(["rm", "-rf", tmp_dir], cwd=install_dir)
+    else:
+      check_call(["mkdir", install_file], cwd=install_dir)
+      # Add -DD to not extract timestamps that may confuse the build system.
+      check_call(["unzip", "-DD", download_file, "-d", install_file],
+                 cwd=install_dir)
   elif entry.unzip_single_file:
     if not os.path.exists(unzip_file):
       check_call(["unzip", download_file, "-d", unzip_dir, entry.unzip_single_file])
@@ -445,6 +490,15 @@ def get_args():
   parser.add_argument("--local-dist", metavar="PATH",
                       help="Take prebuilts from this local dist dir instead of "
                       "using fetch_artifact")
+  parser.add_argument("--local-dist-riscv64", metavar="PATH",
+                      help="Copy riscv64 prebuilts from a local path, which "
+                      "must be $HOME/<path-to-aosp-root>/out/dist with prebuilts "
+                      "already built for aosp_riscv64-userdebug target as "
+                      "described in README_riscv64.md. Only riscv64-specific "
+                      "files and Android.bp are updated. Options such as "
+                      "--skip-apex, --skip-module-sdk, --skip-impl-lib are "
+                      "ignored. It is a temporary workaround until mainline "
+                      "supports riscv64.")
   parser.add_argument("--skip-apex", default=True,
                       action=argparse.BooleanOptionalAction,
                       help="Do not fetch .apex files.")
@@ -466,11 +520,18 @@ def get_args():
                       "downloaded again.")
 
   args = parser.parse_args()
+
+  if args.local_dist_riscv64:
+    global ARCHES
+    ARCHES = ["riscv64"]
+    args.local_dist = args.local_dist_riscv64
+
   got_build_numbers = bool(args.aosp_master_build and
                            args.aosp_master_throttled_build)
   if ((not got_build_numbers and not args.local_dist) or
       (got_build_numbers and args.local_dist)):
     sys.exit(parser.format_help())
+
   return args
 
 
@@ -488,15 +549,17 @@ def main():
         "aosp-master-throttled": args.aosp_master_throttled_build,
     }
 
-  entries = install_entries
-  if args.skip_apex:
-    entries = [entry for entry in entries if entry.type != "apex"]
-  if args.skip_module_sdk:
-    entries = [entry for entry in entries if entry.type != "module_sdk"]
-  if args.skip_impl_lib:
-    entries = [entry for entry in entries if entry.type != "impl_lib"]
-  if not entries:
-    sys.exit("All prebuilts skipped - nothing to do.")
+  entries = install_entries()
+  # For riscv64, filtering is more complex; `install_entries` takes care of it.
+  if not args.local_dist_riscv64:
+    if args.skip_apex:
+      entries = [entry for entry in entries if entry.type != "apex"]
+    if args.skip_module_sdk:
+      entries = [entry for entry in entries if entry.type != "module_sdk"]
+    if args.skip_impl_lib:
+      entries = [entry for entry in entries if entry.type != "impl_lib"]
+    if not entries:
+      sys.exit("All prebuilts skipped - nothing to do.")
 
   install_paths = [entry.install_path for entry in entries]
   install_paths_per_root = install_paths_per_git_root(
@@ -510,8 +573,9 @@ def main():
     git_paths = list(install_paths_per_root.keys())
     start_branch(git_branch_name, git_paths)
 
-  for git_root, subpaths in install_paths_per_root.items():
-    remove_files(git_root, subpaths, not args.skip_cls)
+  if not args.local_dist_riscv64:
+    for git_root, subpaths in install_paths_per_root.items():
+      remove_files(git_root, subpaths, not args.skip_cls)
 
   all_installed_sources = {}
 
