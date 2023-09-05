@@ -54,14 +54,7 @@ class StatsdPullAtomConfig : public ::protozero::Message {
       ::perfetto::protos::pbzero::AtomId,
       StatsdPullAtomConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PullAtomId kPullAtomId() { return {}; }
+  static constexpr FieldMetadata_PullAtomId kPullAtomId{};
   void add_pull_atom_id(::perfetto::protos::pbzero::AtomId value) {
     static constexpr uint32_t field_id = FieldMetadata_PullAtomId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -79,14 +72,7 @@ class StatsdPullAtomConfig : public ::protozero::Message {
       int32_t,
       StatsdPullAtomConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RawPullAtomId kRawPullAtomId() { return {}; }
+  static constexpr FieldMetadata_RawPullAtomId kRawPullAtomId{};
   void add_raw_pull_atom_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RawPullAtomId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -104,14 +90,7 @@ class StatsdPullAtomConfig : public ::protozero::Message {
       int32_t,
       StatsdPullAtomConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PullFrequencyMs kPullFrequencyMs() { return {}; }
+  static constexpr FieldMetadata_PullFrequencyMs kPullFrequencyMs{};
   void set_pull_frequency_ms(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_PullFrequencyMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -129,14 +108,7 @@ class StatsdPullAtomConfig : public ::protozero::Message {
       std::string,
       StatsdPullAtomConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Packages kPackages() { return {}; }
+  static constexpr FieldMetadata_Packages kPackages{};
   void add_packages(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Packages::kFieldId, data, size);
   }
@@ -185,14 +157,7 @@ class StatsdTracingConfig : public ::protozero::Message {
       ::perfetto::protos::pbzero::AtomId,
       StatsdTracingConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PushAtomId kPushAtomId() { return {}; }
+  static constexpr FieldMetadata_PushAtomId kPushAtomId{};
   void add_push_atom_id(::perfetto::protos::pbzero::AtomId value) {
     static constexpr uint32_t field_id = FieldMetadata_PushAtomId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -210,14 +175,7 @@ class StatsdTracingConfig : public ::protozero::Message {
       int32_t,
       StatsdTracingConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RawPushAtomId kRawPushAtomId() { return {}; }
+  static constexpr FieldMetadata_RawPushAtomId kRawPushAtomId{};
   void add_raw_push_atom_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RawPushAtomId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -235,14 +193,7 @@ class StatsdTracingConfig : public ::protozero::Message {
       StatsdPullAtomConfig,
       StatsdTracingConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_PullConfig kPullConfig() { return {}; }
+  static constexpr FieldMetadata_PullConfig kPullConfig{};
   template <typename T = StatsdPullAtomConfig> T* add_pull_config() {
     return BeginNestedMessage<T>(3);
   }

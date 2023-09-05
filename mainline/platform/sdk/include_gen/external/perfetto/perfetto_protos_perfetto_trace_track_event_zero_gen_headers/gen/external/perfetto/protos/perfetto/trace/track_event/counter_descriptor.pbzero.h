@@ -129,13 +129,13 @@ class CounterDescriptor : public ::protozero::Message {
   static inline const char* Unit_Name(Unit value) {
     return ::perfetto::protos::pbzero::CounterDescriptor_Unit_Name(value);
   }
-  static const BuiltinCounterType COUNTER_UNSPECIFIED = BuiltinCounterType::COUNTER_UNSPECIFIED;
-  static const BuiltinCounterType COUNTER_THREAD_TIME_NS = BuiltinCounterType::COUNTER_THREAD_TIME_NS;
-  static const BuiltinCounterType COUNTER_THREAD_INSTRUCTION_COUNT = BuiltinCounterType::COUNTER_THREAD_INSTRUCTION_COUNT;
-  static const Unit UNIT_UNSPECIFIED = Unit::UNIT_UNSPECIFIED;
-  static const Unit UNIT_TIME_NS = Unit::UNIT_TIME_NS;
-  static const Unit UNIT_COUNT = Unit::UNIT_COUNT;
-  static const Unit UNIT_SIZE_BYTES = Unit::UNIT_SIZE_BYTES;
+  static inline const BuiltinCounterType COUNTER_UNSPECIFIED = BuiltinCounterType::COUNTER_UNSPECIFIED;
+  static inline const BuiltinCounterType COUNTER_THREAD_TIME_NS = BuiltinCounterType::COUNTER_THREAD_TIME_NS;
+  static inline const BuiltinCounterType COUNTER_THREAD_INSTRUCTION_COUNT = BuiltinCounterType::COUNTER_THREAD_INSTRUCTION_COUNT;
+  static inline const Unit UNIT_UNSPECIFIED = Unit::UNIT_UNSPECIFIED;
+  static inline const Unit UNIT_TIME_NS = Unit::UNIT_TIME_NS;
+  static inline const Unit UNIT_COUNT = Unit::UNIT_COUNT;
+  static inline const Unit UNIT_SIZE_BYTES = Unit::UNIT_SIZE_BYTES;
 
   using FieldMetadata_Type =
     ::protozero::proto_utils::FieldMetadata<
@@ -145,14 +145,7 @@ class CounterDescriptor : public ::protozero::Message {
       ::perfetto::protos::pbzero::CounterDescriptor_BuiltinCounterType,
       CounterDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Type kType() { return {}; }
+  static constexpr FieldMetadata_Type kType{};
   void set_type(::perfetto::protos::pbzero::CounterDescriptor_BuiltinCounterType value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -170,14 +163,7 @@ class CounterDescriptor : public ::protozero::Message {
       std::string,
       CounterDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Categories kCategories() { return {}; }
+  static constexpr FieldMetadata_Categories kCategories{};
   void add_categories(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Categories::kFieldId, data, size);
   }
@@ -201,14 +187,7 @@ class CounterDescriptor : public ::protozero::Message {
       ::perfetto::protos::pbzero::CounterDescriptor_Unit,
       CounterDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Unit kUnit() { return {}; }
+  static constexpr FieldMetadata_Unit kUnit{};
   void set_unit(::perfetto::protos::pbzero::CounterDescriptor_Unit value) {
     static constexpr uint32_t field_id = FieldMetadata_Unit::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -226,14 +205,7 @@ class CounterDescriptor : public ::protozero::Message {
       std::string,
       CounterDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_UnitName kUnitName() { return {}; }
+  static constexpr FieldMetadata_UnitName kUnitName{};
   void set_unit_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_UnitName::kFieldId, data, size);
   }
@@ -257,14 +229,7 @@ class CounterDescriptor : public ::protozero::Message {
       int64_t,
       CounterDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_UnitMultiplier kUnitMultiplier() { return {}; }
+  static constexpr FieldMetadata_UnitMultiplier kUnitMultiplier{};
   void set_unit_multiplier(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_UnitMultiplier::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -282,14 +247,7 @@ class CounterDescriptor : public ::protozero::Message {
       bool,
       CounterDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IsIncremental kIsIncremental() { return {}; }
+  static constexpr FieldMetadata_IsIncremental kIsIncremental{};
   void set_is_incremental(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_IsIncremental::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

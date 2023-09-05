@@ -48,14 +48,7 @@ class GenericFtraceEvent : public ::protozero::Message {
       std::string,
       GenericFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EventName kEventName() { return {}; }
+  static constexpr FieldMetadata_EventName kEventName{};
   void set_event_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_EventName::kFieldId, data, size);
   }
@@ -79,14 +72,7 @@ class GenericFtraceEvent : public ::protozero::Message {
       GenericFtraceEvent_Field,
       GenericFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Field kField() { return {}; }
+  static constexpr FieldMetadata_Field kField{};
   template <typename T = GenericFtraceEvent_Field> T* add_field() {
     return BeginNestedMessage<T>(2);
   }
@@ -128,14 +114,7 @@ class GenericFtraceEvent_Field : public ::protozero::Message {
       std::string,
       GenericFtraceEvent_Field>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -159,14 +138,7 @@ class GenericFtraceEvent_Field : public ::protozero::Message {
       std::string,
       GenericFtraceEvent_Field>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StrValue kStrValue() { return {}; }
+  static constexpr FieldMetadata_StrValue kStrValue{};
   void set_str_value(const char* data, size_t size) {
     AppendBytes(FieldMetadata_StrValue::kFieldId, data, size);
   }
@@ -190,14 +162,7 @@ class GenericFtraceEvent_Field : public ::protozero::Message {
       int64_t,
       GenericFtraceEvent_Field>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IntValue kIntValue() { return {}; }
+  static constexpr FieldMetadata_IntValue kIntValue{};
   void set_int_value(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IntValue::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -215,14 +180,7 @@ class GenericFtraceEvent_Field : public ::protozero::Message {
       uint64_t,
       GenericFtraceEvent_Field>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_UintValue kUintValue() { return {}; }
+  static constexpr FieldMetadata_UintValue kUintValue{};
   void set_uint_value(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_UintValue::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

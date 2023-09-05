@@ -49,14 +49,7 @@ class Trigger : public ::protozero::Message {
       std::string,
       Trigger>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TriggerName kTriggerName() { return {}; }
+  static constexpr FieldMetadata_TriggerName kTriggerName{};
   void set_trigger_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_TriggerName::kFieldId, data, size);
   }
@@ -80,14 +73,7 @@ class Trigger : public ::protozero::Message {
       std::string,
       Trigger>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ProducerName kProducerName() { return {}; }
+  static constexpr FieldMetadata_ProducerName kProducerName{};
   void set_producer_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProducerName::kFieldId, data, size);
   }
@@ -111,14 +97,7 @@ class Trigger : public ::protozero::Message {
       int32_t,
       Trigger>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TrustedProducerUid kTrustedProducerUid() { return {}; }
+  static constexpr FieldMetadata_TrustedProducerUid kTrustedProducerUid{};
   void set_trusted_producer_uid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TrustedProducerUid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

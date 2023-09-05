@@ -46,14 +46,7 @@ class InitialDisplayState : public ::protozero::Message {
       int32_t,
       InitialDisplayState>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DisplayState kDisplayState() { return {}; }
+  static constexpr FieldMetadata_DisplayState kDisplayState{};
   void set_display_state(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DisplayState::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -71,14 +64,7 @@ class InitialDisplayState : public ::protozero::Message {
       double,
       InitialDisplayState>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Brightness kBrightness() { return {}; }
+  static constexpr FieldMetadata_Brightness kBrightness{};
   void set_brightness(double value) {
     static constexpr uint32_t field_id = FieldMetadata_Brightness::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
