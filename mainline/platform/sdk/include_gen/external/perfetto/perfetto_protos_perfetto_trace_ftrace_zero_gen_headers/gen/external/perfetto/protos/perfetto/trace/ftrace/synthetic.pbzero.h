@@ -17,6 +17,43 @@ namespace protos {
 namespace pbzero {
 
 
+class SuspendResumeMinimalFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  SuspendResumeMinimalFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit SuspendResumeMinimalFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit SuspendResumeMinimalFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_start() const { return at<1>().valid(); }
+  uint32_t start() const { return at<1>().as_uint32(); }
+};
+
+class SuspendResumeMinimalFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = SuspendResumeMinimalFtraceEvent_Decoder;
+  enum : int32_t {
+    kStartFieldNumber = 1,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.SuspendResumeMinimalFtraceEvent"; }
+
+
+  using FieldMetadata_Start =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SuspendResumeMinimalFtraceEvent>;
+
+  static constexpr FieldMetadata_Start kStart{};
+  void set_start(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Start::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+};
+
 class RssStatThrottledFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   RssStatThrottledFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
@@ -52,14 +89,7 @@ class RssStatThrottledFtraceEvent : public ::protozero::Message {
       uint32_t,
       RssStatThrottledFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Curr kCurr() { return {}; }
+  static constexpr FieldMetadata_Curr kCurr{};
   void set_curr(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Curr::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -77,14 +107,7 @@ class RssStatThrottledFtraceEvent : public ::protozero::Message {
       int32_t,
       RssStatThrottledFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Member kMember() { return {}; }
+  static constexpr FieldMetadata_Member kMember{};
   void set_member(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Member::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -102,14 +125,7 @@ class RssStatThrottledFtraceEvent : public ::protozero::Message {
       uint32_t,
       RssStatThrottledFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MmId kMmId() { return {}; }
+  static constexpr FieldMetadata_MmId kMmId{};
   void set_mm_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MmId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -127,14 +143,7 @@ class RssStatThrottledFtraceEvent : public ::protozero::Message {
       int64_t,
       RssStatThrottledFtraceEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Size kSize() { return {}; }
+  static constexpr FieldMetadata_Size kSize{};
   void set_size(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Size::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

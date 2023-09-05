@@ -48,14 +48,7 @@ class TestExtensionChild : public ::protozero::Message {
       std::string,
       TestExtensionChild>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ChildFieldForTesting kChildFieldForTesting() { return {}; }
+  static constexpr FieldMetadata_ChildFieldForTesting kChildFieldForTesting{};
   void set_child_field_for_testing(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ChildFieldForTesting::kFieldId, data, size);
   }
@@ -79,14 +72,7 @@ class TestExtensionChild : public ::protozero::Message {
       DebugAnnotation,
       TestExtensionChild>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DebugAnnotations kDebugAnnotations() { return {}; }
+  static constexpr FieldMetadata_DebugAnnotations kDebugAnnotations{};
   template <typename T = DebugAnnotation> T* add_debug_annotations() {
     return BeginNestedMessage<T>(99);
   }
@@ -104,14 +90,7 @@ class TestExtension : public ::perfetto::protos::pbzero::TrackEvent {
       std::string,
       TestExtension>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StringExtensionForTesting kStringExtensionForTesting() { return {}; }
+  static constexpr FieldMetadata_StringExtensionForTesting kStringExtensionForTesting{};
   void set_string_extension_for_testing(const char* data, size_t size) {
     AppendBytes(FieldMetadata_StringExtensionForTesting::kFieldId, data, size);
   }
@@ -135,14 +114,7 @@ class TestExtension : public ::perfetto::protos::pbzero::TrackEvent {
       int32_t,
       TestExtension>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IntExtensionForTesting kIntExtensionForTesting() { return {}; }
+  static constexpr FieldMetadata_IntExtensionForTesting kIntExtensionForTesting{};
   void add_int_extension_for_testing(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IntExtensionForTesting::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -160,14 +132,7 @@ class TestExtension : public ::perfetto::protos::pbzero::TrackEvent {
       std::string,
       TestExtension>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_OmittedExtensionForTesting kOmittedExtensionForTesting() { return {}; }
+  static constexpr FieldMetadata_OmittedExtensionForTesting kOmittedExtensionForTesting{};
   void set_omitted_extension_for_testing(const char* data, size_t size) {
     AppendBytes(FieldMetadata_OmittedExtensionForTesting::kFieldId, data, size);
   }
@@ -191,18 +156,29 @@ class TestExtension : public ::perfetto::protos::pbzero::TrackEvent {
       TestExtensionChild,
       TestExtension>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NestedMessageExtensionForTesting kNestedMessageExtensionForTesting() { return {}; }
+  static constexpr FieldMetadata_NestedMessageExtensionForTesting kNestedMessageExtensionForTesting{};
   template <typename T = TestExtensionChild> T* set_nested_message_extension_for_testing() {
     return BeginNestedMessage<T>(9903);
   }
 
+
+  using FieldMetadata_UintExtensionForTesting =
+    ::protozero::proto_utils::FieldMetadata<
+      9904,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      TestExtension>;
+
+  static constexpr FieldMetadata_UintExtensionForTesting kUintExtensionForTesting{};
+  void set_uint_extension_for_testing(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_UintExtensionForTesting::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
 };
 } // Namespace.
 } // Namespace.

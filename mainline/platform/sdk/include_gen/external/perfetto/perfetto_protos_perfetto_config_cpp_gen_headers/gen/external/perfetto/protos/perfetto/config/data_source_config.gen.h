@@ -50,6 +50,7 @@ class PERFETTO_EXPORT_COMPONENT DataSourceConfig : public ::protozero::CppMessag
     kNameFieldNumber = 1,
     kTargetBufferFieldNumber = 2,
     kTraceDurationMsFieldNumber = 3,
+    kPreferSuspendClockForDurationFieldNumber = 122,
     kStopTimeoutMsFieldNumber = 7,
     kEnableExtraGuardrailsFieldNumber = 6,
     kSessionInitiatorFieldNumber = 8,
@@ -75,6 +76,7 @@ class PERFETTO_EXPORT_COMPONENT DataSourceConfig : public ::protozero::CppMessag
     kChromeConfigFieldNumber = 101,
     kInterceptorConfigFieldNumber = 115,
     kNetworkPacketTraceConfigFieldNumber = 120,
+    kSurfaceflingerLayersConfigFieldNumber = 121,
     kLegacyConfigFieldNumber = 1000,
     kForTestingFieldNumber = 1001,
   };
@@ -104,6 +106,10 @@ class PERFETTO_EXPORT_COMPONENT DataSourceConfig : public ::protozero::CppMessag
   bool has_trace_duration_ms() const { return _has_field_[3]; }
   uint32_t trace_duration_ms() const { return trace_duration_ms_; }
   void set_trace_duration_ms(uint32_t value) { trace_duration_ms_ = value; _has_field_.set(3); }
+
+  bool has_prefer_suspend_clock_for_duration() const { return _has_field_[122]; }
+  bool prefer_suspend_clock_for_duration() const { return prefer_suspend_clock_for_duration_; }
+  void set_prefer_suspend_clock_for_duration(bool value) { prefer_suspend_clock_for_duration_ = value; _has_field_.set(122); }
 
   bool has_stop_timeout_ms() const { return _has_field_[7]; }
   uint32_t stop_timeout_ms() const { return stop_timeout_ms_; }
@@ -187,6 +193,9 @@ class PERFETTO_EXPORT_COMPONENT DataSourceConfig : public ::protozero::CppMessag
   const std::string& network_packet_trace_config_raw() const { return network_packet_trace_config_; }
   void set_network_packet_trace_config_raw(const std::string& raw) { network_packet_trace_config_ = raw; _has_field_.set(120); }
 
+  const std::string& surfaceflinger_layers_config_raw() const { return surfaceflinger_layers_config_; }
+  void set_surfaceflinger_layers_config_raw(const std::string& raw) { surfaceflinger_layers_config_ = raw; _has_field_.set(121); }
+
   bool has_legacy_config() const { return _has_field_[1000]; }
   const std::string& legacy_config() const { return legacy_config_; }
   void set_legacy_config(const std::string& value) { legacy_config_ = value; _has_field_.set(1000); }
@@ -199,6 +208,7 @@ class PERFETTO_EXPORT_COMPONENT DataSourceConfig : public ::protozero::CppMessag
   std::string name_{};
   uint32_t target_buffer_{};
   uint32_t trace_duration_ms_{};
+  bool prefer_suspend_clock_for_duration_{};
   uint32_t stop_timeout_ms_{};
   bool enable_extra_guardrails_{};
   DataSourceConfig_SessionInitiator session_initiator_{};
@@ -224,6 +234,7 @@ class PERFETTO_EXPORT_COMPONENT DataSourceConfig : public ::protozero::CppMessag
   ::protozero::CopyablePtr<ChromeConfig> chrome_config_;
   ::protozero::CopyablePtr<InterceptorConfig> interceptor_config_;
   std::string network_packet_trace_config_;  // [lazy=true]
+  std::string surfaceflinger_layers_config_;  // [lazy=true]
   std::string legacy_config_{};
   ::protozero::CopyablePtr<TestConfig> for_testing_;
 
