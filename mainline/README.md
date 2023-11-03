@@ -11,12 +11,12 @@ To update:
 
 1. Submit the changes that need to go into the prebuilts.
 
-2. Wait for new builds on branches `aosp-master` and/or `aosp-master-throttled`,
+2. Wait for new builds on branches `aosp-main` and/or `aosp-main-throttled`,
    depending on which prebuilts are required. See `update.py` for details about
    which branches and targets are used for what.
 
-   In general `mainline_modules_sdks-userdebug` is the slowest build to
-   complete, so look for that to be on the safe side.
+   In general `mainline_modules_sdks-trunk_staging-userdebug` is the slowest
+   build to complete, so look for that to be on the safe side.
 
 3. Edit the list returned by `install_entries` in `update.py` in this directory
    to only cover the updates you need (this change shouldn't be submitted).
@@ -25,7 +25,7 @@ To update:
 
    ```
    prebuilts/runtime/mainline/update.py \
-     --aosp-master-build <build id> --aosp-master-throttled-build <build id>
+     --aosp-main-build <build id> --aosp-main-throttled-build <build id>
    ```
 
    where the two `<build id>` are the builds from step #2.
