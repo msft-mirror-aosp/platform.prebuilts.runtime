@@ -43,7 +43,8 @@ BuildSource = collections.namedtuple("BuildSource", [
 ARCHES = ["arm", "arm64", "x86", "x86_64"]
 
 # CI build for SDK snapshots
-SDK_SOURCE = BuildSource("aosp-master", "mainline_modules_sdks-userdebug")
+SDK_SOURCE = BuildSource("aosp-main",
+                         "mainline_modules_sdks-trunk_staging-userdebug")
 
 # Architecture-specific CI builds for APEXes. These are only used in the chroot
 # test setup (see art/tools/buildbot-build.sh). They never become part of any
@@ -52,26 +53,31 @@ SDK_SOURCE = BuildSource("aosp-master", "mainline_modules_sdks-userdebug")
 # There are currently no CI builds except for x86_64, so APEX updates are
 # skipped by default.
 APEX_SOURCE = {
-    "x86_64": BuildSource("aosp-master", "mainline_modules_x86_64-userdebug"),
+    "x86_64": BuildSource("aosp-main",
+                          "mainline_modules_x86_64-trunk_staging-userdebug"),
 }
 
 # Architecture-specific CI builds for implementation libraries. These are only
 # used in the chroot test setup (see art/tools/buildbot-build.sh). They never
 # become part of any dist artifact.
 #
-# We'd prefer to take all these from the aosp-master branch, but unfortunately
-# they're not available there, so we need to use aosp-master-throttled as well.
-# As long as they're new enough to contain the required changes (see README.md
-# instructions) and pass tests, it doesn't matter much which builds they come
-# from. Also, x86 has no userdebug build available, so we use eng for that.
-# riscv64 is updated from a local build (it is not supported by mainline), the
-# target here is used only to construct path in `install_impl_lib_entries`.
+# We'd prefer to take all these from the aosp-main branch, but in case they're
+# not available there we have the option to use aosp-main-throttled as well. As
+# long as they're new enough to contain the required changes (see README.md
+# instructions) and pass tests, it doesn't matter much which exact builds they
+# come from. riscv64 is updated from a local build (it is not supported by
+# mainline), the target here is used only to construct path in
+# `install_impl_lib_entries`.
 IMPL_LIB_SOURCE = {
-    "arm": BuildSource("aosp-master-throttled", "aosp_arm-userdebug"),
-    "arm64": BuildSource("aosp-master", "aosp_arm64-userdebug"),
-    "riscv64": BuildSource("aosp-master", "aosp_riscv64-userdebug"),
-    "x86": BuildSource("aosp-master", "aosp_x86-eng"),
-    "x86_64": BuildSource("aosp-master", "aosp_x86_64-userdebug"),
+    "arm": None, # There's no longer any AOSP CI build for this arch.
+    "arm64": BuildSource("aosp-main",
+                         "aosp_arm64-trunk_staging-userdebug"),
+    "riscv64": BuildSource("aosp-main",
+                           "aosp_riscv64-trunk_staging-userdebug"),
+    "x86": BuildSource("aosp-main",
+                       "aosp_x86-trunk_staging-userdebug"),
+    "x86_64": BuildSource("aosp-main",
+                          "aosp_x86_64-trunk_staging-userdebug"),
 }
 
 # Paths to git projects to prepare CLs in
@@ -191,7 +197,7 @@ def install_impl_lib_entries(lib_name):
           source_build=IMPL_LIB_SOURCE[arch],
           source_path=(
               IMPL_LIB_SOURCE[arch].target.rpartition("-")[0] +
-              "-target_files-{BUILD}.zip"),
+              "-target_files-{BUILD}.zip" if IMPL_LIB_SOURCE[arch] else None),
           unzip_single_file=os.path.join(
               "SYSTEM",
               "lib64" if arch.endswith("64") else "lib",
@@ -480,25 +486,25 @@ def install_paths_per_git_root(roots, paths):
 def get_args():
   """Parses and returns command line arguments."""
   parser = argparse.ArgumentParser(
-      epilog="Either --aosp-master-build and --aosp-master-throttled-build, "
+      epilog="Either --aosp-main-build and --aosp-main-throttled-build, "
       "or --local-dist, is required.")
 
-  parser.add_argument("--aosp-master-build", metavar="NUMBER",
-                      help="Build number to fetch from aosp-master")
-  parser.add_argument("--aosp-master-throttled-build", metavar="NUMBER",
-                      help="Build number to fetch from aosp-master-throttled")
+  parser.add_argument("--aosp-main-build", metavar="NUMBER",
+                      help="Build number to fetch from aosp-main")
+  parser.add_argument("--aosp-main-throttled-build", metavar="NUMBER",
+                      help="Build number to fetch from aosp-main-throttled")
   parser.add_argument("--local-dist", metavar="PATH",
                       help="Take prebuilts from this local dist dir instead of "
                       "using fetch_artifact")
   parser.add_argument("--local-dist-riscv64", metavar="PATH",
                       help="Copy riscv64 prebuilts from a local path, which "
                       "must be $HOME/<path-to-aosp-root>/out/dist with prebuilts "
-                      "already built for aosp_riscv64-userdebug target as "
-                      "described in README_riscv64.md. Only riscv64-specific "
-                      "files and Android.bp are updated. Options such as "
-                      "--skip-apex, --skip-module-sdk, --skip-impl-lib are "
-                      "ignored. It is a temporary workaround until mainline "
-                      "supports riscv64.")
+                      "already built for aosp_riscv64-trunk_staging-userdebug "
+                      "target as described in README_riscv64.md. Only "
+                      "riscv64-specific files and Android.bp are updated. "
+                      "Options such as --skip-apex, --skip-module-sdk, "
+                      "--skip-impl-lib are ignored. It is a temporary "
+                      "workaround until mainline supports riscv64.")
   parser.add_argument("--skip-apex", default=True,
                       action=argparse.BooleanOptionalAction,
                       help="Do not fetch .apex files.")
@@ -526,8 +532,8 @@ def get_args():
     ARCHES = ["riscv64"]
     args.local_dist = args.local_dist_riscv64
 
-  got_build_numbers = bool(args.aosp_master_build and
-                           args.aosp_master_throttled_build)
+  got_build_numbers = bool(args.aosp_main_build and
+                           args.aosp_main_throttled_build)
   if ((not got_build_numbers and not args.local_dist) or
       (got_build_numbers and args.local_dist)):
     sys.exit(parser.format_help())
@@ -543,10 +549,10 @@ def main():
     sys.exit("This script must be run in the root of the Android build tree.")
 
   build_numbers = None
-  if args.aosp_master_build:
+  if args.aosp_main_build:
     build_numbers = {
-        "aosp-master": args.aosp_master_build,
-        "aosp-master-throttled": args.aosp_master_throttled_build,
+        "aosp-main": args.aosp_main_build,
+        "aosp-main-throttled": args.aosp_main_throttled_build,
     }
 
   entries = install_entries()
@@ -566,8 +572,8 @@ def main():
       GIT_PROJECT_ROOTS, install_paths)
 
   git_branch_name = PREBUILT_DESCR.lower().replace(" ", "-") + "-update"
-  if args.aosp_master_build:
-    git_branch_name += "-" + args.aosp_master_build
+  if args.aosp_main_build:
+    git_branch_name += "-" + args.aosp_main_build
 
   if not args.skip_cls:
     git_paths = list(install_paths_per_root.keys())
