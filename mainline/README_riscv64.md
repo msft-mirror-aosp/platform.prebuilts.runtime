@@ -33,7 +33,7 @@ To update:
 
 - Build implementation libs:
   ```
-  $ lunch aosp_riscv64-userdebug
+  $ lunch aosp_riscv64-trunk_staging-userdebug
   $ m dist
   ```
 
