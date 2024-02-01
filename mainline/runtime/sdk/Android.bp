@@ -132,15 +132,6 @@ cc_prebuilt_library_headers {
                 "android/arm64/include/bionic/libc/kernel/android/uapi",
             ],
         },
-        android_riscv64: {
-            export_system_include_dirs: [
-                "android/riscv64/include/bionic/libc/include",
-                "android/riscv64/include/bionic/libc/kernel/uapi/asm-riscv",
-                "android/riscv64/include/bionic/libc/kernel/uapi",
-                "android/riscv64/include/bionic/libc/kernel/android/scsi",
-                "android/riscv64/include/bionic/libc/kernel/android/uapi",
-            ],
-        },
         android_x86_64: {
             export_system_include_dirs: [
                 "android/x86_64/include/bionic/libc/include",
@@ -208,9 +199,6 @@ cc_prebuilt_object {
         android_arm64: {
             srcs: ["android/arm64/lib/crtbegin_dynamic.o"],
         },
-        android_riscv64: {
-            srcs: ["android/riscv64/lib/crtbegin_dynamic.o"],
-        },
         android_x86_64: {
             srcs: ["android/x86_64/lib/crtbegin_dynamic.o"],
         },
@@ -252,9 +240,6 @@ cc_prebuilt_object {
         },
         android_arm64: {
             srcs: ["android/arm64/lib/crtbegin_so.o"],
-        },
-        android_riscv64: {
-            srcs: ["android/riscv64/lib/crtbegin_so.o"],
         },
         android_x86_64: {
             srcs: ["android/x86_64/lib/crtbegin_so.o"],
@@ -298,9 +283,6 @@ cc_prebuilt_object {
         android_arm64: {
             srcs: ["android/arm64/lib/crtend_android.o"],
         },
-        android_riscv64: {
-            srcs: ["android/riscv64/lib/crtend_android.o"],
-        },
         android_x86_64: {
             srcs: ["android/x86_64/lib/crtend_android.o"],
         },
@@ -343,9 +325,6 @@ cc_prebuilt_object {
         android_arm64: {
             srcs: ["android/arm64/lib/crtend_so.o"],
         },
-        android_riscv64: {
-            srcs: ["android/riscv64/lib/crtend_so.o"],
-        },
         android_x86_64: {
             srcs: ["android/x86_64/lib/crtend_so.o"],
         },
@@ -360,6 +339,48 @@ cc_prebuilt_object {
         },
         linux_bionic_x86_64: {
             srcs: ["linux_bionic/x86_64/lib/crtend_so.o"],
+        },
+    },
+}
+
+cc_prebuilt_object {
+    name: "crt_pad_segment",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: [
+        "//apex_available:anyapex",
+        "//apex_available:platform",
+    ],
+    licenses: ["runtime-module-sdk_bionic_libc_license"],
+    host_supported: true,
+    vendor_available: true,
+    product_available: true,
+    stl: "none",
+    system_shared_libs: [],
+    sanitize: {
+        never: true,
+    },
+    target: {
+        android: {
+            compile_multilib: "both",
+        },
+        android_arm64: {
+            srcs: ["android/arm64/lib/crt_pad_segment.o"],
+        },
+        android_x86_64: {
+            srcs: ["android/x86_64/lib/crt_pad_segment.o"],
+        },
+        android_arm: {
+            srcs: ["android/arm/lib/crt_pad_segment.o"],
+        },
+        android_x86: {
+            srcs: ["android/x86/lib/crt_pad_segment.o"],
+        },
+        linux_bionic: {
+            compile_multilib: "64",
+        },
+        linux_bionic_x86_64: {
+            srcs: ["linux_bionic/x86_64/lib/crt_pad_segment.o"],
         },
     },
 }
@@ -409,16 +430,6 @@ cc_prebuilt_library_shared {
                 "android/arm64/include/bionic/libc/kernel/uapi",
                 "android/arm64/include/bionic/libc/kernel/android/scsi",
                 "android/arm64/include/bionic/libc/kernel/android/uapi",
-            ],
-        },
-        android_riscv64: {
-            srcs: ["android/riscv64/lib/libc.so"],
-            export_system_include_dirs: [
-                "android/riscv64/include/bionic/libc/include",
-                "android/riscv64/include/bionic/libc/kernel/uapi/asm-riscv",
-                "android/riscv64/include/bionic/libc/kernel/uapi",
-                "android/riscv64/include/bionic/libc/kernel/android/scsi",
-                "android/riscv64/include/bionic/libc/kernel/android/uapi",
             ],
         },
         android_x86_64: {
@@ -506,16 +517,6 @@ cc_prebuilt_library_shared {
                 "android/arm64/include/bionic/libc/kernel/android/uapi",
             ],
         },
-        android_riscv64: {
-            srcs: ["android/riscv64/lib/libdl.so"],
-            export_system_include_dirs: [
-                "android/riscv64/include/bionic/libc/include",
-                "android/riscv64/include/bionic/libc/kernel/uapi/asm-riscv",
-                "android/riscv64/include/bionic/libc/kernel/uapi",
-                "android/riscv64/include/bionic/libc/kernel/android/scsi",
-                "android/riscv64/include/bionic/libc/kernel/android/uapi",
-            ],
-        },
         android_x86_64: {
             srcs: ["android/x86_64/lib/libdl.so"],
             export_system_include_dirs: [
@@ -591,9 +592,6 @@ cc_prebuilt_library_shared {
         android_arm64: {
             srcs: ["android/arm64/lib/libdl_android.so"],
         },
-        android_riscv64: {
-            srcs: ["android/riscv64/lib/libdl_android.so"],
-        },
         android_x86_64: {
             srcs: ["android/x86_64/lib/libdl_android.so"],
         },
@@ -646,9 +644,6 @@ cc_prebuilt_library_shared {
         android_arm64: {
             srcs: ["android/arm64/lib/libm.so"],
         },
-        android_riscv64: {
-            srcs: ["android/riscv64/lib/libm.so"],
-        },
         android_x86_64: {
             srcs: ["android/x86_64/lib/libm.so"],
         },
@@ -675,6 +670,7 @@ cc_prebuilt_library_static {
     apex_available: [
         "//apex_available:anyapex",
         "//apex_available:platform",
+        "com.android.runtime",
     ],
     licenses: ["runtime-module-sdk_bionic_libc_license"],
     host_supported: true,
@@ -706,16 +702,6 @@ cc_prebuilt_library_static {
                 "android/arm64/include/bionic/libc/kernel/uapi",
                 "android/arm64/include/bionic/libc/kernel/android/scsi",
                 "android/arm64/include/bionic/libc/kernel/android/uapi",
-            ],
-        },
-        android_riscv64: {
-            srcs: ["android/riscv64/lib/libasync_safe.a"],
-            export_system_include_dirs: [
-                "android/riscv64/include/bionic/libc/include",
-                "android/riscv64/include/bionic/libc/kernel/uapi/asm-riscv",
-                "android/riscv64/include/bionic/libc/kernel/uapi",
-                "android/riscv64/include/bionic/libc/kernel/android/scsi",
-                "android/riscv64/include/bionic/libc/kernel/android/uapi",
             ],
         },
         android_x86_64: {
@@ -792,9 +778,6 @@ cc_prebuilt_library_static {
         android_arm64: {
             srcs: ["android/arm64/lib/note_memtag_heap_async.a"],
         },
-        android_riscv64: {
-            srcs: ["android/riscv64/lib/note_memtag_heap_async.a"],
-        },
         android_x86_64: {
             srcs: ["android/x86_64/lib/note_memtag_heap_async.a"],
         },
@@ -840,9 +823,6 @@ cc_prebuilt_library_static {
         },
         android_arm64: {
             srcs: ["android/arm64/lib/note_memtag_heap_sync.a"],
-        },
-        android_riscv64: {
-            srcs: ["android/riscv64/lib/note_memtag_heap_sync.a"],
         },
         android_x86_64: {
             srcs: ["android/x86_64/lib/note_memtag_heap_sync.a"],
