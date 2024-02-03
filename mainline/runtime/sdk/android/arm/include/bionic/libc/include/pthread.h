@@ -34,6 +34,7 @@
  */
 
 #include <limits.h>
+#include <bits/page_size.h>
 #include <bits/pthread_types.h>
 #include <sched.h>
 #include <sys/cdefs.h>
@@ -74,9 +75,9 @@ enum {
 #endif
 
 #if defined(__LP64__)
-#define PTHREAD_STACK_MIN (4 * PAGE_SIZE)
+#define PTHREAD_STACK_MIN 16384
 #else
-#define PTHREAD_STACK_MIN (2 * PAGE_SIZE)
+#define PTHREAD_STACK_MIN 8192
 #endif
 
 #define PTHREAD_CREATE_DETACHED 1
