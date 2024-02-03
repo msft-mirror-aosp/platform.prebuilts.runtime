@@ -1,21 +1,9 @@
-/****************************************************************************
- ****************************************************************************
- ***
- ***   This header was automatically generated from a Linux kernel header
- ***   of the same name, to make information necessary for userspace to
- ***   call into the kernel available to libc.  It contains only constants,
- ***   structures, and macros generated from the original header, and thus,
- ***   contains no copyrightable information.
- ***
- ***   To edit the content of this header, modify the corresponding
- ***   source file (e.g. under external/kernel-headers/original/) then
- ***   run bionic/libc/kernel/tools/update_all.py
- ***
- ***   Any manual change here will be lost the next time this script will
- ***   be run. You've been warned!
- ***
- ****************************************************************************
- ****************************************************************************/
+/*
+ * This file is auto-generated. Modifications will be lost.
+ *
+ * See https://android.googlesource.com/platform/bionic/+/master/libc/kernel/
+ * for more information.
+ */
 #ifndef _UAPI_LINUX_ETHTOOL_NETLINK_H_
 #define _UAPI_LINUX_ETHTOOL_NETLINK_H_
 #include <linux/ethtool.h>
@@ -277,6 +265,8 @@ enum {
   ETHTOOL_A_RINGS_CQE_SIZE,
   ETHTOOL_A_RINGS_TX_PUSH,
   ETHTOOL_A_RINGS_RX_PUSH,
+  ETHTOOL_A_RINGS_TX_PUSH_BUF_LEN,
+  ETHTOOL_A_RINGS_TX_PUSH_BUF_LEN_MAX,
   __ETHTOOL_A_RINGS_CNT,
   ETHTOOL_A_RINGS_MAX = (__ETHTOOL_A_RINGS_CNT - 1)
 };
@@ -576,7 +566,7 @@ enum {
   ETHTOOL_A_STATS_GRP_HIST_BKT_HI,
   ETHTOOL_A_STATS_GRP_HIST_VAL,
   __ETHTOOL_A_STATS_GRP_CNT,
-  ETHTOOL_A_STATS_GRP_MAX = (__ETHTOOL_A_STATS_CNT - 1)
+  ETHTOOL_A_STATS_GRP_MAX = (__ETHTOOL_A_STATS_GRP_CNT - 1)
 };
 enum {
   ETHTOOL_A_STATS_ETH_PHY_5_SYM_ERR,
