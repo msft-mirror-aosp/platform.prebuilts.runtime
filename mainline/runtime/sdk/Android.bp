@@ -388,6 +388,9 @@ cc_prebuilt_object {
         android_arm64: {
             srcs: ["android/arm64/lib/crt_pad_segment.o"],
         },
+        android_riscv64: {
+            srcs: ["android/riscv64/lib/crt_pad_segment.o"],
+        },
         android_x86_64: {
             srcs: ["android/x86_64/lib/crt_pad_segment.o"],
         },
