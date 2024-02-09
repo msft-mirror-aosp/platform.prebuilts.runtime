@@ -19,51 +19,46 @@ To update:
 
 1. On aosp/main (full manifest):
 
-- Build apexes:
-  ```
-  $ banchan \
-      com.android.runtime \
-      com.android.tzdata \
-      com.android.os.statsd \
-      com.android.conscrypt \
-      com.android.i18n \
-      riscv64 \
-    && DIST_DIR=out/dist/mainline_modules_riscv64 m dist
-  ```
+   1. Cherry pick https://r.android.com/2647900 (this is necessary for the SDK
+      build in step 4).
 
-- Build implementation libs:
-  ```
-  $ lunch aosp_riscv64-trunk_staging-userdebug
-  $ m dist
-  ```
+   2. Build implementation libs:
+      ```
+      $ lunch aosp_riscv64-trunk_staging-userdebug
+      $ m dist
+      ```
 
-- Build module SDKs:
+   3. Build apexes:
+      ```
+      $ banchan \
+          com.android.runtime \
+          com.android.tzdata \
+          com.android.os.statsd \
+          com.android.conscrypt \
+          com.android.i18n \
+          riscv64
+      $ m DIST_DIR=out/dist/mainline_modules_riscv64 dist
+      ```
 
-  First, cherry-pick https://r.android.com/2647900.
-  ```
-  $ TARGET_BUILD_APPS="\
-      com.android.os.statsd \
-      com.android.runtime \
-      com.android.i18n \
-      com.android.conscrypt \
-      com.android.tzdata" \
-    packages/modules/common/build/mainline_modules_sdks.sh \
-      --build-release latest \
-      --build-platform-sdks-for-mainline
-  ```
+   4. Build module SDKs:
+      ```
+      $ packages/modules/common/build/mainline_modules_sdks.sh \
+          --build-release latest \
+          --build-platform-sdks-for-mainline
+      ```
 
-2. On master-art branch (reduced manifest):
+2. On aosp/master-art branch (reduced manifest):
 
-- Run:
-  ```
-  $ prebuilts/runtime/mainline/update.py \
-      --local-dist-riscv64 <root-of-aosp-tree>/out/dist
-  ```
+   1. Run:
+      ```
+      $ prebuilts/runtime/mainline/update.py \
+          --local-dist-riscv64 <root-of-aosp-tree>/out/dist
+      ```
 
-- Manually inspect the updated Android.bp files and revert any sections not
-  related to riscv64 (it may be necessary to revert the entire file). Then try
-  to build with `lunch riscv64 && art/tools/buildbot-build.sh`, you may find
-  that further tweaking is needed. Make sure that the build succeeds.
+   2. Manually inspect the updated Android.bp files and revert any sections not
+      related to riscv64 (it may be necessary to revert the entire file). Then try
+      to build with `lunch riscv64 && art/tools/buildbot-build.sh`, you may find
+      that further tweaking is needed. Make sure that the build succeeds.
 
-- Update the commit (use `lunch riscv64 && art/tools/buildbot-build.sh` as a
-  validation step in commit message). Be sure to set mast@ as reviewer.
+   3. Update the commit (use `lunch riscv64 && art/tools/buildbot-build.sh` as a
+      validation step in commit message). Be sure to set mast@ as reviewer.
