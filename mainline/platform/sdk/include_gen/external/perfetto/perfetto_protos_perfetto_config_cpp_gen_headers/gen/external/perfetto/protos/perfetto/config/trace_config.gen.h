@@ -19,6 +19,8 @@ class TraceConfig;
 class TraceConfig_CmdTraceStartDelay;
 class TraceConfig_AndroidReportConfig;
 class TraceConfig_TraceFilter;
+class TraceConfig_TraceFilter_StringFilterChain;
+class TraceConfig_TraceFilter_StringFilterRule;
 class TraceConfig_IncidentReportConfig;
 class TraceConfig_IncrementalStateConfig;
 class TraceConfig_TriggerConfig;
@@ -38,6 +40,7 @@ class TraceConfig_BufferConfig;
 enum TraceConfig_LockdownModeOperation : int;
 enum TraceConfig_CompressionType : int;
 enum TraceConfig_StatsdLogging : int;
+enum TraceConfig_TraceFilter_StringFilterPolicy : int;
 enum TraceConfig_TriggerConfig_TriggerMode : int;
 enum BuiltinClock : int;
 enum DataSourceConfig_SessionInitiator : int;
@@ -68,10 +71,18 @@ enum TraceConfig_StatsdLogging : int {
   TraceConfig_StatsdLogging_STATSD_LOGGING_ENABLED = 1,
   TraceConfig_StatsdLogging_STATSD_LOGGING_DISABLED = 2,
 };
+enum TraceConfig_TraceFilter_StringFilterPolicy : int {
+  TraceConfig_TraceFilter_StringFilterPolicy_SFP_UNSPECIFIED = 0,
+  TraceConfig_TraceFilter_StringFilterPolicy_SFP_MATCH_REDACT_GROUPS = 1,
+  TraceConfig_TraceFilter_StringFilterPolicy_SFP_ATRACE_MATCH_REDACT_GROUPS = 2,
+  TraceConfig_TraceFilter_StringFilterPolicy_SFP_MATCH_BREAK = 3,
+  TraceConfig_TraceFilter_StringFilterPolicy_SFP_ATRACE_MATCH_BREAK = 4,
+};
 enum TraceConfig_TriggerConfig_TriggerMode : int {
   TraceConfig_TriggerConfig_TriggerMode_UNSPECIFIED = 0,
   TraceConfig_TriggerConfig_TriggerMode_START_TRACING = 1,
   TraceConfig_TriggerConfig_TriggerMode_STOP_TRACING = 2,
+  TraceConfig_TriggerConfig_TriggerMode_CLONE_SNAPSHOT = 3,
 };
 enum TraceConfig_BufferConfig_FillPolicy : int {
   TraceConfig_BufferConfig_FillPolicy_UNSPECIFIED = 0,
@@ -115,6 +126,7 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig : public ::protozero::CppMessageObj 
     kDataSourcesFieldNumber = 2,
     kBuiltinDataSourcesFieldNumber = 20,
     kDurationMsFieldNumber = 3,
+    kPreferSuspendClockForDurationFieldNumber = 36,
     kEnableExtraGuardrailsFieldNumber = 4,
     kLockdownModeFieldNumber = 5,
     kProducersFieldNumber = 6,
@@ -136,6 +148,7 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig : public ::protozero::CppMessageObj 
     kAllowUserBuildTracingFieldNumber = 19,
     kUniqueSessionNameFieldNumber = 22,
     kCompressionTypeFieldNumber = 24,
+    kCompressFromCliFieldNumber = 37,
     kIncidentReportConfigFieldNumber = 25,
     kStatsdLoggingFieldNumber = 31,
     kTraceUuidMsbFieldNumber = 27,
@@ -178,6 +191,10 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig : public ::protozero::CppMessageObj 
   bool has_duration_ms() const { return _has_field_[3]; }
   uint32_t duration_ms() const { return duration_ms_; }
   void set_duration_ms(uint32_t value) { duration_ms_ = value; _has_field_.set(3); }
+
+  bool has_prefer_suspend_clock_for_duration() const { return _has_field_[36]; }
+  bool prefer_suspend_clock_for_duration() const { return prefer_suspend_clock_for_duration_; }
+  void set_prefer_suspend_clock_for_duration(bool value) { prefer_suspend_clock_for_duration_ = value; _has_field_.set(36); }
 
   bool has_enable_extra_guardrails() const { return _has_field_[4]; }
   bool enable_extra_guardrails() const { return enable_extra_guardrails_; }
@@ -268,6 +285,10 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig : public ::protozero::CppMessageObj 
   TraceConfig_CompressionType compression_type() const { return compression_type_; }
   void set_compression_type(TraceConfig_CompressionType value) { compression_type_ = value; _has_field_.set(24); }
 
+  bool has_compress_from_cli() const { return _has_field_[37]; }
+  bool compress_from_cli() const { return compress_from_cli_; }
+  void set_compress_from_cli(bool value) { compress_from_cli_ = value; _has_field_.set(37); }
+
   bool has_incident_report_config() const { return _has_field_[25]; }
   const TraceConfig_IncidentReportConfig& incident_report_config() const { return *incident_report_config_; }
   TraceConfig_IncidentReportConfig* mutable_incident_report_config() { _has_field_.set(25); return incident_report_config_.get(); }
@@ -301,6 +322,7 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig : public ::protozero::CppMessageObj 
   std::vector<TraceConfig_DataSource> data_sources_;
   ::protozero::CopyablePtr<TraceConfig_BuiltinDataSource> builtin_data_sources_;
   uint32_t duration_ms_{};
+  bool prefer_suspend_clock_for_duration_{};
   bool enable_extra_guardrails_{};
   TraceConfig_LockdownModeOperation lockdown_mode_{};
   std::vector<TraceConfig_ProducerConfig> producers_;
@@ -322,6 +344,7 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig : public ::protozero::CppMessageObj 
   bool allow_user_build_tracing_{};
   std::string unique_session_name_{};
   TraceConfig_CompressionType compression_type_{};
+  bool compress_from_cli_{};
   ::protozero::CopyablePtr<TraceConfig_IncidentReportConfig> incident_report_config_;
   TraceConfig_StatsdLogging statsd_logging_{};
   int64_t trace_uuid_msb_{};
@@ -334,7 +357,7 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig : public ::protozero::CppMessageObj 
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<36> _has_field_{};
+  std::bitset<38> _has_field_{};
 };
 
 
@@ -434,8 +457,20 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig_AndroidReportConfig : public ::proto
 
 class PERFETTO_EXPORT_COMPONENT TraceConfig_TraceFilter : public ::protozero::CppMessageObj {
  public:
+  using StringFilterRule = TraceConfig_TraceFilter_StringFilterRule;
+  using StringFilterChain = TraceConfig_TraceFilter_StringFilterChain;
+  using StringFilterPolicy = TraceConfig_TraceFilter_StringFilterPolicy;
+  static constexpr auto SFP_UNSPECIFIED = TraceConfig_TraceFilter_StringFilterPolicy_SFP_UNSPECIFIED;
+  static constexpr auto SFP_MATCH_REDACT_GROUPS = TraceConfig_TraceFilter_StringFilterPolicy_SFP_MATCH_REDACT_GROUPS;
+  static constexpr auto SFP_ATRACE_MATCH_REDACT_GROUPS = TraceConfig_TraceFilter_StringFilterPolicy_SFP_ATRACE_MATCH_REDACT_GROUPS;
+  static constexpr auto SFP_MATCH_BREAK = TraceConfig_TraceFilter_StringFilterPolicy_SFP_MATCH_BREAK;
+  static constexpr auto SFP_ATRACE_MATCH_BREAK = TraceConfig_TraceFilter_StringFilterPolicy_SFP_ATRACE_MATCH_BREAK;
+  static constexpr auto StringFilterPolicy_MIN = TraceConfig_TraceFilter_StringFilterPolicy_SFP_UNSPECIFIED;
+  static constexpr auto StringFilterPolicy_MAX = TraceConfig_TraceFilter_StringFilterPolicy_SFP_ATRACE_MATCH_BREAK;
   enum FieldNumbers {
     kBytecodeFieldNumber = 1,
+    kBytecodeV2FieldNumber = 2,
+    kStringFilterChainFieldNumber = 3,
   };
 
   TraceConfig_TraceFilter();
@@ -457,14 +492,109 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig_TraceFilter : public ::protozero::Cp
   void set_bytecode(const std::string& value) { bytecode_ = value; _has_field_.set(1); }
   void set_bytecode(const void* p, size_t s) { bytecode_.assign(reinterpret_cast<const char*>(p), s); _has_field_.set(1); }
 
+  bool has_bytecode_v2() const { return _has_field_[2]; }
+  const std::string& bytecode_v2() const { return bytecode_v2_; }
+  void set_bytecode_v2(const std::string& value) { bytecode_v2_ = value; _has_field_.set(2); }
+  void set_bytecode_v2(const void* p, size_t s) { bytecode_v2_.assign(reinterpret_cast<const char*>(p), s); _has_field_.set(2); }
+
+  bool has_string_filter_chain() const { return _has_field_[3]; }
+  const TraceConfig_TraceFilter_StringFilterChain& string_filter_chain() const { return *string_filter_chain_; }
+  TraceConfig_TraceFilter_StringFilterChain* mutable_string_filter_chain() { _has_field_.set(3); return string_filter_chain_.get(); }
+
  private:
   std::string bytecode_{};
+  std::string bytecode_v2_{};
+  ::protozero::CopyablePtr<TraceConfig_TraceFilter_StringFilterChain> string_filter_chain_;
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<4> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT TraceConfig_TraceFilter_StringFilterChain : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kRulesFieldNumber = 1,
+  };
+
+  TraceConfig_TraceFilter_StringFilterChain();
+  ~TraceConfig_TraceFilter_StringFilterChain() override;
+  TraceConfig_TraceFilter_StringFilterChain(TraceConfig_TraceFilter_StringFilterChain&&) noexcept;
+  TraceConfig_TraceFilter_StringFilterChain& operator=(TraceConfig_TraceFilter_StringFilterChain&&);
+  TraceConfig_TraceFilter_StringFilterChain(const TraceConfig_TraceFilter_StringFilterChain&);
+  TraceConfig_TraceFilter_StringFilterChain& operator=(const TraceConfig_TraceFilter_StringFilterChain&);
+  bool operator==(const TraceConfig_TraceFilter_StringFilterChain&) const;
+  bool operator!=(const TraceConfig_TraceFilter_StringFilterChain& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  const std::vector<TraceConfig_TraceFilter_StringFilterRule>& rules() const { return rules_; }
+  std::vector<TraceConfig_TraceFilter_StringFilterRule>* mutable_rules() { return &rules_; }
+  int rules_size() const;
+  void clear_rules();
+  TraceConfig_TraceFilter_StringFilterRule* add_rules();
+
+ private:
+  std::vector<TraceConfig_TraceFilter_StringFilterRule> rules_;
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
   std::bitset<2> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT TraceConfig_TraceFilter_StringFilterRule : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kPolicyFieldNumber = 1,
+    kRegexPatternFieldNumber = 2,
+    kAtracePayloadStartsWithFieldNumber = 3,
+  };
+
+  TraceConfig_TraceFilter_StringFilterRule();
+  ~TraceConfig_TraceFilter_StringFilterRule() override;
+  TraceConfig_TraceFilter_StringFilterRule(TraceConfig_TraceFilter_StringFilterRule&&) noexcept;
+  TraceConfig_TraceFilter_StringFilterRule& operator=(TraceConfig_TraceFilter_StringFilterRule&&);
+  TraceConfig_TraceFilter_StringFilterRule(const TraceConfig_TraceFilter_StringFilterRule&);
+  TraceConfig_TraceFilter_StringFilterRule& operator=(const TraceConfig_TraceFilter_StringFilterRule&);
+  bool operator==(const TraceConfig_TraceFilter_StringFilterRule&) const;
+  bool operator!=(const TraceConfig_TraceFilter_StringFilterRule& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_policy() const { return _has_field_[1]; }
+  TraceConfig_TraceFilter_StringFilterPolicy policy() const { return policy_; }
+  void set_policy(TraceConfig_TraceFilter_StringFilterPolicy value) { policy_ = value; _has_field_.set(1); }
+
+  bool has_regex_pattern() const { return _has_field_[2]; }
+  const std::string& regex_pattern() const { return regex_pattern_; }
+  void set_regex_pattern(const std::string& value) { regex_pattern_ = value; _has_field_.set(2); }
+
+  bool has_atrace_payload_starts_with() const { return _has_field_[3]; }
+  const std::string& atrace_payload_starts_with() const { return atrace_payload_starts_with_; }
+  void set_atrace_payload_starts_with(const std::string& value) { atrace_payload_starts_with_ = value; _has_field_.set(3); }
+
+ private:
+  TraceConfig_TraceFilter_StringFilterPolicy policy_{};
+  std::string regex_pattern_{};
+  std::string atrace_payload_starts_with_{};
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<4> _has_field_{};
 };
 
 
@@ -569,10 +699,12 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig_TriggerConfig : public ::protozero::
   static constexpr auto UNSPECIFIED = TraceConfig_TriggerConfig_TriggerMode_UNSPECIFIED;
   static constexpr auto START_TRACING = TraceConfig_TriggerConfig_TriggerMode_START_TRACING;
   static constexpr auto STOP_TRACING = TraceConfig_TriggerConfig_TriggerMode_STOP_TRACING;
+  static constexpr auto CLONE_SNAPSHOT = TraceConfig_TriggerConfig_TriggerMode_CLONE_SNAPSHOT;
   static constexpr auto TriggerMode_MIN = TraceConfig_TriggerConfig_TriggerMode_UNSPECIFIED;
-  static constexpr auto TriggerMode_MAX = TraceConfig_TriggerConfig_TriggerMode_STOP_TRACING;
+  static constexpr auto TriggerMode_MAX = TraceConfig_TriggerConfig_TriggerMode_CLONE_SNAPSHOT;
   enum FieldNumbers {
     kTriggerModeFieldNumber = 1,
+    kUseCloneSnapshotIfAvailableFieldNumber = 4,
     kTriggersFieldNumber = 2,
     kTriggerTimeoutMsFieldNumber = 3,
   };
@@ -595,6 +727,10 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig_TriggerConfig : public ::protozero::
   TraceConfig_TriggerConfig_TriggerMode trigger_mode() const { return trigger_mode_; }
   void set_trigger_mode(TraceConfig_TriggerConfig_TriggerMode value) { trigger_mode_ = value; _has_field_.set(1); }
 
+  bool has_use_clone_snapshot_if_available() const { return _has_field_[4]; }
+  bool use_clone_snapshot_if_available() const { return use_clone_snapshot_if_available_; }
+  void set_use_clone_snapshot_if_available(bool value) { use_clone_snapshot_if_available_ = value; _has_field_.set(4); }
+
   const std::vector<TraceConfig_TriggerConfig_Trigger>& triggers() const { return triggers_; }
   std::vector<TraceConfig_TriggerConfig_Trigger>* mutable_triggers() { return &triggers_; }
   int triggers_size() const;
@@ -607,6 +743,7 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig_TriggerConfig : public ::protozero::
 
  private:
   TraceConfig_TriggerConfig_TriggerMode trigger_mode_{};
+  bool use_clone_snapshot_if_available_{};
   std::vector<TraceConfig_TriggerConfig_Trigger> triggers_;
   uint32_t trigger_timeout_ms_{};
 
@@ -614,7 +751,7 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig_TriggerConfig : public ::protozero::
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<4> _has_field_{};
+  std::bitset<5> _has_field_{};
 };
 
 
@@ -681,6 +818,7 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig_GuardrailOverrides : public ::protoz
  public:
   enum FieldNumbers {
     kMaxUploadPerDayBytesFieldNumber = 1,
+    kMaxTracingBufferSizeKbFieldNumber = 2,
   };
 
   TraceConfig_GuardrailOverrides();
@@ -701,14 +839,19 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig_GuardrailOverrides : public ::protoz
   uint64_t max_upload_per_day_bytes() const { return max_upload_per_day_bytes_; }
   void set_max_upload_per_day_bytes(uint64_t value) { max_upload_per_day_bytes_ = value; _has_field_.set(1); }
 
+  bool has_max_tracing_buffer_size_kb() const { return _has_field_[2]; }
+  uint32_t max_tracing_buffer_size_kb() const { return max_tracing_buffer_size_kb_; }
+  void set_max_tracing_buffer_size_kb(uint32_t value) { max_tracing_buffer_size_kb_ = value; _has_field_.set(2); }
+
  private:
   uint64_t max_upload_per_day_bytes_{};
+  uint32_t max_tracing_buffer_size_kb_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<2> _has_field_{};
+  std::bitset<3> _has_field_{};
 };
 
 
@@ -822,6 +965,7 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig_BuiltinDataSource : public ::protoze
     kPrimaryTraceClockFieldNumber = 5,
     kSnapshotIntervalMsFieldNumber = 6,
     kPreferSuspendClockForSnapshotFieldNumber = 7,
+    kDisableChunkUsageHistogramsFieldNumber = 8,
   };
 
   TraceConfig_BuiltinDataSource();
@@ -866,6 +1010,10 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig_BuiltinDataSource : public ::protoze
   bool prefer_suspend_clock_for_snapshot() const { return prefer_suspend_clock_for_snapshot_; }
   void set_prefer_suspend_clock_for_snapshot(bool value) { prefer_suspend_clock_for_snapshot_ = value; _has_field_.set(7); }
 
+  bool has_disable_chunk_usage_histograms() const { return _has_field_[8]; }
+  bool disable_chunk_usage_histograms() const { return disable_chunk_usage_histograms_; }
+  void set_disable_chunk_usage_histograms(bool value) { disable_chunk_usage_histograms_ = value; _has_field_.set(8); }
+
  private:
   bool disable_clock_snapshotting_{};
   bool disable_trace_config_{};
@@ -874,12 +1022,13 @@ class PERFETTO_EXPORT_COMPONENT TraceConfig_BuiltinDataSource : public ::protoze
   BuiltinClock primary_trace_clock_{};
   uint32_t snapshot_interval_ms_{};
   bool prefer_suspend_clock_for_snapshot_{};
+  bool disable_chunk_usage_histograms_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<8> _has_field_{};
+  std::bitset<9> _has_field_{};
 };
 
 

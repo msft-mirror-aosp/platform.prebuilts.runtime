@@ -67,14 +67,7 @@ class DataSourceDescriptor : public ::protozero::Message {
       std::string,
       DataSourceDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -98,14 +91,7 @@ class DataSourceDescriptor : public ::protozero::Message {
       uint64_t,
       DataSourceDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Id kId() { return {}; }
+  static constexpr FieldMetadata_Id kId{};
   void set_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -123,14 +109,7 @@ class DataSourceDescriptor : public ::protozero::Message {
       bool,
       DataSourceDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_WillNotifyOnStop kWillNotifyOnStop() { return {}; }
+  static constexpr FieldMetadata_WillNotifyOnStop kWillNotifyOnStop{};
   void set_will_notify_on_stop(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_WillNotifyOnStop::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -148,14 +127,7 @@ class DataSourceDescriptor : public ::protozero::Message {
       bool,
       DataSourceDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_WillNotifyOnStart kWillNotifyOnStart() { return {}; }
+  static constexpr FieldMetadata_WillNotifyOnStart kWillNotifyOnStart{};
   void set_will_notify_on_start(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_WillNotifyOnStart::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -173,14 +145,7 @@ class DataSourceDescriptor : public ::protozero::Message {
       bool,
       DataSourceDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_HandlesIncrementalStateClear kHandlesIncrementalStateClear() { return {}; }
+  static constexpr FieldMetadata_HandlesIncrementalStateClear kHandlesIncrementalStateClear{};
   void set_handles_incremental_state_clear(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_HandlesIncrementalStateClear::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -198,14 +163,7 @@ class DataSourceDescriptor : public ::protozero::Message {
       GpuCounterDescriptor,
       DataSourceDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_GpuCounterDescriptor kGpuCounterDescriptor() { return {}; }
+  static constexpr FieldMetadata_GpuCounterDescriptor kGpuCounterDescriptor{};
   template <typename T = GpuCounterDescriptor> T* set_gpu_counter_descriptor() {
     return BeginNestedMessage<T>(5);
   }
@@ -223,14 +181,7 @@ class DataSourceDescriptor : public ::protozero::Message {
       TrackEventDescriptor,
       DataSourceDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TrackEventDescriptor kTrackEventDescriptor() { return {}; }
+  static constexpr FieldMetadata_TrackEventDescriptor kTrackEventDescriptor{};
   template <typename T = TrackEventDescriptor> T* set_track_event_descriptor() {
     return BeginNestedMessage<T>(6);
   }
@@ -248,14 +199,7 @@ class DataSourceDescriptor : public ::protozero::Message {
       FtraceDescriptor,
       DataSourceDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FtraceDescriptor kFtraceDescriptor() { return {}; }
+  static constexpr FieldMetadata_FtraceDescriptor kFtraceDescriptor{};
   template <typename T = FtraceDescriptor> T* set_ftrace_descriptor() {
     return BeginNestedMessage<T>(8);
   }

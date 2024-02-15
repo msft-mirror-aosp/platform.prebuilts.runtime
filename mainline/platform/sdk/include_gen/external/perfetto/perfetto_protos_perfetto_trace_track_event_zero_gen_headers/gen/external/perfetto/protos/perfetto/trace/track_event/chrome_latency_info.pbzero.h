@@ -214,33 +214,33 @@ class ChromeLatencyInfo : public ::protozero::Message {
   static inline const char* LatencyComponentType_Name(LatencyComponentType value) {
     return ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType_Name(value);
   }
-  static const Step STEP_UNSPECIFIED = Step::STEP_UNSPECIFIED;
-  static const Step STEP_SEND_INPUT_EVENT_UI = Step::STEP_SEND_INPUT_EVENT_UI;
-  static const Step STEP_HANDLE_INPUT_EVENT_IMPL = Step::STEP_HANDLE_INPUT_EVENT_IMPL;
-  static const Step STEP_DID_HANDLE_INPUT_AND_OVERSCROLL = Step::STEP_DID_HANDLE_INPUT_AND_OVERSCROLL;
-  static const Step STEP_HANDLE_INPUT_EVENT_MAIN = Step::STEP_HANDLE_INPUT_EVENT_MAIN;
-  static const Step STEP_MAIN_THREAD_SCROLL_UPDATE = Step::STEP_MAIN_THREAD_SCROLL_UPDATE;
-  static const Step STEP_HANDLE_INPUT_EVENT_MAIN_COMMIT = Step::STEP_HANDLE_INPUT_EVENT_MAIN_COMMIT;
-  static const Step STEP_HANDLED_INPUT_EVENT_MAIN_OR_IMPL = Step::STEP_HANDLED_INPUT_EVENT_MAIN_OR_IMPL;
-  static const Step STEP_HANDLED_INPUT_EVENT_IMPL = Step::STEP_HANDLED_INPUT_EVENT_IMPL;
-  static const Step STEP_SWAP_BUFFERS = Step::STEP_SWAP_BUFFERS;
-  static const Step STEP_DRAW_AND_SWAP = Step::STEP_DRAW_AND_SWAP;
-  static const Step STEP_FINISHED_SWAP_BUFFERS = Step::STEP_FINISHED_SWAP_BUFFERS;
-  static const LatencyComponentType COMPONENT_UNSPECIFIED = LatencyComponentType::COMPONENT_UNSPECIFIED;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_BEGIN_RWH = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_BEGIN_RWH;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_FIRST_SCROLL_UPDATE_ORIGINAL = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_FIRST_SCROLL_UPDATE_ORIGINAL;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_ORIGINAL = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_ORIGINAL;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_UI = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_UI;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERER_MAIN = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERER_MAIN;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_LAST_EVENT = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_LAST_EVENT;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_ACK_RWH = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_ACK_RWH;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERER_SWAP = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERER_SWAP;
-  static const LatencyComponentType COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME = LatencyComponentType::COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER = LatencyComponentType::COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER;
-  static const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP;
+  static inline const Step STEP_UNSPECIFIED = Step::STEP_UNSPECIFIED;
+  static inline const Step STEP_SEND_INPUT_EVENT_UI = Step::STEP_SEND_INPUT_EVENT_UI;
+  static inline const Step STEP_HANDLE_INPUT_EVENT_IMPL = Step::STEP_HANDLE_INPUT_EVENT_IMPL;
+  static inline const Step STEP_DID_HANDLE_INPUT_AND_OVERSCROLL = Step::STEP_DID_HANDLE_INPUT_AND_OVERSCROLL;
+  static inline const Step STEP_HANDLE_INPUT_EVENT_MAIN = Step::STEP_HANDLE_INPUT_EVENT_MAIN;
+  static inline const Step STEP_MAIN_THREAD_SCROLL_UPDATE = Step::STEP_MAIN_THREAD_SCROLL_UPDATE;
+  static inline const Step STEP_HANDLE_INPUT_EVENT_MAIN_COMMIT = Step::STEP_HANDLE_INPUT_EVENT_MAIN_COMMIT;
+  static inline const Step STEP_HANDLED_INPUT_EVENT_MAIN_OR_IMPL = Step::STEP_HANDLED_INPUT_EVENT_MAIN_OR_IMPL;
+  static inline const Step STEP_HANDLED_INPUT_EVENT_IMPL = Step::STEP_HANDLED_INPUT_EVENT_IMPL;
+  static inline const Step STEP_SWAP_BUFFERS = Step::STEP_SWAP_BUFFERS;
+  static inline const Step STEP_DRAW_AND_SWAP = Step::STEP_DRAW_AND_SWAP;
+  static inline const Step STEP_FINISHED_SWAP_BUFFERS = Step::STEP_FINISHED_SWAP_BUFFERS;
+  static inline const LatencyComponentType COMPONENT_UNSPECIFIED = LatencyComponentType::COMPONENT_UNSPECIFIED;
+  static inline const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_BEGIN_RWH = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_BEGIN_RWH;
+  static inline const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_ORIGINAL;
+  static inline const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_FIRST_SCROLL_UPDATE_ORIGINAL = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_FIRST_SCROLL_UPDATE_ORIGINAL;
+  static inline const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_ORIGINAL = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_ORIGINAL;
+  static inline const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_UI = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_UI;
+  static inline const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERER_MAIN = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERER_MAIN;
+  static inline const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_MAIN;
+  static inline const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERING_SCHEDULED_IMPL;
+  static inline const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_LAST_EVENT = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_SCROLL_UPDATE_LAST_EVENT;
+  static inline const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_ACK_RWH = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_ACK_RWH;
+  static inline const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_RENDERER_SWAP = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_RENDERER_SWAP;
+  static inline const LatencyComponentType COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME = LatencyComponentType::COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME;
+  static inline const LatencyComponentType COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER = LatencyComponentType::COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER;
+  static inline const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP;
 
   using FieldMetadata_TraceId =
     ::protozero::proto_utils::FieldMetadata<
@@ -250,14 +250,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
       int64_t,
       ChromeLatencyInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TraceId kTraceId() { return {}; }
+  static constexpr FieldMetadata_TraceId kTraceId{};
   void set_trace_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TraceId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -275,14 +268,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
       ::perfetto::protos::pbzero::ChromeLatencyInfo_Step,
       ChromeLatencyInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Step kStep() { return {}; }
+  static constexpr FieldMetadata_Step kStep{};
   void set_step(::perfetto::protos::pbzero::ChromeLatencyInfo_Step value) {
     static constexpr uint32_t field_id = FieldMetadata_Step::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -300,14 +286,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
       int32_t,
       ChromeLatencyInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FrameTreeNodeId kFrameTreeNodeId() { return {}; }
+  static constexpr FieldMetadata_FrameTreeNodeId kFrameTreeNodeId{};
   void set_frame_tree_node_id(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FrameTreeNodeId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -325,14 +304,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
       ChromeLatencyInfo_ComponentInfo,
       ChromeLatencyInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ComponentInfo kComponentInfo() { return {}; }
+  static constexpr FieldMetadata_ComponentInfo kComponentInfo{};
   template <typename T = ChromeLatencyInfo_ComponentInfo> T* add_component_info() {
     return BeginNestedMessage<T>(4);
   }
@@ -346,14 +318,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
       bool,
       ChromeLatencyInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IsCoalesced kIsCoalesced() { return {}; }
+  static constexpr FieldMetadata_IsCoalesced kIsCoalesced{};
   void set_is_coalesced(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_IsCoalesced::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -371,14 +336,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
       int64_t,
       ChromeLatencyInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_GestureScrollId kGestureScrollId() { return {}; }
+  static constexpr FieldMetadata_GestureScrollId kGestureScrollId{};
   void set_gesture_scroll_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_GestureScrollId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -396,14 +354,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
       int64_t,
       ChromeLatencyInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TouchId kTouchId() { return {}; }
+  static constexpr FieldMetadata_TouchId kTouchId{};
   void set_touch_id(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TouchId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -443,14 +394,7 @@ class ChromeLatencyInfo_ComponentInfo : public ::protozero::Message {
       ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType,
       ChromeLatencyInfo_ComponentInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ComponentType kComponentType() { return {}; }
+  static constexpr FieldMetadata_ComponentType kComponentType{};
   void set_component_type(::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType value) {
     static constexpr uint32_t field_id = FieldMetadata_ComponentType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -468,14 +412,7 @@ class ChromeLatencyInfo_ComponentInfo : public ::protozero::Message {
       uint64_t,
       ChromeLatencyInfo_ComponentInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TimeUs kTimeUs() { return {}; }
+  static constexpr FieldMetadata_TimeUs kTimeUs{};
   void set_time_us(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimeUs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

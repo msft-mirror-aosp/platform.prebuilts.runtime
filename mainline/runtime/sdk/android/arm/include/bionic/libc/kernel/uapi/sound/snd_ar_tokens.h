@@ -1,21 +1,9 @@
-/****************************************************************************
- ****************************************************************************
- ***
- ***   This header was automatically generated from a Linux kernel header
- ***   of the same name, to make information necessary for userspace to
- ***   call into the kernel available to libc.  It contains only constants,
- ***   structures, and macros generated from the original header, and thus,
- ***   contains no copyrightable information.
- ***
- ***   To edit the content of this header, modify the corresponding
- ***   source file (e.g. under external/kernel-headers/original/) then
- ***   run bionic/libc/kernel/tools/update_all.py
- ***
- ***   Any manual change here will be lost the next time this script will
- ***   be run. You've been warned!
- ***
- ****************************************************************************
- ****************************************************************************/
+/*
+ * This file is auto-generated. Modifications will be lost.
+ *
+ * See https://android.googlesource.com/platform/bionic/+/master/libc/kernel/
+ * for more information.
+ */
 #ifndef __SND_AR_TOKENS_H__
 #define __SND_AR_TOKENS_H__
 #define APM_SUB_GRAPH_PERF_MODE_LOW_POWER 0x1
@@ -68,6 +56,27 @@ enum ar_event_types {
 #define AR_TKN_U32_MODULE_DST_IN_PORT_ID 207
 #define AR_TKN_U32_MODULE_SRC_INSTANCE_ID 208
 #define AR_TKN_U32_MODULE_DST_INSTANCE_ID 209
+#define AR_TKN_U32_MODULE_SRC_OP_PORT_ID1 210
+#define AR_TKN_U32_MODULE_DST_IN_PORT_ID1 211
+#define AR_TKN_U32_MODULE_DST_INSTANCE_ID1 212
+#define AR_TKN_U32_MODULE_SRC_OP_PORT_ID2 213
+#define AR_TKN_U32_MODULE_DST_IN_PORT_ID2 214
+#define AR_TKN_U32_MODULE_DST_INSTANCE_ID2 215
+#define AR_TKN_U32_MODULE_SRC_OP_PORT_ID3 216
+#define AR_TKN_U32_MODULE_DST_IN_PORT_ID3 217
+#define AR_TKN_U32_MODULE_DST_INSTANCE_ID3 218
+#define AR_TKN_U32_MODULE_SRC_OP_PORT_ID4 219
+#define AR_TKN_U32_MODULE_DST_IN_PORT_ID4 220
+#define AR_TKN_U32_MODULE_DST_INSTANCE_ID4 221
+#define AR_TKN_U32_MODULE_SRC_OP_PORT_ID5 222
+#define AR_TKN_U32_MODULE_DST_IN_PORT_ID5 223
+#define AR_TKN_U32_MODULE_DST_INSTANCE_ID5 224
+#define AR_TKN_U32_MODULE_SRC_OP_PORT_ID6 225
+#define AR_TKN_U32_MODULE_DST_IN_PORT_ID6 226
+#define AR_TKN_U32_MODULE_DST_INSTANCE_ID6 227
+#define AR_TKN_U32_MODULE_SRC_OP_PORT_ID7 228
+#define AR_TKN_U32_MODULE_DST_IN_PORT_ID7 229
+#define AR_TKN_U32_MODULE_DST_INSTANCE_ID7 230
 #define AR_TKN_U32_MODULE_HW_IF_IDX 250
 #define AR_TKN_U32_MODULE_HW_IF_TYPE 251
 #define AR_TKN_U32_MODULE_FMT_INTERLEAVE 252
