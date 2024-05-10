@@ -67,14 +67,7 @@ class TrackEventConfig : public ::protozero::Message {
       std::string,
       TrackEventConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DisabledCategories kDisabledCategories() { return {}; }
+  static constexpr FieldMetadata_DisabledCategories kDisabledCategories{};
   void add_disabled_categories(const char* data, size_t size) {
     AppendBytes(FieldMetadata_DisabledCategories::kFieldId, data, size);
   }
@@ -98,14 +91,7 @@ class TrackEventConfig : public ::protozero::Message {
       std::string,
       TrackEventConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnabledCategories kEnabledCategories() { return {}; }
+  static constexpr FieldMetadata_EnabledCategories kEnabledCategories{};
   void add_enabled_categories(const char* data, size_t size) {
     AppendBytes(FieldMetadata_EnabledCategories::kFieldId, data, size);
   }
@@ -129,14 +115,7 @@ class TrackEventConfig : public ::protozero::Message {
       std::string,
       TrackEventConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DisabledTags kDisabledTags() { return {}; }
+  static constexpr FieldMetadata_DisabledTags kDisabledTags{};
   void add_disabled_tags(const char* data, size_t size) {
     AppendBytes(FieldMetadata_DisabledTags::kFieldId, data, size);
   }
@@ -160,14 +139,7 @@ class TrackEventConfig : public ::protozero::Message {
       std::string,
       TrackEventConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnabledTags kEnabledTags() { return {}; }
+  static constexpr FieldMetadata_EnabledTags kEnabledTags{};
   void add_enabled_tags(const char* data, size_t size) {
     AppendBytes(FieldMetadata_EnabledTags::kFieldId, data, size);
   }
@@ -191,14 +163,7 @@ class TrackEventConfig : public ::protozero::Message {
       bool,
       TrackEventConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DisableIncrementalTimestamps kDisableIncrementalTimestamps() { return {}; }
+  static constexpr FieldMetadata_DisableIncrementalTimestamps kDisableIncrementalTimestamps{};
   void set_disable_incremental_timestamps(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DisableIncrementalTimestamps::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -216,14 +181,7 @@ class TrackEventConfig : public ::protozero::Message {
       uint64_t,
       TrackEventConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TimestampUnitMultiplier kTimestampUnitMultiplier() { return {}; }
+  static constexpr FieldMetadata_TimestampUnitMultiplier kTimestampUnitMultiplier{};
   void set_timestamp_unit_multiplier(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimestampUnitMultiplier::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -241,14 +199,7 @@ class TrackEventConfig : public ::protozero::Message {
       bool,
       TrackEventConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FilterDebugAnnotations kFilterDebugAnnotations() { return {}; }
+  static constexpr FieldMetadata_FilterDebugAnnotations kFilterDebugAnnotations{};
   void set_filter_debug_annotations(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_FilterDebugAnnotations::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -266,14 +217,7 @@ class TrackEventConfig : public ::protozero::Message {
       bool,
       TrackEventConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnableThreadTimeSampling kEnableThreadTimeSampling() { return {}; }
+  static constexpr FieldMetadata_EnableThreadTimeSampling kEnableThreadTimeSampling{};
   void set_enable_thread_time_sampling(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_EnableThreadTimeSampling::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -291,14 +235,7 @@ class TrackEventConfig : public ::protozero::Message {
       bool,
       TrackEventConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FilterDynamicEventNames kFilterDynamicEventNames() { return {}; }
+  static constexpr FieldMetadata_FilterDynamicEventNames kFilterDynamicEventNames{};
   void set_filter_dynamic_event_names(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_FilterDynamicEventNames::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

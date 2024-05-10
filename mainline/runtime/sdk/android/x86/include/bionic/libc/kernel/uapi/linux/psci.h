@@ -1,21 +1,9 @@
-/****************************************************************************
- ****************************************************************************
- ***
- ***   This header was automatically generated from a Linux kernel header
- ***   of the same name, to make information necessary for userspace to
- ***   call into the kernel available to libc.  It contains only constants,
- ***   structures, and macros generated from the original header, and thus,
- ***   contains no copyrightable information.
- ***
- ***   To edit the content of this header, modify the corresponding
- ***   source file (e.g. under external/kernel-headers/original/) then
- ***   run bionic/libc/kernel/tools/update_all.py
- ***
- ***   Any manual change here will be lost the next time this script will
- ***   be run. You've been warned!
- ***
- ****************************************************************************
- ****************************************************************************/
+/*
+ * This file is auto-generated. Modifications will be lost.
+ *
+ * See https://android.googlesource.com/platform/bionic/+/master/libc/kernel/
+ * for more information.
+ */
 #ifndef _UAPI_LINUX_PSCI_H
 #define _UAPI_LINUX_PSCI_H
 #define PSCI_0_2_FN_BASE 0x84000000
@@ -48,14 +36,14 @@
 #define PSCI_1_0_FN_STAT_COUNT PSCI_0_2_FN(17)
 #define PSCI_1_1_FN_SYSTEM_RESET2 PSCI_0_2_FN(18)
 #define PSCI_1_1_FN_MEM_PROTECT PSCI_0_2_FN(19)
-#define PSCI_1_1_FN_MEM_PROTECT_CHECK_RANGE PSCI_0_2_FN(19)
+#define PSCI_1_1_FN_MEM_PROTECT_CHECK_RANGE PSCI_0_2_FN(20)
 #define PSCI_1_0_FN64_CPU_DEFAULT_SUSPEND PSCI_0_2_FN64(12)
 #define PSCI_1_0_FN64_NODE_HW_STATE PSCI_0_2_FN64(13)
 #define PSCI_1_0_FN64_SYSTEM_SUSPEND PSCI_0_2_FN64(14)
 #define PSCI_1_0_FN64_STAT_RESIDENCY PSCI_0_2_FN64(16)
 #define PSCI_1_0_FN64_STAT_COUNT PSCI_0_2_FN64(17)
 #define PSCI_1_1_FN64_SYSTEM_RESET2 PSCI_0_2_FN64(18)
-#define PSCI_1_1_FN64_MEM_PROTECT_CHECK_RANGE PSCI_0_2_FN64(19)
+#define PSCI_1_1_FN64_MEM_PROTECT_CHECK_RANGE PSCI_0_2_FN64(20)
 #define PSCI_0_2_POWER_STATE_ID_MASK 0xffff
 #define PSCI_0_2_POWER_STATE_ID_SHIFT 0
 #define PSCI_0_2_POWER_STATE_TYPE_SHIFT 16

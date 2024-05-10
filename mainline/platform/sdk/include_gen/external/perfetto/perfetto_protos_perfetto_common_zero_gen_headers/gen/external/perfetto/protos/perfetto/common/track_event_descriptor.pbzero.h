@@ -44,14 +44,7 @@ class TrackEventDescriptor : public ::protozero::Message {
       TrackEventCategory,
       TrackEventDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_AvailableCategories kAvailableCategories() { return {}; }
+  static constexpr FieldMetadata_AvailableCategories kAvailableCategories{};
   template <typename T = TrackEventCategory> T* add_available_categories() {
     return BeginNestedMessage<T>(1);
   }
@@ -90,14 +83,7 @@ class TrackEventCategory : public ::protozero::Message {
       std::string,
       TrackEventCategory>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Name kName() { return {}; }
+  static constexpr FieldMetadata_Name kName{};
   void set_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Name::kFieldId, data, size);
   }
@@ -121,14 +107,7 @@ class TrackEventCategory : public ::protozero::Message {
       std::string,
       TrackEventCategory>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Description kDescription() { return {}; }
+  static constexpr FieldMetadata_Description kDescription{};
   void set_description(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Description::kFieldId, data, size);
   }
@@ -152,14 +131,7 @@ class TrackEventCategory : public ::protozero::Message {
       std::string,
       TrackEventCategory>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Tags kTags() { return {}; }
+  static constexpr FieldMetadata_Tags kTags{};
   void add_tags(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Tags::kFieldId, data, size);
   }

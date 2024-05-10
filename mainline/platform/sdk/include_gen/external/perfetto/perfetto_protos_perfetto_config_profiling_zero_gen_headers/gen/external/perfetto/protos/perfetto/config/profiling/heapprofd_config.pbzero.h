@@ -117,14 +117,7 @@ class HeapprofdConfig : public ::protozero::Message {
       uint64_t,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SamplingIntervalBytes kSamplingIntervalBytes() { return {}; }
+  static constexpr FieldMetadata_SamplingIntervalBytes kSamplingIntervalBytes{};
   void set_sampling_interval_bytes(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SamplingIntervalBytes::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -142,14 +135,7 @@ class HeapprofdConfig : public ::protozero::Message {
       uint64_t,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_AdaptiveSamplingShmemThreshold kAdaptiveSamplingShmemThreshold() { return {}; }
+  static constexpr FieldMetadata_AdaptiveSamplingShmemThreshold kAdaptiveSamplingShmemThreshold{};
   void set_adaptive_sampling_shmem_threshold(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_AdaptiveSamplingShmemThreshold::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -167,14 +153,7 @@ class HeapprofdConfig : public ::protozero::Message {
       uint64_t,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_AdaptiveSamplingMaxSamplingIntervalBytes kAdaptiveSamplingMaxSamplingIntervalBytes() { return {}; }
+  static constexpr FieldMetadata_AdaptiveSamplingMaxSamplingIntervalBytes kAdaptiveSamplingMaxSamplingIntervalBytes{};
   void set_adaptive_sampling_max_sampling_interval_bytes(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_AdaptiveSamplingMaxSamplingIntervalBytes::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -192,14 +171,7 @@ class HeapprofdConfig : public ::protozero::Message {
       std::string,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ProcessCmdline kProcessCmdline() { return {}; }
+  static constexpr FieldMetadata_ProcessCmdline kProcessCmdline{};
   void add_process_cmdline(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ProcessCmdline::kFieldId, data, size);
   }
@@ -223,14 +195,7 @@ class HeapprofdConfig : public ::protozero::Message {
       uint64_t,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Pid kPid() { return {}; }
+  static constexpr FieldMetadata_Pid kPid{};
   void add_pid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -248,14 +213,7 @@ class HeapprofdConfig : public ::protozero::Message {
       std::string,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TargetInstalledBy kTargetInstalledBy() { return {}; }
+  static constexpr FieldMetadata_TargetInstalledBy kTargetInstalledBy{};
   void add_target_installed_by(const char* data, size_t size) {
     AppendBytes(FieldMetadata_TargetInstalledBy::kFieldId, data, size);
   }
@@ -279,14 +237,7 @@ class HeapprofdConfig : public ::protozero::Message {
       std::string,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Heaps kHeaps() { return {}; }
+  static constexpr FieldMetadata_Heaps kHeaps{};
   void add_heaps(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Heaps::kFieldId, data, size);
   }
@@ -310,14 +261,7 @@ class HeapprofdConfig : public ::protozero::Message {
       std::string,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ExcludeHeaps kExcludeHeaps() { return {}; }
+  static constexpr FieldMetadata_ExcludeHeaps kExcludeHeaps{};
   void add_exclude_heaps(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ExcludeHeaps::kFieldId, data, size);
   }
@@ -341,14 +285,7 @@ class HeapprofdConfig : public ::protozero::Message {
       bool,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StreamAllocations kStreamAllocations() { return {}; }
+  static constexpr FieldMetadata_StreamAllocations kStreamAllocations{};
   void set_stream_allocations(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_StreamAllocations::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -366,14 +303,7 @@ class HeapprofdConfig : public ::protozero::Message {
       uint64_t,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_HeapSamplingIntervals kHeapSamplingIntervals() { return {}; }
+  static constexpr FieldMetadata_HeapSamplingIntervals kHeapSamplingIntervals{};
   void add_heap_sampling_intervals(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HeapSamplingIntervals::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -391,14 +321,7 @@ class HeapprofdConfig : public ::protozero::Message {
       bool,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_AllHeaps kAllHeaps() { return {}; }
+  static constexpr FieldMetadata_AllHeaps kAllHeaps{};
   void set_all_heaps(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_AllHeaps::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -416,14 +339,7 @@ class HeapprofdConfig : public ::protozero::Message {
       bool,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_All kAll() { return {}; }
+  static constexpr FieldMetadata_All kAll{};
   void set_all(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_All::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -441,14 +357,7 @@ class HeapprofdConfig : public ::protozero::Message {
       uint32_t,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MinAnonymousMemoryKb kMinAnonymousMemoryKb() { return {}; }
+  static constexpr FieldMetadata_MinAnonymousMemoryKb kMinAnonymousMemoryKb{};
   void set_min_anonymous_memory_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MinAnonymousMemoryKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -466,14 +375,7 @@ class HeapprofdConfig : public ::protozero::Message {
       uint32_t,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MaxHeapprofdMemoryKb kMaxHeapprofdMemoryKb() { return {}; }
+  static constexpr FieldMetadata_MaxHeapprofdMemoryKb kMaxHeapprofdMemoryKb{};
   void set_max_heapprofd_memory_kb(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxHeapprofdMemoryKb::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -491,14 +393,7 @@ class HeapprofdConfig : public ::protozero::Message {
       uint64_t,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MaxHeapprofdCpuSecs kMaxHeapprofdCpuSecs() { return {}; }
+  static constexpr FieldMetadata_MaxHeapprofdCpuSecs kMaxHeapprofdCpuSecs{};
   void set_max_heapprofd_cpu_secs(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MaxHeapprofdCpuSecs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -516,14 +411,7 @@ class HeapprofdConfig : public ::protozero::Message {
       std::string,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SkipSymbolPrefix kSkipSymbolPrefix() { return {}; }
+  static constexpr FieldMetadata_SkipSymbolPrefix kSkipSymbolPrefix{};
   void add_skip_symbol_prefix(const char* data, size_t size) {
     AppendBytes(FieldMetadata_SkipSymbolPrefix::kFieldId, data, size);
   }
@@ -547,14 +435,7 @@ class HeapprofdConfig : public ::protozero::Message {
       HeapprofdConfig_ContinuousDumpConfig,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ContinuousDumpConfig kContinuousDumpConfig() { return {}; }
+  static constexpr FieldMetadata_ContinuousDumpConfig kContinuousDumpConfig{};
   template <typename T = HeapprofdConfig_ContinuousDumpConfig> T* set_continuous_dump_config() {
     return BeginNestedMessage<T>(6);
   }
@@ -568,14 +449,7 @@ class HeapprofdConfig : public ::protozero::Message {
       uint64_t,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ShmemSizeBytes kShmemSizeBytes() { return {}; }
+  static constexpr FieldMetadata_ShmemSizeBytes kShmemSizeBytes{};
   void set_shmem_size_bytes(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ShmemSizeBytes::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -593,14 +467,7 @@ class HeapprofdConfig : public ::protozero::Message {
       bool,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BlockClient kBlockClient() { return {}; }
+  static constexpr FieldMetadata_BlockClient kBlockClient{};
   void set_block_client(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_BlockClient::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -618,14 +485,7 @@ class HeapprofdConfig : public ::protozero::Message {
       uint32_t,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BlockClientTimeoutUs kBlockClientTimeoutUs() { return {}; }
+  static constexpr FieldMetadata_BlockClientTimeoutUs kBlockClientTimeoutUs{};
   void set_block_client_timeout_us(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BlockClientTimeoutUs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -643,14 +503,7 @@ class HeapprofdConfig : public ::protozero::Message {
       bool,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NoStartup kNoStartup() { return {}; }
+  static constexpr FieldMetadata_NoStartup kNoStartup{};
   void set_no_startup(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_NoStartup::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -668,14 +521,7 @@ class HeapprofdConfig : public ::protozero::Message {
       bool,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NoRunning kNoRunning() { return {}; }
+  static constexpr FieldMetadata_NoRunning kNoRunning{};
   void set_no_running(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_NoRunning::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -693,14 +539,7 @@ class HeapprofdConfig : public ::protozero::Message {
       bool,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DumpAtMax kDumpAtMax() { return {}; }
+  static constexpr FieldMetadata_DumpAtMax kDumpAtMax{};
   void set_dump_at_max(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DumpAtMax::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -718,14 +557,7 @@ class HeapprofdConfig : public ::protozero::Message {
       bool,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DisableForkTeardown kDisableForkTeardown() { return {}; }
+  static constexpr FieldMetadata_DisableForkTeardown kDisableForkTeardown{};
   void set_disable_fork_teardown(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DisableForkTeardown::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -743,14 +575,7 @@ class HeapprofdConfig : public ::protozero::Message {
       bool,
       HeapprofdConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DisableVforkDetection kDisableVforkDetection() { return {}; }
+  static constexpr FieldMetadata_DisableVforkDetection kDisableVforkDetection{};
   void set_disable_vfork_detection(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_DisableVforkDetection::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -790,14 +615,7 @@ class HeapprofdConfig_ContinuousDumpConfig : public ::protozero::Message {
       uint32_t,
       HeapprofdConfig_ContinuousDumpConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DumpPhaseMs kDumpPhaseMs() { return {}; }
+  static constexpr FieldMetadata_DumpPhaseMs kDumpPhaseMs{};
   void set_dump_phase_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DumpPhaseMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -815,14 +633,7 @@ class HeapprofdConfig_ContinuousDumpConfig : public ::protozero::Message {
       uint32_t,
       HeapprofdConfig_ContinuousDumpConfig>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DumpIntervalMs kDumpIntervalMs() { return {}; }
+  static constexpr FieldMetadata_DumpIntervalMs kDumpIntervalMs{};
   void set_dump_interval_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DumpIntervalMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
