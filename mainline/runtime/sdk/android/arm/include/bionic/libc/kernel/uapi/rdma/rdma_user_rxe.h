@@ -1,21 +1,9 @@
-/****************************************************************************
- ****************************************************************************
- ***
- ***   This header was automatically generated from a Linux kernel header
- ***   of the same name, to make information necessary for userspace to
- ***   call into the kernel available to libc.  It contains only constants,
- ***   structures, and macros generated from the original header, and thus,
- ***   contains no copyrightable information.
- ***
- ***   To edit the content of this header, modify the corresponding
- ***   source file (e.g. under external/kernel-headers/original/) then
- ***   run bionic/libc/kernel/tools/update_all.py
- ***
- ***   Any manual change here will be lost the next time this script will
- ***   be run. You've been warned!
- ***
- ****************************************************************************
- ****************************************************************************/
+/*
+ * This file is auto-generated. Modifications will be lost.
+ *
+ * See https://android.googlesource.com/platform/bionic/+/master/libc/kernel/
+ * for more information.
+ */
 #ifndef RDMA_USER_RXE_H
 #define RDMA_USER_RXE_H
 #include <linux/types.h>
@@ -60,6 +48,13 @@ struct rxe_send_wr {
     __u32 invalidate_rkey;
   } ex;
   union {
+    struct {
+      __aligned_u64 remote_addr;
+      __u32 length;
+      __u32 rkey;
+      __u8 type;
+      __u8 level;
+    } flush;
     struct {
       __aligned_u64 remote_addr;
       __u32 rkey;
@@ -110,6 +105,7 @@ struct rxe_dma_info {
   __u32 reserved;
   union {
     __DECLARE_FLEX_ARRAY(__u8, inline_data);
+    __DECLARE_FLEX_ARRAY(__u8, atomic_wr);
     __DECLARE_FLEX_ARRAY(struct rxe_sge, sge);
   };
 };

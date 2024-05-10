@@ -224,24 +224,24 @@ class VulkanMemoryEvent : public ::protozero::Message {
   static inline const char* AllocationScope_Name(AllocationScope value) {
     return ::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope_Name(value);
   }
-  static const Source SOURCE_UNSPECIFIED = Source::SOURCE_UNSPECIFIED;
-  static const Source SOURCE_DRIVER = Source::SOURCE_DRIVER;
-  static const Source SOURCE_DEVICE = Source::SOURCE_DEVICE;
-  static const Source SOURCE_DEVICE_MEMORY = Source::SOURCE_DEVICE_MEMORY;
-  static const Source SOURCE_BUFFER = Source::SOURCE_BUFFER;
-  static const Source SOURCE_IMAGE = Source::SOURCE_IMAGE;
-  static const Operation OP_UNSPECIFIED = Operation::OP_UNSPECIFIED;
-  static const Operation OP_CREATE = Operation::OP_CREATE;
-  static const Operation OP_DESTROY = Operation::OP_DESTROY;
-  static const Operation OP_BIND = Operation::OP_BIND;
-  static const Operation OP_DESTROY_BOUND = Operation::OP_DESTROY_BOUND;
-  static const Operation OP_ANNOTATIONS = Operation::OP_ANNOTATIONS;
-  static const AllocationScope SCOPE_UNSPECIFIED = AllocationScope::SCOPE_UNSPECIFIED;
-  static const AllocationScope SCOPE_COMMAND = AllocationScope::SCOPE_COMMAND;
-  static const AllocationScope SCOPE_OBJECT = AllocationScope::SCOPE_OBJECT;
-  static const AllocationScope SCOPE_CACHE = AllocationScope::SCOPE_CACHE;
-  static const AllocationScope SCOPE_DEVICE = AllocationScope::SCOPE_DEVICE;
-  static const AllocationScope SCOPE_INSTANCE = AllocationScope::SCOPE_INSTANCE;
+  static inline const Source SOURCE_UNSPECIFIED = Source::SOURCE_UNSPECIFIED;
+  static inline const Source SOURCE_DRIVER = Source::SOURCE_DRIVER;
+  static inline const Source SOURCE_DEVICE = Source::SOURCE_DEVICE;
+  static inline const Source SOURCE_DEVICE_MEMORY = Source::SOURCE_DEVICE_MEMORY;
+  static inline const Source SOURCE_BUFFER = Source::SOURCE_BUFFER;
+  static inline const Source SOURCE_IMAGE = Source::SOURCE_IMAGE;
+  static inline const Operation OP_UNSPECIFIED = Operation::OP_UNSPECIFIED;
+  static inline const Operation OP_CREATE = Operation::OP_CREATE;
+  static inline const Operation OP_DESTROY = Operation::OP_DESTROY;
+  static inline const Operation OP_BIND = Operation::OP_BIND;
+  static inline const Operation OP_DESTROY_BOUND = Operation::OP_DESTROY_BOUND;
+  static inline const Operation OP_ANNOTATIONS = Operation::OP_ANNOTATIONS;
+  static inline const AllocationScope SCOPE_UNSPECIFIED = AllocationScope::SCOPE_UNSPECIFIED;
+  static inline const AllocationScope SCOPE_COMMAND = AllocationScope::SCOPE_COMMAND;
+  static inline const AllocationScope SCOPE_OBJECT = AllocationScope::SCOPE_OBJECT;
+  static inline const AllocationScope SCOPE_CACHE = AllocationScope::SCOPE_CACHE;
+  static inline const AllocationScope SCOPE_DEVICE = AllocationScope::SCOPE_DEVICE;
+  static inline const AllocationScope SCOPE_INSTANCE = AllocationScope::SCOPE_INSTANCE;
 
   using FieldMetadata_Source =
     ::protozero::proto_utils::FieldMetadata<
@@ -251,14 +251,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       ::perfetto::protos::pbzero::VulkanMemoryEvent_Source,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Source kSource() { return {}; }
+  static constexpr FieldMetadata_Source kSource{};
   void set_source(::perfetto::protos::pbzero::VulkanMemoryEvent_Source value) {
     static constexpr uint32_t field_id = FieldMetadata_Source::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -276,14 +269,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       ::perfetto::protos::pbzero::VulkanMemoryEvent_Operation,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Operation kOperation() { return {}; }
+  static constexpr FieldMetadata_Operation kOperation{};
   void set_operation(::perfetto::protos::pbzero::VulkanMemoryEvent_Operation value) {
     static constexpr uint32_t field_id = FieldMetadata_Operation::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -301,14 +287,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       int64_t,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Timestamp kTimestamp() { return {}; }
+  static constexpr FieldMetadata_Timestamp kTimestamp{};
   void set_timestamp(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Timestamp::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -326,14 +305,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       uint32_t,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Pid kPid() { return {}; }
+  static constexpr FieldMetadata_Pid kPid{};
   void set_pid(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -351,14 +323,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       uint64_t,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MemoryAddress kMemoryAddress() { return {}; }
+  static constexpr FieldMetadata_MemoryAddress kMemoryAddress{};
   void set_memory_address(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MemoryAddress::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -376,14 +341,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       uint64_t,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MemorySize kMemorySize() { return {}; }
+  static constexpr FieldMetadata_MemorySize kMemorySize{};
   void set_memory_size(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MemorySize::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -401,14 +359,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       uint64_t,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_CallerIid kCallerIid() { return {}; }
+  static constexpr FieldMetadata_CallerIid kCallerIid{};
   void set_caller_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_CallerIid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -426,14 +377,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       ::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_AllocationScope kAllocationScope() { return {}; }
+  static constexpr FieldMetadata_AllocationScope kAllocationScope{};
   void set_allocation_scope(::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope value) {
     static constexpr uint32_t field_id = FieldMetadata_AllocationScope::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -451,14 +395,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       VulkanMemoryEventAnnotation,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Annotations kAnnotations() { return {}; }
+  static constexpr FieldMetadata_Annotations kAnnotations{};
   template <typename T = VulkanMemoryEventAnnotation> T* add_annotations() {
     return BeginNestedMessage<T>(9);
   }
@@ -472,14 +409,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       uint64_t,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Device kDevice() { return {}; }
+  static constexpr FieldMetadata_Device kDevice{};
   void set_device(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Device::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -497,14 +427,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       uint64_t,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DeviceMemory kDeviceMemory() { return {}; }
+  static constexpr FieldMetadata_DeviceMemory kDeviceMemory{};
   void set_device_memory(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DeviceMemory::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -522,14 +445,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       uint32_t,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MemoryType kMemoryType() { return {}; }
+  static constexpr FieldMetadata_MemoryType kMemoryType{};
   void set_memory_type(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MemoryType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -547,14 +463,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       uint32_t,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Heap kHeap() { return {}; }
+  static constexpr FieldMetadata_Heap kHeap{};
   void set_heap(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Heap::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -572,14 +481,7 @@ class VulkanMemoryEvent : public ::protozero::Message {
       uint64_t,
       VulkanMemoryEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ObjectHandle kObjectHandle() { return {}; }
+  static constexpr FieldMetadata_ObjectHandle kObjectHandle{};
   void set_object_handle(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ObjectHandle::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -625,14 +527,7 @@ class VulkanMemoryEventAnnotation : public ::protozero::Message {
       uint64_t,
       VulkanMemoryEventAnnotation>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_KeyIid kKeyIid() { return {}; }
+  static constexpr FieldMetadata_KeyIid kKeyIid{};
   void set_key_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_KeyIid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -650,14 +545,7 @@ class VulkanMemoryEventAnnotation : public ::protozero::Message {
       int64_t,
       VulkanMemoryEventAnnotation>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IntValue kIntValue() { return {}; }
+  static constexpr FieldMetadata_IntValue kIntValue{};
   void set_int_value(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IntValue::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -675,14 +563,7 @@ class VulkanMemoryEventAnnotation : public ::protozero::Message {
       double,
       VulkanMemoryEventAnnotation>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DoubleValue kDoubleValue() { return {}; }
+  static constexpr FieldMetadata_DoubleValue kDoubleValue{};
   void set_double_value(double value) {
     static constexpr uint32_t field_id = FieldMetadata_DoubleValue::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -700,14 +581,7 @@ class VulkanMemoryEventAnnotation : public ::protozero::Message {
       uint64_t,
       VulkanMemoryEventAnnotation>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_StringIid kStringIid() { return {}; }
+  static constexpr FieldMetadata_StringIid kStringIid{};
   void set_string_iid(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_StringIid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

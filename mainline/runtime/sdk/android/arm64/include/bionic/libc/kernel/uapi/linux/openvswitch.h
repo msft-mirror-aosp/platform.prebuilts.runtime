@@ -1,21 +1,9 @@
-/****************************************************************************
- ****************************************************************************
- ***
- ***   This header was automatically generated from a Linux kernel header
- ***   of the same name, to make information necessary for userspace to
- ***   call into the kernel available to libc.  It contains only constants,
- ***   structures, and macros generated from the original header, and thus,
- ***   contains no copyrightable information.
- ***
- ***   To edit the content of this header, modify the corresponding
- ***   source file (e.g. under external/kernel-headers/original/) then
- ***   run bionic/libc/kernel/tools/update_all.py
- ***
- ***   Any manual change here will be lost the next time this script will
- ***   be run. You've been warned!
- ***
- ****************************************************************************
- ****************************************************************************/
+/*
+ * This file is auto-generated. Modifications will be lost.
+ *
+ * See https://android.googlesource.com/platform/bionic/+/master/libc/kernel/
+ * for more information.
+ */
 #ifndef _UAPI__LINUX_OPENVSWITCH_H
 #define _UAPI__LINUX_OPENVSWITCH_H 1
 #include <linux/types.h>
@@ -131,9 +119,16 @@ enum ovs_vport_attr {
   OVS_VPORT_ATTR_PAD,
   OVS_VPORT_ATTR_IFINDEX,
   OVS_VPORT_ATTR_NETNSID,
+  OVS_VPORT_ATTR_UPCALL_STATS,
   __OVS_VPORT_ATTR_MAX
 };
 #define OVS_VPORT_ATTR_MAX (__OVS_VPORT_ATTR_MAX - 1)
+enum ovs_vport_upcall_attr {
+  OVS_VPORT_UPCALL_ATTR_SUCCESS,
+  OVS_VPORT_UPCALL_ATTR_FAIL,
+  __OVS_VPORT_UPCALL_ATTR_MAX
+};
+#define OVS_VPORT_UPCALL_ATTR_MAX (__OVS_VPORT_UPCALL_ATTR_MAX - 1)
 enum {
   OVS_VXLAN_EXT_UNSPEC,
   OVS_VXLAN_EXT_GBP,
@@ -389,6 +384,7 @@ struct ovs_action_push_vlan {
 };
 enum ovs_hash_alg {
   OVS_HASH_ALG_L4,
+  OVS_HASH_ALG_SYM_L4,
 };
 struct ovs_action_hash {
   __u32 hash_alg;
@@ -458,6 +454,7 @@ enum ovs_action_attr {
   OVS_ACTION_ATTR_CHECK_PKT_LEN,
   OVS_ACTION_ATTR_ADD_MPLS,
   OVS_ACTION_ATTR_DEC_TTL,
+  OVS_ACTION_ATTR_DROP,
   __OVS_ACTION_ATTR_MAX,
 };
 #define OVS_ACTION_ATTR_MAX (__OVS_ACTION_ATTR_MAX - 1)

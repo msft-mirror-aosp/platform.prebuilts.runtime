@@ -219,14 +219,7 @@ class HeapGraph : public ::protozero::Message {
       int32_t,
       HeapGraph>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Pid kPid() { return {}; }
+  static constexpr FieldMetadata_Pid kPid{};
   void set_pid(int32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -244,14 +237,7 @@ class HeapGraph : public ::protozero::Message {
       HeapGraphObject,
       HeapGraph>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Objects kObjects() { return {}; }
+  static constexpr FieldMetadata_Objects kObjects{};
   template <typename T = HeapGraphObject> T* add_objects() {
     return BeginNestedMessage<T>(2);
   }
@@ -265,14 +251,7 @@ class HeapGraph : public ::protozero::Message {
       HeapGraphRoot,
       HeapGraph>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Roots kRoots() { return {}; }
+  static constexpr FieldMetadata_Roots kRoots{};
   template <typename T = HeapGraphRoot> T* add_roots() {
     return BeginNestedMessage<T>(7);
   }
@@ -286,14 +265,7 @@ class HeapGraph : public ::protozero::Message {
       HeapGraphType,
       HeapGraph>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Types kTypes() { return {}; }
+  static constexpr FieldMetadata_Types kTypes{};
   template <typename T = HeapGraphType> T* add_types() {
     return BeginNestedMessage<T>(9);
   }
@@ -307,14 +279,7 @@ class HeapGraph : public ::protozero::Message {
       InternedString,
       HeapGraph>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FieldNames kFieldNames() { return {}; }
+  static constexpr FieldMetadata_FieldNames kFieldNames{};
   template <typename T = InternedString> T* add_field_names() {
     return BeginNestedMessage<T>(4);
   }
@@ -328,14 +293,7 @@ class HeapGraph : public ::protozero::Message {
       InternedString,
       HeapGraph>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_LocationNames kLocationNames() { return {}; }
+  static constexpr FieldMetadata_LocationNames kLocationNames{};
   template <typename T = InternedString> T* add_location_names() {
     return BeginNestedMessage<T>(8);
   }
@@ -349,14 +307,7 @@ class HeapGraph : public ::protozero::Message {
       bool,
       HeapGraph>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Continued kContinued() { return {}; }
+  static constexpr FieldMetadata_Continued kContinued{};
   void set_continued(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_Continued::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -374,14 +325,7 @@ class HeapGraph : public ::protozero::Message {
       uint64_t,
       HeapGraph>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Index kIndex() { return {}; }
+  static constexpr FieldMetadata_Index kIndex{};
   void set_index(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Index::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -439,14 +383,7 @@ class HeapGraphObject : public ::protozero::Message {
       uint64_t,
       HeapGraphObject>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Id kId() { return {}; }
+  static constexpr FieldMetadata_Id kId{};
   void set_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -464,14 +401,7 @@ class HeapGraphObject : public ::protozero::Message {
       uint64_t,
       HeapGraphObject>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_IdDelta kIdDelta() { return {}; }
+  static constexpr FieldMetadata_IdDelta kIdDelta{};
   void set_id_delta(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_IdDelta::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -489,14 +419,7 @@ class HeapGraphObject : public ::protozero::Message {
       uint64_t,
       HeapGraphObject>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TypeId kTypeId() { return {}; }
+  static constexpr FieldMetadata_TypeId kTypeId{};
   void set_type_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TypeId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -514,14 +437,7 @@ class HeapGraphObject : public ::protozero::Message {
       uint64_t,
       HeapGraphObject>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SelfSize kSelfSize() { return {}; }
+  static constexpr FieldMetadata_SelfSize kSelfSize{};
   void set_self_size(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SelfSize::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -539,14 +455,7 @@ class HeapGraphObject : public ::protozero::Message {
       uint64_t,
       HeapGraphObject>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReferenceFieldIdBase kReferenceFieldIdBase() { return {}; }
+  static constexpr FieldMetadata_ReferenceFieldIdBase kReferenceFieldIdBase{};
   void set_reference_field_id_base(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ReferenceFieldIdBase::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -564,14 +473,7 @@ class HeapGraphObject : public ::protozero::Message {
       uint64_t,
       HeapGraphObject>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReferenceFieldId kReferenceFieldId() { return {}; }
+  static constexpr FieldMetadata_ReferenceFieldId kReferenceFieldId{};
   void set_reference_field_id(const ::protozero::PackedVarInt& packed_buffer) {
     AppendBytes(FieldMetadata_ReferenceFieldId::kFieldId, packed_buffer.data(),
                 packed_buffer.size());
@@ -585,14 +487,7 @@ class HeapGraphObject : public ::protozero::Message {
       uint64_t,
       HeapGraphObject>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReferenceObjectId kReferenceObjectId() { return {}; }
+  static constexpr FieldMetadata_ReferenceObjectId kReferenceObjectId{};
   void set_reference_object_id(const ::protozero::PackedVarInt& packed_buffer) {
     AppendBytes(FieldMetadata_ReferenceObjectId::kFieldId, packed_buffer.data(),
                 packed_buffer.size());
@@ -606,14 +501,7 @@ class HeapGraphObject : public ::protozero::Message {
       int64_t,
       HeapGraphObject>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_NativeAllocationRegistrySizeField kNativeAllocationRegistrySizeField() { return {}; }
+  static constexpr FieldMetadata_NativeAllocationRegistrySizeField kNativeAllocationRegistrySizeField{};
   void set_native_allocation_registry_size_field(int64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_NativeAllocationRegistrySizeField::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -667,18 +555,18 @@ class HeapGraphType : public ::protozero::Message {
   static inline const char* Kind_Name(Kind value) {
     return ::perfetto::protos::pbzero::HeapGraphType_Kind_Name(value);
   }
-  static const Kind KIND_UNKNOWN = Kind::KIND_UNKNOWN;
-  static const Kind KIND_NORMAL = Kind::KIND_NORMAL;
-  static const Kind KIND_NOREFERENCES = Kind::KIND_NOREFERENCES;
-  static const Kind KIND_STRING = Kind::KIND_STRING;
-  static const Kind KIND_ARRAY = Kind::KIND_ARRAY;
-  static const Kind KIND_CLASS = Kind::KIND_CLASS;
-  static const Kind KIND_CLASSLOADER = Kind::KIND_CLASSLOADER;
-  static const Kind KIND_DEXCACHE = Kind::KIND_DEXCACHE;
-  static const Kind KIND_SOFT_REFERENCE = Kind::KIND_SOFT_REFERENCE;
-  static const Kind KIND_WEAK_REFERENCE = Kind::KIND_WEAK_REFERENCE;
-  static const Kind KIND_FINALIZER_REFERENCE = Kind::KIND_FINALIZER_REFERENCE;
-  static const Kind KIND_PHANTOM_REFERENCE = Kind::KIND_PHANTOM_REFERENCE;
+  static inline const Kind KIND_UNKNOWN = Kind::KIND_UNKNOWN;
+  static inline const Kind KIND_NORMAL = Kind::KIND_NORMAL;
+  static inline const Kind KIND_NOREFERENCES = Kind::KIND_NOREFERENCES;
+  static inline const Kind KIND_STRING = Kind::KIND_STRING;
+  static inline const Kind KIND_ARRAY = Kind::KIND_ARRAY;
+  static inline const Kind KIND_CLASS = Kind::KIND_CLASS;
+  static inline const Kind KIND_CLASSLOADER = Kind::KIND_CLASSLOADER;
+  static inline const Kind KIND_DEXCACHE = Kind::KIND_DEXCACHE;
+  static inline const Kind KIND_SOFT_REFERENCE = Kind::KIND_SOFT_REFERENCE;
+  static inline const Kind KIND_WEAK_REFERENCE = Kind::KIND_WEAK_REFERENCE;
+  static inline const Kind KIND_FINALIZER_REFERENCE = Kind::KIND_FINALIZER_REFERENCE;
+  static inline const Kind KIND_PHANTOM_REFERENCE = Kind::KIND_PHANTOM_REFERENCE;
 
   using FieldMetadata_Id =
     ::protozero::proto_utils::FieldMetadata<
@@ -688,14 +576,7 @@ class HeapGraphType : public ::protozero::Message {
       uint64_t,
       HeapGraphType>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Id kId() { return {}; }
+  static constexpr FieldMetadata_Id kId{};
   void set_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Id::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -713,14 +594,7 @@ class HeapGraphType : public ::protozero::Message {
       uint64_t,
       HeapGraphType>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_LocationId kLocationId() { return {}; }
+  static constexpr FieldMetadata_LocationId kLocationId{};
   void set_location_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_LocationId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -738,14 +612,7 @@ class HeapGraphType : public ::protozero::Message {
       std::string,
       HeapGraphType>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ClassName kClassName() { return {}; }
+  static constexpr FieldMetadata_ClassName kClassName{};
   void set_class_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_ClassName::kFieldId, data, size);
   }
@@ -769,14 +636,7 @@ class HeapGraphType : public ::protozero::Message {
       uint64_t,
       HeapGraphType>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ObjectSize kObjectSize() { return {}; }
+  static constexpr FieldMetadata_ObjectSize kObjectSize{};
   void set_object_size(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ObjectSize::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -794,14 +654,7 @@ class HeapGraphType : public ::protozero::Message {
       uint64_t,
       HeapGraphType>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SuperclassId kSuperclassId() { return {}; }
+  static constexpr FieldMetadata_SuperclassId kSuperclassId{};
   void set_superclass_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SuperclassId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -819,14 +672,7 @@ class HeapGraphType : public ::protozero::Message {
       uint64_t,
       HeapGraphType>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ReferenceFieldId kReferenceFieldId() { return {}; }
+  static constexpr FieldMetadata_ReferenceFieldId kReferenceFieldId{};
   void set_reference_field_id(const ::protozero::PackedVarInt& packed_buffer) {
     AppendBytes(FieldMetadata_ReferenceFieldId::kFieldId, packed_buffer.data(),
                 packed_buffer.size());
@@ -840,14 +686,7 @@ class HeapGraphType : public ::protozero::Message {
       ::perfetto::protos::pbzero::HeapGraphType_Kind,
       HeapGraphType>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Kind kKind() { return {}; }
+  static constexpr FieldMetadata_Kind kKind{};
   void set_kind(::perfetto::protos::pbzero::HeapGraphType_Kind value) {
     static constexpr uint32_t field_id = FieldMetadata_Kind::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -865,14 +704,7 @@ class HeapGraphType : public ::protozero::Message {
       uint64_t,
       HeapGraphType>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ClassloaderId kClassloaderId() { return {}; }
+  static constexpr FieldMetadata_ClassloaderId kClassloaderId{};
   void set_classloader_id(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_ClassloaderId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -908,21 +740,21 @@ class HeapGraphRoot : public ::protozero::Message {
   static inline const char* Type_Name(Type value) {
     return ::perfetto::protos::pbzero::HeapGraphRoot_Type_Name(value);
   }
-  static const Type ROOT_UNKNOWN = Type::ROOT_UNKNOWN;
-  static const Type ROOT_JNI_GLOBAL = Type::ROOT_JNI_GLOBAL;
-  static const Type ROOT_JNI_LOCAL = Type::ROOT_JNI_LOCAL;
-  static const Type ROOT_JAVA_FRAME = Type::ROOT_JAVA_FRAME;
-  static const Type ROOT_NATIVE_STACK = Type::ROOT_NATIVE_STACK;
-  static const Type ROOT_STICKY_CLASS = Type::ROOT_STICKY_CLASS;
-  static const Type ROOT_THREAD_BLOCK = Type::ROOT_THREAD_BLOCK;
-  static const Type ROOT_MONITOR_USED = Type::ROOT_MONITOR_USED;
-  static const Type ROOT_THREAD_OBJECT = Type::ROOT_THREAD_OBJECT;
-  static const Type ROOT_INTERNED_STRING = Type::ROOT_INTERNED_STRING;
-  static const Type ROOT_FINALIZING = Type::ROOT_FINALIZING;
-  static const Type ROOT_DEBUGGER = Type::ROOT_DEBUGGER;
-  static const Type ROOT_REFERENCE_CLEANUP = Type::ROOT_REFERENCE_CLEANUP;
-  static const Type ROOT_VM_INTERNAL = Type::ROOT_VM_INTERNAL;
-  static const Type ROOT_JNI_MONITOR = Type::ROOT_JNI_MONITOR;
+  static inline const Type ROOT_UNKNOWN = Type::ROOT_UNKNOWN;
+  static inline const Type ROOT_JNI_GLOBAL = Type::ROOT_JNI_GLOBAL;
+  static inline const Type ROOT_JNI_LOCAL = Type::ROOT_JNI_LOCAL;
+  static inline const Type ROOT_JAVA_FRAME = Type::ROOT_JAVA_FRAME;
+  static inline const Type ROOT_NATIVE_STACK = Type::ROOT_NATIVE_STACK;
+  static inline const Type ROOT_STICKY_CLASS = Type::ROOT_STICKY_CLASS;
+  static inline const Type ROOT_THREAD_BLOCK = Type::ROOT_THREAD_BLOCK;
+  static inline const Type ROOT_MONITOR_USED = Type::ROOT_MONITOR_USED;
+  static inline const Type ROOT_THREAD_OBJECT = Type::ROOT_THREAD_OBJECT;
+  static inline const Type ROOT_INTERNED_STRING = Type::ROOT_INTERNED_STRING;
+  static inline const Type ROOT_FINALIZING = Type::ROOT_FINALIZING;
+  static inline const Type ROOT_DEBUGGER = Type::ROOT_DEBUGGER;
+  static inline const Type ROOT_REFERENCE_CLEANUP = Type::ROOT_REFERENCE_CLEANUP;
+  static inline const Type ROOT_VM_INTERNAL = Type::ROOT_VM_INTERNAL;
+  static inline const Type ROOT_JNI_MONITOR = Type::ROOT_JNI_MONITOR;
 
   using FieldMetadata_ObjectIds =
     ::protozero::proto_utils::FieldMetadata<
@@ -932,14 +764,7 @@ class HeapGraphRoot : public ::protozero::Message {
       uint64_t,
       HeapGraphRoot>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_ObjectIds kObjectIds() { return {}; }
+  static constexpr FieldMetadata_ObjectIds kObjectIds{};
   void set_object_ids(const ::protozero::PackedVarInt& packed_buffer) {
     AppendBytes(FieldMetadata_ObjectIds::kFieldId, packed_buffer.data(),
                 packed_buffer.size());
@@ -953,14 +778,7 @@ class HeapGraphRoot : public ::protozero::Message {
       ::perfetto::protos::pbzero::HeapGraphRoot_Type,
       HeapGraphRoot>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RootType kRootType() { return {}; }
+  static constexpr FieldMetadata_RootType kRootType{};
   void set_root_type(::perfetto::protos::pbzero::HeapGraphRoot_Type value) {
     static constexpr uint32_t field_id = FieldMetadata_RootType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

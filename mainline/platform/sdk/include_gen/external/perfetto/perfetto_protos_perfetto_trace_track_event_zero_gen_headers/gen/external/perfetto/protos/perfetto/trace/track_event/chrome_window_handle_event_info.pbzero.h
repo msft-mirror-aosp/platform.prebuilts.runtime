@@ -49,14 +49,7 @@ class ChromeWindowHandleEventInfo : public ::protozero::Message {
       uint32_t,
       ChromeWindowHandleEventInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Dpi kDpi() { return {}; }
+  static constexpr FieldMetadata_Dpi kDpi{};
   void set_dpi(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Dpi::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -74,14 +67,7 @@ class ChromeWindowHandleEventInfo : public ::protozero::Message {
       uint32_t,
       ChromeWindowHandleEventInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_MessageId kMessageId() { return {}; }
+  static constexpr FieldMetadata_MessageId kMessageId{};
   void set_message_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_MessageId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -99,14 +85,7 @@ class ChromeWindowHandleEventInfo : public ::protozero::Message {
       uint64_t,
       ChromeWindowHandleEventInfo>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_HwndPtr kHwndPtr() { return {}; }
+  static constexpr FieldMetadata_HwndPtr kHwndPtr{};
   void set_hwnd_ptr(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_HwndPtr::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

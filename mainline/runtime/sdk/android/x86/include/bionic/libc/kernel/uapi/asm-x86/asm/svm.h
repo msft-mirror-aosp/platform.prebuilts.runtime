@@ -1,21 +1,9 @@
-/****************************************************************************
- ****************************************************************************
- ***
- ***   This header was automatically generated from a Linux kernel header
- ***   of the same name, to make information necessary for userspace to
- ***   call into the kernel available to libc.  It contains only constants,
- ***   structures, and macros generated from the original header, and thus,
- ***   contains no copyrightable information.
- ***
- ***   To edit the content of this header, modify the corresponding
- ***   source file (e.g. under external/kernel-headers/original/) then
- ***   run bionic/libc/kernel/tools/update_all.py
- ***
- ***   Any manual change here will be lost the next time this script will
- ***   be run. You've been warned!
- ***
- ****************************************************************************
- ****************************************************************************/
+/*
+ * This file is auto-generated. Modifications will be lost.
+ *
+ * See https://android.googlesource.com/platform/bionic/+/master/libc/kernel/
+ * for more information.
+ */
 #ifndef _UAPI__SVM_H
 #define _UAPI__SVM_H
 #define SVM_EXIT_READ_CR0 0x000
@@ -130,6 +118,8 @@
 #define SVM_VMGEXIT_AP_CREATE 1
 #define SVM_VMGEXIT_AP_DESTROY 2
 #define SVM_VMGEXIT_HV_FEATURES 0x8000fffd
+#define SVM_VMGEXIT_TERM_REQUEST 0x8000fffe
+#define SVM_VMGEXIT_TERM_REASON(reason_set,reason_code) (((((u64) reason_set) & 0xf)) | ((((u64) reason_code) & 0xff) << 4))
 #define SVM_VMGEXIT_UNSUPPORTED_EVENT 0x8000ffff
 #define SVM_EXIT_SW 0xf0000000
 #define SVM_EXIT_ERR - 1
