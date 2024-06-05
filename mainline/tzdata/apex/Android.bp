@@ -27,6 +27,9 @@ prebuilt_apex {
         arm64: {
             src: "com.android.tzdata-arm64.apex",
         },
+        riscv64: {
+            src: "com.android.tzdata-riscv64.apex",
+        },
         x86: {
             src: "com.android.tzdata-x86.apex",
         },

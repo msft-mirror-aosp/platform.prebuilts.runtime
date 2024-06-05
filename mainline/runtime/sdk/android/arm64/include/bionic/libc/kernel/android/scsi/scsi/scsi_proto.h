@@ -1,21 +1,9 @@
-/****************************************************************************
- ****************************************************************************
- ***
- ***   This header was automatically generated from a Linux kernel header
- ***   of the same name, to make information necessary for userspace to
- ***   call into the kernel available to libc.  It contains only constants,
- ***   structures, and macros generated from the original header, and thus,
- ***   contains no copyrightable information.
- ***
- ***   To edit the content of this header, modify the corresponding
- ***   source file (e.g. under external/kernel-headers/original/) then
- ***   run bionic/libc/kernel/tools/update_all.py
- ***
- ***   Any manual change here will be lost the next time this script will
- ***   be run. You've been warned!
- ***
- ****************************************************************************
- ****************************************************************************/
+/*
+ * This file is auto-generated. Modifications will be lost.
+ *
+ * See https://android.googlesource.com/platform/bionic/+/master/libc/kernel/
+ * for more information.
+ */
 #ifndef _SCSI_PROTO_H_
 #define _SCSI_PROTO_H_
 #include <linux/types.h>
@@ -139,6 +127,7 @@
 #define ABORTED_COMMAND 0x0b
 #define VOLUME_OVERFLOW 0x0d
 #define MISCOMPARE 0x0e
+#define COMPLETED 0x0f
 #define TYPE_DISK 0x00
 #define TYPE_TAPE 0x01
 #define TYPE_PRINTER 0x02
@@ -210,4 +199,12 @@ enum scsi_version_descriptor {
   SCSI_VERSION_DESCRIPTOR_SPC4 = 0x0460,
   SCSI_VERSION_DESCRIPTOR_SRP = 0x0940
 };
+enum scsi_support_opcode {
+  SCSI_SUPPORT_NO_INFO = 0,
+  SCSI_SUPPORT_NOT_SUPPORTED = 1,
+  SCSI_SUPPORT_FULL = 3,
+  SCSI_SUPPORT_VENDOR = 5,
+};
+#define SCSI_CONTROL_MASK 0
+#define SCSI_GROUP_NUMBER_MASK 0
 #endif

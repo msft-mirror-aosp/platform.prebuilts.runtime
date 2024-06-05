@@ -50,14 +50,7 @@ class PowerRails : public ::protozero::Message {
       PowerRails_RailDescriptor,
       PowerRails>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RailDescriptor kRailDescriptor() { return {}; }
+  static constexpr FieldMetadata_RailDescriptor kRailDescriptor{};
   template <typename T = PowerRails_RailDescriptor> T* add_rail_descriptor() {
     return BeginNestedMessage<T>(1);
   }
@@ -71,14 +64,7 @@ class PowerRails : public ::protozero::Message {
       PowerRails_EnergyData,
       PowerRails>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_EnergyData kEnergyData() { return {}; }
+  static constexpr FieldMetadata_EnergyData kEnergyData{};
   template <typename T = PowerRails_EnergyData> T* add_energy_data() {
     return BeginNestedMessage<T>(2);
   }
@@ -117,14 +103,7 @@ class PowerRails_EnergyData : public ::protozero::Message {
       uint32_t,
       PowerRails_EnergyData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Index kIndex() { return {}; }
+  static constexpr FieldMetadata_Index kIndex{};
   void set_index(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Index::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -142,14 +121,7 @@ class PowerRails_EnergyData : public ::protozero::Message {
       uint64_t,
       PowerRails_EnergyData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_TimestampMs kTimestampMs() { return {}; }
+  static constexpr FieldMetadata_TimestampMs kTimestampMs{};
   void set_timestamp_ms(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimestampMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -167,14 +139,7 @@ class PowerRails_EnergyData : public ::protozero::Message {
       uint64_t,
       PowerRails_EnergyData>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Energy kEnergy() { return {}; }
+  static constexpr FieldMetadata_Energy kEnergy{};
   void set_energy(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Energy::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -220,14 +185,7 @@ class PowerRails_RailDescriptor : public ::protozero::Message {
       uint32_t,
       PowerRails_RailDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Index kIndex() { return {}; }
+  static constexpr FieldMetadata_Index kIndex{};
   void set_index(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_Index::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -245,14 +203,7 @@ class PowerRails_RailDescriptor : public ::protozero::Message {
       std::string,
       PowerRails_RailDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_RailName kRailName() { return {}; }
+  static constexpr FieldMetadata_RailName kRailName{};
   void set_rail_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_RailName::kFieldId, data, size);
   }
@@ -276,14 +227,7 @@ class PowerRails_RailDescriptor : public ::protozero::Message {
       std::string,
       PowerRails_RailDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SubsysName kSubsysName() { return {}; }
+  static constexpr FieldMetadata_SubsysName kSubsysName{};
   void set_subsys_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_SubsysName::kFieldId, data, size);
   }
@@ -307,14 +251,7 @@ class PowerRails_RailDescriptor : public ::protozero::Message {
       uint32_t,
       PowerRails_RailDescriptor>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_SamplingRate kSamplingRate() { return {}; }
+  static constexpr FieldMetadata_SamplingRate kSamplingRate{};
   void set_sampling_rate(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SamplingRate::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

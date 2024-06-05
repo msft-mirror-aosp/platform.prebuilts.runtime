@@ -33,7 +33,8 @@
 #include <stdint.h>
 
 // Structures for android_mallopt.
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnullability-completeness"
 typedef struct {
   // Pointer to the buffer allocated by a call to M_GET_MALLOC_LEAK_INFO.
   uint8_t* buffer;
@@ -47,7 +48,7 @@ typedef struct {
   // The maximum number of backtrace entries.
   size_t backtrace_size;
 } android_mallopt_leak_info_t;
-
+#pragma clang diagnostic pop
 // Opcodes for android_mallopt.
 
 enum {
@@ -103,8 +104,17 @@ enum {
   // Query whether memtag stack is enabled for this process.
   M_MEMTAG_STACK_IS_ON = 11,
 #define M_MEMTAG_STACK_IS_ON M_MEMTAG_STACK_IS_ON
+  // Query whether the current process has the decay time enabled so that
+  // the memory from allocations are not immediately released to the OS.
+  // Result is assigned to the arg pointer's destination.
+  //   arg = bool*
+  //   arg_size = sizeof(bool)
+  M_GET_DECAY_TIME_ENABLED = 12,
+#define M_GET_DECAY_TIME_ENABLED M_GET_DECAY_TIME_ENABLED
 };
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnullability-completeness"
 typedef struct {
   // The null-terminated name that the zygote is spawning. Because native
   // SpecializeCommon (where the GWP-ASan mallopt() is called from) happens
@@ -121,22 +131,35 @@ typedef struct {
   // apply to system apps. They use the "libc.debug.gwp_asan.*.system_default"
   // sysprops.
   enum Action {
-    // The app has opted-in to GWP-ASan, and should always have it enabled. This
-    // should only be used by apps.
+    // Enable GWP-ASan. This is used by apps that have `gwpAsanMode=always` in
+    // the manifest.
     TURN_ON_FOR_APP,
-    // System processes apps have GWP-ASan enabled by default, but use the
-    // process sampling method.
+    // Enable GWP-ASan, but only a small percentage of the time. This is used by
+    // system processes and system apps, and we use a lottery to determine which
+    // processes have GWP-ASan enabled. This allows us to mitigate system-wide
+    // memory overhead concerns, as each GWP-ASan enabled process uses ~70KiB of
+    // extra memory.
     TURN_ON_WITH_SAMPLING,
-    // Non-system apps don't have GWP-ASan by default.
+    // Don't enable GWP-ASan, unless overwritten by a system property or
+    // environment variable. This is used by apps that have `gwpAsanMode=never`
+    // in the manifest. Prior to Android 14, this also was used by non-system
+    // apps that didn't specify a `gwpAsanMode` in their manifest.
     DONT_TURN_ON_UNLESS_OVERRIDDEN,
-    // Note: GWP-ASan cannot be disabled once it's been enabled.
+    // Enable GWP-ASan, but only a small percentage of the time, and enable it
+    // in the non-crashing ("recoverable") mode. In Android 14, this is used by
+    // apps that don't specify `gwpAsanMode` (or use `gwpAsanMode=default`) in
+    // their manifest. GWP-ASan will detect heap memory safety bugs in this
+    // mode, and bug reports will be created by debuggerd, however the process
+    // will recover and continue to function as if the memory safety bug wasn't
+    // detected.
+    TURN_ON_FOR_APP_SAMPLED_NON_CRASHING,
   };
 
   Action desire = DONT_TURN_ON_UNLESS_OVERRIDDEN;
 } android_mallopt_gwp_asan_options_t;
-
+#pragma clang diagnostic pop
 // Manipulates bionic-specific handling of memory allocation APIs such as
 // malloc. Only for use by the Android platform and APEXes.
 //
 // On success, returns true. On failure, returns false and sets errno.
-extern "C" bool android_mallopt(int opcode, void* arg, size_t arg_size);
+extern "C" bool android_mallopt(int opcode, void* _Nullable arg, size_t arg_size);

@@ -118,20 +118,20 @@ class GraphicsFrameEvent : public ::protozero::Message {
   static inline const char* BufferEventType_Name(BufferEventType value) {
     return ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType_Name(value);
   }
-  static const BufferEventType UNSPECIFIED = BufferEventType::UNSPECIFIED;
-  static const BufferEventType DEQUEUE = BufferEventType::DEQUEUE;
-  static const BufferEventType QUEUE = BufferEventType::QUEUE;
-  static const BufferEventType POST = BufferEventType::POST;
-  static const BufferEventType ACQUIRE_FENCE = BufferEventType::ACQUIRE_FENCE;
-  static const BufferEventType LATCH = BufferEventType::LATCH;
-  static const BufferEventType HWC_COMPOSITION_QUEUED = BufferEventType::HWC_COMPOSITION_QUEUED;
-  static const BufferEventType FALLBACK_COMPOSITION = BufferEventType::FALLBACK_COMPOSITION;
-  static const BufferEventType PRESENT_FENCE = BufferEventType::PRESENT_FENCE;
-  static const BufferEventType RELEASE_FENCE = BufferEventType::RELEASE_FENCE;
-  static const BufferEventType MODIFY = BufferEventType::MODIFY;
-  static const BufferEventType DETACH = BufferEventType::DETACH;
-  static const BufferEventType ATTACH = BufferEventType::ATTACH;
-  static const BufferEventType CANCEL = BufferEventType::CANCEL;
+  static inline const BufferEventType UNSPECIFIED = BufferEventType::UNSPECIFIED;
+  static inline const BufferEventType DEQUEUE = BufferEventType::DEQUEUE;
+  static inline const BufferEventType QUEUE = BufferEventType::QUEUE;
+  static inline const BufferEventType POST = BufferEventType::POST;
+  static inline const BufferEventType ACQUIRE_FENCE = BufferEventType::ACQUIRE_FENCE;
+  static inline const BufferEventType LATCH = BufferEventType::LATCH;
+  static inline const BufferEventType HWC_COMPOSITION_QUEUED = BufferEventType::HWC_COMPOSITION_QUEUED;
+  static inline const BufferEventType FALLBACK_COMPOSITION = BufferEventType::FALLBACK_COMPOSITION;
+  static inline const BufferEventType PRESENT_FENCE = BufferEventType::PRESENT_FENCE;
+  static inline const BufferEventType RELEASE_FENCE = BufferEventType::RELEASE_FENCE;
+  static inline const BufferEventType MODIFY = BufferEventType::MODIFY;
+  static inline const BufferEventType DETACH = BufferEventType::DETACH;
+  static inline const BufferEventType ATTACH = BufferEventType::ATTACH;
+  static inline const BufferEventType CANCEL = BufferEventType::CANCEL;
 
   using FieldMetadata_BufferEvent =
     ::protozero::proto_utils::FieldMetadata<
@@ -141,14 +141,7 @@ class GraphicsFrameEvent : public ::protozero::Message {
       GraphicsFrameEvent_BufferEvent,
       GraphicsFrameEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BufferEvent kBufferEvent() { return {}; }
+  static constexpr FieldMetadata_BufferEvent kBufferEvent{};
   template <typename T = GraphicsFrameEvent_BufferEvent> T* set_buffer_event() {
     return BeginNestedMessage<T>(1);
   }
@@ -193,14 +186,7 @@ class GraphicsFrameEvent_BufferEvent : public ::protozero::Message {
       uint32_t,
       GraphicsFrameEvent_BufferEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_FrameNumber kFrameNumber() { return {}; }
+  static constexpr FieldMetadata_FrameNumber kFrameNumber{};
   void set_frame_number(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_FrameNumber::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -218,14 +204,7 @@ class GraphicsFrameEvent_BufferEvent : public ::protozero::Message {
       ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType,
       GraphicsFrameEvent_BufferEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Type kType() { return {}; }
+  static constexpr FieldMetadata_Type kType{};
   void set_type(::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -243,14 +222,7 @@ class GraphicsFrameEvent_BufferEvent : public ::protozero::Message {
       std::string,
       GraphicsFrameEvent_BufferEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_LayerName kLayerName() { return {}; }
+  static constexpr FieldMetadata_LayerName kLayerName{};
   void set_layer_name(const char* data, size_t size) {
     AppendBytes(FieldMetadata_LayerName::kFieldId, data, size);
   }
@@ -274,14 +246,7 @@ class GraphicsFrameEvent_BufferEvent : public ::protozero::Message {
       uint64_t,
       GraphicsFrameEvent_BufferEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_DurationNs kDurationNs() { return {}; }
+  static constexpr FieldMetadata_DurationNs kDurationNs{};
   void set_duration_ns(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DurationNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
@@ -299,14 +264,7 @@ class GraphicsFrameEvent_BufferEvent : public ::protozero::Message {
       uint32_t,
       GraphicsFrameEvent_BufferEvent>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_BufferId kBufferId() { return {}; }
+  static constexpr FieldMetadata_BufferId kBufferId{};
   void set_buffer_id(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_BufferId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)

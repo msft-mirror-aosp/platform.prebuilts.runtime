@@ -41,6 +41,9 @@ cc_prebuilt_library_shared {
         arm64: {
             srcs: ["arm64/lib/libtombstoned_client.so"],
         },
+        riscv64: {
+            srcs: ["riscv64/lib/libtombstoned_client.so"],
+        },
         x86_64: {
             srcs: ["x86_64/lib/libtombstoned_client.so"],
         },

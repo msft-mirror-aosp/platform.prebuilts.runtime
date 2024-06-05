@@ -50,14 +50,7 @@ class TestBundleWrapper : public ::protozero::Message {
       std::string,
       TestBundleWrapper>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Before kBefore() { return {}; }
+  static constexpr FieldMetadata_Before kBefore{};
   void set_before(const char* data, size_t size) {
     AppendBytes(FieldMetadata_Before::kFieldId, data, size);
   }
@@ -81,14 +74,7 @@ class TestBundleWrapper : public ::protozero::Message {
       FtraceEventBundle,
       TestBundleWrapper>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_Bundle kBundle() { return {}; }
+  static constexpr FieldMetadata_Bundle kBundle{};
   template <typename T = FtraceEventBundle> T* add_bundle() {
     return BeginNestedMessage<T>(2);
   }
@@ -102,14 +88,7 @@ class TestBundleWrapper : public ::protozero::Message {
       std::string,
       TestBundleWrapper>;
 
-  // Ceci n'est pas une pipe.
-  // This is actually a variable of FieldMetadataHelper<FieldMetadata<...>>
-  // type (and users are expected to use it as such, hence kCamelCase name).
-  // It is declared as a function to keep protozero bindings header-only as
-  // inline constexpr variables are not available until C++17 (while inline
-  // functions are).
-  // TODO(altimin): Use inline variable instead after adopting C++17.
-  static constexpr FieldMetadata_After kAfter() { return {}; }
+  static constexpr FieldMetadata_After kAfter{};
   void set_after(const char* data, size_t size) {
     AppendBytes(FieldMetadata_After::kFieldId, data, size);
   }
