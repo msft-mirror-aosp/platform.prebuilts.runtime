@@ -260,6 +260,7 @@ def install_entries():
     install_impl_lib_entries("libbinder_ndk.so") +
     # libbinder_ndk dependencies:
     install_impl_lib_entries("libandroid_runtime_lazy.so") +
+    install_impl_lib_entries("libapexsupport.so") +
     install_impl_lib_entries("libbase.so") +
     install_impl_lib_entries("libbinder.so") +
     install_impl_lib_entries("libcutils.so") +
