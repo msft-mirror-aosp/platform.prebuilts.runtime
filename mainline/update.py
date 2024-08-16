@@ -260,6 +260,7 @@ def install_entries():
     install_impl_lib_entries("libbinder_ndk.so") +
     # libbinder_ndk dependencies:
     install_impl_lib_entries("libandroid_runtime_lazy.so") +
+    install_impl_lib_entries("libapexsupport.so") +
     install_impl_lib_entries("libbase.so") +
     install_impl_lib_entries("libbinder.so") +
     install_impl_lib_entries("libcutils.so") +
@@ -564,16 +565,15 @@ def main():
     }
 
   entries = install_entries()
-  # For riscv64, filtering is more complex; `install_entries` takes care of it.
-  if not args.local_dist_riscv64:
-    if args.skip_apex:
-      entries = [entry for entry in entries if entry.type != "apex"]
-    if args.skip_module_sdk:
-      entries = [entry for entry in entries if entry.type != "module_sdk"]
-    if args.skip_impl_lib:
-      entries = [entry for entry in entries if entry.type != "impl_lib"]
-    if not entries:
-      sys.exit("All prebuilts skipped - nothing to do.")
+
+  if args.skip_apex:
+    entries = [entry for entry in entries if entry.type != "apex"]
+  if args.skip_module_sdk:
+    entries = [entry for entry in entries if entry.type != "module_sdk"]
+  if args.skip_impl_lib:
+    entries = [entry for entry in entries if entry.type != "impl_lib"]
+  if not entries:
+    sys.exit("All prebuilts skipped - nothing to do.")
 
   install_paths = [entry.install_path for entry in entries]
   install_paths_per_root = install_paths_per_git_root(
