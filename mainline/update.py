@@ -69,7 +69,8 @@ APEX_SOURCE = {
 # mainline), the target here is used only to construct path in
 # `install_impl_lib_entries`.
 IMPL_LIB_SOURCE = {
-    "arm": None, # There's no longer any AOSP CI build for this arch.
+    "arm": BuildSource("aosp-main",
+                       "aosp_arm64-trunk_staging-userdebug"), # arm64 build contains 32-bit libs.
     "arm64": BuildSource("aosp-main",
                          "aosp_arm64-trunk_staging-userdebug"),
     "riscv64": BuildSource("aosp-main",
@@ -196,7 +197,7 @@ def install_impl_lib_entries(lib_name):
           type="impl_lib",
           source_build=IMPL_LIB_SOURCE[arch],
           source_path=(
-              IMPL_LIB_SOURCE[arch].target.rpartition("-")[0] +
+              IMPL_LIB_SOURCE[arch].target.partition("-")[0] +
               "-target_files-{BUILD}.zip" if IMPL_LIB_SOURCE[arch] else None),
           unzip_single_file=os.path.join(
               "SYSTEM",
@@ -254,10 +255,12 @@ def install_entries():
     install_platform_mainline_sdk_entries("test-exports") +
     install_impl_lib_entries("heapprofd_client_api.so") +
     install_impl_lib_entries("libartpalette-system.so") +
+    install_impl_lib_entries("libdebugstore_cxx.so") +
     install_impl_lib_entries("liblog.so") +
     install_impl_lib_entries("libbinder_ndk.so") +
     # libbinder_ndk dependencies:
     install_impl_lib_entries("libandroid_runtime_lazy.so") +
+    install_impl_lib_entries("libapexsupport.so") +
     install_impl_lib_entries("libbase.so") +
     install_impl_lib_entries("libbinder.so") +
     install_impl_lib_entries("libcutils.so") +
@@ -484,10 +487,16 @@ def install_paths_per_git_root(roots, paths):
 
 
 def get_args():
+  need_aosp_main_throttled = any(
+      source is not None and source.branch == "aosp-main-throttled"
+      for source in ([SDK_SOURCE] + list(APEX_SOURCE.values()) + list(IMPL_LIB_SOURCE.values())))
+  if need_aosp_main_throttled:
+    epilog="Either --aosp-main-build and --aosp-main-throttled-build, or --local-dist, is required."
+  else:
+    epilog="Either --aosp-main-build or --local-dist is required."
+
   """Parses and returns command line arguments."""
-  parser = argparse.ArgumentParser(
-      epilog="Either --aosp-main-build and --aosp-main-throttled-build, "
-      "or --local-dist, is required.")
+  parser = argparse.ArgumentParser(epilog=epilog)
 
   parser.add_argument("--aosp-main-build", metavar="NUMBER",
                       help="Build number to fetch from aosp-main")
@@ -533,7 +542,7 @@ def get_args():
     args.local_dist = args.local_dist_riscv64
 
   got_build_numbers = bool(args.aosp_main_build and
-                           args.aosp_main_throttled_build)
+                           (args.aosp_main_throttled_build or not need_aosp_main_throttled))
   if ((not got_build_numbers and not args.local_dist) or
       (got_build_numbers and args.local_dist)):
     sys.exit(parser.format_help())
@@ -556,16 +565,15 @@ def main():
     }
 
   entries = install_entries()
-  # For riscv64, filtering is more complex; `install_entries` takes care of it.
-  if not args.local_dist_riscv64:
-    if args.skip_apex:
-      entries = [entry for entry in entries if entry.type != "apex"]
-    if args.skip_module_sdk:
-      entries = [entry for entry in entries if entry.type != "module_sdk"]
-    if args.skip_impl_lib:
-      entries = [entry for entry in entries if entry.type != "impl_lib"]
-    if not entries:
-      sys.exit("All prebuilts skipped - nothing to do.")
+
+  if args.skip_apex:
+    entries = [entry for entry in entries if entry.type != "apex"]
+  if args.skip_module_sdk:
+    entries = [entry for entry in entries if entry.type != "module_sdk"]
+  if args.skip_impl_lib:
+    entries = [entry for entry in entries if entry.type != "impl_lib"]
+  if not entries:
+    sys.exit("All prebuilts skipped - nothing to do.")
 
   install_paths = [entry.install_path for entry in entries]
   install_paths_per_root = install_paths_per_git_root(
