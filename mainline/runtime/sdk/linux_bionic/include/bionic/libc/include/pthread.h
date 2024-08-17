@@ -144,20 +144,7 @@ int pthread_cond_timedwait_monotonic_np(pthread_cond_t* _Nonnull __cond, pthread
                                         const struct timespec* _Nullable __timeout) __INTRODUCED_IN_64(28);
 int pthread_cond_wait(pthread_cond_t* _Nonnull __cond, pthread_mutex_t* _Nonnull __mutex);
 
-#if defined(__clang__)
-/*
- * Disable -Wbuiltin-requires-header because clang confuses this declaration with the one defined in
- * "llvm/tools/clang/include/clang/Basic/Builtins.def", which did not define any formal arguments.
- * It seems to be an upstream bug and the fix (https://reviews.llvm.org/D58531) is still under
- * review. Thus, let's disable the warning for this function declaration.
- */
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wbuiltin-requires-header"
-#endif
 int pthread_create(pthread_t* _Nonnull __pthread_ptr, pthread_attr_t const* _Nullable __attr, void* _Nonnull (* _Nonnull __start_routine)(void* _Nonnull), void* _Nullable);
-#if defined(__clang__)
-#pragma clang diagnostic pop
-#endif
 
 int pthread_detach(pthread_t __pthread);
 void pthread_exit(void* _Nullable __return_value) __noreturn;
@@ -174,7 +161,29 @@ pid_t pthread_gettid_np(pthread_t __pthread);
 
 int pthread_join(pthread_t __pthread, void* _Nullable * _Nullable __return_value_ptr);
 
+/**
+ * [pthread_key_create(3)](https://man7.org/linux/man-pages/man3/pthread_key_create.3p.html)
+ * creates a key for thread-specific data.
+ *
+ * There is a limit of `PTHREAD_KEYS_MAX` keys per process, but most callers
+ * should just use the C or C++ `thread_local` storage specifier anyway. When
+ * targeting new enough OS versions, the compiler will automatically use
+ * ELF TLS; when targeting old OS versions the emutls implementation will
+ * multiplex pthread keys behind the scenes, using one per library rather than
+ * one per thread-local variable. If you are implementing the runtime for a
+ * different language, you should consider similar implementation choices and
+ * avoid a direct one-to-one mapping from thread locals to pthread keys.
+ *
+ * Returns 0 on success and returns an error number on failure.
+ */
 int pthread_key_create(pthread_key_t* _Nonnull __key_ptr, void (* _Nullable __key_destructor)(void* _Nullable));
+
+/**
+ * [pthread_key_delete(3)](https://man7.org/linux/man-pages/man3/pthread_key_delete.3p.html)
+ * deletes a key for thread-specific data.
+ *
+ * Returns 0 on success and returns an error number on failure.
+ */
 int pthread_key_delete(pthread_key_t __key);
 
 int pthread_mutexattr_destroy(pthread_mutexattr_t* _Nonnull __attr);
