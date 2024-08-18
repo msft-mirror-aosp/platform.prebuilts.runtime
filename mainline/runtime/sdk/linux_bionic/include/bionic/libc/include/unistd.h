@@ -78,10 +78,57 @@ extern char* _Nullable * _Nullable environ;
 
 __noreturn void _exit(int __status);
 
-pid_t  fork(void);
-pid_t  vfork(void) __returns_twice;
+/**
+ * [fork(2)](http://man7.org/linux/man-pages/man2/fork.2.html) creates a new
+ * process. fork() runs any handlers set by pthread_atfork().
+ *
+ * Returns 0 in the child, the pid of the child in the parent,
+ * and returns -1 and sets `errno` on failure.
+ */
+pid_t fork(void);
+
+/**
+ * _Fork() creates a new process. _Fork() differs from fork() in that it does
+ * not run any handlers set by pthread_atfork(). In addition to any user-defined
+ * ones, bionic uses pthread_atfork() handlers to ensure consistency of its own
+ * state, so the child should only call
+ * [POSIX async-safe](https://man7.org/linux/man-pages/man7/signal-safety.7.html)
+ * functions.
+ *
+ * Returns 0 in the child, the pid of the child in the parent,
+ * and returns -1 and sets `errno` on failure.
+ *
+ * Available since API level 35.
+ */
+pid_t _Fork(void) __INTRODUCED_IN(35);
+
+/**
+ * [vfork(2)](http://man7.org/linux/man-pages/man2/vfork.2.html) creates a new
+ * process. vfork() differs from fork() in that it does not run any handlers
+ * set by pthread_atfork(), and the parent is suspended until the child calls
+ * exec() or exits.
+ *
+ * Returns 0 in the child, the pid of the child in the parent,
+ * and returns -1 and sets `errno` on failure.
+ */
+pid_t vfork(void) __returns_twice;
+
+/**
+ * [getpid(2)](http://man7.org/linux/man-pages/man2/getpid.2.html) returns
+ * the caller's process ID.
+ *
+ * Returns the caller's process ID.
+ */
 pid_t  getpid(void);
-pid_t  gettid(void) __attribute_const__;
+
+/**
+ * [gettid(2)](http://man7.org/linux/man-pages/man2/gettid.2.html) returns
+ * the caller's thread ID.
+ *
+ * Returns the caller's thread ID.
+ */
+pid_t  gettid(void);
+
 pid_t  getpgid(pid_t __pid);
 int    setpgid(pid_t __pid, pid_t __pgid);
 pid_t  getppid(void);
@@ -303,6 +350,13 @@ int ttyname_r(int __fd, char* _Nonnull __buf, size_t __buf_size);
 
 int acct(const char* _Nullable __path);
 
+/**
+ * [getpagesize(2)](https://man7.org/linux/man-pages/man2/getpagesize.2.html)
+ * returns the system's page size. This is slightly faster than going via
+ * sysconf(), and avoids the linear search in getauxval().
+ *
+ * Returns the system's page size in bytes.
+ */
 int getpagesize(void) __attribute_const__;
 
 long syscall(long __number, ...);
@@ -310,8 +364,11 @@ long syscall(long __number, ...);
 int daemon(int __no_chdir, int __no_close);
 
 #if defined(__arm__)
+/**
+ * New code should use __builtin___clear_cache() instead, which works on
+ * all architectures.
+ */
 int cacheflush(long __addr, long __nbytes, long __cache);
-    /* __attribute__((deprecated("use __builtin___clear_cache instead"))); */
 #endif
 
 pid_t tcgetpgrp(int __fd);
