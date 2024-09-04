@@ -192,6 +192,7 @@ cc_prebuilt_library_shared {
     visibility: [
         "//external/icu/android_icu4j/libcore_bridge/src/native",
         "//packages/modules/RuntimeI18n/apex",
+        "//art/tools/ahat",
     ],
     apex_available: ["com.android.i18n"],
     licenses: ["i18n-module-test-exports_external_icu_license"],
