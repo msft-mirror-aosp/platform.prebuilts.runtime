@@ -6,6 +6,26 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
+apex_contributions_defaults {
+    name: "runtime-module-sdk.contributions",
+    contents: [
+        "prebuilt_bionic_libc_platform_headers",
+        "prebuilt_libc_headers",
+        "prebuilt_crtbegin_dynamic",
+        "prebuilt_crtbegin_so",
+        "prebuilt_crtend_android",
+        "prebuilt_crtend_so",
+        "prebuilt_crt_pad_segment",
+        "prebuilt_libc",
+        "prebuilt_libdl",
+        "prebuilt_libdl_android",
+        "prebuilt_libm",
+        "prebuilt_libasync_safe",
+        "prebuilt_note_memtag_heap_async",
+        "prebuilt_note_memtag_heap_sync",
+    ],
+}
+
 license {
     name: "runtime-module-sdk_bionic_apex_license",
     visibility: ["//visibility:private"],
@@ -101,6 +121,7 @@ cc_prebuilt_library_headers {
         "//external/gwp_asan",
         "//external/jemalloc_new",
         "//external/libunwind_llvm",
+        "//external/llvm-libc",
         "//external/scudo",
         "//system/core/property_service/libpropertyinfoparser",
         "//system/extras/toolchain-extras",
@@ -438,6 +459,7 @@ cc_prebuilt_library_shared {
             "30",
             "current",
         ],
+        symbol_file: "libc.map",
     },
     target: {
         host: {
@@ -511,6 +533,9 @@ cc_prebuilt_library_shared {
             srcs: ["linux_bionic/x86_64/lib/libc.so"],
         },
     },
+    strip: {
+        none: true,
+    },
 }
 
 cc_prebuilt_library_shared {
@@ -533,6 +558,7 @@ cc_prebuilt_library_shared {
             "29",
             "current",
         ],
+        symbol_file: "libdl.map",
     },
     target: {
         host: {
@@ -606,6 +632,9 @@ cc_prebuilt_library_shared {
             srcs: ["linux_bionic/x86_64/lib/libdl.so"],
         },
     },
+    strip: {
+        none: true,
+    },
 }
 
 cc_prebuilt_library_shared {
@@ -625,6 +654,7 @@ cc_prebuilt_library_shared {
     },
     stubs: {
         versions: ["current"],
+        symbol_file: "libdl_android.map",
     },
     target: {
         host: {
@@ -656,6 +686,9 @@ cc_prebuilt_library_shared {
             srcs: ["linux_bionic/x86_64/lib/libdl_android.so"],
         },
     },
+    strip: {
+        none: true,
+    },
 }
 
 cc_prebuilt_library_shared {
@@ -680,6 +713,7 @@ cc_prebuilt_library_shared {
             "29",
             "current",
         ],
+        symbol_file: "libm.map",
     },
     target: {
         host: {
@@ -710,6 +744,9 @@ cc_prebuilt_library_shared {
             enabled: true,
             srcs: ["linux_bionic/x86_64/lib/libm.so"],
         },
+    },
+    strip: {
+        none: true,
     },
 }
 
