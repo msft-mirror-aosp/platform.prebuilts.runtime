@@ -33,6 +33,7 @@ java_import {
     name: "core-icu4j",
     prefer: false,
     visibility: [
+        "//art/tools/fuzzer",
         "//external/icu/android_icu4j",
         "//packages/modules/RuntimeI18n/apex",
     ],
