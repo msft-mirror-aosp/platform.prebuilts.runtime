@@ -57,33 +57,9 @@ APEX_SOURCE = {
                           "mainline_modules_x86_64-trunk_staging-userdebug"),
 }
 
-# Architecture-specific CI builds for implementation libraries. These are only
-# used in the chroot test setup (see art/tools/buildbot-build.sh). They never
-# become part of any dist artifact.
-#
-# We'd prefer to take all these from the aosp-main branch, but in case they're
-# not available there we have the option to use aosp-main-throttled as well. As
-# long as they're new enough to contain the required changes (see README.md
-# instructions) and pass tests, it doesn't matter much which exact builds they
-# come from. riscv64 is updated from a local build (it is not supported by
-# mainline), the target here is used only to construct path in
-# `install_impl_lib_entries`.
-IMPL_LIB_SOURCE = {
-    "arm": None, # There's no longer any AOSP CI build for this arch.
-    "arm64": BuildSource("aosp-main",
-                         "aosp_arm64-trunk_staging-userdebug"),
-    "riscv64": BuildSource("aosp-main",
-                           "aosp_riscv64-trunk_staging-userdebug"),
-    "x86": BuildSource("aosp-main",
-                       "aosp_x86-trunk_staging-userdebug"),
-    "x86_64": BuildSource("aosp-main",
-                          "aosp_x86_64-trunk_staging-userdebug"),
-}
-
 # Paths to git projects to prepare CLs in
 GIT_PROJECT_ROOTS = [
     "prebuilts/module_sdk/conscrypt",
-    "prebuilts/module_sdk/StatsD",
     "prebuilts/runtime",
 ]
 
@@ -95,7 +71,7 @@ SCRIPT_PATH = "prebuilts/runtime/mainline/update.py"
 InstallEntry = collections.namedtuple(
     "InstallEntry",
     [
-        # One of "apex", "module_sdk" and "impl_lib", for the --skip-* flags.
+        # Either "apex" or "module_sdk", for the --skip-* flags.
         "type",
         # Source CI build as a BuildSource tuple, or None if none exists.
         "source_build",
@@ -190,25 +166,6 @@ def install_platform_mainline_sdk_entries(sdk_type):
           install_unzipped=True)]
 
 
-def install_impl_lib_entries(lib_name):
-  return [
-      InstallEntry(
-          type="impl_lib",
-          source_build=IMPL_LIB_SOURCE[arch],
-          source_path=(
-              IMPL_LIB_SOURCE[arch].target.rpartition("-")[0] +
-              "-target_files-{BUILD}.zip" if IMPL_LIB_SOURCE[arch] else None),
-          unzip_single_file=os.path.join(
-              "SYSTEM",
-              "lib64" if arch.endswith("64") else "lib",
-              lib_name),
-          install_path=os.path.join(
-              "prebuilts/runtime/mainline/platform/impl",
-              arch,
-              lib_name))
-      for arch in ARCHES]
-
-
 # This is defined as a function (not a global list) because it depends on the
 # list of architectures, which may change after parsing options.
 def install_entries():
@@ -243,26 +200,9 @@ def install_entries():
     install_apex_entries("tzdata", "com.android.tzdata") +
     install_bundled_sdk_entries("tzdata", "test-exports") +
 
-    # statsd
-    install_apex_entries("statsd", "com.android.os.statsd") +
-    install_unbundled_sdk_entries(
-        "com.android.os.statsd", "statsd-module", "sdk",
-        "prebuilts/module_sdk/StatsD/current") +
-
     # Platform
     install_platform_mainline_sdk_entries("sdk") +
     install_platform_mainline_sdk_entries("test-exports") +
-    install_impl_lib_entries("heapprofd_client_api.so") +
-    install_impl_lib_entries("libartpalette-system.so") +
-    install_impl_lib_entries("liblog.so") +
-    install_impl_lib_entries("libbinder_ndk.so") +
-    # libbinder_ndk dependencies:
-    install_impl_lib_entries("libandroid_runtime_lazy.so") +
-    install_impl_lib_entries("libbase.so") +
-    install_impl_lib_entries("libbinder.so") +
-    install_impl_lib_entries("libcutils.so") +
-    install_impl_lib_entries("libutils.so") +
-    install_impl_lib_entries("libvndksupport.so") +
 
     [])
 
@@ -420,9 +360,9 @@ def install_entry(tmp_dir, local_dist, build_numbers, entry):
       check_call(["mkdir", "-p", tmp_dir], cwd=install_dir)
       check_call(["unzip", "-DD", "-o", download_file, "-d", tmp_dir],
                  cwd=install_dir)
-      # Conscrypt and statsd are not owned by the ART team, so we keep a local
-      # copy if their prebuilts with Android.bp files renamed to ArtThinBuild.bp
-      # to avoid Soong adding them as part of the build graph.
+      # Conscrypt is not owned by the ART team, so we keep a local copy of its
+      # prebuilt with Android.bp files renamed to ArtThinBuild.bp to avoid Soong
+      # adding them as part of the build graph.
       if "local_riscv64" in install_dir:
         patch_cmd = ("sed -i 's|This is auto-generated. DO NOT EDIT.|"
             "DO NOT COMMIT. Changes in this file are temporary and generated "
@@ -484,10 +424,16 @@ def install_paths_per_git_root(roots, paths):
 
 
 def get_args():
+  need_aosp_main_throttled = any(
+      source is not None and source.branch == "aosp-main-throttled"
+      for source in ([SDK_SOURCE] + list(APEX_SOURCE.values())))
+  if need_aosp_main_throttled:
+    epilog="Either --aosp-main-build and --aosp-main-throttled-build, or --local-dist, is required."
+  else:
+    epilog="Either --aosp-main-build or --local-dist is required."
+
   """Parses and returns command line arguments."""
-  parser = argparse.ArgumentParser(
-      epilog="Either --aosp-main-build and --aosp-main-throttled-build, "
-      "or --local-dist, is required.")
+  parser = argparse.ArgumentParser(epilog=epilog)
 
   parser.add_argument("--aosp-main-build", metavar="NUMBER",
                       help="Build number to fetch from aosp-main")
@@ -501,17 +447,12 @@ def get_args():
                       "must be $HOME/<path-to-aosp-root>/out/dist with prebuilts "
                       "already built for aosp_riscv64-trunk_staging-userdebug "
                       "target as described in README_riscv64.md. Only "
-                      "riscv64-specific files and Android.bp are updated. "
-                      "Options such as --skip-apex, --skip-module-sdk, "
-                      "--skip-impl-lib are ignored. It is a temporary "
-                      "workaround until mainline supports riscv64.")
+                      "riscv64-specific files and Android.bp are updated.")
   parser.add_argument("--skip-apex", default=True,
                       action=argparse.BooleanOptionalAction,
                       help="Do not fetch .apex files.")
   parser.add_argument("--skip-module-sdk", action="store_true",
                       help="Do not fetch and unpack sdk and module_export zips.")
-  parser.add_argument("--skip-impl-lib", action="store_true",
-                      help="Do not fetch implementation libraries.")
   parser.add_argument("--skip-cls", action="store_true",
                       help="Do not create branches or git commits")
   parser.add_argument("--bug", metavar="NUMBER",
@@ -533,7 +474,7 @@ def get_args():
     args.local_dist = args.local_dist_riscv64
 
   got_build_numbers = bool(args.aosp_main_build and
-                           args.aosp_main_throttled_build)
+                           (args.aosp_main_throttled_build or not need_aosp_main_throttled))
   if ((not got_build_numbers and not args.local_dist) or
       (got_build_numbers and args.local_dist)):
     sys.exit(parser.format_help())
@@ -556,16 +497,13 @@ def main():
     }
 
   entries = install_entries()
-  # For riscv64, filtering is more complex; `install_entries` takes care of it.
-  if not args.local_dist_riscv64:
-    if args.skip_apex:
-      entries = [entry for entry in entries if entry.type != "apex"]
-    if args.skip_module_sdk:
-      entries = [entry for entry in entries if entry.type != "module_sdk"]
-    if args.skip_impl_lib:
-      entries = [entry for entry in entries if entry.type != "impl_lib"]
-    if not entries:
-      sys.exit("All prebuilts skipped - nothing to do.")
+
+  if args.skip_apex:
+    entries = [entry for entry in entries if entry.type != "apex"]
+  if args.skip_module_sdk:
+    entries = [entry for entry in entries if entry.type != "module_sdk"]
+  if not entries:
+    sys.exit("All prebuilts skipped - nothing to do.")
 
   install_paths = [entry.install_path for entry in entries]
   install_paths_per_root = install_paths_per_git_root(
