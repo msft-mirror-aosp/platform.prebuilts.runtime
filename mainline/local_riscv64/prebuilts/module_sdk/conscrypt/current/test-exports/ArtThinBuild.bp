@@ -17,13 +17,7 @@ apex_contributions_defaults {
 
 java_import {
     name: "conscrypt-for-host",
-    visibility: [
-        "//art/build",
-        "//external/conscrypt",
-        "//external/robolectric",
-        "//external/robolectric-shadows",
-        "//frameworks/layoutlib",
-    ],
+    visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
     licenses: ["conscrypt-module-test-exports_external_conscrypt_license"],
     jars: ["java/conscrypt-for-host.jar"],
@@ -31,12 +25,7 @@ java_import {
 
 java_test_import {
     name: "conscrypt-tests",
-    visibility: [
-        "//cts/tests/libcore/luni",
-        "//external/conscrypt",
-        "//external/conscrypt/apex/tests",
-        "//libcore",
-    ],
+    visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
     licenses: ["conscrypt-module-test-exports_external_conscrypt_license"],
     jars: ["java/conscrypt-tests.jar"],
@@ -60,7 +49,7 @@ license {
 
 cc_prebuilt_library_shared {
     name: "libjavacrypto",
-    visibility: ["//external/conscrypt:__subpackages__"],
+    visibility: ["//visibility:public"],
     apex_available: [
         "com.android.conscrypt",
         "test_com.android.conscrypt",
