@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class AndroidCameraFrameEvent_CameraNodeProcessingDetails;
 class AndroidCameraSessionStats_CameraGraph;
 class AndroidCameraSessionStats_CameraGraph_CameraEdge;
@@ -24,6 +23,13 @@ namespace perfetto_pbzero_enum_AndroidCameraFrameEvent {
 enum CaptureResultStatus : int32_t;
 }  // namespace perfetto_pbzero_enum_AndroidCameraFrameEvent
 using AndroidCameraFrameEvent_CaptureResultStatus = perfetto_pbzero_enum_AndroidCameraFrameEvent::CaptureResultStatus;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_AndroidCameraFrameEvent {
 enum CaptureResultStatus : int32_t {
@@ -690,11 +696,11 @@ class AndroidCameraFrameEvent : public ::protozero::Message {
       10,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::AndroidCameraFrameEvent_CaptureResultStatus,
+      AndroidCameraFrameEvent_CaptureResultStatus,
       AndroidCameraFrameEvent>;
 
   static constexpr FieldMetadata_CaptureResultStatus kCaptureResultStatus{};
-  void set_capture_result_status(::perfetto::protos::pbzero::AndroidCameraFrameEvent_CaptureResultStatus value) {
+  void set_capture_result_status(AndroidCameraFrameEvent_CaptureResultStatus value) {
     static constexpr uint32_t field_id = FieldMetadata_CaptureResultStatus::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

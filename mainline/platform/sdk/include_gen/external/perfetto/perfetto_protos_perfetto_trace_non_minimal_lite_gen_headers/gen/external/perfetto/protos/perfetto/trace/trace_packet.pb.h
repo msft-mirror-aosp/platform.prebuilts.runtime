@@ -43,12 +43,19 @@
 #include "protos/perfetto/trace/android/initial_display_state.pb.h"
 #include "protos/perfetto/trace/android/network_trace.pb.h"
 #include "protos/perfetto/trace/android/packages_list.pb.h"
+#include "protos/perfetto/trace/android/pixel_modem_events.pb.h"
+#include "protos/perfetto/trace/android/protolog.pb.h"
+#include "protos/perfetto/trace/android/shell_transition.pb.h"
 #include "protos/perfetto/trace/android/surfaceflinger_layers.pb.h"
 #include "protos/perfetto/trace/android/surfaceflinger_transactions.pb.h"
+#include "protos/perfetto/trace/android/winscope_extensions.pb.h"
 #include "protos/perfetto/trace/chrome/chrome_benchmark_metadata.pb.h"
 #include "protos/perfetto/trace/chrome/chrome_metadata.pb.h"
 #include "protos/perfetto/trace/chrome/chrome_trace_event.pb.h"
+#include "protos/perfetto/trace/chrome/chrome_trigger.pb.h"
+#include "protos/perfetto/trace/chrome/v8.pb.h"
 #include "protos/perfetto/trace/clock_snapshot.pb.h"
+#include "protos/perfetto/trace/etw/etw_event_bundle.pb.h"
 #include "protos/perfetto/trace/filesystem/inode_file_map.pb.h"
 #include "protos/perfetto/trace/ftrace/ftrace_event_bundle.pb.h"
 #include "protos/perfetto/trace/ftrace/ftrace_stats.pb.h"
@@ -73,6 +80,7 @@
 #include "protos/perfetto/trace/profiling/smaps.pb.h"
 #include "protos/perfetto/trace/ps/process_stats.pb.h"
 #include "protos/perfetto/trace/ps/process_tree.pb.h"
+#include "protos/perfetto/trace/remote_clock_sync.pb.h"
 #include "protos/perfetto/trace/sys_stats/sys_stats.pb.h"
 #include "protos/perfetto/trace/system_info.pb.h"
 #include "protos/perfetto/trace/system_info/cpu_info.pb.h"
@@ -197,6 +205,7 @@ class TracePacket final :
     kAndroidLog = 39,
     kSystemInfo = 45,
     kTrigger = 46,
+    kChromeTrigger = 109,
     kPackagesList = 47,
     kChromeBenchmarkMetadata = 48,
     kPerfettoMetatrace = 49,
@@ -241,6 +250,20 @@ class TracePacket final :
     kTrackEventRangeOfInterest = 90,
     kSurfaceflingerLayersSnapshot = 93,
     kSurfaceflingerTransactions = 94,
+    kShellTransition = 96,
+    kShellHandlerMappings = 97,
+    kProtologMessage = 104,
+    kProtologViewerConfig = 105,
+    kWinscopeExtensions = 112,
+    kEtwEvents = 95,
+    kV8JsCode = 99,
+    kV8InternalCode = 100,
+    kV8WasmCode = 101,
+    kV8RegExpCode = 102,
+    kV8CodeMove = 103,
+    kRemoteClockSync = 107,
+    kPixelModemEvents = 110,
+    kPixelModemTokenDatabase = 111,
     kForTesting = 900,
     DATA_NOT_SET = 0,
   };
@@ -364,6 +387,7 @@ class TracePacket final :
     kFirstPacketOnSequenceFieldNumber = 87,
     kTimestampClockIdFieldNumber = 58,
     kTrustedPidFieldNumber = 79,
+    kMachineIdFieldNumber = 98,
     kProcessTreeFieldNumber = 2,
     kProcessStatsFieldNumber = 9,
     kInodeFileMapFieldNumber = 4,
@@ -383,6 +407,7 @@ class TracePacket final :
     kAndroidLogFieldNumber = 39,
     kSystemInfoFieldNumber = 45,
     kTriggerFieldNumber = 46,
+    kChromeTriggerFieldNumber = 109,
     kPackagesListFieldNumber = 47,
     kChromeBenchmarkMetadataFieldNumber = 48,
     kPerfettoMetatraceFieldNumber = 49,
@@ -427,6 +452,20 @@ class TracePacket final :
     kTrackEventRangeOfInterestFieldNumber = 90,
     kSurfaceflingerLayersSnapshotFieldNumber = 93,
     kSurfaceflingerTransactionsFieldNumber = 94,
+    kShellTransitionFieldNumber = 96,
+    kShellHandlerMappingsFieldNumber = 97,
+    kProtologMessageFieldNumber = 104,
+    kProtologViewerConfigFieldNumber = 105,
+    kWinscopeExtensionsFieldNumber = 112,
+    kEtwEventsFieldNumber = 95,
+    kV8JsCodeFieldNumber = 99,
+    kV8InternalCodeFieldNumber = 100,
+    kV8WasmCodeFieldNumber = 101,
+    kV8RegExpCodeFieldNumber = 102,
+    kV8CodeMoveFieldNumber = 103,
+    kRemoteClockSyncFieldNumber = 107,
+    kPixelModemEventsFieldNumber = 110,
+    kPixelModemTokenDatabaseFieldNumber = 111,
     kForTestingFieldNumber = 900,
     kTrustedUidFieldNumber = 3,
     kTrustedPacketSequenceIdFieldNumber = 10,
@@ -556,6 +595,19 @@ class TracePacket final :
   private:
   ::int32_t _internal_trusted_pid() const;
   void _internal_set_trusted_pid(::int32_t value);
+  public:
+
+  // optional uint32 machine_id = 98;
+  bool has_machine_id() const;
+  private:
+  bool _internal_has_machine_id() const;
+  public:
+  void clear_machine_id();
+  ::uint32_t machine_id() const;
+  void set_machine_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_machine_id() const;
+  void _internal_set_machine_id(::uint32_t value);
   public:
 
   // .perfetto.protos.ProcessTree process_tree = 2;
@@ -899,6 +951,24 @@ class TracePacket final :
   void unsafe_arena_set_allocated_trigger(
       ::perfetto::protos::Trigger* trigger);
   ::perfetto::protos::Trigger* unsafe_arena_release_trigger();
+
+  // .perfetto.protos.ChromeTrigger chrome_trigger = 109;
+  bool has_chrome_trigger() const;
+  private:
+  bool _internal_has_chrome_trigger() const;
+  public:
+  void clear_chrome_trigger();
+  const ::perfetto::protos::ChromeTrigger& chrome_trigger() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::ChromeTrigger* release_chrome_trigger();
+  ::perfetto::protos::ChromeTrigger* mutable_chrome_trigger();
+  void set_allocated_chrome_trigger(::perfetto::protos::ChromeTrigger* chrome_trigger);
+  private:
+  const ::perfetto::protos::ChromeTrigger& _internal_chrome_trigger() const;
+  ::perfetto::protos::ChromeTrigger* _internal_mutable_chrome_trigger();
+  public:
+  void unsafe_arena_set_allocated_chrome_trigger(
+      ::perfetto::protos::ChromeTrigger* chrome_trigger);
+  ::perfetto::protos::ChromeTrigger* unsafe_arena_release_chrome_trigger();
 
   // .perfetto.protos.PackagesList packages_list = 47;
   bool has_packages_list() const;
@@ -1692,6 +1762,258 @@ class TracePacket final :
       ::perfetto::protos::TransactionTraceEntry* surfaceflinger_transactions);
   ::perfetto::protos::TransactionTraceEntry* unsafe_arena_release_surfaceflinger_transactions();
 
+  // .perfetto.protos.ShellTransition shell_transition = 96;
+  bool has_shell_transition() const;
+  private:
+  bool _internal_has_shell_transition() const;
+  public:
+  void clear_shell_transition();
+  const ::perfetto::protos::ShellTransition& shell_transition() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::ShellTransition* release_shell_transition();
+  ::perfetto::protos::ShellTransition* mutable_shell_transition();
+  void set_allocated_shell_transition(::perfetto::protos::ShellTransition* shell_transition);
+  private:
+  const ::perfetto::protos::ShellTransition& _internal_shell_transition() const;
+  ::perfetto::protos::ShellTransition* _internal_mutable_shell_transition();
+  public:
+  void unsafe_arena_set_allocated_shell_transition(
+      ::perfetto::protos::ShellTransition* shell_transition);
+  ::perfetto::protos::ShellTransition* unsafe_arena_release_shell_transition();
+
+  // .perfetto.protos.ShellHandlerMappings shell_handler_mappings = 97;
+  bool has_shell_handler_mappings() const;
+  private:
+  bool _internal_has_shell_handler_mappings() const;
+  public:
+  void clear_shell_handler_mappings();
+  const ::perfetto::protos::ShellHandlerMappings& shell_handler_mappings() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::ShellHandlerMappings* release_shell_handler_mappings();
+  ::perfetto::protos::ShellHandlerMappings* mutable_shell_handler_mappings();
+  void set_allocated_shell_handler_mappings(::perfetto::protos::ShellHandlerMappings* shell_handler_mappings);
+  private:
+  const ::perfetto::protos::ShellHandlerMappings& _internal_shell_handler_mappings() const;
+  ::perfetto::protos::ShellHandlerMappings* _internal_mutable_shell_handler_mappings();
+  public:
+  void unsafe_arena_set_allocated_shell_handler_mappings(
+      ::perfetto::protos::ShellHandlerMappings* shell_handler_mappings);
+  ::perfetto::protos::ShellHandlerMappings* unsafe_arena_release_shell_handler_mappings();
+
+  // .perfetto.protos.ProtoLogMessage protolog_message = 104;
+  bool has_protolog_message() const;
+  private:
+  bool _internal_has_protolog_message() const;
+  public:
+  void clear_protolog_message();
+  const ::perfetto::protos::ProtoLogMessage& protolog_message() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::ProtoLogMessage* release_protolog_message();
+  ::perfetto::protos::ProtoLogMessage* mutable_protolog_message();
+  void set_allocated_protolog_message(::perfetto::protos::ProtoLogMessage* protolog_message);
+  private:
+  const ::perfetto::protos::ProtoLogMessage& _internal_protolog_message() const;
+  ::perfetto::protos::ProtoLogMessage* _internal_mutable_protolog_message();
+  public:
+  void unsafe_arena_set_allocated_protolog_message(
+      ::perfetto::protos::ProtoLogMessage* protolog_message);
+  ::perfetto::protos::ProtoLogMessage* unsafe_arena_release_protolog_message();
+
+  // .perfetto.protos.ProtoLogViewerConfig protolog_viewer_config = 105;
+  bool has_protolog_viewer_config() const;
+  private:
+  bool _internal_has_protolog_viewer_config() const;
+  public:
+  void clear_protolog_viewer_config();
+  const ::perfetto::protos::ProtoLogViewerConfig& protolog_viewer_config() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::ProtoLogViewerConfig* release_protolog_viewer_config();
+  ::perfetto::protos::ProtoLogViewerConfig* mutable_protolog_viewer_config();
+  void set_allocated_protolog_viewer_config(::perfetto::protos::ProtoLogViewerConfig* protolog_viewer_config);
+  private:
+  const ::perfetto::protos::ProtoLogViewerConfig& _internal_protolog_viewer_config() const;
+  ::perfetto::protos::ProtoLogViewerConfig* _internal_mutable_protolog_viewer_config();
+  public:
+  void unsafe_arena_set_allocated_protolog_viewer_config(
+      ::perfetto::protos::ProtoLogViewerConfig* protolog_viewer_config);
+  ::perfetto::protos::ProtoLogViewerConfig* unsafe_arena_release_protolog_viewer_config();
+
+  // .perfetto.protos.WinscopeExtensions winscope_extensions = 112;
+  bool has_winscope_extensions() const;
+  private:
+  bool _internal_has_winscope_extensions() const;
+  public:
+  void clear_winscope_extensions();
+  const ::perfetto::protos::WinscopeExtensions& winscope_extensions() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::WinscopeExtensions* release_winscope_extensions();
+  ::perfetto::protos::WinscopeExtensions* mutable_winscope_extensions();
+  void set_allocated_winscope_extensions(::perfetto::protos::WinscopeExtensions* winscope_extensions);
+  private:
+  const ::perfetto::protos::WinscopeExtensions& _internal_winscope_extensions() const;
+  ::perfetto::protos::WinscopeExtensions* _internal_mutable_winscope_extensions();
+  public:
+  void unsafe_arena_set_allocated_winscope_extensions(
+      ::perfetto::protos::WinscopeExtensions* winscope_extensions);
+  ::perfetto::protos::WinscopeExtensions* unsafe_arena_release_winscope_extensions();
+
+  // .perfetto.protos.EtwTraceEventBundle etw_events = 95;
+  bool has_etw_events() const;
+  private:
+  bool _internal_has_etw_events() const;
+  public:
+  void clear_etw_events();
+  const ::perfetto::protos::EtwTraceEventBundle& etw_events() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::EtwTraceEventBundle* release_etw_events();
+  ::perfetto::protos::EtwTraceEventBundle* mutable_etw_events();
+  void set_allocated_etw_events(::perfetto::protos::EtwTraceEventBundle* etw_events);
+  private:
+  const ::perfetto::protos::EtwTraceEventBundle& _internal_etw_events() const;
+  ::perfetto::protos::EtwTraceEventBundle* _internal_mutable_etw_events();
+  public:
+  void unsafe_arena_set_allocated_etw_events(
+      ::perfetto::protos::EtwTraceEventBundle* etw_events);
+  ::perfetto::protos::EtwTraceEventBundle* unsafe_arena_release_etw_events();
+
+  // .perfetto.protos.V8JsCode v8_js_code = 99;
+  bool has_v8_js_code() const;
+  private:
+  bool _internal_has_v8_js_code() const;
+  public:
+  void clear_v8_js_code();
+  const ::perfetto::protos::V8JsCode& v8_js_code() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::V8JsCode* release_v8_js_code();
+  ::perfetto::protos::V8JsCode* mutable_v8_js_code();
+  void set_allocated_v8_js_code(::perfetto::protos::V8JsCode* v8_js_code);
+  private:
+  const ::perfetto::protos::V8JsCode& _internal_v8_js_code() const;
+  ::perfetto::protos::V8JsCode* _internal_mutable_v8_js_code();
+  public:
+  void unsafe_arena_set_allocated_v8_js_code(
+      ::perfetto::protos::V8JsCode* v8_js_code);
+  ::perfetto::protos::V8JsCode* unsafe_arena_release_v8_js_code();
+
+  // .perfetto.protos.V8InternalCode v8_internal_code = 100;
+  bool has_v8_internal_code() const;
+  private:
+  bool _internal_has_v8_internal_code() const;
+  public:
+  void clear_v8_internal_code();
+  const ::perfetto::protos::V8InternalCode& v8_internal_code() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::V8InternalCode* release_v8_internal_code();
+  ::perfetto::protos::V8InternalCode* mutable_v8_internal_code();
+  void set_allocated_v8_internal_code(::perfetto::protos::V8InternalCode* v8_internal_code);
+  private:
+  const ::perfetto::protos::V8InternalCode& _internal_v8_internal_code() const;
+  ::perfetto::protos::V8InternalCode* _internal_mutable_v8_internal_code();
+  public:
+  void unsafe_arena_set_allocated_v8_internal_code(
+      ::perfetto::protos::V8InternalCode* v8_internal_code);
+  ::perfetto::protos::V8InternalCode* unsafe_arena_release_v8_internal_code();
+
+  // .perfetto.protos.V8WasmCode v8_wasm_code = 101;
+  bool has_v8_wasm_code() const;
+  private:
+  bool _internal_has_v8_wasm_code() const;
+  public:
+  void clear_v8_wasm_code();
+  const ::perfetto::protos::V8WasmCode& v8_wasm_code() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::V8WasmCode* release_v8_wasm_code();
+  ::perfetto::protos::V8WasmCode* mutable_v8_wasm_code();
+  void set_allocated_v8_wasm_code(::perfetto::protos::V8WasmCode* v8_wasm_code);
+  private:
+  const ::perfetto::protos::V8WasmCode& _internal_v8_wasm_code() const;
+  ::perfetto::protos::V8WasmCode* _internal_mutable_v8_wasm_code();
+  public:
+  void unsafe_arena_set_allocated_v8_wasm_code(
+      ::perfetto::protos::V8WasmCode* v8_wasm_code);
+  ::perfetto::protos::V8WasmCode* unsafe_arena_release_v8_wasm_code();
+
+  // .perfetto.protos.V8RegExpCode v8_reg_exp_code = 102;
+  bool has_v8_reg_exp_code() const;
+  private:
+  bool _internal_has_v8_reg_exp_code() const;
+  public:
+  void clear_v8_reg_exp_code();
+  const ::perfetto::protos::V8RegExpCode& v8_reg_exp_code() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::V8RegExpCode* release_v8_reg_exp_code();
+  ::perfetto::protos::V8RegExpCode* mutable_v8_reg_exp_code();
+  void set_allocated_v8_reg_exp_code(::perfetto::protos::V8RegExpCode* v8_reg_exp_code);
+  private:
+  const ::perfetto::protos::V8RegExpCode& _internal_v8_reg_exp_code() const;
+  ::perfetto::protos::V8RegExpCode* _internal_mutable_v8_reg_exp_code();
+  public:
+  void unsafe_arena_set_allocated_v8_reg_exp_code(
+      ::perfetto::protos::V8RegExpCode* v8_reg_exp_code);
+  ::perfetto::protos::V8RegExpCode* unsafe_arena_release_v8_reg_exp_code();
+
+  // .perfetto.protos.V8CodeMove v8_code_move = 103;
+  bool has_v8_code_move() const;
+  private:
+  bool _internal_has_v8_code_move() const;
+  public:
+  void clear_v8_code_move();
+  const ::perfetto::protos::V8CodeMove& v8_code_move() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::V8CodeMove* release_v8_code_move();
+  ::perfetto::protos::V8CodeMove* mutable_v8_code_move();
+  void set_allocated_v8_code_move(::perfetto::protos::V8CodeMove* v8_code_move);
+  private:
+  const ::perfetto::protos::V8CodeMove& _internal_v8_code_move() const;
+  ::perfetto::protos::V8CodeMove* _internal_mutable_v8_code_move();
+  public:
+  void unsafe_arena_set_allocated_v8_code_move(
+      ::perfetto::protos::V8CodeMove* v8_code_move);
+  ::perfetto::protos::V8CodeMove* unsafe_arena_release_v8_code_move();
+
+  // .perfetto.protos.RemoteClockSync remote_clock_sync = 107;
+  bool has_remote_clock_sync() const;
+  private:
+  bool _internal_has_remote_clock_sync() const;
+  public:
+  void clear_remote_clock_sync();
+  const ::perfetto::protos::RemoteClockSync& remote_clock_sync() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::RemoteClockSync* release_remote_clock_sync();
+  ::perfetto::protos::RemoteClockSync* mutable_remote_clock_sync();
+  void set_allocated_remote_clock_sync(::perfetto::protos::RemoteClockSync* remote_clock_sync);
+  private:
+  const ::perfetto::protos::RemoteClockSync& _internal_remote_clock_sync() const;
+  ::perfetto::protos::RemoteClockSync* _internal_mutable_remote_clock_sync();
+  public:
+  void unsafe_arena_set_allocated_remote_clock_sync(
+      ::perfetto::protos::RemoteClockSync* remote_clock_sync);
+  ::perfetto::protos::RemoteClockSync* unsafe_arena_release_remote_clock_sync();
+
+  // .perfetto.protos.PixelModemEvents pixel_modem_events = 110;
+  bool has_pixel_modem_events() const;
+  private:
+  bool _internal_has_pixel_modem_events() const;
+  public:
+  void clear_pixel_modem_events();
+  const ::perfetto::protos::PixelModemEvents& pixel_modem_events() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::PixelModemEvents* release_pixel_modem_events();
+  ::perfetto::protos::PixelModemEvents* mutable_pixel_modem_events();
+  void set_allocated_pixel_modem_events(::perfetto::protos::PixelModemEvents* pixel_modem_events);
+  private:
+  const ::perfetto::protos::PixelModemEvents& _internal_pixel_modem_events() const;
+  ::perfetto::protos::PixelModemEvents* _internal_mutable_pixel_modem_events();
+  public:
+  void unsafe_arena_set_allocated_pixel_modem_events(
+      ::perfetto::protos::PixelModemEvents* pixel_modem_events);
+  ::perfetto::protos::PixelModemEvents* unsafe_arena_release_pixel_modem_events();
+
+  // .perfetto.protos.PixelModemTokenDatabase pixel_modem_token_database = 111;
+  bool has_pixel_modem_token_database() const;
+  private:
+  bool _internal_has_pixel_modem_token_database() const;
+  public:
+  void clear_pixel_modem_token_database();
+  const ::perfetto::protos::PixelModemTokenDatabase& pixel_modem_token_database() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::PixelModemTokenDatabase* release_pixel_modem_token_database();
+  ::perfetto::protos::PixelModemTokenDatabase* mutable_pixel_modem_token_database();
+  void set_allocated_pixel_modem_token_database(::perfetto::protos::PixelModemTokenDatabase* pixel_modem_token_database);
+  private:
+  const ::perfetto::protos::PixelModemTokenDatabase& _internal_pixel_modem_token_database() const;
+  ::perfetto::protos::PixelModemTokenDatabase* _internal_mutable_pixel_modem_token_database();
+  public:
+  void unsafe_arena_set_allocated_pixel_modem_token_database(
+      ::perfetto::protos::PixelModemTokenDatabase* pixel_modem_token_database);
+  ::perfetto::protos::PixelModemTokenDatabase* unsafe_arena_release_pixel_modem_token_database();
+
   // .perfetto.protos.TestEvent for_testing = 900;
   bool has_for_testing() const;
   private:
@@ -1764,6 +2086,7 @@ class TracePacket final :
   void set_has_android_log();
   void set_has_system_info();
   void set_has_trigger();
+  void set_has_chrome_trigger();
   void set_has_packages_list();
   void set_has_chrome_benchmark_metadata();
   void set_has_perfetto_metatrace();
@@ -1808,6 +2131,20 @@ class TracePacket final :
   void set_has_track_event_range_of_interest();
   void set_has_surfaceflinger_layers_snapshot();
   void set_has_surfaceflinger_transactions();
+  void set_has_shell_transition();
+  void set_has_shell_handler_mappings();
+  void set_has_protolog_message();
+  void set_has_protolog_viewer_config();
+  void set_has_winscope_extensions();
+  void set_has_etw_events();
+  void set_has_v8_js_code();
+  void set_has_v8_internal_code();
+  void set_has_v8_wasm_code();
+  void set_has_v8_reg_exp_code();
+  void set_has_v8_code_move();
+  void set_has_remote_clock_sync();
+  void set_has_pixel_modem_events();
+  void set_has_pixel_modem_token_database();
   void set_has_for_testing();
   void set_has_trusted_uid();
   void set_has_trusted_packet_sequence_id();
@@ -1836,6 +2173,7 @@ class TracePacket final :
     bool first_packet_on_sequence_;
     ::uint32_t timestamp_clock_id_;
     ::int32_t trusted_pid_;
+    ::uint32_t machine_id_;
     union DataUnion {
       constexpr DataUnion() : _constinit_{} {}
         ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
@@ -1858,6 +2196,7 @@ class TracePacket final :
       ::perfetto::protos::AndroidLogPacket* android_log_;
       ::perfetto::protos::SystemInfo* system_info_;
       ::perfetto::protos::Trigger* trigger_;
+      ::perfetto::protos::ChromeTrigger* chrome_trigger_;
       ::perfetto::protos::PackagesList* packages_list_;
       ::perfetto::protos::ChromeBenchmarkMetadata* chrome_benchmark_metadata_;
       ::perfetto::protos::PerfettoMetatrace* perfetto_metatrace_;
@@ -1902,6 +2241,20 @@ class TracePacket final :
       ::perfetto::protos::TrackEventRangeOfInterest* track_event_range_of_interest_;
       ::perfetto::protos::LayersSnapshotProto* surfaceflinger_layers_snapshot_;
       ::perfetto::protos::TransactionTraceEntry* surfaceflinger_transactions_;
+      ::perfetto::protos::ShellTransition* shell_transition_;
+      ::perfetto::protos::ShellHandlerMappings* shell_handler_mappings_;
+      ::perfetto::protos::ProtoLogMessage* protolog_message_;
+      ::perfetto::protos::ProtoLogViewerConfig* protolog_viewer_config_;
+      ::perfetto::protos::WinscopeExtensions* winscope_extensions_;
+      ::perfetto::protos::EtwTraceEventBundle* etw_events_;
+      ::perfetto::protos::V8JsCode* v8_js_code_;
+      ::perfetto::protos::V8InternalCode* v8_internal_code_;
+      ::perfetto::protos::V8WasmCode* v8_wasm_code_;
+      ::perfetto::protos::V8RegExpCode* v8_reg_exp_code_;
+      ::perfetto::protos::V8CodeMove* v8_code_move_;
+      ::perfetto::protos::RemoteClockSync* remote_clock_sync_;
+      ::perfetto::protos::PixelModemEvents* pixel_modem_events_;
+      ::perfetto::protos::PixelModemTokenDatabase* pixel_modem_token_database_;
       ::perfetto::protos::TestEvent* for_testing_;
     } data_;
     union OptionalTrustedUidUnion {
@@ -3238,6 +3591,72 @@ inline ::perfetto::protos::Trigger* TracePacket::_internal_mutable_trigger() {
 inline ::perfetto::protos::Trigger* TracePacket::mutable_trigger() {
   ::perfetto::protos::Trigger* _msg = _internal_mutable_trigger();
   // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.trigger)
+  return _msg;
+}
+
+// .perfetto.protos.ChromeTrigger chrome_trigger = 109;
+inline bool TracePacket::_internal_has_chrome_trigger() const {
+  return data_case() == kChromeTrigger;
+}
+inline bool TracePacket::has_chrome_trigger() const {
+  return _internal_has_chrome_trigger();
+}
+inline void TracePacket::set_has_chrome_trigger() {
+  _impl_._oneof_case_[0] = kChromeTrigger;
+}
+inline ::perfetto::protos::ChromeTrigger* TracePacket::release_chrome_trigger() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.chrome_trigger)
+  if (_internal_has_chrome_trigger()) {
+    clear_has_data();
+    ::perfetto::protos::ChromeTrigger* temp = _impl_.data_.chrome_trigger_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.chrome_trigger_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::ChromeTrigger& TracePacket::_internal_chrome_trigger() const {
+  return _internal_has_chrome_trigger()
+      ? *_impl_.data_.chrome_trigger_
+      : reinterpret_cast< ::perfetto::protos::ChromeTrigger&>(::perfetto::protos::_ChromeTrigger_default_instance_);
+}
+inline const ::perfetto::protos::ChromeTrigger& TracePacket::chrome_trigger() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.chrome_trigger)
+  return _internal_chrome_trigger();
+}
+inline ::perfetto::protos::ChromeTrigger* TracePacket::unsafe_arena_release_chrome_trigger() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.chrome_trigger)
+  if (_internal_has_chrome_trigger()) {
+    clear_has_data();
+    ::perfetto::protos::ChromeTrigger* temp = _impl_.data_.chrome_trigger_;
+    _impl_.data_.chrome_trigger_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_chrome_trigger(::perfetto::protos::ChromeTrigger* chrome_trigger) {
+  clear_data();
+  if (chrome_trigger) {
+    set_has_chrome_trigger();
+    _impl_.data_.chrome_trigger_ = chrome_trigger;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.chrome_trigger)
+}
+inline ::perfetto::protos::ChromeTrigger* TracePacket::_internal_mutable_chrome_trigger() {
+  if (!_internal_has_chrome_trigger()) {
+    clear_data();
+    set_has_chrome_trigger();
+    _impl_.data_.chrome_trigger_ = CreateMaybeMessage< ::perfetto::protos::ChromeTrigger >(GetArenaForAllocation());
+  }
+  return _impl_.data_.chrome_trigger_;
+}
+inline ::perfetto::protos::ChromeTrigger* TracePacket::mutable_chrome_trigger() {
+  ::perfetto::protos::ChromeTrigger* _msg = _internal_mutable_chrome_trigger();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.chrome_trigger)
   return _msg;
 }
 
@@ -6167,6 +6586,930 @@ inline ::perfetto::protos::TransactionTraceEntry* TracePacket::mutable_surfacefl
   return _msg;
 }
 
+// .perfetto.protos.ShellTransition shell_transition = 96;
+inline bool TracePacket::_internal_has_shell_transition() const {
+  return data_case() == kShellTransition;
+}
+inline bool TracePacket::has_shell_transition() const {
+  return _internal_has_shell_transition();
+}
+inline void TracePacket::set_has_shell_transition() {
+  _impl_._oneof_case_[0] = kShellTransition;
+}
+inline ::perfetto::protos::ShellTransition* TracePacket::release_shell_transition() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.shell_transition)
+  if (_internal_has_shell_transition()) {
+    clear_has_data();
+    ::perfetto::protos::ShellTransition* temp = _impl_.data_.shell_transition_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.shell_transition_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::ShellTransition& TracePacket::_internal_shell_transition() const {
+  return _internal_has_shell_transition()
+      ? *_impl_.data_.shell_transition_
+      : reinterpret_cast< ::perfetto::protos::ShellTransition&>(::perfetto::protos::_ShellTransition_default_instance_);
+}
+inline const ::perfetto::protos::ShellTransition& TracePacket::shell_transition() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.shell_transition)
+  return _internal_shell_transition();
+}
+inline ::perfetto::protos::ShellTransition* TracePacket::unsafe_arena_release_shell_transition() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.shell_transition)
+  if (_internal_has_shell_transition()) {
+    clear_has_data();
+    ::perfetto::protos::ShellTransition* temp = _impl_.data_.shell_transition_;
+    _impl_.data_.shell_transition_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_shell_transition(::perfetto::protos::ShellTransition* shell_transition) {
+  clear_data();
+  if (shell_transition) {
+    set_has_shell_transition();
+    _impl_.data_.shell_transition_ = shell_transition;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.shell_transition)
+}
+inline ::perfetto::protos::ShellTransition* TracePacket::_internal_mutable_shell_transition() {
+  if (!_internal_has_shell_transition()) {
+    clear_data();
+    set_has_shell_transition();
+    _impl_.data_.shell_transition_ = CreateMaybeMessage< ::perfetto::protos::ShellTransition >(GetArenaForAllocation());
+  }
+  return _impl_.data_.shell_transition_;
+}
+inline ::perfetto::protos::ShellTransition* TracePacket::mutable_shell_transition() {
+  ::perfetto::protos::ShellTransition* _msg = _internal_mutable_shell_transition();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.shell_transition)
+  return _msg;
+}
+
+// .perfetto.protos.ShellHandlerMappings shell_handler_mappings = 97;
+inline bool TracePacket::_internal_has_shell_handler_mappings() const {
+  return data_case() == kShellHandlerMappings;
+}
+inline bool TracePacket::has_shell_handler_mappings() const {
+  return _internal_has_shell_handler_mappings();
+}
+inline void TracePacket::set_has_shell_handler_mappings() {
+  _impl_._oneof_case_[0] = kShellHandlerMappings;
+}
+inline ::perfetto::protos::ShellHandlerMappings* TracePacket::release_shell_handler_mappings() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.shell_handler_mappings)
+  if (_internal_has_shell_handler_mappings()) {
+    clear_has_data();
+    ::perfetto::protos::ShellHandlerMappings* temp = _impl_.data_.shell_handler_mappings_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.shell_handler_mappings_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::ShellHandlerMappings& TracePacket::_internal_shell_handler_mappings() const {
+  return _internal_has_shell_handler_mappings()
+      ? *_impl_.data_.shell_handler_mappings_
+      : reinterpret_cast< ::perfetto::protos::ShellHandlerMappings&>(::perfetto::protos::_ShellHandlerMappings_default_instance_);
+}
+inline const ::perfetto::protos::ShellHandlerMappings& TracePacket::shell_handler_mappings() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.shell_handler_mappings)
+  return _internal_shell_handler_mappings();
+}
+inline ::perfetto::protos::ShellHandlerMappings* TracePacket::unsafe_arena_release_shell_handler_mappings() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.shell_handler_mappings)
+  if (_internal_has_shell_handler_mappings()) {
+    clear_has_data();
+    ::perfetto::protos::ShellHandlerMappings* temp = _impl_.data_.shell_handler_mappings_;
+    _impl_.data_.shell_handler_mappings_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_shell_handler_mappings(::perfetto::protos::ShellHandlerMappings* shell_handler_mappings) {
+  clear_data();
+  if (shell_handler_mappings) {
+    set_has_shell_handler_mappings();
+    _impl_.data_.shell_handler_mappings_ = shell_handler_mappings;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.shell_handler_mappings)
+}
+inline ::perfetto::protos::ShellHandlerMappings* TracePacket::_internal_mutable_shell_handler_mappings() {
+  if (!_internal_has_shell_handler_mappings()) {
+    clear_data();
+    set_has_shell_handler_mappings();
+    _impl_.data_.shell_handler_mappings_ = CreateMaybeMessage< ::perfetto::protos::ShellHandlerMappings >(GetArenaForAllocation());
+  }
+  return _impl_.data_.shell_handler_mappings_;
+}
+inline ::perfetto::protos::ShellHandlerMappings* TracePacket::mutable_shell_handler_mappings() {
+  ::perfetto::protos::ShellHandlerMappings* _msg = _internal_mutable_shell_handler_mappings();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.shell_handler_mappings)
+  return _msg;
+}
+
+// .perfetto.protos.ProtoLogMessage protolog_message = 104;
+inline bool TracePacket::_internal_has_protolog_message() const {
+  return data_case() == kProtologMessage;
+}
+inline bool TracePacket::has_protolog_message() const {
+  return _internal_has_protolog_message();
+}
+inline void TracePacket::set_has_protolog_message() {
+  _impl_._oneof_case_[0] = kProtologMessage;
+}
+inline ::perfetto::protos::ProtoLogMessage* TracePacket::release_protolog_message() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.protolog_message)
+  if (_internal_has_protolog_message()) {
+    clear_has_data();
+    ::perfetto::protos::ProtoLogMessage* temp = _impl_.data_.protolog_message_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.protolog_message_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::ProtoLogMessage& TracePacket::_internal_protolog_message() const {
+  return _internal_has_protolog_message()
+      ? *_impl_.data_.protolog_message_
+      : reinterpret_cast< ::perfetto::protos::ProtoLogMessage&>(::perfetto::protos::_ProtoLogMessage_default_instance_);
+}
+inline const ::perfetto::protos::ProtoLogMessage& TracePacket::protolog_message() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.protolog_message)
+  return _internal_protolog_message();
+}
+inline ::perfetto::protos::ProtoLogMessage* TracePacket::unsafe_arena_release_protolog_message() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.protolog_message)
+  if (_internal_has_protolog_message()) {
+    clear_has_data();
+    ::perfetto::protos::ProtoLogMessage* temp = _impl_.data_.protolog_message_;
+    _impl_.data_.protolog_message_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_protolog_message(::perfetto::protos::ProtoLogMessage* protolog_message) {
+  clear_data();
+  if (protolog_message) {
+    set_has_protolog_message();
+    _impl_.data_.protolog_message_ = protolog_message;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.protolog_message)
+}
+inline ::perfetto::protos::ProtoLogMessage* TracePacket::_internal_mutable_protolog_message() {
+  if (!_internal_has_protolog_message()) {
+    clear_data();
+    set_has_protolog_message();
+    _impl_.data_.protolog_message_ = CreateMaybeMessage< ::perfetto::protos::ProtoLogMessage >(GetArenaForAllocation());
+  }
+  return _impl_.data_.protolog_message_;
+}
+inline ::perfetto::protos::ProtoLogMessage* TracePacket::mutable_protolog_message() {
+  ::perfetto::protos::ProtoLogMessage* _msg = _internal_mutable_protolog_message();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.protolog_message)
+  return _msg;
+}
+
+// .perfetto.protos.ProtoLogViewerConfig protolog_viewer_config = 105;
+inline bool TracePacket::_internal_has_protolog_viewer_config() const {
+  return data_case() == kProtologViewerConfig;
+}
+inline bool TracePacket::has_protolog_viewer_config() const {
+  return _internal_has_protolog_viewer_config();
+}
+inline void TracePacket::set_has_protolog_viewer_config() {
+  _impl_._oneof_case_[0] = kProtologViewerConfig;
+}
+inline ::perfetto::protos::ProtoLogViewerConfig* TracePacket::release_protolog_viewer_config() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.protolog_viewer_config)
+  if (_internal_has_protolog_viewer_config()) {
+    clear_has_data();
+    ::perfetto::protos::ProtoLogViewerConfig* temp = _impl_.data_.protolog_viewer_config_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.protolog_viewer_config_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::ProtoLogViewerConfig& TracePacket::_internal_protolog_viewer_config() const {
+  return _internal_has_protolog_viewer_config()
+      ? *_impl_.data_.protolog_viewer_config_
+      : reinterpret_cast< ::perfetto::protos::ProtoLogViewerConfig&>(::perfetto::protos::_ProtoLogViewerConfig_default_instance_);
+}
+inline const ::perfetto::protos::ProtoLogViewerConfig& TracePacket::protolog_viewer_config() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.protolog_viewer_config)
+  return _internal_protolog_viewer_config();
+}
+inline ::perfetto::protos::ProtoLogViewerConfig* TracePacket::unsafe_arena_release_protolog_viewer_config() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.protolog_viewer_config)
+  if (_internal_has_protolog_viewer_config()) {
+    clear_has_data();
+    ::perfetto::protos::ProtoLogViewerConfig* temp = _impl_.data_.protolog_viewer_config_;
+    _impl_.data_.protolog_viewer_config_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_protolog_viewer_config(::perfetto::protos::ProtoLogViewerConfig* protolog_viewer_config) {
+  clear_data();
+  if (protolog_viewer_config) {
+    set_has_protolog_viewer_config();
+    _impl_.data_.protolog_viewer_config_ = protolog_viewer_config;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.protolog_viewer_config)
+}
+inline ::perfetto::protos::ProtoLogViewerConfig* TracePacket::_internal_mutable_protolog_viewer_config() {
+  if (!_internal_has_protolog_viewer_config()) {
+    clear_data();
+    set_has_protolog_viewer_config();
+    _impl_.data_.protolog_viewer_config_ = CreateMaybeMessage< ::perfetto::protos::ProtoLogViewerConfig >(GetArenaForAllocation());
+  }
+  return _impl_.data_.protolog_viewer_config_;
+}
+inline ::perfetto::protos::ProtoLogViewerConfig* TracePacket::mutable_protolog_viewer_config() {
+  ::perfetto::protos::ProtoLogViewerConfig* _msg = _internal_mutable_protolog_viewer_config();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.protolog_viewer_config)
+  return _msg;
+}
+
+// .perfetto.protos.WinscopeExtensions winscope_extensions = 112;
+inline bool TracePacket::_internal_has_winscope_extensions() const {
+  return data_case() == kWinscopeExtensions;
+}
+inline bool TracePacket::has_winscope_extensions() const {
+  return _internal_has_winscope_extensions();
+}
+inline void TracePacket::set_has_winscope_extensions() {
+  _impl_._oneof_case_[0] = kWinscopeExtensions;
+}
+inline ::perfetto::protos::WinscopeExtensions* TracePacket::release_winscope_extensions() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.winscope_extensions)
+  if (_internal_has_winscope_extensions()) {
+    clear_has_data();
+    ::perfetto::protos::WinscopeExtensions* temp = _impl_.data_.winscope_extensions_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.winscope_extensions_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::WinscopeExtensions& TracePacket::_internal_winscope_extensions() const {
+  return _internal_has_winscope_extensions()
+      ? *_impl_.data_.winscope_extensions_
+      : reinterpret_cast< ::perfetto::protos::WinscopeExtensions&>(::perfetto::protos::_WinscopeExtensions_default_instance_);
+}
+inline const ::perfetto::protos::WinscopeExtensions& TracePacket::winscope_extensions() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.winscope_extensions)
+  return _internal_winscope_extensions();
+}
+inline ::perfetto::protos::WinscopeExtensions* TracePacket::unsafe_arena_release_winscope_extensions() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.winscope_extensions)
+  if (_internal_has_winscope_extensions()) {
+    clear_has_data();
+    ::perfetto::protos::WinscopeExtensions* temp = _impl_.data_.winscope_extensions_;
+    _impl_.data_.winscope_extensions_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_winscope_extensions(::perfetto::protos::WinscopeExtensions* winscope_extensions) {
+  clear_data();
+  if (winscope_extensions) {
+    set_has_winscope_extensions();
+    _impl_.data_.winscope_extensions_ = winscope_extensions;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.winscope_extensions)
+}
+inline ::perfetto::protos::WinscopeExtensions* TracePacket::_internal_mutable_winscope_extensions() {
+  if (!_internal_has_winscope_extensions()) {
+    clear_data();
+    set_has_winscope_extensions();
+    _impl_.data_.winscope_extensions_ = CreateMaybeMessage< ::perfetto::protos::WinscopeExtensions >(GetArenaForAllocation());
+  }
+  return _impl_.data_.winscope_extensions_;
+}
+inline ::perfetto::protos::WinscopeExtensions* TracePacket::mutable_winscope_extensions() {
+  ::perfetto::protos::WinscopeExtensions* _msg = _internal_mutable_winscope_extensions();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.winscope_extensions)
+  return _msg;
+}
+
+// .perfetto.protos.EtwTraceEventBundle etw_events = 95;
+inline bool TracePacket::_internal_has_etw_events() const {
+  return data_case() == kEtwEvents;
+}
+inline bool TracePacket::has_etw_events() const {
+  return _internal_has_etw_events();
+}
+inline void TracePacket::set_has_etw_events() {
+  _impl_._oneof_case_[0] = kEtwEvents;
+}
+inline ::perfetto::protos::EtwTraceEventBundle* TracePacket::release_etw_events() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.etw_events)
+  if (_internal_has_etw_events()) {
+    clear_has_data();
+    ::perfetto::protos::EtwTraceEventBundle* temp = _impl_.data_.etw_events_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.etw_events_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::EtwTraceEventBundle& TracePacket::_internal_etw_events() const {
+  return _internal_has_etw_events()
+      ? *_impl_.data_.etw_events_
+      : reinterpret_cast< ::perfetto::protos::EtwTraceEventBundle&>(::perfetto::protos::_EtwTraceEventBundle_default_instance_);
+}
+inline const ::perfetto::protos::EtwTraceEventBundle& TracePacket::etw_events() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.etw_events)
+  return _internal_etw_events();
+}
+inline ::perfetto::protos::EtwTraceEventBundle* TracePacket::unsafe_arena_release_etw_events() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.etw_events)
+  if (_internal_has_etw_events()) {
+    clear_has_data();
+    ::perfetto::protos::EtwTraceEventBundle* temp = _impl_.data_.etw_events_;
+    _impl_.data_.etw_events_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_etw_events(::perfetto::protos::EtwTraceEventBundle* etw_events) {
+  clear_data();
+  if (etw_events) {
+    set_has_etw_events();
+    _impl_.data_.etw_events_ = etw_events;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.etw_events)
+}
+inline ::perfetto::protos::EtwTraceEventBundle* TracePacket::_internal_mutable_etw_events() {
+  if (!_internal_has_etw_events()) {
+    clear_data();
+    set_has_etw_events();
+    _impl_.data_.etw_events_ = CreateMaybeMessage< ::perfetto::protos::EtwTraceEventBundle >(GetArenaForAllocation());
+  }
+  return _impl_.data_.etw_events_;
+}
+inline ::perfetto::protos::EtwTraceEventBundle* TracePacket::mutable_etw_events() {
+  ::perfetto::protos::EtwTraceEventBundle* _msg = _internal_mutable_etw_events();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.etw_events)
+  return _msg;
+}
+
+// .perfetto.protos.V8JsCode v8_js_code = 99;
+inline bool TracePacket::_internal_has_v8_js_code() const {
+  return data_case() == kV8JsCode;
+}
+inline bool TracePacket::has_v8_js_code() const {
+  return _internal_has_v8_js_code();
+}
+inline void TracePacket::set_has_v8_js_code() {
+  _impl_._oneof_case_[0] = kV8JsCode;
+}
+inline ::perfetto::protos::V8JsCode* TracePacket::release_v8_js_code() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.v8_js_code)
+  if (_internal_has_v8_js_code()) {
+    clear_has_data();
+    ::perfetto::protos::V8JsCode* temp = _impl_.data_.v8_js_code_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.v8_js_code_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::V8JsCode& TracePacket::_internal_v8_js_code() const {
+  return _internal_has_v8_js_code()
+      ? *_impl_.data_.v8_js_code_
+      : reinterpret_cast< ::perfetto::protos::V8JsCode&>(::perfetto::protos::_V8JsCode_default_instance_);
+}
+inline const ::perfetto::protos::V8JsCode& TracePacket::v8_js_code() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.v8_js_code)
+  return _internal_v8_js_code();
+}
+inline ::perfetto::protos::V8JsCode* TracePacket::unsafe_arena_release_v8_js_code() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.v8_js_code)
+  if (_internal_has_v8_js_code()) {
+    clear_has_data();
+    ::perfetto::protos::V8JsCode* temp = _impl_.data_.v8_js_code_;
+    _impl_.data_.v8_js_code_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_v8_js_code(::perfetto::protos::V8JsCode* v8_js_code) {
+  clear_data();
+  if (v8_js_code) {
+    set_has_v8_js_code();
+    _impl_.data_.v8_js_code_ = v8_js_code;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.v8_js_code)
+}
+inline ::perfetto::protos::V8JsCode* TracePacket::_internal_mutable_v8_js_code() {
+  if (!_internal_has_v8_js_code()) {
+    clear_data();
+    set_has_v8_js_code();
+    _impl_.data_.v8_js_code_ = CreateMaybeMessage< ::perfetto::protos::V8JsCode >(GetArenaForAllocation());
+  }
+  return _impl_.data_.v8_js_code_;
+}
+inline ::perfetto::protos::V8JsCode* TracePacket::mutable_v8_js_code() {
+  ::perfetto::protos::V8JsCode* _msg = _internal_mutable_v8_js_code();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.v8_js_code)
+  return _msg;
+}
+
+// .perfetto.protos.V8InternalCode v8_internal_code = 100;
+inline bool TracePacket::_internal_has_v8_internal_code() const {
+  return data_case() == kV8InternalCode;
+}
+inline bool TracePacket::has_v8_internal_code() const {
+  return _internal_has_v8_internal_code();
+}
+inline void TracePacket::set_has_v8_internal_code() {
+  _impl_._oneof_case_[0] = kV8InternalCode;
+}
+inline ::perfetto::protos::V8InternalCode* TracePacket::release_v8_internal_code() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.v8_internal_code)
+  if (_internal_has_v8_internal_code()) {
+    clear_has_data();
+    ::perfetto::protos::V8InternalCode* temp = _impl_.data_.v8_internal_code_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.v8_internal_code_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::V8InternalCode& TracePacket::_internal_v8_internal_code() const {
+  return _internal_has_v8_internal_code()
+      ? *_impl_.data_.v8_internal_code_
+      : reinterpret_cast< ::perfetto::protos::V8InternalCode&>(::perfetto::protos::_V8InternalCode_default_instance_);
+}
+inline const ::perfetto::protos::V8InternalCode& TracePacket::v8_internal_code() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.v8_internal_code)
+  return _internal_v8_internal_code();
+}
+inline ::perfetto::protos::V8InternalCode* TracePacket::unsafe_arena_release_v8_internal_code() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.v8_internal_code)
+  if (_internal_has_v8_internal_code()) {
+    clear_has_data();
+    ::perfetto::protos::V8InternalCode* temp = _impl_.data_.v8_internal_code_;
+    _impl_.data_.v8_internal_code_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_v8_internal_code(::perfetto::protos::V8InternalCode* v8_internal_code) {
+  clear_data();
+  if (v8_internal_code) {
+    set_has_v8_internal_code();
+    _impl_.data_.v8_internal_code_ = v8_internal_code;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.v8_internal_code)
+}
+inline ::perfetto::protos::V8InternalCode* TracePacket::_internal_mutable_v8_internal_code() {
+  if (!_internal_has_v8_internal_code()) {
+    clear_data();
+    set_has_v8_internal_code();
+    _impl_.data_.v8_internal_code_ = CreateMaybeMessage< ::perfetto::protos::V8InternalCode >(GetArenaForAllocation());
+  }
+  return _impl_.data_.v8_internal_code_;
+}
+inline ::perfetto::protos::V8InternalCode* TracePacket::mutable_v8_internal_code() {
+  ::perfetto::protos::V8InternalCode* _msg = _internal_mutable_v8_internal_code();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.v8_internal_code)
+  return _msg;
+}
+
+// .perfetto.protos.V8WasmCode v8_wasm_code = 101;
+inline bool TracePacket::_internal_has_v8_wasm_code() const {
+  return data_case() == kV8WasmCode;
+}
+inline bool TracePacket::has_v8_wasm_code() const {
+  return _internal_has_v8_wasm_code();
+}
+inline void TracePacket::set_has_v8_wasm_code() {
+  _impl_._oneof_case_[0] = kV8WasmCode;
+}
+inline ::perfetto::protos::V8WasmCode* TracePacket::release_v8_wasm_code() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.v8_wasm_code)
+  if (_internal_has_v8_wasm_code()) {
+    clear_has_data();
+    ::perfetto::protos::V8WasmCode* temp = _impl_.data_.v8_wasm_code_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.v8_wasm_code_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::V8WasmCode& TracePacket::_internal_v8_wasm_code() const {
+  return _internal_has_v8_wasm_code()
+      ? *_impl_.data_.v8_wasm_code_
+      : reinterpret_cast< ::perfetto::protos::V8WasmCode&>(::perfetto::protos::_V8WasmCode_default_instance_);
+}
+inline const ::perfetto::protos::V8WasmCode& TracePacket::v8_wasm_code() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.v8_wasm_code)
+  return _internal_v8_wasm_code();
+}
+inline ::perfetto::protos::V8WasmCode* TracePacket::unsafe_arena_release_v8_wasm_code() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.v8_wasm_code)
+  if (_internal_has_v8_wasm_code()) {
+    clear_has_data();
+    ::perfetto::protos::V8WasmCode* temp = _impl_.data_.v8_wasm_code_;
+    _impl_.data_.v8_wasm_code_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_v8_wasm_code(::perfetto::protos::V8WasmCode* v8_wasm_code) {
+  clear_data();
+  if (v8_wasm_code) {
+    set_has_v8_wasm_code();
+    _impl_.data_.v8_wasm_code_ = v8_wasm_code;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.v8_wasm_code)
+}
+inline ::perfetto::protos::V8WasmCode* TracePacket::_internal_mutable_v8_wasm_code() {
+  if (!_internal_has_v8_wasm_code()) {
+    clear_data();
+    set_has_v8_wasm_code();
+    _impl_.data_.v8_wasm_code_ = CreateMaybeMessage< ::perfetto::protos::V8WasmCode >(GetArenaForAllocation());
+  }
+  return _impl_.data_.v8_wasm_code_;
+}
+inline ::perfetto::protos::V8WasmCode* TracePacket::mutable_v8_wasm_code() {
+  ::perfetto::protos::V8WasmCode* _msg = _internal_mutable_v8_wasm_code();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.v8_wasm_code)
+  return _msg;
+}
+
+// .perfetto.protos.V8RegExpCode v8_reg_exp_code = 102;
+inline bool TracePacket::_internal_has_v8_reg_exp_code() const {
+  return data_case() == kV8RegExpCode;
+}
+inline bool TracePacket::has_v8_reg_exp_code() const {
+  return _internal_has_v8_reg_exp_code();
+}
+inline void TracePacket::set_has_v8_reg_exp_code() {
+  _impl_._oneof_case_[0] = kV8RegExpCode;
+}
+inline ::perfetto::protos::V8RegExpCode* TracePacket::release_v8_reg_exp_code() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.v8_reg_exp_code)
+  if (_internal_has_v8_reg_exp_code()) {
+    clear_has_data();
+    ::perfetto::protos::V8RegExpCode* temp = _impl_.data_.v8_reg_exp_code_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.v8_reg_exp_code_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::V8RegExpCode& TracePacket::_internal_v8_reg_exp_code() const {
+  return _internal_has_v8_reg_exp_code()
+      ? *_impl_.data_.v8_reg_exp_code_
+      : reinterpret_cast< ::perfetto::protos::V8RegExpCode&>(::perfetto::protos::_V8RegExpCode_default_instance_);
+}
+inline const ::perfetto::protos::V8RegExpCode& TracePacket::v8_reg_exp_code() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.v8_reg_exp_code)
+  return _internal_v8_reg_exp_code();
+}
+inline ::perfetto::protos::V8RegExpCode* TracePacket::unsafe_arena_release_v8_reg_exp_code() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.v8_reg_exp_code)
+  if (_internal_has_v8_reg_exp_code()) {
+    clear_has_data();
+    ::perfetto::protos::V8RegExpCode* temp = _impl_.data_.v8_reg_exp_code_;
+    _impl_.data_.v8_reg_exp_code_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_v8_reg_exp_code(::perfetto::protos::V8RegExpCode* v8_reg_exp_code) {
+  clear_data();
+  if (v8_reg_exp_code) {
+    set_has_v8_reg_exp_code();
+    _impl_.data_.v8_reg_exp_code_ = v8_reg_exp_code;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.v8_reg_exp_code)
+}
+inline ::perfetto::protos::V8RegExpCode* TracePacket::_internal_mutable_v8_reg_exp_code() {
+  if (!_internal_has_v8_reg_exp_code()) {
+    clear_data();
+    set_has_v8_reg_exp_code();
+    _impl_.data_.v8_reg_exp_code_ = CreateMaybeMessage< ::perfetto::protos::V8RegExpCode >(GetArenaForAllocation());
+  }
+  return _impl_.data_.v8_reg_exp_code_;
+}
+inline ::perfetto::protos::V8RegExpCode* TracePacket::mutable_v8_reg_exp_code() {
+  ::perfetto::protos::V8RegExpCode* _msg = _internal_mutable_v8_reg_exp_code();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.v8_reg_exp_code)
+  return _msg;
+}
+
+// .perfetto.protos.V8CodeMove v8_code_move = 103;
+inline bool TracePacket::_internal_has_v8_code_move() const {
+  return data_case() == kV8CodeMove;
+}
+inline bool TracePacket::has_v8_code_move() const {
+  return _internal_has_v8_code_move();
+}
+inline void TracePacket::set_has_v8_code_move() {
+  _impl_._oneof_case_[0] = kV8CodeMove;
+}
+inline ::perfetto::protos::V8CodeMove* TracePacket::release_v8_code_move() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.v8_code_move)
+  if (_internal_has_v8_code_move()) {
+    clear_has_data();
+    ::perfetto::protos::V8CodeMove* temp = _impl_.data_.v8_code_move_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.v8_code_move_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::V8CodeMove& TracePacket::_internal_v8_code_move() const {
+  return _internal_has_v8_code_move()
+      ? *_impl_.data_.v8_code_move_
+      : reinterpret_cast< ::perfetto::protos::V8CodeMove&>(::perfetto::protos::_V8CodeMove_default_instance_);
+}
+inline const ::perfetto::protos::V8CodeMove& TracePacket::v8_code_move() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.v8_code_move)
+  return _internal_v8_code_move();
+}
+inline ::perfetto::protos::V8CodeMove* TracePacket::unsafe_arena_release_v8_code_move() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.v8_code_move)
+  if (_internal_has_v8_code_move()) {
+    clear_has_data();
+    ::perfetto::protos::V8CodeMove* temp = _impl_.data_.v8_code_move_;
+    _impl_.data_.v8_code_move_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_v8_code_move(::perfetto::protos::V8CodeMove* v8_code_move) {
+  clear_data();
+  if (v8_code_move) {
+    set_has_v8_code_move();
+    _impl_.data_.v8_code_move_ = v8_code_move;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.v8_code_move)
+}
+inline ::perfetto::protos::V8CodeMove* TracePacket::_internal_mutable_v8_code_move() {
+  if (!_internal_has_v8_code_move()) {
+    clear_data();
+    set_has_v8_code_move();
+    _impl_.data_.v8_code_move_ = CreateMaybeMessage< ::perfetto::protos::V8CodeMove >(GetArenaForAllocation());
+  }
+  return _impl_.data_.v8_code_move_;
+}
+inline ::perfetto::protos::V8CodeMove* TracePacket::mutable_v8_code_move() {
+  ::perfetto::protos::V8CodeMove* _msg = _internal_mutable_v8_code_move();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.v8_code_move)
+  return _msg;
+}
+
+// .perfetto.protos.RemoteClockSync remote_clock_sync = 107;
+inline bool TracePacket::_internal_has_remote_clock_sync() const {
+  return data_case() == kRemoteClockSync;
+}
+inline bool TracePacket::has_remote_clock_sync() const {
+  return _internal_has_remote_clock_sync();
+}
+inline void TracePacket::set_has_remote_clock_sync() {
+  _impl_._oneof_case_[0] = kRemoteClockSync;
+}
+inline ::perfetto::protos::RemoteClockSync* TracePacket::release_remote_clock_sync() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.remote_clock_sync)
+  if (_internal_has_remote_clock_sync()) {
+    clear_has_data();
+    ::perfetto::protos::RemoteClockSync* temp = _impl_.data_.remote_clock_sync_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.remote_clock_sync_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::RemoteClockSync& TracePacket::_internal_remote_clock_sync() const {
+  return _internal_has_remote_clock_sync()
+      ? *_impl_.data_.remote_clock_sync_
+      : reinterpret_cast< ::perfetto::protos::RemoteClockSync&>(::perfetto::protos::_RemoteClockSync_default_instance_);
+}
+inline const ::perfetto::protos::RemoteClockSync& TracePacket::remote_clock_sync() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.remote_clock_sync)
+  return _internal_remote_clock_sync();
+}
+inline ::perfetto::protos::RemoteClockSync* TracePacket::unsafe_arena_release_remote_clock_sync() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.remote_clock_sync)
+  if (_internal_has_remote_clock_sync()) {
+    clear_has_data();
+    ::perfetto::protos::RemoteClockSync* temp = _impl_.data_.remote_clock_sync_;
+    _impl_.data_.remote_clock_sync_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_remote_clock_sync(::perfetto::protos::RemoteClockSync* remote_clock_sync) {
+  clear_data();
+  if (remote_clock_sync) {
+    set_has_remote_clock_sync();
+    _impl_.data_.remote_clock_sync_ = remote_clock_sync;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.remote_clock_sync)
+}
+inline ::perfetto::protos::RemoteClockSync* TracePacket::_internal_mutable_remote_clock_sync() {
+  if (!_internal_has_remote_clock_sync()) {
+    clear_data();
+    set_has_remote_clock_sync();
+    _impl_.data_.remote_clock_sync_ = CreateMaybeMessage< ::perfetto::protos::RemoteClockSync >(GetArenaForAllocation());
+  }
+  return _impl_.data_.remote_clock_sync_;
+}
+inline ::perfetto::protos::RemoteClockSync* TracePacket::mutable_remote_clock_sync() {
+  ::perfetto::protos::RemoteClockSync* _msg = _internal_mutable_remote_clock_sync();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.remote_clock_sync)
+  return _msg;
+}
+
+// .perfetto.protos.PixelModemEvents pixel_modem_events = 110;
+inline bool TracePacket::_internal_has_pixel_modem_events() const {
+  return data_case() == kPixelModemEvents;
+}
+inline bool TracePacket::has_pixel_modem_events() const {
+  return _internal_has_pixel_modem_events();
+}
+inline void TracePacket::set_has_pixel_modem_events() {
+  _impl_._oneof_case_[0] = kPixelModemEvents;
+}
+inline ::perfetto::protos::PixelModemEvents* TracePacket::release_pixel_modem_events() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.pixel_modem_events)
+  if (_internal_has_pixel_modem_events()) {
+    clear_has_data();
+    ::perfetto::protos::PixelModemEvents* temp = _impl_.data_.pixel_modem_events_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.pixel_modem_events_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::PixelModemEvents& TracePacket::_internal_pixel_modem_events() const {
+  return _internal_has_pixel_modem_events()
+      ? *_impl_.data_.pixel_modem_events_
+      : reinterpret_cast< ::perfetto::protos::PixelModemEvents&>(::perfetto::protos::_PixelModemEvents_default_instance_);
+}
+inline const ::perfetto::protos::PixelModemEvents& TracePacket::pixel_modem_events() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.pixel_modem_events)
+  return _internal_pixel_modem_events();
+}
+inline ::perfetto::protos::PixelModemEvents* TracePacket::unsafe_arena_release_pixel_modem_events() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.pixel_modem_events)
+  if (_internal_has_pixel_modem_events()) {
+    clear_has_data();
+    ::perfetto::protos::PixelModemEvents* temp = _impl_.data_.pixel_modem_events_;
+    _impl_.data_.pixel_modem_events_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_pixel_modem_events(::perfetto::protos::PixelModemEvents* pixel_modem_events) {
+  clear_data();
+  if (pixel_modem_events) {
+    set_has_pixel_modem_events();
+    _impl_.data_.pixel_modem_events_ = pixel_modem_events;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.pixel_modem_events)
+}
+inline ::perfetto::protos::PixelModemEvents* TracePacket::_internal_mutable_pixel_modem_events() {
+  if (!_internal_has_pixel_modem_events()) {
+    clear_data();
+    set_has_pixel_modem_events();
+    _impl_.data_.pixel_modem_events_ = CreateMaybeMessage< ::perfetto::protos::PixelModemEvents >(GetArenaForAllocation());
+  }
+  return _impl_.data_.pixel_modem_events_;
+}
+inline ::perfetto::protos::PixelModemEvents* TracePacket::mutable_pixel_modem_events() {
+  ::perfetto::protos::PixelModemEvents* _msg = _internal_mutable_pixel_modem_events();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.pixel_modem_events)
+  return _msg;
+}
+
+// .perfetto.protos.PixelModemTokenDatabase pixel_modem_token_database = 111;
+inline bool TracePacket::_internal_has_pixel_modem_token_database() const {
+  return data_case() == kPixelModemTokenDatabase;
+}
+inline bool TracePacket::has_pixel_modem_token_database() const {
+  return _internal_has_pixel_modem_token_database();
+}
+inline void TracePacket::set_has_pixel_modem_token_database() {
+  _impl_._oneof_case_[0] = kPixelModemTokenDatabase;
+}
+inline ::perfetto::protos::PixelModemTokenDatabase* TracePacket::release_pixel_modem_token_database() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracePacket.pixel_modem_token_database)
+  if (_internal_has_pixel_modem_token_database()) {
+    clear_has_data();
+    ::perfetto::protos::PixelModemTokenDatabase* temp = _impl_.data_.pixel_modem_token_database_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.pixel_modem_token_database_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::PixelModemTokenDatabase& TracePacket::_internal_pixel_modem_token_database() const {
+  return _internal_has_pixel_modem_token_database()
+      ? *_impl_.data_.pixel_modem_token_database_
+      : reinterpret_cast< ::perfetto::protos::PixelModemTokenDatabase&>(::perfetto::protos::_PixelModemTokenDatabase_default_instance_);
+}
+inline const ::perfetto::protos::PixelModemTokenDatabase& TracePacket::pixel_modem_token_database() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.pixel_modem_token_database)
+  return _internal_pixel_modem_token_database();
+}
+inline ::perfetto::protos::PixelModemTokenDatabase* TracePacket::unsafe_arena_release_pixel_modem_token_database() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracePacket.pixel_modem_token_database)
+  if (_internal_has_pixel_modem_token_database()) {
+    clear_has_data();
+    ::perfetto::protos::PixelModemTokenDatabase* temp = _impl_.data_.pixel_modem_token_database_;
+    _impl_.data_.pixel_modem_token_database_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracePacket::unsafe_arena_set_allocated_pixel_modem_token_database(::perfetto::protos::PixelModemTokenDatabase* pixel_modem_token_database) {
+  clear_data();
+  if (pixel_modem_token_database) {
+    set_has_pixel_modem_token_database();
+    _impl_.data_.pixel_modem_token_database_ = pixel_modem_token_database;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracePacket.pixel_modem_token_database)
+}
+inline ::perfetto::protos::PixelModemTokenDatabase* TracePacket::_internal_mutable_pixel_modem_token_database() {
+  if (!_internal_has_pixel_modem_token_database()) {
+    clear_data();
+    set_has_pixel_modem_token_database();
+    _impl_.data_.pixel_modem_token_database_ = CreateMaybeMessage< ::perfetto::protos::PixelModemTokenDatabase >(GetArenaForAllocation());
+  }
+  return _impl_.data_.pixel_modem_token_database_;
+}
+inline ::perfetto::protos::PixelModemTokenDatabase* TracePacket::mutable_pixel_modem_token_database() {
+  ::perfetto::protos::PixelModemTokenDatabase* _msg = _internal_mutable_pixel_modem_token_database();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracePacket.pixel_modem_token_database)
+  return _msg;
+}
+
 // .perfetto.protos.TestEvent for_testing = 900;
 inline bool TracePacket::_internal_has_for_testing() const {
   return data_case() == kForTesting;
@@ -6621,6 +7964,34 @@ inline void TracePacket::_internal_set_first_packet_on_sequence(bool value) {
 inline void TracePacket::set_first_packet_on_sequence(bool value) {
   _internal_set_first_packet_on_sequence(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.TracePacket.first_packet_on_sequence)
+}
+
+// optional uint32 machine_id = 98;
+inline bool TracePacket::_internal_has_machine_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000200u) != 0;
+  return value;
+}
+inline bool TracePacket::has_machine_id() const {
+  return _internal_has_machine_id();
+}
+inline void TracePacket::clear_machine_id() {
+  _impl_.machine_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000200u;
+}
+inline ::uint32_t TracePacket::_internal_machine_id() const {
+  return _impl_.machine_id_;
+}
+inline ::uint32_t TracePacket::machine_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracePacket.machine_id)
+  return _internal_machine_id();
+}
+inline void TracePacket::_internal_set_machine_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000200u;
+  _impl_.machine_id_ = value;
+}
+inline void TracePacket::set_machine_id(::uint32_t value) {
+  _internal_set_machine_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.TracePacket.machine_id)
 }
 
 inline bool TracePacket::has_data() const {

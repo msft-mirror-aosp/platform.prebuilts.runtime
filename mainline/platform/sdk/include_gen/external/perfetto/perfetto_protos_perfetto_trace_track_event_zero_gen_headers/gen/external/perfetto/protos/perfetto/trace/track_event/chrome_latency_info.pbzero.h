@@ -15,8 +15,11 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class ChromeLatencyInfo_ComponentInfo;
+namespace perfetto_pbzero_enum_ChromeLatencyInfo {
+enum InputType : int32_t;
+}  // namespace perfetto_pbzero_enum_ChromeLatencyInfo
+using ChromeLatencyInfo_InputType = perfetto_pbzero_enum_ChromeLatencyInfo::InputType;
 namespace perfetto_pbzero_enum_ChromeLatencyInfo {
 enum LatencyComponentType : int32_t;
 }  // namespace perfetto_pbzero_enum_ChromeLatencyInfo
@@ -25,6 +28,13 @@ namespace perfetto_pbzero_enum_ChromeLatencyInfo {
 enum Step : int32_t;
 }  // namespace perfetto_pbzero_enum_ChromeLatencyInfo
 using ChromeLatencyInfo_Step = perfetto_pbzero_enum_ChromeLatencyInfo::Step;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_ChromeLatencyInfo {
 enum Step : int32_t {
@@ -168,7 +178,52 @@ const char* ChromeLatencyInfo_LatencyComponentType_Name(::perfetto::protos::pbze
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class ChromeLatencyInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+namespace perfetto_pbzero_enum_ChromeLatencyInfo {
+enum InputType : int32_t {
+  UNSPECIFIED_OR_OTHER = 0,
+  TOUCH_MOVED = 1,
+  GESTURE_SCROLL_BEGIN = 2,
+  GESTURE_SCROLL_UPDATE = 3,
+  GESTURE_SCROLL_END = 4,
+  GESTURE_TAP = 5,
+  GESTURE_TAP_CANCEL = 6,
+};
+} // namespace perfetto_pbzero_enum_ChromeLatencyInfo
+using ChromeLatencyInfo_InputType = perfetto_pbzero_enum_ChromeLatencyInfo::InputType;
+
+
+constexpr ChromeLatencyInfo_InputType ChromeLatencyInfo_InputType_MIN = ChromeLatencyInfo_InputType::UNSPECIFIED_OR_OTHER;
+constexpr ChromeLatencyInfo_InputType ChromeLatencyInfo_InputType_MAX = ChromeLatencyInfo_InputType::GESTURE_TAP_CANCEL;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* ChromeLatencyInfo_InputType_Name(::perfetto::protos::pbzero::ChromeLatencyInfo_InputType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_InputType::UNSPECIFIED_OR_OTHER:
+    return "UNSPECIFIED_OR_OTHER";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_InputType::TOUCH_MOVED:
+    return "TOUCH_MOVED";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_InputType::GESTURE_SCROLL_BEGIN:
+    return "GESTURE_SCROLL_BEGIN";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_InputType::GESTURE_SCROLL_UPDATE:
+    return "GESTURE_SCROLL_UPDATE";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_InputType::GESTURE_SCROLL_END:
+    return "GESTURE_SCROLL_END";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_InputType::GESTURE_TAP:
+    return "GESTURE_TAP";
+
+  case ::perfetto::protos::pbzero::ChromeLatencyInfo_InputType::GESTURE_TAP_CANCEL:
+    return "GESTURE_TAP_CANCEL";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+class ChromeLatencyInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/8, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   ChromeLatencyInfo_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ChromeLatencyInfo_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -187,6 +242,8 @@ class ChromeLatencyInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FI
   int64_t gesture_scroll_id() const { return at<6>().as_int64(); }
   bool has_touch_id() const { return at<7>().valid(); }
   int64_t touch_id() const { return at<7>().as_int64(); }
+  bool has_input_type() const { return at<8>().valid(); }
+  int32_t input_type() const { return at<8>().as_int32(); }
 };
 
 class ChromeLatencyInfo : public ::protozero::Message {
@@ -200,6 +257,7 @@ class ChromeLatencyInfo : public ::protozero::Message {
     kIsCoalescedFieldNumber = 5,
     kGestureScrollIdFieldNumber = 6,
     kTouchIdFieldNumber = 7,
+    kInputTypeFieldNumber = 8,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.ChromeLatencyInfo"; }
 
@@ -213,6 +271,11 @@ class ChromeLatencyInfo : public ::protozero::Message {
   using LatencyComponentType = ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType;
   static inline const char* LatencyComponentType_Name(LatencyComponentType value) {
     return ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType_Name(value);
+  }
+
+  using InputType = ::perfetto::protos::pbzero::ChromeLatencyInfo_InputType;
+  static inline const char* InputType_Name(InputType value) {
+    return ::perfetto::protos::pbzero::ChromeLatencyInfo_InputType_Name(value);
   }
   static inline const Step STEP_UNSPECIFIED = Step::STEP_UNSPECIFIED;
   static inline const Step STEP_SEND_INPUT_EVENT_UI = Step::STEP_SEND_INPUT_EVENT_UI;
@@ -241,6 +304,13 @@ class ChromeLatencyInfo : public ::protozero::Message {
   static inline const LatencyComponentType COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME = LatencyComponentType::COMPONENT_DISPLAY_COMPOSITOR_RECEIVED_FRAME;
   static inline const LatencyComponentType COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER = LatencyComponentType::COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER;
   static inline const LatencyComponentType COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP = LatencyComponentType::COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP;
+  static inline const InputType UNSPECIFIED_OR_OTHER = InputType::UNSPECIFIED_OR_OTHER;
+  static inline const InputType TOUCH_MOVED = InputType::TOUCH_MOVED;
+  static inline const InputType GESTURE_SCROLL_BEGIN = InputType::GESTURE_SCROLL_BEGIN;
+  static inline const InputType GESTURE_SCROLL_UPDATE = InputType::GESTURE_SCROLL_UPDATE;
+  static inline const InputType GESTURE_SCROLL_END = InputType::GESTURE_SCROLL_END;
+  static inline const InputType GESTURE_TAP = InputType::GESTURE_TAP;
+  static inline const InputType GESTURE_TAP_CANCEL = InputType::GESTURE_TAP_CANCEL;
 
   using FieldMetadata_TraceId =
     ::protozero::proto_utils::FieldMetadata<
@@ -265,11 +335,11 @@ class ChromeLatencyInfo : public ::protozero::Message {
       2,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeLatencyInfo_Step,
+      ChromeLatencyInfo_Step,
       ChromeLatencyInfo>;
 
   static constexpr FieldMetadata_Step kStep{};
-  void set_step(::perfetto::protos::pbzero::ChromeLatencyInfo_Step value) {
+  void set_step(ChromeLatencyInfo_Step value) {
     static constexpr uint32_t field_id = FieldMetadata_Step::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -363,6 +433,24 @@ class ChromeLatencyInfo : public ::protozero::Message {
       ::protozero::proto_utils::ProtoSchemaType::kInt64>
         ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_InputType =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      ChromeLatencyInfo_InputType,
+      ChromeLatencyInfo>;
+
+  static constexpr FieldMetadata_InputType kInputType{};
+  void set_input_type(ChromeLatencyInfo_InputType value) {
+    static constexpr uint32_t field_id = FieldMetadata_InputType::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
+  }
 };
 
 class ChromeLatencyInfo_ComponentInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
@@ -391,11 +479,11 @@ class ChromeLatencyInfo_ComponentInfo : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType,
+      ChromeLatencyInfo_LatencyComponentType,
       ChromeLatencyInfo_ComponentInfo>;
 
   static constexpr FieldMetadata_ComponentType kComponentType{};
-  void set_component_type(::perfetto::protos::pbzero::ChromeLatencyInfo_LatencyComponentType value) {
+  void set_component_type(ChromeLatencyInfo_LatencyComponentType value) {
     static constexpr uint32_t field_id = FieldMetadata_ComponentType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

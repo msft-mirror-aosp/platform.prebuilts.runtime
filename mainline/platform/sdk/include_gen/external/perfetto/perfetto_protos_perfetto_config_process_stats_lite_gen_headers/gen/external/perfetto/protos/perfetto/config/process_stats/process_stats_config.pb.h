@@ -227,6 +227,8 @@ class ProcessStatsConfig final :
     kRecordThreadNamesFieldNumber = 3,
     kResolveProcessFdsFieldNumber = 9,
     kScanSmapsRollupFieldNumber = 10,
+    kRecordProcessAgeFieldNumber = 11,
+    kRecordProcessRuntimeFieldNumber = 12,
   };
   // repeated .perfetto.protos.ProcessStatsConfig.Quirks quirks = 1;
   int quirks_size() const;
@@ -323,6 +325,32 @@ class ProcessStatsConfig final :
   void _internal_set_scan_smaps_rollup(bool value);
   public:
 
+  // optional bool record_process_age = 11;
+  bool has_record_process_age() const;
+  private:
+  bool _internal_has_record_process_age() const;
+  public:
+  void clear_record_process_age();
+  bool record_process_age() const;
+  void set_record_process_age(bool value);
+  private:
+  bool _internal_record_process_age() const;
+  void _internal_set_record_process_age(bool value);
+  public:
+
+  // optional bool record_process_runtime = 12;
+  bool has_record_process_runtime() const;
+  private:
+  bool _internal_has_record_process_runtime() const;
+  public:
+  void clear_record_process_runtime();
+  bool record_process_runtime() const;
+  void set_record_process_runtime(bool value);
+  private:
+  bool _internal_record_process_runtime() const;
+  void _internal_set_record_process_runtime(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.ProcessStatsConfig)
  private:
   class _Internal;
@@ -340,6 +368,8 @@ class ProcessStatsConfig final :
     bool record_thread_names_;
     bool resolve_process_fds_;
     bool scan_smaps_rollup_;
+    bool record_process_age_;
+    bool record_process_runtime_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fprocess_5fstats_2fprocess_5fstats_5fconfig_2eproto;
@@ -566,6 +596,62 @@ inline void ProcessStatsConfig::_internal_set_scan_smaps_rollup(bool value) {
 inline void ProcessStatsConfig::set_scan_smaps_rollup(bool value) {
   _internal_set_scan_smaps_rollup(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.ProcessStatsConfig.scan_smaps_rollup)
+}
+
+// optional bool record_process_age = 11;
+inline bool ProcessStatsConfig::_internal_has_record_process_age() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
+  return value;
+}
+inline bool ProcessStatsConfig::has_record_process_age() const {
+  return _internal_has_record_process_age();
+}
+inline void ProcessStatsConfig::clear_record_process_age() {
+  _impl_.record_process_age_ = false;
+  _impl_._has_bits_[0] &= ~0x00000040u;
+}
+inline bool ProcessStatsConfig::_internal_record_process_age() const {
+  return _impl_.record_process_age_;
+}
+inline bool ProcessStatsConfig::record_process_age() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ProcessStatsConfig.record_process_age)
+  return _internal_record_process_age();
+}
+inline void ProcessStatsConfig::_internal_set_record_process_age(bool value) {
+  _impl_._has_bits_[0] |= 0x00000040u;
+  _impl_.record_process_age_ = value;
+}
+inline void ProcessStatsConfig::set_record_process_age(bool value) {
+  _internal_set_record_process_age(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.ProcessStatsConfig.record_process_age)
+}
+
+// optional bool record_process_runtime = 12;
+inline bool ProcessStatsConfig::_internal_has_record_process_runtime() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
+  return value;
+}
+inline bool ProcessStatsConfig::has_record_process_runtime() const {
+  return _internal_has_record_process_runtime();
+}
+inline void ProcessStatsConfig::clear_record_process_runtime() {
+  _impl_.record_process_runtime_ = false;
+  _impl_._has_bits_[0] &= ~0x00000080u;
+}
+inline bool ProcessStatsConfig::_internal_record_process_runtime() const {
+  return _impl_.record_process_runtime_;
+}
+inline bool ProcessStatsConfig::record_process_runtime() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ProcessStatsConfig.record_process_runtime)
+  return _internal_record_process_runtime();
+}
+inline void ProcessStatsConfig::_internal_set_record_process_runtime(bool value) {
+  _impl_._has_bits_[0] |= 0x00000080u;
+  _impl_.record_process_runtime_ = value;
+}
+inline void ProcessStatsConfig::set_record_process_runtime(bool value) {
+  _internal_set_record_process_runtime(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.ProcessStatsConfig.record_process_runtime)
 }
 
 #ifdef __GNUC__
