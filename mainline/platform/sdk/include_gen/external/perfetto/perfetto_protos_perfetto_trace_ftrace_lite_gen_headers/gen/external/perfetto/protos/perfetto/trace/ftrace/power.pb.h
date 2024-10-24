@@ -62,9 +62,18 @@ extern CpuFrequencyLimitsFtraceEventDefaultTypeInternal _CpuFrequencyLimitsFtrac
 class CpuIdleFtraceEvent;
 struct CpuIdleFtraceEventDefaultTypeInternal;
 extern CpuIdleFtraceEventDefaultTypeInternal _CpuIdleFtraceEvent_default_instance_;
+class DevicePmCallbackEndFtraceEvent;
+struct DevicePmCallbackEndFtraceEventDefaultTypeInternal;
+extern DevicePmCallbackEndFtraceEventDefaultTypeInternal _DevicePmCallbackEndFtraceEvent_default_instance_;
+class DevicePmCallbackStartFtraceEvent;
+struct DevicePmCallbackStartFtraceEventDefaultTypeInternal;
+extern DevicePmCallbackStartFtraceEventDefaultTypeInternal _DevicePmCallbackStartFtraceEvent_default_instance_;
 class GpuFrequencyFtraceEvent;
 struct GpuFrequencyFtraceEventDefaultTypeInternal;
 extern GpuFrequencyFtraceEventDefaultTypeInternal _GpuFrequencyFtraceEvent_default_instance_;
+class GpuWorkPeriodFtraceEvent;
+struct GpuWorkPeriodFtraceEventDefaultTypeInternal;
+extern GpuWorkPeriodFtraceEventDefaultTypeInternal _GpuWorkPeriodFtraceEvent_default_instance_;
 class SuspendResumeFtraceEvent;
 struct SuspendResumeFtraceEventDefaultTypeInternal;
 extern SuspendResumeFtraceEventDefaultTypeInternal _SuspendResumeFtraceEvent_default_instance_;
@@ -83,7 +92,10 @@ template<> ::perfetto::protos::ClockSetRateFtraceEvent* Arena::CreateMaybeMessag
 template<> ::perfetto::protos::CpuFrequencyFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::CpuFrequencyFtraceEvent>(Arena*);
 template<> ::perfetto::protos::CpuFrequencyLimitsFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::CpuFrequencyLimitsFtraceEvent>(Arena*);
 template<> ::perfetto::protos::CpuIdleFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::CpuIdleFtraceEvent>(Arena*);
+template<> ::perfetto::protos::DevicePmCallbackEndFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::DevicePmCallbackEndFtraceEvent>(Arena*);
+template<> ::perfetto::protos::DevicePmCallbackStartFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::DevicePmCallbackStartFtraceEvent>(Arena*);
 template<> ::perfetto::protos::GpuFrequencyFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::GpuFrequencyFtraceEvent>(Arena*);
+template<> ::perfetto::protos::GpuWorkPeriodFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::GpuWorkPeriodFtraceEvent>(Arena*);
 template<> ::perfetto::protos::SuspendResumeFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SuspendResumeFtraceEvent>(Arena*);
 template<> ::perfetto::protos::WakeupSourceActivateFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::WakeupSourceActivateFtraceEvent>(Arena*);
 template<> ::perfetto::protos::WakeupSourceDeactivateFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::WakeupSourceDeactivateFtraceEvent>(Arena*);
@@ -1806,6 +1818,624 @@ class WakeupSourceDeactivateFtraceEvent final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fpower_2eproto;
 };
+// -------------------------------------------------------------------
+
+class GpuWorkPeriodFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.GpuWorkPeriodFtraceEvent) */ {
+ public:
+  inline GpuWorkPeriodFtraceEvent() : GpuWorkPeriodFtraceEvent(nullptr) {}
+  ~GpuWorkPeriodFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR GpuWorkPeriodFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GpuWorkPeriodFtraceEvent(const GpuWorkPeriodFtraceEvent& from);
+  GpuWorkPeriodFtraceEvent(GpuWorkPeriodFtraceEvent&& from) noexcept
+    : GpuWorkPeriodFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline GpuWorkPeriodFtraceEvent& operator=(const GpuWorkPeriodFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline GpuWorkPeriodFtraceEvent& operator=(GpuWorkPeriodFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const GpuWorkPeriodFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GpuWorkPeriodFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const GpuWorkPeriodFtraceEvent*>(
+               &_GpuWorkPeriodFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(GpuWorkPeriodFtraceEvent& a, GpuWorkPeriodFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GpuWorkPeriodFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GpuWorkPeriodFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GpuWorkPeriodFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<GpuWorkPeriodFtraceEvent>(arena);
+  }
+  GpuWorkPeriodFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const GpuWorkPeriodFtraceEvent& from);
+  void MergeFrom(const GpuWorkPeriodFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(GpuWorkPeriodFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.GpuWorkPeriodFtraceEvent";
+  }
+  protected:
+  explicit GpuWorkPeriodFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kGpuIdFieldNumber = 1,
+    kUidFieldNumber = 2,
+    kStartTimeNsFieldNumber = 3,
+    kEndTimeNsFieldNumber = 4,
+    kTotalActiveDurationNsFieldNumber = 5,
+  };
+  // optional uint32 gpu_id = 1;
+  bool has_gpu_id() const;
+  private:
+  bool _internal_has_gpu_id() const;
+  public:
+  void clear_gpu_id();
+  ::uint32_t gpu_id() const;
+  void set_gpu_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_gpu_id() const;
+  void _internal_set_gpu_id(::uint32_t value);
+  public:
+
+  // optional uint32 uid = 2;
+  bool has_uid() const;
+  private:
+  bool _internal_has_uid() const;
+  public:
+  void clear_uid();
+  ::uint32_t uid() const;
+  void set_uid(::uint32_t value);
+  private:
+  ::uint32_t _internal_uid() const;
+  void _internal_set_uid(::uint32_t value);
+  public:
+
+  // optional uint64 start_time_ns = 3;
+  bool has_start_time_ns() const;
+  private:
+  bool _internal_has_start_time_ns() const;
+  public:
+  void clear_start_time_ns();
+  ::uint64_t start_time_ns() const;
+  void set_start_time_ns(::uint64_t value);
+  private:
+  ::uint64_t _internal_start_time_ns() const;
+  void _internal_set_start_time_ns(::uint64_t value);
+  public:
+
+  // optional uint64 end_time_ns = 4;
+  bool has_end_time_ns() const;
+  private:
+  bool _internal_has_end_time_ns() const;
+  public:
+  void clear_end_time_ns();
+  ::uint64_t end_time_ns() const;
+  void set_end_time_ns(::uint64_t value);
+  private:
+  ::uint64_t _internal_end_time_ns() const;
+  void _internal_set_end_time_ns(::uint64_t value);
+  public:
+
+  // optional uint64 total_active_duration_ns = 5;
+  bool has_total_active_duration_ns() const;
+  private:
+  bool _internal_has_total_active_duration_ns() const;
+  public:
+  void clear_total_active_duration_ns();
+  ::uint64_t total_active_duration_ns() const;
+  void set_total_active_duration_ns(::uint64_t value);
+  private:
+  ::uint64_t _internal_total_active_duration_ns() const;
+  void _internal_set_total_active_duration_ns(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.GpuWorkPeriodFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::uint32_t gpu_id_;
+    ::uint32_t uid_;
+    ::uint64_t start_time_ns_;
+    ::uint64_t end_time_ns_;
+    ::uint64_t total_active_duration_ns_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fpower_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DevicePmCallbackStartFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.DevicePmCallbackStartFtraceEvent) */ {
+ public:
+  inline DevicePmCallbackStartFtraceEvent() : DevicePmCallbackStartFtraceEvent(nullptr) {}
+  ~DevicePmCallbackStartFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR DevicePmCallbackStartFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DevicePmCallbackStartFtraceEvent(const DevicePmCallbackStartFtraceEvent& from);
+  DevicePmCallbackStartFtraceEvent(DevicePmCallbackStartFtraceEvent&& from) noexcept
+    : DevicePmCallbackStartFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline DevicePmCallbackStartFtraceEvent& operator=(const DevicePmCallbackStartFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline DevicePmCallbackStartFtraceEvent& operator=(DevicePmCallbackStartFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const DevicePmCallbackStartFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DevicePmCallbackStartFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const DevicePmCallbackStartFtraceEvent*>(
+               &_DevicePmCallbackStartFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(DevicePmCallbackStartFtraceEvent& a, DevicePmCallbackStartFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DevicePmCallbackStartFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DevicePmCallbackStartFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DevicePmCallbackStartFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DevicePmCallbackStartFtraceEvent>(arena);
+  }
+  DevicePmCallbackStartFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const DevicePmCallbackStartFtraceEvent& from);
+  void MergeFrom(const DevicePmCallbackStartFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(DevicePmCallbackStartFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.DevicePmCallbackStartFtraceEvent";
+  }
+  protected:
+  explicit DevicePmCallbackStartFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDeviceFieldNumber = 1,
+    kDriverFieldNumber = 2,
+    kParentFieldNumber = 3,
+    kPmOpsFieldNumber = 4,
+    kEventFieldNumber = 5,
+  };
+  // optional string device = 1;
+  bool has_device() const;
+  private:
+  bool _internal_has_device() const;
+  public:
+  void clear_device();
+  const std::string& device() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_device(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_device();
+  PROTOBUF_NODISCARD std::string* release_device();
+  void set_allocated_device(std::string* device);
+  private:
+  const std::string& _internal_device() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device(const std::string& value);
+  std::string* _internal_mutable_device();
+  public:
+
+  // optional string driver = 2;
+  bool has_driver() const;
+  private:
+  bool _internal_has_driver() const;
+  public:
+  void clear_driver();
+  const std::string& driver() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_driver(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_driver();
+  PROTOBUF_NODISCARD std::string* release_driver();
+  void set_allocated_driver(std::string* driver);
+  private:
+  const std::string& _internal_driver() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_driver(const std::string& value);
+  std::string* _internal_mutable_driver();
+  public:
+
+  // optional string parent = 3;
+  bool has_parent() const;
+  private:
+  bool _internal_has_parent() const;
+  public:
+  void clear_parent();
+  const std::string& parent() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_parent(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_parent();
+  PROTOBUF_NODISCARD std::string* release_parent();
+  void set_allocated_parent(std::string* parent);
+  private:
+  const std::string& _internal_parent() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_parent(const std::string& value);
+  std::string* _internal_mutable_parent();
+  public:
+
+  // optional string pm_ops = 4;
+  bool has_pm_ops() const;
+  private:
+  bool _internal_has_pm_ops() const;
+  public:
+  void clear_pm_ops();
+  const std::string& pm_ops() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_pm_ops(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_pm_ops();
+  PROTOBUF_NODISCARD std::string* release_pm_ops();
+  void set_allocated_pm_ops(std::string* pm_ops);
+  private:
+  const std::string& _internal_pm_ops() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_pm_ops(const std::string& value);
+  std::string* _internal_mutable_pm_ops();
+  public:
+
+  // optional int32 event = 5;
+  bool has_event() const;
+  private:
+  bool _internal_has_event() const;
+  public:
+  void clear_event();
+  ::int32_t event() const;
+  void set_event(::int32_t value);
+  private:
+  ::int32_t _internal_event() const;
+  void _internal_set_event(::int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.DevicePmCallbackStartFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr driver_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr parent_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr pm_ops_;
+    ::int32_t event_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fpower_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DevicePmCallbackEndFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.DevicePmCallbackEndFtraceEvent) */ {
+ public:
+  inline DevicePmCallbackEndFtraceEvent() : DevicePmCallbackEndFtraceEvent(nullptr) {}
+  ~DevicePmCallbackEndFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR DevicePmCallbackEndFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DevicePmCallbackEndFtraceEvent(const DevicePmCallbackEndFtraceEvent& from);
+  DevicePmCallbackEndFtraceEvent(DevicePmCallbackEndFtraceEvent&& from) noexcept
+    : DevicePmCallbackEndFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline DevicePmCallbackEndFtraceEvent& operator=(const DevicePmCallbackEndFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline DevicePmCallbackEndFtraceEvent& operator=(DevicePmCallbackEndFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const DevicePmCallbackEndFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DevicePmCallbackEndFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const DevicePmCallbackEndFtraceEvent*>(
+               &_DevicePmCallbackEndFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(DevicePmCallbackEndFtraceEvent& a, DevicePmCallbackEndFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DevicePmCallbackEndFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DevicePmCallbackEndFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DevicePmCallbackEndFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DevicePmCallbackEndFtraceEvent>(arena);
+  }
+  DevicePmCallbackEndFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const DevicePmCallbackEndFtraceEvent& from);
+  void MergeFrom(const DevicePmCallbackEndFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(DevicePmCallbackEndFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.DevicePmCallbackEndFtraceEvent";
+  }
+  protected:
+  explicit DevicePmCallbackEndFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDeviceFieldNumber = 1,
+    kDriverFieldNumber = 2,
+    kErrorFieldNumber = 3,
+  };
+  // optional string device = 1;
+  bool has_device() const;
+  private:
+  bool _internal_has_device() const;
+  public:
+  void clear_device();
+  const std::string& device() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_device(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_device();
+  PROTOBUF_NODISCARD std::string* release_device();
+  void set_allocated_device(std::string* device);
+  private:
+  const std::string& _internal_device() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device(const std::string& value);
+  std::string* _internal_mutable_device();
+  public:
+
+  // optional string driver = 2;
+  bool has_driver() const;
+  private:
+  bool _internal_has_driver() const;
+  public:
+  void clear_driver();
+  const std::string& driver() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_driver(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_driver();
+  PROTOBUF_NODISCARD std::string* release_driver();
+  void set_allocated_driver(std::string* driver);
+  private:
+  const std::string& _internal_driver() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_driver(const std::string& value);
+  std::string* _internal_mutable_driver();
+  public:
+
+  // optional int32 error = 3;
+  bool has_error() const;
+  private:
+  bool _internal_has_error() const;
+  public:
+  void clear_error();
+  ::int32_t error() const;
+  void set_error(::int32_t value);
+  private:
+  ::int32_t _internal_error() const;
+  void _internal_set_error(::int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.DevicePmCallbackEndFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr driver_;
+    ::int32_t error_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fpower_2eproto;
+};
 // ===================================================================
 
 
@@ -2793,9 +3423,631 @@ inline void WakeupSourceDeactivateFtraceEvent::set_state(::uint64_t value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.WakeupSourceDeactivateFtraceEvent.state)
 }
 
+// -------------------------------------------------------------------
+
+// GpuWorkPeriodFtraceEvent
+
+// optional uint32 gpu_id = 1;
+inline bool GpuWorkPeriodFtraceEvent::_internal_has_gpu_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool GpuWorkPeriodFtraceEvent::has_gpu_id() const {
+  return _internal_has_gpu_id();
+}
+inline void GpuWorkPeriodFtraceEvent::clear_gpu_id() {
+  _impl_.gpu_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::uint32_t GpuWorkPeriodFtraceEvent::_internal_gpu_id() const {
+  return _impl_.gpu_id_;
+}
+inline ::uint32_t GpuWorkPeriodFtraceEvent::gpu_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.GpuWorkPeriodFtraceEvent.gpu_id)
+  return _internal_gpu_id();
+}
+inline void GpuWorkPeriodFtraceEvent::_internal_set_gpu_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.gpu_id_ = value;
+}
+inline void GpuWorkPeriodFtraceEvent::set_gpu_id(::uint32_t value) {
+  _internal_set_gpu_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.GpuWorkPeriodFtraceEvent.gpu_id)
+}
+
+// optional uint32 uid = 2;
+inline bool GpuWorkPeriodFtraceEvent::_internal_has_uid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool GpuWorkPeriodFtraceEvent::has_uid() const {
+  return _internal_has_uid();
+}
+inline void GpuWorkPeriodFtraceEvent::clear_uid() {
+  _impl_.uid_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t GpuWorkPeriodFtraceEvent::_internal_uid() const {
+  return _impl_.uid_;
+}
+inline ::uint32_t GpuWorkPeriodFtraceEvent::uid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.GpuWorkPeriodFtraceEvent.uid)
+  return _internal_uid();
+}
+inline void GpuWorkPeriodFtraceEvent::_internal_set_uid(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.uid_ = value;
+}
+inline void GpuWorkPeriodFtraceEvent::set_uid(::uint32_t value) {
+  _internal_set_uid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.GpuWorkPeriodFtraceEvent.uid)
+}
+
+// optional uint64 start_time_ns = 3;
+inline bool GpuWorkPeriodFtraceEvent::_internal_has_start_time_ns() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool GpuWorkPeriodFtraceEvent::has_start_time_ns() const {
+  return _internal_has_start_time_ns();
+}
+inline void GpuWorkPeriodFtraceEvent::clear_start_time_ns() {
+  _impl_.start_time_ns_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t GpuWorkPeriodFtraceEvent::_internal_start_time_ns() const {
+  return _impl_.start_time_ns_;
+}
+inline ::uint64_t GpuWorkPeriodFtraceEvent::start_time_ns() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.GpuWorkPeriodFtraceEvent.start_time_ns)
+  return _internal_start_time_ns();
+}
+inline void GpuWorkPeriodFtraceEvent::_internal_set_start_time_ns(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.start_time_ns_ = value;
+}
+inline void GpuWorkPeriodFtraceEvent::set_start_time_ns(::uint64_t value) {
+  _internal_set_start_time_ns(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.GpuWorkPeriodFtraceEvent.start_time_ns)
+}
+
+// optional uint64 end_time_ns = 4;
+inline bool GpuWorkPeriodFtraceEvent::_internal_has_end_time_ns() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool GpuWorkPeriodFtraceEvent::has_end_time_ns() const {
+  return _internal_has_end_time_ns();
+}
+inline void GpuWorkPeriodFtraceEvent::clear_end_time_ns() {
+  _impl_.end_time_ns_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline ::uint64_t GpuWorkPeriodFtraceEvent::_internal_end_time_ns() const {
+  return _impl_.end_time_ns_;
+}
+inline ::uint64_t GpuWorkPeriodFtraceEvent::end_time_ns() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.GpuWorkPeriodFtraceEvent.end_time_ns)
+  return _internal_end_time_ns();
+}
+inline void GpuWorkPeriodFtraceEvent::_internal_set_end_time_ns(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.end_time_ns_ = value;
+}
+inline void GpuWorkPeriodFtraceEvent::set_end_time_ns(::uint64_t value) {
+  _internal_set_end_time_ns(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.GpuWorkPeriodFtraceEvent.end_time_ns)
+}
+
+// optional uint64 total_active_duration_ns = 5;
+inline bool GpuWorkPeriodFtraceEvent::_internal_has_total_active_duration_ns() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool GpuWorkPeriodFtraceEvent::has_total_active_duration_ns() const {
+  return _internal_has_total_active_duration_ns();
+}
+inline void GpuWorkPeriodFtraceEvent::clear_total_active_duration_ns() {
+  _impl_.total_active_duration_ns_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline ::uint64_t GpuWorkPeriodFtraceEvent::_internal_total_active_duration_ns() const {
+  return _impl_.total_active_duration_ns_;
+}
+inline ::uint64_t GpuWorkPeriodFtraceEvent::total_active_duration_ns() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.GpuWorkPeriodFtraceEvent.total_active_duration_ns)
+  return _internal_total_active_duration_ns();
+}
+inline void GpuWorkPeriodFtraceEvent::_internal_set_total_active_duration_ns(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.total_active_duration_ns_ = value;
+}
+inline void GpuWorkPeriodFtraceEvent::set_total_active_duration_ns(::uint64_t value) {
+  _internal_set_total_active_duration_ns(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.GpuWorkPeriodFtraceEvent.total_active_duration_ns)
+}
+
+// -------------------------------------------------------------------
+
+// DevicePmCallbackStartFtraceEvent
+
+// optional string device = 1;
+inline bool DevicePmCallbackStartFtraceEvent::_internal_has_device() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool DevicePmCallbackStartFtraceEvent::has_device() const {
+  return _internal_has_device();
+}
+inline void DevicePmCallbackStartFtraceEvent::clear_device() {
+  _impl_.device_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& DevicePmCallbackStartFtraceEvent::device() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DevicePmCallbackStartFtraceEvent.device)
+  return _internal_device();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DevicePmCallbackStartFtraceEvent::set_device(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.device_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.DevicePmCallbackStartFtraceEvent.device)
+}
+inline std::string* DevicePmCallbackStartFtraceEvent::mutable_device() {
+  std::string* _s = _internal_mutable_device();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.DevicePmCallbackStartFtraceEvent.device)
+  return _s;
+}
+inline const std::string& DevicePmCallbackStartFtraceEvent::_internal_device() const {
+  return _impl_.device_.Get();
+}
+inline void DevicePmCallbackStartFtraceEvent::_internal_set_device(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.device_.Set(value, GetArenaForAllocation());
+}
+inline std::string* DevicePmCallbackStartFtraceEvent::_internal_mutable_device() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.device_.Mutable(GetArenaForAllocation());
+}
+inline std::string* DevicePmCallbackStartFtraceEvent::release_device() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.DevicePmCallbackStartFtraceEvent.device)
+  if (!_internal_has_device()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.device_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.device_.IsDefault()) {
+    _impl_.device_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void DevicePmCallbackStartFtraceEvent::set_allocated_device(std::string* device) {
+  if (device != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.device_.SetAllocated(device, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.device_.IsDefault()) {
+    _impl_.device_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.DevicePmCallbackStartFtraceEvent.device)
+}
+
+// optional string driver = 2;
+inline bool DevicePmCallbackStartFtraceEvent::_internal_has_driver() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool DevicePmCallbackStartFtraceEvent::has_driver() const {
+  return _internal_has_driver();
+}
+inline void DevicePmCallbackStartFtraceEvent::clear_driver() {
+  _impl_.driver_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& DevicePmCallbackStartFtraceEvent::driver() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DevicePmCallbackStartFtraceEvent.driver)
+  return _internal_driver();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DevicePmCallbackStartFtraceEvent::set_driver(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000002u;
+ _impl_.driver_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.DevicePmCallbackStartFtraceEvent.driver)
+}
+inline std::string* DevicePmCallbackStartFtraceEvent::mutable_driver() {
+  std::string* _s = _internal_mutable_driver();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.DevicePmCallbackStartFtraceEvent.driver)
+  return _s;
+}
+inline const std::string& DevicePmCallbackStartFtraceEvent::_internal_driver() const {
+  return _impl_.driver_.Get();
+}
+inline void DevicePmCallbackStartFtraceEvent::_internal_set_driver(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.driver_.Set(value, GetArenaForAllocation());
+}
+inline std::string* DevicePmCallbackStartFtraceEvent::_internal_mutable_driver() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  return _impl_.driver_.Mutable(GetArenaForAllocation());
+}
+inline std::string* DevicePmCallbackStartFtraceEvent::release_driver() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.DevicePmCallbackStartFtraceEvent.driver)
+  if (!_internal_has_driver()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* p = _impl_.driver_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.driver_.IsDefault()) {
+    _impl_.driver_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void DevicePmCallbackStartFtraceEvent::set_allocated_driver(std::string* driver) {
+  if (driver != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.driver_.SetAllocated(driver, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.driver_.IsDefault()) {
+    _impl_.driver_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.DevicePmCallbackStartFtraceEvent.driver)
+}
+
+// optional string parent = 3;
+inline bool DevicePmCallbackStartFtraceEvent::_internal_has_parent() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool DevicePmCallbackStartFtraceEvent::has_parent() const {
+  return _internal_has_parent();
+}
+inline void DevicePmCallbackStartFtraceEvent::clear_parent() {
+  _impl_.parent_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline const std::string& DevicePmCallbackStartFtraceEvent::parent() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DevicePmCallbackStartFtraceEvent.parent)
+  return _internal_parent();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DevicePmCallbackStartFtraceEvent::set_parent(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000004u;
+ _impl_.parent_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.DevicePmCallbackStartFtraceEvent.parent)
+}
+inline std::string* DevicePmCallbackStartFtraceEvent::mutable_parent() {
+  std::string* _s = _internal_mutable_parent();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.DevicePmCallbackStartFtraceEvent.parent)
+  return _s;
+}
+inline const std::string& DevicePmCallbackStartFtraceEvent::_internal_parent() const {
+  return _impl_.parent_.Get();
+}
+inline void DevicePmCallbackStartFtraceEvent::_internal_set_parent(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.parent_.Set(value, GetArenaForAllocation());
+}
+inline std::string* DevicePmCallbackStartFtraceEvent::_internal_mutable_parent() {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  return _impl_.parent_.Mutable(GetArenaForAllocation());
+}
+inline std::string* DevicePmCallbackStartFtraceEvent::release_parent() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.DevicePmCallbackStartFtraceEvent.parent)
+  if (!_internal_has_parent()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  auto* p = _impl_.parent_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.parent_.IsDefault()) {
+    _impl_.parent_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void DevicePmCallbackStartFtraceEvent::set_allocated_parent(std::string* parent) {
+  if (parent != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  _impl_.parent_.SetAllocated(parent, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.parent_.IsDefault()) {
+    _impl_.parent_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.DevicePmCallbackStartFtraceEvent.parent)
+}
+
+// optional string pm_ops = 4;
+inline bool DevicePmCallbackStartFtraceEvent::_internal_has_pm_ops() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool DevicePmCallbackStartFtraceEvent::has_pm_ops() const {
+  return _internal_has_pm_ops();
+}
+inline void DevicePmCallbackStartFtraceEvent::clear_pm_ops() {
+  _impl_.pm_ops_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline const std::string& DevicePmCallbackStartFtraceEvent::pm_ops() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DevicePmCallbackStartFtraceEvent.pm_ops)
+  return _internal_pm_ops();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DevicePmCallbackStartFtraceEvent::set_pm_ops(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000008u;
+ _impl_.pm_ops_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.DevicePmCallbackStartFtraceEvent.pm_ops)
+}
+inline std::string* DevicePmCallbackStartFtraceEvent::mutable_pm_ops() {
+  std::string* _s = _internal_mutable_pm_ops();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.DevicePmCallbackStartFtraceEvent.pm_ops)
+  return _s;
+}
+inline const std::string& DevicePmCallbackStartFtraceEvent::_internal_pm_ops() const {
+  return _impl_.pm_ops_.Get();
+}
+inline void DevicePmCallbackStartFtraceEvent::_internal_set_pm_ops(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.pm_ops_.Set(value, GetArenaForAllocation());
+}
+inline std::string* DevicePmCallbackStartFtraceEvent::_internal_mutable_pm_ops() {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  return _impl_.pm_ops_.Mutable(GetArenaForAllocation());
+}
+inline std::string* DevicePmCallbackStartFtraceEvent::release_pm_ops() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.DevicePmCallbackStartFtraceEvent.pm_ops)
+  if (!_internal_has_pm_ops()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000008u;
+  auto* p = _impl_.pm_ops_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.pm_ops_.IsDefault()) {
+    _impl_.pm_ops_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void DevicePmCallbackStartFtraceEvent::set_allocated_pm_ops(std::string* pm_ops) {
+  if (pm_ops != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000008u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000008u;
+  }
+  _impl_.pm_ops_.SetAllocated(pm_ops, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.pm_ops_.IsDefault()) {
+    _impl_.pm_ops_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.DevicePmCallbackStartFtraceEvent.pm_ops)
+}
+
+// optional int32 event = 5;
+inline bool DevicePmCallbackStartFtraceEvent::_internal_has_event() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool DevicePmCallbackStartFtraceEvent::has_event() const {
+  return _internal_has_event();
+}
+inline void DevicePmCallbackStartFtraceEvent::clear_event() {
+  _impl_.event_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline ::int32_t DevicePmCallbackStartFtraceEvent::_internal_event() const {
+  return _impl_.event_;
+}
+inline ::int32_t DevicePmCallbackStartFtraceEvent::event() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DevicePmCallbackStartFtraceEvent.event)
+  return _internal_event();
+}
+inline void DevicePmCallbackStartFtraceEvent::_internal_set_event(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.event_ = value;
+}
+inline void DevicePmCallbackStartFtraceEvent::set_event(::int32_t value) {
+  _internal_set_event(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.DevicePmCallbackStartFtraceEvent.event)
+}
+
+// -------------------------------------------------------------------
+
+// DevicePmCallbackEndFtraceEvent
+
+// optional string device = 1;
+inline bool DevicePmCallbackEndFtraceEvent::_internal_has_device() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool DevicePmCallbackEndFtraceEvent::has_device() const {
+  return _internal_has_device();
+}
+inline void DevicePmCallbackEndFtraceEvent::clear_device() {
+  _impl_.device_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& DevicePmCallbackEndFtraceEvent::device() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DevicePmCallbackEndFtraceEvent.device)
+  return _internal_device();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DevicePmCallbackEndFtraceEvent::set_device(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.device_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.DevicePmCallbackEndFtraceEvent.device)
+}
+inline std::string* DevicePmCallbackEndFtraceEvent::mutable_device() {
+  std::string* _s = _internal_mutable_device();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.DevicePmCallbackEndFtraceEvent.device)
+  return _s;
+}
+inline const std::string& DevicePmCallbackEndFtraceEvent::_internal_device() const {
+  return _impl_.device_.Get();
+}
+inline void DevicePmCallbackEndFtraceEvent::_internal_set_device(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.device_.Set(value, GetArenaForAllocation());
+}
+inline std::string* DevicePmCallbackEndFtraceEvent::_internal_mutable_device() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.device_.Mutable(GetArenaForAllocation());
+}
+inline std::string* DevicePmCallbackEndFtraceEvent::release_device() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.DevicePmCallbackEndFtraceEvent.device)
+  if (!_internal_has_device()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.device_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.device_.IsDefault()) {
+    _impl_.device_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void DevicePmCallbackEndFtraceEvent::set_allocated_device(std::string* device) {
+  if (device != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.device_.SetAllocated(device, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.device_.IsDefault()) {
+    _impl_.device_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.DevicePmCallbackEndFtraceEvent.device)
+}
+
+// optional string driver = 2;
+inline bool DevicePmCallbackEndFtraceEvent::_internal_has_driver() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool DevicePmCallbackEndFtraceEvent::has_driver() const {
+  return _internal_has_driver();
+}
+inline void DevicePmCallbackEndFtraceEvent::clear_driver() {
+  _impl_.driver_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& DevicePmCallbackEndFtraceEvent::driver() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DevicePmCallbackEndFtraceEvent.driver)
+  return _internal_driver();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DevicePmCallbackEndFtraceEvent::set_driver(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000002u;
+ _impl_.driver_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.DevicePmCallbackEndFtraceEvent.driver)
+}
+inline std::string* DevicePmCallbackEndFtraceEvent::mutable_driver() {
+  std::string* _s = _internal_mutable_driver();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.DevicePmCallbackEndFtraceEvent.driver)
+  return _s;
+}
+inline const std::string& DevicePmCallbackEndFtraceEvent::_internal_driver() const {
+  return _impl_.driver_.Get();
+}
+inline void DevicePmCallbackEndFtraceEvent::_internal_set_driver(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.driver_.Set(value, GetArenaForAllocation());
+}
+inline std::string* DevicePmCallbackEndFtraceEvent::_internal_mutable_driver() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  return _impl_.driver_.Mutable(GetArenaForAllocation());
+}
+inline std::string* DevicePmCallbackEndFtraceEvent::release_driver() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.DevicePmCallbackEndFtraceEvent.driver)
+  if (!_internal_has_driver()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* p = _impl_.driver_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.driver_.IsDefault()) {
+    _impl_.driver_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void DevicePmCallbackEndFtraceEvent::set_allocated_driver(std::string* driver) {
+  if (driver != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.driver_.SetAllocated(driver, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.driver_.IsDefault()) {
+    _impl_.driver_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.DevicePmCallbackEndFtraceEvent.driver)
+}
+
+// optional int32 error = 3;
+inline bool DevicePmCallbackEndFtraceEvent::_internal_has_error() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool DevicePmCallbackEndFtraceEvent::has_error() const {
+  return _internal_has_error();
+}
+inline void DevicePmCallbackEndFtraceEvent::clear_error() {
+  _impl_.error_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::int32_t DevicePmCallbackEndFtraceEvent::_internal_error() const {
+  return _impl_.error_;
+}
+inline ::int32_t DevicePmCallbackEndFtraceEvent::error() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DevicePmCallbackEndFtraceEvent.error)
+  return _internal_error();
+}
+inline void DevicePmCallbackEndFtraceEvent::_internal_set_error(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.error_ = value;
+}
+inline void DevicePmCallbackEndFtraceEvent::set_error(::int32_t value) {
+  _internal_set_error(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.DevicePmCallbackEndFtraceEvent.error)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

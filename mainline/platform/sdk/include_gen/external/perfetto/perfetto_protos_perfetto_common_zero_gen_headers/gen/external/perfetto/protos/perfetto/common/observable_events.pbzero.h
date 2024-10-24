@@ -15,13 +15,19 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class ObservableEvents_CloneTriggerHit;
 class ObservableEvents_DataSourceInstanceStateChange;
 namespace perfetto_pbzero_enum_ObservableEvents {
 enum DataSourceInstanceState : int32_t;
 }  // namespace perfetto_pbzero_enum_ObservableEvents
 using ObservableEvents_DataSourceInstanceState = perfetto_pbzero_enum_ObservableEvents::DataSourceInstanceState;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_ObservableEvents {
 enum Type : int32_t {
@@ -170,13 +176,15 @@ class ObservableEvents : public ::protozero::Message {
 
 };
 
-class ObservableEvents_CloneTriggerHit_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class ObservableEvents_CloneTriggerHit_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   ObservableEvents_CloneTriggerHit_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ObservableEvents_CloneTriggerHit_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit ObservableEvents_CloneTriggerHit_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_tracing_session_id() const { return at<1>().valid(); }
   int64_t tracing_session_id() const { return at<1>().as_int64(); }
+  bool has_trigger_name() const { return at<2>().valid(); }
+  ::protozero::ConstChars trigger_name() const { return at<2>().as_string(); }
 };
 
 class ObservableEvents_CloneTriggerHit : public ::protozero::Message {
@@ -184,6 +192,7 @@ class ObservableEvents_CloneTriggerHit : public ::protozero::Message {
   using Decoder = ObservableEvents_CloneTriggerHit_Decoder;
   enum : int32_t {
     kTracingSessionIdFieldNumber = 1,
+    kTriggerNameFieldNumber = 2,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.ObservableEvents.CloneTriggerHit"; }
 
@@ -203,6 +212,30 @@ class ObservableEvents_CloneTriggerHit : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TriggerName =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      ObservableEvents_CloneTriggerHit>;
+
+  static constexpr FieldMetadata_TriggerName kTriggerName{};
+  void set_trigger_name(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_TriggerName::kFieldId, data, size);
+  }
+  void set_trigger_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_TriggerName::kFieldId, chars.data, chars.size);
+  }
+  void set_trigger_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_TriggerName::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
         ::Append(*this, field_id, value);
   }
 };
@@ -284,11 +317,11 @@ class ObservableEvents_DataSourceInstanceStateChange : public ::protozero::Messa
       3,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceState,
+      ObservableEvents_DataSourceInstanceState,
       ObservableEvents_DataSourceInstanceStateChange>;
 
   static constexpr FieldMetadata_State kState{};
-  void set_state(::perfetto::protos::pbzero::ObservableEvents_DataSourceInstanceState value) {
+  void set_state(ObservableEvents_DataSourceInstanceState value) {
     static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

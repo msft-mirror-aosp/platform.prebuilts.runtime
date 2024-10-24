@@ -15,12 +15,18 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class AndroidLogPacket_LogEvent;
 class AndroidLogPacket_LogEvent_Arg;
 class AndroidLogPacket_Stats;
 enum AndroidLogId : int32_t;
 enum AndroidLogPriority : int32_t;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 class AndroidLogPacket_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -201,11 +207,11 @@ class AndroidLogPacket_LogEvent : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::AndroidLogId,
+      AndroidLogId,
       AndroidLogPacket_LogEvent>;
 
   static constexpr FieldMetadata_LogId kLogId{};
-  void set_log_id(::perfetto::protos::pbzero::AndroidLogId value) {
+  void set_log_id(AndroidLogId value) {
     static constexpr uint32_t field_id = FieldMetadata_LogId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -315,11 +321,11 @@ class AndroidLogPacket_LogEvent : public ::protozero::Message {
       7,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::AndroidLogPriority,
+      AndroidLogPriority,
       AndroidLogPacket_LogEvent>;
 
   static constexpr FieldMetadata_Prio kPrio{};
-  void set_prio(::perfetto::protos::pbzero::AndroidLogPriority value) {
+  void set_prio(AndroidLogPriority value) {
     static constexpr uint32_t field_id = FieldMetadata_Prio::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
