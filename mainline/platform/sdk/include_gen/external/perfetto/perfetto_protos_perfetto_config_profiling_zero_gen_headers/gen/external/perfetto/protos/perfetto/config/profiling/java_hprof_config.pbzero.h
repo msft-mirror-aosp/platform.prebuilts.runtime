@@ -15,8 +15,14 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class JavaHprofConfig_ContinuousDumpConfig;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 class JavaHprofConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:

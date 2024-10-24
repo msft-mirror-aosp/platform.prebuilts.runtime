@@ -12,10 +12,10 @@
 #include "perfetto/protozero/proto_decoder.h"
 #include "perfetto/protozero/proto_utils.h"
 
+
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 
 enum BuiltinClock : int32_t {
   BUILTIN_CLOCK_UNKNOWN = 0,
@@ -25,6 +25,8 @@ enum BuiltinClock : int32_t {
   BUILTIN_CLOCK_MONOTONIC_COARSE = 4,
   BUILTIN_CLOCK_MONOTONIC_RAW = 5,
   BUILTIN_CLOCK_BOOTTIME = 6,
+  BUILTIN_CLOCK_TSC = 9,
+  BUILTIN_CLOCK_PERF = 10,
   BUILTIN_CLOCK_MAX_ID = 63,
 };
 
@@ -55,6 +57,12 @@ const char* BuiltinClock_Name(::perfetto::protos::pbzero::BuiltinClock value) {
 
   case ::perfetto::protos::pbzero::BuiltinClock::BUILTIN_CLOCK_BOOTTIME:
     return "BUILTIN_CLOCK_BOOTTIME";
+
+  case ::perfetto::protos::pbzero::BuiltinClock::BUILTIN_CLOCK_TSC:
+    return "BUILTIN_CLOCK_TSC";
+
+  case ::perfetto::protos::pbzero::BuiltinClock::BUILTIN_CLOCK_PERF:
+    return "BUILTIN_CLOCK_PERF";
 
   case ::perfetto::protos::pbzero::BuiltinClock::BUILTIN_CLOCK_MAX_ID:
     return "BUILTIN_CLOCK_MAX_ID";

@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class FtraceConfig_CompactSchedConfig;
 class FtraceConfig_PrintFilter;
 class FtraceConfig_PrintFilter_Rule;
@@ -24,6 +23,13 @@ namespace perfetto_pbzero_enum_FtraceConfig {
 enum KsymsMemPolicy : int32_t;
 }  // namespace perfetto_pbzero_enum_FtraceConfig
 using FtraceConfig_KsymsMemPolicy = perfetto_pbzero_enum_FtraceConfig::KsymsMemPolicy;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_FtraceConfig {
 enum KsymsMemPolicy : int32_t {
@@ -54,7 +60,7 @@ const char* FtraceConfig_KsymsMemPolicy_Name(::perfetto::protos::pbzero::FtraceC
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class FtraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/25, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class FtraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/29, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   FtraceConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit FtraceConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -65,10 +71,14 @@ class FtraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_I
   ::protozero::RepeatedFieldIterator<::protozero::ConstChars> atrace_categories() const { return GetRepeated<::protozero::ConstChars>(2); }
   bool has_atrace_apps() const { return at<3>().valid(); }
   ::protozero::RepeatedFieldIterator<::protozero::ConstChars> atrace_apps() const { return GetRepeated<::protozero::ConstChars>(3); }
+  bool has_atrace_categories_prefer_sdk() const { return at<28>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstChars> atrace_categories_prefer_sdk() const { return GetRepeated<::protozero::ConstChars>(28); }
   bool has_buffer_size_kb() const { return at<10>().valid(); }
   uint32_t buffer_size_kb() const { return at<10>().as_uint32(); }
   bool has_drain_period_ms() const { return at<11>().valid(); }
   uint32_t drain_period_ms() const { return at<11>().as_uint32(); }
+  bool has_drain_buffer_percent() const { return at<29>().valid(); }
+  uint32_t drain_buffer_percent() const { return at<29>().as_uint32(); }
   bool has_compact_sched() const { return at<12>().valid(); }
   ::protozero::ConstBytes compact_sched() const { return at<12>().as_bytes(); }
   bool has_print_filter() const { return at<22>().valid(); }
@@ -97,6 +107,8 @@ class FtraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_I
   bool use_monotonic_raw_clock() const { return at<24>().as_bool(); }
   bool has_instance_name() const { return at<25>().valid(); }
   ::protozero::ConstChars instance_name() const { return at<25>().as_string(); }
+  bool has_buffer_size_lower_bound() const { return at<27>().valid(); }
+  bool buffer_size_lower_bound() const { return at<27>().as_bool(); }
 };
 
 class FtraceConfig : public ::protozero::Message {
@@ -106,8 +118,10 @@ class FtraceConfig : public ::protozero::Message {
     kFtraceEventsFieldNumber = 1,
     kAtraceCategoriesFieldNumber = 2,
     kAtraceAppsFieldNumber = 3,
+    kAtraceCategoriesPreferSdkFieldNumber = 28,
     kBufferSizeKbFieldNumber = 10,
     kDrainPeriodMsFieldNumber = 11,
+    kDrainBufferPercentFieldNumber = 29,
     kCompactSchedFieldNumber = 12,
     kPrintFilterFieldNumber = 22,
     kSymbolizeKsymsFieldNumber = 13,
@@ -122,6 +136,7 @@ class FtraceConfig : public ::protozero::Message {
     kPreserveFtraceBufferFieldNumber = 23,
     kUseMonotonicRawClockFieldNumber = 24,
     kInstanceNameFieldNumber = 25,
+    kBufferSizeLowerBoundFieldNumber = 27,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.FtraceConfig"; }
 
@@ -208,6 +223,30 @@ class FtraceConfig : public ::protozero::Message {
         ::Append(*this, field_id, value);
   }
 
+  using FieldMetadata_AtraceCategoriesPreferSdk =
+    ::protozero::proto_utils::FieldMetadata<
+      28,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      FtraceConfig>;
+
+  static constexpr FieldMetadata_AtraceCategoriesPreferSdk kAtraceCategoriesPreferSdk{};
+  void add_atrace_categories_prefer_sdk(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_AtraceCategoriesPreferSdk::kFieldId, data, size);
+  }
+  void add_atrace_categories_prefer_sdk(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_AtraceCategoriesPreferSdk::kFieldId, chars.data, chars.size);
+  }
+  void add_atrace_categories_prefer_sdk(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_AtraceCategoriesPreferSdk::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
   using FieldMetadata_BufferSizeKb =
     ::protozero::proto_utils::FieldMetadata<
       10,
@@ -237,6 +276,24 @@ class FtraceConfig : public ::protozero::Message {
   static constexpr FieldMetadata_DrainPeriodMs kDrainPeriodMs{};
   void set_drain_period_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DrainPeriodMs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DrainBufferPercent =
+    ::protozero::proto_utils::FieldMetadata<
+      29,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      FtraceConfig>;
+
+  static constexpr FieldMetadata_DrainBufferPercent kDrainBufferPercent{};
+  void set_drain_buffer_percent(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DrainBufferPercent::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
@@ -295,11 +352,11 @@ class FtraceConfig : public ::protozero::Message {
       17,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::FtraceConfig_KsymsMemPolicy,
+      FtraceConfig_KsymsMemPolicy,
       FtraceConfig>;
 
   static constexpr FieldMetadata_KsymsMemPolicy kKsymsMemPolicy{};
-  void set_ksyms_mem_policy(::perfetto::protos::pbzero::FtraceConfig_KsymsMemPolicy value) {
+  void set_ksyms_mem_policy(FtraceConfig_KsymsMemPolicy value) {
     static constexpr uint32_t field_id = FieldMetadata_KsymsMemPolicy::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -509,6 +566,24 @@ class FtraceConfig : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_BufferSizeLowerBound =
+    ::protozero::proto_utils::FieldMetadata<
+      27,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      FtraceConfig>;
+
+  static constexpr FieldMetadata_BufferSizeLowerBound kBufferSizeLowerBound{};
+  void set_buffer_size_lower_bound(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_BufferSizeLowerBound::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
         ::Append(*this, field_id, value);
   }
 };

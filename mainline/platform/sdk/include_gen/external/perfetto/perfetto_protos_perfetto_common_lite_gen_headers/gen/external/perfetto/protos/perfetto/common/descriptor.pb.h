@@ -75,6 +75,12 @@ extern OneofDescriptorProtoDefaultTypeInternal _OneofDescriptorProto_default_ins
 class OneofOptions;
 struct OneofOptionsDefaultTypeInternal;
 extern OneofOptionsDefaultTypeInternal _OneofOptions_default_instance_;
+class UninterpretedOption;
+struct UninterpretedOptionDefaultTypeInternal;
+extern UninterpretedOptionDefaultTypeInternal _UninterpretedOption_default_instance_;
+class UninterpretedOption_NamePart;
+struct UninterpretedOption_NamePartDefaultTypeInternal;
+extern UninterpretedOption_NamePartDefaultTypeInternal _UninterpretedOption_NamePart_default_instance_;
 }  // namespace protos
 }  // namespace perfetto
 PROTOBUF_NAMESPACE_OPEN
@@ -88,6 +94,8 @@ template<> ::perfetto::protos::FileDescriptorProto* Arena::CreateMaybeMessage<::
 template<> ::perfetto::protos::FileDescriptorSet* Arena::CreateMaybeMessage<::perfetto::protos::FileDescriptorSet>(Arena*);
 template<> ::perfetto::protos::OneofDescriptorProto* Arena::CreateMaybeMessage<::perfetto::protos::OneofDescriptorProto>(Arena*);
 template<> ::perfetto::protos::OneofOptions* Arena::CreateMaybeMessage<::perfetto::protos::OneofOptions>(Arena*);
+template<> ::perfetto::protos::UninterpretedOption* Arena::CreateMaybeMessage<::perfetto::protos::UninterpretedOption>(Arena*);
+template<> ::perfetto::protos::UninterpretedOption_NamePart* Arena::CreateMaybeMessage<::perfetto::protos::UninterpretedOption_NamePart>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
 namespace protos {
@@ -1064,6 +1072,430 @@ class DescriptorProto final :
 };
 // -------------------------------------------------------------------
 
+class UninterpretedOption_NamePart final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.UninterpretedOption.NamePart) */ {
+ public:
+  inline UninterpretedOption_NamePart() : UninterpretedOption_NamePart(nullptr) {}
+  ~UninterpretedOption_NamePart() override;
+  explicit PROTOBUF_CONSTEXPR UninterpretedOption_NamePart(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UninterpretedOption_NamePart(const UninterpretedOption_NamePart& from);
+  UninterpretedOption_NamePart(UninterpretedOption_NamePart&& from) noexcept
+    : UninterpretedOption_NamePart() {
+    *this = ::std::move(from);
+  }
+
+  inline UninterpretedOption_NamePart& operator=(const UninterpretedOption_NamePart& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline UninterpretedOption_NamePart& operator=(UninterpretedOption_NamePart&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const UninterpretedOption_NamePart& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UninterpretedOption_NamePart* internal_default_instance() {
+    return reinterpret_cast<const UninterpretedOption_NamePart*>(
+               &_UninterpretedOption_NamePart_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(UninterpretedOption_NamePart& a, UninterpretedOption_NamePart& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UninterpretedOption_NamePart* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UninterpretedOption_NamePart* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UninterpretedOption_NamePart* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<UninterpretedOption_NamePart>(arena);
+  }
+  UninterpretedOption_NamePart* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const UninterpretedOption_NamePart& from);
+  void MergeFrom(const UninterpretedOption_NamePart& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(UninterpretedOption_NamePart* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.UninterpretedOption.NamePart";
+  }
+  protected:
+  explicit UninterpretedOption_NamePart(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNamePartFieldNumber = 1,
+    kIsExtensionFieldNumber = 2,
+  };
+  // optional string name_part = 1;
+  bool has_name_part() const;
+  private:
+  bool _internal_has_name_part() const;
+  public:
+  void clear_name_part();
+  const std::string& name_part() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name_part(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name_part();
+  PROTOBUF_NODISCARD std::string* release_name_part();
+  void set_allocated_name_part(std::string* name_part);
+  private:
+  const std::string& _internal_name_part() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name_part(const std::string& value);
+  std::string* _internal_mutable_name_part();
+  public:
+
+  // optional bool is_extension = 2;
+  bool has_is_extension() const;
+  private:
+  bool _internal_has_is_extension() const;
+  public:
+  void clear_is_extension();
+  bool is_extension() const;
+  void set_is_extension(bool value);
+  private:
+  bool _internal_is_extension() const;
+  void _internal_set_is_extension(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.UninterpretedOption.NamePart)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_part_;
+    bool is_extension_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2fcommon_2fdescriptor_2eproto;
+};
+// -------------------------------------------------------------------
+
+class UninterpretedOption final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.UninterpretedOption) */ {
+ public:
+  inline UninterpretedOption() : UninterpretedOption(nullptr) {}
+  ~UninterpretedOption() override;
+  explicit PROTOBUF_CONSTEXPR UninterpretedOption(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UninterpretedOption(const UninterpretedOption& from);
+  UninterpretedOption(UninterpretedOption&& from) noexcept
+    : UninterpretedOption() {
+    *this = ::std::move(from);
+  }
+
+  inline UninterpretedOption& operator=(const UninterpretedOption& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline UninterpretedOption& operator=(UninterpretedOption&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const UninterpretedOption& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UninterpretedOption* internal_default_instance() {
+    return reinterpret_cast<const UninterpretedOption*>(
+               &_UninterpretedOption_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(UninterpretedOption& a, UninterpretedOption& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UninterpretedOption* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UninterpretedOption* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UninterpretedOption* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<UninterpretedOption>(arena);
+  }
+  UninterpretedOption* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const UninterpretedOption& from);
+  void MergeFrom(const UninterpretedOption& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(UninterpretedOption* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.UninterpretedOption";
+  }
+  protected:
+  explicit UninterpretedOption(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef UninterpretedOption_NamePart NamePart;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNameFieldNumber = 2,
+    kIdentifierValueFieldNumber = 3,
+    kStringValueFieldNumber = 7,
+    kAggregateValueFieldNumber = 8,
+    kPositiveIntValueFieldNumber = 4,
+    kNegativeIntValueFieldNumber = 5,
+    kDoubleValueFieldNumber = 6,
+  };
+  // repeated .perfetto.protos.UninterpretedOption.NamePart name = 2;
+  int name_size() const;
+  private:
+  int _internal_name_size() const;
+  public:
+  void clear_name();
+  ::perfetto::protos::UninterpretedOption_NamePart* mutable_name(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::UninterpretedOption_NamePart >*
+      mutable_name();
+  private:
+  const ::perfetto::protos::UninterpretedOption_NamePart& _internal_name(int index) const;
+  ::perfetto::protos::UninterpretedOption_NamePart* _internal_add_name();
+  public:
+  const ::perfetto::protos::UninterpretedOption_NamePart& name(int index) const;
+  ::perfetto::protos::UninterpretedOption_NamePart* add_name();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::UninterpretedOption_NamePart >&
+      name() const;
+
+  // optional string identifier_value = 3;
+  bool has_identifier_value() const;
+  private:
+  bool _internal_has_identifier_value() const;
+  public:
+  void clear_identifier_value();
+  const std::string& identifier_value() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_identifier_value(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_identifier_value();
+  PROTOBUF_NODISCARD std::string* release_identifier_value();
+  void set_allocated_identifier_value(std::string* identifier_value);
+  private:
+  const std::string& _internal_identifier_value() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_identifier_value(const std::string& value);
+  std::string* _internal_mutable_identifier_value();
+  public:
+
+  // optional bytes string_value = 7;
+  bool has_string_value() const;
+  private:
+  bool _internal_has_string_value() const;
+  public:
+  void clear_string_value();
+  const std::string& string_value() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_string_value(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_string_value();
+  PROTOBUF_NODISCARD std::string* release_string_value();
+  void set_allocated_string_value(std::string* string_value);
+  private:
+  const std::string& _internal_string_value() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_string_value(const std::string& value);
+  std::string* _internal_mutable_string_value();
+  public:
+
+  // optional string aggregate_value = 8;
+  bool has_aggregate_value() const;
+  private:
+  bool _internal_has_aggregate_value() const;
+  public:
+  void clear_aggregate_value();
+  const std::string& aggregate_value() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_aggregate_value(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_aggregate_value();
+  PROTOBUF_NODISCARD std::string* release_aggregate_value();
+  void set_allocated_aggregate_value(std::string* aggregate_value);
+  private:
+  const std::string& _internal_aggregate_value() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_aggregate_value(const std::string& value);
+  std::string* _internal_mutable_aggregate_value();
+  public:
+
+  // optional uint64 positive_int_value = 4;
+  bool has_positive_int_value() const;
+  private:
+  bool _internal_has_positive_int_value() const;
+  public:
+  void clear_positive_int_value();
+  ::uint64_t positive_int_value() const;
+  void set_positive_int_value(::uint64_t value);
+  private:
+  ::uint64_t _internal_positive_int_value() const;
+  void _internal_set_positive_int_value(::uint64_t value);
+  public:
+
+  // optional int64 negative_int_value = 5;
+  bool has_negative_int_value() const;
+  private:
+  bool _internal_has_negative_int_value() const;
+  public:
+  void clear_negative_int_value();
+  ::int64_t negative_int_value() const;
+  void set_negative_int_value(::int64_t value);
+  private:
+  ::int64_t _internal_negative_int_value() const;
+  void _internal_set_negative_int_value(::int64_t value);
+  public:
+
+  // optional double double_value = 6;
+  bool has_double_value() const;
+  private:
+  bool _internal_has_double_value() const;
+  public:
+  void clear_double_value();
+  double double_value() const;
+  void set_double_value(double value);
+  private:
+  double _internal_double_value() const;
+  void _internal_set_double_value(double value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.UninterpretedOption)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::UninterpretedOption_NamePart > name_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr identifier_value_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr string_value_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr aggregate_value_;
+    ::uint64_t positive_int_value_;
+    ::int64_t negative_int_value_;
+    double double_value_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2fcommon_2fdescriptor_2eproto;
+};
+// -------------------------------------------------------------------
+
 class FieldOptions final :
     public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.FieldOptions) */ {
  public:
@@ -1111,7 +1543,7 @@ class FieldOptions final :
                &_FieldOptions_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   friend void swap(FieldOptions& a, FieldOptions& b) {
     a.Swap(&b);
@@ -1178,8 +1610,27 @@ class FieldOptions final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kUninterpretedOptionFieldNumber = 999,
     kPackedFieldNumber = 2,
   };
+  // repeated .perfetto.protos.UninterpretedOption uninterpreted_option = 999;
+  int uninterpreted_option_size() const;
+  private:
+  int _internal_uninterpreted_option_size() const;
+  public:
+  void clear_uninterpreted_option();
+  ::perfetto::protos::UninterpretedOption* mutable_uninterpreted_option(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::UninterpretedOption >*
+      mutable_uninterpreted_option();
+  private:
+  const ::perfetto::protos::UninterpretedOption& _internal_uninterpreted_option(int index) const;
+  ::perfetto::protos::UninterpretedOption* _internal_add_uninterpreted_option();
+  public:
+  const ::perfetto::protos::UninterpretedOption& uninterpreted_option(int index) const;
+  ::perfetto::protos::UninterpretedOption* add_uninterpreted_option();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::UninterpretedOption >&
+      uninterpreted_option() const;
+
   // optional bool packed = 2;
   bool has_packed() const;
   private:
@@ -1203,6 +1654,7 @@ class FieldOptions final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::UninterpretedOption > uninterpreted_option_;
     bool packed_;
   };
   union { Impl_ _impl_; };
@@ -1257,7 +1709,7 @@ class FieldDescriptorProto final :
                &_FieldDescriptorProto_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   friend void swap(FieldDescriptorProto& a, FieldDescriptorProto& b) {
     a.Swap(&b);
@@ -1634,7 +2086,7 @@ class OneofDescriptorProto final :
                &_OneofDescriptorProto_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    8;
 
   friend void swap(OneofDescriptorProto& a, OneofDescriptorProto& b) {
     a.Swap(&b);
@@ -1805,7 +2257,7 @@ class EnumDescriptorProto final :
                &_EnumDescriptorProto_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    9;
 
   friend void swap(EnumDescriptorProto& a, EnumDescriptorProto& b) {
     a.Swap(&b);
@@ -2002,7 +2454,7 @@ class EnumValueDescriptorProto final :
                &_EnumValueDescriptorProto_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   friend void swap(EnumValueDescriptorProto& a, EnumValueDescriptorProto& b) {
     a.Swap(&b);
@@ -2168,7 +2620,7 @@ class OneofOptions final :
                &_OneofOptions_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    11;
 
   friend void swap(OneofOptions& a, OneofOptions& b) {
     a.Swap(&b);
@@ -3368,6 +3820,438 @@ DescriptorProto::mutable_reserved_name() {
 
 // -------------------------------------------------------------------
 
+// UninterpretedOption_NamePart
+
+// optional string name_part = 1;
+inline bool UninterpretedOption_NamePart::_internal_has_name_part() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool UninterpretedOption_NamePart::has_name_part() const {
+  return _internal_has_name_part();
+}
+inline void UninterpretedOption_NamePart::clear_name_part() {
+  _impl_.name_part_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& UninterpretedOption_NamePart::name_part() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.UninterpretedOption.NamePart.name_part)
+  return _internal_name_part();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UninterpretedOption_NamePart::set_name_part(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.name_part_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.UninterpretedOption.NamePart.name_part)
+}
+inline std::string* UninterpretedOption_NamePart::mutable_name_part() {
+  std::string* _s = _internal_mutable_name_part();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.UninterpretedOption.NamePart.name_part)
+  return _s;
+}
+inline const std::string& UninterpretedOption_NamePart::_internal_name_part() const {
+  return _impl_.name_part_.Get();
+}
+inline void UninterpretedOption_NamePart::_internal_set_name_part(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.name_part_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UninterpretedOption_NamePart::_internal_mutable_name_part() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.name_part_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UninterpretedOption_NamePart::release_name_part() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.UninterpretedOption.NamePart.name_part)
+  if (!_internal_has_name_part()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.name_part_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_part_.IsDefault()) {
+    _impl_.name_part_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void UninterpretedOption_NamePart::set_allocated_name_part(std::string* name_part) {
+  if (name_part != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.name_part_.SetAllocated(name_part, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_part_.IsDefault()) {
+    _impl_.name_part_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.UninterpretedOption.NamePart.name_part)
+}
+
+// optional bool is_extension = 2;
+inline bool UninterpretedOption_NamePart::_internal_has_is_extension() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool UninterpretedOption_NamePart::has_is_extension() const {
+  return _internal_has_is_extension();
+}
+inline void UninterpretedOption_NamePart::clear_is_extension() {
+  _impl_.is_extension_ = false;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline bool UninterpretedOption_NamePart::_internal_is_extension() const {
+  return _impl_.is_extension_;
+}
+inline bool UninterpretedOption_NamePart::is_extension() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.UninterpretedOption.NamePart.is_extension)
+  return _internal_is_extension();
+}
+inline void UninterpretedOption_NamePart::_internal_set_is_extension(bool value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.is_extension_ = value;
+}
+inline void UninterpretedOption_NamePart::set_is_extension(bool value) {
+  _internal_set_is_extension(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.UninterpretedOption.NamePart.is_extension)
+}
+
+// -------------------------------------------------------------------
+
+// UninterpretedOption
+
+// repeated .perfetto.protos.UninterpretedOption.NamePart name = 2;
+inline int UninterpretedOption::_internal_name_size() const {
+  return _impl_.name_.size();
+}
+inline int UninterpretedOption::name_size() const {
+  return _internal_name_size();
+}
+inline void UninterpretedOption::clear_name() {
+  _impl_.name_.Clear();
+}
+inline ::perfetto::protos::UninterpretedOption_NamePart* UninterpretedOption::mutable_name(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.UninterpretedOption.name)
+  return _impl_.name_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::UninterpretedOption_NamePart >*
+UninterpretedOption::mutable_name() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.UninterpretedOption.name)
+  return &_impl_.name_;
+}
+inline const ::perfetto::protos::UninterpretedOption_NamePart& UninterpretedOption::_internal_name(int index) const {
+  return _impl_.name_.Get(index);
+}
+inline const ::perfetto::protos::UninterpretedOption_NamePart& UninterpretedOption::name(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.UninterpretedOption.name)
+  return _internal_name(index);
+}
+inline ::perfetto::protos::UninterpretedOption_NamePart* UninterpretedOption::_internal_add_name() {
+  return _impl_.name_.Add();
+}
+inline ::perfetto::protos::UninterpretedOption_NamePart* UninterpretedOption::add_name() {
+  ::perfetto::protos::UninterpretedOption_NamePart* _add = _internal_add_name();
+  // @@protoc_insertion_point(field_add:perfetto.protos.UninterpretedOption.name)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::UninterpretedOption_NamePart >&
+UninterpretedOption::name() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.UninterpretedOption.name)
+  return _impl_.name_;
+}
+
+// optional string identifier_value = 3;
+inline bool UninterpretedOption::_internal_has_identifier_value() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool UninterpretedOption::has_identifier_value() const {
+  return _internal_has_identifier_value();
+}
+inline void UninterpretedOption::clear_identifier_value() {
+  _impl_.identifier_value_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& UninterpretedOption::identifier_value() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.UninterpretedOption.identifier_value)
+  return _internal_identifier_value();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UninterpretedOption::set_identifier_value(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.identifier_value_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.UninterpretedOption.identifier_value)
+}
+inline std::string* UninterpretedOption::mutable_identifier_value() {
+  std::string* _s = _internal_mutable_identifier_value();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.UninterpretedOption.identifier_value)
+  return _s;
+}
+inline const std::string& UninterpretedOption::_internal_identifier_value() const {
+  return _impl_.identifier_value_.Get();
+}
+inline void UninterpretedOption::_internal_set_identifier_value(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.identifier_value_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UninterpretedOption::_internal_mutable_identifier_value() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.identifier_value_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UninterpretedOption::release_identifier_value() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.UninterpretedOption.identifier_value)
+  if (!_internal_has_identifier_value()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.identifier_value_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.identifier_value_.IsDefault()) {
+    _impl_.identifier_value_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void UninterpretedOption::set_allocated_identifier_value(std::string* identifier_value) {
+  if (identifier_value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.identifier_value_.SetAllocated(identifier_value, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.identifier_value_.IsDefault()) {
+    _impl_.identifier_value_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.UninterpretedOption.identifier_value)
+}
+
+// optional uint64 positive_int_value = 4;
+inline bool UninterpretedOption::_internal_has_positive_int_value() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool UninterpretedOption::has_positive_int_value() const {
+  return _internal_has_positive_int_value();
+}
+inline void UninterpretedOption::clear_positive_int_value() {
+  _impl_.positive_int_value_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline ::uint64_t UninterpretedOption::_internal_positive_int_value() const {
+  return _impl_.positive_int_value_;
+}
+inline ::uint64_t UninterpretedOption::positive_int_value() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.UninterpretedOption.positive_int_value)
+  return _internal_positive_int_value();
+}
+inline void UninterpretedOption::_internal_set_positive_int_value(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.positive_int_value_ = value;
+}
+inline void UninterpretedOption::set_positive_int_value(::uint64_t value) {
+  _internal_set_positive_int_value(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.UninterpretedOption.positive_int_value)
+}
+
+// optional int64 negative_int_value = 5;
+inline bool UninterpretedOption::_internal_has_negative_int_value() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool UninterpretedOption::has_negative_int_value() const {
+  return _internal_has_negative_int_value();
+}
+inline void UninterpretedOption::clear_negative_int_value() {
+  _impl_.negative_int_value_ = ::int64_t{0};
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline ::int64_t UninterpretedOption::_internal_negative_int_value() const {
+  return _impl_.negative_int_value_;
+}
+inline ::int64_t UninterpretedOption::negative_int_value() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.UninterpretedOption.negative_int_value)
+  return _internal_negative_int_value();
+}
+inline void UninterpretedOption::_internal_set_negative_int_value(::int64_t value) {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.negative_int_value_ = value;
+}
+inline void UninterpretedOption::set_negative_int_value(::int64_t value) {
+  _internal_set_negative_int_value(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.UninterpretedOption.negative_int_value)
+}
+
+// optional double double_value = 6;
+inline bool UninterpretedOption::_internal_has_double_value() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool UninterpretedOption::has_double_value() const {
+  return _internal_has_double_value();
+}
+inline void UninterpretedOption::clear_double_value() {
+  _impl_.double_value_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline double UninterpretedOption::_internal_double_value() const {
+  return _impl_.double_value_;
+}
+inline double UninterpretedOption::double_value() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.UninterpretedOption.double_value)
+  return _internal_double_value();
+}
+inline void UninterpretedOption::_internal_set_double_value(double value) {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_.double_value_ = value;
+}
+inline void UninterpretedOption::set_double_value(double value) {
+  _internal_set_double_value(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.UninterpretedOption.double_value)
+}
+
+// optional bytes string_value = 7;
+inline bool UninterpretedOption::_internal_has_string_value() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool UninterpretedOption::has_string_value() const {
+  return _internal_has_string_value();
+}
+inline void UninterpretedOption::clear_string_value() {
+  _impl_.string_value_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& UninterpretedOption::string_value() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.UninterpretedOption.string_value)
+  return _internal_string_value();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UninterpretedOption::set_string_value(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000002u;
+ _impl_.string_value_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.UninterpretedOption.string_value)
+}
+inline std::string* UninterpretedOption::mutable_string_value() {
+  std::string* _s = _internal_mutable_string_value();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.UninterpretedOption.string_value)
+  return _s;
+}
+inline const std::string& UninterpretedOption::_internal_string_value() const {
+  return _impl_.string_value_.Get();
+}
+inline void UninterpretedOption::_internal_set_string_value(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.string_value_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UninterpretedOption::_internal_mutable_string_value() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  return _impl_.string_value_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UninterpretedOption::release_string_value() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.UninterpretedOption.string_value)
+  if (!_internal_has_string_value()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* p = _impl_.string_value_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.string_value_.IsDefault()) {
+    _impl_.string_value_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void UninterpretedOption::set_allocated_string_value(std::string* string_value) {
+  if (string_value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.string_value_.SetAllocated(string_value, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.string_value_.IsDefault()) {
+    _impl_.string_value_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.UninterpretedOption.string_value)
+}
+
+// optional string aggregate_value = 8;
+inline bool UninterpretedOption::_internal_has_aggregate_value() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool UninterpretedOption::has_aggregate_value() const {
+  return _internal_has_aggregate_value();
+}
+inline void UninterpretedOption::clear_aggregate_value() {
+  _impl_.aggregate_value_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline const std::string& UninterpretedOption::aggregate_value() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.UninterpretedOption.aggregate_value)
+  return _internal_aggregate_value();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UninterpretedOption::set_aggregate_value(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000004u;
+ _impl_.aggregate_value_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.UninterpretedOption.aggregate_value)
+}
+inline std::string* UninterpretedOption::mutable_aggregate_value() {
+  std::string* _s = _internal_mutable_aggregate_value();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.UninterpretedOption.aggregate_value)
+  return _s;
+}
+inline const std::string& UninterpretedOption::_internal_aggregate_value() const {
+  return _impl_.aggregate_value_.Get();
+}
+inline void UninterpretedOption::_internal_set_aggregate_value(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.aggregate_value_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UninterpretedOption::_internal_mutable_aggregate_value() {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  return _impl_.aggregate_value_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UninterpretedOption::release_aggregate_value() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.UninterpretedOption.aggregate_value)
+  if (!_internal_has_aggregate_value()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  auto* p = _impl_.aggregate_value_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.aggregate_value_.IsDefault()) {
+    _impl_.aggregate_value_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void UninterpretedOption::set_allocated_aggregate_value(std::string* aggregate_value) {
+  if (aggregate_value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  _impl_.aggregate_value_.SetAllocated(aggregate_value, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.aggregate_value_.IsDefault()) {
+    _impl_.aggregate_value_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.UninterpretedOption.aggregate_value)
+}
+
+// -------------------------------------------------------------------
+
 // FieldOptions
 
 // optional bool packed = 2;
@@ -3396,6 +4280,46 @@ inline void FieldOptions::_internal_set_packed(bool value) {
 inline void FieldOptions::set_packed(bool value) {
   _internal_set_packed(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.FieldOptions.packed)
+}
+
+// repeated .perfetto.protos.UninterpretedOption uninterpreted_option = 999;
+inline int FieldOptions::_internal_uninterpreted_option_size() const {
+  return _impl_.uninterpreted_option_.size();
+}
+inline int FieldOptions::uninterpreted_option_size() const {
+  return _internal_uninterpreted_option_size();
+}
+inline void FieldOptions::clear_uninterpreted_option() {
+  _impl_.uninterpreted_option_.Clear();
+}
+inline ::perfetto::protos::UninterpretedOption* FieldOptions::mutable_uninterpreted_option(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FieldOptions.uninterpreted_option)
+  return _impl_.uninterpreted_option_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::UninterpretedOption >*
+FieldOptions::mutable_uninterpreted_option() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.FieldOptions.uninterpreted_option)
+  return &_impl_.uninterpreted_option_;
+}
+inline const ::perfetto::protos::UninterpretedOption& FieldOptions::_internal_uninterpreted_option(int index) const {
+  return _impl_.uninterpreted_option_.Get(index);
+}
+inline const ::perfetto::protos::UninterpretedOption& FieldOptions::uninterpreted_option(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FieldOptions.uninterpreted_option)
+  return _internal_uninterpreted_option(index);
+}
+inline ::perfetto::protos::UninterpretedOption* FieldOptions::_internal_add_uninterpreted_option() {
+  return _impl_.uninterpreted_option_.Add();
+}
+inline ::perfetto::protos::UninterpretedOption* FieldOptions::add_uninterpreted_option() {
+  ::perfetto::protos::UninterpretedOption* _add = _internal_add_uninterpreted_option();
+  // @@protoc_insertion_point(field_add:perfetto.protos.FieldOptions.uninterpreted_option)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::UninterpretedOption >&
+FieldOptions::uninterpreted_option() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.FieldOptions.uninterpreted_option)
+  return _impl_.uninterpreted_option_;
 }
 
 // -------------------------------------------------------------------
@@ -4334,6 +5258,10 @@ inline void EnumValueDescriptorProto::set_number(::int32_t value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
