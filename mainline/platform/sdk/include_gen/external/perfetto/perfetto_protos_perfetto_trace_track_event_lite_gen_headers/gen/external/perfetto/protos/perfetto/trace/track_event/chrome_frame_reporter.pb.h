@@ -381,9 +381,11 @@ class ChromeFrameReporter final :
     kHasCompositorAnimationFieldNumber = 8,
     kHasSmoothInputMainFieldNumber = 9,
     kLayerTreeHostIdFieldNumber = 11,
+    kFrameTypeFieldNumber = 13,
     kHasMissingContentFieldNumber = 10,
     kHasHighLatencyFieldNumber = 12,
-    kFrameTypeFieldNumber = 13,
+    kCheckerboardedNeedsRasterFieldNumber = 15,
+    kCheckerboardedNeedsRecordFieldNumber = 16,
   };
   // repeated string high_latency_contribution_stage = 14;
   int high_latency_contribution_stage_size() const;
@@ -539,6 +541,19 @@ class ChromeFrameReporter final :
   void _internal_set_layer_tree_host_id(::uint64_t value);
   public:
 
+  // optional .perfetto.protos.ChromeFrameReporter.FrameType frame_type = 13;
+  bool has_frame_type() const;
+  private:
+  bool _internal_has_frame_type() const;
+  public:
+  void clear_frame_type();
+  ::perfetto::protos::ChromeFrameReporter_FrameType frame_type() const;
+  void set_frame_type(::perfetto::protos::ChromeFrameReporter_FrameType value);
+  private:
+  ::perfetto::protos::ChromeFrameReporter_FrameType _internal_frame_type() const;
+  void _internal_set_frame_type(::perfetto::protos::ChromeFrameReporter_FrameType value);
+  public:
+
   // optional bool has_missing_content = 10;
   bool has_has_missing_content() const;
   private:
@@ -565,17 +580,30 @@ class ChromeFrameReporter final :
   void _internal_set_has_high_latency(bool value);
   public:
 
-  // optional .perfetto.protos.ChromeFrameReporter.FrameType frame_type = 13;
-  bool has_frame_type() const;
+  // optional bool checkerboarded_needs_raster = 15;
+  bool has_checkerboarded_needs_raster() const;
   private:
-  bool _internal_has_frame_type() const;
+  bool _internal_has_checkerboarded_needs_raster() const;
   public:
-  void clear_frame_type();
-  ::perfetto::protos::ChromeFrameReporter_FrameType frame_type() const;
-  void set_frame_type(::perfetto::protos::ChromeFrameReporter_FrameType value);
+  void clear_checkerboarded_needs_raster();
+  bool checkerboarded_needs_raster() const;
+  void set_checkerboarded_needs_raster(bool value);
   private:
-  ::perfetto::protos::ChromeFrameReporter_FrameType _internal_frame_type() const;
-  void _internal_set_frame_type(::perfetto::protos::ChromeFrameReporter_FrameType value);
+  bool _internal_checkerboarded_needs_raster() const;
+  void _internal_set_checkerboarded_needs_raster(bool value);
+  public:
+
+  // optional bool checkerboarded_needs_record = 16;
+  bool has_checkerboarded_needs_record() const;
+  private:
+  bool _internal_has_checkerboarded_needs_record() const;
+  public:
+  void clear_checkerboarded_needs_record();
+  bool checkerboarded_needs_record() const;
+  void set_checkerboarded_needs_record(bool value);
+  private:
+  bool _internal_checkerboarded_needs_record() const;
+  void _internal_set_checkerboarded_needs_record(bool value);
   public:
 
   // @@protoc_insertion_point(class_scope:perfetto.protos.ChromeFrameReporter)
@@ -599,9 +627,11 @@ class ChromeFrameReporter final :
     bool has_compositor_animation_;
     bool has_smooth_input_main_;
     ::uint64_t layer_tree_host_id_;
+    int frame_type_;
     bool has_missing_content_;
     bool has_high_latency_;
-    int frame_type_;
+    bool checkerboarded_needs_raster_;
+    bool checkerboarded_needs_record_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftrack_5fevent_2fchrome_5fframe_5freporter_2eproto;
@@ -874,7 +904,7 @@ inline void ChromeFrameReporter::set_has_smooth_input_main(bool value) {
 
 // optional bool has_missing_content = 10;
 inline bool ChromeFrameReporter::_internal_has_has_missing_content() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000400u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000800u) != 0;
   return value;
 }
 inline bool ChromeFrameReporter::has_has_missing_content() const {
@@ -882,7 +912,7 @@ inline bool ChromeFrameReporter::has_has_missing_content() const {
 }
 inline void ChromeFrameReporter::clear_has_missing_content() {
   _impl_.has_missing_content_ = false;
-  _impl_._has_bits_[0] &= ~0x00000400u;
+  _impl_._has_bits_[0] &= ~0x00000800u;
 }
 inline bool ChromeFrameReporter::_internal_has_missing_content() const {
   return _impl_.has_missing_content_;
@@ -892,7 +922,7 @@ inline bool ChromeFrameReporter::has_missing_content() const {
   return _internal_has_missing_content();
 }
 inline void ChromeFrameReporter::_internal_set_has_missing_content(bool value) {
-  _impl_._has_bits_[0] |= 0x00000400u;
+  _impl_._has_bits_[0] |= 0x00000800u;
   _impl_.has_missing_content_ = value;
 }
 inline void ChromeFrameReporter::set_has_missing_content(bool value) {
@@ -930,7 +960,7 @@ inline void ChromeFrameReporter::set_layer_tree_host_id(::uint64_t value) {
 
 // optional bool has_high_latency = 12;
 inline bool ChromeFrameReporter::_internal_has_has_high_latency() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000800u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00001000u) != 0;
   return value;
 }
 inline bool ChromeFrameReporter::has_has_high_latency() const {
@@ -938,7 +968,7 @@ inline bool ChromeFrameReporter::has_has_high_latency() const {
 }
 inline void ChromeFrameReporter::clear_has_high_latency() {
   _impl_.has_high_latency_ = false;
-  _impl_._has_bits_[0] &= ~0x00000800u;
+  _impl_._has_bits_[0] &= ~0x00001000u;
 }
 inline bool ChromeFrameReporter::_internal_has_high_latency() const {
   return _impl_.has_high_latency_;
@@ -948,7 +978,7 @@ inline bool ChromeFrameReporter::has_high_latency() const {
   return _internal_has_high_latency();
 }
 inline void ChromeFrameReporter::_internal_set_has_high_latency(bool value) {
-  _impl_._has_bits_[0] |= 0x00000800u;
+  _impl_._has_bits_[0] |= 0x00001000u;
   _impl_.has_high_latency_ = value;
 }
 inline void ChromeFrameReporter::set_has_high_latency(bool value) {
@@ -958,7 +988,7 @@ inline void ChromeFrameReporter::set_has_high_latency(bool value) {
 
 // optional .perfetto.protos.ChromeFrameReporter.FrameType frame_type = 13;
 inline bool ChromeFrameReporter::_internal_has_frame_type() const {
-  bool value = (_impl_._has_bits_[0] & 0x00001000u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000400u) != 0;
   return value;
 }
 inline bool ChromeFrameReporter::has_frame_type() const {
@@ -966,7 +996,7 @@ inline bool ChromeFrameReporter::has_frame_type() const {
 }
 inline void ChromeFrameReporter::clear_frame_type() {
   _impl_.frame_type_ = 0;
-  _impl_._has_bits_[0] &= ~0x00001000u;
+  _impl_._has_bits_[0] &= ~0x00000400u;
 }
 inline ::perfetto::protos::ChromeFrameReporter_FrameType ChromeFrameReporter::_internal_frame_type() const {
   return static_cast< ::perfetto::protos::ChromeFrameReporter_FrameType >(_impl_.frame_type_);
@@ -977,7 +1007,7 @@ inline ::perfetto::protos::ChromeFrameReporter_FrameType ChromeFrameReporter::fr
 }
 inline void ChromeFrameReporter::_internal_set_frame_type(::perfetto::protos::ChromeFrameReporter_FrameType value) {
   assert(::perfetto::protos::ChromeFrameReporter_FrameType_IsValid(value));
-  _impl_._has_bits_[0] |= 0x00001000u;
+  _impl_._has_bits_[0] |= 0x00000400u;
   _impl_.frame_type_ = value;
 }
 inline void ChromeFrameReporter::set_frame_type(::perfetto::protos::ChromeFrameReporter_FrameType value) {
@@ -1058,6 +1088,62 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 ChromeFrameReporter::mutable_high_latency_contribution_stage() {
   // @@protoc_insertion_point(field_mutable_list:perfetto.protos.ChromeFrameReporter.high_latency_contribution_stage)
   return &_impl_.high_latency_contribution_stage_;
+}
+
+// optional bool checkerboarded_needs_raster = 15;
+inline bool ChromeFrameReporter::_internal_has_checkerboarded_needs_raster() const {
+  bool value = (_impl_._has_bits_[0] & 0x00002000u) != 0;
+  return value;
+}
+inline bool ChromeFrameReporter::has_checkerboarded_needs_raster() const {
+  return _internal_has_checkerboarded_needs_raster();
+}
+inline void ChromeFrameReporter::clear_checkerboarded_needs_raster() {
+  _impl_.checkerboarded_needs_raster_ = false;
+  _impl_._has_bits_[0] &= ~0x00002000u;
+}
+inline bool ChromeFrameReporter::_internal_checkerboarded_needs_raster() const {
+  return _impl_.checkerboarded_needs_raster_;
+}
+inline bool ChromeFrameReporter::checkerboarded_needs_raster() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeFrameReporter.checkerboarded_needs_raster)
+  return _internal_checkerboarded_needs_raster();
+}
+inline void ChromeFrameReporter::_internal_set_checkerboarded_needs_raster(bool value) {
+  _impl_._has_bits_[0] |= 0x00002000u;
+  _impl_.checkerboarded_needs_raster_ = value;
+}
+inline void ChromeFrameReporter::set_checkerboarded_needs_raster(bool value) {
+  _internal_set_checkerboarded_needs_raster(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeFrameReporter.checkerboarded_needs_raster)
+}
+
+// optional bool checkerboarded_needs_record = 16;
+inline bool ChromeFrameReporter::_internal_has_checkerboarded_needs_record() const {
+  bool value = (_impl_._has_bits_[0] & 0x00004000u) != 0;
+  return value;
+}
+inline bool ChromeFrameReporter::has_checkerboarded_needs_record() const {
+  return _internal_has_checkerboarded_needs_record();
+}
+inline void ChromeFrameReporter::clear_checkerboarded_needs_record() {
+  _impl_.checkerboarded_needs_record_ = false;
+  _impl_._has_bits_[0] &= ~0x00004000u;
+}
+inline bool ChromeFrameReporter::_internal_checkerboarded_needs_record() const {
+  return _impl_.checkerboarded_needs_record_;
+}
+inline bool ChromeFrameReporter::checkerboarded_needs_record() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeFrameReporter.checkerboarded_needs_record)
+  return _internal_checkerboarded_needs_record();
+}
+inline void ChromeFrameReporter::_internal_set_checkerboarded_needs_record(bool value) {
+  _impl_._has_bits_[0] |= 0x00004000u;
+  _impl_.checkerboarded_needs_record_ = value;
+}
+inline void ChromeFrameReporter::set_checkerboarded_needs_record(bool value) {
+  _internal_set_checkerboarded_needs_record(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeFrameReporter.checkerboarded_needs_record)
 }
 
 #ifdef __GNUC__

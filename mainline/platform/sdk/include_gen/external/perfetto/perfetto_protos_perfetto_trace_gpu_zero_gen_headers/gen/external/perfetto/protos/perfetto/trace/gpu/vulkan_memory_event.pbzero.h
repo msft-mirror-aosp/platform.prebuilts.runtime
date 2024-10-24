@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class VulkanMemoryEventAnnotation;
 namespace perfetto_pbzero_enum_VulkanMemoryEvent {
 enum AllocationScope : int32_t;
@@ -29,6 +28,13 @@ namespace perfetto_pbzero_enum_VulkanMemoryEvent {
 enum Source : int32_t;
 }  // namespace perfetto_pbzero_enum_VulkanMemoryEvent
 using VulkanMemoryEvent_Source = perfetto_pbzero_enum_VulkanMemoryEvent::Source;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_VulkanMemoryEvent {
 enum Source : int32_t {
@@ -248,11 +254,11 @@ class VulkanMemoryEvent : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::VulkanMemoryEvent_Source,
+      VulkanMemoryEvent_Source,
       VulkanMemoryEvent>;
 
   static constexpr FieldMetadata_Source kSource{};
-  void set_source(::perfetto::protos::pbzero::VulkanMemoryEvent_Source value) {
+  void set_source(VulkanMemoryEvent_Source value) {
     static constexpr uint32_t field_id = FieldMetadata_Source::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -266,11 +272,11 @@ class VulkanMemoryEvent : public ::protozero::Message {
       2,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::VulkanMemoryEvent_Operation,
+      VulkanMemoryEvent_Operation,
       VulkanMemoryEvent>;
 
   static constexpr FieldMetadata_Operation kOperation{};
-  void set_operation(::perfetto::protos::pbzero::VulkanMemoryEvent_Operation value) {
+  void set_operation(VulkanMemoryEvent_Operation value) {
     static constexpr uint32_t field_id = FieldMetadata_Operation::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -374,11 +380,11 @@ class VulkanMemoryEvent : public ::protozero::Message {
       8,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope,
+      VulkanMemoryEvent_AllocationScope,
       VulkanMemoryEvent>;
 
   static constexpr FieldMetadata_AllocationScope kAllocationScope{};
-  void set_allocation_scope(::perfetto::protos::pbzero::VulkanMemoryEvent_AllocationScope value) {
+  void set_allocation_scope(VulkanMemoryEvent_AllocationScope value) {
     static constexpr uint32_t field_id = FieldMetadata_AllocationScope::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
