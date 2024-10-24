@@ -15,11 +15,17 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 namespace perfetto_pbzero_enum_ChromeLegacyIpc {
 enum MessageClass : int32_t;
 }  // namespace perfetto_pbzero_enum_ChromeLegacyIpc
 using ChromeLegacyIpc_MessageClass = perfetto_pbzero_enum_ChromeLegacyIpc::MessageClass;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_ChromeLegacyIpc {
 enum MessageClass : int32_t {
@@ -259,11 +265,11 @@ class ChromeLegacyIpc : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass,
+      ChromeLegacyIpc_MessageClass,
       ChromeLegacyIpc>;
 
   static constexpr FieldMetadata_MessageClass kMessageClass{};
-  void set_message_class(::perfetto::protos::pbzero::ChromeLegacyIpc_MessageClass value) {
+  void set_message_class(ChromeLegacyIpc_MessageClass value) {
     static constexpr uint32_t field_id = FieldMetadata_MessageClass::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

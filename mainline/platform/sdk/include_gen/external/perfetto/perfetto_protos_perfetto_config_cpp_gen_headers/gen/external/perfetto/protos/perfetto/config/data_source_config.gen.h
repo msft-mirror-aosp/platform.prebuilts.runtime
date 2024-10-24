@@ -19,9 +19,11 @@ class DataSourceConfig;
 class TestConfig;
 class TestConfig_DummyFields;
 class InterceptorConfig;
+class ConsoleConfig;
 class ChromeConfig;
 class SystemInfoConfig;
 enum DataSourceConfig_SessionInitiator : int;
+enum ConsoleConfig_Output : int;
 enum ChromeConfig_ClientPriority : int;
 }  // namespace perfetto
 }  // namespace protos
@@ -74,9 +76,17 @@ class PERFETTO_EXPORT_COMPONENT DataSourceConfig : public ::protozero::CppMessag
     kStatsdTracingConfigFieldNumber = 117,
     kSystemInfoConfigFieldNumber = 119,
     kChromeConfigFieldNumber = 101,
+    kV8ConfigFieldNumber = 127,
     kInterceptorConfigFieldNumber = 115,
     kNetworkPacketTraceConfigFieldNumber = 120,
     kSurfaceflingerLayersConfigFieldNumber = 121,
+    kSurfaceflingerTransactionsConfigFieldNumber = 123,
+    kAndroidSdkSyspropGuardConfigFieldNumber = 124,
+    kEtwConfigFieldNumber = 125,
+    kProtologConfigFieldNumber = 126,
+    kAndroidInputEventConfigFieldNumber = 128,
+    kPixelModemConfigFieldNumber = 129,
+    kWindowmanagerConfigFieldNumber = 130,
     kLegacyConfigFieldNumber = 1000,
     kForTestingFieldNumber = 1001,
   };
@@ -186,6 +196,9 @@ class PERFETTO_EXPORT_COMPONENT DataSourceConfig : public ::protozero::CppMessag
   const ChromeConfig& chrome_config() const { return *chrome_config_; }
   ChromeConfig* mutable_chrome_config() { _has_field_.set(101); return chrome_config_.get(); }
 
+  const std::string& v8_config_raw() const { return v8_config_; }
+  void set_v8_config_raw(const std::string& raw) { v8_config_ = raw; _has_field_.set(127); }
+
   bool has_interceptor_config() const { return _has_field_[115]; }
   const InterceptorConfig& interceptor_config() const { return *interceptor_config_; }
   InterceptorConfig* mutable_interceptor_config() { _has_field_.set(115); return interceptor_config_.get(); }
@@ -195,6 +208,27 @@ class PERFETTO_EXPORT_COMPONENT DataSourceConfig : public ::protozero::CppMessag
 
   const std::string& surfaceflinger_layers_config_raw() const { return surfaceflinger_layers_config_; }
   void set_surfaceflinger_layers_config_raw(const std::string& raw) { surfaceflinger_layers_config_ = raw; _has_field_.set(121); }
+
+  const std::string& surfaceflinger_transactions_config_raw() const { return surfaceflinger_transactions_config_; }
+  void set_surfaceflinger_transactions_config_raw(const std::string& raw) { surfaceflinger_transactions_config_ = raw; _has_field_.set(123); }
+
+  const std::string& android_sdk_sysprop_guard_config_raw() const { return android_sdk_sysprop_guard_config_; }
+  void set_android_sdk_sysprop_guard_config_raw(const std::string& raw) { android_sdk_sysprop_guard_config_ = raw; _has_field_.set(124); }
+
+  const std::string& etw_config_raw() const { return etw_config_; }
+  void set_etw_config_raw(const std::string& raw) { etw_config_ = raw; _has_field_.set(125); }
+
+  const std::string& protolog_config_raw() const { return protolog_config_; }
+  void set_protolog_config_raw(const std::string& raw) { protolog_config_ = raw; _has_field_.set(126); }
+
+  const std::string& android_input_event_config_raw() const { return android_input_event_config_; }
+  void set_android_input_event_config_raw(const std::string& raw) { android_input_event_config_ = raw; _has_field_.set(128); }
+
+  const std::string& pixel_modem_config_raw() const { return pixel_modem_config_; }
+  void set_pixel_modem_config_raw(const std::string& raw) { pixel_modem_config_ = raw; _has_field_.set(129); }
+
+  const std::string& windowmanager_config_raw() const { return windowmanager_config_; }
+  void set_windowmanager_config_raw(const std::string& raw) { windowmanager_config_ = raw; _has_field_.set(130); }
 
   bool has_legacy_config() const { return _has_field_[1000]; }
   const std::string& legacy_config() const { return legacy_config_; }
@@ -232,9 +266,17 @@ class PERFETTO_EXPORT_COMPONENT DataSourceConfig : public ::protozero::CppMessag
   std::string statsd_tracing_config_;  // [lazy=true]
   ::protozero::CopyablePtr<SystemInfoConfig> system_info_config_;
   ::protozero::CopyablePtr<ChromeConfig> chrome_config_;
+  std::string v8_config_;  // [lazy=true]
   ::protozero::CopyablePtr<InterceptorConfig> interceptor_config_;
   std::string network_packet_trace_config_;  // [lazy=true]
   std::string surfaceflinger_layers_config_;  // [lazy=true]
+  std::string surfaceflinger_transactions_config_;  // [lazy=true]
+  std::string android_sdk_sysprop_guard_config_;  // [lazy=true]
+  std::string etw_config_;  // [lazy=true]
+  std::string protolog_config_;  // [lazy=true]
+  std::string android_input_event_config_;  // [lazy=true]
+  std::string pixel_modem_config_;  // [lazy=true]
+  std::string windowmanager_config_;  // [lazy=true]
   std::string legacy_config_{};
   ::protozero::CopyablePtr<TestConfig> for_testing_;
 

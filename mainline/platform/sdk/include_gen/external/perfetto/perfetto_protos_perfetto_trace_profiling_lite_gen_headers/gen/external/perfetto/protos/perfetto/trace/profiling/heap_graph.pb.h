@@ -131,6 +131,27 @@ inline const std::string& HeapGraphType_Kind_Name(T enum_t_value) {
 }
 bool HeapGraphType_Kind_Parse(
     ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, HeapGraphType_Kind* value);
+enum HeapGraphObject_HeapType : int {
+  HeapGraphObject_HeapType_HEAP_TYPE_UNKNOWN = 0,
+  HeapGraphObject_HeapType_HEAP_TYPE_APP = 1,
+  HeapGraphObject_HeapType_HEAP_TYPE_ZYGOTE = 2,
+  HeapGraphObject_HeapType_HEAP_TYPE_BOOT_IMAGE = 3
+};
+bool HeapGraphObject_HeapType_IsValid(int value);
+constexpr HeapGraphObject_HeapType HeapGraphObject_HeapType_HeapType_MIN = HeapGraphObject_HeapType_HEAP_TYPE_UNKNOWN;
+constexpr HeapGraphObject_HeapType HeapGraphObject_HeapType_HeapType_MAX = HeapGraphObject_HeapType_HEAP_TYPE_BOOT_IMAGE;
+constexpr int HeapGraphObject_HeapType_HeapType_ARRAYSIZE = HeapGraphObject_HeapType_HeapType_MAX + 1;
+
+const std::string& HeapGraphObject_HeapType_Name(HeapGraphObject_HeapType value);
+template<typename T>
+inline const std::string& HeapGraphObject_HeapType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, HeapGraphObject_HeapType>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function HeapGraphObject_HeapType_Name.");
+  return HeapGraphObject_HeapType_Name(static_cast<HeapGraphObject_HeapType>(enum_t_value));
+}
+bool HeapGraphObject_HeapType_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, HeapGraphObject_HeapType* value);
 // ===================================================================
 
 class HeapGraphRoot final :
@@ -785,6 +806,36 @@ class HeapGraphObject final :
 
   // nested types ----------------------------------------------------
 
+  typedef HeapGraphObject_HeapType HeapType;
+  static constexpr HeapType HEAP_TYPE_UNKNOWN =
+    HeapGraphObject_HeapType_HEAP_TYPE_UNKNOWN;
+  static constexpr HeapType HEAP_TYPE_APP =
+    HeapGraphObject_HeapType_HEAP_TYPE_APP;
+  static constexpr HeapType HEAP_TYPE_ZYGOTE =
+    HeapGraphObject_HeapType_HEAP_TYPE_ZYGOTE;
+  static constexpr HeapType HEAP_TYPE_BOOT_IMAGE =
+    HeapGraphObject_HeapType_HEAP_TYPE_BOOT_IMAGE;
+  static inline bool HeapType_IsValid(int value) {
+    return HeapGraphObject_HeapType_IsValid(value);
+  }
+  static constexpr HeapType HeapType_MIN =
+    HeapGraphObject_HeapType_HeapType_MIN;
+  static constexpr HeapType HeapType_MAX =
+    HeapGraphObject_HeapType_HeapType_MAX;
+  static constexpr int HeapType_ARRAYSIZE =
+    HeapGraphObject_HeapType_HeapType_ARRAYSIZE;
+  template<typename T>
+  static inline const std::string& HeapType_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, HeapType>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function HeapType_Name.");
+    return HeapGraphObject_HeapType_Name(enum_t_value);
+  }
+  static inline bool HeapType_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      HeapType* value) {
+    return HeapGraphObject_HeapType_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
@@ -794,6 +845,7 @@ class HeapGraphObject final :
     kSelfSizeFieldNumber = 3,
     kReferenceFieldIdBaseFieldNumber = 6,
     kNativeAllocationRegistrySizeFieldFieldNumber = 8,
+    kHeapTypeDeltaFieldNumber = 9,
     kIdFieldNumber = 1,
     kIdDeltaFieldNumber = 7,
   };
@@ -893,6 +945,19 @@ class HeapGraphObject final :
   void _internal_set_native_allocation_registry_size_field(::int64_t value);
   public:
 
+  // optional .perfetto.protos.HeapGraphObject.HeapType heap_type_delta = 9;
+  bool has_heap_type_delta() const;
+  private:
+  bool _internal_has_heap_type_delta() const;
+  public:
+  void clear_heap_type_delta();
+  ::perfetto::protos::HeapGraphObject_HeapType heap_type_delta() const;
+  void set_heap_type_delta(::perfetto::protos::HeapGraphObject_HeapType value);
+  private:
+  ::perfetto::protos::HeapGraphObject_HeapType _internal_heap_type_delta() const;
+  void _internal_set_heap_type_delta(::perfetto::protos::HeapGraphObject_HeapType value);
+  public:
+
   // uint64 id = 1;
   bool has_id() const;
   private:
@@ -944,6 +1009,7 @@ class HeapGraphObject final :
     ::uint64_t self_size_;
     ::uint64_t reference_field_id_base_;
     ::int64_t native_allocation_registry_size_field_;
+    int heap_type_delta_;
     union IdentifierUnion {
       constexpr IdentifierUnion() : _constinit_{} {}
         ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
@@ -1893,6 +1959,35 @@ inline void HeapGraphObject::set_native_allocation_registry_size_field(::int64_t
   // @@protoc_insertion_point(field_set:perfetto.protos.HeapGraphObject.native_allocation_registry_size_field)
 }
 
+// optional .perfetto.protos.HeapGraphObject.HeapType heap_type_delta = 9;
+inline bool HeapGraphObject::_internal_has_heap_type_delta() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool HeapGraphObject::has_heap_type_delta() const {
+  return _internal_has_heap_type_delta();
+}
+inline void HeapGraphObject::clear_heap_type_delta() {
+  _impl_.heap_type_delta_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline ::perfetto::protos::HeapGraphObject_HeapType HeapGraphObject::_internal_heap_type_delta() const {
+  return static_cast< ::perfetto::protos::HeapGraphObject_HeapType >(_impl_.heap_type_delta_);
+}
+inline ::perfetto::protos::HeapGraphObject_HeapType HeapGraphObject::heap_type_delta() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.HeapGraphObject.heap_type_delta)
+  return _internal_heap_type_delta();
+}
+inline void HeapGraphObject::_internal_set_heap_type_delta(::perfetto::protos::HeapGraphObject_HeapType value) {
+  assert(::perfetto::protos::HeapGraphObject_HeapType_IsValid(value));
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.heap_type_delta_ = value;
+}
+inline void HeapGraphObject::set_heap_type_delta(::perfetto::protos::HeapGraphObject_HeapType value) {
+  _internal_set_heap_type_delta(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.HeapGraphObject.heap_type_delta)
+}
+
 inline bool HeapGraphObject::has_identifier() const {
   return identifier_case() != IDENTIFIER_NOT_SET;
 }
@@ -2203,6 +2298,7 @@ PROTOBUF_NAMESPACE_OPEN
 
 template <> struct is_proto_enum< ::perfetto::protos::HeapGraphRoot_Type> : ::std::true_type {};
 template <> struct is_proto_enum< ::perfetto::protos::HeapGraphType_Kind> : ::std::true_type {};
+template <> struct is_proto_enum< ::perfetto::protos::HeapGraphObject_HeapType> : ::std::true_type {};
 
 PROTOBUF_NAMESPACE_CLOSE
 
