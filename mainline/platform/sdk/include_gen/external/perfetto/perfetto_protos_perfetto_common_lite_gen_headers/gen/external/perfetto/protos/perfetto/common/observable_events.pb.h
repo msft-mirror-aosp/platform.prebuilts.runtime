@@ -406,8 +406,27 @@ class ObservableEvents_CloneTriggerHit final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kTriggerNameFieldNumber = 2,
     kTracingSessionIdFieldNumber = 1,
   };
+  // optional string trigger_name = 2;
+  bool has_trigger_name() const;
+  private:
+  bool _internal_has_trigger_name() const;
+  public:
+  void clear_trigger_name();
+  const std::string& trigger_name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_trigger_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_trigger_name();
+  PROTOBUF_NODISCARD std::string* release_trigger_name();
+  void set_allocated_trigger_name(std::string* trigger_name);
+  private:
+  const std::string& _internal_trigger_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_trigger_name(const std::string& value);
+  std::string* _internal_mutable_trigger_name();
+  public:
+
   // optional int64 tracing_session_id = 1;
   bool has_tracing_session_id() const;
   private:
@@ -431,6 +450,7 @@ class ObservableEvents_CloneTriggerHit final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr trigger_name_;
     ::int64_t tracing_session_id_;
   };
   union { Impl_ _impl_; };
@@ -863,7 +883,7 @@ inline void ObservableEvents_DataSourceInstanceStateChange::set_state(::perfetto
 
 // optional int64 tracing_session_id = 1;
 inline bool ObservableEvents_CloneTriggerHit::_internal_has_tracing_session_id() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
   return value;
 }
 inline bool ObservableEvents_CloneTriggerHit::has_tracing_session_id() const {
@@ -871,7 +891,7 @@ inline bool ObservableEvents_CloneTriggerHit::has_tracing_session_id() const {
 }
 inline void ObservableEvents_CloneTriggerHit::clear_tracing_session_id() {
   _impl_.tracing_session_id_ = ::int64_t{0};
-  _impl_._has_bits_[0] &= ~0x00000001u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 inline ::int64_t ObservableEvents_CloneTriggerHit::_internal_tracing_session_id() const {
   return _impl_.tracing_session_id_;
@@ -881,12 +901,80 @@ inline ::int64_t ObservableEvents_CloneTriggerHit::tracing_session_id() const {
   return _internal_tracing_session_id();
 }
 inline void ObservableEvents_CloneTriggerHit::_internal_set_tracing_session_id(::int64_t value) {
-  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_._has_bits_[0] |= 0x00000002u;
   _impl_.tracing_session_id_ = value;
 }
 inline void ObservableEvents_CloneTriggerHit::set_tracing_session_id(::int64_t value) {
   _internal_set_tracing_session_id(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.ObservableEvents.CloneTriggerHit.tracing_session_id)
+}
+
+// optional string trigger_name = 2;
+inline bool ObservableEvents_CloneTriggerHit::_internal_has_trigger_name() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool ObservableEvents_CloneTriggerHit::has_trigger_name() const {
+  return _internal_has_trigger_name();
+}
+inline void ObservableEvents_CloneTriggerHit::clear_trigger_name() {
+  _impl_.trigger_name_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& ObservableEvents_CloneTriggerHit::trigger_name() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ObservableEvents.CloneTriggerHit.trigger_name)
+  return _internal_trigger_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ObservableEvents_CloneTriggerHit::set_trigger_name(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.trigger_name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.ObservableEvents.CloneTriggerHit.trigger_name)
+}
+inline std::string* ObservableEvents_CloneTriggerHit::mutable_trigger_name() {
+  std::string* _s = _internal_mutable_trigger_name();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.ObservableEvents.CloneTriggerHit.trigger_name)
+  return _s;
+}
+inline const std::string& ObservableEvents_CloneTriggerHit::_internal_trigger_name() const {
+  return _impl_.trigger_name_.Get();
+}
+inline void ObservableEvents_CloneTriggerHit::_internal_set_trigger_name(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.trigger_name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ObservableEvents_CloneTriggerHit::_internal_mutable_trigger_name() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.trigger_name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ObservableEvents_CloneTriggerHit::release_trigger_name() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.ObservableEvents.CloneTriggerHit.trigger_name)
+  if (!_internal_has_trigger_name()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.trigger_name_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.trigger_name_.IsDefault()) {
+    _impl_.trigger_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void ObservableEvents_CloneTriggerHit::set_allocated_trigger_name(std::string* trigger_name) {
+  if (trigger_name != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.trigger_name_.SetAllocated(trigger_name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.trigger_name_.IsDefault()) {
+    _impl_.trigger_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.ObservableEvents.CloneTriggerHit.trigger_name)
 }
 
 // -------------------------------------------------------------------

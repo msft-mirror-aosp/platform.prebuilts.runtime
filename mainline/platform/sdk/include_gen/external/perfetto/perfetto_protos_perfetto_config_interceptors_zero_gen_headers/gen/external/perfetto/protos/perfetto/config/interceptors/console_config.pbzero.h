@@ -15,11 +15,17 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 namespace perfetto_pbzero_enum_ConsoleConfig {
 enum Output : int32_t;
 }  // namespace perfetto_pbzero_enum_ConsoleConfig
 using ConsoleConfig_Output = perfetto_pbzero_enum_ConsoleConfig::Output;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_ConsoleConfig {
 enum Output : int32_t {
@@ -84,11 +90,11 @@ class ConsoleConfig : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ConsoleConfig_Output,
+      ConsoleConfig_Output,
       ConsoleConfig>;
 
   static constexpr FieldMetadata_Output kOutput{};
-  void set_output(::perfetto::protos::pbzero::ConsoleConfig_Output value) {
+  void set_output(ConsoleConfig_Output value) {
     static constexpr uint32_t field_id = FieldMetadata_Output::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

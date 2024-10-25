@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 namespace perfetto_pbzero_enum_ChromeFrameReporter {
 enum FrameDropReason : int32_t;
 }  // namespace perfetto_pbzero_enum_ChromeFrameReporter
@@ -32,6 +31,13 @@ namespace perfetto_pbzero_enum_ChromeFrameReporter {
 enum State : int32_t;
 }  // namespace perfetto_pbzero_enum_ChromeFrameReporter
 using ChromeFrameReporter_State = perfetto_pbzero_enum_ChromeFrameReporter::State;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_ChromeFrameReporter {
 enum State : int32_t {
@@ -157,7 +163,7 @@ const char* ChromeFrameReporter_FrameType_Name(::perfetto::protos::pbzero::Chrom
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class ChromeFrameReporter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/14, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class ChromeFrameReporter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/16, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   ChromeFrameReporter_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ChromeFrameReporter_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -190,6 +196,10 @@ class ChromeFrameReporter_Decoder : public ::protozero::TypedProtoDecoder</*MAX_
   int32_t frame_type() const { return at<13>().as_int32(); }
   bool has_high_latency_contribution_stage() const { return at<14>().valid(); }
   ::protozero::RepeatedFieldIterator<::protozero::ConstChars> high_latency_contribution_stage() const { return GetRepeated<::protozero::ConstChars>(14); }
+  bool has_checkerboarded_needs_raster() const { return at<15>().valid(); }
+  bool checkerboarded_needs_raster() const { return at<15>().as_bool(); }
+  bool has_checkerboarded_needs_record() const { return at<16>().valid(); }
+  bool checkerboarded_needs_record() const { return at<16>().as_bool(); }
 };
 
 class ChromeFrameReporter : public ::protozero::Message {
@@ -210,6 +220,8 @@ class ChromeFrameReporter : public ::protozero::Message {
     kHasHighLatencyFieldNumber = 12,
     kFrameTypeFieldNumber = 13,
     kHighLatencyContributionStageFieldNumber = 14,
+    kCheckerboardedNeedsRasterFieldNumber = 15,
+    kCheckerboardedNeedsRecordFieldNumber = 16,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.ChromeFrameReporter"; }
 
@@ -253,11 +265,11 @@ class ChromeFrameReporter : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeFrameReporter_State,
+      ChromeFrameReporter_State,
       ChromeFrameReporter>;
 
   static constexpr FieldMetadata_State kState{};
-  void set_state(::perfetto::protos::pbzero::ChromeFrameReporter_State value) {
+  void set_state(ChromeFrameReporter_State value) {
     static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -271,11 +283,11 @@ class ChromeFrameReporter : public ::protozero::Message {
       2,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeFrameReporter_FrameDropReason,
+      ChromeFrameReporter_FrameDropReason,
       ChromeFrameReporter>;
 
   static constexpr FieldMetadata_Reason kReason{};
-  void set_reason(::perfetto::protos::pbzero::ChromeFrameReporter_FrameDropReason value) {
+  void set_reason(ChromeFrameReporter_FrameDropReason value) {
     static constexpr uint32_t field_id = FieldMetadata_Reason::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -343,11 +355,11 @@ class ChromeFrameReporter : public ::protozero::Message {
       6,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeFrameReporter_ScrollState,
+      ChromeFrameReporter_ScrollState,
       ChromeFrameReporter>;
 
   static constexpr FieldMetadata_ScrollState kScrollState{};
-  void set_scroll_state(::perfetto::protos::pbzero::ChromeFrameReporter_ScrollState value) {
+  void set_scroll_state(ChromeFrameReporter_ScrollState value) {
     static constexpr uint32_t field_id = FieldMetadata_ScrollState::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -469,11 +481,11 @@ class ChromeFrameReporter : public ::protozero::Message {
       13,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeFrameReporter_FrameType,
+      ChromeFrameReporter_FrameType,
       ChromeFrameReporter>;
 
   static constexpr FieldMetadata_FrameType kFrameType{};
-  void set_frame_type(::perfetto::protos::pbzero::ChromeFrameReporter_FrameType value) {
+  void set_frame_type(ChromeFrameReporter_FrameType value) {
     static constexpr uint32_t field_id = FieldMetadata_FrameType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -503,6 +515,42 @@ class ChromeFrameReporter : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_CheckerboardedNeedsRaster =
+    ::protozero::proto_utils::FieldMetadata<
+      15,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      ChromeFrameReporter>;
+
+  static constexpr FieldMetadata_CheckerboardedNeedsRaster kCheckerboardedNeedsRaster{};
+  void set_checkerboarded_needs_raster(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_CheckerboardedNeedsRaster::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_CheckerboardedNeedsRecord =
+    ::protozero::proto_utils::FieldMetadata<
+      16,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      ChromeFrameReporter>;
+
+  static constexpr FieldMetadata_CheckerboardedNeedsRecord kCheckerboardedNeedsRecord{};
+  void set_checkerboarded_needs_record(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_CheckerboardedNeedsRecord::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
         ::Append(*this, field_id, value);
   }
 };

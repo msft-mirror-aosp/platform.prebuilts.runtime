@@ -679,6 +679,7 @@ class PerfEventConfig final :
     kExcludePidFieldNumber = 6,
     kExcludeCmdlineFieldNumber = 7,
     kTargetInstalledByFieldNumber = 18,
+    kFollowersFieldNumber = 19,
     kTimebaseFieldNumber = 15,
     kCallstackSamplingFieldNumber = 16,
     kSamplingFrequencyFieldNumber = 2,
@@ -807,6 +808,24 @@ class PerfEventConfig final :
   const std::string& _internal_target_installed_by(int index) const;
   std::string* _internal_add_target_installed_by();
   public:
+
+  // repeated .perfetto.protos.FollowerEvent followers = 19;
+  int followers_size() const;
+  private:
+  int _internal_followers_size() const;
+  public:
+  void clear_followers();
+  ::perfetto::protos::FollowerEvent* mutable_followers(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FollowerEvent >*
+      mutable_followers();
+  private:
+  const ::perfetto::protos::FollowerEvent& _internal_followers(int index) const;
+  ::perfetto::protos::FollowerEvent* _internal_add_followers();
+  public:
+  const ::perfetto::protos::FollowerEvent& followers(int index) const;
+  ::perfetto::protos::FollowerEvent* add_followers();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FollowerEvent >&
+      followers() const;
 
   // optional .perfetto.protos.PerfEvents.Timebase timebase = 15;
   bool has_timebase() const;
@@ -989,6 +1008,7 @@ class PerfEventConfig final :
     ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::int32_t > exclude_pid_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> exclude_cmdline_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> target_installed_by_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FollowerEvent > followers_;
     ::perfetto::protos::PerfEvents_Timebase* timebase_;
     ::perfetto::protos::PerfEventConfig_CallstackSampling* callstack_sampling_;
     ::uint32_t sampling_frequency_;
@@ -1556,6 +1576,43 @@ inline void PerfEventConfig::set_allocated_timebase(::perfetto::protos::PerfEven
   }
   _impl_.timebase_ = timebase;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.PerfEventConfig.timebase)
+}
+
+// repeated .perfetto.protos.FollowerEvent followers = 19;
+inline int PerfEventConfig::_internal_followers_size() const {
+  return _impl_.followers_.size();
+}
+inline int PerfEventConfig::followers_size() const {
+  return _internal_followers_size();
+}
+inline ::perfetto::protos::FollowerEvent* PerfEventConfig::mutable_followers(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.PerfEventConfig.followers)
+  return _impl_.followers_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FollowerEvent >*
+PerfEventConfig::mutable_followers() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.PerfEventConfig.followers)
+  return &_impl_.followers_;
+}
+inline const ::perfetto::protos::FollowerEvent& PerfEventConfig::_internal_followers(int index) const {
+  return _impl_.followers_.Get(index);
+}
+inline const ::perfetto::protos::FollowerEvent& PerfEventConfig::followers(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.PerfEventConfig.followers)
+  return _internal_followers(index);
+}
+inline ::perfetto::protos::FollowerEvent* PerfEventConfig::_internal_add_followers() {
+  return _impl_.followers_.Add();
+}
+inline ::perfetto::protos::FollowerEvent* PerfEventConfig::add_followers() {
+  ::perfetto::protos::FollowerEvent* _add = _internal_add_followers();
+  // @@protoc_insertion_point(field_add:perfetto.protos.PerfEventConfig.followers)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FollowerEvent >&
+PerfEventConfig::followers() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.PerfEventConfig.followers)
+  return _impl_.followers_;
 }
 
 // optional .perfetto.protos.PerfEventConfig.CallstackSampling callstack_sampling = 16;

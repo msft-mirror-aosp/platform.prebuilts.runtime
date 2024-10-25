@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class ChromeHistorgramTranslationTable;
 class ChromeHistorgramTranslationTable_HashToNameEntry;
 class ChromePerformanceMarkTranslationTable;
@@ -23,8 +22,121 @@ class ChromePerformanceMarkTranslationTable_MarkHashToNameEntry;
 class ChromePerformanceMarkTranslationTable_SiteHashToNameEntry;
 class ChromeUserEventTranslationTable;
 class ChromeUserEventTranslationTable_ActionHashToNameEntry;
+class ProcessTrackNameTranslationTable;
+class ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry;
 class SliceNameTranslationTable;
 class SliceNameTranslationTable_RawToDeobfuscatedNameEntry;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
+
+class ProcessTrackNameTranslationTable_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+ public:
+  ProcessTrackNameTranslationTable_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit ProcessTrackNameTranslationTable_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit ProcessTrackNameTranslationTable_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_raw_to_deobfuscated_name() const { return at<1>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> raw_to_deobfuscated_name() const { return GetRepeated<::protozero::ConstBytes>(1); }
+};
+
+class ProcessTrackNameTranslationTable : public ::protozero::Message {
+ public:
+  using Decoder = ProcessTrackNameTranslationTable_Decoder;
+  enum : int32_t {
+    kRawToDeobfuscatedNameFieldNumber = 1,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProcessTrackNameTranslationTable"; }
+
+  using RawToDeobfuscatedNameEntry = ::perfetto::protos::pbzero::ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry;
+
+  using FieldMetadata_RawToDeobfuscatedName =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry,
+      ProcessTrackNameTranslationTable>;
+
+  static constexpr FieldMetadata_RawToDeobfuscatedName kRawToDeobfuscatedName{};
+  template <typename T = ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry> T* add_raw_to_deobfuscated_name() {
+    return BeginNestedMessage<T>(1);
+  }
+
+};
+
+class ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_key() const { return at<1>().valid(); }
+  ::protozero::ConstChars key() const { return at<1>().as_string(); }
+  bool has_value() const { return at<2>().valid(); }
+  ::protozero::ConstChars value() const { return at<2>().as_string(); }
+};
+
+class ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry : public ::protozero::Message {
+ public:
+  using Decoder = ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_Decoder;
+  enum : int32_t {
+    kKeyFieldNumber = 1,
+    kValueFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.ProcessTrackNameTranslationTable.RawToDeobfuscatedNameEntry"; }
+
+
+  using FieldMetadata_Key =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry>;
+
+  static constexpr FieldMetadata_Key kKey{};
+  void set_key(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Key::kFieldId, data, size);
+  }
+  void set_key(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Key::kFieldId, chars.data, chars.size);
+  }
+  void set_key(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Key::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Value =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry>;
+
+  static constexpr FieldMetadata_Value kValue{};
+  void set_value(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Value::kFieldId, data, size);
+  }
+  void set_value(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Value::kFieldId, chars.data, chars.size);
+  }
+  void set_value(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Value::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+};
 
 class SliceNameTranslationTable_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -506,7 +618,7 @@ class ChromeHistorgramTranslationTable_HashToNameEntry : public ::protozero::Mes
   }
 };
 
-class TranslationTable_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class TranslationTable_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   TranslationTable_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TranslationTable_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -519,6 +631,8 @@ class TranslationTable_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIE
   ::protozero::ConstBytes chrome_performance_mark() const { return at<3>().as_bytes(); }
   bool has_slice_name() const { return at<4>().valid(); }
   ::protozero::ConstBytes slice_name() const { return at<4>().as_bytes(); }
+  bool has_process_track_name() const { return at<5>().valid(); }
+  ::protozero::ConstBytes process_track_name() const { return at<5>().as_bytes(); }
 };
 
 class TranslationTable : public ::protozero::Message {
@@ -529,6 +643,7 @@ class TranslationTable : public ::protozero::Message {
     kChromeUserEventFieldNumber = 2,
     kChromePerformanceMarkFieldNumber = 3,
     kSliceNameFieldNumber = 4,
+    kProcessTrackNameFieldNumber = 5,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.TranslationTable"; }
 
@@ -586,6 +701,20 @@ class TranslationTable : public ::protozero::Message {
   static constexpr FieldMetadata_SliceName kSliceName{};
   template <typename T = SliceNameTranslationTable> T* set_slice_name() {
     return BeginNestedMessage<T>(4);
+  }
+
+
+  using FieldMetadata_ProcessTrackName =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ProcessTrackNameTranslationTable,
+      TranslationTable>;
+
+  static constexpr FieldMetadata_ProcessTrackName kProcessTrackName{};
+  template <typename T = ProcessTrackNameTranslationTable> T* set_process_track_name() {
+    return BeginNestedMessage<T>(5);
   }
 
 };

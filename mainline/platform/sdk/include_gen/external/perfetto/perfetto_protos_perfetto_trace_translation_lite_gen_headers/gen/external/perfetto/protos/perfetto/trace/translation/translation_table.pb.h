@@ -68,6 +68,12 @@ extern ChromeUserEventTranslationTableDefaultTypeInternal _ChromeUserEventTransl
 class ChromeUserEventTranslationTable_ActionHashToNameEntry_DoNotUse;
 struct ChromeUserEventTranslationTable_ActionHashToNameEntry_DoNotUseDefaultTypeInternal;
 extern ChromeUserEventTranslationTable_ActionHashToNameEntry_DoNotUseDefaultTypeInternal _ChromeUserEventTranslationTable_ActionHashToNameEntry_DoNotUse_default_instance_;
+class ProcessTrackNameTranslationTable;
+struct ProcessTrackNameTranslationTableDefaultTypeInternal;
+extern ProcessTrackNameTranslationTableDefaultTypeInternal _ProcessTrackNameTranslationTable_default_instance_;
+class ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse;
+struct ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUseDefaultTypeInternal;
+extern ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUseDefaultTypeInternal _ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse_default_instance_;
 class SliceNameTranslationTable;
 struct SliceNameTranslationTableDefaultTypeInternal;
 extern SliceNameTranslationTableDefaultTypeInternal _SliceNameTranslationTable_default_instance_;
@@ -87,6 +93,8 @@ template<> ::perfetto::protos::ChromePerformanceMarkTranslationTable_MarkHashToN
 template<> ::perfetto::protos::ChromePerformanceMarkTranslationTable_SiteHashToNameEntry_DoNotUse* Arena::CreateMaybeMessage<::perfetto::protos::ChromePerformanceMarkTranslationTable_SiteHashToNameEntry_DoNotUse>(Arena*);
 template<> ::perfetto::protos::ChromeUserEventTranslationTable* Arena::CreateMaybeMessage<::perfetto::protos::ChromeUserEventTranslationTable>(Arena*);
 template<> ::perfetto::protos::ChromeUserEventTranslationTable_ActionHashToNameEntry_DoNotUse* Arena::CreateMaybeMessage<::perfetto::protos::ChromeUserEventTranslationTable_ActionHashToNameEntry_DoNotUse>(Arena*);
+template<> ::perfetto::protos::ProcessTrackNameTranslationTable* Arena::CreateMaybeMessage<::perfetto::protos::ProcessTrackNameTranslationTable>(Arena*);
+template<> ::perfetto::protos::ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse* Arena::CreateMaybeMessage<::perfetto::protos::ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse>(Arena*);
 template<> ::perfetto::protos::SliceNameTranslationTable* Arena::CreateMaybeMessage<::perfetto::protos::SliceNameTranslationTable>(Arena*);
 template<> ::perfetto::protos::SliceNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse* Arena::CreateMaybeMessage<::perfetto::protos::SliceNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse>(Arena*);
 template<> ::perfetto::protos::TranslationTable* Arena::CreateMaybeMessage<::perfetto::protos::TranslationTable>(Arena*);
@@ -143,6 +151,7 @@ class TranslationTable final :
     kChromeUserEvent = 2,
     kChromePerformanceMark = 3,
     kSliceName = 4,
+    kProcessTrackName = 5,
     TABLE_NOT_SET = 0,
   };
 
@@ -222,6 +231,7 @@ class TranslationTable final :
     kChromeUserEventFieldNumber = 2,
     kChromePerformanceMarkFieldNumber = 3,
     kSliceNameFieldNumber = 4,
+    kProcessTrackNameFieldNumber = 5,
   };
   // .perfetto.protos.ChromeHistorgramTranslationTable chrome_histogram = 1;
   bool has_chrome_histogram() const;
@@ -295,6 +305,24 @@ class TranslationTable final :
       ::perfetto::protos::SliceNameTranslationTable* slice_name);
   ::perfetto::protos::SliceNameTranslationTable* unsafe_arena_release_slice_name();
 
+  // .perfetto.protos.ProcessTrackNameTranslationTable process_track_name = 5;
+  bool has_process_track_name() const;
+  private:
+  bool _internal_has_process_track_name() const;
+  public:
+  void clear_process_track_name();
+  const ::perfetto::protos::ProcessTrackNameTranslationTable& process_track_name() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::ProcessTrackNameTranslationTable* release_process_track_name();
+  ::perfetto::protos::ProcessTrackNameTranslationTable* mutable_process_track_name();
+  void set_allocated_process_track_name(::perfetto::protos::ProcessTrackNameTranslationTable* process_track_name);
+  private:
+  const ::perfetto::protos::ProcessTrackNameTranslationTable& _internal_process_track_name() const;
+  ::perfetto::protos::ProcessTrackNameTranslationTable* _internal_mutable_process_track_name();
+  public:
+  void unsafe_arena_set_allocated_process_track_name(
+      ::perfetto::protos::ProcessTrackNameTranslationTable* process_track_name);
+  ::perfetto::protos::ProcessTrackNameTranslationTable* unsafe_arena_release_process_track_name();
+
   void clear_table();
   TableCase table_case() const;
   // @@protoc_insertion_point(class_scope:perfetto.protos.TranslationTable)
@@ -304,6 +332,7 @@ class TranslationTable final :
   void set_has_chrome_user_event();
   void set_has_chrome_performance_mark();
   void set_has_slice_name();
+  void set_has_process_track_name();
 
   inline bool has_table() const;
   inline void clear_has_table();
@@ -319,6 +348,7 @@ class TranslationTable final :
       ::perfetto::protos::ChromeUserEventTranslationTable* chrome_user_event_;
       ::perfetto::protos::ChromePerformanceMarkTranslationTable* chrome_performance_mark_;
       ::perfetto::protos::SliceNameTranslationTable* slice_name_;
+      ::perfetto::protos::ProcessTrackNameTranslationTable* process_track_name_;
     } table_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::uint32_t _oneof_case_[1];
@@ -1076,6 +1106,182 @@ class SliceNameTranslationTable final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftranslation_2ftranslation_5ftable_2eproto;
 };
+// -------------------------------------------------------------------
+
+class ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntryLite<ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntryLite<ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> SuperType;
+  ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse();
+  explicit PROTOBUF_CONSTEXPR ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse& other);
+  static const ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse*>(&_ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(void*) { return true; }
+  static bool ValidateValue(void*) { return true; }
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftranslation_2ftranslation_5ftable_2eproto;
+};
+
+// -------------------------------------------------------------------
+
+class ProcessTrackNameTranslationTable final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.ProcessTrackNameTranslationTable) */ {
+ public:
+  inline ProcessTrackNameTranslationTable() : ProcessTrackNameTranslationTable(nullptr) {}
+  ~ProcessTrackNameTranslationTable() override;
+  explicit PROTOBUF_CONSTEXPR ProcessTrackNameTranslationTable(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ProcessTrackNameTranslationTable(const ProcessTrackNameTranslationTable& from);
+  ProcessTrackNameTranslationTable(ProcessTrackNameTranslationTable&& from) noexcept
+    : ProcessTrackNameTranslationTable() {
+    *this = ::std::move(from);
+  }
+
+  inline ProcessTrackNameTranslationTable& operator=(const ProcessTrackNameTranslationTable& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline ProcessTrackNameTranslationTable& operator=(ProcessTrackNameTranslationTable&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const ProcessTrackNameTranslationTable& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ProcessTrackNameTranslationTable* internal_default_instance() {
+    return reinterpret_cast<const ProcessTrackNameTranslationTable*>(
+               &_ProcessTrackNameTranslationTable_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(ProcessTrackNameTranslationTable& a, ProcessTrackNameTranslationTable& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ProcessTrackNameTranslationTable* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ProcessTrackNameTranslationTable* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ProcessTrackNameTranslationTable* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ProcessTrackNameTranslationTable>(arena);
+  }
+  ProcessTrackNameTranslationTable* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const ProcessTrackNameTranslationTable& from);
+  void MergeFrom(const ProcessTrackNameTranslationTable& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(ProcessTrackNameTranslationTable* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.ProcessTrackNameTranslationTable";
+  }
+  protected:
+  explicit ProcessTrackNameTranslationTable(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRawToDeobfuscatedNameFieldNumber = 1,
+  };
+  // map<string, string> raw_to_deobfuscated_name = 1;
+  int raw_to_deobfuscated_name_size() const;
+  private:
+  int _internal_raw_to_deobfuscated_name_size() const;
+  public:
+  void clear_raw_to_deobfuscated_name();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_raw_to_deobfuscated_name() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_raw_to_deobfuscated_name();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      raw_to_deobfuscated_name() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_raw_to_deobfuscated_name();
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.ProcessTrackNameTranslationTable)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::MapFieldLite<
+        ProcessTrackNameTranslationTable_RawToDeobfuscatedNameEntry_DoNotUse,
+        std::string, std::string,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> raw_to_deobfuscated_name_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftranslation_2ftranslation_5ftable_2eproto;
+};
 // ===================================================================
 
 
@@ -1383,6 +1589,80 @@ inline ::perfetto::protos::SliceNameTranslationTable* TranslationTable::mutable_
   return _msg;
 }
 
+// .perfetto.protos.ProcessTrackNameTranslationTable process_track_name = 5;
+inline bool TranslationTable::_internal_has_process_track_name() const {
+  return table_case() == kProcessTrackName;
+}
+inline bool TranslationTable::has_process_track_name() const {
+  return _internal_has_process_track_name();
+}
+inline void TranslationTable::set_has_process_track_name() {
+  _impl_._oneof_case_[0] = kProcessTrackName;
+}
+inline void TranslationTable::clear_process_track_name() {
+  if (_internal_has_process_track_name()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.table_.process_track_name_;
+    }
+    clear_has_table();
+  }
+}
+inline ::perfetto::protos::ProcessTrackNameTranslationTable* TranslationTable::release_process_track_name() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TranslationTable.process_track_name)
+  if (_internal_has_process_track_name()) {
+    clear_has_table();
+    ::perfetto::protos::ProcessTrackNameTranslationTable* temp = _impl_.table_.process_track_name_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.table_.process_track_name_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::ProcessTrackNameTranslationTable& TranslationTable::_internal_process_track_name() const {
+  return _internal_has_process_track_name()
+      ? *_impl_.table_.process_track_name_
+      : reinterpret_cast< ::perfetto::protos::ProcessTrackNameTranslationTable&>(::perfetto::protos::_ProcessTrackNameTranslationTable_default_instance_);
+}
+inline const ::perfetto::protos::ProcessTrackNameTranslationTable& TranslationTable::process_track_name() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TranslationTable.process_track_name)
+  return _internal_process_track_name();
+}
+inline ::perfetto::protos::ProcessTrackNameTranslationTable* TranslationTable::unsafe_arena_release_process_track_name() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TranslationTable.process_track_name)
+  if (_internal_has_process_track_name()) {
+    clear_has_table();
+    ::perfetto::protos::ProcessTrackNameTranslationTable* temp = _impl_.table_.process_track_name_;
+    _impl_.table_.process_track_name_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TranslationTable::unsafe_arena_set_allocated_process_track_name(::perfetto::protos::ProcessTrackNameTranslationTable* process_track_name) {
+  clear_table();
+  if (process_track_name) {
+    set_has_process_track_name();
+    _impl_.table_.process_track_name_ = process_track_name;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TranslationTable.process_track_name)
+}
+inline ::perfetto::protos::ProcessTrackNameTranslationTable* TranslationTable::_internal_mutable_process_track_name() {
+  if (!_internal_has_process_track_name()) {
+    clear_table();
+    set_has_process_track_name();
+    _impl_.table_.process_track_name_ = CreateMaybeMessage< ::perfetto::protos::ProcessTrackNameTranslationTable >(GetArenaForAllocation());
+  }
+  return _impl_.table_.process_track_name_;
+}
+inline ::perfetto::protos::ProcessTrackNameTranslationTable* TranslationTable::mutable_process_track_name() {
+  ::perfetto::protos::ProcessTrackNameTranslationTable* _msg = _internal_mutable_process_track_name();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TranslationTable.process_track_name)
+  return _msg;
+}
+
 inline bool TranslationTable::has_table() const {
   return table_case() != TABLE_NOT_SET;
 }
@@ -1563,9 +1843,48 @@ SliceNameTranslationTable::mutable_raw_to_deobfuscated_name() {
   return _internal_mutable_raw_to_deobfuscated_name();
 }
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// ProcessTrackNameTranslationTable
+
+// map<string, string> raw_to_deobfuscated_name = 1;
+inline int ProcessTrackNameTranslationTable::_internal_raw_to_deobfuscated_name_size() const {
+  return _impl_.raw_to_deobfuscated_name_.size();
+}
+inline int ProcessTrackNameTranslationTable::raw_to_deobfuscated_name_size() const {
+  return _internal_raw_to_deobfuscated_name_size();
+}
+inline void ProcessTrackNameTranslationTable::clear_raw_to_deobfuscated_name() {
+  _impl_.raw_to_deobfuscated_name_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+ProcessTrackNameTranslationTable::_internal_raw_to_deobfuscated_name() const {
+  return _impl_.raw_to_deobfuscated_name_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+ProcessTrackNameTranslationTable::raw_to_deobfuscated_name() const {
+  // @@protoc_insertion_point(field_map:perfetto.protos.ProcessTrackNameTranslationTable.raw_to_deobfuscated_name)
+  return _internal_raw_to_deobfuscated_name();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+ProcessTrackNameTranslationTable::_internal_mutable_raw_to_deobfuscated_name() {
+  return _impl_.raw_to_deobfuscated_name_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+ProcessTrackNameTranslationTable::mutable_raw_to_deobfuscated_name() {
+  // @@protoc_insertion_point(field_mutable_map:perfetto.protos.ProcessTrackNameTranslationTable.raw_to_deobfuscated_name)
+  return _internal_mutable_raw_to_deobfuscated_name();
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

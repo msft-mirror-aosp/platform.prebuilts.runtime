@@ -15,8 +15,14 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class ConsoleConfig;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 class InterceptorConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/100, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -74,10 +80,6 @@ class InterceptorConfig : public ::protozero::Message {
   static constexpr FieldMetadata_ConsoleConfig kConsoleConfig{};
   template <typename T = ConsoleConfig> T* set_console_config() {
     return BeginNestedMessage<T>(100);
-  }
-
-  void set_console_config_raw(const std::string& raw) {
-    return AppendBytes(100, raw.data(), raw.size());
   }
 
 };
