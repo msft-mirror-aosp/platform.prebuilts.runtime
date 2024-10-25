@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class AndroidCameraFrameEvent;
 class AndroidCameraSessionStats;
 class AndroidEnergyEstimationBreakdown;
@@ -26,10 +25,12 @@ class BatteryCounters;
 class ChromeBenchmarkMetadata;
 class ChromeEventBundle;
 class ChromeMetadataPacket;
+class ChromeTrigger;
 class ClockSnapshot;
 class CpuInfo;
 class DeobfuscationMapping;
 class EntityStateResidency;
+class EtwTraceEventBundle;
 class ExtensionDescriptor;
 class FrameTimelineEvent;
 class FtraceEventBundle;
@@ -51,12 +52,19 @@ class NetworkPacketEvent;
 class PackagesList;
 class PerfSample;
 class PerfettoMetatrace;
+class PixelModemEvents;
+class PixelModemTokenDatabase;
 class PowerRails;
 class ProcessDescriptor;
 class ProcessStats;
 class ProcessTree;
 class ProfilePacket;
 class ProfiledFrameSymbols;
+class ProtoLogMessage;
+class ProtoLogViewerConfig;
+class RemoteClockSync;
+class ShellHandlerMappings;
+class ShellTransition;
 class SmapsPacket;
 class StatsdAtom;
 class StreamingAllocation;
@@ -78,8 +86,21 @@ class TransactionTraceEntry;
 class TranslationTable;
 class Trigger;
 class UiState;
+class V8CodeMove;
+class V8InternalCode;
+class V8JsCode;
+class V8RegExpCode;
+class V8WasmCode;
 class VulkanApiEvent;
 class VulkanMemoryEvent;
+class WinscopeExtensions;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_TracePacket {
 enum SequenceFlags : int32_t {
@@ -157,6 +178,8 @@ class TracePacket_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstBytes system_info() const { return at<45>().as_bytes(); }
   bool has_trigger() const { return at<46>().valid(); }
   ::protozero::ConstBytes trigger() const { return at<46>().as_bytes(); }
+  bool has_chrome_trigger() const { return at<109>().valid(); }
+  ::protozero::ConstBytes chrome_trigger() const { return at<109>().as_bytes(); }
   bool has_packages_list() const { return at<47>().valid(); }
   ::protozero::ConstBytes packages_list() const { return at<47>().as_bytes(); }
   bool has_chrome_benchmark_metadata() const { return at<48>().valid(); }
@@ -245,6 +268,34 @@ class TracePacket_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstBytes surfaceflinger_layers_snapshot() const { return at<93>().as_bytes(); }
   bool has_surfaceflinger_transactions() const { return at<94>().valid(); }
   ::protozero::ConstBytes surfaceflinger_transactions() const { return at<94>().as_bytes(); }
+  bool has_shell_transition() const { return at<96>().valid(); }
+  ::protozero::ConstBytes shell_transition() const { return at<96>().as_bytes(); }
+  bool has_shell_handler_mappings() const { return at<97>().valid(); }
+  ::protozero::ConstBytes shell_handler_mappings() const { return at<97>().as_bytes(); }
+  bool has_protolog_message() const { return at<104>().valid(); }
+  ::protozero::ConstBytes protolog_message() const { return at<104>().as_bytes(); }
+  bool has_protolog_viewer_config() const { return at<105>().valid(); }
+  ::protozero::ConstBytes protolog_viewer_config() const { return at<105>().as_bytes(); }
+  bool has_winscope_extensions() const { return at<112>().valid(); }
+  ::protozero::ConstBytes winscope_extensions() const { return at<112>().as_bytes(); }
+  bool has_etw_events() const { return at<95>().valid(); }
+  ::protozero::ConstBytes etw_events() const { return at<95>().as_bytes(); }
+  bool has_v8_js_code() const { return at<99>().valid(); }
+  ::protozero::ConstBytes v8_js_code() const { return at<99>().as_bytes(); }
+  bool has_v8_internal_code() const { return at<100>().valid(); }
+  ::protozero::ConstBytes v8_internal_code() const { return at<100>().as_bytes(); }
+  bool has_v8_wasm_code() const { return at<101>().valid(); }
+  ::protozero::ConstBytes v8_wasm_code() const { return at<101>().as_bytes(); }
+  bool has_v8_reg_exp_code() const { return at<102>().valid(); }
+  ::protozero::ConstBytes v8_reg_exp_code() const { return at<102>().as_bytes(); }
+  bool has_v8_code_move() const { return at<103>().valid(); }
+  ::protozero::ConstBytes v8_code_move() const { return at<103>().as_bytes(); }
+  bool has_remote_clock_sync() const { return at<107>().valid(); }
+  ::protozero::ConstBytes remote_clock_sync() const { return at<107>().as_bytes(); }
+  bool has_pixel_modem_events() const { return at<110>().valid(); }
+  ::protozero::ConstBytes pixel_modem_events() const { return at<110>().as_bytes(); }
+  bool has_pixel_modem_token_database() const { return at<111>().valid(); }
+  ::protozero::ConstBytes pixel_modem_token_database() const { return at<111>().as_bytes(); }
   bool has_for_testing() const { return at<900>().valid(); }
   ::protozero::ConstBytes for_testing() const { return at<900>().as_bytes(); }
   bool has_trusted_uid() const { return at<3>().valid(); }
@@ -265,6 +316,8 @@ class TracePacket_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   bool previous_packet_dropped() const { return at<42>().as_bool(); }
   bool has_first_packet_on_sequence() const { return at<87>().valid(); }
   bool first_packet_on_sequence() const { return at<87>().as_bool(); }
+  bool has_machine_id() const { return at<98>().valid(); }
+  uint32_t machine_id() const { return at<98>().as_uint32(); }
 };
 
 class TracePacket : public ::protozero::Message {
@@ -292,6 +345,7 @@ class TracePacket : public ::protozero::Message {
     kAndroidLogFieldNumber = 39,
     kSystemInfoFieldNumber = 45,
     kTriggerFieldNumber = 46,
+    kChromeTriggerFieldNumber = 109,
     kPackagesListFieldNumber = 47,
     kChromeBenchmarkMetadataFieldNumber = 48,
     kPerfettoMetatraceFieldNumber = 49,
@@ -336,6 +390,20 @@ class TracePacket : public ::protozero::Message {
     kTrackEventRangeOfInterestFieldNumber = 90,
     kSurfaceflingerLayersSnapshotFieldNumber = 93,
     kSurfaceflingerTransactionsFieldNumber = 94,
+    kShellTransitionFieldNumber = 96,
+    kShellHandlerMappingsFieldNumber = 97,
+    kProtologMessageFieldNumber = 104,
+    kProtologViewerConfigFieldNumber = 105,
+    kWinscopeExtensionsFieldNumber = 112,
+    kEtwEventsFieldNumber = 95,
+    kV8JsCodeFieldNumber = 99,
+    kV8InternalCodeFieldNumber = 100,
+    kV8WasmCodeFieldNumber = 101,
+    kV8RegExpCodeFieldNumber = 102,
+    kV8CodeMoveFieldNumber = 103,
+    kRemoteClockSyncFieldNumber = 107,
+    kPixelModemEventsFieldNumber = 110,
+    kPixelModemTokenDatabaseFieldNumber = 111,
     kForTestingFieldNumber = 900,
     kTrustedUidFieldNumber = 3,
     kTrustedPacketSequenceIdFieldNumber = 10,
@@ -346,6 +414,7 @@ class TracePacket : public ::protozero::Message {
     kTracePacketDefaultsFieldNumber = 59,
     kPreviousPacketDroppedFieldNumber = 42,
     kFirstPacketOnSequenceFieldNumber = 87,
+    kMachineIdFieldNumber = 98,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.TracePacket"; }
 
@@ -657,6 +726,20 @@ class TracePacket : public ::protozero::Message {
   static constexpr FieldMetadata_Trigger kTrigger{};
   template <typename T = Trigger> T* set_trigger() {
     return BeginNestedMessage<T>(46);
+  }
+
+
+  using FieldMetadata_ChromeTrigger =
+    ::protozero::proto_utils::FieldMetadata<
+      109,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ChromeTrigger,
+      TracePacket>;
+
+  static constexpr FieldMetadata_ChromeTrigger kChromeTrigger{};
+  template <typename T = ChromeTrigger> T* set_chrome_trigger() {
+    return BeginNestedMessage<T>(109);
   }
 
 
@@ -1296,6 +1379,202 @@ class TracePacket : public ::protozero::Message {
   }
 
 
+  using FieldMetadata_ShellTransition =
+    ::protozero::proto_utils::FieldMetadata<
+      96,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ShellTransition,
+      TracePacket>;
+
+  static constexpr FieldMetadata_ShellTransition kShellTransition{};
+  template <typename T = ShellTransition> T* set_shell_transition() {
+    return BeginNestedMessage<T>(96);
+  }
+
+
+  using FieldMetadata_ShellHandlerMappings =
+    ::protozero::proto_utils::FieldMetadata<
+      97,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ShellHandlerMappings,
+      TracePacket>;
+
+  static constexpr FieldMetadata_ShellHandlerMappings kShellHandlerMappings{};
+  template <typename T = ShellHandlerMappings> T* set_shell_handler_mappings() {
+    return BeginNestedMessage<T>(97);
+  }
+
+
+  using FieldMetadata_ProtologMessage =
+    ::protozero::proto_utils::FieldMetadata<
+      104,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ProtoLogMessage,
+      TracePacket>;
+
+  static constexpr FieldMetadata_ProtologMessage kProtologMessage{};
+  template <typename T = ProtoLogMessage> T* set_protolog_message() {
+    return BeginNestedMessage<T>(104);
+  }
+
+
+  using FieldMetadata_ProtologViewerConfig =
+    ::protozero::proto_utils::FieldMetadata<
+      105,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ProtoLogViewerConfig,
+      TracePacket>;
+
+  static constexpr FieldMetadata_ProtologViewerConfig kProtologViewerConfig{};
+  template <typename T = ProtoLogViewerConfig> T* set_protolog_viewer_config() {
+    return BeginNestedMessage<T>(105);
+  }
+
+
+  using FieldMetadata_WinscopeExtensions =
+    ::protozero::proto_utils::FieldMetadata<
+      112,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      WinscopeExtensions,
+      TracePacket>;
+
+  static constexpr FieldMetadata_WinscopeExtensions kWinscopeExtensions{};
+  template <typename T = WinscopeExtensions> T* set_winscope_extensions() {
+    return BeginNestedMessage<T>(112);
+  }
+
+
+  using FieldMetadata_EtwEvents =
+    ::protozero::proto_utils::FieldMetadata<
+      95,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      EtwTraceEventBundle,
+      TracePacket>;
+
+  static constexpr FieldMetadata_EtwEvents kEtwEvents{};
+  template <typename T = EtwTraceEventBundle> T* set_etw_events() {
+    return BeginNestedMessage<T>(95);
+  }
+
+
+  using FieldMetadata_V8JsCode =
+    ::protozero::proto_utils::FieldMetadata<
+      99,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      V8JsCode,
+      TracePacket>;
+
+  static constexpr FieldMetadata_V8JsCode kV8JsCode{};
+  template <typename T = V8JsCode> T* set_v8_js_code() {
+    return BeginNestedMessage<T>(99);
+  }
+
+
+  using FieldMetadata_V8InternalCode =
+    ::protozero::proto_utils::FieldMetadata<
+      100,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      V8InternalCode,
+      TracePacket>;
+
+  static constexpr FieldMetadata_V8InternalCode kV8InternalCode{};
+  template <typename T = V8InternalCode> T* set_v8_internal_code() {
+    return BeginNestedMessage<T>(100);
+  }
+
+
+  using FieldMetadata_V8WasmCode =
+    ::protozero::proto_utils::FieldMetadata<
+      101,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      V8WasmCode,
+      TracePacket>;
+
+  static constexpr FieldMetadata_V8WasmCode kV8WasmCode{};
+  template <typename T = V8WasmCode> T* set_v8_wasm_code() {
+    return BeginNestedMessage<T>(101);
+  }
+
+
+  using FieldMetadata_V8RegExpCode =
+    ::protozero::proto_utils::FieldMetadata<
+      102,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      V8RegExpCode,
+      TracePacket>;
+
+  static constexpr FieldMetadata_V8RegExpCode kV8RegExpCode{};
+  template <typename T = V8RegExpCode> T* set_v8_reg_exp_code() {
+    return BeginNestedMessage<T>(102);
+  }
+
+
+  using FieldMetadata_V8CodeMove =
+    ::protozero::proto_utils::FieldMetadata<
+      103,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      V8CodeMove,
+      TracePacket>;
+
+  static constexpr FieldMetadata_V8CodeMove kV8CodeMove{};
+  template <typename T = V8CodeMove> T* set_v8_code_move() {
+    return BeginNestedMessage<T>(103);
+  }
+
+
+  using FieldMetadata_RemoteClockSync =
+    ::protozero::proto_utils::FieldMetadata<
+      107,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      RemoteClockSync,
+      TracePacket>;
+
+  static constexpr FieldMetadata_RemoteClockSync kRemoteClockSync{};
+  template <typename T = RemoteClockSync> T* set_remote_clock_sync() {
+    return BeginNestedMessage<T>(107);
+  }
+
+
+  using FieldMetadata_PixelModemEvents =
+    ::protozero::proto_utils::FieldMetadata<
+      110,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      PixelModemEvents,
+      TracePacket>;
+
+  static constexpr FieldMetadata_PixelModemEvents kPixelModemEvents{};
+  template <typename T = PixelModemEvents> T* set_pixel_modem_events() {
+    return BeginNestedMessage<T>(110);
+  }
+
+
+  using FieldMetadata_PixelModemTokenDatabase =
+    ::protozero::proto_utils::FieldMetadata<
+      111,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      PixelModemTokenDatabase,
+      TracePacket>;
+
+  static constexpr FieldMetadata_PixelModemTokenDatabase kPixelModemTokenDatabase{};
+  template <typename T = PixelModemTokenDatabase> T* set_pixel_modem_token_database() {
+    return BeginNestedMessage<T>(111);
+  }
+
+
   using FieldMetadata_ForTesting =
     ::protozero::proto_utils::FieldMetadata<
       900,
@@ -1461,6 +1740,24 @@ class TracePacket : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_MachineId =
+    ::protozero::proto_utils::FieldMetadata<
+      98,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      TracePacket>;
+
+  static constexpr FieldMetadata_MachineId kMachineId{};
+  void set_machine_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_MachineId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
         ::Append(*this, field_id, value);
   }
 };

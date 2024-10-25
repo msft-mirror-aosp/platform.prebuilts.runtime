@@ -109,6 +109,7 @@ class PERFETTO_EXPORT_COMPONENT ObservableEvents_CloneTriggerHit : public ::prot
  public:
   enum FieldNumbers {
     kTracingSessionIdFieldNumber = 1,
+    kTriggerNameFieldNumber = 2,
   };
 
   ObservableEvents_CloneTriggerHit();
@@ -129,14 +130,19 @@ class PERFETTO_EXPORT_COMPONENT ObservableEvents_CloneTriggerHit : public ::prot
   int64_t tracing_session_id() const { return tracing_session_id_; }
   void set_tracing_session_id(int64_t value) { tracing_session_id_ = value; _has_field_.set(1); }
 
+  bool has_trigger_name() const { return _has_field_[2]; }
+  const std::string& trigger_name() const { return trigger_name_; }
+  void set_trigger_name(const std::string& value) { trigger_name_ = value; _has_field_.set(2); }
+
  private:
   int64_t tracing_session_id_{};
+  std::string trigger_name_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<2> _has_field_{};
+  std::bitset<3> _has_field_{};
 };
 
 

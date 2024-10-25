@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class GpuRenderStageEvent_ExtraData;
 class GpuRenderStageEvent_Specifications;
 class GpuRenderStageEvent_Specifications_ContextSpec;
@@ -28,6 +27,13 @@ namespace perfetto_pbzero_enum_InternedGraphicsContext {
 enum Api : int32_t;
 }  // namespace perfetto_pbzero_enum_InternedGraphicsContext
 using InternedGraphicsContext_Api = perfetto_pbzero_enum_InternedGraphicsContext::Api;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_InternedGpuRenderStageSpecification {
 enum RenderStageCategory : int32_t {
@@ -197,11 +203,11 @@ class InternedGpuRenderStageSpecification : public ::protozero::Message {
       4,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::InternedGpuRenderStageSpecification_RenderStageCategory,
+      InternedGpuRenderStageSpecification_RenderStageCategory,
       InternedGpuRenderStageSpecification>;
 
   static constexpr FieldMetadata_Category kCategory{};
-  void set_category(::perfetto::protos::pbzero::InternedGpuRenderStageSpecification_RenderStageCategory value) {
+  void set_category(InternedGpuRenderStageSpecification_RenderStageCategory value) {
     static constexpr uint32_t field_id = FieldMetadata_Category::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -285,11 +291,11 @@ class InternedGraphicsContext : public ::protozero::Message {
       3,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::InternedGraphicsContext_Api,
+      InternedGraphicsContext_Api,
       InternedGraphicsContext>;
 
   static constexpr FieldMetadata_Api kApi{};
-  void set_api(::perfetto::protos::pbzero::InternedGraphicsContext_Api value) {
+  void set_api(InternedGraphicsContext_Api value) {
     static constexpr uint32_t field_id = FieldMetadata_Api::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -299,7 +305,7 @@ class InternedGraphicsContext : public ::protozero::Message {
   }
 };
 
-class GpuRenderStageEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/15, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class GpuRenderStageEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/100, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   GpuRenderStageEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit GpuRenderStageEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}

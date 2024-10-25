@@ -15,13 +15,15 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class AndroidGameInterventionListConfig;
+class AndroidInputEventConfig;
 class AndroidLogConfig;
 class AndroidPolledStateConfig;
 class AndroidPowerConfig;
+class AndroidSdkSyspropGuardConfig;
 class AndroidSystemPropertyConfig;
 class ChromeConfig;
+class EtwConfig;
 class FtraceConfig;
 class GpuCounterConfig;
 class HeapprofdConfig;
@@ -31,18 +33,30 @@ class JavaHprofConfig;
 class NetworkPacketTraceConfig;
 class PackagesListConfig;
 class PerfEventConfig;
+class PixelModemConfig;
 class ProcessStatsConfig;
+class ProtoLogConfig;
 class StatsdTracingConfig;
 class SurfaceFlingerLayersConfig;
+class SurfaceFlingerTransactionsConfig;
 class SysStatsConfig;
 class SystemInfoConfig;
 class TestConfig;
 class TrackEventConfig;
+class V8Config;
 class VulkanMemoryConfig;
+class WindowManagerConfig;
 namespace perfetto_pbzero_enum_DataSourceConfig {
 enum SessionInitiator : int32_t;
 }  // namespace perfetto_pbzero_enum_DataSourceConfig
 using DataSourceConfig_SessionInitiator = perfetto_pbzero_enum_DataSourceConfig::SessionInitiator;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_DataSourceConfig {
 enum SessionInitiator : int32_t {
@@ -69,7 +83,7 @@ const char* DataSourceConfig_SessionInitiator_Name(::perfetto::protos::pbzero::D
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class DataSourceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/122, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class DataSourceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/130, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   DataSourceConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit DataSourceConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -128,12 +142,28 @@ class DataSourceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIE
   ::protozero::ConstBytes system_info_config() const { return at<119>().as_bytes(); }
   bool has_chrome_config() const { return at<101>().valid(); }
   ::protozero::ConstBytes chrome_config() const { return at<101>().as_bytes(); }
+  bool has_v8_config() const { return at<127>().valid(); }
+  ::protozero::ConstBytes v8_config() const { return at<127>().as_bytes(); }
   bool has_interceptor_config() const { return at<115>().valid(); }
   ::protozero::ConstBytes interceptor_config() const { return at<115>().as_bytes(); }
   bool has_network_packet_trace_config() const { return at<120>().valid(); }
   ::protozero::ConstBytes network_packet_trace_config() const { return at<120>().as_bytes(); }
   bool has_surfaceflinger_layers_config() const { return at<121>().valid(); }
   ::protozero::ConstBytes surfaceflinger_layers_config() const { return at<121>().as_bytes(); }
+  bool has_surfaceflinger_transactions_config() const { return at<123>().valid(); }
+  ::protozero::ConstBytes surfaceflinger_transactions_config() const { return at<123>().as_bytes(); }
+  bool has_android_sdk_sysprop_guard_config() const { return at<124>().valid(); }
+  ::protozero::ConstBytes android_sdk_sysprop_guard_config() const { return at<124>().as_bytes(); }
+  bool has_etw_config() const { return at<125>().valid(); }
+  ::protozero::ConstBytes etw_config() const { return at<125>().as_bytes(); }
+  bool has_protolog_config() const { return at<126>().valid(); }
+  ::protozero::ConstBytes protolog_config() const { return at<126>().as_bytes(); }
+  bool has_android_input_event_config() const { return at<128>().valid(); }
+  ::protozero::ConstBytes android_input_event_config() const { return at<128>().as_bytes(); }
+  bool has_pixel_modem_config() const { return at<129>().valid(); }
+  ::protozero::ConstBytes pixel_modem_config() const { return at<129>().as_bytes(); }
+  bool has_windowmanager_config() const { return at<130>().valid(); }
+  ::protozero::ConstBytes windowmanager_config() const { return at<130>().as_bytes(); }
   // field legacy_config omitted because its id is too high
   // field for_testing omitted because its id is too high
 };
@@ -169,9 +199,17 @@ class DataSourceConfig : public ::protozero::Message {
     kStatsdTracingConfigFieldNumber = 117,
     kSystemInfoConfigFieldNumber = 119,
     kChromeConfigFieldNumber = 101,
+    kV8ConfigFieldNumber = 127,
     kInterceptorConfigFieldNumber = 115,
     kNetworkPacketTraceConfigFieldNumber = 120,
     kSurfaceflingerLayersConfigFieldNumber = 121,
+    kSurfaceflingerTransactionsConfigFieldNumber = 123,
+    kAndroidSdkSyspropGuardConfigFieldNumber = 124,
+    kEtwConfigFieldNumber = 125,
+    kProtologConfigFieldNumber = 126,
+    kAndroidInputEventConfigFieldNumber = 128,
+    kPixelModemConfigFieldNumber = 129,
+    kWindowmanagerConfigFieldNumber = 130,
     kLegacyConfigFieldNumber = 1000,
     kForTestingFieldNumber = 1001,
   };
@@ -304,11 +342,11 @@ class DataSourceConfig : public ::protozero::Message {
       8,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::DataSourceConfig_SessionInitiator,
+      DataSourceConfig_SessionInitiator,
       DataSourceConfig>;
 
   static constexpr FieldMetadata_SessionInitiator kSessionInitiator{};
-  void set_session_initiator(::perfetto::protos::pbzero::DataSourceConfig_SessionInitiator value) {
+  void set_session_initiator(DataSourceConfig_SessionInitiator value) {
     static constexpr uint32_t field_id = FieldMetadata_SessionInitiator::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -669,6 +707,24 @@ class DataSourceConfig : public ::protozero::Message {
   }
 
 
+  using FieldMetadata_V8Config =
+    ::protozero::proto_utils::FieldMetadata<
+      127,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      V8Config,
+      DataSourceConfig>;
+
+  static constexpr FieldMetadata_V8Config kV8Config{};
+  template <typename T = V8Config> T* set_v8_config() {
+    return BeginNestedMessage<T>(127);
+  }
+
+  void set_v8_config_raw(const std::string& raw) {
+    return AppendBytes(127, raw.data(), raw.size());
+  }
+
+
   using FieldMetadata_InterceptorConfig =
     ::protozero::proto_utils::FieldMetadata<
       115,
@@ -716,6 +772,132 @@ class DataSourceConfig : public ::protozero::Message {
 
   void set_surfaceflinger_layers_config_raw(const std::string& raw) {
     return AppendBytes(121, raw.data(), raw.size());
+  }
+
+
+  using FieldMetadata_SurfaceflingerTransactionsConfig =
+    ::protozero::proto_utils::FieldMetadata<
+      123,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SurfaceFlingerTransactionsConfig,
+      DataSourceConfig>;
+
+  static constexpr FieldMetadata_SurfaceflingerTransactionsConfig kSurfaceflingerTransactionsConfig{};
+  template <typename T = SurfaceFlingerTransactionsConfig> T* set_surfaceflinger_transactions_config() {
+    return BeginNestedMessage<T>(123);
+  }
+
+  void set_surfaceflinger_transactions_config_raw(const std::string& raw) {
+    return AppendBytes(123, raw.data(), raw.size());
+  }
+
+
+  using FieldMetadata_AndroidSdkSyspropGuardConfig =
+    ::protozero::proto_utils::FieldMetadata<
+      124,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      AndroidSdkSyspropGuardConfig,
+      DataSourceConfig>;
+
+  static constexpr FieldMetadata_AndroidSdkSyspropGuardConfig kAndroidSdkSyspropGuardConfig{};
+  template <typename T = AndroidSdkSyspropGuardConfig> T* set_android_sdk_sysprop_guard_config() {
+    return BeginNestedMessage<T>(124);
+  }
+
+  void set_android_sdk_sysprop_guard_config_raw(const std::string& raw) {
+    return AppendBytes(124, raw.data(), raw.size());
+  }
+
+
+  using FieldMetadata_EtwConfig =
+    ::protozero::proto_utils::FieldMetadata<
+      125,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      EtwConfig,
+      DataSourceConfig>;
+
+  static constexpr FieldMetadata_EtwConfig kEtwConfig{};
+  template <typename T = EtwConfig> T* set_etw_config() {
+    return BeginNestedMessage<T>(125);
+  }
+
+  void set_etw_config_raw(const std::string& raw) {
+    return AppendBytes(125, raw.data(), raw.size());
+  }
+
+
+  using FieldMetadata_ProtologConfig =
+    ::protozero::proto_utils::FieldMetadata<
+      126,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ProtoLogConfig,
+      DataSourceConfig>;
+
+  static constexpr FieldMetadata_ProtologConfig kProtologConfig{};
+  template <typename T = ProtoLogConfig> T* set_protolog_config() {
+    return BeginNestedMessage<T>(126);
+  }
+
+  void set_protolog_config_raw(const std::string& raw) {
+    return AppendBytes(126, raw.data(), raw.size());
+  }
+
+
+  using FieldMetadata_AndroidInputEventConfig =
+    ::protozero::proto_utils::FieldMetadata<
+      128,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      AndroidInputEventConfig,
+      DataSourceConfig>;
+
+  static constexpr FieldMetadata_AndroidInputEventConfig kAndroidInputEventConfig{};
+  template <typename T = AndroidInputEventConfig> T* set_android_input_event_config() {
+    return BeginNestedMessage<T>(128);
+  }
+
+  void set_android_input_event_config_raw(const std::string& raw) {
+    return AppendBytes(128, raw.data(), raw.size());
+  }
+
+
+  using FieldMetadata_PixelModemConfig =
+    ::protozero::proto_utils::FieldMetadata<
+      129,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      PixelModemConfig,
+      DataSourceConfig>;
+
+  static constexpr FieldMetadata_PixelModemConfig kPixelModemConfig{};
+  template <typename T = PixelModemConfig> T* set_pixel_modem_config() {
+    return BeginNestedMessage<T>(129);
+  }
+
+  void set_pixel_modem_config_raw(const std::string& raw) {
+    return AppendBytes(129, raw.data(), raw.size());
+  }
+
+
+  using FieldMetadata_WindowmanagerConfig =
+    ::protozero::proto_utils::FieldMetadata<
+      130,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      WindowManagerConfig,
+      DataSourceConfig>;
+
+  static constexpr FieldMetadata_WindowmanagerConfig kWindowmanagerConfig{};
+  template <typename T = WindowManagerConfig> T* set_windowmanager_config() {
+    return BeginNestedMessage<T>(130);
+  }
+
+  void set_windowmanager_config_raw(const std::string& raw) {
+    return AppendBytes(130, raw.data(), raw.size());
   }
 
 

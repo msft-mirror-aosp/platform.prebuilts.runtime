@@ -15,11 +15,17 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 namespace perfetto_pbzero_enum_ChromeApplicationStateInfo {
 enum ChromeApplicationState : int32_t;
 }  // namespace perfetto_pbzero_enum_ChromeApplicationStateInfo
 using ChromeApplicationStateInfo_ChromeApplicationState = perfetto_pbzero_enum_ChromeApplicationStateInfo::ChromeApplicationState;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_ChromeApplicationStateInfo {
 enum ChromeApplicationState : int32_t {
@@ -91,11 +97,11 @@ class ChromeApplicationStateInfo : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState,
+      ChromeApplicationStateInfo_ChromeApplicationState,
       ChromeApplicationStateInfo>;
 
   static constexpr FieldMetadata_ApplicationState kApplicationState{};
-  void set_application_state(::perfetto::protos::pbzero::ChromeApplicationStateInfo_ChromeApplicationState value) {
+  void set_application_state(ChromeApplicationStateInfo_ChromeApplicationState value) {
     static constexpr uint32_t field_id = FieldMetadata_ApplicationState::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

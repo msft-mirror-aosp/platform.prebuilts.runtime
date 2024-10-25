@@ -12,10 +12,300 @@
 #include "perfetto/protozero/proto_decoder.h"
 #include "perfetto/protozero/proto_utils.h"
 
+
 namespace perfetto {
 namespace protos {
 namespace pbzero {
 
+class SchedWakeupTaskAttrFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  SchedWakeupTaskAttrFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit SchedWakeupTaskAttrFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit SchedWakeupTaskAttrFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_pid() const { return at<1>().valid(); }
+  int32_t pid() const { return at<1>().as_int32(); }
+  bool has_cpu_affinity() const { return at<2>().valid(); }
+  uint64_t cpu_affinity() const { return at<2>().as_uint64(); }
+  bool has_task_util() const { return at<3>().valid(); }
+  uint64_t task_util() const { return at<3>().as_uint64(); }
+  bool has_uclamp_min() const { return at<4>().valid(); }
+  uint64_t uclamp_min() const { return at<4>().as_uint64(); }
+  bool has_vruntime() const { return at<5>().valid(); }
+  uint64_t vruntime() const { return at<5>().as_uint64(); }
+};
+
+class SchedWakeupTaskAttrFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = SchedWakeupTaskAttrFtraceEvent_Decoder;
+  enum : int32_t {
+    kPidFieldNumber = 1,
+    kCpuAffinityFieldNumber = 2,
+    kTaskUtilFieldNumber = 3,
+    kUclampMinFieldNumber = 4,
+    kVruntimeFieldNumber = 5,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.SchedWakeupTaskAttrFtraceEvent"; }
+
+
+  using FieldMetadata_Pid =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      SchedWakeupTaskAttrFtraceEvent>;
+
+  static constexpr FieldMetadata_Pid kPid{};
+  void set_pid(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_CpuAffinity =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      SchedWakeupTaskAttrFtraceEvent>;
+
+  static constexpr FieldMetadata_CpuAffinity kCpuAffinity{};
+  void set_cpu_affinity(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_CpuAffinity::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TaskUtil =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      SchedWakeupTaskAttrFtraceEvent>;
+
+  static constexpr FieldMetadata_TaskUtil kTaskUtil{};
+  void set_task_util(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_TaskUtil::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_UclampMin =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      SchedWakeupTaskAttrFtraceEvent>;
+
+  static constexpr FieldMetadata_UclampMin kUclampMin{};
+  void set_uclamp_min(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_UclampMin::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Vruntime =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      SchedWakeupTaskAttrFtraceEvent>;
+
+  static constexpr FieldMetadata_Vruntime kVruntime{};
+  void set_vruntime(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Vruntime::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class SchedMigrateTaskFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  SchedMigrateTaskFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit SchedMigrateTaskFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit SchedMigrateTaskFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_comm() const { return at<1>().valid(); }
+  ::protozero::ConstChars comm() const { return at<1>().as_string(); }
+  bool has_pid() const { return at<2>().valid(); }
+  int32_t pid() const { return at<2>().as_int32(); }
+  bool has_prio() const { return at<3>().valid(); }
+  int32_t prio() const { return at<3>().as_int32(); }
+  bool has_orig_cpu() const { return at<4>().valid(); }
+  int32_t orig_cpu() const { return at<4>().as_int32(); }
+  bool has_dest_cpu() const { return at<5>().valid(); }
+  int32_t dest_cpu() const { return at<5>().as_int32(); }
+  bool has_running() const { return at<6>().valid(); }
+  int32_t running() const { return at<6>().as_int32(); }
+  bool has_load() const { return at<7>().valid(); }
+  uint32_t load() const { return at<7>().as_uint32(); }
+};
+
+class SchedMigrateTaskFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = SchedMigrateTaskFtraceEvent_Decoder;
+  enum : int32_t {
+    kCommFieldNumber = 1,
+    kPidFieldNumber = 2,
+    kPrioFieldNumber = 3,
+    kOrigCpuFieldNumber = 4,
+    kDestCpuFieldNumber = 5,
+    kRunningFieldNumber = 6,
+    kLoadFieldNumber = 7,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.SchedMigrateTaskFtraceEvent"; }
+
+
+  using FieldMetadata_Comm =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      SchedMigrateTaskFtraceEvent>;
+
+  static constexpr FieldMetadata_Comm kComm{};
+  void set_comm(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, data, size);
+  }
+  void set_comm(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Comm::kFieldId, chars.data, chars.size);
+  }
+  void set_comm(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Comm::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Pid =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      SchedMigrateTaskFtraceEvent>;
+
+  static constexpr FieldMetadata_Pid kPid{};
+  void set_pid(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Prio =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      SchedMigrateTaskFtraceEvent>;
+
+  static constexpr FieldMetadata_Prio kPrio{};
+  void set_prio(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Prio::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_OrigCpu =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      SchedMigrateTaskFtraceEvent>;
+
+  static constexpr FieldMetadata_OrigCpu kOrigCpu{};
+  void set_orig_cpu(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_OrigCpu::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DestCpu =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      SchedMigrateTaskFtraceEvent>;
+
+  static constexpr FieldMetadata_DestCpu kDestCpu{};
+  void set_dest_cpu(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DestCpu::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Running =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      SchedMigrateTaskFtraceEvent>;
+
+  static constexpr FieldMetadata_Running kRunning{};
+  void set_running(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Running::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Load =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SchedMigrateTaskFtraceEvent>;
+
+  static constexpr FieldMetadata_Load kLoad{};
+  void set_load(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Load::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+};
 
 class SchedCpuUtilCfsFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/15, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:

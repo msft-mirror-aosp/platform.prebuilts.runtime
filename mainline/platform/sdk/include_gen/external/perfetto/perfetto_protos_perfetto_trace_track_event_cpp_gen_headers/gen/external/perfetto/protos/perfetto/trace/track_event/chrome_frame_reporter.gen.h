@@ -97,6 +97,8 @@ class PERFETTO_EXPORT_COMPONENT ChromeFrameReporter : public ::protozero::CppMes
     kHasHighLatencyFieldNumber = 12,
     kFrameTypeFieldNumber = 13,
     kHighLatencyContributionStageFieldNumber = 14,
+    kCheckerboardedNeedsRasterFieldNumber = 15,
+    kCheckerboardedNeedsRecordFieldNumber = 16,
   };
 
   ChromeFrameReporter();
@@ -172,6 +174,14 @@ class PERFETTO_EXPORT_COMPONENT ChromeFrameReporter : public ::protozero::CppMes
   void add_high_latency_contribution_stage(std::string value) { high_latency_contribution_stage_.emplace_back(value); }
   std::string* add_high_latency_contribution_stage() { high_latency_contribution_stage_.emplace_back(); return &high_latency_contribution_stage_.back(); }
 
+  bool has_checkerboarded_needs_raster() const { return _has_field_[15]; }
+  bool checkerboarded_needs_raster() const { return checkerboarded_needs_raster_; }
+  void set_checkerboarded_needs_raster(bool value) { checkerboarded_needs_raster_ = value; _has_field_.set(15); }
+
+  bool has_checkerboarded_needs_record() const { return _has_field_[16]; }
+  bool checkerboarded_needs_record() const { return checkerboarded_needs_record_; }
+  void set_checkerboarded_needs_record(bool value) { checkerboarded_needs_record_ = value; _has_field_.set(16); }
+
  private:
   ChromeFrameReporter_State state_{};
   ChromeFrameReporter_FrameDropReason reason_{};
@@ -187,12 +197,14 @@ class PERFETTO_EXPORT_COMPONENT ChromeFrameReporter : public ::protozero::CppMes
   bool has_high_latency_{};
   ChromeFrameReporter_FrameType frame_type_{};
   std::vector<std::string> high_latency_contribution_stage_;
+  bool checkerboarded_needs_raster_{};
+  bool checkerboarded_needs_record_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<15> _has_field_{};
+  std::bitset<17> _has_field_{};
 };
 
 }  // namespace perfetto

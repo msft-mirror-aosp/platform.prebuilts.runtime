@@ -53,12 +53,16 @@ extern DsiRxFtraceEventDefaultTypeInternal _DsiRxFtraceEvent_default_instance_;
 class DsiTxFtraceEvent;
 struct DsiTxFtraceEventDefaultTypeInternal;
 extern DsiTxFtraceEventDefaultTypeInternal _DsiTxFtraceEvent_default_instance_;
+class PanelWriteGenericFtraceEvent;
+struct PanelWriteGenericFtraceEventDefaultTypeInternal;
+extern PanelWriteGenericFtraceEventDefaultTypeInternal _PanelWriteGenericFtraceEvent_default_instance_;
 }  // namespace protos
 }  // namespace perfetto
 PROTOBUF_NAMESPACE_OPEN
 template<> ::perfetto::protos::DsiCmdFifoStatusFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::DsiCmdFifoStatusFtraceEvent>(Arena*);
 template<> ::perfetto::protos::DsiRxFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::DsiRxFtraceEvent>(Arena*);
 template<> ::perfetto::protos::DsiTxFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::DsiTxFtraceEvent>(Arena*);
+template<> ::perfetto::protos::PanelWriteGenericFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::PanelWriteGenericFtraceEvent>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
 namespace protos {
@@ -561,6 +565,237 @@ class DsiTxFtraceEvent final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fpanel_2eproto;
 };
+// -------------------------------------------------------------------
+
+class PanelWriteGenericFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.PanelWriteGenericFtraceEvent) */ {
+ public:
+  inline PanelWriteGenericFtraceEvent() : PanelWriteGenericFtraceEvent(nullptr) {}
+  ~PanelWriteGenericFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR PanelWriteGenericFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  PanelWriteGenericFtraceEvent(const PanelWriteGenericFtraceEvent& from);
+  PanelWriteGenericFtraceEvent(PanelWriteGenericFtraceEvent&& from) noexcept
+    : PanelWriteGenericFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline PanelWriteGenericFtraceEvent& operator=(const PanelWriteGenericFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline PanelWriteGenericFtraceEvent& operator=(PanelWriteGenericFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const PanelWriteGenericFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const PanelWriteGenericFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const PanelWriteGenericFtraceEvent*>(
+               &_PanelWriteGenericFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(PanelWriteGenericFtraceEvent& a, PanelWriteGenericFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PanelWriteGenericFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(PanelWriteGenericFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  PanelWriteGenericFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<PanelWriteGenericFtraceEvent>(arena);
+  }
+  PanelWriteGenericFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const PanelWriteGenericFtraceEvent& from);
+  void MergeFrom(const PanelWriteGenericFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(PanelWriteGenericFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.PanelWriteGenericFtraceEvent";
+  }
+  protected:
+  explicit PanelWriteGenericFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTraceNameFieldNumber = 2,
+    kNameFieldNumber = 4,
+    kPidFieldNumber = 1,
+    kTraceBeginFieldNumber = 3,
+    kTypeFieldNumber = 5,
+    kValueFieldNumber = 6,
+  };
+  // optional string trace_name = 2;
+  bool has_trace_name() const;
+  private:
+  bool _internal_has_trace_name() const;
+  public:
+  void clear_trace_name();
+  const std::string& trace_name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_trace_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_trace_name();
+  PROTOBUF_NODISCARD std::string* release_trace_name();
+  void set_allocated_trace_name(std::string* trace_name);
+  private:
+  const std::string& _internal_trace_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_trace_name(const std::string& value);
+  std::string* _internal_mutable_trace_name();
+  public:
+
+  // optional string name = 4;
+  bool has_name() const;
+  private:
+  bool _internal_has_name() const;
+  public:
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // optional int32 pid = 1;
+  bool has_pid() const;
+  private:
+  bool _internal_has_pid() const;
+  public:
+  void clear_pid();
+  ::int32_t pid() const;
+  void set_pid(::int32_t value);
+  private:
+  ::int32_t _internal_pid() const;
+  void _internal_set_pid(::int32_t value);
+  public:
+
+  // optional uint32 trace_begin = 3;
+  bool has_trace_begin() const;
+  private:
+  bool _internal_has_trace_begin() const;
+  public:
+  void clear_trace_begin();
+  ::uint32_t trace_begin() const;
+  void set_trace_begin(::uint32_t value);
+  private:
+  ::uint32_t _internal_trace_begin() const;
+  void _internal_set_trace_begin(::uint32_t value);
+  public:
+
+  // optional uint32 type = 5;
+  bool has_type() const;
+  private:
+  bool _internal_has_type() const;
+  public:
+  void clear_type();
+  ::uint32_t type() const;
+  void set_type(::uint32_t value);
+  private:
+  ::uint32_t _internal_type() const;
+  void _internal_set_type(::uint32_t value);
+  public:
+
+  // optional int32 value = 6;
+  bool has_value() const;
+  private:
+  bool _internal_has_value() const;
+  public:
+  void clear_value();
+  ::int32_t value() const;
+  void set_value(::int32_t value);
+  private:
+  ::int32_t _internal_value() const;
+  void _internal_set_value(::int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.PanelWriteGenericFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr trace_name_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+    ::int32_t pid_;
+    ::uint32_t trace_begin_;
+    ::uint32_t type_;
+    ::int32_t value_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fpanel_2eproto;
+};
 // ===================================================================
 
 
@@ -776,9 +1011,263 @@ inline void DsiTxFtraceEvent::set_type(::uint32_t value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.DsiTxFtraceEvent.type)
 }
 
+// -------------------------------------------------------------------
+
+// PanelWriteGenericFtraceEvent
+
+// optional int32 pid = 1;
+inline bool PanelWriteGenericFtraceEvent::_internal_has_pid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool PanelWriteGenericFtraceEvent::has_pid() const {
+  return _internal_has_pid();
+}
+inline void PanelWriteGenericFtraceEvent::clear_pid() {
+  _impl_.pid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::int32_t PanelWriteGenericFtraceEvent::_internal_pid() const {
+  return _impl_.pid_;
+}
+inline ::int32_t PanelWriteGenericFtraceEvent::pid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.PanelWriteGenericFtraceEvent.pid)
+  return _internal_pid();
+}
+inline void PanelWriteGenericFtraceEvent::_internal_set_pid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.pid_ = value;
+}
+inline void PanelWriteGenericFtraceEvent::set_pid(::int32_t value) {
+  _internal_set_pid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.PanelWriteGenericFtraceEvent.pid)
+}
+
+// optional string trace_name = 2;
+inline bool PanelWriteGenericFtraceEvent::_internal_has_trace_name() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool PanelWriteGenericFtraceEvent::has_trace_name() const {
+  return _internal_has_trace_name();
+}
+inline void PanelWriteGenericFtraceEvent::clear_trace_name() {
+  _impl_.trace_name_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& PanelWriteGenericFtraceEvent::trace_name() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.PanelWriteGenericFtraceEvent.trace_name)
+  return _internal_trace_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void PanelWriteGenericFtraceEvent::set_trace_name(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.trace_name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.PanelWriteGenericFtraceEvent.trace_name)
+}
+inline std::string* PanelWriteGenericFtraceEvent::mutable_trace_name() {
+  std::string* _s = _internal_mutable_trace_name();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.PanelWriteGenericFtraceEvent.trace_name)
+  return _s;
+}
+inline const std::string& PanelWriteGenericFtraceEvent::_internal_trace_name() const {
+  return _impl_.trace_name_.Get();
+}
+inline void PanelWriteGenericFtraceEvent::_internal_set_trace_name(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.trace_name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* PanelWriteGenericFtraceEvent::_internal_mutable_trace_name() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.trace_name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* PanelWriteGenericFtraceEvent::release_trace_name() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.PanelWriteGenericFtraceEvent.trace_name)
+  if (!_internal_has_trace_name()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.trace_name_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.trace_name_.IsDefault()) {
+    _impl_.trace_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void PanelWriteGenericFtraceEvent::set_allocated_trace_name(std::string* trace_name) {
+  if (trace_name != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.trace_name_.SetAllocated(trace_name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.trace_name_.IsDefault()) {
+    _impl_.trace_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.PanelWriteGenericFtraceEvent.trace_name)
+}
+
+// optional uint32 trace_begin = 3;
+inline bool PanelWriteGenericFtraceEvent::_internal_has_trace_begin() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool PanelWriteGenericFtraceEvent::has_trace_begin() const {
+  return _internal_has_trace_begin();
+}
+inline void PanelWriteGenericFtraceEvent::clear_trace_begin() {
+  _impl_.trace_begin_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline ::uint32_t PanelWriteGenericFtraceEvent::_internal_trace_begin() const {
+  return _impl_.trace_begin_;
+}
+inline ::uint32_t PanelWriteGenericFtraceEvent::trace_begin() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.PanelWriteGenericFtraceEvent.trace_begin)
+  return _internal_trace_begin();
+}
+inline void PanelWriteGenericFtraceEvent::_internal_set_trace_begin(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.trace_begin_ = value;
+}
+inline void PanelWriteGenericFtraceEvent::set_trace_begin(::uint32_t value) {
+  _internal_set_trace_begin(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.PanelWriteGenericFtraceEvent.trace_begin)
+}
+
+// optional string name = 4;
+inline bool PanelWriteGenericFtraceEvent::_internal_has_name() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool PanelWriteGenericFtraceEvent::has_name() const {
+  return _internal_has_name();
+}
+inline void PanelWriteGenericFtraceEvent::clear_name() {
+  _impl_.name_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& PanelWriteGenericFtraceEvent::name() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.PanelWriteGenericFtraceEvent.name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void PanelWriteGenericFtraceEvent::set_name(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000002u;
+ _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.PanelWriteGenericFtraceEvent.name)
+}
+inline std::string* PanelWriteGenericFtraceEvent::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.PanelWriteGenericFtraceEvent.name)
+  return _s;
+}
+inline const std::string& PanelWriteGenericFtraceEvent::_internal_name() const {
+  return _impl_.name_.Get();
+}
+inline void PanelWriteGenericFtraceEvent::_internal_set_name(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* PanelWriteGenericFtraceEvent::_internal_mutable_name() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  return _impl_.name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* PanelWriteGenericFtraceEvent::release_name() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.PanelWriteGenericFtraceEvent.name)
+  if (!_internal_has_name()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* p = _impl_.name_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void PanelWriteGenericFtraceEvent::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.name_.SetAllocated(name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.PanelWriteGenericFtraceEvent.name)
+}
+
+// optional uint32 type = 5;
+inline bool PanelWriteGenericFtraceEvent::_internal_has_type() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool PanelWriteGenericFtraceEvent::has_type() const {
+  return _internal_has_type();
+}
+inline void PanelWriteGenericFtraceEvent::clear_type() {
+  _impl_.type_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline ::uint32_t PanelWriteGenericFtraceEvent::_internal_type() const {
+  return _impl_.type_;
+}
+inline ::uint32_t PanelWriteGenericFtraceEvent::type() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.PanelWriteGenericFtraceEvent.type)
+  return _internal_type();
+}
+inline void PanelWriteGenericFtraceEvent::_internal_set_type(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.type_ = value;
+}
+inline void PanelWriteGenericFtraceEvent::set_type(::uint32_t value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.PanelWriteGenericFtraceEvent.type)
+}
+
+// optional int32 value = 6;
+inline bool PanelWriteGenericFtraceEvent::_internal_has_value() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool PanelWriteGenericFtraceEvent::has_value() const {
+  return _internal_has_value();
+}
+inline void PanelWriteGenericFtraceEvent::clear_value() {
+  _impl_.value_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline ::int32_t PanelWriteGenericFtraceEvent::_internal_value() const {
+  return _impl_.value_;
+}
+inline ::int32_t PanelWriteGenericFtraceEvent::value() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.PanelWriteGenericFtraceEvent.value)
+  return _internal_value();
+}
+inline void PanelWriteGenericFtraceEvent::_internal_set_value(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_.value_ = value;
+}
+inline void PanelWriteGenericFtraceEvent::set_value(::int32_t value) {
+  _internal_set_value(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.PanelWriteGenericFtraceEvent.value)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
