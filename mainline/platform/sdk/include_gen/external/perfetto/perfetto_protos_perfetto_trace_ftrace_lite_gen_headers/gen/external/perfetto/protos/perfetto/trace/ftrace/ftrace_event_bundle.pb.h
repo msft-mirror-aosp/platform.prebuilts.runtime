@@ -31,6 +31,7 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_util.h>
 #include "protos/perfetto/trace/ftrace/ftrace_event.pb.h"
+#include "protos/perfetto/trace/ftrace/ftrace_stats.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_protos_2fperfetto_2ftrace_2fftrace_2fftrace_5fevent_5fbundle_2eproto
@@ -52,11 +53,15 @@ extern FtraceEventBundleDefaultTypeInternal _FtraceEventBundle_default_instance_
 class FtraceEventBundle_CompactSched;
 struct FtraceEventBundle_CompactSchedDefaultTypeInternal;
 extern FtraceEventBundle_CompactSchedDefaultTypeInternal _FtraceEventBundle_CompactSched_default_instance_;
+class FtraceEventBundle_FtraceError;
+struct FtraceEventBundle_FtraceErrorDefaultTypeInternal;
+extern FtraceEventBundle_FtraceErrorDefaultTypeInternal _FtraceEventBundle_FtraceError_default_instance_;
 }  // namespace protos
 }  // namespace perfetto
 PROTOBUF_NAMESPACE_OPEN
 template<> ::perfetto::protos::FtraceEventBundle* Arena::CreateMaybeMessage<::perfetto::protos::FtraceEventBundle>(Arena*);
 template<> ::perfetto::protos::FtraceEventBundle_CompactSched* Arena::CreateMaybeMessage<::perfetto::protos::FtraceEventBundle_CompactSched>(Arena*);
+template<> ::perfetto::protos::FtraceEventBundle_FtraceError* Arena::CreateMaybeMessage<::perfetto::protos::FtraceEventBundle_FtraceError>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
 namespace protos {
@@ -516,6 +521,167 @@ class FtraceEventBundle_CompactSched final :
 };
 // -------------------------------------------------------------------
 
+class FtraceEventBundle_FtraceError final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.FtraceEventBundle.FtraceError) */ {
+ public:
+  inline FtraceEventBundle_FtraceError() : FtraceEventBundle_FtraceError(nullptr) {}
+  ~FtraceEventBundle_FtraceError() override;
+  explicit PROTOBUF_CONSTEXPR FtraceEventBundle_FtraceError(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  FtraceEventBundle_FtraceError(const FtraceEventBundle_FtraceError& from);
+  FtraceEventBundle_FtraceError(FtraceEventBundle_FtraceError&& from) noexcept
+    : FtraceEventBundle_FtraceError() {
+    *this = ::std::move(from);
+  }
+
+  inline FtraceEventBundle_FtraceError& operator=(const FtraceEventBundle_FtraceError& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline FtraceEventBundle_FtraceError& operator=(FtraceEventBundle_FtraceError&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const FtraceEventBundle_FtraceError& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const FtraceEventBundle_FtraceError* internal_default_instance() {
+    return reinterpret_cast<const FtraceEventBundle_FtraceError*>(
+               &_FtraceEventBundle_FtraceError_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(FtraceEventBundle_FtraceError& a, FtraceEventBundle_FtraceError& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(FtraceEventBundle_FtraceError* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(FtraceEventBundle_FtraceError* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  FtraceEventBundle_FtraceError* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<FtraceEventBundle_FtraceError>(arena);
+  }
+  FtraceEventBundle_FtraceError* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const FtraceEventBundle_FtraceError& from);
+  void MergeFrom(const FtraceEventBundle_FtraceError& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(FtraceEventBundle_FtraceError* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.FtraceEventBundle.FtraceError";
+  }
+  protected:
+  explicit FtraceEventBundle_FtraceError(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTimestampFieldNumber = 1,
+    kStatusFieldNumber = 2,
+  };
+  // optional uint64 timestamp = 1;
+  bool has_timestamp() const;
+  private:
+  bool _internal_has_timestamp() const;
+  public:
+  void clear_timestamp();
+  ::uint64_t timestamp() const;
+  void set_timestamp(::uint64_t value);
+  private:
+  ::uint64_t _internal_timestamp() const;
+  void _internal_set_timestamp(::uint64_t value);
+  public:
+
+  // optional .perfetto.protos.FtraceParseStatus status = 2;
+  bool has_status() const;
+  private:
+  bool _internal_has_status() const;
+  public:
+  void clear_status();
+  ::perfetto::protos::FtraceParseStatus status() const;
+  void set_status(::perfetto::protos::FtraceParseStatus value);
+  private:
+  ::perfetto::protos::FtraceParseStatus _internal_status() const;
+  void _internal_set_status(::perfetto::protos::FtraceParseStatus value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.FtraceEventBundle.FtraceError)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::uint64_t timestamp_;
+    int status_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fftrace_5fevent_5fbundle_2eproto;
+};
+// -------------------------------------------------------------------
+
 class FtraceEventBundle final :
     public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.FtraceEventBundle) */ {
  public:
@@ -563,7 +729,7 @@ class FtraceEventBundle final :
                &_FtraceEventBundle_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(FtraceEventBundle& a, FtraceEventBundle& b) {
     a.Swap(&b);
@@ -628,16 +794,20 @@ class FtraceEventBundle final :
   // nested types ----------------------------------------------------
 
   typedef FtraceEventBundle_CompactSched CompactSched;
+  typedef FtraceEventBundle_FtraceError FtraceError;
 
   // accessors -------------------------------------------------------
 
   enum : int {
     kEventFieldNumber = 2,
+    kErrorFieldNumber = 8,
     kCompactSchedFieldNumber = 4,
     kCpuFieldNumber = 1,
     kLostEventsFieldNumber = 3,
     kFtraceTimestampFieldNumber = 6,
     kBootTimestampFieldNumber = 7,
+    kLastReadEventTimestampFieldNumber = 9,
+    kPreviousBundleEndTimestampFieldNumber = 10,
     kFtraceClockFieldNumber = 5,
   };
   // repeated .perfetto.protos.FtraceEvent event = 2;
@@ -657,6 +827,24 @@ class FtraceEventBundle final :
   ::perfetto::protos::FtraceEvent* add_event();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FtraceEvent >&
       event() const;
+
+  // repeated .perfetto.protos.FtraceEventBundle.FtraceError error = 8;
+  int error_size() const;
+  private:
+  int _internal_error_size() const;
+  public:
+  void clear_error();
+  ::perfetto::protos::FtraceEventBundle_FtraceError* mutable_error(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FtraceEventBundle_FtraceError >*
+      mutable_error();
+  private:
+  const ::perfetto::protos::FtraceEventBundle_FtraceError& _internal_error(int index) const;
+  ::perfetto::protos::FtraceEventBundle_FtraceError* _internal_add_error();
+  public:
+  const ::perfetto::protos::FtraceEventBundle_FtraceError& error(int index) const;
+  ::perfetto::protos::FtraceEventBundle_FtraceError* add_error();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FtraceEventBundle_FtraceError >&
+      error() const;
 
   // optional .perfetto.protos.FtraceEventBundle.CompactSched compact_sched = 4;
   bool has_compact_sched() const;
@@ -728,6 +916,32 @@ class FtraceEventBundle final :
   void _internal_set_boot_timestamp(::int64_t value);
   public:
 
+  // optional uint64 last_read_event_timestamp = 9;
+  bool has_last_read_event_timestamp() const;
+  private:
+  bool _internal_has_last_read_event_timestamp() const;
+  public:
+  void clear_last_read_event_timestamp();
+  ::uint64_t last_read_event_timestamp() const;
+  void set_last_read_event_timestamp(::uint64_t value);
+  private:
+  ::uint64_t _internal_last_read_event_timestamp() const;
+  void _internal_set_last_read_event_timestamp(::uint64_t value);
+  public:
+
+  // optional uint64 previous_bundle_end_timestamp = 10;
+  bool has_previous_bundle_end_timestamp() const;
+  private:
+  bool _internal_has_previous_bundle_end_timestamp() const;
+  public:
+  void clear_previous_bundle_end_timestamp();
+  ::uint64_t previous_bundle_end_timestamp() const;
+  void set_previous_bundle_end_timestamp(::uint64_t value);
+  private:
+  ::uint64_t _internal_previous_bundle_end_timestamp() const;
+  void _internal_set_previous_bundle_end_timestamp(::uint64_t value);
+  public:
+
   // optional .perfetto.protos.FtraceClock ftrace_clock = 5;
   bool has_ftrace_clock() const;
   private:
@@ -752,11 +966,14 @@ class FtraceEventBundle final :
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FtraceEvent > event_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FtraceEventBundle_FtraceError > error_;
     ::perfetto::protos::FtraceEventBundle_CompactSched* compact_sched_;
     ::uint32_t cpu_;
     bool lost_events_;
     ::int64_t ftrace_timestamp_;
     ::int64_t boot_timestamp_;
+    ::uint64_t last_read_event_timestamp_;
+    ::uint64_t previous_bundle_end_timestamp_;
     int ftrace_clock_;
   };
   union { Impl_ _impl_; };
@@ -1367,6 +1584,67 @@ FtraceEventBundle_CompactSched::mutable_waking_common_flags() {
 
 // -------------------------------------------------------------------
 
+// FtraceEventBundle_FtraceError
+
+// optional uint64 timestamp = 1;
+inline bool FtraceEventBundle_FtraceError::_internal_has_timestamp() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool FtraceEventBundle_FtraceError::has_timestamp() const {
+  return _internal_has_timestamp();
+}
+inline void FtraceEventBundle_FtraceError::clear_timestamp() {
+  _impl_.timestamp_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::uint64_t FtraceEventBundle_FtraceError::_internal_timestamp() const {
+  return _impl_.timestamp_;
+}
+inline ::uint64_t FtraceEventBundle_FtraceError::timestamp() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEventBundle.FtraceError.timestamp)
+  return _internal_timestamp();
+}
+inline void FtraceEventBundle_FtraceError::_internal_set_timestamp(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.timestamp_ = value;
+}
+inline void FtraceEventBundle_FtraceError::set_timestamp(::uint64_t value) {
+  _internal_set_timestamp(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.FtraceEventBundle.FtraceError.timestamp)
+}
+
+// optional .perfetto.protos.FtraceParseStatus status = 2;
+inline bool FtraceEventBundle_FtraceError::_internal_has_status() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool FtraceEventBundle_FtraceError::has_status() const {
+  return _internal_has_status();
+}
+inline void FtraceEventBundle_FtraceError::clear_status() {
+  _impl_.status_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::perfetto::protos::FtraceParseStatus FtraceEventBundle_FtraceError::_internal_status() const {
+  return static_cast< ::perfetto::protos::FtraceParseStatus >(_impl_.status_);
+}
+inline ::perfetto::protos::FtraceParseStatus FtraceEventBundle_FtraceError::status() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEventBundle.FtraceError.status)
+  return _internal_status();
+}
+inline void FtraceEventBundle_FtraceError::_internal_set_status(::perfetto::protos::FtraceParseStatus value) {
+  assert(::perfetto::protos::FtraceParseStatus_IsValid(value));
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.status_ = value;
+}
+inline void FtraceEventBundle_FtraceError::set_status(::perfetto::protos::FtraceParseStatus value) {
+  _internal_set_status(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.FtraceEventBundle.FtraceError.status)
+}
+
+// -------------------------------------------------------------------
+
 // FtraceEventBundle
 
 // optional uint32 cpu = 1;
@@ -1554,7 +1832,7 @@ inline void FtraceEventBundle::set_allocated_compact_sched(::perfetto::protos::F
 
 // optional .perfetto.protos.FtraceClock ftrace_clock = 5;
 inline bool FtraceEventBundle::_internal_has_ftrace_clock() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
   return value;
 }
 inline bool FtraceEventBundle::has_ftrace_clock() const {
@@ -1562,7 +1840,7 @@ inline bool FtraceEventBundle::has_ftrace_clock() const {
 }
 inline void FtraceEventBundle::clear_ftrace_clock() {
   _impl_.ftrace_clock_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000020u;
+  _impl_._has_bits_[0] &= ~0x00000080u;
 }
 inline ::perfetto::protos::FtraceClock FtraceEventBundle::_internal_ftrace_clock() const {
   return static_cast< ::perfetto::protos::FtraceClock >(_impl_.ftrace_clock_);
@@ -1573,7 +1851,7 @@ inline ::perfetto::protos::FtraceClock FtraceEventBundle::ftrace_clock() const {
 }
 inline void FtraceEventBundle::_internal_set_ftrace_clock(::perfetto::protos::FtraceClock value) {
   assert(::perfetto::protos::FtraceClock_IsValid(value));
-  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_._has_bits_[0] |= 0x00000080u;
   _impl_.ftrace_clock_ = value;
 }
 inline void FtraceEventBundle::set_ftrace_clock(::perfetto::protos::FtraceClock value) {
@@ -1637,9 +1915,107 @@ inline void FtraceEventBundle::set_boot_timestamp(::int64_t value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.FtraceEventBundle.boot_timestamp)
 }
 
+// repeated .perfetto.protos.FtraceEventBundle.FtraceError error = 8;
+inline int FtraceEventBundle::_internal_error_size() const {
+  return _impl_.error_.size();
+}
+inline int FtraceEventBundle::error_size() const {
+  return _internal_error_size();
+}
+inline void FtraceEventBundle::clear_error() {
+  _impl_.error_.Clear();
+}
+inline ::perfetto::protos::FtraceEventBundle_FtraceError* FtraceEventBundle::mutable_error(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEventBundle.error)
+  return _impl_.error_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FtraceEventBundle_FtraceError >*
+FtraceEventBundle::mutable_error() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.FtraceEventBundle.error)
+  return &_impl_.error_;
+}
+inline const ::perfetto::protos::FtraceEventBundle_FtraceError& FtraceEventBundle::_internal_error(int index) const {
+  return _impl_.error_.Get(index);
+}
+inline const ::perfetto::protos::FtraceEventBundle_FtraceError& FtraceEventBundle::error(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEventBundle.error)
+  return _internal_error(index);
+}
+inline ::perfetto::protos::FtraceEventBundle_FtraceError* FtraceEventBundle::_internal_add_error() {
+  return _impl_.error_.Add();
+}
+inline ::perfetto::protos::FtraceEventBundle_FtraceError* FtraceEventBundle::add_error() {
+  ::perfetto::protos::FtraceEventBundle_FtraceError* _add = _internal_add_error();
+  // @@protoc_insertion_point(field_add:perfetto.protos.FtraceEventBundle.error)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FtraceEventBundle_FtraceError >&
+FtraceEventBundle::error() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.FtraceEventBundle.error)
+  return _impl_.error_;
+}
+
+// optional uint64 last_read_event_timestamp = 9;
+inline bool FtraceEventBundle::_internal_has_last_read_event_timestamp() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool FtraceEventBundle::has_last_read_event_timestamp() const {
+  return _internal_has_last_read_event_timestamp();
+}
+inline void FtraceEventBundle::clear_last_read_event_timestamp() {
+  _impl_.last_read_event_timestamp_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline ::uint64_t FtraceEventBundle::_internal_last_read_event_timestamp() const {
+  return _impl_.last_read_event_timestamp_;
+}
+inline ::uint64_t FtraceEventBundle::last_read_event_timestamp() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEventBundle.last_read_event_timestamp)
+  return _internal_last_read_event_timestamp();
+}
+inline void FtraceEventBundle::_internal_set_last_read_event_timestamp(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_.last_read_event_timestamp_ = value;
+}
+inline void FtraceEventBundle::set_last_read_event_timestamp(::uint64_t value) {
+  _internal_set_last_read_event_timestamp(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.FtraceEventBundle.last_read_event_timestamp)
+}
+
+// optional uint64 previous_bundle_end_timestamp = 10;
+inline bool FtraceEventBundle::_internal_has_previous_bundle_end_timestamp() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
+  return value;
+}
+inline bool FtraceEventBundle::has_previous_bundle_end_timestamp() const {
+  return _internal_has_previous_bundle_end_timestamp();
+}
+inline void FtraceEventBundle::clear_previous_bundle_end_timestamp() {
+  _impl_.previous_bundle_end_timestamp_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000040u;
+}
+inline ::uint64_t FtraceEventBundle::_internal_previous_bundle_end_timestamp() const {
+  return _impl_.previous_bundle_end_timestamp_;
+}
+inline ::uint64_t FtraceEventBundle::previous_bundle_end_timestamp() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEventBundle.previous_bundle_end_timestamp)
+  return _internal_previous_bundle_end_timestamp();
+}
+inline void FtraceEventBundle::_internal_set_previous_bundle_end_timestamp(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000040u;
+  _impl_.previous_bundle_end_timestamp_ = value;
+}
+inline void FtraceEventBundle::set_previous_bundle_end_timestamp(::uint64_t value) {
+  _internal_set_previous_bundle_end_timestamp(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.FtraceEventBundle.previous_bundle_end_timestamp)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 

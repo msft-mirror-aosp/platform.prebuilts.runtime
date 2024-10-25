@@ -18,9 +18,10 @@ namespace gen {
 class PerfEventConfig;
 class PerfEventConfig_CallstackSampling;
 class PerfEventConfig_Scope;
-class PerfEvents_Timebase;
+class FollowerEvent;
 class PerfEvents_RawEvent;
 class PerfEvents_Tracepoint;
+class PerfEvents_Timebase;
 enum PerfEventConfig_UnwindMode : int;
 enum PerfEvents_Counter : int;
 enum PerfEvents_PerfClock : int;
@@ -53,6 +54,7 @@ class PERFETTO_EXPORT_COMPONENT PerfEventConfig : public ::protozero::CppMessage
   static constexpr auto UnwindMode_MAX = PerfEventConfig_UnwindMode_UNWIND_DWARF;
   enum FieldNumbers {
     kTimebaseFieldNumber = 15,
+    kFollowersFieldNumber = 19,
     kCallstackSamplingFieldNumber = 16,
     kRingBufferReadPeriodMsFieldNumber = 8,
     kRingBufferPagesFieldNumber = 3,
@@ -88,6 +90,12 @@ class PERFETTO_EXPORT_COMPONENT PerfEventConfig : public ::protozero::CppMessage
   bool has_timebase() const { return _has_field_[15]; }
   const PerfEvents_Timebase& timebase() const { return *timebase_; }
   PerfEvents_Timebase* mutable_timebase() { _has_field_.set(15); return timebase_.get(); }
+
+  const std::vector<FollowerEvent>& followers() const { return followers_; }
+  std::vector<FollowerEvent>* mutable_followers() { return &followers_; }
+  int followers_size() const;
+  void clear_followers();
+  FollowerEvent* add_followers();
 
   bool has_callstack_sampling() const { return _has_field_[16]; }
   const PerfEventConfig_CallstackSampling& callstack_sampling() const { return *callstack_sampling_; }
@@ -170,6 +178,7 @@ class PERFETTO_EXPORT_COMPONENT PerfEventConfig : public ::protozero::CppMessage
 
  private:
   ::protozero::CopyablePtr<PerfEvents_Timebase> timebase_;
+  std::vector<FollowerEvent> followers_;
   ::protozero::CopyablePtr<PerfEventConfig_CallstackSampling> callstack_sampling_;
   uint32_t ring_buffer_read_period_ms_{};
   uint32_t ring_buffer_pages_{};
@@ -191,7 +200,7 @@ class PERFETTO_EXPORT_COMPONENT PerfEventConfig : public ::protozero::CppMessage
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<19> _has_field_{};
+  std::bitset<20> _has_field_{};
 };
 
 

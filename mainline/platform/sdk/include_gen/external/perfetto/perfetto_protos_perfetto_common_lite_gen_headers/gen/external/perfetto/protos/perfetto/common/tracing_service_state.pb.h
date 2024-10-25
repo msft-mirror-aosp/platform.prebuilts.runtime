@@ -569,11 +569,14 @@ class TracingServiceState_TracingSession final :
     kBufferSizeKbFieldNumber = 5,
     kStateFieldNumber = 3,
     kUniqueSessionNameFieldNumber = 4,
+    kBugreportFilenameFieldNumber = 10,
     kIdFieldNumber = 1,
     kConsumerUidFieldNumber = 2,
     kDurationMsFieldNumber = 6,
     kStartRealtimeNsFieldNumber = 8,
     kNumDataSourcesFieldNumber = 7,
+    kBugreportScoreFieldNumber = 9,
+    kIsStartedFieldNumber = 11,
   };
   // repeated uint32 buffer_size_kb = 5;
   int buffer_size_kb_size() const;
@@ -631,6 +634,24 @@ class TracingServiceState_TracingSession final :
   const std::string& _internal_unique_session_name() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_unique_session_name(const std::string& value);
   std::string* _internal_mutable_unique_session_name();
+  public:
+
+  // optional string bugreport_filename = 10;
+  bool has_bugreport_filename() const;
+  private:
+  bool _internal_has_bugreport_filename() const;
+  public:
+  void clear_bugreport_filename();
+  const std::string& bugreport_filename() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_bugreport_filename(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_bugreport_filename();
+  PROTOBUF_NODISCARD std::string* release_bugreport_filename();
+  void set_allocated_bugreport_filename(std::string* bugreport_filename);
+  private:
+  const std::string& _internal_bugreport_filename() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_bugreport_filename(const std::string& value);
+  std::string* _internal_mutable_bugreport_filename();
   public:
 
   // optional uint64 id = 1;
@@ -698,6 +719,32 @@ class TracingServiceState_TracingSession final :
   void _internal_set_num_data_sources(::uint32_t value);
   public:
 
+  // optional int32 bugreport_score = 9;
+  bool has_bugreport_score() const;
+  private:
+  bool _internal_has_bugreport_score() const;
+  public:
+  void clear_bugreport_score();
+  ::int32_t bugreport_score() const;
+  void set_bugreport_score(::int32_t value);
+  private:
+  ::int32_t _internal_bugreport_score() const;
+  void _internal_set_bugreport_score(::int32_t value);
+  public:
+
+  // optional bool is_started = 11;
+  bool has_is_started() const;
+  private:
+  bool _internal_has_is_started() const;
+  public:
+  void clear_is_started();
+  bool is_started() const;
+  void set_is_started(bool value);
+  private:
+  bool _internal_is_started() const;
+  void _internal_set_is_started(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.TracingServiceState.TracingSession)
  private:
   class _Internal;
@@ -711,11 +758,14 @@ class TracingServiceState_TracingSession final :
     ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::uint32_t > buffer_size_kb_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr state_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr unique_session_name_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr bugreport_filename_;
     ::uint64_t id_;
     ::int32_t consumer_uid_;
     ::uint32_t duration_ms_;
     ::int64_t start_realtime_ns_;
     ::uint32_t num_data_sources_;
+    ::int32_t bugreport_score_;
+    bool is_started_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2fcommon_2ftracing_5fservice_5fstate_2eproto;
@@ -1336,7 +1386,7 @@ inline void TracingServiceState_DataSource::set_producer_id(::int32_t value) {
 
 // optional uint64 id = 1;
 inline bool TracingServiceState_TracingSession::_internal_has_id() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
 inline bool TracingServiceState_TracingSession::has_id() const {
@@ -1344,7 +1394,7 @@ inline bool TracingServiceState_TracingSession::has_id() const {
 }
 inline void TracingServiceState_TracingSession::clear_id() {
   _impl_.id_ = ::uint64_t{0u};
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
 }
 inline ::uint64_t TracingServiceState_TracingSession::_internal_id() const {
   return _impl_.id_;
@@ -1354,7 +1404,7 @@ inline ::uint64_t TracingServiceState_TracingSession::id() const {
   return _internal_id();
 }
 inline void TracingServiceState_TracingSession::_internal_set_id(::uint64_t value) {
-  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_._has_bits_[0] |= 0x00000008u;
   _impl_.id_ = value;
 }
 inline void TracingServiceState_TracingSession::set_id(::uint64_t value) {
@@ -1364,7 +1414,7 @@ inline void TracingServiceState_TracingSession::set_id(::uint64_t value) {
 
 // optional int32 consumer_uid = 2;
 inline bool TracingServiceState_TracingSession::_internal_has_consumer_uid() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
   return value;
 }
 inline bool TracingServiceState_TracingSession::has_consumer_uid() const {
@@ -1372,7 +1422,7 @@ inline bool TracingServiceState_TracingSession::has_consumer_uid() const {
 }
 inline void TracingServiceState_TracingSession::clear_consumer_uid() {
   _impl_.consumer_uid_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000008u;
+  _impl_._has_bits_[0] &= ~0x00000010u;
 }
 inline ::int32_t TracingServiceState_TracingSession::_internal_consumer_uid() const {
   return _impl_.consumer_uid_;
@@ -1382,7 +1432,7 @@ inline ::int32_t TracingServiceState_TracingSession::consumer_uid() const {
   return _internal_consumer_uid();
 }
 inline void TracingServiceState_TracingSession::_internal_set_consumer_uid(::int32_t value) {
-  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_._has_bits_[0] |= 0x00000010u;
   _impl_.consumer_uid_ = value;
 }
 inline void TracingServiceState_TracingSession::set_consumer_uid(::int32_t value) {
@@ -1575,7 +1625,7 @@ TracingServiceState_TracingSession::mutable_buffer_size_kb() {
 
 // optional uint32 duration_ms = 6;
 inline bool TracingServiceState_TracingSession::_internal_has_duration_ms() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
   return value;
 }
 inline bool TracingServiceState_TracingSession::has_duration_ms() const {
@@ -1583,7 +1633,7 @@ inline bool TracingServiceState_TracingSession::has_duration_ms() const {
 }
 inline void TracingServiceState_TracingSession::clear_duration_ms() {
   _impl_.duration_ms_ = 0u;
-  _impl_._has_bits_[0] &= ~0x00000010u;
+  _impl_._has_bits_[0] &= ~0x00000020u;
 }
 inline ::uint32_t TracingServiceState_TracingSession::_internal_duration_ms() const {
   return _impl_.duration_ms_;
@@ -1593,7 +1643,7 @@ inline ::uint32_t TracingServiceState_TracingSession::duration_ms() const {
   return _internal_duration_ms();
 }
 inline void TracingServiceState_TracingSession::_internal_set_duration_ms(::uint32_t value) {
-  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_._has_bits_[0] |= 0x00000020u;
   _impl_.duration_ms_ = value;
 }
 inline void TracingServiceState_TracingSession::set_duration_ms(::uint32_t value) {
@@ -1603,7 +1653,7 @@ inline void TracingServiceState_TracingSession::set_duration_ms(::uint32_t value
 
 // optional uint32 num_data_sources = 7;
 inline bool TracingServiceState_TracingSession::_internal_has_num_data_sources() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
   return value;
 }
 inline bool TracingServiceState_TracingSession::has_num_data_sources() const {
@@ -1611,7 +1661,7 @@ inline bool TracingServiceState_TracingSession::has_num_data_sources() const {
 }
 inline void TracingServiceState_TracingSession::clear_num_data_sources() {
   _impl_.num_data_sources_ = 0u;
-  _impl_._has_bits_[0] &= ~0x00000040u;
+  _impl_._has_bits_[0] &= ~0x00000080u;
 }
 inline ::uint32_t TracingServiceState_TracingSession::_internal_num_data_sources() const {
   return _impl_.num_data_sources_;
@@ -1621,7 +1671,7 @@ inline ::uint32_t TracingServiceState_TracingSession::num_data_sources() const {
   return _internal_num_data_sources();
 }
 inline void TracingServiceState_TracingSession::_internal_set_num_data_sources(::uint32_t value) {
-  _impl_._has_bits_[0] |= 0x00000040u;
+  _impl_._has_bits_[0] |= 0x00000080u;
   _impl_.num_data_sources_ = value;
 }
 inline void TracingServiceState_TracingSession::set_num_data_sources(::uint32_t value) {
@@ -1631,7 +1681,7 @@ inline void TracingServiceState_TracingSession::set_num_data_sources(::uint32_t 
 
 // optional int64 start_realtime_ns = 8;
 inline bool TracingServiceState_TracingSession::_internal_has_start_realtime_ns() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
   return value;
 }
 inline bool TracingServiceState_TracingSession::has_start_realtime_ns() const {
@@ -1639,7 +1689,7 @@ inline bool TracingServiceState_TracingSession::has_start_realtime_ns() const {
 }
 inline void TracingServiceState_TracingSession::clear_start_realtime_ns() {
   _impl_.start_realtime_ns_ = ::int64_t{0};
-  _impl_._has_bits_[0] &= ~0x00000020u;
+  _impl_._has_bits_[0] &= ~0x00000040u;
 }
 inline ::int64_t TracingServiceState_TracingSession::_internal_start_realtime_ns() const {
   return _impl_.start_realtime_ns_;
@@ -1649,12 +1699,136 @@ inline ::int64_t TracingServiceState_TracingSession::start_realtime_ns() const {
   return _internal_start_realtime_ns();
 }
 inline void TracingServiceState_TracingSession::_internal_set_start_realtime_ns(::int64_t value) {
-  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_._has_bits_[0] |= 0x00000040u;
   _impl_.start_realtime_ns_ = value;
 }
 inline void TracingServiceState_TracingSession::set_start_realtime_ns(::int64_t value) {
   _internal_set_start_realtime_ns(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceState.TracingSession.start_realtime_ns)
+}
+
+// optional int32 bugreport_score = 9;
+inline bool TracingServiceState_TracingSession::_internal_has_bugreport_score() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000100u) != 0;
+  return value;
+}
+inline bool TracingServiceState_TracingSession::has_bugreport_score() const {
+  return _internal_has_bugreport_score();
+}
+inline void TracingServiceState_TracingSession::clear_bugreport_score() {
+  _impl_.bugreport_score_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000100u;
+}
+inline ::int32_t TracingServiceState_TracingSession::_internal_bugreport_score() const {
+  return _impl_.bugreport_score_;
+}
+inline ::int32_t TracingServiceState_TracingSession::bugreport_score() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceState.TracingSession.bugreport_score)
+  return _internal_bugreport_score();
+}
+inline void TracingServiceState_TracingSession::_internal_set_bugreport_score(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000100u;
+  _impl_.bugreport_score_ = value;
+}
+inline void TracingServiceState_TracingSession::set_bugreport_score(::int32_t value) {
+  _internal_set_bugreport_score(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceState.TracingSession.bugreport_score)
+}
+
+// optional string bugreport_filename = 10;
+inline bool TracingServiceState_TracingSession::_internal_has_bugreport_filename() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool TracingServiceState_TracingSession::has_bugreport_filename() const {
+  return _internal_has_bugreport_filename();
+}
+inline void TracingServiceState_TracingSession::clear_bugreport_filename() {
+  _impl_.bugreport_filename_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline const std::string& TracingServiceState_TracingSession::bugreport_filename() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceState.TracingSession.bugreport_filename)
+  return _internal_bugreport_filename();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TracingServiceState_TracingSession::set_bugreport_filename(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000004u;
+ _impl_.bugreport_filename_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceState.TracingSession.bugreport_filename)
+}
+inline std::string* TracingServiceState_TracingSession::mutable_bugreport_filename() {
+  std::string* _s = _internal_mutable_bugreport_filename();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracingServiceState.TracingSession.bugreport_filename)
+  return _s;
+}
+inline const std::string& TracingServiceState_TracingSession::_internal_bugreport_filename() const {
+  return _impl_.bugreport_filename_.Get();
+}
+inline void TracingServiceState_TracingSession::_internal_set_bugreport_filename(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.bugreport_filename_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TracingServiceState_TracingSession::_internal_mutable_bugreport_filename() {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  return _impl_.bugreport_filename_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TracingServiceState_TracingSession::release_bugreport_filename() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracingServiceState.TracingSession.bugreport_filename)
+  if (!_internal_has_bugreport_filename()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  auto* p = _impl_.bugreport_filename_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.bugreport_filename_.IsDefault()) {
+    _impl_.bugreport_filename_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void TracingServiceState_TracingSession::set_allocated_bugreport_filename(std::string* bugreport_filename) {
+  if (bugreport_filename != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  _impl_.bugreport_filename_.SetAllocated(bugreport_filename, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.bugreport_filename_.IsDefault()) {
+    _impl_.bugreport_filename_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TracingServiceState.TracingSession.bugreport_filename)
+}
+
+// optional bool is_started = 11;
+inline bool TracingServiceState_TracingSession::_internal_has_is_started() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000200u) != 0;
+  return value;
+}
+inline bool TracingServiceState_TracingSession::has_is_started() const {
+  return _internal_has_is_started();
+}
+inline void TracingServiceState_TracingSession::clear_is_started() {
+  _impl_.is_started_ = false;
+  _impl_._has_bits_[0] &= ~0x00000200u;
+}
+inline bool TracingServiceState_TracingSession::_internal_is_started() const {
+  return _impl_.is_started_;
+}
+inline bool TracingServiceState_TracingSession::is_started() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceState.TracingSession.is_started)
+  return _internal_is_started();
+}
+inline void TracingServiceState_TracingSession::_internal_set_is_started(bool value) {
+  _impl_._has_bits_[0] |= 0x00000200u;
+  _impl_.is_started_ = value;
+}
+inline void TracingServiceState_TracingSession::set_is_started(bool value) {
+  _internal_set_is_started(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceState.TracingSession.is_started)
 }
 
 // -------------------------------------------------------------------

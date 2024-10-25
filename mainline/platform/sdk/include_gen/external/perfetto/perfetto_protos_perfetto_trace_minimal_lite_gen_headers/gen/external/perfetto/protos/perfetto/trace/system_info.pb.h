@@ -388,10 +388,16 @@ class SystemInfo final :
   enum : int {
     kAndroidBuildFingerprintFieldNumber = 2,
     kTracingServiceVersionFieldNumber = 4,
+    kAndroidSocModelFieldNumber = 9,
+    kAndroidHardwareRevisionFieldNumber = 10,
+    kAndroidStorageModelFieldNumber = 11,
+    kAndroidRamModelFieldNumber = 12,
     kUtsnameFieldNumber = 1,
     kHzFieldNumber = 3,
     kAndroidSdkVersionFieldNumber = 5,
     kPageSizeFieldNumber = 6,
+    kTimezoneOffMinsFieldNumber = 7,
+    kNumCpusFieldNumber = 8,
   };
   // optional string android_build_fingerprint = 2;
   bool has_android_build_fingerprint() const;
@@ -427,6 +433,78 @@ class SystemInfo final :
   const std::string& _internal_tracing_service_version() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_tracing_service_version(const std::string& value);
   std::string* _internal_mutable_tracing_service_version();
+  public:
+
+  // optional string android_soc_model = 9;
+  bool has_android_soc_model() const;
+  private:
+  bool _internal_has_android_soc_model() const;
+  public:
+  void clear_android_soc_model();
+  const std::string& android_soc_model() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_android_soc_model(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_android_soc_model();
+  PROTOBUF_NODISCARD std::string* release_android_soc_model();
+  void set_allocated_android_soc_model(std::string* android_soc_model);
+  private:
+  const std::string& _internal_android_soc_model() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_android_soc_model(const std::string& value);
+  std::string* _internal_mutable_android_soc_model();
+  public:
+
+  // optional string android_hardware_revision = 10;
+  bool has_android_hardware_revision() const;
+  private:
+  bool _internal_has_android_hardware_revision() const;
+  public:
+  void clear_android_hardware_revision();
+  const std::string& android_hardware_revision() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_android_hardware_revision(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_android_hardware_revision();
+  PROTOBUF_NODISCARD std::string* release_android_hardware_revision();
+  void set_allocated_android_hardware_revision(std::string* android_hardware_revision);
+  private:
+  const std::string& _internal_android_hardware_revision() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_android_hardware_revision(const std::string& value);
+  std::string* _internal_mutable_android_hardware_revision();
+  public:
+
+  // optional string android_storage_model = 11;
+  bool has_android_storage_model() const;
+  private:
+  bool _internal_has_android_storage_model() const;
+  public:
+  void clear_android_storage_model();
+  const std::string& android_storage_model() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_android_storage_model(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_android_storage_model();
+  PROTOBUF_NODISCARD std::string* release_android_storage_model();
+  void set_allocated_android_storage_model(std::string* android_storage_model);
+  private:
+  const std::string& _internal_android_storage_model() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_android_storage_model(const std::string& value);
+  std::string* _internal_mutable_android_storage_model();
+  public:
+
+  // optional string android_ram_model = 12;
+  bool has_android_ram_model() const;
+  private:
+  bool _internal_has_android_ram_model() const;
+  public:
+  void clear_android_ram_model();
+  const std::string& android_ram_model() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_android_ram_model(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_android_ram_model();
+  PROTOBUF_NODISCARD std::string* release_android_ram_model();
+  void set_allocated_android_ram_model(std::string* android_ram_model);
+  private:
+  const std::string& _internal_android_ram_model() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_android_ram_model(const std::string& value);
+  std::string* _internal_mutable_android_ram_model();
   public:
 
   // optional .perfetto.protos.Utsname utsname = 1;
@@ -486,6 +564,32 @@ class SystemInfo final :
   void _internal_set_page_size(::uint32_t value);
   public:
 
+  // optional int32 timezone_off_mins = 7;
+  bool has_timezone_off_mins() const;
+  private:
+  bool _internal_has_timezone_off_mins() const;
+  public:
+  void clear_timezone_off_mins();
+  ::int32_t timezone_off_mins() const;
+  void set_timezone_off_mins(::int32_t value);
+  private:
+  ::int32_t _internal_timezone_off_mins() const;
+  void _internal_set_timezone_off_mins(::int32_t value);
+  public:
+
+  // optional uint32 num_cpus = 8;
+  bool has_num_cpus() const;
+  private:
+  bool _internal_has_num_cpus() const;
+  public:
+  void clear_num_cpus();
+  ::uint32_t num_cpus() const;
+  void set_num_cpus(::uint32_t value);
+  private:
+  ::uint32_t _internal_num_cpus() const;
+  void _internal_set_num_cpus(::uint32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.SystemInfo)
  private:
   class _Internal;
@@ -498,10 +602,16 @@ class SystemInfo final :
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr android_build_fingerprint_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tracing_service_version_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr android_soc_model_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr android_hardware_revision_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr android_storage_model_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr android_ram_model_;
     ::perfetto::protos::Utsname* utsname_;
     ::int64_t hz_;
     ::uint64_t android_sdk_version_;
     ::uint32_t page_size_;
+    ::int32_t timezone_off_mins_;
+    ::uint32_t num_cpus_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fsystem_5finfo_2eproto;
@@ -795,7 +905,7 @@ inline void Utsname::set_allocated_machine(std::string* machine) {
 
 // optional .perfetto.protos.Utsname utsname = 1;
 inline bool SystemInfo::_internal_has_utsname() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.utsname_ != nullptr);
   return value;
 }
@@ -804,7 +914,7 @@ inline bool SystemInfo::has_utsname() const {
 }
 inline void SystemInfo::clear_utsname() {
   if (_impl_.utsname_ != nullptr) _impl_.utsname_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  _impl_._has_bits_[0] &= ~0x00000040u;
 }
 inline const ::perfetto::protos::Utsname& SystemInfo::_internal_utsname() const {
   const ::perfetto::protos::Utsname* p = _impl_.utsname_;
@@ -822,14 +932,14 @@ inline void SystemInfo::unsafe_arena_set_allocated_utsname(
   }
   _impl_.utsname_ = utsname;
   if (utsname) {
-    _impl_._has_bits_[0] |= 0x00000004u;
+    _impl_._has_bits_[0] |= 0x00000040u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000004u;
+    _impl_._has_bits_[0] &= ~0x00000040u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.SystemInfo.utsname)
 }
 inline ::perfetto::protos::Utsname* SystemInfo::release_utsname() {
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  _impl_._has_bits_[0] &= ~0x00000040u;
   ::perfetto::protos::Utsname* temp = _impl_.utsname_;
   _impl_.utsname_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -845,13 +955,13 @@ inline ::perfetto::protos::Utsname* SystemInfo::release_utsname() {
 }
 inline ::perfetto::protos::Utsname* SystemInfo::unsafe_arena_release_utsname() {
   // @@protoc_insertion_point(field_release:perfetto.protos.SystemInfo.utsname)
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  _impl_._has_bits_[0] &= ~0x00000040u;
   ::perfetto::protos::Utsname* temp = _impl_.utsname_;
   _impl_.utsname_ = nullptr;
   return temp;
 }
 inline ::perfetto::protos::Utsname* SystemInfo::_internal_mutable_utsname() {
-  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_._has_bits_[0] |= 0x00000040u;
   if (_impl_.utsname_ == nullptr) {
     auto* p = CreateMaybeMessage<::perfetto::protos::Utsname>(GetArenaForAllocation());
     _impl_.utsname_ = p;
@@ -875,9 +985,9 @@ inline void SystemInfo::set_allocated_utsname(::perfetto::protos::Utsname* utsna
       utsname = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, utsname, submessage_arena);
     }
-    _impl_._has_bits_[0] |= 0x00000004u;
+    _impl_._has_bits_[0] |= 0x00000040u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000004u;
+    _impl_._has_bits_[0] &= ~0x00000040u;
   }
   _impl_.utsname_ = utsname;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.SystemInfo.utsname)
@@ -951,32 +1061,276 @@ inline void SystemInfo::set_allocated_android_build_fingerprint(std::string* and
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.SystemInfo.android_build_fingerprint)
 }
 
-// optional int64 hz = 3;
-inline bool SystemInfo::_internal_has_hz() const {
+// optional string android_soc_model = 9;
+inline bool SystemInfo::_internal_has_android_soc_model() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool SystemInfo::has_android_soc_model() const {
+  return _internal_has_android_soc_model();
+}
+inline void SystemInfo::clear_android_soc_model() {
+  _impl_.android_soc_model_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline const std::string& SystemInfo::android_soc_model() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SystemInfo.android_soc_model)
+  return _internal_android_soc_model();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SystemInfo::set_android_soc_model(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000004u;
+ _impl_.android_soc_model_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.SystemInfo.android_soc_model)
+}
+inline std::string* SystemInfo::mutable_android_soc_model() {
+  std::string* _s = _internal_mutable_android_soc_model();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.SystemInfo.android_soc_model)
+  return _s;
+}
+inline const std::string& SystemInfo::_internal_android_soc_model() const {
+  return _impl_.android_soc_model_.Get();
+}
+inline void SystemInfo::_internal_set_android_soc_model(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.android_soc_model_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SystemInfo::_internal_mutable_android_soc_model() {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  return _impl_.android_soc_model_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SystemInfo::release_android_soc_model() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.SystemInfo.android_soc_model)
+  if (!_internal_has_android_soc_model()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  auto* p = _impl_.android_soc_model_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.android_soc_model_.IsDefault()) {
+    _impl_.android_soc_model_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SystemInfo::set_allocated_android_soc_model(std::string* android_soc_model) {
+  if (android_soc_model != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  _impl_.android_soc_model_.SetAllocated(android_soc_model, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.android_soc_model_.IsDefault()) {
+    _impl_.android_soc_model_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.SystemInfo.android_soc_model)
+}
+
+// optional string android_hardware_revision = 10;
+inline bool SystemInfo::_internal_has_android_hardware_revision() const {
   bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
-inline bool SystemInfo::has_hz() const {
-  return _internal_has_hz();
+inline bool SystemInfo::has_android_hardware_revision() const {
+  return _internal_has_android_hardware_revision();
 }
-inline void SystemInfo::clear_hz() {
-  _impl_.hz_ = ::int64_t{0};
+inline void SystemInfo::clear_android_hardware_revision() {
+  _impl_.android_hardware_revision_.ClearToEmpty();
   _impl_._has_bits_[0] &= ~0x00000008u;
 }
-inline ::int64_t SystemInfo::_internal_hz() const {
-  return _impl_.hz_;
+inline const std::string& SystemInfo::android_hardware_revision() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SystemInfo.android_hardware_revision)
+  return _internal_android_hardware_revision();
 }
-inline ::int64_t SystemInfo::hz() const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.SystemInfo.hz)
-  return _internal_hz();
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SystemInfo::set_android_hardware_revision(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000008u;
+ _impl_.android_hardware_revision_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.SystemInfo.android_hardware_revision)
 }
-inline void SystemInfo::_internal_set_hz(::int64_t value) {
+inline std::string* SystemInfo::mutable_android_hardware_revision() {
+  std::string* _s = _internal_mutable_android_hardware_revision();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.SystemInfo.android_hardware_revision)
+  return _s;
+}
+inline const std::string& SystemInfo::_internal_android_hardware_revision() const {
+  return _impl_.android_hardware_revision_.Get();
+}
+inline void SystemInfo::_internal_set_android_hardware_revision(const std::string& value) {
   _impl_._has_bits_[0] |= 0x00000008u;
-  _impl_.hz_ = value;
+  _impl_.android_hardware_revision_.Set(value, GetArenaForAllocation());
 }
-inline void SystemInfo::set_hz(::int64_t value) {
-  _internal_set_hz(value);
-  // @@protoc_insertion_point(field_set:perfetto.protos.SystemInfo.hz)
+inline std::string* SystemInfo::_internal_mutable_android_hardware_revision() {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  return _impl_.android_hardware_revision_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SystemInfo::release_android_hardware_revision() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.SystemInfo.android_hardware_revision)
+  if (!_internal_has_android_hardware_revision()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000008u;
+  auto* p = _impl_.android_hardware_revision_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.android_hardware_revision_.IsDefault()) {
+    _impl_.android_hardware_revision_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SystemInfo::set_allocated_android_hardware_revision(std::string* android_hardware_revision) {
+  if (android_hardware_revision != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000008u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000008u;
+  }
+  _impl_.android_hardware_revision_.SetAllocated(android_hardware_revision, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.android_hardware_revision_.IsDefault()) {
+    _impl_.android_hardware_revision_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.SystemInfo.android_hardware_revision)
+}
+
+// optional string android_storage_model = 11;
+inline bool SystemInfo::_internal_has_android_storage_model() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool SystemInfo::has_android_storage_model() const {
+  return _internal_has_android_storage_model();
+}
+inline void SystemInfo::clear_android_storage_model() {
+  _impl_.android_storage_model_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline const std::string& SystemInfo::android_storage_model() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SystemInfo.android_storage_model)
+  return _internal_android_storage_model();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SystemInfo::set_android_storage_model(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000010u;
+ _impl_.android_storage_model_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.SystemInfo.android_storage_model)
+}
+inline std::string* SystemInfo::mutable_android_storage_model() {
+  std::string* _s = _internal_mutable_android_storage_model();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.SystemInfo.android_storage_model)
+  return _s;
+}
+inline const std::string& SystemInfo::_internal_android_storage_model() const {
+  return _impl_.android_storage_model_.Get();
+}
+inline void SystemInfo::_internal_set_android_storage_model(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.android_storage_model_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SystemInfo::_internal_mutable_android_storage_model() {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  return _impl_.android_storage_model_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SystemInfo::release_android_storage_model() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.SystemInfo.android_storage_model)
+  if (!_internal_has_android_storage_model()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000010u;
+  auto* p = _impl_.android_storage_model_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.android_storage_model_.IsDefault()) {
+    _impl_.android_storage_model_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SystemInfo::set_allocated_android_storage_model(std::string* android_storage_model) {
+  if (android_storage_model != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000010u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000010u;
+  }
+  _impl_.android_storage_model_.SetAllocated(android_storage_model, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.android_storage_model_.IsDefault()) {
+    _impl_.android_storage_model_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.SystemInfo.android_storage_model)
+}
+
+// optional string android_ram_model = 12;
+inline bool SystemInfo::_internal_has_android_ram_model() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool SystemInfo::has_android_ram_model() const {
+  return _internal_has_android_ram_model();
+}
+inline void SystemInfo::clear_android_ram_model() {
+  _impl_.android_ram_model_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline const std::string& SystemInfo::android_ram_model() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SystemInfo.android_ram_model)
+  return _internal_android_ram_model();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SystemInfo::set_android_ram_model(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000020u;
+ _impl_.android_ram_model_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.SystemInfo.android_ram_model)
+}
+inline std::string* SystemInfo::mutable_android_ram_model() {
+  std::string* _s = _internal_mutable_android_ram_model();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.SystemInfo.android_ram_model)
+  return _s;
+}
+inline const std::string& SystemInfo::_internal_android_ram_model() const {
+  return _impl_.android_ram_model_.Get();
+}
+inline void SystemInfo::_internal_set_android_ram_model(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_.android_ram_model_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SystemInfo::_internal_mutable_android_ram_model() {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  return _impl_.android_ram_model_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SystemInfo::release_android_ram_model() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.SystemInfo.android_ram_model)
+  if (!_internal_has_android_ram_model()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000020u;
+  auto* p = _impl_.android_ram_model_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.android_ram_model_.IsDefault()) {
+    _impl_.android_ram_model_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SystemInfo::set_allocated_android_ram_model(std::string* android_ram_model) {
+  if (android_ram_model != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000020u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000020u;
+  }
+  _impl_.android_ram_model_.SetAllocated(android_ram_model, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.android_ram_model_.IsDefault()) {
+    _impl_.android_ram_model_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.SystemInfo.android_ram_model)
 }
 
 // optional string tracing_service_version = 4;
@@ -1049,7 +1403,7 @@ inline void SystemInfo::set_allocated_tracing_service_version(std::string* traci
 
 // optional uint64 android_sdk_version = 5;
 inline bool SystemInfo::_internal_has_android_sdk_version() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000100u) != 0;
   return value;
 }
 inline bool SystemInfo::has_android_sdk_version() const {
@@ -1057,7 +1411,7 @@ inline bool SystemInfo::has_android_sdk_version() const {
 }
 inline void SystemInfo::clear_android_sdk_version() {
   _impl_.android_sdk_version_ = ::uint64_t{0u};
-  _impl_._has_bits_[0] &= ~0x00000010u;
+  _impl_._has_bits_[0] &= ~0x00000100u;
 }
 inline ::uint64_t SystemInfo::_internal_android_sdk_version() const {
   return _impl_.android_sdk_version_;
@@ -1067,7 +1421,7 @@ inline ::uint64_t SystemInfo::android_sdk_version() const {
   return _internal_android_sdk_version();
 }
 inline void SystemInfo::_internal_set_android_sdk_version(::uint64_t value) {
-  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_._has_bits_[0] |= 0x00000100u;
   _impl_.android_sdk_version_ = value;
 }
 inline void SystemInfo::set_android_sdk_version(::uint64_t value) {
@@ -1077,7 +1431,7 @@ inline void SystemInfo::set_android_sdk_version(::uint64_t value) {
 
 // optional uint32 page_size = 6;
 inline bool SystemInfo::_internal_has_page_size() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000200u) != 0;
   return value;
 }
 inline bool SystemInfo::has_page_size() const {
@@ -1085,7 +1439,7 @@ inline bool SystemInfo::has_page_size() const {
 }
 inline void SystemInfo::clear_page_size() {
   _impl_.page_size_ = 0u;
-  _impl_._has_bits_[0] &= ~0x00000020u;
+  _impl_._has_bits_[0] &= ~0x00000200u;
 }
 inline ::uint32_t SystemInfo::_internal_page_size() const {
   return _impl_.page_size_;
@@ -1095,12 +1449,96 @@ inline ::uint32_t SystemInfo::page_size() const {
   return _internal_page_size();
 }
 inline void SystemInfo::_internal_set_page_size(::uint32_t value) {
-  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_._has_bits_[0] |= 0x00000200u;
   _impl_.page_size_ = value;
 }
 inline void SystemInfo::set_page_size(::uint32_t value) {
   _internal_set_page_size(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.SystemInfo.page_size)
+}
+
+// optional uint32 num_cpus = 8;
+inline bool SystemInfo::_internal_has_num_cpus() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000800u) != 0;
+  return value;
+}
+inline bool SystemInfo::has_num_cpus() const {
+  return _internal_has_num_cpus();
+}
+inline void SystemInfo::clear_num_cpus() {
+  _impl_.num_cpus_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000800u;
+}
+inline ::uint32_t SystemInfo::_internal_num_cpus() const {
+  return _impl_.num_cpus_;
+}
+inline ::uint32_t SystemInfo::num_cpus() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SystemInfo.num_cpus)
+  return _internal_num_cpus();
+}
+inline void SystemInfo::_internal_set_num_cpus(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000800u;
+  _impl_.num_cpus_ = value;
+}
+inline void SystemInfo::set_num_cpus(::uint32_t value) {
+  _internal_set_num_cpus(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SystemInfo.num_cpus)
+}
+
+// optional int32 timezone_off_mins = 7;
+inline bool SystemInfo::_internal_has_timezone_off_mins() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000400u) != 0;
+  return value;
+}
+inline bool SystemInfo::has_timezone_off_mins() const {
+  return _internal_has_timezone_off_mins();
+}
+inline void SystemInfo::clear_timezone_off_mins() {
+  _impl_.timezone_off_mins_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000400u;
+}
+inline ::int32_t SystemInfo::_internal_timezone_off_mins() const {
+  return _impl_.timezone_off_mins_;
+}
+inline ::int32_t SystemInfo::timezone_off_mins() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SystemInfo.timezone_off_mins)
+  return _internal_timezone_off_mins();
+}
+inline void SystemInfo::_internal_set_timezone_off_mins(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000400u;
+  _impl_.timezone_off_mins_ = value;
+}
+inline void SystemInfo::set_timezone_off_mins(::int32_t value) {
+  _internal_set_timezone_off_mins(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SystemInfo.timezone_off_mins)
+}
+
+// optional int64 hz = 3;
+inline bool SystemInfo::_internal_has_hz() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
+  return value;
+}
+inline bool SystemInfo::has_hz() const {
+  return _internal_has_hz();
+}
+inline void SystemInfo::clear_hz() {
+  _impl_.hz_ = ::int64_t{0};
+  _impl_._has_bits_[0] &= ~0x00000080u;
+}
+inline ::int64_t SystemInfo::_internal_hz() const {
+  return _impl_.hz_;
+}
+inline ::int64_t SystemInfo::hz() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SystemInfo.hz)
+  return _internal_hz();
+}
+inline void SystemInfo::_internal_set_hz(::int64_t value) {
+  _impl_._has_bits_[0] |= 0x00000080u;
+  _impl_.hz_ = value;
+}
+inline void SystemInfo::set_hz(::int64_t value) {
+  _internal_set_hz(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SystemInfo.hz)
 }
 
 #ifdef __GNUC__

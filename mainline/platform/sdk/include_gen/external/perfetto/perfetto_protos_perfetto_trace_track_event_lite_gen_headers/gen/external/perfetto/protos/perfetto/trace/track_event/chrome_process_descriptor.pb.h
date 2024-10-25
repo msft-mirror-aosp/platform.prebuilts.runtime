@@ -97,11 +97,12 @@ enum ChromeProcessDescriptor_ProcessType : int {
   ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_IME = 37,
   ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_RECORDING = 38,
   ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHAPEDETECTION = 39,
-  ChromeProcessDescriptor_ProcessType_PROCESS_RENDERER_EXTENSION = 40
+  ChromeProcessDescriptor_ProcessType_PROCESS_RENDERER_EXTENSION = 40,
+  ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_MEDIA_FOUNDATION = 41
 };
 bool ChromeProcessDescriptor_ProcessType_IsValid(int value);
 constexpr ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_ProcessType_MIN = ChromeProcessDescriptor_ProcessType_PROCESS_UNSPECIFIED;
-constexpr ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_ProcessType_MAX = ChromeProcessDescriptor_ProcessType_PROCESS_RENDERER_EXTENSION;
+constexpr ChromeProcessDescriptor_ProcessType ChromeProcessDescriptor_ProcessType_ProcessType_MAX = ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_MEDIA_FOUNDATION;
 constexpr int ChromeProcessDescriptor_ProcessType_ProcessType_ARRAYSIZE = ChromeProcessDescriptor_ProcessType_ProcessType_MAX + 1;
 
 const std::string& ChromeProcessDescriptor_ProcessType_Name(ChromeProcessDescriptor_ProcessType value);
@@ -310,6 +311,8 @@ class ChromeProcessDescriptor final :
     ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_SHAPEDETECTION;
   static constexpr ProcessType PROCESS_RENDERER_EXTENSION =
     ChromeProcessDescriptor_ProcessType_PROCESS_RENDERER_EXTENSION;
+  static constexpr ProcessType PROCESS_SERVICE_MEDIA_FOUNDATION =
+    ChromeProcessDescriptor_ProcessType_PROCESS_SERVICE_MEDIA_FOUNDATION;
   static inline bool ProcessType_IsValid(int value) {
     return ChromeProcessDescriptor_ProcessType_IsValid(value);
   }

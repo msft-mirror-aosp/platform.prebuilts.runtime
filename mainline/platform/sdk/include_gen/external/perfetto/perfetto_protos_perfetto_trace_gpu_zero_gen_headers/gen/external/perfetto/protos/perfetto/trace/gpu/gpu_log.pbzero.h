@@ -15,11 +15,17 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 namespace perfetto_pbzero_enum_GpuLog {
 enum Severity : int32_t;
 }  // namespace perfetto_pbzero_enum_GpuLog
 using GpuLog_Severity = perfetto_pbzero_enum_GpuLog::Severity;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_GpuLog {
 enum Severity : int32_t {
@@ -102,11 +108,11 @@ class GpuLog : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::GpuLog_Severity,
+      GpuLog_Severity,
       GpuLog>;
 
   static constexpr FieldMetadata_Severity kSeverity{};
-  void set_severity(::perfetto::protos::pbzero::GpuLog_Severity value) {
+  void set_severity(GpuLog_Severity value) {
     static constexpr uint32_t field_id = FieldMetadata_Severity::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
