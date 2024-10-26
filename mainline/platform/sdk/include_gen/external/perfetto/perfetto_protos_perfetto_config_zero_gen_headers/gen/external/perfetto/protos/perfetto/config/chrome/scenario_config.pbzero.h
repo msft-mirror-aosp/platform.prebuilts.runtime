@@ -15,13 +15,52 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class NestedScenarioConfig;
 class ScenarioConfig;
 class TraceConfig;
 class TriggerRule;
 class TriggerRule_HistogramTrigger;
 class TriggerRule_RepeatingInterval;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
+
+class TracingTriggerRulesConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+ public:
+  TracingTriggerRulesConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit TracingTriggerRulesConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit TracingTriggerRulesConfig_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_rules() const { return at<1>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> rules() const { return GetRepeated<::protozero::ConstBytes>(1); }
+};
+
+class TracingTriggerRulesConfig : public ::protozero::Message {
+ public:
+  using Decoder = TracingTriggerRulesConfig_Decoder;
+  enum : int32_t {
+    kRulesFieldNumber = 1,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.TracingTriggerRulesConfig"; }
+
+
+  using FieldMetadata_Rules =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      TriggerRule,
+      TracingTriggerRulesConfig>;
+
+  static constexpr FieldMetadata_Rules kRules{};
+  template <typename T = TriggerRule> T* add_rules() {
+    return BeginNestedMessage<T>(1);
+  }
+
+};
 
 class ChromeFieldTracingConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/1, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -295,7 +334,7 @@ class NestedScenarioConfig : public ::protozero::Message {
 
 };
 
-class TriggerRule_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class TriggerRule_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/8, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   TriggerRule_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TriggerRule_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -306,6 +345,8 @@ class TriggerRule_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   float trigger_chance() const { return at<2>().as_float(); }
   bool has_delay_ms() const { return at<3>().valid(); }
   uint64_t delay_ms() const { return at<3>().as_uint64(); }
+  bool has_activation_delay_ms() const { return at<8>().valid(); }
+  uint64_t activation_delay_ms() const { return at<8>().as_uint64(); }
   bool has_manual_trigger_name() const { return at<4>().valid(); }
   ::protozero::ConstChars manual_trigger_name() const { return at<4>().as_string(); }
   bool has_histogram() const { return at<5>().valid(); }
@@ -321,6 +362,7 @@ class TriggerRule : public ::protozero::Message {
     kNameFieldNumber = 1,
     kTriggerChanceFieldNumber = 2,
     kDelayMsFieldNumber = 3,
+    kActivationDelayMsFieldNumber = 8,
     kManualTriggerNameFieldNumber = 4,
     kHistogramFieldNumber = 5,
     kRepeatingIntervalFieldNumber = 6,
@@ -383,6 +425,24 @@ class TriggerRule : public ::protozero::Message {
   static constexpr FieldMetadata_DelayMs kDelayMs{};
   void set_delay_ms(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DelayMs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_ActivationDelayMs =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      TriggerRule>;
+
+  static constexpr FieldMetadata_ActivationDelayMs kActivationDelayMs{};
+  void set_activation_delay_ms(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_ActivationDelayMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<

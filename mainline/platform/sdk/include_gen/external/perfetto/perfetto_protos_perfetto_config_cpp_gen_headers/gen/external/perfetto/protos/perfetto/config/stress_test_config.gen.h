@@ -18,6 +18,7 @@ namespace gen {
 class StressTestConfig;
 class StressTestConfig_WriterTiming;
 class TraceConfig;
+class TraceConfig_SessionSemaphore;
 class TraceConfig_CmdTraceStartDelay;
 class TraceConfig_AndroidReportConfig;
 class TraceConfig_TraceFilter;
@@ -36,6 +37,7 @@ class DataSourceConfig;
 class TestConfig;
 class TestConfig_DummyFields;
 class InterceptorConfig;
+class ConsoleConfig;
 class ChromeConfig;
 class SystemInfoConfig;
 class TraceConfig_BufferConfig;
@@ -46,6 +48,7 @@ enum TraceConfig_TraceFilter_StringFilterPolicy : int;
 enum TraceConfig_TriggerConfig_TriggerMode : int;
 enum BuiltinClock : int;
 enum DataSourceConfig_SessionInitiator : int;
+enum ConsoleConfig_Output : int;
 enum ChromeConfig_ClientPriority : int;
 enum TraceConfig_BufferConfig_FillPolicy : int;
 }  // namespace perfetto

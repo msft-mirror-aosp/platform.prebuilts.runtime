@@ -23,6 +23,7 @@ class TrackEvent_LegacyEvent;
 class ChromeMojoEventInfo;
 class ChromeMessagePump;
 class SourceLocation;
+class Screenshot;
 class ChromeActiveProcesses;
 class ChromeContentSettingsEventInfo;
 class ChromeWindowHandleEventInfo;
@@ -60,6 +61,7 @@ enum ChromeFrameReporter_ScrollState : int;
 enum ChromeFrameReporter_FrameType : int;
 enum ChromeLatencyInfo_Step : int;
 enum ChromeLatencyInfo_LatencyComponentType : int;
+enum ChromeLatencyInfo_InputType : int;
 enum ChromeLegacyIpc_MessageClass : int;
 enum ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode : int;
 enum ChromeCompositorSchedulerAction : int;
@@ -282,6 +284,7 @@ class PERFETTO_EXPORT_COMPONENT TrackEvent : public ::protozero::CppMessageObj {
     kChromeWindowHandleEventInfoFieldNumber = 41,
     kChromeContentSettingsEventInfoFieldNumber = 43,
     kChromeActiveProcessesFieldNumber = 49,
+    kScreenshotFieldNumber = 50,
     kSourceLocationFieldNumber = 33,
     kSourceLocationIidFieldNumber = 34,
     kChromeMessagePumpFieldNumber = 35,
@@ -465,6 +468,10 @@ class PERFETTO_EXPORT_COMPONENT TrackEvent : public ::protozero::CppMessageObj {
   const ChromeActiveProcesses& chrome_active_processes() const { return *chrome_active_processes_; }
   ChromeActiveProcesses* mutable_chrome_active_processes() { _has_field_.set(49); return chrome_active_processes_.get(); }
 
+  bool has_screenshot() const { return _has_field_[50]; }
+  const Screenshot& screenshot() const { return *screenshot_; }
+  Screenshot* mutable_screenshot() { _has_field_.set(50); return screenshot_.get(); }
+
   bool has_source_location() const { return _has_field_[33]; }
   const SourceLocation& source_location() const { return *source_location_; }
   SourceLocation* mutable_source_location() { _has_field_.set(33); return source_location_.get(); }
@@ -541,6 +548,7 @@ class PERFETTO_EXPORT_COMPONENT TrackEvent : public ::protozero::CppMessageObj {
   ::protozero::CopyablePtr<ChromeWindowHandleEventInfo> chrome_window_handle_event_info_;
   ::protozero::CopyablePtr<ChromeContentSettingsEventInfo> chrome_content_settings_event_info_;
   ::protozero::CopyablePtr<ChromeActiveProcesses> chrome_active_processes_;
+  ::protozero::CopyablePtr<Screenshot> screenshot_;
   ::protozero::CopyablePtr<SourceLocation> source_location_;
   uint64_t source_location_iid_{};
   ::protozero::CopyablePtr<ChromeMessagePump> chrome_message_pump_;
@@ -557,7 +565,7 @@ class PERFETTO_EXPORT_COMPONENT TrackEvent : public ::protozero::CppMessageObj {
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<50> _has_field_{};
+  std::bitset<51> _has_field_{};
 };
 
 

@@ -68,6 +68,75 @@ extern MaliMaliKCPUFENCEWAITENDFtraceEventDefaultTypeInternal _MaliMaliKCPUFENCE
 class MaliMaliKCPUFENCEWAITSTARTFtraceEvent;
 struct MaliMaliKCPUFENCEWAITSTARTFtraceEventDefaultTypeInternal;
 extern MaliMaliKCPUFENCEWAITSTARTFtraceEventDefaultTypeInternal _MaliMaliKCPUFENCEWAITSTARTFtraceEvent_default_instance_;
+class MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent;
+struct MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEventDefaultTypeInternal _MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent_default_instance_;
+class MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent;
+struct MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEventDefaultTypeInternal _MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent_default_instance_;
+class MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent;
+struct MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEventDefaultTypeInternal _MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent_default_instance_;
+class MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent;
+struct MaliMaliPMMCUHCTLMCUONRECHECKFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUHCTLMCUONRECHECKFtraceEventDefaultTypeInternal _MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent_default_instance_;
+class MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent;
+struct MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEventDefaultTypeInternal _MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent_default_instance_;
+class MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent;
+struct MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEventDefaultTypeInternal _MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent_default_instance_;
+class MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent;
+struct MaliMaliPMMCUHCTLSHADERSPENDONFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUHCTLSHADERSPENDONFtraceEventDefaultTypeInternal _MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent_default_instance_;
+class MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent;
+struct MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEventDefaultTypeInternal _MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent_default_instance_;
+class MaliMaliPMMCUINSLEEPFtraceEvent;
+struct MaliMaliPMMCUINSLEEPFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUINSLEEPFtraceEventDefaultTypeInternal _MaliMaliPMMCUINSLEEPFtraceEvent_default_instance_;
+class MaliMaliPMMCUOFFFtraceEvent;
+struct MaliMaliPMMCUOFFFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUOFFFtraceEventDefaultTypeInternal _MaliMaliPMMCUOFFFtraceEvent_default_instance_;
+class MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent;
+struct MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEventDefaultTypeInternal _MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent_default_instance_;
+class MaliMaliPMMCUONFtraceEvent;
+struct MaliMaliPMMCUONFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUONFtraceEventDefaultTypeInternal _MaliMaliPMMCUONFtraceEvent_default_instance_;
+class MaliMaliPMMCUONGLBREINITPENDFtraceEvent;
+struct MaliMaliPMMCUONGLBREINITPENDFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUONGLBREINITPENDFtraceEventDefaultTypeInternal _MaliMaliPMMCUONGLBREINITPENDFtraceEvent_default_instance_;
+class MaliMaliPMMCUONHALTFtraceEvent;
+struct MaliMaliPMMCUONHALTFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUONHALTFtraceEventDefaultTypeInternal _MaliMaliPMMCUONHALTFtraceEvent_default_instance_;
+class MaliMaliPMMCUONHWCNTDISABLEFtraceEvent;
+struct MaliMaliPMMCUONHWCNTDISABLEFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUONHWCNTDISABLEFtraceEventDefaultTypeInternal _MaliMaliPMMCUONHWCNTDISABLEFtraceEvent_default_instance_;
+class MaliMaliPMMCUONHWCNTENABLEFtraceEvent;
+struct MaliMaliPMMCUONHWCNTENABLEFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUONHWCNTENABLEFtraceEventDefaultTypeInternal _MaliMaliPMMCUONHWCNTENABLEFtraceEvent_default_instance_;
+class MaliMaliPMMCUONPENDHALTFtraceEvent;
+struct MaliMaliPMMCUONPENDHALTFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUONPENDHALTFtraceEventDefaultTypeInternal _MaliMaliPMMCUONPENDHALTFtraceEvent_default_instance_;
+class MaliMaliPMMCUONPENDSLEEPFtraceEvent;
+struct MaliMaliPMMCUONPENDSLEEPFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUONPENDSLEEPFtraceEventDefaultTypeInternal _MaliMaliPMMCUONPENDSLEEPFtraceEvent_default_instance_;
+class MaliMaliPMMCUONSLEEPINITIATEFtraceEvent;
+struct MaliMaliPMMCUONSLEEPINITIATEFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUONSLEEPINITIATEFtraceEventDefaultTypeInternal _MaliMaliPMMCUONSLEEPINITIATEFtraceEvent_default_instance_;
+class MaliMaliPMMCUPENDOFFFtraceEvent;
+struct MaliMaliPMMCUPENDOFFFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUPENDOFFFtraceEventDefaultTypeInternal _MaliMaliPMMCUPENDOFFFtraceEvent_default_instance_;
+class MaliMaliPMMCUPENDONRELOADFtraceEvent;
+struct MaliMaliPMMCUPENDONRELOADFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUPENDONRELOADFtraceEventDefaultTypeInternal _MaliMaliPMMCUPENDONRELOADFtraceEvent_default_instance_;
+class MaliMaliPMMCUPOWERDOWNFtraceEvent;
+struct MaliMaliPMMCUPOWERDOWNFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCUPOWERDOWNFtraceEventDefaultTypeInternal _MaliMaliPMMCUPOWERDOWNFtraceEvent_default_instance_;
+class MaliMaliPMMCURESETWAITFtraceEvent;
+struct MaliMaliPMMCURESETWAITFtraceEventDefaultTypeInternal;
+extern MaliMaliPMMCURESETWAITFtraceEventDefaultTypeInternal _MaliMaliPMMCURESETWAITFtraceEvent_default_instance_;
 class MaliTracingMarkWriteFtraceEvent;
 struct MaliTracingMarkWriteFtraceEventDefaultTypeInternal;
 extern MaliTracingMarkWriteFtraceEventDefaultTypeInternal _MaliTracingMarkWriteFtraceEvent_default_instance_;
@@ -82,6 +151,29 @@ template<> ::perfetto::protos::MaliMaliKCPUCQSWAITSTARTFtraceEvent* Arena::Creat
 template<> ::perfetto::protos::MaliMaliKCPUFENCESIGNALFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliKCPUFENCESIGNALFtraceEvent>(Arena*);
 template<> ::perfetto::protos::MaliMaliKCPUFENCEWAITENDFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliKCPUFENCEWAITENDFtraceEvent>(Arena*);
 template<> ::perfetto::protos::MaliMaliKCPUFENCEWAITSTARTFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliKCPUFENCEWAITSTARTFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUONFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent>(Arena*);
+template<> ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent>(Arena*);
 template<> ::perfetto::protos::MaliTracingMarkWriteFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::MaliTracingMarkWriteFtraceEvent>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
@@ -1871,6 +1963,4054 @@ class MaliMaliCSFINTERRUPTENDFtraceEvent final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
 };
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent() : MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent(const MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent& from);
+  MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent(MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent& operator=(const MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent& operator=(MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent*>(
+               &_MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent& a, MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent() : MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent(const MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent& from);
+  MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent(MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent& operator=(const MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent& operator=(MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent*>(
+               &_MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent& a, MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent() : MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent(const MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent& from);
+  MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent(MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent& operator=(const MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent& operator=(MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent*>(
+               &_MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent& a, MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent() : MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent(const MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent& from);
+  MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent(MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent& operator=(const MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent& operator=(MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent*>(
+               &_MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent& a, MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent() : MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent(const MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent& from);
+  MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent(MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent& operator=(const MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent& operator=(MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent*>(
+               &_MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  friend void swap(MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent& a, MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent() : MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent(const MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent& from);
+  MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent(MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent& operator=(const MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent& operator=(MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent*>(
+               &_MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    14;
+
+  friend void swap(MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent& a, MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent() : MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent(const MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent& from);
+  MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent(MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent& operator=(const MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent& operator=(MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent*>(
+               &_MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  friend void swap(MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent& a, MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent() : MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent(const MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent& from);
+  MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent(MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent& operator=(const MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent& operator=(MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent*>(
+               &_MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    16;
+
+  friend void swap(MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent& a, MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUINSLEEPFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUINSLEEPFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUINSLEEPFtraceEvent() : MaliMaliPMMCUINSLEEPFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUINSLEEPFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUINSLEEPFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUINSLEEPFtraceEvent(const MaliMaliPMMCUINSLEEPFtraceEvent& from);
+  MaliMaliPMMCUINSLEEPFtraceEvent(MaliMaliPMMCUINSLEEPFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUINSLEEPFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUINSLEEPFtraceEvent& operator=(const MaliMaliPMMCUINSLEEPFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUINSLEEPFtraceEvent& operator=(MaliMaliPMMCUINSLEEPFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUINSLEEPFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUINSLEEPFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUINSLEEPFtraceEvent*>(
+               &_MaliMaliPMMCUINSLEEPFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    17;
+
+  friend void swap(MaliMaliPMMCUINSLEEPFtraceEvent& a, MaliMaliPMMCUINSLEEPFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUINSLEEPFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUINSLEEPFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUINSLEEPFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUINSLEEPFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUINSLEEPFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUINSLEEPFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUINSLEEPFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUINSLEEPFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUINSLEEPFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUINSLEEPFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUINSLEEPFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUOFFFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUOFFFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUOFFFtraceEvent() : MaliMaliPMMCUOFFFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUOFFFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUOFFFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUOFFFtraceEvent(const MaliMaliPMMCUOFFFtraceEvent& from);
+  MaliMaliPMMCUOFFFtraceEvent(MaliMaliPMMCUOFFFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUOFFFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUOFFFtraceEvent& operator=(const MaliMaliPMMCUOFFFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUOFFFtraceEvent& operator=(MaliMaliPMMCUOFFFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUOFFFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUOFFFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUOFFFtraceEvent*>(
+               &_MaliMaliPMMCUOFFFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    18;
+
+  friend void swap(MaliMaliPMMCUOFFFtraceEvent& a, MaliMaliPMMCUOFFFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUOFFFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUOFFFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUOFFFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUOFFFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUOFFFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUOFFFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUOFFFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUOFFFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUOFFFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUOFFFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUOFFFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUONFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUONFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUONFtraceEvent() : MaliMaliPMMCUONFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUONFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUONFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUONFtraceEvent(const MaliMaliPMMCUONFtraceEvent& from);
+  MaliMaliPMMCUONFtraceEvent(MaliMaliPMMCUONFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUONFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUONFtraceEvent& operator=(const MaliMaliPMMCUONFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUONFtraceEvent& operator=(MaliMaliPMMCUONFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUONFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUONFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUONFtraceEvent*>(
+               &_MaliMaliPMMCUONFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    19;
+
+  friend void swap(MaliMaliPMMCUONFtraceEvent& a, MaliMaliPMMCUONFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUONFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUONFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUONFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUONFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUONFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUONFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUONFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUONFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUONFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUONFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUONFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent() : MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent(const MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent& from);
+  MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent(MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent& operator=(const MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent& operator=(MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent*>(
+               &_MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    20;
+
+  friend void swap(MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent& a, MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUONGLBREINITPENDFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUONGLBREINITPENDFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUONGLBREINITPENDFtraceEvent() : MaliMaliPMMCUONGLBREINITPENDFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUONGLBREINITPENDFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUONGLBREINITPENDFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUONGLBREINITPENDFtraceEvent(const MaliMaliPMMCUONGLBREINITPENDFtraceEvent& from);
+  MaliMaliPMMCUONGLBREINITPENDFtraceEvent(MaliMaliPMMCUONGLBREINITPENDFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUONGLBREINITPENDFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUONGLBREINITPENDFtraceEvent& operator=(const MaliMaliPMMCUONGLBREINITPENDFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUONGLBREINITPENDFtraceEvent& operator=(MaliMaliPMMCUONGLBREINITPENDFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUONGLBREINITPENDFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUONGLBREINITPENDFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUONGLBREINITPENDFtraceEvent*>(
+               &_MaliMaliPMMCUONGLBREINITPENDFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    21;
+
+  friend void swap(MaliMaliPMMCUONGLBREINITPENDFtraceEvent& a, MaliMaliPMMCUONGLBREINITPENDFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUONGLBREINITPENDFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUONGLBREINITPENDFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUONGLBREINITPENDFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUONGLBREINITPENDFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUONGLBREINITPENDFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUONGLBREINITPENDFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUONGLBREINITPENDFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUONGLBREINITPENDFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUONGLBREINITPENDFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUONGLBREINITPENDFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUONGLBREINITPENDFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUONHALTFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUONHALTFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUONHALTFtraceEvent() : MaliMaliPMMCUONHALTFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUONHALTFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUONHALTFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUONHALTFtraceEvent(const MaliMaliPMMCUONHALTFtraceEvent& from);
+  MaliMaliPMMCUONHALTFtraceEvent(MaliMaliPMMCUONHALTFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUONHALTFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUONHALTFtraceEvent& operator=(const MaliMaliPMMCUONHALTFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUONHALTFtraceEvent& operator=(MaliMaliPMMCUONHALTFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUONHALTFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUONHALTFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUONHALTFtraceEvent*>(
+               &_MaliMaliPMMCUONHALTFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    22;
+
+  friend void swap(MaliMaliPMMCUONHALTFtraceEvent& a, MaliMaliPMMCUONHALTFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUONHALTFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUONHALTFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUONHALTFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUONHALTFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUONHALTFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUONHALTFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUONHALTFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUONHALTFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUONHALTFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUONHALTFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUONHALTFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUONHWCNTDISABLEFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUONHWCNTDISABLEFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUONHWCNTDISABLEFtraceEvent() : MaliMaliPMMCUONHWCNTDISABLEFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUONHWCNTDISABLEFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUONHWCNTDISABLEFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUONHWCNTDISABLEFtraceEvent(const MaliMaliPMMCUONHWCNTDISABLEFtraceEvent& from);
+  MaliMaliPMMCUONHWCNTDISABLEFtraceEvent(MaliMaliPMMCUONHWCNTDISABLEFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUONHWCNTDISABLEFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUONHWCNTDISABLEFtraceEvent& operator=(const MaliMaliPMMCUONHWCNTDISABLEFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUONHWCNTDISABLEFtraceEvent& operator=(MaliMaliPMMCUONHWCNTDISABLEFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUONHWCNTDISABLEFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUONHWCNTDISABLEFtraceEvent*>(
+               &_MaliMaliPMMCUONHWCNTDISABLEFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    23;
+
+  friend void swap(MaliMaliPMMCUONHWCNTDISABLEFtraceEvent& a, MaliMaliPMMCUONHWCNTDISABLEFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUONHWCNTDISABLEFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUONHWCNTDISABLEFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUONHWCNTDISABLEFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUONHWCNTDISABLEFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUONHWCNTDISABLEFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUONHWCNTDISABLEFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUONHWCNTENABLEFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUONHWCNTENABLEFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUONHWCNTENABLEFtraceEvent() : MaliMaliPMMCUONHWCNTENABLEFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUONHWCNTENABLEFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUONHWCNTENABLEFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUONHWCNTENABLEFtraceEvent(const MaliMaliPMMCUONHWCNTENABLEFtraceEvent& from);
+  MaliMaliPMMCUONHWCNTENABLEFtraceEvent(MaliMaliPMMCUONHWCNTENABLEFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUONHWCNTENABLEFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUONHWCNTENABLEFtraceEvent& operator=(const MaliMaliPMMCUONHWCNTENABLEFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUONHWCNTENABLEFtraceEvent& operator=(MaliMaliPMMCUONHWCNTENABLEFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUONHWCNTENABLEFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUONHWCNTENABLEFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUONHWCNTENABLEFtraceEvent*>(
+               &_MaliMaliPMMCUONHWCNTENABLEFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    24;
+
+  friend void swap(MaliMaliPMMCUONHWCNTENABLEFtraceEvent& a, MaliMaliPMMCUONHWCNTENABLEFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUONHWCNTENABLEFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUONHWCNTENABLEFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUONHWCNTENABLEFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUONHWCNTENABLEFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUONHWCNTENABLEFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUONHWCNTENABLEFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUONHWCNTENABLEFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUONHWCNTENABLEFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUONHWCNTENABLEFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUONHWCNTENABLEFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUONHWCNTENABLEFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUONPENDHALTFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUONPENDHALTFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUONPENDHALTFtraceEvent() : MaliMaliPMMCUONPENDHALTFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUONPENDHALTFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUONPENDHALTFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUONPENDHALTFtraceEvent(const MaliMaliPMMCUONPENDHALTFtraceEvent& from);
+  MaliMaliPMMCUONPENDHALTFtraceEvent(MaliMaliPMMCUONPENDHALTFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUONPENDHALTFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUONPENDHALTFtraceEvent& operator=(const MaliMaliPMMCUONPENDHALTFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUONPENDHALTFtraceEvent& operator=(MaliMaliPMMCUONPENDHALTFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUONPENDHALTFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUONPENDHALTFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUONPENDHALTFtraceEvent*>(
+               &_MaliMaliPMMCUONPENDHALTFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    25;
+
+  friend void swap(MaliMaliPMMCUONPENDHALTFtraceEvent& a, MaliMaliPMMCUONPENDHALTFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUONPENDHALTFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUONPENDHALTFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUONPENDHALTFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUONPENDHALTFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUONPENDHALTFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUONPENDHALTFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUONPENDHALTFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUONPENDHALTFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUONPENDHALTFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUONPENDHALTFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUONPENDHALTFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUONPENDSLEEPFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUONPENDSLEEPFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUONPENDSLEEPFtraceEvent() : MaliMaliPMMCUONPENDSLEEPFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUONPENDSLEEPFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUONPENDSLEEPFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUONPENDSLEEPFtraceEvent(const MaliMaliPMMCUONPENDSLEEPFtraceEvent& from);
+  MaliMaliPMMCUONPENDSLEEPFtraceEvent(MaliMaliPMMCUONPENDSLEEPFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUONPENDSLEEPFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUONPENDSLEEPFtraceEvent& operator=(const MaliMaliPMMCUONPENDSLEEPFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUONPENDSLEEPFtraceEvent& operator=(MaliMaliPMMCUONPENDSLEEPFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUONPENDSLEEPFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUONPENDSLEEPFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUONPENDSLEEPFtraceEvent*>(
+               &_MaliMaliPMMCUONPENDSLEEPFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    26;
+
+  friend void swap(MaliMaliPMMCUONPENDSLEEPFtraceEvent& a, MaliMaliPMMCUONPENDSLEEPFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUONPENDSLEEPFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUONPENDSLEEPFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUONPENDSLEEPFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUONPENDSLEEPFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUONPENDSLEEPFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUONPENDSLEEPFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUONPENDSLEEPFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUONPENDSLEEPFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUONPENDSLEEPFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUONPENDSLEEPFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUONPENDSLEEPFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUONSLEEPINITIATEFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUONSLEEPINITIATEFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUONSLEEPINITIATEFtraceEvent() : MaliMaliPMMCUONSLEEPINITIATEFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUONSLEEPINITIATEFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUONSLEEPINITIATEFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUONSLEEPINITIATEFtraceEvent(const MaliMaliPMMCUONSLEEPINITIATEFtraceEvent& from);
+  MaliMaliPMMCUONSLEEPINITIATEFtraceEvent(MaliMaliPMMCUONSLEEPINITIATEFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUONSLEEPINITIATEFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUONSLEEPINITIATEFtraceEvent& operator=(const MaliMaliPMMCUONSLEEPINITIATEFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUONSLEEPINITIATEFtraceEvent& operator=(MaliMaliPMMCUONSLEEPINITIATEFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUONSLEEPINITIATEFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUONSLEEPINITIATEFtraceEvent*>(
+               &_MaliMaliPMMCUONSLEEPINITIATEFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    27;
+
+  friend void swap(MaliMaliPMMCUONSLEEPINITIATEFtraceEvent& a, MaliMaliPMMCUONSLEEPINITIATEFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUONSLEEPINITIATEFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUONSLEEPINITIATEFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUONSLEEPINITIATEFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUONSLEEPINITIATEFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUONSLEEPINITIATEFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUONSLEEPINITIATEFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUPENDOFFFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUPENDOFFFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUPENDOFFFtraceEvent() : MaliMaliPMMCUPENDOFFFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUPENDOFFFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUPENDOFFFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUPENDOFFFtraceEvent(const MaliMaliPMMCUPENDOFFFtraceEvent& from);
+  MaliMaliPMMCUPENDOFFFtraceEvent(MaliMaliPMMCUPENDOFFFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUPENDOFFFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUPENDOFFFtraceEvent& operator=(const MaliMaliPMMCUPENDOFFFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUPENDOFFFtraceEvent& operator=(MaliMaliPMMCUPENDOFFFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUPENDOFFFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUPENDOFFFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUPENDOFFFtraceEvent*>(
+               &_MaliMaliPMMCUPENDOFFFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    28;
+
+  friend void swap(MaliMaliPMMCUPENDOFFFtraceEvent& a, MaliMaliPMMCUPENDOFFFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUPENDOFFFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUPENDOFFFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUPENDOFFFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUPENDOFFFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUPENDOFFFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUPENDOFFFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUPENDOFFFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUPENDOFFFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUPENDOFFFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUPENDOFFFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUPENDOFFFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUPENDONRELOADFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUPENDONRELOADFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUPENDONRELOADFtraceEvent() : MaliMaliPMMCUPENDONRELOADFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUPENDONRELOADFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUPENDONRELOADFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUPENDONRELOADFtraceEvent(const MaliMaliPMMCUPENDONRELOADFtraceEvent& from);
+  MaliMaliPMMCUPENDONRELOADFtraceEvent(MaliMaliPMMCUPENDONRELOADFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUPENDONRELOADFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUPENDONRELOADFtraceEvent& operator=(const MaliMaliPMMCUPENDONRELOADFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUPENDONRELOADFtraceEvent& operator=(MaliMaliPMMCUPENDONRELOADFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUPENDONRELOADFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUPENDONRELOADFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUPENDONRELOADFtraceEvent*>(
+               &_MaliMaliPMMCUPENDONRELOADFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    29;
+
+  friend void swap(MaliMaliPMMCUPENDONRELOADFtraceEvent& a, MaliMaliPMMCUPENDONRELOADFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUPENDONRELOADFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUPENDONRELOADFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUPENDONRELOADFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUPENDONRELOADFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUPENDONRELOADFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUPENDONRELOADFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUPENDONRELOADFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUPENDONRELOADFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUPENDONRELOADFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUPENDONRELOADFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUPENDONRELOADFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCUPOWERDOWNFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCUPOWERDOWNFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCUPOWERDOWNFtraceEvent() : MaliMaliPMMCUPOWERDOWNFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCUPOWERDOWNFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCUPOWERDOWNFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCUPOWERDOWNFtraceEvent(const MaliMaliPMMCUPOWERDOWNFtraceEvent& from);
+  MaliMaliPMMCUPOWERDOWNFtraceEvent(MaliMaliPMMCUPOWERDOWNFtraceEvent&& from) noexcept
+    : MaliMaliPMMCUPOWERDOWNFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCUPOWERDOWNFtraceEvent& operator=(const MaliMaliPMMCUPOWERDOWNFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCUPOWERDOWNFtraceEvent& operator=(MaliMaliPMMCUPOWERDOWNFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCUPOWERDOWNFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCUPOWERDOWNFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCUPOWERDOWNFtraceEvent*>(
+               &_MaliMaliPMMCUPOWERDOWNFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    30;
+
+  friend void swap(MaliMaliPMMCUPOWERDOWNFtraceEvent& a, MaliMaliPMMCUPOWERDOWNFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCUPOWERDOWNFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCUPOWERDOWNFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCUPOWERDOWNFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCUPOWERDOWNFtraceEvent>(arena);
+  }
+  MaliMaliPMMCUPOWERDOWNFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCUPOWERDOWNFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCUPOWERDOWNFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCUPOWERDOWNFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCUPOWERDOWNFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCUPOWERDOWNFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCUPOWERDOWNFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MaliMaliPMMCURESETWAITFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.MaliMaliPMMCURESETWAITFtraceEvent) */ {
+ public:
+  inline MaliMaliPMMCURESETWAITFtraceEvent() : MaliMaliPMMCURESETWAITFtraceEvent(nullptr) {}
+  ~MaliMaliPMMCURESETWAITFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR MaliMaliPMMCURESETWAITFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MaliMaliPMMCURESETWAITFtraceEvent(const MaliMaliPMMCURESETWAITFtraceEvent& from);
+  MaliMaliPMMCURESETWAITFtraceEvent(MaliMaliPMMCURESETWAITFtraceEvent&& from) noexcept
+    : MaliMaliPMMCURESETWAITFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MaliMaliPMMCURESETWAITFtraceEvent& operator=(const MaliMaliPMMCURESETWAITFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline MaliMaliPMMCURESETWAITFtraceEvent& operator=(MaliMaliPMMCURESETWAITFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const MaliMaliPMMCURESETWAITFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MaliMaliPMMCURESETWAITFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const MaliMaliPMMCURESETWAITFtraceEvent*>(
+               &_MaliMaliPMMCURESETWAITFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    31;
+
+  friend void swap(MaliMaliPMMCURESETWAITFtraceEvent& a, MaliMaliPMMCURESETWAITFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MaliMaliPMMCURESETWAITFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MaliMaliPMMCURESETWAITFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MaliMaliPMMCURESETWAITFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MaliMaliPMMCURESETWAITFtraceEvent>(arena);
+  }
+  MaliMaliPMMCURESETWAITFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const MaliMaliPMMCURESETWAITFtraceEvent& from);
+  void MergeFrom(const MaliMaliPMMCURESETWAITFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MaliMaliPMMCURESETWAITFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.MaliMaliPMMCURESETWAITFtraceEvent";
+  }
+  protected:
+  explicit MaliMaliPMMCURESETWAITFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kKctxTgidFieldNumber = 1,
+    kKctxIdFieldNumber = 2,
+    kInfoValFieldNumber = 3,
+  };
+  // optional int32 kctx_tgid = 1;
+  bool has_kctx_tgid() const;
+  private:
+  bool _internal_has_kctx_tgid() const;
+  public:
+  void clear_kctx_tgid();
+  ::int32_t kctx_tgid() const;
+  void set_kctx_tgid(::int32_t value);
+  private:
+  ::int32_t _internal_kctx_tgid() const;
+  void _internal_set_kctx_tgid(::int32_t value);
+  public:
+
+  // optional uint32 kctx_id = 2;
+  bool has_kctx_id() const;
+  private:
+  bool _internal_has_kctx_id() const;
+  public:
+  void clear_kctx_id();
+  ::uint32_t kctx_id() const;
+  void set_kctx_id(::uint32_t value);
+  private:
+  ::uint32_t _internal_kctx_id() const;
+  void _internal_set_kctx_id(::uint32_t value);
+  public:
+
+  // optional uint64 info_val = 3;
+  bool has_info_val() const;
+  private:
+  bool _internal_has_info_val() const;
+  public:
+  void clear_info_val();
+  ::uint64_t info_val() const;
+  void set_info_val(::uint64_t value);
+  private:
+  ::uint64_t _internal_info_val() const;
+  void _internal_set_info_val(::uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.MaliMaliPMMCURESETWAITFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::int32_t kctx_tgid_;
+    ::uint32_t kctx_id_;
+    ::uint64_t info_val_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fmali_2eproto;
+};
 // ===================================================================
 
 
@@ -3074,9 +7214,2079 @@ inline void MaliMaliCSFINTERRUPTENDFtraceEvent::set_info_val(::uint64_t value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliCSFINTERRUPTENDFtraceEvent.info_val)
 }
 
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUINSLEEPFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUINSLEEPFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUINSLEEPFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUINSLEEPFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUINSLEEPFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUINSLEEPFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUINSLEEPFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUINSLEEPFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUINSLEEPFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUINSLEEPFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUINSLEEPFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUINSLEEPFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUINSLEEPFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUINSLEEPFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUINSLEEPFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUINSLEEPFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUINSLEEPFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUINSLEEPFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUINSLEEPFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUINSLEEPFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUINSLEEPFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUINSLEEPFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUINSLEEPFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUINSLEEPFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUINSLEEPFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUINSLEEPFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUINSLEEPFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUINSLEEPFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUOFFFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUOFFFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUOFFFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUOFFFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUOFFFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUOFFFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUOFFFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUOFFFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUOFFFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUOFFFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUOFFFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUOFFFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUOFFFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUOFFFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUOFFFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUOFFFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUOFFFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUOFFFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUOFFFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUOFFFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUOFFFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUOFFFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUOFFFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUOFFFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUOFFFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUOFFFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUOFFFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUOFFFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUONFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUONFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUONFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUONFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUONFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUONFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUONFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUONFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUONFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUONFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUONFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUONFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUONFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUONFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUONFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUONFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUONFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUONFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUONFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUONGLBREINITPENDFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUONGLBREINITPENDFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONGLBREINITPENDFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUONGLBREINITPENDFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUONGLBREINITPENDFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUONGLBREINITPENDFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONGLBREINITPENDFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUONGLBREINITPENDFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUONGLBREINITPENDFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONGLBREINITPENDFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUONGLBREINITPENDFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONGLBREINITPENDFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUONGLBREINITPENDFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUONGLBREINITPENDFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUONGLBREINITPENDFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONGLBREINITPENDFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUONGLBREINITPENDFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUONGLBREINITPENDFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONGLBREINITPENDFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUONGLBREINITPENDFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONGLBREINITPENDFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUONGLBREINITPENDFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUONGLBREINITPENDFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUONGLBREINITPENDFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONGLBREINITPENDFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUONGLBREINITPENDFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUONGLBREINITPENDFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONGLBREINITPENDFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUONHALTFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUONHALTFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONHALTFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUONHALTFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUONHALTFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUONHALTFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONHALTFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUONHALTFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUONHALTFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONHALTFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUONHALTFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONHALTFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUONHALTFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUONHALTFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUONHALTFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONHALTFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUONHALTFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUONHALTFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONHALTFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUONHALTFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONHALTFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUONHALTFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUONHALTFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUONHALTFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONHALTFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUONHALTFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUONHALTFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONHALTFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUONHWCNTDISABLEFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONHWCNTDISABLEFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONHWCNTDISABLEFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONHWCNTDISABLEFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONHWCNTDISABLEFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONHWCNTDISABLEFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUONHWCNTDISABLEFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONHWCNTDISABLEFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUONHWCNTENABLEFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUONHWCNTENABLEFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONHWCNTENABLEFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUONHWCNTENABLEFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUONHWCNTENABLEFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUONHWCNTENABLEFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONHWCNTENABLEFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUONHWCNTENABLEFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUONHWCNTENABLEFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONHWCNTENABLEFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUONHWCNTENABLEFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONHWCNTENABLEFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUONHWCNTENABLEFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUONHWCNTENABLEFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUONHWCNTENABLEFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONHWCNTENABLEFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUONHWCNTENABLEFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUONHWCNTENABLEFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONHWCNTENABLEFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUONHWCNTENABLEFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONHWCNTENABLEFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUONHWCNTENABLEFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUONHWCNTENABLEFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUONHWCNTENABLEFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONHWCNTENABLEFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUONHWCNTENABLEFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUONHWCNTENABLEFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONHWCNTENABLEFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUONPENDHALTFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUONPENDHALTFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONPENDHALTFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUONPENDHALTFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUONPENDHALTFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUONPENDHALTFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONPENDHALTFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUONPENDHALTFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUONPENDHALTFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONPENDHALTFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUONPENDHALTFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONPENDHALTFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUONPENDHALTFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUONPENDHALTFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUONPENDHALTFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONPENDHALTFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUONPENDHALTFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUONPENDHALTFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONPENDHALTFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUONPENDHALTFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONPENDHALTFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUONPENDHALTFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUONPENDHALTFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUONPENDHALTFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONPENDHALTFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUONPENDHALTFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUONPENDHALTFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONPENDHALTFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUONPENDSLEEPFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUONPENDSLEEPFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONPENDSLEEPFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUONPENDSLEEPFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUONPENDSLEEPFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUONPENDSLEEPFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONPENDSLEEPFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUONPENDSLEEPFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUONPENDSLEEPFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONPENDSLEEPFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUONPENDSLEEPFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONPENDSLEEPFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUONPENDSLEEPFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUONPENDSLEEPFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUONPENDSLEEPFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONPENDSLEEPFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUONPENDSLEEPFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUONPENDSLEEPFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONPENDSLEEPFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUONPENDSLEEPFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONPENDSLEEPFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUONPENDSLEEPFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUONPENDSLEEPFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUONPENDSLEEPFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONPENDSLEEPFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUONPENDSLEEPFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUONPENDSLEEPFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONPENDSLEEPFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUONSLEEPINITIATEFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONSLEEPINITIATEFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONSLEEPINITIATEFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONSLEEPINITIATEFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONSLEEPINITIATEFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUONSLEEPINITIATEFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUONSLEEPINITIATEFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUONSLEEPINITIATEFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUPENDOFFFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUPENDOFFFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUPENDOFFFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUPENDOFFFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUPENDOFFFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUPENDOFFFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUPENDOFFFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUPENDOFFFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUPENDOFFFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUPENDOFFFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUPENDOFFFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUPENDOFFFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUPENDOFFFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUPENDOFFFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUPENDOFFFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUPENDOFFFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUPENDOFFFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUPENDOFFFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUPENDOFFFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUPENDOFFFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUPENDOFFFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUPENDOFFFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUPENDOFFFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUPENDOFFFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUPENDOFFFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUPENDOFFFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUPENDOFFFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUPENDOFFFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUPENDONRELOADFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUPENDONRELOADFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUPENDONRELOADFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUPENDONRELOADFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUPENDONRELOADFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUPENDONRELOADFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUPENDONRELOADFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUPENDONRELOADFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUPENDONRELOADFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUPENDONRELOADFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUPENDONRELOADFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUPENDONRELOADFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUPENDONRELOADFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUPENDONRELOADFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUPENDONRELOADFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUPENDONRELOADFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUPENDONRELOADFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUPENDONRELOADFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUPENDONRELOADFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUPENDONRELOADFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUPENDONRELOADFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUPENDONRELOADFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUPENDONRELOADFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUPENDONRELOADFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUPENDONRELOADFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUPENDONRELOADFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUPENDONRELOADFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUPENDONRELOADFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCUPOWERDOWNFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCUPOWERDOWNFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUPOWERDOWNFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCUPOWERDOWNFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCUPOWERDOWNFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCUPOWERDOWNFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUPOWERDOWNFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCUPOWERDOWNFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCUPOWERDOWNFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUPOWERDOWNFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCUPOWERDOWNFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUPOWERDOWNFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCUPOWERDOWNFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCUPOWERDOWNFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCUPOWERDOWNFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUPOWERDOWNFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCUPOWERDOWNFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCUPOWERDOWNFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUPOWERDOWNFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCUPOWERDOWNFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCUPOWERDOWNFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCUPOWERDOWNFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCUPOWERDOWNFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCUPOWERDOWNFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCUPOWERDOWNFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCUPOWERDOWNFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCUPOWERDOWNFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCUPOWERDOWNFtraceEvent.info_val)
+}
+
+// -------------------------------------------------------------------
+
+// MaliMaliPMMCURESETWAITFtraceEvent
+
+// optional int32 kctx_tgid = 1;
+inline bool MaliMaliPMMCURESETWAITFtraceEvent::_internal_has_kctx_tgid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCURESETWAITFtraceEvent::has_kctx_tgid() const {
+  return _internal_has_kctx_tgid();
+}
+inline void MaliMaliPMMCURESETWAITFtraceEvent::clear_kctx_tgid() {
+  _impl_.kctx_tgid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::int32_t MaliMaliPMMCURESETWAITFtraceEvent::_internal_kctx_tgid() const {
+  return _impl_.kctx_tgid_;
+}
+inline ::int32_t MaliMaliPMMCURESETWAITFtraceEvent::kctx_tgid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCURESETWAITFtraceEvent.kctx_tgid)
+  return _internal_kctx_tgid();
+}
+inline void MaliMaliPMMCURESETWAITFtraceEvent::_internal_set_kctx_tgid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.kctx_tgid_ = value;
+}
+inline void MaliMaliPMMCURESETWAITFtraceEvent::set_kctx_tgid(::int32_t value) {
+  _internal_set_kctx_tgid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCURESETWAITFtraceEvent.kctx_tgid)
+}
+
+// optional uint32 kctx_id = 2;
+inline bool MaliMaliPMMCURESETWAITFtraceEvent::_internal_has_kctx_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCURESETWAITFtraceEvent::has_kctx_id() const {
+  return _internal_has_kctx_id();
+}
+inline void MaliMaliPMMCURESETWAITFtraceEvent::clear_kctx_id() {
+  _impl_.kctx_id_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t MaliMaliPMMCURESETWAITFtraceEvent::_internal_kctx_id() const {
+  return _impl_.kctx_id_;
+}
+inline ::uint32_t MaliMaliPMMCURESETWAITFtraceEvent::kctx_id() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCURESETWAITFtraceEvent.kctx_id)
+  return _internal_kctx_id();
+}
+inline void MaliMaliPMMCURESETWAITFtraceEvent::_internal_set_kctx_id(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.kctx_id_ = value;
+}
+inline void MaliMaliPMMCURESETWAITFtraceEvent::set_kctx_id(::uint32_t value) {
+  _internal_set_kctx_id(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCURESETWAITFtraceEvent.kctx_id)
+}
+
+// optional uint64 info_val = 3;
+inline bool MaliMaliPMMCURESETWAITFtraceEvent::_internal_has_info_val() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool MaliMaliPMMCURESETWAITFtraceEvent::has_info_val() const {
+  return _internal_has_info_val();
+}
+inline void MaliMaliPMMCURESETWAITFtraceEvent::clear_info_val() {
+  _impl_.info_val_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t MaliMaliPMMCURESETWAITFtraceEvent::_internal_info_val() const {
+  return _impl_.info_val_;
+}
+inline ::uint64_t MaliMaliPMMCURESETWAITFtraceEvent::info_val() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.MaliMaliPMMCURESETWAITFtraceEvent.info_val)
+  return _internal_info_val();
+}
+inline void MaliMaliPMMCURESETWAITFtraceEvent::_internal_set_info_val(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.info_val_ = value;
+}
+inline void MaliMaliPMMCURESETWAITFtraceEvent::set_info_val(::uint64_t value) {
+  _internal_set_info_val(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.MaliMaliPMMCURESETWAITFtraceEvent.info_val)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
