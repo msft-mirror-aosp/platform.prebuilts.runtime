@@ -15,9 +15,10 @@
 namespace perfetto {
 namespace protos {
 namespace gen {
-class PerfEvents;
+class FollowerEvent;
 class PerfEvents_RawEvent;
 class PerfEvents_Tracepoint;
+class PerfEvents;
 class PerfEvents_Timebase;
 enum PerfEvents_Counter : int;
 enum PerfEvents_PerfClock : int;
@@ -63,67 +64,56 @@ enum PerfEvents_PerfClock : int {
   PerfEvents_PerfClock_PERF_CLOCK_BOOTTIME = 4,
 };
 
-class PERFETTO_EXPORT_COMPONENT PerfEvents : public ::protozero::CppMessageObj {
+class PERFETTO_EXPORT_COMPONENT FollowerEvent : public ::protozero::CppMessageObj {
  public:
-  using Timebase = PerfEvents_Timebase;
-  using Tracepoint = PerfEvents_Tracepoint;
-  using RawEvent = PerfEvents_RawEvent;
-  using Counter = PerfEvents_Counter;
-  static constexpr auto UNKNOWN_COUNTER = PerfEvents_Counter_UNKNOWN_COUNTER;
-  static constexpr auto SW_CPU_CLOCK = PerfEvents_Counter_SW_CPU_CLOCK;
-  static constexpr auto SW_PAGE_FAULTS = PerfEvents_Counter_SW_PAGE_FAULTS;
-  static constexpr auto SW_TASK_CLOCK = PerfEvents_Counter_SW_TASK_CLOCK;
-  static constexpr auto SW_CONTEXT_SWITCHES = PerfEvents_Counter_SW_CONTEXT_SWITCHES;
-  static constexpr auto SW_CPU_MIGRATIONS = PerfEvents_Counter_SW_CPU_MIGRATIONS;
-  static constexpr auto SW_PAGE_FAULTS_MIN = PerfEvents_Counter_SW_PAGE_FAULTS_MIN;
-  static constexpr auto SW_PAGE_FAULTS_MAJ = PerfEvents_Counter_SW_PAGE_FAULTS_MAJ;
-  static constexpr auto SW_ALIGNMENT_FAULTS = PerfEvents_Counter_SW_ALIGNMENT_FAULTS;
-  static constexpr auto SW_EMULATION_FAULTS = PerfEvents_Counter_SW_EMULATION_FAULTS;
-  static constexpr auto SW_DUMMY = PerfEvents_Counter_SW_DUMMY;
-  static constexpr auto HW_CPU_CYCLES = PerfEvents_Counter_HW_CPU_CYCLES;
-  static constexpr auto HW_INSTRUCTIONS = PerfEvents_Counter_HW_INSTRUCTIONS;
-  static constexpr auto HW_CACHE_REFERENCES = PerfEvents_Counter_HW_CACHE_REFERENCES;
-  static constexpr auto HW_CACHE_MISSES = PerfEvents_Counter_HW_CACHE_MISSES;
-  static constexpr auto HW_BRANCH_INSTRUCTIONS = PerfEvents_Counter_HW_BRANCH_INSTRUCTIONS;
-  static constexpr auto HW_BRANCH_MISSES = PerfEvents_Counter_HW_BRANCH_MISSES;
-  static constexpr auto HW_BUS_CYCLES = PerfEvents_Counter_HW_BUS_CYCLES;
-  static constexpr auto HW_STALLED_CYCLES_FRONTEND = PerfEvents_Counter_HW_STALLED_CYCLES_FRONTEND;
-  static constexpr auto HW_STALLED_CYCLES_BACKEND = PerfEvents_Counter_HW_STALLED_CYCLES_BACKEND;
-  static constexpr auto HW_REF_CPU_CYCLES = PerfEvents_Counter_HW_REF_CPU_CYCLES;
-  static constexpr auto Counter_MIN = PerfEvents_Counter_UNKNOWN_COUNTER;
-  static constexpr auto Counter_MAX = PerfEvents_Counter_SW_DUMMY;
-  using PerfClock = PerfEvents_PerfClock;
-  static constexpr auto UNKNOWN_PERF_CLOCK = PerfEvents_PerfClock_UNKNOWN_PERF_CLOCK;
-  static constexpr auto PERF_CLOCK_REALTIME = PerfEvents_PerfClock_PERF_CLOCK_REALTIME;
-  static constexpr auto PERF_CLOCK_MONOTONIC = PerfEvents_PerfClock_PERF_CLOCK_MONOTONIC;
-  static constexpr auto PERF_CLOCK_MONOTONIC_RAW = PerfEvents_PerfClock_PERF_CLOCK_MONOTONIC_RAW;
-  static constexpr auto PERF_CLOCK_BOOTTIME = PerfEvents_PerfClock_PERF_CLOCK_BOOTTIME;
-  static constexpr auto PerfClock_MIN = PerfEvents_PerfClock_UNKNOWN_PERF_CLOCK;
-  static constexpr auto PerfClock_MAX = PerfEvents_PerfClock_PERF_CLOCK_BOOTTIME;
   enum FieldNumbers {
+    kCounterFieldNumber = 1,
+    kTracepointFieldNumber = 2,
+    kRawEventFieldNumber = 3,
+    kNameFieldNumber = 4,
   };
 
-  PerfEvents();
-  ~PerfEvents() override;
-  PerfEvents(PerfEvents&&) noexcept;
-  PerfEvents& operator=(PerfEvents&&);
-  PerfEvents(const PerfEvents&);
-  PerfEvents& operator=(const PerfEvents&);
-  bool operator==(const PerfEvents&) const;
-  bool operator!=(const PerfEvents& other) const { return !(*this == other); }
+  FollowerEvent();
+  ~FollowerEvent() override;
+  FollowerEvent(FollowerEvent&&) noexcept;
+  FollowerEvent& operator=(FollowerEvent&&);
+  FollowerEvent(const FollowerEvent&);
+  FollowerEvent& operator=(const FollowerEvent&);
+  bool operator==(const FollowerEvent&) const;
+  bool operator!=(const FollowerEvent& other) const { return !(*this == other); }
 
   bool ParseFromArray(const void*, size_t) override;
   std::string SerializeAsString() const override;
   std::vector<uint8_t> SerializeAsArray() const override;
   void Serialize(::protozero::Message*) const;
 
+  bool has_counter() const { return _has_field_[1]; }
+  PerfEvents_Counter counter() const { return counter_; }
+  void set_counter(PerfEvents_Counter value) { counter_ = value; _has_field_.set(1); }
+
+  bool has_tracepoint() const { return _has_field_[2]; }
+  const PerfEvents_Tracepoint& tracepoint() const { return *tracepoint_; }
+  PerfEvents_Tracepoint* mutable_tracepoint() { _has_field_.set(2); return tracepoint_.get(); }
+
+  bool has_raw_event() const { return _has_field_[3]; }
+  const PerfEvents_RawEvent& raw_event() const { return *raw_event_; }
+  PerfEvents_RawEvent* mutable_raw_event() { _has_field_.set(3); return raw_event_.get(); }
+
+  bool has_name() const { return _has_field_[4]; }
+  const std::string& name() const { return name_; }
+  void set_name(const std::string& value) { name_ = value; _has_field_.set(4); }
+
  private:
+  PerfEvents_Counter counter_{};
+  ::protozero::CopyablePtr<PerfEvents_Tracepoint> tracepoint_;
+  ::protozero::CopyablePtr<PerfEvents_RawEvent> raw_event_;
+  std::string name_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<2> _has_field_{};
+  std::bitset<5> _has_field_{};
 };
 
 
@@ -218,6 +208,70 @@ class PERFETTO_EXPORT_COMPONENT PerfEvents_Tracepoint : public ::protozero::CppM
   std::string unknown_fields_;
 
   std::bitset<3> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT PerfEvents : public ::protozero::CppMessageObj {
+ public:
+  using Timebase = PerfEvents_Timebase;
+  using Tracepoint = PerfEvents_Tracepoint;
+  using RawEvent = PerfEvents_RawEvent;
+  using Counter = PerfEvents_Counter;
+  static constexpr auto UNKNOWN_COUNTER = PerfEvents_Counter_UNKNOWN_COUNTER;
+  static constexpr auto SW_CPU_CLOCK = PerfEvents_Counter_SW_CPU_CLOCK;
+  static constexpr auto SW_PAGE_FAULTS = PerfEvents_Counter_SW_PAGE_FAULTS;
+  static constexpr auto SW_TASK_CLOCK = PerfEvents_Counter_SW_TASK_CLOCK;
+  static constexpr auto SW_CONTEXT_SWITCHES = PerfEvents_Counter_SW_CONTEXT_SWITCHES;
+  static constexpr auto SW_CPU_MIGRATIONS = PerfEvents_Counter_SW_CPU_MIGRATIONS;
+  static constexpr auto SW_PAGE_FAULTS_MIN = PerfEvents_Counter_SW_PAGE_FAULTS_MIN;
+  static constexpr auto SW_PAGE_FAULTS_MAJ = PerfEvents_Counter_SW_PAGE_FAULTS_MAJ;
+  static constexpr auto SW_ALIGNMENT_FAULTS = PerfEvents_Counter_SW_ALIGNMENT_FAULTS;
+  static constexpr auto SW_EMULATION_FAULTS = PerfEvents_Counter_SW_EMULATION_FAULTS;
+  static constexpr auto SW_DUMMY = PerfEvents_Counter_SW_DUMMY;
+  static constexpr auto HW_CPU_CYCLES = PerfEvents_Counter_HW_CPU_CYCLES;
+  static constexpr auto HW_INSTRUCTIONS = PerfEvents_Counter_HW_INSTRUCTIONS;
+  static constexpr auto HW_CACHE_REFERENCES = PerfEvents_Counter_HW_CACHE_REFERENCES;
+  static constexpr auto HW_CACHE_MISSES = PerfEvents_Counter_HW_CACHE_MISSES;
+  static constexpr auto HW_BRANCH_INSTRUCTIONS = PerfEvents_Counter_HW_BRANCH_INSTRUCTIONS;
+  static constexpr auto HW_BRANCH_MISSES = PerfEvents_Counter_HW_BRANCH_MISSES;
+  static constexpr auto HW_BUS_CYCLES = PerfEvents_Counter_HW_BUS_CYCLES;
+  static constexpr auto HW_STALLED_CYCLES_FRONTEND = PerfEvents_Counter_HW_STALLED_CYCLES_FRONTEND;
+  static constexpr auto HW_STALLED_CYCLES_BACKEND = PerfEvents_Counter_HW_STALLED_CYCLES_BACKEND;
+  static constexpr auto HW_REF_CPU_CYCLES = PerfEvents_Counter_HW_REF_CPU_CYCLES;
+  static constexpr auto Counter_MIN = PerfEvents_Counter_UNKNOWN_COUNTER;
+  static constexpr auto Counter_MAX = PerfEvents_Counter_SW_DUMMY;
+  using PerfClock = PerfEvents_PerfClock;
+  static constexpr auto UNKNOWN_PERF_CLOCK = PerfEvents_PerfClock_UNKNOWN_PERF_CLOCK;
+  static constexpr auto PERF_CLOCK_REALTIME = PerfEvents_PerfClock_PERF_CLOCK_REALTIME;
+  static constexpr auto PERF_CLOCK_MONOTONIC = PerfEvents_PerfClock_PERF_CLOCK_MONOTONIC;
+  static constexpr auto PERF_CLOCK_MONOTONIC_RAW = PerfEvents_PerfClock_PERF_CLOCK_MONOTONIC_RAW;
+  static constexpr auto PERF_CLOCK_BOOTTIME = PerfEvents_PerfClock_PERF_CLOCK_BOOTTIME;
+  static constexpr auto PerfClock_MIN = PerfEvents_PerfClock_UNKNOWN_PERF_CLOCK;
+  static constexpr auto PerfClock_MAX = PerfEvents_PerfClock_PERF_CLOCK_BOOTTIME;
+  enum FieldNumbers {
+  };
+
+  PerfEvents();
+  ~PerfEvents() override;
+  PerfEvents(PerfEvents&&) noexcept;
+  PerfEvents& operator=(PerfEvents&&);
+  PerfEvents(const PerfEvents&);
+  PerfEvents& operator=(const PerfEvents&);
+  bool operator==(const PerfEvents&) const;
+  bool operator!=(const PerfEvents& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+ private:
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<2> _has_field_{};
 };
 
 
