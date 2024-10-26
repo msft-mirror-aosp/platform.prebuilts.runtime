@@ -15,10 +15,16 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class ProcessStats_FDInfo;
 class ProcessStats_Process;
 class ProcessStats_Thread;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 class ProcessStats_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -77,13 +83,15 @@ class ProcessStats : public ::protozero::Message {
   }
 };
 
-class ProcessStats_Process_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/20, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class ProcessStats_Process_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/23, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   ProcessStats_Process_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ProcessStats_Process_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit ProcessStats_Process_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_pid() const { return at<1>().valid(); }
   int32_t pid() const { return at<1>().as_int32(); }
+  bool has_threads() const { return at<11>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> threads() const { return GetRepeated<::protozero::ConstBytes>(11); }
   bool has_vm_size_kb() const { return at<2>().valid(); }
   uint64_t vm_size_kb() const { return at<2>().as_uint64(); }
   bool has_vm_rss_kb() const { return at<3>().valid(); }
@@ -102,8 +110,6 @@ class ProcessStats_Process_Decoder : public ::protozero::TypedProtoDecoder</*MAX
   uint64_t vm_hwm_kb() const { return at<9>().as_uint64(); }
   bool has_oom_score_adj() const { return at<10>().valid(); }
   int64_t oom_score_adj() const { return at<10>().as_int64(); }
-  bool has_threads() const { return at<11>().valid(); }
-  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> threads() const { return GetRepeated<::protozero::ConstBytes>(11); }
   bool has_is_peak_rss_resettable() const { return at<12>().valid(); }
   bool is_peak_rss_resettable() const { return at<12>().as_bool(); }
   bool has_chrome_private_footprint_kb() const { return at<13>().valid(); }
@@ -122,6 +128,12 @@ class ProcessStats_Process_Decoder : public ::protozero::TypedProtoDecoder</*MAX
   uint64_t smr_pss_file_kb() const { return at<19>().as_uint64(); }
   bool has_smr_pss_shmem_kb() const { return at<20>().valid(); }
   uint64_t smr_pss_shmem_kb() const { return at<20>().as_uint64(); }
+  bool has_smr_swap_pss_kb() const { return at<23>().valid(); }
+  uint64_t smr_swap_pss_kb() const { return at<23>().as_uint64(); }
+  bool has_runtime_user_mode() const { return at<21>().valid(); }
+  uint64_t runtime_user_mode() const { return at<21>().as_uint64(); }
+  bool has_runtime_kernel_mode() const { return at<22>().valid(); }
+  uint64_t runtime_kernel_mode() const { return at<22>().as_uint64(); }
 };
 
 class ProcessStats_Process : public ::protozero::Message {
@@ -129,6 +141,7 @@ class ProcessStats_Process : public ::protozero::Message {
   using Decoder = ProcessStats_Process_Decoder;
   enum : int32_t {
     kPidFieldNumber = 1,
+    kThreadsFieldNumber = 11,
     kVmSizeKbFieldNumber = 2,
     kVmRssKbFieldNumber = 3,
     kRssAnonKbFieldNumber = 4,
@@ -138,7 +151,6 @@ class ProcessStats_Process : public ::protozero::Message {
     kVmLockedKbFieldNumber = 8,
     kVmHwmKbFieldNumber = 9,
     kOomScoreAdjFieldNumber = 10,
-    kThreadsFieldNumber = 11,
     kIsPeakRssResettableFieldNumber = 12,
     kChromePrivateFootprintKbFieldNumber = 13,
     kChromePeakResidentSetKbFieldNumber = 14,
@@ -148,6 +160,9 @@ class ProcessStats_Process : public ::protozero::Message {
     kSmrPssAnonKbFieldNumber = 18,
     kSmrPssFileKbFieldNumber = 19,
     kSmrPssShmemKbFieldNumber = 20,
+    kSmrSwapPssKbFieldNumber = 23,
+    kRuntimeUserModeFieldNumber = 21,
+    kRuntimeKernelModeFieldNumber = 22,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.ProcessStats.Process"; }
 
@@ -169,6 +184,20 @@ class ProcessStats_Process : public ::protozero::Message {
       ::protozero::proto_utils::ProtoSchemaType::kInt32>
         ::Append(*this, field_id, value);
   }
+
+  using FieldMetadata_Threads =
+    ::protozero::proto_utils::FieldMetadata<
+      11,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ProcessStats_Thread,
+      ProcessStats_Process>;
+
+  static constexpr FieldMetadata_Threads kThreads{};
+  template <typename T = ProcessStats_Thread> T* add_threads() {
+    return BeginNestedMessage<T>(11);
+  }
+
 
   using FieldMetadata_VmSizeKb =
     ::protozero::proto_utils::FieldMetadata<
@@ -332,20 +361,6 @@ class ProcessStats_Process : public ::protozero::Message {
         ::Append(*this, field_id, value);
   }
 
-  using FieldMetadata_Threads =
-    ::protozero::proto_utils::FieldMetadata<
-      11,
-      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
-      ::protozero::proto_utils::ProtoSchemaType::kMessage,
-      ProcessStats_Thread,
-      ProcessStats_Process>;
-
-  static constexpr FieldMetadata_Threads kThreads{};
-  template <typename T = ProcessStats_Thread> T* add_threads() {
-    return BeginNestedMessage<T>(11);
-  }
-
-
   using FieldMetadata_IsPeakRssResettable =
     ::protozero::proto_utils::FieldMetadata<
       12,
@@ -497,6 +512,60 @@ class ProcessStats_Process : public ::protozero::Message {
   static constexpr FieldMetadata_SmrPssShmemKb kSmrPssShmemKb{};
   void set_smr_pss_shmem_kb(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_SmrPssShmemKb::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_SmrSwapPssKb =
+    ::protozero::proto_utils::FieldMetadata<
+      23,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      ProcessStats_Process>;
+
+  static constexpr FieldMetadata_SmrSwapPssKb kSmrSwapPssKb{};
+  void set_smr_swap_pss_kb(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_SmrSwapPssKb::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_RuntimeUserMode =
+    ::protozero::proto_utils::FieldMetadata<
+      21,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      ProcessStats_Process>;
+
+  static constexpr FieldMetadata_RuntimeUserMode kRuntimeUserMode{};
+  void set_runtime_user_mode(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_RuntimeUserMode::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_RuntimeKernelMode =
+    ::protozero::proto_utils::FieldMetadata<
+      22,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      ProcessStats_Process>;
+
+  static constexpr FieldMetadata_RuntimeKernelMode kRuntimeKernelMode{};
+  void set_runtime_kernel_mode(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_RuntimeKernelMode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<

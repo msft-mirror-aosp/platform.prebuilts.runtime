@@ -15,11 +15,17 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 namespace perfetto_pbzero_enum_ChromeConfig {
 enum ClientPriority : int32_t;
 }  // namespace perfetto_pbzero_enum_ChromeConfig
 using ChromeConfig_ClientPriority = perfetto_pbzero_enum_ChromeConfig::ClientPriority;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_ChromeConfig {
 enum ClientPriority : int32_t {
@@ -153,11 +159,11 @@ class ChromeConfig : public ::protozero::Message {
       4,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeConfig_ClientPriority,
+      ChromeConfig_ClientPriority,
       ChromeConfig>;
 
   static constexpr FieldMetadata_ClientPriority kClientPriority{};
-  void set_client_priority(::perfetto::protos::pbzero::ChromeConfig_ClientPriority value) {
+  void set_client_priority(ChromeConfig_ClientPriority value) {
     static constexpr uint32_t field_id = FieldMetadata_ClientPriority::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

@@ -12,10 +12,367 @@
 #include "perfetto/protozero/proto_decoder.h"
 #include "perfetto/protozero/proto_utils.h"
 
+
 namespace perfetto {
 namespace protos {
 namespace pbzero {
 
+class DevicePmCallbackEndFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  DevicePmCallbackEndFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit DevicePmCallbackEndFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit DevicePmCallbackEndFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_device() const { return at<1>().valid(); }
+  ::protozero::ConstChars device() const { return at<1>().as_string(); }
+  bool has_driver() const { return at<2>().valid(); }
+  ::protozero::ConstChars driver() const { return at<2>().as_string(); }
+  bool has_error() const { return at<3>().valid(); }
+  int32_t error() const { return at<3>().as_int32(); }
+};
+
+class DevicePmCallbackEndFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = DevicePmCallbackEndFtraceEvent_Decoder;
+  enum : int32_t {
+    kDeviceFieldNumber = 1,
+    kDriverFieldNumber = 2,
+    kErrorFieldNumber = 3,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.DevicePmCallbackEndFtraceEvent"; }
+
+
+  using FieldMetadata_Device =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      DevicePmCallbackEndFtraceEvent>;
+
+  static constexpr FieldMetadata_Device kDevice{};
+  void set_device(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Device::kFieldId, data, size);
+  }
+  void set_device(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Device::kFieldId, chars.data, chars.size);
+  }
+  void set_device(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Device::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Driver =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      DevicePmCallbackEndFtraceEvent>;
+
+  static constexpr FieldMetadata_Driver kDriver{};
+  void set_driver(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Driver::kFieldId, data, size);
+  }
+  void set_driver(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Driver::kFieldId, chars.data, chars.size);
+  }
+  void set_driver(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Driver::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Error =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      DevicePmCallbackEndFtraceEvent>;
+
+  static constexpr FieldMetadata_Error kError{};
+  void set_error(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Error::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class DevicePmCallbackStartFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  DevicePmCallbackStartFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit DevicePmCallbackStartFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit DevicePmCallbackStartFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_device() const { return at<1>().valid(); }
+  ::protozero::ConstChars device() const { return at<1>().as_string(); }
+  bool has_driver() const { return at<2>().valid(); }
+  ::protozero::ConstChars driver() const { return at<2>().as_string(); }
+  bool has_parent() const { return at<3>().valid(); }
+  ::protozero::ConstChars parent() const { return at<3>().as_string(); }
+  bool has_pm_ops() const { return at<4>().valid(); }
+  ::protozero::ConstChars pm_ops() const { return at<4>().as_string(); }
+  bool has_event() const { return at<5>().valid(); }
+  int32_t event() const { return at<5>().as_int32(); }
+};
+
+class DevicePmCallbackStartFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = DevicePmCallbackStartFtraceEvent_Decoder;
+  enum : int32_t {
+    kDeviceFieldNumber = 1,
+    kDriverFieldNumber = 2,
+    kParentFieldNumber = 3,
+    kPmOpsFieldNumber = 4,
+    kEventFieldNumber = 5,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.DevicePmCallbackStartFtraceEvent"; }
+
+
+  using FieldMetadata_Device =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      DevicePmCallbackStartFtraceEvent>;
+
+  static constexpr FieldMetadata_Device kDevice{};
+  void set_device(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Device::kFieldId, data, size);
+  }
+  void set_device(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Device::kFieldId, chars.data, chars.size);
+  }
+  void set_device(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Device::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Driver =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      DevicePmCallbackStartFtraceEvent>;
+
+  static constexpr FieldMetadata_Driver kDriver{};
+  void set_driver(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Driver::kFieldId, data, size);
+  }
+  void set_driver(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Driver::kFieldId, chars.data, chars.size);
+  }
+  void set_driver(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Driver::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Parent =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      DevicePmCallbackStartFtraceEvent>;
+
+  static constexpr FieldMetadata_Parent kParent{};
+  void set_parent(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Parent::kFieldId, data, size);
+  }
+  void set_parent(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Parent::kFieldId, chars.data, chars.size);
+  }
+  void set_parent(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Parent::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_PmOps =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      DevicePmCallbackStartFtraceEvent>;
+
+  static constexpr FieldMetadata_PmOps kPmOps{};
+  void set_pm_ops(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_PmOps::kFieldId, data, size);
+  }
+  void set_pm_ops(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_PmOps::kFieldId, chars.data, chars.size);
+  }
+  void set_pm_ops(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_PmOps::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Event =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      DevicePmCallbackStartFtraceEvent>;
+
+  static constexpr FieldMetadata_Event kEvent{};
+  void set_event(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Event::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class GpuWorkPeriodFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  GpuWorkPeriodFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit GpuWorkPeriodFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit GpuWorkPeriodFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_gpu_id() const { return at<1>().valid(); }
+  uint32_t gpu_id() const { return at<1>().as_uint32(); }
+  bool has_uid() const { return at<2>().valid(); }
+  uint32_t uid() const { return at<2>().as_uint32(); }
+  bool has_start_time_ns() const { return at<3>().valid(); }
+  uint64_t start_time_ns() const { return at<3>().as_uint64(); }
+  bool has_end_time_ns() const { return at<4>().valid(); }
+  uint64_t end_time_ns() const { return at<4>().as_uint64(); }
+  bool has_total_active_duration_ns() const { return at<5>().valid(); }
+  uint64_t total_active_duration_ns() const { return at<5>().as_uint64(); }
+};
+
+class GpuWorkPeriodFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = GpuWorkPeriodFtraceEvent_Decoder;
+  enum : int32_t {
+    kGpuIdFieldNumber = 1,
+    kUidFieldNumber = 2,
+    kStartTimeNsFieldNumber = 3,
+    kEndTimeNsFieldNumber = 4,
+    kTotalActiveDurationNsFieldNumber = 5,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.GpuWorkPeriodFtraceEvent"; }
+
+
+  using FieldMetadata_GpuId =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      GpuWorkPeriodFtraceEvent>;
+
+  static constexpr FieldMetadata_GpuId kGpuId{};
+  void set_gpu_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_GpuId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Uid =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      GpuWorkPeriodFtraceEvent>;
+
+  static constexpr FieldMetadata_Uid kUid{};
+  void set_uid(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Uid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_StartTimeNs =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      GpuWorkPeriodFtraceEvent>;
+
+  static constexpr FieldMetadata_StartTimeNs kStartTimeNs{};
+  void set_start_time_ns(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_StartTimeNs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_EndTimeNs =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      GpuWorkPeriodFtraceEvent>;
+
+  static constexpr FieldMetadata_EndTimeNs kEndTimeNs{};
+  void set_end_time_ns(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_EndTimeNs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TotalActiveDurationNs =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      GpuWorkPeriodFtraceEvent>;
+
+  static constexpr FieldMetadata_TotalActiveDurationNs kTotalActiveDurationNs{};
+  void set_total_active_duration_ns(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_TotalActiveDurationNs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
 
 class WakeupSourceDeactivateFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:

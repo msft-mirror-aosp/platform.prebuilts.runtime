@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 namespace perfetto_pbzero_enum_SurfaceFlingerLayersConfig {
 enum Mode : int32_t;
 }  // namespace perfetto_pbzero_enum_SurfaceFlingerLayersConfig
@@ -24,6 +23,13 @@ namespace perfetto_pbzero_enum_SurfaceFlingerLayersConfig {
 enum TraceFlag : int32_t;
 }  // namespace perfetto_pbzero_enum_SurfaceFlingerLayersConfig
 using SurfaceFlingerLayersConfig_TraceFlag = perfetto_pbzero_enum_SurfaceFlingerLayersConfig::TraceFlag;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_SurfaceFlingerLayersConfig {
 enum Mode : int32_t {
@@ -31,13 +37,14 @@ enum Mode : int32_t {
   MODE_ACTIVE = 1,
   MODE_GENERATED = 2,
   MODE_DUMP = 3,
+  MODE_GENERATED_BUGREPORT_ONLY = 4,
 };
 } // namespace perfetto_pbzero_enum_SurfaceFlingerLayersConfig
 using SurfaceFlingerLayersConfig_Mode = perfetto_pbzero_enum_SurfaceFlingerLayersConfig::Mode;
 
 
 constexpr SurfaceFlingerLayersConfig_Mode SurfaceFlingerLayersConfig_Mode_MIN = SurfaceFlingerLayersConfig_Mode::MODE_UNSPECIFIED;
-constexpr SurfaceFlingerLayersConfig_Mode SurfaceFlingerLayersConfig_Mode_MAX = SurfaceFlingerLayersConfig_Mode::MODE_DUMP;
+constexpr SurfaceFlingerLayersConfig_Mode SurfaceFlingerLayersConfig_Mode_MAX = SurfaceFlingerLayersConfig_Mode::MODE_GENERATED_BUGREPORT_ONLY;
 
 
 PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
@@ -54,6 +61,9 @@ const char* SurfaceFlingerLayersConfig_Mode_Name(::perfetto::protos::pbzero::Sur
 
   case ::perfetto::protos::pbzero::SurfaceFlingerLayersConfig_Mode::MODE_DUMP:
     return "MODE_DUMP";
+
+  case ::perfetto::protos::pbzero::SurfaceFlingerLayersConfig_Mode::MODE_GENERATED_BUGREPORT_ONLY:
+    return "MODE_GENERATED_BUGREPORT_ONLY";
   }
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
@@ -141,6 +151,7 @@ class SurfaceFlingerLayersConfig : public ::protozero::Message {
   static inline const Mode MODE_ACTIVE = Mode::MODE_ACTIVE;
   static inline const Mode MODE_GENERATED = Mode::MODE_GENERATED;
   static inline const Mode MODE_DUMP = Mode::MODE_DUMP;
+  static inline const Mode MODE_GENERATED_BUGREPORT_ONLY = Mode::MODE_GENERATED_BUGREPORT_ONLY;
   static inline const TraceFlag TRACE_FLAG_UNSPECIFIED = TraceFlag::TRACE_FLAG_UNSPECIFIED;
   static inline const TraceFlag TRACE_FLAG_INPUT = TraceFlag::TRACE_FLAG_INPUT;
   static inline const TraceFlag TRACE_FLAG_COMPOSITION = TraceFlag::TRACE_FLAG_COMPOSITION;
@@ -155,11 +166,11 @@ class SurfaceFlingerLayersConfig : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::SurfaceFlingerLayersConfig_Mode,
+      SurfaceFlingerLayersConfig_Mode,
       SurfaceFlingerLayersConfig>;
 
   static constexpr FieldMetadata_Mode kMode{};
-  void set_mode(::perfetto::protos::pbzero::SurfaceFlingerLayersConfig_Mode value) {
+  void set_mode(SurfaceFlingerLayersConfig_Mode value) {
     static constexpr uint32_t field_id = FieldMetadata_Mode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -173,11 +184,11 @@ class SurfaceFlingerLayersConfig : public ::protozero::Message {
       2,
       ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::SurfaceFlingerLayersConfig_TraceFlag,
+      SurfaceFlingerLayersConfig_TraceFlag,
       SurfaceFlingerLayersConfig>;
 
   static constexpr FieldMetadata_TraceFlags kTraceFlags{};
-  void add_trace_flags(::perfetto::protos::pbzero::SurfaceFlingerLayersConfig_TraceFlag value) {
+  void add_trace_flags(SurfaceFlingerLayersConfig_TraceFlag value) {
     static constexpr uint32_t field_id = FieldMetadata_TraceFlags::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
