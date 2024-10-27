@@ -12,10 +12,10 @@
 #include "perfetto/protozero/proto_decoder.h"
 #include "perfetto/protozero/proto_utils.h"
 
+
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 
 class Vb2V4l2DqbufFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/15, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:

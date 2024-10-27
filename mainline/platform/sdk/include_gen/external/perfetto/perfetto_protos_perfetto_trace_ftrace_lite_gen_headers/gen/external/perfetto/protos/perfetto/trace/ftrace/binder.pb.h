@@ -44,12 +44,18 @@ struct TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fbinder_2eproto {
 };
 namespace perfetto {
 namespace protos {
+class BinderCommandFtraceEvent;
+struct BinderCommandFtraceEventDefaultTypeInternal;
+extern BinderCommandFtraceEventDefaultTypeInternal _BinderCommandFtraceEvent_default_instance_;
 class BinderLockFtraceEvent;
 struct BinderLockFtraceEventDefaultTypeInternal;
 extern BinderLockFtraceEventDefaultTypeInternal _BinderLockFtraceEvent_default_instance_;
 class BinderLockedFtraceEvent;
 struct BinderLockedFtraceEventDefaultTypeInternal;
 extern BinderLockedFtraceEventDefaultTypeInternal _BinderLockedFtraceEvent_default_instance_;
+class BinderReturnFtraceEvent;
+struct BinderReturnFtraceEventDefaultTypeInternal;
+extern BinderReturnFtraceEventDefaultTypeInternal _BinderReturnFtraceEvent_default_instance_;
 class BinderSetPriorityFtraceEvent;
 struct BinderSetPriorityFtraceEventDefaultTypeInternal;
 extern BinderSetPriorityFtraceEventDefaultTypeInternal _BinderSetPriorityFtraceEvent_default_instance_;
@@ -68,8 +74,10 @@ extern BinderUnlockFtraceEventDefaultTypeInternal _BinderUnlockFtraceEvent_defau
 }  // namespace protos
 }  // namespace perfetto
 PROTOBUF_NAMESPACE_OPEN
+template<> ::perfetto::protos::BinderCommandFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::BinderCommandFtraceEvent>(Arena*);
 template<> ::perfetto::protos::BinderLockFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::BinderLockFtraceEvent>(Arena*);
 template<> ::perfetto::protos::BinderLockedFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::BinderLockedFtraceEvent>(Arena*);
+template<> ::perfetto::protos::BinderReturnFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::BinderReturnFtraceEvent>(Arena*);
 template<> ::perfetto::protos::BinderSetPriorityFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::BinderSetPriorityFtraceEvent>(Arena*);
 template<> ::perfetto::protos::BinderTransactionAllocBufFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::BinderTransactionAllocBufFtraceEvent>(Arena*);
 template<> ::perfetto::protos::BinderTransactionFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::BinderTransactionFtraceEvent>(Arena*);
@@ -1311,6 +1319,298 @@ class BinderTransactionAllocBufFtraceEvent final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fbinder_2eproto;
 };
+// -------------------------------------------------------------------
+
+class BinderCommandFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.BinderCommandFtraceEvent) */ {
+ public:
+  inline BinderCommandFtraceEvent() : BinderCommandFtraceEvent(nullptr) {}
+  ~BinderCommandFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR BinderCommandFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BinderCommandFtraceEvent(const BinderCommandFtraceEvent& from);
+  BinderCommandFtraceEvent(BinderCommandFtraceEvent&& from) noexcept
+    : BinderCommandFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline BinderCommandFtraceEvent& operator=(const BinderCommandFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline BinderCommandFtraceEvent& operator=(BinderCommandFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const BinderCommandFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BinderCommandFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const BinderCommandFtraceEvent*>(
+               &_BinderCommandFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(BinderCommandFtraceEvent& a, BinderCommandFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BinderCommandFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BinderCommandFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BinderCommandFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<BinderCommandFtraceEvent>(arena);
+  }
+  BinderCommandFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const BinderCommandFtraceEvent& from);
+  void MergeFrom(const BinderCommandFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(BinderCommandFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.BinderCommandFtraceEvent";
+  }
+  protected:
+  explicit BinderCommandFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCmdFieldNumber = 1,
+  };
+  // optional uint32 cmd = 1;
+  bool has_cmd() const;
+  private:
+  bool _internal_has_cmd() const;
+  public:
+  void clear_cmd();
+  ::uint32_t cmd() const;
+  void set_cmd(::uint32_t value);
+  private:
+  ::uint32_t _internal_cmd() const;
+  void _internal_set_cmd(::uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.BinderCommandFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::uint32_t cmd_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fbinder_2eproto;
+};
+// -------------------------------------------------------------------
+
+class BinderReturnFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.BinderReturnFtraceEvent) */ {
+ public:
+  inline BinderReturnFtraceEvent() : BinderReturnFtraceEvent(nullptr) {}
+  ~BinderReturnFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR BinderReturnFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BinderReturnFtraceEvent(const BinderReturnFtraceEvent& from);
+  BinderReturnFtraceEvent(BinderReturnFtraceEvent&& from) noexcept
+    : BinderReturnFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline BinderReturnFtraceEvent& operator=(const BinderReturnFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline BinderReturnFtraceEvent& operator=(BinderReturnFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const BinderReturnFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BinderReturnFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const BinderReturnFtraceEvent*>(
+               &_BinderReturnFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(BinderReturnFtraceEvent& a, BinderReturnFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BinderReturnFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BinderReturnFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BinderReturnFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<BinderReturnFtraceEvent>(arena);
+  }
+  BinderReturnFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const BinderReturnFtraceEvent& from);
+  void MergeFrom(const BinderReturnFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(BinderReturnFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.BinderReturnFtraceEvent";
+  }
+  protected:
+  explicit BinderReturnFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCmdFieldNumber = 1,
+  };
+  // optional uint32 cmd = 1;
+  bool has_cmd() const;
+  private:
+  bool _internal_has_cmd() const;
+  public:
+  void clear_cmd();
+  ::uint32_t cmd() const;
+  void set_cmd(::uint32_t value);
+  private:
+  ::uint32_t _internal_cmd() const;
+  void _internal_set_cmd(::uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.BinderReturnFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::uint32_t cmd_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fbinder_2eproto;
+};
 // ===================================================================
 
 
@@ -2026,9 +2326,77 @@ inline void BinderTransactionAllocBufFtraceEvent::set_extra_buffers_size(::uint6
   // @@protoc_insertion_point(field_set:perfetto.protos.BinderTransactionAllocBufFtraceEvent.extra_buffers_size)
 }
 
+// -------------------------------------------------------------------
+
+// BinderCommandFtraceEvent
+
+// optional uint32 cmd = 1;
+inline bool BinderCommandFtraceEvent::_internal_has_cmd() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool BinderCommandFtraceEvent::has_cmd() const {
+  return _internal_has_cmd();
+}
+inline void BinderCommandFtraceEvent::clear_cmd() {
+  _impl_.cmd_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::uint32_t BinderCommandFtraceEvent::_internal_cmd() const {
+  return _impl_.cmd_;
+}
+inline ::uint32_t BinderCommandFtraceEvent::cmd() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.BinderCommandFtraceEvent.cmd)
+  return _internal_cmd();
+}
+inline void BinderCommandFtraceEvent::_internal_set_cmd(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.cmd_ = value;
+}
+inline void BinderCommandFtraceEvent::set_cmd(::uint32_t value) {
+  _internal_set_cmd(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.BinderCommandFtraceEvent.cmd)
+}
+
+// -------------------------------------------------------------------
+
+// BinderReturnFtraceEvent
+
+// optional uint32 cmd = 1;
+inline bool BinderReturnFtraceEvent::_internal_has_cmd() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool BinderReturnFtraceEvent::has_cmd() const {
+  return _internal_has_cmd();
+}
+inline void BinderReturnFtraceEvent::clear_cmd() {
+  _impl_.cmd_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::uint32_t BinderReturnFtraceEvent::_internal_cmd() const {
+  return _impl_.cmd_;
+}
+inline ::uint32_t BinderReturnFtraceEvent::cmd() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.BinderReturnFtraceEvent.cmd)
+  return _internal_cmd();
+}
+inline void BinderReturnFtraceEvent::_internal_set_cmd(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.cmd_ = value;
+}
+inline void BinderReturnFtraceEvent::set_cmd(::uint32_t value) {
+  _internal_set_cmd(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.BinderReturnFtraceEvent.cmd)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
