@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class AllocPagesIommuEndFtraceEvent;
 class AllocPagesIommuFailFtraceEvent;
 class AllocPagesIommuStartFtraceEvent;
@@ -28,8 +27,11 @@ class AndroidFsDatawriteEndFtraceEvent;
 class AndroidFsDatawriteStartFtraceEvent;
 class AndroidFsFsyncEndFtraceEvent;
 class AndroidFsFsyncStartFtraceEvent;
+class BclIrqTriggerFtraceEvent;
+class BinderCommandFtraceEvent;
 class BinderLockFtraceEvent;
 class BinderLockedFtraceEvent;
+class BinderReturnFtraceEvent;
 class BinderSetPriorityFtraceEvent;
 class BinderTransactionAllocBufFtraceEvent;
 class BinderTransactionFtraceEvent;
@@ -82,6 +84,10 @@ class CpuhpLatencyFtraceEvent;
 class CpuhpMultiEnterFtraceEvent;
 class CpuhpPauseFtraceEvent;
 class CrosEcSensorhubDataFtraceEvent;
+class DcvshFreqFtraceEvent;
+class DevfreqFrequencyFtraceEvent;
+class DevicePmCallbackEndFtraceEvent;
+class DevicePmCallbackStartFtraceEvent;
 class DmaAllocContiguousRetryFtraceEvent;
 class DmaFenceEmitFtraceEvent;
 class DmaFenceInitFtraceEvent;
@@ -89,6 +95,9 @@ class DmaFenceSignaledFtraceEvent;
 class DmaFenceWaitEndFtraceEvent;
 class DmaFenceWaitStartFtraceEvent;
 class DmaHeapStatFtraceEvent;
+class DpuDsiCmdFifoStatusFtraceEvent;
+class DpuDsiRxFtraceEvent;
+class DpuDsiTxFtraceEvent;
 class DpuTracingMarkWriteFtraceEvent;
 class DrmRunJobFtraceEvent;
 class DrmSchedJobFtraceEvent;
@@ -193,9 +202,12 @@ class Ext4WritepageFtraceEvent;
 class Ext4WritepagesFtraceEvent;
 class Ext4WritepagesResultFtraceEvent;
 class Ext4ZeroRangeFtraceEvent;
+class F2fsBackgroundGcFtraceEvent;
 class F2fsDoSubmitBioFtraceEvent;
 class F2fsEvictInodeFtraceEvent;
 class F2fsFallocateFtraceEvent;
+class F2fsGcBeginFtraceEvent;
+class F2fsGcEndFtraceEvent;
 class F2fsGetDataBlockFtraceEvent;
 class F2fsGetVictimFtraceEvent;
 class F2fsIgetExitFtraceEvent;
@@ -226,7 +238,11 @@ class F2fsVmPageMkwriteFtraceEvent;
 class F2fsWriteBeginFtraceEvent;
 class F2fsWriteCheckpointFtraceEvent;
 class F2fsWriteEndFtraceEvent;
+class FastrpcDmaAllocFtraceEvent;
+class FastrpcDmaFreeFtraceEvent;
+class FastrpcDmaMapFtraceEvent;
 class FastrpcDmaStatFtraceEvent;
+class FastrpcDmaUnmapFtraceEvent;
 class FenceDestroyFtraceEvent;
 class FenceEnableSignalFtraceEvent;
 class FenceInitFtraceEvent;
@@ -235,8 +251,11 @@ class FuncgraphEntryFtraceEvent;
 class FuncgraphExitFtraceEvent;
 class G2dTracingMarkWriteFtraceEvent;
 class GenericFtraceEvent;
+class GoogleIccEventFtraceEvent;
+class GoogleIrmEventFtraceEvent;
 class GpuFrequencyFtraceEvent;
 class GpuMemTotalFtraceEvent;
+class GpuWorkPeriodFtraceEvent;
 class HostHcallFtraceEvent;
 class HostMemAbortFtraceEvent;
 class HostSmcFtraceEvent;
@@ -276,6 +295,11 @@ class IrqHandlerEntryFtraceEvent;
 class IrqHandlerExitFtraceEvent;
 class KfreeFtraceEvent;
 class KfreeSkbFtraceEvent;
+class KgslAdrenoCmdbatchQueuedFtraceEvent;
+class KgslAdrenoCmdbatchRetiredFtraceEvent;
+class KgslAdrenoCmdbatchSubmittedFtraceEvent;
+class KgslAdrenoCmdbatchSyncFtraceEvent;
+class KgslGpuFrequencyFtraceEvent;
 class KmallocFtraceEvent;
 class KmallocNodeFtraceEvent;
 class KmemCacheAllocFtraceEvent;
@@ -325,6 +349,29 @@ class MaliMaliKCPUCQSWAITSTARTFtraceEvent;
 class MaliMaliKCPUFENCESIGNALFtraceEvent;
 class MaliMaliKCPUFENCEWAITENDFtraceEvent;
 class MaliMaliKCPUFENCEWAITSTARTFtraceEvent;
+class MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent;
+class MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent;
+class MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent;
+class MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent;
+class MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent;
+class MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent;
+class MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent;
+class MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent;
+class MaliMaliPMMCUINSLEEPFtraceEvent;
+class MaliMaliPMMCUOFFFtraceEvent;
+class MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent;
+class MaliMaliPMMCUONFtraceEvent;
+class MaliMaliPMMCUONGLBREINITPENDFtraceEvent;
+class MaliMaliPMMCUONHALTFtraceEvent;
+class MaliMaliPMMCUONHWCNTDISABLEFtraceEvent;
+class MaliMaliPMMCUONHWCNTENABLEFtraceEvent;
+class MaliMaliPMMCUONPENDHALTFtraceEvent;
+class MaliMaliPMMCUONPENDSLEEPFtraceEvent;
+class MaliMaliPMMCUONSLEEPINITIATEFtraceEvent;
+class MaliMaliPMMCUPENDOFFFtraceEvent;
+class MaliMaliPMMCUPENDONRELOADFtraceEvent;
+class MaliMaliPMMCUPOWERDOWNFtraceEvent;
+class MaliMaliPMMCURESETWAITFtraceEvent;
 class MaliTracingMarkWriteFtraceEvent;
 class MarkVictimFtraceEvent;
 class MdpCmdKickoffFtraceEvent;
@@ -383,6 +430,9 @@ class NapiGroReceiveExitFtraceEvent;
 class NetDevXmitFtraceEvent;
 class NetifReceiveSkbFtraceEvent;
 class OomScoreAdjUpdateFtraceEvent;
+class PanelWriteGenericFtraceEvent;
+class PixelMmKswapdDoneFtraceEvent;
+class PixelMmKswapdWakeFtraceEvent;
 class PrintFtraceEvent;
 class RegulatorDisableCompleteFtraceEvent;
 class RegulatorDisableFtraceEvent;
@@ -392,11 +442,14 @@ class RegulatorEnableFtraceEvent;
 class RegulatorSetVoltageCompleteFtraceEvent;
 class RegulatorSetVoltageFtraceEvent;
 class RotatorBwAoAsContextFtraceEvent;
+class RpmStatusFtraceEvent;
 class RssStatFtraceEvent;
 class RssStatThrottledFtraceEvent;
+class SamsungTracingMarkWriteFtraceEvent;
 class SchedBlockedReasonFtraceEvent;
 class SchedCpuHotplugFtraceEvent;
 class SchedCpuUtilCfsFtraceEvent;
+class SchedMigrateTaskFtraceEvent;
 class SchedPiSetprioFtraceEvent;
 class SchedProcessExecFtraceEvent;
 class SchedProcessExitFtraceEvent;
@@ -405,8 +458,10 @@ class SchedProcessFreeFtraceEvent;
 class SchedProcessHangFtraceEvent;
 class SchedProcessWaitFtraceEvent;
 class SchedSwitchFtraceEvent;
+class SchedSwitchWithCtrsFtraceEvent;
 class SchedWakeupFtraceEvent;
 class SchedWakeupNewFtraceEvent;
+class SchedWakeupTaskAttrFtraceEvent;
 class SchedWakingFtraceEvent;
 class ScmCallEndFtraceEvent;
 class ScmCallStartFtraceEvent;
@@ -435,6 +490,8 @@ class SysExitFtraceEvent;
 class TaskNewtaskFtraceEvent;
 class TaskRenameFtraceEvent;
 class TcpRetransmitSkbFtraceEvent;
+class ThermalExynosAcpmBulkFtraceEvent;
+class ThermalExynosAcpmHighOverheadFtraceEvent;
 class ThermalTemperatureFtraceEvent;
 class TracingMarkWriteFtraceEvent;
 class TrapRegFtraceEvent;
@@ -478,8 +535,15 @@ class WorkqueueExecuteEndFtraceEvent;
 class WorkqueueExecuteStartFtraceEvent;
 class WorkqueueQueueWorkFtraceEvent;
 class ZeroFtraceEvent;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
 
-class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/483, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+namespace perfetto {
+namespace protos {
+namespace pbzero {
+
+class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/541, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   FtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit FtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -1414,6 +1478,122 @@ class FtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstBytes mali_mali_csf_interrupt_start() const { return at<482>().as_bytes(); }
   bool has_mali_mali_csf_interrupt_end() const { return at<483>().valid(); }
   ::protozero::ConstBytes mali_mali_csf_interrupt_end() const { return at<483>().as_bytes(); }
+  bool has_samsung_tracing_mark_write() const { return at<484>().valid(); }
+  ::protozero::ConstBytes samsung_tracing_mark_write() const { return at<484>().as_bytes(); }
+  bool has_binder_command() const { return at<485>().valid(); }
+  ::protozero::ConstBytes binder_command() const { return at<485>().as_bytes(); }
+  bool has_binder_return() const { return at<486>().valid(); }
+  ::protozero::ConstBytes binder_return() const { return at<486>().as_bytes(); }
+  bool has_sched_switch_with_ctrs() const { return at<487>().valid(); }
+  ::protozero::ConstBytes sched_switch_with_ctrs() const { return at<487>().as_bytes(); }
+  bool has_gpu_work_period() const { return at<488>().valid(); }
+  ::protozero::ConstBytes gpu_work_period() const { return at<488>().as_bytes(); }
+  bool has_rpm_status() const { return at<489>().valid(); }
+  ::protozero::ConstBytes rpm_status() const { return at<489>().as_bytes(); }
+  bool has_panel_write_generic() const { return at<490>().valid(); }
+  ::protozero::ConstBytes panel_write_generic() const { return at<490>().as_bytes(); }
+  bool has_sched_migrate_task() const { return at<491>().valid(); }
+  ::protozero::ConstBytes sched_migrate_task() const { return at<491>().as_bytes(); }
+  bool has_dpu_dsi_cmd_fifo_status() const { return at<492>().valid(); }
+  ::protozero::ConstBytes dpu_dsi_cmd_fifo_status() const { return at<492>().as_bytes(); }
+  bool has_dpu_dsi_rx() const { return at<493>().valid(); }
+  ::protozero::ConstBytes dpu_dsi_rx() const { return at<493>().as_bytes(); }
+  bool has_dpu_dsi_tx() const { return at<494>().valid(); }
+  ::protozero::ConstBytes dpu_dsi_tx() const { return at<494>().as_bytes(); }
+  bool has_f2fs_background_gc() const { return at<495>().valid(); }
+  ::protozero::ConstBytes f2fs_background_gc() const { return at<495>().as_bytes(); }
+  bool has_f2fs_gc_begin() const { return at<496>().valid(); }
+  ::protozero::ConstBytes f2fs_gc_begin() const { return at<496>().as_bytes(); }
+  bool has_f2fs_gc_end() const { return at<497>().valid(); }
+  ::protozero::ConstBytes f2fs_gc_end() const { return at<497>().as_bytes(); }
+  bool has_fastrpc_dma_free() const { return at<498>().valid(); }
+  ::protozero::ConstBytes fastrpc_dma_free() const { return at<498>().as_bytes(); }
+  bool has_fastrpc_dma_alloc() const { return at<499>().valid(); }
+  ::protozero::ConstBytes fastrpc_dma_alloc() const { return at<499>().as_bytes(); }
+  bool has_fastrpc_dma_unmap() const { return at<500>().valid(); }
+  ::protozero::ConstBytes fastrpc_dma_unmap() const { return at<500>().as_bytes(); }
+  bool has_fastrpc_dma_map() const { return at<501>().valid(); }
+  ::protozero::ConstBytes fastrpc_dma_map() const { return at<501>().as_bytes(); }
+  bool has_google_icc_event() const { return at<502>().valid(); }
+  ::protozero::ConstBytes google_icc_event() const { return at<502>().as_bytes(); }
+  bool has_google_irm_event() const { return at<503>().valid(); }
+  ::protozero::ConstBytes google_irm_event() const { return at<503>().as_bytes(); }
+  bool has_device_pm_callback_start() const { return at<504>().valid(); }
+  ::protozero::ConstBytes device_pm_callback_start() const { return at<504>().as_bytes(); }
+  bool has_device_pm_callback_end() const { return at<505>().valid(); }
+  ::protozero::ConstBytes device_pm_callback_end() const { return at<505>().as_bytes(); }
+  bool has_thermal_exynos_acpm_bulk() const { return at<506>().valid(); }
+  ::protozero::ConstBytes thermal_exynos_acpm_bulk() const { return at<506>().as_bytes(); }
+  bool has_thermal_exynos_acpm_high_overhead() const { return at<507>().valid(); }
+  ::protozero::ConstBytes thermal_exynos_acpm_high_overhead() const { return at<507>().as_bytes(); }
+  bool has_dcvsh_freq() const { return at<508>().valid(); }
+  ::protozero::ConstBytes dcvsh_freq() const { return at<508>().as_bytes(); }
+  bool has_kgsl_gpu_frequency() const { return at<509>().valid(); }
+  ::protozero::ConstBytes kgsl_gpu_frequency() const { return at<509>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() const { return at<510>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() const { return at<510>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_hctl_cores_notify_pend() const { return at<511>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_hctl_cores_notify_pend() const { return at<511>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_hctl_core_inactive_pend() const { return at<512>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_hctl_core_inactive_pend() const { return at<512>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_hctl_mcu_on_recheck() const { return at<513>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_hctl_mcu_on_recheck() const { return at<513>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_hctl_shaders_core_off_pend() const { return at<514>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_hctl_shaders_core_off_pend() const { return at<514>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_hctl_shaders_pend_off() const { return at<515>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_hctl_shaders_pend_off() const { return at<515>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_hctl_shaders_pend_on() const { return at<516>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_hctl_shaders_pend_on() const { return at<516>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_hctl_shaders_ready_off() const { return at<517>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_hctl_shaders_ready_off() const { return at<517>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_in_sleep() const { return at<518>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_in_sleep() const { return at<518>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_off() const { return at<519>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_off() const { return at<519>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_on() const { return at<520>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_on() const { return at<520>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_on_core_attr_update_pend() const { return at<521>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_on_core_attr_update_pend() const { return at<521>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_on_glb_reinit_pend() const { return at<522>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_on_glb_reinit_pend() const { return at<522>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_on_halt() const { return at<523>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_on_halt() const { return at<523>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_on_hwcnt_disable() const { return at<524>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_on_hwcnt_disable() const { return at<524>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_on_hwcnt_enable() const { return at<525>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_on_hwcnt_enable() const { return at<525>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_on_pend_halt() const { return at<526>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_on_pend_halt() const { return at<526>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_on_pend_sleep() const { return at<527>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_on_pend_sleep() const { return at<527>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_on_sleep_initiate() const { return at<528>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_on_sleep_initiate() const { return at<528>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_pend_off() const { return at<529>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_pend_off() const { return at<529>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_pend_on_reload() const { return at<530>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_pend_on_reload() const { return at<530>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_power_down() const { return at<531>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_power_down() const { return at<531>().as_bytes(); }
+  bool has_mali_mali_pm_mcu_reset_wait() const { return at<532>().valid(); }
+  ::protozero::ConstBytes mali_mali_pm_mcu_reset_wait() const { return at<532>().as_bytes(); }
+  bool has_bcl_irq_trigger() const { return at<533>().valid(); }
+  ::protozero::ConstBytes bcl_irq_trigger() const { return at<533>().as_bytes(); }
+  bool has_kgsl_adreno_cmdbatch_queued() const { return at<534>().valid(); }
+  ::protozero::ConstBytes kgsl_adreno_cmdbatch_queued() const { return at<534>().as_bytes(); }
+  bool has_kgsl_adreno_cmdbatch_submitted() const { return at<535>().valid(); }
+  ::protozero::ConstBytes kgsl_adreno_cmdbatch_submitted() const { return at<535>().as_bytes(); }
+  bool has_kgsl_adreno_cmdbatch_sync() const { return at<536>().valid(); }
+  ::protozero::ConstBytes kgsl_adreno_cmdbatch_sync() const { return at<536>().as_bytes(); }
+  bool has_kgsl_adreno_cmdbatch_retired() const { return at<537>().valid(); }
+  ::protozero::ConstBytes kgsl_adreno_cmdbatch_retired() const { return at<537>().as_bytes(); }
+  bool has_pixel_mm_kswapd_wake() const { return at<538>().valid(); }
+  ::protozero::ConstBytes pixel_mm_kswapd_wake() const { return at<538>().as_bytes(); }
+  bool has_pixel_mm_kswapd_done() const { return at<539>().valid(); }
+  ::protozero::ConstBytes pixel_mm_kswapd_done() const { return at<539>().as_bytes(); }
+  bool has_sched_wakeup_task_attr() const { return at<540>().valid(); }
+  ::protozero::ConstBytes sched_wakeup_task_attr() const { return at<540>().as_bytes(); }
+  bool has_devfreq_frequency() const { return at<541>().valid(); }
+  ::protozero::ConstBytes devfreq_frequency() const { return at<541>().as_bytes(); }
 };
 
 class FtraceEvent : public ::protozero::Message {
@@ -1885,6 +2065,64 @@ class FtraceEvent : public ::protozero::Message {
     kSuspendResumeMinimalFieldNumber = 481,
     kMaliMaliCSFINTERRUPTSTARTFieldNumber = 482,
     kMaliMaliCSFINTERRUPTENDFieldNumber = 483,
+    kSamsungTracingMarkWriteFieldNumber = 484,
+    kBinderCommandFieldNumber = 485,
+    kBinderReturnFieldNumber = 486,
+    kSchedSwitchWithCtrsFieldNumber = 487,
+    kGpuWorkPeriodFieldNumber = 488,
+    kRpmStatusFieldNumber = 489,
+    kPanelWriteGenericFieldNumber = 490,
+    kSchedMigrateTaskFieldNumber = 491,
+    kDpuDsiCmdFifoStatusFieldNumber = 492,
+    kDpuDsiRxFieldNumber = 493,
+    kDpuDsiTxFieldNumber = 494,
+    kF2fsBackgroundGcFieldNumber = 495,
+    kF2fsGcBeginFieldNumber = 496,
+    kF2fsGcEndFieldNumber = 497,
+    kFastrpcDmaFreeFieldNumber = 498,
+    kFastrpcDmaAllocFieldNumber = 499,
+    kFastrpcDmaUnmapFieldNumber = 500,
+    kFastrpcDmaMapFieldNumber = 501,
+    kGoogleIccEventFieldNumber = 502,
+    kGoogleIrmEventFieldNumber = 503,
+    kDevicePmCallbackStartFieldNumber = 504,
+    kDevicePmCallbackEndFieldNumber = 505,
+    kThermalExynosAcpmBulkFieldNumber = 506,
+    kThermalExynosAcpmHighOverheadFieldNumber = 507,
+    kDcvshFreqFieldNumber = 508,
+    kKgslGpuFrequencyFieldNumber = 509,
+    kMaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFieldNumber = 510,
+    kMaliMaliPMMCUHCTLCORESNOTIFYPENDFieldNumber = 511,
+    kMaliMaliPMMCUHCTLCOREINACTIVEPENDFieldNumber = 512,
+    kMaliMaliPMMCUHCTLMCUONRECHECKFieldNumber = 513,
+    kMaliMaliPMMCUHCTLSHADERSCOREOFFPENDFieldNumber = 514,
+    kMaliMaliPMMCUHCTLSHADERSPENDOFFFieldNumber = 515,
+    kMaliMaliPMMCUHCTLSHADERSPENDONFieldNumber = 516,
+    kMaliMaliPMMCUHCTLSHADERSREADYOFFFieldNumber = 517,
+    kMaliMaliPMMCUINSLEEPFieldNumber = 518,
+    kMaliMaliPMMCUOFFFieldNumber = 519,
+    kMaliMaliPMMCUONFieldNumber = 520,
+    kMaliMaliPMMCUONCOREATTRUPDATEPENDFieldNumber = 521,
+    kMaliMaliPMMCUONGLBREINITPENDFieldNumber = 522,
+    kMaliMaliPMMCUONHALTFieldNumber = 523,
+    kMaliMaliPMMCUONHWCNTDISABLEFieldNumber = 524,
+    kMaliMaliPMMCUONHWCNTENABLEFieldNumber = 525,
+    kMaliMaliPMMCUONPENDHALTFieldNumber = 526,
+    kMaliMaliPMMCUONPENDSLEEPFieldNumber = 527,
+    kMaliMaliPMMCUONSLEEPINITIATEFieldNumber = 528,
+    kMaliMaliPMMCUPENDOFFFieldNumber = 529,
+    kMaliMaliPMMCUPENDONRELOADFieldNumber = 530,
+    kMaliMaliPMMCUPOWERDOWNFieldNumber = 531,
+    kMaliMaliPMMCURESETWAITFieldNumber = 532,
+    kBclIrqTriggerFieldNumber = 533,
+    kKgslAdrenoCmdbatchQueuedFieldNumber = 534,
+    kKgslAdrenoCmdbatchSubmittedFieldNumber = 535,
+    kKgslAdrenoCmdbatchSyncFieldNumber = 536,
+    kKgslAdrenoCmdbatchRetiredFieldNumber = 537,
+    kPixelMmKswapdWakeFieldNumber = 538,
+    kPixelMmKswapdDoneFieldNumber = 539,
+    kSchedWakeupTaskAttrFieldNumber = 540,
+    kDevfreqFrequencyFieldNumber = 541,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.FtraceEvent"; }
 
@@ -8408,6 +8646,818 @@ class FtraceEvent : public ::protozero::Message {
   static constexpr FieldMetadata_MaliMaliCSFINTERRUPTEND kMaliMaliCSFINTERRUPTEND{};
   template <typename T = MaliMaliCSFINTERRUPTENDFtraceEvent> T* set_mali_mali_csf_interrupt_end() {
     return BeginNestedMessage<T>(483);
+  }
+
+
+  using FieldMetadata_SamsungTracingMarkWrite =
+    ::protozero::proto_utils::FieldMetadata<
+      484,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SamsungTracingMarkWriteFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_SamsungTracingMarkWrite kSamsungTracingMarkWrite{};
+  template <typename T = SamsungTracingMarkWriteFtraceEvent> T* set_samsung_tracing_mark_write() {
+    return BeginNestedMessage<T>(484);
+  }
+
+
+  using FieldMetadata_BinderCommand =
+    ::protozero::proto_utils::FieldMetadata<
+      485,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BinderCommandFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_BinderCommand kBinderCommand{};
+  template <typename T = BinderCommandFtraceEvent> T* set_binder_command() {
+    return BeginNestedMessage<T>(485);
+  }
+
+
+  using FieldMetadata_BinderReturn =
+    ::protozero::proto_utils::FieldMetadata<
+      486,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BinderReturnFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_BinderReturn kBinderReturn{};
+  template <typename T = BinderReturnFtraceEvent> T* set_binder_return() {
+    return BeginNestedMessage<T>(486);
+  }
+
+
+  using FieldMetadata_SchedSwitchWithCtrs =
+    ::protozero::proto_utils::FieldMetadata<
+      487,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedSwitchWithCtrsFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_SchedSwitchWithCtrs kSchedSwitchWithCtrs{};
+  template <typename T = SchedSwitchWithCtrsFtraceEvent> T* set_sched_switch_with_ctrs() {
+    return BeginNestedMessage<T>(487);
+  }
+
+
+  using FieldMetadata_GpuWorkPeriod =
+    ::protozero::proto_utils::FieldMetadata<
+      488,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      GpuWorkPeriodFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_GpuWorkPeriod kGpuWorkPeriod{};
+  template <typename T = GpuWorkPeriodFtraceEvent> T* set_gpu_work_period() {
+    return BeginNestedMessage<T>(488);
+  }
+
+
+  using FieldMetadata_RpmStatus =
+    ::protozero::proto_utils::FieldMetadata<
+      489,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      RpmStatusFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_RpmStatus kRpmStatus{};
+  template <typename T = RpmStatusFtraceEvent> T* set_rpm_status() {
+    return BeginNestedMessage<T>(489);
+  }
+
+
+  using FieldMetadata_PanelWriteGeneric =
+    ::protozero::proto_utils::FieldMetadata<
+      490,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      PanelWriteGenericFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_PanelWriteGeneric kPanelWriteGeneric{};
+  template <typename T = PanelWriteGenericFtraceEvent> T* set_panel_write_generic() {
+    return BeginNestedMessage<T>(490);
+  }
+
+
+  using FieldMetadata_SchedMigrateTask =
+    ::protozero::proto_utils::FieldMetadata<
+      491,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedMigrateTaskFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_SchedMigrateTask kSchedMigrateTask{};
+  template <typename T = SchedMigrateTaskFtraceEvent> T* set_sched_migrate_task() {
+    return BeginNestedMessage<T>(491);
+  }
+
+
+  using FieldMetadata_DpuDsiCmdFifoStatus =
+    ::protozero::proto_utils::FieldMetadata<
+      492,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      DpuDsiCmdFifoStatusFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_DpuDsiCmdFifoStatus kDpuDsiCmdFifoStatus{};
+  template <typename T = DpuDsiCmdFifoStatusFtraceEvent> T* set_dpu_dsi_cmd_fifo_status() {
+    return BeginNestedMessage<T>(492);
+  }
+
+
+  using FieldMetadata_DpuDsiRx =
+    ::protozero::proto_utils::FieldMetadata<
+      493,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      DpuDsiRxFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_DpuDsiRx kDpuDsiRx{};
+  template <typename T = DpuDsiRxFtraceEvent> T* set_dpu_dsi_rx() {
+    return BeginNestedMessage<T>(493);
+  }
+
+
+  using FieldMetadata_DpuDsiTx =
+    ::protozero::proto_utils::FieldMetadata<
+      494,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      DpuDsiTxFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_DpuDsiTx kDpuDsiTx{};
+  template <typename T = DpuDsiTxFtraceEvent> T* set_dpu_dsi_tx() {
+    return BeginNestedMessage<T>(494);
+  }
+
+
+  using FieldMetadata_F2fsBackgroundGc =
+    ::protozero::proto_utils::FieldMetadata<
+      495,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsBackgroundGcFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_F2fsBackgroundGc kF2fsBackgroundGc{};
+  template <typename T = F2fsBackgroundGcFtraceEvent> T* set_f2fs_background_gc() {
+    return BeginNestedMessage<T>(495);
+  }
+
+
+  using FieldMetadata_F2fsGcBegin =
+    ::protozero::proto_utils::FieldMetadata<
+      496,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsGcBeginFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_F2fsGcBegin kF2fsGcBegin{};
+  template <typename T = F2fsGcBeginFtraceEvent> T* set_f2fs_gc_begin() {
+    return BeginNestedMessage<T>(496);
+  }
+
+
+  using FieldMetadata_F2fsGcEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      497,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      F2fsGcEndFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_F2fsGcEnd kF2fsGcEnd{};
+  template <typename T = F2fsGcEndFtraceEvent> T* set_f2fs_gc_end() {
+    return BeginNestedMessage<T>(497);
+  }
+
+
+  using FieldMetadata_FastrpcDmaFree =
+    ::protozero::proto_utils::FieldMetadata<
+      498,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FastrpcDmaFreeFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_FastrpcDmaFree kFastrpcDmaFree{};
+  template <typename T = FastrpcDmaFreeFtraceEvent> T* set_fastrpc_dma_free() {
+    return BeginNestedMessage<T>(498);
+  }
+
+
+  using FieldMetadata_FastrpcDmaAlloc =
+    ::protozero::proto_utils::FieldMetadata<
+      499,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FastrpcDmaAllocFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_FastrpcDmaAlloc kFastrpcDmaAlloc{};
+  template <typename T = FastrpcDmaAllocFtraceEvent> T* set_fastrpc_dma_alloc() {
+    return BeginNestedMessage<T>(499);
+  }
+
+
+  using FieldMetadata_FastrpcDmaUnmap =
+    ::protozero::proto_utils::FieldMetadata<
+      500,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FastrpcDmaUnmapFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_FastrpcDmaUnmap kFastrpcDmaUnmap{};
+  template <typename T = FastrpcDmaUnmapFtraceEvent> T* set_fastrpc_dma_unmap() {
+    return BeginNestedMessage<T>(500);
+  }
+
+
+  using FieldMetadata_FastrpcDmaMap =
+    ::protozero::proto_utils::FieldMetadata<
+      501,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FastrpcDmaMapFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_FastrpcDmaMap kFastrpcDmaMap{};
+  template <typename T = FastrpcDmaMapFtraceEvent> T* set_fastrpc_dma_map() {
+    return BeginNestedMessage<T>(501);
+  }
+
+
+  using FieldMetadata_GoogleIccEvent =
+    ::protozero::proto_utils::FieldMetadata<
+      502,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      GoogleIccEventFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_GoogleIccEvent kGoogleIccEvent{};
+  template <typename T = GoogleIccEventFtraceEvent> T* set_google_icc_event() {
+    return BeginNestedMessage<T>(502);
+  }
+
+
+  using FieldMetadata_GoogleIrmEvent =
+    ::protozero::proto_utils::FieldMetadata<
+      503,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      GoogleIrmEventFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_GoogleIrmEvent kGoogleIrmEvent{};
+  template <typename T = GoogleIrmEventFtraceEvent> T* set_google_irm_event() {
+    return BeginNestedMessage<T>(503);
+  }
+
+
+  using FieldMetadata_DevicePmCallbackStart =
+    ::protozero::proto_utils::FieldMetadata<
+      504,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      DevicePmCallbackStartFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_DevicePmCallbackStart kDevicePmCallbackStart{};
+  template <typename T = DevicePmCallbackStartFtraceEvent> T* set_device_pm_callback_start() {
+    return BeginNestedMessage<T>(504);
+  }
+
+
+  using FieldMetadata_DevicePmCallbackEnd =
+    ::protozero::proto_utils::FieldMetadata<
+      505,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      DevicePmCallbackEndFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_DevicePmCallbackEnd kDevicePmCallbackEnd{};
+  template <typename T = DevicePmCallbackEndFtraceEvent> T* set_device_pm_callback_end() {
+    return BeginNestedMessage<T>(505);
+  }
+
+
+  using FieldMetadata_ThermalExynosAcpmBulk =
+    ::protozero::proto_utils::FieldMetadata<
+      506,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ThermalExynosAcpmBulkFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_ThermalExynosAcpmBulk kThermalExynosAcpmBulk{};
+  template <typename T = ThermalExynosAcpmBulkFtraceEvent> T* set_thermal_exynos_acpm_bulk() {
+    return BeginNestedMessage<T>(506);
+  }
+
+
+  using FieldMetadata_ThermalExynosAcpmHighOverhead =
+    ::protozero::proto_utils::FieldMetadata<
+      507,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      ThermalExynosAcpmHighOverheadFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_ThermalExynosAcpmHighOverhead kThermalExynosAcpmHighOverhead{};
+  template <typename T = ThermalExynosAcpmHighOverheadFtraceEvent> T* set_thermal_exynos_acpm_high_overhead() {
+    return BeginNestedMessage<T>(507);
+  }
+
+
+  using FieldMetadata_DcvshFreq =
+    ::protozero::proto_utils::FieldMetadata<
+      508,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      DcvshFreqFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_DcvshFreq kDcvshFreq{};
+  template <typename T = DcvshFreqFtraceEvent> T* set_dcvsh_freq() {
+    return BeginNestedMessage<T>(508);
+  }
+
+
+  using FieldMetadata_KgslGpuFrequency =
+    ::protozero::proto_utils::FieldMetadata<
+      509,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      KgslGpuFrequencyFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_KgslGpuFrequency kKgslGpuFrequency{};
+  template <typename T = KgslGpuFrequencyFtraceEvent> T* set_kgsl_gpu_frequency() {
+    return BeginNestedMessage<T>(509);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPEND =
+    ::protozero::proto_utils::FieldMetadata<
+      510,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPEND kMaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPEND{};
+  template <typename T = MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent> T* set_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() {
+    return BeginNestedMessage<T>(510);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUHCTLCORESNOTIFYPEND =
+    ::protozero::proto_utils::FieldMetadata<
+      511,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUHCTLCORESNOTIFYPEND kMaliMaliPMMCUHCTLCORESNOTIFYPEND{};
+  template <typename T = MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent> T* set_mali_mali_pm_mcu_hctl_cores_notify_pend() {
+    return BeginNestedMessage<T>(511);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUHCTLCOREINACTIVEPEND =
+    ::protozero::proto_utils::FieldMetadata<
+      512,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUHCTLCOREINACTIVEPEND kMaliMaliPMMCUHCTLCOREINACTIVEPEND{};
+  template <typename T = MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent> T* set_mali_mali_pm_mcu_hctl_core_inactive_pend() {
+    return BeginNestedMessage<T>(512);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUHCTLMCUONRECHECK =
+    ::protozero::proto_utils::FieldMetadata<
+      513,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUHCTLMCUONRECHECK kMaliMaliPMMCUHCTLMCUONRECHECK{};
+  template <typename T = MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent> T* set_mali_mali_pm_mcu_hctl_mcu_on_recheck() {
+    return BeginNestedMessage<T>(513);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUHCTLSHADERSCOREOFFPEND =
+    ::protozero::proto_utils::FieldMetadata<
+      514,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUHCTLSHADERSCOREOFFPEND kMaliMaliPMMCUHCTLSHADERSCOREOFFPEND{};
+  template <typename T = MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent> T* set_mali_mali_pm_mcu_hctl_shaders_core_off_pend() {
+    return BeginNestedMessage<T>(514);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUHCTLSHADERSPENDOFF =
+    ::protozero::proto_utils::FieldMetadata<
+      515,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUHCTLSHADERSPENDOFF kMaliMaliPMMCUHCTLSHADERSPENDOFF{};
+  template <typename T = MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent> T* set_mali_mali_pm_mcu_hctl_shaders_pend_off() {
+    return BeginNestedMessage<T>(515);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUHCTLSHADERSPENDON =
+    ::protozero::proto_utils::FieldMetadata<
+      516,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUHCTLSHADERSPENDON kMaliMaliPMMCUHCTLSHADERSPENDON{};
+  template <typename T = MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent> T* set_mali_mali_pm_mcu_hctl_shaders_pend_on() {
+    return BeginNestedMessage<T>(516);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUHCTLSHADERSREADYOFF =
+    ::protozero::proto_utils::FieldMetadata<
+      517,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUHCTLSHADERSREADYOFF kMaliMaliPMMCUHCTLSHADERSREADYOFF{};
+  template <typename T = MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent> T* set_mali_mali_pm_mcu_hctl_shaders_ready_off() {
+    return BeginNestedMessage<T>(517);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUINSLEEP =
+    ::protozero::proto_utils::FieldMetadata<
+      518,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUINSLEEPFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUINSLEEP kMaliMaliPMMCUINSLEEP{};
+  template <typename T = MaliMaliPMMCUINSLEEPFtraceEvent> T* set_mali_mali_pm_mcu_in_sleep() {
+    return BeginNestedMessage<T>(518);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUOFF =
+    ::protozero::proto_utils::FieldMetadata<
+      519,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUOFFFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUOFF kMaliMaliPMMCUOFF{};
+  template <typename T = MaliMaliPMMCUOFFFtraceEvent> T* set_mali_mali_pm_mcu_off() {
+    return BeginNestedMessage<T>(519);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUON =
+    ::protozero::proto_utils::FieldMetadata<
+      520,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUONFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUON kMaliMaliPMMCUON{};
+  template <typename T = MaliMaliPMMCUONFtraceEvent> T* set_mali_mali_pm_mcu_on() {
+    return BeginNestedMessage<T>(520);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUONCOREATTRUPDATEPEND =
+    ::protozero::proto_utils::FieldMetadata<
+      521,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUONCOREATTRUPDATEPEND kMaliMaliPMMCUONCOREATTRUPDATEPEND{};
+  template <typename T = MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent> T* set_mali_mali_pm_mcu_on_core_attr_update_pend() {
+    return BeginNestedMessage<T>(521);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUONGLBREINITPEND =
+    ::protozero::proto_utils::FieldMetadata<
+      522,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUONGLBREINITPENDFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUONGLBREINITPEND kMaliMaliPMMCUONGLBREINITPEND{};
+  template <typename T = MaliMaliPMMCUONGLBREINITPENDFtraceEvent> T* set_mali_mali_pm_mcu_on_glb_reinit_pend() {
+    return BeginNestedMessage<T>(522);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUONHALT =
+    ::protozero::proto_utils::FieldMetadata<
+      523,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUONHALTFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUONHALT kMaliMaliPMMCUONHALT{};
+  template <typename T = MaliMaliPMMCUONHALTFtraceEvent> T* set_mali_mali_pm_mcu_on_halt() {
+    return BeginNestedMessage<T>(523);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUONHWCNTDISABLE =
+    ::protozero::proto_utils::FieldMetadata<
+      524,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUONHWCNTDISABLEFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUONHWCNTDISABLE kMaliMaliPMMCUONHWCNTDISABLE{};
+  template <typename T = MaliMaliPMMCUONHWCNTDISABLEFtraceEvent> T* set_mali_mali_pm_mcu_on_hwcnt_disable() {
+    return BeginNestedMessage<T>(524);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUONHWCNTENABLE =
+    ::protozero::proto_utils::FieldMetadata<
+      525,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUONHWCNTENABLEFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUONHWCNTENABLE kMaliMaliPMMCUONHWCNTENABLE{};
+  template <typename T = MaliMaliPMMCUONHWCNTENABLEFtraceEvent> T* set_mali_mali_pm_mcu_on_hwcnt_enable() {
+    return BeginNestedMessage<T>(525);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUONPENDHALT =
+    ::protozero::proto_utils::FieldMetadata<
+      526,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUONPENDHALTFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUONPENDHALT kMaliMaliPMMCUONPENDHALT{};
+  template <typename T = MaliMaliPMMCUONPENDHALTFtraceEvent> T* set_mali_mali_pm_mcu_on_pend_halt() {
+    return BeginNestedMessage<T>(526);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUONPENDSLEEP =
+    ::protozero::proto_utils::FieldMetadata<
+      527,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUONPENDSLEEPFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUONPENDSLEEP kMaliMaliPMMCUONPENDSLEEP{};
+  template <typename T = MaliMaliPMMCUONPENDSLEEPFtraceEvent> T* set_mali_mali_pm_mcu_on_pend_sleep() {
+    return BeginNestedMessage<T>(527);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUONSLEEPINITIATE =
+    ::protozero::proto_utils::FieldMetadata<
+      528,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUONSLEEPINITIATEFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUONSLEEPINITIATE kMaliMaliPMMCUONSLEEPINITIATE{};
+  template <typename T = MaliMaliPMMCUONSLEEPINITIATEFtraceEvent> T* set_mali_mali_pm_mcu_on_sleep_initiate() {
+    return BeginNestedMessage<T>(528);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUPENDOFF =
+    ::protozero::proto_utils::FieldMetadata<
+      529,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUPENDOFFFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUPENDOFF kMaliMaliPMMCUPENDOFF{};
+  template <typename T = MaliMaliPMMCUPENDOFFFtraceEvent> T* set_mali_mali_pm_mcu_pend_off() {
+    return BeginNestedMessage<T>(529);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUPENDONRELOAD =
+    ::protozero::proto_utils::FieldMetadata<
+      530,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUPENDONRELOADFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUPENDONRELOAD kMaliMaliPMMCUPENDONRELOAD{};
+  template <typename T = MaliMaliPMMCUPENDONRELOADFtraceEvent> T* set_mali_mali_pm_mcu_pend_on_reload() {
+    return BeginNestedMessage<T>(530);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCUPOWERDOWN =
+    ::protozero::proto_utils::FieldMetadata<
+      531,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCUPOWERDOWNFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCUPOWERDOWN kMaliMaliPMMCUPOWERDOWN{};
+  template <typename T = MaliMaliPMMCUPOWERDOWNFtraceEvent> T* set_mali_mali_pm_mcu_power_down() {
+    return BeginNestedMessage<T>(531);
+  }
+
+
+  using FieldMetadata_MaliMaliPMMCURESETWAIT =
+    ::protozero::proto_utils::FieldMetadata<
+      532,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      MaliMaliPMMCURESETWAITFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_MaliMaliPMMCURESETWAIT kMaliMaliPMMCURESETWAIT{};
+  template <typename T = MaliMaliPMMCURESETWAITFtraceEvent> T* set_mali_mali_pm_mcu_reset_wait() {
+    return BeginNestedMessage<T>(532);
+  }
+
+
+  using FieldMetadata_BclIrqTrigger =
+    ::protozero::proto_utils::FieldMetadata<
+      533,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      BclIrqTriggerFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_BclIrqTrigger kBclIrqTrigger{};
+  template <typename T = BclIrqTriggerFtraceEvent> T* set_bcl_irq_trigger() {
+    return BeginNestedMessage<T>(533);
+  }
+
+
+  using FieldMetadata_KgslAdrenoCmdbatchQueued =
+    ::protozero::proto_utils::FieldMetadata<
+      534,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      KgslAdrenoCmdbatchQueuedFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_KgslAdrenoCmdbatchQueued kKgslAdrenoCmdbatchQueued{};
+  template <typename T = KgslAdrenoCmdbatchQueuedFtraceEvent> T* set_kgsl_adreno_cmdbatch_queued() {
+    return BeginNestedMessage<T>(534);
+  }
+
+
+  using FieldMetadata_KgslAdrenoCmdbatchSubmitted =
+    ::protozero::proto_utils::FieldMetadata<
+      535,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      KgslAdrenoCmdbatchSubmittedFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_KgslAdrenoCmdbatchSubmitted kKgslAdrenoCmdbatchSubmitted{};
+  template <typename T = KgslAdrenoCmdbatchSubmittedFtraceEvent> T* set_kgsl_adreno_cmdbatch_submitted() {
+    return BeginNestedMessage<T>(535);
+  }
+
+
+  using FieldMetadata_KgslAdrenoCmdbatchSync =
+    ::protozero::proto_utils::FieldMetadata<
+      536,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      KgslAdrenoCmdbatchSyncFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_KgslAdrenoCmdbatchSync kKgslAdrenoCmdbatchSync{};
+  template <typename T = KgslAdrenoCmdbatchSyncFtraceEvent> T* set_kgsl_adreno_cmdbatch_sync() {
+    return BeginNestedMessage<T>(536);
+  }
+
+
+  using FieldMetadata_KgslAdrenoCmdbatchRetired =
+    ::protozero::proto_utils::FieldMetadata<
+      537,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      KgslAdrenoCmdbatchRetiredFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_KgslAdrenoCmdbatchRetired kKgslAdrenoCmdbatchRetired{};
+  template <typename T = KgslAdrenoCmdbatchRetiredFtraceEvent> T* set_kgsl_adreno_cmdbatch_retired() {
+    return BeginNestedMessage<T>(537);
+  }
+
+
+  using FieldMetadata_PixelMmKswapdWake =
+    ::protozero::proto_utils::FieldMetadata<
+      538,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      PixelMmKswapdWakeFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_PixelMmKswapdWake kPixelMmKswapdWake{};
+  template <typename T = PixelMmKswapdWakeFtraceEvent> T* set_pixel_mm_kswapd_wake() {
+    return BeginNestedMessage<T>(538);
+  }
+
+
+  using FieldMetadata_PixelMmKswapdDone =
+    ::protozero::proto_utils::FieldMetadata<
+      539,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      PixelMmKswapdDoneFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_PixelMmKswapdDone kPixelMmKswapdDone{};
+  template <typename T = PixelMmKswapdDoneFtraceEvent> T* set_pixel_mm_kswapd_done() {
+    return BeginNestedMessage<T>(539);
+  }
+
+
+  using FieldMetadata_SchedWakeupTaskAttr =
+    ::protozero::proto_utils::FieldMetadata<
+      540,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SchedWakeupTaskAttrFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_SchedWakeupTaskAttr kSchedWakeupTaskAttr{};
+  template <typename T = SchedWakeupTaskAttrFtraceEvent> T* set_sched_wakeup_task_attr() {
+    return BeginNestedMessage<T>(540);
+  }
+
+
+  using FieldMetadata_DevfreqFrequency =
+    ::protozero::proto_utils::FieldMetadata<
+      541,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      DevfreqFrequencyFtraceEvent,
+      FtraceEvent>;
+
+  static constexpr FieldMetadata_DevfreqFrequency kDevfreqFrequency{};
+  template <typename T = DevfreqFrequencyFtraceEvent> T* set_devfreq_frequency() {
+    return BeginNestedMessage<T>(541);
   }
 
 };

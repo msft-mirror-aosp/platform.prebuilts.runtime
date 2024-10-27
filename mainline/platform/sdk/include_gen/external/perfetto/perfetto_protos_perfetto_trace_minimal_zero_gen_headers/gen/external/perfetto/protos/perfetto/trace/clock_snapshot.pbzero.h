@@ -15,9 +15,15 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class ClockSnapshot_Clock;
 enum BuiltinClock : int32_t;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_ClockSnapshot_Clock {
 enum BuiltinClocks : int32_t {
@@ -109,11 +115,11 @@ class ClockSnapshot : public ::protozero::Message {
       2,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::BuiltinClock,
+      BuiltinClock,
       ClockSnapshot>;
 
   static constexpr FieldMetadata_PrimaryTraceClock kPrimaryTraceClock{};
-  void set_primary_trace_clock(::perfetto::protos::pbzero::BuiltinClock value) {
+  void set_primary_trace_clock(BuiltinClock value) {
     static constexpr uint32_t field_id = FieldMetadata_PrimaryTraceClock::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

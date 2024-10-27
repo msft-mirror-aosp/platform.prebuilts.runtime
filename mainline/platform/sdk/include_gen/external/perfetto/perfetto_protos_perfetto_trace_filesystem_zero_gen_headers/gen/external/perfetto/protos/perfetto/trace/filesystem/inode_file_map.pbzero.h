@@ -15,12 +15,18 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class InodeFileMap_Entry;
 namespace perfetto_pbzero_enum_InodeFileMap_Entry {
 enum Type : int32_t;
 }  // namespace perfetto_pbzero_enum_InodeFileMap_Entry
 using InodeFileMap_Entry_Type = perfetto_pbzero_enum_InodeFileMap_Entry::Type;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_InodeFileMap_Entry {
 enum Type : int32_t {
@@ -212,11 +218,11 @@ class InodeFileMap_Entry : public ::protozero::Message {
       3,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::InodeFileMap_Entry_Type,
+      InodeFileMap_Entry_Type,
       InodeFileMap_Entry>;
 
   static constexpr FieldMetadata_Type kType{};
-  void set_type(::perfetto::protos::pbzero::InodeFileMap_Entry_Type value) {
+  void set_type(InodeFileMap_Entry_Type value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

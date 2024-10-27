@@ -15,14 +15,20 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class ChromeProcessDescriptor;
 class ChromeThreadDescriptor;
 class CounterDescriptor;
 class ProcessDescriptor;
 class ThreadDescriptor;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
 
-class TrackDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/9, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+namespace perfetto {
+namespace protos {
+namespace pbzero {
+
+class TrackDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   TrackDescriptor_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TrackDescriptor_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -33,6 +39,8 @@ class TrackDescriptor_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIEL
   uint64_t parent_uuid() const { return at<5>().as_uint64(); }
   bool has_name() const { return at<2>().valid(); }
   ::protozero::ConstChars name() const { return at<2>().as_string(); }
+  bool has_static_name() const { return at<10>().valid(); }
+  ::protozero::ConstChars static_name() const { return at<10>().as_string(); }
   bool has_process() const { return at<3>().valid(); }
   ::protozero::ConstBytes process() const { return at<3>().as_bytes(); }
   bool has_chrome_process() const { return at<6>().valid(); }
@@ -54,6 +62,7 @@ class TrackDescriptor : public ::protozero::Message {
     kUuidFieldNumber = 1,
     kParentUuidFieldNumber = 5,
     kNameFieldNumber = 2,
+    kStaticNameFieldNumber = 10,
     kProcessFieldNumber = 3,
     kChromeProcessFieldNumber = 6,
     kThreadFieldNumber = 4,
@@ -117,6 +126,30 @@ class TrackDescriptor : public ::protozero::Message {
   }
   void set_name(std::string value) {
     static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_StaticName =
+    ::protozero::proto_utils::FieldMetadata<
+      10,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      TrackDescriptor>;
+
+  static constexpr FieldMetadata_StaticName kStaticName{};
+  void set_static_name(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_StaticName::kFieldId, data, size);
+  }
+  void set_static_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_StaticName::kFieldId, chars.data, chars.size);
+  }
+  void set_static_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_StaticName::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
