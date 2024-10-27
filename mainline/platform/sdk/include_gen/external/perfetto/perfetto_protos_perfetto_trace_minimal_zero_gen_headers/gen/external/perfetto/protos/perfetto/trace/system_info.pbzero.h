@@ -15,10 +15,16 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class Utsname;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
 
-class SystemInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+namespace perfetto {
+namespace protos {
+namespace pbzero {
+
+class SystemInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/12, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   SystemInfo_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit SystemInfo_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -27,14 +33,26 @@ class SystemInfo_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=
   ::protozero::ConstBytes utsname() const { return at<1>().as_bytes(); }
   bool has_android_build_fingerprint() const { return at<2>().valid(); }
   ::protozero::ConstChars android_build_fingerprint() const { return at<2>().as_string(); }
-  bool has_hz() const { return at<3>().valid(); }
-  int64_t hz() const { return at<3>().as_int64(); }
+  bool has_android_soc_model() const { return at<9>().valid(); }
+  ::protozero::ConstChars android_soc_model() const { return at<9>().as_string(); }
+  bool has_android_hardware_revision() const { return at<10>().valid(); }
+  ::protozero::ConstChars android_hardware_revision() const { return at<10>().as_string(); }
+  bool has_android_storage_model() const { return at<11>().valid(); }
+  ::protozero::ConstChars android_storage_model() const { return at<11>().as_string(); }
+  bool has_android_ram_model() const { return at<12>().valid(); }
+  ::protozero::ConstChars android_ram_model() const { return at<12>().as_string(); }
   bool has_tracing_service_version() const { return at<4>().valid(); }
   ::protozero::ConstChars tracing_service_version() const { return at<4>().as_string(); }
   bool has_android_sdk_version() const { return at<5>().valid(); }
   uint64_t android_sdk_version() const { return at<5>().as_uint64(); }
   bool has_page_size() const { return at<6>().valid(); }
   uint32_t page_size() const { return at<6>().as_uint32(); }
+  bool has_num_cpus() const { return at<8>().valid(); }
+  uint32_t num_cpus() const { return at<8>().as_uint32(); }
+  bool has_timezone_off_mins() const { return at<7>().valid(); }
+  int32_t timezone_off_mins() const { return at<7>().as_int32(); }
+  bool has_hz() const { return at<3>().valid(); }
+  int64_t hz() const { return at<3>().as_int64(); }
 };
 
 class SystemInfo : public ::protozero::Message {
@@ -43,10 +61,16 @@ class SystemInfo : public ::protozero::Message {
   enum : int32_t {
     kUtsnameFieldNumber = 1,
     kAndroidBuildFingerprintFieldNumber = 2,
-    kHzFieldNumber = 3,
+    kAndroidSocModelFieldNumber = 9,
+    kAndroidHardwareRevisionFieldNumber = 10,
+    kAndroidStorageModelFieldNumber = 11,
+    kAndroidRamModelFieldNumber = 12,
     kTracingServiceVersionFieldNumber = 4,
     kAndroidSdkVersionFieldNumber = 5,
     kPageSizeFieldNumber = 6,
+    kNumCpusFieldNumber = 8,
+    kTimezoneOffMinsFieldNumber = 7,
+    kHzFieldNumber = 3,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.SystemInfo"; }
 
@@ -89,21 +113,99 @@ class SystemInfo : public ::protozero::Message {
         ::Append(*this, field_id, value);
   }
 
-  using FieldMetadata_Hz =
+  using FieldMetadata_AndroidSocModel =
     ::protozero::proto_utils::FieldMetadata<
-      3,
+      9,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kInt64,
-      int64_t,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
       SystemInfo>;
 
-  static constexpr FieldMetadata_Hz kHz{};
-  void set_hz(int64_t value) {
-    static constexpr uint32_t field_id = FieldMetadata_Hz::kFieldId;
+  static constexpr FieldMetadata_AndroidSocModel kAndroidSocModel{};
+  void set_android_soc_model(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_AndroidSocModel::kFieldId, data, size);
+  }
+  void set_android_soc_model(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_AndroidSocModel::kFieldId, chars.data, chars.size);
+  }
+  void set_android_soc_model(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_AndroidSocModel::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kInt64>
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_AndroidHardwareRevision =
+    ::protozero::proto_utils::FieldMetadata<
+      10,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      SystemInfo>;
+
+  static constexpr FieldMetadata_AndroidHardwareRevision kAndroidHardwareRevision{};
+  void set_android_hardware_revision(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_AndroidHardwareRevision::kFieldId, data, size);
+  }
+  void set_android_hardware_revision(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_AndroidHardwareRevision::kFieldId, chars.data, chars.size);
+  }
+  void set_android_hardware_revision(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_AndroidHardwareRevision::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_AndroidStorageModel =
+    ::protozero::proto_utils::FieldMetadata<
+      11,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      SystemInfo>;
+
+  static constexpr FieldMetadata_AndroidStorageModel kAndroidStorageModel{};
+  void set_android_storage_model(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_AndroidStorageModel::kFieldId, data, size);
+  }
+  void set_android_storage_model(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_AndroidStorageModel::kFieldId, chars.data, chars.size);
+  }
+  void set_android_storage_model(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_AndroidStorageModel::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_AndroidRamModel =
+    ::protozero::proto_utils::FieldMetadata<
+      12,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      SystemInfo>;
+
+  static constexpr FieldMetadata_AndroidRamModel kAndroidRamModel{};
+  void set_android_ram_model(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_AndroidRamModel::kFieldId, data, size);
+  }
+  void set_android_ram_model(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_AndroidRamModel::kFieldId, chars.data, chars.size);
+  }
+  void set_android_ram_model(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_AndroidRamModel::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
         ::Append(*this, field_id, value);
   }
 
@@ -164,6 +266,60 @@ class SystemInfo : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_NumCpus =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SystemInfo>;
+
+  static constexpr FieldMetadata_NumCpus kNumCpus{};
+  void set_num_cpus(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_NumCpus::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TimezoneOffMins =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      SystemInfo>;
+
+  static constexpr FieldMetadata_TimezoneOffMins kTimezoneOffMins{};
+  void set_timezone_off_mins(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_TimezoneOffMins::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Hz =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt64,
+      int64_t,
+      SystemInfo>;
+
+  static constexpr FieldMetadata_Hz kHz{};
+  void set_hz(int64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Hz::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt64>
         ::Append(*this, field_id, value);
   }
 };

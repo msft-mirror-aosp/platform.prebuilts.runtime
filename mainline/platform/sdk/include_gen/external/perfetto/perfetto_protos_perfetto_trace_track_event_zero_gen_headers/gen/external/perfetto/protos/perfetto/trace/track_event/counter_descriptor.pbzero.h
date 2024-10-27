@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 namespace perfetto_pbzero_enum_CounterDescriptor {
 enum BuiltinCounterType : int32_t;
 }  // namespace perfetto_pbzero_enum_CounterDescriptor
@@ -24,6 +23,13 @@ namespace perfetto_pbzero_enum_CounterDescriptor {
 enum Unit : int32_t;
 }  // namespace perfetto_pbzero_enum_CounterDescriptor
 using CounterDescriptor_Unit = perfetto_pbzero_enum_CounterDescriptor::Unit;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_CounterDescriptor {
 enum BuiltinCounterType : int32_t {
@@ -142,11 +148,11 @@ class CounterDescriptor : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::CounterDescriptor_BuiltinCounterType,
+      CounterDescriptor_BuiltinCounterType,
       CounterDescriptor>;
 
   static constexpr FieldMetadata_Type kType{};
-  void set_type(::perfetto::protos::pbzero::CounterDescriptor_BuiltinCounterType value) {
+  void set_type(CounterDescriptor_BuiltinCounterType value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -184,11 +190,11 @@ class CounterDescriptor : public ::protozero::Message {
       3,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::CounterDescriptor_Unit,
+      CounterDescriptor_Unit,
       CounterDescriptor>;
 
   static constexpr FieldMetadata_Unit kUnit{};
-  void set_unit(::perfetto::protos::pbzero::CounterDescriptor_Unit value) {
+  void set_unit(CounterDescriptor_Unit value) {
     static constexpr uint32_t field_id = FieldMetadata_Unit::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

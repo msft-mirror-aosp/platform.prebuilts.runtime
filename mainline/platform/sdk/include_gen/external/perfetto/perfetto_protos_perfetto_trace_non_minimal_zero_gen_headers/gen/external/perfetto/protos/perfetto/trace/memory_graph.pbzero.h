@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class MemoryTrackerSnapshot_ProcessSnapshot;
 class MemoryTrackerSnapshot_ProcessSnapshot_MemoryEdge;
 class MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode;
@@ -28,6 +27,13 @@ namespace perfetto_pbzero_enum_MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_
 enum Units : int32_t;
 }  // namespace perfetto_pbzero_enum_MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry
 using MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry_Units = perfetto_pbzero_enum_MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry::Units;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_MemoryTrackerSnapshot {
 enum LevelOfDetail : int32_t {
@@ -143,11 +149,11 @@ class MemoryTrackerSnapshot : public ::protozero::Message {
       2,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::MemoryTrackerSnapshot_LevelOfDetail,
+      MemoryTrackerSnapshot_LevelOfDetail,
       MemoryTrackerSnapshot>;
 
   static constexpr FieldMetadata_LevelOfDetail kLevelOfDetail{};
-  void set_level_of_detail(::perfetto::protos::pbzero::MemoryTrackerSnapshot_LevelOfDetail value) {
+  void set_level_of_detail(MemoryTrackerSnapshot_LevelOfDetail value) {
     static constexpr uint32_t field_id = FieldMetadata_LevelOfDetail::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -532,11 +538,11 @@ class MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry : public 
       2,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry_Units,
+      MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry_Units,
       MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry>;
 
   static constexpr FieldMetadata_Units kUnits{};
-  void set_units(::perfetto::protos::pbzero::MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry_Units value) {
+  void set_units(MemoryTrackerSnapshot_ProcessSnapshot_MemoryNode_MemoryNodeEntry_Units value) {
     static constexpr uint32_t field_id = FieldMetadata_Units::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

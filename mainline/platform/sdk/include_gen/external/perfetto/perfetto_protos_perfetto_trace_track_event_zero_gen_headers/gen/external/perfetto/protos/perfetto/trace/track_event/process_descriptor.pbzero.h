@@ -15,11 +15,17 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 namespace perfetto_pbzero_enum_ProcessDescriptor {
 enum ChromeProcessType : int32_t;
 }  // namespace perfetto_pbzero_enum_ProcessDescriptor
 using ProcessDescriptor_ChromeProcessType = perfetto_pbzero_enum_ProcessDescriptor::ChromeProcessType;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_ProcessDescriptor {
 enum ChromeProcessType : int32_t {
@@ -234,11 +240,11 @@ class ProcessDescriptor : public ::protozero::Message {
       4,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType,
+      ProcessDescriptor_ChromeProcessType,
       ProcessDescriptor>;
 
   static constexpr FieldMetadata_ChromeProcessType kChromeProcessType{};
-  void set_chrome_process_type(::perfetto::protos::pbzero::ProcessDescriptor_ChromeProcessType value) {
+  void set_chrome_process_type(ProcessDescriptor_ChromeProcessType value) {
     static constexpr uint32_t field_id = FieldMetadata_ChromeProcessType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

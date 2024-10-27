@@ -15,8 +15,8 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class Callstack;
+class FollowerEvent;
 class Frame;
 class InternedString;
 class Mapping;
@@ -47,6 +47,13 @@ namespace perfetto_pbzero_enum_Profiling {
 enum StackUnwindError : int32_t;
 }  // namespace perfetto_pbzero_enum_Profiling
 using Profiling_StackUnwindError = perfetto_pbzero_enum_Profiling::StackUnwindError;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_PerfSample {
 enum SampleSkipReason : int32_t {
@@ -257,13 +264,15 @@ const char* ProfilePacket_ProcessHeapSamples_ClientError_Name(::perfetto::protos
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class PerfSampleDefaults_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class PerfSampleDefaults_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   PerfSampleDefaults_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit PerfSampleDefaults_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit PerfSampleDefaults_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_timebase() const { return at<1>().valid(); }
   ::protozero::ConstBytes timebase() const { return at<1>().as_bytes(); }
+  bool has_followers() const { return at<4>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> followers() const { return GetRepeated<::protozero::ConstBytes>(4); }
   bool has_process_shard_count() const { return at<2>().valid(); }
   uint32_t process_shard_count() const { return at<2>().as_uint32(); }
   bool has_chosen_process_shard() const { return at<3>().valid(); }
@@ -275,6 +284,7 @@ class PerfSampleDefaults : public ::protozero::Message {
   using Decoder = PerfSampleDefaults_Decoder;
   enum : int32_t {
     kTimebaseFieldNumber = 1,
+    kFollowersFieldNumber = 4,
     kProcessShardCountFieldNumber = 2,
     kChosenProcessShardFieldNumber = 3,
   };
@@ -292,6 +302,20 @@ class PerfSampleDefaults : public ::protozero::Message {
   static constexpr FieldMetadata_Timebase kTimebase{};
   template <typename T = PerfEvents_Timebase> T* set_timebase() {
     return BeginNestedMessage<T>(1);
+  }
+
+
+  using FieldMetadata_Followers =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FollowerEvent,
+      PerfSampleDefaults>;
+
+  static constexpr FieldMetadata_Followers kFollowers{};
+  template <typename T = FollowerEvent> T* add_followers() {
+    return BeginNestedMessage<T>(4);
   }
 
 
@@ -332,7 +356,7 @@ class PerfSampleDefaults : public ::protozero::Message {
   }
 };
 
-class PerfSample_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/19, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class PerfSample_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/19, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   PerfSample_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit PerfSample_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -347,6 +371,8 @@ class PerfSample_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=
   int32_t cpu_mode() const { return at<5>().as_int32(); }
   bool has_timebase_count() const { return at<6>().valid(); }
   uint64_t timebase_count() const { return at<6>().as_uint64(); }
+  bool has_follower_counts() const { return at<7>().valid(); }
+  ::protozero::RepeatedFieldIterator<uint64_t> follower_counts() const { return GetRepeated<uint64_t>(7); }
   bool has_callstack_iid() const { return at<4>().valid(); }
   uint64_t callstack_iid() const { return at<4>().as_uint64(); }
   bool has_unwind_error() const { return at<16>().valid(); }
@@ -368,6 +394,7 @@ class PerfSample : public ::protozero::Message {
     kTidFieldNumber = 3,
     kCpuModeFieldNumber = 5,
     kTimebaseCountFieldNumber = 6,
+    kFollowerCountsFieldNumber = 7,
     kCallstackIidFieldNumber = 4,
     kUnwindErrorFieldNumber = 16,
     kKernelRecordsLostFieldNumber = 17,
@@ -446,11 +473,11 @@ class PerfSample : public ::protozero::Message {
       5,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::Profiling_CpuMode,
+      Profiling_CpuMode,
       PerfSample>;
 
   static constexpr FieldMetadata_CpuMode kCpuMode{};
-  void set_cpu_mode(::perfetto::protos::pbzero::Profiling_CpuMode value) {
+  void set_cpu_mode(Profiling_CpuMode value) {
     static constexpr uint32_t field_id = FieldMetadata_CpuMode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -470,6 +497,24 @@ class PerfSample : public ::protozero::Message {
   static constexpr FieldMetadata_TimebaseCount kTimebaseCount{};
   void set_timebase_count(uint64_t value) {
     static constexpr uint32_t field_id = FieldMetadata_TimebaseCount::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_FollowerCounts =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      PerfSample>;
+
+  static constexpr FieldMetadata_FollowerCounts kFollowerCounts{};
+  void add_follower_counts(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_FollowerCounts::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
@@ -500,11 +545,11 @@ class PerfSample : public ::protozero::Message {
       16,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::Profiling_StackUnwindError,
+      Profiling_StackUnwindError,
       PerfSample>;
 
   static constexpr FieldMetadata_UnwindError kUnwindError{};
-  void set_unwind_error(::perfetto::protos::pbzero::Profiling_StackUnwindError value) {
+  void set_unwind_error(Profiling_StackUnwindError value) {
     static constexpr uint32_t field_id = FieldMetadata_UnwindError::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -536,11 +581,11 @@ class PerfSample : public ::protozero::Message {
       18,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::PerfSample_SampleSkipReason,
+      PerfSample_SampleSkipReason,
       PerfSample>;
 
   static constexpr FieldMetadata_SampleSkippedReason kSampleSkippedReason{};
-  void set_sample_skipped_reason(::perfetto::protos::pbzero::PerfSample_SampleSkipReason value) {
+  void set_sample_skipped_reason(PerfSample_SampleSkipReason value) {
     static constexpr uint32_t field_id = FieldMetadata_SampleSkippedReason::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -594,11 +639,11 @@ class PerfSample_ProducerEvent : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::PerfSample_ProducerEvent_DataSourceStopReason,
+      PerfSample_ProducerEvent_DataSourceStopReason,
       PerfSample_ProducerEvent>;
 
   static constexpr FieldMetadata_SourceStopReason kSourceStopReason{};
-  void set_source_stop_reason(::perfetto::protos::pbzero::PerfSample_ProducerEvent_DataSourceStopReason value) {
+  void set_source_stop_reason(PerfSample_ProducerEvent_DataSourceStopReason value) {
     static constexpr uint32_t field_id = FieldMetadata_SourceStopReason::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -1261,11 +1306,11 @@ class ProfilePacket_ProcessHeapSamples : public ::protozero::Message {
       14,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ProfilePacket_ProcessHeapSamples_ClientError,
+      ProfilePacket_ProcessHeapSamples_ClientError,
       ProfilePacket_ProcessHeapSamples>;
 
   static constexpr FieldMetadata_ClientError kClientError{};
-  void set_client_error(::perfetto::protos::pbzero::ProfilePacket_ProcessHeapSamples_ClientError value) {
+  void set_client_error(ProfilePacket_ProcessHeapSamples_ClientError value) {
     static constexpr uint32_t field_id = FieldMetadata_ClientError::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

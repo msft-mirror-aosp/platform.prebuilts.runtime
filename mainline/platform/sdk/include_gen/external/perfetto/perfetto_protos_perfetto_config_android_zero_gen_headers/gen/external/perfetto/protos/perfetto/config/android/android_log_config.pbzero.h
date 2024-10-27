@@ -15,9 +15,15 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 enum AndroidLogId : int32_t;
 enum AndroidLogPriority : int32_t;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 class AndroidLogConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -48,11 +54,11 @@ class AndroidLogConfig : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::AndroidLogId,
+      AndroidLogId,
       AndroidLogConfig>;
 
   static constexpr FieldMetadata_LogIds kLogIds{};
-  void add_log_ids(::perfetto::protos::pbzero::AndroidLogId value) {
+  void add_log_ids(AndroidLogId value) {
     static constexpr uint32_t field_id = FieldMetadata_LogIds::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -66,11 +72,11 @@ class AndroidLogConfig : public ::protozero::Message {
       3,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::AndroidLogPriority,
+      AndroidLogPriority,
       AndroidLogConfig>;
 
   static constexpr FieldMetadata_MinPrio kMinPrio{};
-  void set_min_prio(::perfetto::protos::pbzero::AndroidLogPriority value) {
+  void set_min_prio(AndroidLogPriority value) {
     static constexpr uint32_t field_id = FieldMetadata_MinPrio::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

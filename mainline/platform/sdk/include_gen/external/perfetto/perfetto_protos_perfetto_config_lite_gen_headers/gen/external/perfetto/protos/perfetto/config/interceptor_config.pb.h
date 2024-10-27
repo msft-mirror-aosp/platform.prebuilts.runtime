@@ -193,7 +193,7 @@ class InterceptorConfig final :
   std::string* _internal_mutable_name();
   public:
 
-  // optional .perfetto.protos.ConsoleConfig console_config = 100 [lazy = true];
+  // optional .perfetto.protos.ConsoleConfig console_config = 100;
   bool has_console_config() const;
   private:
   bool _internal_has_console_config() const;
@@ -306,7 +306,7 @@ inline void InterceptorConfig::set_allocated_name(std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.InterceptorConfig.name)
 }
 
-// optional .perfetto.protos.ConsoleConfig console_config = 100 [lazy = true];
+// optional .perfetto.protos.ConsoleConfig console_config = 100;
 inline bool InterceptorConfig::_internal_has_console_config() const {
   bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.console_config_ != nullptr);

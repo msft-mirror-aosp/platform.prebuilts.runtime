@@ -15,11 +15,17 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 namespace perfetto_pbzero_enum_ProcessStatsConfig {
 enum Quirks : int32_t;
 }  // namespace perfetto_pbzero_enum_ProcessStatsConfig
 using ProcessStatsConfig_Quirks = perfetto_pbzero_enum_ProcessStatsConfig::Quirks;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_ProcessStatsConfig {
 enum Quirks : int32_t {
@@ -50,7 +56,7 @@ const char* ProcessStatsConfig_Quirks_Name(::perfetto::protos::pbzero::ProcessSt
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class ProcessStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class ProcessStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/12, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   ProcessStatsConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ProcessStatsConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -69,6 +75,10 @@ class ProcessStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_F
   bool resolve_process_fds() const { return at<9>().as_bool(); }
   bool has_scan_smaps_rollup() const { return at<10>().valid(); }
   bool scan_smaps_rollup() const { return at<10>().as_bool(); }
+  bool has_record_process_age() const { return at<11>().valid(); }
+  bool record_process_age() const { return at<11>().as_bool(); }
+  bool has_record_process_runtime() const { return at<12>().valid(); }
+  bool record_process_runtime() const { return at<12>().as_bool(); }
 };
 
 class ProcessStatsConfig : public ::protozero::Message {
@@ -82,6 +92,8 @@ class ProcessStatsConfig : public ::protozero::Message {
     kProcStatsCacheTtlMsFieldNumber = 6,
     kResolveProcessFdsFieldNumber = 9,
     kScanSmapsRollupFieldNumber = 10,
+    kRecordProcessAgeFieldNumber = 11,
+    kRecordProcessRuntimeFieldNumber = 12,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.ProcessStatsConfig"; }
 
@@ -99,11 +111,11 @@ class ProcessStatsConfig : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ProcessStatsConfig_Quirks,
+      ProcessStatsConfig_Quirks,
       ProcessStatsConfig>;
 
   static constexpr FieldMetadata_Quirks kQuirks{};
-  void add_quirks(::perfetto::protos::pbzero::ProcessStatsConfig_Quirks value) {
+  void add_quirks(ProcessStatsConfig_Quirks value) {
     static constexpr uint32_t field_id = FieldMetadata_Quirks::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -213,6 +225,42 @@ class ProcessStatsConfig : public ::protozero::Message {
   static constexpr FieldMetadata_ScanSmapsRollup kScanSmapsRollup{};
   void set_scan_smaps_rollup(bool value) {
     static constexpr uint32_t field_id = FieldMetadata_ScanSmapsRollup::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_RecordProcessAge =
+    ::protozero::proto_utils::FieldMetadata<
+      11,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      ProcessStatsConfig>;
+
+  static constexpr FieldMetadata_RecordProcessAge kRecordProcessAge{};
+  void set_record_process_age(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_RecordProcessAge::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_RecordProcessRuntime =
+    ::protozero::proto_utils::FieldMetadata<
+      12,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      ProcessStatsConfig>;
+
+  static constexpr FieldMetadata_RecordProcessRuntime kRecordProcessRuntime{};
+  void set_record_process_runtime(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_RecordProcessRuntime::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<

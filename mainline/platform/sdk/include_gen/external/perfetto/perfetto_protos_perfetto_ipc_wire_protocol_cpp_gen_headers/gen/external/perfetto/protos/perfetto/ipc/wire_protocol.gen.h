@@ -16,6 +16,7 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 class IPCFrame;
+class IPCFrame_SetPeerIdentity;
 class IPCFrame_RequestError;
 class IPCFrame_InvokeMethodReply;
 class IPCFrame_InvokeMethod;
@@ -41,6 +42,7 @@ class PERFETTO_EXPORT_COMPONENT IPCFrame : public ::protozero::CppMessageObj {
   using InvokeMethod = IPCFrame_InvokeMethod;
   using InvokeMethodReply = IPCFrame_InvokeMethodReply;
   using RequestError = IPCFrame_RequestError;
+  using SetPeerIdentity = IPCFrame_SetPeerIdentity;
   enum FieldNumbers {
     kRequestIdFieldNumber = 2,
     kMsgBindServiceFieldNumber = 3,
@@ -48,6 +50,7 @@ class PERFETTO_EXPORT_COMPONENT IPCFrame : public ::protozero::CppMessageObj {
     kMsgInvokeMethodFieldNumber = 5,
     kMsgInvokeMethodReplyFieldNumber = 6,
     kMsgRequestErrorFieldNumber = 7,
+    kSetPeerIdentityFieldNumber = 8,
     kDataForTestingFieldNumber = 1,
   };
 
@@ -89,6 +92,10 @@ class PERFETTO_EXPORT_COMPONENT IPCFrame : public ::protozero::CppMessageObj {
   const IPCFrame_RequestError& msg_request_error() const { return *msg_request_error_; }
   IPCFrame_RequestError* mutable_msg_request_error() { _has_field_.set(7); return msg_request_error_.get(); }
 
+  bool has_set_peer_identity() const { return _has_field_[8]; }
+  const IPCFrame_SetPeerIdentity& set_peer_identity() const { return *set_peer_identity_; }
+  IPCFrame_SetPeerIdentity* mutable_set_peer_identity() { _has_field_.set(8); return set_peer_identity_.get(); }
+
   const std::vector<std::string>& data_for_testing() const { return data_for_testing_; }
   std::vector<std::string>* mutable_data_for_testing() { return &data_for_testing_; }
   int data_for_testing_size() const { return static_cast<int>(data_for_testing_.size()); }
@@ -103,13 +110,61 @@ class PERFETTO_EXPORT_COMPONENT IPCFrame : public ::protozero::CppMessageObj {
   ::protozero::CopyablePtr<IPCFrame_InvokeMethod> msg_invoke_method_;
   ::protozero::CopyablePtr<IPCFrame_InvokeMethodReply> msg_invoke_method_reply_;
   ::protozero::CopyablePtr<IPCFrame_RequestError> msg_request_error_;
+  ::protozero::CopyablePtr<IPCFrame_SetPeerIdentity> set_peer_identity_;
   std::vector<std::string> data_for_testing_;
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<8> _has_field_{};
+  std::bitset<9> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT IPCFrame_SetPeerIdentity : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kPidFieldNumber = 1,
+    kUidFieldNumber = 2,
+    kMachineIdHintFieldNumber = 3,
+  };
+
+  IPCFrame_SetPeerIdentity();
+  ~IPCFrame_SetPeerIdentity() override;
+  IPCFrame_SetPeerIdentity(IPCFrame_SetPeerIdentity&&) noexcept;
+  IPCFrame_SetPeerIdentity& operator=(IPCFrame_SetPeerIdentity&&);
+  IPCFrame_SetPeerIdentity(const IPCFrame_SetPeerIdentity&);
+  IPCFrame_SetPeerIdentity& operator=(const IPCFrame_SetPeerIdentity&);
+  bool operator==(const IPCFrame_SetPeerIdentity&) const;
+  bool operator!=(const IPCFrame_SetPeerIdentity& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_pid() const { return _has_field_[1]; }
+  int32_t pid() const { return pid_; }
+  void set_pid(int32_t value) { pid_ = value; _has_field_.set(1); }
+
+  bool has_uid() const { return _has_field_[2]; }
+  int32_t uid() const { return uid_; }
+  void set_uid(int32_t value) { uid_ = value; _has_field_.set(2); }
+
+  bool has_machine_id_hint() const { return _has_field_[3]; }
+  const std::string& machine_id_hint() const { return machine_id_hint_; }
+  void set_machine_id_hint(const std::string& value) { machine_id_hint_ = value; _has_field_.set(3); }
+
+ private:
+  int32_t pid_{};
+  int32_t uid_{};
+  std::string machine_id_hint_{};
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<4> _has_field_{};
 };
 
 
