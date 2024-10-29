@@ -47,6 +47,7 @@
 #include "protos/perfetto/trace/track_event/chrome_renderer_scheduler_state.pb.h"
 #include "protos/perfetto/trace/track_event/chrome_user_event.pb.h"
 #include "protos/perfetto/trace/track_event/chrome_window_handle_event_info.pb.h"
+#include "protos/perfetto/trace/track_event/screenshot.pb.h"
 #include "protos/perfetto/trace/track_event/source_location.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -825,6 +826,7 @@ class TrackEvent final :
     kChromeWindowHandleEventInfoFieldNumber = 41,
     kChromeContentSettingsEventInfoFieldNumber = 43,
     kChromeActiveProcessesFieldNumber = 49,
+    kScreenshotFieldNumber = 50,
     kTrackUuidFieldNumber = 11,
     kTypeFieldNumber = 9,
     kNameIidFieldNumber = 10,
@@ -1386,6 +1388,24 @@ class TrackEvent final :
       ::perfetto::protos::ChromeActiveProcesses* chrome_active_processes);
   ::perfetto::protos::ChromeActiveProcesses* unsafe_arena_release_chrome_active_processes();
 
+  // optional .perfetto.protos.Screenshot screenshot = 50;
+  bool has_screenshot() const;
+  private:
+  bool _internal_has_screenshot() const;
+  public:
+  void clear_screenshot();
+  const ::perfetto::protos::Screenshot& screenshot() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::Screenshot* release_screenshot();
+  ::perfetto::protos::Screenshot* mutable_screenshot();
+  void set_allocated_screenshot(::perfetto::protos::Screenshot* screenshot);
+  private:
+  const ::perfetto::protos::Screenshot& _internal_screenshot() const;
+  ::perfetto::protos::Screenshot* _internal_mutable_screenshot();
+  public:
+  void unsafe_arena_set_allocated_screenshot(
+      ::perfetto::protos::Screenshot* screenshot);
+  ::perfetto::protos::Screenshot* unsafe_arena_release_screenshot();
+
   // optional uint64 track_uuid = 11;
   bool has_track_uuid() const;
   private:
@@ -1850,6 +1870,7 @@ class TrackEvent final :
     ::perfetto::protos::ChromeWindowHandleEventInfo* chrome_window_handle_event_info_;
     ::perfetto::protos::ChromeContentSettingsEventInfo* chrome_content_settings_event_info_;
     ::perfetto::protos::ChromeActiveProcesses* chrome_active_processes_;
+    ::perfetto::protos::Screenshot* screenshot_;
     ::uint64_t track_uuid_;
     int type_;
     union NameFieldUnion {
@@ -3203,7 +3224,7 @@ inline void TrackEvent::set_allocated_name(std::string* name) {
 
 // optional .perfetto.protos.TrackEvent.Type type = 9;
 inline bool TrackEvent::_internal_has_type() const {
-  bool value = (_impl_._has_bits_[0] & 0x00040000u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00080000u) != 0;
   return value;
 }
 inline bool TrackEvent::has_type() const {
@@ -3211,7 +3232,7 @@ inline bool TrackEvent::has_type() const {
 }
 inline void TrackEvent::clear_type() {
   _impl_.type_ = 0;
-  _impl_._has_bits_[0] &= ~0x00040000u;
+  _impl_._has_bits_[0] &= ~0x00080000u;
 }
 inline ::perfetto::protos::TrackEvent_Type TrackEvent::_internal_type() const {
   return static_cast< ::perfetto::protos::TrackEvent_Type >(_impl_.type_);
@@ -3222,7 +3243,7 @@ inline ::perfetto::protos::TrackEvent_Type TrackEvent::type() const {
 }
 inline void TrackEvent::_internal_set_type(::perfetto::protos::TrackEvent_Type value) {
   assert(::perfetto::protos::TrackEvent_Type_IsValid(value));
-  _impl_._has_bits_[0] |= 0x00040000u;
+  _impl_._has_bits_[0] |= 0x00080000u;
   _impl_.type_ = value;
 }
 inline void TrackEvent::set_type(::perfetto::protos::TrackEvent_Type value) {
@@ -3232,7 +3253,7 @@ inline void TrackEvent::set_type(::perfetto::protos::TrackEvent_Type value) {
 
 // optional uint64 track_uuid = 11;
 inline bool TrackEvent::_internal_has_track_uuid() const {
-  bool value = (_impl_._has_bits_[0] & 0x00020000u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00040000u) != 0;
   return value;
 }
 inline bool TrackEvent::has_track_uuid() const {
@@ -3240,7 +3261,7 @@ inline bool TrackEvent::has_track_uuid() const {
 }
 inline void TrackEvent::clear_track_uuid() {
   _impl_.track_uuid_ = ::uint64_t{0u};
-  _impl_._has_bits_[0] &= ~0x00020000u;
+  _impl_._has_bits_[0] &= ~0x00040000u;
 }
 inline ::uint64_t TrackEvent::_internal_track_uuid() const {
   return _impl_.track_uuid_;
@@ -3250,7 +3271,7 @@ inline ::uint64_t TrackEvent::track_uuid() const {
   return _internal_track_uuid();
 }
 inline void TrackEvent::_internal_set_track_uuid(::uint64_t value) {
-  _impl_._has_bits_[0] |= 0x00020000u;
+  _impl_._has_bits_[0] |= 0x00040000u;
   _impl_.track_uuid_ = value;
 }
 inline void TrackEvent::set_track_uuid(::uint64_t value) {
@@ -4963,6 +4984,93 @@ inline void TrackEvent::set_allocated_chrome_active_processes(::perfetto::protos
   }
   _impl_.chrome_active_processes_ = chrome_active_processes;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TrackEvent.chrome_active_processes)
+}
+
+// optional .perfetto.protos.Screenshot screenshot = 50;
+inline bool TrackEvent::_internal_has_screenshot() const {
+  bool value = (_impl_._has_bits_[0] & 0x00020000u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.screenshot_ != nullptr);
+  return value;
+}
+inline bool TrackEvent::has_screenshot() const {
+  return _internal_has_screenshot();
+}
+inline const ::perfetto::protos::Screenshot& TrackEvent::_internal_screenshot() const {
+  const ::perfetto::protos::Screenshot* p = _impl_.screenshot_;
+  return p != nullptr ? *p : reinterpret_cast<const ::perfetto::protos::Screenshot&>(
+      ::perfetto::protos::_Screenshot_default_instance_);
+}
+inline const ::perfetto::protos::Screenshot& TrackEvent::screenshot() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TrackEvent.screenshot)
+  return _internal_screenshot();
+}
+inline void TrackEvent::unsafe_arena_set_allocated_screenshot(
+    ::perfetto::protos::Screenshot* screenshot) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.screenshot_);
+  }
+  _impl_.screenshot_ = screenshot;
+  if (screenshot) {
+    _impl_._has_bits_[0] |= 0x00020000u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00020000u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TrackEvent.screenshot)
+}
+inline ::perfetto::protos::Screenshot* TrackEvent::release_screenshot() {
+  _impl_._has_bits_[0] &= ~0x00020000u;
+  ::perfetto::protos::Screenshot* temp = _impl_.screenshot_;
+  _impl_.screenshot_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::perfetto::protos::Screenshot* TrackEvent::unsafe_arena_release_screenshot() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TrackEvent.screenshot)
+  _impl_._has_bits_[0] &= ~0x00020000u;
+  ::perfetto::protos::Screenshot* temp = _impl_.screenshot_;
+  _impl_.screenshot_ = nullptr;
+  return temp;
+}
+inline ::perfetto::protos::Screenshot* TrackEvent::_internal_mutable_screenshot() {
+  _impl_._has_bits_[0] |= 0x00020000u;
+  if (_impl_.screenshot_ == nullptr) {
+    auto* p = CreateMaybeMessage<::perfetto::protos::Screenshot>(GetArenaForAllocation());
+    _impl_.screenshot_ = p;
+  }
+  return _impl_.screenshot_;
+}
+inline ::perfetto::protos::Screenshot* TrackEvent::mutable_screenshot() {
+  ::perfetto::protos::Screenshot* _msg = _internal_mutable_screenshot();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TrackEvent.screenshot)
+  return _msg;
+}
+inline void TrackEvent::set_allocated_screenshot(::perfetto::protos::Screenshot* screenshot) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.screenshot_);
+  }
+  if (screenshot) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(screenshot));
+    if (message_arena != submessage_arena) {
+      screenshot = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, screenshot, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00020000u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00020000u;
+  }
+  _impl_.screenshot_ = screenshot;
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TrackEvent.screenshot)
 }
 
 // .perfetto.protos.SourceLocation source_location = 33;

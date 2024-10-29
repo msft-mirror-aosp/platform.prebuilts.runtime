@@ -15,12 +15,18 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class GraphicsFrameEvent_BufferEvent;
 namespace perfetto_pbzero_enum_GraphicsFrameEvent {
 enum BufferEventType : int32_t;
 }  // namespace perfetto_pbzero_enum_GraphicsFrameEvent
 using GraphicsFrameEvent_BufferEventType = perfetto_pbzero_enum_GraphicsFrameEvent::BufferEventType;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_GraphicsFrameEvent {
 enum BufferEventType : int32_t {
@@ -201,11 +207,11 @@ class GraphicsFrameEvent_BufferEvent : public ::protozero::Message {
       2,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType,
+      GraphicsFrameEvent_BufferEventType,
       GraphicsFrameEvent_BufferEvent>;
 
   static constexpr FieldMetadata_Type kType{};
-  void set_type(::perfetto::protos::pbzero::GraphicsFrameEvent_BufferEventType value) {
+  void set_type(GraphicsFrameEvent_BufferEventType value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

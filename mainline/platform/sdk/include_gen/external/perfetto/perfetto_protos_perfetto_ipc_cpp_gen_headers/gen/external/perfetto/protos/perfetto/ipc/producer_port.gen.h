@@ -26,6 +26,7 @@ class DataSourceConfig;
 class TestConfig;
 class TestConfig_DummyFields;
 class InterceptorConfig;
+class ConsoleConfig;
 class ChromeConfig;
 class SystemInfoConfig;
 class GetAsyncCommandResponse_SetupDataSource;
@@ -52,6 +53,7 @@ class RegisterDataSourceRequest;
 class InitializeConnectionResponse;
 class InitializeConnectionRequest;
 enum DataSourceConfig_SessionInitiator : int;
+enum ConsoleConfig_Output : int;
 enum ChromeConfig_ClientPriority : int;
 enum InitializeConnectionRequest_ProducerSMBScrapingMode : int;
 }  // namespace perfetto
@@ -243,6 +245,7 @@ class PERFETTO_EXPORT_COMPONENT GetAsyncCommandResponse_Flush : public ::protoze
   enum FieldNumbers {
     kDataSourceIdsFieldNumber = 1,
     kRequestIdFieldNumber = 2,
+    kFlagsFieldNumber = 3,
   };
 
   GetAsyncCommandResponse_Flush();
@@ -270,15 +273,20 @@ class PERFETTO_EXPORT_COMPONENT GetAsyncCommandResponse_Flush : public ::protoze
   uint64_t request_id() const { return request_id_; }
   void set_request_id(uint64_t value) { request_id_ = value; _has_field_.set(2); }
 
+  bool has_flags() const { return _has_field_[3]; }
+  uint64_t flags() const { return flags_; }
+  void set_flags(uint64_t value) { flags_ = value; _has_field_.set(3); }
+
  private:
   std::vector<uint64_t> data_source_ids_;
   uint64_t request_id_{};
+  uint64_t flags_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<3> _has_field_{};
+  std::bitset<4> _has_field_{};
 };
 
 
@@ -1030,6 +1038,7 @@ class PERFETTO_EXPORT_COMPONENT InitializeConnectionResponse : public ::protozer
   enum FieldNumbers {
     kUsingShmemProvidedByProducerFieldNumber = 1,
     kDirectSmbPatchingSupportedFieldNumber = 2,
+    kUseShmemEmulationFieldNumber = 3,
   };
 
   InitializeConnectionResponse();
@@ -1054,15 +1063,20 @@ class PERFETTO_EXPORT_COMPONENT InitializeConnectionResponse : public ::protozer
   bool direct_smb_patching_supported() const { return direct_smb_patching_supported_; }
   void set_direct_smb_patching_supported(bool value) { direct_smb_patching_supported_ = value; _has_field_.set(2); }
 
+  bool has_use_shmem_emulation() const { return _has_field_[3]; }
+  bool use_shmem_emulation() const { return use_shmem_emulation_; }
+  void set_use_shmem_emulation(bool value) { use_shmem_emulation_ = value; _has_field_.set(3); }
+
  private:
   bool using_shmem_provided_by_producer_{};
   bool direct_smb_patching_supported_{};
+  bool use_shmem_emulation_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<3> _has_field_{};
+  std::bitset<4> _has_field_{};
 };
 
 

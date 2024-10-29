@@ -59,6 +59,10 @@ class PERFETTO_EXPORT_COMPONENT SysStatsConfig : public ::protozero::CppMessageO
     kCpufreqPeriodMsFieldNumber = 8,
     kBuddyinfoPeriodMsFieldNumber = 9,
     kDiskstatPeriodMsFieldNumber = 10,
+    kPsiPeriodMsFieldNumber = 11,
+    kThermalPeriodMsFieldNumber = 12,
+    kCpuidlePeriodMsFieldNumber = 13,
+    kGpufreqPeriodMsFieldNumber = 14,
   };
 
   SysStatsConfig();
@@ -124,6 +128,22 @@ class PERFETTO_EXPORT_COMPONENT SysStatsConfig : public ::protozero::CppMessageO
   uint32_t diskstat_period_ms() const { return diskstat_period_ms_; }
   void set_diskstat_period_ms(uint32_t value) { diskstat_period_ms_ = value; _has_field_.set(10); }
 
+  bool has_psi_period_ms() const { return _has_field_[11]; }
+  uint32_t psi_period_ms() const { return psi_period_ms_; }
+  void set_psi_period_ms(uint32_t value) { psi_period_ms_ = value; _has_field_.set(11); }
+
+  bool has_thermal_period_ms() const { return _has_field_[12]; }
+  uint32_t thermal_period_ms() const { return thermal_period_ms_; }
+  void set_thermal_period_ms(uint32_t value) { thermal_period_ms_ = value; _has_field_.set(12); }
+
+  bool has_cpuidle_period_ms() const { return _has_field_[13]; }
+  uint32_t cpuidle_period_ms() const { return cpuidle_period_ms_; }
+  void set_cpuidle_period_ms(uint32_t value) { cpuidle_period_ms_ = value; _has_field_.set(13); }
+
+  bool has_gpufreq_period_ms() const { return _has_field_[14]; }
+  uint32_t gpufreq_period_ms() const { return gpufreq_period_ms_; }
+  void set_gpufreq_period_ms(uint32_t value) { gpufreq_period_ms_ = value; _has_field_.set(14); }
+
  private:
   uint32_t meminfo_period_ms_{};
   std::vector<MeminfoCounters> meminfo_counters_;
@@ -135,12 +155,16 @@ class PERFETTO_EXPORT_COMPONENT SysStatsConfig : public ::protozero::CppMessageO
   uint32_t cpufreq_period_ms_{};
   uint32_t buddyinfo_period_ms_{};
   uint32_t diskstat_period_ms_{};
+  uint32_t psi_period_ms_{};
+  uint32_t thermal_period_ms_{};
+  uint32_t cpuidle_period_ms_{};
+  uint32_t gpufreq_period_ms_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<11> _has_field_{};
+  std::bitset<15> _has_field_{};
 };
 
 }  // namespace perfetto

@@ -15,11 +15,17 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 namespace perfetto_pbzero_enum_ObservableEvents {
 enum Type : int32_t;
 }  // namespace perfetto_pbzero_enum_ObservableEvents
 using ObservableEvents_Type = perfetto_pbzero_enum_ObservableEvents::Type;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 class TracingServiceCapabilities_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -71,11 +77,11 @@ class TracingServiceCapabilities : public ::protozero::Message {
       2,
       ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ObservableEvents_Type,
+      ObservableEvents_Type,
       TracingServiceCapabilities>;
 
   static constexpr FieldMetadata_ObservableEvents kObservableEvents{};
-  void add_observable_events(::perfetto::protos::pbzero::ObservableEvents_Type value) {
+  void add_observable_events(ObservableEvents_Type value) {
     static constexpr uint32_t field_id = FieldMetadata_ObservableEvents::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
