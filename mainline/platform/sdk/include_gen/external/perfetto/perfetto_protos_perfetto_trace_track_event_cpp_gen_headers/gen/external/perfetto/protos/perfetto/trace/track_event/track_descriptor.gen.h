@@ -45,6 +45,7 @@ class PERFETTO_EXPORT_COMPONENT TrackDescriptor : public ::protozero::CppMessage
     kUuidFieldNumber = 1,
     kParentUuidFieldNumber = 5,
     kNameFieldNumber = 2,
+    kStaticNameFieldNumber = 10,
     kProcessFieldNumber = 3,
     kChromeProcessFieldNumber = 6,
     kThreadFieldNumber = 4,
@@ -79,6 +80,10 @@ class PERFETTO_EXPORT_COMPONENT TrackDescriptor : public ::protozero::CppMessage
   const std::string& name() const { return name_; }
   void set_name(const std::string& value) { name_ = value; _has_field_.set(2); }
 
+  bool has_static_name() const { return _has_field_[10]; }
+  const std::string& static_name() const { return static_name_; }
+  void set_static_name(const std::string& value) { static_name_ = value; _has_field_.set(10); }
+
   bool has_process() const { return _has_field_[3]; }
   const ProcessDescriptor& process() const { return *process_; }
   ProcessDescriptor* mutable_process() { _has_field_.set(3); return process_.get(); }
@@ -107,6 +112,7 @@ class PERFETTO_EXPORT_COMPONENT TrackDescriptor : public ::protozero::CppMessage
   uint64_t uuid_{};
   uint64_t parent_uuid_{};
   std::string name_{};
+  std::string static_name_{};
   ::protozero::CopyablePtr<ProcessDescriptor> process_;
   ::protozero::CopyablePtr<ChromeProcessDescriptor> chrome_process_;
   ::protozero::CopyablePtr<ThreadDescriptor> thread_;
@@ -118,7 +124,7 @@ class PERFETTO_EXPORT_COMPONENT TrackDescriptor : public ::protozero::CppMessage
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<10> _has_field_{};
+  std::bitset<11> _has_field_{};
 };
 
 }  // namespace perfetto

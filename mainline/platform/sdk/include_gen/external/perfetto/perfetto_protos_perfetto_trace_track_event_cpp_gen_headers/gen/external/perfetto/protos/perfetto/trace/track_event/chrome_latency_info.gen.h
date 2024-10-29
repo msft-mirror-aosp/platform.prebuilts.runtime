@@ -19,6 +19,7 @@ class ChromeLatencyInfo;
 class ChromeLatencyInfo_ComponentInfo;
 enum ChromeLatencyInfo_Step : int;
 enum ChromeLatencyInfo_LatencyComponentType : int;
+enum ChromeLatencyInfo_InputType : int;
 }  // namespace perfetto
 }  // namespace protos
 }  // namespace gen
@@ -61,6 +62,15 @@ enum ChromeLatencyInfo_LatencyComponentType : int {
   ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_GPU_SWAP_BUFFER = 13,
   ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP = 14,
 };
+enum ChromeLatencyInfo_InputType : int {
+  ChromeLatencyInfo_InputType_UNSPECIFIED_OR_OTHER = 0,
+  ChromeLatencyInfo_InputType_TOUCH_MOVED = 1,
+  ChromeLatencyInfo_InputType_GESTURE_SCROLL_BEGIN = 2,
+  ChromeLatencyInfo_InputType_GESTURE_SCROLL_UPDATE = 3,
+  ChromeLatencyInfo_InputType_GESTURE_SCROLL_END = 4,
+  ChromeLatencyInfo_InputType_GESTURE_TAP = 5,
+  ChromeLatencyInfo_InputType_GESTURE_TAP_CANCEL = 6,
+};
 
 class PERFETTO_EXPORT_COMPONENT ChromeLatencyInfo : public ::protozero::CppMessageObj {
  public:
@@ -98,6 +108,16 @@ class PERFETTO_EXPORT_COMPONENT ChromeLatencyInfo : public ::protozero::CppMessa
   static constexpr auto COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP;
   static constexpr auto LatencyComponentType_MIN = ChromeLatencyInfo_LatencyComponentType_COMPONENT_UNSPECIFIED;
   static constexpr auto LatencyComponentType_MAX = ChromeLatencyInfo_LatencyComponentType_COMPONENT_INPUT_EVENT_LATENCY_FRAME_SWAP;
+  using InputType = ChromeLatencyInfo_InputType;
+  static constexpr auto UNSPECIFIED_OR_OTHER = ChromeLatencyInfo_InputType_UNSPECIFIED_OR_OTHER;
+  static constexpr auto TOUCH_MOVED = ChromeLatencyInfo_InputType_TOUCH_MOVED;
+  static constexpr auto GESTURE_SCROLL_BEGIN = ChromeLatencyInfo_InputType_GESTURE_SCROLL_BEGIN;
+  static constexpr auto GESTURE_SCROLL_UPDATE = ChromeLatencyInfo_InputType_GESTURE_SCROLL_UPDATE;
+  static constexpr auto GESTURE_SCROLL_END = ChromeLatencyInfo_InputType_GESTURE_SCROLL_END;
+  static constexpr auto GESTURE_TAP = ChromeLatencyInfo_InputType_GESTURE_TAP;
+  static constexpr auto GESTURE_TAP_CANCEL = ChromeLatencyInfo_InputType_GESTURE_TAP_CANCEL;
+  static constexpr auto InputType_MIN = ChromeLatencyInfo_InputType_UNSPECIFIED_OR_OTHER;
+  static constexpr auto InputType_MAX = ChromeLatencyInfo_InputType_GESTURE_TAP_CANCEL;
   enum FieldNumbers {
     kTraceIdFieldNumber = 1,
     kStepFieldNumber = 2,
@@ -106,6 +126,7 @@ class PERFETTO_EXPORT_COMPONENT ChromeLatencyInfo : public ::protozero::CppMessa
     kIsCoalescedFieldNumber = 5,
     kGestureScrollIdFieldNumber = 6,
     kTouchIdFieldNumber = 7,
+    kInputTypeFieldNumber = 8,
   };
 
   ChromeLatencyInfo();
@@ -152,6 +173,10 @@ class PERFETTO_EXPORT_COMPONENT ChromeLatencyInfo : public ::protozero::CppMessa
   int64_t touch_id() const { return touch_id_; }
   void set_touch_id(int64_t value) { touch_id_ = value; _has_field_.set(7); }
 
+  bool has_input_type() const { return _has_field_[8]; }
+  ChromeLatencyInfo_InputType input_type() const { return input_type_; }
+  void set_input_type(ChromeLatencyInfo_InputType value) { input_type_ = value; _has_field_.set(8); }
+
  private:
   int64_t trace_id_{};
   ChromeLatencyInfo_Step step_{};
@@ -160,12 +185,13 @@ class PERFETTO_EXPORT_COMPONENT ChromeLatencyInfo : public ::protozero::CppMessa
   bool is_coalesced_{};
   int64_t gesture_scroll_id_{};
   int64_t touch_id_{};
+  ChromeLatencyInfo_InputType input_type_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<8> _has_field_{};
+  std::bitset<9> _has_field_{};
 };
 
 
