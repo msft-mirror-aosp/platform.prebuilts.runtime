@@ -15,10 +15,18 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class FtraceEvent;
 class FtraceEventBundle_CompactSched;
+class FtraceEventBundle_FtraceError;
 enum FtraceClock : int32_t;
+enum FtraceParseStatus : int32_t;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 enum FtraceClock : int32_t {
   FTRACE_CLOCK_UNSPECIFIED = 0,
@@ -53,7 +61,7 @@ const char* FtraceClock_Name(::perfetto::protos::pbzero::FtraceClock value) {
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class FtraceEventBundle_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class FtraceEventBundle_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   FtraceEventBundle_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit FtraceEventBundle_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -72,6 +80,12 @@ class FtraceEventBundle_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FI
   int64_t ftrace_timestamp() const { return at<6>().as_int64(); }
   bool has_boot_timestamp() const { return at<7>().valid(); }
   int64_t boot_timestamp() const { return at<7>().as_int64(); }
+  bool has_error() const { return at<8>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> error() const { return GetRepeated<::protozero::ConstBytes>(8); }
+  bool has_last_read_event_timestamp() const { return at<9>().valid(); }
+  uint64_t last_read_event_timestamp() const { return at<9>().as_uint64(); }
+  bool has_previous_bundle_end_timestamp() const { return at<10>().valid(); }
+  uint64_t previous_bundle_end_timestamp() const { return at<10>().as_uint64(); }
 };
 
 class FtraceEventBundle : public ::protozero::Message {
@@ -85,10 +99,14 @@ class FtraceEventBundle : public ::protozero::Message {
     kFtraceClockFieldNumber = 5,
     kFtraceTimestampFieldNumber = 6,
     kBootTimestampFieldNumber = 7,
+    kErrorFieldNumber = 8,
+    kLastReadEventTimestampFieldNumber = 9,
+    kPreviousBundleEndTimestampFieldNumber = 10,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.FtraceEventBundle"; }
 
   using CompactSched = ::perfetto::protos::pbzero::FtraceEventBundle_CompactSched;
+  using FtraceError = ::perfetto::protos::pbzero::FtraceEventBundle_FtraceError;
 
   using FieldMetadata_Cpu =
     ::protozero::proto_utils::FieldMetadata<
@@ -159,11 +177,11 @@ class FtraceEventBundle : public ::protozero::Message {
       5,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::FtraceClock,
+      FtraceClock,
       FtraceEventBundle>;
 
   static constexpr FieldMetadata_FtraceClock kFtraceClock{};
-  void set_ftrace_clock(::perfetto::protos::pbzero::FtraceClock value) {
+  void set_ftrace_clock(FtraceClock value) {
     static constexpr uint32_t field_id = FieldMetadata_FtraceClock::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -205,6 +223,114 @@ class FtraceEventBundle : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Error =
+    ::protozero::proto_utils::FieldMetadata<
+      8,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FtraceEventBundle_FtraceError,
+      FtraceEventBundle>;
+
+  static constexpr FieldMetadata_Error kError{};
+  template <typename T = FtraceEventBundle_FtraceError> T* add_error() {
+    return BeginNestedMessage<T>(8);
+  }
+
+
+  using FieldMetadata_LastReadEventTimestamp =
+    ::protozero::proto_utils::FieldMetadata<
+      9,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      FtraceEventBundle>;
+
+  static constexpr FieldMetadata_LastReadEventTimestamp kLastReadEventTimestamp{};
+  void set_last_read_event_timestamp(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_LastReadEventTimestamp::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_PreviousBundleEndTimestamp =
+    ::protozero::proto_utils::FieldMetadata<
+      10,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      FtraceEventBundle>;
+
+  static constexpr FieldMetadata_PreviousBundleEndTimestamp kPreviousBundleEndTimestamp{};
+  void set_previous_bundle_end_timestamp(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_PreviousBundleEndTimestamp::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class FtraceEventBundle_FtraceError_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  FtraceEventBundle_FtraceError_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit FtraceEventBundle_FtraceError_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit FtraceEventBundle_FtraceError_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_timestamp() const { return at<1>().valid(); }
+  uint64_t timestamp() const { return at<1>().as_uint64(); }
+  bool has_status() const { return at<2>().valid(); }
+  int32_t status() const { return at<2>().as_int32(); }
+};
+
+class FtraceEventBundle_FtraceError : public ::protozero::Message {
+ public:
+  using Decoder = FtraceEventBundle_FtraceError_Decoder;
+  enum : int32_t {
+    kTimestampFieldNumber = 1,
+    kStatusFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.FtraceEventBundle.FtraceError"; }
+
+
+  using FieldMetadata_Timestamp =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      FtraceEventBundle_FtraceError>;
+
+  static constexpr FieldMetadata_Timestamp kTimestamp{};
+  void set_timestamp(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Timestamp::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Status =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      FtraceParseStatus,
+      FtraceEventBundle_FtraceError>;
+
+  static constexpr FieldMetadata_Status kStatus{};
+  void set_status(FtraceParseStatus value) {
+    static constexpr uint32_t field_id = FieldMetadata_Status::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
         ::Append(*this, field_id, value);
   }
 };

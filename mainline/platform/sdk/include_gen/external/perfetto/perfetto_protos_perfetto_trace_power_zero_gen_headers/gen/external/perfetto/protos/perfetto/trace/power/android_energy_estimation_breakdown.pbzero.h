@@ -15,9 +15,15 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class AndroidEnergyConsumerDescriptor;
 class AndroidEnergyEstimationBreakdown_EnergyUidBreakdown;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 class AndroidEnergyEstimationBreakdown_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:

@@ -15,11 +15,17 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 namespace perfetto_pbzero_enum_AndroidPowerConfig {
 enum BatteryCounters : int32_t;
 }  // namespace perfetto_pbzero_enum_AndroidPowerConfig
 using AndroidPowerConfig_BatteryCounters = perfetto_pbzero_enum_AndroidPowerConfig::BatteryCounters;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_AndroidPowerConfig {
 enum BatteryCounters : int32_t {
@@ -28,13 +34,14 @@ enum BatteryCounters : int32_t {
   BATTERY_COUNTER_CAPACITY_PERCENT = 2,
   BATTERY_COUNTER_CURRENT = 3,
   BATTERY_COUNTER_CURRENT_AVG = 4,
+  BATTERY_COUNTER_VOLTAGE = 5,
 };
 } // namespace perfetto_pbzero_enum_AndroidPowerConfig
 using AndroidPowerConfig_BatteryCounters = perfetto_pbzero_enum_AndroidPowerConfig::BatteryCounters;
 
 
 constexpr AndroidPowerConfig_BatteryCounters AndroidPowerConfig_BatteryCounters_MIN = AndroidPowerConfig_BatteryCounters::BATTERY_COUNTER_UNSPECIFIED;
-constexpr AndroidPowerConfig_BatteryCounters AndroidPowerConfig_BatteryCounters_MAX = AndroidPowerConfig_BatteryCounters::BATTERY_COUNTER_CURRENT_AVG;
+constexpr AndroidPowerConfig_BatteryCounters AndroidPowerConfig_BatteryCounters_MAX = AndroidPowerConfig_BatteryCounters::BATTERY_COUNTER_VOLTAGE;
 
 
 PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
@@ -54,6 +61,9 @@ const char* AndroidPowerConfig_BatteryCounters_Name(::perfetto::protos::pbzero::
 
   case ::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters::BATTERY_COUNTER_CURRENT_AVG:
     return "BATTERY_COUNTER_CURRENT_AVG";
+
+  case ::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters::BATTERY_COUNTER_VOLTAGE:
+    return "BATTERY_COUNTER_VOLTAGE";
   }
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
@@ -97,6 +107,7 @@ class AndroidPowerConfig : public ::protozero::Message {
   static inline const BatteryCounters BATTERY_COUNTER_CAPACITY_PERCENT = BatteryCounters::BATTERY_COUNTER_CAPACITY_PERCENT;
   static inline const BatteryCounters BATTERY_COUNTER_CURRENT = BatteryCounters::BATTERY_COUNTER_CURRENT;
   static inline const BatteryCounters BATTERY_COUNTER_CURRENT_AVG = BatteryCounters::BATTERY_COUNTER_CURRENT_AVG;
+  static inline const BatteryCounters BATTERY_COUNTER_VOLTAGE = BatteryCounters::BATTERY_COUNTER_VOLTAGE;
 
   using FieldMetadata_BatteryPollMs =
     ::protozero::proto_utils::FieldMetadata<
@@ -121,11 +132,11 @@ class AndroidPowerConfig : public ::protozero::Message {
       2,
       ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters,
+      AndroidPowerConfig_BatteryCounters,
       AndroidPowerConfig>;
 
   static constexpr FieldMetadata_BatteryCounters kBatteryCounters{};
-  void add_battery_counters(::perfetto::protos::pbzero::AndroidPowerConfig_BatteryCounters value) {
+  void add_battery_counters(AndroidPowerConfig_BatteryCounters value) {
     static constexpr uint32_t field_id = FieldMetadata_BatteryCounters::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

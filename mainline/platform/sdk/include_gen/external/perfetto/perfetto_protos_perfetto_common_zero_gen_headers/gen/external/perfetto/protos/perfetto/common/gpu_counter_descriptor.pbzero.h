@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class GpuCounterDescriptor_GpuCounterBlock;
 class GpuCounterDescriptor_GpuCounterSpec;
 namespace perfetto_pbzero_enum_GpuCounterDescriptor {
@@ -26,6 +25,13 @@ namespace perfetto_pbzero_enum_GpuCounterDescriptor {
 enum MeasureUnit : int32_t;
 }  // namespace perfetto_pbzero_enum_GpuCounterDescriptor
 using GpuCounterDescriptor_MeasureUnit = perfetto_pbzero_enum_GpuCounterDescriptor::MeasureUnit;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_GpuCounterDescriptor {
 enum GpuCounterGroup : int32_t {
@@ -708,11 +714,11 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
       7,
       ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit,
+      GpuCounterDescriptor_MeasureUnit,
       GpuCounterDescriptor_GpuCounterSpec>;
 
   static constexpr FieldMetadata_NumeratorUnits kNumeratorUnits{};
-  void add_numerator_units(::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit value) {
+  void add_numerator_units(GpuCounterDescriptor_MeasureUnit value) {
     static constexpr uint32_t field_id = FieldMetadata_NumeratorUnits::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -726,11 +732,11 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
       8,
       ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit,
+      GpuCounterDescriptor_MeasureUnit,
       GpuCounterDescriptor_GpuCounterSpec>;
 
   static constexpr FieldMetadata_DenominatorUnits kDenominatorUnits{};
-  void add_denominator_units(::perfetto::protos::pbzero::GpuCounterDescriptor_MeasureUnit value) {
+  void add_denominator_units(GpuCounterDescriptor_MeasureUnit value) {
     static constexpr uint32_t field_id = FieldMetadata_DenominatorUnits::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -762,11 +768,11 @@ class GpuCounterDescriptor_GpuCounterSpec : public ::protozero::Message {
       10,
       ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup,
+      GpuCounterDescriptor_GpuCounterGroup,
       GpuCounterDescriptor_GpuCounterSpec>;
 
   static constexpr FieldMetadata_Groups kGroups{};
-  void add_groups(::perfetto::protos::pbzero::GpuCounterDescriptor_GpuCounterGroup value) {
+  void add_groups(GpuCounterDescriptor_GpuCounterGroup value) {
     static constexpr uint32_t field_id = FieldMetadata_Groups::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

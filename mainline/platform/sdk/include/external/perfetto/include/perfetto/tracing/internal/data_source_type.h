@@ -53,6 +53,7 @@ class PERFETTO_EXPORT_COMPONENT DataSourceType {
                 TracingMuxer::DataSourceFactory factory,
                 internal::DataSourceParams params,
                 BufferExhaustedPolicy buffer_exhausted_policy,
+                bool no_flush,
                 CreateCustomTlsFn create_custom_tls_fn,
                 CreateIncrementalStateFn create_incremental_state_fn,
                 void* user_arg) {
@@ -62,7 +63,7 @@ class PERFETTO_EXPORT_COMPONENT DataSourceType {
     user_arg_ = user_arg;
     auto* tracing_impl = TracingMuxer::Get();
     return tracing_impl->RegisterDataSource(descriptor, factory, params,
-                                            &state_);
+                                            no_flush, &state_);
   }
 
   // Updates the data source type descriptor.
@@ -285,9 +286,6 @@ class PERFETTO_EXPORT_COMPONENT DataSourceType {
   // per data-source *instance*.
   template <typename DataSourceTraits>
   DataSourceThreadLocalState* GetOrCreateDataSourceTLS() {
-#if PERFETTO_BUILDFLAG(PERFETTO_OS_IOS)
-    PERFETTO_FATAL("Data source TLS not supported on iOS, see b/158814068");
-#endif
     auto* tracing_impl = TracingMuxer::Get();
     TracingTLS* root_tls = tracing_impl->GetOrCreateTracingTLS();
     DataSourceThreadLocalState* ds_tls =

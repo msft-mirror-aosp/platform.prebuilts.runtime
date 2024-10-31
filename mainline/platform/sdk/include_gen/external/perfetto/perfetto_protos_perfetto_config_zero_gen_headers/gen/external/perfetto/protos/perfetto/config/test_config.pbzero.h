@@ -15,8 +15,14 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class TestConfig_DummyFields;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 class TestConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -183,9 +189,9 @@ class TestConfig_DummyFields_Decoder : public ::protozero::TypedProtoDecoder</*M
   bool has_field_float() const { return at<10>().valid(); }
   float field_float() const { return at<10>().as_float(); }
   bool has_field_sint64() const { return at<11>().valid(); }
-  int64_t field_sint64() const { return at<11>().as_int64(); }
+  int64_t field_sint64() const { return at<11>().as_sint64(); }
   bool has_field_sint32() const { return at<12>().valid(); }
-  int32_t field_sint32() const { return at<12>().as_int32(); }
+  int32_t field_sint32() const { return at<12>().as_sint32(); }
   bool has_field_string() const { return at<13>().valid(); }
   ::protozero::ConstChars field_string() const { return at<13>().as_string(); }
   bool has_field_bytes() const { return at<14>().valid(); }

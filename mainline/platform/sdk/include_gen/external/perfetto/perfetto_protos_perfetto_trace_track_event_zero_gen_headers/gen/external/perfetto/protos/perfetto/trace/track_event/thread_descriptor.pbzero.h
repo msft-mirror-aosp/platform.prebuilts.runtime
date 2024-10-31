@@ -15,11 +15,17 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 namespace perfetto_pbzero_enum_ThreadDescriptor {
 enum ChromeThreadType : int32_t;
 }  // namespace perfetto_pbzero_enum_ThreadDescriptor
 using ThreadDescriptor_ChromeThreadType = perfetto_pbzero_enum_ThreadDescriptor::ChromeThreadType;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_ThreadDescriptor {
 enum ChromeThreadType : int32_t {
@@ -217,11 +223,11 @@ class ThreadDescriptor : public ::protozero::Message {
       4,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType,
+      ThreadDescriptor_ChromeThreadType,
       ThreadDescriptor>;
 
   static constexpr FieldMetadata_ChromeThreadType kChromeThreadType{};
-  void set_chrome_thread_type(::perfetto::protos::pbzero::ThreadDescriptor_ChromeThreadType value) {
+  void set_chrome_thread_type(ThreadDescriptor_ChromeThreadType value) {
     static constexpr uint32_t field_id = FieldMetadata_ChromeThreadType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
