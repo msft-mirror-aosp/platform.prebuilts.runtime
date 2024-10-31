@@ -12,10 +12,164 @@
 #include "perfetto/protozero/proto_decoder.h"
 #include "perfetto/protozero/proto_utils.h"
 
+
 namespace perfetto {
 namespace protos {
 namespace pbzero {
 
+class PanelWriteGenericFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  PanelWriteGenericFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit PanelWriteGenericFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit PanelWriteGenericFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_pid() const { return at<1>().valid(); }
+  int32_t pid() const { return at<1>().as_int32(); }
+  bool has_trace_name() const { return at<2>().valid(); }
+  ::protozero::ConstChars trace_name() const { return at<2>().as_string(); }
+  bool has_trace_begin() const { return at<3>().valid(); }
+  uint32_t trace_begin() const { return at<3>().as_uint32(); }
+  bool has_name() const { return at<4>().valid(); }
+  ::protozero::ConstChars name() const { return at<4>().as_string(); }
+  bool has_type() const { return at<5>().valid(); }
+  uint32_t type() const { return at<5>().as_uint32(); }
+  bool has_value() const { return at<6>().valid(); }
+  int32_t value() const { return at<6>().as_int32(); }
+};
+
+class PanelWriteGenericFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = PanelWriteGenericFtraceEvent_Decoder;
+  enum : int32_t {
+    kPidFieldNumber = 1,
+    kTraceNameFieldNumber = 2,
+    kTraceBeginFieldNumber = 3,
+    kNameFieldNumber = 4,
+    kTypeFieldNumber = 5,
+    kValueFieldNumber = 6,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.PanelWriteGenericFtraceEvent"; }
+
+
+  using FieldMetadata_Pid =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      PanelWriteGenericFtraceEvent>;
+
+  static constexpr FieldMetadata_Pid kPid{};
+  void set_pid(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Pid::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TraceName =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      PanelWriteGenericFtraceEvent>;
+
+  static constexpr FieldMetadata_TraceName kTraceName{};
+  void set_trace_name(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_TraceName::kFieldId, data, size);
+  }
+  void set_trace_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_TraceName::kFieldId, chars.data, chars.size);
+  }
+  void set_trace_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_TraceName::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TraceBegin =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      PanelWriteGenericFtraceEvent>;
+
+  static constexpr FieldMetadata_TraceBegin kTraceBegin{};
+  void set_trace_begin(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_TraceBegin::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Name =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      PanelWriteGenericFtraceEvent>;
+
+  static constexpr FieldMetadata_Name kName{};
+  void set_name(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
+  }
+  void set_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Type =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      PanelWriteGenericFtraceEvent>;
+
+  static constexpr FieldMetadata_Type kType{};
+  void set_type(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Value =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kInt32,
+      int32_t,
+      PanelWriteGenericFtraceEvent>;
+
+  static constexpr FieldMetadata_Value kValue{};
+  void set_value(int32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Value::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+};
 
 class DsiTxFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
