@@ -44,12 +44,24 @@ struct TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fdpu_2eproto {
 };
 namespace perfetto {
 namespace protos {
+class DpuDsiCmdFifoStatusFtraceEvent;
+struct DpuDsiCmdFifoStatusFtraceEventDefaultTypeInternal;
+extern DpuDsiCmdFifoStatusFtraceEventDefaultTypeInternal _DpuDsiCmdFifoStatusFtraceEvent_default_instance_;
+class DpuDsiRxFtraceEvent;
+struct DpuDsiRxFtraceEventDefaultTypeInternal;
+extern DpuDsiRxFtraceEventDefaultTypeInternal _DpuDsiRxFtraceEvent_default_instance_;
+class DpuDsiTxFtraceEvent;
+struct DpuDsiTxFtraceEventDefaultTypeInternal;
+extern DpuDsiTxFtraceEventDefaultTypeInternal _DpuDsiTxFtraceEvent_default_instance_;
 class DpuTracingMarkWriteFtraceEvent;
 struct DpuTracingMarkWriteFtraceEventDefaultTypeInternal;
 extern DpuTracingMarkWriteFtraceEventDefaultTypeInternal _DpuTracingMarkWriteFtraceEvent_default_instance_;
 }  // namespace protos
 }  // namespace perfetto
 PROTOBUF_NAMESPACE_OPEN
+template<> ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent>(Arena*);
+template<> ::perfetto::protos::DpuDsiRxFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::DpuDsiRxFtraceEvent>(Arena*);
+template<> ::perfetto::protos::DpuDsiTxFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::DpuDsiTxFtraceEvent>(Arena*);
 template<> ::perfetto::protos::DpuTracingMarkWriteFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::DpuTracingMarkWriteFtraceEvent>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
@@ -282,6 +294,519 @@ class DpuTracingMarkWriteFtraceEvent final :
     ::uint32_t trace_begin_;
     ::uint32_t type_;
     ::int32_t value_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fdpu_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DpuDsiCmdFifoStatusFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.DpuDsiCmdFifoStatusFtraceEvent) */ {
+ public:
+  inline DpuDsiCmdFifoStatusFtraceEvent() : DpuDsiCmdFifoStatusFtraceEvent(nullptr) {}
+  ~DpuDsiCmdFifoStatusFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR DpuDsiCmdFifoStatusFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DpuDsiCmdFifoStatusFtraceEvent(const DpuDsiCmdFifoStatusFtraceEvent& from);
+  DpuDsiCmdFifoStatusFtraceEvent(DpuDsiCmdFifoStatusFtraceEvent&& from) noexcept
+    : DpuDsiCmdFifoStatusFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline DpuDsiCmdFifoStatusFtraceEvent& operator=(const DpuDsiCmdFifoStatusFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline DpuDsiCmdFifoStatusFtraceEvent& operator=(DpuDsiCmdFifoStatusFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const DpuDsiCmdFifoStatusFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DpuDsiCmdFifoStatusFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const DpuDsiCmdFifoStatusFtraceEvent*>(
+               &_DpuDsiCmdFifoStatusFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(DpuDsiCmdFifoStatusFtraceEvent& a, DpuDsiCmdFifoStatusFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DpuDsiCmdFifoStatusFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DpuDsiCmdFifoStatusFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DpuDsiCmdFifoStatusFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DpuDsiCmdFifoStatusFtraceEvent>(arena);
+  }
+  DpuDsiCmdFifoStatusFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const DpuDsiCmdFifoStatusFtraceEvent& from);
+  void MergeFrom(const DpuDsiCmdFifoStatusFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(DpuDsiCmdFifoStatusFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.DpuDsiCmdFifoStatusFtraceEvent";
+  }
+  protected:
+  explicit DpuDsiCmdFifoStatusFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kHeaderFieldNumber = 1,
+    kPayloadFieldNumber = 2,
+  };
+  // optional uint32 header = 1;
+  bool has_header() const;
+  private:
+  bool _internal_has_header() const;
+  public:
+  void clear_header();
+  ::uint32_t header() const;
+  void set_header(::uint32_t value);
+  private:
+  ::uint32_t _internal_header() const;
+  void _internal_set_header(::uint32_t value);
+  public:
+
+  // optional uint32 payload = 2;
+  bool has_payload() const;
+  private:
+  bool _internal_has_payload() const;
+  public:
+  void clear_payload();
+  ::uint32_t payload() const;
+  void set_payload(::uint32_t value);
+  private:
+  ::uint32_t _internal_payload() const;
+  void _internal_set_payload(::uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.DpuDsiCmdFifoStatusFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::uint32_t header_;
+    ::uint32_t payload_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fdpu_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DpuDsiRxFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.DpuDsiRxFtraceEvent) */ {
+ public:
+  inline DpuDsiRxFtraceEvent() : DpuDsiRxFtraceEvent(nullptr) {}
+  ~DpuDsiRxFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR DpuDsiRxFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DpuDsiRxFtraceEvent(const DpuDsiRxFtraceEvent& from);
+  DpuDsiRxFtraceEvent(DpuDsiRxFtraceEvent&& from) noexcept
+    : DpuDsiRxFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline DpuDsiRxFtraceEvent& operator=(const DpuDsiRxFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline DpuDsiRxFtraceEvent& operator=(DpuDsiRxFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const DpuDsiRxFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DpuDsiRxFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const DpuDsiRxFtraceEvent*>(
+               &_DpuDsiRxFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(DpuDsiRxFtraceEvent& a, DpuDsiRxFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DpuDsiRxFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DpuDsiRxFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DpuDsiRxFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DpuDsiRxFtraceEvent>(arena);
+  }
+  DpuDsiRxFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const DpuDsiRxFtraceEvent& from);
+  void MergeFrom(const DpuDsiRxFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(DpuDsiRxFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.DpuDsiRxFtraceEvent";
+  }
+  protected:
+  explicit DpuDsiRxFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCmdFieldNumber = 1,
+    kRxBufFieldNumber = 2,
+  };
+  // optional uint32 cmd = 1;
+  bool has_cmd() const;
+  private:
+  bool _internal_has_cmd() const;
+  public:
+  void clear_cmd();
+  ::uint32_t cmd() const;
+  void set_cmd(::uint32_t value);
+  private:
+  ::uint32_t _internal_cmd() const;
+  void _internal_set_cmd(::uint32_t value);
+  public:
+
+  // optional uint32 rx_buf = 2;
+  bool has_rx_buf() const;
+  private:
+  bool _internal_has_rx_buf() const;
+  public:
+  void clear_rx_buf();
+  ::uint32_t rx_buf() const;
+  void set_rx_buf(::uint32_t value);
+  private:
+  ::uint32_t _internal_rx_buf() const;
+  void _internal_set_rx_buf(::uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.DpuDsiRxFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::uint32_t cmd_;
+    ::uint32_t rx_buf_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fdpu_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DpuDsiTxFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.DpuDsiTxFtraceEvent) */ {
+ public:
+  inline DpuDsiTxFtraceEvent() : DpuDsiTxFtraceEvent(nullptr) {}
+  ~DpuDsiTxFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR DpuDsiTxFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DpuDsiTxFtraceEvent(const DpuDsiTxFtraceEvent& from);
+  DpuDsiTxFtraceEvent(DpuDsiTxFtraceEvent&& from) noexcept
+    : DpuDsiTxFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline DpuDsiTxFtraceEvent& operator=(const DpuDsiTxFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline DpuDsiTxFtraceEvent& operator=(DpuDsiTxFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const DpuDsiTxFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DpuDsiTxFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const DpuDsiTxFtraceEvent*>(
+               &_DpuDsiTxFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(DpuDsiTxFtraceEvent& a, DpuDsiTxFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DpuDsiTxFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DpuDsiTxFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DpuDsiTxFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DpuDsiTxFtraceEvent>(arena);
+  }
+  DpuDsiTxFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const DpuDsiTxFtraceEvent& from);
+  void MergeFrom(const DpuDsiTxFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(DpuDsiTxFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.DpuDsiTxFtraceEvent";
+  }
+  protected:
+  explicit DpuDsiTxFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTypeFieldNumber = 1,
+    kTxBufFieldNumber = 2,
+    kLastFieldNumber = 3,
+    kDelayMsFieldNumber = 4,
+  };
+  // optional uint32 type = 1;
+  bool has_type() const;
+  private:
+  bool _internal_has_type() const;
+  public:
+  void clear_type();
+  ::uint32_t type() const;
+  void set_type(::uint32_t value);
+  private:
+  ::uint32_t _internal_type() const;
+  void _internal_set_type(::uint32_t value);
+  public:
+
+  // optional uint32 tx_buf = 2;
+  bool has_tx_buf() const;
+  private:
+  bool _internal_has_tx_buf() const;
+  public:
+  void clear_tx_buf();
+  ::uint32_t tx_buf() const;
+  void set_tx_buf(::uint32_t value);
+  private:
+  ::uint32_t _internal_tx_buf() const;
+  void _internal_set_tx_buf(::uint32_t value);
+  public:
+
+  // optional uint32 last = 3;
+  bool has_last() const;
+  private:
+  bool _internal_has_last() const;
+  public:
+  void clear_last();
+  ::uint32_t last() const;
+  void set_last(::uint32_t value);
+  private:
+  ::uint32_t _internal_last() const;
+  void _internal_set_last(::uint32_t value);
+  public:
+
+  // optional uint32 delay_ms = 4;
+  bool has_delay_ms() const;
+  private:
+  bool _internal_has_delay_ms() const;
+  public:
+  void clear_delay_ms();
+  ::uint32_t delay_ms() const;
+  void set_delay_ms(::uint32_t value);
+  private:
+  ::uint32_t _internal_delay_ms() const;
+  void _internal_set_delay_ms(::uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.DpuDsiTxFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::uint32_t type_;
+    ::uint32_t tx_buf_;
+    ::uint32_t last_;
+    ::uint32_t delay_ms_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fdpu_2eproto;
@@ -545,9 +1070,251 @@ inline void DpuTracingMarkWriteFtraceEvent::set_value(::int32_t value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.DpuTracingMarkWriteFtraceEvent.value)
 }
 
+// -------------------------------------------------------------------
+
+// DpuDsiCmdFifoStatusFtraceEvent
+
+// optional uint32 header = 1;
+inline bool DpuDsiCmdFifoStatusFtraceEvent::_internal_has_header() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool DpuDsiCmdFifoStatusFtraceEvent::has_header() const {
+  return _internal_has_header();
+}
+inline void DpuDsiCmdFifoStatusFtraceEvent::clear_header() {
+  _impl_.header_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::uint32_t DpuDsiCmdFifoStatusFtraceEvent::_internal_header() const {
+  return _impl_.header_;
+}
+inline ::uint32_t DpuDsiCmdFifoStatusFtraceEvent::header() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DpuDsiCmdFifoStatusFtraceEvent.header)
+  return _internal_header();
+}
+inline void DpuDsiCmdFifoStatusFtraceEvent::_internal_set_header(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.header_ = value;
+}
+inline void DpuDsiCmdFifoStatusFtraceEvent::set_header(::uint32_t value) {
+  _internal_set_header(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.DpuDsiCmdFifoStatusFtraceEvent.header)
+}
+
+// optional uint32 payload = 2;
+inline bool DpuDsiCmdFifoStatusFtraceEvent::_internal_has_payload() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool DpuDsiCmdFifoStatusFtraceEvent::has_payload() const {
+  return _internal_has_payload();
+}
+inline void DpuDsiCmdFifoStatusFtraceEvent::clear_payload() {
+  _impl_.payload_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t DpuDsiCmdFifoStatusFtraceEvent::_internal_payload() const {
+  return _impl_.payload_;
+}
+inline ::uint32_t DpuDsiCmdFifoStatusFtraceEvent::payload() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DpuDsiCmdFifoStatusFtraceEvent.payload)
+  return _internal_payload();
+}
+inline void DpuDsiCmdFifoStatusFtraceEvent::_internal_set_payload(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.payload_ = value;
+}
+inline void DpuDsiCmdFifoStatusFtraceEvent::set_payload(::uint32_t value) {
+  _internal_set_payload(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.DpuDsiCmdFifoStatusFtraceEvent.payload)
+}
+
+// -------------------------------------------------------------------
+
+// DpuDsiRxFtraceEvent
+
+// optional uint32 cmd = 1;
+inline bool DpuDsiRxFtraceEvent::_internal_has_cmd() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool DpuDsiRxFtraceEvent::has_cmd() const {
+  return _internal_has_cmd();
+}
+inline void DpuDsiRxFtraceEvent::clear_cmd() {
+  _impl_.cmd_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::uint32_t DpuDsiRxFtraceEvent::_internal_cmd() const {
+  return _impl_.cmd_;
+}
+inline ::uint32_t DpuDsiRxFtraceEvent::cmd() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DpuDsiRxFtraceEvent.cmd)
+  return _internal_cmd();
+}
+inline void DpuDsiRxFtraceEvent::_internal_set_cmd(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.cmd_ = value;
+}
+inline void DpuDsiRxFtraceEvent::set_cmd(::uint32_t value) {
+  _internal_set_cmd(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.DpuDsiRxFtraceEvent.cmd)
+}
+
+// optional uint32 rx_buf = 2;
+inline bool DpuDsiRxFtraceEvent::_internal_has_rx_buf() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool DpuDsiRxFtraceEvent::has_rx_buf() const {
+  return _internal_has_rx_buf();
+}
+inline void DpuDsiRxFtraceEvent::clear_rx_buf() {
+  _impl_.rx_buf_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t DpuDsiRxFtraceEvent::_internal_rx_buf() const {
+  return _impl_.rx_buf_;
+}
+inline ::uint32_t DpuDsiRxFtraceEvent::rx_buf() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DpuDsiRxFtraceEvent.rx_buf)
+  return _internal_rx_buf();
+}
+inline void DpuDsiRxFtraceEvent::_internal_set_rx_buf(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.rx_buf_ = value;
+}
+inline void DpuDsiRxFtraceEvent::set_rx_buf(::uint32_t value) {
+  _internal_set_rx_buf(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.DpuDsiRxFtraceEvent.rx_buf)
+}
+
+// -------------------------------------------------------------------
+
+// DpuDsiTxFtraceEvent
+
+// optional uint32 type = 1;
+inline bool DpuDsiTxFtraceEvent::_internal_has_type() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool DpuDsiTxFtraceEvent::has_type() const {
+  return _internal_has_type();
+}
+inline void DpuDsiTxFtraceEvent::clear_type() {
+  _impl_.type_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::uint32_t DpuDsiTxFtraceEvent::_internal_type() const {
+  return _impl_.type_;
+}
+inline ::uint32_t DpuDsiTxFtraceEvent::type() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DpuDsiTxFtraceEvent.type)
+  return _internal_type();
+}
+inline void DpuDsiTxFtraceEvent::_internal_set_type(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.type_ = value;
+}
+inline void DpuDsiTxFtraceEvent::set_type(::uint32_t value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.DpuDsiTxFtraceEvent.type)
+}
+
+// optional uint32 tx_buf = 2;
+inline bool DpuDsiTxFtraceEvent::_internal_has_tx_buf() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool DpuDsiTxFtraceEvent::has_tx_buf() const {
+  return _internal_has_tx_buf();
+}
+inline void DpuDsiTxFtraceEvent::clear_tx_buf() {
+  _impl_.tx_buf_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t DpuDsiTxFtraceEvent::_internal_tx_buf() const {
+  return _impl_.tx_buf_;
+}
+inline ::uint32_t DpuDsiTxFtraceEvent::tx_buf() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DpuDsiTxFtraceEvent.tx_buf)
+  return _internal_tx_buf();
+}
+inline void DpuDsiTxFtraceEvent::_internal_set_tx_buf(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.tx_buf_ = value;
+}
+inline void DpuDsiTxFtraceEvent::set_tx_buf(::uint32_t value) {
+  _internal_set_tx_buf(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.DpuDsiTxFtraceEvent.tx_buf)
+}
+
+// optional uint32 last = 3;
+inline bool DpuDsiTxFtraceEvent::_internal_has_last() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool DpuDsiTxFtraceEvent::has_last() const {
+  return _internal_has_last();
+}
+inline void DpuDsiTxFtraceEvent::clear_last() {
+  _impl_.last_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint32_t DpuDsiTxFtraceEvent::_internal_last() const {
+  return _impl_.last_;
+}
+inline ::uint32_t DpuDsiTxFtraceEvent::last() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DpuDsiTxFtraceEvent.last)
+  return _internal_last();
+}
+inline void DpuDsiTxFtraceEvent::_internal_set_last(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.last_ = value;
+}
+inline void DpuDsiTxFtraceEvent::set_last(::uint32_t value) {
+  _internal_set_last(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.DpuDsiTxFtraceEvent.last)
+}
+
+// optional uint32 delay_ms = 4;
+inline bool DpuDsiTxFtraceEvent::_internal_has_delay_ms() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool DpuDsiTxFtraceEvent::has_delay_ms() const {
+  return _internal_has_delay_ms();
+}
+inline void DpuDsiTxFtraceEvent::clear_delay_ms() {
+  _impl_.delay_ms_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline ::uint32_t DpuDsiTxFtraceEvent::_internal_delay_ms() const {
+  return _impl_.delay_ms_;
+}
+inline ::uint32_t DpuDsiTxFtraceEvent::delay_ms() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.DpuDsiTxFtraceEvent.delay_ms)
+  return _internal_delay_ms();
+}
+inline void DpuDsiTxFtraceEvent::_internal_set_delay_ms(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.delay_ms_ = value;
+}
+inline void DpuDsiTxFtraceEvent::set_delay_ms(::uint32_t value) {
+  _internal_set_delay_ms(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.DpuDsiTxFtraceEvent.delay_ms)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 

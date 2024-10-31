@@ -53,6 +53,9 @@ extern SchedCpuHotplugFtraceEventDefaultTypeInternal _SchedCpuHotplugFtraceEvent
 class SchedCpuUtilCfsFtraceEvent;
 struct SchedCpuUtilCfsFtraceEventDefaultTypeInternal;
 extern SchedCpuUtilCfsFtraceEventDefaultTypeInternal _SchedCpuUtilCfsFtraceEvent_default_instance_;
+class SchedMigrateTaskFtraceEvent;
+struct SchedMigrateTaskFtraceEventDefaultTypeInternal;
+extern SchedMigrateTaskFtraceEventDefaultTypeInternal _SchedMigrateTaskFtraceEvent_default_instance_;
 class SchedPiSetprioFtraceEvent;
 struct SchedPiSetprioFtraceEventDefaultTypeInternal;
 extern SchedPiSetprioFtraceEventDefaultTypeInternal _SchedPiSetprioFtraceEvent_default_instance_;
@@ -83,6 +86,9 @@ extern SchedWakeupFtraceEventDefaultTypeInternal _SchedWakeupFtraceEvent_default
 class SchedWakeupNewFtraceEvent;
 struct SchedWakeupNewFtraceEventDefaultTypeInternal;
 extern SchedWakeupNewFtraceEventDefaultTypeInternal _SchedWakeupNewFtraceEvent_default_instance_;
+class SchedWakeupTaskAttrFtraceEvent;
+struct SchedWakeupTaskAttrFtraceEventDefaultTypeInternal;
+extern SchedWakeupTaskAttrFtraceEventDefaultTypeInternal _SchedWakeupTaskAttrFtraceEvent_default_instance_;
 class SchedWakingFtraceEvent;
 struct SchedWakingFtraceEventDefaultTypeInternal;
 extern SchedWakingFtraceEventDefaultTypeInternal _SchedWakingFtraceEvent_default_instance_;
@@ -92,6 +98,7 @@ PROTOBUF_NAMESPACE_OPEN
 template<> ::perfetto::protos::SchedBlockedReasonFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedBlockedReasonFtraceEvent>(Arena*);
 template<> ::perfetto::protos::SchedCpuHotplugFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedCpuHotplugFtraceEvent>(Arena*);
 template<> ::perfetto::protos::SchedCpuUtilCfsFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedCpuUtilCfsFtraceEvent>(Arena*);
+template<> ::perfetto::protos::SchedMigrateTaskFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedMigrateTaskFtraceEvent>(Arena*);
 template<> ::perfetto::protos::SchedPiSetprioFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedPiSetprioFtraceEvent>(Arena*);
 template<> ::perfetto::protos::SchedProcessExecFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedProcessExecFtraceEvent>(Arena*);
 template<> ::perfetto::protos::SchedProcessExitFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedProcessExitFtraceEvent>(Arena*);
@@ -102,6 +109,7 @@ template<> ::perfetto::protos::SchedProcessWaitFtraceEvent* Arena::CreateMaybeMe
 template<> ::perfetto::protos::SchedSwitchFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedSwitchFtraceEvent>(Arena*);
 template<> ::perfetto::protos::SchedWakeupFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedWakeupFtraceEvent>(Arena*);
 template<> ::perfetto::protos::SchedWakeupNewFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedWakeupNewFtraceEvent>(Arena*);
+template<> ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedWakeupTaskAttrFtraceEvent>(Arena*);
 template<> ::perfetto::protos::SchedWakingFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::SchedWakingFtraceEvent>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
@@ -2996,6 +3004,453 @@ class SchedCpuUtilCfsFtraceEvent final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fsched_2eproto;
 };
+// -------------------------------------------------------------------
+
+class SchedMigrateTaskFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.SchedMigrateTaskFtraceEvent) */ {
+ public:
+  inline SchedMigrateTaskFtraceEvent() : SchedMigrateTaskFtraceEvent(nullptr) {}
+  ~SchedMigrateTaskFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR SchedMigrateTaskFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SchedMigrateTaskFtraceEvent(const SchedMigrateTaskFtraceEvent& from);
+  SchedMigrateTaskFtraceEvent(SchedMigrateTaskFtraceEvent&& from) noexcept
+    : SchedMigrateTaskFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline SchedMigrateTaskFtraceEvent& operator=(const SchedMigrateTaskFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline SchedMigrateTaskFtraceEvent& operator=(SchedMigrateTaskFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const SchedMigrateTaskFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SchedMigrateTaskFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const SchedMigrateTaskFtraceEvent*>(
+               &_SchedMigrateTaskFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    14;
+
+  friend void swap(SchedMigrateTaskFtraceEvent& a, SchedMigrateTaskFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SchedMigrateTaskFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SchedMigrateTaskFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SchedMigrateTaskFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<SchedMigrateTaskFtraceEvent>(arena);
+  }
+  SchedMigrateTaskFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const SchedMigrateTaskFtraceEvent& from);
+  void MergeFrom(const SchedMigrateTaskFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(SchedMigrateTaskFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.SchedMigrateTaskFtraceEvent";
+  }
+  protected:
+  explicit SchedMigrateTaskFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCommFieldNumber = 1,
+    kPidFieldNumber = 2,
+    kPrioFieldNumber = 3,
+    kOrigCpuFieldNumber = 4,
+    kDestCpuFieldNumber = 5,
+    kRunningFieldNumber = 6,
+    kLoadFieldNumber = 7,
+  };
+  // optional string comm = 1;
+  bool has_comm() const;
+  private:
+  bool _internal_has_comm() const;
+  public:
+  void clear_comm();
+  const std::string& comm() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_comm(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_comm();
+  PROTOBUF_NODISCARD std::string* release_comm();
+  void set_allocated_comm(std::string* comm);
+  private:
+  const std::string& _internal_comm() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_comm(const std::string& value);
+  std::string* _internal_mutable_comm();
+  public:
+
+  // optional int32 pid = 2;
+  bool has_pid() const;
+  private:
+  bool _internal_has_pid() const;
+  public:
+  void clear_pid();
+  ::int32_t pid() const;
+  void set_pid(::int32_t value);
+  private:
+  ::int32_t _internal_pid() const;
+  void _internal_set_pid(::int32_t value);
+  public:
+
+  // optional int32 prio = 3;
+  bool has_prio() const;
+  private:
+  bool _internal_has_prio() const;
+  public:
+  void clear_prio();
+  ::int32_t prio() const;
+  void set_prio(::int32_t value);
+  private:
+  ::int32_t _internal_prio() const;
+  void _internal_set_prio(::int32_t value);
+  public:
+
+  // optional int32 orig_cpu = 4;
+  bool has_orig_cpu() const;
+  private:
+  bool _internal_has_orig_cpu() const;
+  public:
+  void clear_orig_cpu();
+  ::int32_t orig_cpu() const;
+  void set_orig_cpu(::int32_t value);
+  private:
+  ::int32_t _internal_orig_cpu() const;
+  void _internal_set_orig_cpu(::int32_t value);
+  public:
+
+  // optional int32 dest_cpu = 5;
+  bool has_dest_cpu() const;
+  private:
+  bool _internal_has_dest_cpu() const;
+  public:
+  void clear_dest_cpu();
+  ::int32_t dest_cpu() const;
+  void set_dest_cpu(::int32_t value);
+  private:
+  ::int32_t _internal_dest_cpu() const;
+  void _internal_set_dest_cpu(::int32_t value);
+  public:
+
+  // optional int32 running = 6;
+  bool has_running() const;
+  private:
+  bool _internal_has_running() const;
+  public:
+  void clear_running();
+  ::int32_t running() const;
+  void set_running(::int32_t value);
+  private:
+  ::int32_t _internal_running() const;
+  void _internal_set_running(::int32_t value);
+  public:
+
+  // optional uint32 load = 7;
+  bool has_load() const;
+  private:
+  bool _internal_has_load() const;
+  public:
+  void clear_load();
+  ::uint32_t load() const;
+  void set_load(::uint32_t value);
+  private:
+  ::uint32_t _internal_load() const;
+  void _internal_set_load(::uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.SchedMigrateTaskFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr comm_;
+    ::int32_t pid_;
+    ::int32_t prio_;
+    ::int32_t orig_cpu_;
+    ::int32_t dest_cpu_;
+    ::int32_t running_;
+    ::uint32_t load_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fsched_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SchedWakeupTaskAttrFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.SchedWakeupTaskAttrFtraceEvent) */ {
+ public:
+  inline SchedWakeupTaskAttrFtraceEvent() : SchedWakeupTaskAttrFtraceEvent(nullptr) {}
+  ~SchedWakeupTaskAttrFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR SchedWakeupTaskAttrFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SchedWakeupTaskAttrFtraceEvent(const SchedWakeupTaskAttrFtraceEvent& from);
+  SchedWakeupTaskAttrFtraceEvent(SchedWakeupTaskAttrFtraceEvent&& from) noexcept
+    : SchedWakeupTaskAttrFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline SchedWakeupTaskAttrFtraceEvent& operator=(const SchedWakeupTaskAttrFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline SchedWakeupTaskAttrFtraceEvent& operator=(SchedWakeupTaskAttrFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const SchedWakeupTaskAttrFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SchedWakeupTaskAttrFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const SchedWakeupTaskAttrFtraceEvent*>(
+               &_SchedWakeupTaskAttrFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  friend void swap(SchedWakeupTaskAttrFtraceEvent& a, SchedWakeupTaskAttrFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SchedWakeupTaskAttrFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SchedWakeupTaskAttrFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SchedWakeupTaskAttrFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<SchedWakeupTaskAttrFtraceEvent>(arena);
+  }
+  SchedWakeupTaskAttrFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const SchedWakeupTaskAttrFtraceEvent& from);
+  void MergeFrom(const SchedWakeupTaskAttrFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(SchedWakeupTaskAttrFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.SchedWakeupTaskAttrFtraceEvent";
+  }
+  protected:
+  explicit SchedWakeupTaskAttrFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCpuAffinityFieldNumber = 2,
+    kTaskUtilFieldNumber = 3,
+    kUclampMinFieldNumber = 4,
+    kVruntimeFieldNumber = 5,
+    kPidFieldNumber = 1,
+  };
+  // optional uint64 cpu_affinity = 2;
+  bool has_cpu_affinity() const;
+  private:
+  bool _internal_has_cpu_affinity() const;
+  public:
+  void clear_cpu_affinity();
+  ::uint64_t cpu_affinity() const;
+  void set_cpu_affinity(::uint64_t value);
+  private:
+  ::uint64_t _internal_cpu_affinity() const;
+  void _internal_set_cpu_affinity(::uint64_t value);
+  public:
+
+  // optional uint64 task_util = 3;
+  bool has_task_util() const;
+  private:
+  bool _internal_has_task_util() const;
+  public:
+  void clear_task_util();
+  ::uint64_t task_util() const;
+  void set_task_util(::uint64_t value);
+  private:
+  ::uint64_t _internal_task_util() const;
+  void _internal_set_task_util(::uint64_t value);
+  public:
+
+  // optional uint64 uclamp_min = 4;
+  bool has_uclamp_min() const;
+  private:
+  bool _internal_has_uclamp_min() const;
+  public:
+  void clear_uclamp_min();
+  ::uint64_t uclamp_min() const;
+  void set_uclamp_min(::uint64_t value);
+  private:
+  ::uint64_t _internal_uclamp_min() const;
+  void _internal_set_uclamp_min(::uint64_t value);
+  public:
+
+  // optional uint64 vruntime = 5;
+  bool has_vruntime() const;
+  private:
+  bool _internal_has_vruntime() const;
+  public:
+  void clear_vruntime();
+  ::uint64_t vruntime() const;
+  void set_vruntime(::uint64_t value);
+  private:
+  ::uint64_t _internal_vruntime() const;
+  void _internal_set_vruntime(::uint64_t value);
+  public:
+
+  // optional int32 pid = 1;
+  bool has_pid() const;
+  private:
+  bool _internal_has_pid() const;
+  public:
+  void clear_pid();
+  ::int32_t pid() const;
+  void set_pid(::int32_t value);
+  private:
+  ::int32_t _internal_pid() const;
+  void _internal_set_pid(::int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.SchedWakeupTaskAttrFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::uint64_t cpu_affinity_;
+    ::uint64_t task_util_;
+    ::uint64_t uclamp_min_;
+    ::uint64_t vruntime_;
+    ::int32_t pid_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2fsched_2eproto;
+};
 // ===================================================================
 
 
@@ -5427,9 +5882,397 @@ inline void SchedCpuUtilCfsFtraceEvent::set_wake_util(::uint64_t value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.SchedCpuUtilCfsFtraceEvent.wake_util)
 }
 
+// -------------------------------------------------------------------
+
+// SchedMigrateTaskFtraceEvent
+
+// optional string comm = 1;
+inline bool SchedMigrateTaskFtraceEvent::_internal_has_comm() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool SchedMigrateTaskFtraceEvent::has_comm() const {
+  return _internal_has_comm();
+}
+inline void SchedMigrateTaskFtraceEvent::clear_comm() {
+  _impl_.comm_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& SchedMigrateTaskFtraceEvent::comm() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedMigrateTaskFtraceEvent.comm)
+  return _internal_comm();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SchedMigrateTaskFtraceEvent::set_comm(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.comm_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedMigrateTaskFtraceEvent.comm)
+}
+inline std::string* SchedMigrateTaskFtraceEvent::mutable_comm() {
+  std::string* _s = _internal_mutable_comm();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.SchedMigrateTaskFtraceEvent.comm)
+  return _s;
+}
+inline const std::string& SchedMigrateTaskFtraceEvent::_internal_comm() const {
+  return _impl_.comm_.Get();
+}
+inline void SchedMigrateTaskFtraceEvent::_internal_set_comm(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.comm_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SchedMigrateTaskFtraceEvent::_internal_mutable_comm() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.comm_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SchedMigrateTaskFtraceEvent::release_comm() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.SchedMigrateTaskFtraceEvent.comm)
+  if (!_internal_has_comm()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.comm_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.comm_.IsDefault()) {
+    _impl_.comm_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void SchedMigrateTaskFtraceEvent::set_allocated_comm(std::string* comm) {
+  if (comm != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.comm_.SetAllocated(comm, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.comm_.IsDefault()) {
+    _impl_.comm_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.SchedMigrateTaskFtraceEvent.comm)
+}
+
+// optional int32 pid = 2;
+inline bool SchedMigrateTaskFtraceEvent::_internal_has_pid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool SchedMigrateTaskFtraceEvent::has_pid() const {
+  return _internal_has_pid();
+}
+inline void SchedMigrateTaskFtraceEvent::clear_pid() {
+  _impl_.pid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::int32_t SchedMigrateTaskFtraceEvent::_internal_pid() const {
+  return _impl_.pid_;
+}
+inline ::int32_t SchedMigrateTaskFtraceEvent::pid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedMigrateTaskFtraceEvent.pid)
+  return _internal_pid();
+}
+inline void SchedMigrateTaskFtraceEvent::_internal_set_pid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.pid_ = value;
+}
+inline void SchedMigrateTaskFtraceEvent::set_pid(::int32_t value) {
+  _internal_set_pid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedMigrateTaskFtraceEvent.pid)
+}
+
+// optional int32 prio = 3;
+inline bool SchedMigrateTaskFtraceEvent::_internal_has_prio() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool SchedMigrateTaskFtraceEvent::has_prio() const {
+  return _internal_has_prio();
+}
+inline void SchedMigrateTaskFtraceEvent::clear_prio() {
+  _impl_.prio_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::int32_t SchedMigrateTaskFtraceEvent::_internal_prio() const {
+  return _impl_.prio_;
+}
+inline ::int32_t SchedMigrateTaskFtraceEvent::prio() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedMigrateTaskFtraceEvent.prio)
+  return _internal_prio();
+}
+inline void SchedMigrateTaskFtraceEvent::_internal_set_prio(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.prio_ = value;
+}
+inline void SchedMigrateTaskFtraceEvent::set_prio(::int32_t value) {
+  _internal_set_prio(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedMigrateTaskFtraceEvent.prio)
+}
+
+// optional int32 orig_cpu = 4;
+inline bool SchedMigrateTaskFtraceEvent::_internal_has_orig_cpu() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool SchedMigrateTaskFtraceEvent::has_orig_cpu() const {
+  return _internal_has_orig_cpu();
+}
+inline void SchedMigrateTaskFtraceEvent::clear_orig_cpu() {
+  _impl_.orig_cpu_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline ::int32_t SchedMigrateTaskFtraceEvent::_internal_orig_cpu() const {
+  return _impl_.orig_cpu_;
+}
+inline ::int32_t SchedMigrateTaskFtraceEvent::orig_cpu() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedMigrateTaskFtraceEvent.orig_cpu)
+  return _internal_orig_cpu();
+}
+inline void SchedMigrateTaskFtraceEvent::_internal_set_orig_cpu(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.orig_cpu_ = value;
+}
+inline void SchedMigrateTaskFtraceEvent::set_orig_cpu(::int32_t value) {
+  _internal_set_orig_cpu(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedMigrateTaskFtraceEvent.orig_cpu)
+}
+
+// optional int32 dest_cpu = 5;
+inline bool SchedMigrateTaskFtraceEvent::_internal_has_dest_cpu() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool SchedMigrateTaskFtraceEvent::has_dest_cpu() const {
+  return _internal_has_dest_cpu();
+}
+inline void SchedMigrateTaskFtraceEvent::clear_dest_cpu() {
+  _impl_.dest_cpu_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline ::int32_t SchedMigrateTaskFtraceEvent::_internal_dest_cpu() const {
+  return _impl_.dest_cpu_;
+}
+inline ::int32_t SchedMigrateTaskFtraceEvent::dest_cpu() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedMigrateTaskFtraceEvent.dest_cpu)
+  return _internal_dest_cpu();
+}
+inline void SchedMigrateTaskFtraceEvent::_internal_set_dest_cpu(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.dest_cpu_ = value;
+}
+inline void SchedMigrateTaskFtraceEvent::set_dest_cpu(::int32_t value) {
+  _internal_set_dest_cpu(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedMigrateTaskFtraceEvent.dest_cpu)
+}
+
+// optional int32 running = 6;
+inline bool SchedMigrateTaskFtraceEvent::_internal_has_running() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool SchedMigrateTaskFtraceEvent::has_running() const {
+  return _internal_has_running();
+}
+inline void SchedMigrateTaskFtraceEvent::clear_running() {
+  _impl_.running_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline ::int32_t SchedMigrateTaskFtraceEvent::_internal_running() const {
+  return _impl_.running_;
+}
+inline ::int32_t SchedMigrateTaskFtraceEvent::running() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedMigrateTaskFtraceEvent.running)
+  return _internal_running();
+}
+inline void SchedMigrateTaskFtraceEvent::_internal_set_running(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_.running_ = value;
+}
+inline void SchedMigrateTaskFtraceEvent::set_running(::int32_t value) {
+  _internal_set_running(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedMigrateTaskFtraceEvent.running)
+}
+
+// optional uint32 load = 7;
+inline bool SchedMigrateTaskFtraceEvent::_internal_has_load() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
+  return value;
+}
+inline bool SchedMigrateTaskFtraceEvent::has_load() const {
+  return _internal_has_load();
+}
+inline void SchedMigrateTaskFtraceEvent::clear_load() {
+  _impl_.load_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000040u;
+}
+inline ::uint32_t SchedMigrateTaskFtraceEvent::_internal_load() const {
+  return _impl_.load_;
+}
+inline ::uint32_t SchedMigrateTaskFtraceEvent::load() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedMigrateTaskFtraceEvent.load)
+  return _internal_load();
+}
+inline void SchedMigrateTaskFtraceEvent::_internal_set_load(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000040u;
+  _impl_.load_ = value;
+}
+inline void SchedMigrateTaskFtraceEvent::set_load(::uint32_t value) {
+  _internal_set_load(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedMigrateTaskFtraceEvent.load)
+}
+
+// -------------------------------------------------------------------
+
+// SchedWakeupTaskAttrFtraceEvent
+
+// optional int32 pid = 1;
+inline bool SchedWakeupTaskAttrFtraceEvent::_internal_has_pid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool SchedWakeupTaskAttrFtraceEvent::has_pid() const {
+  return _internal_has_pid();
+}
+inline void SchedWakeupTaskAttrFtraceEvent::clear_pid() {
+  _impl_.pid_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline ::int32_t SchedWakeupTaskAttrFtraceEvent::_internal_pid() const {
+  return _impl_.pid_;
+}
+inline ::int32_t SchedWakeupTaskAttrFtraceEvent::pid() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedWakeupTaskAttrFtraceEvent.pid)
+  return _internal_pid();
+}
+inline void SchedWakeupTaskAttrFtraceEvent::_internal_set_pid(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.pid_ = value;
+}
+inline void SchedWakeupTaskAttrFtraceEvent::set_pid(::int32_t value) {
+  _internal_set_pid(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedWakeupTaskAttrFtraceEvent.pid)
+}
+
+// optional uint64 cpu_affinity = 2;
+inline bool SchedWakeupTaskAttrFtraceEvent::_internal_has_cpu_affinity() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool SchedWakeupTaskAttrFtraceEvent::has_cpu_affinity() const {
+  return _internal_has_cpu_affinity();
+}
+inline void SchedWakeupTaskAttrFtraceEvent::clear_cpu_affinity() {
+  _impl_.cpu_affinity_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::uint64_t SchedWakeupTaskAttrFtraceEvent::_internal_cpu_affinity() const {
+  return _impl_.cpu_affinity_;
+}
+inline ::uint64_t SchedWakeupTaskAttrFtraceEvent::cpu_affinity() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedWakeupTaskAttrFtraceEvent.cpu_affinity)
+  return _internal_cpu_affinity();
+}
+inline void SchedWakeupTaskAttrFtraceEvent::_internal_set_cpu_affinity(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.cpu_affinity_ = value;
+}
+inline void SchedWakeupTaskAttrFtraceEvent::set_cpu_affinity(::uint64_t value) {
+  _internal_set_cpu_affinity(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedWakeupTaskAttrFtraceEvent.cpu_affinity)
+}
+
+// optional uint64 task_util = 3;
+inline bool SchedWakeupTaskAttrFtraceEvent::_internal_has_task_util() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool SchedWakeupTaskAttrFtraceEvent::has_task_util() const {
+  return _internal_has_task_util();
+}
+inline void SchedWakeupTaskAttrFtraceEvent::clear_task_util() {
+  _impl_.task_util_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint64_t SchedWakeupTaskAttrFtraceEvent::_internal_task_util() const {
+  return _impl_.task_util_;
+}
+inline ::uint64_t SchedWakeupTaskAttrFtraceEvent::task_util() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedWakeupTaskAttrFtraceEvent.task_util)
+  return _internal_task_util();
+}
+inline void SchedWakeupTaskAttrFtraceEvent::_internal_set_task_util(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.task_util_ = value;
+}
+inline void SchedWakeupTaskAttrFtraceEvent::set_task_util(::uint64_t value) {
+  _internal_set_task_util(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedWakeupTaskAttrFtraceEvent.task_util)
+}
+
+// optional uint64 uclamp_min = 4;
+inline bool SchedWakeupTaskAttrFtraceEvent::_internal_has_uclamp_min() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool SchedWakeupTaskAttrFtraceEvent::has_uclamp_min() const {
+  return _internal_has_uclamp_min();
+}
+inline void SchedWakeupTaskAttrFtraceEvent::clear_uclamp_min() {
+  _impl_.uclamp_min_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t SchedWakeupTaskAttrFtraceEvent::_internal_uclamp_min() const {
+  return _impl_.uclamp_min_;
+}
+inline ::uint64_t SchedWakeupTaskAttrFtraceEvent::uclamp_min() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedWakeupTaskAttrFtraceEvent.uclamp_min)
+  return _internal_uclamp_min();
+}
+inline void SchedWakeupTaskAttrFtraceEvent::_internal_set_uclamp_min(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.uclamp_min_ = value;
+}
+inline void SchedWakeupTaskAttrFtraceEvent::set_uclamp_min(::uint64_t value) {
+  _internal_set_uclamp_min(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedWakeupTaskAttrFtraceEvent.uclamp_min)
+}
+
+// optional uint64 vruntime = 5;
+inline bool SchedWakeupTaskAttrFtraceEvent::_internal_has_vruntime() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool SchedWakeupTaskAttrFtraceEvent::has_vruntime() const {
+  return _internal_has_vruntime();
+}
+inline void SchedWakeupTaskAttrFtraceEvent::clear_vruntime() {
+  _impl_.vruntime_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline ::uint64_t SchedWakeupTaskAttrFtraceEvent::_internal_vruntime() const {
+  return _impl_.vruntime_;
+}
+inline ::uint64_t SchedWakeupTaskAttrFtraceEvent::vruntime() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SchedWakeupTaskAttrFtraceEvent.vruntime)
+  return _internal_vruntime();
+}
+inline void SchedWakeupTaskAttrFtraceEvent::_internal_set_vruntime(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.vruntime_ = value;
+}
+inline void SchedWakeupTaskAttrFtraceEvent::set_vruntime(::uint64_t value) {
+  _internal_set_vruntime(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SchedWakeupTaskAttrFtraceEvent.vruntime)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

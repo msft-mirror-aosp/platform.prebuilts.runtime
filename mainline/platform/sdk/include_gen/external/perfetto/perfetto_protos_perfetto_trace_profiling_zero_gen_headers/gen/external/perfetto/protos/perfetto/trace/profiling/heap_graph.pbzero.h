@@ -16,11 +16,14 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class HeapGraphObject;
 class HeapGraphRoot;
 class HeapGraphType;
 class InternedString;
+namespace perfetto_pbzero_enum_HeapGraphObject {
+enum HeapType : int32_t;
+}  // namespace perfetto_pbzero_enum_HeapGraphObject
+using HeapGraphObject_HeapType = perfetto_pbzero_enum_HeapGraphObject::HeapType;
 namespace perfetto_pbzero_enum_HeapGraphRoot {
 enum Type : int32_t;
 }  // namespace perfetto_pbzero_enum_HeapGraphRoot
@@ -29,6 +32,46 @@ namespace perfetto_pbzero_enum_HeapGraphType {
 enum Kind : int32_t;
 }  // namespace perfetto_pbzero_enum_HeapGraphType
 using HeapGraphType_Kind = perfetto_pbzero_enum_HeapGraphType::Kind;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
+
+namespace perfetto_pbzero_enum_HeapGraphObject {
+enum HeapType : int32_t {
+  HEAP_TYPE_UNKNOWN = 0,
+  HEAP_TYPE_APP = 1,
+  HEAP_TYPE_ZYGOTE = 2,
+  HEAP_TYPE_BOOT_IMAGE = 3,
+};
+} // namespace perfetto_pbzero_enum_HeapGraphObject
+using HeapGraphObject_HeapType = perfetto_pbzero_enum_HeapGraphObject::HeapType;
+
+
+constexpr HeapGraphObject_HeapType HeapGraphObject_HeapType_MIN = HeapGraphObject_HeapType::HEAP_TYPE_UNKNOWN;
+constexpr HeapGraphObject_HeapType HeapGraphObject_HeapType_MAX = HeapGraphObject_HeapType::HEAP_TYPE_BOOT_IMAGE;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* HeapGraphObject_HeapType_Name(::perfetto::protos::pbzero::HeapGraphObject_HeapType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::HeapGraphObject_HeapType::HEAP_TYPE_UNKNOWN:
+    return "HEAP_TYPE_UNKNOWN";
+
+  case ::perfetto::protos::pbzero::HeapGraphObject_HeapType::HEAP_TYPE_APP:
+    return "HEAP_TYPE_APP";
+
+  case ::perfetto::protos::pbzero::HeapGraphObject_HeapType::HEAP_TYPE_ZYGOTE:
+    return "HEAP_TYPE_ZYGOTE";
+
+  case ::perfetto::protos::pbzero::HeapGraphObject_HeapType::HEAP_TYPE_BOOT_IMAGE:
+    return "HEAP_TYPE_BOOT_IMAGE";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
 
 namespace perfetto_pbzero_enum_HeapGraphType {
 enum Kind : int32_t {
@@ -336,7 +379,7 @@ class HeapGraph : public ::protozero::Message {
   }
 };
 
-class HeapGraphObject_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/8, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class HeapGraphObject_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/9, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   HeapGraphObject_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit HeapGraphObject_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -357,6 +400,8 @@ class HeapGraphObject_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIEL
   ::protozero::PackedRepeatedFieldIterator<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t> reference_object_id(bool* parse_error_ptr) const { return GetPackedRepeated<::protozero::proto_utils::ProtoWireType::kVarInt, uint64_t>(5, parse_error_ptr); }
   bool has_native_allocation_registry_size_field() const { return at<8>().valid(); }
   int64_t native_allocation_registry_size_field() const { return at<8>().as_int64(); }
+  bool has_heap_type_delta() const { return at<9>().valid(); }
+  int32_t heap_type_delta() const { return at<9>().as_int32(); }
 };
 
 class HeapGraphObject : public ::protozero::Message {
@@ -371,9 +416,19 @@ class HeapGraphObject : public ::protozero::Message {
     kReferenceFieldIdFieldNumber = 4,
     kReferenceObjectIdFieldNumber = 5,
     kNativeAllocationRegistrySizeFieldFieldNumber = 8,
+    kHeapTypeDeltaFieldNumber = 9,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.HeapGraphObject"; }
 
+
+  using HeapType = ::perfetto::protos::pbzero::HeapGraphObject_HeapType;
+  static inline const char* HeapType_Name(HeapType value) {
+    return ::perfetto::protos::pbzero::HeapGraphObject_HeapType_Name(value);
+  }
+  static inline const HeapType HEAP_TYPE_UNKNOWN = HeapType::HEAP_TYPE_UNKNOWN;
+  static inline const HeapType HEAP_TYPE_APP = HeapType::HEAP_TYPE_APP;
+  static inline const HeapType HEAP_TYPE_ZYGOTE = HeapType::HEAP_TYPE_ZYGOTE;
+  static inline const HeapType HEAP_TYPE_BOOT_IMAGE = HeapType::HEAP_TYPE_BOOT_IMAGE;
 
   using FieldMetadata_Id =
     ::protozero::proto_utils::FieldMetadata<
@@ -508,6 +563,24 @@ class HeapGraphObject : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kInt64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_HeapTypeDelta =
+    ::protozero::proto_utils::FieldMetadata<
+      9,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      HeapGraphObject_HeapType,
+      HeapGraphObject>;
+
+  static constexpr FieldMetadata_HeapTypeDelta kHeapTypeDelta{};
+  void set_heap_type_delta(HeapGraphObject_HeapType value) {
+    static constexpr uint32_t field_id = FieldMetadata_HeapTypeDelta::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
         ::Append(*this, field_id, value);
   }
 };
@@ -683,11 +756,11 @@ class HeapGraphType : public ::protozero::Message {
       7,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::HeapGraphType_Kind,
+      HeapGraphType_Kind,
       HeapGraphType>;
 
   static constexpr FieldMetadata_Kind kKind{};
-  void set_kind(::perfetto::protos::pbzero::HeapGraphType_Kind value) {
+  void set_kind(HeapGraphType_Kind value) {
     static constexpr uint32_t field_id = FieldMetadata_Kind::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -775,11 +848,11 @@ class HeapGraphRoot : public ::protozero::Message {
       2,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::HeapGraphRoot_Type,
+      HeapGraphRoot_Type,
       HeapGraphRoot>;
 
   static constexpr FieldMetadata_RootType kRootType{};
-  void set_root_type(::perfetto::protos::pbzero::HeapGraphRoot_Type value) {
+  void set_root_type(HeapGraphRoot_Type value) {
     static constexpr uint32_t field_id = FieldMetadata_RootType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
