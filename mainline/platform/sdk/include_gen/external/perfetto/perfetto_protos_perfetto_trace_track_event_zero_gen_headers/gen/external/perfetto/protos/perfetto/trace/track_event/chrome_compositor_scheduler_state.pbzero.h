@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class BeginFrameArgs;
 class BeginFrameObserverState;
 class BeginFrameSourceState;
@@ -63,6 +62,13 @@ namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState {
 enum TreePriority : int32_t;
 }  // namespace perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState
 using ChromeCompositorStateMachine_MinorState_TreePriority = perfetto_pbzero_enum_ChromeCompositorStateMachine_MinorState::TreePriority;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 enum ChromeCompositorSchedulerAction : int32_t {
   CC_SCHEDULER_ACTION_UNSPECIFIED = 0,
@@ -833,11 +839,11 @@ class BeginImplFrameArgs : public ::protozero::Message {
       3,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::BeginImplFrameArgs_State,
+      BeginImplFrameArgs_State,
       BeginImplFrameArgs>;
 
   static constexpr FieldMetadata_State kState{};
-  void set_state(::perfetto::protos::pbzero::BeginImplFrameArgs_State value) {
+  void set_state(BeginImplFrameArgs_State value) {
     static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -1114,11 +1120,11 @@ class BeginFrameArgs : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::BeginFrameArgs_BeginFrameArgsType,
+      BeginFrameArgs_BeginFrameArgsType,
       BeginFrameArgs>;
 
   static constexpr FieldMetadata_Type kType{};
-  void set_type(::perfetto::protos::pbzero::BeginFrameArgs_BeginFrameArgsType value) {
+  void set_type(BeginFrameArgs_BeginFrameArgsType value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -2068,11 +2074,11 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
       31,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_TreePriority,
+      ChromeCompositorStateMachine_MinorState_TreePriority,
       ChromeCompositorStateMachine_MinorState>;
 
   static constexpr FieldMetadata_TreePriority kTreePriority{};
-  void set_tree_priority(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_TreePriority value) {
+  void set_tree_priority(ChromeCompositorStateMachine_MinorState_TreePriority value) {
     static constexpr uint32_t field_id = FieldMetadata_TreePriority::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -2086,11 +2092,11 @@ class ChromeCompositorStateMachine_MinorState : public ::protozero::Message {
       32,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_ScrollHandlerState,
+      ChromeCompositorStateMachine_MinorState_ScrollHandlerState,
       ChromeCompositorStateMachine_MinorState>;
 
   static constexpr FieldMetadata_ScrollHandlerState kScrollHandlerState{};
-  void set_scroll_handler_state(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MinorState_ScrollHandlerState value) {
+  void set_scroll_handler_state(ChromeCompositorStateMachine_MinorState_ScrollHandlerState value) {
     static constexpr uint32_t field_id = FieldMetadata_ScrollHandlerState::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -2408,11 +2414,11 @@ class ChromeCompositorStateMachine_MajorState : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction,
+      ChromeCompositorSchedulerAction,
       ChromeCompositorStateMachine_MajorState>;
 
   static constexpr FieldMetadata_NextAction kNextAction{};
-  void set_next_action(::perfetto::protos::pbzero::ChromeCompositorSchedulerAction value) {
+  void set_next_action(ChromeCompositorSchedulerAction value) {
     static constexpr uint32_t field_id = FieldMetadata_NextAction::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -2426,11 +2432,11 @@ class ChromeCompositorStateMachine_MajorState : public ::protozero::Message {
       2,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginImplFrameState,
+      ChromeCompositorStateMachine_MajorState_BeginImplFrameState,
       ChromeCompositorStateMachine_MajorState>;
 
   static constexpr FieldMetadata_BeginImplFrameState kBeginImplFrameState{};
-  void set_begin_impl_frame_state(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginImplFrameState value) {
+  void set_begin_impl_frame_state(ChromeCompositorStateMachine_MajorState_BeginImplFrameState value) {
     static constexpr uint32_t field_id = FieldMetadata_BeginImplFrameState::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -2444,11 +2450,11 @@ class ChromeCompositorStateMachine_MajorState : public ::protozero::Message {
       3,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginMainFrameState,
+      ChromeCompositorStateMachine_MajorState_BeginMainFrameState,
       ChromeCompositorStateMachine_MajorState>;
 
   static constexpr FieldMetadata_BeginMainFrameState kBeginMainFrameState{};
-  void set_begin_main_frame_state(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_BeginMainFrameState value) {
+  void set_begin_main_frame_state(ChromeCompositorStateMachine_MajorState_BeginMainFrameState value) {
     static constexpr uint32_t field_id = FieldMetadata_BeginMainFrameState::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -2462,11 +2468,11 @@ class ChromeCompositorStateMachine_MajorState : public ::protozero::Message {
       4,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState,
+      ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState,
       ChromeCompositorStateMachine_MajorState>;
 
   static constexpr FieldMetadata_LayerTreeFrameSinkState kLayerTreeFrameSinkState{};
-  void set_layer_tree_frame_sink_state(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState value) {
+  void set_layer_tree_frame_sink_state(ChromeCompositorStateMachine_MajorState_LayerTreeFrameSinkState value) {
     static constexpr uint32_t field_id = FieldMetadata_LayerTreeFrameSinkState::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -2480,11 +2486,11 @@ class ChromeCompositorStateMachine_MajorState : public ::protozero::Message {
       5,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState,
+      ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState,
       ChromeCompositorStateMachine_MajorState>;
 
   static constexpr FieldMetadata_ForcedRedrawState kForcedRedrawState{};
-  void set_forced_redraw_state(::perfetto::protos::pbzero::ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState value) {
+  void set_forced_redraw_state(ChromeCompositorStateMachine_MajorState_ForcedRedrawOnTimeoutState value) {
     static constexpr uint32_t field_id = FieldMetadata_ForcedRedrawState::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -2659,11 +2665,11 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
       7,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeCompositorSchedulerAction,
+      ChromeCompositorSchedulerAction,
       ChromeCompositorSchedulerState>;
 
   static constexpr FieldMetadata_InsideAction kInsideAction{};
-  void set_inside_action(::perfetto::protos::pbzero::ChromeCompositorSchedulerAction value) {
+  void set_inside_action(ChromeCompositorSchedulerAction value) {
     static constexpr uint32_t field_id = FieldMetadata_InsideAction::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -2677,11 +2683,11 @@ class ChromeCompositorSchedulerState : public ::protozero::Message {
       8,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode,
+      ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode,
       ChromeCompositorSchedulerState>;
 
   static constexpr FieldMetadata_DeadlineMode kDeadlineMode{};
-  void set_deadline_mode(::perfetto::protos::pbzero::ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode value) {
+  void set_deadline_mode(ChromeCompositorSchedulerState_BeginImplFrameDeadlineMode value) {
     static constexpr uint32_t field_id = FieldMetadata_DeadlineMode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

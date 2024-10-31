@@ -15,7 +15,7 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
+class FollowerEvent;
 class PerfEventConfig_CallstackSampling;
 class PerfEventConfig_Scope;
 class PerfEvents_Timebase;
@@ -23,6 +23,13 @@ namespace perfetto_pbzero_enum_PerfEventConfig {
 enum UnwindMode : int32_t;
 }  // namespace perfetto_pbzero_enum_PerfEventConfig
 using PerfEventConfig_UnwindMode = perfetto_pbzero_enum_PerfEventConfig::UnwindMode;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_PerfEventConfig {
 enum UnwindMode : int32_t {
@@ -53,13 +60,15 @@ const char* PerfEventConfig_UnwindMode_Name(::perfetto::protos::pbzero::PerfEven
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class PerfEventConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/18, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class PerfEventConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/19, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   PerfEventConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit PerfEventConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit PerfEventConfig_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_timebase() const { return at<15>().valid(); }
   ::protozero::ConstBytes timebase() const { return at<15>().as_bytes(); }
+  bool has_followers() const { return at<19>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> followers() const { return GetRepeated<::protozero::ConstBytes>(19); }
   bool has_callstack_sampling() const { return at<16>().valid(); }
   ::protozero::ConstBytes callstack_sampling() const { return at<16>().as_bytes(); }
   bool has_ring_buffer_read_period_ms() const { return at<8>().valid(); }
@@ -99,6 +108,7 @@ class PerfEventConfig : public ::protozero::Message {
   using Decoder = PerfEventConfig_Decoder;
   enum : int32_t {
     kTimebaseFieldNumber = 15,
+    kFollowersFieldNumber = 19,
     kCallstackSamplingFieldNumber = 16,
     kRingBufferReadPeriodMsFieldNumber = 8,
     kRingBufferPagesFieldNumber = 3,
@@ -140,6 +150,20 @@ class PerfEventConfig : public ::protozero::Message {
   static constexpr FieldMetadata_Timebase kTimebase{};
   template <typename T = PerfEvents_Timebase> T* set_timebase() {
     return BeginNestedMessage<T>(15);
+  }
+
+
+  using FieldMetadata_Followers =
+    ::protozero::proto_utils::FieldMetadata<
+      19,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      FollowerEvent,
+      PerfEventConfig>;
+
+  static constexpr FieldMetadata_Followers kFollowers{};
+  template <typename T = FollowerEvent> T* add_followers() {
+    return BeginNestedMessage<T>(19);
   }
 
 
@@ -661,11 +685,11 @@ class PerfEventConfig_CallstackSampling : public ::protozero::Message {
       3,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::PerfEventConfig_UnwindMode,
+      PerfEventConfig_UnwindMode,
       PerfEventConfig_CallstackSampling>;
 
   static constexpr FieldMetadata_UserFrames kUserFrames{};
-  void set_user_frames(::perfetto::protos::pbzero::PerfEventConfig_UnwindMode value) {
+  void set_user_frames(PerfEventConfig_UnwindMode value) {
     static constexpr uint32_t field_id = FieldMetadata_UserFrames::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

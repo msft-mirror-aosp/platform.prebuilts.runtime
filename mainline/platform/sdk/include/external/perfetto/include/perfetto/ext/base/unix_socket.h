@@ -25,8 +25,10 @@
 #include <utility>
 
 #include "perfetto/base/build_config.h"
+#include "perfetto/base/compiler.h"
 #include "perfetto/base/export.h"
 #include "perfetto/base/logging.h"
+#include "perfetto/base/platform_handle.h"
 #include "perfetto/ext/base/scoped_file.h"
 #include "perfetto/ext/base/utils.h"
 #include "perfetto/ext/base/weak_ptr.h"
@@ -36,23 +38,13 @@ struct msghdr;
 namespace perfetto {
 namespace base {
 
-// Define the SocketHandle and ScopedSocketHandle types.
-// On POSIX OSes, a SocketHandle is really just an int (a file descriptor).
-// On Windows, sockets are have their own type (SOCKET) which is neither a
-// HANDLE nor an int. However Windows SOCKET(s) can have a event HANDLE attached
-// to them (which in Perfetto is a PlatformHandle), and that can be used in
-// WaitForMultipleObjects, hence in base::TaskRunner.AddFileDescriptorWatch().
+// Define the ScopedSocketHandle type.
 
 #if PERFETTO_BUILDFLAG(PERFETTO_OS_WIN)
-// uintptr_t really reads as SOCKET here (Windows headers typedef to that).
-// As usual we don't just use SOCKET here to avoid leaking Windows.h includes
-// in our headers.
-using SocketHandle = uintptr_t;  // SOCKET
-int CloseSocket(SocketHandle);   // A wrapper around ::closesocket().
+int CloseSocket(SocketHandle);  // A wrapper around ::closesocket().
 using ScopedSocketHandle =
     ScopedResource<SocketHandle, CloseSocket, static_cast<SocketHandle>(-1)>;
 #else
-using SocketHandle = int;
 using ScopedSocketHandle = ScopedFile;
 #endif
 
@@ -88,7 +80,26 @@ enum class SockPeerCredMode {
 // - @abstract_name  : for abstract AF_UNIX sockets.
 // - 1.2.3.4:8080    : for Inet sockets.
 // - [::1]:8080      : for Inet6 sockets.
+// - vsock://-1:3000 : for VM sockets.
 SockFamily GetSockFamily(const char* addr);
+
+// Returns whether inter-process shared memory is supported for the socket.
+inline bool SockShmemSupported(SockFamily sock_family) {
+#if !PERFETTO_BUILDFLAG(PERFETTO_OS_WIN)
+  return sock_family == SockFamily::kUnix;
+#else
+  base::ignore_result(sock_family);
+  // On Windows shm is negotiated by sharing an unguessable token
+  // over TCP sockets. In theory works on any socket type, in practice
+  // we need to tell the difference between a local and a remote
+  // connection. For now we assume everything is local.
+  // See comments on r.android.com/2951909 .
+  return true;
+#endif
+}
+inline bool SockShmemSupported(const char* addr) {
+  return SockShmemSupported(GetSockFamily(addr));
+}
 
 // UnixSocketRaw is a basic wrapper around sockets. It exposes wrapper
 // methods that take care of most common pitfalls (e.g., marking fd as
@@ -126,6 +137,7 @@ class UnixSocketRaw {
   void SetBlocking(bool);
   void DcheckIsBlocking(bool expected) const;  // No-op on release and Win.
   void SetRetainOnExec(bool retain);
+  std::string GetSockAddr() const;
   SockType type() const { return type_; }
   SockFamily family() const { return family_; }
   SocketHandle fd() const { return *fd_; }
@@ -331,6 +343,9 @@ class PERFETTO_EXPORT_COMPONENT UnixSocket {
   void SetRxTimeout(uint32_t timeout_ms) {
     PERFETTO_CHECK(sock_raw_.SetRxTimeout(timeout_ms));
   }
+
+  std::string GetSockAddr() const { return sock_raw_.GetSockAddr(); }
+
   // Returns true is the message was queued, false if there was no space in the
   // output buffer, in which case the client should retry or give up.
   // If any other error happens the socket will be shutdown and

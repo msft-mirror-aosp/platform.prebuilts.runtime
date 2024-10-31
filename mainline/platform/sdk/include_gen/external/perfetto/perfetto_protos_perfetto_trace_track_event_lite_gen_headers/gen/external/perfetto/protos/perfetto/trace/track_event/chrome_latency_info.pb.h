@@ -121,6 +121,30 @@ inline const std::string& ChromeLatencyInfo_LatencyComponentType_Name(T enum_t_v
 }
 bool ChromeLatencyInfo_LatencyComponentType_Parse(
     ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ChromeLatencyInfo_LatencyComponentType* value);
+enum ChromeLatencyInfo_InputType : int {
+  ChromeLatencyInfo_InputType_UNSPECIFIED_OR_OTHER = 0,
+  ChromeLatencyInfo_InputType_TOUCH_MOVED = 1,
+  ChromeLatencyInfo_InputType_GESTURE_SCROLL_BEGIN = 2,
+  ChromeLatencyInfo_InputType_GESTURE_SCROLL_UPDATE = 3,
+  ChromeLatencyInfo_InputType_GESTURE_SCROLL_END = 4,
+  ChromeLatencyInfo_InputType_GESTURE_TAP = 5,
+  ChromeLatencyInfo_InputType_GESTURE_TAP_CANCEL = 6
+};
+bool ChromeLatencyInfo_InputType_IsValid(int value);
+constexpr ChromeLatencyInfo_InputType ChromeLatencyInfo_InputType_InputType_MIN = ChromeLatencyInfo_InputType_UNSPECIFIED_OR_OTHER;
+constexpr ChromeLatencyInfo_InputType ChromeLatencyInfo_InputType_InputType_MAX = ChromeLatencyInfo_InputType_GESTURE_TAP_CANCEL;
+constexpr int ChromeLatencyInfo_InputType_InputType_ARRAYSIZE = ChromeLatencyInfo_InputType_InputType_MAX + 1;
+
+const std::string& ChromeLatencyInfo_InputType_Name(ChromeLatencyInfo_InputType value);
+template<typename T>
+inline const std::string& ChromeLatencyInfo_InputType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ChromeLatencyInfo_InputType>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function ChromeLatencyInfo_InputType_Name.");
+  return ChromeLatencyInfo_InputType_Name(static_cast<ChromeLatencyInfo_InputType>(enum_t_value));
+}
+bool ChromeLatencyInfo_InputType_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ChromeLatencyInfo_InputType* value);
 // ===================================================================
 
 class ChromeLatencyInfo_ComponentInfo final :
@@ -495,6 +519,42 @@ class ChromeLatencyInfo final :
     return ChromeLatencyInfo_LatencyComponentType_Parse(name, value);
   }
 
+  typedef ChromeLatencyInfo_InputType InputType;
+  static constexpr InputType UNSPECIFIED_OR_OTHER =
+    ChromeLatencyInfo_InputType_UNSPECIFIED_OR_OTHER;
+  static constexpr InputType TOUCH_MOVED =
+    ChromeLatencyInfo_InputType_TOUCH_MOVED;
+  static constexpr InputType GESTURE_SCROLL_BEGIN =
+    ChromeLatencyInfo_InputType_GESTURE_SCROLL_BEGIN;
+  static constexpr InputType GESTURE_SCROLL_UPDATE =
+    ChromeLatencyInfo_InputType_GESTURE_SCROLL_UPDATE;
+  static constexpr InputType GESTURE_SCROLL_END =
+    ChromeLatencyInfo_InputType_GESTURE_SCROLL_END;
+  static constexpr InputType GESTURE_TAP =
+    ChromeLatencyInfo_InputType_GESTURE_TAP;
+  static constexpr InputType GESTURE_TAP_CANCEL =
+    ChromeLatencyInfo_InputType_GESTURE_TAP_CANCEL;
+  static inline bool InputType_IsValid(int value) {
+    return ChromeLatencyInfo_InputType_IsValid(value);
+  }
+  static constexpr InputType InputType_MIN =
+    ChromeLatencyInfo_InputType_InputType_MIN;
+  static constexpr InputType InputType_MAX =
+    ChromeLatencyInfo_InputType_InputType_MAX;
+  static constexpr int InputType_ARRAYSIZE =
+    ChromeLatencyInfo_InputType_InputType_ARRAYSIZE;
+  template<typename T>
+  static inline const std::string& InputType_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, InputType>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function InputType_Name.");
+    return ChromeLatencyInfo_InputType_Name(enum_t_value);
+  }
+  static inline bool InputType_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      InputType* value) {
+    return ChromeLatencyInfo_InputType_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
@@ -503,8 +563,9 @@ class ChromeLatencyInfo final :
     kStepFieldNumber = 2,
     kFrameTreeNodeIdFieldNumber = 3,
     kGestureScrollIdFieldNumber = 6,
-    kTouchIdFieldNumber = 7,
     kIsCoalescedFieldNumber = 5,
+    kInputTypeFieldNumber = 8,
+    kTouchIdFieldNumber = 7,
   };
   // repeated .perfetto.protos.ChromeLatencyInfo.ComponentInfo component_info = 4;
   int component_info_size() const;
@@ -576,19 +637,6 @@ class ChromeLatencyInfo final :
   void _internal_set_gesture_scroll_id(::int64_t value);
   public:
 
-  // optional int64 touch_id = 7;
-  bool has_touch_id() const;
-  private:
-  bool _internal_has_touch_id() const;
-  public:
-  void clear_touch_id();
-  ::int64_t touch_id() const;
-  void set_touch_id(::int64_t value);
-  private:
-  ::int64_t _internal_touch_id() const;
-  void _internal_set_touch_id(::int64_t value);
-  public:
-
   // optional bool is_coalesced = 5;
   bool has_is_coalesced() const;
   private:
@@ -600,6 +648,32 @@ class ChromeLatencyInfo final :
   private:
   bool _internal_is_coalesced() const;
   void _internal_set_is_coalesced(bool value);
+  public:
+
+  // optional .perfetto.protos.ChromeLatencyInfo.InputType input_type = 8;
+  bool has_input_type() const;
+  private:
+  bool _internal_has_input_type() const;
+  public:
+  void clear_input_type();
+  ::perfetto::protos::ChromeLatencyInfo_InputType input_type() const;
+  void set_input_type(::perfetto::protos::ChromeLatencyInfo_InputType value);
+  private:
+  ::perfetto::protos::ChromeLatencyInfo_InputType _internal_input_type() const;
+  void _internal_set_input_type(::perfetto::protos::ChromeLatencyInfo_InputType value);
+  public:
+
+  // optional int64 touch_id = 7;
+  bool has_touch_id() const;
+  private:
+  bool _internal_has_touch_id() const;
+  public:
+  void clear_touch_id();
+  ::int64_t touch_id() const;
+  void set_touch_id(::int64_t value);
+  private:
+  ::int64_t _internal_touch_id() const;
+  void _internal_set_touch_id(::int64_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:perfetto.protos.ChromeLatencyInfo)
@@ -617,8 +691,9 @@ class ChromeLatencyInfo final :
     int step_;
     ::int32_t frame_tree_node_id_;
     ::int64_t gesture_scroll_id_;
-    ::int64_t touch_id_;
     bool is_coalesced_;
+    int input_type_;
+    ::int64_t touch_id_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftrack_5fevent_2fchrome_5flatency_5finfo_2eproto;
@@ -822,7 +897,7 @@ ChromeLatencyInfo::component_info() const {
 
 // optional bool is_coalesced = 5;
 inline bool ChromeLatencyInfo::_internal_has_is_coalesced() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
   return value;
 }
 inline bool ChromeLatencyInfo::has_is_coalesced() const {
@@ -830,7 +905,7 @@ inline bool ChromeLatencyInfo::has_is_coalesced() const {
 }
 inline void ChromeLatencyInfo::clear_is_coalesced() {
   _impl_.is_coalesced_ = false;
-  _impl_._has_bits_[0] &= ~0x00000020u;
+  _impl_._has_bits_[0] &= ~0x00000010u;
 }
 inline bool ChromeLatencyInfo::_internal_is_coalesced() const {
   return _impl_.is_coalesced_;
@@ -840,7 +915,7 @@ inline bool ChromeLatencyInfo::is_coalesced() const {
   return _internal_is_coalesced();
 }
 inline void ChromeLatencyInfo::_internal_set_is_coalesced(bool value) {
-  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_._has_bits_[0] |= 0x00000010u;
   _impl_.is_coalesced_ = value;
 }
 inline void ChromeLatencyInfo::set_is_coalesced(bool value) {
@@ -878,7 +953,7 @@ inline void ChromeLatencyInfo::set_gesture_scroll_id(::int64_t value) {
 
 // optional int64 touch_id = 7;
 inline bool ChromeLatencyInfo::_internal_has_touch_id() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
   return value;
 }
 inline bool ChromeLatencyInfo::has_touch_id() const {
@@ -886,7 +961,7 @@ inline bool ChromeLatencyInfo::has_touch_id() const {
 }
 inline void ChromeLatencyInfo::clear_touch_id() {
   _impl_.touch_id_ = ::int64_t{0};
-  _impl_._has_bits_[0] &= ~0x00000010u;
+  _impl_._has_bits_[0] &= ~0x00000040u;
 }
 inline ::int64_t ChromeLatencyInfo::_internal_touch_id() const {
   return _impl_.touch_id_;
@@ -896,12 +971,41 @@ inline ::int64_t ChromeLatencyInfo::touch_id() const {
   return _internal_touch_id();
 }
 inline void ChromeLatencyInfo::_internal_set_touch_id(::int64_t value) {
-  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_._has_bits_[0] |= 0x00000040u;
   _impl_.touch_id_ = value;
 }
 inline void ChromeLatencyInfo::set_touch_id(::int64_t value) {
   _internal_set_touch_id(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.ChromeLatencyInfo.touch_id)
+}
+
+// optional .perfetto.protos.ChromeLatencyInfo.InputType input_type = 8;
+inline bool ChromeLatencyInfo::_internal_has_input_type() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool ChromeLatencyInfo::has_input_type() const {
+  return _internal_has_input_type();
+}
+inline void ChromeLatencyInfo::clear_input_type() {
+  _impl_.input_type_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline ::perfetto::protos::ChromeLatencyInfo_InputType ChromeLatencyInfo::_internal_input_type() const {
+  return static_cast< ::perfetto::protos::ChromeLatencyInfo_InputType >(_impl_.input_type_);
+}
+inline ::perfetto::protos::ChromeLatencyInfo_InputType ChromeLatencyInfo::input_type() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ChromeLatencyInfo.input_type)
+  return _internal_input_type();
+}
+inline void ChromeLatencyInfo::_internal_set_input_type(::perfetto::protos::ChromeLatencyInfo_InputType value) {
+  assert(::perfetto::protos::ChromeLatencyInfo_InputType_IsValid(value));
+  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_.input_type_ = value;
+}
+inline void ChromeLatencyInfo::set_input_type(::perfetto::protos::ChromeLatencyInfo_InputType value) {
+  _internal_set_input_type(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.ChromeLatencyInfo.input_type)
 }
 
 #ifdef __GNUC__
@@ -919,6 +1023,7 @@ PROTOBUF_NAMESPACE_OPEN
 
 template <> struct is_proto_enum< ::perfetto::protos::ChromeLatencyInfo_Step> : ::std::true_type {};
 template <> struct is_proto_enum< ::perfetto::protos::ChromeLatencyInfo_LatencyComponentType> : ::std::true_type {};
+template <> struct is_proto_enum< ::perfetto::protos::ChromeLatencyInfo_InputType> : ::std::true_type {};
 
 PROTOBUF_NAMESPACE_CLOSE
 

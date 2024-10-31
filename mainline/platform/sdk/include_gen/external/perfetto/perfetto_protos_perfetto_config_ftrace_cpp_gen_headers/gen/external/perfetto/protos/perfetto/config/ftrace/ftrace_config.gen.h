@@ -52,8 +52,10 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig : public ::protozero::CppMessageObj
     kFtraceEventsFieldNumber = 1,
     kAtraceCategoriesFieldNumber = 2,
     kAtraceAppsFieldNumber = 3,
+    kAtraceCategoriesPreferSdkFieldNumber = 28,
     kBufferSizeKbFieldNumber = 10,
     kDrainPeriodMsFieldNumber = 11,
+    kDrainBufferPercentFieldNumber = 29,
     kCompactSchedFieldNumber = 12,
     kPrintFilterFieldNumber = 22,
     kSymbolizeKsymsFieldNumber = 13,
@@ -68,6 +70,7 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig : public ::protozero::CppMessageObj
     kPreserveFtraceBufferFieldNumber = 23,
     kUseMonotonicRawClockFieldNumber = 24,
     kInstanceNameFieldNumber = 25,
+    kBufferSizeLowerBoundFieldNumber = 27,
   };
 
   FtraceConfig();
@@ -105,6 +108,13 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig : public ::protozero::CppMessageObj
   void add_atrace_apps(std::string value) { atrace_apps_.emplace_back(value); }
   std::string* add_atrace_apps() { atrace_apps_.emplace_back(); return &atrace_apps_.back(); }
 
+  const std::vector<std::string>& atrace_categories_prefer_sdk() const { return atrace_categories_prefer_sdk_; }
+  std::vector<std::string>* mutable_atrace_categories_prefer_sdk() { return &atrace_categories_prefer_sdk_; }
+  int atrace_categories_prefer_sdk_size() const { return static_cast<int>(atrace_categories_prefer_sdk_.size()); }
+  void clear_atrace_categories_prefer_sdk() { atrace_categories_prefer_sdk_.clear(); }
+  void add_atrace_categories_prefer_sdk(std::string value) { atrace_categories_prefer_sdk_.emplace_back(value); }
+  std::string* add_atrace_categories_prefer_sdk() { atrace_categories_prefer_sdk_.emplace_back(); return &atrace_categories_prefer_sdk_.back(); }
+
   bool has_buffer_size_kb() const { return _has_field_[10]; }
   uint32_t buffer_size_kb() const { return buffer_size_kb_; }
   void set_buffer_size_kb(uint32_t value) { buffer_size_kb_ = value; _has_field_.set(10); }
@@ -112,6 +122,10 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig : public ::protozero::CppMessageObj
   bool has_drain_period_ms() const { return _has_field_[11]; }
   uint32_t drain_period_ms() const { return drain_period_ms_; }
   void set_drain_period_ms(uint32_t value) { drain_period_ms_ = value; _has_field_.set(11); }
+
+  bool has_drain_buffer_percent() const { return _has_field_[29]; }
+  uint32_t drain_buffer_percent() const { return drain_buffer_percent_; }
+  void set_drain_buffer_percent(uint32_t value) { drain_buffer_percent_ = value; _has_field_.set(29); }
 
   bool has_compact_sched() const { return _has_field_[12]; }
   const FtraceConfig_CompactSchedConfig& compact_sched() const { return *compact_sched_; }
@@ -178,12 +192,18 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig : public ::protozero::CppMessageObj
   const std::string& instance_name() const { return instance_name_; }
   void set_instance_name(const std::string& value) { instance_name_ = value; _has_field_.set(25); }
 
+  bool has_buffer_size_lower_bound() const { return _has_field_[27]; }
+  bool buffer_size_lower_bound() const { return buffer_size_lower_bound_; }
+  void set_buffer_size_lower_bound(bool value) { buffer_size_lower_bound_ = value; _has_field_.set(27); }
+
  private:
   std::vector<std::string> ftrace_events_;
   std::vector<std::string> atrace_categories_;
   std::vector<std::string> atrace_apps_;
+  std::vector<std::string> atrace_categories_prefer_sdk_;
   uint32_t buffer_size_kb_{};
   uint32_t drain_period_ms_{};
+  uint32_t drain_buffer_percent_{};
   ::protozero::CopyablePtr<FtraceConfig_CompactSchedConfig> compact_sched_;
   ::protozero::CopyablePtr<FtraceConfig_PrintFilter> print_filter_;
   bool symbolize_ksyms_{};
@@ -198,12 +218,13 @@ class PERFETTO_EXPORT_COMPONENT FtraceConfig : public ::protozero::CppMessageObj
   bool preserve_ftrace_buffer_{};
   bool use_monotonic_raw_clock_{};
   std::string instance_name_{};
+  bool buffer_size_lower_bound_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<26> _has_field_{};
+  std::bitset<30> _has_field_{};
 };
 
 

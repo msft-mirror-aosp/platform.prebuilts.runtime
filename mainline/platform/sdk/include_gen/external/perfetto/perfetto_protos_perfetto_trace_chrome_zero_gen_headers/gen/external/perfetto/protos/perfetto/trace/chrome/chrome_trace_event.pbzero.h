@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class ChromeLegacyJsonTrace;
 class ChromeMetadata;
 class ChromeStringTableEntry;
@@ -30,6 +29,13 @@ namespace perfetto_pbzero_enum_ChromeTracedValue {
 enum NestedType : int32_t;
 }  // namespace perfetto_pbzero_enum_ChromeTracedValue
 using ChromeTracedValue_NestedType = perfetto_pbzero_enum_ChromeTracedValue::NestedType;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_ChromeLegacyJsonTrace {
 enum TraceType : int32_t {
@@ -225,11 +231,11 @@ class ChromeLegacyJsonTrace : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeLegacyJsonTrace_TraceType,
+      ChromeLegacyJsonTrace_TraceType,
       ChromeLegacyJsonTrace>;
 
   static constexpr FieldMetadata_Type kType{};
-  void set_type(::perfetto::protos::pbzero::ChromeLegacyJsonTrace_TraceType value) {
+  void set_type(ChromeLegacyJsonTrace_TraceType value) {
     static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -1124,11 +1130,11 @@ class ChromeTracedValue : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeTracedValue_NestedType,
+      ChromeTracedValue_NestedType,
       ChromeTracedValue>;
 
   static constexpr FieldMetadata_NestedType kNestedType{};
-  void set_nested_type(::perfetto::protos::pbzero::ChromeTracedValue_NestedType value) {
+  void set_nested_type(ChromeTracedValue_NestedType value) {
     static constexpr uint32_t field_id = FieldMetadata_NestedType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

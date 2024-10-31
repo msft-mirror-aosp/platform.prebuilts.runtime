@@ -15,12 +15,15 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class FrameTimelineEvent_ActualDisplayFrameStart;
 class FrameTimelineEvent_ActualSurfaceFrameStart;
 class FrameTimelineEvent_ExpectedDisplayFrameStart;
 class FrameTimelineEvent_ExpectedSurfaceFrameStart;
 class FrameTimelineEvent_FrameEnd;
+namespace perfetto_pbzero_enum_FrameTimelineEvent {
+enum JankSeverityType : int32_t;
+}  // namespace perfetto_pbzero_enum_FrameTimelineEvent
+using FrameTimelineEvent_JankSeverityType = perfetto_pbzero_enum_FrameTimelineEvent::JankSeverityType;
 namespace perfetto_pbzero_enum_FrameTimelineEvent {
 enum PredictionType : int32_t;
 }  // namespace perfetto_pbzero_enum_FrameTimelineEvent
@@ -29,6 +32,13 @@ namespace perfetto_pbzero_enum_FrameTimelineEvent {
 enum PresentType : int32_t;
 }  // namespace perfetto_pbzero_enum_FrameTimelineEvent
 using FrameTimelineEvent_PresentType = perfetto_pbzero_enum_FrameTimelineEvent::PresentType;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_FrameTimelineEvent {
 enum JankType : int32_t {
@@ -91,6 +101,39 @@ const char* FrameTimelineEvent_JankType_Name(::perfetto::protos::pbzero::FrameTi
 
   case ::perfetto::protos::pbzero::FrameTimelineEvent_JankType::JANK_DROPPED:
     return "JANK_DROPPED";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+namespace perfetto_pbzero_enum_FrameTimelineEvent {
+enum JankSeverityType : int32_t {
+  SEVERITY_UNKNOWN = 0,
+  SEVERITY_NONE = 1,
+  SEVERITY_PARTIAL = 2,
+  SEVERITY_FULL = 3,
+};
+} // namespace perfetto_pbzero_enum_FrameTimelineEvent
+using FrameTimelineEvent_JankSeverityType = perfetto_pbzero_enum_FrameTimelineEvent::JankSeverityType;
+
+
+constexpr FrameTimelineEvent_JankSeverityType FrameTimelineEvent_JankSeverityType_MIN = FrameTimelineEvent_JankSeverityType::SEVERITY_UNKNOWN;
+constexpr FrameTimelineEvent_JankSeverityType FrameTimelineEvent_JankSeverityType_MAX = FrameTimelineEvent_JankSeverityType::SEVERITY_FULL;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* FrameTimelineEvent_JankSeverityType_Name(::perfetto::protos::pbzero::FrameTimelineEvent_JankSeverityType value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankSeverityType::SEVERITY_UNKNOWN:
+    return "SEVERITY_UNKNOWN";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankSeverityType::SEVERITY_NONE:
+    return "SEVERITY_NONE";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankSeverityType::SEVERITY_PARTIAL:
+    return "SEVERITY_PARTIAL";
+
+  case ::perfetto::protos::pbzero::FrameTimelineEvent_JankSeverityType::SEVERITY_FULL:
+    return "SEVERITY_FULL";
   }
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
@@ -209,6 +252,11 @@ class FrameTimelineEvent : public ::protozero::Message {
     return ::perfetto::protos::pbzero::FrameTimelineEvent_JankType_Name(value);
   }
 
+  using JankSeverityType = ::perfetto::protos::pbzero::FrameTimelineEvent_JankSeverityType;
+  static inline const char* JankSeverityType_Name(JankSeverityType value) {
+    return ::perfetto::protos::pbzero::FrameTimelineEvent_JankSeverityType_Name(value);
+  }
+
   using PresentType = ::perfetto::protos::pbzero::FrameTimelineEvent_PresentType;
   static inline const char* PresentType_Name(PresentType value) {
     return ::perfetto::protos::pbzero::FrameTimelineEvent_PresentType_Name(value);
@@ -230,6 +278,10 @@ class FrameTimelineEvent : public ::protozero::Message {
   static inline const JankType JANK_UNKNOWN = JankType::JANK_UNKNOWN;
   static inline const JankType JANK_SF_STUFFING = JankType::JANK_SF_STUFFING;
   static inline const JankType JANK_DROPPED = JankType::JANK_DROPPED;
+  static inline const JankSeverityType SEVERITY_UNKNOWN = JankSeverityType::SEVERITY_UNKNOWN;
+  static inline const JankSeverityType SEVERITY_NONE = JankSeverityType::SEVERITY_NONE;
+  static inline const JankSeverityType SEVERITY_PARTIAL = JankSeverityType::SEVERITY_PARTIAL;
+  static inline const JankSeverityType SEVERITY_FULL = JankSeverityType::SEVERITY_FULL;
   static inline const PresentType PRESENT_UNSPECIFIED = PresentType::PRESENT_UNSPECIFIED;
   static inline const PresentType PRESENT_ON_TIME = PresentType::PRESENT_ON_TIME;
   static inline const PresentType PRESENT_LATE = PresentType::PRESENT_LATE;
@@ -349,7 +401,7 @@ class FrameTimelineEvent_FrameEnd : public ::protozero::Message {
   }
 };
 
-class FrameTimelineEvent_ActualDisplayFrameStart_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/8, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class FrameTimelineEvent_ActualDisplayFrameStart_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/9, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   FrameTimelineEvent_ActualDisplayFrameStart_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit FrameTimelineEvent_ActualDisplayFrameStart_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -370,6 +422,8 @@ class FrameTimelineEvent_ActualDisplayFrameStart_Decoder : public ::protozero::T
   int32_t jank_type() const { return at<7>().as_int32(); }
   bool has_prediction_type() const { return at<8>().valid(); }
   int32_t prediction_type() const { return at<8>().as_int32(); }
+  bool has_jank_severity_type() const { return at<9>().valid(); }
+  int32_t jank_severity_type() const { return at<9>().as_int32(); }
 };
 
 class FrameTimelineEvent_ActualDisplayFrameStart : public ::protozero::Message {
@@ -384,6 +438,7 @@ class FrameTimelineEvent_ActualDisplayFrameStart : public ::protozero::Message {
     kGpuCompositionFieldNumber = 6,
     kJankTypeFieldNumber = 7,
     kPredictionTypeFieldNumber = 8,
+    kJankSeverityTypeFieldNumber = 9,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.FrameTimelineEvent.ActualDisplayFrameStart"; }
 
@@ -447,11 +502,11 @@ class FrameTimelineEvent_ActualDisplayFrameStart : public ::protozero::Message {
       4,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::FrameTimelineEvent_PresentType,
+      FrameTimelineEvent_PresentType,
       FrameTimelineEvent_ActualDisplayFrameStart>;
 
   static constexpr FieldMetadata_PresentType kPresentType{};
-  void set_present_type(::perfetto::protos::pbzero::FrameTimelineEvent_PresentType value) {
+  void set_present_type(FrameTimelineEvent_PresentType value) {
     static constexpr uint32_t field_id = FieldMetadata_PresentType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -519,12 +574,30 @@ class FrameTimelineEvent_ActualDisplayFrameStart : public ::protozero::Message {
       8,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType,
+      FrameTimelineEvent_PredictionType,
       FrameTimelineEvent_ActualDisplayFrameStart>;
 
   static constexpr FieldMetadata_PredictionType kPredictionType{};
-  void set_prediction_type(::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType value) {
+  void set_prediction_type(FrameTimelineEvent_PredictionType value) {
     static constexpr uint32_t field_id = FieldMetadata_PredictionType::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_JankSeverityType =
+    ::protozero::proto_utils::FieldMetadata<
+      9,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      FrameTimelineEvent_JankSeverityType,
+      FrameTimelineEvent_ActualDisplayFrameStart>;
+
+  static constexpr FieldMetadata_JankSeverityType kJankSeverityType{};
+  void set_jank_severity_type(FrameTimelineEvent_JankSeverityType value) {
+    static constexpr uint32_t field_id = FieldMetadata_JankSeverityType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
@@ -612,7 +685,7 @@ class FrameTimelineEvent_ExpectedDisplayFrameStart : public ::protozero::Message
   }
 };
 
-class FrameTimelineEvent_ActualSurfaceFrameStart_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/11, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class FrameTimelineEvent_ActualSurfaceFrameStart_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/12, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   FrameTimelineEvent_ActualSurfaceFrameStart_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit FrameTimelineEvent_ActualSurfaceFrameStart_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -639,6 +712,8 @@ class FrameTimelineEvent_ActualSurfaceFrameStart_Decoder : public ::protozero::T
   int32_t prediction_type() const { return at<10>().as_int32(); }
   bool has_is_buffer() const { return at<11>().valid(); }
   bool is_buffer() const { return at<11>().as_bool(); }
+  bool has_jank_severity_type() const { return at<12>().valid(); }
+  int32_t jank_severity_type() const { return at<12>().as_int32(); }
 };
 
 class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
@@ -656,6 +731,7 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
     kJankTypeFieldNumber = 9,
     kPredictionTypeFieldNumber = 10,
     kIsBufferFieldNumber = 11,
+    kJankSeverityTypeFieldNumber = 12,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.FrameTimelineEvent.ActualSurfaceFrameStart"; }
 
@@ -761,11 +837,11 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
       6,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::FrameTimelineEvent_PresentType,
+      FrameTimelineEvent_PresentType,
       FrameTimelineEvent_ActualSurfaceFrameStart>;
 
   static constexpr FieldMetadata_PresentType kPresentType{};
-  void set_present_type(::perfetto::protos::pbzero::FrameTimelineEvent_PresentType value) {
+  void set_present_type(FrameTimelineEvent_PresentType value) {
     static constexpr uint32_t field_id = FieldMetadata_PresentType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -833,11 +909,11 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
       10,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType,
+      FrameTimelineEvent_PredictionType,
       FrameTimelineEvent_ActualSurfaceFrameStart>;
 
   static constexpr FieldMetadata_PredictionType kPredictionType{};
-  void set_prediction_type(::perfetto::protos::pbzero::FrameTimelineEvent_PredictionType value) {
+  void set_prediction_type(FrameTimelineEvent_PredictionType value) {
     static constexpr uint32_t field_id = FieldMetadata_PredictionType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -861,6 +937,24 @@ class FrameTimelineEvent_ActualSurfaceFrameStart : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_JankSeverityType =
+    ::protozero::proto_utils::FieldMetadata<
+      12,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      FrameTimelineEvent_JankSeverityType,
+      FrameTimelineEvent_ActualSurfaceFrameStart>;
+
+  static constexpr FieldMetadata_JankSeverityType kJankSeverityType{};
+  void set_jank_severity_type(FrameTimelineEvent_JankSeverityType value) {
+    static constexpr uint32_t field_id = FieldMetadata_JankSeverityType::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
         ::Append(*this, field_id, value);
   }
 };
