@@ -42,6 +42,7 @@ class TraceStats_BufferStats;
 class GetTraceStatsRequest;
 class AttachResponse;
 class TraceConfig;
+class TraceConfig_SessionSemaphore;
 class TraceConfig_CmdTraceStartDelay;
 class TraceConfig_AndroidReportConfig;
 class TraceConfig_TraceFilter;
@@ -60,6 +61,7 @@ class DataSourceConfig;
 class TestConfig;
 class TestConfig_DummyFields;
 class InterceptorConfig;
+class ConsoleConfig;
 class ChromeConfig;
 class SystemInfoConfig;
 class TraceConfig_BufferConfig;
@@ -91,6 +93,7 @@ enum TraceConfig_TraceFilter_StringFilterPolicy : int;
 enum TraceConfig_TriggerConfig_TriggerMode : int;
 enum BuiltinClock : int;
 enum DataSourceConfig_SessionInitiator : int;
+enum ConsoleConfig_Output : int;
 enum ChromeConfig_ClientPriority : int;
 enum TraceConfig_BufferConfig_FillPolicy : int;
 }  // namespace perfetto
@@ -162,6 +165,8 @@ class PERFETTO_EXPORT_COMPONENT CloneSessionRequest : public ::protozero::CppMes
  public:
   enum FieldNumbers {
     kSessionIdFieldNumber = 1,
+    kSkipTraceFilterFieldNumber = 2,
+    kForBugreportFieldNumber = 3,
   };
 
   CloneSessionRequest();
@@ -182,14 +187,24 @@ class PERFETTO_EXPORT_COMPONENT CloneSessionRequest : public ::protozero::CppMes
   uint64_t session_id() const { return session_id_; }
   void set_session_id(uint64_t value) { session_id_ = value; _has_field_.set(1); }
 
+  bool has_skip_trace_filter() const { return _has_field_[2]; }
+  bool skip_trace_filter() const { return skip_trace_filter_; }
+  void set_skip_trace_filter(bool value) { skip_trace_filter_ = value; _has_field_.set(2); }
+
+  bool has_for_bugreport() const { return _has_field_[3]; }
+  bool for_bugreport() const { return for_bugreport_; }
+  void set_for_bugreport(bool value) { for_bugreport_ = value; _has_field_.set(3); }
+
  private:
   uint64_t session_id_{};
+  bool skip_trace_filter_{};
+  bool for_bugreport_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<2> _has_field_{};
+  std::bitset<4> _has_field_{};
 };
 
 
@@ -365,6 +380,7 @@ class PERFETTO_EXPORT_COMPONENT QueryServiceStateResponse : public ::protozero::
 class PERFETTO_EXPORT_COMPONENT QueryServiceStateRequest : public ::protozero::CppMessageObj {
  public:
   enum FieldNumbers {
+    kSessionsOnlyFieldNumber = 1,
   };
 
   QueryServiceStateRequest();
@@ -381,7 +397,12 @@ class PERFETTO_EXPORT_COMPONENT QueryServiceStateRequest : public ::protozero::C
   std::vector<uint8_t> SerializeAsArray() const override;
   void Serialize(::protozero::Message*) const;
 
+  bool has_sessions_only() const { return _has_field_[1]; }
+  bool sessions_only() const { return sessions_only_; }
+  void set_sessions_only(bool value) { sessions_only_ = value; _has_field_.set(1); }
+
  private:
+  bool sessions_only_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
@@ -695,6 +716,7 @@ class PERFETTO_EXPORT_COMPONENT FlushRequest : public ::protozero::CppMessageObj
  public:
   enum FieldNumbers {
     kTimeoutMsFieldNumber = 1,
+    kFlagsFieldNumber = 2,
   };
 
   FlushRequest();
@@ -715,14 +737,19 @@ class PERFETTO_EXPORT_COMPONENT FlushRequest : public ::protozero::CppMessageObj
   uint32_t timeout_ms() const { return timeout_ms_; }
   void set_timeout_ms(uint32_t value) { timeout_ms_ = value; _has_field_.set(1); }
 
+  bool has_flags() const { return _has_field_[2]; }
+  uint64_t flags() const { return flags_; }
+  void set_flags(uint64_t value) { flags_ = value; _has_field_.set(2); }
+
  private:
   uint32_t timeout_ms_{};
+  uint64_t flags_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<2> _has_field_{};
+  std::bitset<3> _has_field_{};
 };
 
 

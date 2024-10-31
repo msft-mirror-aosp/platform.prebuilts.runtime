@@ -16,6 +16,8 @@ namespace perfetto {
 namespace protos {
 namespace gen {
 class InterceptorConfig;
+class ConsoleConfig;
+enum ConsoleConfig_Output : int;
 }  // namespace perfetto
 }  // namespace protos
 }  // namespace gen
@@ -53,12 +55,13 @@ class PERFETTO_EXPORT_COMPONENT InterceptorConfig : public ::protozero::CppMessa
   const std::string& name() const { return name_; }
   void set_name(const std::string& value) { name_ = value; _has_field_.set(1); }
 
-  const std::string& console_config_raw() const { return console_config_; }
-  void set_console_config_raw(const std::string& raw) { console_config_ = raw; _has_field_.set(100); }
+  bool has_console_config() const { return _has_field_[100]; }
+  const ConsoleConfig& console_config() const { return *console_config_; }
+  ConsoleConfig* mutable_console_config() { _has_field_.set(100); return console_config_.get(); }
 
  private:
   std::string name_{};
-  std::string console_config_;  // [lazy=true]
+  ::protozero::CopyablePtr<ConsoleConfig> console_config_;
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.

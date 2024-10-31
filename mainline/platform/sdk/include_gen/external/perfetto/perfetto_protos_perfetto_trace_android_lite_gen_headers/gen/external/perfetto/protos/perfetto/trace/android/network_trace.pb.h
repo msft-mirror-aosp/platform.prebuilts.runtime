@@ -209,6 +209,8 @@ class NetworkPacketEvent final :
     kTcpFlagsFieldNumber = 7,
     kLocalPortFieldNumber = 8,
     kRemotePortFieldNumber = 9,
+    kIcmpTypeFieldNumber = 10,
+    kIcmpCodeFieldNumber = 11,
   };
   // optional string interface = 2;
   bool has_interface() const;
@@ -332,6 +334,32 @@ class NetworkPacketEvent final :
   void _internal_set_remote_port(::uint32_t value);
   public:
 
+  // optional uint32 icmp_type = 10;
+  bool has_icmp_type() const;
+  private:
+  bool _internal_has_icmp_type() const;
+  public:
+  void clear_icmp_type();
+  ::uint32_t icmp_type() const;
+  void set_icmp_type(::uint32_t value);
+  private:
+  ::uint32_t _internal_icmp_type() const;
+  void _internal_set_icmp_type(::uint32_t value);
+  public:
+
+  // optional uint32 icmp_code = 11;
+  bool has_icmp_code() const;
+  private:
+  bool _internal_has_icmp_code() const;
+  public:
+  void clear_icmp_code();
+  ::uint32_t icmp_code() const;
+  void set_icmp_code(::uint32_t value);
+  private:
+  ::uint32_t _internal_icmp_code() const;
+  void _internal_set_icmp_code(::uint32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.NetworkPacketEvent)
  private:
   class _Internal;
@@ -351,6 +379,8 @@ class NetworkPacketEvent final :
     ::uint32_t tcp_flags_;
     ::uint32_t local_port_;
     ::uint32_t remote_port_;
+    ::uint32_t icmp_type_;
+    ::uint32_t icmp_code_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fandroid_2fnetwork_5ftrace_2eproto;
@@ -1103,6 +1133,62 @@ inline void NetworkPacketEvent::_internal_set_remote_port(::uint32_t value) {
 inline void NetworkPacketEvent::set_remote_port(::uint32_t value) {
   _internal_set_remote_port(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketEvent.remote_port)
+}
+
+// optional uint32 icmp_type = 10;
+inline bool NetworkPacketEvent::_internal_has_icmp_type() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000200u) != 0;
+  return value;
+}
+inline bool NetworkPacketEvent::has_icmp_type() const {
+  return _internal_has_icmp_type();
+}
+inline void NetworkPacketEvent::clear_icmp_type() {
+  _impl_.icmp_type_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000200u;
+}
+inline ::uint32_t NetworkPacketEvent::_internal_icmp_type() const {
+  return _impl_.icmp_type_;
+}
+inline ::uint32_t NetworkPacketEvent::icmp_type() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketEvent.icmp_type)
+  return _internal_icmp_type();
+}
+inline void NetworkPacketEvent::_internal_set_icmp_type(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000200u;
+  _impl_.icmp_type_ = value;
+}
+inline void NetworkPacketEvent::set_icmp_type(::uint32_t value) {
+  _internal_set_icmp_type(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketEvent.icmp_type)
+}
+
+// optional uint32 icmp_code = 11;
+inline bool NetworkPacketEvent::_internal_has_icmp_code() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000400u) != 0;
+  return value;
+}
+inline bool NetworkPacketEvent::has_icmp_code() const {
+  return _internal_has_icmp_code();
+}
+inline void NetworkPacketEvent::clear_icmp_code() {
+  _impl_.icmp_code_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000400u;
+}
+inline ::uint32_t NetworkPacketEvent::_internal_icmp_code() const {
+  return _impl_.icmp_code_;
+}
+inline ::uint32_t NetworkPacketEvent::icmp_code() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.NetworkPacketEvent.icmp_code)
+  return _internal_icmp_code();
+}
+inline void NetworkPacketEvent::_internal_set_icmp_code(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000400u;
+  _impl_.icmp_code_ = value;
+}
+inline void NetworkPacketEvent::set_icmp_code(::uint32_t value) {
+  _internal_set_icmp_code(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.NetworkPacketEvent.icmp_code)
 }
 
 // -------------------------------------------------------------------

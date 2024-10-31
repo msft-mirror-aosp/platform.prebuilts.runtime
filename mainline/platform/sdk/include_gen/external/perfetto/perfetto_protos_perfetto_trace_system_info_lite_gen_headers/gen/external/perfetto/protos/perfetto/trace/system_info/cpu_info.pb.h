@@ -47,6 +47,9 @@ namespace protos {
 class CpuInfo;
 struct CpuInfoDefaultTypeInternal;
 extern CpuInfoDefaultTypeInternal _CpuInfo_default_instance_;
+class CpuInfo_ArmCpuIdentifier;
+struct CpuInfo_ArmCpuIdentifierDefaultTypeInternal;
+extern CpuInfo_ArmCpuIdentifierDefaultTypeInternal _CpuInfo_ArmCpuIdentifier_default_instance_;
 class CpuInfo_Cpu;
 struct CpuInfo_CpuDefaultTypeInternal;
 extern CpuInfo_CpuDefaultTypeInternal _CpuInfo_Cpu_default_instance_;
@@ -54,12 +57,219 @@ extern CpuInfo_CpuDefaultTypeInternal _CpuInfo_Cpu_default_instance_;
 }  // namespace perfetto
 PROTOBUF_NAMESPACE_OPEN
 template<> ::perfetto::protos::CpuInfo* Arena::CreateMaybeMessage<::perfetto::protos::CpuInfo>(Arena*);
+template<> ::perfetto::protos::CpuInfo_ArmCpuIdentifier* Arena::CreateMaybeMessage<::perfetto::protos::CpuInfo_ArmCpuIdentifier>(Arena*);
 template<> ::perfetto::protos::CpuInfo_Cpu* Arena::CreateMaybeMessage<::perfetto::protos::CpuInfo_Cpu>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
 namespace protos {
 
 // ===================================================================
+
+class CpuInfo_ArmCpuIdentifier final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.CpuInfo.ArmCpuIdentifier) */ {
+ public:
+  inline CpuInfo_ArmCpuIdentifier() : CpuInfo_ArmCpuIdentifier(nullptr) {}
+  ~CpuInfo_ArmCpuIdentifier() override;
+  explicit PROTOBUF_CONSTEXPR CpuInfo_ArmCpuIdentifier(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CpuInfo_ArmCpuIdentifier(const CpuInfo_ArmCpuIdentifier& from);
+  CpuInfo_ArmCpuIdentifier(CpuInfo_ArmCpuIdentifier&& from) noexcept
+    : CpuInfo_ArmCpuIdentifier() {
+    *this = ::std::move(from);
+  }
+
+  inline CpuInfo_ArmCpuIdentifier& operator=(const CpuInfo_ArmCpuIdentifier& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline CpuInfo_ArmCpuIdentifier& operator=(CpuInfo_ArmCpuIdentifier&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const CpuInfo_ArmCpuIdentifier& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CpuInfo_ArmCpuIdentifier* internal_default_instance() {
+    return reinterpret_cast<const CpuInfo_ArmCpuIdentifier*>(
+               &_CpuInfo_ArmCpuIdentifier_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(CpuInfo_ArmCpuIdentifier& a, CpuInfo_ArmCpuIdentifier& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CpuInfo_ArmCpuIdentifier* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CpuInfo_ArmCpuIdentifier* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CpuInfo_ArmCpuIdentifier* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<CpuInfo_ArmCpuIdentifier>(arena);
+  }
+  CpuInfo_ArmCpuIdentifier* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const CpuInfo_ArmCpuIdentifier& from);
+  void MergeFrom(const CpuInfo_ArmCpuIdentifier& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(CpuInfo_ArmCpuIdentifier* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.CpuInfo.ArmCpuIdentifier";
+  }
+  protected:
+  explicit CpuInfo_ArmCpuIdentifier(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kImplementerFieldNumber = 1,
+    kArchitectureFieldNumber = 2,
+    kVariantFieldNumber = 3,
+    kPartFieldNumber = 4,
+    kRevisionFieldNumber = 5,
+  };
+  // optional uint32 implementer = 1;
+  bool has_implementer() const;
+  private:
+  bool _internal_has_implementer() const;
+  public:
+  void clear_implementer();
+  ::uint32_t implementer() const;
+  void set_implementer(::uint32_t value);
+  private:
+  ::uint32_t _internal_implementer() const;
+  void _internal_set_implementer(::uint32_t value);
+  public:
+
+  // optional uint32 architecture = 2;
+  bool has_architecture() const;
+  private:
+  bool _internal_has_architecture() const;
+  public:
+  void clear_architecture();
+  ::uint32_t architecture() const;
+  void set_architecture(::uint32_t value);
+  private:
+  ::uint32_t _internal_architecture() const;
+  void _internal_set_architecture(::uint32_t value);
+  public:
+
+  // optional uint32 variant = 3;
+  bool has_variant() const;
+  private:
+  bool _internal_has_variant() const;
+  public:
+  void clear_variant();
+  ::uint32_t variant() const;
+  void set_variant(::uint32_t value);
+  private:
+  ::uint32_t _internal_variant() const;
+  void _internal_set_variant(::uint32_t value);
+  public:
+
+  // optional uint32 part = 4;
+  bool has_part() const;
+  private:
+  bool _internal_has_part() const;
+  public:
+  void clear_part();
+  ::uint32_t part() const;
+  void set_part(::uint32_t value);
+  private:
+  ::uint32_t _internal_part() const;
+  void _internal_set_part(::uint32_t value);
+  public:
+
+  // optional uint32 revision = 5;
+  bool has_revision() const;
+  private:
+  bool _internal_has_revision() const;
+  public:
+  void clear_revision();
+  ::uint32_t revision() const;
+  void set_revision(::uint32_t value);
+  private:
+  ::uint32_t _internal_revision() const;
+  void _internal_set_revision(::uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.CpuInfo.ArmCpuIdentifier)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::uint32_t implementer_;
+    ::uint32_t architecture_;
+    ::uint32_t variant_;
+    ::uint32_t part_;
+    ::uint32_t revision_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fsystem_5finfo_2fcpu_5finfo_2eproto;
+};
+// -------------------------------------------------------------------
 
 class CpuInfo_Cpu final :
     public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.CpuInfo.Cpu) */ {
@@ -103,12 +313,17 @@ class CpuInfo_Cpu final :
   static const CpuInfo_Cpu& default_instance() {
     return *internal_default_instance();
   }
+  enum IdentifierCase {
+    kArmIdentifier = 4,
+    IDENTIFIER_NOT_SET = 0,
+  };
+
   static inline const CpuInfo_Cpu* internal_default_instance() {
     return reinterpret_cast<const CpuInfo_Cpu*>(
                &_CpuInfo_Cpu_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    1;
 
   friend void swap(CpuInfo_Cpu& a, CpuInfo_Cpu& b) {
     a.Swap(&b);
@@ -177,6 +392,8 @@ class CpuInfo_Cpu final :
   enum : int {
     kFrequenciesFieldNumber = 2,
     kProcessorFieldNumber = 1,
+    kCapacityFieldNumber = 3,
+    kArmIdentifierFieldNumber = 4,
   };
   // repeated uint32 frequencies = 2;
   int frequencies_size() const;
@@ -218,9 +435,46 @@ class CpuInfo_Cpu final :
   std::string* _internal_mutable_processor();
   public:
 
+  // optional uint32 capacity = 3;
+  bool has_capacity() const;
+  private:
+  bool _internal_has_capacity() const;
+  public:
+  void clear_capacity();
+  ::uint32_t capacity() const;
+  void set_capacity(::uint32_t value);
+  private:
+  ::uint32_t _internal_capacity() const;
+  void _internal_set_capacity(::uint32_t value);
+  public:
+
+  // .perfetto.protos.CpuInfo.ArmCpuIdentifier arm_identifier = 4;
+  bool has_arm_identifier() const;
+  private:
+  bool _internal_has_arm_identifier() const;
+  public:
+  void clear_arm_identifier();
+  const ::perfetto::protos::CpuInfo_ArmCpuIdentifier& arm_identifier() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::CpuInfo_ArmCpuIdentifier* release_arm_identifier();
+  ::perfetto::protos::CpuInfo_ArmCpuIdentifier* mutable_arm_identifier();
+  void set_allocated_arm_identifier(::perfetto::protos::CpuInfo_ArmCpuIdentifier* arm_identifier);
+  private:
+  const ::perfetto::protos::CpuInfo_ArmCpuIdentifier& _internal_arm_identifier() const;
+  ::perfetto::protos::CpuInfo_ArmCpuIdentifier* _internal_mutable_arm_identifier();
+  public:
+  void unsafe_arena_set_allocated_arm_identifier(
+      ::perfetto::protos::CpuInfo_ArmCpuIdentifier* arm_identifier);
+  ::perfetto::protos::CpuInfo_ArmCpuIdentifier* unsafe_arena_release_arm_identifier();
+
+  void clear_identifier();
+  IdentifierCase identifier_case() const;
   // @@protoc_insertion_point(class_scope:perfetto.protos.CpuInfo.Cpu)
  private:
   class _Internal;
+  void set_has_arm_identifier();
+
+  inline bool has_identifier() const;
+  inline void clear_has_identifier();
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
@@ -230,6 +484,14 @@ class CpuInfo_Cpu final :
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::uint32_t > frequencies_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr processor_;
+    ::uint32_t capacity_;
+    union IdentifierUnion {
+      constexpr IdentifierUnion() : _constinit_{} {}
+        ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+      ::perfetto::protos::CpuInfo_ArmCpuIdentifier* arm_identifier_;
+    } identifier_;
+    ::uint32_t _oneof_case_[1];
+
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fsystem_5finfo_2fcpu_5finfo_2eproto;
@@ -283,7 +545,7 @@ class CpuInfo final :
                &_CpuInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(CpuInfo& a, CpuInfo& b) {
     a.Swap(&b);
@@ -347,6 +609,7 @@ class CpuInfo final :
 
   // nested types ----------------------------------------------------
 
+  typedef CpuInfo_ArmCpuIdentifier ArmCpuIdentifier;
   typedef CpuInfo_Cpu Cpu;
 
   // accessors -------------------------------------------------------
@@ -395,6 +658,150 @@ class CpuInfo final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// CpuInfo_ArmCpuIdentifier
+
+// optional uint32 implementer = 1;
+inline bool CpuInfo_ArmCpuIdentifier::_internal_has_implementer() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool CpuInfo_ArmCpuIdentifier::has_implementer() const {
+  return _internal_has_implementer();
+}
+inline void CpuInfo_ArmCpuIdentifier::clear_implementer() {
+  _impl_.implementer_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::uint32_t CpuInfo_ArmCpuIdentifier::_internal_implementer() const {
+  return _impl_.implementer_;
+}
+inline ::uint32_t CpuInfo_ArmCpuIdentifier::implementer() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CpuInfo.ArmCpuIdentifier.implementer)
+  return _internal_implementer();
+}
+inline void CpuInfo_ArmCpuIdentifier::_internal_set_implementer(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.implementer_ = value;
+}
+inline void CpuInfo_ArmCpuIdentifier::set_implementer(::uint32_t value) {
+  _internal_set_implementer(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.CpuInfo.ArmCpuIdentifier.implementer)
+}
+
+// optional uint32 architecture = 2;
+inline bool CpuInfo_ArmCpuIdentifier::_internal_has_architecture() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool CpuInfo_ArmCpuIdentifier::has_architecture() const {
+  return _internal_has_architecture();
+}
+inline void CpuInfo_ArmCpuIdentifier::clear_architecture() {
+  _impl_.architecture_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t CpuInfo_ArmCpuIdentifier::_internal_architecture() const {
+  return _impl_.architecture_;
+}
+inline ::uint32_t CpuInfo_ArmCpuIdentifier::architecture() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CpuInfo.ArmCpuIdentifier.architecture)
+  return _internal_architecture();
+}
+inline void CpuInfo_ArmCpuIdentifier::_internal_set_architecture(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.architecture_ = value;
+}
+inline void CpuInfo_ArmCpuIdentifier::set_architecture(::uint32_t value) {
+  _internal_set_architecture(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.CpuInfo.ArmCpuIdentifier.architecture)
+}
+
+// optional uint32 variant = 3;
+inline bool CpuInfo_ArmCpuIdentifier::_internal_has_variant() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool CpuInfo_ArmCpuIdentifier::has_variant() const {
+  return _internal_has_variant();
+}
+inline void CpuInfo_ArmCpuIdentifier::clear_variant() {
+  _impl_.variant_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint32_t CpuInfo_ArmCpuIdentifier::_internal_variant() const {
+  return _impl_.variant_;
+}
+inline ::uint32_t CpuInfo_ArmCpuIdentifier::variant() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CpuInfo.ArmCpuIdentifier.variant)
+  return _internal_variant();
+}
+inline void CpuInfo_ArmCpuIdentifier::_internal_set_variant(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.variant_ = value;
+}
+inline void CpuInfo_ArmCpuIdentifier::set_variant(::uint32_t value) {
+  _internal_set_variant(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.CpuInfo.ArmCpuIdentifier.variant)
+}
+
+// optional uint32 part = 4;
+inline bool CpuInfo_ArmCpuIdentifier::_internal_has_part() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool CpuInfo_ArmCpuIdentifier::has_part() const {
+  return _internal_has_part();
+}
+inline void CpuInfo_ArmCpuIdentifier::clear_part() {
+  _impl_.part_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline ::uint32_t CpuInfo_ArmCpuIdentifier::_internal_part() const {
+  return _impl_.part_;
+}
+inline ::uint32_t CpuInfo_ArmCpuIdentifier::part() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CpuInfo.ArmCpuIdentifier.part)
+  return _internal_part();
+}
+inline void CpuInfo_ArmCpuIdentifier::_internal_set_part(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.part_ = value;
+}
+inline void CpuInfo_ArmCpuIdentifier::set_part(::uint32_t value) {
+  _internal_set_part(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.CpuInfo.ArmCpuIdentifier.part)
+}
+
+// optional uint32 revision = 5;
+inline bool CpuInfo_ArmCpuIdentifier::_internal_has_revision() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool CpuInfo_ArmCpuIdentifier::has_revision() const {
+  return _internal_has_revision();
+}
+inline void CpuInfo_ArmCpuIdentifier::clear_revision() {
+  _impl_.revision_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline ::uint32_t CpuInfo_ArmCpuIdentifier::_internal_revision() const {
+  return _impl_.revision_;
+}
+inline ::uint32_t CpuInfo_ArmCpuIdentifier::revision() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CpuInfo.ArmCpuIdentifier.revision)
+  return _internal_revision();
+}
+inline void CpuInfo_ArmCpuIdentifier::_internal_set_revision(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.revision_ = value;
+}
+inline void CpuInfo_ArmCpuIdentifier::set_revision(::uint32_t value) {
+  _internal_set_revision(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.CpuInfo.ArmCpuIdentifier.revision)
+}
+
+// -------------------------------------------------------------------
+
 // CpuInfo_Cpu
 
 // optional string processor = 1;
@@ -512,6 +919,117 @@ CpuInfo_Cpu::mutable_frequencies() {
   return _internal_mutable_frequencies();
 }
 
+// optional uint32 capacity = 3;
+inline bool CpuInfo_Cpu::_internal_has_capacity() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool CpuInfo_Cpu::has_capacity() const {
+  return _internal_has_capacity();
+}
+inline void CpuInfo_Cpu::clear_capacity() {
+  _impl_.capacity_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t CpuInfo_Cpu::_internal_capacity() const {
+  return _impl_.capacity_;
+}
+inline ::uint32_t CpuInfo_Cpu::capacity() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CpuInfo.Cpu.capacity)
+  return _internal_capacity();
+}
+inline void CpuInfo_Cpu::_internal_set_capacity(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.capacity_ = value;
+}
+inline void CpuInfo_Cpu::set_capacity(::uint32_t value) {
+  _internal_set_capacity(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.CpuInfo.Cpu.capacity)
+}
+
+// .perfetto.protos.CpuInfo.ArmCpuIdentifier arm_identifier = 4;
+inline bool CpuInfo_Cpu::_internal_has_arm_identifier() const {
+  return identifier_case() == kArmIdentifier;
+}
+inline bool CpuInfo_Cpu::has_arm_identifier() const {
+  return _internal_has_arm_identifier();
+}
+inline void CpuInfo_Cpu::set_has_arm_identifier() {
+  _impl_._oneof_case_[0] = kArmIdentifier;
+}
+inline void CpuInfo_Cpu::clear_arm_identifier() {
+  if (_internal_has_arm_identifier()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.identifier_.arm_identifier_;
+    }
+    clear_has_identifier();
+  }
+}
+inline ::perfetto::protos::CpuInfo_ArmCpuIdentifier* CpuInfo_Cpu::release_arm_identifier() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.CpuInfo.Cpu.arm_identifier)
+  if (_internal_has_arm_identifier()) {
+    clear_has_identifier();
+    ::perfetto::protos::CpuInfo_ArmCpuIdentifier* temp = _impl_.identifier_.arm_identifier_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.identifier_.arm_identifier_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::CpuInfo_ArmCpuIdentifier& CpuInfo_Cpu::_internal_arm_identifier() const {
+  return _internal_has_arm_identifier()
+      ? *_impl_.identifier_.arm_identifier_
+      : reinterpret_cast< ::perfetto::protos::CpuInfo_ArmCpuIdentifier&>(::perfetto::protos::_CpuInfo_ArmCpuIdentifier_default_instance_);
+}
+inline const ::perfetto::protos::CpuInfo_ArmCpuIdentifier& CpuInfo_Cpu::arm_identifier() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CpuInfo.Cpu.arm_identifier)
+  return _internal_arm_identifier();
+}
+inline ::perfetto::protos::CpuInfo_ArmCpuIdentifier* CpuInfo_Cpu::unsafe_arena_release_arm_identifier() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.CpuInfo.Cpu.arm_identifier)
+  if (_internal_has_arm_identifier()) {
+    clear_has_identifier();
+    ::perfetto::protos::CpuInfo_ArmCpuIdentifier* temp = _impl_.identifier_.arm_identifier_;
+    _impl_.identifier_.arm_identifier_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void CpuInfo_Cpu::unsafe_arena_set_allocated_arm_identifier(::perfetto::protos::CpuInfo_ArmCpuIdentifier* arm_identifier) {
+  clear_identifier();
+  if (arm_identifier) {
+    set_has_arm_identifier();
+    _impl_.identifier_.arm_identifier_ = arm_identifier;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.CpuInfo.Cpu.arm_identifier)
+}
+inline ::perfetto::protos::CpuInfo_ArmCpuIdentifier* CpuInfo_Cpu::_internal_mutable_arm_identifier() {
+  if (!_internal_has_arm_identifier()) {
+    clear_identifier();
+    set_has_arm_identifier();
+    _impl_.identifier_.arm_identifier_ = CreateMaybeMessage< ::perfetto::protos::CpuInfo_ArmCpuIdentifier >(GetArenaForAllocation());
+  }
+  return _impl_.identifier_.arm_identifier_;
+}
+inline ::perfetto::protos::CpuInfo_ArmCpuIdentifier* CpuInfo_Cpu::mutable_arm_identifier() {
+  ::perfetto::protos::CpuInfo_ArmCpuIdentifier* _msg = _internal_mutable_arm_identifier();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.CpuInfo.Cpu.arm_identifier)
+  return _msg;
+}
+
+inline bool CpuInfo_Cpu::has_identifier() const {
+  return identifier_case() != IDENTIFIER_NOT_SET;
+}
+inline void CpuInfo_Cpu::clear_has_identifier() {
+  _impl_._oneof_case_[0] = IDENTIFIER_NOT_SET;
+}
+inline CpuInfo_Cpu::IdentifierCase CpuInfo_Cpu::identifier_case() const {
+  return CpuInfo_Cpu::IdentifierCase(_impl_._oneof_case_[0]);
+}
 // -------------------------------------------------------------------
 
 // CpuInfo
@@ -559,6 +1077,8 @@ CpuInfo::cpus() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 
