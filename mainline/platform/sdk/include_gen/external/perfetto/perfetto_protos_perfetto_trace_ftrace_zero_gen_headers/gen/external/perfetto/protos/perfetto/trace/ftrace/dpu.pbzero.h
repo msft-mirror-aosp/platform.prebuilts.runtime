@@ -12,10 +12,226 @@
 #include "perfetto/protozero/proto_decoder.h"
 #include "perfetto/protozero/proto_utils.h"
 
+
 namespace perfetto {
 namespace protos {
 namespace pbzero {
 
+class DpuDsiTxFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  DpuDsiTxFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit DpuDsiTxFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit DpuDsiTxFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_type() const { return at<1>().valid(); }
+  uint32_t type() const { return at<1>().as_uint32(); }
+  bool has_tx_buf() const { return at<2>().valid(); }
+  uint32_t tx_buf() const { return at<2>().as_uint32(); }
+  bool has_last() const { return at<3>().valid(); }
+  uint32_t last() const { return at<3>().as_uint32(); }
+  bool has_delay_ms() const { return at<4>().valid(); }
+  uint32_t delay_ms() const { return at<4>().as_uint32(); }
+};
+
+class DpuDsiTxFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = DpuDsiTxFtraceEvent_Decoder;
+  enum : int32_t {
+    kTypeFieldNumber = 1,
+    kTxBufFieldNumber = 2,
+    kLastFieldNumber = 3,
+    kDelayMsFieldNumber = 4,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.DpuDsiTxFtraceEvent"; }
+
+
+  using FieldMetadata_Type =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      DpuDsiTxFtraceEvent>;
+
+  static constexpr FieldMetadata_Type kType{};
+  void set_type(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TxBuf =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      DpuDsiTxFtraceEvent>;
+
+  static constexpr FieldMetadata_TxBuf kTxBuf{};
+  void set_tx_buf(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_TxBuf::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Last =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      DpuDsiTxFtraceEvent>;
+
+  static constexpr FieldMetadata_Last kLast{};
+  void set_last(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Last::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DelayMs =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      DpuDsiTxFtraceEvent>;
+
+  static constexpr FieldMetadata_DelayMs kDelayMs{};
+  void set_delay_ms(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DelayMs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class DpuDsiRxFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  DpuDsiRxFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit DpuDsiRxFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit DpuDsiRxFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_cmd() const { return at<1>().valid(); }
+  uint32_t cmd() const { return at<1>().as_uint32(); }
+  bool has_rx_buf() const { return at<2>().valid(); }
+  uint32_t rx_buf() const { return at<2>().as_uint32(); }
+};
+
+class DpuDsiRxFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = DpuDsiRxFtraceEvent_Decoder;
+  enum : int32_t {
+    kCmdFieldNumber = 1,
+    kRxBufFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.DpuDsiRxFtraceEvent"; }
+
+
+  using FieldMetadata_Cmd =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      DpuDsiRxFtraceEvent>;
+
+  static constexpr FieldMetadata_Cmd kCmd{};
+  void set_cmd(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Cmd::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_RxBuf =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      DpuDsiRxFtraceEvent>;
+
+  static constexpr FieldMetadata_RxBuf kRxBuf{};
+  void set_rx_buf(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_RxBuf::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class DpuDsiCmdFifoStatusFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  DpuDsiCmdFifoStatusFtraceEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit DpuDsiCmdFifoStatusFtraceEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit DpuDsiCmdFifoStatusFtraceEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_header() const { return at<1>().valid(); }
+  uint32_t header() const { return at<1>().as_uint32(); }
+  bool has_payload() const { return at<2>().valid(); }
+  uint32_t payload() const { return at<2>().as_uint32(); }
+};
+
+class DpuDsiCmdFifoStatusFtraceEvent : public ::protozero::Message {
+ public:
+  using Decoder = DpuDsiCmdFifoStatusFtraceEvent_Decoder;
+  enum : int32_t {
+    kHeaderFieldNumber = 1,
+    kPayloadFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.DpuDsiCmdFifoStatusFtraceEvent"; }
+
+
+  using FieldMetadata_Header =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      DpuDsiCmdFifoStatusFtraceEvent>;
+
+  static constexpr FieldMetadata_Header kHeader{};
+  void set_header(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Header::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Payload =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      DpuDsiCmdFifoStatusFtraceEvent>;
+
+  static constexpr FieldMetadata_Payload kPayload{};
+  void set_payload(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Payload::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+};
 
 class DpuTracingMarkWriteFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
