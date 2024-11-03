@@ -44,6 +44,9 @@ struct TableStruct_protos_2fperfetto_2ftrace_2fftrace_2ff2fs_2eproto {
 };
 namespace perfetto {
 namespace protos {
+class F2fsBackgroundGcFtraceEvent;
+struct F2fsBackgroundGcFtraceEventDefaultTypeInternal;
+extern F2fsBackgroundGcFtraceEventDefaultTypeInternal _F2fsBackgroundGcFtraceEvent_default_instance_;
 class F2fsDoSubmitBioFtraceEvent;
 struct F2fsDoSubmitBioFtraceEventDefaultTypeInternal;
 extern F2fsDoSubmitBioFtraceEventDefaultTypeInternal _F2fsDoSubmitBioFtraceEvent_default_instance_;
@@ -53,6 +56,12 @@ extern F2fsEvictInodeFtraceEventDefaultTypeInternal _F2fsEvictInodeFtraceEvent_d
 class F2fsFallocateFtraceEvent;
 struct F2fsFallocateFtraceEventDefaultTypeInternal;
 extern F2fsFallocateFtraceEventDefaultTypeInternal _F2fsFallocateFtraceEvent_default_instance_;
+class F2fsGcBeginFtraceEvent;
+struct F2fsGcBeginFtraceEventDefaultTypeInternal;
+extern F2fsGcBeginFtraceEventDefaultTypeInternal _F2fsGcBeginFtraceEvent_default_instance_;
+class F2fsGcEndFtraceEvent;
+struct F2fsGcEndFtraceEventDefaultTypeInternal;
+extern F2fsGcEndFtraceEventDefaultTypeInternal _F2fsGcEndFtraceEvent_default_instance_;
 class F2fsGetDataBlockFtraceEvent;
 struct F2fsGetDataBlockFtraceEventDefaultTypeInternal;
 extern F2fsGetDataBlockFtraceEventDefaultTypeInternal _F2fsGetDataBlockFtraceEvent_default_instance_;
@@ -146,9 +155,12 @@ extern F2fsWriteEndFtraceEventDefaultTypeInternal _F2fsWriteEndFtraceEvent_defau
 }  // namespace protos
 }  // namespace perfetto
 PROTOBUF_NAMESPACE_OPEN
+template<> ::perfetto::protos::F2fsBackgroundGcFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::F2fsBackgroundGcFtraceEvent>(Arena*);
 template<> ::perfetto::protos::F2fsDoSubmitBioFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::F2fsDoSubmitBioFtraceEvent>(Arena*);
 template<> ::perfetto::protos::F2fsEvictInodeFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::F2fsEvictInodeFtraceEvent>(Arena*);
 template<> ::perfetto::protos::F2fsFallocateFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::F2fsFallocateFtraceEvent>(Arena*);
+template<> ::perfetto::protos::F2fsGcBeginFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::F2fsGcBeginFtraceEvent>(Arena*);
+template<> ::perfetto::protos::F2fsGcEndFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::F2fsGcEndFtraceEvent>(Arena*);
 template<> ::perfetto::protos::F2fsGetDataBlockFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::F2fsGetDataBlockFtraceEvent>(Arena*);
 template<> ::perfetto::protos::F2fsGetVictimFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::F2fsGetVictimFtraceEvent>(Arena*);
 template<> ::perfetto::protos::F2fsIgetExitFtraceEvent* Arena::CreateMaybeMessage<::perfetto::protos::F2fsIgetExitFtraceEvent>(Arena*);
@@ -7771,6 +7783,819 @@ class F2fsIostatLatencyFtraceEvent final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2ff2fs_2eproto;
 };
+// -------------------------------------------------------------------
+
+class F2fsBackgroundGcFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.F2fsBackgroundGcFtraceEvent) */ {
+ public:
+  inline F2fsBackgroundGcFtraceEvent() : F2fsBackgroundGcFtraceEvent(nullptr) {}
+  ~F2fsBackgroundGcFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR F2fsBackgroundGcFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  F2fsBackgroundGcFtraceEvent(const F2fsBackgroundGcFtraceEvent& from);
+  F2fsBackgroundGcFtraceEvent(F2fsBackgroundGcFtraceEvent&& from) noexcept
+    : F2fsBackgroundGcFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline F2fsBackgroundGcFtraceEvent& operator=(const F2fsBackgroundGcFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline F2fsBackgroundGcFtraceEvent& operator=(F2fsBackgroundGcFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const F2fsBackgroundGcFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const F2fsBackgroundGcFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const F2fsBackgroundGcFtraceEvent*>(
+               &_F2fsBackgroundGcFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    33;
+
+  friend void swap(F2fsBackgroundGcFtraceEvent& a, F2fsBackgroundGcFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(F2fsBackgroundGcFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(F2fsBackgroundGcFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  F2fsBackgroundGcFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<F2fsBackgroundGcFtraceEvent>(arena);
+  }
+  F2fsBackgroundGcFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const F2fsBackgroundGcFtraceEvent& from);
+  void MergeFrom(const F2fsBackgroundGcFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(F2fsBackgroundGcFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.F2fsBackgroundGcFtraceEvent";
+  }
+  protected:
+  explicit F2fsBackgroundGcFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDevFieldNumber = 1,
+    kWaitMsFieldNumber = 2,
+    kPrefreeFieldNumber = 3,
+    kFreeFieldNumber = 4,
+  };
+  // optional uint64 dev = 1;
+  bool has_dev() const;
+  private:
+  bool _internal_has_dev() const;
+  public:
+  void clear_dev();
+  ::uint64_t dev() const;
+  void set_dev(::uint64_t value);
+  private:
+  ::uint64_t _internal_dev() const;
+  void _internal_set_dev(::uint64_t value);
+  public:
+
+  // optional uint32 wait_ms = 2;
+  bool has_wait_ms() const;
+  private:
+  bool _internal_has_wait_ms() const;
+  public:
+  void clear_wait_ms();
+  ::uint32_t wait_ms() const;
+  void set_wait_ms(::uint32_t value);
+  private:
+  ::uint32_t _internal_wait_ms() const;
+  void _internal_set_wait_ms(::uint32_t value);
+  public:
+
+  // optional uint32 prefree = 3;
+  bool has_prefree() const;
+  private:
+  bool _internal_has_prefree() const;
+  public:
+  void clear_prefree();
+  ::uint32_t prefree() const;
+  void set_prefree(::uint32_t value);
+  private:
+  ::uint32_t _internal_prefree() const;
+  void _internal_set_prefree(::uint32_t value);
+  public:
+
+  // optional uint32 free = 4;
+  bool has_free() const;
+  private:
+  bool _internal_has_free() const;
+  public:
+  void clear_free();
+  ::uint32_t free() const;
+  void set_free(::uint32_t value);
+  private:
+  ::uint32_t _internal_free() const;
+  void _internal_set_free(::uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.F2fsBackgroundGcFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::uint64_t dev_;
+    ::uint32_t wait_ms_;
+    ::uint32_t prefree_;
+    ::uint32_t free_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2ff2fs_2eproto;
+};
+// -------------------------------------------------------------------
+
+class F2fsGcBeginFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.F2fsGcBeginFtraceEvent) */ {
+ public:
+  inline F2fsGcBeginFtraceEvent() : F2fsGcBeginFtraceEvent(nullptr) {}
+  ~F2fsGcBeginFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR F2fsGcBeginFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  F2fsGcBeginFtraceEvent(const F2fsGcBeginFtraceEvent& from);
+  F2fsGcBeginFtraceEvent(F2fsGcBeginFtraceEvent&& from) noexcept
+    : F2fsGcBeginFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline F2fsGcBeginFtraceEvent& operator=(const F2fsGcBeginFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline F2fsGcBeginFtraceEvent& operator=(F2fsGcBeginFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const F2fsGcBeginFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const F2fsGcBeginFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const F2fsGcBeginFtraceEvent*>(
+               &_F2fsGcBeginFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    34;
+
+  friend void swap(F2fsGcBeginFtraceEvent& a, F2fsGcBeginFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(F2fsGcBeginFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(F2fsGcBeginFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  F2fsGcBeginFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<F2fsGcBeginFtraceEvent>(arena);
+  }
+  F2fsGcBeginFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const F2fsGcBeginFtraceEvent& from);
+  void MergeFrom(const F2fsGcBeginFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(F2fsGcBeginFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.F2fsGcBeginFtraceEvent";
+  }
+  protected:
+  explicit F2fsGcBeginFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDevFieldNumber = 1,
+    kSyncFieldNumber = 2,
+    kBackgroundFieldNumber = 3,
+    kDirtyNodesFieldNumber = 4,
+    kDirtyDentsFieldNumber = 5,
+    kDirtyImetaFieldNumber = 6,
+    kFreeSecFieldNumber = 7,
+    kFreeSegFieldNumber = 8,
+    kReservedSegFieldNumber = 9,
+    kPrefreeSegFieldNumber = 10,
+    kGcTypeFieldNumber = 11,
+    kNoBgGcFieldNumber = 12,
+    kNrFreeSecsFieldNumber = 13,
+  };
+  // optional uint64 dev = 1;
+  bool has_dev() const;
+  private:
+  bool _internal_has_dev() const;
+  public:
+  void clear_dev();
+  ::uint64_t dev() const;
+  void set_dev(::uint64_t value);
+  private:
+  ::uint64_t _internal_dev() const;
+  void _internal_set_dev(::uint64_t value);
+  public:
+
+  // optional uint32 sync = 2;
+  bool has_sync() const;
+  private:
+  bool _internal_has_sync() const;
+  public:
+  void clear_sync();
+  ::uint32_t sync() const;
+  void set_sync(::uint32_t value);
+  private:
+  ::uint32_t _internal_sync() const;
+  void _internal_set_sync(::uint32_t value);
+  public:
+
+  // optional uint32 background = 3;
+  bool has_background() const;
+  private:
+  bool _internal_has_background() const;
+  public:
+  void clear_background();
+  ::uint32_t background() const;
+  void set_background(::uint32_t value);
+  private:
+  ::uint32_t _internal_background() const;
+  void _internal_set_background(::uint32_t value);
+  public:
+
+  // optional int64 dirty_nodes = 4;
+  bool has_dirty_nodes() const;
+  private:
+  bool _internal_has_dirty_nodes() const;
+  public:
+  void clear_dirty_nodes();
+  ::int64_t dirty_nodes() const;
+  void set_dirty_nodes(::int64_t value);
+  private:
+  ::int64_t _internal_dirty_nodes() const;
+  void _internal_set_dirty_nodes(::int64_t value);
+  public:
+
+  // optional int64 dirty_dents = 5;
+  bool has_dirty_dents() const;
+  private:
+  bool _internal_has_dirty_dents() const;
+  public:
+  void clear_dirty_dents();
+  ::int64_t dirty_dents() const;
+  void set_dirty_dents(::int64_t value);
+  private:
+  ::int64_t _internal_dirty_dents() const;
+  void _internal_set_dirty_dents(::int64_t value);
+  public:
+
+  // optional int64 dirty_imeta = 6;
+  bool has_dirty_imeta() const;
+  private:
+  bool _internal_has_dirty_imeta() const;
+  public:
+  void clear_dirty_imeta();
+  ::int64_t dirty_imeta() const;
+  void set_dirty_imeta(::int64_t value);
+  private:
+  ::int64_t _internal_dirty_imeta() const;
+  void _internal_set_dirty_imeta(::int64_t value);
+  public:
+
+  // optional uint32 free_sec = 7;
+  bool has_free_sec() const;
+  private:
+  bool _internal_has_free_sec() const;
+  public:
+  void clear_free_sec();
+  ::uint32_t free_sec() const;
+  void set_free_sec(::uint32_t value);
+  private:
+  ::uint32_t _internal_free_sec() const;
+  void _internal_set_free_sec(::uint32_t value);
+  public:
+
+  // optional uint32 free_seg = 8;
+  bool has_free_seg() const;
+  private:
+  bool _internal_has_free_seg() const;
+  public:
+  void clear_free_seg();
+  ::uint32_t free_seg() const;
+  void set_free_seg(::uint32_t value);
+  private:
+  ::uint32_t _internal_free_seg() const;
+  void _internal_set_free_seg(::uint32_t value);
+  public:
+
+  // optional int32 reserved_seg = 9;
+  bool has_reserved_seg() const;
+  private:
+  bool _internal_has_reserved_seg() const;
+  public:
+  void clear_reserved_seg();
+  ::int32_t reserved_seg() const;
+  void set_reserved_seg(::int32_t value);
+  private:
+  ::int32_t _internal_reserved_seg() const;
+  void _internal_set_reserved_seg(::int32_t value);
+  public:
+
+  // optional uint32 prefree_seg = 10;
+  bool has_prefree_seg() const;
+  private:
+  bool _internal_has_prefree_seg() const;
+  public:
+  void clear_prefree_seg();
+  ::uint32_t prefree_seg() const;
+  void set_prefree_seg(::uint32_t value);
+  private:
+  ::uint32_t _internal_prefree_seg() const;
+  void _internal_set_prefree_seg(::uint32_t value);
+  public:
+
+  // optional int32 gc_type = 11;
+  bool has_gc_type() const;
+  private:
+  bool _internal_has_gc_type() const;
+  public:
+  void clear_gc_type();
+  ::int32_t gc_type() const;
+  void set_gc_type(::int32_t value);
+  private:
+  ::int32_t _internal_gc_type() const;
+  void _internal_set_gc_type(::int32_t value);
+  public:
+
+  // optional uint32 no_bg_gc = 12;
+  bool has_no_bg_gc() const;
+  private:
+  bool _internal_has_no_bg_gc() const;
+  public:
+  void clear_no_bg_gc();
+  ::uint32_t no_bg_gc() const;
+  void set_no_bg_gc(::uint32_t value);
+  private:
+  ::uint32_t _internal_no_bg_gc() const;
+  void _internal_set_no_bg_gc(::uint32_t value);
+  public:
+
+  // optional uint32 nr_free_secs = 13;
+  bool has_nr_free_secs() const;
+  private:
+  bool _internal_has_nr_free_secs() const;
+  public:
+  void clear_nr_free_secs();
+  ::uint32_t nr_free_secs() const;
+  void set_nr_free_secs(::uint32_t value);
+  private:
+  ::uint32_t _internal_nr_free_secs() const;
+  void _internal_set_nr_free_secs(::uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.F2fsGcBeginFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::uint64_t dev_;
+    ::uint32_t sync_;
+    ::uint32_t background_;
+    ::int64_t dirty_nodes_;
+    ::int64_t dirty_dents_;
+    ::int64_t dirty_imeta_;
+    ::uint32_t free_sec_;
+    ::uint32_t free_seg_;
+    ::int32_t reserved_seg_;
+    ::uint32_t prefree_seg_;
+    ::int32_t gc_type_;
+    ::uint32_t no_bg_gc_;
+    ::uint32_t nr_free_secs_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2ff2fs_2eproto;
+};
+// -------------------------------------------------------------------
+
+class F2fsGcEndFtraceEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.F2fsGcEndFtraceEvent) */ {
+ public:
+  inline F2fsGcEndFtraceEvent() : F2fsGcEndFtraceEvent(nullptr) {}
+  ~F2fsGcEndFtraceEvent() override;
+  explicit PROTOBUF_CONSTEXPR F2fsGcEndFtraceEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  F2fsGcEndFtraceEvent(const F2fsGcEndFtraceEvent& from);
+  F2fsGcEndFtraceEvent(F2fsGcEndFtraceEvent&& from) noexcept
+    : F2fsGcEndFtraceEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline F2fsGcEndFtraceEvent& operator=(const F2fsGcEndFtraceEvent& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline F2fsGcEndFtraceEvent& operator=(F2fsGcEndFtraceEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const F2fsGcEndFtraceEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const F2fsGcEndFtraceEvent* internal_default_instance() {
+    return reinterpret_cast<const F2fsGcEndFtraceEvent*>(
+               &_F2fsGcEndFtraceEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    35;
+
+  friend void swap(F2fsGcEndFtraceEvent& a, F2fsGcEndFtraceEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(F2fsGcEndFtraceEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(F2fsGcEndFtraceEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  F2fsGcEndFtraceEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<F2fsGcEndFtraceEvent>(arena);
+  }
+  F2fsGcEndFtraceEvent* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const F2fsGcEndFtraceEvent& from);
+  void MergeFrom(const F2fsGcEndFtraceEvent& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(F2fsGcEndFtraceEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.F2fsGcEndFtraceEvent";
+  }
+  protected:
+  explicit F2fsGcEndFtraceEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDevFieldNumber = 1,
+    kRetFieldNumber = 2,
+    kSegFreedFieldNumber = 3,
+    kDirtyNodesFieldNumber = 5,
+    kDirtyDentsFieldNumber = 6,
+    kSecFreedFieldNumber = 4,
+    kFreeSecFieldNumber = 8,
+    kDirtyImetaFieldNumber = 7,
+    kFreeSegFieldNumber = 9,
+    kReservedSegFieldNumber = 10,
+    kPrefreeSegFieldNumber = 11,
+  };
+  // optional uint64 dev = 1;
+  bool has_dev() const;
+  private:
+  bool _internal_has_dev() const;
+  public:
+  void clear_dev();
+  ::uint64_t dev() const;
+  void set_dev(::uint64_t value);
+  private:
+  ::uint64_t _internal_dev() const;
+  void _internal_set_dev(::uint64_t value);
+  public:
+
+  // optional int32 ret = 2;
+  bool has_ret() const;
+  private:
+  bool _internal_has_ret() const;
+  public:
+  void clear_ret();
+  ::int32_t ret() const;
+  void set_ret(::int32_t value);
+  private:
+  ::int32_t _internal_ret() const;
+  void _internal_set_ret(::int32_t value);
+  public:
+
+  // optional int32 seg_freed = 3;
+  bool has_seg_freed() const;
+  private:
+  bool _internal_has_seg_freed() const;
+  public:
+  void clear_seg_freed();
+  ::int32_t seg_freed() const;
+  void set_seg_freed(::int32_t value);
+  private:
+  ::int32_t _internal_seg_freed() const;
+  void _internal_set_seg_freed(::int32_t value);
+  public:
+
+  // optional int64 dirty_nodes = 5;
+  bool has_dirty_nodes() const;
+  private:
+  bool _internal_has_dirty_nodes() const;
+  public:
+  void clear_dirty_nodes();
+  ::int64_t dirty_nodes() const;
+  void set_dirty_nodes(::int64_t value);
+  private:
+  ::int64_t _internal_dirty_nodes() const;
+  void _internal_set_dirty_nodes(::int64_t value);
+  public:
+
+  // optional int64 dirty_dents = 6;
+  bool has_dirty_dents() const;
+  private:
+  bool _internal_has_dirty_dents() const;
+  public:
+  void clear_dirty_dents();
+  ::int64_t dirty_dents() const;
+  void set_dirty_dents(::int64_t value);
+  private:
+  ::int64_t _internal_dirty_dents() const;
+  void _internal_set_dirty_dents(::int64_t value);
+  public:
+
+  // optional int32 sec_freed = 4;
+  bool has_sec_freed() const;
+  private:
+  bool _internal_has_sec_freed() const;
+  public:
+  void clear_sec_freed();
+  ::int32_t sec_freed() const;
+  void set_sec_freed(::int32_t value);
+  private:
+  ::int32_t _internal_sec_freed() const;
+  void _internal_set_sec_freed(::int32_t value);
+  public:
+
+  // optional uint32 free_sec = 8;
+  bool has_free_sec() const;
+  private:
+  bool _internal_has_free_sec() const;
+  public:
+  void clear_free_sec();
+  ::uint32_t free_sec() const;
+  void set_free_sec(::uint32_t value);
+  private:
+  ::uint32_t _internal_free_sec() const;
+  void _internal_set_free_sec(::uint32_t value);
+  public:
+
+  // optional int64 dirty_imeta = 7;
+  bool has_dirty_imeta() const;
+  private:
+  bool _internal_has_dirty_imeta() const;
+  public:
+  void clear_dirty_imeta();
+  ::int64_t dirty_imeta() const;
+  void set_dirty_imeta(::int64_t value);
+  private:
+  ::int64_t _internal_dirty_imeta() const;
+  void _internal_set_dirty_imeta(::int64_t value);
+  public:
+
+  // optional uint32 free_seg = 9;
+  bool has_free_seg() const;
+  private:
+  bool _internal_has_free_seg() const;
+  public:
+  void clear_free_seg();
+  ::uint32_t free_seg() const;
+  void set_free_seg(::uint32_t value);
+  private:
+  ::uint32_t _internal_free_seg() const;
+  void _internal_set_free_seg(::uint32_t value);
+  public:
+
+  // optional int32 reserved_seg = 10;
+  bool has_reserved_seg() const;
+  private:
+  bool _internal_has_reserved_seg() const;
+  public:
+  void clear_reserved_seg();
+  ::int32_t reserved_seg() const;
+  void set_reserved_seg(::int32_t value);
+  private:
+  ::int32_t _internal_reserved_seg() const;
+  void _internal_set_reserved_seg(::int32_t value);
+  public:
+
+  // optional uint32 prefree_seg = 11;
+  bool has_prefree_seg() const;
+  private:
+  bool _internal_has_prefree_seg() const;
+  public:
+  void clear_prefree_seg();
+  ::uint32_t prefree_seg() const;
+  void set_prefree_seg(::uint32_t value);
+  private:
+  ::uint32_t _internal_prefree_seg() const;
+  void _internal_set_prefree_seg(::uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.F2fsGcEndFtraceEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::uint64_t dev_;
+    ::int32_t ret_;
+    ::int32_t seg_freed_;
+    ::int64_t dirty_nodes_;
+    ::int64_t dirty_dents_;
+    ::int32_t sec_freed_;
+    ::uint32_t free_sec_;
+    ::int64_t dirty_imeta_;
+    ::uint32_t free_seg_;
+    ::int32_t reserved_seg_;
+    ::uint32_t prefree_seg_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fftrace_2ff2fs_2eproto;
+};
 // ===================================================================
 
 
@@ -14066,9 +14891,811 @@ inline void F2fsIostatLatencyFtraceEvent::set_n_wr_s_peak(::uint32_t value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.F2fsIostatLatencyFtraceEvent.n_wr_s_peak)
 }
 
+// -------------------------------------------------------------------
+
+// F2fsBackgroundGcFtraceEvent
+
+// optional uint64 dev = 1;
+inline bool F2fsBackgroundGcFtraceEvent::_internal_has_dev() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool F2fsBackgroundGcFtraceEvent::has_dev() const {
+  return _internal_has_dev();
+}
+inline void F2fsBackgroundGcFtraceEvent::clear_dev() {
+  _impl_.dev_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::uint64_t F2fsBackgroundGcFtraceEvent::_internal_dev() const {
+  return _impl_.dev_;
+}
+inline ::uint64_t F2fsBackgroundGcFtraceEvent::dev() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsBackgroundGcFtraceEvent.dev)
+  return _internal_dev();
+}
+inline void F2fsBackgroundGcFtraceEvent::_internal_set_dev(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.dev_ = value;
+}
+inline void F2fsBackgroundGcFtraceEvent::set_dev(::uint64_t value) {
+  _internal_set_dev(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsBackgroundGcFtraceEvent.dev)
+}
+
+// optional uint32 wait_ms = 2;
+inline bool F2fsBackgroundGcFtraceEvent::_internal_has_wait_ms() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool F2fsBackgroundGcFtraceEvent::has_wait_ms() const {
+  return _internal_has_wait_ms();
+}
+inline void F2fsBackgroundGcFtraceEvent::clear_wait_ms() {
+  _impl_.wait_ms_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t F2fsBackgroundGcFtraceEvent::_internal_wait_ms() const {
+  return _impl_.wait_ms_;
+}
+inline ::uint32_t F2fsBackgroundGcFtraceEvent::wait_ms() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsBackgroundGcFtraceEvent.wait_ms)
+  return _internal_wait_ms();
+}
+inline void F2fsBackgroundGcFtraceEvent::_internal_set_wait_ms(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.wait_ms_ = value;
+}
+inline void F2fsBackgroundGcFtraceEvent::set_wait_ms(::uint32_t value) {
+  _internal_set_wait_ms(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsBackgroundGcFtraceEvent.wait_ms)
+}
+
+// optional uint32 prefree = 3;
+inline bool F2fsBackgroundGcFtraceEvent::_internal_has_prefree() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool F2fsBackgroundGcFtraceEvent::has_prefree() const {
+  return _internal_has_prefree();
+}
+inline void F2fsBackgroundGcFtraceEvent::clear_prefree() {
+  _impl_.prefree_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint32_t F2fsBackgroundGcFtraceEvent::_internal_prefree() const {
+  return _impl_.prefree_;
+}
+inline ::uint32_t F2fsBackgroundGcFtraceEvent::prefree() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsBackgroundGcFtraceEvent.prefree)
+  return _internal_prefree();
+}
+inline void F2fsBackgroundGcFtraceEvent::_internal_set_prefree(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.prefree_ = value;
+}
+inline void F2fsBackgroundGcFtraceEvent::set_prefree(::uint32_t value) {
+  _internal_set_prefree(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsBackgroundGcFtraceEvent.prefree)
+}
+
+// optional uint32 free = 4;
+inline bool F2fsBackgroundGcFtraceEvent::_internal_has_free() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool F2fsBackgroundGcFtraceEvent::has_free() const {
+  return _internal_has_free();
+}
+inline void F2fsBackgroundGcFtraceEvent::clear_free() {
+  _impl_.free_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline ::uint32_t F2fsBackgroundGcFtraceEvent::_internal_free() const {
+  return _impl_.free_;
+}
+inline ::uint32_t F2fsBackgroundGcFtraceEvent::free() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsBackgroundGcFtraceEvent.free)
+  return _internal_free();
+}
+inline void F2fsBackgroundGcFtraceEvent::_internal_set_free(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.free_ = value;
+}
+inline void F2fsBackgroundGcFtraceEvent::set_free(::uint32_t value) {
+  _internal_set_free(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsBackgroundGcFtraceEvent.free)
+}
+
+// -------------------------------------------------------------------
+
+// F2fsGcBeginFtraceEvent
+
+// optional uint64 dev = 1;
+inline bool F2fsGcBeginFtraceEvent::_internal_has_dev() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool F2fsGcBeginFtraceEvent::has_dev() const {
+  return _internal_has_dev();
+}
+inline void F2fsGcBeginFtraceEvent::clear_dev() {
+  _impl_.dev_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::uint64_t F2fsGcBeginFtraceEvent::_internal_dev() const {
+  return _impl_.dev_;
+}
+inline ::uint64_t F2fsGcBeginFtraceEvent::dev() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcBeginFtraceEvent.dev)
+  return _internal_dev();
+}
+inline void F2fsGcBeginFtraceEvent::_internal_set_dev(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.dev_ = value;
+}
+inline void F2fsGcBeginFtraceEvent::set_dev(::uint64_t value) {
+  _internal_set_dev(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcBeginFtraceEvent.dev)
+}
+
+// optional uint32 sync = 2;
+inline bool F2fsGcBeginFtraceEvent::_internal_has_sync() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool F2fsGcBeginFtraceEvent::has_sync() const {
+  return _internal_has_sync();
+}
+inline void F2fsGcBeginFtraceEvent::clear_sync() {
+  _impl_.sync_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::_internal_sync() const {
+  return _impl_.sync_;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::sync() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcBeginFtraceEvent.sync)
+  return _internal_sync();
+}
+inline void F2fsGcBeginFtraceEvent::_internal_set_sync(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.sync_ = value;
+}
+inline void F2fsGcBeginFtraceEvent::set_sync(::uint32_t value) {
+  _internal_set_sync(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcBeginFtraceEvent.sync)
+}
+
+// optional uint32 background = 3;
+inline bool F2fsGcBeginFtraceEvent::_internal_has_background() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool F2fsGcBeginFtraceEvent::has_background() const {
+  return _internal_has_background();
+}
+inline void F2fsGcBeginFtraceEvent::clear_background() {
+  _impl_.background_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::_internal_background() const {
+  return _impl_.background_;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::background() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcBeginFtraceEvent.background)
+  return _internal_background();
+}
+inline void F2fsGcBeginFtraceEvent::_internal_set_background(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.background_ = value;
+}
+inline void F2fsGcBeginFtraceEvent::set_background(::uint32_t value) {
+  _internal_set_background(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcBeginFtraceEvent.background)
+}
+
+// optional int64 dirty_nodes = 4;
+inline bool F2fsGcBeginFtraceEvent::_internal_has_dirty_nodes() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool F2fsGcBeginFtraceEvent::has_dirty_nodes() const {
+  return _internal_has_dirty_nodes();
+}
+inline void F2fsGcBeginFtraceEvent::clear_dirty_nodes() {
+  _impl_.dirty_nodes_ = ::int64_t{0};
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline ::int64_t F2fsGcBeginFtraceEvent::_internal_dirty_nodes() const {
+  return _impl_.dirty_nodes_;
+}
+inline ::int64_t F2fsGcBeginFtraceEvent::dirty_nodes() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcBeginFtraceEvent.dirty_nodes)
+  return _internal_dirty_nodes();
+}
+inline void F2fsGcBeginFtraceEvent::_internal_set_dirty_nodes(::int64_t value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.dirty_nodes_ = value;
+}
+inline void F2fsGcBeginFtraceEvent::set_dirty_nodes(::int64_t value) {
+  _internal_set_dirty_nodes(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcBeginFtraceEvent.dirty_nodes)
+}
+
+// optional int64 dirty_dents = 5;
+inline bool F2fsGcBeginFtraceEvent::_internal_has_dirty_dents() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool F2fsGcBeginFtraceEvent::has_dirty_dents() const {
+  return _internal_has_dirty_dents();
+}
+inline void F2fsGcBeginFtraceEvent::clear_dirty_dents() {
+  _impl_.dirty_dents_ = ::int64_t{0};
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline ::int64_t F2fsGcBeginFtraceEvent::_internal_dirty_dents() const {
+  return _impl_.dirty_dents_;
+}
+inline ::int64_t F2fsGcBeginFtraceEvent::dirty_dents() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcBeginFtraceEvent.dirty_dents)
+  return _internal_dirty_dents();
+}
+inline void F2fsGcBeginFtraceEvent::_internal_set_dirty_dents(::int64_t value) {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.dirty_dents_ = value;
+}
+inline void F2fsGcBeginFtraceEvent::set_dirty_dents(::int64_t value) {
+  _internal_set_dirty_dents(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcBeginFtraceEvent.dirty_dents)
+}
+
+// optional int64 dirty_imeta = 6;
+inline bool F2fsGcBeginFtraceEvent::_internal_has_dirty_imeta() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool F2fsGcBeginFtraceEvent::has_dirty_imeta() const {
+  return _internal_has_dirty_imeta();
+}
+inline void F2fsGcBeginFtraceEvent::clear_dirty_imeta() {
+  _impl_.dirty_imeta_ = ::int64_t{0};
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline ::int64_t F2fsGcBeginFtraceEvent::_internal_dirty_imeta() const {
+  return _impl_.dirty_imeta_;
+}
+inline ::int64_t F2fsGcBeginFtraceEvent::dirty_imeta() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcBeginFtraceEvent.dirty_imeta)
+  return _internal_dirty_imeta();
+}
+inline void F2fsGcBeginFtraceEvent::_internal_set_dirty_imeta(::int64_t value) {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_.dirty_imeta_ = value;
+}
+inline void F2fsGcBeginFtraceEvent::set_dirty_imeta(::int64_t value) {
+  _internal_set_dirty_imeta(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcBeginFtraceEvent.dirty_imeta)
+}
+
+// optional uint32 free_sec = 7;
+inline bool F2fsGcBeginFtraceEvent::_internal_has_free_sec() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
+  return value;
+}
+inline bool F2fsGcBeginFtraceEvent::has_free_sec() const {
+  return _internal_has_free_sec();
+}
+inline void F2fsGcBeginFtraceEvent::clear_free_sec() {
+  _impl_.free_sec_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000040u;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::_internal_free_sec() const {
+  return _impl_.free_sec_;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::free_sec() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcBeginFtraceEvent.free_sec)
+  return _internal_free_sec();
+}
+inline void F2fsGcBeginFtraceEvent::_internal_set_free_sec(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000040u;
+  _impl_.free_sec_ = value;
+}
+inline void F2fsGcBeginFtraceEvent::set_free_sec(::uint32_t value) {
+  _internal_set_free_sec(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcBeginFtraceEvent.free_sec)
+}
+
+// optional uint32 free_seg = 8;
+inline bool F2fsGcBeginFtraceEvent::_internal_has_free_seg() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
+  return value;
+}
+inline bool F2fsGcBeginFtraceEvent::has_free_seg() const {
+  return _internal_has_free_seg();
+}
+inline void F2fsGcBeginFtraceEvent::clear_free_seg() {
+  _impl_.free_seg_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000080u;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::_internal_free_seg() const {
+  return _impl_.free_seg_;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::free_seg() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcBeginFtraceEvent.free_seg)
+  return _internal_free_seg();
+}
+inline void F2fsGcBeginFtraceEvent::_internal_set_free_seg(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000080u;
+  _impl_.free_seg_ = value;
+}
+inline void F2fsGcBeginFtraceEvent::set_free_seg(::uint32_t value) {
+  _internal_set_free_seg(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcBeginFtraceEvent.free_seg)
+}
+
+// optional int32 reserved_seg = 9;
+inline bool F2fsGcBeginFtraceEvent::_internal_has_reserved_seg() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000100u) != 0;
+  return value;
+}
+inline bool F2fsGcBeginFtraceEvent::has_reserved_seg() const {
+  return _internal_has_reserved_seg();
+}
+inline void F2fsGcBeginFtraceEvent::clear_reserved_seg() {
+  _impl_.reserved_seg_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000100u;
+}
+inline ::int32_t F2fsGcBeginFtraceEvent::_internal_reserved_seg() const {
+  return _impl_.reserved_seg_;
+}
+inline ::int32_t F2fsGcBeginFtraceEvent::reserved_seg() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcBeginFtraceEvent.reserved_seg)
+  return _internal_reserved_seg();
+}
+inline void F2fsGcBeginFtraceEvent::_internal_set_reserved_seg(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000100u;
+  _impl_.reserved_seg_ = value;
+}
+inline void F2fsGcBeginFtraceEvent::set_reserved_seg(::int32_t value) {
+  _internal_set_reserved_seg(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcBeginFtraceEvent.reserved_seg)
+}
+
+// optional uint32 prefree_seg = 10;
+inline bool F2fsGcBeginFtraceEvent::_internal_has_prefree_seg() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000200u) != 0;
+  return value;
+}
+inline bool F2fsGcBeginFtraceEvent::has_prefree_seg() const {
+  return _internal_has_prefree_seg();
+}
+inline void F2fsGcBeginFtraceEvent::clear_prefree_seg() {
+  _impl_.prefree_seg_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000200u;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::_internal_prefree_seg() const {
+  return _impl_.prefree_seg_;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::prefree_seg() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcBeginFtraceEvent.prefree_seg)
+  return _internal_prefree_seg();
+}
+inline void F2fsGcBeginFtraceEvent::_internal_set_prefree_seg(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000200u;
+  _impl_.prefree_seg_ = value;
+}
+inline void F2fsGcBeginFtraceEvent::set_prefree_seg(::uint32_t value) {
+  _internal_set_prefree_seg(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcBeginFtraceEvent.prefree_seg)
+}
+
+// optional int32 gc_type = 11;
+inline bool F2fsGcBeginFtraceEvent::_internal_has_gc_type() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000400u) != 0;
+  return value;
+}
+inline bool F2fsGcBeginFtraceEvent::has_gc_type() const {
+  return _internal_has_gc_type();
+}
+inline void F2fsGcBeginFtraceEvent::clear_gc_type() {
+  _impl_.gc_type_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000400u;
+}
+inline ::int32_t F2fsGcBeginFtraceEvent::_internal_gc_type() const {
+  return _impl_.gc_type_;
+}
+inline ::int32_t F2fsGcBeginFtraceEvent::gc_type() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcBeginFtraceEvent.gc_type)
+  return _internal_gc_type();
+}
+inline void F2fsGcBeginFtraceEvent::_internal_set_gc_type(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000400u;
+  _impl_.gc_type_ = value;
+}
+inline void F2fsGcBeginFtraceEvent::set_gc_type(::int32_t value) {
+  _internal_set_gc_type(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcBeginFtraceEvent.gc_type)
+}
+
+// optional uint32 no_bg_gc = 12;
+inline bool F2fsGcBeginFtraceEvent::_internal_has_no_bg_gc() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000800u) != 0;
+  return value;
+}
+inline bool F2fsGcBeginFtraceEvent::has_no_bg_gc() const {
+  return _internal_has_no_bg_gc();
+}
+inline void F2fsGcBeginFtraceEvent::clear_no_bg_gc() {
+  _impl_.no_bg_gc_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000800u;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::_internal_no_bg_gc() const {
+  return _impl_.no_bg_gc_;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::no_bg_gc() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcBeginFtraceEvent.no_bg_gc)
+  return _internal_no_bg_gc();
+}
+inline void F2fsGcBeginFtraceEvent::_internal_set_no_bg_gc(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000800u;
+  _impl_.no_bg_gc_ = value;
+}
+inline void F2fsGcBeginFtraceEvent::set_no_bg_gc(::uint32_t value) {
+  _internal_set_no_bg_gc(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcBeginFtraceEvent.no_bg_gc)
+}
+
+// optional uint32 nr_free_secs = 13;
+inline bool F2fsGcBeginFtraceEvent::_internal_has_nr_free_secs() const {
+  bool value = (_impl_._has_bits_[0] & 0x00001000u) != 0;
+  return value;
+}
+inline bool F2fsGcBeginFtraceEvent::has_nr_free_secs() const {
+  return _internal_has_nr_free_secs();
+}
+inline void F2fsGcBeginFtraceEvent::clear_nr_free_secs() {
+  _impl_.nr_free_secs_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00001000u;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::_internal_nr_free_secs() const {
+  return _impl_.nr_free_secs_;
+}
+inline ::uint32_t F2fsGcBeginFtraceEvent::nr_free_secs() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcBeginFtraceEvent.nr_free_secs)
+  return _internal_nr_free_secs();
+}
+inline void F2fsGcBeginFtraceEvent::_internal_set_nr_free_secs(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00001000u;
+  _impl_.nr_free_secs_ = value;
+}
+inline void F2fsGcBeginFtraceEvent::set_nr_free_secs(::uint32_t value) {
+  _internal_set_nr_free_secs(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcBeginFtraceEvent.nr_free_secs)
+}
+
+// -------------------------------------------------------------------
+
+// F2fsGcEndFtraceEvent
+
+// optional uint64 dev = 1;
+inline bool F2fsGcEndFtraceEvent::_internal_has_dev() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool F2fsGcEndFtraceEvent::has_dev() const {
+  return _internal_has_dev();
+}
+inline void F2fsGcEndFtraceEvent::clear_dev() {
+  _impl_.dev_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline ::uint64_t F2fsGcEndFtraceEvent::_internal_dev() const {
+  return _impl_.dev_;
+}
+inline ::uint64_t F2fsGcEndFtraceEvent::dev() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcEndFtraceEvent.dev)
+  return _internal_dev();
+}
+inline void F2fsGcEndFtraceEvent::_internal_set_dev(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.dev_ = value;
+}
+inline void F2fsGcEndFtraceEvent::set_dev(::uint64_t value) {
+  _internal_set_dev(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcEndFtraceEvent.dev)
+}
+
+// optional int32 ret = 2;
+inline bool F2fsGcEndFtraceEvent::_internal_has_ret() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool F2fsGcEndFtraceEvent::has_ret() const {
+  return _internal_has_ret();
+}
+inline void F2fsGcEndFtraceEvent::clear_ret() {
+  _impl_.ret_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline ::int32_t F2fsGcEndFtraceEvent::_internal_ret() const {
+  return _impl_.ret_;
+}
+inline ::int32_t F2fsGcEndFtraceEvent::ret() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcEndFtraceEvent.ret)
+  return _internal_ret();
+}
+inline void F2fsGcEndFtraceEvent::_internal_set_ret(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.ret_ = value;
+}
+inline void F2fsGcEndFtraceEvent::set_ret(::int32_t value) {
+  _internal_set_ret(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcEndFtraceEvent.ret)
+}
+
+// optional int32 seg_freed = 3;
+inline bool F2fsGcEndFtraceEvent::_internal_has_seg_freed() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool F2fsGcEndFtraceEvent::has_seg_freed() const {
+  return _internal_has_seg_freed();
+}
+inline void F2fsGcEndFtraceEvent::clear_seg_freed() {
+  _impl_.seg_freed_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::int32_t F2fsGcEndFtraceEvent::_internal_seg_freed() const {
+  return _impl_.seg_freed_;
+}
+inline ::int32_t F2fsGcEndFtraceEvent::seg_freed() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcEndFtraceEvent.seg_freed)
+  return _internal_seg_freed();
+}
+inline void F2fsGcEndFtraceEvent::_internal_set_seg_freed(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.seg_freed_ = value;
+}
+inline void F2fsGcEndFtraceEvent::set_seg_freed(::int32_t value) {
+  _internal_set_seg_freed(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcEndFtraceEvent.seg_freed)
+}
+
+// optional int32 sec_freed = 4;
+inline bool F2fsGcEndFtraceEvent::_internal_has_sec_freed() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool F2fsGcEndFtraceEvent::has_sec_freed() const {
+  return _internal_has_sec_freed();
+}
+inline void F2fsGcEndFtraceEvent::clear_sec_freed() {
+  _impl_.sec_freed_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline ::int32_t F2fsGcEndFtraceEvent::_internal_sec_freed() const {
+  return _impl_.sec_freed_;
+}
+inline ::int32_t F2fsGcEndFtraceEvent::sec_freed() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcEndFtraceEvent.sec_freed)
+  return _internal_sec_freed();
+}
+inline void F2fsGcEndFtraceEvent::_internal_set_sec_freed(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_.sec_freed_ = value;
+}
+inline void F2fsGcEndFtraceEvent::set_sec_freed(::int32_t value) {
+  _internal_set_sec_freed(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcEndFtraceEvent.sec_freed)
+}
+
+// optional int64 dirty_nodes = 5;
+inline bool F2fsGcEndFtraceEvent::_internal_has_dirty_nodes() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool F2fsGcEndFtraceEvent::has_dirty_nodes() const {
+  return _internal_has_dirty_nodes();
+}
+inline void F2fsGcEndFtraceEvent::clear_dirty_nodes() {
+  _impl_.dirty_nodes_ = ::int64_t{0};
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline ::int64_t F2fsGcEndFtraceEvent::_internal_dirty_nodes() const {
+  return _impl_.dirty_nodes_;
+}
+inline ::int64_t F2fsGcEndFtraceEvent::dirty_nodes() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcEndFtraceEvent.dirty_nodes)
+  return _internal_dirty_nodes();
+}
+inline void F2fsGcEndFtraceEvent::_internal_set_dirty_nodes(::int64_t value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.dirty_nodes_ = value;
+}
+inline void F2fsGcEndFtraceEvent::set_dirty_nodes(::int64_t value) {
+  _internal_set_dirty_nodes(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcEndFtraceEvent.dirty_nodes)
+}
+
+// optional int64 dirty_dents = 6;
+inline bool F2fsGcEndFtraceEvent::_internal_has_dirty_dents() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool F2fsGcEndFtraceEvent::has_dirty_dents() const {
+  return _internal_has_dirty_dents();
+}
+inline void F2fsGcEndFtraceEvent::clear_dirty_dents() {
+  _impl_.dirty_dents_ = ::int64_t{0};
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline ::int64_t F2fsGcEndFtraceEvent::_internal_dirty_dents() const {
+  return _impl_.dirty_dents_;
+}
+inline ::int64_t F2fsGcEndFtraceEvent::dirty_dents() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcEndFtraceEvent.dirty_dents)
+  return _internal_dirty_dents();
+}
+inline void F2fsGcEndFtraceEvent::_internal_set_dirty_dents(::int64_t value) {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.dirty_dents_ = value;
+}
+inline void F2fsGcEndFtraceEvent::set_dirty_dents(::int64_t value) {
+  _internal_set_dirty_dents(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcEndFtraceEvent.dirty_dents)
+}
+
+// optional int64 dirty_imeta = 7;
+inline bool F2fsGcEndFtraceEvent::_internal_has_dirty_imeta() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
+  return value;
+}
+inline bool F2fsGcEndFtraceEvent::has_dirty_imeta() const {
+  return _internal_has_dirty_imeta();
+}
+inline void F2fsGcEndFtraceEvent::clear_dirty_imeta() {
+  _impl_.dirty_imeta_ = ::int64_t{0};
+  _impl_._has_bits_[0] &= ~0x00000080u;
+}
+inline ::int64_t F2fsGcEndFtraceEvent::_internal_dirty_imeta() const {
+  return _impl_.dirty_imeta_;
+}
+inline ::int64_t F2fsGcEndFtraceEvent::dirty_imeta() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcEndFtraceEvent.dirty_imeta)
+  return _internal_dirty_imeta();
+}
+inline void F2fsGcEndFtraceEvent::_internal_set_dirty_imeta(::int64_t value) {
+  _impl_._has_bits_[0] |= 0x00000080u;
+  _impl_.dirty_imeta_ = value;
+}
+inline void F2fsGcEndFtraceEvent::set_dirty_imeta(::int64_t value) {
+  _internal_set_dirty_imeta(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcEndFtraceEvent.dirty_imeta)
+}
+
+// optional uint32 free_sec = 8;
+inline bool F2fsGcEndFtraceEvent::_internal_has_free_sec() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
+  return value;
+}
+inline bool F2fsGcEndFtraceEvent::has_free_sec() const {
+  return _internal_has_free_sec();
+}
+inline void F2fsGcEndFtraceEvent::clear_free_sec() {
+  _impl_.free_sec_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000040u;
+}
+inline ::uint32_t F2fsGcEndFtraceEvent::_internal_free_sec() const {
+  return _impl_.free_sec_;
+}
+inline ::uint32_t F2fsGcEndFtraceEvent::free_sec() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcEndFtraceEvent.free_sec)
+  return _internal_free_sec();
+}
+inline void F2fsGcEndFtraceEvent::_internal_set_free_sec(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000040u;
+  _impl_.free_sec_ = value;
+}
+inline void F2fsGcEndFtraceEvent::set_free_sec(::uint32_t value) {
+  _internal_set_free_sec(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcEndFtraceEvent.free_sec)
+}
+
+// optional uint32 free_seg = 9;
+inline bool F2fsGcEndFtraceEvent::_internal_has_free_seg() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000100u) != 0;
+  return value;
+}
+inline bool F2fsGcEndFtraceEvent::has_free_seg() const {
+  return _internal_has_free_seg();
+}
+inline void F2fsGcEndFtraceEvent::clear_free_seg() {
+  _impl_.free_seg_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000100u;
+}
+inline ::uint32_t F2fsGcEndFtraceEvent::_internal_free_seg() const {
+  return _impl_.free_seg_;
+}
+inline ::uint32_t F2fsGcEndFtraceEvent::free_seg() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcEndFtraceEvent.free_seg)
+  return _internal_free_seg();
+}
+inline void F2fsGcEndFtraceEvent::_internal_set_free_seg(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000100u;
+  _impl_.free_seg_ = value;
+}
+inline void F2fsGcEndFtraceEvent::set_free_seg(::uint32_t value) {
+  _internal_set_free_seg(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcEndFtraceEvent.free_seg)
+}
+
+// optional int32 reserved_seg = 10;
+inline bool F2fsGcEndFtraceEvent::_internal_has_reserved_seg() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000200u) != 0;
+  return value;
+}
+inline bool F2fsGcEndFtraceEvent::has_reserved_seg() const {
+  return _internal_has_reserved_seg();
+}
+inline void F2fsGcEndFtraceEvent::clear_reserved_seg() {
+  _impl_.reserved_seg_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000200u;
+}
+inline ::int32_t F2fsGcEndFtraceEvent::_internal_reserved_seg() const {
+  return _impl_.reserved_seg_;
+}
+inline ::int32_t F2fsGcEndFtraceEvent::reserved_seg() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcEndFtraceEvent.reserved_seg)
+  return _internal_reserved_seg();
+}
+inline void F2fsGcEndFtraceEvent::_internal_set_reserved_seg(::int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000200u;
+  _impl_.reserved_seg_ = value;
+}
+inline void F2fsGcEndFtraceEvent::set_reserved_seg(::int32_t value) {
+  _internal_set_reserved_seg(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcEndFtraceEvent.reserved_seg)
+}
+
+// optional uint32 prefree_seg = 11;
+inline bool F2fsGcEndFtraceEvent::_internal_has_prefree_seg() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000400u) != 0;
+  return value;
+}
+inline bool F2fsGcEndFtraceEvent::has_prefree_seg() const {
+  return _internal_has_prefree_seg();
+}
+inline void F2fsGcEndFtraceEvent::clear_prefree_seg() {
+  _impl_.prefree_seg_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000400u;
+}
+inline ::uint32_t F2fsGcEndFtraceEvent::_internal_prefree_seg() const {
+  return _impl_.prefree_seg_;
+}
+inline ::uint32_t F2fsGcEndFtraceEvent::prefree_seg() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.F2fsGcEndFtraceEvent.prefree_seg)
+  return _internal_prefree_seg();
+}
+inline void F2fsGcEndFtraceEvent::_internal_set_prefree_seg(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000400u;
+  _impl_.prefree_seg_ = value;
+}
+inline void F2fsGcEndFtraceEvent::set_prefree_seg(::uint32_t value) {
+  _internal_set_prefree_seg(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.F2fsGcEndFtraceEvent.prefree_seg)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -50,6 +50,8 @@ class PERFETTO_EXPORT_COMPONENT ProcessStatsConfig : public ::protozero::CppMess
     kProcStatsCacheTtlMsFieldNumber = 6,
     kResolveProcessFdsFieldNumber = 9,
     kScanSmapsRollupFieldNumber = 10,
+    kRecordProcessAgeFieldNumber = 11,
+    kRecordProcessRuntimeFieldNumber = 12,
   };
 
   ProcessStatsConfig();
@@ -97,6 +99,14 @@ class PERFETTO_EXPORT_COMPONENT ProcessStatsConfig : public ::protozero::CppMess
   bool scan_smaps_rollup() const { return scan_smaps_rollup_; }
   void set_scan_smaps_rollup(bool value) { scan_smaps_rollup_ = value; _has_field_.set(10); }
 
+  bool has_record_process_age() const { return _has_field_[11]; }
+  bool record_process_age() const { return record_process_age_; }
+  void set_record_process_age(bool value) { record_process_age_ = value; _has_field_.set(11); }
+
+  bool has_record_process_runtime() const { return _has_field_[12]; }
+  bool record_process_runtime() const { return record_process_runtime_; }
+  void set_record_process_runtime(bool value) { record_process_runtime_ = value; _has_field_.set(12); }
+
  private:
   std::vector<ProcessStatsConfig_Quirks> quirks_;
   bool scan_all_processes_on_start_{};
@@ -105,12 +115,14 @@ class PERFETTO_EXPORT_COMPONENT ProcessStatsConfig : public ::protozero::CppMess
   uint32_t proc_stats_cache_ttl_ms_{};
   bool resolve_process_fds_{};
   bool scan_smaps_rollup_{};
+  bool record_process_age_{};
+  bool record_process_runtime_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.
   std::string unknown_fields_;
 
-  std::bitset<11> _has_field_{};
+  std::bitset<13> _has_field_{};
 };
 
 }  // namespace perfetto

@@ -34,6 +34,7 @@ enum SurfaceFlingerLayersConfig_Mode : int {
   SurfaceFlingerLayersConfig_Mode_MODE_ACTIVE = 1,
   SurfaceFlingerLayersConfig_Mode_MODE_GENERATED = 2,
   SurfaceFlingerLayersConfig_Mode_MODE_DUMP = 3,
+  SurfaceFlingerLayersConfig_Mode_MODE_GENERATED_BUGREPORT_ONLY = 4,
 };
 enum SurfaceFlingerLayersConfig_TraceFlag : int {
   SurfaceFlingerLayersConfig_TraceFlag_TRACE_FLAG_UNSPECIFIED = 0,
@@ -53,8 +54,9 @@ class PERFETTO_EXPORT_COMPONENT SurfaceFlingerLayersConfig : public ::protozero:
   static constexpr auto MODE_ACTIVE = SurfaceFlingerLayersConfig_Mode_MODE_ACTIVE;
   static constexpr auto MODE_GENERATED = SurfaceFlingerLayersConfig_Mode_MODE_GENERATED;
   static constexpr auto MODE_DUMP = SurfaceFlingerLayersConfig_Mode_MODE_DUMP;
+  static constexpr auto MODE_GENERATED_BUGREPORT_ONLY = SurfaceFlingerLayersConfig_Mode_MODE_GENERATED_BUGREPORT_ONLY;
   static constexpr auto Mode_MIN = SurfaceFlingerLayersConfig_Mode_MODE_UNSPECIFIED;
-  static constexpr auto Mode_MAX = SurfaceFlingerLayersConfig_Mode_MODE_DUMP;
+  static constexpr auto Mode_MAX = SurfaceFlingerLayersConfig_Mode_MODE_GENERATED_BUGREPORT_ONLY;
   using TraceFlag = SurfaceFlingerLayersConfig_TraceFlag;
   static constexpr auto TRACE_FLAG_UNSPECIFIED = SurfaceFlingerLayersConfig_TraceFlag_TRACE_FLAG_UNSPECIFIED;
   static constexpr auto TRACE_FLAG_INPUT = SurfaceFlingerLayersConfig_TraceFlag_TRACE_FLAG_INPUT;

@@ -15,18 +15,77 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class SysStats_BuddyInfo;
+class SysStats_CpuIdleState;
+class SysStats_CpuIdleStateEntry;
 class SysStats_CpuTimes;
 class SysStats_DevfreqValue;
 class SysStats_DiskStat;
 class SysStats_InterruptCount;
 class SysStats_MeminfoValue;
+class SysStats_PsiSample;
+class SysStats_ThermalZone;
 class SysStats_VmstatValue;
 enum MeminfoCounters : int32_t;
+namespace perfetto_pbzero_enum_SysStats_PsiSample {
+enum PsiResource : int32_t;
+}  // namespace perfetto_pbzero_enum_SysStats_PsiSample
+using SysStats_PsiSample_PsiResource = perfetto_pbzero_enum_SysStats_PsiSample::PsiResource;
 enum VmstatCounters : int32_t;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
 
-class SysStats_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/13, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+namespace perfetto {
+namespace protos {
+namespace pbzero {
+
+namespace perfetto_pbzero_enum_SysStats_PsiSample {
+enum PsiResource : int32_t {
+  PSI_RESOURCE_UNSPECIFIED = 0,
+  PSI_RESOURCE_CPU_SOME = 1,
+  PSI_RESOURCE_CPU_FULL = 2,
+  PSI_RESOURCE_IO_SOME = 3,
+  PSI_RESOURCE_IO_FULL = 4,
+  PSI_RESOURCE_MEMORY_SOME = 5,
+  PSI_RESOURCE_MEMORY_FULL = 6,
+};
+} // namespace perfetto_pbzero_enum_SysStats_PsiSample
+using SysStats_PsiSample_PsiResource = perfetto_pbzero_enum_SysStats_PsiSample::PsiResource;
+
+
+constexpr SysStats_PsiSample_PsiResource SysStats_PsiSample_PsiResource_MIN = SysStats_PsiSample_PsiResource::PSI_RESOURCE_UNSPECIFIED;
+constexpr SysStats_PsiSample_PsiResource SysStats_PsiSample_PsiResource_MAX = SysStats_PsiSample_PsiResource::PSI_RESOURCE_MEMORY_FULL;
+
+
+PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
+const char* SysStats_PsiSample_PsiResource_Name(::perfetto::protos::pbzero::SysStats_PsiSample_PsiResource value) {
+  switch (value) {
+  case ::perfetto::protos::pbzero::SysStats_PsiSample_PsiResource::PSI_RESOURCE_UNSPECIFIED:
+    return "PSI_RESOURCE_UNSPECIFIED";
+
+  case ::perfetto::protos::pbzero::SysStats_PsiSample_PsiResource::PSI_RESOURCE_CPU_SOME:
+    return "PSI_RESOURCE_CPU_SOME";
+
+  case ::perfetto::protos::pbzero::SysStats_PsiSample_PsiResource::PSI_RESOURCE_CPU_FULL:
+    return "PSI_RESOURCE_CPU_FULL";
+
+  case ::perfetto::protos::pbzero::SysStats_PsiSample_PsiResource::PSI_RESOURCE_IO_SOME:
+    return "PSI_RESOURCE_IO_SOME";
+
+  case ::perfetto::protos::pbzero::SysStats_PsiSample_PsiResource::PSI_RESOURCE_IO_FULL:
+    return "PSI_RESOURCE_IO_FULL";
+
+  case ::perfetto::protos::pbzero::SysStats_PsiSample_PsiResource::PSI_RESOURCE_MEMORY_SOME:
+    return "PSI_RESOURCE_MEMORY_SOME";
+
+  case ::perfetto::protos::pbzero::SysStats_PsiSample_PsiResource::PSI_RESOURCE_MEMORY_FULL:
+    return "PSI_RESOURCE_MEMORY_FULL";
+  }
+  return "PBZERO_UNKNOWN_ENUM_VALUE";
+}
+
+class SysStats_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/17, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   SysStats_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit SysStats_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -57,6 +116,14 @@ class SysStats_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/
   ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> buddy_info() const { return GetRepeated<::protozero::ConstBytes>(12); }
   bool has_disk_stat() const { return at<13>().valid(); }
   ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> disk_stat() const { return GetRepeated<::protozero::ConstBytes>(13); }
+  bool has_psi() const { return at<14>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> psi() const { return GetRepeated<::protozero::ConstBytes>(14); }
+  bool has_thermal_zone() const { return at<15>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> thermal_zone() const { return GetRepeated<::protozero::ConstBytes>(15); }
+  bool has_cpuidle_state() const { return at<16>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> cpuidle_state() const { return GetRepeated<::protozero::ConstBytes>(16); }
+  bool has_gpufreq_mhz() const { return at<17>().valid(); }
+  ::protozero::RepeatedFieldIterator<uint64_t> gpufreq_mhz() const { return GetRepeated<uint64_t>(17); }
 };
 
 class SysStats : public ::protozero::Message {
@@ -76,6 +143,10 @@ class SysStats : public ::protozero::Message {
     kCpufreqKhzFieldNumber = 11,
     kBuddyInfoFieldNumber = 12,
     kDiskStatFieldNumber = 13,
+    kPsiFieldNumber = 14,
+    kThermalZoneFieldNumber = 15,
+    kCpuidleStateFieldNumber = 16,
+    kGpufreqMhzFieldNumber = 17,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.SysStats"; }
 
@@ -86,6 +157,10 @@ class SysStats : public ::protozero::Message {
   using DevfreqValue = ::perfetto::protos::pbzero::SysStats_DevfreqValue;
   using BuddyInfo = ::perfetto::protos::pbzero::SysStats_BuddyInfo;
   using DiskStat = ::perfetto::protos::pbzero::SysStats_DiskStat;
+  using PsiSample = ::perfetto::protos::pbzero::SysStats_PsiSample;
+  using ThermalZone = ::perfetto::protos::pbzero::SysStats_ThermalZone;
+  using CpuIdleStateEntry = ::perfetto::protos::pbzero::SysStats_CpuIdleStateEntry;
+  using CpuIdleState = ::perfetto::protos::pbzero::SysStats_CpuIdleState;
 
   using FieldMetadata_Meminfo =
     ::protozero::proto_utils::FieldMetadata<
@@ -288,6 +363,345 @@ class SysStats : public ::protozero::Message {
     return BeginNestedMessage<T>(13);
   }
 
+
+  using FieldMetadata_Psi =
+    ::protozero::proto_utils::FieldMetadata<
+      14,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SysStats_PsiSample,
+      SysStats>;
+
+  static constexpr FieldMetadata_Psi kPsi{};
+  template <typename T = SysStats_PsiSample> T* add_psi() {
+    return BeginNestedMessage<T>(14);
+  }
+
+
+  using FieldMetadata_ThermalZone =
+    ::protozero::proto_utils::FieldMetadata<
+      15,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SysStats_ThermalZone,
+      SysStats>;
+
+  static constexpr FieldMetadata_ThermalZone kThermalZone{};
+  template <typename T = SysStats_ThermalZone> T* add_thermal_zone() {
+    return BeginNestedMessage<T>(15);
+  }
+
+
+  using FieldMetadata_CpuidleState =
+    ::protozero::proto_utils::FieldMetadata<
+      16,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SysStats_CpuIdleState,
+      SysStats>;
+
+  static constexpr FieldMetadata_CpuidleState kCpuidleState{};
+  template <typename T = SysStats_CpuIdleState> T* add_cpuidle_state() {
+    return BeginNestedMessage<T>(16);
+  }
+
+
+  using FieldMetadata_GpufreqMhz =
+    ::protozero::proto_utils::FieldMetadata<
+      17,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      SysStats>;
+
+  static constexpr FieldMetadata_GpufreqMhz kGpufreqMhz{};
+  void add_gpufreq_mhz(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_GpufreqMhz::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class SysStats_CpuIdleState_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+ public:
+  SysStats_CpuIdleState_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit SysStats_CpuIdleState_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit SysStats_CpuIdleState_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_cpu_id() const { return at<1>().valid(); }
+  uint32_t cpu_id() const { return at<1>().as_uint32(); }
+  bool has_cpuidle_state_entry() const { return at<2>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> cpuidle_state_entry() const { return GetRepeated<::protozero::ConstBytes>(2); }
+};
+
+class SysStats_CpuIdleState : public ::protozero::Message {
+ public:
+  using Decoder = SysStats_CpuIdleState_Decoder;
+  enum : int32_t {
+    kCpuIdFieldNumber = 1,
+    kCpuidleStateEntryFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.SysStats.CpuIdleState"; }
+
+
+  using FieldMetadata_CpuId =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SysStats_CpuIdleState>;
+
+  static constexpr FieldMetadata_CpuId kCpuId{};
+  void set_cpu_id(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_CpuId::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_CpuidleStateEntry =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      SysStats_CpuIdleStateEntry,
+      SysStats_CpuIdleState>;
+
+  static constexpr FieldMetadata_CpuidleStateEntry kCpuidleStateEntry{};
+  template <typename T = SysStats_CpuIdleStateEntry> T* add_cpuidle_state_entry() {
+    return BeginNestedMessage<T>(2);
+  }
+
+};
+
+class SysStats_CpuIdleStateEntry_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  SysStats_CpuIdleStateEntry_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit SysStats_CpuIdleStateEntry_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit SysStats_CpuIdleStateEntry_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_state() const { return at<1>().valid(); }
+  ::protozero::ConstChars state() const { return at<1>().as_string(); }
+  bool has_duration_us() const { return at<2>().valid(); }
+  uint64_t duration_us() const { return at<2>().as_uint64(); }
+};
+
+class SysStats_CpuIdleStateEntry : public ::protozero::Message {
+ public:
+  using Decoder = SysStats_CpuIdleStateEntry_Decoder;
+  enum : int32_t {
+    kStateFieldNumber = 1,
+    kDurationUsFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.SysStats.CpuIdleStateEntry"; }
+
+
+  using FieldMetadata_State =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      SysStats_CpuIdleStateEntry>;
+
+  static constexpr FieldMetadata_State kState{};
+  void set_state(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_State::kFieldId, data, size);
+  }
+  void set_state(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_State::kFieldId, chars.data, chars.size);
+  }
+  void set_state(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_State::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_DurationUs =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      SysStats_CpuIdleStateEntry>;
+
+  static constexpr FieldMetadata_DurationUs kDurationUs{};
+  void set_duration_us(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_DurationUs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class SysStats_ThermalZone_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  SysStats_ThermalZone_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit SysStats_ThermalZone_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit SysStats_ThermalZone_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_name() const { return at<1>().valid(); }
+  ::protozero::ConstChars name() const { return at<1>().as_string(); }
+  bool has_temp() const { return at<2>().valid(); }
+  uint64_t temp() const { return at<2>().as_uint64(); }
+  bool has_type() const { return at<3>().valid(); }
+  ::protozero::ConstChars type() const { return at<3>().as_string(); }
+};
+
+class SysStats_ThermalZone : public ::protozero::Message {
+ public:
+  using Decoder = SysStats_ThermalZone_Decoder;
+  enum : int32_t {
+    kNameFieldNumber = 1,
+    kTempFieldNumber = 2,
+    kTypeFieldNumber = 3,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.SysStats.ThermalZone"; }
+
+
+  using FieldMetadata_Name =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      SysStats_ThermalZone>;
+
+  static constexpr FieldMetadata_Name kName{};
+  void set_name(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
+  }
+  void set_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Temp =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      SysStats_ThermalZone>;
+
+  static constexpr FieldMetadata_Temp kTemp{};
+  void set_temp(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_Temp::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Type =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      SysStats_ThermalZone>;
+
+  static constexpr FieldMetadata_Type kType{};
+  void set_type(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Type::kFieldId, data, size);
+  }
+  void set_type(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Type::kFieldId, chars.data, chars.size);
+  }
+  void set_type(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Type::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+};
+
+class SysStats_PsiSample_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  SysStats_PsiSample_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit SysStats_PsiSample_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit SysStats_PsiSample_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_resource() const { return at<1>().valid(); }
+  int32_t resource() const { return at<1>().as_int32(); }
+  bool has_total_ns() const { return at<2>().valid(); }
+  uint64_t total_ns() const { return at<2>().as_uint64(); }
+};
+
+class SysStats_PsiSample : public ::protozero::Message {
+ public:
+  using Decoder = SysStats_PsiSample_Decoder;
+  enum : int32_t {
+    kResourceFieldNumber = 1,
+    kTotalNsFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.SysStats.PsiSample"; }
+
+
+  using PsiResource = ::perfetto::protos::pbzero::SysStats_PsiSample_PsiResource;
+  static inline const char* PsiResource_Name(PsiResource value) {
+    return ::perfetto::protos::pbzero::SysStats_PsiSample_PsiResource_Name(value);
+  }
+  static inline const PsiResource PSI_RESOURCE_UNSPECIFIED = PsiResource::PSI_RESOURCE_UNSPECIFIED;
+  static inline const PsiResource PSI_RESOURCE_CPU_SOME = PsiResource::PSI_RESOURCE_CPU_SOME;
+  static inline const PsiResource PSI_RESOURCE_CPU_FULL = PsiResource::PSI_RESOURCE_CPU_FULL;
+  static inline const PsiResource PSI_RESOURCE_IO_SOME = PsiResource::PSI_RESOURCE_IO_SOME;
+  static inline const PsiResource PSI_RESOURCE_IO_FULL = PsiResource::PSI_RESOURCE_IO_FULL;
+  static inline const PsiResource PSI_RESOURCE_MEMORY_SOME = PsiResource::PSI_RESOURCE_MEMORY_SOME;
+  static inline const PsiResource PSI_RESOURCE_MEMORY_FULL = PsiResource::PSI_RESOURCE_MEMORY_FULL;
+
+  using FieldMetadata_Resource =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      SysStats_PsiSample_PsiResource,
+      SysStats_PsiSample>;
+
+  static constexpr FieldMetadata_Resource kResource{};
+  void set_resource(SysStats_PsiSample_PsiResource value) {
+    static constexpr uint32_t field_id = FieldMetadata_Resource::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TotalNs =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      SysStats_PsiSample>;
+
+  static constexpr FieldMetadata_TotalNs kTotalNs{};
+  void set_total_ns(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_TotalNs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
 };
 
 class SysStats_DiskStat_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/9, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
@@ -723,8 +1137,8 @@ class SysStats_CpuTimes_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FI
   uint32_t cpu_id() const { return at<1>().as_uint32(); }
   bool has_user_ns() const { return at<2>().valid(); }
   uint64_t user_ns() const { return at<2>().as_uint64(); }
-  bool has_user_ice_ns() const { return at<3>().valid(); }
-  uint64_t user_ice_ns() const { return at<3>().as_uint64(); }
+  bool has_user_nice_ns() const { return at<3>().valid(); }
+  uint64_t user_nice_ns() const { return at<3>().as_uint64(); }
   bool has_system_mode_ns() const { return at<4>().valid(); }
   uint64_t system_mode_ns() const { return at<4>().as_uint64(); }
   bool has_idle_ns() const { return at<5>().valid(); }
@@ -743,7 +1157,7 @@ class SysStats_CpuTimes : public ::protozero::Message {
   enum : int32_t {
     kCpuIdFieldNumber = 1,
     kUserNsFieldNumber = 2,
-    kUserIceNsFieldNumber = 3,
+    kUserNiceNsFieldNumber = 3,
     kSystemModeNsFieldNumber = 4,
     kIdleNsFieldNumber = 5,
     kIoWaitNsFieldNumber = 6,
@@ -789,7 +1203,7 @@ class SysStats_CpuTimes : public ::protozero::Message {
         ::Append(*this, field_id, value);
   }
 
-  using FieldMetadata_UserIceNs =
+  using FieldMetadata_UserNiceNs =
     ::protozero::proto_utils::FieldMetadata<
       3,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
@@ -797,9 +1211,9 @@ class SysStats_CpuTimes : public ::protozero::Message {
       uint64_t,
       SysStats_CpuTimes>;
 
-  static constexpr FieldMetadata_UserIceNs kUserIceNs{};
-  void set_user_ice_ns(uint64_t value) {
-    static constexpr uint32_t field_id = FieldMetadata_UserIceNs::kFieldId;
+  static constexpr FieldMetadata_UserNiceNs kUserNiceNs{};
+  void set_user_nice_ns(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_UserNiceNs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
@@ -924,11 +1338,11 @@ class SysStats_VmstatValue : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::VmstatCounters,
+      VmstatCounters,
       SysStats_VmstatValue>;
 
   static constexpr FieldMetadata_Key kKey{};
-  void set_key(::perfetto::protos::pbzero::VmstatCounters value) {
+  void set_key(VmstatCounters value) {
     static constexpr uint32_t field_id = FieldMetadata_Key::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -982,11 +1396,11 @@ class SysStats_MeminfoValue : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::MeminfoCounters,
+      MeminfoCounters,
       SysStats_MeminfoValue>;
 
   static constexpr FieldMetadata_Key kKey{};
-  void set_key(::perfetto::protos::pbzero::MeminfoCounters value) {
+  void set_key(MeminfoCounters value) {
     static constexpr uint32_t field_id = FieldMetadata_Key::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

@@ -12,10 +12,10 @@
 #include "perfetto/protozero/proto_decoder.h"
 #include "perfetto/protozero/proto_utils.h"
 
+
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 
 enum AndroidLogId : int32_t {
   LID_DEFAULT = 0,

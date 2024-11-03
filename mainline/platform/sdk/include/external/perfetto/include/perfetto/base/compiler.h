@@ -17,10 +17,10 @@
 #ifndef INCLUDE_PERFETTO_BASE_COMPILER_H_
 #define INCLUDE_PERFETTO_BASE_COMPILER_H_
 
-#include <stddef.h>
+#include <cstddef>
 #include <type_traits>
+#include <variant>
 
-#include "perfetto/base/build_config.h"
 #include "perfetto/public/compiler.h"
 
 // __has_attribute is supported only by clang and recent versions of GCC.
@@ -43,16 +43,6 @@
 #define PERFETTO_UNUSED
 #endif
 
-#if defined(__clang__)
-#define PERFETTO_ALWAYS_INLINE __attribute__((__always_inline__))
-#define PERFETTO_NO_INLINE __attribute__((__noinline__))
-#else
-// GCC is too pedantic and often fails with the error:
-// "always_inline function might not be inlinable"
-#define PERFETTO_ALWAYS_INLINE
-#define PERFETTO_NO_INLINE
-#endif
-
 #if defined(__GNUC__) || defined(__clang__)
 #define PERFETTO_NORETURN __attribute__((__noreturn__))
 #else
@@ -73,16 +63,6 @@
   __attribute__((__format__(__printf__, x, y)))
 #else
 #define PERFETTO_PRINTF_FORMAT(x, y)
-#endif
-
-#if PERFETTO_BUILDFLAG(PERFETTO_OS_IOS)
-// TODO(b/158814068): For iOS builds, thread_local is only supported since iOS
-// 8. We'd have to use pthread for thread local data instead here. For now, just
-// define it to nothing since we don't support running perfetto or the client
-// lib on iOS right now.
-#define PERFETTO_THREAD_LOCAL
-#else
-#define PERFETTO_THREAD_LOCAL thread_local
 #endif
 
 #if defined(__GNUC__) || defined(__clang__)
@@ -154,19 +134,25 @@ extern "C" void __asan_unpoison_memory_region(void const volatile*, size_t);
 #endif
 
 // Macro for telling -Wimplicit-fallthrough that a fallthrough is intentional.
-#if defined(__clang__)
-#define PERFETTO_FALLTHROUGH [[clang::fallthrough]]
-#else
-#define PERFETTO_FALLTHROUGH
-#endif
+#define PERFETTO_FALLTHROUGH [[fallthrough]]
 
-namespace perfetto {
-namespace base {
+namespace perfetto::base {
 
 template <typename... T>
 inline void ignore_result(const T&...) {}
 
-}  // namespace base
-}  // namespace perfetto
+// Given a std::variant and a type T, returns the index of the T in the variant.
+template <typename VariantType, typename T, size_t i = 0>
+constexpr size_t variant_index() {
+  static_assert(i < std::variant_size_v<VariantType>,
+                "Type not found in variant");
+  if constexpr (std::is_same_v<std::variant_alternative_t<i, VariantType>, T>) {
+    return i;
+  } else {
+    return variant_index<VariantType, T, i + 1>();
+  }
+}
+
+}  // namespace perfetto::base
 
 #endif  // INCLUDE_PERFETTO_BASE_COMPILER_H_
