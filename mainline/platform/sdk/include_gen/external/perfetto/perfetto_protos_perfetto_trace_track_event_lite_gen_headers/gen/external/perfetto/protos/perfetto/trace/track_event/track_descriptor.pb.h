@@ -104,6 +104,12 @@ class TrackDescriptor final :
   static const TrackDescriptor& default_instance() {
     return *internal_default_instance();
   }
+  enum StaticOrDynamicNameCase {
+    kName = 2,
+    kStaticName = 10,
+    STATIC_OR_DYNAMIC_NAME_NOT_SET = 0,
+  };
+
   static inline const TrackDescriptor* internal_default_instance() {
     return reinterpret_cast<const TrackDescriptor*>(
                &_TrackDescriptor_default_instance_);
@@ -176,7 +182,6 @@ class TrackDescriptor final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kNameFieldNumber = 2,
     kProcessFieldNumber = 3,
     kThreadFieldNumber = 4,
     kChromeProcessFieldNumber = 6,
@@ -185,25 +190,9 @@ class TrackDescriptor final :
     kUuidFieldNumber = 1,
     kParentUuidFieldNumber = 5,
     kDisallowMergingWithSystemTracksFieldNumber = 9,
+    kNameFieldNumber = 2,
+    kStaticNameFieldNumber = 10,
   };
-  // optional string name = 2;
-  bool has_name() const;
-  private:
-  bool _internal_has_name() const;
-  public:
-  void clear_name();
-  const std::string& name() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_name(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_name();
-  PROTOBUF_NODISCARD std::string* release_name();
-  void set_allocated_name(std::string* name);
-  private:
-  const std::string& _internal_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
-  std::string* _internal_mutable_name();
-  public:
-
   // optional .perfetto.protos.ProcessDescriptor process = 3;
   bool has_process() const;
   private:
@@ -333,9 +322,52 @@ class TrackDescriptor final :
   void _internal_set_disallow_merging_with_system_tracks(bool value);
   public:
 
+  // string name = 2;
+  bool has_name() const;
+  private:
+  bool _internal_has_name() const;
+  public:
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // string static_name = 10;
+  bool has_static_name() const;
+  private:
+  bool _internal_has_static_name() const;
+  public:
+  void clear_static_name();
+  const std::string& static_name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_static_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_static_name();
+  PROTOBUF_NODISCARD std::string* release_static_name();
+  void set_allocated_static_name(std::string* static_name);
+  private:
+  const std::string& _internal_static_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_static_name(const std::string& value);
+  std::string* _internal_mutable_static_name();
+  public:
+
+  void clear_static_or_dynamic_name();
+  StaticOrDynamicNameCase static_or_dynamic_name_case() const;
   // @@protoc_insertion_point(class_scope:perfetto.protos.TrackDescriptor)
  private:
   class _Internal;
+  void set_has_name();
+  void set_has_static_name();
+
+  inline bool has_static_or_dynamic_name() const;
+  inline void clear_has_static_or_dynamic_name();
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
@@ -343,7 +375,6 @@ class TrackDescriptor final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
     ::perfetto::protos::ProcessDescriptor* process_;
     ::perfetto::protos::ThreadDescriptor* thread_;
     ::perfetto::protos::ChromeProcessDescriptor* chrome_process_;
@@ -352,6 +383,14 @@ class TrackDescriptor final :
     ::uint64_t uuid_;
     ::uint64_t parent_uuid_;
     bool disallow_merging_with_system_tracks_;
+    union StaticOrDynamicNameUnion {
+      constexpr StaticOrDynamicNameUnion() : _constinit_{} {}
+        ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+      ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+      ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr static_name_;
+    } static_or_dynamic_name_;
+    ::uint32_t _oneof_case_[1];
+
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2ftrack_5fevent_2ftrack_5fdescriptor_2eproto;
@@ -369,7 +408,7 @@ class TrackDescriptor final :
 
 // optional uint64 uuid = 1;
 inline bool TrackDescriptor::_internal_has_uuid() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
   return value;
 }
 inline bool TrackDescriptor::has_uuid() const {
@@ -377,7 +416,7 @@ inline bool TrackDescriptor::has_uuid() const {
 }
 inline void TrackDescriptor::clear_uuid() {
   _impl_.uuid_ = ::uint64_t{0u};
-  _impl_._has_bits_[0] &= ~0x00000040u;
+  _impl_._has_bits_[0] &= ~0x00000020u;
 }
 inline ::uint64_t TrackDescriptor::_internal_uuid() const {
   return _impl_.uuid_;
@@ -387,7 +426,7 @@ inline ::uint64_t TrackDescriptor::uuid() const {
   return _internal_uuid();
 }
 inline void TrackDescriptor::_internal_set_uuid(::uint64_t value) {
-  _impl_._has_bits_[0] |= 0x00000040u;
+  _impl_._has_bits_[0] |= 0x00000020u;
   _impl_.uuid_ = value;
 }
 inline void TrackDescriptor::set_uuid(::uint64_t value) {
@@ -397,7 +436,7 @@ inline void TrackDescriptor::set_uuid(::uint64_t value) {
 
 // optional uint64 parent_uuid = 5;
 inline bool TrackDescriptor::_internal_has_parent_uuid() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
   return value;
 }
 inline bool TrackDescriptor::has_parent_uuid() const {
@@ -405,7 +444,7 @@ inline bool TrackDescriptor::has_parent_uuid() const {
 }
 inline void TrackDescriptor::clear_parent_uuid() {
   _impl_.parent_uuid_ = ::uint64_t{0u};
-  _impl_._has_bits_[0] &= ~0x00000080u;
+  _impl_._has_bits_[0] &= ~0x00000040u;
 }
 inline ::uint64_t TrackDescriptor::_internal_parent_uuid() const {
   return _impl_.parent_uuid_;
@@ -415,7 +454,7 @@ inline ::uint64_t TrackDescriptor::parent_uuid() const {
   return _internal_parent_uuid();
 }
 inline void TrackDescriptor::_internal_set_parent_uuid(::uint64_t value) {
-  _impl_._has_bits_[0] |= 0x00000080u;
+  _impl_._has_bits_[0] |= 0x00000040u;
   _impl_.parent_uuid_ = value;
 }
 inline void TrackDescriptor::set_parent_uuid(::uint64_t value) {
@@ -423,27 +462,34 @@ inline void TrackDescriptor::set_parent_uuid(::uint64_t value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.TrackDescriptor.parent_uuid)
 }
 
-// optional string name = 2;
+// string name = 2;
 inline bool TrackDescriptor::_internal_has_name() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  return value;
+  return static_or_dynamic_name_case() == kName;
 }
 inline bool TrackDescriptor::has_name() const {
   return _internal_has_name();
 }
+inline void TrackDescriptor::set_has_name() {
+  _impl_._oneof_case_[0] = kName;
+}
 inline void TrackDescriptor::clear_name() {
-  _impl_.name_.ClearToEmpty();
-  _impl_._has_bits_[0] &= ~0x00000001u;
+  if (_internal_has_name()) {
+    _impl_.static_or_dynamic_name_.name_.Destroy();
+    clear_has_static_or_dynamic_name();
+  }
 }
 inline const std::string& TrackDescriptor::name() const {
   // @@protoc_insertion_point(field_get:perfetto.protos.TrackDescriptor.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void TrackDescriptor::set_name(ArgT0&& arg0, ArgT... args) {
- _impl_._has_bits_[0] |= 0x00000001u;
- _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+inline void TrackDescriptor::set_name(ArgT0&& arg0, ArgT... args) {
+  if (!_internal_has_name()) {
+    clear_static_or_dynamic_name();
+    set_has_name();
+    _impl_.static_or_dynamic_name_.name_.InitDefault();
+  }
+  _impl_.static_or_dynamic_name_.name_.Set( static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
   // @@protoc_insertion_point(field_set:perfetto.protos.TrackDescriptor.name)
 }
 inline std::string* TrackDescriptor::mutable_name() {
@@ -452,48 +498,127 @@ inline std::string* TrackDescriptor::mutable_name() {
   return _s;
 }
 inline const std::string& TrackDescriptor::_internal_name() const {
-  return _impl_.name_.Get();
+  if (_internal_has_name()) {
+    return _impl_.static_or_dynamic_name_.name_.Get();
+  }
+  return ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
 }
 inline void TrackDescriptor::_internal_set_name(const std::string& value) {
-  _impl_._has_bits_[0] |= 0x00000001u;
-  _impl_.name_.Set(value, GetArenaForAllocation());
+  if (!_internal_has_name()) {
+    clear_static_or_dynamic_name();
+    set_has_name();
+    _impl_.static_or_dynamic_name_.name_.InitDefault();
+  }
+  _impl_.static_or_dynamic_name_.name_.Set(value, GetArenaForAllocation());
 }
 inline std::string* TrackDescriptor::_internal_mutable_name() {
-  _impl_._has_bits_[0] |= 0x00000001u;
-  return _impl_.name_.Mutable(GetArenaForAllocation());
+  if (!_internal_has_name()) {
+    clear_static_or_dynamic_name();
+    set_has_name();
+    _impl_.static_or_dynamic_name_.name_.InitDefault();
+  }
+  return _impl_.static_or_dynamic_name_.name_.Mutable(      GetArenaForAllocation());
 }
 inline std::string* TrackDescriptor::release_name() {
   // @@protoc_insertion_point(field_release:perfetto.protos.TrackDescriptor.name)
-  if (!_internal_has_name()) {
+  if (_internal_has_name()) {
+    clear_has_static_or_dynamic_name();
+    return _impl_.static_or_dynamic_name_.name_.Release();
+  } else {
     return nullptr;
   }
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  auto* p = _impl_.name_.Release();
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.name_.IsDefault()) {
-    _impl_.name_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  return p;
 }
 inline void TrackDescriptor::set_allocated_name(std::string* name) {
+  if (has_static_or_dynamic_name()) {
+    clear_static_or_dynamic_name();
+  }
   if (name != nullptr) {
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
+    set_has_name();
+    _impl_.static_or_dynamic_name_.name_.InitAllocated(name, GetArenaForAllocation());
   }
-  _impl_.name_.SetAllocated(name, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.name_.IsDefault()) {
-    _impl_.name_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TrackDescriptor.name)
+}
+
+// string static_name = 10;
+inline bool TrackDescriptor::_internal_has_static_name() const {
+  return static_or_dynamic_name_case() == kStaticName;
+}
+inline bool TrackDescriptor::has_static_name() const {
+  return _internal_has_static_name();
+}
+inline void TrackDescriptor::set_has_static_name() {
+  _impl_._oneof_case_[0] = kStaticName;
+}
+inline void TrackDescriptor::clear_static_name() {
+  if (_internal_has_static_name()) {
+    _impl_.static_or_dynamic_name_.static_name_.Destroy();
+    clear_has_static_or_dynamic_name();
+  }
+}
+inline const std::string& TrackDescriptor::static_name() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TrackDescriptor.static_name)
+  return _internal_static_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline void TrackDescriptor::set_static_name(ArgT0&& arg0, ArgT... args) {
+  if (!_internal_has_static_name()) {
+    clear_static_or_dynamic_name();
+    set_has_static_name();
+    _impl_.static_or_dynamic_name_.static_name_.InitDefault();
+  }
+  _impl_.static_or_dynamic_name_.static_name_.Set( static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.TrackDescriptor.static_name)
+}
+inline std::string* TrackDescriptor::mutable_static_name() {
+  std::string* _s = _internal_mutable_static_name();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TrackDescriptor.static_name)
+  return _s;
+}
+inline const std::string& TrackDescriptor::_internal_static_name() const {
+  if (_internal_has_static_name()) {
+    return _impl_.static_or_dynamic_name_.static_name_.Get();
+  }
+  return ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
+}
+inline void TrackDescriptor::_internal_set_static_name(const std::string& value) {
+  if (!_internal_has_static_name()) {
+    clear_static_or_dynamic_name();
+    set_has_static_name();
+    _impl_.static_or_dynamic_name_.static_name_.InitDefault();
+  }
+  _impl_.static_or_dynamic_name_.static_name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TrackDescriptor::_internal_mutable_static_name() {
+  if (!_internal_has_static_name()) {
+    clear_static_or_dynamic_name();
+    set_has_static_name();
+    _impl_.static_or_dynamic_name_.static_name_.InitDefault();
+  }
+  return _impl_.static_or_dynamic_name_.static_name_.Mutable(      GetArenaForAllocation());
+}
+inline std::string* TrackDescriptor::release_static_name() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TrackDescriptor.static_name)
+  if (_internal_has_static_name()) {
+    clear_has_static_or_dynamic_name();
+    return _impl_.static_or_dynamic_name_.static_name_.Release();
+  } else {
+    return nullptr;
+  }
+}
+inline void TrackDescriptor::set_allocated_static_name(std::string* static_name) {
+  if (has_static_or_dynamic_name()) {
+    clear_static_or_dynamic_name();
+  }
+  if (static_name != nullptr) {
+    set_has_static_name();
+    _impl_.static_or_dynamic_name_.static_name_.InitAllocated(static_name, GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TrackDescriptor.static_name)
 }
 
 // optional .perfetto.protos.ProcessDescriptor process = 3;
 inline bool TrackDescriptor::_internal_has_process() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.process_ != nullptr);
   return value;
 }
@@ -516,14 +641,14 @@ inline void TrackDescriptor::unsafe_arena_set_allocated_process(
   }
   _impl_.process_ = process;
   if (process) {
-    _impl_._has_bits_[0] |= 0x00000002u;
+    _impl_._has_bits_[0] |= 0x00000001u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000002u;
+    _impl_._has_bits_[0] &= ~0x00000001u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TrackDescriptor.process)
 }
 inline ::perfetto::protos::ProcessDescriptor* TrackDescriptor::release_process() {
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
   ::perfetto::protos::ProcessDescriptor* temp = _impl_.process_;
   _impl_.process_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -539,13 +664,13 @@ inline ::perfetto::protos::ProcessDescriptor* TrackDescriptor::release_process()
 }
 inline ::perfetto::protos::ProcessDescriptor* TrackDescriptor::unsafe_arena_release_process() {
   // @@protoc_insertion_point(field_release:perfetto.protos.TrackDescriptor.process)
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
   ::perfetto::protos::ProcessDescriptor* temp = _impl_.process_;
   _impl_.process_ = nullptr;
   return temp;
 }
 inline ::perfetto::protos::ProcessDescriptor* TrackDescriptor::_internal_mutable_process() {
-  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_._has_bits_[0] |= 0x00000001u;
   if (_impl_.process_ == nullptr) {
     auto* p = CreateMaybeMessage<::perfetto::protos::ProcessDescriptor>(GetArenaForAllocation());
     _impl_.process_ = p;
@@ -570,9 +695,9 @@ inline void TrackDescriptor::set_allocated_process(::perfetto::protos::ProcessDe
       process = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, process, submessage_arena);
     }
-    _impl_._has_bits_[0] |= 0x00000002u;
+    _impl_._has_bits_[0] |= 0x00000001u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000002u;
+    _impl_._has_bits_[0] &= ~0x00000001u;
   }
   _impl_.process_ = process;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TrackDescriptor.process)
@@ -580,7 +705,7 @@ inline void TrackDescriptor::set_allocated_process(::perfetto::protos::ProcessDe
 
 // optional .perfetto.protos.ChromeProcessDescriptor chrome_process = 6;
 inline bool TrackDescriptor::_internal_has_chrome_process() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.chrome_process_ != nullptr);
   return value;
 }
@@ -603,14 +728,14 @@ inline void TrackDescriptor::unsafe_arena_set_allocated_chrome_process(
   }
   _impl_.chrome_process_ = chrome_process;
   if (chrome_process) {
-    _impl_._has_bits_[0] |= 0x00000008u;
+    _impl_._has_bits_[0] |= 0x00000004u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000008u;
+    _impl_._has_bits_[0] &= ~0x00000004u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TrackDescriptor.chrome_process)
 }
 inline ::perfetto::protos::ChromeProcessDescriptor* TrackDescriptor::release_chrome_process() {
-  _impl_._has_bits_[0] &= ~0x00000008u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
   ::perfetto::protos::ChromeProcessDescriptor* temp = _impl_.chrome_process_;
   _impl_.chrome_process_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -626,13 +751,13 @@ inline ::perfetto::protos::ChromeProcessDescriptor* TrackDescriptor::release_chr
 }
 inline ::perfetto::protos::ChromeProcessDescriptor* TrackDescriptor::unsafe_arena_release_chrome_process() {
   // @@protoc_insertion_point(field_release:perfetto.protos.TrackDescriptor.chrome_process)
-  _impl_._has_bits_[0] &= ~0x00000008u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
   ::perfetto::protos::ChromeProcessDescriptor* temp = _impl_.chrome_process_;
   _impl_.chrome_process_ = nullptr;
   return temp;
 }
 inline ::perfetto::protos::ChromeProcessDescriptor* TrackDescriptor::_internal_mutable_chrome_process() {
-  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_._has_bits_[0] |= 0x00000004u;
   if (_impl_.chrome_process_ == nullptr) {
     auto* p = CreateMaybeMessage<::perfetto::protos::ChromeProcessDescriptor>(GetArenaForAllocation());
     _impl_.chrome_process_ = p;
@@ -657,9 +782,9 @@ inline void TrackDescriptor::set_allocated_chrome_process(::perfetto::protos::Ch
       chrome_process = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, chrome_process, submessage_arena);
     }
-    _impl_._has_bits_[0] |= 0x00000008u;
+    _impl_._has_bits_[0] |= 0x00000004u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000008u;
+    _impl_._has_bits_[0] &= ~0x00000004u;
   }
   _impl_.chrome_process_ = chrome_process;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TrackDescriptor.chrome_process)
@@ -667,7 +792,7 @@ inline void TrackDescriptor::set_allocated_chrome_process(::perfetto::protos::Ch
 
 // optional .perfetto.protos.ThreadDescriptor thread = 4;
 inline bool TrackDescriptor::_internal_has_thread() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.thread_ != nullptr);
   return value;
 }
@@ -690,14 +815,14 @@ inline void TrackDescriptor::unsafe_arena_set_allocated_thread(
   }
   _impl_.thread_ = thread;
   if (thread) {
-    _impl_._has_bits_[0] |= 0x00000004u;
+    _impl_._has_bits_[0] |= 0x00000002u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000004u;
+    _impl_._has_bits_[0] &= ~0x00000002u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TrackDescriptor.thread)
 }
 inline ::perfetto::protos::ThreadDescriptor* TrackDescriptor::release_thread() {
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
   ::perfetto::protos::ThreadDescriptor* temp = _impl_.thread_;
   _impl_.thread_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -713,13 +838,13 @@ inline ::perfetto::protos::ThreadDescriptor* TrackDescriptor::release_thread() {
 }
 inline ::perfetto::protos::ThreadDescriptor* TrackDescriptor::unsafe_arena_release_thread() {
   // @@protoc_insertion_point(field_release:perfetto.protos.TrackDescriptor.thread)
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
   ::perfetto::protos::ThreadDescriptor* temp = _impl_.thread_;
   _impl_.thread_ = nullptr;
   return temp;
 }
 inline ::perfetto::protos::ThreadDescriptor* TrackDescriptor::_internal_mutable_thread() {
-  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_._has_bits_[0] |= 0x00000002u;
   if (_impl_.thread_ == nullptr) {
     auto* p = CreateMaybeMessage<::perfetto::protos::ThreadDescriptor>(GetArenaForAllocation());
     _impl_.thread_ = p;
@@ -744,9 +869,9 @@ inline void TrackDescriptor::set_allocated_thread(::perfetto::protos::ThreadDesc
       thread = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, thread, submessage_arena);
     }
-    _impl_._has_bits_[0] |= 0x00000004u;
+    _impl_._has_bits_[0] |= 0x00000002u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000004u;
+    _impl_._has_bits_[0] &= ~0x00000002u;
   }
   _impl_.thread_ = thread;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TrackDescriptor.thread)
@@ -754,7 +879,7 @@ inline void TrackDescriptor::set_allocated_thread(::perfetto::protos::ThreadDesc
 
 // optional .perfetto.protos.ChromeThreadDescriptor chrome_thread = 7;
 inline bool TrackDescriptor::_internal_has_chrome_thread() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.chrome_thread_ != nullptr);
   return value;
 }
@@ -777,14 +902,14 @@ inline void TrackDescriptor::unsafe_arena_set_allocated_chrome_thread(
   }
   _impl_.chrome_thread_ = chrome_thread;
   if (chrome_thread) {
-    _impl_._has_bits_[0] |= 0x00000010u;
+    _impl_._has_bits_[0] |= 0x00000008u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000010u;
+    _impl_._has_bits_[0] &= ~0x00000008u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TrackDescriptor.chrome_thread)
 }
 inline ::perfetto::protos::ChromeThreadDescriptor* TrackDescriptor::release_chrome_thread() {
-  _impl_._has_bits_[0] &= ~0x00000010u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
   ::perfetto::protos::ChromeThreadDescriptor* temp = _impl_.chrome_thread_;
   _impl_.chrome_thread_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -800,13 +925,13 @@ inline ::perfetto::protos::ChromeThreadDescriptor* TrackDescriptor::release_chro
 }
 inline ::perfetto::protos::ChromeThreadDescriptor* TrackDescriptor::unsafe_arena_release_chrome_thread() {
   // @@protoc_insertion_point(field_release:perfetto.protos.TrackDescriptor.chrome_thread)
-  _impl_._has_bits_[0] &= ~0x00000010u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
   ::perfetto::protos::ChromeThreadDescriptor* temp = _impl_.chrome_thread_;
   _impl_.chrome_thread_ = nullptr;
   return temp;
 }
 inline ::perfetto::protos::ChromeThreadDescriptor* TrackDescriptor::_internal_mutable_chrome_thread() {
-  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_._has_bits_[0] |= 0x00000008u;
   if (_impl_.chrome_thread_ == nullptr) {
     auto* p = CreateMaybeMessage<::perfetto::protos::ChromeThreadDescriptor>(GetArenaForAllocation());
     _impl_.chrome_thread_ = p;
@@ -831,9 +956,9 @@ inline void TrackDescriptor::set_allocated_chrome_thread(::perfetto::protos::Chr
       chrome_thread = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, chrome_thread, submessage_arena);
     }
-    _impl_._has_bits_[0] |= 0x00000010u;
+    _impl_._has_bits_[0] |= 0x00000008u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000010u;
+    _impl_._has_bits_[0] &= ~0x00000008u;
   }
   _impl_.chrome_thread_ = chrome_thread;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TrackDescriptor.chrome_thread)
@@ -841,7 +966,7 @@ inline void TrackDescriptor::set_allocated_chrome_thread(::perfetto::protos::Chr
 
 // optional .perfetto.protos.CounterDescriptor counter = 8;
 inline bool TrackDescriptor::_internal_has_counter() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.counter_ != nullptr);
   return value;
 }
@@ -864,14 +989,14 @@ inline void TrackDescriptor::unsafe_arena_set_allocated_counter(
   }
   _impl_.counter_ = counter;
   if (counter) {
-    _impl_._has_bits_[0] |= 0x00000020u;
+    _impl_._has_bits_[0] |= 0x00000010u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000020u;
+    _impl_._has_bits_[0] &= ~0x00000010u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TrackDescriptor.counter)
 }
 inline ::perfetto::protos::CounterDescriptor* TrackDescriptor::release_counter() {
-  _impl_._has_bits_[0] &= ~0x00000020u;
+  _impl_._has_bits_[0] &= ~0x00000010u;
   ::perfetto::protos::CounterDescriptor* temp = _impl_.counter_;
   _impl_.counter_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -887,13 +1012,13 @@ inline ::perfetto::protos::CounterDescriptor* TrackDescriptor::release_counter()
 }
 inline ::perfetto::protos::CounterDescriptor* TrackDescriptor::unsafe_arena_release_counter() {
   // @@protoc_insertion_point(field_release:perfetto.protos.TrackDescriptor.counter)
-  _impl_._has_bits_[0] &= ~0x00000020u;
+  _impl_._has_bits_[0] &= ~0x00000010u;
   ::perfetto::protos::CounterDescriptor* temp = _impl_.counter_;
   _impl_.counter_ = nullptr;
   return temp;
 }
 inline ::perfetto::protos::CounterDescriptor* TrackDescriptor::_internal_mutable_counter() {
-  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_._has_bits_[0] |= 0x00000010u;
   if (_impl_.counter_ == nullptr) {
     auto* p = CreateMaybeMessage<::perfetto::protos::CounterDescriptor>(GetArenaForAllocation());
     _impl_.counter_ = p;
@@ -918,9 +1043,9 @@ inline void TrackDescriptor::set_allocated_counter(::perfetto::protos::CounterDe
       counter = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, counter, submessage_arena);
     }
-    _impl_._has_bits_[0] |= 0x00000020u;
+    _impl_._has_bits_[0] |= 0x00000010u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000020u;
+    _impl_._has_bits_[0] &= ~0x00000010u;
   }
   _impl_.counter_ = counter;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TrackDescriptor.counter)
@@ -928,7 +1053,7 @@ inline void TrackDescriptor::set_allocated_counter(::perfetto::protos::CounterDe
 
 // optional bool disallow_merging_with_system_tracks = 9;
 inline bool TrackDescriptor::_internal_has_disallow_merging_with_system_tracks() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000100u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
   return value;
 }
 inline bool TrackDescriptor::has_disallow_merging_with_system_tracks() const {
@@ -936,7 +1061,7 @@ inline bool TrackDescriptor::has_disallow_merging_with_system_tracks() const {
 }
 inline void TrackDescriptor::clear_disallow_merging_with_system_tracks() {
   _impl_.disallow_merging_with_system_tracks_ = false;
-  _impl_._has_bits_[0] &= ~0x00000100u;
+  _impl_._has_bits_[0] &= ~0x00000080u;
 }
 inline bool TrackDescriptor::_internal_disallow_merging_with_system_tracks() const {
   return _impl_.disallow_merging_with_system_tracks_;
@@ -946,7 +1071,7 @@ inline bool TrackDescriptor::disallow_merging_with_system_tracks() const {
   return _internal_disallow_merging_with_system_tracks();
 }
 inline void TrackDescriptor::_internal_set_disallow_merging_with_system_tracks(bool value) {
-  _impl_._has_bits_[0] |= 0x00000100u;
+  _impl_._has_bits_[0] |= 0x00000080u;
   _impl_.disallow_merging_with_system_tracks_ = value;
 }
 inline void TrackDescriptor::set_disallow_merging_with_system_tracks(bool value) {
@@ -954,6 +1079,15 @@ inline void TrackDescriptor::set_disallow_merging_with_system_tracks(bool value)
   // @@protoc_insertion_point(field_set:perfetto.protos.TrackDescriptor.disallow_merging_with_system_tracks)
 }
 
+inline bool TrackDescriptor::has_static_or_dynamic_name() const {
+  return static_or_dynamic_name_case() != STATIC_OR_DYNAMIC_NAME_NOT_SET;
+}
+inline void TrackDescriptor::clear_has_static_or_dynamic_name() {
+  _impl_._oneof_case_[0] = STATIC_OR_DYNAMIC_NAME_NOT_SET;
+}
+inline TrackDescriptor::StaticOrDynamicNameCase TrackDescriptor::static_or_dynamic_name_case() const {
+  return TrackDescriptor::StaticOrDynamicNameCase(_impl_._oneof_case_[0]);
+}
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__

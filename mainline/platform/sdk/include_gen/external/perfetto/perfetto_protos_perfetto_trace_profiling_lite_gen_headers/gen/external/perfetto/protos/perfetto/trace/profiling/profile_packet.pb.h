@@ -2909,6 +2909,7 @@ class PerfSample final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kFollowerCountsFieldNumber = 7,
     kProducerEventFieldNumber = 19,
     kCpuFieldNumber = 1,
     kPidFieldNumber = 2,
@@ -2920,6 +2921,28 @@ class PerfSample final :
     kUnwindErrorFieldNumber = 16,
     kSampleSkippedReasonFieldNumber = 18,
   };
+  // repeated uint64 follower_counts = 7;
+  int follower_counts_size() const;
+  private:
+  int _internal_follower_counts_size() const;
+  public:
+  void clear_follower_counts();
+  private:
+  ::uint64_t _internal_follower_counts(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::uint64_t >&
+      _internal_follower_counts() const;
+  void _internal_add_follower_counts(::uint64_t value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::uint64_t >*
+      _internal_mutable_follower_counts();
+  public:
+  ::uint64_t follower_counts(int index) const;
+  void set_follower_counts(int index, ::uint64_t value);
+  void add_follower_counts(::uint64_t value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::uint64_t >&
+      follower_counts() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::uint64_t >*
+      mutable_follower_counts();
+
   // optional .perfetto.protos.PerfSample.ProducerEvent producer_event = 19;
   bool has_producer_event() const;
   private:
@@ -3077,6 +3100,7 @@ class PerfSample final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::uint64_t > follower_counts_;
     ::perfetto::protos::PerfSample_ProducerEvent* producer_event_;
     ::uint32_t cpu_;
     ::uint32_t pid_;
@@ -3217,10 +3241,29 @@ class PerfSampleDefaults final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kFollowersFieldNumber = 4,
     kTimebaseFieldNumber = 1,
     kProcessShardCountFieldNumber = 2,
     kChosenProcessShardFieldNumber = 3,
   };
+  // repeated .perfetto.protos.FollowerEvent followers = 4;
+  int followers_size() const;
+  private:
+  int _internal_followers_size() const;
+  public:
+  void clear_followers();
+  ::perfetto::protos::FollowerEvent* mutable_followers(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FollowerEvent >*
+      mutable_followers();
+  private:
+  const ::perfetto::protos::FollowerEvent& _internal_followers(int index) const;
+  ::perfetto::protos::FollowerEvent* _internal_add_followers();
+  public:
+  const ::perfetto::protos::FollowerEvent& followers(int index) const;
+  ::perfetto::protos::FollowerEvent* add_followers();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FollowerEvent >&
+      followers() const;
+
   // optional .perfetto.protos.PerfEvents.Timebase timebase = 1;
   bool has_timebase() const;
   private:
@@ -3275,6 +3318,7 @@ class PerfSampleDefaults final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FollowerEvent > followers_;
     ::perfetto::protos::PerfEvents_Timebase* timebase_;
     ::uint32_t process_shard_count_;
     ::uint32_t chosen_process_shard_;
@@ -5400,6 +5444,53 @@ inline void PerfSample::set_timebase_count(::uint64_t value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.PerfSample.timebase_count)
 }
 
+// repeated uint64 follower_counts = 7;
+inline int PerfSample::_internal_follower_counts_size() const {
+  return _impl_.follower_counts_.size();
+}
+inline int PerfSample::follower_counts_size() const {
+  return _internal_follower_counts_size();
+}
+inline void PerfSample::clear_follower_counts() {
+  _impl_.follower_counts_.Clear();
+}
+inline ::uint64_t PerfSample::_internal_follower_counts(int index) const {
+  return _impl_.follower_counts_.Get(index);
+}
+inline ::uint64_t PerfSample::follower_counts(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.PerfSample.follower_counts)
+  return _internal_follower_counts(index);
+}
+inline void PerfSample::set_follower_counts(int index, ::uint64_t value) {
+  _impl_.follower_counts_.Set(index, value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.PerfSample.follower_counts)
+}
+inline void PerfSample::_internal_add_follower_counts(::uint64_t value) {
+  _impl_.follower_counts_.Add(value);
+}
+inline void PerfSample::add_follower_counts(::uint64_t value) {
+  _internal_add_follower_counts(value);
+  // @@protoc_insertion_point(field_add:perfetto.protos.PerfSample.follower_counts)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::uint64_t >&
+PerfSample::_internal_follower_counts() const {
+  return _impl_.follower_counts_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::uint64_t >&
+PerfSample::follower_counts() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.PerfSample.follower_counts)
+  return _internal_follower_counts();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::uint64_t >*
+PerfSample::_internal_mutable_follower_counts() {
+  return &_impl_.follower_counts_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::uint64_t >*
+PerfSample::mutable_follower_counts() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.PerfSample.follower_counts)
+  return _internal_mutable_follower_counts();
+}
+
 // optional uint64 callstack_iid = 4;
 inline bool PerfSample::_internal_has_callstack_iid() const {
   bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
@@ -5731,6 +5822,43 @@ inline void PerfSampleDefaults::set_allocated_timebase(::perfetto::protos::PerfE
   }
   _impl_.timebase_ = timebase;
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.PerfSampleDefaults.timebase)
+}
+
+// repeated .perfetto.protos.FollowerEvent followers = 4;
+inline int PerfSampleDefaults::_internal_followers_size() const {
+  return _impl_.followers_.size();
+}
+inline int PerfSampleDefaults::followers_size() const {
+  return _internal_followers_size();
+}
+inline ::perfetto::protos::FollowerEvent* PerfSampleDefaults::mutable_followers(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.PerfSampleDefaults.followers)
+  return _impl_.followers_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FollowerEvent >*
+PerfSampleDefaults::mutable_followers() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.PerfSampleDefaults.followers)
+  return &_impl_.followers_;
+}
+inline const ::perfetto::protos::FollowerEvent& PerfSampleDefaults::_internal_followers(int index) const {
+  return _impl_.followers_.Get(index);
+}
+inline const ::perfetto::protos::FollowerEvent& PerfSampleDefaults::followers(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.PerfSampleDefaults.followers)
+  return _internal_followers(index);
+}
+inline ::perfetto::protos::FollowerEvent* PerfSampleDefaults::_internal_add_followers() {
+  return _impl_.followers_.Add();
+}
+inline ::perfetto::protos::FollowerEvent* PerfSampleDefaults::add_followers() {
+  ::perfetto::protos::FollowerEvent* _add = _internal_add_followers();
+  // @@protoc_insertion_point(field_add:perfetto.protos.PerfSampleDefaults.followers)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::FollowerEvent >&
+PerfSampleDefaults::followers() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.PerfSampleDefaults.followers)
+  return _impl_.followers_;
 }
 
 // optional uint32 process_shard_count = 2;

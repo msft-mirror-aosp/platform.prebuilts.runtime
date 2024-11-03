@@ -183,10 +183,29 @@ class CommitDataRequest_ChunksToMove final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kDataFieldNumber = 4,
     kPageFieldNumber = 1,
     kChunkFieldNumber = 2,
     kTargetBufferFieldNumber = 3,
   };
+  // optional bytes data = 4;
+  bool has_data() const;
+  private:
+  bool _internal_has_data() const;
+  public:
+  void clear_data();
+  const std::string& data() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_data(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_data();
+  PROTOBUF_NODISCARD std::string* release_data();
+  void set_allocated_data(std::string* data);
+  private:
+  const std::string& _internal_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_data(const std::string& value);
+  std::string* _internal_mutable_data();
+  public:
+
   // optional uint32 page = 1;
   bool has_page() const;
   private:
@@ -236,6 +255,7 @@ class CommitDataRequest_ChunksToMove final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr data_;
     ::uint32_t page_;
     ::uint32_t chunk_;
     ::uint32_t target_buffer_;
@@ -824,7 +844,7 @@ class CommitDataRequest final :
 
 // optional uint32 page = 1;
 inline bool CommitDataRequest_ChunksToMove::_internal_has_page() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
   return value;
 }
 inline bool CommitDataRequest_ChunksToMove::has_page() const {
@@ -832,7 +852,7 @@ inline bool CommitDataRequest_ChunksToMove::has_page() const {
 }
 inline void CommitDataRequest_ChunksToMove::clear_page() {
   _impl_.page_ = 0u;
-  _impl_._has_bits_[0] &= ~0x00000001u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 inline ::uint32_t CommitDataRequest_ChunksToMove::_internal_page() const {
   return _impl_.page_;
@@ -842,7 +862,7 @@ inline ::uint32_t CommitDataRequest_ChunksToMove::page() const {
   return _internal_page();
 }
 inline void CommitDataRequest_ChunksToMove::_internal_set_page(::uint32_t value) {
-  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_._has_bits_[0] |= 0x00000002u;
   _impl_.page_ = value;
 }
 inline void CommitDataRequest_ChunksToMove::set_page(::uint32_t value) {
@@ -852,7 +872,7 @@ inline void CommitDataRequest_ChunksToMove::set_page(::uint32_t value) {
 
 // optional uint32 chunk = 2;
 inline bool CommitDataRequest_ChunksToMove::_internal_has_chunk() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
 inline bool CommitDataRequest_ChunksToMove::has_chunk() const {
@@ -860,7 +880,7 @@ inline bool CommitDataRequest_ChunksToMove::has_chunk() const {
 }
 inline void CommitDataRequest_ChunksToMove::clear_chunk() {
   _impl_.chunk_ = 0u;
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
 }
 inline ::uint32_t CommitDataRequest_ChunksToMove::_internal_chunk() const {
   return _impl_.chunk_;
@@ -870,7 +890,7 @@ inline ::uint32_t CommitDataRequest_ChunksToMove::chunk() const {
   return _internal_chunk();
 }
 inline void CommitDataRequest_ChunksToMove::_internal_set_chunk(::uint32_t value) {
-  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_._has_bits_[0] |= 0x00000004u;
   _impl_.chunk_ = value;
 }
 inline void CommitDataRequest_ChunksToMove::set_chunk(::uint32_t value) {
@@ -880,7 +900,7 @@ inline void CommitDataRequest_ChunksToMove::set_chunk(::uint32_t value) {
 
 // optional uint32 target_buffer = 3;
 inline bool CommitDataRequest_ChunksToMove::_internal_has_target_buffer() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
 inline bool CommitDataRequest_ChunksToMove::has_target_buffer() const {
@@ -888,7 +908,7 @@ inline bool CommitDataRequest_ChunksToMove::has_target_buffer() const {
 }
 inline void CommitDataRequest_ChunksToMove::clear_target_buffer() {
   _impl_.target_buffer_ = 0u;
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
 }
 inline ::uint32_t CommitDataRequest_ChunksToMove::_internal_target_buffer() const {
   return _impl_.target_buffer_;
@@ -898,12 +918,80 @@ inline ::uint32_t CommitDataRequest_ChunksToMove::target_buffer() const {
   return _internal_target_buffer();
 }
 inline void CommitDataRequest_ChunksToMove::_internal_set_target_buffer(::uint32_t value) {
-  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_._has_bits_[0] |= 0x00000008u;
   _impl_.target_buffer_ = value;
 }
 inline void CommitDataRequest_ChunksToMove::set_target_buffer(::uint32_t value) {
   _internal_set_target_buffer(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.CommitDataRequest.ChunksToMove.target_buffer)
+}
+
+// optional bytes data = 4;
+inline bool CommitDataRequest_ChunksToMove::_internal_has_data() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool CommitDataRequest_ChunksToMove::has_data() const {
+  return _internal_has_data();
+}
+inline void CommitDataRequest_ChunksToMove::clear_data() {
+  _impl_.data_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& CommitDataRequest_ChunksToMove::data() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.CommitDataRequest.ChunksToMove.data)
+  return _internal_data();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CommitDataRequest_ChunksToMove::set_data(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.data_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.CommitDataRequest.ChunksToMove.data)
+}
+inline std::string* CommitDataRequest_ChunksToMove::mutable_data() {
+  std::string* _s = _internal_mutable_data();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.CommitDataRequest.ChunksToMove.data)
+  return _s;
+}
+inline const std::string& CommitDataRequest_ChunksToMove::_internal_data() const {
+  return _impl_.data_.Get();
+}
+inline void CommitDataRequest_ChunksToMove::_internal_set_data(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.data_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CommitDataRequest_ChunksToMove::_internal_mutable_data() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.data_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CommitDataRequest_ChunksToMove::release_data() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.CommitDataRequest.ChunksToMove.data)
+  if (!_internal_has_data()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.data_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.data_.IsDefault()) {
+    _impl_.data_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void CommitDataRequest_ChunksToMove::set_allocated_data(std::string* data) {
+  if (data != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.data_.SetAllocated(data, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.data_.IsDefault()) {
+    _impl_.data_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.CommitDataRequest.ChunksToMove.data)
 }
 
 // -------------------------------------------------------------------
