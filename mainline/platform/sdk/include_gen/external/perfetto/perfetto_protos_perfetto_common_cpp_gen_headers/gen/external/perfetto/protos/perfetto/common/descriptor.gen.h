@@ -21,6 +21,8 @@ class EnumDescriptorProto;
 class OneofDescriptorProto;
 class FieldDescriptorProto;
 class FieldOptions;
+class UninterpretedOption;
+class UninterpretedOption_NamePart;
 class DescriptorProto;
 class DescriptorProto_ReservedRange;
 class FileDescriptorProto;
@@ -341,6 +343,7 @@ class PERFETTO_EXPORT_COMPONENT FieldOptions : public ::protozero::CppMessageObj
  public:
   enum FieldNumbers {
     kPackedFieldNumber = 2,
+    kUninterpretedOptionFieldNumber = 999,
   };
 
   FieldOptions();
@@ -361,8 +364,131 @@ class PERFETTO_EXPORT_COMPONENT FieldOptions : public ::protozero::CppMessageObj
   bool packed() const { return packed_; }
   void set_packed(bool value) { packed_ = value; _has_field_.set(2); }
 
+  const std::vector<UninterpretedOption>& uninterpreted_option() const { return uninterpreted_option_; }
+  std::vector<UninterpretedOption>* mutable_uninterpreted_option() { return &uninterpreted_option_; }
+  int uninterpreted_option_size() const;
+  void clear_uninterpreted_option();
+  UninterpretedOption* add_uninterpreted_option();
+
  private:
   bool packed_{};
+  std::vector<UninterpretedOption> uninterpreted_option_;
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<1000> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT UninterpretedOption : public ::protozero::CppMessageObj {
+ public:
+  using NamePart = UninterpretedOption_NamePart;
+  enum FieldNumbers {
+    kNameFieldNumber = 2,
+    kIdentifierValueFieldNumber = 3,
+    kPositiveIntValueFieldNumber = 4,
+    kNegativeIntValueFieldNumber = 5,
+    kDoubleValueFieldNumber = 6,
+    kStringValueFieldNumber = 7,
+    kAggregateValueFieldNumber = 8,
+  };
+
+  UninterpretedOption();
+  ~UninterpretedOption() override;
+  UninterpretedOption(UninterpretedOption&&) noexcept;
+  UninterpretedOption& operator=(UninterpretedOption&&);
+  UninterpretedOption(const UninterpretedOption&);
+  UninterpretedOption& operator=(const UninterpretedOption&);
+  bool operator==(const UninterpretedOption&) const;
+  bool operator!=(const UninterpretedOption& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  const std::vector<UninterpretedOption_NamePart>& name() const { return name_; }
+  std::vector<UninterpretedOption_NamePart>* mutable_name() { return &name_; }
+  int name_size() const;
+  void clear_name();
+  UninterpretedOption_NamePart* add_name();
+
+  bool has_identifier_value() const { return _has_field_[3]; }
+  const std::string& identifier_value() const { return identifier_value_; }
+  void set_identifier_value(const std::string& value) { identifier_value_ = value; _has_field_.set(3); }
+
+  bool has_positive_int_value() const { return _has_field_[4]; }
+  uint64_t positive_int_value() const { return positive_int_value_; }
+  void set_positive_int_value(uint64_t value) { positive_int_value_ = value; _has_field_.set(4); }
+
+  bool has_negative_int_value() const { return _has_field_[5]; }
+  int64_t negative_int_value() const { return negative_int_value_; }
+  void set_negative_int_value(int64_t value) { negative_int_value_ = value; _has_field_.set(5); }
+
+  bool has_double_value() const { return _has_field_[6]; }
+  double double_value() const { return double_value_; }
+  void set_double_value(double value) { double_value_ = value; _has_field_.set(6); }
+
+  bool has_string_value() const { return _has_field_[7]; }
+  const std::string& string_value() const { return string_value_; }
+  void set_string_value(const std::string& value) { string_value_ = value; _has_field_.set(7); }
+  void set_string_value(const void* p, size_t s) { string_value_.assign(reinterpret_cast<const char*>(p), s); _has_field_.set(7); }
+
+  bool has_aggregate_value() const { return _has_field_[8]; }
+  const std::string& aggregate_value() const { return aggregate_value_; }
+  void set_aggregate_value(const std::string& value) { aggregate_value_ = value; _has_field_.set(8); }
+
+ private:
+  std::vector<UninterpretedOption_NamePart> name_;
+  std::string identifier_value_{};
+  uint64_t positive_int_value_{};
+  int64_t negative_int_value_{};
+  double double_value_{};
+  std::string string_value_{};
+  std::string aggregate_value_{};
+
+  // Allows to preserve unknown protobuf fields for compatibility
+  // with future versions of .proto files.
+  std::string unknown_fields_;
+
+  std::bitset<9> _has_field_{};
+};
+
+
+class PERFETTO_EXPORT_COMPONENT UninterpretedOption_NamePart : public ::protozero::CppMessageObj {
+ public:
+  enum FieldNumbers {
+    kNamePartFieldNumber = 1,
+    kIsExtensionFieldNumber = 2,
+  };
+
+  UninterpretedOption_NamePart();
+  ~UninterpretedOption_NamePart() override;
+  UninterpretedOption_NamePart(UninterpretedOption_NamePart&&) noexcept;
+  UninterpretedOption_NamePart& operator=(UninterpretedOption_NamePart&&);
+  UninterpretedOption_NamePart(const UninterpretedOption_NamePart&);
+  UninterpretedOption_NamePart& operator=(const UninterpretedOption_NamePart&);
+  bool operator==(const UninterpretedOption_NamePart&) const;
+  bool operator!=(const UninterpretedOption_NamePart& other) const { return !(*this == other); }
+
+  bool ParseFromArray(const void*, size_t) override;
+  std::string SerializeAsString() const override;
+  std::vector<uint8_t> SerializeAsArray() const override;
+  void Serialize(::protozero::Message*) const;
+
+  bool has_name_part() const { return _has_field_[1]; }
+  const std::string& name_part() const { return name_part_; }
+  void set_name_part(const std::string& value) { name_part_ = value; _has_field_.set(1); }
+
+  bool has_is_extension() const { return _has_field_[2]; }
+  bool is_extension() const { return is_extension_; }
+  void set_is_extension(bool value) { is_extension_ = value; _has_field_.set(2); }
+
+ private:
+  std::string name_part_{};
+  bool is_extension_{};
 
   // Allows to preserve unknown protobuf fields for compatibility
   // with future versions of .proto files.

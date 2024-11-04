@@ -180,6 +180,10 @@ class TestExtension final :
   static ::PROTOBUF_NAMESPACE_ID::internal::ExtensionIdentifier< ::perfetto::protos::TrackEvent,
       ::PROTOBUF_NAMESPACE_ID::internal::StringTypeTraits, 9, false >
     string_extension_for_testing;
+  static const int kStringExtensionForTesting2FieldNumber = 9905;
+  static ::PROTOBUF_NAMESPACE_ID::internal::ExtensionIdentifier< ::perfetto::protos::TrackEvent,
+      ::PROTOBUF_NAMESPACE_ID::internal::StringTypeTraits, 9, false >
+    string_extension_for_testing2;
   static const int kIntExtensionForTestingFieldNumber = 9901;
   static ::PROTOBUF_NAMESPACE_ID::internal::ExtensionIdentifier< ::perfetto::protos::TrackEvent,
       ::PROTOBUF_NAMESPACE_ID::internal::RepeatedPrimitiveTypeTraits< ::int32_t >, 5, false >

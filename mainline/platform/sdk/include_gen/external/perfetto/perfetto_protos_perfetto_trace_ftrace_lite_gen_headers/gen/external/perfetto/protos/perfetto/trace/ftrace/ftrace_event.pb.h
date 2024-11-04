@@ -30,6 +30,7 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include "protos/perfetto/trace/ftrace/android_fs.pb.h"
+#include "protos/perfetto/trace/ftrace/bcl_exynos.pb.h"
 #include "protos/perfetto/trace/ftrace/binder.pb.h"
 #include "protos/perfetto/trace/ftrace/block.pb.h"
 #include "protos/perfetto/trace/ftrace/cgroup.pb.h"
@@ -38,6 +39,8 @@
 #include "protos/perfetto/trace/ftrace/compaction.pb.h"
 #include "protos/perfetto/trace/ftrace/cpuhp.pb.h"
 #include "protos/perfetto/trace/ftrace/cros_ec.pb.h"
+#include "protos/perfetto/trace/ftrace/dcvsh.pb.h"
+#include "protos/perfetto/trace/ftrace/devfreq.pb.h"
 #include "protos/perfetto/trace/ftrace/dma_fence.pb.h"
 #include "protos/perfetto/trace/ftrace/dmabuf_heap.pb.h"
 #include "protos/perfetto/trace/ftrace/dpu.pb.h"
@@ -49,6 +52,8 @@
 #include "protos/perfetto/trace/ftrace/filemap.pb.h"
 #include "protos/perfetto/trace/ftrace/ftrace.pb.h"
 #include "protos/perfetto/trace/ftrace/g2d.pb.h"
+#include "protos/perfetto/trace/ftrace/google_icc_trace.pb.h"
+#include "protos/perfetto/trace/ftrace/google_irm_trace.pb.h"
 #include "protos/perfetto/trace/ftrace/gpu_mem.pb.h"
 #include "protos/perfetto/trace/ftrace/gpu_scheduler.pb.h"
 #include "protos/perfetto/trace/ftrace/hyp.pb.h"
@@ -56,6 +61,7 @@
 #include "protos/perfetto/trace/ftrace/ion.pb.h"
 #include "protos/perfetto/trace/ftrace/ipi.pb.h"
 #include "protos/perfetto/trace/ftrace/irq.pb.h"
+#include "protos/perfetto/trace/ftrace/kgsl.pb.h"
 #include "protos/perfetto/trace/ftrace/kmem.pb.h"
 #include "protos/perfetto/trace/ftrace/kvm.pb.h"
 #include "protos/perfetto/trace/ftrace/lowmemorykiller.pb.h"
@@ -66,10 +72,14 @@
 #include "protos/perfetto/trace/ftrace/net.pb.h"
 #include "protos/perfetto/trace/ftrace/oom.pb.h"
 #include "protos/perfetto/trace/ftrace/panel.pb.h"
+#include "protos/perfetto/trace/ftrace/perf_trace_counters.pb.h"
+#include "protos/perfetto/trace/ftrace/pixel_mm.pb.h"
 #include "protos/perfetto/trace/ftrace/power.pb.h"
 #include "protos/perfetto/trace/ftrace/printk.pb.h"
 #include "protos/perfetto/trace/ftrace/raw_syscalls.pb.h"
 #include "protos/perfetto/trace/ftrace/regulator.pb.h"
+#include "protos/perfetto/trace/ftrace/rpm.pb.h"
+#include "protos/perfetto/trace/ftrace/samsung.pb.h"
 #include "protos/perfetto/trace/ftrace/sched.pb.h"
 #include "protos/perfetto/trace/ftrace/scm.pb.h"
 #include "protos/perfetto/trace/ftrace/sde.pb.h"
@@ -82,6 +92,7 @@
 #include "protos/perfetto/trace/ftrace/task.pb.h"
 #include "protos/perfetto/trace/ftrace/tcp.pb.h"
 #include "protos/perfetto/trace/ftrace/thermal.pb.h"
+#include "protos/perfetto/trace/ftrace/thermal_exynos.pb.h"
 #include "protos/perfetto/trace/ftrace/trusty.pb.h"
 #include "protos/perfetto/trace/ftrace/ufs.pb.h"
 #include "protos/perfetto/trace/ftrace/v4l2.pb.h"
@@ -623,6 +634,64 @@ class FtraceEvent final :
     kSuspendResumeMinimal = 481,
     kMaliMaliCSFINTERRUPTSTART = 482,
     kMaliMaliCSFINTERRUPTEND = 483,
+    kSamsungTracingMarkWrite = 484,
+    kBinderCommand = 485,
+    kBinderReturn = 486,
+    kSchedSwitchWithCtrs = 487,
+    kGpuWorkPeriod = 488,
+    kRpmStatus = 489,
+    kPanelWriteGeneric = 490,
+    kSchedMigrateTask = 491,
+    kDpuDsiCmdFifoStatus = 492,
+    kDpuDsiRx = 493,
+    kDpuDsiTx = 494,
+    kF2FsBackgroundGc = 495,
+    kF2FsGcBegin = 496,
+    kF2FsGcEnd = 497,
+    kFastrpcDmaFree = 498,
+    kFastrpcDmaAlloc = 499,
+    kFastrpcDmaUnmap = 500,
+    kFastrpcDmaMap = 501,
+    kGoogleIccEvent = 502,
+    kGoogleIrmEvent = 503,
+    kDevicePmCallbackStart = 504,
+    kDevicePmCallbackEnd = 505,
+    kThermalExynosAcpmBulk = 506,
+    kThermalExynosAcpmHighOverhead = 507,
+    kDcvshFreq = 508,
+    kKgslGpuFrequency = 509,
+    kMaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPEND = 510,
+    kMaliMaliPMMCUHCTLCORESNOTIFYPEND = 511,
+    kMaliMaliPMMCUHCTLCOREINACTIVEPEND = 512,
+    kMaliMaliPMMCUHCTLMCUONRECHECK = 513,
+    kMaliMaliPMMCUHCTLSHADERSCOREOFFPEND = 514,
+    kMaliMaliPMMCUHCTLSHADERSPENDOFF = 515,
+    kMaliMaliPMMCUHCTLSHADERSPENDON = 516,
+    kMaliMaliPMMCUHCTLSHADERSREADYOFF = 517,
+    kMaliMaliPMMCUINSLEEP = 518,
+    kMaliMaliPMMCUOFF = 519,
+    kMaliMaliPMMCUON = 520,
+    kMaliMaliPMMCUONCOREATTRUPDATEPEND = 521,
+    kMaliMaliPMMCUONGLBREINITPEND = 522,
+    kMaliMaliPMMCUONHALT = 523,
+    kMaliMaliPMMCUONHWCNTDISABLE = 524,
+    kMaliMaliPMMCUONHWCNTENABLE = 525,
+    kMaliMaliPMMCUONPENDHALT = 526,
+    kMaliMaliPMMCUONPENDSLEEP = 527,
+    kMaliMaliPMMCUONSLEEPINITIATE = 528,
+    kMaliMaliPMMCUPENDOFF = 529,
+    kMaliMaliPMMCUPENDONRELOAD = 530,
+    kMaliMaliPMMCUPOWERDOWN = 531,
+    kMaliMaliPMMCURESETWAIT = 532,
+    kBclIrqTrigger = 533,
+    kKgslAdrenoCmdbatchQueued = 534,
+    kKgslAdrenoCmdbatchSubmitted = 535,
+    kKgslAdrenoCmdbatchSync = 536,
+    kKgslAdrenoCmdbatchRetired = 537,
+    kPixelMmKswapdWake = 538,
+    kPixelMmKswapdDone = 539,
+    kSchedWakeupTaskAttr = 540,
+    kDevfreqFrequency = 541,
     EVENT_NOT_SET = 0,
   };
 
@@ -1163,6 +1232,64 @@ class FtraceEvent final :
     kSuspendResumeMinimalFieldNumber = 481,
     kMaliMaliCSFINTERRUPTSTARTFieldNumber = 482,
     kMaliMaliCSFINTERRUPTENDFieldNumber = 483,
+    kSamsungTracingMarkWriteFieldNumber = 484,
+    kBinderCommandFieldNumber = 485,
+    kBinderReturnFieldNumber = 486,
+    kSchedSwitchWithCtrsFieldNumber = 487,
+    kGpuWorkPeriodFieldNumber = 488,
+    kRpmStatusFieldNumber = 489,
+    kPanelWriteGenericFieldNumber = 490,
+    kSchedMigrateTaskFieldNumber = 491,
+    kDpuDsiCmdFifoStatusFieldNumber = 492,
+    kDpuDsiRxFieldNumber = 493,
+    kDpuDsiTxFieldNumber = 494,
+    kF2FsBackgroundGcFieldNumber = 495,
+    kF2FsGcBeginFieldNumber = 496,
+    kF2FsGcEndFieldNumber = 497,
+    kFastrpcDmaFreeFieldNumber = 498,
+    kFastrpcDmaAllocFieldNumber = 499,
+    kFastrpcDmaUnmapFieldNumber = 500,
+    kFastrpcDmaMapFieldNumber = 501,
+    kGoogleIccEventFieldNumber = 502,
+    kGoogleIrmEventFieldNumber = 503,
+    kDevicePmCallbackStartFieldNumber = 504,
+    kDevicePmCallbackEndFieldNumber = 505,
+    kThermalExynosAcpmBulkFieldNumber = 506,
+    kThermalExynosAcpmHighOverheadFieldNumber = 507,
+    kDcvshFreqFieldNumber = 508,
+    kKgslGpuFrequencyFieldNumber = 509,
+    kMaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFieldNumber = 510,
+    kMaliMaliPMMCUHCTLCORESNOTIFYPENDFieldNumber = 511,
+    kMaliMaliPMMCUHCTLCOREINACTIVEPENDFieldNumber = 512,
+    kMaliMaliPMMCUHCTLMCUONRECHECKFieldNumber = 513,
+    kMaliMaliPMMCUHCTLSHADERSCOREOFFPENDFieldNumber = 514,
+    kMaliMaliPMMCUHCTLSHADERSPENDOFFFieldNumber = 515,
+    kMaliMaliPMMCUHCTLSHADERSPENDONFieldNumber = 516,
+    kMaliMaliPMMCUHCTLSHADERSREADYOFFFieldNumber = 517,
+    kMaliMaliPMMCUINSLEEPFieldNumber = 518,
+    kMaliMaliPMMCUOFFFieldNumber = 519,
+    kMaliMaliPMMCUONFieldNumber = 520,
+    kMaliMaliPMMCUONCOREATTRUPDATEPENDFieldNumber = 521,
+    kMaliMaliPMMCUONGLBREINITPENDFieldNumber = 522,
+    kMaliMaliPMMCUONHALTFieldNumber = 523,
+    kMaliMaliPMMCUONHWCNTDISABLEFieldNumber = 524,
+    kMaliMaliPMMCUONHWCNTENABLEFieldNumber = 525,
+    kMaliMaliPMMCUONPENDHALTFieldNumber = 526,
+    kMaliMaliPMMCUONPENDSLEEPFieldNumber = 527,
+    kMaliMaliPMMCUONSLEEPINITIATEFieldNumber = 528,
+    kMaliMaliPMMCUPENDOFFFieldNumber = 529,
+    kMaliMaliPMMCUPENDONRELOADFieldNumber = 530,
+    kMaliMaliPMMCUPOWERDOWNFieldNumber = 531,
+    kMaliMaliPMMCURESETWAITFieldNumber = 532,
+    kBclIrqTriggerFieldNumber = 533,
+    kKgslAdrenoCmdbatchQueuedFieldNumber = 534,
+    kKgslAdrenoCmdbatchSubmittedFieldNumber = 535,
+    kKgslAdrenoCmdbatchSyncFieldNumber = 536,
+    kKgslAdrenoCmdbatchRetiredFieldNumber = 537,
+    kPixelMmKswapdWakeFieldNumber = 538,
+    kPixelMmKswapdDoneFieldNumber = 539,
+    kSchedWakeupTaskAttrFieldNumber = 540,
+    kDevfreqFrequencyFieldNumber = 541,
   };
   // optional uint64 timestamp = 1;
   bool has_timestamp() const;
@@ -9519,6 +9646,1050 @@ class FtraceEvent final :
       ::perfetto::protos::MaliMaliCSFINTERRUPTENDFtraceEvent* mali_mali_csf_interrupt_end);
   ::perfetto::protos::MaliMaliCSFINTERRUPTENDFtraceEvent* unsafe_arena_release_mali_mali_csf_interrupt_end();
 
+  // .perfetto.protos.SamsungTracingMarkWriteFtraceEvent samsung_tracing_mark_write = 484;
+  bool has_samsung_tracing_mark_write() const;
+  private:
+  bool _internal_has_samsung_tracing_mark_write() const;
+  public:
+  void clear_samsung_tracing_mark_write();
+  const ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent& samsung_tracing_mark_write() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* release_samsung_tracing_mark_write();
+  ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* mutable_samsung_tracing_mark_write();
+  void set_allocated_samsung_tracing_mark_write(::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* samsung_tracing_mark_write);
+  private:
+  const ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent& _internal_samsung_tracing_mark_write() const;
+  ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* _internal_mutable_samsung_tracing_mark_write();
+  public:
+  void unsafe_arena_set_allocated_samsung_tracing_mark_write(
+      ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* samsung_tracing_mark_write);
+  ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* unsafe_arena_release_samsung_tracing_mark_write();
+
+  // .perfetto.protos.BinderCommandFtraceEvent binder_command = 485;
+  bool has_binder_command() const;
+  private:
+  bool _internal_has_binder_command() const;
+  public:
+  void clear_binder_command();
+  const ::perfetto::protos::BinderCommandFtraceEvent& binder_command() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::BinderCommandFtraceEvent* release_binder_command();
+  ::perfetto::protos::BinderCommandFtraceEvent* mutable_binder_command();
+  void set_allocated_binder_command(::perfetto::protos::BinderCommandFtraceEvent* binder_command);
+  private:
+  const ::perfetto::protos::BinderCommandFtraceEvent& _internal_binder_command() const;
+  ::perfetto::protos::BinderCommandFtraceEvent* _internal_mutable_binder_command();
+  public:
+  void unsafe_arena_set_allocated_binder_command(
+      ::perfetto::protos::BinderCommandFtraceEvent* binder_command);
+  ::perfetto::protos::BinderCommandFtraceEvent* unsafe_arena_release_binder_command();
+
+  // .perfetto.protos.BinderReturnFtraceEvent binder_return = 486;
+  bool has_binder_return() const;
+  private:
+  bool _internal_has_binder_return() const;
+  public:
+  void clear_binder_return();
+  const ::perfetto::protos::BinderReturnFtraceEvent& binder_return() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::BinderReturnFtraceEvent* release_binder_return();
+  ::perfetto::protos::BinderReturnFtraceEvent* mutable_binder_return();
+  void set_allocated_binder_return(::perfetto::protos::BinderReturnFtraceEvent* binder_return);
+  private:
+  const ::perfetto::protos::BinderReturnFtraceEvent& _internal_binder_return() const;
+  ::perfetto::protos::BinderReturnFtraceEvent* _internal_mutable_binder_return();
+  public:
+  void unsafe_arena_set_allocated_binder_return(
+      ::perfetto::protos::BinderReturnFtraceEvent* binder_return);
+  ::perfetto::protos::BinderReturnFtraceEvent* unsafe_arena_release_binder_return();
+
+  // .perfetto.protos.SchedSwitchWithCtrsFtraceEvent sched_switch_with_ctrs = 487;
+  bool has_sched_switch_with_ctrs() const;
+  private:
+  bool _internal_has_sched_switch_with_ctrs() const;
+  public:
+  void clear_sched_switch_with_ctrs();
+  const ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent& sched_switch_with_ctrs() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* release_sched_switch_with_ctrs();
+  ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* mutable_sched_switch_with_ctrs();
+  void set_allocated_sched_switch_with_ctrs(::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* sched_switch_with_ctrs);
+  private:
+  const ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent& _internal_sched_switch_with_ctrs() const;
+  ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* _internal_mutable_sched_switch_with_ctrs();
+  public:
+  void unsafe_arena_set_allocated_sched_switch_with_ctrs(
+      ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* sched_switch_with_ctrs);
+  ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* unsafe_arena_release_sched_switch_with_ctrs();
+
+  // .perfetto.protos.GpuWorkPeriodFtraceEvent gpu_work_period = 488;
+  bool has_gpu_work_period() const;
+  private:
+  bool _internal_has_gpu_work_period() const;
+  public:
+  void clear_gpu_work_period();
+  const ::perfetto::protos::GpuWorkPeriodFtraceEvent& gpu_work_period() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::GpuWorkPeriodFtraceEvent* release_gpu_work_period();
+  ::perfetto::protos::GpuWorkPeriodFtraceEvent* mutable_gpu_work_period();
+  void set_allocated_gpu_work_period(::perfetto::protos::GpuWorkPeriodFtraceEvent* gpu_work_period);
+  private:
+  const ::perfetto::protos::GpuWorkPeriodFtraceEvent& _internal_gpu_work_period() const;
+  ::perfetto::protos::GpuWorkPeriodFtraceEvent* _internal_mutable_gpu_work_period();
+  public:
+  void unsafe_arena_set_allocated_gpu_work_period(
+      ::perfetto::protos::GpuWorkPeriodFtraceEvent* gpu_work_period);
+  ::perfetto::protos::GpuWorkPeriodFtraceEvent* unsafe_arena_release_gpu_work_period();
+
+  // .perfetto.protos.RpmStatusFtraceEvent rpm_status = 489;
+  bool has_rpm_status() const;
+  private:
+  bool _internal_has_rpm_status() const;
+  public:
+  void clear_rpm_status();
+  const ::perfetto::protos::RpmStatusFtraceEvent& rpm_status() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::RpmStatusFtraceEvent* release_rpm_status();
+  ::perfetto::protos::RpmStatusFtraceEvent* mutable_rpm_status();
+  void set_allocated_rpm_status(::perfetto::protos::RpmStatusFtraceEvent* rpm_status);
+  private:
+  const ::perfetto::protos::RpmStatusFtraceEvent& _internal_rpm_status() const;
+  ::perfetto::protos::RpmStatusFtraceEvent* _internal_mutable_rpm_status();
+  public:
+  void unsafe_arena_set_allocated_rpm_status(
+      ::perfetto::protos::RpmStatusFtraceEvent* rpm_status);
+  ::perfetto::protos::RpmStatusFtraceEvent* unsafe_arena_release_rpm_status();
+
+  // .perfetto.protos.PanelWriteGenericFtraceEvent panel_write_generic = 490;
+  bool has_panel_write_generic() const;
+  private:
+  bool _internal_has_panel_write_generic() const;
+  public:
+  void clear_panel_write_generic();
+  const ::perfetto::protos::PanelWriteGenericFtraceEvent& panel_write_generic() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::PanelWriteGenericFtraceEvent* release_panel_write_generic();
+  ::perfetto::protos::PanelWriteGenericFtraceEvent* mutable_panel_write_generic();
+  void set_allocated_panel_write_generic(::perfetto::protos::PanelWriteGenericFtraceEvent* panel_write_generic);
+  private:
+  const ::perfetto::protos::PanelWriteGenericFtraceEvent& _internal_panel_write_generic() const;
+  ::perfetto::protos::PanelWriteGenericFtraceEvent* _internal_mutable_panel_write_generic();
+  public:
+  void unsafe_arena_set_allocated_panel_write_generic(
+      ::perfetto::protos::PanelWriteGenericFtraceEvent* panel_write_generic);
+  ::perfetto::protos::PanelWriteGenericFtraceEvent* unsafe_arena_release_panel_write_generic();
+
+  // .perfetto.protos.SchedMigrateTaskFtraceEvent sched_migrate_task = 491;
+  bool has_sched_migrate_task() const;
+  private:
+  bool _internal_has_sched_migrate_task() const;
+  public:
+  void clear_sched_migrate_task();
+  const ::perfetto::protos::SchedMigrateTaskFtraceEvent& sched_migrate_task() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::SchedMigrateTaskFtraceEvent* release_sched_migrate_task();
+  ::perfetto::protos::SchedMigrateTaskFtraceEvent* mutable_sched_migrate_task();
+  void set_allocated_sched_migrate_task(::perfetto::protos::SchedMigrateTaskFtraceEvent* sched_migrate_task);
+  private:
+  const ::perfetto::protos::SchedMigrateTaskFtraceEvent& _internal_sched_migrate_task() const;
+  ::perfetto::protos::SchedMigrateTaskFtraceEvent* _internal_mutable_sched_migrate_task();
+  public:
+  void unsafe_arena_set_allocated_sched_migrate_task(
+      ::perfetto::protos::SchedMigrateTaskFtraceEvent* sched_migrate_task);
+  ::perfetto::protos::SchedMigrateTaskFtraceEvent* unsafe_arena_release_sched_migrate_task();
+
+  // .perfetto.protos.DpuDsiCmdFifoStatusFtraceEvent dpu_dsi_cmd_fifo_status = 492;
+  bool has_dpu_dsi_cmd_fifo_status() const;
+  private:
+  bool _internal_has_dpu_dsi_cmd_fifo_status() const;
+  public:
+  void clear_dpu_dsi_cmd_fifo_status();
+  const ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent& dpu_dsi_cmd_fifo_status() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* release_dpu_dsi_cmd_fifo_status();
+  ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* mutable_dpu_dsi_cmd_fifo_status();
+  void set_allocated_dpu_dsi_cmd_fifo_status(::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* dpu_dsi_cmd_fifo_status);
+  private:
+  const ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent& _internal_dpu_dsi_cmd_fifo_status() const;
+  ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* _internal_mutable_dpu_dsi_cmd_fifo_status();
+  public:
+  void unsafe_arena_set_allocated_dpu_dsi_cmd_fifo_status(
+      ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* dpu_dsi_cmd_fifo_status);
+  ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* unsafe_arena_release_dpu_dsi_cmd_fifo_status();
+
+  // .perfetto.protos.DpuDsiRxFtraceEvent dpu_dsi_rx = 493;
+  bool has_dpu_dsi_rx() const;
+  private:
+  bool _internal_has_dpu_dsi_rx() const;
+  public:
+  void clear_dpu_dsi_rx();
+  const ::perfetto::protos::DpuDsiRxFtraceEvent& dpu_dsi_rx() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::DpuDsiRxFtraceEvent* release_dpu_dsi_rx();
+  ::perfetto::protos::DpuDsiRxFtraceEvent* mutable_dpu_dsi_rx();
+  void set_allocated_dpu_dsi_rx(::perfetto::protos::DpuDsiRxFtraceEvent* dpu_dsi_rx);
+  private:
+  const ::perfetto::protos::DpuDsiRxFtraceEvent& _internal_dpu_dsi_rx() const;
+  ::perfetto::protos::DpuDsiRxFtraceEvent* _internal_mutable_dpu_dsi_rx();
+  public:
+  void unsafe_arena_set_allocated_dpu_dsi_rx(
+      ::perfetto::protos::DpuDsiRxFtraceEvent* dpu_dsi_rx);
+  ::perfetto::protos::DpuDsiRxFtraceEvent* unsafe_arena_release_dpu_dsi_rx();
+
+  // .perfetto.protos.DpuDsiTxFtraceEvent dpu_dsi_tx = 494;
+  bool has_dpu_dsi_tx() const;
+  private:
+  bool _internal_has_dpu_dsi_tx() const;
+  public:
+  void clear_dpu_dsi_tx();
+  const ::perfetto::protos::DpuDsiTxFtraceEvent& dpu_dsi_tx() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::DpuDsiTxFtraceEvent* release_dpu_dsi_tx();
+  ::perfetto::protos::DpuDsiTxFtraceEvent* mutable_dpu_dsi_tx();
+  void set_allocated_dpu_dsi_tx(::perfetto::protos::DpuDsiTxFtraceEvent* dpu_dsi_tx);
+  private:
+  const ::perfetto::protos::DpuDsiTxFtraceEvent& _internal_dpu_dsi_tx() const;
+  ::perfetto::protos::DpuDsiTxFtraceEvent* _internal_mutable_dpu_dsi_tx();
+  public:
+  void unsafe_arena_set_allocated_dpu_dsi_tx(
+      ::perfetto::protos::DpuDsiTxFtraceEvent* dpu_dsi_tx);
+  ::perfetto::protos::DpuDsiTxFtraceEvent* unsafe_arena_release_dpu_dsi_tx();
+
+  // .perfetto.protos.F2fsBackgroundGcFtraceEvent f2fs_background_gc = 495;
+  bool has_f2fs_background_gc() const;
+  private:
+  bool _internal_has_f2fs_background_gc() const;
+  public:
+  void clear_f2fs_background_gc();
+  const ::perfetto::protos::F2fsBackgroundGcFtraceEvent& f2fs_background_gc() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::F2fsBackgroundGcFtraceEvent* release_f2fs_background_gc();
+  ::perfetto::protos::F2fsBackgroundGcFtraceEvent* mutable_f2fs_background_gc();
+  void set_allocated_f2fs_background_gc(::perfetto::protos::F2fsBackgroundGcFtraceEvent* f2fs_background_gc);
+  private:
+  const ::perfetto::protos::F2fsBackgroundGcFtraceEvent& _internal_f2fs_background_gc() const;
+  ::perfetto::protos::F2fsBackgroundGcFtraceEvent* _internal_mutable_f2fs_background_gc();
+  public:
+  void unsafe_arena_set_allocated_f2fs_background_gc(
+      ::perfetto::protos::F2fsBackgroundGcFtraceEvent* f2fs_background_gc);
+  ::perfetto::protos::F2fsBackgroundGcFtraceEvent* unsafe_arena_release_f2fs_background_gc();
+
+  // .perfetto.protos.F2fsGcBeginFtraceEvent f2fs_gc_begin = 496;
+  bool has_f2fs_gc_begin() const;
+  private:
+  bool _internal_has_f2fs_gc_begin() const;
+  public:
+  void clear_f2fs_gc_begin();
+  const ::perfetto::protos::F2fsGcBeginFtraceEvent& f2fs_gc_begin() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::F2fsGcBeginFtraceEvent* release_f2fs_gc_begin();
+  ::perfetto::protos::F2fsGcBeginFtraceEvent* mutable_f2fs_gc_begin();
+  void set_allocated_f2fs_gc_begin(::perfetto::protos::F2fsGcBeginFtraceEvent* f2fs_gc_begin);
+  private:
+  const ::perfetto::protos::F2fsGcBeginFtraceEvent& _internal_f2fs_gc_begin() const;
+  ::perfetto::protos::F2fsGcBeginFtraceEvent* _internal_mutable_f2fs_gc_begin();
+  public:
+  void unsafe_arena_set_allocated_f2fs_gc_begin(
+      ::perfetto::protos::F2fsGcBeginFtraceEvent* f2fs_gc_begin);
+  ::perfetto::protos::F2fsGcBeginFtraceEvent* unsafe_arena_release_f2fs_gc_begin();
+
+  // .perfetto.protos.F2fsGcEndFtraceEvent f2fs_gc_end = 497;
+  bool has_f2fs_gc_end() const;
+  private:
+  bool _internal_has_f2fs_gc_end() const;
+  public:
+  void clear_f2fs_gc_end();
+  const ::perfetto::protos::F2fsGcEndFtraceEvent& f2fs_gc_end() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::F2fsGcEndFtraceEvent* release_f2fs_gc_end();
+  ::perfetto::protos::F2fsGcEndFtraceEvent* mutable_f2fs_gc_end();
+  void set_allocated_f2fs_gc_end(::perfetto::protos::F2fsGcEndFtraceEvent* f2fs_gc_end);
+  private:
+  const ::perfetto::protos::F2fsGcEndFtraceEvent& _internal_f2fs_gc_end() const;
+  ::perfetto::protos::F2fsGcEndFtraceEvent* _internal_mutable_f2fs_gc_end();
+  public:
+  void unsafe_arena_set_allocated_f2fs_gc_end(
+      ::perfetto::protos::F2fsGcEndFtraceEvent* f2fs_gc_end);
+  ::perfetto::protos::F2fsGcEndFtraceEvent* unsafe_arena_release_f2fs_gc_end();
+
+  // .perfetto.protos.FastrpcDmaFreeFtraceEvent fastrpc_dma_free = 498;
+  bool has_fastrpc_dma_free() const;
+  private:
+  bool _internal_has_fastrpc_dma_free() const;
+  public:
+  void clear_fastrpc_dma_free();
+  const ::perfetto::protos::FastrpcDmaFreeFtraceEvent& fastrpc_dma_free() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::FastrpcDmaFreeFtraceEvent* release_fastrpc_dma_free();
+  ::perfetto::protos::FastrpcDmaFreeFtraceEvent* mutable_fastrpc_dma_free();
+  void set_allocated_fastrpc_dma_free(::perfetto::protos::FastrpcDmaFreeFtraceEvent* fastrpc_dma_free);
+  private:
+  const ::perfetto::protos::FastrpcDmaFreeFtraceEvent& _internal_fastrpc_dma_free() const;
+  ::perfetto::protos::FastrpcDmaFreeFtraceEvent* _internal_mutable_fastrpc_dma_free();
+  public:
+  void unsafe_arena_set_allocated_fastrpc_dma_free(
+      ::perfetto::protos::FastrpcDmaFreeFtraceEvent* fastrpc_dma_free);
+  ::perfetto::protos::FastrpcDmaFreeFtraceEvent* unsafe_arena_release_fastrpc_dma_free();
+
+  // .perfetto.protos.FastrpcDmaAllocFtraceEvent fastrpc_dma_alloc = 499;
+  bool has_fastrpc_dma_alloc() const;
+  private:
+  bool _internal_has_fastrpc_dma_alloc() const;
+  public:
+  void clear_fastrpc_dma_alloc();
+  const ::perfetto::protos::FastrpcDmaAllocFtraceEvent& fastrpc_dma_alloc() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::FastrpcDmaAllocFtraceEvent* release_fastrpc_dma_alloc();
+  ::perfetto::protos::FastrpcDmaAllocFtraceEvent* mutable_fastrpc_dma_alloc();
+  void set_allocated_fastrpc_dma_alloc(::perfetto::protos::FastrpcDmaAllocFtraceEvent* fastrpc_dma_alloc);
+  private:
+  const ::perfetto::protos::FastrpcDmaAllocFtraceEvent& _internal_fastrpc_dma_alloc() const;
+  ::perfetto::protos::FastrpcDmaAllocFtraceEvent* _internal_mutable_fastrpc_dma_alloc();
+  public:
+  void unsafe_arena_set_allocated_fastrpc_dma_alloc(
+      ::perfetto::protos::FastrpcDmaAllocFtraceEvent* fastrpc_dma_alloc);
+  ::perfetto::protos::FastrpcDmaAllocFtraceEvent* unsafe_arena_release_fastrpc_dma_alloc();
+
+  // .perfetto.protos.FastrpcDmaUnmapFtraceEvent fastrpc_dma_unmap = 500;
+  bool has_fastrpc_dma_unmap() const;
+  private:
+  bool _internal_has_fastrpc_dma_unmap() const;
+  public:
+  void clear_fastrpc_dma_unmap();
+  const ::perfetto::protos::FastrpcDmaUnmapFtraceEvent& fastrpc_dma_unmap() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::FastrpcDmaUnmapFtraceEvent* release_fastrpc_dma_unmap();
+  ::perfetto::protos::FastrpcDmaUnmapFtraceEvent* mutable_fastrpc_dma_unmap();
+  void set_allocated_fastrpc_dma_unmap(::perfetto::protos::FastrpcDmaUnmapFtraceEvent* fastrpc_dma_unmap);
+  private:
+  const ::perfetto::protos::FastrpcDmaUnmapFtraceEvent& _internal_fastrpc_dma_unmap() const;
+  ::perfetto::protos::FastrpcDmaUnmapFtraceEvent* _internal_mutable_fastrpc_dma_unmap();
+  public:
+  void unsafe_arena_set_allocated_fastrpc_dma_unmap(
+      ::perfetto::protos::FastrpcDmaUnmapFtraceEvent* fastrpc_dma_unmap);
+  ::perfetto::protos::FastrpcDmaUnmapFtraceEvent* unsafe_arena_release_fastrpc_dma_unmap();
+
+  // .perfetto.protos.FastrpcDmaMapFtraceEvent fastrpc_dma_map = 501;
+  bool has_fastrpc_dma_map() const;
+  private:
+  bool _internal_has_fastrpc_dma_map() const;
+  public:
+  void clear_fastrpc_dma_map();
+  const ::perfetto::protos::FastrpcDmaMapFtraceEvent& fastrpc_dma_map() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::FastrpcDmaMapFtraceEvent* release_fastrpc_dma_map();
+  ::perfetto::protos::FastrpcDmaMapFtraceEvent* mutable_fastrpc_dma_map();
+  void set_allocated_fastrpc_dma_map(::perfetto::protos::FastrpcDmaMapFtraceEvent* fastrpc_dma_map);
+  private:
+  const ::perfetto::protos::FastrpcDmaMapFtraceEvent& _internal_fastrpc_dma_map() const;
+  ::perfetto::protos::FastrpcDmaMapFtraceEvent* _internal_mutable_fastrpc_dma_map();
+  public:
+  void unsafe_arena_set_allocated_fastrpc_dma_map(
+      ::perfetto::protos::FastrpcDmaMapFtraceEvent* fastrpc_dma_map);
+  ::perfetto::protos::FastrpcDmaMapFtraceEvent* unsafe_arena_release_fastrpc_dma_map();
+
+  // .perfetto.protos.GoogleIccEventFtraceEvent google_icc_event = 502;
+  bool has_google_icc_event() const;
+  private:
+  bool _internal_has_google_icc_event() const;
+  public:
+  void clear_google_icc_event();
+  const ::perfetto::protos::GoogleIccEventFtraceEvent& google_icc_event() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::GoogleIccEventFtraceEvent* release_google_icc_event();
+  ::perfetto::protos::GoogleIccEventFtraceEvent* mutable_google_icc_event();
+  void set_allocated_google_icc_event(::perfetto::protos::GoogleIccEventFtraceEvent* google_icc_event);
+  private:
+  const ::perfetto::protos::GoogleIccEventFtraceEvent& _internal_google_icc_event() const;
+  ::perfetto::protos::GoogleIccEventFtraceEvent* _internal_mutable_google_icc_event();
+  public:
+  void unsafe_arena_set_allocated_google_icc_event(
+      ::perfetto::protos::GoogleIccEventFtraceEvent* google_icc_event);
+  ::perfetto::protos::GoogleIccEventFtraceEvent* unsafe_arena_release_google_icc_event();
+
+  // .perfetto.protos.GoogleIrmEventFtraceEvent google_irm_event = 503;
+  bool has_google_irm_event() const;
+  private:
+  bool _internal_has_google_irm_event() const;
+  public:
+  void clear_google_irm_event();
+  const ::perfetto::protos::GoogleIrmEventFtraceEvent& google_irm_event() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::GoogleIrmEventFtraceEvent* release_google_irm_event();
+  ::perfetto::protos::GoogleIrmEventFtraceEvent* mutable_google_irm_event();
+  void set_allocated_google_irm_event(::perfetto::protos::GoogleIrmEventFtraceEvent* google_irm_event);
+  private:
+  const ::perfetto::protos::GoogleIrmEventFtraceEvent& _internal_google_irm_event() const;
+  ::perfetto::protos::GoogleIrmEventFtraceEvent* _internal_mutable_google_irm_event();
+  public:
+  void unsafe_arena_set_allocated_google_irm_event(
+      ::perfetto::protos::GoogleIrmEventFtraceEvent* google_irm_event);
+  ::perfetto::protos::GoogleIrmEventFtraceEvent* unsafe_arena_release_google_irm_event();
+
+  // .perfetto.protos.DevicePmCallbackStartFtraceEvent device_pm_callback_start = 504;
+  bool has_device_pm_callback_start() const;
+  private:
+  bool _internal_has_device_pm_callback_start() const;
+  public:
+  void clear_device_pm_callback_start();
+  const ::perfetto::protos::DevicePmCallbackStartFtraceEvent& device_pm_callback_start() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::DevicePmCallbackStartFtraceEvent* release_device_pm_callback_start();
+  ::perfetto::protos::DevicePmCallbackStartFtraceEvent* mutable_device_pm_callback_start();
+  void set_allocated_device_pm_callback_start(::perfetto::protos::DevicePmCallbackStartFtraceEvent* device_pm_callback_start);
+  private:
+  const ::perfetto::protos::DevicePmCallbackStartFtraceEvent& _internal_device_pm_callback_start() const;
+  ::perfetto::protos::DevicePmCallbackStartFtraceEvent* _internal_mutable_device_pm_callback_start();
+  public:
+  void unsafe_arena_set_allocated_device_pm_callback_start(
+      ::perfetto::protos::DevicePmCallbackStartFtraceEvent* device_pm_callback_start);
+  ::perfetto::protos::DevicePmCallbackStartFtraceEvent* unsafe_arena_release_device_pm_callback_start();
+
+  // .perfetto.protos.DevicePmCallbackEndFtraceEvent device_pm_callback_end = 505;
+  bool has_device_pm_callback_end() const;
+  private:
+  bool _internal_has_device_pm_callback_end() const;
+  public:
+  void clear_device_pm_callback_end();
+  const ::perfetto::protos::DevicePmCallbackEndFtraceEvent& device_pm_callback_end() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::DevicePmCallbackEndFtraceEvent* release_device_pm_callback_end();
+  ::perfetto::protos::DevicePmCallbackEndFtraceEvent* mutable_device_pm_callback_end();
+  void set_allocated_device_pm_callback_end(::perfetto::protos::DevicePmCallbackEndFtraceEvent* device_pm_callback_end);
+  private:
+  const ::perfetto::protos::DevicePmCallbackEndFtraceEvent& _internal_device_pm_callback_end() const;
+  ::perfetto::protos::DevicePmCallbackEndFtraceEvent* _internal_mutable_device_pm_callback_end();
+  public:
+  void unsafe_arena_set_allocated_device_pm_callback_end(
+      ::perfetto::protos::DevicePmCallbackEndFtraceEvent* device_pm_callback_end);
+  ::perfetto::protos::DevicePmCallbackEndFtraceEvent* unsafe_arena_release_device_pm_callback_end();
+
+  // .perfetto.protos.ThermalExynosAcpmBulkFtraceEvent thermal_exynos_acpm_bulk = 506;
+  bool has_thermal_exynos_acpm_bulk() const;
+  private:
+  bool _internal_has_thermal_exynos_acpm_bulk() const;
+  public:
+  void clear_thermal_exynos_acpm_bulk();
+  const ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent& thermal_exynos_acpm_bulk() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* release_thermal_exynos_acpm_bulk();
+  ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* mutable_thermal_exynos_acpm_bulk();
+  void set_allocated_thermal_exynos_acpm_bulk(::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* thermal_exynos_acpm_bulk);
+  private:
+  const ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent& _internal_thermal_exynos_acpm_bulk() const;
+  ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* _internal_mutable_thermal_exynos_acpm_bulk();
+  public:
+  void unsafe_arena_set_allocated_thermal_exynos_acpm_bulk(
+      ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* thermal_exynos_acpm_bulk);
+  ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* unsafe_arena_release_thermal_exynos_acpm_bulk();
+
+  // .perfetto.protos.ThermalExynosAcpmHighOverheadFtraceEvent thermal_exynos_acpm_high_overhead = 507;
+  bool has_thermal_exynos_acpm_high_overhead() const;
+  private:
+  bool _internal_has_thermal_exynos_acpm_high_overhead() const;
+  public:
+  void clear_thermal_exynos_acpm_high_overhead();
+  const ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent& thermal_exynos_acpm_high_overhead() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* release_thermal_exynos_acpm_high_overhead();
+  ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* mutable_thermal_exynos_acpm_high_overhead();
+  void set_allocated_thermal_exynos_acpm_high_overhead(::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* thermal_exynos_acpm_high_overhead);
+  private:
+  const ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent& _internal_thermal_exynos_acpm_high_overhead() const;
+  ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* _internal_mutable_thermal_exynos_acpm_high_overhead();
+  public:
+  void unsafe_arena_set_allocated_thermal_exynos_acpm_high_overhead(
+      ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* thermal_exynos_acpm_high_overhead);
+  ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* unsafe_arena_release_thermal_exynos_acpm_high_overhead();
+
+  // .perfetto.protos.DcvshFreqFtraceEvent dcvsh_freq = 508;
+  bool has_dcvsh_freq() const;
+  private:
+  bool _internal_has_dcvsh_freq() const;
+  public:
+  void clear_dcvsh_freq();
+  const ::perfetto::protos::DcvshFreqFtraceEvent& dcvsh_freq() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::DcvshFreqFtraceEvent* release_dcvsh_freq();
+  ::perfetto::protos::DcvshFreqFtraceEvent* mutable_dcvsh_freq();
+  void set_allocated_dcvsh_freq(::perfetto::protos::DcvshFreqFtraceEvent* dcvsh_freq);
+  private:
+  const ::perfetto::protos::DcvshFreqFtraceEvent& _internal_dcvsh_freq() const;
+  ::perfetto::protos::DcvshFreqFtraceEvent* _internal_mutable_dcvsh_freq();
+  public:
+  void unsafe_arena_set_allocated_dcvsh_freq(
+      ::perfetto::protos::DcvshFreqFtraceEvent* dcvsh_freq);
+  ::perfetto::protos::DcvshFreqFtraceEvent* unsafe_arena_release_dcvsh_freq();
+
+  // .perfetto.protos.KgslGpuFrequencyFtraceEvent kgsl_gpu_frequency = 509;
+  bool has_kgsl_gpu_frequency() const;
+  private:
+  bool _internal_has_kgsl_gpu_frequency() const;
+  public:
+  void clear_kgsl_gpu_frequency();
+  const ::perfetto::protos::KgslGpuFrequencyFtraceEvent& kgsl_gpu_frequency() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::KgslGpuFrequencyFtraceEvent* release_kgsl_gpu_frequency();
+  ::perfetto::protos::KgslGpuFrequencyFtraceEvent* mutable_kgsl_gpu_frequency();
+  void set_allocated_kgsl_gpu_frequency(::perfetto::protos::KgslGpuFrequencyFtraceEvent* kgsl_gpu_frequency);
+  private:
+  const ::perfetto::protos::KgslGpuFrequencyFtraceEvent& _internal_kgsl_gpu_frequency() const;
+  ::perfetto::protos::KgslGpuFrequencyFtraceEvent* _internal_mutable_kgsl_gpu_frequency();
+  public:
+  void unsafe_arena_set_allocated_kgsl_gpu_frequency(
+      ::perfetto::protos::KgslGpuFrequencyFtraceEvent* kgsl_gpu_frequency);
+  ::perfetto::protos::KgslGpuFrequencyFtraceEvent* unsafe_arena_release_kgsl_gpu_frequency();
+
+  // .perfetto.protos.MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent mali_mali_PM_MCU_HCTL_CORES_DOWN_SCALE_NOTIFY_PEND = 510;
+  bool has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() const;
+  public:
+  void clear_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend();
+  const ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent& mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* release_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend();
+  ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* mutable_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend();
+  void set_allocated_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend(::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent& _internal_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() const;
+  ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* _internal_mutable_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend(
+      ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend);
+  ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend();
+
+  // .perfetto.protos.MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent mali_mali_PM_MCU_HCTL_CORES_NOTIFY_PEND = 511;
+  bool has_mali_mali_pm_mcu_hctl_cores_notify_pend() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_hctl_cores_notify_pend() const;
+  public:
+  void clear_mali_mali_pm_mcu_hctl_cores_notify_pend();
+  const ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent& mali_mali_pm_mcu_hctl_cores_notify_pend() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* release_mali_mali_pm_mcu_hctl_cores_notify_pend();
+  ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* mutable_mali_mali_pm_mcu_hctl_cores_notify_pend();
+  void set_allocated_mali_mali_pm_mcu_hctl_cores_notify_pend(::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* mali_mali_pm_mcu_hctl_cores_notify_pend);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent& _internal_mali_mali_pm_mcu_hctl_cores_notify_pend() const;
+  ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* _internal_mutable_mali_mali_pm_mcu_hctl_cores_notify_pend();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_cores_notify_pend(
+      ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* mali_mali_pm_mcu_hctl_cores_notify_pend);
+  ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_hctl_cores_notify_pend();
+
+  // .perfetto.protos.MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent mali_mali_PM_MCU_HCTL_CORE_INACTIVE_PEND = 512;
+  bool has_mali_mali_pm_mcu_hctl_core_inactive_pend() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_hctl_core_inactive_pend() const;
+  public:
+  void clear_mali_mali_pm_mcu_hctl_core_inactive_pend();
+  const ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent& mali_mali_pm_mcu_hctl_core_inactive_pend() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* release_mali_mali_pm_mcu_hctl_core_inactive_pend();
+  ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* mutable_mali_mali_pm_mcu_hctl_core_inactive_pend();
+  void set_allocated_mali_mali_pm_mcu_hctl_core_inactive_pend(::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* mali_mali_pm_mcu_hctl_core_inactive_pend);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent& _internal_mali_mali_pm_mcu_hctl_core_inactive_pend() const;
+  ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* _internal_mutable_mali_mali_pm_mcu_hctl_core_inactive_pend();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_core_inactive_pend(
+      ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* mali_mali_pm_mcu_hctl_core_inactive_pend);
+  ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_hctl_core_inactive_pend();
+
+  // .perfetto.protos.MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent mali_mali_PM_MCU_HCTL_MCU_ON_RECHECK = 513;
+  bool has_mali_mali_pm_mcu_hctl_mcu_on_recheck() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_hctl_mcu_on_recheck() const;
+  public:
+  void clear_mali_mali_pm_mcu_hctl_mcu_on_recheck();
+  const ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent& mali_mali_pm_mcu_hctl_mcu_on_recheck() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* release_mali_mali_pm_mcu_hctl_mcu_on_recheck();
+  ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* mutable_mali_mali_pm_mcu_hctl_mcu_on_recheck();
+  void set_allocated_mali_mali_pm_mcu_hctl_mcu_on_recheck(::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* mali_mali_pm_mcu_hctl_mcu_on_recheck);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent& _internal_mali_mali_pm_mcu_hctl_mcu_on_recheck() const;
+  ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* _internal_mutable_mali_mali_pm_mcu_hctl_mcu_on_recheck();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_mcu_on_recheck(
+      ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* mali_mali_pm_mcu_hctl_mcu_on_recheck);
+  ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_hctl_mcu_on_recheck();
+
+  // .perfetto.protos.MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent mali_mali_PM_MCU_HCTL_SHADERS_CORE_OFF_PEND = 514;
+  bool has_mali_mali_pm_mcu_hctl_shaders_core_off_pend() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_hctl_shaders_core_off_pend() const;
+  public:
+  void clear_mali_mali_pm_mcu_hctl_shaders_core_off_pend();
+  const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent& mali_mali_pm_mcu_hctl_shaders_core_off_pend() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* release_mali_mali_pm_mcu_hctl_shaders_core_off_pend();
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* mutable_mali_mali_pm_mcu_hctl_shaders_core_off_pend();
+  void set_allocated_mali_mali_pm_mcu_hctl_shaders_core_off_pend(::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* mali_mali_pm_mcu_hctl_shaders_core_off_pend);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent& _internal_mali_mali_pm_mcu_hctl_shaders_core_off_pend() const;
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* _internal_mutable_mali_mali_pm_mcu_hctl_shaders_core_off_pend();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_shaders_core_off_pend(
+      ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* mali_mali_pm_mcu_hctl_shaders_core_off_pend);
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_hctl_shaders_core_off_pend();
+
+  // .perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent mali_mali_PM_MCU_HCTL_SHADERS_PEND_OFF = 515;
+  bool has_mali_mali_pm_mcu_hctl_shaders_pend_off() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_hctl_shaders_pend_off() const;
+  public:
+  void clear_mali_mali_pm_mcu_hctl_shaders_pend_off();
+  const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent& mali_mali_pm_mcu_hctl_shaders_pend_off() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* release_mali_mali_pm_mcu_hctl_shaders_pend_off();
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* mutable_mali_mali_pm_mcu_hctl_shaders_pend_off();
+  void set_allocated_mali_mali_pm_mcu_hctl_shaders_pend_off(::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* mali_mali_pm_mcu_hctl_shaders_pend_off);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent& _internal_mali_mali_pm_mcu_hctl_shaders_pend_off() const;
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* _internal_mutable_mali_mali_pm_mcu_hctl_shaders_pend_off();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_shaders_pend_off(
+      ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* mali_mali_pm_mcu_hctl_shaders_pend_off);
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_hctl_shaders_pend_off();
+
+  // .perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent mali_mali_PM_MCU_HCTL_SHADERS_PEND_ON = 516;
+  bool has_mali_mali_pm_mcu_hctl_shaders_pend_on() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_hctl_shaders_pend_on() const;
+  public:
+  void clear_mali_mali_pm_mcu_hctl_shaders_pend_on();
+  const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent& mali_mali_pm_mcu_hctl_shaders_pend_on() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* release_mali_mali_pm_mcu_hctl_shaders_pend_on();
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* mutable_mali_mali_pm_mcu_hctl_shaders_pend_on();
+  void set_allocated_mali_mali_pm_mcu_hctl_shaders_pend_on(::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* mali_mali_pm_mcu_hctl_shaders_pend_on);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent& _internal_mali_mali_pm_mcu_hctl_shaders_pend_on() const;
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* _internal_mutable_mali_mali_pm_mcu_hctl_shaders_pend_on();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_shaders_pend_on(
+      ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* mali_mali_pm_mcu_hctl_shaders_pend_on);
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_hctl_shaders_pend_on();
+
+  // .perfetto.protos.MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent mali_mali_PM_MCU_HCTL_SHADERS_READY_OFF = 517;
+  bool has_mali_mali_pm_mcu_hctl_shaders_ready_off() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_hctl_shaders_ready_off() const;
+  public:
+  void clear_mali_mali_pm_mcu_hctl_shaders_ready_off();
+  const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent& mali_mali_pm_mcu_hctl_shaders_ready_off() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* release_mali_mali_pm_mcu_hctl_shaders_ready_off();
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* mutable_mali_mali_pm_mcu_hctl_shaders_ready_off();
+  void set_allocated_mali_mali_pm_mcu_hctl_shaders_ready_off(::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* mali_mali_pm_mcu_hctl_shaders_ready_off);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent& _internal_mali_mali_pm_mcu_hctl_shaders_ready_off() const;
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* _internal_mutable_mali_mali_pm_mcu_hctl_shaders_ready_off();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_shaders_ready_off(
+      ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* mali_mali_pm_mcu_hctl_shaders_ready_off);
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_hctl_shaders_ready_off();
+
+  // .perfetto.protos.MaliMaliPMMCUINSLEEPFtraceEvent mali_mali_PM_MCU_IN_SLEEP = 518;
+  bool has_mali_mali_pm_mcu_in_sleep() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_in_sleep() const;
+  public:
+  void clear_mali_mali_pm_mcu_in_sleep();
+  const ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent& mali_mali_pm_mcu_in_sleep() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* release_mali_mali_pm_mcu_in_sleep();
+  ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* mutable_mali_mali_pm_mcu_in_sleep();
+  void set_allocated_mali_mali_pm_mcu_in_sleep(::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* mali_mali_pm_mcu_in_sleep);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent& _internal_mali_mali_pm_mcu_in_sleep() const;
+  ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* _internal_mutable_mali_mali_pm_mcu_in_sleep();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_in_sleep(
+      ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* mali_mali_pm_mcu_in_sleep);
+  ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_in_sleep();
+
+  // .perfetto.protos.MaliMaliPMMCUOFFFtraceEvent mali_mali_PM_MCU_OFF = 519;
+  bool has_mali_mali_pm_mcu_off() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_off() const;
+  public:
+  void clear_mali_mali_pm_mcu_off();
+  const ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent& mali_mali_pm_mcu_off() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* release_mali_mali_pm_mcu_off();
+  ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* mutable_mali_mali_pm_mcu_off();
+  void set_allocated_mali_mali_pm_mcu_off(::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* mali_mali_pm_mcu_off);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent& _internal_mali_mali_pm_mcu_off() const;
+  ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* _internal_mutable_mali_mali_pm_mcu_off();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_off(
+      ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* mali_mali_pm_mcu_off);
+  ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_off();
+
+  // .perfetto.protos.MaliMaliPMMCUONFtraceEvent mali_mali_PM_MCU_ON = 520;
+  bool has_mali_mali_pm_mcu_on() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_on() const;
+  public:
+  void clear_mali_mali_pm_mcu_on();
+  const ::perfetto::protos::MaliMaliPMMCUONFtraceEvent& mali_mali_pm_mcu_on() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* release_mali_mali_pm_mcu_on();
+  ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* mutable_mali_mali_pm_mcu_on();
+  void set_allocated_mali_mali_pm_mcu_on(::perfetto::protos::MaliMaliPMMCUONFtraceEvent* mali_mali_pm_mcu_on);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUONFtraceEvent& _internal_mali_mali_pm_mcu_on() const;
+  ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* _internal_mutable_mali_mali_pm_mcu_on();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_on(
+      ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* mali_mali_pm_mcu_on);
+  ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_on();
+
+  // .perfetto.protos.MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent mali_mali_PM_MCU_ON_CORE_ATTR_UPDATE_PEND = 521;
+  bool has_mali_mali_pm_mcu_on_core_attr_update_pend() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_on_core_attr_update_pend() const;
+  public:
+  void clear_mali_mali_pm_mcu_on_core_attr_update_pend();
+  const ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent& mali_mali_pm_mcu_on_core_attr_update_pend() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* release_mali_mali_pm_mcu_on_core_attr_update_pend();
+  ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* mutable_mali_mali_pm_mcu_on_core_attr_update_pend();
+  void set_allocated_mali_mali_pm_mcu_on_core_attr_update_pend(::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* mali_mali_pm_mcu_on_core_attr_update_pend);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent& _internal_mali_mali_pm_mcu_on_core_attr_update_pend() const;
+  ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* _internal_mutable_mali_mali_pm_mcu_on_core_attr_update_pend();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_on_core_attr_update_pend(
+      ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* mali_mali_pm_mcu_on_core_attr_update_pend);
+  ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_on_core_attr_update_pend();
+
+  // .perfetto.protos.MaliMaliPMMCUONGLBREINITPENDFtraceEvent mali_mali_PM_MCU_ON_GLB_REINIT_PEND = 522;
+  bool has_mali_mali_pm_mcu_on_glb_reinit_pend() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_on_glb_reinit_pend() const;
+  public:
+  void clear_mali_mali_pm_mcu_on_glb_reinit_pend();
+  const ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent& mali_mali_pm_mcu_on_glb_reinit_pend() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* release_mali_mali_pm_mcu_on_glb_reinit_pend();
+  ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* mutable_mali_mali_pm_mcu_on_glb_reinit_pend();
+  void set_allocated_mali_mali_pm_mcu_on_glb_reinit_pend(::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* mali_mali_pm_mcu_on_glb_reinit_pend);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent& _internal_mali_mali_pm_mcu_on_glb_reinit_pend() const;
+  ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* _internal_mutable_mali_mali_pm_mcu_on_glb_reinit_pend();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_on_glb_reinit_pend(
+      ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* mali_mali_pm_mcu_on_glb_reinit_pend);
+  ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_on_glb_reinit_pend();
+
+  // .perfetto.protos.MaliMaliPMMCUONHALTFtraceEvent mali_mali_PM_MCU_ON_HALT = 523;
+  bool has_mali_mali_pm_mcu_on_halt() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_on_halt() const;
+  public:
+  void clear_mali_mali_pm_mcu_on_halt();
+  const ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent& mali_mali_pm_mcu_on_halt() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* release_mali_mali_pm_mcu_on_halt();
+  ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* mutable_mali_mali_pm_mcu_on_halt();
+  void set_allocated_mali_mali_pm_mcu_on_halt(::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* mali_mali_pm_mcu_on_halt);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent& _internal_mali_mali_pm_mcu_on_halt() const;
+  ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* _internal_mutable_mali_mali_pm_mcu_on_halt();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_on_halt(
+      ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* mali_mali_pm_mcu_on_halt);
+  ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_on_halt();
+
+  // .perfetto.protos.MaliMaliPMMCUONHWCNTDISABLEFtraceEvent mali_mali_PM_MCU_ON_HWCNT_DISABLE = 524;
+  bool has_mali_mali_pm_mcu_on_hwcnt_disable() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_on_hwcnt_disable() const;
+  public:
+  void clear_mali_mali_pm_mcu_on_hwcnt_disable();
+  const ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent& mali_mali_pm_mcu_on_hwcnt_disable() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* release_mali_mali_pm_mcu_on_hwcnt_disable();
+  ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* mutable_mali_mali_pm_mcu_on_hwcnt_disable();
+  void set_allocated_mali_mali_pm_mcu_on_hwcnt_disable(::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* mali_mali_pm_mcu_on_hwcnt_disable);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent& _internal_mali_mali_pm_mcu_on_hwcnt_disable() const;
+  ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* _internal_mutable_mali_mali_pm_mcu_on_hwcnt_disable();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_on_hwcnt_disable(
+      ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* mali_mali_pm_mcu_on_hwcnt_disable);
+  ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_on_hwcnt_disable();
+
+  // .perfetto.protos.MaliMaliPMMCUONHWCNTENABLEFtraceEvent mali_mali_PM_MCU_ON_HWCNT_ENABLE = 525;
+  bool has_mali_mali_pm_mcu_on_hwcnt_enable() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_on_hwcnt_enable() const;
+  public:
+  void clear_mali_mali_pm_mcu_on_hwcnt_enable();
+  const ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent& mali_mali_pm_mcu_on_hwcnt_enable() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* release_mali_mali_pm_mcu_on_hwcnt_enable();
+  ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* mutable_mali_mali_pm_mcu_on_hwcnt_enable();
+  void set_allocated_mali_mali_pm_mcu_on_hwcnt_enable(::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* mali_mali_pm_mcu_on_hwcnt_enable);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent& _internal_mali_mali_pm_mcu_on_hwcnt_enable() const;
+  ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* _internal_mutable_mali_mali_pm_mcu_on_hwcnt_enable();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_on_hwcnt_enable(
+      ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* mali_mali_pm_mcu_on_hwcnt_enable);
+  ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_on_hwcnt_enable();
+
+  // .perfetto.protos.MaliMaliPMMCUONPENDHALTFtraceEvent mali_mali_PM_MCU_ON_PEND_HALT = 526;
+  bool has_mali_mali_pm_mcu_on_pend_halt() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_on_pend_halt() const;
+  public:
+  void clear_mali_mali_pm_mcu_on_pend_halt();
+  const ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent& mali_mali_pm_mcu_on_pend_halt() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* release_mali_mali_pm_mcu_on_pend_halt();
+  ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* mutable_mali_mali_pm_mcu_on_pend_halt();
+  void set_allocated_mali_mali_pm_mcu_on_pend_halt(::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* mali_mali_pm_mcu_on_pend_halt);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent& _internal_mali_mali_pm_mcu_on_pend_halt() const;
+  ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* _internal_mutable_mali_mali_pm_mcu_on_pend_halt();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_on_pend_halt(
+      ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* mali_mali_pm_mcu_on_pend_halt);
+  ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_on_pend_halt();
+
+  // .perfetto.protos.MaliMaliPMMCUONPENDSLEEPFtraceEvent mali_mali_PM_MCU_ON_PEND_SLEEP = 527;
+  bool has_mali_mali_pm_mcu_on_pend_sleep() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_on_pend_sleep() const;
+  public:
+  void clear_mali_mali_pm_mcu_on_pend_sleep();
+  const ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent& mali_mali_pm_mcu_on_pend_sleep() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* release_mali_mali_pm_mcu_on_pend_sleep();
+  ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* mutable_mali_mali_pm_mcu_on_pend_sleep();
+  void set_allocated_mali_mali_pm_mcu_on_pend_sleep(::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* mali_mali_pm_mcu_on_pend_sleep);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent& _internal_mali_mali_pm_mcu_on_pend_sleep() const;
+  ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* _internal_mutable_mali_mali_pm_mcu_on_pend_sleep();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_on_pend_sleep(
+      ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* mali_mali_pm_mcu_on_pend_sleep);
+  ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_on_pend_sleep();
+
+  // .perfetto.protos.MaliMaliPMMCUONSLEEPINITIATEFtraceEvent mali_mali_PM_MCU_ON_SLEEP_INITIATE = 528;
+  bool has_mali_mali_pm_mcu_on_sleep_initiate() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_on_sleep_initiate() const;
+  public:
+  void clear_mali_mali_pm_mcu_on_sleep_initiate();
+  const ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent& mali_mali_pm_mcu_on_sleep_initiate() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* release_mali_mali_pm_mcu_on_sleep_initiate();
+  ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* mutable_mali_mali_pm_mcu_on_sleep_initiate();
+  void set_allocated_mali_mali_pm_mcu_on_sleep_initiate(::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* mali_mali_pm_mcu_on_sleep_initiate);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent& _internal_mali_mali_pm_mcu_on_sleep_initiate() const;
+  ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* _internal_mutable_mali_mali_pm_mcu_on_sleep_initiate();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_on_sleep_initiate(
+      ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* mali_mali_pm_mcu_on_sleep_initiate);
+  ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_on_sleep_initiate();
+
+  // .perfetto.protos.MaliMaliPMMCUPENDOFFFtraceEvent mali_mali_PM_MCU_PEND_OFF = 529;
+  bool has_mali_mali_pm_mcu_pend_off() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_pend_off() const;
+  public:
+  void clear_mali_mali_pm_mcu_pend_off();
+  const ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent& mali_mali_pm_mcu_pend_off() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* release_mali_mali_pm_mcu_pend_off();
+  ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* mutable_mali_mali_pm_mcu_pend_off();
+  void set_allocated_mali_mali_pm_mcu_pend_off(::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* mali_mali_pm_mcu_pend_off);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent& _internal_mali_mali_pm_mcu_pend_off() const;
+  ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* _internal_mutable_mali_mali_pm_mcu_pend_off();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_pend_off(
+      ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* mali_mali_pm_mcu_pend_off);
+  ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_pend_off();
+
+  // .perfetto.protos.MaliMaliPMMCUPENDONRELOADFtraceEvent mali_mali_PM_MCU_PEND_ON_RELOAD = 530;
+  bool has_mali_mali_pm_mcu_pend_on_reload() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_pend_on_reload() const;
+  public:
+  void clear_mali_mali_pm_mcu_pend_on_reload();
+  const ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent& mali_mali_pm_mcu_pend_on_reload() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* release_mali_mali_pm_mcu_pend_on_reload();
+  ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* mutable_mali_mali_pm_mcu_pend_on_reload();
+  void set_allocated_mali_mali_pm_mcu_pend_on_reload(::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* mali_mali_pm_mcu_pend_on_reload);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent& _internal_mali_mali_pm_mcu_pend_on_reload() const;
+  ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* _internal_mutable_mali_mali_pm_mcu_pend_on_reload();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_pend_on_reload(
+      ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* mali_mali_pm_mcu_pend_on_reload);
+  ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_pend_on_reload();
+
+  // .perfetto.protos.MaliMaliPMMCUPOWERDOWNFtraceEvent mali_mali_PM_MCU_POWER_DOWN = 531;
+  bool has_mali_mali_pm_mcu_power_down() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_power_down() const;
+  public:
+  void clear_mali_mali_pm_mcu_power_down();
+  const ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent& mali_mali_pm_mcu_power_down() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* release_mali_mali_pm_mcu_power_down();
+  ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* mutable_mali_mali_pm_mcu_power_down();
+  void set_allocated_mali_mali_pm_mcu_power_down(::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* mali_mali_pm_mcu_power_down);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent& _internal_mali_mali_pm_mcu_power_down() const;
+  ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* _internal_mutable_mali_mali_pm_mcu_power_down();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_power_down(
+      ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* mali_mali_pm_mcu_power_down);
+  ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_power_down();
+
+  // .perfetto.protos.MaliMaliPMMCURESETWAITFtraceEvent mali_mali_PM_MCU_RESET_WAIT = 532;
+  bool has_mali_mali_pm_mcu_reset_wait() const;
+  private:
+  bool _internal_has_mali_mali_pm_mcu_reset_wait() const;
+  public:
+  void clear_mali_mali_pm_mcu_reset_wait();
+  const ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent& mali_mali_pm_mcu_reset_wait() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* release_mali_mali_pm_mcu_reset_wait();
+  ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* mutable_mali_mali_pm_mcu_reset_wait();
+  void set_allocated_mali_mali_pm_mcu_reset_wait(::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* mali_mali_pm_mcu_reset_wait);
+  private:
+  const ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent& _internal_mali_mali_pm_mcu_reset_wait() const;
+  ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* _internal_mutable_mali_mali_pm_mcu_reset_wait();
+  public:
+  void unsafe_arena_set_allocated_mali_mali_pm_mcu_reset_wait(
+      ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* mali_mali_pm_mcu_reset_wait);
+  ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* unsafe_arena_release_mali_mali_pm_mcu_reset_wait();
+
+  // .perfetto.protos.BclIrqTriggerFtraceEvent bcl_irq_trigger = 533;
+  bool has_bcl_irq_trigger() const;
+  private:
+  bool _internal_has_bcl_irq_trigger() const;
+  public:
+  void clear_bcl_irq_trigger();
+  const ::perfetto::protos::BclIrqTriggerFtraceEvent& bcl_irq_trigger() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::BclIrqTriggerFtraceEvent* release_bcl_irq_trigger();
+  ::perfetto::protos::BclIrqTriggerFtraceEvent* mutable_bcl_irq_trigger();
+  void set_allocated_bcl_irq_trigger(::perfetto::protos::BclIrqTriggerFtraceEvent* bcl_irq_trigger);
+  private:
+  const ::perfetto::protos::BclIrqTriggerFtraceEvent& _internal_bcl_irq_trigger() const;
+  ::perfetto::protos::BclIrqTriggerFtraceEvent* _internal_mutable_bcl_irq_trigger();
+  public:
+  void unsafe_arena_set_allocated_bcl_irq_trigger(
+      ::perfetto::protos::BclIrqTriggerFtraceEvent* bcl_irq_trigger);
+  ::perfetto::protos::BclIrqTriggerFtraceEvent* unsafe_arena_release_bcl_irq_trigger();
+
+  // .perfetto.protos.KgslAdrenoCmdbatchQueuedFtraceEvent kgsl_adreno_cmdbatch_queued = 534;
+  bool has_kgsl_adreno_cmdbatch_queued() const;
+  private:
+  bool _internal_has_kgsl_adreno_cmdbatch_queued() const;
+  public:
+  void clear_kgsl_adreno_cmdbatch_queued();
+  const ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent& kgsl_adreno_cmdbatch_queued() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* release_kgsl_adreno_cmdbatch_queued();
+  ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* mutable_kgsl_adreno_cmdbatch_queued();
+  void set_allocated_kgsl_adreno_cmdbatch_queued(::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* kgsl_adreno_cmdbatch_queued);
+  private:
+  const ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent& _internal_kgsl_adreno_cmdbatch_queued() const;
+  ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* _internal_mutable_kgsl_adreno_cmdbatch_queued();
+  public:
+  void unsafe_arena_set_allocated_kgsl_adreno_cmdbatch_queued(
+      ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* kgsl_adreno_cmdbatch_queued);
+  ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* unsafe_arena_release_kgsl_adreno_cmdbatch_queued();
+
+  // .perfetto.protos.KgslAdrenoCmdbatchSubmittedFtraceEvent kgsl_adreno_cmdbatch_submitted = 535;
+  bool has_kgsl_adreno_cmdbatch_submitted() const;
+  private:
+  bool _internal_has_kgsl_adreno_cmdbatch_submitted() const;
+  public:
+  void clear_kgsl_adreno_cmdbatch_submitted();
+  const ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent& kgsl_adreno_cmdbatch_submitted() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* release_kgsl_adreno_cmdbatch_submitted();
+  ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* mutable_kgsl_adreno_cmdbatch_submitted();
+  void set_allocated_kgsl_adreno_cmdbatch_submitted(::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* kgsl_adreno_cmdbatch_submitted);
+  private:
+  const ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent& _internal_kgsl_adreno_cmdbatch_submitted() const;
+  ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* _internal_mutable_kgsl_adreno_cmdbatch_submitted();
+  public:
+  void unsafe_arena_set_allocated_kgsl_adreno_cmdbatch_submitted(
+      ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* kgsl_adreno_cmdbatch_submitted);
+  ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* unsafe_arena_release_kgsl_adreno_cmdbatch_submitted();
+
+  // .perfetto.protos.KgslAdrenoCmdbatchSyncFtraceEvent kgsl_adreno_cmdbatch_sync = 536;
+  bool has_kgsl_adreno_cmdbatch_sync() const;
+  private:
+  bool _internal_has_kgsl_adreno_cmdbatch_sync() const;
+  public:
+  void clear_kgsl_adreno_cmdbatch_sync();
+  const ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent& kgsl_adreno_cmdbatch_sync() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* release_kgsl_adreno_cmdbatch_sync();
+  ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* mutable_kgsl_adreno_cmdbatch_sync();
+  void set_allocated_kgsl_adreno_cmdbatch_sync(::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* kgsl_adreno_cmdbatch_sync);
+  private:
+  const ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent& _internal_kgsl_adreno_cmdbatch_sync() const;
+  ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* _internal_mutable_kgsl_adreno_cmdbatch_sync();
+  public:
+  void unsafe_arena_set_allocated_kgsl_adreno_cmdbatch_sync(
+      ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* kgsl_adreno_cmdbatch_sync);
+  ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* unsafe_arena_release_kgsl_adreno_cmdbatch_sync();
+
+  // .perfetto.protos.KgslAdrenoCmdbatchRetiredFtraceEvent kgsl_adreno_cmdbatch_retired = 537;
+  bool has_kgsl_adreno_cmdbatch_retired() const;
+  private:
+  bool _internal_has_kgsl_adreno_cmdbatch_retired() const;
+  public:
+  void clear_kgsl_adreno_cmdbatch_retired();
+  const ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent& kgsl_adreno_cmdbatch_retired() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* release_kgsl_adreno_cmdbatch_retired();
+  ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* mutable_kgsl_adreno_cmdbatch_retired();
+  void set_allocated_kgsl_adreno_cmdbatch_retired(::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* kgsl_adreno_cmdbatch_retired);
+  private:
+  const ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent& _internal_kgsl_adreno_cmdbatch_retired() const;
+  ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* _internal_mutable_kgsl_adreno_cmdbatch_retired();
+  public:
+  void unsafe_arena_set_allocated_kgsl_adreno_cmdbatch_retired(
+      ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* kgsl_adreno_cmdbatch_retired);
+  ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* unsafe_arena_release_kgsl_adreno_cmdbatch_retired();
+
+  // .perfetto.protos.PixelMmKswapdWakeFtraceEvent pixel_mm_kswapd_wake = 538;
+  bool has_pixel_mm_kswapd_wake() const;
+  private:
+  bool _internal_has_pixel_mm_kswapd_wake() const;
+  public:
+  void clear_pixel_mm_kswapd_wake();
+  const ::perfetto::protos::PixelMmKswapdWakeFtraceEvent& pixel_mm_kswapd_wake() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::PixelMmKswapdWakeFtraceEvent* release_pixel_mm_kswapd_wake();
+  ::perfetto::protos::PixelMmKswapdWakeFtraceEvent* mutable_pixel_mm_kswapd_wake();
+  void set_allocated_pixel_mm_kswapd_wake(::perfetto::protos::PixelMmKswapdWakeFtraceEvent* pixel_mm_kswapd_wake);
+  private:
+  const ::perfetto::protos::PixelMmKswapdWakeFtraceEvent& _internal_pixel_mm_kswapd_wake() const;
+  ::perfetto::protos::PixelMmKswapdWakeFtraceEvent* _internal_mutable_pixel_mm_kswapd_wake();
+  public:
+  void unsafe_arena_set_allocated_pixel_mm_kswapd_wake(
+      ::perfetto::protos::PixelMmKswapdWakeFtraceEvent* pixel_mm_kswapd_wake);
+  ::perfetto::protos::PixelMmKswapdWakeFtraceEvent* unsafe_arena_release_pixel_mm_kswapd_wake();
+
+  // .perfetto.protos.PixelMmKswapdDoneFtraceEvent pixel_mm_kswapd_done = 539;
+  bool has_pixel_mm_kswapd_done() const;
+  private:
+  bool _internal_has_pixel_mm_kswapd_done() const;
+  public:
+  void clear_pixel_mm_kswapd_done();
+  const ::perfetto::protos::PixelMmKswapdDoneFtraceEvent& pixel_mm_kswapd_done() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::PixelMmKswapdDoneFtraceEvent* release_pixel_mm_kswapd_done();
+  ::perfetto::protos::PixelMmKswapdDoneFtraceEvent* mutable_pixel_mm_kswapd_done();
+  void set_allocated_pixel_mm_kswapd_done(::perfetto::protos::PixelMmKswapdDoneFtraceEvent* pixel_mm_kswapd_done);
+  private:
+  const ::perfetto::protos::PixelMmKswapdDoneFtraceEvent& _internal_pixel_mm_kswapd_done() const;
+  ::perfetto::protos::PixelMmKswapdDoneFtraceEvent* _internal_mutable_pixel_mm_kswapd_done();
+  public:
+  void unsafe_arena_set_allocated_pixel_mm_kswapd_done(
+      ::perfetto::protos::PixelMmKswapdDoneFtraceEvent* pixel_mm_kswapd_done);
+  ::perfetto::protos::PixelMmKswapdDoneFtraceEvent* unsafe_arena_release_pixel_mm_kswapd_done();
+
+  // .perfetto.protos.SchedWakeupTaskAttrFtraceEvent sched_wakeup_task_attr = 540;
+  bool has_sched_wakeup_task_attr() const;
+  private:
+  bool _internal_has_sched_wakeup_task_attr() const;
+  public:
+  void clear_sched_wakeup_task_attr();
+  const ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent& sched_wakeup_task_attr() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* release_sched_wakeup_task_attr();
+  ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* mutable_sched_wakeup_task_attr();
+  void set_allocated_sched_wakeup_task_attr(::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* sched_wakeup_task_attr);
+  private:
+  const ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent& _internal_sched_wakeup_task_attr() const;
+  ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* _internal_mutable_sched_wakeup_task_attr();
+  public:
+  void unsafe_arena_set_allocated_sched_wakeup_task_attr(
+      ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* sched_wakeup_task_attr);
+  ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* unsafe_arena_release_sched_wakeup_task_attr();
+
+  // .perfetto.protos.DevfreqFrequencyFtraceEvent devfreq_frequency = 541;
+  bool has_devfreq_frequency() const;
+  private:
+  bool _internal_has_devfreq_frequency() const;
+  public:
+  void clear_devfreq_frequency();
+  const ::perfetto::protos::DevfreqFrequencyFtraceEvent& devfreq_frequency() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::DevfreqFrequencyFtraceEvent* release_devfreq_frequency();
+  ::perfetto::protos::DevfreqFrequencyFtraceEvent* mutable_devfreq_frequency();
+  void set_allocated_devfreq_frequency(::perfetto::protos::DevfreqFrequencyFtraceEvent* devfreq_frequency);
+  private:
+  const ::perfetto::protos::DevfreqFrequencyFtraceEvent& _internal_devfreq_frequency() const;
+  ::perfetto::protos::DevfreqFrequencyFtraceEvent* _internal_mutable_devfreq_frequency();
+  public:
+  void unsafe_arena_set_allocated_devfreq_frequency(
+      ::perfetto::protos::DevfreqFrequencyFtraceEvent* devfreq_frequency);
+  ::perfetto::protos::DevfreqFrequencyFtraceEvent* unsafe_arena_release_devfreq_frequency();
+
   void clear_event();
   EventCase event_case() const;
   // @@protoc_insertion_point(class_scope:perfetto.protos.FtraceEvent)
@@ -9986,6 +11157,64 @@ class FtraceEvent final :
   void set_has_suspend_resume_minimal();
   void set_has_mali_mali_csf_interrupt_start();
   void set_has_mali_mali_csf_interrupt_end();
+  void set_has_samsung_tracing_mark_write();
+  void set_has_binder_command();
+  void set_has_binder_return();
+  void set_has_sched_switch_with_ctrs();
+  void set_has_gpu_work_period();
+  void set_has_rpm_status();
+  void set_has_panel_write_generic();
+  void set_has_sched_migrate_task();
+  void set_has_dpu_dsi_cmd_fifo_status();
+  void set_has_dpu_dsi_rx();
+  void set_has_dpu_dsi_tx();
+  void set_has_f2fs_background_gc();
+  void set_has_f2fs_gc_begin();
+  void set_has_f2fs_gc_end();
+  void set_has_fastrpc_dma_free();
+  void set_has_fastrpc_dma_alloc();
+  void set_has_fastrpc_dma_unmap();
+  void set_has_fastrpc_dma_map();
+  void set_has_google_icc_event();
+  void set_has_google_irm_event();
+  void set_has_device_pm_callback_start();
+  void set_has_device_pm_callback_end();
+  void set_has_thermal_exynos_acpm_bulk();
+  void set_has_thermal_exynos_acpm_high_overhead();
+  void set_has_dcvsh_freq();
+  void set_has_kgsl_gpu_frequency();
+  void set_has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend();
+  void set_has_mali_mali_pm_mcu_hctl_cores_notify_pend();
+  void set_has_mali_mali_pm_mcu_hctl_core_inactive_pend();
+  void set_has_mali_mali_pm_mcu_hctl_mcu_on_recheck();
+  void set_has_mali_mali_pm_mcu_hctl_shaders_core_off_pend();
+  void set_has_mali_mali_pm_mcu_hctl_shaders_pend_off();
+  void set_has_mali_mali_pm_mcu_hctl_shaders_pend_on();
+  void set_has_mali_mali_pm_mcu_hctl_shaders_ready_off();
+  void set_has_mali_mali_pm_mcu_in_sleep();
+  void set_has_mali_mali_pm_mcu_off();
+  void set_has_mali_mali_pm_mcu_on();
+  void set_has_mali_mali_pm_mcu_on_core_attr_update_pend();
+  void set_has_mali_mali_pm_mcu_on_glb_reinit_pend();
+  void set_has_mali_mali_pm_mcu_on_halt();
+  void set_has_mali_mali_pm_mcu_on_hwcnt_disable();
+  void set_has_mali_mali_pm_mcu_on_hwcnt_enable();
+  void set_has_mali_mali_pm_mcu_on_pend_halt();
+  void set_has_mali_mali_pm_mcu_on_pend_sleep();
+  void set_has_mali_mali_pm_mcu_on_sleep_initiate();
+  void set_has_mali_mali_pm_mcu_pend_off();
+  void set_has_mali_mali_pm_mcu_pend_on_reload();
+  void set_has_mali_mali_pm_mcu_power_down();
+  void set_has_mali_mali_pm_mcu_reset_wait();
+  void set_has_bcl_irq_trigger();
+  void set_has_kgsl_adreno_cmdbatch_queued();
+  void set_has_kgsl_adreno_cmdbatch_submitted();
+  void set_has_kgsl_adreno_cmdbatch_sync();
+  void set_has_kgsl_adreno_cmdbatch_retired();
+  void set_has_pixel_mm_kswapd_wake();
+  void set_has_pixel_mm_kswapd_done();
+  void set_has_sched_wakeup_task_attr();
+  void set_has_devfreq_frequency();
 
   inline bool has_event() const;
   inline void clear_has_event();
@@ -10464,6 +11693,64 @@ class FtraceEvent final :
       ::perfetto::protos::SuspendResumeMinimalFtraceEvent* suspend_resume_minimal_;
       ::perfetto::protos::MaliMaliCSFINTERRUPTSTARTFtraceEvent* mali_mali_csf_interrupt_start_;
       ::perfetto::protos::MaliMaliCSFINTERRUPTENDFtraceEvent* mali_mali_csf_interrupt_end_;
+      ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* samsung_tracing_mark_write_;
+      ::perfetto::protos::BinderCommandFtraceEvent* binder_command_;
+      ::perfetto::protos::BinderReturnFtraceEvent* binder_return_;
+      ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* sched_switch_with_ctrs_;
+      ::perfetto::protos::GpuWorkPeriodFtraceEvent* gpu_work_period_;
+      ::perfetto::protos::RpmStatusFtraceEvent* rpm_status_;
+      ::perfetto::protos::PanelWriteGenericFtraceEvent* panel_write_generic_;
+      ::perfetto::protos::SchedMigrateTaskFtraceEvent* sched_migrate_task_;
+      ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* dpu_dsi_cmd_fifo_status_;
+      ::perfetto::protos::DpuDsiRxFtraceEvent* dpu_dsi_rx_;
+      ::perfetto::protos::DpuDsiTxFtraceEvent* dpu_dsi_tx_;
+      ::perfetto::protos::F2fsBackgroundGcFtraceEvent* f2fs_background_gc_;
+      ::perfetto::protos::F2fsGcBeginFtraceEvent* f2fs_gc_begin_;
+      ::perfetto::protos::F2fsGcEndFtraceEvent* f2fs_gc_end_;
+      ::perfetto::protos::FastrpcDmaFreeFtraceEvent* fastrpc_dma_free_;
+      ::perfetto::protos::FastrpcDmaAllocFtraceEvent* fastrpc_dma_alloc_;
+      ::perfetto::protos::FastrpcDmaUnmapFtraceEvent* fastrpc_dma_unmap_;
+      ::perfetto::protos::FastrpcDmaMapFtraceEvent* fastrpc_dma_map_;
+      ::perfetto::protos::GoogleIccEventFtraceEvent* google_icc_event_;
+      ::perfetto::protos::GoogleIrmEventFtraceEvent* google_irm_event_;
+      ::perfetto::protos::DevicePmCallbackStartFtraceEvent* device_pm_callback_start_;
+      ::perfetto::protos::DevicePmCallbackEndFtraceEvent* device_pm_callback_end_;
+      ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* thermal_exynos_acpm_bulk_;
+      ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* thermal_exynos_acpm_high_overhead_;
+      ::perfetto::protos::DcvshFreqFtraceEvent* dcvsh_freq_;
+      ::perfetto::protos::KgslGpuFrequencyFtraceEvent* kgsl_gpu_frequency_;
+      ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend_;
+      ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* mali_mali_pm_mcu_hctl_cores_notify_pend_;
+      ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* mali_mali_pm_mcu_hctl_core_inactive_pend_;
+      ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* mali_mali_pm_mcu_hctl_mcu_on_recheck_;
+      ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* mali_mali_pm_mcu_hctl_shaders_core_off_pend_;
+      ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* mali_mali_pm_mcu_hctl_shaders_pend_off_;
+      ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* mali_mali_pm_mcu_hctl_shaders_pend_on_;
+      ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* mali_mali_pm_mcu_hctl_shaders_ready_off_;
+      ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* mali_mali_pm_mcu_in_sleep_;
+      ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* mali_mali_pm_mcu_off_;
+      ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* mali_mali_pm_mcu_on_;
+      ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* mali_mali_pm_mcu_on_core_attr_update_pend_;
+      ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* mali_mali_pm_mcu_on_glb_reinit_pend_;
+      ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* mali_mali_pm_mcu_on_halt_;
+      ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* mali_mali_pm_mcu_on_hwcnt_disable_;
+      ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* mali_mali_pm_mcu_on_hwcnt_enable_;
+      ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* mali_mali_pm_mcu_on_pend_halt_;
+      ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* mali_mali_pm_mcu_on_pend_sleep_;
+      ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* mali_mali_pm_mcu_on_sleep_initiate_;
+      ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* mali_mali_pm_mcu_pend_off_;
+      ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* mali_mali_pm_mcu_pend_on_reload_;
+      ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* mali_mali_pm_mcu_power_down_;
+      ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* mali_mali_pm_mcu_reset_wait_;
+      ::perfetto::protos::BclIrqTriggerFtraceEvent* bcl_irq_trigger_;
+      ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* kgsl_adreno_cmdbatch_queued_;
+      ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* kgsl_adreno_cmdbatch_submitted_;
+      ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* kgsl_adreno_cmdbatch_sync_;
+      ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* kgsl_adreno_cmdbatch_retired_;
+      ::perfetto::protos::PixelMmKswapdWakeFtraceEvent* pixel_mm_kswapd_wake_;
+      ::perfetto::protos::PixelMmKswapdDoneFtraceEvent* pixel_mm_kswapd_done_;
+      ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* sched_wakeup_task_attr_;
+      ::perfetto::protos::DevfreqFrequencyFtraceEvent* devfreq_frequency_;
     } event_;
     ::uint32_t _oneof_case_[1];
 
@@ -41055,6 +42342,3834 @@ inline ::perfetto::protos::MaliMaliCSFINTERRUPTENDFtraceEvent* FtraceEvent::_int
 inline ::perfetto::protos::MaliMaliCSFINTERRUPTENDFtraceEvent* FtraceEvent::mutable_mali_mali_csf_interrupt_end() {
   ::perfetto::protos::MaliMaliCSFINTERRUPTENDFtraceEvent* _msg = _internal_mutable_mali_mali_csf_interrupt_end();
   // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_CSF_INTERRUPT_END)
+  return _msg;
+}
+
+// .perfetto.protos.SamsungTracingMarkWriteFtraceEvent samsung_tracing_mark_write = 484;
+inline bool FtraceEvent::_internal_has_samsung_tracing_mark_write() const {
+  return event_case() == kSamsungTracingMarkWrite;
+}
+inline bool FtraceEvent::has_samsung_tracing_mark_write() const {
+  return _internal_has_samsung_tracing_mark_write();
+}
+inline void FtraceEvent::set_has_samsung_tracing_mark_write() {
+  _impl_._oneof_case_[0] = kSamsungTracingMarkWrite;
+}
+inline ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* FtraceEvent::release_samsung_tracing_mark_write() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.samsung_tracing_mark_write)
+  if (_internal_has_samsung_tracing_mark_write()) {
+    clear_has_event();
+    ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* temp = _impl_.event_.samsung_tracing_mark_write_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.samsung_tracing_mark_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent& FtraceEvent::_internal_samsung_tracing_mark_write() const {
+  return _internal_has_samsung_tracing_mark_write()
+      ? *_impl_.event_.samsung_tracing_mark_write_
+      : reinterpret_cast< ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent&>(::perfetto::protos::_SamsungTracingMarkWriteFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent& FtraceEvent::samsung_tracing_mark_write() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.samsung_tracing_mark_write)
+  return _internal_samsung_tracing_mark_write();
+}
+inline ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* FtraceEvent::unsafe_arena_release_samsung_tracing_mark_write() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.samsung_tracing_mark_write)
+  if (_internal_has_samsung_tracing_mark_write()) {
+    clear_has_event();
+    ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* temp = _impl_.event_.samsung_tracing_mark_write_;
+    _impl_.event_.samsung_tracing_mark_write_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_samsung_tracing_mark_write(::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* samsung_tracing_mark_write) {
+  clear_event();
+  if (samsung_tracing_mark_write) {
+    set_has_samsung_tracing_mark_write();
+    _impl_.event_.samsung_tracing_mark_write_ = samsung_tracing_mark_write;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.samsung_tracing_mark_write)
+}
+inline ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* FtraceEvent::_internal_mutable_samsung_tracing_mark_write() {
+  if (!_internal_has_samsung_tracing_mark_write()) {
+    clear_event();
+    set_has_samsung_tracing_mark_write();
+    _impl_.event_.samsung_tracing_mark_write_ = CreateMaybeMessage< ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.samsung_tracing_mark_write_;
+}
+inline ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* FtraceEvent::mutable_samsung_tracing_mark_write() {
+  ::perfetto::protos::SamsungTracingMarkWriteFtraceEvent* _msg = _internal_mutable_samsung_tracing_mark_write();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.samsung_tracing_mark_write)
+  return _msg;
+}
+
+// .perfetto.protos.BinderCommandFtraceEvent binder_command = 485;
+inline bool FtraceEvent::_internal_has_binder_command() const {
+  return event_case() == kBinderCommand;
+}
+inline bool FtraceEvent::has_binder_command() const {
+  return _internal_has_binder_command();
+}
+inline void FtraceEvent::set_has_binder_command() {
+  _impl_._oneof_case_[0] = kBinderCommand;
+}
+inline ::perfetto::protos::BinderCommandFtraceEvent* FtraceEvent::release_binder_command() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.binder_command)
+  if (_internal_has_binder_command()) {
+    clear_has_event();
+    ::perfetto::protos::BinderCommandFtraceEvent* temp = _impl_.event_.binder_command_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.binder_command_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::BinderCommandFtraceEvent& FtraceEvent::_internal_binder_command() const {
+  return _internal_has_binder_command()
+      ? *_impl_.event_.binder_command_
+      : reinterpret_cast< ::perfetto::protos::BinderCommandFtraceEvent&>(::perfetto::protos::_BinderCommandFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::BinderCommandFtraceEvent& FtraceEvent::binder_command() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.binder_command)
+  return _internal_binder_command();
+}
+inline ::perfetto::protos::BinderCommandFtraceEvent* FtraceEvent::unsafe_arena_release_binder_command() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.binder_command)
+  if (_internal_has_binder_command()) {
+    clear_has_event();
+    ::perfetto::protos::BinderCommandFtraceEvent* temp = _impl_.event_.binder_command_;
+    _impl_.event_.binder_command_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_binder_command(::perfetto::protos::BinderCommandFtraceEvent* binder_command) {
+  clear_event();
+  if (binder_command) {
+    set_has_binder_command();
+    _impl_.event_.binder_command_ = binder_command;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.binder_command)
+}
+inline ::perfetto::protos::BinderCommandFtraceEvent* FtraceEvent::_internal_mutable_binder_command() {
+  if (!_internal_has_binder_command()) {
+    clear_event();
+    set_has_binder_command();
+    _impl_.event_.binder_command_ = CreateMaybeMessage< ::perfetto::protos::BinderCommandFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.binder_command_;
+}
+inline ::perfetto::protos::BinderCommandFtraceEvent* FtraceEvent::mutable_binder_command() {
+  ::perfetto::protos::BinderCommandFtraceEvent* _msg = _internal_mutable_binder_command();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.binder_command)
+  return _msg;
+}
+
+// .perfetto.protos.BinderReturnFtraceEvent binder_return = 486;
+inline bool FtraceEvent::_internal_has_binder_return() const {
+  return event_case() == kBinderReturn;
+}
+inline bool FtraceEvent::has_binder_return() const {
+  return _internal_has_binder_return();
+}
+inline void FtraceEvent::set_has_binder_return() {
+  _impl_._oneof_case_[0] = kBinderReturn;
+}
+inline ::perfetto::protos::BinderReturnFtraceEvent* FtraceEvent::release_binder_return() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.binder_return)
+  if (_internal_has_binder_return()) {
+    clear_has_event();
+    ::perfetto::protos::BinderReturnFtraceEvent* temp = _impl_.event_.binder_return_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.binder_return_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::BinderReturnFtraceEvent& FtraceEvent::_internal_binder_return() const {
+  return _internal_has_binder_return()
+      ? *_impl_.event_.binder_return_
+      : reinterpret_cast< ::perfetto::protos::BinderReturnFtraceEvent&>(::perfetto::protos::_BinderReturnFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::BinderReturnFtraceEvent& FtraceEvent::binder_return() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.binder_return)
+  return _internal_binder_return();
+}
+inline ::perfetto::protos::BinderReturnFtraceEvent* FtraceEvent::unsafe_arena_release_binder_return() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.binder_return)
+  if (_internal_has_binder_return()) {
+    clear_has_event();
+    ::perfetto::protos::BinderReturnFtraceEvent* temp = _impl_.event_.binder_return_;
+    _impl_.event_.binder_return_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_binder_return(::perfetto::protos::BinderReturnFtraceEvent* binder_return) {
+  clear_event();
+  if (binder_return) {
+    set_has_binder_return();
+    _impl_.event_.binder_return_ = binder_return;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.binder_return)
+}
+inline ::perfetto::protos::BinderReturnFtraceEvent* FtraceEvent::_internal_mutable_binder_return() {
+  if (!_internal_has_binder_return()) {
+    clear_event();
+    set_has_binder_return();
+    _impl_.event_.binder_return_ = CreateMaybeMessage< ::perfetto::protos::BinderReturnFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.binder_return_;
+}
+inline ::perfetto::protos::BinderReturnFtraceEvent* FtraceEvent::mutable_binder_return() {
+  ::perfetto::protos::BinderReturnFtraceEvent* _msg = _internal_mutable_binder_return();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.binder_return)
+  return _msg;
+}
+
+// .perfetto.protos.SchedSwitchWithCtrsFtraceEvent sched_switch_with_ctrs = 487;
+inline bool FtraceEvent::_internal_has_sched_switch_with_ctrs() const {
+  return event_case() == kSchedSwitchWithCtrs;
+}
+inline bool FtraceEvent::has_sched_switch_with_ctrs() const {
+  return _internal_has_sched_switch_with_ctrs();
+}
+inline void FtraceEvent::set_has_sched_switch_with_ctrs() {
+  _impl_._oneof_case_[0] = kSchedSwitchWithCtrs;
+}
+inline ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* FtraceEvent::release_sched_switch_with_ctrs() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.sched_switch_with_ctrs)
+  if (_internal_has_sched_switch_with_ctrs()) {
+    clear_has_event();
+    ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* temp = _impl_.event_.sched_switch_with_ctrs_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.sched_switch_with_ctrs_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent& FtraceEvent::_internal_sched_switch_with_ctrs() const {
+  return _internal_has_sched_switch_with_ctrs()
+      ? *_impl_.event_.sched_switch_with_ctrs_
+      : reinterpret_cast< ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent&>(::perfetto::protos::_SchedSwitchWithCtrsFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent& FtraceEvent::sched_switch_with_ctrs() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.sched_switch_with_ctrs)
+  return _internal_sched_switch_with_ctrs();
+}
+inline ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* FtraceEvent::unsafe_arena_release_sched_switch_with_ctrs() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.sched_switch_with_ctrs)
+  if (_internal_has_sched_switch_with_ctrs()) {
+    clear_has_event();
+    ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* temp = _impl_.event_.sched_switch_with_ctrs_;
+    _impl_.event_.sched_switch_with_ctrs_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_sched_switch_with_ctrs(::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* sched_switch_with_ctrs) {
+  clear_event();
+  if (sched_switch_with_ctrs) {
+    set_has_sched_switch_with_ctrs();
+    _impl_.event_.sched_switch_with_ctrs_ = sched_switch_with_ctrs;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.sched_switch_with_ctrs)
+}
+inline ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* FtraceEvent::_internal_mutable_sched_switch_with_ctrs() {
+  if (!_internal_has_sched_switch_with_ctrs()) {
+    clear_event();
+    set_has_sched_switch_with_ctrs();
+    _impl_.event_.sched_switch_with_ctrs_ = CreateMaybeMessage< ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.sched_switch_with_ctrs_;
+}
+inline ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* FtraceEvent::mutable_sched_switch_with_ctrs() {
+  ::perfetto::protos::SchedSwitchWithCtrsFtraceEvent* _msg = _internal_mutable_sched_switch_with_ctrs();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.sched_switch_with_ctrs)
+  return _msg;
+}
+
+// .perfetto.protos.GpuWorkPeriodFtraceEvent gpu_work_period = 488;
+inline bool FtraceEvent::_internal_has_gpu_work_period() const {
+  return event_case() == kGpuWorkPeriod;
+}
+inline bool FtraceEvent::has_gpu_work_period() const {
+  return _internal_has_gpu_work_period();
+}
+inline void FtraceEvent::set_has_gpu_work_period() {
+  _impl_._oneof_case_[0] = kGpuWorkPeriod;
+}
+inline ::perfetto::protos::GpuWorkPeriodFtraceEvent* FtraceEvent::release_gpu_work_period() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.gpu_work_period)
+  if (_internal_has_gpu_work_period()) {
+    clear_has_event();
+    ::perfetto::protos::GpuWorkPeriodFtraceEvent* temp = _impl_.event_.gpu_work_period_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.gpu_work_period_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::GpuWorkPeriodFtraceEvent& FtraceEvent::_internal_gpu_work_period() const {
+  return _internal_has_gpu_work_period()
+      ? *_impl_.event_.gpu_work_period_
+      : reinterpret_cast< ::perfetto::protos::GpuWorkPeriodFtraceEvent&>(::perfetto::protos::_GpuWorkPeriodFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::GpuWorkPeriodFtraceEvent& FtraceEvent::gpu_work_period() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.gpu_work_period)
+  return _internal_gpu_work_period();
+}
+inline ::perfetto::protos::GpuWorkPeriodFtraceEvent* FtraceEvent::unsafe_arena_release_gpu_work_period() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.gpu_work_period)
+  if (_internal_has_gpu_work_period()) {
+    clear_has_event();
+    ::perfetto::protos::GpuWorkPeriodFtraceEvent* temp = _impl_.event_.gpu_work_period_;
+    _impl_.event_.gpu_work_period_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_gpu_work_period(::perfetto::protos::GpuWorkPeriodFtraceEvent* gpu_work_period) {
+  clear_event();
+  if (gpu_work_period) {
+    set_has_gpu_work_period();
+    _impl_.event_.gpu_work_period_ = gpu_work_period;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.gpu_work_period)
+}
+inline ::perfetto::protos::GpuWorkPeriodFtraceEvent* FtraceEvent::_internal_mutable_gpu_work_period() {
+  if (!_internal_has_gpu_work_period()) {
+    clear_event();
+    set_has_gpu_work_period();
+    _impl_.event_.gpu_work_period_ = CreateMaybeMessage< ::perfetto::protos::GpuWorkPeriodFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.gpu_work_period_;
+}
+inline ::perfetto::protos::GpuWorkPeriodFtraceEvent* FtraceEvent::mutable_gpu_work_period() {
+  ::perfetto::protos::GpuWorkPeriodFtraceEvent* _msg = _internal_mutable_gpu_work_period();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.gpu_work_period)
+  return _msg;
+}
+
+// .perfetto.protos.RpmStatusFtraceEvent rpm_status = 489;
+inline bool FtraceEvent::_internal_has_rpm_status() const {
+  return event_case() == kRpmStatus;
+}
+inline bool FtraceEvent::has_rpm_status() const {
+  return _internal_has_rpm_status();
+}
+inline void FtraceEvent::set_has_rpm_status() {
+  _impl_._oneof_case_[0] = kRpmStatus;
+}
+inline ::perfetto::protos::RpmStatusFtraceEvent* FtraceEvent::release_rpm_status() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.rpm_status)
+  if (_internal_has_rpm_status()) {
+    clear_has_event();
+    ::perfetto::protos::RpmStatusFtraceEvent* temp = _impl_.event_.rpm_status_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.rpm_status_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::RpmStatusFtraceEvent& FtraceEvent::_internal_rpm_status() const {
+  return _internal_has_rpm_status()
+      ? *_impl_.event_.rpm_status_
+      : reinterpret_cast< ::perfetto::protos::RpmStatusFtraceEvent&>(::perfetto::protos::_RpmStatusFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::RpmStatusFtraceEvent& FtraceEvent::rpm_status() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.rpm_status)
+  return _internal_rpm_status();
+}
+inline ::perfetto::protos::RpmStatusFtraceEvent* FtraceEvent::unsafe_arena_release_rpm_status() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.rpm_status)
+  if (_internal_has_rpm_status()) {
+    clear_has_event();
+    ::perfetto::protos::RpmStatusFtraceEvent* temp = _impl_.event_.rpm_status_;
+    _impl_.event_.rpm_status_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_rpm_status(::perfetto::protos::RpmStatusFtraceEvent* rpm_status) {
+  clear_event();
+  if (rpm_status) {
+    set_has_rpm_status();
+    _impl_.event_.rpm_status_ = rpm_status;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.rpm_status)
+}
+inline ::perfetto::protos::RpmStatusFtraceEvent* FtraceEvent::_internal_mutable_rpm_status() {
+  if (!_internal_has_rpm_status()) {
+    clear_event();
+    set_has_rpm_status();
+    _impl_.event_.rpm_status_ = CreateMaybeMessage< ::perfetto::protos::RpmStatusFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.rpm_status_;
+}
+inline ::perfetto::protos::RpmStatusFtraceEvent* FtraceEvent::mutable_rpm_status() {
+  ::perfetto::protos::RpmStatusFtraceEvent* _msg = _internal_mutable_rpm_status();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.rpm_status)
+  return _msg;
+}
+
+// .perfetto.protos.PanelWriteGenericFtraceEvent panel_write_generic = 490;
+inline bool FtraceEvent::_internal_has_panel_write_generic() const {
+  return event_case() == kPanelWriteGeneric;
+}
+inline bool FtraceEvent::has_panel_write_generic() const {
+  return _internal_has_panel_write_generic();
+}
+inline void FtraceEvent::set_has_panel_write_generic() {
+  _impl_._oneof_case_[0] = kPanelWriteGeneric;
+}
+inline ::perfetto::protos::PanelWriteGenericFtraceEvent* FtraceEvent::release_panel_write_generic() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.panel_write_generic)
+  if (_internal_has_panel_write_generic()) {
+    clear_has_event();
+    ::perfetto::protos::PanelWriteGenericFtraceEvent* temp = _impl_.event_.panel_write_generic_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.panel_write_generic_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::PanelWriteGenericFtraceEvent& FtraceEvent::_internal_panel_write_generic() const {
+  return _internal_has_panel_write_generic()
+      ? *_impl_.event_.panel_write_generic_
+      : reinterpret_cast< ::perfetto::protos::PanelWriteGenericFtraceEvent&>(::perfetto::protos::_PanelWriteGenericFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::PanelWriteGenericFtraceEvent& FtraceEvent::panel_write_generic() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.panel_write_generic)
+  return _internal_panel_write_generic();
+}
+inline ::perfetto::protos::PanelWriteGenericFtraceEvent* FtraceEvent::unsafe_arena_release_panel_write_generic() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.panel_write_generic)
+  if (_internal_has_panel_write_generic()) {
+    clear_has_event();
+    ::perfetto::protos::PanelWriteGenericFtraceEvent* temp = _impl_.event_.panel_write_generic_;
+    _impl_.event_.panel_write_generic_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_panel_write_generic(::perfetto::protos::PanelWriteGenericFtraceEvent* panel_write_generic) {
+  clear_event();
+  if (panel_write_generic) {
+    set_has_panel_write_generic();
+    _impl_.event_.panel_write_generic_ = panel_write_generic;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.panel_write_generic)
+}
+inline ::perfetto::protos::PanelWriteGenericFtraceEvent* FtraceEvent::_internal_mutable_panel_write_generic() {
+  if (!_internal_has_panel_write_generic()) {
+    clear_event();
+    set_has_panel_write_generic();
+    _impl_.event_.panel_write_generic_ = CreateMaybeMessage< ::perfetto::protos::PanelWriteGenericFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.panel_write_generic_;
+}
+inline ::perfetto::protos::PanelWriteGenericFtraceEvent* FtraceEvent::mutable_panel_write_generic() {
+  ::perfetto::protos::PanelWriteGenericFtraceEvent* _msg = _internal_mutable_panel_write_generic();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.panel_write_generic)
+  return _msg;
+}
+
+// .perfetto.protos.SchedMigrateTaskFtraceEvent sched_migrate_task = 491;
+inline bool FtraceEvent::_internal_has_sched_migrate_task() const {
+  return event_case() == kSchedMigrateTask;
+}
+inline bool FtraceEvent::has_sched_migrate_task() const {
+  return _internal_has_sched_migrate_task();
+}
+inline void FtraceEvent::set_has_sched_migrate_task() {
+  _impl_._oneof_case_[0] = kSchedMigrateTask;
+}
+inline ::perfetto::protos::SchedMigrateTaskFtraceEvent* FtraceEvent::release_sched_migrate_task() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.sched_migrate_task)
+  if (_internal_has_sched_migrate_task()) {
+    clear_has_event();
+    ::perfetto::protos::SchedMigrateTaskFtraceEvent* temp = _impl_.event_.sched_migrate_task_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.sched_migrate_task_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::SchedMigrateTaskFtraceEvent& FtraceEvent::_internal_sched_migrate_task() const {
+  return _internal_has_sched_migrate_task()
+      ? *_impl_.event_.sched_migrate_task_
+      : reinterpret_cast< ::perfetto::protos::SchedMigrateTaskFtraceEvent&>(::perfetto::protos::_SchedMigrateTaskFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::SchedMigrateTaskFtraceEvent& FtraceEvent::sched_migrate_task() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.sched_migrate_task)
+  return _internal_sched_migrate_task();
+}
+inline ::perfetto::protos::SchedMigrateTaskFtraceEvent* FtraceEvent::unsafe_arena_release_sched_migrate_task() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.sched_migrate_task)
+  if (_internal_has_sched_migrate_task()) {
+    clear_has_event();
+    ::perfetto::protos::SchedMigrateTaskFtraceEvent* temp = _impl_.event_.sched_migrate_task_;
+    _impl_.event_.sched_migrate_task_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_sched_migrate_task(::perfetto::protos::SchedMigrateTaskFtraceEvent* sched_migrate_task) {
+  clear_event();
+  if (sched_migrate_task) {
+    set_has_sched_migrate_task();
+    _impl_.event_.sched_migrate_task_ = sched_migrate_task;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.sched_migrate_task)
+}
+inline ::perfetto::protos::SchedMigrateTaskFtraceEvent* FtraceEvent::_internal_mutable_sched_migrate_task() {
+  if (!_internal_has_sched_migrate_task()) {
+    clear_event();
+    set_has_sched_migrate_task();
+    _impl_.event_.sched_migrate_task_ = CreateMaybeMessage< ::perfetto::protos::SchedMigrateTaskFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.sched_migrate_task_;
+}
+inline ::perfetto::protos::SchedMigrateTaskFtraceEvent* FtraceEvent::mutable_sched_migrate_task() {
+  ::perfetto::protos::SchedMigrateTaskFtraceEvent* _msg = _internal_mutable_sched_migrate_task();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.sched_migrate_task)
+  return _msg;
+}
+
+// .perfetto.protos.DpuDsiCmdFifoStatusFtraceEvent dpu_dsi_cmd_fifo_status = 492;
+inline bool FtraceEvent::_internal_has_dpu_dsi_cmd_fifo_status() const {
+  return event_case() == kDpuDsiCmdFifoStatus;
+}
+inline bool FtraceEvent::has_dpu_dsi_cmd_fifo_status() const {
+  return _internal_has_dpu_dsi_cmd_fifo_status();
+}
+inline void FtraceEvent::set_has_dpu_dsi_cmd_fifo_status() {
+  _impl_._oneof_case_[0] = kDpuDsiCmdFifoStatus;
+}
+inline ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* FtraceEvent::release_dpu_dsi_cmd_fifo_status() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.dpu_dsi_cmd_fifo_status)
+  if (_internal_has_dpu_dsi_cmd_fifo_status()) {
+    clear_has_event();
+    ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* temp = _impl_.event_.dpu_dsi_cmd_fifo_status_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.dpu_dsi_cmd_fifo_status_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent& FtraceEvent::_internal_dpu_dsi_cmd_fifo_status() const {
+  return _internal_has_dpu_dsi_cmd_fifo_status()
+      ? *_impl_.event_.dpu_dsi_cmd_fifo_status_
+      : reinterpret_cast< ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent&>(::perfetto::protos::_DpuDsiCmdFifoStatusFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent& FtraceEvent::dpu_dsi_cmd_fifo_status() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.dpu_dsi_cmd_fifo_status)
+  return _internal_dpu_dsi_cmd_fifo_status();
+}
+inline ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* FtraceEvent::unsafe_arena_release_dpu_dsi_cmd_fifo_status() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.dpu_dsi_cmd_fifo_status)
+  if (_internal_has_dpu_dsi_cmd_fifo_status()) {
+    clear_has_event();
+    ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* temp = _impl_.event_.dpu_dsi_cmd_fifo_status_;
+    _impl_.event_.dpu_dsi_cmd_fifo_status_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_dpu_dsi_cmd_fifo_status(::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* dpu_dsi_cmd_fifo_status) {
+  clear_event();
+  if (dpu_dsi_cmd_fifo_status) {
+    set_has_dpu_dsi_cmd_fifo_status();
+    _impl_.event_.dpu_dsi_cmd_fifo_status_ = dpu_dsi_cmd_fifo_status;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.dpu_dsi_cmd_fifo_status)
+}
+inline ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* FtraceEvent::_internal_mutable_dpu_dsi_cmd_fifo_status() {
+  if (!_internal_has_dpu_dsi_cmd_fifo_status()) {
+    clear_event();
+    set_has_dpu_dsi_cmd_fifo_status();
+    _impl_.event_.dpu_dsi_cmd_fifo_status_ = CreateMaybeMessage< ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.dpu_dsi_cmd_fifo_status_;
+}
+inline ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* FtraceEvent::mutable_dpu_dsi_cmd_fifo_status() {
+  ::perfetto::protos::DpuDsiCmdFifoStatusFtraceEvent* _msg = _internal_mutable_dpu_dsi_cmd_fifo_status();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.dpu_dsi_cmd_fifo_status)
+  return _msg;
+}
+
+// .perfetto.protos.DpuDsiRxFtraceEvent dpu_dsi_rx = 493;
+inline bool FtraceEvent::_internal_has_dpu_dsi_rx() const {
+  return event_case() == kDpuDsiRx;
+}
+inline bool FtraceEvent::has_dpu_dsi_rx() const {
+  return _internal_has_dpu_dsi_rx();
+}
+inline void FtraceEvent::set_has_dpu_dsi_rx() {
+  _impl_._oneof_case_[0] = kDpuDsiRx;
+}
+inline ::perfetto::protos::DpuDsiRxFtraceEvent* FtraceEvent::release_dpu_dsi_rx() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.dpu_dsi_rx)
+  if (_internal_has_dpu_dsi_rx()) {
+    clear_has_event();
+    ::perfetto::protos::DpuDsiRxFtraceEvent* temp = _impl_.event_.dpu_dsi_rx_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.dpu_dsi_rx_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::DpuDsiRxFtraceEvent& FtraceEvent::_internal_dpu_dsi_rx() const {
+  return _internal_has_dpu_dsi_rx()
+      ? *_impl_.event_.dpu_dsi_rx_
+      : reinterpret_cast< ::perfetto::protos::DpuDsiRxFtraceEvent&>(::perfetto::protos::_DpuDsiRxFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::DpuDsiRxFtraceEvent& FtraceEvent::dpu_dsi_rx() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.dpu_dsi_rx)
+  return _internal_dpu_dsi_rx();
+}
+inline ::perfetto::protos::DpuDsiRxFtraceEvent* FtraceEvent::unsafe_arena_release_dpu_dsi_rx() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.dpu_dsi_rx)
+  if (_internal_has_dpu_dsi_rx()) {
+    clear_has_event();
+    ::perfetto::protos::DpuDsiRxFtraceEvent* temp = _impl_.event_.dpu_dsi_rx_;
+    _impl_.event_.dpu_dsi_rx_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_dpu_dsi_rx(::perfetto::protos::DpuDsiRxFtraceEvent* dpu_dsi_rx) {
+  clear_event();
+  if (dpu_dsi_rx) {
+    set_has_dpu_dsi_rx();
+    _impl_.event_.dpu_dsi_rx_ = dpu_dsi_rx;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.dpu_dsi_rx)
+}
+inline ::perfetto::protos::DpuDsiRxFtraceEvent* FtraceEvent::_internal_mutable_dpu_dsi_rx() {
+  if (!_internal_has_dpu_dsi_rx()) {
+    clear_event();
+    set_has_dpu_dsi_rx();
+    _impl_.event_.dpu_dsi_rx_ = CreateMaybeMessage< ::perfetto::protos::DpuDsiRxFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.dpu_dsi_rx_;
+}
+inline ::perfetto::protos::DpuDsiRxFtraceEvent* FtraceEvent::mutable_dpu_dsi_rx() {
+  ::perfetto::protos::DpuDsiRxFtraceEvent* _msg = _internal_mutable_dpu_dsi_rx();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.dpu_dsi_rx)
+  return _msg;
+}
+
+// .perfetto.protos.DpuDsiTxFtraceEvent dpu_dsi_tx = 494;
+inline bool FtraceEvent::_internal_has_dpu_dsi_tx() const {
+  return event_case() == kDpuDsiTx;
+}
+inline bool FtraceEvent::has_dpu_dsi_tx() const {
+  return _internal_has_dpu_dsi_tx();
+}
+inline void FtraceEvent::set_has_dpu_dsi_tx() {
+  _impl_._oneof_case_[0] = kDpuDsiTx;
+}
+inline ::perfetto::protos::DpuDsiTxFtraceEvent* FtraceEvent::release_dpu_dsi_tx() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.dpu_dsi_tx)
+  if (_internal_has_dpu_dsi_tx()) {
+    clear_has_event();
+    ::perfetto::protos::DpuDsiTxFtraceEvent* temp = _impl_.event_.dpu_dsi_tx_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.dpu_dsi_tx_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::DpuDsiTxFtraceEvent& FtraceEvent::_internal_dpu_dsi_tx() const {
+  return _internal_has_dpu_dsi_tx()
+      ? *_impl_.event_.dpu_dsi_tx_
+      : reinterpret_cast< ::perfetto::protos::DpuDsiTxFtraceEvent&>(::perfetto::protos::_DpuDsiTxFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::DpuDsiTxFtraceEvent& FtraceEvent::dpu_dsi_tx() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.dpu_dsi_tx)
+  return _internal_dpu_dsi_tx();
+}
+inline ::perfetto::protos::DpuDsiTxFtraceEvent* FtraceEvent::unsafe_arena_release_dpu_dsi_tx() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.dpu_dsi_tx)
+  if (_internal_has_dpu_dsi_tx()) {
+    clear_has_event();
+    ::perfetto::protos::DpuDsiTxFtraceEvent* temp = _impl_.event_.dpu_dsi_tx_;
+    _impl_.event_.dpu_dsi_tx_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_dpu_dsi_tx(::perfetto::protos::DpuDsiTxFtraceEvent* dpu_dsi_tx) {
+  clear_event();
+  if (dpu_dsi_tx) {
+    set_has_dpu_dsi_tx();
+    _impl_.event_.dpu_dsi_tx_ = dpu_dsi_tx;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.dpu_dsi_tx)
+}
+inline ::perfetto::protos::DpuDsiTxFtraceEvent* FtraceEvent::_internal_mutable_dpu_dsi_tx() {
+  if (!_internal_has_dpu_dsi_tx()) {
+    clear_event();
+    set_has_dpu_dsi_tx();
+    _impl_.event_.dpu_dsi_tx_ = CreateMaybeMessage< ::perfetto::protos::DpuDsiTxFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.dpu_dsi_tx_;
+}
+inline ::perfetto::protos::DpuDsiTxFtraceEvent* FtraceEvent::mutable_dpu_dsi_tx() {
+  ::perfetto::protos::DpuDsiTxFtraceEvent* _msg = _internal_mutable_dpu_dsi_tx();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.dpu_dsi_tx)
+  return _msg;
+}
+
+// .perfetto.protos.F2fsBackgroundGcFtraceEvent f2fs_background_gc = 495;
+inline bool FtraceEvent::_internal_has_f2fs_background_gc() const {
+  return event_case() == kF2FsBackgroundGc;
+}
+inline bool FtraceEvent::has_f2fs_background_gc() const {
+  return _internal_has_f2fs_background_gc();
+}
+inline void FtraceEvent::set_has_f2fs_background_gc() {
+  _impl_._oneof_case_[0] = kF2FsBackgroundGc;
+}
+inline ::perfetto::protos::F2fsBackgroundGcFtraceEvent* FtraceEvent::release_f2fs_background_gc() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.f2fs_background_gc)
+  if (_internal_has_f2fs_background_gc()) {
+    clear_has_event();
+    ::perfetto::protos::F2fsBackgroundGcFtraceEvent* temp = _impl_.event_.f2fs_background_gc_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.f2fs_background_gc_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::F2fsBackgroundGcFtraceEvent& FtraceEvent::_internal_f2fs_background_gc() const {
+  return _internal_has_f2fs_background_gc()
+      ? *_impl_.event_.f2fs_background_gc_
+      : reinterpret_cast< ::perfetto::protos::F2fsBackgroundGcFtraceEvent&>(::perfetto::protos::_F2fsBackgroundGcFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::F2fsBackgroundGcFtraceEvent& FtraceEvent::f2fs_background_gc() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.f2fs_background_gc)
+  return _internal_f2fs_background_gc();
+}
+inline ::perfetto::protos::F2fsBackgroundGcFtraceEvent* FtraceEvent::unsafe_arena_release_f2fs_background_gc() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.f2fs_background_gc)
+  if (_internal_has_f2fs_background_gc()) {
+    clear_has_event();
+    ::perfetto::protos::F2fsBackgroundGcFtraceEvent* temp = _impl_.event_.f2fs_background_gc_;
+    _impl_.event_.f2fs_background_gc_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_f2fs_background_gc(::perfetto::protos::F2fsBackgroundGcFtraceEvent* f2fs_background_gc) {
+  clear_event();
+  if (f2fs_background_gc) {
+    set_has_f2fs_background_gc();
+    _impl_.event_.f2fs_background_gc_ = f2fs_background_gc;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.f2fs_background_gc)
+}
+inline ::perfetto::protos::F2fsBackgroundGcFtraceEvent* FtraceEvent::_internal_mutable_f2fs_background_gc() {
+  if (!_internal_has_f2fs_background_gc()) {
+    clear_event();
+    set_has_f2fs_background_gc();
+    _impl_.event_.f2fs_background_gc_ = CreateMaybeMessage< ::perfetto::protos::F2fsBackgroundGcFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.f2fs_background_gc_;
+}
+inline ::perfetto::protos::F2fsBackgroundGcFtraceEvent* FtraceEvent::mutable_f2fs_background_gc() {
+  ::perfetto::protos::F2fsBackgroundGcFtraceEvent* _msg = _internal_mutable_f2fs_background_gc();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.f2fs_background_gc)
+  return _msg;
+}
+
+// .perfetto.protos.F2fsGcBeginFtraceEvent f2fs_gc_begin = 496;
+inline bool FtraceEvent::_internal_has_f2fs_gc_begin() const {
+  return event_case() == kF2FsGcBegin;
+}
+inline bool FtraceEvent::has_f2fs_gc_begin() const {
+  return _internal_has_f2fs_gc_begin();
+}
+inline void FtraceEvent::set_has_f2fs_gc_begin() {
+  _impl_._oneof_case_[0] = kF2FsGcBegin;
+}
+inline ::perfetto::protos::F2fsGcBeginFtraceEvent* FtraceEvent::release_f2fs_gc_begin() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.f2fs_gc_begin)
+  if (_internal_has_f2fs_gc_begin()) {
+    clear_has_event();
+    ::perfetto::protos::F2fsGcBeginFtraceEvent* temp = _impl_.event_.f2fs_gc_begin_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.f2fs_gc_begin_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::F2fsGcBeginFtraceEvent& FtraceEvent::_internal_f2fs_gc_begin() const {
+  return _internal_has_f2fs_gc_begin()
+      ? *_impl_.event_.f2fs_gc_begin_
+      : reinterpret_cast< ::perfetto::protos::F2fsGcBeginFtraceEvent&>(::perfetto::protos::_F2fsGcBeginFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::F2fsGcBeginFtraceEvent& FtraceEvent::f2fs_gc_begin() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.f2fs_gc_begin)
+  return _internal_f2fs_gc_begin();
+}
+inline ::perfetto::protos::F2fsGcBeginFtraceEvent* FtraceEvent::unsafe_arena_release_f2fs_gc_begin() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.f2fs_gc_begin)
+  if (_internal_has_f2fs_gc_begin()) {
+    clear_has_event();
+    ::perfetto::protos::F2fsGcBeginFtraceEvent* temp = _impl_.event_.f2fs_gc_begin_;
+    _impl_.event_.f2fs_gc_begin_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_f2fs_gc_begin(::perfetto::protos::F2fsGcBeginFtraceEvent* f2fs_gc_begin) {
+  clear_event();
+  if (f2fs_gc_begin) {
+    set_has_f2fs_gc_begin();
+    _impl_.event_.f2fs_gc_begin_ = f2fs_gc_begin;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.f2fs_gc_begin)
+}
+inline ::perfetto::protos::F2fsGcBeginFtraceEvent* FtraceEvent::_internal_mutable_f2fs_gc_begin() {
+  if (!_internal_has_f2fs_gc_begin()) {
+    clear_event();
+    set_has_f2fs_gc_begin();
+    _impl_.event_.f2fs_gc_begin_ = CreateMaybeMessage< ::perfetto::protos::F2fsGcBeginFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.f2fs_gc_begin_;
+}
+inline ::perfetto::protos::F2fsGcBeginFtraceEvent* FtraceEvent::mutable_f2fs_gc_begin() {
+  ::perfetto::protos::F2fsGcBeginFtraceEvent* _msg = _internal_mutable_f2fs_gc_begin();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.f2fs_gc_begin)
+  return _msg;
+}
+
+// .perfetto.protos.F2fsGcEndFtraceEvent f2fs_gc_end = 497;
+inline bool FtraceEvent::_internal_has_f2fs_gc_end() const {
+  return event_case() == kF2FsGcEnd;
+}
+inline bool FtraceEvent::has_f2fs_gc_end() const {
+  return _internal_has_f2fs_gc_end();
+}
+inline void FtraceEvent::set_has_f2fs_gc_end() {
+  _impl_._oneof_case_[0] = kF2FsGcEnd;
+}
+inline ::perfetto::protos::F2fsGcEndFtraceEvent* FtraceEvent::release_f2fs_gc_end() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.f2fs_gc_end)
+  if (_internal_has_f2fs_gc_end()) {
+    clear_has_event();
+    ::perfetto::protos::F2fsGcEndFtraceEvent* temp = _impl_.event_.f2fs_gc_end_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.f2fs_gc_end_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::F2fsGcEndFtraceEvent& FtraceEvent::_internal_f2fs_gc_end() const {
+  return _internal_has_f2fs_gc_end()
+      ? *_impl_.event_.f2fs_gc_end_
+      : reinterpret_cast< ::perfetto::protos::F2fsGcEndFtraceEvent&>(::perfetto::protos::_F2fsGcEndFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::F2fsGcEndFtraceEvent& FtraceEvent::f2fs_gc_end() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.f2fs_gc_end)
+  return _internal_f2fs_gc_end();
+}
+inline ::perfetto::protos::F2fsGcEndFtraceEvent* FtraceEvent::unsafe_arena_release_f2fs_gc_end() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.f2fs_gc_end)
+  if (_internal_has_f2fs_gc_end()) {
+    clear_has_event();
+    ::perfetto::protos::F2fsGcEndFtraceEvent* temp = _impl_.event_.f2fs_gc_end_;
+    _impl_.event_.f2fs_gc_end_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_f2fs_gc_end(::perfetto::protos::F2fsGcEndFtraceEvent* f2fs_gc_end) {
+  clear_event();
+  if (f2fs_gc_end) {
+    set_has_f2fs_gc_end();
+    _impl_.event_.f2fs_gc_end_ = f2fs_gc_end;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.f2fs_gc_end)
+}
+inline ::perfetto::protos::F2fsGcEndFtraceEvent* FtraceEvent::_internal_mutable_f2fs_gc_end() {
+  if (!_internal_has_f2fs_gc_end()) {
+    clear_event();
+    set_has_f2fs_gc_end();
+    _impl_.event_.f2fs_gc_end_ = CreateMaybeMessage< ::perfetto::protos::F2fsGcEndFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.f2fs_gc_end_;
+}
+inline ::perfetto::protos::F2fsGcEndFtraceEvent* FtraceEvent::mutable_f2fs_gc_end() {
+  ::perfetto::protos::F2fsGcEndFtraceEvent* _msg = _internal_mutable_f2fs_gc_end();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.f2fs_gc_end)
+  return _msg;
+}
+
+// .perfetto.protos.FastrpcDmaFreeFtraceEvent fastrpc_dma_free = 498;
+inline bool FtraceEvent::_internal_has_fastrpc_dma_free() const {
+  return event_case() == kFastrpcDmaFree;
+}
+inline bool FtraceEvent::has_fastrpc_dma_free() const {
+  return _internal_has_fastrpc_dma_free();
+}
+inline void FtraceEvent::set_has_fastrpc_dma_free() {
+  _impl_._oneof_case_[0] = kFastrpcDmaFree;
+}
+inline ::perfetto::protos::FastrpcDmaFreeFtraceEvent* FtraceEvent::release_fastrpc_dma_free() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.fastrpc_dma_free)
+  if (_internal_has_fastrpc_dma_free()) {
+    clear_has_event();
+    ::perfetto::protos::FastrpcDmaFreeFtraceEvent* temp = _impl_.event_.fastrpc_dma_free_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.fastrpc_dma_free_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::FastrpcDmaFreeFtraceEvent& FtraceEvent::_internal_fastrpc_dma_free() const {
+  return _internal_has_fastrpc_dma_free()
+      ? *_impl_.event_.fastrpc_dma_free_
+      : reinterpret_cast< ::perfetto::protos::FastrpcDmaFreeFtraceEvent&>(::perfetto::protos::_FastrpcDmaFreeFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::FastrpcDmaFreeFtraceEvent& FtraceEvent::fastrpc_dma_free() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.fastrpc_dma_free)
+  return _internal_fastrpc_dma_free();
+}
+inline ::perfetto::protos::FastrpcDmaFreeFtraceEvent* FtraceEvent::unsafe_arena_release_fastrpc_dma_free() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.fastrpc_dma_free)
+  if (_internal_has_fastrpc_dma_free()) {
+    clear_has_event();
+    ::perfetto::protos::FastrpcDmaFreeFtraceEvent* temp = _impl_.event_.fastrpc_dma_free_;
+    _impl_.event_.fastrpc_dma_free_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_fastrpc_dma_free(::perfetto::protos::FastrpcDmaFreeFtraceEvent* fastrpc_dma_free) {
+  clear_event();
+  if (fastrpc_dma_free) {
+    set_has_fastrpc_dma_free();
+    _impl_.event_.fastrpc_dma_free_ = fastrpc_dma_free;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.fastrpc_dma_free)
+}
+inline ::perfetto::protos::FastrpcDmaFreeFtraceEvent* FtraceEvent::_internal_mutable_fastrpc_dma_free() {
+  if (!_internal_has_fastrpc_dma_free()) {
+    clear_event();
+    set_has_fastrpc_dma_free();
+    _impl_.event_.fastrpc_dma_free_ = CreateMaybeMessage< ::perfetto::protos::FastrpcDmaFreeFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.fastrpc_dma_free_;
+}
+inline ::perfetto::protos::FastrpcDmaFreeFtraceEvent* FtraceEvent::mutable_fastrpc_dma_free() {
+  ::perfetto::protos::FastrpcDmaFreeFtraceEvent* _msg = _internal_mutable_fastrpc_dma_free();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.fastrpc_dma_free)
+  return _msg;
+}
+
+// .perfetto.protos.FastrpcDmaAllocFtraceEvent fastrpc_dma_alloc = 499;
+inline bool FtraceEvent::_internal_has_fastrpc_dma_alloc() const {
+  return event_case() == kFastrpcDmaAlloc;
+}
+inline bool FtraceEvent::has_fastrpc_dma_alloc() const {
+  return _internal_has_fastrpc_dma_alloc();
+}
+inline void FtraceEvent::set_has_fastrpc_dma_alloc() {
+  _impl_._oneof_case_[0] = kFastrpcDmaAlloc;
+}
+inline ::perfetto::protos::FastrpcDmaAllocFtraceEvent* FtraceEvent::release_fastrpc_dma_alloc() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.fastrpc_dma_alloc)
+  if (_internal_has_fastrpc_dma_alloc()) {
+    clear_has_event();
+    ::perfetto::protos::FastrpcDmaAllocFtraceEvent* temp = _impl_.event_.fastrpc_dma_alloc_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.fastrpc_dma_alloc_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::FastrpcDmaAllocFtraceEvent& FtraceEvent::_internal_fastrpc_dma_alloc() const {
+  return _internal_has_fastrpc_dma_alloc()
+      ? *_impl_.event_.fastrpc_dma_alloc_
+      : reinterpret_cast< ::perfetto::protos::FastrpcDmaAllocFtraceEvent&>(::perfetto::protos::_FastrpcDmaAllocFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::FastrpcDmaAllocFtraceEvent& FtraceEvent::fastrpc_dma_alloc() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.fastrpc_dma_alloc)
+  return _internal_fastrpc_dma_alloc();
+}
+inline ::perfetto::protos::FastrpcDmaAllocFtraceEvent* FtraceEvent::unsafe_arena_release_fastrpc_dma_alloc() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.fastrpc_dma_alloc)
+  if (_internal_has_fastrpc_dma_alloc()) {
+    clear_has_event();
+    ::perfetto::protos::FastrpcDmaAllocFtraceEvent* temp = _impl_.event_.fastrpc_dma_alloc_;
+    _impl_.event_.fastrpc_dma_alloc_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_fastrpc_dma_alloc(::perfetto::protos::FastrpcDmaAllocFtraceEvent* fastrpc_dma_alloc) {
+  clear_event();
+  if (fastrpc_dma_alloc) {
+    set_has_fastrpc_dma_alloc();
+    _impl_.event_.fastrpc_dma_alloc_ = fastrpc_dma_alloc;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.fastrpc_dma_alloc)
+}
+inline ::perfetto::protos::FastrpcDmaAllocFtraceEvent* FtraceEvent::_internal_mutable_fastrpc_dma_alloc() {
+  if (!_internal_has_fastrpc_dma_alloc()) {
+    clear_event();
+    set_has_fastrpc_dma_alloc();
+    _impl_.event_.fastrpc_dma_alloc_ = CreateMaybeMessage< ::perfetto::protos::FastrpcDmaAllocFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.fastrpc_dma_alloc_;
+}
+inline ::perfetto::protos::FastrpcDmaAllocFtraceEvent* FtraceEvent::mutable_fastrpc_dma_alloc() {
+  ::perfetto::protos::FastrpcDmaAllocFtraceEvent* _msg = _internal_mutable_fastrpc_dma_alloc();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.fastrpc_dma_alloc)
+  return _msg;
+}
+
+// .perfetto.protos.FastrpcDmaUnmapFtraceEvent fastrpc_dma_unmap = 500;
+inline bool FtraceEvent::_internal_has_fastrpc_dma_unmap() const {
+  return event_case() == kFastrpcDmaUnmap;
+}
+inline bool FtraceEvent::has_fastrpc_dma_unmap() const {
+  return _internal_has_fastrpc_dma_unmap();
+}
+inline void FtraceEvent::set_has_fastrpc_dma_unmap() {
+  _impl_._oneof_case_[0] = kFastrpcDmaUnmap;
+}
+inline ::perfetto::protos::FastrpcDmaUnmapFtraceEvent* FtraceEvent::release_fastrpc_dma_unmap() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.fastrpc_dma_unmap)
+  if (_internal_has_fastrpc_dma_unmap()) {
+    clear_has_event();
+    ::perfetto::protos::FastrpcDmaUnmapFtraceEvent* temp = _impl_.event_.fastrpc_dma_unmap_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.fastrpc_dma_unmap_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::FastrpcDmaUnmapFtraceEvent& FtraceEvent::_internal_fastrpc_dma_unmap() const {
+  return _internal_has_fastrpc_dma_unmap()
+      ? *_impl_.event_.fastrpc_dma_unmap_
+      : reinterpret_cast< ::perfetto::protos::FastrpcDmaUnmapFtraceEvent&>(::perfetto::protos::_FastrpcDmaUnmapFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::FastrpcDmaUnmapFtraceEvent& FtraceEvent::fastrpc_dma_unmap() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.fastrpc_dma_unmap)
+  return _internal_fastrpc_dma_unmap();
+}
+inline ::perfetto::protos::FastrpcDmaUnmapFtraceEvent* FtraceEvent::unsafe_arena_release_fastrpc_dma_unmap() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.fastrpc_dma_unmap)
+  if (_internal_has_fastrpc_dma_unmap()) {
+    clear_has_event();
+    ::perfetto::protos::FastrpcDmaUnmapFtraceEvent* temp = _impl_.event_.fastrpc_dma_unmap_;
+    _impl_.event_.fastrpc_dma_unmap_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_fastrpc_dma_unmap(::perfetto::protos::FastrpcDmaUnmapFtraceEvent* fastrpc_dma_unmap) {
+  clear_event();
+  if (fastrpc_dma_unmap) {
+    set_has_fastrpc_dma_unmap();
+    _impl_.event_.fastrpc_dma_unmap_ = fastrpc_dma_unmap;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.fastrpc_dma_unmap)
+}
+inline ::perfetto::protos::FastrpcDmaUnmapFtraceEvent* FtraceEvent::_internal_mutable_fastrpc_dma_unmap() {
+  if (!_internal_has_fastrpc_dma_unmap()) {
+    clear_event();
+    set_has_fastrpc_dma_unmap();
+    _impl_.event_.fastrpc_dma_unmap_ = CreateMaybeMessage< ::perfetto::protos::FastrpcDmaUnmapFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.fastrpc_dma_unmap_;
+}
+inline ::perfetto::protos::FastrpcDmaUnmapFtraceEvent* FtraceEvent::mutable_fastrpc_dma_unmap() {
+  ::perfetto::protos::FastrpcDmaUnmapFtraceEvent* _msg = _internal_mutable_fastrpc_dma_unmap();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.fastrpc_dma_unmap)
+  return _msg;
+}
+
+// .perfetto.protos.FastrpcDmaMapFtraceEvent fastrpc_dma_map = 501;
+inline bool FtraceEvent::_internal_has_fastrpc_dma_map() const {
+  return event_case() == kFastrpcDmaMap;
+}
+inline bool FtraceEvent::has_fastrpc_dma_map() const {
+  return _internal_has_fastrpc_dma_map();
+}
+inline void FtraceEvent::set_has_fastrpc_dma_map() {
+  _impl_._oneof_case_[0] = kFastrpcDmaMap;
+}
+inline ::perfetto::protos::FastrpcDmaMapFtraceEvent* FtraceEvent::release_fastrpc_dma_map() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.fastrpc_dma_map)
+  if (_internal_has_fastrpc_dma_map()) {
+    clear_has_event();
+    ::perfetto::protos::FastrpcDmaMapFtraceEvent* temp = _impl_.event_.fastrpc_dma_map_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.fastrpc_dma_map_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::FastrpcDmaMapFtraceEvent& FtraceEvent::_internal_fastrpc_dma_map() const {
+  return _internal_has_fastrpc_dma_map()
+      ? *_impl_.event_.fastrpc_dma_map_
+      : reinterpret_cast< ::perfetto::protos::FastrpcDmaMapFtraceEvent&>(::perfetto::protos::_FastrpcDmaMapFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::FastrpcDmaMapFtraceEvent& FtraceEvent::fastrpc_dma_map() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.fastrpc_dma_map)
+  return _internal_fastrpc_dma_map();
+}
+inline ::perfetto::protos::FastrpcDmaMapFtraceEvent* FtraceEvent::unsafe_arena_release_fastrpc_dma_map() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.fastrpc_dma_map)
+  if (_internal_has_fastrpc_dma_map()) {
+    clear_has_event();
+    ::perfetto::protos::FastrpcDmaMapFtraceEvent* temp = _impl_.event_.fastrpc_dma_map_;
+    _impl_.event_.fastrpc_dma_map_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_fastrpc_dma_map(::perfetto::protos::FastrpcDmaMapFtraceEvent* fastrpc_dma_map) {
+  clear_event();
+  if (fastrpc_dma_map) {
+    set_has_fastrpc_dma_map();
+    _impl_.event_.fastrpc_dma_map_ = fastrpc_dma_map;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.fastrpc_dma_map)
+}
+inline ::perfetto::protos::FastrpcDmaMapFtraceEvent* FtraceEvent::_internal_mutable_fastrpc_dma_map() {
+  if (!_internal_has_fastrpc_dma_map()) {
+    clear_event();
+    set_has_fastrpc_dma_map();
+    _impl_.event_.fastrpc_dma_map_ = CreateMaybeMessage< ::perfetto::protos::FastrpcDmaMapFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.fastrpc_dma_map_;
+}
+inline ::perfetto::protos::FastrpcDmaMapFtraceEvent* FtraceEvent::mutable_fastrpc_dma_map() {
+  ::perfetto::protos::FastrpcDmaMapFtraceEvent* _msg = _internal_mutable_fastrpc_dma_map();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.fastrpc_dma_map)
+  return _msg;
+}
+
+// .perfetto.protos.GoogleIccEventFtraceEvent google_icc_event = 502;
+inline bool FtraceEvent::_internal_has_google_icc_event() const {
+  return event_case() == kGoogleIccEvent;
+}
+inline bool FtraceEvent::has_google_icc_event() const {
+  return _internal_has_google_icc_event();
+}
+inline void FtraceEvent::set_has_google_icc_event() {
+  _impl_._oneof_case_[0] = kGoogleIccEvent;
+}
+inline ::perfetto::protos::GoogleIccEventFtraceEvent* FtraceEvent::release_google_icc_event() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.google_icc_event)
+  if (_internal_has_google_icc_event()) {
+    clear_has_event();
+    ::perfetto::protos::GoogleIccEventFtraceEvent* temp = _impl_.event_.google_icc_event_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.google_icc_event_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::GoogleIccEventFtraceEvent& FtraceEvent::_internal_google_icc_event() const {
+  return _internal_has_google_icc_event()
+      ? *_impl_.event_.google_icc_event_
+      : reinterpret_cast< ::perfetto::protos::GoogleIccEventFtraceEvent&>(::perfetto::protos::_GoogleIccEventFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::GoogleIccEventFtraceEvent& FtraceEvent::google_icc_event() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.google_icc_event)
+  return _internal_google_icc_event();
+}
+inline ::perfetto::protos::GoogleIccEventFtraceEvent* FtraceEvent::unsafe_arena_release_google_icc_event() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.google_icc_event)
+  if (_internal_has_google_icc_event()) {
+    clear_has_event();
+    ::perfetto::protos::GoogleIccEventFtraceEvent* temp = _impl_.event_.google_icc_event_;
+    _impl_.event_.google_icc_event_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_google_icc_event(::perfetto::protos::GoogleIccEventFtraceEvent* google_icc_event) {
+  clear_event();
+  if (google_icc_event) {
+    set_has_google_icc_event();
+    _impl_.event_.google_icc_event_ = google_icc_event;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.google_icc_event)
+}
+inline ::perfetto::protos::GoogleIccEventFtraceEvent* FtraceEvent::_internal_mutable_google_icc_event() {
+  if (!_internal_has_google_icc_event()) {
+    clear_event();
+    set_has_google_icc_event();
+    _impl_.event_.google_icc_event_ = CreateMaybeMessage< ::perfetto::protos::GoogleIccEventFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.google_icc_event_;
+}
+inline ::perfetto::protos::GoogleIccEventFtraceEvent* FtraceEvent::mutable_google_icc_event() {
+  ::perfetto::protos::GoogleIccEventFtraceEvent* _msg = _internal_mutable_google_icc_event();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.google_icc_event)
+  return _msg;
+}
+
+// .perfetto.protos.GoogleIrmEventFtraceEvent google_irm_event = 503;
+inline bool FtraceEvent::_internal_has_google_irm_event() const {
+  return event_case() == kGoogleIrmEvent;
+}
+inline bool FtraceEvent::has_google_irm_event() const {
+  return _internal_has_google_irm_event();
+}
+inline void FtraceEvent::set_has_google_irm_event() {
+  _impl_._oneof_case_[0] = kGoogleIrmEvent;
+}
+inline ::perfetto::protos::GoogleIrmEventFtraceEvent* FtraceEvent::release_google_irm_event() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.google_irm_event)
+  if (_internal_has_google_irm_event()) {
+    clear_has_event();
+    ::perfetto::protos::GoogleIrmEventFtraceEvent* temp = _impl_.event_.google_irm_event_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.google_irm_event_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::GoogleIrmEventFtraceEvent& FtraceEvent::_internal_google_irm_event() const {
+  return _internal_has_google_irm_event()
+      ? *_impl_.event_.google_irm_event_
+      : reinterpret_cast< ::perfetto::protos::GoogleIrmEventFtraceEvent&>(::perfetto::protos::_GoogleIrmEventFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::GoogleIrmEventFtraceEvent& FtraceEvent::google_irm_event() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.google_irm_event)
+  return _internal_google_irm_event();
+}
+inline ::perfetto::protos::GoogleIrmEventFtraceEvent* FtraceEvent::unsafe_arena_release_google_irm_event() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.google_irm_event)
+  if (_internal_has_google_irm_event()) {
+    clear_has_event();
+    ::perfetto::protos::GoogleIrmEventFtraceEvent* temp = _impl_.event_.google_irm_event_;
+    _impl_.event_.google_irm_event_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_google_irm_event(::perfetto::protos::GoogleIrmEventFtraceEvent* google_irm_event) {
+  clear_event();
+  if (google_irm_event) {
+    set_has_google_irm_event();
+    _impl_.event_.google_irm_event_ = google_irm_event;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.google_irm_event)
+}
+inline ::perfetto::protos::GoogleIrmEventFtraceEvent* FtraceEvent::_internal_mutable_google_irm_event() {
+  if (!_internal_has_google_irm_event()) {
+    clear_event();
+    set_has_google_irm_event();
+    _impl_.event_.google_irm_event_ = CreateMaybeMessage< ::perfetto::protos::GoogleIrmEventFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.google_irm_event_;
+}
+inline ::perfetto::protos::GoogleIrmEventFtraceEvent* FtraceEvent::mutable_google_irm_event() {
+  ::perfetto::protos::GoogleIrmEventFtraceEvent* _msg = _internal_mutable_google_irm_event();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.google_irm_event)
+  return _msg;
+}
+
+// .perfetto.protos.DevicePmCallbackStartFtraceEvent device_pm_callback_start = 504;
+inline bool FtraceEvent::_internal_has_device_pm_callback_start() const {
+  return event_case() == kDevicePmCallbackStart;
+}
+inline bool FtraceEvent::has_device_pm_callback_start() const {
+  return _internal_has_device_pm_callback_start();
+}
+inline void FtraceEvent::set_has_device_pm_callback_start() {
+  _impl_._oneof_case_[0] = kDevicePmCallbackStart;
+}
+inline ::perfetto::protos::DevicePmCallbackStartFtraceEvent* FtraceEvent::release_device_pm_callback_start() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.device_pm_callback_start)
+  if (_internal_has_device_pm_callback_start()) {
+    clear_has_event();
+    ::perfetto::protos::DevicePmCallbackStartFtraceEvent* temp = _impl_.event_.device_pm_callback_start_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.device_pm_callback_start_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::DevicePmCallbackStartFtraceEvent& FtraceEvent::_internal_device_pm_callback_start() const {
+  return _internal_has_device_pm_callback_start()
+      ? *_impl_.event_.device_pm_callback_start_
+      : reinterpret_cast< ::perfetto::protos::DevicePmCallbackStartFtraceEvent&>(::perfetto::protos::_DevicePmCallbackStartFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::DevicePmCallbackStartFtraceEvent& FtraceEvent::device_pm_callback_start() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.device_pm_callback_start)
+  return _internal_device_pm_callback_start();
+}
+inline ::perfetto::protos::DevicePmCallbackStartFtraceEvent* FtraceEvent::unsafe_arena_release_device_pm_callback_start() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.device_pm_callback_start)
+  if (_internal_has_device_pm_callback_start()) {
+    clear_has_event();
+    ::perfetto::protos::DevicePmCallbackStartFtraceEvent* temp = _impl_.event_.device_pm_callback_start_;
+    _impl_.event_.device_pm_callback_start_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_device_pm_callback_start(::perfetto::protos::DevicePmCallbackStartFtraceEvent* device_pm_callback_start) {
+  clear_event();
+  if (device_pm_callback_start) {
+    set_has_device_pm_callback_start();
+    _impl_.event_.device_pm_callback_start_ = device_pm_callback_start;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.device_pm_callback_start)
+}
+inline ::perfetto::protos::DevicePmCallbackStartFtraceEvent* FtraceEvent::_internal_mutable_device_pm_callback_start() {
+  if (!_internal_has_device_pm_callback_start()) {
+    clear_event();
+    set_has_device_pm_callback_start();
+    _impl_.event_.device_pm_callback_start_ = CreateMaybeMessage< ::perfetto::protos::DevicePmCallbackStartFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.device_pm_callback_start_;
+}
+inline ::perfetto::protos::DevicePmCallbackStartFtraceEvent* FtraceEvent::mutable_device_pm_callback_start() {
+  ::perfetto::protos::DevicePmCallbackStartFtraceEvent* _msg = _internal_mutable_device_pm_callback_start();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.device_pm_callback_start)
+  return _msg;
+}
+
+// .perfetto.protos.DevicePmCallbackEndFtraceEvent device_pm_callback_end = 505;
+inline bool FtraceEvent::_internal_has_device_pm_callback_end() const {
+  return event_case() == kDevicePmCallbackEnd;
+}
+inline bool FtraceEvent::has_device_pm_callback_end() const {
+  return _internal_has_device_pm_callback_end();
+}
+inline void FtraceEvent::set_has_device_pm_callback_end() {
+  _impl_._oneof_case_[0] = kDevicePmCallbackEnd;
+}
+inline ::perfetto::protos::DevicePmCallbackEndFtraceEvent* FtraceEvent::release_device_pm_callback_end() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.device_pm_callback_end)
+  if (_internal_has_device_pm_callback_end()) {
+    clear_has_event();
+    ::perfetto::protos::DevicePmCallbackEndFtraceEvent* temp = _impl_.event_.device_pm_callback_end_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.device_pm_callback_end_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::DevicePmCallbackEndFtraceEvent& FtraceEvent::_internal_device_pm_callback_end() const {
+  return _internal_has_device_pm_callback_end()
+      ? *_impl_.event_.device_pm_callback_end_
+      : reinterpret_cast< ::perfetto::protos::DevicePmCallbackEndFtraceEvent&>(::perfetto::protos::_DevicePmCallbackEndFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::DevicePmCallbackEndFtraceEvent& FtraceEvent::device_pm_callback_end() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.device_pm_callback_end)
+  return _internal_device_pm_callback_end();
+}
+inline ::perfetto::protos::DevicePmCallbackEndFtraceEvent* FtraceEvent::unsafe_arena_release_device_pm_callback_end() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.device_pm_callback_end)
+  if (_internal_has_device_pm_callback_end()) {
+    clear_has_event();
+    ::perfetto::protos::DevicePmCallbackEndFtraceEvent* temp = _impl_.event_.device_pm_callback_end_;
+    _impl_.event_.device_pm_callback_end_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_device_pm_callback_end(::perfetto::protos::DevicePmCallbackEndFtraceEvent* device_pm_callback_end) {
+  clear_event();
+  if (device_pm_callback_end) {
+    set_has_device_pm_callback_end();
+    _impl_.event_.device_pm_callback_end_ = device_pm_callback_end;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.device_pm_callback_end)
+}
+inline ::perfetto::protos::DevicePmCallbackEndFtraceEvent* FtraceEvent::_internal_mutable_device_pm_callback_end() {
+  if (!_internal_has_device_pm_callback_end()) {
+    clear_event();
+    set_has_device_pm_callback_end();
+    _impl_.event_.device_pm_callback_end_ = CreateMaybeMessage< ::perfetto::protos::DevicePmCallbackEndFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.device_pm_callback_end_;
+}
+inline ::perfetto::protos::DevicePmCallbackEndFtraceEvent* FtraceEvent::mutable_device_pm_callback_end() {
+  ::perfetto::protos::DevicePmCallbackEndFtraceEvent* _msg = _internal_mutable_device_pm_callback_end();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.device_pm_callback_end)
+  return _msg;
+}
+
+// .perfetto.protos.ThermalExynosAcpmBulkFtraceEvent thermal_exynos_acpm_bulk = 506;
+inline bool FtraceEvent::_internal_has_thermal_exynos_acpm_bulk() const {
+  return event_case() == kThermalExynosAcpmBulk;
+}
+inline bool FtraceEvent::has_thermal_exynos_acpm_bulk() const {
+  return _internal_has_thermal_exynos_acpm_bulk();
+}
+inline void FtraceEvent::set_has_thermal_exynos_acpm_bulk() {
+  _impl_._oneof_case_[0] = kThermalExynosAcpmBulk;
+}
+inline ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* FtraceEvent::release_thermal_exynos_acpm_bulk() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.thermal_exynos_acpm_bulk)
+  if (_internal_has_thermal_exynos_acpm_bulk()) {
+    clear_has_event();
+    ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* temp = _impl_.event_.thermal_exynos_acpm_bulk_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.thermal_exynos_acpm_bulk_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent& FtraceEvent::_internal_thermal_exynos_acpm_bulk() const {
+  return _internal_has_thermal_exynos_acpm_bulk()
+      ? *_impl_.event_.thermal_exynos_acpm_bulk_
+      : reinterpret_cast< ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent&>(::perfetto::protos::_ThermalExynosAcpmBulkFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent& FtraceEvent::thermal_exynos_acpm_bulk() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.thermal_exynos_acpm_bulk)
+  return _internal_thermal_exynos_acpm_bulk();
+}
+inline ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* FtraceEvent::unsafe_arena_release_thermal_exynos_acpm_bulk() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.thermal_exynos_acpm_bulk)
+  if (_internal_has_thermal_exynos_acpm_bulk()) {
+    clear_has_event();
+    ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* temp = _impl_.event_.thermal_exynos_acpm_bulk_;
+    _impl_.event_.thermal_exynos_acpm_bulk_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_thermal_exynos_acpm_bulk(::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* thermal_exynos_acpm_bulk) {
+  clear_event();
+  if (thermal_exynos_acpm_bulk) {
+    set_has_thermal_exynos_acpm_bulk();
+    _impl_.event_.thermal_exynos_acpm_bulk_ = thermal_exynos_acpm_bulk;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.thermal_exynos_acpm_bulk)
+}
+inline ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* FtraceEvent::_internal_mutable_thermal_exynos_acpm_bulk() {
+  if (!_internal_has_thermal_exynos_acpm_bulk()) {
+    clear_event();
+    set_has_thermal_exynos_acpm_bulk();
+    _impl_.event_.thermal_exynos_acpm_bulk_ = CreateMaybeMessage< ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.thermal_exynos_acpm_bulk_;
+}
+inline ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* FtraceEvent::mutable_thermal_exynos_acpm_bulk() {
+  ::perfetto::protos::ThermalExynosAcpmBulkFtraceEvent* _msg = _internal_mutable_thermal_exynos_acpm_bulk();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.thermal_exynos_acpm_bulk)
+  return _msg;
+}
+
+// .perfetto.protos.ThermalExynosAcpmHighOverheadFtraceEvent thermal_exynos_acpm_high_overhead = 507;
+inline bool FtraceEvent::_internal_has_thermal_exynos_acpm_high_overhead() const {
+  return event_case() == kThermalExynosAcpmHighOverhead;
+}
+inline bool FtraceEvent::has_thermal_exynos_acpm_high_overhead() const {
+  return _internal_has_thermal_exynos_acpm_high_overhead();
+}
+inline void FtraceEvent::set_has_thermal_exynos_acpm_high_overhead() {
+  _impl_._oneof_case_[0] = kThermalExynosAcpmHighOverhead;
+}
+inline ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* FtraceEvent::release_thermal_exynos_acpm_high_overhead() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.thermal_exynos_acpm_high_overhead)
+  if (_internal_has_thermal_exynos_acpm_high_overhead()) {
+    clear_has_event();
+    ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* temp = _impl_.event_.thermal_exynos_acpm_high_overhead_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.thermal_exynos_acpm_high_overhead_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent& FtraceEvent::_internal_thermal_exynos_acpm_high_overhead() const {
+  return _internal_has_thermal_exynos_acpm_high_overhead()
+      ? *_impl_.event_.thermal_exynos_acpm_high_overhead_
+      : reinterpret_cast< ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent&>(::perfetto::protos::_ThermalExynosAcpmHighOverheadFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent& FtraceEvent::thermal_exynos_acpm_high_overhead() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.thermal_exynos_acpm_high_overhead)
+  return _internal_thermal_exynos_acpm_high_overhead();
+}
+inline ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* FtraceEvent::unsafe_arena_release_thermal_exynos_acpm_high_overhead() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.thermal_exynos_acpm_high_overhead)
+  if (_internal_has_thermal_exynos_acpm_high_overhead()) {
+    clear_has_event();
+    ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* temp = _impl_.event_.thermal_exynos_acpm_high_overhead_;
+    _impl_.event_.thermal_exynos_acpm_high_overhead_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_thermal_exynos_acpm_high_overhead(::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* thermal_exynos_acpm_high_overhead) {
+  clear_event();
+  if (thermal_exynos_acpm_high_overhead) {
+    set_has_thermal_exynos_acpm_high_overhead();
+    _impl_.event_.thermal_exynos_acpm_high_overhead_ = thermal_exynos_acpm_high_overhead;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.thermal_exynos_acpm_high_overhead)
+}
+inline ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* FtraceEvent::_internal_mutable_thermal_exynos_acpm_high_overhead() {
+  if (!_internal_has_thermal_exynos_acpm_high_overhead()) {
+    clear_event();
+    set_has_thermal_exynos_acpm_high_overhead();
+    _impl_.event_.thermal_exynos_acpm_high_overhead_ = CreateMaybeMessage< ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.thermal_exynos_acpm_high_overhead_;
+}
+inline ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* FtraceEvent::mutable_thermal_exynos_acpm_high_overhead() {
+  ::perfetto::protos::ThermalExynosAcpmHighOverheadFtraceEvent* _msg = _internal_mutable_thermal_exynos_acpm_high_overhead();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.thermal_exynos_acpm_high_overhead)
+  return _msg;
+}
+
+// .perfetto.protos.DcvshFreqFtraceEvent dcvsh_freq = 508;
+inline bool FtraceEvent::_internal_has_dcvsh_freq() const {
+  return event_case() == kDcvshFreq;
+}
+inline bool FtraceEvent::has_dcvsh_freq() const {
+  return _internal_has_dcvsh_freq();
+}
+inline void FtraceEvent::set_has_dcvsh_freq() {
+  _impl_._oneof_case_[0] = kDcvshFreq;
+}
+inline ::perfetto::protos::DcvshFreqFtraceEvent* FtraceEvent::release_dcvsh_freq() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.dcvsh_freq)
+  if (_internal_has_dcvsh_freq()) {
+    clear_has_event();
+    ::perfetto::protos::DcvshFreqFtraceEvent* temp = _impl_.event_.dcvsh_freq_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.dcvsh_freq_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::DcvshFreqFtraceEvent& FtraceEvent::_internal_dcvsh_freq() const {
+  return _internal_has_dcvsh_freq()
+      ? *_impl_.event_.dcvsh_freq_
+      : reinterpret_cast< ::perfetto::protos::DcvshFreqFtraceEvent&>(::perfetto::protos::_DcvshFreqFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::DcvshFreqFtraceEvent& FtraceEvent::dcvsh_freq() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.dcvsh_freq)
+  return _internal_dcvsh_freq();
+}
+inline ::perfetto::protos::DcvshFreqFtraceEvent* FtraceEvent::unsafe_arena_release_dcvsh_freq() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.dcvsh_freq)
+  if (_internal_has_dcvsh_freq()) {
+    clear_has_event();
+    ::perfetto::protos::DcvshFreqFtraceEvent* temp = _impl_.event_.dcvsh_freq_;
+    _impl_.event_.dcvsh_freq_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_dcvsh_freq(::perfetto::protos::DcvshFreqFtraceEvent* dcvsh_freq) {
+  clear_event();
+  if (dcvsh_freq) {
+    set_has_dcvsh_freq();
+    _impl_.event_.dcvsh_freq_ = dcvsh_freq;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.dcvsh_freq)
+}
+inline ::perfetto::protos::DcvshFreqFtraceEvent* FtraceEvent::_internal_mutable_dcvsh_freq() {
+  if (!_internal_has_dcvsh_freq()) {
+    clear_event();
+    set_has_dcvsh_freq();
+    _impl_.event_.dcvsh_freq_ = CreateMaybeMessage< ::perfetto::protos::DcvshFreqFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.dcvsh_freq_;
+}
+inline ::perfetto::protos::DcvshFreqFtraceEvent* FtraceEvent::mutable_dcvsh_freq() {
+  ::perfetto::protos::DcvshFreqFtraceEvent* _msg = _internal_mutable_dcvsh_freq();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.dcvsh_freq)
+  return _msg;
+}
+
+// .perfetto.protos.KgslGpuFrequencyFtraceEvent kgsl_gpu_frequency = 509;
+inline bool FtraceEvent::_internal_has_kgsl_gpu_frequency() const {
+  return event_case() == kKgslGpuFrequency;
+}
+inline bool FtraceEvent::has_kgsl_gpu_frequency() const {
+  return _internal_has_kgsl_gpu_frequency();
+}
+inline void FtraceEvent::set_has_kgsl_gpu_frequency() {
+  _impl_._oneof_case_[0] = kKgslGpuFrequency;
+}
+inline ::perfetto::protos::KgslGpuFrequencyFtraceEvent* FtraceEvent::release_kgsl_gpu_frequency() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.kgsl_gpu_frequency)
+  if (_internal_has_kgsl_gpu_frequency()) {
+    clear_has_event();
+    ::perfetto::protos::KgslGpuFrequencyFtraceEvent* temp = _impl_.event_.kgsl_gpu_frequency_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.kgsl_gpu_frequency_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::KgslGpuFrequencyFtraceEvent& FtraceEvent::_internal_kgsl_gpu_frequency() const {
+  return _internal_has_kgsl_gpu_frequency()
+      ? *_impl_.event_.kgsl_gpu_frequency_
+      : reinterpret_cast< ::perfetto::protos::KgslGpuFrequencyFtraceEvent&>(::perfetto::protos::_KgslGpuFrequencyFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::KgslGpuFrequencyFtraceEvent& FtraceEvent::kgsl_gpu_frequency() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.kgsl_gpu_frequency)
+  return _internal_kgsl_gpu_frequency();
+}
+inline ::perfetto::protos::KgslGpuFrequencyFtraceEvent* FtraceEvent::unsafe_arena_release_kgsl_gpu_frequency() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.kgsl_gpu_frequency)
+  if (_internal_has_kgsl_gpu_frequency()) {
+    clear_has_event();
+    ::perfetto::protos::KgslGpuFrequencyFtraceEvent* temp = _impl_.event_.kgsl_gpu_frequency_;
+    _impl_.event_.kgsl_gpu_frequency_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_kgsl_gpu_frequency(::perfetto::protos::KgslGpuFrequencyFtraceEvent* kgsl_gpu_frequency) {
+  clear_event();
+  if (kgsl_gpu_frequency) {
+    set_has_kgsl_gpu_frequency();
+    _impl_.event_.kgsl_gpu_frequency_ = kgsl_gpu_frequency;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.kgsl_gpu_frequency)
+}
+inline ::perfetto::protos::KgslGpuFrequencyFtraceEvent* FtraceEvent::_internal_mutable_kgsl_gpu_frequency() {
+  if (!_internal_has_kgsl_gpu_frequency()) {
+    clear_event();
+    set_has_kgsl_gpu_frequency();
+    _impl_.event_.kgsl_gpu_frequency_ = CreateMaybeMessage< ::perfetto::protos::KgslGpuFrequencyFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.kgsl_gpu_frequency_;
+}
+inline ::perfetto::protos::KgslGpuFrequencyFtraceEvent* FtraceEvent::mutable_kgsl_gpu_frequency() {
+  ::perfetto::protos::KgslGpuFrequencyFtraceEvent* _msg = _internal_mutable_kgsl_gpu_frequency();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.kgsl_gpu_frequency)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent mali_mali_PM_MCU_HCTL_CORES_DOWN_SCALE_NOTIFY_PEND = 510;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() const {
+  return event_case() == kMaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPEND;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPEND;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORES_DOWN_SCALE_NOTIFY_PEND)
+  if (_internal_has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend()
+      ? *_impl_.event_.mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent& FtraceEvent::mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORES_DOWN_SCALE_NOTIFY_PEND)
+  return _internal_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend();
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORES_DOWN_SCALE_NOTIFY_PEND)
+  if (_internal_has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend_;
+    _impl_.event_.mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend(::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend) {
+  clear_event();
+  if (mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend) {
+    set_has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend();
+    _impl_.event_.mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend_ = mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORES_DOWN_SCALE_NOTIFY_PEND)
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() {
+  if (!_internal_has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend();
+    _impl_.event_.mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend() {
+  ::perfetto::protos::MaliMaliPMMCUHCTLCORESDOWNSCALENOTIFYPENDFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_hctl_cores_down_scale_notify_pend();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORES_DOWN_SCALE_NOTIFY_PEND)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent mali_mali_PM_MCU_HCTL_CORES_NOTIFY_PEND = 511;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_hctl_cores_notify_pend() const {
+  return event_case() == kMaliMaliPMMCUHCTLCORESNOTIFYPEND;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_hctl_cores_notify_pend() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_cores_notify_pend();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_hctl_cores_notify_pend() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUHCTLCORESNOTIFYPEND;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_hctl_cores_notify_pend() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORES_NOTIFY_PEND)
+  if (_internal_has_mali_mali_pm_mcu_hctl_cores_notify_pend()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_cores_notify_pend_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_hctl_cores_notify_pend_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_hctl_cores_notify_pend() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_cores_notify_pend()
+      ? *_impl_.event_.mali_mali_pm_mcu_hctl_cores_notify_pend_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent& FtraceEvent::mali_mali_pm_mcu_hctl_cores_notify_pend() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORES_NOTIFY_PEND)
+  return _internal_mali_mali_pm_mcu_hctl_cores_notify_pend();
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_hctl_cores_notify_pend() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORES_NOTIFY_PEND)
+  if (_internal_has_mali_mali_pm_mcu_hctl_cores_notify_pend()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_cores_notify_pend_;
+    _impl_.event_.mali_mali_pm_mcu_hctl_cores_notify_pend_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_cores_notify_pend(::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* mali_mali_pm_mcu_hctl_cores_notify_pend) {
+  clear_event();
+  if (mali_mali_pm_mcu_hctl_cores_notify_pend) {
+    set_has_mali_mali_pm_mcu_hctl_cores_notify_pend();
+    _impl_.event_.mali_mali_pm_mcu_hctl_cores_notify_pend_ = mali_mali_pm_mcu_hctl_cores_notify_pend;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORES_NOTIFY_PEND)
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_hctl_cores_notify_pend() {
+  if (!_internal_has_mali_mali_pm_mcu_hctl_cores_notify_pend()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_hctl_cores_notify_pend();
+    _impl_.event_.mali_mali_pm_mcu_hctl_cores_notify_pend_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_hctl_cores_notify_pend_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_hctl_cores_notify_pend() {
+  ::perfetto::protos::MaliMaliPMMCUHCTLCORESNOTIFYPENDFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_hctl_cores_notify_pend();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORES_NOTIFY_PEND)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent mali_mali_PM_MCU_HCTL_CORE_INACTIVE_PEND = 512;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_hctl_core_inactive_pend() const {
+  return event_case() == kMaliMaliPMMCUHCTLCOREINACTIVEPEND;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_hctl_core_inactive_pend() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_core_inactive_pend();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_hctl_core_inactive_pend() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUHCTLCOREINACTIVEPEND;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_hctl_core_inactive_pend() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORE_INACTIVE_PEND)
+  if (_internal_has_mali_mali_pm_mcu_hctl_core_inactive_pend()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_core_inactive_pend_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_hctl_core_inactive_pend_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_hctl_core_inactive_pend() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_core_inactive_pend()
+      ? *_impl_.event_.mali_mali_pm_mcu_hctl_core_inactive_pend_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent& FtraceEvent::mali_mali_pm_mcu_hctl_core_inactive_pend() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORE_INACTIVE_PEND)
+  return _internal_mali_mali_pm_mcu_hctl_core_inactive_pend();
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_hctl_core_inactive_pend() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORE_INACTIVE_PEND)
+  if (_internal_has_mali_mali_pm_mcu_hctl_core_inactive_pend()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_core_inactive_pend_;
+    _impl_.event_.mali_mali_pm_mcu_hctl_core_inactive_pend_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_core_inactive_pend(::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* mali_mali_pm_mcu_hctl_core_inactive_pend) {
+  clear_event();
+  if (mali_mali_pm_mcu_hctl_core_inactive_pend) {
+    set_has_mali_mali_pm_mcu_hctl_core_inactive_pend();
+    _impl_.event_.mali_mali_pm_mcu_hctl_core_inactive_pend_ = mali_mali_pm_mcu_hctl_core_inactive_pend;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORE_INACTIVE_PEND)
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_hctl_core_inactive_pend() {
+  if (!_internal_has_mali_mali_pm_mcu_hctl_core_inactive_pend()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_hctl_core_inactive_pend();
+    _impl_.event_.mali_mali_pm_mcu_hctl_core_inactive_pend_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_hctl_core_inactive_pend_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_hctl_core_inactive_pend() {
+  ::perfetto::protos::MaliMaliPMMCUHCTLCOREINACTIVEPENDFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_hctl_core_inactive_pend();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_CORE_INACTIVE_PEND)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent mali_mali_PM_MCU_HCTL_MCU_ON_RECHECK = 513;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_hctl_mcu_on_recheck() const {
+  return event_case() == kMaliMaliPMMCUHCTLMCUONRECHECK;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_hctl_mcu_on_recheck() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_mcu_on_recheck();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_hctl_mcu_on_recheck() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUHCTLMCUONRECHECK;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_hctl_mcu_on_recheck() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_MCU_ON_RECHECK)
+  if (_internal_has_mali_mali_pm_mcu_hctl_mcu_on_recheck()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_mcu_on_recheck_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_hctl_mcu_on_recheck_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_hctl_mcu_on_recheck() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_mcu_on_recheck()
+      ? *_impl_.event_.mali_mali_pm_mcu_hctl_mcu_on_recheck_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent& FtraceEvent::mali_mali_pm_mcu_hctl_mcu_on_recheck() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_MCU_ON_RECHECK)
+  return _internal_mali_mali_pm_mcu_hctl_mcu_on_recheck();
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_hctl_mcu_on_recheck() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_MCU_ON_RECHECK)
+  if (_internal_has_mali_mali_pm_mcu_hctl_mcu_on_recheck()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_mcu_on_recheck_;
+    _impl_.event_.mali_mali_pm_mcu_hctl_mcu_on_recheck_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_mcu_on_recheck(::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* mali_mali_pm_mcu_hctl_mcu_on_recheck) {
+  clear_event();
+  if (mali_mali_pm_mcu_hctl_mcu_on_recheck) {
+    set_has_mali_mali_pm_mcu_hctl_mcu_on_recheck();
+    _impl_.event_.mali_mali_pm_mcu_hctl_mcu_on_recheck_ = mali_mali_pm_mcu_hctl_mcu_on_recheck;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_MCU_ON_RECHECK)
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_hctl_mcu_on_recheck() {
+  if (!_internal_has_mali_mali_pm_mcu_hctl_mcu_on_recheck()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_hctl_mcu_on_recheck();
+    _impl_.event_.mali_mali_pm_mcu_hctl_mcu_on_recheck_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_hctl_mcu_on_recheck_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_hctl_mcu_on_recheck() {
+  ::perfetto::protos::MaliMaliPMMCUHCTLMCUONRECHECKFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_hctl_mcu_on_recheck();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_MCU_ON_RECHECK)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent mali_mali_PM_MCU_HCTL_SHADERS_CORE_OFF_PEND = 514;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_hctl_shaders_core_off_pend() const {
+  return event_case() == kMaliMaliPMMCUHCTLSHADERSCOREOFFPEND;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_hctl_shaders_core_off_pend() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_shaders_core_off_pend();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_hctl_shaders_core_off_pend() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUHCTLSHADERSCOREOFFPEND;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_hctl_shaders_core_off_pend() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_CORE_OFF_PEND)
+  if (_internal_has_mali_mali_pm_mcu_hctl_shaders_core_off_pend()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_shaders_core_off_pend_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_core_off_pend_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_hctl_shaders_core_off_pend() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_shaders_core_off_pend()
+      ? *_impl_.event_.mali_mali_pm_mcu_hctl_shaders_core_off_pend_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent& FtraceEvent::mali_mali_pm_mcu_hctl_shaders_core_off_pend() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_CORE_OFF_PEND)
+  return _internal_mali_mali_pm_mcu_hctl_shaders_core_off_pend();
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_hctl_shaders_core_off_pend() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_CORE_OFF_PEND)
+  if (_internal_has_mali_mali_pm_mcu_hctl_shaders_core_off_pend()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_shaders_core_off_pend_;
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_core_off_pend_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_shaders_core_off_pend(::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* mali_mali_pm_mcu_hctl_shaders_core_off_pend) {
+  clear_event();
+  if (mali_mali_pm_mcu_hctl_shaders_core_off_pend) {
+    set_has_mali_mali_pm_mcu_hctl_shaders_core_off_pend();
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_core_off_pend_ = mali_mali_pm_mcu_hctl_shaders_core_off_pend;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_CORE_OFF_PEND)
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_hctl_shaders_core_off_pend() {
+  if (!_internal_has_mali_mali_pm_mcu_hctl_shaders_core_off_pend()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_hctl_shaders_core_off_pend();
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_core_off_pend_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_hctl_shaders_core_off_pend_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_hctl_shaders_core_off_pend() {
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSCOREOFFPENDFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_hctl_shaders_core_off_pend();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_CORE_OFF_PEND)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent mali_mali_PM_MCU_HCTL_SHADERS_PEND_OFF = 515;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_hctl_shaders_pend_off() const {
+  return event_case() == kMaliMaliPMMCUHCTLSHADERSPENDOFF;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_hctl_shaders_pend_off() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_shaders_pend_off();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_hctl_shaders_pend_off() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUHCTLSHADERSPENDOFF;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_hctl_shaders_pend_off() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_PEND_OFF)
+  if (_internal_has_mali_mali_pm_mcu_hctl_shaders_pend_off()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_off_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_off_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_hctl_shaders_pend_off() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_shaders_pend_off()
+      ? *_impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_off_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent& FtraceEvent::mali_mali_pm_mcu_hctl_shaders_pend_off() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_PEND_OFF)
+  return _internal_mali_mali_pm_mcu_hctl_shaders_pend_off();
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_hctl_shaders_pend_off() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_PEND_OFF)
+  if (_internal_has_mali_mali_pm_mcu_hctl_shaders_pend_off()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_off_;
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_off_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_shaders_pend_off(::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* mali_mali_pm_mcu_hctl_shaders_pend_off) {
+  clear_event();
+  if (mali_mali_pm_mcu_hctl_shaders_pend_off) {
+    set_has_mali_mali_pm_mcu_hctl_shaders_pend_off();
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_off_ = mali_mali_pm_mcu_hctl_shaders_pend_off;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_PEND_OFF)
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_hctl_shaders_pend_off() {
+  if (!_internal_has_mali_mali_pm_mcu_hctl_shaders_pend_off()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_hctl_shaders_pend_off();
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_off_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_off_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_hctl_shaders_pend_off() {
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDOFFFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_hctl_shaders_pend_off();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_PEND_OFF)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent mali_mali_PM_MCU_HCTL_SHADERS_PEND_ON = 516;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_hctl_shaders_pend_on() const {
+  return event_case() == kMaliMaliPMMCUHCTLSHADERSPENDON;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_hctl_shaders_pend_on() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_shaders_pend_on();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_hctl_shaders_pend_on() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUHCTLSHADERSPENDON;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_hctl_shaders_pend_on() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_PEND_ON)
+  if (_internal_has_mali_mali_pm_mcu_hctl_shaders_pend_on()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_on_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_on_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_hctl_shaders_pend_on() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_shaders_pend_on()
+      ? *_impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_on_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent& FtraceEvent::mali_mali_pm_mcu_hctl_shaders_pend_on() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_PEND_ON)
+  return _internal_mali_mali_pm_mcu_hctl_shaders_pend_on();
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_hctl_shaders_pend_on() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_PEND_ON)
+  if (_internal_has_mali_mali_pm_mcu_hctl_shaders_pend_on()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_on_;
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_on_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_shaders_pend_on(::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* mali_mali_pm_mcu_hctl_shaders_pend_on) {
+  clear_event();
+  if (mali_mali_pm_mcu_hctl_shaders_pend_on) {
+    set_has_mali_mali_pm_mcu_hctl_shaders_pend_on();
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_on_ = mali_mali_pm_mcu_hctl_shaders_pend_on;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_PEND_ON)
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_hctl_shaders_pend_on() {
+  if (!_internal_has_mali_mali_pm_mcu_hctl_shaders_pend_on()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_hctl_shaders_pend_on();
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_on_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_hctl_shaders_pend_on_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_hctl_shaders_pend_on() {
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSPENDONFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_hctl_shaders_pend_on();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_PEND_ON)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent mali_mali_PM_MCU_HCTL_SHADERS_READY_OFF = 517;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_hctl_shaders_ready_off() const {
+  return event_case() == kMaliMaliPMMCUHCTLSHADERSREADYOFF;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_hctl_shaders_ready_off() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_shaders_ready_off();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_hctl_shaders_ready_off() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUHCTLSHADERSREADYOFF;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_hctl_shaders_ready_off() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_READY_OFF)
+  if (_internal_has_mali_mali_pm_mcu_hctl_shaders_ready_off()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_shaders_ready_off_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_ready_off_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_hctl_shaders_ready_off() const {
+  return _internal_has_mali_mali_pm_mcu_hctl_shaders_ready_off()
+      ? *_impl_.event_.mali_mali_pm_mcu_hctl_shaders_ready_off_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent& FtraceEvent::mali_mali_pm_mcu_hctl_shaders_ready_off() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_READY_OFF)
+  return _internal_mali_mali_pm_mcu_hctl_shaders_ready_off();
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_hctl_shaders_ready_off() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_READY_OFF)
+  if (_internal_has_mali_mali_pm_mcu_hctl_shaders_ready_off()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_hctl_shaders_ready_off_;
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_ready_off_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_hctl_shaders_ready_off(::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* mali_mali_pm_mcu_hctl_shaders_ready_off) {
+  clear_event();
+  if (mali_mali_pm_mcu_hctl_shaders_ready_off) {
+    set_has_mali_mali_pm_mcu_hctl_shaders_ready_off();
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_ready_off_ = mali_mali_pm_mcu_hctl_shaders_ready_off;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_READY_OFF)
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_hctl_shaders_ready_off() {
+  if (!_internal_has_mali_mali_pm_mcu_hctl_shaders_ready_off()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_hctl_shaders_ready_off();
+    _impl_.event_.mali_mali_pm_mcu_hctl_shaders_ready_off_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_hctl_shaders_ready_off_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_hctl_shaders_ready_off() {
+  ::perfetto::protos::MaliMaliPMMCUHCTLSHADERSREADYOFFFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_hctl_shaders_ready_off();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_HCTL_SHADERS_READY_OFF)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUINSLEEPFtraceEvent mali_mali_PM_MCU_IN_SLEEP = 518;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_in_sleep() const {
+  return event_case() == kMaliMaliPMMCUINSLEEP;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_in_sleep() const {
+  return _internal_has_mali_mali_pm_mcu_in_sleep();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_in_sleep() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUINSLEEP;
+}
+inline ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_in_sleep() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_IN_SLEEP)
+  if (_internal_has_mali_mali_pm_mcu_in_sleep()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_in_sleep_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_in_sleep_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_in_sleep() const {
+  return _internal_has_mali_mali_pm_mcu_in_sleep()
+      ? *_impl_.event_.mali_mali_pm_mcu_in_sleep_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUINSLEEPFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent& FtraceEvent::mali_mali_pm_mcu_in_sleep() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_IN_SLEEP)
+  return _internal_mali_mali_pm_mcu_in_sleep();
+}
+inline ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_in_sleep() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_IN_SLEEP)
+  if (_internal_has_mali_mali_pm_mcu_in_sleep()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_in_sleep_;
+    _impl_.event_.mali_mali_pm_mcu_in_sleep_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_in_sleep(::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* mali_mali_pm_mcu_in_sleep) {
+  clear_event();
+  if (mali_mali_pm_mcu_in_sleep) {
+    set_has_mali_mali_pm_mcu_in_sleep();
+    _impl_.event_.mali_mali_pm_mcu_in_sleep_ = mali_mali_pm_mcu_in_sleep;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_IN_SLEEP)
+}
+inline ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_in_sleep() {
+  if (!_internal_has_mali_mali_pm_mcu_in_sleep()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_in_sleep();
+    _impl_.event_.mali_mali_pm_mcu_in_sleep_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_in_sleep_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_in_sleep() {
+  ::perfetto::protos::MaliMaliPMMCUINSLEEPFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_in_sleep();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_IN_SLEEP)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUOFFFtraceEvent mali_mali_PM_MCU_OFF = 519;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_off() const {
+  return event_case() == kMaliMaliPMMCUOFF;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_off() const {
+  return _internal_has_mali_mali_pm_mcu_off();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_off() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUOFF;
+}
+inline ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_off() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_OFF)
+  if (_internal_has_mali_mali_pm_mcu_off()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_off_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_off_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_off() const {
+  return _internal_has_mali_mali_pm_mcu_off()
+      ? *_impl_.event_.mali_mali_pm_mcu_off_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUOFFFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent& FtraceEvent::mali_mali_pm_mcu_off() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_OFF)
+  return _internal_mali_mali_pm_mcu_off();
+}
+inline ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_off() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_OFF)
+  if (_internal_has_mali_mali_pm_mcu_off()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_off_;
+    _impl_.event_.mali_mali_pm_mcu_off_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_off(::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* mali_mali_pm_mcu_off) {
+  clear_event();
+  if (mali_mali_pm_mcu_off) {
+    set_has_mali_mali_pm_mcu_off();
+    _impl_.event_.mali_mali_pm_mcu_off_ = mali_mali_pm_mcu_off;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_OFF)
+}
+inline ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_off() {
+  if (!_internal_has_mali_mali_pm_mcu_off()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_off();
+    _impl_.event_.mali_mali_pm_mcu_off_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_off_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_off() {
+  ::perfetto::protos::MaliMaliPMMCUOFFFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_off();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_OFF)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUONFtraceEvent mali_mali_PM_MCU_ON = 520;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_on() const {
+  return event_case() == kMaliMaliPMMCUON;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_on() const {
+  return _internal_has_mali_mali_pm_mcu_on();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_on() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUON;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_on() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON)
+  if (_internal_has_mali_mali_pm_mcu_on()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_on_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_on() const {
+  return _internal_has_mali_mali_pm_mcu_on()
+      ? *_impl_.event_.mali_mali_pm_mcu_on_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUONFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUONFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONFtraceEvent& FtraceEvent::mali_mali_pm_mcu_on() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON)
+  return _internal_mali_mali_pm_mcu_on();
+}
+inline ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_on() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON)
+  if (_internal_has_mali_mali_pm_mcu_on()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_;
+    _impl_.event_.mali_mali_pm_mcu_on_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_on(::perfetto::protos::MaliMaliPMMCUONFtraceEvent* mali_mali_pm_mcu_on) {
+  clear_event();
+  if (mali_mali_pm_mcu_on) {
+    set_has_mali_mali_pm_mcu_on();
+    _impl_.event_.mali_mali_pm_mcu_on_ = mali_mali_pm_mcu_on;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON)
+}
+inline ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_on() {
+  if (!_internal_has_mali_mali_pm_mcu_on()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_on();
+    _impl_.event_.mali_mali_pm_mcu_on_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUONFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_on_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_on() {
+  ::perfetto::protos::MaliMaliPMMCUONFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_on();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent mali_mali_PM_MCU_ON_CORE_ATTR_UPDATE_PEND = 521;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_on_core_attr_update_pend() const {
+  return event_case() == kMaliMaliPMMCUONCOREATTRUPDATEPEND;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_on_core_attr_update_pend() const {
+  return _internal_has_mali_mali_pm_mcu_on_core_attr_update_pend();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_on_core_attr_update_pend() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUONCOREATTRUPDATEPEND;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_on_core_attr_update_pend() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_CORE_ATTR_UPDATE_PEND)
+  if (_internal_has_mali_mali_pm_mcu_on_core_attr_update_pend()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_core_attr_update_pend_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_on_core_attr_update_pend_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_on_core_attr_update_pend() const {
+  return _internal_has_mali_mali_pm_mcu_on_core_attr_update_pend()
+      ? *_impl_.event_.mali_mali_pm_mcu_on_core_attr_update_pend_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent& FtraceEvent::mali_mali_pm_mcu_on_core_attr_update_pend() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_CORE_ATTR_UPDATE_PEND)
+  return _internal_mali_mali_pm_mcu_on_core_attr_update_pend();
+}
+inline ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_on_core_attr_update_pend() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_CORE_ATTR_UPDATE_PEND)
+  if (_internal_has_mali_mali_pm_mcu_on_core_attr_update_pend()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_core_attr_update_pend_;
+    _impl_.event_.mali_mali_pm_mcu_on_core_attr_update_pend_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_on_core_attr_update_pend(::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* mali_mali_pm_mcu_on_core_attr_update_pend) {
+  clear_event();
+  if (mali_mali_pm_mcu_on_core_attr_update_pend) {
+    set_has_mali_mali_pm_mcu_on_core_attr_update_pend();
+    _impl_.event_.mali_mali_pm_mcu_on_core_attr_update_pend_ = mali_mali_pm_mcu_on_core_attr_update_pend;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_CORE_ATTR_UPDATE_PEND)
+}
+inline ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_on_core_attr_update_pend() {
+  if (!_internal_has_mali_mali_pm_mcu_on_core_attr_update_pend()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_on_core_attr_update_pend();
+    _impl_.event_.mali_mali_pm_mcu_on_core_attr_update_pend_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_on_core_attr_update_pend_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_on_core_attr_update_pend() {
+  ::perfetto::protos::MaliMaliPMMCUONCOREATTRUPDATEPENDFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_on_core_attr_update_pend();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_CORE_ATTR_UPDATE_PEND)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUONGLBREINITPENDFtraceEvent mali_mali_PM_MCU_ON_GLB_REINIT_PEND = 522;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_on_glb_reinit_pend() const {
+  return event_case() == kMaliMaliPMMCUONGLBREINITPEND;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_on_glb_reinit_pend() const {
+  return _internal_has_mali_mali_pm_mcu_on_glb_reinit_pend();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_on_glb_reinit_pend() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUONGLBREINITPEND;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_on_glb_reinit_pend() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_GLB_REINIT_PEND)
+  if (_internal_has_mali_mali_pm_mcu_on_glb_reinit_pend()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_glb_reinit_pend_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_on_glb_reinit_pend_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_on_glb_reinit_pend() const {
+  return _internal_has_mali_mali_pm_mcu_on_glb_reinit_pend()
+      ? *_impl_.event_.mali_mali_pm_mcu_on_glb_reinit_pend_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUONGLBREINITPENDFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent& FtraceEvent::mali_mali_pm_mcu_on_glb_reinit_pend() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_GLB_REINIT_PEND)
+  return _internal_mali_mali_pm_mcu_on_glb_reinit_pend();
+}
+inline ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_on_glb_reinit_pend() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_GLB_REINIT_PEND)
+  if (_internal_has_mali_mali_pm_mcu_on_glb_reinit_pend()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_glb_reinit_pend_;
+    _impl_.event_.mali_mali_pm_mcu_on_glb_reinit_pend_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_on_glb_reinit_pend(::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* mali_mali_pm_mcu_on_glb_reinit_pend) {
+  clear_event();
+  if (mali_mali_pm_mcu_on_glb_reinit_pend) {
+    set_has_mali_mali_pm_mcu_on_glb_reinit_pend();
+    _impl_.event_.mali_mali_pm_mcu_on_glb_reinit_pend_ = mali_mali_pm_mcu_on_glb_reinit_pend;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_GLB_REINIT_PEND)
+}
+inline ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_on_glb_reinit_pend() {
+  if (!_internal_has_mali_mali_pm_mcu_on_glb_reinit_pend()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_on_glb_reinit_pend();
+    _impl_.event_.mali_mali_pm_mcu_on_glb_reinit_pend_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_on_glb_reinit_pend_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_on_glb_reinit_pend() {
+  ::perfetto::protos::MaliMaliPMMCUONGLBREINITPENDFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_on_glb_reinit_pend();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_GLB_REINIT_PEND)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUONHALTFtraceEvent mali_mali_PM_MCU_ON_HALT = 523;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_on_halt() const {
+  return event_case() == kMaliMaliPMMCUONHALT;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_on_halt() const {
+  return _internal_has_mali_mali_pm_mcu_on_halt();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_on_halt() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUONHALT;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_on_halt() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HALT)
+  if (_internal_has_mali_mali_pm_mcu_on_halt()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_halt_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_on_halt_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_on_halt() const {
+  return _internal_has_mali_mali_pm_mcu_on_halt()
+      ? *_impl_.event_.mali_mali_pm_mcu_on_halt_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUONHALTFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent& FtraceEvent::mali_mali_pm_mcu_on_halt() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HALT)
+  return _internal_mali_mali_pm_mcu_on_halt();
+}
+inline ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_on_halt() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HALT)
+  if (_internal_has_mali_mali_pm_mcu_on_halt()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_halt_;
+    _impl_.event_.mali_mali_pm_mcu_on_halt_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_on_halt(::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* mali_mali_pm_mcu_on_halt) {
+  clear_event();
+  if (mali_mali_pm_mcu_on_halt) {
+    set_has_mali_mali_pm_mcu_on_halt();
+    _impl_.event_.mali_mali_pm_mcu_on_halt_ = mali_mali_pm_mcu_on_halt;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HALT)
+}
+inline ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_on_halt() {
+  if (!_internal_has_mali_mali_pm_mcu_on_halt()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_on_halt();
+    _impl_.event_.mali_mali_pm_mcu_on_halt_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_on_halt_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_on_halt() {
+  ::perfetto::protos::MaliMaliPMMCUONHALTFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_on_halt();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HALT)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUONHWCNTDISABLEFtraceEvent mali_mali_PM_MCU_ON_HWCNT_DISABLE = 524;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_on_hwcnt_disable() const {
+  return event_case() == kMaliMaliPMMCUONHWCNTDISABLE;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_on_hwcnt_disable() const {
+  return _internal_has_mali_mali_pm_mcu_on_hwcnt_disable();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_on_hwcnt_disable() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUONHWCNTDISABLE;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_on_hwcnt_disable() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HWCNT_DISABLE)
+  if (_internal_has_mali_mali_pm_mcu_on_hwcnt_disable()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_hwcnt_disable_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_on_hwcnt_disable_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_on_hwcnt_disable() const {
+  return _internal_has_mali_mali_pm_mcu_on_hwcnt_disable()
+      ? *_impl_.event_.mali_mali_pm_mcu_on_hwcnt_disable_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUONHWCNTDISABLEFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent& FtraceEvent::mali_mali_pm_mcu_on_hwcnt_disable() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HWCNT_DISABLE)
+  return _internal_mali_mali_pm_mcu_on_hwcnt_disable();
+}
+inline ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_on_hwcnt_disable() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HWCNT_DISABLE)
+  if (_internal_has_mali_mali_pm_mcu_on_hwcnt_disable()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_hwcnt_disable_;
+    _impl_.event_.mali_mali_pm_mcu_on_hwcnt_disable_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_on_hwcnt_disable(::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* mali_mali_pm_mcu_on_hwcnt_disable) {
+  clear_event();
+  if (mali_mali_pm_mcu_on_hwcnt_disable) {
+    set_has_mali_mali_pm_mcu_on_hwcnt_disable();
+    _impl_.event_.mali_mali_pm_mcu_on_hwcnt_disable_ = mali_mali_pm_mcu_on_hwcnt_disable;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HWCNT_DISABLE)
+}
+inline ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_on_hwcnt_disable() {
+  if (!_internal_has_mali_mali_pm_mcu_on_hwcnt_disable()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_on_hwcnt_disable();
+    _impl_.event_.mali_mali_pm_mcu_on_hwcnt_disable_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_on_hwcnt_disable_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_on_hwcnt_disable() {
+  ::perfetto::protos::MaliMaliPMMCUONHWCNTDISABLEFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_on_hwcnt_disable();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HWCNT_DISABLE)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUONHWCNTENABLEFtraceEvent mali_mali_PM_MCU_ON_HWCNT_ENABLE = 525;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_on_hwcnt_enable() const {
+  return event_case() == kMaliMaliPMMCUONHWCNTENABLE;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_on_hwcnt_enable() const {
+  return _internal_has_mali_mali_pm_mcu_on_hwcnt_enable();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_on_hwcnt_enable() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUONHWCNTENABLE;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_on_hwcnt_enable() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HWCNT_ENABLE)
+  if (_internal_has_mali_mali_pm_mcu_on_hwcnt_enable()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_hwcnt_enable_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_on_hwcnt_enable_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_on_hwcnt_enable() const {
+  return _internal_has_mali_mali_pm_mcu_on_hwcnt_enable()
+      ? *_impl_.event_.mali_mali_pm_mcu_on_hwcnt_enable_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUONHWCNTENABLEFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent& FtraceEvent::mali_mali_pm_mcu_on_hwcnt_enable() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HWCNT_ENABLE)
+  return _internal_mali_mali_pm_mcu_on_hwcnt_enable();
+}
+inline ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_on_hwcnt_enable() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HWCNT_ENABLE)
+  if (_internal_has_mali_mali_pm_mcu_on_hwcnt_enable()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_hwcnt_enable_;
+    _impl_.event_.mali_mali_pm_mcu_on_hwcnt_enable_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_on_hwcnt_enable(::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* mali_mali_pm_mcu_on_hwcnt_enable) {
+  clear_event();
+  if (mali_mali_pm_mcu_on_hwcnt_enable) {
+    set_has_mali_mali_pm_mcu_on_hwcnt_enable();
+    _impl_.event_.mali_mali_pm_mcu_on_hwcnt_enable_ = mali_mali_pm_mcu_on_hwcnt_enable;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HWCNT_ENABLE)
+}
+inline ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_on_hwcnt_enable() {
+  if (!_internal_has_mali_mali_pm_mcu_on_hwcnt_enable()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_on_hwcnt_enable();
+    _impl_.event_.mali_mali_pm_mcu_on_hwcnt_enable_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_on_hwcnt_enable_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_on_hwcnt_enable() {
+  ::perfetto::protos::MaliMaliPMMCUONHWCNTENABLEFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_on_hwcnt_enable();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_HWCNT_ENABLE)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUONPENDHALTFtraceEvent mali_mali_PM_MCU_ON_PEND_HALT = 526;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_on_pend_halt() const {
+  return event_case() == kMaliMaliPMMCUONPENDHALT;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_on_pend_halt() const {
+  return _internal_has_mali_mali_pm_mcu_on_pend_halt();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_on_pend_halt() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUONPENDHALT;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_on_pend_halt() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_PEND_HALT)
+  if (_internal_has_mali_mali_pm_mcu_on_pend_halt()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_pend_halt_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_on_pend_halt_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_on_pend_halt() const {
+  return _internal_has_mali_mali_pm_mcu_on_pend_halt()
+      ? *_impl_.event_.mali_mali_pm_mcu_on_pend_halt_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUONPENDHALTFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent& FtraceEvent::mali_mali_pm_mcu_on_pend_halt() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_PEND_HALT)
+  return _internal_mali_mali_pm_mcu_on_pend_halt();
+}
+inline ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_on_pend_halt() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_PEND_HALT)
+  if (_internal_has_mali_mali_pm_mcu_on_pend_halt()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_pend_halt_;
+    _impl_.event_.mali_mali_pm_mcu_on_pend_halt_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_on_pend_halt(::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* mali_mali_pm_mcu_on_pend_halt) {
+  clear_event();
+  if (mali_mali_pm_mcu_on_pend_halt) {
+    set_has_mali_mali_pm_mcu_on_pend_halt();
+    _impl_.event_.mali_mali_pm_mcu_on_pend_halt_ = mali_mali_pm_mcu_on_pend_halt;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_PEND_HALT)
+}
+inline ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_on_pend_halt() {
+  if (!_internal_has_mali_mali_pm_mcu_on_pend_halt()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_on_pend_halt();
+    _impl_.event_.mali_mali_pm_mcu_on_pend_halt_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_on_pend_halt_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_on_pend_halt() {
+  ::perfetto::protos::MaliMaliPMMCUONPENDHALTFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_on_pend_halt();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_PEND_HALT)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUONPENDSLEEPFtraceEvent mali_mali_PM_MCU_ON_PEND_SLEEP = 527;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_on_pend_sleep() const {
+  return event_case() == kMaliMaliPMMCUONPENDSLEEP;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_on_pend_sleep() const {
+  return _internal_has_mali_mali_pm_mcu_on_pend_sleep();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_on_pend_sleep() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUONPENDSLEEP;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_on_pend_sleep() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_PEND_SLEEP)
+  if (_internal_has_mali_mali_pm_mcu_on_pend_sleep()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_pend_sleep_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_on_pend_sleep_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_on_pend_sleep() const {
+  return _internal_has_mali_mali_pm_mcu_on_pend_sleep()
+      ? *_impl_.event_.mali_mali_pm_mcu_on_pend_sleep_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUONPENDSLEEPFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent& FtraceEvent::mali_mali_pm_mcu_on_pend_sleep() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_PEND_SLEEP)
+  return _internal_mali_mali_pm_mcu_on_pend_sleep();
+}
+inline ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_on_pend_sleep() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_PEND_SLEEP)
+  if (_internal_has_mali_mali_pm_mcu_on_pend_sleep()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_pend_sleep_;
+    _impl_.event_.mali_mali_pm_mcu_on_pend_sleep_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_on_pend_sleep(::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* mali_mali_pm_mcu_on_pend_sleep) {
+  clear_event();
+  if (mali_mali_pm_mcu_on_pend_sleep) {
+    set_has_mali_mali_pm_mcu_on_pend_sleep();
+    _impl_.event_.mali_mali_pm_mcu_on_pend_sleep_ = mali_mali_pm_mcu_on_pend_sleep;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_PEND_SLEEP)
+}
+inline ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_on_pend_sleep() {
+  if (!_internal_has_mali_mali_pm_mcu_on_pend_sleep()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_on_pend_sleep();
+    _impl_.event_.mali_mali_pm_mcu_on_pend_sleep_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_on_pend_sleep_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_on_pend_sleep() {
+  ::perfetto::protos::MaliMaliPMMCUONPENDSLEEPFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_on_pend_sleep();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_PEND_SLEEP)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUONSLEEPINITIATEFtraceEvent mali_mali_PM_MCU_ON_SLEEP_INITIATE = 528;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_on_sleep_initiate() const {
+  return event_case() == kMaliMaliPMMCUONSLEEPINITIATE;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_on_sleep_initiate() const {
+  return _internal_has_mali_mali_pm_mcu_on_sleep_initiate();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_on_sleep_initiate() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUONSLEEPINITIATE;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_on_sleep_initiate() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_SLEEP_INITIATE)
+  if (_internal_has_mali_mali_pm_mcu_on_sleep_initiate()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_sleep_initiate_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_on_sleep_initiate_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_on_sleep_initiate() const {
+  return _internal_has_mali_mali_pm_mcu_on_sleep_initiate()
+      ? *_impl_.event_.mali_mali_pm_mcu_on_sleep_initiate_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUONSLEEPINITIATEFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent& FtraceEvent::mali_mali_pm_mcu_on_sleep_initiate() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_SLEEP_INITIATE)
+  return _internal_mali_mali_pm_mcu_on_sleep_initiate();
+}
+inline ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_on_sleep_initiate() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_SLEEP_INITIATE)
+  if (_internal_has_mali_mali_pm_mcu_on_sleep_initiate()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_on_sleep_initiate_;
+    _impl_.event_.mali_mali_pm_mcu_on_sleep_initiate_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_on_sleep_initiate(::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* mali_mali_pm_mcu_on_sleep_initiate) {
+  clear_event();
+  if (mali_mali_pm_mcu_on_sleep_initiate) {
+    set_has_mali_mali_pm_mcu_on_sleep_initiate();
+    _impl_.event_.mali_mali_pm_mcu_on_sleep_initiate_ = mali_mali_pm_mcu_on_sleep_initiate;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_SLEEP_INITIATE)
+}
+inline ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_on_sleep_initiate() {
+  if (!_internal_has_mali_mali_pm_mcu_on_sleep_initiate()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_on_sleep_initiate();
+    _impl_.event_.mali_mali_pm_mcu_on_sleep_initiate_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_on_sleep_initiate_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_on_sleep_initiate() {
+  ::perfetto::protos::MaliMaliPMMCUONSLEEPINITIATEFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_on_sleep_initiate();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_ON_SLEEP_INITIATE)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUPENDOFFFtraceEvent mali_mali_PM_MCU_PEND_OFF = 529;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_pend_off() const {
+  return event_case() == kMaliMaliPMMCUPENDOFF;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_pend_off() const {
+  return _internal_has_mali_mali_pm_mcu_pend_off();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_pend_off() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUPENDOFF;
+}
+inline ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_pend_off() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_PEND_OFF)
+  if (_internal_has_mali_mali_pm_mcu_pend_off()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_pend_off_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_pend_off_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_pend_off() const {
+  return _internal_has_mali_mali_pm_mcu_pend_off()
+      ? *_impl_.event_.mali_mali_pm_mcu_pend_off_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUPENDOFFFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent& FtraceEvent::mali_mali_pm_mcu_pend_off() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_PEND_OFF)
+  return _internal_mali_mali_pm_mcu_pend_off();
+}
+inline ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_pend_off() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_PEND_OFF)
+  if (_internal_has_mali_mali_pm_mcu_pend_off()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_pend_off_;
+    _impl_.event_.mali_mali_pm_mcu_pend_off_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_pend_off(::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* mali_mali_pm_mcu_pend_off) {
+  clear_event();
+  if (mali_mali_pm_mcu_pend_off) {
+    set_has_mali_mali_pm_mcu_pend_off();
+    _impl_.event_.mali_mali_pm_mcu_pend_off_ = mali_mali_pm_mcu_pend_off;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_PEND_OFF)
+}
+inline ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_pend_off() {
+  if (!_internal_has_mali_mali_pm_mcu_pend_off()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_pend_off();
+    _impl_.event_.mali_mali_pm_mcu_pend_off_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_pend_off_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_pend_off() {
+  ::perfetto::protos::MaliMaliPMMCUPENDOFFFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_pend_off();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_PEND_OFF)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUPENDONRELOADFtraceEvent mali_mali_PM_MCU_PEND_ON_RELOAD = 530;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_pend_on_reload() const {
+  return event_case() == kMaliMaliPMMCUPENDONRELOAD;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_pend_on_reload() const {
+  return _internal_has_mali_mali_pm_mcu_pend_on_reload();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_pend_on_reload() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUPENDONRELOAD;
+}
+inline ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_pend_on_reload() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_PEND_ON_RELOAD)
+  if (_internal_has_mali_mali_pm_mcu_pend_on_reload()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_pend_on_reload_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_pend_on_reload_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_pend_on_reload() const {
+  return _internal_has_mali_mali_pm_mcu_pend_on_reload()
+      ? *_impl_.event_.mali_mali_pm_mcu_pend_on_reload_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUPENDONRELOADFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent& FtraceEvent::mali_mali_pm_mcu_pend_on_reload() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_PEND_ON_RELOAD)
+  return _internal_mali_mali_pm_mcu_pend_on_reload();
+}
+inline ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_pend_on_reload() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_PEND_ON_RELOAD)
+  if (_internal_has_mali_mali_pm_mcu_pend_on_reload()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_pend_on_reload_;
+    _impl_.event_.mali_mali_pm_mcu_pend_on_reload_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_pend_on_reload(::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* mali_mali_pm_mcu_pend_on_reload) {
+  clear_event();
+  if (mali_mali_pm_mcu_pend_on_reload) {
+    set_has_mali_mali_pm_mcu_pend_on_reload();
+    _impl_.event_.mali_mali_pm_mcu_pend_on_reload_ = mali_mali_pm_mcu_pend_on_reload;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_PEND_ON_RELOAD)
+}
+inline ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_pend_on_reload() {
+  if (!_internal_has_mali_mali_pm_mcu_pend_on_reload()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_pend_on_reload();
+    _impl_.event_.mali_mali_pm_mcu_pend_on_reload_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_pend_on_reload_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_pend_on_reload() {
+  ::perfetto::protos::MaliMaliPMMCUPENDONRELOADFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_pend_on_reload();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_PEND_ON_RELOAD)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCUPOWERDOWNFtraceEvent mali_mali_PM_MCU_POWER_DOWN = 531;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_power_down() const {
+  return event_case() == kMaliMaliPMMCUPOWERDOWN;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_power_down() const {
+  return _internal_has_mali_mali_pm_mcu_power_down();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_power_down() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCUPOWERDOWN;
+}
+inline ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_power_down() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_POWER_DOWN)
+  if (_internal_has_mali_mali_pm_mcu_power_down()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_power_down_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_power_down_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_power_down() const {
+  return _internal_has_mali_mali_pm_mcu_power_down()
+      ? *_impl_.event_.mali_mali_pm_mcu_power_down_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCUPOWERDOWNFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent& FtraceEvent::mali_mali_pm_mcu_power_down() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_POWER_DOWN)
+  return _internal_mali_mali_pm_mcu_power_down();
+}
+inline ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_power_down() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_POWER_DOWN)
+  if (_internal_has_mali_mali_pm_mcu_power_down()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_power_down_;
+    _impl_.event_.mali_mali_pm_mcu_power_down_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_power_down(::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* mali_mali_pm_mcu_power_down) {
+  clear_event();
+  if (mali_mali_pm_mcu_power_down) {
+    set_has_mali_mali_pm_mcu_power_down();
+    _impl_.event_.mali_mali_pm_mcu_power_down_ = mali_mali_pm_mcu_power_down;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_POWER_DOWN)
+}
+inline ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_power_down() {
+  if (!_internal_has_mali_mali_pm_mcu_power_down()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_power_down();
+    _impl_.event_.mali_mali_pm_mcu_power_down_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_power_down_;
+}
+inline ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_power_down() {
+  ::perfetto::protos::MaliMaliPMMCUPOWERDOWNFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_power_down();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_POWER_DOWN)
+  return _msg;
+}
+
+// .perfetto.protos.MaliMaliPMMCURESETWAITFtraceEvent mali_mali_PM_MCU_RESET_WAIT = 532;
+inline bool FtraceEvent::_internal_has_mali_mali_pm_mcu_reset_wait() const {
+  return event_case() == kMaliMaliPMMCURESETWAIT;
+}
+inline bool FtraceEvent::has_mali_mali_pm_mcu_reset_wait() const {
+  return _internal_has_mali_mali_pm_mcu_reset_wait();
+}
+inline void FtraceEvent::set_has_mali_mali_pm_mcu_reset_wait() {
+  _impl_._oneof_case_[0] = kMaliMaliPMMCURESETWAIT;
+}
+inline ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* FtraceEvent::release_mali_mali_pm_mcu_reset_wait() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_RESET_WAIT)
+  if (_internal_has_mali_mali_pm_mcu_reset_wait()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_reset_wait_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.mali_mali_pm_mcu_reset_wait_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent& FtraceEvent::_internal_mali_mali_pm_mcu_reset_wait() const {
+  return _internal_has_mali_mali_pm_mcu_reset_wait()
+      ? *_impl_.event_.mali_mali_pm_mcu_reset_wait_
+      : reinterpret_cast< ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent&>(::perfetto::protos::_MaliMaliPMMCURESETWAITFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent& FtraceEvent::mali_mali_pm_mcu_reset_wait() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_RESET_WAIT)
+  return _internal_mali_mali_pm_mcu_reset_wait();
+}
+inline ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* FtraceEvent::unsafe_arena_release_mali_mali_pm_mcu_reset_wait() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_RESET_WAIT)
+  if (_internal_has_mali_mali_pm_mcu_reset_wait()) {
+    clear_has_event();
+    ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* temp = _impl_.event_.mali_mali_pm_mcu_reset_wait_;
+    _impl_.event_.mali_mali_pm_mcu_reset_wait_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_mali_mali_pm_mcu_reset_wait(::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* mali_mali_pm_mcu_reset_wait) {
+  clear_event();
+  if (mali_mali_pm_mcu_reset_wait) {
+    set_has_mali_mali_pm_mcu_reset_wait();
+    _impl_.event_.mali_mali_pm_mcu_reset_wait_ = mali_mali_pm_mcu_reset_wait;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_RESET_WAIT)
+}
+inline ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* FtraceEvent::_internal_mutable_mali_mali_pm_mcu_reset_wait() {
+  if (!_internal_has_mali_mali_pm_mcu_reset_wait()) {
+    clear_event();
+    set_has_mali_mali_pm_mcu_reset_wait();
+    _impl_.event_.mali_mali_pm_mcu_reset_wait_ = CreateMaybeMessage< ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.mali_mali_pm_mcu_reset_wait_;
+}
+inline ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* FtraceEvent::mutable_mali_mali_pm_mcu_reset_wait() {
+  ::perfetto::protos::MaliMaliPMMCURESETWAITFtraceEvent* _msg = _internal_mutable_mali_mali_pm_mcu_reset_wait();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.mali_mali_PM_MCU_RESET_WAIT)
+  return _msg;
+}
+
+// .perfetto.protos.BclIrqTriggerFtraceEvent bcl_irq_trigger = 533;
+inline bool FtraceEvent::_internal_has_bcl_irq_trigger() const {
+  return event_case() == kBclIrqTrigger;
+}
+inline bool FtraceEvent::has_bcl_irq_trigger() const {
+  return _internal_has_bcl_irq_trigger();
+}
+inline void FtraceEvent::set_has_bcl_irq_trigger() {
+  _impl_._oneof_case_[0] = kBclIrqTrigger;
+}
+inline ::perfetto::protos::BclIrqTriggerFtraceEvent* FtraceEvent::release_bcl_irq_trigger() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.bcl_irq_trigger)
+  if (_internal_has_bcl_irq_trigger()) {
+    clear_has_event();
+    ::perfetto::protos::BclIrqTriggerFtraceEvent* temp = _impl_.event_.bcl_irq_trigger_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.bcl_irq_trigger_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::BclIrqTriggerFtraceEvent& FtraceEvent::_internal_bcl_irq_trigger() const {
+  return _internal_has_bcl_irq_trigger()
+      ? *_impl_.event_.bcl_irq_trigger_
+      : reinterpret_cast< ::perfetto::protos::BclIrqTriggerFtraceEvent&>(::perfetto::protos::_BclIrqTriggerFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::BclIrqTriggerFtraceEvent& FtraceEvent::bcl_irq_trigger() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.bcl_irq_trigger)
+  return _internal_bcl_irq_trigger();
+}
+inline ::perfetto::protos::BclIrqTriggerFtraceEvent* FtraceEvent::unsafe_arena_release_bcl_irq_trigger() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.bcl_irq_trigger)
+  if (_internal_has_bcl_irq_trigger()) {
+    clear_has_event();
+    ::perfetto::protos::BclIrqTriggerFtraceEvent* temp = _impl_.event_.bcl_irq_trigger_;
+    _impl_.event_.bcl_irq_trigger_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_bcl_irq_trigger(::perfetto::protos::BclIrqTriggerFtraceEvent* bcl_irq_trigger) {
+  clear_event();
+  if (bcl_irq_trigger) {
+    set_has_bcl_irq_trigger();
+    _impl_.event_.bcl_irq_trigger_ = bcl_irq_trigger;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.bcl_irq_trigger)
+}
+inline ::perfetto::protos::BclIrqTriggerFtraceEvent* FtraceEvent::_internal_mutable_bcl_irq_trigger() {
+  if (!_internal_has_bcl_irq_trigger()) {
+    clear_event();
+    set_has_bcl_irq_trigger();
+    _impl_.event_.bcl_irq_trigger_ = CreateMaybeMessage< ::perfetto::protos::BclIrqTriggerFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.bcl_irq_trigger_;
+}
+inline ::perfetto::protos::BclIrqTriggerFtraceEvent* FtraceEvent::mutable_bcl_irq_trigger() {
+  ::perfetto::protos::BclIrqTriggerFtraceEvent* _msg = _internal_mutable_bcl_irq_trigger();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.bcl_irq_trigger)
+  return _msg;
+}
+
+// .perfetto.protos.KgslAdrenoCmdbatchQueuedFtraceEvent kgsl_adreno_cmdbatch_queued = 534;
+inline bool FtraceEvent::_internal_has_kgsl_adreno_cmdbatch_queued() const {
+  return event_case() == kKgslAdrenoCmdbatchQueued;
+}
+inline bool FtraceEvent::has_kgsl_adreno_cmdbatch_queued() const {
+  return _internal_has_kgsl_adreno_cmdbatch_queued();
+}
+inline void FtraceEvent::set_has_kgsl_adreno_cmdbatch_queued() {
+  _impl_._oneof_case_[0] = kKgslAdrenoCmdbatchQueued;
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* FtraceEvent::release_kgsl_adreno_cmdbatch_queued() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_queued)
+  if (_internal_has_kgsl_adreno_cmdbatch_queued()) {
+    clear_has_event();
+    ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* temp = _impl_.event_.kgsl_adreno_cmdbatch_queued_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.kgsl_adreno_cmdbatch_queued_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent& FtraceEvent::_internal_kgsl_adreno_cmdbatch_queued() const {
+  return _internal_has_kgsl_adreno_cmdbatch_queued()
+      ? *_impl_.event_.kgsl_adreno_cmdbatch_queued_
+      : reinterpret_cast< ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent&>(::perfetto::protos::_KgslAdrenoCmdbatchQueuedFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent& FtraceEvent::kgsl_adreno_cmdbatch_queued() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_queued)
+  return _internal_kgsl_adreno_cmdbatch_queued();
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* FtraceEvent::unsafe_arena_release_kgsl_adreno_cmdbatch_queued() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_queued)
+  if (_internal_has_kgsl_adreno_cmdbatch_queued()) {
+    clear_has_event();
+    ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* temp = _impl_.event_.kgsl_adreno_cmdbatch_queued_;
+    _impl_.event_.kgsl_adreno_cmdbatch_queued_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_kgsl_adreno_cmdbatch_queued(::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* kgsl_adreno_cmdbatch_queued) {
+  clear_event();
+  if (kgsl_adreno_cmdbatch_queued) {
+    set_has_kgsl_adreno_cmdbatch_queued();
+    _impl_.event_.kgsl_adreno_cmdbatch_queued_ = kgsl_adreno_cmdbatch_queued;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_queued)
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* FtraceEvent::_internal_mutable_kgsl_adreno_cmdbatch_queued() {
+  if (!_internal_has_kgsl_adreno_cmdbatch_queued()) {
+    clear_event();
+    set_has_kgsl_adreno_cmdbatch_queued();
+    _impl_.event_.kgsl_adreno_cmdbatch_queued_ = CreateMaybeMessage< ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.kgsl_adreno_cmdbatch_queued_;
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* FtraceEvent::mutable_kgsl_adreno_cmdbatch_queued() {
+  ::perfetto::protos::KgslAdrenoCmdbatchQueuedFtraceEvent* _msg = _internal_mutable_kgsl_adreno_cmdbatch_queued();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_queued)
+  return _msg;
+}
+
+// .perfetto.protos.KgslAdrenoCmdbatchSubmittedFtraceEvent kgsl_adreno_cmdbatch_submitted = 535;
+inline bool FtraceEvent::_internal_has_kgsl_adreno_cmdbatch_submitted() const {
+  return event_case() == kKgslAdrenoCmdbatchSubmitted;
+}
+inline bool FtraceEvent::has_kgsl_adreno_cmdbatch_submitted() const {
+  return _internal_has_kgsl_adreno_cmdbatch_submitted();
+}
+inline void FtraceEvent::set_has_kgsl_adreno_cmdbatch_submitted() {
+  _impl_._oneof_case_[0] = kKgslAdrenoCmdbatchSubmitted;
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* FtraceEvent::release_kgsl_adreno_cmdbatch_submitted() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_submitted)
+  if (_internal_has_kgsl_adreno_cmdbatch_submitted()) {
+    clear_has_event();
+    ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* temp = _impl_.event_.kgsl_adreno_cmdbatch_submitted_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.kgsl_adreno_cmdbatch_submitted_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent& FtraceEvent::_internal_kgsl_adreno_cmdbatch_submitted() const {
+  return _internal_has_kgsl_adreno_cmdbatch_submitted()
+      ? *_impl_.event_.kgsl_adreno_cmdbatch_submitted_
+      : reinterpret_cast< ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent&>(::perfetto::protos::_KgslAdrenoCmdbatchSubmittedFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent& FtraceEvent::kgsl_adreno_cmdbatch_submitted() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_submitted)
+  return _internal_kgsl_adreno_cmdbatch_submitted();
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* FtraceEvent::unsafe_arena_release_kgsl_adreno_cmdbatch_submitted() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_submitted)
+  if (_internal_has_kgsl_adreno_cmdbatch_submitted()) {
+    clear_has_event();
+    ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* temp = _impl_.event_.kgsl_adreno_cmdbatch_submitted_;
+    _impl_.event_.kgsl_adreno_cmdbatch_submitted_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_kgsl_adreno_cmdbatch_submitted(::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* kgsl_adreno_cmdbatch_submitted) {
+  clear_event();
+  if (kgsl_adreno_cmdbatch_submitted) {
+    set_has_kgsl_adreno_cmdbatch_submitted();
+    _impl_.event_.kgsl_adreno_cmdbatch_submitted_ = kgsl_adreno_cmdbatch_submitted;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_submitted)
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* FtraceEvent::_internal_mutable_kgsl_adreno_cmdbatch_submitted() {
+  if (!_internal_has_kgsl_adreno_cmdbatch_submitted()) {
+    clear_event();
+    set_has_kgsl_adreno_cmdbatch_submitted();
+    _impl_.event_.kgsl_adreno_cmdbatch_submitted_ = CreateMaybeMessage< ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.kgsl_adreno_cmdbatch_submitted_;
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* FtraceEvent::mutable_kgsl_adreno_cmdbatch_submitted() {
+  ::perfetto::protos::KgslAdrenoCmdbatchSubmittedFtraceEvent* _msg = _internal_mutable_kgsl_adreno_cmdbatch_submitted();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_submitted)
+  return _msg;
+}
+
+// .perfetto.protos.KgslAdrenoCmdbatchSyncFtraceEvent kgsl_adreno_cmdbatch_sync = 536;
+inline bool FtraceEvent::_internal_has_kgsl_adreno_cmdbatch_sync() const {
+  return event_case() == kKgslAdrenoCmdbatchSync;
+}
+inline bool FtraceEvent::has_kgsl_adreno_cmdbatch_sync() const {
+  return _internal_has_kgsl_adreno_cmdbatch_sync();
+}
+inline void FtraceEvent::set_has_kgsl_adreno_cmdbatch_sync() {
+  _impl_._oneof_case_[0] = kKgslAdrenoCmdbatchSync;
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* FtraceEvent::release_kgsl_adreno_cmdbatch_sync() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_sync)
+  if (_internal_has_kgsl_adreno_cmdbatch_sync()) {
+    clear_has_event();
+    ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* temp = _impl_.event_.kgsl_adreno_cmdbatch_sync_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.kgsl_adreno_cmdbatch_sync_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent& FtraceEvent::_internal_kgsl_adreno_cmdbatch_sync() const {
+  return _internal_has_kgsl_adreno_cmdbatch_sync()
+      ? *_impl_.event_.kgsl_adreno_cmdbatch_sync_
+      : reinterpret_cast< ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent&>(::perfetto::protos::_KgslAdrenoCmdbatchSyncFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent& FtraceEvent::kgsl_adreno_cmdbatch_sync() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_sync)
+  return _internal_kgsl_adreno_cmdbatch_sync();
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* FtraceEvent::unsafe_arena_release_kgsl_adreno_cmdbatch_sync() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_sync)
+  if (_internal_has_kgsl_adreno_cmdbatch_sync()) {
+    clear_has_event();
+    ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* temp = _impl_.event_.kgsl_adreno_cmdbatch_sync_;
+    _impl_.event_.kgsl_adreno_cmdbatch_sync_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_kgsl_adreno_cmdbatch_sync(::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* kgsl_adreno_cmdbatch_sync) {
+  clear_event();
+  if (kgsl_adreno_cmdbatch_sync) {
+    set_has_kgsl_adreno_cmdbatch_sync();
+    _impl_.event_.kgsl_adreno_cmdbatch_sync_ = kgsl_adreno_cmdbatch_sync;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_sync)
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* FtraceEvent::_internal_mutable_kgsl_adreno_cmdbatch_sync() {
+  if (!_internal_has_kgsl_adreno_cmdbatch_sync()) {
+    clear_event();
+    set_has_kgsl_adreno_cmdbatch_sync();
+    _impl_.event_.kgsl_adreno_cmdbatch_sync_ = CreateMaybeMessage< ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.kgsl_adreno_cmdbatch_sync_;
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* FtraceEvent::mutable_kgsl_adreno_cmdbatch_sync() {
+  ::perfetto::protos::KgslAdrenoCmdbatchSyncFtraceEvent* _msg = _internal_mutable_kgsl_adreno_cmdbatch_sync();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_sync)
+  return _msg;
+}
+
+// .perfetto.protos.KgslAdrenoCmdbatchRetiredFtraceEvent kgsl_adreno_cmdbatch_retired = 537;
+inline bool FtraceEvent::_internal_has_kgsl_adreno_cmdbatch_retired() const {
+  return event_case() == kKgslAdrenoCmdbatchRetired;
+}
+inline bool FtraceEvent::has_kgsl_adreno_cmdbatch_retired() const {
+  return _internal_has_kgsl_adreno_cmdbatch_retired();
+}
+inline void FtraceEvent::set_has_kgsl_adreno_cmdbatch_retired() {
+  _impl_._oneof_case_[0] = kKgslAdrenoCmdbatchRetired;
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* FtraceEvent::release_kgsl_adreno_cmdbatch_retired() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_retired)
+  if (_internal_has_kgsl_adreno_cmdbatch_retired()) {
+    clear_has_event();
+    ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* temp = _impl_.event_.kgsl_adreno_cmdbatch_retired_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.kgsl_adreno_cmdbatch_retired_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent& FtraceEvent::_internal_kgsl_adreno_cmdbatch_retired() const {
+  return _internal_has_kgsl_adreno_cmdbatch_retired()
+      ? *_impl_.event_.kgsl_adreno_cmdbatch_retired_
+      : reinterpret_cast< ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent&>(::perfetto::protos::_KgslAdrenoCmdbatchRetiredFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent& FtraceEvent::kgsl_adreno_cmdbatch_retired() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_retired)
+  return _internal_kgsl_adreno_cmdbatch_retired();
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* FtraceEvent::unsafe_arena_release_kgsl_adreno_cmdbatch_retired() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_retired)
+  if (_internal_has_kgsl_adreno_cmdbatch_retired()) {
+    clear_has_event();
+    ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* temp = _impl_.event_.kgsl_adreno_cmdbatch_retired_;
+    _impl_.event_.kgsl_adreno_cmdbatch_retired_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_kgsl_adreno_cmdbatch_retired(::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* kgsl_adreno_cmdbatch_retired) {
+  clear_event();
+  if (kgsl_adreno_cmdbatch_retired) {
+    set_has_kgsl_adreno_cmdbatch_retired();
+    _impl_.event_.kgsl_adreno_cmdbatch_retired_ = kgsl_adreno_cmdbatch_retired;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_retired)
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* FtraceEvent::_internal_mutable_kgsl_adreno_cmdbatch_retired() {
+  if (!_internal_has_kgsl_adreno_cmdbatch_retired()) {
+    clear_event();
+    set_has_kgsl_adreno_cmdbatch_retired();
+    _impl_.event_.kgsl_adreno_cmdbatch_retired_ = CreateMaybeMessage< ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.kgsl_adreno_cmdbatch_retired_;
+}
+inline ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* FtraceEvent::mutable_kgsl_adreno_cmdbatch_retired() {
+  ::perfetto::protos::KgslAdrenoCmdbatchRetiredFtraceEvent* _msg = _internal_mutable_kgsl_adreno_cmdbatch_retired();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.kgsl_adreno_cmdbatch_retired)
+  return _msg;
+}
+
+// .perfetto.protos.PixelMmKswapdWakeFtraceEvent pixel_mm_kswapd_wake = 538;
+inline bool FtraceEvent::_internal_has_pixel_mm_kswapd_wake() const {
+  return event_case() == kPixelMmKswapdWake;
+}
+inline bool FtraceEvent::has_pixel_mm_kswapd_wake() const {
+  return _internal_has_pixel_mm_kswapd_wake();
+}
+inline void FtraceEvent::set_has_pixel_mm_kswapd_wake() {
+  _impl_._oneof_case_[0] = kPixelMmKswapdWake;
+}
+inline ::perfetto::protos::PixelMmKswapdWakeFtraceEvent* FtraceEvent::release_pixel_mm_kswapd_wake() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.pixel_mm_kswapd_wake)
+  if (_internal_has_pixel_mm_kswapd_wake()) {
+    clear_has_event();
+    ::perfetto::protos::PixelMmKswapdWakeFtraceEvent* temp = _impl_.event_.pixel_mm_kswapd_wake_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.pixel_mm_kswapd_wake_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::PixelMmKswapdWakeFtraceEvent& FtraceEvent::_internal_pixel_mm_kswapd_wake() const {
+  return _internal_has_pixel_mm_kswapd_wake()
+      ? *_impl_.event_.pixel_mm_kswapd_wake_
+      : reinterpret_cast< ::perfetto::protos::PixelMmKswapdWakeFtraceEvent&>(::perfetto::protos::_PixelMmKswapdWakeFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::PixelMmKswapdWakeFtraceEvent& FtraceEvent::pixel_mm_kswapd_wake() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.pixel_mm_kswapd_wake)
+  return _internal_pixel_mm_kswapd_wake();
+}
+inline ::perfetto::protos::PixelMmKswapdWakeFtraceEvent* FtraceEvent::unsafe_arena_release_pixel_mm_kswapd_wake() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.pixel_mm_kswapd_wake)
+  if (_internal_has_pixel_mm_kswapd_wake()) {
+    clear_has_event();
+    ::perfetto::protos::PixelMmKswapdWakeFtraceEvent* temp = _impl_.event_.pixel_mm_kswapd_wake_;
+    _impl_.event_.pixel_mm_kswapd_wake_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_pixel_mm_kswapd_wake(::perfetto::protos::PixelMmKswapdWakeFtraceEvent* pixel_mm_kswapd_wake) {
+  clear_event();
+  if (pixel_mm_kswapd_wake) {
+    set_has_pixel_mm_kswapd_wake();
+    _impl_.event_.pixel_mm_kswapd_wake_ = pixel_mm_kswapd_wake;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.pixel_mm_kswapd_wake)
+}
+inline ::perfetto::protos::PixelMmKswapdWakeFtraceEvent* FtraceEvent::_internal_mutable_pixel_mm_kswapd_wake() {
+  if (!_internal_has_pixel_mm_kswapd_wake()) {
+    clear_event();
+    set_has_pixel_mm_kswapd_wake();
+    _impl_.event_.pixel_mm_kswapd_wake_ = CreateMaybeMessage< ::perfetto::protos::PixelMmKswapdWakeFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.pixel_mm_kswapd_wake_;
+}
+inline ::perfetto::protos::PixelMmKswapdWakeFtraceEvent* FtraceEvent::mutable_pixel_mm_kswapd_wake() {
+  ::perfetto::protos::PixelMmKswapdWakeFtraceEvent* _msg = _internal_mutable_pixel_mm_kswapd_wake();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.pixel_mm_kswapd_wake)
+  return _msg;
+}
+
+// .perfetto.protos.PixelMmKswapdDoneFtraceEvent pixel_mm_kswapd_done = 539;
+inline bool FtraceEvent::_internal_has_pixel_mm_kswapd_done() const {
+  return event_case() == kPixelMmKswapdDone;
+}
+inline bool FtraceEvent::has_pixel_mm_kswapd_done() const {
+  return _internal_has_pixel_mm_kswapd_done();
+}
+inline void FtraceEvent::set_has_pixel_mm_kswapd_done() {
+  _impl_._oneof_case_[0] = kPixelMmKswapdDone;
+}
+inline ::perfetto::protos::PixelMmKswapdDoneFtraceEvent* FtraceEvent::release_pixel_mm_kswapd_done() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.pixel_mm_kswapd_done)
+  if (_internal_has_pixel_mm_kswapd_done()) {
+    clear_has_event();
+    ::perfetto::protos::PixelMmKswapdDoneFtraceEvent* temp = _impl_.event_.pixel_mm_kswapd_done_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.pixel_mm_kswapd_done_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::PixelMmKswapdDoneFtraceEvent& FtraceEvent::_internal_pixel_mm_kswapd_done() const {
+  return _internal_has_pixel_mm_kswapd_done()
+      ? *_impl_.event_.pixel_mm_kswapd_done_
+      : reinterpret_cast< ::perfetto::protos::PixelMmKswapdDoneFtraceEvent&>(::perfetto::protos::_PixelMmKswapdDoneFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::PixelMmKswapdDoneFtraceEvent& FtraceEvent::pixel_mm_kswapd_done() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.pixel_mm_kswapd_done)
+  return _internal_pixel_mm_kswapd_done();
+}
+inline ::perfetto::protos::PixelMmKswapdDoneFtraceEvent* FtraceEvent::unsafe_arena_release_pixel_mm_kswapd_done() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.pixel_mm_kswapd_done)
+  if (_internal_has_pixel_mm_kswapd_done()) {
+    clear_has_event();
+    ::perfetto::protos::PixelMmKswapdDoneFtraceEvent* temp = _impl_.event_.pixel_mm_kswapd_done_;
+    _impl_.event_.pixel_mm_kswapd_done_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_pixel_mm_kswapd_done(::perfetto::protos::PixelMmKswapdDoneFtraceEvent* pixel_mm_kswapd_done) {
+  clear_event();
+  if (pixel_mm_kswapd_done) {
+    set_has_pixel_mm_kswapd_done();
+    _impl_.event_.pixel_mm_kswapd_done_ = pixel_mm_kswapd_done;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.pixel_mm_kswapd_done)
+}
+inline ::perfetto::protos::PixelMmKswapdDoneFtraceEvent* FtraceEvent::_internal_mutable_pixel_mm_kswapd_done() {
+  if (!_internal_has_pixel_mm_kswapd_done()) {
+    clear_event();
+    set_has_pixel_mm_kswapd_done();
+    _impl_.event_.pixel_mm_kswapd_done_ = CreateMaybeMessage< ::perfetto::protos::PixelMmKswapdDoneFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.pixel_mm_kswapd_done_;
+}
+inline ::perfetto::protos::PixelMmKswapdDoneFtraceEvent* FtraceEvent::mutable_pixel_mm_kswapd_done() {
+  ::perfetto::protos::PixelMmKswapdDoneFtraceEvent* _msg = _internal_mutable_pixel_mm_kswapd_done();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.pixel_mm_kswapd_done)
+  return _msg;
+}
+
+// .perfetto.protos.SchedWakeupTaskAttrFtraceEvent sched_wakeup_task_attr = 540;
+inline bool FtraceEvent::_internal_has_sched_wakeup_task_attr() const {
+  return event_case() == kSchedWakeupTaskAttr;
+}
+inline bool FtraceEvent::has_sched_wakeup_task_attr() const {
+  return _internal_has_sched_wakeup_task_attr();
+}
+inline void FtraceEvent::set_has_sched_wakeup_task_attr() {
+  _impl_._oneof_case_[0] = kSchedWakeupTaskAttr;
+}
+inline ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* FtraceEvent::release_sched_wakeup_task_attr() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.sched_wakeup_task_attr)
+  if (_internal_has_sched_wakeup_task_attr()) {
+    clear_has_event();
+    ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* temp = _impl_.event_.sched_wakeup_task_attr_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.sched_wakeup_task_attr_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent& FtraceEvent::_internal_sched_wakeup_task_attr() const {
+  return _internal_has_sched_wakeup_task_attr()
+      ? *_impl_.event_.sched_wakeup_task_attr_
+      : reinterpret_cast< ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent&>(::perfetto::protos::_SchedWakeupTaskAttrFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent& FtraceEvent::sched_wakeup_task_attr() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.sched_wakeup_task_attr)
+  return _internal_sched_wakeup_task_attr();
+}
+inline ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* FtraceEvent::unsafe_arena_release_sched_wakeup_task_attr() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.sched_wakeup_task_attr)
+  if (_internal_has_sched_wakeup_task_attr()) {
+    clear_has_event();
+    ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* temp = _impl_.event_.sched_wakeup_task_attr_;
+    _impl_.event_.sched_wakeup_task_attr_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_sched_wakeup_task_attr(::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* sched_wakeup_task_attr) {
+  clear_event();
+  if (sched_wakeup_task_attr) {
+    set_has_sched_wakeup_task_attr();
+    _impl_.event_.sched_wakeup_task_attr_ = sched_wakeup_task_attr;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.sched_wakeup_task_attr)
+}
+inline ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* FtraceEvent::_internal_mutable_sched_wakeup_task_attr() {
+  if (!_internal_has_sched_wakeup_task_attr()) {
+    clear_event();
+    set_has_sched_wakeup_task_attr();
+    _impl_.event_.sched_wakeup_task_attr_ = CreateMaybeMessage< ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.sched_wakeup_task_attr_;
+}
+inline ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* FtraceEvent::mutable_sched_wakeup_task_attr() {
+  ::perfetto::protos::SchedWakeupTaskAttrFtraceEvent* _msg = _internal_mutable_sched_wakeup_task_attr();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.sched_wakeup_task_attr)
+  return _msg;
+}
+
+// .perfetto.protos.DevfreqFrequencyFtraceEvent devfreq_frequency = 541;
+inline bool FtraceEvent::_internal_has_devfreq_frequency() const {
+  return event_case() == kDevfreqFrequency;
+}
+inline bool FtraceEvent::has_devfreq_frequency() const {
+  return _internal_has_devfreq_frequency();
+}
+inline void FtraceEvent::set_has_devfreq_frequency() {
+  _impl_._oneof_case_[0] = kDevfreqFrequency;
+}
+inline ::perfetto::protos::DevfreqFrequencyFtraceEvent* FtraceEvent::release_devfreq_frequency() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.FtraceEvent.devfreq_frequency)
+  if (_internal_has_devfreq_frequency()) {
+    clear_has_event();
+    ::perfetto::protos::DevfreqFrequencyFtraceEvent* temp = _impl_.event_.devfreq_frequency_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_.devfreq_frequency_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::DevfreqFrequencyFtraceEvent& FtraceEvent::_internal_devfreq_frequency() const {
+  return _internal_has_devfreq_frequency()
+      ? *_impl_.event_.devfreq_frequency_
+      : reinterpret_cast< ::perfetto::protos::DevfreqFrequencyFtraceEvent&>(::perfetto::protos::_DevfreqFrequencyFtraceEvent_default_instance_);
+}
+inline const ::perfetto::protos::DevfreqFrequencyFtraceEvent& FtraceEvent::devfreq_frequency() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceEvent.devfreq_frequency)
+  return _internal_devfreq_frequency();
+}
+inline ::perfetto::protos::DevfreqFrequencyFtraceEvent* FtraceEvent::unsafe_arena_release_devfreq_frequency() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.FtraceEvent.devfreq_frequency)
+  if (_internal_has_devfreq_frequency()) {
+    clear_has_event();
+    ::perfetto::protos::DevfreqFrequencyFtraceEvent* temp = _impl_.event_.devfreq_frequency_;
+    _impl_.event_.devfreq_frequency_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void FtraceEvent::unsafe_arena_set_allocated_devfreq_frequency(::perfetto::protos::DevfreqFrequencyFtraceEvent* devfreq_frequency) {
+  clear_event();
+  if (devfreq_frequency) {
+    set_has_devfreq_frequency();
+    _impl_.event_.devfreq_frequency_ = devfreq_frequency;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.FtraceEvent.devfreq_frequency)
+}
+inline ::perfetto::protos::DevfreqFrequencyFtraceEvent* FtraceEvent::_internal_mutable_devfreq_frequency() {
+  if (!_internal_has_devfreq_frequency()) {
+    clear_event();
+    set_has_devfreq_frequency();
+    _impl_.event_.devfreq_frequency_ = CreateMaybeMessage< ::perfetto::protos::DevfreqFrequencyFtraceEvent >(GetArenaForAllocation());
+  }
+  return _impl_.event_.devfreq_frequency_;
+}
+inline ::perfetto::protos::DevfreqFrequencyFtraceEvent* FtraceEvent::mutable_devfreq_frequency() {
+  ::perfetto::protos::DevfreqFrequencyFtraceEvent* _msg = _internal_mutable_devfreq_frequency();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceEvent.devfreq_frequency)
   return _msg;
 }
 

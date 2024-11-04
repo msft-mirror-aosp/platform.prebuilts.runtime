@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class DataSourceConfig;
 class TraceConfig_AndroidReportConfig;
 class TraceConfig_BufferConfig;
@@ -26,6 +25,7 @@ class TraceConfig_GuardrailOverrides;
 class TraceConfig_IncidentReportConfig;
 class TraceConfig_IncrementalStateConfig;
 class TraceConfig_ProducerConfig;
+class TraceConfig_SessionSemaphore;
 class TraceConfig_StatsdMetadata;
 class TraceConfig_TraceFilter;
 class TraceConfig_TraceFilter_StringFilterChain;
@@ -57,6 +57,13 @@ namespace perfetto_pbzero_enum_TraceConfig_TriggerConfig {
 enum TriggerMode : int32_t;
 }  // namespace perfetto_pbzero_enum_TraceConfig_TriggerConfig
 using TraceConfig_TriggerConfig_TriggerMode = perfetto_pbzero_enum_TraceConfig_TriggerConfig::TriggerMode;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_TraceConfig {
 enum LockdownModeOperation : int32_t {
@@ -148,13 +155,14 @@ enum StringFilterPolicy : int32_t {
   SFP_ATRACE_MATCH_REDACT_GROUPS = 2,
   SFP_MATCH_BREAK = 3,
   SFP_ATRACE_MATCH_BREAK = 4,
+  SFP_ATRACE_REPEATED_SEARCH_REDACT_GROUPS = 5,
 };
 } // namespace perfetto_pbzero_enum_TraceConfig_TraceFilter
 using TraceConfig_TraceFilter_StringFilterPolicy = perfetto_pbzero_enum_TraceConfig_TraceFilter::StringFilterPolicy;
 
 
 constexpr TraceConfig_TraceFilter_StringFilterPolicy TraceConfig_TraceFilter_StringFilterPolicy_MIN = TraceConfig_TraceFilter_StringFilterPolicy::SFP_UNSPECIFIED;
-constexpr TraceConfig_TraceFilter_StringFilterPolicy TraceConfig_TraceFilter_StringFilterPolicy_MAX = TraceConfig_TraceFilter_StringFilterPolicy::SFP_ATRACE_MATCH_BREAK;
+constexpr TraceConfig_TraceFilter_StringFilterPolicy TraceConfig_TraceFilter_StringFilterPolicy_MAX = TraceConfig_TraceFilter_StringFilterPolicy::SFP_ATRACE_REPEATED_SEARCH_REDACT_GROUPS;
 
 
 PERFETTO_PROTOZERO_CONSTEXPR14_OR_INLINE
@@ -174,6 +182,9 @@ const char* TraceConfig_TraceFilter_StringFilterPolicy_Name(::perfetto::protos::
 
   case ::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy::SFP_ATRACE_MATCH_BREAK:
     return "SFP_ATRACE_MATCH_BREAK";
+
+  case ::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy::SFP_ATRACE_REPEATED_SEARCH_REDACT_GROUPS:
+    return "SFP_ATRACE_REPEATED_SEARCH_REDACT_GROUPS";
   }
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
@@ -183,7 +194,7 @@ enum TriggerMode : int32_t {
   UNSPECIFIED = 0,
   START_TRACING = 1,
   STOP_TRACING = 2,
-  CLONE_SNAPSHOT = 3,
+  CLONE_SNAPSHOT = 4,
 };
 } // namespace perfetto_pbzero_enum_TraceConfig_TriggerConfig
 using TraceConfig_TriggerConfig_TriggerMode = perfetto_pbzero_enum_TraceConfig_TriggerConfig::TriggerMode;
@@ -240,7 +251,7 @@ const char* TraceConfig_BufferConfig_FillPolicy_Name(::perfetto::protos::pbzero:
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/37, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/39, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   TraceConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -285,6 +296,8 @@ class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   bool notify_traceur() const { return at<16>().as_bool(); }
   bool has_bugreport_score() const { return at<30>().valid(); }
   int32_t bugreport_score() const { return at<30>().as_int32(); }
+  bool has_bugreport_filename() const { return at<38>().valid(); }
+  ::protozero::ConstChars bugreport_filename() const { return at<38>().as_string(); }
   bool has_trigger_config() const { return at<17>().valid(); }
   ::protozero::ConstBytes trigger_config() const { return at<17>().as_bytes(); }
   bool has_activate_triggers() const { return at<18>().valid(); }
@@ -297,8 +310,6 @@ class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstChars unique_session_name() const { return at<22>().as_string(); }
   bool has_compression_type() const { return at<24>().valid(); }
   int32_t compression_type() const { return at<24>().as_int32(); }
-  bool has_compress_from_cli() const { return at<37>().valid(); }
-  bool compress_from_cli() const { return at<37>().as_bool(); }
   bool has_incident_report_config() const { return at<25>().valid(); }
   ::protozero::ConstBytes incident_report_config() const { return at<25>().as_bytes(); }
   bool has_statsd_logging() const { return at<31>().valid(); }
@@ -313,6 +324,8 @@ class TraceConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID
   ::protozero::ConstBytes android_report_config() const { return at<34>().as_bytes(); }
   bool has_cmd_trace_start_delay() const { return at<35>().valid(); }
   ::protozero::ConstBytes cmd_trace_start_delay() const { return at<35>().as_bytes(); }
+  bool has_session_semaphores() const { return at<39>().valid(); }
+  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> session_semaphores() const { return GetRepeated<::protozero::ConstBytes>(39); }
 };
 
 class TraceConfig : public ::protozero::Message {
@@ -339,13 +352,13 @@ class TraceConfig : public ::protozero::Message {
     kDataSourceStopTimeoutMsFieldNumber = 23,
     kNotifyTraceurFieldNumber = 16,
     kBugreportScoreFieldNumber = 30,
+    kBugreportFilenameFieldNumber = 38,
     kTriggerConfigFieldNumber = 17,
     kActivateTriggersFieldNumber = 18,
     kIncrementalStateConfigFieldNumber = 21,
     kAllowUserBuildTracingFieldNumber = 19,
     kUniqueSessionNameFieldNumber = 22,
     kCompressionTypeFieldNumber = 24,
-    kCompressFromCliFieldNumber = 37,
     kIncidentReportConfigFieldNumber = 25,
     kStatsdLoggingFieldNumber = 31,
     kTraceUuidMsbFieldNumber = 27,
@@ -353,6 +366,7 @@ class TraceConfig : public ::protozero::Message {
     kTraceFilterFieldNumber = 33,
     kAndroidReportConfigFieldNumber = 34,
     kCmdTraceStartDelayFieldNumber = 35,
+    kSessionSemaphoresFieldNumber = 39,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.TraceConfig"; }
 
@@ -368,6 +382,7 @@ class TraceConfig : public ::protozero::Message {
   using TraceFilter = ::perfetto::protos::pbzero::TraceConfig_TraceFilter;
   using AndroidReportConfig = ::perfetto::protos::pbzero::TraceConfig_AndroidReportConfig;
   using CmdTraceStartDelay = ::perfetto::protos::pbzero::TraceConfig_CmdTraceStartDelay;
+  using SessionSemaphore = ::perfetto::protos::pbzero::TraceConfig_SessionSemaphore;
 
   using LockdownModeOperation = ::perfetto::protos::pbzero::TraceConfig_LockdownModeOperation;
   static inline const char* LockdownModeOperation_Name(LockdownModeOperation value) {
@@ -493,11 +508,11 @@ class TraceConfig : public ::protozero::Message {
       5,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::TraceConfig_LockdownModeOperation,
+      TraceConfig_LockdownModeOperation,
       TraceConfig>;
 
   static constexpr FieldMetadata_LockdownMode kLockdownMode{};
-  void set_lockdown_mode(::perfetto::protos::pbzero::TraceConfig_LockdownModeOperation value) {
+  void set_lockdown_mode(TraceConfig_LockdownModeOperation value) {
     static constexpr uint32_t field_id = FieldMetadata_LockdownMode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -734,6 +749,30 @@ class TraceConfig : public ::protozero::Message {
         ::Append(*this, field_id, value);
   }
 
+  using FieldMetadata_BugreportFilename =
+    ::protozero::proto_utils::FieldMetadata<
+      38,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      TraceConfig>;
+
+  static constexpr FieldMetadata_BugreportFilename kBugreportFilename{};
+  void set_bugreport_filename(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_BugreportFilename::kFieldId, data, size);
+  }
+  void set_bugreport_filename(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_BugreportFilename::kFieldId, chars.data, chars.size);
+  }
+  void set_bugreport_filename(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_BugreportFilename::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
   using FieldMetadata_TriggerConfig =
     ::protozero::proto_utils::FieldMetadata<
       17,
@@ -833,34 +872,16 @@ class TraceConfig : public ::protozero::Message {
       24,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::TraceConfig_CompressionType,
+      TraceConfig_CompressionType,
       TraceConfig>;
 
   static constexpr FieldMetadata_CompressionType kCompressionType{};
-  void set_compression_type(::perfetto::protos::pbzero::TraceConfig_CompressionType value) {
+  void set_compression_type(TraceConfig_CompressionType value) {
     static constexpr uint32_t field_id = FieldMetadata_CompressionType::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kEnum>
-        ::Append(*this, field_id, value);
-  }
-
-  using FieldMetadata_CompressFromCli =
-    ::protozero::proto_utils::FieldMetadata<
-      37,
-      ::protozero::proto_utils::RepetitionType::kNotRepeated,
-      ::protozero::proto_utils::ProtoSchemaType::kBool,
-      bool,
-      TraceConfig>;
-
-  static constexpr FieldMetadata_CompressFromCli kCompressFromCli{};
-  void set_compress_from_cli(bool value) {
-    static constexpr uint32_t field_id = FieldMetadata_CompressFromCli::kFieldId;
-    // Call the appropriate protozero::Message::Append(field_id, ...)
-    // method based on the type of the field.
-    ::protozero::internal::FieldWriter<
-      ::protozero::proto_utils::ProtoSchemaType::kBool>
         ::Append(*this, field_id, value);
   }
 
@@ -883,11 +904,11 @@ class TraceConfig : public ::protozero::Message {
       31,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::TraceConfig_StatsdLogging,
+      TraceConfig_StatsdLogging,
       TraceConfig>;
 
   static constexpr FieldMetadata_StatsdLogging kStatsdLogging{};
-  void set_statsd_logging(::perfetto::protos::pbzero::TraceConfig_StatsdLogging value) {
+  void set_statsd_logging(TraceConfig_StatsdLogging value) {
     static constexpr uint32_t field_id = FieldMetadata_StatsdLogging::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -973,6 +994,84 @@ class TraceConfig : public ::protozero::Message {
     return BeginNestedMessage<T>(35);
   }
 
+
+  using FieldMetadata_SessionSemaphores =
+    ::protozero::proto_utils::FieldMetadata<
+      39,
+      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      TraceConfig_SessionSemaphore,
+      TraceConfig>;
+
+  static constexpr FieldMetadata_SessionSemaphores kSessionSemaphores{};
+  template <typename T = TraceConfig_SessionSemaphore> T* add_session_semaphores() {
+    return BeginNestedMessage<T>(39);
+  }
+
+};
+
+class TraceConfig_SessionSemaphore_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  TraceConfig_SessionSemaphore_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit TraceConfig_SessionSemaphore_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit TraceConfig_SessionSemaphore_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_name() const { return at<1>().valid(); }
+  ::protozero::ConstChars name() const { return at<1>().as_string(); }
+  bool has_max_other_session_count() const { return at<2>().valid(); }
+  uint64_t max_other_session_count() const { return at<2>().as_uint64(); }
+};
+
+class TraceConfig_SessionSemaphore : public ::protozero::Message {
+ public:
+  using Decoder = TraceConfig_SessionSemaphore_Decoder;
+  enum : int32_t {
+    kNameFieldNumber = 1,
+    kMaxOtherSessionCountFieldNumber = 2,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.TraceConfig.SessionSemaphore"; }
+
+
+  using FieldMetadata_Name =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      TraceConfig_SessionSemaphore>;
+
+  static constexpr FieldMetadata_Name kName{};
+  void set_name(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
+  }
+  void set_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_MaxOtherSessionCount =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      TraceConfig_SessionSemaphore>;
+
+  static constexpr FieldMetadata_MaxOtherSessionCount kMaxOtherSessionCount{};
+  void set_max_other_session_count(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_MaxOtherSessionCount::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
+        ::Append(*this, field_id, value);
+  }
 };
 
 class TraceConfig_CmdTraceStartDelay_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/2, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
@@ -1180,6 +1279,7 @@ class TraceConfig_TraceFilter : public ::protozero::Message {
   static inline const StringFilterPolicy SFP_ATRACE_MATCH_REDACT_GROUPS = StringFilterPolicy::SFP_ATRACE_MATCH_REDACT_GROUPS;
   static inline const StringFilterPolicy SFP_MATCH_BREAK = StringFilterPolicy::SFP_MATCH_BREAK;
   static inline const StringFilterPolicy SFP_ATRACE_MATCH_BREAK = StringFilterPolicy::SFP_ATRACE_MATCH_BREAK;
+  static inline const StringFilterPolicy SFP_ATRACE_REPEATED_SEARCH_REDACT_GROUPS = StringFilterPolicy::SFP_ATRACE_REPEATED_SEARCH_REDACT_GROUPS;
 
   using FieldMetadata_Bytecode =
     ::protozero::proto_utils::FieldMetadata<
@@ -1306,11 +1406,11 @@ class TraceConfig_TraceFilter_StringFilterRule : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy,
+      TraceConfig_TraceFilter_StringFilterPolicy,
       TraceConfig_TraceFilter_StringFilterRule>;
 
   static constexpr FieldMetadata_Policy kPolicy{};
-  void set_policy(::perfetto::protos::pbzero::TraceConfig_TraceFilter_StringFilterPolicy value) {
+  void set_policy(TraceConfig_TraceFilter_StringFilterPolicy value) {
     static constexpr uint32_t field_id = FieldMetadata_Policy::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -1538,15 +1638,15 @@ class TraceConfig_IncrementalStateConfig : public ::protozero::Message {
   }
 };
 
-class TraceConfig_TriggerConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class TraceConfig_TriggerConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/5, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   TraceConfig_TriggerConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_TriggerConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
   explicit TraceConfig_TriggerConfig_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
   bool has_trigger_mode() const { return at<1>().valid(); }
   int32_t trigger_mode() const { return at<1>().as_int32(); }
-  bool has_use_clone_snapshot_if_available() const { return at<4>().valid(); }
-  bool use_clone_snapshot_if_available() const { return at<4>().as_bool(); }
+  bool has_use_clone_snapshot_if_available() const { return at<5>().valid(); }
+  bool use_clone_snapshot_if_available() const { return at<5>().as_bool(); }
   bool has_triggers() const { return at<2>().valid(); }
   ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> triggers() const { return GetRepeated<::protozero::ConstBytes>(2); }
   bool has_trigger_timeout_ms() const { return at<3>().valid(); }
@@ -1558,7 +1658,7 @@ class TraceConfig_TriggerConfig : public ::protozero::Message {
   using Decoder = TraceConfig_TriggerConfig_Decoder;
   enum : int32_t {
     kTriggerModeFieldNumber = 1,
-    kUseCloneSnapshotIfAvailableFieldNumber = 4,
+    kUseCloneSnapshotIfAvailableFieldNumber = 5,
     kTriggersFieldNumber = 2,
     kTriggerTimeoutMsFieldNumber = 3,
   };
@@ -1580,11 +1680,11 @@ class TraceConfig_TriggerConfig : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::TraceConfig_TriggerConfig_TriggerMode,
+      TraceConfig_TriggerConfig_TriggerMode,
       TraceConfig_TriggerConfig>;
 
   static constexpr FieldMetadata_TriggerMode kTriggerMode{};
-  void set_trigger_mode(::perfetto::protos::pbzero::TraceConfig_TriggerConfig_TriggerMode value) {
+  void set_trigger_mode(TraceConfig_TriggerConfig_TriggerMode value) {
     static constexpr uint32_t field_id = FieldMetadata_TriggerMode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -1595,7 +1695,7 @@ class TraceConfig_TriggerConfig : public ::protozero::Message {
 
   using FieldMetadata_UseCloneSnapshotIfAvailable =
     ::protozero::proto_utils::FieldMetadata<
-      4,
+      5,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kBool,
       bool,
@@ -2136,11 +2236,11 @@ class TraceConfig_BuiltinDataSource : public ::protozero::Message {
       5,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::BuiltinClock,
+      BuiltinClock,
       TraceConfig_BuiltinDataSource>;
 
   static constexpr FieldMetadata_PrimaryTraceClock kPrimaryTraceClock{};
-  void set_primary_trace_clock(::perfetto::protos::pbzero::BuiltinClock value) {
+  void set_primary_trace_clock(BuiltinClock value) {
     static constexpr uint32_t field_id = FieldMetadata_PrimaryTraceClock::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -2291,7 +2391,7 @@ class TraceConfig_DataSource : public ::protozero::Message {
   }
 };
 
-class TraceConfig_BufferConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class TraceConfig_BufferConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   TraceConfig_BufferConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit TraceConfig_BufferConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -2300,6 +2400,10 @@ class TraceConfig_BufferConfig_Decoder : public ::protozero::TypedProtoDecoder</
   uint32_t size_kb() const { return at<1>().as_uint32(); }
   bool has_fill_policy() const { return at<4>().valid(); }
   int32_t fill_policy() const { return at<4>().as_int32(); }
+  bool has_transfer_on_clone() const { return at<5>().valid(); }
+  bool transfer_on_clone() const { return at<5>().as_bool(); }
+  bool has_clear_before_clone() const { return at<6>().valid(); }
+  bool clear_before_clone() const { return at<6>().as_bool(); }
 };
 
 class TraceConfig_BufferConfig : public ::protozero::Message {
@@ -2308,6 +2412,8 @@ class TraceConfig_BufferConfig : public ::protozero::Message {
   enum : int32_t {
     kSizeKbFieldNumber = 1,
     kFillPolicyFieldNumber = 4,
+    kTransferOnCloneFieldNumber = 5,
+    kClearBeforeCloneFieldNumber = 6,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.TraceConfig.BufferConfig"; }
 
@@ -2343,16 +2449,52 @@ class TraceConfig_BufferConfig : public ::protozero::Message {
       4,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::TraceConfig_BufferConfig_FillPolicy,
+      TraceConfig_BufferConfig_FillPolicy,
       TraceConfig_BufferConfig>;
 
   static constexpr FieldMetadata_FillPolicy kFillPolicy{};
-  void set_fill_policy(::perfetto::protos::pbzero::TraceConfig_BufferConfig_FillPolicy value) {
+  void set_fill_policy(TraceConfig_BufferConfig_FillPolicy value) {
     static constexpr uint32_t field_id = FieldMetadata_FillPolicy::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_TransferOnClone =
+    ::protozero::proto_utils::FieldMetadata<
+      5,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      TraceConfig_BufferConfig>;
+
+  static constexpr FieldMetadata_TransferOnClone kTransferOnClone{};
+  void set_transfer_on_clone(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_TransferOnClone::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_ClearBeforeClone =
+    ::protozero::proto_utils::FieldMetadata<
+      6,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kBool,
+      bool,
+      TraceConfig_BufferConfig>;
+
+  static constexpr FieldMetadata_ClearBeforeClone kClearBeforeClone{};
+  void set_clear_before_clone(bool value) {
+    static constexpr uint32_t field_id = FieldMetadata_ClearBeforeClone::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kBool>
         ::Append(*this, field_id, value);
   }
 };

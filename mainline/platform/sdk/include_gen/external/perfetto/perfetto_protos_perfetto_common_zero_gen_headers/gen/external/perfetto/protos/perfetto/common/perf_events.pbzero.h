@@ -15,7 +15,6 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class PerfEvents_RawEvent;
 class PerfEvents_Timebase;
 class PerfEvents_Tracepoint;
@@ -27,6 +26,13 @@ namespace perfetto_pbzero_enum_PerfEvents {
 enum PerfClock : int32_t;
 }  // namespace perfetto_pbzero_enum_PerfEvents
 using PerfEvents_PerfClock = perfetto_pbzero_enum_PerfEvents::PerfClock;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_PerfEvents {
 enum Counter : int32_t {
@@ -165,6 +171,104 @@ const char* PerfEvents_PerfClock_Name(::perfetto::protos::pbzero::PerfEvents_Per
   }
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
+
+class FollowerEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+ public:
+  FollowerEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
+  explicit FollowerEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
+  explicit FollowerEvent_Decoder(const ::protozero::ConstBytes& raw) : TypedProtoDecoder(raw.data, raw.size) {}
+  bool has_counter() const { return at<1>().valid(); }
+  int32_t counter() const { return at<1>().as_int32(); }
+  bool has_tracepoint() const { return at<2>().valid(); }
+  ::protozero::ConstBytes tracepoint() const { return at<2>().as_bytes(); }
+  bool has_raw_event() const { return at<3>().valid(); }
+  ::protozero::ConstBytes raw_event() const { return at<3>().as_bytes(); }
+  bool has_name() const { return at<4>().valid(); }
+  ::protozero::ConstChars name() const { return at<4>().as_string(); }
+};
+
+class FollowerEvent : public ::protozero::Message {
+ public:
+  using Decoder = FollowerEvent_Decoder;
+  enum : int32_t {
+    kCounterFieldNumber = 1,
+    kTracepointFieldNumber = 2,
+    kRawEventFieldNumber = 3,
+    kNameFieldNumber = 4,
+  };
+  static constexpr const char* GetName() { return ".perfetto.protos.FollowerEvent"; }
+
+
+  using FieldMetadata_Counter =
+    ::protozero::proto_utils::FieldMetadata<
+      1,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kEnum,
+      PerfEvents_Counter,
+      FollowerEvent>;
+
+  static constexpr FieldMetadata_Counter kCounter{};
+  void set_counter(PerfEvents_Counter value) {
+    static constexpr uint32_t field_id = FieldMetadata_Counter::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kEnum>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_Tracepoint =
+    ::protozero::proto_utils::FieldMetadata<
+      2,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      PerfEvents_Tracepoint,
+      FollowerEvent>;
+
+  static constexpr FieldMetadata_Tracepoint kTracepoint{};
+  template <typename T = PerfEvents_Tracepoint> T* set_tracepoint() {
+    return BeginNestedMessage<T>(2);
+  }
+
+
+  using FieldMetadata_RawEvent =
+    ::protozero::proto_utils::FieldMetadata<
+      3,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kMessage,
+      PerfEvents_RawEvent,
+      FollowerEvent>;
+
+  static constexpr FieldMetadata_RawEvent kRawEvent{};
+  template <typename T = PerfEvents_RawEvent> T* set_raw_event() {
+    return BeginNestedMessage<T>(3);
+  }
+
+
+  using FieldMetadata_Name =
+    ::protozero::proto_utils::FieldMetadata<
+      4,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      FollowerEvent>;
+
+  static constexpr FieldMetadata_Name kName{};
+  void set_name(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_Name::kFieldId, data, size);
+  }
+  void set_name(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_Name::kFieldId, chars.data, chars.size);
+  }
+  void set_name(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_Name::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+};
 
 class PerfEvents_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/0, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
@@ -466,11 +570,11 @@ class PerfEvents_Timebase : public ::protozero::Message {
       4,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::PerfEvents_Counter,
+      PerfEvents_Counter,
       PerfEvents_Timebase>;
 
   static constexpr FieldMetadata_Counter kCounter{};
-  void set_counter(::perfetto::protos::pbzero::PerfEvents_Counter value) {
+  void set_counter(PerfEvents_Counter value) {
     static constexpr uint32_t field_id = FieldMetadata_Counter::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -512,11 +616,11 @@ class PerfEvents_Timebase : public ::protozero::Message {
       11,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::PerfEvents_PerfClock,
+      PerfEvents_PerfClock,
       PerfEvents_Timebase>;
 
   static constexpr FieldMetadata_TimestampClock kTimestampClock{};
-  void set_timestamp_clock(::perfetto::protos::pbzero::PerfEvents_PerfClock value) {
+  void set_timestamp_clock(PerfEvents_PerfClock value) {
     static constexpr uint32_t field_id = FieldMetadata_TimestampClock::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
