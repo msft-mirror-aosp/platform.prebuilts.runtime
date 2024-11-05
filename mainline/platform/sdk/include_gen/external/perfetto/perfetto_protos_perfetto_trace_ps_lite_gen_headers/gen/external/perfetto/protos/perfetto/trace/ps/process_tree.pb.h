@@ -385,10 +385,10 @@ class ProcessTree_Process final :
 
   enum : int {
     kCmdlineFieldNumber = 3,
-    kThreadsDeprecatedFieldNumber = 4,
     kNspidFieldNumber = 6,
     kPidFieldNumber = 1,
     kPpidFieldNumber = 2,
+    kProcessStartFromBootFieldNumber = 7,
     kUidFieldNumber = 5,
   };
   // repeated string cmdline = 3;
@@ -414,24 +414,6 @@ class ProcessTree_Process final :
   const std::string& _internal_cmdline(int index) const;
   std::string* _internal_add_cmdline();
   public:
-
-  // repeated .perfetto.protos.ProcessTree.Thread threads_deprecated = 4 [deprecated = true];
-  PROTOBUF_DEPRECATED int threads_deprecated_size() const;
-  private:
-  int _internal_threads_deprecated_size() const;
-  public:
-  PROTOBUF_DEPRECATED void clear_threads_deprecated();
-  PROTOBUF_DEPRECATED ::perfetto::protos::ProcessTree_Thread* mutable_threads_deprecated(int index);
-  PROTOBUF_DEPRECATED ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::ProcessTree_Thread >*
-      mutable_threads_deprecated();
-  private:
-  const ::perfetto::protos::ProcessTree_Thread& _internal_threads_deprecated(int index) const;
-  ::perfetto::protos::ProcessTree_Thread* _internal_add_threads_deprecated();
-  public:
-  PROTOBUF_DEPRECATED const ::perfetto::protos::ProcessTree_Thread& threads_deprecated(int index) const;
-  PROTOBUF_DEPRECATED ::perfetto::protos::ProcessTree_Thread* add_threads_deprecated();
-  PROTOBUF_DEPRECATED const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::ProcessTree_Thread >&
-      threads_deprecated() const;
 
   // repeated int32 nspid = 6;
   int nspid_size() const;
@@ -481,6 +463,19 @@ class ProcessTree_Process final :
   void _internal_set_ppid(::int32_t value);
   public:
 
+  // optional uint64 process_start_from_boot = 7;
+  bool has_process_start_from_boot() const;
+  private:
+  bool _internal_has_process_start_from_boot() const;
+  public:
+  void clear_process_start_from_boot();
+  ::uint64_t process_start_from_boot() const;
+  void set_process_start_from_boot(::uint64_t value);
+  private:
+  ::uint64_t _internal_process_start_from_boot() const;
+  void _internal_set_process_start_from_boot(::uint64_t value);
+  public:
+
   // optional int32 uid = 5;
   bool has_uid() const;
   private:
@@ -505,10 +500,10 @@ class ProcessTree_Process final :
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> cmdline_;
-    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::ProcessTree_Thread > threads_deprecated_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::int32_t > nspid_;
     ::int32_t pid_;
     ::int32_t ppid_;
+    ::uint64_t process_start_from_boot_;
     ::int32_t uid_;
   };
   union { Impl_ _impl_; };
@@ -1020,49 +1015,9 @@ ProcessTree_Process::mutable_cmdline() {
   return &_impl_.cmdline_;
 }
 
-// repeated .perfetto.protos.ProcessTree.Thread threads_deprecated = 4 [deprecated = true];
-inline int ProcessTree_Process::_internal_threads_deprecated_size() const {
-  return _impl_.threads_deprecated_.size();
-}
-inline int ProcessTree_Process::threads_deprecated_size() const {
-  return _internal_threads_deprecated_size();
-}
-inline void ProcessTree_Process::clear_threads_deprecated() {
-  _impl_.threads_deprecated_.Clear();
-}
-inline ::perfetto::protos::ProcessTree_Thread* ProcessTree_Process::mutable_threads_deprecated(int index) {
-  // @@protoc_insertion_point(field_mutable:perfetto.protos.ProcessTree.Process.threads_deprecated)
-  return _impl_.threads_deprecated_.Mutable(index);
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::ProcessTree_Thread >*
-ProcessTree_Process::mutable_threads_deprecated() {
-  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.ProcessTree.Process.threads_deprecated)
-  return &_impl_.threads_deprecated_;
-}
-inline const ::perfetto::protos::ProcessTree_Thread& ProcessTree_Process::_internal_threads_deprecated(int index) const {
-  return _impl_.threads_deprecated_.Get(index);
-}
-inline const ::perfetto::protos::ProcessTree_Thread& ProcessTree_Process::threads_deprecated(int index) const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.ProcessTree.Process.threads_deprecated)
-  return _internal_threads_deprecated(index);
-}
-inline ::perfetto::protos::ProcessTree_Thread* ProcessTree_Process::_internal_add_threads_deprecated() {
-  return _impl_.threads_deprecated_.Add();
-}
-inline ::perfetto::protos::ProcessTree_Thread* ProcessTree_Process::add_threads_deprecated() {
-  ::perfetto::protos::ProcessTree_Thread* _add = _internal_add_threads_deprecated();
-  // @@protoc_insertion_point(field_add:perfetto.protos.ProcessTree.Process.threads_deprecated)
-  return _add;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::ProcessTree_Thread >&
-ProcessTree_Process::threads_deprecated() const {
-  // @@protoc_insertion_point(field_list:perfetto.protos.ProcessTree.Process.threads_deprecated)
-  return _impl_.threads_deprecated_;
-}
-
 // optional int32 uid = 5;
 inline bool ProcessTree_Process::_internal_has_uid() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
 inline bool ProcessTree_Process::has_uid() const {
@@ -1070,7 +1025,7 @@ inline bool ProcessTree_Process::has_uid() const {
 }
 inline void ProcessTree_Process::clear_uid() {
   _impl_.uid_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
 }
 inline ::int32_t ProcessTree_Process::_internal_uid() const {
   return _impl_.uid_;
@@ -1080,7 +1035,7 @@ inline ::int32_t ProcessTree_Process::uid() const {
   return _internal_uid();
 }
 inline void ProcessTree_Process::_internal_set_uid(::int32_t value) {
-  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_._has_bits_[0] |= 0x00000008u;
   _impl_.uid_ = value;
 }
 inline void ProcessTree_Process::set_uid(::int32_t value) {
@@ -1133,6 +1088,34 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::int32_t >*
 ProcessTree_Process::mutable_nspid() {
   // @@protoc_insertion_point(field_mutable_list:perfetto.protos.ProcessTree.Process.nspid)
   return _internal_mutable_nspid();
+}
+
+// optional uint64 process_start_from_boot = 7;
+inline bool ProcessTree_Process::_internal_has_process_start_from_boot() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool ProcessTree_Process::has_process_start_from_boot() const {
+  return _internal_has_process_start_from_boot();
+}
+inline void ProcessTree_Process::clear_process_start_from_boot() {
+  _impl_.process_start_from_boot_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t ProcessTree_Process::_internal_process_start_from_boot() const {
+  return _impl_.process_start_from_boot_;
+}
+inline ::uint64_t ProcessTree_Process::process_start_from_boot() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ProcessTree.Process.process_start_from_boot)
+  return _internal_process_start_from_boot();
+}
+inline void ProcessTree_Process::_internal_set_process_start_from_boot(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.process_start_from_boot_ = value;
+}
+inline void ProcessTree_Process::set_process_start_from_boot(::uint64_t value) {
+  _internal_set_process_start_from_boot(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.ProcessTree.Process.process_start_from_boot)
 }
 
 // -------------------------------------------------------------------

@@ -47,15 +47,346 @@ namespace protos {
 class TracingServiceEvent;
 struct TracingServiceEventDefaultTypeInternal;
 extern TracingServiceEventDefaultTypeInternal _TracingServiceEvent_default_instance_;
+class TracingServiceEvent_DataSources;
+struct TracingServiceEvent_DataSourcesDefaultTypeInternal;
+extern TracingServiceEvent_DataSourcesDefaultTypeInternal _TracingServiceEvent_DataSources_default_instance_;
+class TracingServiceEvent_DataSources_DataSource;
+struct TracingServiceEvent_DataSources_DataSourceDefaultTypeInternal;
+extern TracingServiceEvent_DataSources_DataSourceDefaultTypeInternal _TracingServiceEvent_DataSources_DataSource_default_instance_;
 }  // namespace protos
 }  // namespace perfetto
 PROTOBUF_NAMESPACE_OPEN
 template<> ::perfetto::protos::TracingServiceEvent* Arena::CreateMaybeMessage<::perfetto::protos::TracingServiceEvent>(Arena*);
+template<> ::perfetto::protos::TracingServiceEvent_DataSources* Arena::CreateMaybeMessage<::perfetto::protos::TracingServiceEvent_DataSources>(Arena*);
+template<> ::perfetto::protos::TracingServiceEvent_DataSources_DataSource* Arena::CreateMaybeMessage<::perfetto::protos::TracingServiceEvent_DataSources_DataSource>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace perfetto {
 namespace protos {
 
 // ===================================================================
+
+class TracingServiceEvent_DataSources_DataSource final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.TracingServiceEvent.DataSources.DataSource) */ {
+ public:
+  inline TracingServiceEvent_DataSources_DataSource() : TracingServiceEvent_DataSources_DataSource(nullptr) {}
+  ~TracingServiceEvent_DataSources_DataSource() override;
+  explicit PROTOBUF_CONSTEXPR TracingServiceEvent_DataSources_DataSource(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TracingServiceEvent_DataSources_DataSource(const TracingServiceEvent_DataSources_DataSource& from);
+  TracingServiceEvent_DataSources_DataSource(TracingServiceEvent_DataSources_DataSource&& from) noexcept
+    : TracingServiceEvent_DataSources_DataSource() {
+    *this = ::std::move(from);
+  }
+
+  inline TracingServiceEvent_DataSources_DataSource& operator=(const TracingServiceEvent_DataSources_DataSource& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline TracingServiceEvent_DataSources_DataSource& operator=(TracingServiceEvent_DataSources_DataSource&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const TracingServiceEvent_DataSources_DataSource& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TracingServiceEvent_DataSources_DataSource* internal_default_instance() {
+    return reinterpret_cast<const TracingServiceEvent_DataSources_DataSource*>(
+               &_TracingServiceEvent_DataSources_DataSource_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(TracingServiceEvent_DataSources_DataSource& a, TracingServiceEvent_DataSources_DataSource& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TracingServiceEvent_DataSources_DataSource* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TracingServiceEvent_DataSources_DataSource* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TracingServiceEvent_DataSources_DataSource* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<TracingServiceEvent_DataSources_DataSource>(arena);
+  }
+  TracingServiceEvent_DataSources_DataSource* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const TracingServiceEvent_DataSources_DataSource& from);
+  void MergeFrom(const TracingServiceEvent_DataSources_DataSource& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(TracingServiceEvent_DataSources_DataSource* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.TracingServiceEvent.DataSources.DataSource";
+  }
+  protected:
+  explicit TracingServiceEvent_DataSources_DataSource(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kProducerNameFieldNumber = 1,
+    kDataSourceNameFieldNumber = 2,
+  };
+  // optional string producer_name = 1;
+  bool has_producer_name() const;
+  private:
+  bool _internal_has_producer_name() const;
+  public:
+  void clear_producer_name();
+  const std::string& producer_name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_producer_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_producer_name();
+  PROTOBUF_NODISCARD std::string* release_producer_name();
+  void set_allocated_producer_name(std::string* producer_name);
+  private:
+  const std::string& _internal_producer_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_producer_name(const std::string& value);
+  std::string* _internal_mutable_producer_name();
+  public:
+
+  // optional string data_source_name = 2;
+  bool has_data_source_name() const;
+  private:
+  bool _internal_has_data_source_name() const;
+  public:
+  void clear_data_source_name();
+  const std::string& data_source_name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_data_source_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_data_source_name();
+  PROTOBUF_NODISCARD std::string* release_data_source_name();
+  void set_allocated_data_source_name(std::string* data_source_name);
+  private:
+  const std::string& _internal_data_source_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_data_source_name(const std::string& value);
+  std::string* _internal_mutable_data_source_name();
+  public:
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.TracingServiceEvent.DataSources.DataSource)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr producer_name_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr data_source_name_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fperfetto_2ftracing_5fservice_5fevent_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TracingServiceEvent_DataSources final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.TracingServiceEvent.DataSources) */ {
+ public:
+  inline TracingServiceEvent_DataSources() : TracingServiceEvent_DataSources(nullptr) {}
+  ~TracingServiceEvent_DataSources() override;
+  explicit PROTOBUF_CONSTEXPR TracingServiceEvent_DataSources(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TracingServiceEvent_DataSources(const TracingServiceEvent_DataSources& from);
+  TracingServiceEvent_DataSources(TracingServiceEvent_DataSources&& from) noexcept
+    : TracingServiceEvent_DataSources() {
+    *this = ::std::move(from);
+  }
+
+  inline TracingServiceEvent_DataSources& operator=(const TracingServiceEvent_DataSources& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline TracingServiceEvent_DataSources& operator=(TracingServiceEvent_DataSources&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const TracingServiceEvent_DataSources& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TracingServiceEvent_DataSources* internal_default_instance() {
+    return reinterpret_cast<const TracingServiceEvent_DataSources*>(
+               &_TracingServiceEvent_DataSources_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(TracingServiceEvent_DataSources& a, TracingServiceEvent_DataSources& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TracingServiceEvent_DataSources* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TracingServiceEvent_DataSources* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TracingServiceEvent_DataSources* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<TracingServiceEvent_DataSources>(arena);
+  }
+  TracingServiceEvent_DataSources* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const TracingServiceEvent_DataSources& from);
+  void MergeFrom(const TracingServiceEvent_DataSources& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(TracingServiceEvent_DataSources* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.TracingServiceEvent.DataSources";
+  }
+  protected:
+  explicit TracingServiceEvent_DataSources(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef TracingServiceEvent_DataSources_DataSource DataSource;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDataSourceFieldNumber = 1,
+  };
+  // repeated .perfetto.protos.TracingServiceEvent.DataSources.DataSource data_source = 1;
+  int data_source_size() const;
+  private:
+  int _internal_data_source_size() const;
+  public:
+  void clear_data_source();
+  ::perfetto::protos::TracingServiceEvent_DataSources_DataSource* mutable_data_source(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TracingServiceEvent_DataSources_DataSource >*
+      mutable_data_source();
+  private:
+  const ::perfetto::protos::TracingServiceEvent_DataSources_DataSource& _internal_data_source(int index) const;
+  ::perfetto::protos::TracingServiceEvent_DataSources_DataSource* _internal_add_data_source();
+  public:
+  const ::perfetto::protos::TracingServiceEvent_DataSources_DataSource& data_source(int index) const;
+  ::perfetto::protos::TracingServiceEvent_DataSources_DataSource* add_data_source();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TracingServiceEvent_DataSources_DataSource >&
+      data_source() const;
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.TracingServiceEvent.DataSources)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TracingServiceEvent_DataSources_DataSource > data_source_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fperfetto_2ftracing_5fservice_5fevent_2eproto;
+};
+// -------------------------------------------------------------------
 
 class TracingServiceEvent final :
     public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.TracingServiceEvent) */ {
@@ -102,10 +433,13 @@ class TracingServiceEvent final :
   enum EventTypeCase {
     kTracingStarted = 2,
     kAllDataSourcesStarted = 1,
+    kFlushStarted = 9,
     kAllDataSourcesFlushed = 3,
     kReadTracingBuffersCompleted = 4,
     kTracingDisabled = 5,
     kSeizedForBugreport = 6,
+    kSlowStartingDataSources = 7,
+    kLastFlushSlowDataSources = 8,
     EVENT_TYPE_NOT_SET = 0,
   };
 
@@ -114,7 +448,7 @@ class TracingServiceEvent final :
                &_TracingServiceEvent_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    2;
 
   friend void swap(TracingServiceEvent& a, TracingServiceEvent& b) {
     a.Swap(&b);
@@ -178,15 +512,20 @@ class TracingServiceEvent final :
 
   // nested types ----------------------------------------------------
 
+  typedef TracingServiceEvent_DataSources DataSources;
+
   // accessors -------------------------------------------------------
 
   enum : int {
     kTracingStartedFieldNumber = 2,
     kAllDataSourcesStartedFieldNumber = 1,
+    kFlushStartedFieldNumber = 9,
     kAllDataSourcesFlushedFieldNumber = 3,
     kReadTracingBuffersCompletedFieldNumber = 4,
     kTracingDisabledFieldNumber = 5,
     kSeizedForBugreportFieldNumber = 6,
+    kSlowStartingDataSourcesFieldNumber = 7,
+    kLastFlushSlowDataSourcesFieldNumber = 8,
   };
   // bool tracing_started = 2;
   bool has_tracing_started() const;
@@ -212,6 +551,19 @@ class TracingServiceEvent final :
   private:
   bool _internal_all_data_sources_started() const;
   void _internal_set_all_data_sources_started(bool value);
+  public:
+
+  // bool flush_started = 9;
+  bool has_flush_started() const;
+  private:
+  bool _internal_has_flush_started() const;
+  public:
+  void clear_flush_started();
+  bool flush_started() const;
+  void set_flush_started(bool value);
+  private:
+  bool _internal_flush_started() const;
+  void _internal_set_flush_started(bool value);
   public:
 
   // bool all_data_sources_flushed = 3;
@@ -266,6 +618,42 @@ class TracingServiceEvent final :
   void _internal_set_seized_for_bugreport(bool value);
   public:
 
+  // .perfetto.protos.TracingServiceEvent.DataSources slow_starting_data_sources = 7;
+  bool has_slow_starting_data_sources() const;
+  private:
+  bool _internal_has_slow_starting_data_sources() const;
+  public:
+  void clear_slow_starting_data_sources();
+  const ::perfetto::protos::TracingServiceEvent_DataSources& slow_starting_data_sources() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::TracingServiceEvent_DataSources* release_slow_starting_data_sources();
+  ::perfetto::protos::TracingServiceEvent_DataSources* mutable_slow_starting_data_sources();
+  void set_allocated_slow_starting_data_sources(::perfetto::protos::TracingServiceEvent_DataSources* slow_starting_data_sources);
+  private:
+  const ::perfetto::protos::TracingServiceEvent_DataSources& _internal_slow_starting_data_sources() const;
+  ::perfetto::protos::TracingServiceEvent_DataSources* _internal_mutable_slow_starting_data_sources();
+  public:
+  void unsafe_arena_set_allocated_slow_starting_data_sources(
+      ::perfetto::protos::TracingServiceEvent_DataSources* slow_starting_data_sources);
+  ::perfetto::protos::TracingServiceEvent_DataSources* unsafe_arena_release_slow_starting_data_sources();
+
+  // .perfetto.protos.TracingServiceEvent.DataSources last_flush_slow_data_sources = 8;
+  bool has_last_flush_slow_data_sources() const;
+  private:
+  bool _internal_has_last_flush_slow_data_sources() const;
+  public:
+  void clear_last_flush_slow_data_sources();
+  const ::perfetto::protos::TracingServiceEvent_DataSources& last_flush_slow_data_sources() const;
+  PROTOBUF_NODISCARD ::perfetto::protos::TracingServiceEvent_DataSources* release_last_flush_slow_data_sources();
+  ::perfetto::protos::TracingServiceEvent_DataSources* mutable_last_flush_slow_data_sources();
+  void set_allocated_last_flush_slow_data_sources(::perfetto::protos::TracingServiceEvent_DataSources* last_flush_slow_data_sources);
+  private:
+  const ::perfetto::protos::TracingServiceEvent_DataSources& _internal_last_flush_slow_data_sources() const;
+  ::perfetto::protos::TracingServiceEvent_DataSources* _internal_mutable_last_flush_slow_data_sources();
+  public:
+  void unsafe_arena_set_allocated_last_flush_slow_data_sources(
+      ::perfetto::protos::TracingServiceEvent_DataSources* last_flush_slow_data_sources);
+  ::perfetto::protos::TracingServiceEvent_DataSources* unsafe_arena_release_last_flush_slow_data_sources();
+
   void clear_event_type();
   EventTypeCase event_type_case() const;
   // @@protoc_insertion_point(class_scope:perfetto.protos.TracingServiceEvent)
@@ -273,10 +661,13 @@ class TracingServiceEvent final :
   class _Internal;
   void set_has_tracing_started();
   void set_has_all_data_sources_started();
+  void set_has_flush_started();
   void set_has_all_data_sources_flushed();
   void set_has_read_tracing_buffers_completed();
   void set_has_tracing_disabled();
   void set_has_seized_for_bugreport();
+  void set_has_slow_starting_data_sources();
+  void set_has_last_flush_slow_data_sources();
 
   inline bool has_event_type() const;
   inline void clear_has_event_type();
@@ -290,10 +681,13 @@ class TracingServiceEvent final :
         ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
       bool tracing_started_;
       bool all_data_sources_started_;
+      bool flush_started_;
       bool all_data_sources_flushed_;
       bool read_tracing_buffers_completed_;
       bool tracing_disabled_;
       bool seized_for_bugreport_;
+      ::perfetto::protos::TracingServiceEvent_DataSources* slow_starting_data_sources_;
+      ::perfetto::protos::TracingServiceEvent_DataSources* last_flush_slow_data_sources_;
     } event_type_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::uint32_t _oneof_case_[1];
@@ -311,6 +705,190 @@ class TracingServiceEvent final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// TracingServiceEvent_DataSources_DataSource
+
+// optional string producer_name = 1;
+inline bool TracingServiceEvent_DataSources_DataSource::_internal_has_producer_name() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool TracingServiceEvent_DataSources_DataSource::has_producer_name() const {
+  return _internal_has_producer_name();
+}
+inline void TracingServiceEvent_DataSources_DataSource::clear_producer_name() {
+  _impl_.producer_name_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& TracingServiceEvent_DataSources_DataSource::producer_name() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceEvent.DataSources.DataSource.producer_name)
+  return _internal_producer_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TracingServiceEvent_DataSources_DataSource::set_producer_name(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.producer_name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceEvent.DataSources.DataSource.producer_name)
+}
+inline std::string* TracingServiceEvent_DataSources_DataSource::mutable_producer_name() {
+  std::string* _s = _internal_mutable_producer_name();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracingServiceEvent.DataSources.DataSource.producer_name)
+  return _s;
+}
+inline const std::string& TracingServiceEvent_DataSources_DataSource::_internal_producer_name() const {
+  return _impl_.producer_name_.Get();
+}
+inline void TracingServiceEvent_DataSources_DataSource::_internal_set_producer_name(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.producer_name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TracingServiceEvent_DataSources_DataSource::_internal_mutable_producer_name() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.producer_name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TracingServiceEvent_DataSources_DataSource::release_producer_name() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracingServiceEvent.DataSources.DataSource.producer_name)
+  if (!_internal_has_producer_name()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.producer_name_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.producer_name_.IsDefault()) {
+    _impl_.producer_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void TracingServiceEvent_DataSources_DataSource::set_allocated_producer_name(std::string* producer_name) {
+  if (producer_name != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.producer_name_.SetAllocated(producer_name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.producer_name_.IsDefault()) {
+    _impl_.producer_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TracingServiceEvent.DataSources.DataSource.producer_name)
+}
+
+// optional string data_source_name = 2;
+inline bool TracingServiceEvent_DataSources_DataSource::_internal_has_data_source_name() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool TracingServiceEvent_DataSources_DataSource::has_data_source_name() const {
+  return _internal_has_data_source_name();
+}
+inline void TracingServiceEvent_DataSources_DataSource::clear_data_source_name() {
+  _impl_.data_source_name_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& TracingServiceEvent_DataSources_DataSource::data_source_name() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceEvent.DataSources.DataSource.data_source_name)
+  return _internal_data_source_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TracingServiceEvent_DataSources_DataSource::set_data_source_name(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000002u;
+ _impl_.data_source_name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceEvent.DataSources.DataSource.data_source_name)
+}
+inline std::string* TracingServiceEvent_DataSources_DataSource::mutable_data_source_name() {
+  std::string* _s = _internal_mutable_data_source_name();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracingServiceEvent.DataSources.DataSource.data_source_name)
+  return _s;
+}
+inline const std::string& TracingServiceEvent_DataSources_DataSource::_internal_data_source_name() const {
+  return _impl_.data_source_name_.Get();
+}
+inline void TracingServiceEvent_DataSources_DataSource::_internal_set_data_source_name(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.data_source_name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TracingServiceEvent_DataSources_DataSource::_internal_mutable_data_source_name() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  return _impl_.data_source_name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TracingServiceEvent_DataSources_DataSource::release_data_source_name() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracingServiceEvent.DataSources.DataSource.data_source_name)
+  if (!_internal_has_data_source_name()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* p = _impl_.data_source_name_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.data_source_name_.IsDefault()) {
+    _impl_.data_source_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void TracingServiceEvent_DataSources_DataSource::set_allocated_data_source_name(std::string* data_source_name) {
+  if (data_source_name != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.data_source_name_.SetAllocated(data_source_name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.data_source_name_.IsDefault()) {
+    _impl_.data_source_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:perfetto.protos.TracingServiceEvent.DataSources.DataSource.data_source_name)
+}
+
+// -------------------------------------------------------------------
+
+// TracingServiceEvent_DataSources
+
+// repeated .perfetto.protos.TracingServiceEvent.DataSources.DataSource data_source = 1;
+inline int TracingServiceEvent_DataSources::_internal_data_source_size() const {
+  return _impl_.data_source_.size();
+}
+inline int TracingServiceEvent_DataSources::data_source_size() const {
+  return _internal_data_source_size();
+}
+inline void TracingServiceEvent_DataSources::clear_data_source() {
+  _impl_.data_source_.Clear();
+}
+inline ::perfetto::protos::TracingServiceEvent_DataSources_DataSource* TracingServiceEvent_DataSources::mutable_data_source(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracingServiceEvent.DataSources.data_source)
+  return _impl_.data_source_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TracingServiceEvent_DataSources_DataSource >*
+TracingServiceEvent_DataSources::mutable_data_source() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.TracingServiceEvent.DataSources.data_source)
+  return &_impl_.data_source_;
+}
+inline const ::perfetto::protos::TracingServiceEvent_DataSources_DataSource& TracingServiceEvent_DataSources::_internal_data_source(int index) const {
+  return _impl_.data_source_.Get(index);
+}
+inline const ::perfetto::protos::TracingServiceEvent_DataSources_DataSource& TracingServiceEvent_DataSources::data_source(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceEvent.DataSources.data_source)
+  return _internal_data_source(index);
+}
+inline ::perfetto::protos::TracingServiceEvent_DataSources_DataSource* TracingServiceEvent_DataSources::_internal_add_data_source() {
+  return _impl_.data_source_.Add();
+}
+inline ::perfetto::protos::TracingServiceEvent_DataSources_DataSource* TracingServiceEvent_DataSources::add_data_source() {
+  ::perfetto::protos::TracingServiceEvent_DataSources_DataSource* _add = _internal_add_data_source();
+  // @@protoc_insertion_point(field_add:perfetto.protos.TracingServiceEvent.DataSources.data_source)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TracingServiceEvent_DataSources_DataSource >&
+TracingServiceEvent_DataSources::data_source() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.TracingServiceEvent.DataSources.data_source)
+  return _impl_.data_source_;
+}
+
+// -------------------------------------------------------------------
+
 // TracingServiceEvent
 
 // bool tracing_started = 2;
@@ -387,6 +965,44 @@ inline bool TracingServiceEvent::all_data_sources_started() const {
 inline void TracingServiceEvent::set_all_data_sources_started(bool value) {
   _internal_set_all_data_sources_started(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceEvent.all_data_sources_started)
+}
+
+// bool flush_started = 9;
+inline bool TracingServiceEvent::_internal_has_flush_started() const {
+  return event_type_case() == kFlushStarted;
+}
+inline bool TracingServiceEvent::has_flush_started() const {
+  return _internal_has_flush_started();
+}
+inline void TracingServiceEvent::set_has_flush_started() {
+  _impl_._oneof_case_[0] = kFlushStarted;
+}
+inline void TracingServiceEvent::clear_flush_started() {
+  if (_internal_has_flush_started()) {
+    _impl_.event_type_.flush_started_ = false;
+    clear_has_event_type();
+  }
+}
+inline bool TracingServiceEvent::_internal_flush_started() const {
+  if (_internal_has_flush_started()) {
+    return _impl_.event_type_.flush_started_;
+  }
+  return false;
+}
+inline void TracingServiceEvent::_internal_set_flush_started(bool value) {
+  if (!_internal_has_flush_started()) {
+    clear_event_type();
+    set_has_flush_started();
+  }
+  _impl_.event_type_.flush_started_ = value;
+}
+inline bool TracingServiceEvent::flush_started() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceEvent.flush_started)
+  return _internal_flush_started();
+}
+inline void TracingServiceEvent::set_flush_started(bool value) {
+  _internal_set_flush_started(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceEvent.flush_started)
 }
 
 // bool all_data_sources_flushed = 3;
@@ -541,6 +1157,154 @@ inline void TracingServiceEvent::set_seized_for_bugreport(bool value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.TracingServiceEvent.seized_for_bugreport)
 }
 
+// .perfetto.protos.TracingServiceEvent.DataSources slow_starting_data_sources = 7;
+inline bool TracingServiceEvent::_internal_has_slow_starting_data_sources() const {
+  return event_type_case() == kSlowStartingDataSources;
+}
+inline bool TracingServiceEvent::has_slow_starting_data_sources() const {
+  return _internal_has_slow_starting_data_sources();
+}
+inline void TracingServiceEvent::set_has_slow_starting_data_sources() {
+  _impl_._oneof_case_[0] = kSlowStartingDataSources;
+}
+inline void TracingServiceEvent::clear_slow_starting_data_sources() {
+  if (_internal_has_slow_starting_data_sources()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.event_type_.slow_starting_data_sources_;
+    }
+    clear_has_event_type();
+  }
+}
+inline ::perfetto::protos::TracingServiceEvent_DataSources* TracingServiceEvent::release_slow_starting_data_sources() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracingServiceEvent.slow_starting_data_sources)
+  if (_internal_has_slow_starting_data_sources()) {
+    clear_has_event_type();
+    ::perfetto::protos::TracingServiceEvent_DataSources* temp = _impl_.event_type_.slow_starting_data_sources_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_type_.slow_starting_data_sources_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::TracingServiceEvent_DataSources& TracingServiceEvent::_internal_slow_starting_data_sources() const {
+  return _internal_has_slow_starting_data_sources()
+      ? *_impl_.event_type_.slow_starting_data_sources_
+      : reinterpret_cast< ::perfetto::protos::TracingServiceEvent_DataSources&>(::perfetto::protos::_TracingServiceEvent_DataSources_default_instance_);
+}
+inline const ::perfetto::protos::TracingServiceEvent_DataSources& TracingServiceEvent::slow_starting_data_sources() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceEvent.slow_starting_data_sources)
+  return _internal_slow_starting_data_sources();
+}
+inline ::perfetto::protos::TracingServiceEvent_DataSources* TracingServiceEvent::unsafe_arena_release_slow_starting_data_sources() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracingServiceEvent.slow_starting_data_sources)
+  if (_internal_has_slow_starting_data_sources()) {
+    clear_has_event_type();
+    ::perfetto::protos::TracingServiceEvent_DataSources* temp = _impl_.event_type_.slow_starting_data_sources_;
+    _impl_.event_type_.slow_starting_data_sources_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracingServiceEvent::unsafe_arena_set_allocated_slow_starting_data_sources(::perfetto::protos::TracingServiceEvent_DataSources* slow_starting_data_sources) {
+  clear_event_type();
+  if (slow_starting_data_sources) {
+    set_has_slow_starting_data_sources();
+    _impl_.event_type_.slow_starting_data_sources_ = slow_starting_data_sources;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracingServiceEvent.slow_starting_data_sources)
+}
+inline ::perfetto::protos::TracingServiceEvent_DataSources* TracingServiceEvent::_internal_mutable_slow_starting_data_sources() {
+  if (!_internal_has_slow_starting_data_sources()) {
+    clear_event_type();
+    set_has_slow_starting_data_sources();
+    _impl_.event_type_.slow_starting_data_sources_ = CreateMaybeMessage< ::perfetto::protos::TracingServiceEvent_DataSources >(GetArenaForAllocation());
+  }
+  return _impl_.event_type_.slow_starting_data_sources_;
+}
+inline ::perfetto::protos::TracingServiceEvent_DataSources* TracingServiceEvent::mutable_slow_starting_data_sources() {
+  ::perfetto::protos::TracingServiceEvent_DataSources* _msg = _internal_mutable_slow_starting_data_sources();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracingServiceEvent.slow_starting_data_sources)
+  return _msg;
+}
+
+// .perfetto.protos.TracingServiceEvent.DataSources last_flush_slow_data_sources = 8;
+inline bool TracingServiceEvent::_internal_has_last_flush_slow_data_sources() const {
+  return event_type_case() == kLastFlushSlowDataSources;
+}
+inline bool TracingServiceEvent::has_last_flush_slow_data_sources() const {
+  return _internal_has_last_flush_slow_data_sources();
+}
+inline void TracingServiceEvent::set_has_last_flush_slow_data_sources() {
+  _impl_._oneof_case_[0] = kLastFlushSlowDataSources;
+}
+inline void TracingServiceEvent::clear_last_flush_slow_data_sources() {
+  if (_internal_has_last_flush_slow_data_sources()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.event_type_.last_flush_slow_data_sources_;
+    }
+    clear_has_event_type();
+  }
+}
+inline ::perfetto::protos::TracingServiceEvent_DataSources* TracingServiceEvent::release_last_flush_slow_data_sources() {
+  // @@protoc_insertion_point(field_release:perfetto.protos.TracingServiceEvent.last_flush_slow_data_sources)
+  if (_internal_has_last_flush_slow_data_sources()) {
+    clear_has_event_type();
+    ::perfetto::protos::TracingServiceEvent_DataSources* temp = _impl_.event_type_.last_flush_slow_data_sources_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.event_type_.last_flush_slow_data_sources_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::perfetto::protos::TracingServiceEvent_DataSources& TracingServiceEvent::_internal_last_flush_slow_data_sources() const {
+  return _internal_has_last_flush_slow_data_sources()
+      ? *_impl_.event_type_.last_flush_slow_data_sources_
+      : reinterpret_cast< ::perfetto::protos::TracingServiceEvent_DataSources&>(::perfetto::protos::_TracingServiceEvent_DataSources_default_instance_);
+}
+inline const ::perfetto::protos::TracingServiceEvent_DataSources& TracingServiceEvent::last_flush_slow_data_sources() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracingServiceEvent.last_flush_slow_data_sources)
+  return _internal_last_flush_slow_data_sources();
+}
+inline ::perfetto::protos::TracingServiceEvent_DataSources* TracingServiceEvent::unsafe_arena_release_last_flush_slow_data_sources() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:perfetto.protos.TracingServiceEvent.last_flush_slow_data_sources)
+  if (_internal_has_last_flush_slow_data_sources()) {
+    clear_has_event_type();
+    ::perfetto::protos::TracingServiceEvent_DataSources* temp = _impl_.event_type_.last_flush_slow_data_sources_;
+    _impl_.event_type_.last_flush_slow_data_sources_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void TracingServiceEvent::unsafe_arena_set_allocated_last_flush_slow_data_sources(::perfetto::protos::TracingServiceEvent_DataSources* last_flush_slow_data_sources) {
+  clear_event_type();
+  if (last_flush_slow_data_sources) {
+    set_has_last_flush_slow_data_sources();
+    _impl_.event_type_.last_flush_slow_data_sources_ = last_flush_slow_data_sources;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:perfetto.protos.TracingServiceEvent.last_flush_slow_data_sources)
+}
+inline ::perfetto::protos::TracingServiceEvent_DataSources* TracingServiceEvent::_internal_mutable_last_flush_slow_data_sources() {
+  if (!_internal_has_last_flush_slow_data_sources()) {
+    clear_event_type();
+    set_has_last_flush_slow_data_sources();
+    _impl_.event_type_.last_flush_slow_data_sources_ = CreateMaybeMessage< ::perfetto::protos::TracingServiceEvent_DataSources >(GetArenaForAllocation());
+  }
+  return _impl_.event_type_.last_flush_slow_data_sources_;
+}
+inline ::perfetto::protos::TracingServiceEvent_DataSources* TracingServiceEvent::mutable_last_flush_slow_data_sources() {
+  ::perfetto::protos::TracingServiceEvent_DataSources* _msg = _internal_mutable_last_flush_slow_data_sources();
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracingServiceEvent.last_flush_slow_data_sources)
+  return _msg;
+}
+
 inline bool TracingServiceEvent::has_event_type() const {
   return event_type_case() != EVENT_TYPE_NOT_SET;
 }
@@ -553,6 +1317,10 @@ inline TracingServiceEvent::EventTypeCase TracingServiceEvent::event_type_case()
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
