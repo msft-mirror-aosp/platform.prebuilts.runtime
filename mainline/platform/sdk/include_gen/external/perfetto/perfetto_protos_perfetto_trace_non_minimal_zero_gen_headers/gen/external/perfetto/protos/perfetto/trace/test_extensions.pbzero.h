@@ -16,8 +16,15 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class DebugAnnotation;
+class TestExtensionChild;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 class TestExtensionChild_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/99, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -106,6 +113,30 @@ class TestExtension : public ::perfetto::protos::pbzero::TrackEvent {
         ::Append(*this, field_id, value);
   }
 
+  using FieldMetadata_StringExtensionForTesting2 =
+    ::protozero::proto_utils::FieldMetadata<
+      9905,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kString,
+      std::string,
+      TestExtension>;
+
+  static constexpr FieldMetadata_StringExtensionForTesting2 kStringExtensionForTesting2{};
+  void set_string_extension_for_testing2(const char* data, size_t size) {
+    AppendBytes(FieldMetadata_StringExtensionForTesting2::kFieldId, data, size);
+  }
+  void set_string_extension_for_testing2(::protozero::ConstChars chars) {
+    AppendBytes(FieldMetadata_StringExtensionForTesting2::kFieldId, chars.data, chars.size);
+  }
+  void set_string_extension_for_testing2(std::string value) {
+    static constexpr uint32_t field_id = FieldMetadata_StringExtensionForTesting2::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kString>
+        ::Append(*this, field_id, value);
+  }
+
   using FieldMetadata_IntExtensionForTesting =
     ::protozero::proto_utils::FieldMetadata<
       9901,
@@ -179,6 +210,14 @@ class TestExtension : public ::perfetto::protos::pbzero::TrackEvent {
       ::protozero::proto_utils::ProtoSchemaType::kUint32>
         ::Append(*this, field_id, value);
   }
+  enum : int32_t {
+    kStringExtensionForTestingFieldNumber = 9900,
+    kStringExtensionForTesting2FieldNumber = 9905,
+    kIntExtensionForTestingFieldNumber = 9901,
+    kOmittedExtensionForTestingFieldNumber = 9902,
+    kNestedMessageExtensionForTestingFieldNumber = 9903,
+    kUintExtensionForTestingFieldNumber = 9904,
+  };
 };
 } // Namespace.
 } // Namespace.

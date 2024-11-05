@@ -15,9 +15,15 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class StatsdPullAtomConfig;
 enum AtomId : int32_t;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 class StatsdPullAtomConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/4, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -51,11 +57,11 @@ class StatsdPullAtomConfig : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::AtomId,
+      AtomId,
       StatsdPullAtomConfig>;
 
   static constexpr FieldMetadata_PullAtomId kPullAtomId{};
-  void add_pull_atom_id(::perfetto::protos::pbzero::AtomId value) {
+  void add_pull_atom_id(AtomId value) {
     static constexpr uint32_t field_id = FieldMetadata_PullAtomId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -154,11 +160,11 @@ class StatsdTracingConfig : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::AtomId,
+      AtomId,
       StatsdTracingConfig>;
 
   static constexpr FieldMetadata_PushAtomId kPushAtomId{};
-  void add_push_atom_id(::perfetto::protos::pbzero::AtomId value) {
+  void add_push_atom_id(AtomId value) {
     static constexpr uint32_t field_id = FieldMetadata_PushAtomId::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.

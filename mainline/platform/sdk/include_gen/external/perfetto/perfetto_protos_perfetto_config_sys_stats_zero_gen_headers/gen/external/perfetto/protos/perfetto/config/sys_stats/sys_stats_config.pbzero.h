@@ -15,13 +15,19 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 enum MeminfoCounters : int32_t;
 namespace perfetto_pbzero_enum_SysStatsConfig {
 enum StatCounters : int32_t;
 }  // namespace perfetto_pbzero_enum_SysStatsConfig
 using SysStatsConfig_StatCounters = perfetto_pbzero_enum_SysStatsConfig::StatCounters;
 enum VmstatCounters : int32_t;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 namespace perfetto_pbzero_enum_SysStatsConfig {
 enum StatCounters : int32_t {
@@ -60,7 +66,7 @@ const char* SysStatsConfig_StatCounters_Name(::perfetto::protos::pbzero::SysStat
   return "PBZERO_UNKNOWN_ENUM_VALUE";
 }
 
-class SysStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class SysStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/14, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   SysStatsConfig_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit SysStatsConfig_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -85,6 +91,14 @@ class SysStatsConfig_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD
   uint32_t buddyinfo_period_ms() const { return at<9>().as_uint32(); }
   bool has_diskstat_period_ms() const { return at<10>().valid(); }
   uint32_t diskstat_period_ms() const { return at<10>().as_uint32(); }
+  bool has_psi_period_ms() const { return at<11>().valid(); }
+  uint32_t psi_period_ms() const { return at<11>().as_uint32(); }
+  bool has_thermal_period_ms() const { return at<12>().valid(); }
+  uint32_t thermal_period_ms() const { return at<12>().as_uint32(); }
+  bool has_cpuidle_period_ms() const { return at<13>().valid(); }
+  uint32_t cpuidle_period_ms() const { return at<13>().as_uint32(); }
+  bool has_gpufreq_period_ms() const { return at<14>().valid(); }
+  uint32_t gpufreq_period_ms() const { return at<14>().as_uint32(); }
 };
 
 class SysStatsConfig : public ::protozero::Message {
@@ -101,6 +115,10 @@ class SysStatsConfig : public ::protozero::Message {
     kCpufreqPeriodMsFieldNumber = 8,
     kBuddyinfoPeriodMsFieldNumber = 9,
     kDiskstatPeriodMsFieldNumber = 10,
+    kPsiPeriodMsFieldNumber = 11,
+    kThermalPeriodMsFieldNumber = 12,
+    kCpuidlePeriodMsFieldNumber = 13,
+    kGpufreqPeriodMsFieldNumber = 14,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.SysStatsConfig"; }
 
@@ -138,11 +156,11 @@ class SysStatsConfig : public ::protozero::Message {
       2,
       ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::MeminfoCounters,
+      MeminfoCounters,
       SysStatsConfig>;
 
   static constexpr FieldMetadata_MeminfoCounters kMeminfoCounters{};
-  void add_meminfo_counters(::perfetto::protos::pbzero::MeminfoCounters value) {
+  void add_meminfo_counters(MeminfoCounters value) {
     static constexpr uint32_t field_id = FieldMetadata_MeminfoCounters::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -174,11 +192,11 @@ class SysStatsConfig : public ::protozero::Message {
       4,
       ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::VmstatCounters,
+      VmstatCounters,
       SysStatsConfig>;
 
   static constexpr FieldMetadata_VmstatCounters kVmstatCounters{};
-  void add_vmstat_counters(::perfetto::protos::pbzero::VmstatCounters value) {
+  void add_vmstat_counters(VmstatCounters value) {
     static constexpr uint32_t field_id = FieldMetadata_VmstatCounters::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -210,11 +228,11 @@ class SysStatsConfig : public ::protozero::Message {
       6,
       ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::SysStatsConfig_StatCounters,
+      SysStatsConfig_StatCounters,
       SysStatsConfig>;
 
   static constexpr FieldMetadata_StatCounters kStatCounters{};
-  void add_stat_counters(::perfetto::protos::pbzero::SysStatsConfig_StatCounters value) {
+  void add_stat_counters(SysStatsConfig_StatCounters value) {
     static constexpr uint32_t field_id = FieldMetadata_StatCounters::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -288,6 +306,78 @@ class SysStatsConfig : public ::protozero::Message {
   static constexpr FieldMetadata_DiskstatPeriodMs kDiskstatPeriodMs{};
   void set_diskstat_period_ms(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_DiskstatPeriodMs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_PsiPeriodMs =
+    ::protozero::proto_utils::FieldMetadata<
+      11,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SysStatsConfig>;
+
+  static constexpr FieldMetadata_PsiPeriodMs kPsiPeriodMs{};
+  void set_psi_period_ms(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_PsiPeriodMs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_ThermalPeriodMs =
+    ::protozero::proto_utils::FieldMetadata<
+      12,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SysStatsConfig>;
+
+  static constexpr FieldMetadata_ThermalPeriodMs kThermalPeriodMs{};
+  void set_thermal_period_ms(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_ThermalPeriodMs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_CpuidlePeriodMs =
+    ::protozero::proto_utils::FieldMetadata<
+      13,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SysStatsConfig>;
+
+  static constexpr FieldMetadata_CpuidlePeriodMs kCpuidlePeriodMs{};
+  void set_cpuidle_period_ms(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_CpuidlePeriodMs::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_GpufreqPeriodMs =
+    ::protozero::proto_utils::FieldMetadata<
+      14,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      SysStatsConfig>;
+
+  static constexpr FieldMetadata_GpufreqPeriodMs kGpufreqPeriodMs{};
+  void set_gpufreq_period_ms(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_GpufreqPeriodMs::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<

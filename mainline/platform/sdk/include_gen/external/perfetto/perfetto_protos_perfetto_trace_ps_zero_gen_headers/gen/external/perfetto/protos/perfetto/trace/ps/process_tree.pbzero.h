@@ -15,9 +15,15 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class ProcessTree_Process;
 class ProcessTree_Thread;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 class ProcessTree_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/3, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
@@ -92,7 +98,7 @@ class ProcessTree : public ::protozero::Message {
   }
 };
 
-class ProcessTree_Process_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/6, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
+class ProcessTree_Process_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/7, /*HAS_NONPACKED_REPEATED_FIELDS=*/true> {
  public:
   ProcessTree_Process_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit ProcessTree_Process_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -103,12 +109,12 @@ class ProcessTree_Process_Decoder : public ::protozero::TypedProtoDecoder</*MAX_
   int32_t ppid() const { return at<2>().as_int32(); }
   bool has_cmdline() const { return at<3>().valid(); }
   ::protozero::RepeatedFieldIterator<::protozero::ConstChars> cmdline() const { return GetRepeated<::protozero::ConstChars>(3); }
-  bool has_threads_deprecated() const { return at<4>().valid(); }
-  ::protozero::RepeatedFieldIterator<::protozero::ConstBytes> threads_deprecated() const { return GetRepeated<::protozero::ConstBytes>(4); }
   bool has_uid() const { return at<5>().valid(); }
   int32_t uid() const { return at<5>().as_int32(); }
   bool has_nspid() const { return at<6>().valid(); }
   ::protozero::RepeatedFieldIterator<int32_t> nspid() const { return GetRepeated<int32_t>(6); }
+  bool has_process_start_from_boot() const { return at<7>().valid(); }
+  uint64_t process_start_from_boot() const { return at<7>().as_uint64(); }
 };
 
 class ProcessTree_Process : public ::protozero::Message {
@@ -118,9 +124,9 @@ class ProcessTree_Process : public ::protozero::Message {
     kPidFieldNumber = 1,
     kPpidFieldNumber = 2,
     kCmdlineFieldNumber = 3,
-    kThreadsDeprecatedFieldNumber = 4,
     kUidFieldNumber = 5,
     kNspidFieldNumber = 6,
+    kProcessStartFromBootFieldNumber = 7,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.ProcessTree.Process"; }
 
@@ -185,20 +191,6 @@ class ProcessTree_Process : public ::protozero::Message {
         ::Append(*this, field_id, value);
   }
 
-  using FieldMetadata_ThreadsDeprecated =
-    ::protozero::proto_utils::FieldMetadata<
-      4,
-      ::protozero::proto_utils::RepetitionType::kRepeatedNotPacked,
-      ::protozero::proto_utils::ProtoSchemaType::kMessage,
-      ProcessTree_Thread,
-      ProcessTree_Process>;
-
-  static constexpr FieldMetadata_ThreadsDeprecated kThreadsDeprecated{};
-  template <typename T = ProcessTree_Thread> T* add_threads_deprecated() {
-    return BeginNestedMessage<T>(4);
-  }
-
-
   using FieldMetadata_Uid =
     ::protozero::proto_utils::FieldMetadata<
       5,
@@ -232,6 +224,24 @@ class ProcessTree_Process : public ::protozero::Message {
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
       ::protozero::proto_utils::ProtoSchemaType::kInt32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_ProcessStartFromBoot =
+    ::protozero::proto_utils::FieldMetadata<
+      7,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint64,
+      uint64_t,
+      ProcessTree_Process>;
+
+  static constexpr FieldMetadata_ProcessStartFromBoot kProcessStartFromBoot{};
+  void set_process_start_from_boot(uint64_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_ProcessStartFromBoot::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint64>
         ::Append(*this, field_id, value);
   }
 };

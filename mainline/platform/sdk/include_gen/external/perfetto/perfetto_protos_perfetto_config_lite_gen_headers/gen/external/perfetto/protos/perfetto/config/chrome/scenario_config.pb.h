@@ -54,6 +54,9 @@ extern NestedScenarioConfigDefaultTypeInternal _NestedScenarioConfig_default_ins
 class ScenarioConfig;
 struct ScenarioConfigDefaultTypeInternal;
 extern ScenarioConfigDefaultTypeInternal _ScenarioConfig_default_instance_;
+class TracingTriggerRulesConfig;
+struct TracingTriggerRulesConfigDefaultTypeInternal;
+extern TracingTriggerRulesConfigDefaultTypeInternal _TracingTriggerRulesConfig_default_instance_;
 class TriggerRule;
 struct TriggerRuleDefaultTypeInternal;
 extern TriggerRuleDefaultTypeInternal _TriggerRule_default_instance_;
@@ -69,6 +72,7 @@ PROTOBUF_NAMESPACE_OPEN
 template<> ::perfetto::protos::ChromeFieldTracingConfig* Arena::CreateMaybeMessage<::perfetto::protos::ChromeFieldTracingConfig>(Arena*);
 template<> ::perfetto::protos::NestedScenarioConfig* Arena::CreateMaybeMessage<::perfetto::protos::NestedScenarioConfig>(Arena*);
 template<> ::perfetto::protos::ScenarioConfig* Arena::CreateMaybeMessage<::perfetto::protos::ScenarioConfig>(Arena*);
+template<> ::perfetto::protos::TracingTriggerRulesConfig* Arena::CreateMaybeMessage<::perfetto::protos::TracingTriggerRulesConfig>(Arena*);
 template<> ::perfetto::protos::TriggerRule* Arena::CreateMaybeMessage<::perfetto::protos::TriggerRule>(Arena*);
 template<> ::perfetto::protos::TriggerRule_HistogramTrigger* Arena::CreateMaybeMessage<::perfetto::protos::TriggerRule_HistogramTrigger>(Arena*);
 template<> ::perfetto::protos::TriggerRule_RepeatingInterval* Arena::CreateMaybeMessage<::perfetto::protos::TriggerRule_RepeatingInterval>(Arena*);
@@ -546,6 +550,7 @@ class TriggerRule final :
   enum : int {
     kNameFieldNumber = 1,
     kDelayMsFieldNumber = 3,
+    kActivationDelayMsFieldNumber = 8,
     kTriggerChanceFieldNumber = 2,
     kManualTriggerNameFieldNumber = 4,
     kHistogramFieldNumber = 5,
@@ -580,6 +585,19 @@ class TriggerRule final :
   private:
   ::uint64_t _internal_delay_ms() const;
   void _internal_set_delay_ms(::uint64_t value);
+  public:
+
+  // optional uint64 activation_delay_ms = 8;
+  bool has_activation_delay_ms() const;
+  private:
+  bool _internal_has_activation_delay_ms() const;
+  public:
+  void clear_activation_delay_ms();
+  ::uint64_t activation_delay_ms() const;
+  void set_activation_delay_ms(::uint64_t value);
+  private:
+  ::uint64_t _internal_activation_delay_ms() const;
+  void _internal_set_activation_delay_ms(::uint64_t value);
   public:
 
   // optional float trigger_chance = 2;
@@ -669,6 +687,7 @@ class TriggerRule final :
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
     ::uint64_t delay_ms_;
+    ::uint64_t activation_delay_ms_;
     float trigger_chance_;
     union TriggerUnion {
       constexpr TriggerUnion() : _constinit_{} {}
@@ -1315,6 +1334,156 @@ class ChromeFieldTracingConfig final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fchrome_2fscenario_5fconfig_2eproto;
 };
+// -------------------------------------------------------------------
+
+class TracingTriggerRulesConfig final :
+    public ::PROTOBUF_NAMESPACE_ID::MessageLite /* @@protoc_insertion_point(class_definition:perfetto.protos.TracingTriggerRulesConfig) */ {
+ public:
+  inline TracingTriggerRulesConfig() : TracingTriggerRulesConfig(nullptr) {}
+  ~TracingTriggerRulesConfig() override;
+  explicit PROTOBUF_CONSTEXPR TracingTriggerRulesConfig(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TracingTriggerRulesConfig(const TracingTriggerRulesConfig& from);
+  TracingTriggerRulesConfig(TracingTriggerRulesConfig&& from) noexcept
+    : TracingTriggerRulesConfig() {
+    *this = ::std::move(from);
+  }
+
+  inline TracingTriggerRulesConfig& operator=(const TracingTriggerRulesConfig& from) {
+    if (this == &from) return *this;
+    CopyFrom(from);
+    return *this;
+  }
+  inline TracingTriggerRulesConfig& operator=(TracingTriggerRulesConfig&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const std::string& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString);
+  }
+  inline std::string* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<std::string>();
+  }
+
+  static const TracingTriggerRulesConfig& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TracingTriggerRulesConfig* internal_default_instance() {
+    return reinterpret_cast<const TracingTriggerRulesConfig*>(
+               &_TracingTriggerRulesConfig_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(TracingTriggerRulesConfig& a, TracingTriggerRulesConfig& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TracingTriggerRulesConfig* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TracingTriggerRulesConfig* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TracingTriggerRulesConfig* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<TracingTriggerRulesConfig>(arena);
+  }
+  TracingTriggerRulesConfig* New() const {
+    return New(nullptr);
+  }
+  void CheckTypeAndMergeFrom(const ::PROTOBUF_NAMESPACE_ID::MessageLite& from)  final;
+  void CopyFrom(const TracingTriggerRulesConfig& from);
+  void MergeFrom(const TracingTriggerRulesConfig& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(TracingTriggerRulesConfig* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "perfetto.protos.TracingTriggerRulesConfig";
+  }
+  protected:
+  explicit TracingTriggerRulesConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  std::string GetTypeName() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRulesFieldNumber = 1,
+  };
+  // repeated .perfetto.protos.TriggerRule rules = 1;
+  int rules_size() const;
+  private:
+  int _internal_rules_size() const;
+  public:
+  void clear_rules();
+  ::perfetto::protos::TriggerRule* mutable_rules(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TriggerRule >*
+      mutable_rules();
+  private:
+  const ::perfetto::protos::TriggerRule& _internal_rules(int index) const;
+  ::perfetto::protos::TriggerRule* _internal_add_rules();
+  public:
+  const ::perfetto::protos::TriggerRule& rules(int index) const;
+  ::perfetto::protos::TriggerRule* add_rules();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TriggerRule >&
+      rules() const;
+
+  // @@protoc_insertion_point(class_scope:perfetto.protos.TracingTriggerRulesConfig)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TriggerRule > rules_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fchrome_2fscenario_5fconfig_2eproto;
+};
 // ===================================================================
 
 
@@ -1584,7 +1753,7 @@ inline void TriggerRule::set_allocated_name(std::string* name) {
 
 // optional float trigger_chance = 2;
 inline bool TriggerRule::_internal_has_trigger_chance() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
 inline bool TriggerRule::has_trigger_chance() const {
@@ -1592,7 +1761,7 @@ inline bool TriggerRule::has_trigger_chance() const {
 }
 inline void TriggerRule::clear_trigger_chance() {
   _impl_.trigger_chance_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
 }
 inline float TriggerRule::_internal_trigger_chance() const {
   return _impl_.trigger_chance_;
@@ -1602,7 +1771,7 @@ inline float TriggerRule::trigger_chance() const {
   return _internal_trigger_chance();
 }
 inline void TriggerRule::_internal_set_trigger_chance(float value) {
-  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_._has_bits_[0] |= 0x00000008u;
   _impl_.trigger_chance_ = value;
 }
 inline void TriggerRule::set_trigger_chance(float value) {
@@ -1636,6 +1805,34 @@ inline void TriggerRule::_internal_set_delay_ms(::uint64_t value) {
 inline void TriggerRule::set_delay_ms(::uint64_t value) {
   _internal_set_delay_ms(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.TriggerRule.delay_ms)
+}
+
+// optional uint64 activation_delay_ms = 8;
+inline bool TriggerRule::_internal_has_activation_delay_ms() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool TriggerRule::has_activation_delay_ms() const {
+  return _internal_has_activation_delay_ms();
+}
+inline void TriggerRule::clear_activation_delay_ms() {
+  _impl_.activation_delay_ms_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline ::uint64_t TriggerRule::_internal_activation_delay_ms() const {
+  return _impl_.activation_delay_ms_;
+}
+inline ::uint64_t TriggerRule::activation_delay_ms() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TriggerRule.activation_delay_ms)
+  return _internal_activation_delay_ms();
+}
+inline void TriggerRule::_internal_set_activation_delay_ms(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.activation_delay_ms_ = value;
+}
+inline void TriggerRule::set_activation_delay_ms(::uint64_t value) {
+  _internal_set_activation_delay_ms(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.TriggerRule.activation_delay_ms)
 }
 
 // string manual_trigger_name = 4;
@@ -2467,9 +2664,55 @@ ChromeFieldTracingConfig::scenarios() const {
   return _impl_.scenarios_;
 }
 
+// -------------------------------------------------------------------
+
+// TracingTriggerRulesConfig
+
+// repeated .perfetto.protos.TriggerRule rules = 1;
+inline int TracingTriggerRulesConfig::_internal_rules_size() const {
+  return _impl_.rules_.size();
+}
+inline int TracingTriggerRulesConfig::rules_size() const {
+  return _internal_rules_size();
+}
+inline void TracingTriggerRulesConfig::clear_rules() {
+  _impl_.rules_.Clear();
+}
+inline ::perfetto::protos::TriggerRule* TracingTriggerRulesConfig::mutable_rules(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.TracingTriggerRulesConfig.rules)
+  return _impl_.rules_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TriggerRule >*
+TracingTriggerRulesConfig::mutable_rules() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.TracingTriggerRulesConfig.rules)
+  return &_impl_.rules_;
+}
+inline const ::perfetto::protos::TriggerRule& TracingTriggerRulesConfig::_internal_rules(int index) const {
+  return _impl_.rules_.Get(index);
+}
+inline const ::perfetto::protos::TriggerRule& TracingTriggerRulesConfig::rules(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.TracingTriggerRulesConfig.rules)
+  return _internal_rules(index);
+}
+inline ::perfetto::protos::TriggerRule* TracingTriggerRulesConfig::_internal_add_rules() {
+  return _impl_.rules_.Add();
+}
+inline ::perfetto::protos::TriggerRule* TracingTriggerRulesConfig::add_rules() {
+  ::perfetto::protos::TriggerRule* _add = _internal_add_rules();
+  // @@protoc_insertion_point(field_add:perfetto.protos.TracingTriggerRulesConfig.rules)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::TriggerRule >&
+TracingTriggerRulesConfig::rules() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.TracingTriggerRulesConfig.rules)
+  return _impl_.rules_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
