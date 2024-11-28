@@ -237,6 +237,10 @@ class SysStatsConfig final :
     kCpufreqPeriodMsFieldNumber = 8,
     kBuddyinfoPeriodMsFieldNumber = 9,
     kDiskstatPeriodMsFieldNumber = 10,
+    kPsiPeriodMsFieldNumber = 11,
+    kThermalPeriodMsFieldNumber = 12,
+    kCpuidlePeriodMsFieldNumber = 13,
+    kGpufreqPeriodMsFieldNumber = 14,
   };
   // repeated .perfetto.protos.MeminfoCounters meminfo_counters = 2;
   int meminfo_counters_size() const;
@@ -380,6 +384,58 @@ class SysStatsConfig final :
   void _internal_set_diskstat_period_ms(::uint32_t value);
   public:
 
+  // optional uint32 psi_period_ms = 11;
+  bool has_psi_period_ms() const;
+  private:
+  bool _internal_has_psi_period_ms() const;
+  public:
+  void clear_psi_period_ms();
+  ::uint32_t psi_period_ms() const;
+  void set_psi_period_ms(::uint32_t value);
+  private:
+  ::uint32_t _internal_psi_period_ms() const;
+  void _internal_set_psi_period_ms(::uint32_t value);
+  public:
+
+  // optional uint32 thermal_period_ms = 12;
+  bool has_thermal_period_ms() const;
+  private:
+  bool _internal_has_thermal_period_ms() const;
+  public:
+  void clear_thermal_period_ms();
+  ::uint32_t thermal_period_ms() const;
+  void set_thermal_period_ms(::uint32_t value);
+  private:
+  ::uint32_t _internal_thermal_period_ms() const;
+  void _internal_set_thermal_period_ms(::uint32_t value);
+  public:
+
+  // optional uint32 cpuidle_period_ms = 13;
+  bool has_cpuidle_period_ms() const;
+  private:
+  bool _internal_has_cpuidle_period_ms() const;
+  public:
+  void clear_cpuidle_period_ms();
+  ::uint32_t cpuidle_period_ms() const;
+  void set_cpuidle_period_ms(::uint32_t value);
+  private:
+  ::uint32_t _internal_cpuidle_period_ms() const;
+  void _internal_set_cpuidle_period_ms(::uint32_t value);
+  public:
+
+  // optional uint32 gpufreq_period_ms = 14;
+  bool has_gpufreq_period_ms() const;
+  private:
+  bool _internal_has_gpufreq_period_ms() const;
+  public:
+  void clear_gpufreq_period_ms();
+  ::uint32_t gpufreq_period_ms() const;
+  void set_gpufreq_period_ms(::uint32_t value);
+  private:
+  ::uint32_t _internal_gpufreq_period_ms() const;
+  void _internal_set_gpufreq_period_ms(::uint32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.SysStatsConfig)
  private:
   class _Internal;
@@ -400,6 +456,10 @@ class SysStatsConfig final :
     ::uint32_t cpufreq_period_ms_;
     ::uint32_t buddyinfo_period_ms_;
     ::uint32_t diskstat_period_ms_;
+    ::uint32_t psi_period_ms_;
+    ::uint32_t thermal_period_ms_;
+    ::uint32_t cpuidle_period_ms_;
+    ::uint32_t gpufreq_period_ms_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fsys_5fstats_2fsys_5fstats_5fconfig_2eproto;
@@ -744,6 +804,118 @@ inline void SysStatsConfig::_internal_set_diskstat_period_ms(::uint32_t value) {
 inline void SysStatsConfig::set_diskstat_period_ms(::uint32_t value) {
   _internal_set_diskstat_period_ms(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.SysStatsConfig.diskstat_period_ms)
+}
+
+// optional uint32 psi_period_ms = 11;
+inline bool SysStatsConfig::_internal_has_psi_period_ms() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
+  return value;
+}
+inline bool SysStatsConfig::has_psi_period_ms() const {
+  return _internal_has_psi_period_ms();
+}
+inline void SysStatsConfig::clear_psi_period_ms() {
+  _impl_.psi_period_ms_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000080u;
+}
+inline ::uint32_t SysStatsConfig::_internal_psi_period_ms() const {
+  return _impl_.psi_period_ms_;
+}
+inline ::uint32_t SysStatsConfig::psi_period_ms() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SysStatsConfig.psi_period_ms)
+  return _internal_psi_period_ms();
+}
+inline void SysStatsConfig::_internal_set_psi_period_ms(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000080u;
+  _impl_.psi_period_ms_ = value;
+}
+inline void SysStatsConfig::set_psi_period_ms(::uint32_t value) {
+  _internal_set_psi_period_ms(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SysStatsConfig.psi_period_ms)
+}
+
+// optional uint32 thermal_period_ms = 12;
+inline bool SysStatsConfig::_internal_has_thermal_period_ms() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000100u) != 0;
+  return value;
+}
+inline bool SysStatsConfig::has_thermal_period_ms() const {
+  return _internal_has_thermal_period_ms();
+}
+inline void SysStatsConfig::clear_thermal_period_ms() {
+  _impl_.thermal_period_ms_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000100u;
+}
+inline ::uint32_t SysStatsConfig::_internal_thermal_period_ms() const {
+  return _impl_.thermal_period_ms_;
+}
+inline ::uint32_t SysStatsConfig::thermal_period_ms() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SysStatsConfig.thermal_period_ms)
+  return _internal_thermal_period_ms();
+}
+inline void SysStatsConfig::_internal_set_thermal_period_ms(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000100u;
+  _impl_.thermal_period_ms_ = value;
+}
+inline void SysStatsConfig::set_thermal_period_ms(::uint32_t value) {
+  _internal_set_thermal_period_ms(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SysStatsConfig.thermal_period_ms)
+}
+
+// optional uint32 cpuidle_period_ms = 13;
+inline bool SysStatsConfig::_internal_has_cpuidle_period_ms() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000200u) != 0;
+  return value;
+}
+inline bool SysStatsConfig::has_cpuidle_period_ms() const {
+  return _internal_has_cpuidle_period_ms();
+}
+inline void SysStatsConfig::clear_cpuidle_period_ms() {
+  _impl_.cpuidle_period_ms_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000200u;
+}
+inline ::uint32_t SysStatsConfig::_internal_cpuidle_period_ms() const {
+  return _impl_.cpuidle_period_ms_;
+}
+inline ::uint32_t SysStatsConfig::cpuidle_period_ms() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SysStatsConfig.cpuidle_period_ms)
+  return _internal_cpuidle_period_ms();
+}
+inline void SysStatsConfig::_internal_set_cpuidle_period_ms(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000200u;
+  _impl_.cpuidle_period_ms_ = value;
+}
+inline void SysStatsConfig::set_cpuidle_period_ms(::uint32_t value) {
+  _internal_set_cpuidle_period_ms(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SysStatsConfig.cpuidle_period_ms)
+}
+
+// optional uint32 gpufreq_period_ms = 14;
+inline bool SysStatsConfig::_internal_has_gpufreq_period_ms() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000400u) != 0;
+  return value;
+}
+inline bool SysStatsConfig::has_gpufreq_period_ms() const {
+  return _internal_has_gpufreq_period_ms();
+}
+inline void SysStatsConfig::clear_gpufreq_period_ms() {
+  _impl_.gpufreq_period_ms_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000400u;
+}
+inline ::uint32_t SysStatsConfig::_internal_gpufreq_period_ms() const {
+  return _impl_.gpufreq_period_ms_;
+}
+inline ::uint32_t SysStatsConfig::gpufreq_period_ms() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.SysStatsConfig.gpufreq_period_ms)
+  return _internal_gpufreq_period_ms();
+}
+inline void SysStatsConfig::_internal_set_gpufreq_period_ms(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000400u;
+  _impl_.gpufreq_period_ms_ = value;
+}
+inline void SysStatsConfig::set_gpufreq_period_ms(::uint32_t value) {
+  _internal_set_gpufreq_period_ms(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.SysStatsConfig.gpufreq_period_ms)
 }
 
 #ifdef __GNUC__

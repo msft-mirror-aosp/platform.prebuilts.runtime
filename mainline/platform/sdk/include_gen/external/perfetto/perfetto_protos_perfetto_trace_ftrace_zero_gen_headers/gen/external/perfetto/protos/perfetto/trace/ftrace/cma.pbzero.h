@@ -12,10 +12,10 @@
 #include "perfetto/protozero/proto_decoder.h"
 #include "perfetto/protozero/proto_utils.h"
 
+
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 
 class CmaAllocInfoFtraceEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/10, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:

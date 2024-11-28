@@ -921,6 +921,7 @@ class FtraceConfig final :
     kSyscallEventsFieldNumber = 18,
     kFunctionFiltersFieldNumber = 20,
     kFunctionGraphRootsFieldNumber = 21,
+    kAtraceCategoriesPreferSdkFieldNumber = 28,
     kInstanceNameFieldNumber = 25,
     kCompactSchedFieldNumber = 12,
     kPrintFilterFieldNumber = 22,
@@ -934,6 +935,8 @@ class FtraceConfig final :
     kEnableFunctionGraphFieldNumber = 19,
     kPreserveFtraceBufferFieldNumber = 23,
     kUseMonotonicRawClockFieldNumber = 24,
+    kBufferSizeLowerBoundFieldNumber = 27,
+    kDrainBufferPercentFieldNumber = 29,
   };
   // repeated string ftrace_events = 1;
   int ftrace_events_size() const;
@@ -1077,6 +1080,30 @@ class FtraceConfig final :
   private:
   const std::string& _internal_function_graph_roots(int index) const;
   std::string* _internal_add_function_graph_roots();
+  public:
+
+  // repeated string atrace_categories_prefer_sdk = 28;
+  int atrace_categories_prefer_sdk_size() const;
+  private:
+  int _internal_atrace_categories_prefer_sdk_size() const;
+  public:
+  void clear_atrace_categories_prefer_sdk();
+  const std::string& atrace_categories_prefer_sdk(int index) const;
+  std::string* mutable_atrace_categories_prefer_sdk(int index);
+  void set_atrace_categories_prefer_sdk(int index, const std::string& value);
+  void set_atrace_categories_prefer_sdk(int index, std::string&& value);
+  void set_atrace_categories_prefer_sdk(int index, const char* value);
+  void set_atrace_categories_prefer_sdk(int index, const char* value, size_t size);
+  std::string* add_atrace_categories_prefer_sdk();
+  void add_atrace_categories_prefer_sdk(const std::string& value);
+  void add_atrace_categories_prefer_sdk(std::string&& value);
+  void add_atrace_categories_prefer_sdk(const char* value);
+  void add_atrace_categories_prefer_sdk(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& atrace_categories_prefer_sdk() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_atrace_categories_prefer_sdk();
+  private:
+  const std::string& _internal_atrace_categories_prefer_sdk(int index) const;
+  std::string* _internal_add_atrace_categories_prefer_sdk();
   public:
 
   // optional string instance_name = 25;
@@ -1263,6 +1290,32 @@ class FtraceConfig final :
   void _internal_set_use_monotonic_raw_clock(bool value);
   public:
 
+  // optional bool buffer_size_lower_bound = 27;
+  bool has_buffer_size_lower_bound() const;
+  private:
+  bool _internal_has_buffer_size_lower_bound() const;
+  public:
+  void clear_buffer_size_lower_bound();
+  bool buffer_size_lower_bound() const;
+  void set_buffer_size_lower_bound(bool value);
+  private:
+  bool _internal_buffer_size_lower_bound() const;
+  void _internal_set_buffer_size_lower_bound(bool value);
+  public:
+
+  // optional uint32 drain_buffer_percent = 29;
+  bool has_drain_buffer_percent() const;
+  private:
+  bool _internal_has_drain_buffer_percent() const;
+  public:
+  void clear_drain_buffer_percent();
+  ::uint32_t drain_buffer_percent() const;
+  void set_drain_buffer_percent(::uint32_t value);
+  private:
+  ::uint32_t _internal_drain_buffer_percent() const;
+  void _internal_set_drain_buffer_percent(::uint32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.FtraceConfig)
  private:
   class _Internal;
@@ -1279,6 +1332,7 @@ class FtraceConfig final :
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> syscall_events_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> function_filters_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> function_graph_roots_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> atrace_categories_prefer_sdk_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr instance_name_;
     ::perfetto::protos::FtraceConfig_CompactSchedConfig* compact_sched_;
     ::perfetto::protos::FtraceConfig_PrintFilter* print_filter_;
@@ -1292,6 +1346,8 @@ class FtraceConfig final :
     bool enable_function_graph_;
     bool preserve_ftrace_buffer_;
     bool use_monotonic_raw_clock_;
+    bool buffer_size_lower_bound_;
+    ::uint32_t drain_buffer_percent_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2fconfig_2fftrace_2fftrace_5fconfig_2eproto;
@@ -1940,6 +1996,81 @@ FtraceConfig::mutable_atrace_apps() {
   return &_impl_.atrace_apps_;
 }
 
+// repeated string atrace_categories_prefer_sdk = 28;
+inline int FtraceConfig::_internal_atrace_categories_prefer_sdk_size() const {
+  return _impl_.atrace_categories_prefer_sdk_.size();
+}
+inline int FtraceConfig::atrace_categories_prefer_sdk_size() const {
+  return _internal_atrace_categories_prefer_sdk_size();
+}
+inline void FtraceConfig::clear_atrace_categories_prefer_sdk() {
+  _impl_.atrace_categories_prefer_sdk_.Clear();
+}
+inline std::string* FtraceConfig::add_atrace_categories_prefer_sdk() {
+  std::string* _s = _internal_add_atrace_categories_prefer_sdk();
+  // @@protoc_insertion_point(field_add_mutable:perfetto.protos.FtraceConfig.atrace_categories_prefer_sdk)
+  return _s;
+}
+inline const std::string& FtraceConfig::_internal_atrace_categories_prefer_sdk(int index) const {
+  return _impl_.atrace_categories_prefer_sdk_.Get(index);
+}
+inline const std::string& FtraceConfig::atrace_categories_prefer_sdk(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceConfig.atrace_categories_prefer_sdk)
+  return _internal_atrace_categories_prefer_sdk(index);
+}
+inline std::string* FtraceConfig::mutable_atrace_categories_prefer_sdk(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.FtraceConfig.atrace_categories_prefer_sdk)
+  return _impl_.atrace_categories_prefer_sdk_.Mutable(index);
+}
+inline void FtraceConfig::set_atrace_categories_prefer_sdk(int index, const std::string& value) {
+  _impl_.atrace_categories_prefer_sdk_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.FtraceConfig.atrace_categories_prefer_sdk)
+}
+inline void FtraceConfig::set_atrace_categories_prefer_sdk(int index, std::string&& value) {
+  _impl_.atrace_categories_prefer_sdk_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:perfetto.protos.FtraceConfig.atrace_categories_prefer_sdk)
+}
+inline void FtraceConfig::set_atrace_categories_prefer_sdk(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.atrace_categories_prefer_sdk_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:perfetto.protos.FtraceConfig.atrace_categories_prefer_sdk)
+}
+inline void FtraceConfig::set_atrace_categories_prefer_sdk(int index, const char* value, size_t size) {
+  _impl_.atrace_categories_prefer_sdk_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:perfetto.protos.FtraceConfig.atrace_categories_prefer_sdk)
+}
+inline std::string* FtraceConfig::_internal_add_atrace_categories_prefer_sdk() {
+  return _impl_.atrace_categories_prefer_sdk_.Add();
+}
+inline void FtraceConfig::add_atrace_categories_prefer_sdk(const std::string& value) {
+  _impl_.atrace_categories_prefer_sdk_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:perfetto.protos.FtraceConfig.atrace_categories_prefer_sdk)
+}
+inline void FtraceConfig::add_atrace_categories_prefer_sdk(std::string&& value) {
+  _impl_.atrace_categories_prefer_sdk_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:perfetto.protos.FtraceConfig.atrace_categories_prefer_sdk)
+}
+inline void FtraceConfig::add_atrace_categories_prefer_sdk(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.atrace_categories_prefer_sdk_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:perfetto.protos.FtraceConfig.atrace_categories_prefer_sdk)
+}
+inline void FtraceConfig::add_atrace_categories_prefer_sdk(const char* value, size_t size) {
+  _impl_.atrace_categories_prefer_sdk_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:perfetto.protos.FtraceConfig.atrace_categories_prefer_sdk)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+FtraceConfig::atrace_categories_prefer_sdk() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.FtraceConfig.atrace_categories_prefer_sdk)
+  return _impl_.atrace_categories_prefer_sdk_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+FtraceConfig::mutable_atrace_categories_prefer_sdk() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.FtraceConfig.atrace_categories_prefer_sdk)
+  return &_impl_.atrace_categories_prefer_sdk_;
+}
+
 // optional uint32 buffer_size_kb = 10;
 inline bool FtraceConfig::_internal_has_buffer_size_kb() const {
   bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
@@ -1994,6 +2125,34 @@ inline void FtraceConfig::_internal_set_drain_period_ms(::uint32_t value) {
 inline void FtraceConfig::set_drain_period_ms(::uint32_t value) {
   _internal_set_drain_period_ms(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.FtraceConfig.drain_period_ms)
+}
+
+// optional uint32 drain_buffer_percent = 29;
+inline bool FtraceConfig::_internal_has_drain_buffer_percent() const {
+  bool value = (_impl_._has_bits_[0] & 0x00004000u) != 0;
+  return value;
+}
+inline bool FtraceConfig::has_drain_buffer_percent() const {
+  return _internal_has_drain_buffer_percent();
+}
+inline void FtraceConfig::clear_drain_buffer_percent() {
+  _impl_.drain_buffer_percent_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00004000u;
+}
+inline ::uint32_t FtraceConfig::_internal_drain_buffer_percent() const {
+  return _impl_.drain_buffer_percent_;
+}
+inline ::uint32_t FtraceConfig::drain_buffer_percent() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceConfig.drain_buffer_percent)
+  return _internal_drain_buffer_percent();
+}
+inline void FtraceConfig::_internal_set_drain_buffer_percent(::uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00004000u;
+  _impl_.drain_buffer_percent_ = value;
+}
+inline void FtraceConfig::set_drain_buffer_percent(::uint32_t value) {
+  _internal_set_drain_buffer_percent(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.FtraceConfig.drain_buffer_percent)
 }
 
 // optional .perfetto.protos.FtraceConfig.CompactSchedConfig compact_sched = 12;
@@ -2692,6 +2851,34 @@ inline void FtraceConfig::set_allocated_instance_name(std::string* instance_name
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:perfetto.protos.FtraceConfig.instance_name)
+}
+
+// optional bool buffer_size_lower_bound = 27;
+inline bool FtraceConfig::_internal_has_buffer_size_lower_bound() const {
+  bool value = (_impl_._has_bits_[0] & 0x00002000u) != 0;
+  return value;
+}
+inline bool FtraceConfig::has_buffer_size_lower_bound() const {
+  return _internal_has_buffer_size_lower_bound();
+}
+inline void FtraceConfig::clear_buffer_size_lower_bound() {
+  _impl_.buffer_size_lower_bound_ = false;
+  _impl_._has_bits_[0] &= ~0x00002000u;
+}
+inline bool FtraceConfig::_internal_buffer_size_lower_bound() const {
+  return _impl_.buffer_size_lower_bound_;
+}
+inline bool FtraceConfig::buffer_size_lower_bound() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.FtraceConfig.buffer_size_lower_bound)
+  return _internal_buffer_size_lower_bound();
+}
+inline void FtraceConfig::_internal_set_buffer_size_lower_bound(bool value) {
+  _impl_._has_bits_[0] |= 0x00002000u;
+  _impl_.buffer_size_lower_bound_ = value;
+}
+inline void FtraceConfig::set_buffer_size_lower_bound(bool value) {
+  _internal_set_buffer_size_lower_bound(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.FtraceConfig.buffer_size_lower_bound)
 }
 
 #ifdef __GNUC__

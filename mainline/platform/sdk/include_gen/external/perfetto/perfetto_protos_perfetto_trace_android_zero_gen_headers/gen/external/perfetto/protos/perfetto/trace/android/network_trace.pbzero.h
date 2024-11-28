@@ -15,9 +15,15 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 class NetworkPacketEvent;
 enum TrafficDirection : int32_t;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 enum TrafficDirection : int32_t {
   DIR_UNSPECIFIED = 0,
@@ -249,7 +255,7 @@ class NetworkPacketBundle : public ::protozero::Message {
   }
 };
 
-class NetworkPacketEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/9, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
+class NetworkPacketEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_FIELD_ID=*/11, /*HAS_NONPACKED_REPEATED_FIELDS=*/false> {
  public:
   NetworkPacketEvent_Decoder(const uint8_t* data, size_t len) : TypedProtoDecoder(data, len) {}
   explicit NetworkPacketEvent_Decoder(const std::string& raw) : TypedProtoDecoder(reinterpret_cast<const uint8_t*>(raw.data()), raw.size()) {}
@@ -272,6 +278,10 @@ class NetworkPacketEvent_Decoder : public ::protozero::TypedProtoDecoder</*MAX_F
   uint32_t local_port() const { return at<8>().as_uint32(); }
   bool has_remote_port() const { return at<9>().valid(); }
   uint32_t remote_port() const { return at<9>().as_uint32(); }
+  bool has_icmp_type() const { return at<10>().valid(); }
+  uint32_t icmp_type() const { return at<10>().as_uint32(); }
+  bool has_icmp_code() const { return at<11>().valid(); }
+  uint32_t icmp_code() const { return at<11>().as_uint32(); }
 };
 
 class NetworkPacketEvent : public ::protozero::Message {
@@ -287,6 +297,8 @@ class NetworkPacketEvent : public ::protozero::Message {
     kTcpFlagsFieldNumber = 7,
     kLocalPortFieldNumber = 8,
     kRemotePortFieldNumber = 9,
+    kIcmpTypeFieldNumber = 10,
+    kIcmpCodeFieldNumber = 11,
   };
   static constexpr const char* GetName() { return ".perfetto.protos.NetworkPacketEvent"; }
 
@@ -296,11 +308,11 @@ class NetworkPacketEvent : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::TrafficDirection,
+      TrafficDirection,
       NetworkPacketEvent>;
 
   static constexpr FieldMetadata_Direction kDirection{};
-  void set_direction(::perfetto::protos::pbzero::TrafficDirection value) {
+  void set_direction(TrafficDirection value) {
     static constexpr uint32_t field_id = FieldMetadata_Direction::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
@@ -452,6 +464,42 @@ class NetworkPacketEvent : public ::protozero::Message {
   static constexpr FieldMetadata_RemotePort kRemotePort{};
   void set_remote_port(uint32_t value) {
     static constexpr uint32_t field_id = FieldMetadata_RemotePort::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_IcmpType =
+    ::protozero::proto_utils::FieldMetadata<
+      10,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      NetworkPacketEvent>;
+
+  static constexpr FieldMetadata_IcmpType kIcmpType{};
+  void set_icmp_type(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_IcmpType::kFieldId;
+    // Call the appropriate protozero::Message::Append(field_id, ...)
+    // method based on the type of the field.
+    ::protozero::internal::FieldWriter<
+      ::protozero::proto_utils::ProtoSchemaType::kUint32>
+        ::Append(*this, field_id, value);
+  }
+
+  using FieldMetadata_IcmpCode =
+    ::protozero::proto_utils::FieldMetadata<
+      11,
+      ::protozero::proto_utils::RepetitionType::kNotRepeated,
+      ::protozero::proto_utils::ProtoSchemaType::kUint32,
+      uint32_t,
+      NetworkPacketEvent>;
+
+  static constexpr FieldMetadata_IcmpCode kIcmpCode{};
+  void set_icmp_code(uint32_t value) {
+    static constexpr uint32_t field_id = FieldMetadata_IcmpCode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
     ::protozero::internal::FieldWriter<
