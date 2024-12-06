@@ -60,11 +60,12 @@ enum SurfaceFlingerLayersConfig_Mode : int {
   SurfaceFlingerLayersConfig_Mode_MODE_UNSPECIFIED = 0,
   SurfaceFlingerLayersConfig_Mode_MODE_ACTIVE = 1,
   SurfaceFlingerLayersConfig_Mode_MODE_GENERATED = 2,
-  SurfaceFlingerLayersConfig_Mode_MODE_DUMP = 3
+  SurfaceFlingerLayersConfig_Mode_MODE_DUMP = 3,
+  SurfaceFlingerLayersConfig_Mode_MODE_GENERATED_BUGREPORT_ONLY = 4
 };
 bool SurfaceFlingerLayersConfig_Mode_IsValid(int value);
 constexpr SurfaceFlingerLayersConfig_Mode SurfaceFlingerLayersConfig_Mode_Mode_MIN = SurfaceFlingerLayersConfig_Mode_MODE_UNSPECIFIED;
-constexpr SurfaceFlingerLayersConfig_Mode SurfaceFlingerLayersConfig_Mode_Mode_MAX = SurfaceFlingerLayersConfig_Mode_MODE_DUMP;
+constexpr SurfaceFlingerLayersConfig_Mode SurfaceFlingerLayersConfig_Mode_Mode_MAX = SurfaceFlingerLayersConfig_Mode_MODE_GENERATED_BUGREPORT_ONLY;
 constexpr int SurfaceFlingerLayersConfig_Mode_Mode_ARRAYSIZE = SurfaceFlingerLayersConfig_Mode_Mode_MAX + 1;
 
 const std::string& SurfaceFlingerLayersConfig_Mode_Name(SurfaceFlingerLayersConfig_Mode value);
@@ -224,6 +225,8 @@ class SurfaceFlingerLayersConfig final :
     SurfaceFlingerLayersConfig_Mode_MODE_GENERATED;
   static constexpr Mode MODE_DUMP =
     SurfaceFlingerLayersConfig_Mode_MODE_DUMP;
+  static constexpr Mode MODE_GENERATED_BUGREPORT_ONLY =
+    SurfaceFlingerLayersConfig_Mode_MODE_GENERATED_BUGREPORT_ONLY;
   static inline bool Mode_IsValid(int value) {
     return SurfaceFlingerLayersConfig_Mode_IsValid(value);
   }

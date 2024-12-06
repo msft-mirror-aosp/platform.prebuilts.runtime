@@ -515,6 +515,9 @@ class ProcessStats_Process final :
     kSmrPssAnonKbFieldNumber = 18,
     kSmrPssFileKbFieldNumber = 19,
     kSmrPssShmemKbFieldNumber = 20,
+    kRuntimeUserModeFieldNumber = 21,
+    kRuntimeKernelModeFieldNumber = 22,
+    kSmrSwapPssKbFieldNumber = 23,
   };
   // repeated .perfetto.protos.ProcessStats.Thread threads = 11;
   int threads_size() const;
@@ -786,6 +789,45 @@ class ProcessStats_Process final :
   void _internal_set_smr_pss_shmem_kb(::uint64_t value);
   public:
 
+  // optional uint64 runtime_user_mode = 21;
+  bool has_runtime_user_mode() const;
+  private:
+  bool _internal_has_runtime_user_mode() const;
+  public:
+  void clear_runtime_user_mode();
+  ::uint64_t runtime_user_mode() const;
+  void set_runtime_user_mode(::uint64_t value);
+  private:
+  ::uint64_t _internal_runtime_user_mode() const;
+  void _internal_set_runtime_user_mode(::uint64_t value);
+  public:
+
+  // optional uint64 runtime_kernel_mode = 22;
+  bool has_runtime_kernel_mode() const;
+  private:
+  bool _internal_has_runtime_kernel_mode() const;
+  public:
+  void clear_runtime_kernel_mode();
+  ::uint64_t runtime_kernel_mode() const;
+  void set_runtime_kernel_mode(::uint64_t value);
+  private:
+  ::uint64_t _internal_runtime_kernel_mode() const;
+  void _internal_set_runtime_kernel_mode(::uint64_t value);
+  public:
+
+  // optional uint64 smr_swap_pss_kb = 23;
+  bool has_smr_swap_pss_kb() const;
+  private:
+  bool _internal_has_smr_swap_pss_kb() const;
+  public:
+  void clear_smr_swap_pss_kb();
+  ::uint64_t smr_swap_pss_kb() const;
+  void set_smr_swap_pss_kb(::uint64_t value);
+  private:
+  ::uint64_t _internal_smr_swap_pss_kb() const;
+  void _internal_set_smr_swap_pss_kb(::uint64_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:perfetto.protos.ProcessStats.Process)
  private:
   class _Internal;
@@ -816,6 +858,9 @@ class ProcessStats_Process final :
     ::uint64_t smr_pss_anon_kb_;
     ::uint64_t smr_pss_file_kb_;
     ::uint64_t smr_pss_shmem_kb_;
+    ::uint64_t runtime_user_mode_;
+    ::uint64_t runtime_kernel_mode_;
+    ::uint64_t smr_swap_pss_kb_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_protos_2fperfetto_2ftrace_2fps_2fprocess_5fstats_2eproto;
@@ -1161,6 +1206,46 @@ inline void ProcessStats_Process::set_pid(::int32_t value) {
   // @@protoc_insertion_point(field_set:perfetto.protos.ProcessStats.Process.pid)
 }
 
+// repeated .perfetto.protos.ProcessStats.Thread threads = 11;
+inline int ProcessStats_Process::_internal_threads_size() const {
+  return _impl_.threads_.size();
+}
+inline int ProcessStats_Process::threads_size() const {
+  return _internal_threads_size();
+}
+inline void ProcessStats_Process::clear_threads() {
+  _impl_.threads_.Clear();
+}
+inline ::perfetto::protos::ProcessStats_Thread* ProcessStats_Process::mutable_threads(int index) {
+  // @@protoc_insertion_point(field_mutable:perfetto.protos.ProcessStats.Process.threads)
+  return _impl_.threads_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::ProcessStats_Thread >*
+ProcessStats_Process::mutable_threads() {
+  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.ProcessStats.Process.threads)
+  return &_impl_.threads_;
+}
+inline const ::perfetto::protos::ProcessStats_Thread& ProcessStats_Process::_internal_threads(int index) const {
+  return _impl_.threads_.Get(index);
+}
+inline const ::perfetto::protos::ProcessStats_Thread& ProcessStats_Process::threads(int index) const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ProcessStats.Process.threads)
+  return _internal_threads(index);
+}
+inline ::perfetto::protos::ProcessStats_Thread* ProcessStats_Process::_internal_add_threads() {
+  return _impl_.threads_.Add();
+}
+inline ::perfetto::protos::ProcessStats_Thread* ProcessStats_Process::add_threads() {
+  ::perfetto::protos::ProcessStats_Thread* _add = _internal_add_threads();
+  // @@protoc_insertion_point(field_add:perfetto.protos.ProcessStats.Process.threads)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::ProcessStats_Thread >&
+ProcessStats_Process::threads() const {
+  // @@protoc_insertion_point(field_list:perfetto.protos.ProcessStats.Process.threads)
+  return _impl_.threads_;
+}
+
 // optional uint64 vm_size_kb = 2;
 inline bool ProcessStats_Process::_internal_has_vm_size_kb() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
@@ -1411,46 +1496,6 @@ inline void ProcessStats_Process::_internal_set_oom_score_adj(::int64_t value) {
 inline void ProcessStats_Process::set_oom_score_adj(::int64_t value) {
   _internal_set_oom_score_adj(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.ProcessStats.Process.oom_score_adj)
-}
-
-// repeated .perfetto.protos.ProcessStats.Thread threads = 11;
-inline int ProcessStats_Process::_internal_threads_size() const {
-  return _impl_.threads_.size();
-}
-inline int ProcessStats_Process::threads_size() const {
-  return _internal_threads_size();
-}
-inline void ProcessStats_Process::clear_threads() {
-  _impl_.threads_.Clear();
-}
-inline ::perfetto::protos::ProcessStats_Thread* ProcessStats_Process::mutable_threads(int index) {
-  // @@protoc_insertion_point(field_mutable:perfetto.protos.ProcessStats.Process.threads)
-  return _impl_.threads_.Mutable(index);
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::ProcessStats_Thread >*
-ProcessStats_Process::mutable_threads() {
-  // @@protoc_insertion_point(field_mutable_list:perfetto.protos.ProcessStats.Process.threads)
-  return &_impl_.threads_;
-}
-inline const ::perfetto::protos::ProcessStats_Thread& ProcessStats_Process::_internal_threads(int index) const {
-  return _impl_.threads_.Get(index);
-}
-inline const ::perfetto::protos::ProcessStats_Thread& ProcessStats_Process::threads(int index) const {
-  // @@protoc_insertion_point(field_get:perfetto.protos.ProcessStats.Process.threads)
-  return _internal_threads(index);
-}
-inline ::perfetto::protos::ProcessStats_Thread* ProcessStats_Process::_internal_add_threads() {
-  return _impl_.threads_.Add();
-}
-inline ::perfetto::protos::ProcessStats_Thread* ProcessStats_Process::add_threads() {
-  ::perfetto::protos::ProcessStats_Thread* _add = _internal_add_threads();
-  // @@protoc_insertion_point(field_add:perfetto.protos.ProcessStats.Process.threads)
-  return _add;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::perfetto::protos::ProcessStats_Thread >&
-ProcessStats_Process::threads() const {
-  // @@protoc_insertion_point(field_list:perfetto.protos.ProcessStats.Process.threads)
-  return _impl_.threads_;
 }
 
 // optional bool is_peak_rss_resettable = 12;
@@ -1715,6 +1760,90 @@ inline void ProcessStats_Process::_internal_set_smr_pss_shmem_kb(::uint64_t valu
 inline void ProcessStats_Process::set_smr_pss_shmem_kb(::uint64_t value) {
   _internal_set_smr_pss_shmem_kb(value);
   // @@protoc_insertion_point(field_set:perfetto.protos.ProcessStats.Process.smr_pss_shmem_kb)
+}
+
+// optional uint64 smr_swap_pss_kb = 23;
+inline bool ProcessStats_Process::_internal_has_smr_swap_pss_kb() const {
+  bool value = (_impl_._has_bits_[0] & 0x00100000u) != 0;
+  return value;
+}
+inline bool ProcessStats_Process::has_smr_swap_pss_kb() const {
+  return _internal_has_smr_swap_pss_kb();
+}
+inline void ProcessStats_Process::clear_smr_swap_pss_kb() {
+  _impl_.smr_swap_pss_kb_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00100000u;
+}
+inline ::uint64_t ProcessStats_Process::_internal_smr_swap_pss_kb() const {
+  return _impl_.smr_swap_pss_kb_;
+}
+inline ::uint64_t ProcessStats_Process::smr_swap_pss_kb() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ProcessStats.Process.smr_swap_pss_kb)
+  return _internal_smr_swap_pss_kb();
+}
+inline void ProcessStats_Process::_internal_set_smr_swap_pss_kb(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00100000u;
+  _impl_.smr_swap_pss_kb_ = value;
+}
+inline void ProcessStats_Process::set_smr_swap_pss_kb(::uint64_t value) {
+  _internal_set_smr_swap_pss_kb(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.ProcessStats.Process.smr_swap_pss_kb)
+}
+
+// optional uint64 runtime_user_mode = 21;
+inline bool ProcessStats_Process::_internal_has_runtime_user_mode() const {
+  bool value = (_impl_._has_bits_[0] & 0x00040000u) != 0;
+  return value;
+}
+inline bool ProcessStats_Process::has_runtime_user_mode() const {
+  return _internal_has_runtime_user_mode();
+}
+inline void ProcessStats_Process::clear_runtime_user_mode() {
+  _impl_.runtime_user_mode_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00040000u;
+}
+inline ::uint64_t ProcessStats_Process::_internal_runtime_user_mode() const {
+  return _impl_.runtime_user_mode_;
+}
+inline ::uint64_t ProcessStats_Process::runtime_user_mode() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ProcessStats.Process.runtime_user_mode)
+  return _internal_runtime_user_mode();
+}
+inline void ProcessStats_Process::_internal_set_runtime_user_mode(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00040000u;
+  _impl_.runtime_user_mode_ = value;
+}
+inline void ProcessStats_Process::set_runtime_user_mode(::uint64_t value) {
+  _internal_set_runtime_user_mode(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.ProcessStats.Process.runtime_user_mode)
+}
+
+// optional uint64 runtime_kernel_mode = 22;
+inline bool ProcessStats_Process::_internal_has_runtime_kernel_mode() const {
+  bool value = (_impl_._has_bits_[0] & 0x00080000u) != 0;
+  return value;
+}
+inline bool ProcessStats_Process::has_runtime_kernel_mode() const {
+  return _internal_has_runtime_kernel_mode();
+}
+inline void ProcessStats_Process::clear_runtime_kernel_mode() {
+  _impl_.runtime_kernel_mode_ = ::uint64_t{0u};
+  _impl_._has_bits_[0] &= ~0x00080000u;
+}
+inline ::uint64_t ProcessStats_Process::_internal_runtime_kernel_mode() const {
+  return _impl_.runtime_kernel_mode_;
+}
+inline ::uint64_t ProcessStats_Process::runtime_kernel_mode() const {
+  // @@protoc_insertion_point(field_get:perfetto.protos.ProcessStats.Process.runtime_kernel_mode)
+  return _internal_runtime_kernel_mode();
+}
+inline void ProcessStats_Process::_internal_set_runtime_kernel_mode(::uint64_t value) {
+  _impl_._has_bits_[0] |= 0x00080000u;
+  _impl_.runtime_kernel_mode_ = value;
+}
+inline void ProcessStats_Process::set_runtime_kernel_mode(::uint64_t value) {
+  _internal_set_runtime_kernel_mode(value);
+  // @@protoc_insertion_point(field_set:perfetto.protos.ProcessStats.Process.runtime_kernel_mode)
 }
 
 // -------------------------------------------------------------------

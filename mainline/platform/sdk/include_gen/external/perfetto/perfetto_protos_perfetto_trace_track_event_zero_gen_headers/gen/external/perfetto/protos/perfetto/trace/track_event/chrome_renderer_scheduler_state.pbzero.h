@@ -15,8 +15,14 @@
 namespace perfetto {
 namespace protos {
 namespace pbzero {
-
 enum ChromeRAILMode : int32_t;
+} // Namespace pbzero.
+} // Namespace protos.
+} // Namespace perfetto.
+
+namespace perfetto {
+namespace protos {
+namespace pbzero {
 
 enum ChromeRAILMode : int32_t {
   RAIL_MODE_NONE = 0,
@@ -80,11 +86,11 @@ class ChromeRendererSchedulerState : public ::protozero::Message {
       1,
       ::protozero::proto_utils::RepetitionType::kNotRepeated,
       ::protozero::proto_utils::ProtoSchemaType::kEnum,
-      ::perfetto::protos::pbzero::ChromeRAILMode,
+      ChromeRAILMode,
       ChromeRendererSchedulerState>;
 
   static constexpr FieldMetadata_RailMode kRailMode{};
-  void set_rail_mode(::perfetto::protos::pbzero::ChromeRAILMode value) {
+  void set_rail_mode(ChromeRAILMode value) {
     static constexpr uint32_t field_id = FieldMetadata_RailMode::kFieldId;
     // Call the appropriate protozero::Message::Append(field_id, ...)
     // method based on the type of the field.
