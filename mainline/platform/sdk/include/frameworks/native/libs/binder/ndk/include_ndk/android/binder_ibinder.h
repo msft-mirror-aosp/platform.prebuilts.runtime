@@ -219,6 +219,50 @@ typedef binder_status_t (*AIBinder_onDump)(AIBinder* binder, int fd, const char*
 void AIBinder_Class_setOnDump(AIBinder_Class* clazz, AIBinder_onDump onDump) __INTRODUCED_IN(29);
 
 /**
+ * Associates a mapping of transaction codes(transaction_code_t) to function names for the given
+ * class.
+ *
+ * Trace messages will use the provided names instead of bare integer codes when set. If not set by
+ * this function, trace messages will only be identified by the bare code. This should be called one
+ * time during clazz initialization. clazz and transactionCodeToFunctionMap should have same
+ * lifetime. Resetting/clearing the transactionCodeToFunctionMap is not allowed.
+ *
+ * Available since API level 36.
+ *
+ * \param clazz class which should use this transaction to code function map.
+ * \param transactionCodeToFunctionMap array of function names indexed by transaction code.
+ * Transaction codes start from 1, functions with transaction code 1 will correspond to index 0 in
+ * transactionCodeToFunctionMap. When defining methods, transaction codes are expected to be
+ * contiguous, and this is required for maximum memory efficiency.
+ * You can use nullptr if certain transaction codes are not used. Lifetime should be same as clazz.
+ * \param length number of elements in the transactionCodeToFunctionMap
+ *
+ * \return true if setting codeToFunction to clazz is successful. return false if clazz or
+ * codeToFunction is nullptr.
+ */
+void AIBinder_Class_setTransactionCodeToFunctionNameMap(AIBinder_Class* clazz,
+                                                        const char** transactionCodeToFunctionMap,
+                                                        size_t length) __INTRODUCED_IN(36);
+
+/**
+ * Get function name associated with transaction code for given class
+ *
+ * This function returns function name associated with provided transaction code for given class.
+ * AIBinder_Class_setTransactionCodeToFunctionNameMap should be called first to associate function
+ * to transaction code mapping.
+ *
+ * Available since API level 36.
+ *
+ * \param clazz class for which function name is requested
+ * \param transactionCode transaction_code_t for which function name is requested.
+ *
+ * \return function name in form of const char* if transaction code is valid for given class.
+ * if transaction code is invalid or transactionCodeToFunctionMap is not set, nullptr is returned
+ */
+const char* AIBinder_Class_getFunctionName(AIBinder_Class* clazz, transaction_code_t code)
+        __INTRODUCED_IN(36);
+
+/**
  * This tells users of this class not to use a transaction header. By default, libbinder_ndk users
  * read/write transaction headers implicitly (in the SDK, this must be manually written by
  * android.os.Parcel#writeInterfaceToken, and it is read/checked with
@@ -389,6 +433,12 @@ uid_t AIBinder_getCallingUid() __INTRODUCED_IN(29);
  * permissions. However, when doing this, one should be aware of possible TOCTOU problems when the
  * calling process dies and is replaced with another process with elevated permissions and the same
  * PID.
+ *
+ * Warning: oneway transactions do not receive PID. Even if you expect
+ * a transaction to be synchronous, a misbehaving client could send it
+ * as a synchronous call and result in a 0 PID here. Additionally, if
+ * there is a race and the calling process dies, the PID may still be
+ * 0 for a synchronous call.
  *
  * Available since API level 29.
  *
@@ -712,8 +762,16 @@ binder_status_t AIBinder_getExtension(AIBinder* binder, AIBinder** outExt) __INT
  *     When registering the interface, add:
  *         std::shared_ptr<MyFoo> foo = new MyFoo; // class in AOSP codebase
  *         std::shared_ptr<MyBar> bar = new MyBar; // custom extension class
- *         ... = AIBinder_setExtension(foo->asBinder().get(), bar->asBinder().get());
+ *         SpAIBinder binder = foo->asBinder(); // target binder to extend
+ *         ... = AIBinder_setExtension(binder.get(), bar->asBinder().get());
+ *         ... = AServiceManager_addService(binder.get(), instanceName);
  *         // handle error
+ *
+ *         Do not use foo->asBinder().get() as the target binder argument to
+ *         AIBinder_setExtensions because asBinder it creates a new binder
+ *         object that will be destroyed after the function is called. The same
+ *         binder object must be used for AIBinder_setExtension and
+ *         AServiceManager_addService to register the service with an extension.
  *
  *     Then, clients of IFoo can get this extension:
  *         SpAIBinder binder = ...;
@@ -757,7 +815,7 @@ const char* AIBinder_Class_getDescriptor(const AIBinder_Class* clazz) __INTRODUC
  * This provides a per-process-unique total ordering of binders where a null
  * AIBinder* object is considered to be before all other binder objects.
  * For instance, two binders refer to the same object in a local or remote
- * process when both AIBinder_lt(a, b) and AIBinder(b, a) are false. This API
+ * process when both AIBinder_lt(a, b) and AIBinder_lt(b, a) are false. This API
  * might be used to insert and lookup binders in binary search trees.
  *
  * AIBinder* pointers themselves actually also create a per-process-unique total
