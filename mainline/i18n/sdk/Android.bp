@@ -262,10 +262,7 @@ cc_prebuilt_library_shared {
     name: "libandroidicu",
     prefer: false,
     visibility: ["//visibility:public"],
-    apex_available: [
-        "//apex_available:platform",
-        "com.android.i18n",
-    ],
+    apex_available: ["com.android.i18n"],
     licenses: ["i18n-module-sdk_external_icu_license"],
     host_supported: true,
     unique_host_soname: true,
