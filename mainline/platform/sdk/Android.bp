@@ -42,10 +42,7 @@ cc_prebuilt_library {
     name: "liblog",
     prefer: false,
     visibility: ["//visibility:public"],
-    apex_available: [
-        "//apex_available:platform",
-        "com.android.runtime",
-    ],
+    apex_available: ["com.android.runtime"],
     licenses: ["platform-mainline-sdk_system_logging_liblog_license"],
     host_supported: true,
     export_include_dirs: ["common_os/include/system/logging/liblog/include"],
