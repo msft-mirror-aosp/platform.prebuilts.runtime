@@ -42,6 +42,7 @@ To update:
 
    4. Build module SDKs:
       ```
+      $ lunch aosp_riscv64-trunk_staging-userdebug
       $ packages/modules/common/build/mainline_modules_sdks.sh \
           --build-release latest \
           --build-platform-sdks-for-mainline
@@ -56,9 +57,13 @@ To update:
       ```
 
    2. Manually inspect the updated Android.bp files and revert any sections not
-      related to riscv64 (it may be necessary to revert the entire file). Then try
-      to build with `lunch riscv64 && art/tools/buildbot-build.sh`, you may find
-      that further tweaking is needed. Make sure that the build succeeds.
+      related to riscv64 (it may be necessary to revert the entire file).
 
-   3. Update the commit (use `lunch riscv64 && art/tools/buildbot-build.sh` as a
+   3. Then try to build with `lunch riscv64 && art/tools/buildbot-build.sh`, you
+      may find that further tweaking is needed. Make sure that the build
+      succeeds. The Android.bp.patch files under
+      prebuilts/runtime/mainline/local_riscv64 are used to patch Android.bp's in
+      for some prebuilts, so this ensures that they still work.
+
+   4. Update the commit (use `lunch riscv64 && art/tools/buildbot-build.sh` as a
       validation step in commit message). Be sure to set mast@ as reviewer.
