@@ -360,19 +360,16 @@ def install_entry(tmp_dir, local_dist, build_numbers, entry):
       check_call(["mkdir", "-p", tmp_dir], cwd=install_dir)
       check_call(["unzip", "-DD", "-o", download_file, "-d", tmp_dir],
                  cwd=install_dir)
-      # Conscrypt is not owned by the ART team, so we keep a local copy of its
-      # prebuilt with Android.bp files renamed to ArtThinBuild.bp to avoid Soong
-      # adding them as part of the build graph.
       if "local_riscv64" in install_dir:
-        patch_cmd = ("sed -i 's|This is auto-generated. DO NOT EDIT.|"
-            "DO NOT COMMIT. Changes in this file are temporary and generated "
-            "by art/tools/buildbot-build.sh. See b/286551985.|g' {} ; ")
-        rename_cmd = 'f="{}" ; mv "$f" "$(dirname $f)"/ArtThinBuild.bp'
+        # Conscrypt and StatsD are not owned by the ART team and don't have
+        # riscv64 prebuilts, so we patch their prebuilt Android.bp files in
+        # buildbot-build.sh to add the support for that. Hence we should not
+        # include the Android.bp files themselves in local_riscv64.
         check_call(["find", "-type", "f", "-name", "Android.bp",
-                       "-exec", "sh", "-c", patch_cmd + rename_cmd, ";"],
+                       "-exec", "rm", "{}", ";"],
                    cwd=os.path.join(install_dir, tmp_dir))
       check_call(["find", "-type", "f", "-regextype", "posix-extended",
-                     "-regex", ".*riscv64.*|.*Android.bp|.*ArtThinBuild.bp",
+                     "-regex", ".*riscv64.*|.*Android.bp",
                      "-exec", "cp", "--parents", "{}", "..", ";"],
                  cwd=os.path.join(install_dir, tmp_dir))
       check_call(["rm", "-rf", tmp_dir], cwd=install_dir)
