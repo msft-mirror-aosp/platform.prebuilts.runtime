@@ -90,6 +90,8 @@ java_sdk_library_import {
         "//external/icu/android_icu4j",
         "//packages/modules/RuntimeI18n/apex",
         "//prebuilts:__subpackages__",
+        // We need to know what major version of tzdata a device needs.
+        "//system/timezone/apex/tests",
     ],
     apex_available: ["//apex_available:platform"],
     licenses: ["i18n-module-sdk_external_icu_license"],
